@@ -4,63 +4,48 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 const GEN_AI_KEY = "AIzaSyBQAfqrAmnDRs-rPEEC6odo6k90tGL0KTE";
 
 export const generateAIResponse = async (prompt: string, fileData?: { data: string, mimeType: string }) => {
-  // 1. محاولة جلب قائمة الموديلات المتاحة أولاً لمعرفة "العنوان الصحيح"
   try {
-    const listResponse = await fetch(`https://generativelanguage.googleapis.com/v1/models?key=${GEN_AI_KEY}`);
-    const listData = await listResponse.json();
-    console.log("🔍 [Med-Prep AI] Available Models for your Key:", listData.models?.map((m: any) => m.name));
-  } catch (e) {
-    console.warn("Could not list models", e);
-  }
+    console.log("🚀 [Med-Prep AI] Connecting via Official SDK...");
+    const genAI = new GoogleGenerativeAI(GEN_AI_KEY);
+    
+    // محاولة الاتصال بالموديل الأكثر استقراراً
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-  const models = ["gemini-1.5-flash", "gemini-1.5-flash-001", "gemini-1.5-pro", "gemini-pro"];
-  const versions = ["v1", "v1beta"];
-  
-  let lastError = null;
-
-  for (const modelName of models) {
-    for (const apiVersion of versions) {
-      try {
-        console.log(`🚀 [Med-Prep AI] Attempting: ${apiVersion} | Model: ${modelName}`);
-        
-        const systemInstruction = "أنت (Med-Prep AI)، مساعد طبي ذكي. اشرح بأسلوب أكاديمي سهل.";
-        const contents = [{
-          role: "user",
-          parts: [{ text: systemInstruction + "\n\n" + prompt }]
-        }];
-
-        if (fileData) {
-          contents[0].parts.push({
-            inline_data: {
-              mime_type: fileData.mimeType,
-              data: fileData.data.split(',')[1]
-            }
-          } as any);
+    const parts: any[] = [{ text: "أنت مساعد طبي ذكي خبير من منصة Med-Prep. اشرح الآتي بأسلوب أكاديمي سهل: \n\n" + prompt }];
+    
+    if (fileData) {
+      parts.push({
+        inlineData: {
+          mimeType: fileData.mimeType,
+          data: fileData.data.split(',')[1]
         }
-
-        const response = await fetch(`https://generativelanguage.googleapis.com/${apiVersion}/models/${modelName}:generateContent?key=${GEN_AI_KEY}`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ contents })
-        });
-
-        if (response.ok) {
-          const data = await response.json();
-          const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
-          if (text) {
-            console.log(`✅ [Med-Prep AI] FOUND IT! Working with: ${apiVersion}/${modelName}`);
-            return text;
-          }
-        } else {
-          const errData = await response.json();
-          lastError = errData.error?.message;
-          console.warn(`❌ ${apiVersion}/${modelName} failed:`, lastError);
-        }
-      } catch (err: any) {
-        lastError = err.message;
-      }
+      });
     }
-  }
 
-  throw new Error("عذراً، لم نجد موديل متاح لحسابك حالياً. يرجى مراجعة الـ Console.");
+    const result = await model.generateContent(parts);
+    const response = await result.response;
+    const text = response.text();
+    
+    console.log("✅ [Med-Prep AI] SDK Success!");
+    return text;
+  } catch (error: any) {
+    console.error("❌ [Med-Prep AI] SDK Error:", error);
+    
+    // إذا فشل الـ SDK، سنحاول محاولة أخيرة عبر الـ Fetch التقليدي
+    console.log("🔄 [Med-Prep AI] Falling back to Fetch...");
+    return await fallbackFetch(prompt, fileData);
+  }
 };
+
+async function fallbackFetch(prompt: string, fileData?: any) {
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEN_AI_KEY}`;
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      contents: [{ parts: [{ text: prompt }] }]
+    })
+  });
+  const data = await response.json();
+  return data.candidates?.[0]?.content?.parts?.[0]?.text || "عذراً، تعذر الوصول للمساعد الذكي.";
+}
