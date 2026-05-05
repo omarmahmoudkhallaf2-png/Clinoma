@@ -5,13 +5,26 @@ const GEN_AI_KEY = "AIzaSyDGSNgEm4bDP-xetTfwrkbxUF1IdBk-0fI";
 
 export const generateAIResponse = async (prompt: string, fileData?: { data: string, mimeType: string }) => {
   try {
+    console.log("CRITICAL DEBUG: Sending request to Gemini...");
     const genAI = new GoogleGenerativeAI(GEN_AI_KEY);
+    
+    // استخدام طريقة أكثر توافقاً مع المتصفحات
     const model = genAI.getGenerativeModel({ 
       model: "gemini-1.5-flash",
-      systemInstruction: "أنت (Med-Prep AI)، مساعد طبي ذكي وخبير في شرح المحاضرات الطبية. مهمتك هي تبسيط المعلومات المعقدة وشرح الملفات المرفوعة بأسلوب أكاديمي سهل. لا تذكر أبداً أنك نموذج لشركة جوجل. أنت جزء من منصة Med-Prep التعليمية."
     });
 
-    const parts: any[] = [prompt];
+    const chat = model.startChat({
+      history: [],
+      generationConfig: {
+        maxOutputTokens: 2000,
+      },
+    });
+
+    // إضافة التعليمات البرمجية كجزء من البرومبت لضمان التوافق
+    const systemPrefix = "أنت (Med-Prep AI)، مساعد طبي ذكي. اشرح بأسلوب أكاديمي سهل ولا تذكر أنك Gemini. \n\n";
+    const fullPrompt = systemPrefix + prompt;
+
+    const parts: any[] = [fullPrompt];
     if (fileData) {
       parts.push({
         inlineData: {
@@ -23,9 +36,15 @@ export const generateAIResponse = async (prompt: string, fileData?: { data: stri
 
     const result = await model.generateContent(parts);
     const response = await result.response;
-    return response.text();
-  } catch (error) {
-    console.error("AI Error:", error);
+    const text = response.text();
+    console.log("CRITICAL DEBUG: Gemini responded successfully.");
+    return text;
+  } catch (error: any) {
+    console.error("CRITICAL ERROR (Gemini):", error);
+    // طباعة تفاصيل الخطأ للمساعدة في الحل
+    if (error.message?.includes('API_KEY_INVALID')) return "خطأ: مفتاح الـ API غير صحيح. يرجى التأكد منه.";
+    if (error.message?.includes('SAFETY')) return "عذراً، المحتوى المطلوب مخالف لسياسات الأمان الخاصة بالذكاء الاصطناعي.";
+    
     throw new Error("عذراً، واجه المساعد الذكي مشكلة في معالجة طلبك.");
   }
 };
