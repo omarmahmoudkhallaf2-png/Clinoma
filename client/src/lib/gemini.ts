@@ -1,7 +1,7 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 // سيتم جلب المفتاح من ملف الإعدادات لضمان الأمان
-const GEN_AI_KEY = "PLACEHOLDER_FOR_NEW_KEY";
+const GEN_AI_KEY = "AIzaSyBQAfqrAmnDRs-rPEEC6odo6k90tGL0KTE";
 
 export const generateAIResponse = async (prompt: string, fileData?: { data: string, mimeType: string }) => {
   // 1. محاولة جلب قائمة الموديلات المتاحة أولاً لمعرفة "العنوان الصحيح"
