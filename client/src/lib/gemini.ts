@@ -9,7 +9,7 @@ export const generateAIResponse = async (prompt: string, fileData?: { data: stri
     const genAI = new GoogleGenerativeAI(GEN_AI_KEY);
     
     // محاولة الاتصال بالموديل الأكثر استقراراً
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
 
     const parts: any[] = [{ text: "أنت مساعد طبي ذكي خبير من منصة Med-Prep. اشرح الآتي بأسلوب أكاديمي سهل: \n\n" + prompt }];
     
@@ -38,7 +38,7 @@ export const generateAIResponse = async (prompt: string, fileData?: { data: stri
 };
 
 async function fallbackFetch(prompt: string, fileData?: any) {
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEN_AI_KEY}`;
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEN_AI_KEY}`;
   const response = await fetch(url, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
