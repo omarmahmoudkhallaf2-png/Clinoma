@@ -30,7 +30,7 @@ export default function Sidebar({ isOpen = false, setIsOpen = (_: boolean) => {}
   const navigate = useNavigate();
   const location = useLocation();
   const { theme, toggleTheme } = useTheme();
-  const { logout, userRole, userPlan, isSubscribed } = useAuth();
+  const { logout, userRole, userPlan, isSubscribed, userData } = useAuth();
   const [isSupportOpen, setIsSupportOpen] = useState(false);
   const [config, setConfig] = useState({ telegramUser: 'omarrkhallaf', whatsappNumber: '', preferredContact: 'telegram' });
   const [subscribedCourses, setSubscribedCourses] = useState<any[]>([]);
@@ -52,8 +52,10 @@ export default function Sidebar({ isOpen = false, setIsOpen = (_: boolean) => {}
         console.error(err);
       }
     };
-    fetchData();
-  }, [isSubscribed]);
+    if (userData) {
+      fetchData();
+    }
+  }, [userData, isSubscribed]);
 
   const menuItems = [
     { icon: LayoutDashboard, label: 'لوحة التحكم', path: '/dashboard' },
@@ -157,13 +159,13 @@ export default function Sidebar({ isOpen = false, setIsOpen = (_: boolean) => {}
             ))}
             
             {/* My Courses Section */}
-            {subscribedCourses.length > 0 && (
-              <div className="pt-6 pb-2">
-                <div className="px-3 mb-2 text-[10px] font-bold text-muted-foreground uppercase tracking-widest opacity-60 text-right" dir="rtl">
-                  كورساتي المشترك بها
-                </div>
-                <div className="space-y-1">
-                  {subscribedCourses.map((course) => (
+            <div className="pt-6 pb-2">
+              <div className="px-3 mb-2 text-[10px] font-bold text-muted-foreground uppercase tracking-widest opacity-60 text-right" dir="rtl">
+                كورساتي المشترك بها
+              </div>
+              <div className="space-y-1">
+                {subscribedCourses.length > 0 ? (
+                  subscribedCourses.map((course) => (
                     <button
                       key={course.id}
                       onClick={() => navTo(`/course/${course.id}`)}
@@ -177,10 +179,14 @@ export default function Sidebar({ isOpen = false, setIsOpen = (_: boolean) => {}
                       <BookOpen className="w-4 h-4 transition-transform group-hover:scale-110" />
                       <span className="font-medium text-xs flex-1 text-right line-clamp-1" dir="rtl">{course.name}</span>
                     </button>
-                  ))}
-                </div>
+                  ))
+                ) : (
+                  <div className="px-3 py-2 text-[10px] text-muted-foreground italic text-right" dir="rtl">
+                    لا توجد كورسات مشتركة بعد
+                  </div>
+                )}
               </div>
-            )}
+            </div>
             
             <button
               onClick={() => setIsSupportOpen(true)}

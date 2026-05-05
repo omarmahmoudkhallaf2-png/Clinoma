@@ -6,7 +6,7 @@ import { db } from '../lib/firebase';
 import { doc, getDoc, getDocs, collection, query } from 'firebase/firestore';
 
 export default function AvailableCourses() {
-  const { isSubscribed } = useAuth();
+  const { isSubscribed, userRole, userData } = useAuth();
   const [courses, setCourses] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [config, setConfig] = useState({ telegramUser: 'omarrkhallaf', whatsappNumber: '', preferredContact: 'telegram' });
@@ -16,6 +16,7 @@ export default function AvailableCourses() {
     const fetchData = async () => {
       setLoading(true);
       try {
+        console.log("Fetching courses...");
         const [configDoc, coursesSnap] = await Promise.all([
           getDoc(doc(db, 'settings', 'general')),
           getDocs(query(collection(db, 'courses')))
@@ -24,19 +25,27 @@ export default function AvailableCourses() {
         if (configDoc.exists()) setConfig(configDoc.data() as any);
 
         const coursesData = coursesSnap.docs.map(d => ({ id: d.id, ...(d.data() as any) }));
+        console.log("Courses found in DB:", coursesData.length);
+        
         coursesData.sort((a, b) => (a.level || '').localeCompare(b.level || ''));
         
-        // Only show courses NOT subscribed to
-        const availableOnly = coursesData.filter(course => !isSubscribed(course.id));
+        // Show all courses if user is admin, otherwise filter by subscription
+        const availableOnly = coursesData.filter(course => {
+          if (userRole === 'admin') return true;
+          const isEnrolled = userData?.enrolledCourses?.includes(course.id) || userData?.enrolledCourses?.includes(course.level);
+          return !isEnrolled;
+        });
+        
+        console.log("Filtered courses to display:", availableOnly.length);
         setCourses(availableOnly);
       } catch (err) {
-        console.error(err);
+        console.error("Error fetching courses:", err);
       } finally {
         setLoading(false);
       }
     };
     fetchData();
-  }, [isSubscribed]);
+  }, [userRole, userData]);
 
   const colors = [
     { primary: 'bg-primary', shadow: 'shadow-primary/20', border: 'border-primary/20', text: 'text-primary' },
@@ -64,10 +73,9 @@ export default function AvailableCourses() {
         <div className="flex justify-center p-20">
           <div className="w-16 h-16 border-8 border-primary border-t-transparent rounded-full animate-spin shadow-2xl" />
         </div>
-      ) : (
+      ) : courses.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {courses.map((plan, idx) => {
-            const subscribed = isSubscribed(plan.level);
             const features = plan.details ? plan.details.split('\n').filter((f: string) => f.trim() !== '') : [];
             const color = colors[idx % colors.length];
 
@@ -76,7 +84,7 @@ export default function AvailableCourses() {
                 key={plan.id}
                 className={`group bg-card border-2 ${color.border} p-10 rounded-[3.5rem] relative flex flex-col shadow-2xl transition-all hover:-translate-y-4 hover:shadow-primary/5`}
               >
-                {subscribed && (
+                {isSubscribed(plan.id) && (
                   <div className="absolute -top-4 right-10 bg-emerald-500 text-white text-[10px] font-black px-6 py-2 rounded-full shadow-xl flex items-center gap-2 z-10">
                     <CheckCircle className="w-4 h-4" />
                     أنت مشترك الآن
@@ -136,6 +144,13 @@ export default function AvailableCourses() {
               </div>
             );
           })}
+        </div>
+      ) : (
+        <div className="text-center py-20 bg-card border-2 border-dashed border-border rounded-[3rem] space-y-4">
+          <div className="text-6xl">🔍</div>
+          <h2 className="text-2xl font-black">لا توجد كورسات متاحة حالياً</h2>
+          <p className="text-muted-foreground font-medium">سيتم إضافة كورسات جديدة قريباً، ابقَ متيقظاً!</p>
+          <Button onClick={() => window.location.reload()} variant="outline">تحديث الصفحة</Button>
         </div>
       )}
 
