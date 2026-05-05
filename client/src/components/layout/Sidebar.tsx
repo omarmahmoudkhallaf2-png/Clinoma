@@ -20,7 +20,8 @@ import {
   ClipboardList,
   ChevronRight,
   Search,
-  BookOpen
+  BookOpen,
+  Sparkles
 } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 import { cn } from '../../lib/utils';
@@ -61,6 +62,7 @@ export default function Sidebar({ isOpen = false, setIsOpen = (_: boolean) => {}
     { icon: LayoutDashboard, label: 'لوحة التحكم', path: '/dashboard' },
     { icon: Brain, label: 'المراجعة الذكية', path: '/review' },
     { icon: Crown, label: 'الكورسات المتاحة', path: '/available' },
+    { icon: Sparkles, label: 'المساعد الذكي (AI)', path: '/ai-assistant' },
     { icon: ClipboardList, label: 'الإختبارات', path: '/exams' },
     { icon: History, label: 'سجل المحاولات', path: '/history' },
     { icon: SettingsIcon, label: 'الإعدادات', path: '/settings' },

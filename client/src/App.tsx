@@ -23,6 +23,7 @@ import ReviewDashboard from "./pages/ReviewDashboard";
 import FormalExam from "./pages/FormalExam";
 import ExamResultsDashboard from "./pages/ExamResultsDashboard";
 import AvailableExams from "./pages/AvailableExams";
+import AIAssistant from "./pages/AIAssistant";
 import { CommandPalette } from "./components/ui/CommandPalette";
 import { ThemeProvider } from "./context/ThemeContext";
 
@@ -72,6 +73,7 @@ const AnimatedRoutes = () => {
         <Route path="/notes/:category" element={<ProtectedRoute><NoteViewer /></ProtectedRoute>} />
         
         <Route path="/exams" element={<ProtectedRoute><AvailableExams /></ProtectedRoute>} />
+        <Route path="/ai-assistant" element={<ProtectedRoute><AIAssistant /></ProtectedRoute>} />
         <Route path="/exam/:examId" element={<ProtectedRoute useLayout={false}><FormalExam /></ProtectedRoute>} />
         <Route path="/admin/results" element={<ProtectedRoute requireAdmin><ExamResultsDashboard /></ProtectedRoute>} />
 
