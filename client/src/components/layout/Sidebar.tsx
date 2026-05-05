@@ -105,7 +105,10 @@ export default function Sidebar({ isOpen = false, setIsOpen = (_: boolean) => {}
                 <Brain className="w-6 h-6" />
               </div>
               <div className="flex flex-col">
-                <span className="text-xl font-bold tracking-tight text-foreground">MEDPREP</span>
+                <div className="flex items-center gap-1.5">
+                  <span className="text-xl font-bold tracking-tight text-foreground">MEDPREP</span>
+                  <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
+                </div>
                 <span className="text-[10px] text-muted-foreground font-medium uppercase tracking-widest leading-none">Medical Exam Platform</span>
               </div>
             </button>
