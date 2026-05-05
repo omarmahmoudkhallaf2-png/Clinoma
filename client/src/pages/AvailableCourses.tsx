@@ -25,7 +25,10 @@ export default function AvailableCourses() {
 
         const coursesData = coursesSnap.docs.map(d => ({ id: d.id, ...(d.data() as any) }));
         coursesData.sort((a, b) => (a.level || '').localeCompare(b.level || ''));
-        setCourses(coursesData);
+        
+        // Only show courses NOT subscribed to
+        const availableOnly = coursesData.filter(course => !isSubscribed(course.id));
+        setCourses(availableOnly);
       } catch (err) {
         console.error(err);
       } finally {
@@ -33,7 +36,7 @@ export default function AvailableCourses() {
       }
     };
     fetchData();
-  }, []);
+  }, [isSubscribed]);
 
   const colors = [
     { primary: 'bg-primary', shadow: 'shadow-primary/20', border: 'border-primary/20', text: 'text-primary' },
@@ -120,16 +123,16 @@ export default function AvailableCourses() {
                 </ul>
 
                 <button 
-                  disabled={subscribed}
-                  onClick={() => setIsTelegramOpen(true)}
-                  className={`w-full py-6 rounded-3xl font-black text-2xl shadow-2xl transition-all active:scale-95 ${
-                    subscribed 
-                    ? 'bg-secondary text-muted-foreground cursor-not-allowed' 
-                    : `${color.primary} text-white ${color.shadow} hover:shadow-2xl hover:scale-[1.02]`
-                  }`}
-                >
-                  {subscribed ? 'تم تفعيل الاشتراك' : 'اشترك في الكورس'}
-                </button>
+                disabled={isSubscribed(plan.id)}
+                onClick={() => setIsTelegramOpen(true)}
+                className={`w-full py-6 rounded-3xl font-black text-2xl shadow-2xl transition-all active:scale-95 ${
+                  isSubscribed(plan.id) 
+                  ? 'bg-secondary text-muted-foreground cursor-not-allowed' 
+                  : `${color.primary} text-white ${color.shadow} hover:shadow-2xl hover:scale-[1.02]`
+                }`}
+              >
+                {isSubscribed(plan.id) ? 'تم تفعيل الاشتراك' : 'اشترك في الكورس'}
+              </button>
               </div>
             );
           })}

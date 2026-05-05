@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { db } from '../../lib/firebase';
-import { doc, getDoc } from 'firebase/firestore';
+import { doc, getDoc, getDocs, collection, query } from 'firebase/firestore';
 import { motion, AnimatePresence } from 'framer-motion';
 import SupportModal from '../ui/SupportModal';
 import { 
@@ -19,7 +19,8 @@ import {
   Settings as SettingsIcon,
   ClipboardList,
   ChevronRight,
-  Search
+  Search,
+  BookOpen
 } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 import { cn } from '../../lib/utils';
@@ -29,21 +30,30 @@ export default function Sidebar({ isOpen = false, setIsOpen = (_: boolean) => {}
   const navigate = useNavigate();
   const location = useLocation();
   const { theme, toggleTheme } = useTheme();
-  const { logout, userRole, userPlan } = useAuth();
+  const { logout, userRole, userPlan, isSubscribed } = useAuth();
   const [isSupportOpen, setIsSupportOpen] = useState(false);
   const [config, setConfig] = useState({ telegramUser: 'omarrkhallaf', whatsappNumber: '', preferredContact: 'telegram' });
+  const [subscribedCourses, setSubscribedCourses] = useState<any[]>([]);
 
   useEffect(() => {
-    const fetchConfig = async () => {
+    const fetchData = async () => {
       try {
-        const docSnap = await getDoc(doc(db, 'settings', 'general'));
-        if (docSnap.exists()) setConfig(docSnap.data() as any);
+        const [configSnap, coursesSnap] = await Promise.all([
+          getDoc(doc(db, 'settings', 'general')),
+          getDocs(query(collection(db, 'courses')))
+        ]);
+
+        if (configSnap.exists()) setConfig(configSnap.data() as any);
+        
+        const allCourses = coursesSnap.docs.map(d => ({ id: d.id, ...d.data() } as any));
+        const myCourses = allCourses.filter(c => isSubscribed(c.id));
+        setSubscribedCourses(myCourses);
       } catch (err) {
         console.error(err);
       }
     };
-    fetchConfig();
-  }, []);
+    fetchData();
+  }, [isSubscribed]);
 
   const menuItems = [
     { icon: LayoutDashboard, label: 'لوحة التحكم', path: '/dashboard' },
@@ -83,7 +93,7 @@ export default function Sidebar({ isOpen = false, setIsOpen = (_: boolean) => {}
         isOpen ? "translate-x-0" : "-translate-x-full"
       )}>
         {/* Brand Header */}
-        <div className="p-6">
+        <div className="p-6 overflow-y-auto flex-1 custom-scrollbar">
           <div className="flex items-center justify-between mb-8">
             <button 
               onClick={() => navTo('/dashboard')}
@@ -146,6 +156,32 @@ export default function Sidebar({ isOpen = false, setIsOpen = (_: boolean) => {}
               </button>
             ))}
             
+            {/* My Courses Section */}
+            {subscribedCourses.length > 0 && (
+              <div className="pt-6 pb-2">
+                <div className="px-3 mb-2 text-[10px] font-bold text-muted-foreground uppercase tracking-widest opacity-60 text-right" dir="rtl">
+                  كورساتي المشترك بها
+                </div>
+                <div className="space-y-1">
+                  {subscribedCourses.map((course) => (
+                    <button
+                      key={course.id}
+                      onClick={() => navTo(`/course/${course.id}`)}
+                      className={cn(
+                        "w-full flex items-center gap-3 px-3 py-2 rounded-lg transition-all group",
+                        location.pathname === `/course/${course.id}`
+                          ? "bg-emerald-500/10 text-emerald-600"
+                          : "text-muted-foreground hover:bg-emerald-500/5 hover:text-emerald-600"
+                      )}
+                    >
+                      <BookOpen className="w-4 h-4 transition-transform group-hover:scale-110" />
+                      <span className="font-medium text-xs flex-1 text-right line-clamp-1" dir="rtl">{course.name}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+            
             <button
               onClick={() => setIsSupportOpen(true)}
               className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-muted-foreground hover:bg-accent hover:text-foreground transition-all group"
@@ -158,7 +194,7 @@ export default function Sidebar({ isOpen = false, setIsOpen = (_: boolean) => {}
           {/* Admin Section */}
           {userRole === 'admin' && (
             <div className="mt-8">
-              <div className="px-3 mb-2 text-[10px] font-bold text-muted-foreground uppercase tracking-widest opacity-60">
+              <div className="px-3 mb-2 text-[10px] font-bold text-muted-foreground uppercase tracking-widest opacity-60 text-right" dir="rtl">
                 إدارة النظام
               </div>
               {adminItems.map((item) => (
@@ -184,7 +220,7 @@ export default function Sidebar({ isOpen = false, setIsOpen = (_: boolean) => {}
         </div>
 
         {/* Footer Actions */}
-        <div className="mt-auto p-6 space-y-4">
+        <div className="p-6 space-y-4 border-t">
           {userPlan === 'free' && (
             <button 
               onClick={() => setIsSupportOpen(true)}
@@ -225,7 +261,5 @@ export default function Sidebar({ isOpen = false, setIsOpen = (_: boolean) => {}
         whatsappNumber={config.whatsappNumber}
       />
     </>
-  );
-}
   );
 }
