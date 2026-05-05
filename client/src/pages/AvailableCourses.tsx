@@ -4,7 +4,7 @@ import { Crown, CheckCircle, Infinity as InfinityIcon } from 'lucide-react';
 import SupportModal from '../components/ui/SupportModal';
 import { Button } from '../components/ui/Button';
 import { db } from '../lib/firebase';
-import { doc, getDoc, getDocs, collection, query } from 'firebase/firestore';
+import { doc, getDoc, getDocs, collection, query, onSnapshot } from 'firebase/firestore';
 
 export default function AvailableCourses() {
   const { isSubscribed, userRole, userData } = useAuth();
@@ -14,38 +14,31 @@ export default function AvailableCourses() {
   const [isTelegramOpen, setIsTelegramOpen] = useState(false);
 
   useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        console.log("Fetching courses...");
-        const [configDoc, coursesSnap] = await Promise.all([
-          getDoc(doc(db, 'settings', 'general')),
-          getDocs(query(collection(db, 'courses')))
-        ]);
+    console.log("Setting up real-time courses listener...");
+    const q = query(collection(db, 'courses'));
+    
+    const unsubscribe = onSnapshot(q, (coursesSnap) => {
+      const coursesData = coursesSnap.docs.map(d => ({ id: d.id, ...(d.data() as any) }));
+      console.log("Real-time Courses count:", coursesData.length);
+      
+      coursesData.sort((a, b) => (a.level || '').localeCompare(b.level || ''));
+      
+      // Show all courses if user is admin, otherwise filter by unique ID only
+      const availableOnly = coursesData.filter(course => {
+        if (userRole === 'admin') return true;
+        // ONLY filter by unique ID to avoid hiding different courses with same level name
+        const isEnrolled = userData?.enrolledCourses?.includes(course.id);
+        return !isEnrolled;
+      });
+      
+      setCourses(availableOnly);
+      setLoading(false);
+    }, (err) => {
+      console.error("Courses snapshot error:", err);
+      setLoading(false);
+    });
 
-        if (configDoc.exists()) setConfig(configDoc.data() as any);
-
-        const coursesData = coursesSnap.docs.map(d => ({ id: d.id, ...(d.data() as any) }));
-        console.log("Courses found in DB:", coursesData.length);
-        
-        coursesData.sort((a, b) => (a.level || '').localeCompare(b.level || ''));
-        
-        // Show all courses if user is admin, otherwise filter by subscription
-        const availableOnly = coursesData.filter(course => {
-          if (userRole === 'admin') return true;
-          const isEnrolled = userData?.enrolledCourses?.includes(course.id) || userData?.enrolledCourses?.includes(course.level);
-          return !isEnrolled;
-        });
-        
-        console.log("Filtered courses to display:", availableOnly.length);
-        setCourses(availableOnly);
-      } catch (err) {
-        console.error("Error fetching courses:", err);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
+    return () => unsubscribe();
   }, [userRole, userData]);
 
   const colors = [

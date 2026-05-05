@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { db } from '../lib/firebase';
-import { collection, getDocs, query, orderBy, Timestamp } from 'firebase/firestore';
+import { collection, getDocs, query, orderBy, Timestamp, onSnapshot } from 'firebase/firestore';
 import { Loader2, Clock, BookOpen, ChevronRight, ClipboardList, Lock, Calendar } from 'lucide-react';
 
 const examStatus = (exam: any): 'upcoming' | 'open' | 'closed' | 'no-date' => {
@@ -20,17 +20,16 @@ export default function AvailableExams() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchExams = async () => {
-      try {
-        const snap = await getDocs(query(collection(db, 'formal_exams'), orderBy('createdAt', 'desc')));
-        setExams(snap.docs.map(d => ({ id: d.id, ...d.data() })));
-      } catch (err) {
-        console.error(err);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchExams();
+    const q = query(collection(db, 'formal_exams'), orderBy('createdAt', 'desc'));
+    const unsubscribe = onSnapshot(q, (snap) => {
+      setExams(snap.docs.map(d => ({ id: d.id, ...d.data() })));
+      setLoading(false);
+    }, (err) => {
+      console.error(err);
+      setLoading(false);
+    });
+
+    return () => unsubscribe();
   }, []);
 
   if (loading) {
