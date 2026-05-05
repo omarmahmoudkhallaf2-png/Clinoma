@@ -1,193 +1,211 @@
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { Brain, Target, TrendingUp, CheckCircle, ArrowRight } from 'lucide-react';
+import { 
+  Brain, TrendingUp, CheckCircle, 
+  ArrowRight, Sparkles,
+  Zap, Shield, Users, Star
+} from 'lucide-react';
+import { db } from '../lib/firebase';
+import { collection, query, getDocs, doc, getDoc } from 'firebase/firestore';
+import SupportModal from '../components/ui/SupportModal';
 
 export default function Home() {
   const { user } = useAuth();
+  const navigate = useNavigate();
+  const [courses, setCourses] = useState<any[]>([]);
+  const [config, setConfig] = useState({ telegramUser: 'omarrkhallaf', whatsappNumber: '', preferredContact: 'telegram' });
+  const [isSupportOpen, setIsSupportOpen] = useState(false);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const configSnap = await getDoc(doc(db, 'settings', 'general'));
+        if (configSnap.exists()) setConfig(configSnap.data() as any);
+
+        const snap = await getDocs(query(collection(db, 'courses')));
+        const coursesData = snap.docs.map(doc => ({ id: doc.id, ...(doc.data() as any) }));
+        setCourses(coursesData.sort((a, b) => (a.level || '').localeCompare(b.level || '')));
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    fetchData();
+  }, []);
 
   return (
-    <div className="w-full flex flex-col min-h-screen bg-background">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden pt-24 pb-32">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-secondary/10 z-0" />
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl opacity-50 animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-3xl opacity-50 animate-pulse" style={{ animationDelay: '2s' }} />
-        
-        <div className="container mx-auto px-4 relative z-10 text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary mb-8 animate-in slide-in-from-bottom-4 duration-700">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-            </span>
-            <span className="text-sm font-medium">The #1 Medical Question Bank</span>
+    <div className="w-full flex flex-col min-h-screen bg-background selection:bg-primary selection:text-white">
+      {/* Intelligent Navigation */}
+      <nav className="fixed top-0 w-full z-[100] bg-background/80 backdrop-blur-xl border-b border-border px-6 py-4">
+        <div className="max-w-7xl mx-auto flex justify-between items-center">
+          <div className="flex items-center gap-3">
+            <div className="p-2 bg-primary text-white rounded-xl shadow-lg shadow-primary/20">
+              <Brain className="w-6 h-6" />
+            </div>
+            <span className="text-2xl font-black tracking-tighter">MedPrep</span>
           </div>
-          
-          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-foreground mb-6 animate-in slide-in-from-bottom-6 duration-700 delay-100">
-            Master Medical Exams <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">With Confidence</span>
-          </h1>
-          
-          <p className="max-w-2xl mx-auto text-xl text-muted-foreground mb-10 animate-in slide-in-from-bottom-8 duration-700 delay-200">
-            Access thousands of high-yield questions, detailed explanations, and advanced performance analytics designed for medical students and professionals.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-in slide-in-from-bottom-10 duration-700 delay-300">
+          <div className="flex items-center gap-6">
+            <Link to="/available" className="hidden md:block font-bold text-sm text-muted-foreground hover:text-primary transition-colors">Courses</Link>
             {user ? (
-              <Link 
-                to="/dashboard" 
-                className="px-8 py-4 rounded-xl bg-primary text-primary-foreground font-semibold text-lg hover:opacity-90 transition-all hover:scale-105 active:scale-95 flex items-center gap-2 shadow-lg shadow-primary/25"
-              >
-                Go to Dashboard <ArrowRight className="w-5 h-5" />
-              </Link>
+              <button onClick={() => navigate('/dashboard')} className="px-6 py-2.5 bg-primary text-white rounded-full font-black text-sm shadow-xl shadow-primary/20 hover:scale-105 transition-all">
+                Dashboard
+              </button>
             ) : (
-              <>
-                <Link 
-                  to="/register" 
-                  className="px-8 py-4 rounded-xl bg-primary text-primary-foreground font-semibold text-lg hover:opacity-90 transition-all hover:scale-105 active:scale-95 flex items-center gap-2 shadow-lg shadow-primary/25"
-                >
-                  Start for Free <ArrowRight className="w-5 h-5" />
+              <div className="flex items-center gap-4">
+                <Link to="/login" className="font-bold text-sm">Login</Link>
+                <Link to="/register" className="px-6 py-2.5 bg-primary text-white rounded-full font-black text-sm shadow-xl shadow-primary/20 hover:scale-105 transition-all">
+                  Get Started
                 </Link>
-                <Link 
-                  to="/login" 
-                  className="px-8 py-4 rounded-xl bg-card text-foreground border border-border hover:border-primary/50 font-semibold text-lg hover:bg-secondary/20 transition-all"
-                >
-                  Login
-                </Link>
-              </>
+              </div>
             )}
           </div>
         </div>
-      </section>
+      </nav>
 
-      {/* Features Section */}
-      <section className="py-24 bg-card/50 border-y border-border">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Everything you need to succeed</h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">Our platform is built to optimize your study time and maximize retention.</p>
+      {/* Hero: Personalized Context */}
+      <section className="relative pt-40 pb-32 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] -z-10 animate-pulse" />
+        
+        <div className="max-w-5xl mx-auto px-6 text-center space-y-10 relative">
+          <div className="inline-flex items-center gap-3 px-6 py-2 bg-secondary/50 backdrop-blur-md rounded-full border border-border animate-in fade-in slide-in-from-top-4 duration-1000">
+            <Sparkles className="w-4 h-4 text-amber-500" />
+            <span className="text-xs font-black uppercase tracking-[0.2em]">The Future of Medical Learning</span>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-background p-8 rounded-2xl border border-border hover:border-primary/50 transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/5 group">
-              <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                <Brain className="w-7 h-7 text-primary group-hover:text-primary-foreground" />
+
+          <h1 className="text-6xl md:text-8xl font-black tracking-tighter leading-none">
+            Your Medical Journey <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-indigo-600 to-primary-dark">Starts Here.</span>
+          </h1>
+
+          <p className="text-xl md:text-2xl font-medium text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            The only adaptive question bank designed specifically for your medical school journey. Real-time analytics, spaced repetition, and thousands of expert-crafted questions.
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-6">
+            <Link to="/register" className="w-full sm:w-auto px-12 py-6 bg-primary text-white rounded-[2.5rem] font-black text-xl shadow-2xl shadow-primary/30 hover:scale-105 active:scale-95 transition-all flex flex-col items-center gap-1">
+              <span>ابدأ رحلتك في F1 الآن 🚀</span>
+              <span className="text-xs opacity-80 font-bold">محتوى مجاني + نظام أسئلة احترافي</span>
+            </Link>
+            <div className="flex items-center -space-x-4">
+              {[1,2,3,4].map(i => (
+                <div key={i} className="w-12 h-12 rounded-full border-4 border-background bg-secondary flex items-center justify-center font-black text-xs">
+                  U{i}
+                </div>
+              ))}
+              <div className="pl-8 text-left">
+                <div className="flex text-amber-500"><Star className="w-4 h-4 fill-amber-500" /> <Star className="w-4 h-4 fill-amber-500" /> <Star className="w-4 h-4 fill-amber-500" /> <Star className="w-4 h-4 fill-amber-500" /> <Star className="w-4 h-4 fill-amber-500" /></div>
+                <div className="text-[10px] font-black uppercase text-muted-foreground">Joined by 2,500+ Students</div>
               </div>
-              <h3 className="text-xl font-bold mb-3">High-Yield Questions</h3>
-              <p className="text-muted-foreground">Expertly crafted questions that mirror the difficulty and format of real medical board exams.</p>
-            </div>
-            
-            <div className="bg-background p-8 rounded-2xl border border-border hover:border-secondary/50 transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-secondary/5 group">
-              <div className="w-14 h-14 bg-secondary/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-secondary group-hover:text-secondary-foreground transition-colors">
-                <TrendingUp className="w-7 h-7 text-secondary group-hover:text-secondary-foreground" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Advanced Analytics</h3>
-              <p className="text-muted-foreground">Identify your weak areas with detailed performance charts and subject-wise accuracy tracking.</p>
-            </div>
-            
-            <div className="bg-background p-8 rounded-2xl border border-border hover:border-accent/50 transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-accent/5 group">
-              <div className="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-accent group-hover:text-accent-foreground transition-colors">
-                <Target className="w-7 h-7 text-accent group-hover:text-accent-foreground" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Exam Simulation</h3>
-              <p className="text-muted-foreground">Practice in a timed, anti-cheat environment that perfectly simulates test day conditions.</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section className="py-24">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Simple, Transparent Pricing</h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">Choose the plan that fits your study needs.</p>
+      {/* Proof Section: Dynamic Stats */}
+      <section className="py-20 border-y border-border bg-secondary/10">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-12">
+            {[
+              { label: 'High-Yield Questions', value: '15,000+', icon: Zap },
+              { label: 'Active Students', value: '2.5k+', icon: Users },
+              { label: 'Accuracy Improvement', value: '38%', icon: TrendingUp },
+              { label: 'Pass Rate', value: '94%', icon: Shield },
+            ].map((stat, i) => (
+              <div key={i} className="text-center space-y-2">
+                <div className="w-12 h-12 bg-primary/10 text-primary rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <stat.icon className="w-6 h-6" />
+                </div>
+                <div className="text-4xl font-black tracking-tight">{stat.value}</div>
+                <div className="text-xs font-black uppercase text-muted-foreground tracking-widest">{stat.label}</div>
+              </div>
+            ))}
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {/* Free Plan */}
-            <div className="bg-card p-8 rounded-3xl border border-border flex flex-col">
-              <h3 className="text-2xl font-bold mb-2">Basic Plan</h3>
-              <p className="text-muted-foreground mb-6">Perfect for getting started.</p>
-              <div className="mb-8">
-                <span className="text-5xl font-extrabold">$0</span>
-                <span className="text-muted-foreground"> / forever</span>
-              </div>
-              <ul className="space-y-4 mb-8 flex-1">
-                <li className="flex items-center gap-3">
-                  <CheckCircle className="w-5 h-5 text-primary" />
-                  <span>Access to 50 sample questions</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <CheckCircle className="w-5 h-5 text-primary" />
-                  <span>Basic performance tracking</span>
-                </li>
-              </ul>
-              {user ? (
-                <Link to="/dashboard" className="w-full py-3 text-center rounded-xl border border-border hover:bg-secondary/20 font-medium transition-colors">
-                  Go to Dashboard
-                </Link>
-              ) : (
-                <Link to="/register" className="w-full py-3 text-center rounded-xl border border-border hover:bg-secondary/20 font-medium transition-colors">
-                  Sign Up Free
-                </Link>
-              )}
-            </div>
+        </div>
+      </section>
 
-            {/* Premium Plan */}
-            <div className="bg-gradient-to-b from-primary/10 to-transparent p-8 rounded-3xl border border-primary relative flex flex-col shadow-2xl shadow-primary/10 scale-100 md:scale-105">
-              <div className="absolute top-0 right-0 transform translate-x-2 -translate-y-2">
-                <span className="bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Most Popular</span>
-              </div>
-              <h3 className="text-2xl font-bold mb-2">Premium Plan</h3>
-              <p className="text-muted-foreground mb-6">Unlock your full potential.</p>
-              <div className="mb-8">
-                <span className="text-5xl font-extrabold">$19.99</span>
-                <span className="text-muted-foreground"> / month</span>
-              </div>
-              <ul className="space-y-4 mb-8 flex-1">
-                <li className="flex items-center gap-3">
-                  <CheckCircle className="w-5 h-5 text-primary" />
-                  <span className="font-medium">Unlimited access to all questions</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <CheckCircle className="w-5 h-5 text-primary" />
-                  <span>Detailed explanations & references</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <CheckCircle className="w-5 h-5 text-primary" />
-                  <span>Advanced charting & analytics</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <CheckCircle className="w-5 h-5 text-primary" />
-                  <span>Timed exam simulations</span>
-                </li>
-              </ul>
-              {user ? (
-                <Link to="/dashboard" className="w-full py-3 text-center rounded-xl bg-primary text-primary-foreground font-semibold hover:opacity-90 transition-opacity">
-                  Upgrade Now
+      {/* Courses Explore: Premium Cards */}
+      <section className="py-32">
+        <div className="max-w-7xl mx-auto px-6 space-y-20">
+          <div className="text-center space-y-6">
+            <h2 className="text-5xl font-black tracking-tight">Explore Our Programs</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">Choose the curriculum that matches your current academic year.</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            {courses.map((course) => (
+              <div key={course.id} className="group p-10 bg-card border-2 border-border rounded-[4rem] shadow-sm hover:shadow-2xl hover:border-primary/40 transition-all relative overflow-hidden flex flex-col">
+                <div className="absolute top-0 right-0 w-40 h-40 bg-primary/5 rounded-full -mr-20 -mt-20 group-hover:scale-150 transition-transform duration-1000" />
+                <div className="relative flex-1 space-y-6">
+                  <div className="inline-block px-4 py-1 bg-secondary rounded-xl text-[10px] font-black uppercase tracking-widest text-primary">
+                    LIFETIME ACCESS
+                  </div>
+                  <h3 className="text-3xl font-black">{course.name}</h3>
+                  <div className="flex items-end gap-2">
+                    <span className="text-5xl font-black text-primary">{course.price}</span>
+                    <span className="text-lg font-black text-muted-foreground mb-1 uppercase">EGP</span>
+                  </div>
+                  <ul className="space-y-4 pt-6 border-t border-border">
+                    {course.details?.split('\n').slice(0, 4).map((line: string, i: number) => (
+                      <li key={i} className="flex items-center gap-3 font-bold text-sm text-muted-foreground">
+                        <CheckCircle className="w-5 h-5 text-primary shrink-0" /> {line}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <Link to="/register" className="mt-10 w-full py-5 bg-secondary text-foreground rounded-[2.5rem] font-black text-lg group-hover:bg-primary group-hover:text-white group-hover:scale-105 transition-all text-center">
+                  Get Started
                 </Link>
-              ) : (
-                <Link to="/register" className="w-full py-3 text-center rounded-xl bg-primary text-primary-foreground font-semibold hover:opacity-90 transition-opacity">
-                  Get Premium
-                </Link>
-              )}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-12 bg-background border-t border-border mt-auto">
-        <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
-          <div className="flex items-center gap-2 mb-4 md:mb-0">
-            <Brain className="w-6 h-6 text-primary" />
-            <span className="text-lg font-bold">MedPrep</span>
+      <footer className="py-20 border-t border-border bg-card">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
+          <div className="col-span-2 space-y-6">
+            <div className="flex items-center gap-3">
+              <div className="p-2 bg-primary text-white rounded-xl shadow-lg shadow-primary/20">
+                <Brain className="w-6 h-6" />
+              </div>
+              <span className="text-2xl font-black tracking-tighter">MedPrep</span>
+            </div>
+            <p className="text-muted-foreground font-bold max-w-sm">The world's most advanced question bank for medical students. Built by doctors, for future doctors.</p>
           </div>
-          <p className="text-muted-foreground text-sm">
-            © {new Date().getFullYear()} MedPrep. All rights reserved. Built for medical excellence.
-          </p>
+          <div>
+            <h5 className="font-black mb-6 uppercase tracking-widest text-xs">Product</h5>
+            <ul className="space-y-4 font-bold text-sm text-muted-foreground">
+              <li><Link to="/available" className="hover:text-primary transition-colors">Courses</Link></li>
+              <li><Link to="/quiz-setup" className="hover:text-primary transition-colors">Question Bank</Link></li>
+              <li><Link to="/notes/all" className="hover:text-primary transition-colors">Study Notes</Link></li>
+            </ul>
+          </div>
+          <div>
+            <h5 className="font-black mb-6 uppercase tracking-widest text-xs">Support</h5>
+            <ul className="space-y-4 font-bold text-sm text-muted-foreground">
+              <li><button onClick={() => setIsSupportOpen(true)} className="hover:text-primary transition-colors">Contact Support</button></li>
+              <li><Link to="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
+              <li><Link to="/terms" className="hover:text-primary transition-colors">Terms of Service</Link></li>
+            </ul>
+          </div>
+        </div>
+        <div className="max-w-7xl mx-auto px-6 pt-12 mt-12 border-t border-border flex justify-between items-center text-xs font-black text-muted-foreground uppercase tracking-widest">
+          <span>© 2026 MedPrep Intelligence. All rights reserved.</span>
+          <div className="flex gap-6">
+            <span>English</span>
+            <span>Arabic</span>
+          </div>
         </div>
       </footer>
+
+      <SupportModal 
+        isOpen={isSupportOpen}
+        onClose={() => setIsSupportOpen(false)}
+        telegramUser={config.telegramUser}
+        whatsappNumber={config.whatsappNumber}
+      />
     </div>
   );
 }

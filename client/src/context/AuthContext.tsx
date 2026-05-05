@@ -3,15 +3,20 @@ import type { ReactNode } from 'react';
 import type { User } from 'firebase/auth';
 import { signInWithPopup, signOut, onAuthStateChanged } from 'firebase/auth';
 import { auth, googleProvider, db } from '../lib/firebase';
-import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { doc, getDoc, setDoc, updateDoc, arrayUnion } from 'firebase/firestore';
 
 interface AuthContextType {
   user: User | null;
+  userData: any | null;
   loading: boolean;
   signInWithGoogle: () => Promise<void>;
   logout: () => Promise<void>;
   userRole: 'admin' | 'user' | null;
   userPlan: 'free' | 'premium' | null;
+  needsProfileCompletion: boolean;
+  updateUserStatus: (uid: string, updates: any) => Promise<void>;
+  isSubscribed: (courseId: string) => boolean;
+  enrollInCourse: (courseId: string) => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType>({} as AuthContextType);
@@ -20,38 +25,49 @@ export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
-  const [userRole, setUserRole] = useState<'admin' | 'user' | null>(null);
-  const [userPlan, setUserPlan] = useState<'free' | 'premium' | null>(null);
+  const [userData, setUserData] = useState<any | null>(null);
   const [loading, setLoading] = useState(true);
+
+  const fetchUserData = async (uid: string) => {
+    const userRef = doc(db, 'users', uid);
+    const userSnap = await getDoc(userRef);
+    if (userSnap.exists()) {
+      setUserData(userSnap.data());
+    }
+  };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
       if (currentUser) {
-        // Fetch or create user document in Firestore
         const userRef = doc(db, 'users', currentUser.uid);
         const userSnap = await getDoc(userRef);
         
+        const isAdmin = currentUser.email === 'omarmahmoudkhallaf2@gmail.com';
+        
         if (!userSnap.exists()) {
-          // Create new user
-          await setDoc(userRef, {
+          const initialData = {
             email: currentUser.email,
             displayName: currentUser.displayName,
             photoURL: currentUser.photoURL,
-            role: 'user',
-            plan: 'free',
+            role: isAdmin ? 'admin' : 'user',
+            plan: isAdmin ? 'premium' : 'free',
+            profileCompleted: false,
+            enrolledCourses: [],
             createdAt: new Date(),
-          });
-          setUserRole('user');
-          setUserPlan('free');
+          };
+          await setDoc(userRef, initialData);
+          setUserData(initialData);
         } else {
-          const data = userSnap.data();
-          setUserRole(data.role || 'user');
-          setUserPlan(data.plan || 'free');
+          let data = userSnap.data();
+          if (isAdmin && data.role !== 'admin') {
+            await updateDoc(userRef, { role: 'admin', plan: 'premium' });
+            data = { ...data, role: 'admin', plan: 'premium' };
+          }
+          setUserData(data);
         }
       } else {
-        setUserRole(null);
-        setUserPlan(null);
+        setUserData(null);
       }
       setLoading(false);
     });
@@ -76,15 +92,53 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  const updateUserStatus = async (uid: string, updates: any) => {
+    try {
+      const userRef = doc(db, 'users', uid);
+      await updateDoc(userRef, updates);
+      if (uid === user?.uid) {
+        await fetchUserData(uid);
+      }
+    } catch (error) {
+      console.error('Error updating user status', error);
+      throw error;
+    }
+  };
+
+  const isSubscribed = (courseId: string) => {
+    if (!userData) return false;
+    if (userData.role === 'admin') return true;
+    return userData.enrolledCourses?.includes(courseId);
+  };
+
+  const enrollInCourse = async (courseId: string) => {
+    if (!user) return;
+    try {
+      const userRef = doc(db, 'users', user.uid);
+      await updateDoc(userRef, {
+        enrolledCourses: arrayUnion(courseId)
+      });
+      await fetchUserData(user.uid);
+    } catch (error) {
+      console.error('Error enrolling in course', error);
+      throw error;
+    }
+  };
+
+  const userRole = userData?.role || null;
+  const userPlan = userData?.plan || 'free';
+  const needsProfileCompletion = userData ? !userData.profileCompleted : false;
+
   return (
-    <AuthContext.Provider value={{ user, loading, signInWithGoogle, logout, userRole, userPlan }}>
+    <AuthContext.Provider value={{ 
+      user, userData, loading, signInWithGoogle, logout, userRole, userPlan, 
+      needsProfileCompletion, updateUserStatus, isSubscribed, enrollInCourse
+    }}>
       {loading ? (
-        <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--background)' }}>
-          <div style={{ width: 40, height: 40, border: '4px solid #3b82f6', borderTopColor: 'transparent', borderRadius: '50%', animation: 'spin 0.8s linear infinite' }} />
-          <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+        <div className="min-h-screen flex items-center justify-center bg-background">
+          <div className="w-10 h-10 border-4 border-primary border-t-transparent rounded-full animate-spin" />
         </div>
       ) : children}
     </AuthContext.Provider>
   );
-
 };

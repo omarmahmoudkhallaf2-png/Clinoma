@@ -1,0 +1,110 @@
+import { useState, useEffect } from 'react';
+import { useParams, useLocation, useNavigate } from 'react-router-dom';
+import { db } from '../lib/firebase';
+import { collection, query, where, getDocs, orderBy } from 'firebase/firestore';
+import { Loader2, FileText, BookOpen, ChevronLeft } from 'lucide-react';
+import type { Note } from '../types/quiz';
+
+export default function NoteViewer() {
+  const { category } = useParams();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const folder = location.state?.folder || 'f1_free';
+  const lectureNumber = location.state?.lectureNumber || 1;
+  
+  const [notes, setNotes] = useState<Note[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [selectedNote, setSelectedNote] = useState<Note | null>(null);
+
+  useEffect(() => {
+    const fetchNotes = async () => {
+      try {
+        const q = query(
+          collection(db, 'notes'),
+          where('category', '==', category),
+          where('folder', '==', folder),
+          where('lectureNumber', '==', lectureNumber),
+          orderBy('createdAt', 'desc')
+        );
+        const snap = await getDocs(q);
+        const data = snap.docs.map(doc => ({ id: doc.id, ...doc.data() })) as Note[];
+        setNotes(data);
+        if (data.length > 0) setSelectedNote(data[0]);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchNotes();
+  }, [category, folder]);
+
+  if (loading) return <div className="flex justify-center p-20"><Loader2 className="animate-spin w-10 h-10 text-primary" /></div>;
+
+  return (
+    <div className="flex flex-col lg:flex-row gap-8 animate-in fade-in">
+      {/* Sidebar List */}
+      <div className="w-full lg:w-80 space-y-4">
+        <div className="flex items-center gap-2 mb-6">
+          <button 
+            onClick={() => navigate(-1)}
+            className="p-2 bg-secondary hover:bg-primary hover:text-white rounded-xl transition-all"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          <BookOpen className="w-6 h-6 text-primary" />
+          <h1 className="text-2xl font-bold capitalize">{category} • L{lectureNumber}</h1>
+        </div>
+        
+        <div className="space-y-2">
+          {notes.length > 0 ? (
+            notes.map(note => (
+              <button
+                key={note.id}
+                onClick={() => setSelectedNote(note)}
+                className={`w-full text-left p-4 rounded-2xl border transition-all ${
+                  selectedNote?.id === note.id 
+                    ? 'bg-primary text-white border-primary shadow-lg shadow-primary/20' 
+                    : 'bg-card border-border hover:bg-secondary'
+                }`}
+              >
+                <div className="font-bold line-clamp-1">{note.title}</div>
+                <div className={`text-xs mt-1 ${selectedNote?.id === note.id ? 'text-white/80' : 'text-muted-foreground'}`}>
+                  Lecture {note.lectureNumber} • {new Date(note.createdAt?.seconds * 1000).toLocaleDateString()}
+                </div>
+              </button>
+            ))
+          ) : (
+            <div className="p-8 text-center border-2 border-dashed border-border rounded-3xl text-muted-foreground">
+              No notes available for Lecture {lectureNumber}.
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Content Area */}
+      <div className="flex-1 bg-card border border-border rounded-3xl shadow-sm min-h-[600px] overflow-hidden">
+        {selectedNote ? (
+          <div className="p-8 lg:p-12 space-y-8 animate-in slide-in-from-bottom-4">
+            <div className="space-y-4">
+              <div className="inline-block px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-lg uppercase tracking-wider">
+                {selectedNote.category} • Lecture {selectedNote.lectureNumber} • {selectedNote.folder.replace('_', ' ')}
+              </div>
+              <h2 className="text-4xl font-bold text-foreground">{selectedNote.title}</h2>
+            </div>
+            
+            <div className="prose prose-lg max-w-none text-foreground leading-relaxed whitespace-pre-wrap">
+              {selectedNote.content}
+            </div>
+          </div>
+        ) : (
+          <div className="flex flex-col items-center justify-center h-full text-muted-foreground p-12 text-center">
+            <FileText className="w-16 h-16 mb-4 opacity-20" />
+            <h3 className="text-xl font-bold">Select a note to start reading</h3>
+            <p>Your learning journey starts here.</p>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}

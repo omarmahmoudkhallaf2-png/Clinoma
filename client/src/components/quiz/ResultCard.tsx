@@ -4,16 +4,18 @@ import { CheckCircle2, XCircle, RotateCcw, LayoutDashboard } from 'lucide-react'
 interface ResultCardProps {
   score: number;
   total: number;
+  category?: string;
   onRestart: () => void;
 }
 
-export default function ResultCard({ score, total, onRestart }: ResultCardProps) {
+export default function ResultCard({ score, total, category, onRestart }: ResultCardProps) {
   const navigate = useNavigate();
   const percentage = Math.round((score / total) * 100) || 0;
 
   return (
     <div className="bg-card border border-border rounded-xl shadow-sm p-8 w-full max-w-2xl mx-auto text-center animate-in zoom-in-95 duration-500">
       <h2 className="text-3xl font-bold mb-2">Quiz Completed!</h2>
+      {category && <p className="text-lg font-medium text-primary mb-1">{category}</p>}
       <p className="text-muted-foreground mb-8">Here's how you performed.</p>
 
       <div className="flex justify-center mb-8">

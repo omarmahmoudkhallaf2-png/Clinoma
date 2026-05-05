@@ -1,0 +1,168 @@
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+import { db } from '../lib/firebase';
+import { collection, query, where, getDocs, limit, documentId, doc, getDoc } from 'firebase/firestore';
+import { getBookmarks, getIncorrectQuestions } from '../lib/quizEngine';
+import { 
+  BookOpen, Brain, Flag, 
+  ChevronRight, TrendingDown,
+  Play, CheckCircle2, History
+} from 'lucide-react';
+
+export default function ReviewDashboard() {
+  const { user } = useAuth();
+  const navigate = useNavigate();
+  const [dueCount, setDueCount] = useState(0);
+  const [wrongQuestions, setWrongQuestions] = useState<any[]>([]);
+  const [flaggedCount, setFlaggedCount] = useState(0);
+
+  useEffect(() => {
+    if (!user) return;
+
+    const fetchReviewData = async () => {
+      try {
+        const progressRef = collection(db, `users/${user.uid}/progress`);
+        
+        // 1. SRS Due Questions
+        const now = new Date();
+        const srsQuery = query(progressRef, where('srsData.nextReview', '<=', now));
+        const srsSnap = await getDocs(srsQuery);
+        setDueCount(srsSnap.size);
+
+        // 2. Wrong Questions
+        const wrongData = await getIncorrectQuestions(user.uid);
+        setWrongQuestions(wrongData.slice(0, 5));
+
+        // 3. Flagged (Bookmarks)
+        const bookmarks = await getBookmarks(user.uid);
+        setFlaggedCount(bookmarks.length);
+
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    fetchReviewData();
+  }, [user]);
+
+  const startReview = (mode: 'srs' | 'wrong' | 'flagged') => {
+    navigate('/quiz', { state: { mode, isTimed: false, count: 20 } });
+  };
+
+  return (
+    <div className="max-w-[1400px] mx-auto p-6 md:p-10 space-y-10 animate-in fade-in duration-700">
+      {/* Header */}
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 bg-card border-2 border-border p-8 rounded-[3rem] shadow-sm relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/5 rounded-full -mr-32 -mt-32 blur-3xl" />
+        <div className="flex items-center gap-6 relative">
+          <div className="p-5 bg-indigo-600 text-white rounded-[2.5rem] shadow-xl shadow-indigo-600/30">
+            <Brain className="w-10 h-10" />
+          </div>
+          <div>
+            <h1 className="text-4xl font-black">المراجعة الذكية</h1>
+            <p className="text-muted-foreground font-bold text-lg opacity-60">Intelligent Review & Spaced Repetition</p>
+          </div>
+        </div>
+        <button 
+          onClick={() => startReview('srs')}
+          className="relative px-10 py-5 bg-indigo-600 text-white rounded-3xl font-black text-xl shadow-xl shadow-indigo-600/30 hover:scale-105 transition-all flex items-center gap-3"
+        >
+          <Play className="w-6 h-6" /> ابدأ مراجعة اليوم
+        </button>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {/* SRS Status */}
+        <div className="bg-card border-2 border-border rounded-[4rem] p-10 shadow-sm space-y-8">
+          <div className="flex items-center gap-4">
+            <div className="p-4 bg-emerald-500/10 text-emerald-600 rounded-2xl">
+              <History className="w-8 h-8" />
+            </div>
+            <h3 className="text-2xl font-black">الذاكرة طويلة المدى</h3>
+          </div>
+          <div className="text-center py-10 space-y-4">
+            <div className="text-7xl font-black text-emerald-500">{dueCount}</div>
+            <p className="text-muted-foreground font-bold">سؤال جاهز للمراجعة الآن</p>
+          </div>
+          <div className="p-6 bg-emerald-500/5 rounded-3xl border border-emerald-500/20">
+            <p className="text-sm text-emerald-700 font-bold leading-relaxed">
+              تعتمد المراجعة المتباعدة (SRS) على تكرار المعلومة قبل نسيانها مباشرة لضمان بقائها في الذاكرة.
+            </p>
+          </div>
+        </div>
+
+        {/* Errors Analysis */}
+        <div className="lg:col-span-2 bg-card border-2 border-border rounded-[4rem] p-10 shadow-sm">
+          <div className="flex justify-between items-center mb-10">
+            <div className="flex items-center gap-4">
+              <div className="p-4 bg-rose-500/10 text-rose-600 rounded-2xl">
+                <TrendingDown className="w-8 h-8" />
+              </div>
+              <h3 className="text-2xl font-black">أبرز التحديات (أخطاء متكررة)</h3>
+            </div>
+            <button onClick={() => startReview('wrong')} className="text-primary font-black hover:underline flex items-center gap-2">
+              عرض الكل <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
+
+          <div className="space-y-4">
+            {wrongQuestions.length > 0 ? wrongQuestions.map((q, i) => (
+              <div key={q.id} className="group p-6 bg-secondary/20 rounded-[2rem] border-2 border-border hover:border-primary/30 transition-all flex justify-between items-center">
+                <div className="flex gap-6 items-center">
+                  <div className="w-12 h-12 bg-card rounded-2xl flex items-center justify-center font-black text-muted-foreground shadow-sm group-hover:text-primary">
+                    {i + 1}
+                  </div>
+                  <div>
+                    <p className="font-black text-lg line-clamp-1">{q.text}</p>
+                    <div className="flex gap-3 mt-1">
+                      <span className="text-[10px] font-black uppercase text-rose-500 bg-rose-500/10 px-2 py-0.5 rounded-lg">{q.category}</span>
+                      <span className="text-[10px] font-black uppercase text-muted-foreground">Attempts: {q.analytics?.totalAttempts || 0}</span>
+                    </div>
+                  </div>
+                </div>
+                <button onClick={() => navigate('/quiz', { state: { questions: [q], isStudyMode: true } })} className="p-3 bg-primary/10 text-primary rounded-xl opacity-0 group-hover:opacity-100 transition-all">
+                  <Play className="w-5 h-5" />
+                </button>
+              </div>
+            )) : (
+              <div className="py-20 text-center space-y-4">
+                <CheckCircle2 className="w-16 h-16 text-emerald-500 mx-auto opacity-20" />
+                <p className="text-muted-foreground font-bold">لا توجد أخطاء حالياً، عمل رائع!</p>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Flagged and Quick Actions */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="bg-card border-2 border-border p-8 rounded-[3rem] flex items-center justify-between group hover:bg-amber-500/5 transition-all cursor-pointer" onClick={() => startReview('flagged')}>
+          <div className="flex items-center gap-6">
+            <div className="p-5 bg-amber-500/10 text-amber-600 rounded-[2rem]">
+              <Flag className="w-8 h-8" />
+            </div>
+            <div>
+              <h4 className="text-2xl font-black">الأسئلة المحفوظة</h4>
+              <p className="text-muted-foreground font-bold">{flaggedCount} سؤال بانتظار مراجعتك</p>
+            </div>
+          </div>
+          <ChevronRight className="w-8 h-8 text-muted-foreground group-hover:translate-x-2 transition-all" />
+        </div>
+
+        <div className="bg-card border-2 border-border p-8 rounded-[3rem] flex items-center justify-between group hover:bg-primary/5 transition-all cursor-pointer" onClick={() => navigate('/notes/all')}>
+          <div className="flex items-center gap-6">
+            <div className="p-5 bg-primary/10 text-primary rounded-[2rem]">
+              <BookOpen className="w-8 h-8" />
+            </div>
+            <div>
+              <h4 className="text-2xl font-black">النوتس المترابطة</h4>
+              <p className="text-muted-foreground font-bold">ربط النظري بالأسئلة العلمية</p>
+            </div>
+          </div>
+          <ChevronRight className="w-8 h-8 text-muted-foreground group-hover:translate-x-2 transition-all" />
+        </div>
+      </div>
+    </div>
+  );
+}

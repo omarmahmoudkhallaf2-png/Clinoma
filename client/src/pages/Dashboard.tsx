@@ -1,279 +1,319 @@
 import { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { Play, TrendingUp, CheckCircle, Crown, Loader2, LogOut, Settings } from 'lucide-react';
-import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip as RechartsTooltip } from 'recharts';
+import { db } from '../lib/firebase';
+import { collection, query, where, getDocs, limit, doc, getDoc, orderBy } from 'firebase/firestore';
+import { 
+  Play, BookOpen, Brain, TrendingUp, 
+  ChevronRight, Sparkles, Clock,
+  Search, Bell, Plus, Zap, Settings as SettingsIcon,
+  X, Loader2, Crown, CheckCircle, XCircle, Bookmark
+} from 'lucide-react';
 
-interface UserStats {
-  totalQuestions: number;
-  accuracy: number;
-  lastScore: number;
-  lastTotal: number;
-  totalAttempts: number;
-}
+// Components
+import UserStatsGrid from '../components/dashboard/UserStatsGrid';
+import DailyGoals from '../components/dashboard/DailyGoals';
+import { getWeakAreas } from '../lib/quizEngine';
+import WeakAreas from '../components/dashboard/WeakAreas';
 
 export default function Dashboard() {
-  const { user, userRole, userPlan, logout } = useAuth();
+  const { user, isSubscribed } = useAuth();
   const navigate = useNavigate();
-  const location = useLocation();
-  const [stats, setStats] = useState<UserStats | null>(null);
   const [loading, setLoading] = useState(true);
-  const [upgradeLoading, setUpgradeLoading] = useState(false);
-  const [portalLoading, setPortalLoading] = useState(false);
-  const [successMessage, setSuccessMessage] = useState('');
+  const [courses, setCourses] = useState<any[]>([]);
+  const [userStats, setUserStats] = useState({ accuracy: 0, streak: 1, points: 0, totalSolved: 0 });
+  const [weakAreas, setWeakAreas] = useState<any[]>([]);
+  const [lastActivity, setLastActivity] = useState<any>(null);
+  const [recentActions, setRecentActions] = useState<any[]>([]);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQueryText, setSearchQueryText] = useState('');
+  const [searchResults, setSearchResults] = useState<any[]>([]);
+  const [isSearching, setIsSearching] = useState(false);
 
   useEffect(() => {
-    // Check for success param from Stripe
-    const query = new URLSearchParams(location.search);
-    if (query.get('success')) {
-      setSuccessMessage('Payment successful! Your account is being upgraded. Please refresh if your plan has not updated yet.');
-      // Remove the query param from URL without refreshing
-      window.history.replaceState({}, document.title, window.location.pathname);
-    }
+    if (!user) return;
 
-    if (query.get('canceled')) {
-      // Optional: handle cancellation message
-      window.history.replaceState({}, document.title, window.location.pathname);
-    }
-  }, [location]);
-
-  useEffect(() => {
-    const fetchStats = async () => {
+    const fetchDashboardData = async () => {
       try {
-        if (!user) return;
-        const token = await user.getIdToken();
-        const response = await fetch('/api/attempts/user', {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        });
+        const [uSnap, cSnap, weak] = await Promise.all([
+          getDoc(doc(db, 'users', user.uid)),
+          getDocs(collection(db, 'courses')),
+          getWeakAreas(user.uid)
+        ]);
         
-        if (response.ok) {
-          const data = await response.json();
-          setStats(data);
+        if (uSnap.exists()) {
+          const data = uSnap.data();
+          setUserStats({
+            accuracy: data.accuracy || 0,
+            streak: data.streak || 1,
+            points: data.points || 0,
+            totalSolved: data.totalSolved || 0
+          });
+          setLastActivity(data.lastActivity || null);
         }
+
+        setCourses(cSnap.docs.map(d => ({ id: d.id, ...d.data() })));
+        setWeakAreas(weak);
+
+        const activitySnap = await getDocs(query(
+          collection(db, `users/${user.uid}/activity`), 
+          orderBy('timestamp', 'desc'), 
+          limit(5)
+        ));
+        const activities = activitySnap.docs.map(doc => doc.data());
+        setRecentActions(activities.length > 0 ? activities : [
+          { action: 'Welcome to Med Prep!', timestamp: { toDate: () => new Date() }, meta: 'Explore our F1 course' }
+        ]);
+
       } catch (err) {
-        console.error('Error fetching stats', err);
+        console.error('Error fetching dashboard data:', err);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchStats();
+    fetchDashboardData();
   }, [user]);
 
-  const handleLogout = async () => {
-    await logout();
-    navigate('/login');
-  };
+  const myCourses = courses.filter(c => isSubscribed(c.id));
+  const otherCourses = courses.filter(c => !isSubscribed(c.id));
 
-  const handleUpgrade = async () => {
-    setUpgradeLoading(true);
-    try {
-      if (!user) return;
-      const token = await user.getIdToken();
-      const response = await fetch('/api/stripe/create-checkout-session', {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      });
-
-      if (!response.ok) throw new Error('Failed to create checkout session');
-      
-      const { url } = await response.json();
-      window.location.href = url;
-    } catch (err) {
-      console.error(err);
-      alert('Failed to initiate checkout. Please try again.');
-    } finally {
-      setUpgradeLoading(false);
+  const handleSearch = async (val: string) => {
+    setSearchQueryText(val);
+    if (val.length < 3) {
+      setSearchResults([]);
+      return;
     }
-  };
-
-  const handleManageSubscription = async () => {
-    setPortalLoading(true);
+    setIsSearching(true);
     try {
-      if (!user) return;
-      const token = await user.getIdToken();
-      const response = await fetch('/api/stripe/create-portal-session', {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      });
-
-      if (!response.ok) throw new Error('Failed to create portal session');
-      
-      const { url } = await response.json();
-      window.location.href = url;
+      const q = query(collection(db, 'questions'), limit(10));
+      const snap = await getDocs(q);
+      const results = snap.docs
+        .map(doc => ({ id: doc.id, ...doc.data() }))
+        .filter((q: any) => q.text?.toLowerCase().includes(val.toLowerCase()));
+      setSearchResults(results);
     } catch (err) {
       console.error(err);
-      alert('Failed to access subscription portal.');
     } finally {
-      setPortalLoading(false);
+      setIsSearching(false);
     }
   };
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center min-h-[60vh]">
-        <Loader2 className="w-8 h-8 animate-spin text-primary" />
+      <div className="p-10 space-y-10 animate-pulse">
+        <div className="h-64 bg-secondary/20 rounded-[4rem]" />
+        <div className="grid grid-cols-4 gap-6">
+          {[1,2,3,4].map(i => <div key={i} className="h-32 bg-secondary/20 rounded-[2.5rem]" />)}
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="space-y-8 animate-in fade-in duration-500">
-      {successMessage && (
-        <div className="p-4 bg-green-500/10 border border-green-500/20 text-green-700 dark:text-green-400 rounded-lg flex items-center gap-2">
-          <CheckCircle className="w-5 h-5" />
-          {successMessage}
-        </div>
-      )}
-
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-card border border-border p-6 rounded-xl shadow-sm">
-        <div className="flex items-center gap-4">
-          {user?.photoURL ? (
-            <img src={user.photoURL} alt="Profile" className="w-16 h-16 rounded-full border-2 border-primary/20" />
-          ) : (
-            <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-xl font-bold text-primary">
-              {user?.displayName?.charAt(0) || user?.email?.charAt(0)}
-            </div>
-          )}
-          <div>
-            <h1 className="text-2xl font-bold text-card-foreground">Welcome back, {user?.displayName?.split(' ')[0]}!</h1>
-            <div className="flex items-center gap-2 mt-1">
-              <span className="px-2.5 py-0.5 rounded-full text-xs font-medium bg-secondary text-secondary-foreground">
-                {userRole === 'admin' ? 'Admin' : 'Student'}
-              </span>
-              {userPlan === 'premium' ? (
-                <span className="px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-500/10 text-yellow-600 border border-yellow-500/20 flex items-center gap-1">
-                  <Crown className="w-3 h-3" /> Premium Plan
-                </span>
-              ) : (
-                <span className="px-2.5 py-0.5 rounded-full text-xs font-medium bg-muted text-muted-foreground border border-border">
-                  Free Plan
-                </span>
-              )}
-            </div>
-          </div>
-        </div>
-        <div className="flex items-center gap-3 w-full md:w-auto">
-          <button onClick={handleLogout} className="flex-1 md:flex-none flex items-center justify-center gap-2 px-4 py-2 bg-secondary hover:bg-secondary/80 text-secondary-foreground rounded-lg transition-colors">
-            <LogOut className="w-4 h-4" />
-            Logout
-          </button>
-          {userPlan === 'premium' && (
-            <button 
-              onClick={handleManageSubscription} 
-              disabled={portalLoading}
-              className="flex-1 md:flex-none flex items-center justify-center gap-2 px-4 py-2 bg-secondary hover:bg-secondary/80 text-secondary-foreground rounded-lg transition-colors"
-            >
-              {portalLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Settings className="w-4 h-4" />}
-              Manage Plan
-            </button>
-          )}
-          <button onClick={() => navigate('/quiz-setup')} className="flex-1 md:flex-none flex items-center justify-center gap-2 px-6 py-2 bg-primary text-primary-foreground font-medium rounded-lg hover:opacity-90 transition-opacity">
-            <Play className="w-4 h-4 fill-current" />
-            Start Session
-          </button>
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-card border border-border rounded-xl p-6 shadow-sm flex flex-col justify-between">
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-muted-foreground font-medium">Questions Solved</h3>
-            <div className="p-2 bg-primary/10 rounded-lg">
-              <CheckCircle className="w-5 h-5 text-primary" />
-            </div>
-          </div>
-          <p className="text-4xl font-bold text-card-foreground">{stats?.totalQuestions || 0}</p>
-        </div>
-
-        <div className="bg-card border border-border rounded-xl p-6 shadow-sm flex flex-col justify-between">
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-muted-foreground font-medium">Overall Accuracy</h3>
-            <div className="p-2 bg-green-500/10 rounded-lg">
-              <TrendingUp className="w-5 h-5 text-green-500" />
-            </div>
-          </div>
-          <div className="flex items-end gap-2">
-            <p className="text-4xl font-bold text-card-foreground">{stats?.accuracy || 0}%</p>
-          </div>
-        </div>
-
-        <div className="bg-card border border-border rounded-xl p-6 shadow-sm flex flex-col justify-between">
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-muted-foreground font-medium">Last Score</h3>
-            <div className="p-2 bg-accent/10 rounded-lg">
-              <Play className="w-5 h-5 text-accent" />
-            </div>
-          </div>
-          <div className="flex items-baseline gap-2">
-            <p className="text-4xl font-bold text-card-foreground">{stats?.lastScore || 0}</p>
-            <span className="text-muted-foreground font-medium">/ {stats?.lastTotal || 0}</span>
-          </div>
-        </div>
-      </div>
-
-      {stats && stats.totalQuestions > 0 && (
-        <div className="bg-card border border-border rounded-xl p-6 shadow-sm">
-          <h3 className="text-xl font-bold mb-6">Performance Overview</h3>
-          <div className="h-64">
-            <ResponsiveContainer width="100%" height="100%">
-              <PieChart>
-                <Pie
-                  data={[
-                    { name: 'Correct', value: Math.round(stats.totalQuestions * (stats.accuracy / 100)), color: '#10b981' },
-                    { name: 'Incorrect', value: stats.totalQuestions - Math.round(stats.totalQuestions * (stats.accuracy / 100)), color: '#ef4444' }
-                  ]}
-                  cx="50%"
-                  cy="50%"
-                  innerRadius={60}
-                  outerRadius={80}
-                  paddingAngle={5}
-                  dataKey="value"
-                >
-                  {
-                    [
-                      { name: 'Correct', value: Math.round(stats.totalQuestions * (stats.accuracy / 100)), color: '#10b981' },
-                      { name: 'Incorrect', value: stats.totalQuestions - Math.round(stats.totalQuestions * (stats.accuracy / 100)), color: '#ef4444' }
-                    ].map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={entry.color} />
-                    ))
-                  }
-                </Pie>
-                <RechartsTooltip />
-              </PieChart>
-            </ResponsiveContainer>
-          </div>
-        </div>
-      )}
-
-      {userPlan !== 'premium' && (
-        <div className="bg-gradient-to-r from-primary/10 via-accent/5 to-transparent border border-border rounded-xl p-8 shadow-sm relative overflow-hidden">
-          <div className="absolute top-0 right-0 p-8 opacity-10 pointer-events-none">
-            <Crown className="w-48 h-48" />
-          </div>
-          <div className="max-w-xl relative z-10">
-            <h2 className="text-2xl font-bold text-card-foreground mb-2">Upgrade to Premium</h2>
-            <p className="text-muted-foreground mb-6">
-              Unlock thousands of high-yield medical questions, detailed explanations, and advanced performance analytics.
+    <div className="max-w-[1600px] mx-auto p-6 md:p-10 space-y-12 animate-in fade-in duration-700 pb-24">
+      {/* Smart Welcome Banner */}
+      <div className="relative bg-primary text-white p-12 md:p-16 rounded-[4rem] shadow-2xl shadow-primary/20 overflow-hidden group">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/10 rounded-full -mr-48 -mt-48 blur-[100px] group-hover:scale-110 transition-transform duration-1000" />
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-indigo-400/20 rounded-full -ml-32 -mb-32 blur-3xl" />
+        
+        <div className="relative z-10 flex flex-col md:flex-row justify-between items-center gap-10">
+          <div className="space-y-6 text-center md:text-right">
+            <h1 className="text-5xl md:text-7xl font-black tracking-tighter leading-tight">
+              أهلاً بك، {user?.displayName?.split(' ')[0]}! 👋
+            </h1>
+            <p className="text-xl md:text-2xl font-bold opacity-80 max-w-2xl">
+              استكمل رحلتك التعليمية في F1 الآن.
             </p>
-            <button 
-              onClick={handleUpgrade}
-              disabled={upgradeLoading}
-              className="flex items-center gap-2 px-8 py-3 bg-card text-card-foreground border border-border hover:border-primary/50 hover:bg-secondary/50 font-medium rounded-lg transition-all disabled:opacity-50"
-            >
-              {upgradeLoading ? (
-                <Loader2 className="w-5 h-5 animate-spin text-yellow-500" />
-              ) : (
-                <Crown className="w-5 h-5 text-yellow-500" />
-              )}
-              {upgradeLoading ? 'Redirecting to Stripe...' : 'Upgrade Now - $19.99/mo'}
-            </button>
+          </div>
+          
+          <div className="hidden lg:block relative">
+            <div className="w-64 h-64 bg-white/10 rounded-[3rem] border-2 border-white/20 backdrop-blur-xl flex flex-col items-center justify-center p-8 text-center animate-bounce duration-[3000ms]">
+              <TrendingUp className="w-16 h-16 mb-4 text-emerald-400" />
+              <div className="text-4xl font-black">%{userStats.accuracy}</div>
+              <div className="text-xs font-black uppercase tracking-widest opacity-60">Accuracy Rating</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <UserStatsGrid stats={userStats} />
+
+      {/* Smart Revision Quick Hub */}
+      <div className="space-y-8 animate-in slide-in-from-bottom-6 duration-700 delay-200">
+        <h2 className="text-3xl font-black tracking-tight px-4 flex items-center gap-3">
+          <Brain className="w-8 h-8 text-indigo-500" /> المراجعة الذكية (Smart Revision)
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div 
+            onClick={() => navigate('/review')}
+            className="bg-card border-2 border-border p-10 rounded-[4rem] shadow-sm hover:shadow-2xl hover:border-rose-500/30 transition-all group cursor-pointer relative overflow-hidden"
+          >
+            <div className="absolute top-0 right-0 w-40 h-40 bg-rose-500/5 rounded-full -mr-20 -mt-20 blur-3xl group-hover:scale-150 transition-transform duration-700" />
+            <div className="flex items-center gap-10 relative">
+              <div className="w-24 h-24 bg-rose-500/10 text-rose-600 rounded-[2rem] flex items-center justify-center group-hover:rotate-12 transition-transform">
+                <XCircle className="w-12 h-12" />
+              </div>
+              <div className="space-y-2">
+                <h3 className="text-3xl font-black">الأسئلة الخاطئة</h3>
+                <p className="text-muted-foreground font-bold text-lg">راجع أخطائك وصحح مفاهيمك العلمية</p>
+              </div>
+            </div>
+          </div>
+
+          <div 
+            onClick={() => navigate('/review')}
+            className="bg-card border-2 border-border p-10 rounded-[4rem] shadow-sm hover:shadow-2xl hover:border-amber-500/30 transition-all group cursor-pointer relative overflow-hidden"
+          >
+            <div className="absolute top-0 right-0 w-40 h-40 bg-amber-500/5 rounded-full -mr-20 -mt-20 blur-3xl group-hover:scale-150 transition-transform duration-700" />
+            <div className="flex items-center gap-10 relative">
+              <div className="w-24 h-24 bg-amber-500/10 text-amber-600 rounded-[2rem] flex items-center justify-center group-hover:-rotate-12 transition-transform">
+                <Bookmark className="w-12 h-12" />
+              </div>
+              <div className="space-y-2">
+                <h3 className="text-3xl font-black">الأسئلة المعلمة</h3>
+                <p className="text-muted-foreground font-bold text-lg">الوصول السريع للأسئلة الهامة والمحفوظة</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+        <div className="lg:col-span-2 space-y-12">
+          {/* My Courses */}
+          {myCourses.length > 0 && (
+            <div className="space-y-8">
+              <h2 className="text-3xl font-black tracking-tight px-4 flex items-center gap-3">
+                <CheckCircle className="w-8 h-8 text-emerald-500" /> كورسـاتي
+              </h2>
+              <div className="grid grid-cols-1 gap-6">
+                {myCourses.map(course => (
+                  <div 
+                    key={course.id} 
+                    onClick={() => navigate(`/course/${course.id}`)}
+                    className="bg-card border-2 border-border p-10 rounded-[4rem] shadow-sm hover:shadow-xl transition-all group relative overflow-hidden cursor-pointer"
+                  >
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 blur-2xl" />
+                    <div className="flex flex-col md:flex-row gap-10 items-center relative">
+                      <div className="w-40 h-40 bg-secondary/30 rounded-[3rem] flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+                        <BookOpen className="w-20 h-20" />
+                      </div>
+                      <div className="flex-1 space-y-4 text-center md:text-right">
+                        <h3 className="text-4xl font-black tracking-tight">{course.name}</h3>
+                        <p className="text-muted-foreground font-bold text-lg leading-relaxed whitespace-pre-line line-clamp-2">{course.description}</p>
+                        <button 
+                          onClick={(e) => { e.stopPropagation(); navigate(`/course/${course.id}`); }}
+                          className="px-10 py-4 bg-primary text-white rounded-[2rem] font-black text-xl shadow-xl hover:scale-105 transition-all"
+                        >
+                          استكمال المذاكرة
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* All Courses */}
+          <div className="space-y-8">
+            <h2 className="text-3xl font-black tracking-tight px-4 flex items-center gap-3">
+              <Crown className="w-8 h-8 text-amber-500" /> الكورسات المتاحة
+            </h2>
+            <div className="grid grid-cols-1 gap-6">
+              {otherCourses.map(course => (
+                <div 
+                  key={course.id} 
+                  onClick={() => navigate(`/course/${course.id}`)}
+                  className="bg-card border-2 border-border p-10 rounded-[4rem] shadow-sm hover:border-primary/30 transition-all group cursor-pointer"
+                >
+                  <div className="flex flex-col md:flex-row justify-between items-center gap-10">
+                    <div className="flex flex-col md:flex-row gap-8 items-center">
+                      <div className="w-32 h-32 bg-secondary/30 rounded-[2.5rem] flex items-center justify-center text-muted-foreground group-hover:text-primary transition-colors">
+                        <Zap className="w-16 h-16" />
+                      </div>
+                      <div className="text-center md:text-right space-y-2">
+                        <h3 className="text-3xl font-black">{course.name}</h3>
+                        <div className="text-3xl font-black text-primary">{course.price} EGP</div>
+                      </div>
+                    </div>
+                    <button 
+                      onClick={(e) => { e.stopPropagation(); navigate('/available'); }}
+                      className="px-12 py-5 bg-card border-2 border-primary text-primary rounded-[2.5rem] font-black text-xl hover:bg-primary hover:text-white transition-all shadow-lg"
+                    >
+                      تفاصيل الكورس
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Sidebar */}
+        <div className="space-y-10">
+          <WeakAreas areas={weakAreas} />
+          <DailyGoals completed={userStats.totalSolved % 10} target={10} />
+          
+          <div className="bg-card border-2 border-border p-8 rounded-[3rem] shadow-sm space-y-6">
+            <h3 className="text-2xl font-black flex items-center gap-3">
+              <Clock className="w-6 h-6 text-indigo-500" /> النشاط الأخير
+            </h3>
+            <div className="space-y-6">
+              {recentActions.map((act, i) => (
+                <div key={i} className="flex gap-4 group">
+                  <div className="w-1 bg-secondary rounded-full group-hover:bg-primary transition-colors" />
+                  <div>
+                    <p className="font-black text-sm">{act.action}</p>
+                    <p className="text-xs font-bold text-muted-foreground">
+                      {act.timestamp?.toDate ? act.timestamp.toDate().toLocaleTimeString() : 'Just now'} • {act.meta}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Floating Quick Actions */}
+      <div className="fixed bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-4 p-4 bg-background/80 backdrop-blur-2xl border-2 border-border rounded-[2.5rem] shadow-2xl z-50">
+        <button onClick={() => navigate('/quiz-setup')} className="p-4 bg-primary text-white rounded-2xl shadow-xl shadow-primary/20 hover:scale-110 transition-all">
+          <Play className="w-6 h-6 fill-white" />
+        </button>
+        <button onClick={() => setIsSearchOpen(true)} className="p-4 bg-secondary text-foreground rounded-2xl hover:bg-primary hover:text-white transition-all">
+          <Search className="w-6 h-6" />
+        </button>
+        <div className="w-px h-8 bg-border mx-2" />
+        <button onClick={() => navigate('/settings')} className="p-4 bg-secondary text-foreground rounded-2xl hover:bg-primary hover:text-white transition-all">
+          <SettingsIcon className="w-6 h-6" />
+        </button>
+      </div>
+
+      {/* Search Modal */}
+      {isSearchOpen && (
+        <div className="fixed inset-0 z-[1200] bg-background/95 backdrop-blur-xl flex items-start justify-center pt-20 p-6">
+          <div className="w-full max-w-3xl space-y-6">
+            <div className="flex items-center gap-4 bg-card border-2 border-border p-6 rounded-3xl shadow-2xl">
+              <Search className="w-8 h-8 text-primary" />
+              <input 
+                autoFocus
+                placeholder="بحث في الأسئلة..."
+                className="flex-1 bg-transparent border-none outline-none text-2xl font-bold"
+                value={searchQueryText}
+                onChange={(e) => handleSearch(e.target.value)}
+                onKeyDown={(e) => e.key === 'Escape' && setIsSearchOpen(false)}
+              />
+              <button onClick={() => setIsSearchOpen(false)} className="p-2 hover:bg-secondary rounded-xl"><X /></button>
+            </div>
+            <div className="bg-card border-2 border-border p-8 rounded-[3rem] min-h-[400px]">
+              {isSearching ? <Loader2 className="animate-spin mx-auto w-10 h-10" /> : searchResults.map(res => (
+                <div key={res.id} className="p-6 border-b border-border hover:bg-secondary/20 cursor-pointer" onClick={() => navigate('/quiz', { state: { questions: [res] } })}>
+                  <p className="font-bold">{res.text}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       )}
