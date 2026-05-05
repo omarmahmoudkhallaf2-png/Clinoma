@@ -8,9 +8,9 @@ export const generateAIResponse = async (prompt: string, fileData?: { data: stri
     console.log("CRITICAL DEBUG: Sending request to Gemini...");
     const genAI = new GoogleGenerativeAI(GEN_AI_KEY);
     
-    // استخدام طريقة أكثر توافقاً مع المتصفحات
+    // استخدام النسخة الأحدث والمستقرة من الموديل
     const model = genAI.getGenerativeModel({ 
-      model: "gemini-1.5-flash",
+      model: "gemini-1.5-flash-latest",
     });
 
     const chat = model.startChat({
