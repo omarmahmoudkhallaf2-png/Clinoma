@@ -18,14 +18,24 @@ export default function AvailableExams() {
   const navigate = useNavigate();
   const [exams, setExams] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
-
   useEffect(() => {
-    const q = query(collection(db, 'formal_exams'), orderBy('createdAt', 'desc'));
+    console.log("Setting up real-time exams listener...");
+    // Use a simple query first to ensure we get ALL exams, then sort in memory
+    const q = collection(db, 'formal_exams');
+    
     const unsubscribe = onSnapshot(q, (snap) => {
-      setExams(snap.docs.map(d => ({ id: d.id, ...d.data() })));
+      const examsData = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+      // Sort manually to avoid Firebase index requirements that might hide new docs
+      examsData.sort((a: any, b: any) => {
+        const timeA = a.createdAt?.toDate?.()?.getTime() || 0;
+        const timeB = b.createdAt?.toDate?.()?.getTime() || 0;
+        return timeB - timeA;
+      });
+      console.log("Exams found:", examsData.length);
+      setExams(examsData);
       setLoading(false);
     }, (err) => {
-      console.error(err);
+      console.error("Exams error:", err);
       setLoading(false);
     });
 
