@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { Crown, CheckCircle, Infinity as InfinityIcon } from 'lucide-react';
 import SupportModal from '../components/ui/SupportModal';
+import { Button } from '../components/ui/Button';
 import { db } from '../lib/firebase';
 import { doc, getDoc, getDocs, collection, query } from 'firebase/firestore';
 

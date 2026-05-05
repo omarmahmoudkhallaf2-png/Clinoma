@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { db } from '../lib/firebase';
+import { cn } from '../lib/utils';
 import { collection, query, getDocs, addDoc, where } from 'firebase/firestore';
 import { updateUserProgress, logUserActivity, toggleBookmark } from '../lib/quizEngine';
 import type { Question } from '../types/quiz';
