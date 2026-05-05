@@ -1,4 +1,6 @@
 import { Target, Zap, Trophy, Flame } from 'lucide-react';
+import { Card, CardContent } from '../ui/Card';
+import { cn } from '../../lib/utils';
 
 interface StatsProps {
   stats: {
@@ -11,27 +13,29 @@ interface StatsProps {
 
 export default function UserStatsGrid({ stats }: StatsProps) {
   const items = [
-    { label: 'Accuracy', value: `${stats.accuracy}%`, icon: Target, color: 'emerald', desc: 'Correct Answers' },
-    { label: 'Streak', value: stats.streak, icon: Flame, color: 'orange', desc: 'Consecutive Days' },
-    { label: 'Mastery Points', value: stats.points, icon: Zap, color: 'indigo', desc: 'Experience Gained' },
-    { label: 'Rank', value: '#124', icon: Trophy, color: 'amber', desc: 'Global Standing' },
+    { label: 'Accuracy', value: `${stats.accuracy}%`, icon: Target, color: 'text-emerald-500', bg: 'bg-emerald-500/10' },
+    { label: 'Current Streak', value: stats.streak, icon: Flame, color: 'text-orange-500', bg: 'bg-orange-500/10' },
+    { label: 'Mastery Points', value: stats.points, icon: Zap, color: 'text-indigo-500', bg: 'bg-indigo-500/10' },
+    { label: 'Global Rank', value: '#124', icon: Trophy, color: 'text-amber-500', bg: 'bg-amber-500/10' },
   ];
 
   return (
-    <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
       {items.map((item, i) => (
-        <div key={i} className="bg-card border-2 border-border p-6 rounded-[2.5rem] shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group overflow-hidden relative">
-          <div className={`absolute top-0 right-0 w-24 h-24 bg-${item.color}-500/5 rounded-full -mr-12 -mt-12 blur-2xl group-hover:bg-${item.color}-500/10 transition-all`} />
-          <div className="flex justify-between items-start mb-4 relative">
-            <div className={`p-3 rounded-2xl bg-${item.color}-500/10 text-${item.color}-600 group-hover:scale-110 transition-transform`}>
-              <item.icon className="w-6 h-6" />
+        <Card key={i} className="overflow-hidden group">
+          <CardContent className="p-6 relative">
+            <div className={cn("absolute top-0 right-0 w-24 h-24 rounded-full -mr-12 -mt-12 blur-3xl opacity-20", item.bg)} />
+            <div className="flex justify-between items-center mb-4">
+              <div className={cn("p-2 rounded-lg transition-transform group-hover:scale-110", item.bg, item.color)}>
+                <item.icon className="w-5 h-5" />
+              </div>
             </div>
-          </div>
-          <div className="relative">
-            <div className="text-3xl font-black mb-1 tracking-tight">{item.value}</div>
-            <div className="text-[10px] font-black uppercase text-muted-foreground tracking-widest">{item.label}</div>
-          </div>
-        </div>
+            <div className="space-y-1">
+              <div className="text-2xl font-bold tracking-tight">{item.value}</div>
+              <div className="text-[10px] font-bold uppercase text-muted-foreground tracking-widest">{item.label}</div>
+            </div>
+          </CardContent>
+        </Card>
       ))}
     </div>
   );

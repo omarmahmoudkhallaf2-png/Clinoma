@@ -1,6 +1,9 @@
 import { useState } from 'react';
-import { X } from 'lucide-react';
+import { X, Check, AlertCircle, Info } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import type { Question } from '../../types/quiz';
+import { cn } from '../../lib/utils';
+import { Card, CardContent } from '../ui/Card';
 
 interface QuestionCardProps {
   question: Question;
@@ -28,134 +31,174 @@ export default function QuestionCard({
   const [isImageOpen, setIsImageOpen] = useState(false);
 
   return (
-    <div className="space-y-6 md:space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-      <div className="bg-card border border-border p-5 md:p-8 lg:p-10 rounded-3xl md:rounded-[2.5rem] shadow-sm space-y-6 md:space-y-8">
-        <div className="space-y-4 md:space-y-6">
-          <div className="flex justify-between items-start">
-            <span className="px-4 py-1.5 bg-primary/10 text-primary rounded-xl text-[10px] font-black uppercase tracking-widest">
-              {question.category}
-            </span>
-            {isAnswered && isStudyMode && (
-              <span className={`px-4 py-1.5 rounded-xl text-[10px] font-black uppercase tracking-widest ${selectedAnswer === correctAnswer ? 'bg-emerald-500/10 text-emerald-600' : 'bg-red-500/10 text-red-600'}`}>
-                {selectedAnswer === correctAnswer ? 'Correct Answer' : 'Incorrect Answer'}
+    <motion.div 
+      initial={{ opacity: 0, x: 20 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: -20 }}
+      className="space-y-6 md:space-y-8"
+    >
+      <Card className="border-none shadow-xl shadow-foreground/5 overflow-hidden">
+        <CardContent className="p-6 md:p-10 space-y-8">
+          <div className="space-y-4">
+            <div className="flex justify-between items-center flex-row-reverse" dir="rtl">
+              <span className="px-3 py-1 bg-primary/10 text-primary rounded-lg text-[10px] font-bold uppercase tracking-wider">
+                {question.category}
               </span>
-            )}
-          </div>
-          
-          <h2 className="text-xl md:text-2xl lg:text-4xl font-black text-foreground leading-tight tracking-tight">
-            {question.text}
-          </h2>
-
-          {question.imageUrl && (
-            <>
-              <div 
-                className="relative group rounded-3xl overflow-hidden border-2 border-border shadow-sm bg-white/5 p-4 flex justify-center cursor-pointer hover:border-primary transition-all"
-                onClick={() => setIsImageOpen(true)}
-              >
-                <img 
-                  src={question.imageUrl} 
-                  alt="Question Illustration" 
-                  className="max-h-[250px] md:max-h-[300px] w-auto object-contain rounded-2xl"
-                />
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                  <div className="bg-black/70 text-white px-6 py-3 rounded-2xl font-black text-lg flex items-center gap-3 backdrop-blur-md">
-                    🔍 تكبير الصورة
-                  </div>
-                </div>
-              </div>
-
-              {isImageOpen && (
-                <div 
-                  className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4 md:p-12 backdrop-blur-md animate-in fade-in duration-300"
-                  onClick={() => setIsImageOpen(false)}
-                >
-                  <button 
-                    onClick={() => setIsImageOpen(false)}
-                    className="absolute top-6 right-6 md:top-10 md:right-10 p-4 bg-white/10 hover:bg-white/20 text-white rounded-full transition-all hover:scale-110"
+              <AnimatePresence>
+                {isAnswered && isStudyMode && (
+                  <motion.div 
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className={cn(
+                      "flex items-center gap-1.5 px-3 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider",
+                      selectedAnswer === correctAnswer ? "bg-emerald-500/10 text-emerald-600" : "bg-destructive/10 text-destructive"
+                    )}
                   >
-                    <X className="w-8 h-8" />
-                  </button>
+                    {selectedAnswer === correctAnswer ? (
+                      <><Check className="w-3 h-3" /> إجابة صحيحة</>
+                    ) : (
+                      <><AlertCircle className="w-3 h-3" /> إجابة خاطئة</>
+                    )}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+            
+            <h2 className="text-xl md:text-3xl font-bold text-foreground leading-tight tracking-tight text-right" dir="rtl">
+              {question.text}
+            </h2>
+
+            {question.imageUrl && (
+              <>
+                <motion.div 
+                  whileHover={{ scale: 1.01 }}
+                  className="relative group rounded-xl overflow-hidden border bg-muted/30 p-2 flex justify-center cursor-pointer"
+                  onClick={() => setIsImageOpen(true)}
+                >
                   <img 
                     src={question.imageUrl} 
-                    alt="Expanded Illustration" 
-                    className="max-w-full max-h-full object-contain rounded-3xl shadow-2xl animate-in zoom-in-95 duration-300"
-                    onClick={e => e.stopPropagation()}
+                    alt="Question Illustration" 
+                    className="max-h-[300px] w-auto object-contain rounded-lg"
                   />
-                </div>
-              )}
-            </>
-          )}
-        </div>
+                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <div className="bg-white/90 text-black px-4 py-2 rounded-lg font-bold text-sm backdrop-blur-sm shadow-xl">
+                      🔍 تكبير الصورة
+                    </div>
+                  </div>
+                </motion.div>
 
-        <div className="grid grid-cols-1 gap-3 md:gap-4">
-          {question.options.map((option, index) => {
-            const letter = String.fromCharCode(65 + index);
-            const isSelected = selectedAnswer === option;
-            const isActuallyCorrect = option === correctAnswer;
-            const isStruck = struckOutOptions.includes(option);
-            
-            let variantClass = "bg-secondary/30 border-border hover:border-primary/50";
-            if (isSelected) {
-              if (isStudyMode && isAnswered) {
-                variantClass = isActuallyCorrect ? "bg-emerald-500 text-white border-emerald-500 shadow-xl shadow-emerald-500/20 scale-[1.02]" : "bg-red-500 text-white border-red-500 shadow-xl shadow-red-500/20 scale-[1.02]";
-              } else {
-                variantClass = "bg-primary text-white border-primary shadow-xl shadow-primary/20 scale-[1.02]";
+                <AnimatePresence>
+                  {isImageOpen && (
+                    <motion.div 
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      className="fixed inset-0 z-[100] bg-background/95 backdrop-blur-md flex items-center justify-center p-4 md:p-12"
+                      onClick={() => setIsImageOpen(false)}
+                    >
+                      <button className="absolute top-6 right-6 p-2 bg-muted rounded-full hover:bg-muted/80 transition-all">
+                        <X className="w-6 h-6" />
+                      </button>
+                      <motion.img 
+                        initial={{ scale: 0.9 }}
+                        animate={{ scale: 1 }}
+                        exit={{ scale: 0.9 }}
+                        src={question.imageUrl} 
+                        className="max-w-full max-h-full object-contain rounded-xl shadow-2xl"
+                        onClick={e => e.stopPropagation()}
+                      />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </>
+            )}
+          </div>
+
+          <div className="grid grid-cols-1 gap-3">
+            {question.options.map((option, index) => {
+              const letter = String.fromCharCode(65 + index);
+              const isSelected = selectedAnswer === option;
+              const isActuallyCorrect = option === correctAnswer;
+              const isStruck = struckOutOptions.includes(option);
+              
+              let variantStyle = "border-border hover:border-primary/50 hover:bg-accent/50";
+              if (isSelected) {
+                if (isStudyMode && isAnswered) {
+                  variantStyle = isActuallyCorrect 
+                    ? "bg-emerald-500 border-emerald-500 text-white shadow-lg shadow-emerald-500/20" 
+                    : "bg-destructive border-destructive text-white shadow-lg shadow-destructive/20";
+                } else {
+                  variantStyle = "bg-primary border-primary text-primary-foreground shadow-lg shadow-primary/20";
+                }
+              } else if (isStudyMode && isAnswered && isActuallyCorrect) {
+                variantStyle = "bg-emerald-500/10 border-emerald-500 text-emerald-600";
               }
-            } else if (isStudyMode && isAnswered && isActuallyCorrect) {
-              variantClass = "bg-emerald-500/10 border-emerald-500 text-emerald-600";
-            }
 
-            return (
-              <div key={index} className="relative group">
+              return (
                 <button
+                  key={index}
                   disabled={isAnswered && isStudyMode}
                   onClick={() => onSelect(option)}
                   onContextMenu={(e) => {
                     e.preventDefault();
                     if (!(isAnswered && isStudyMode)) onStrikeOut?.(option);
                   }}
-                  className={`relative w-full flex items-center gap-4 md:gap-6 p-4 md:p-6 rounded-2xl md:rounded-[1.5rem] border-2 text-left transition-all duration-300 ${variantClass} ${isStruck ? 'opacity-40 grayscale-[0.5]' : ''}`}
+                  className={cn(
+                    "group relative w-full flex items-center gap-4 p-4 rounded-xl border transition-all duration-200",
+                    variantStyle,
+                    isStruck && !isSelected && "opacity-40 grayscale-[0.5]"
+                  )}
                 >
-                  <div className={`w-10 h-10 md:w-12 md:h-12 rounded-xl md:rounded-2xl flex items-center justify-center font-black text-lg md:text-xl transition-all flex-shrink-0 ${
-                    isSelected ? 'bg-white/20' : 'bg-white text-primary group-hover:bg-primary group-hover:text-white shadow-sm'
-                  }`}>
+                  <div className={cn(
+                    "w-10 h-10 rounded-lg flex items-center justify-center font-bold text-sm transition-all flex-shrink-0",
+                    isSelected ? "bg-white/20" : "bg-muted text-muted-foreground group-hover:bg-primary group-hover:text-primary-foreground"
+                  )}>
                     {letter}
                   </div>
-                  <span className={`flex-1 font-black text-base md:text-xl leading-snug ${isStruck ? 'line-through decoration-destructive/50 decoration-4' : ''}`}>
+                  <span className={cn(
+                    "flex-1 font-bold text-base text-right",
+                    isStruck && "line-through decoration-destructive/50 decoration-2"
+                  )} dir="rtl">
                     {option}
                   </span>
                   
                   {!isAnswered && (
-                    <button 
+                    <div 
                       onClick={(e) => {
                         e.stopPropagation();
                         onStrikeOut?.(option);
                       }}
-                      className="opacity-0 group-hover:opacity-100 p-2 hover:bg-destructive/10 rounded-lg text-destructive transition-all"
-                      title="Strike out (Right click)"
+                      className="opacity-0 group-hover:opacity-100 p-1.5 hover:bg-destructive/10 rounded-md text-destructive transition-all"
                     >
-                      <span className="text-xs font-black">X</span>
-                    </button>
+                      <X className="w-4 h-4" />
+                    </div>
                   )}
                 </button>
-                {isStruck && !isSelected && (
-                  <div className="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-0.5 bg-destructive/30 pointer-events-none" />
-                )}
-              </div>
-            );
-          })}
-        </div>
-
-        {(showExplanation || (isStudyMode && isAnswered)) && question.explanation && (
-          <div className="p-5 md:p-8 bg-primary/5 border border-primary/10 rounded-3xl md:rounded-[2.5rem] animate-in zoom-in-95 duration-500">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-8 h-8 bg-primary rounded-xl flex items-center justify-center text-white font-black text-sm italic">i</div>
-              <h4 className="font-black text-primary uppercase tracking-widest text-sm">التفسير العلمي</h4>
-            </div>
-            <p className="text-muted-foreground leading-relaxed font-bold text-lg" dir="rtl">{question.explanation}</p>
+              );
+            })}
           </div>
-        )}
-      </div>
-    </div>
+
+          <AnimatePresence>
+            {(showExplanation || (isStudyMode && isAnswered)) && question.explanation && (
+              <motion.div 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="p-6 bg-primary/5 border border-primary/10 rounded-xl"
+              >
+                <div className="flex items-center gap-2 mb-3 flex-row-reverse" dir="rtl">
+                  <div className="w-6 h-6 bg-primary rounded-md flex items-center justify-center text-white">
+                    <Info className="w-4 h-4" />
+                  </div>
+                  <h4 className="font-bold text-primary text-sm uppercase tracking-wide">التفسير العلمي</h4>
+                </div>
+                <p className="text-muted-foreground leading-relaxed font-medium text-sm text-right" dir="rtl">
+                  {question.explanation}
+                </p>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </CardContent>
+      </Card>
+    </motion.div>
   );
 }

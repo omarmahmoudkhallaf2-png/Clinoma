@@ -1,5 +1,7 @@
 import { AlertCircle, Target, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { Card, CardContent, CardHeader, CardTitle } from '../ui/Card';
+import { Button } from '../ui/Button';
 
 interface WeakArea {
   id: string;
@@ -12,38 +14,44 @@ export default function WeakAreas({ areas }: { areas: WeakArea[] }) {
   if (areas.length === 0) return null;
 
   return (
-    <div className="bg-card border-2 border-border p-8 rounded-[3rem] shadow-sm space-y-6">
-      <h3 className="text-2xl font-black flex items-center gap-3">
-        <AlertCircle className="w-6 h-6 text-rose-500" /> نقاط تحتاج تركيز
-      </h3>
-      <div className="space-y-4">
-        {areas.map((area, i) => (
-          <div key={i} className="p-5 bg-secondary/20 rounded-2xl border border-border group hover:border-primary/40 transition-all">
-            <div className="flex justify-between items-center">
-              <div>
-                <p className="font-black text-sm uppercase opacity-40">Subject ID</p>
-                <p className="font-black text-lg">{area.id}</p>
+    <Card className="overflow-hidden">
+      <CardHeader className="pb-2">
+        <CardTitle className="text-lg font-bold flex items-center gap-2 flex-row-reverse" dir="rtl">
+          <AlertCircle className="w-5 h-5 text-rose-500" /> نقاط تحتاج تركيز
+        </CardTitle>
+      </CardHeader>
+      <CardContent className="space-y-6">
+        <div className="space-y-3">
+          {areas.map((area, i) => (
+            <div key={i} className="p-4 bg-muted/50 rounded-xl border border-transparent hover:border-primary/20 transition-all group">
+              <div className="flex justify-between items-center flex-row-reverse" dir="rtl">
+                <div>
+                  <p className="text-[10px] font-bold uppercase opacity-40">Subject ID</p>
+                  <p className="font-bold text-sm">{area.id}</p>
+                </div>
+                <div className="text-left">
+                  <p className="text-rose-500 font-bold text-lg">{area.count}</p>
+                  <p className="text-[10px] font-bold uppercase opacity-60">أخطاء</p>
+                </div>
               </div>
-              <div className="text-right">
-                <p className="text-rose-500 font-black text-xl">{area.count}</p>
-                <p className="text-[10px] font-bold uppercase opacity-60">Mistakes</p>
-              </div>
+              <Button 
+                variant="outline"
+                size="sm"
+                onClick={() => navigate('/quiz-setup', { state: { subjectId: area.id, mode: 'wrong' } })}
+                className="mt-3 w-full h-8 text-[10px] font-bold group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-all gap-1"
+              >
+                مراجعة هذه النقطة <ArrowRight className="w-3 h-3" />
+              </Button>
             </div>
-            <button 
-              onClick={() => navigate('/quiz-setup', { state: { subjectId: area.id, mode: 'wrong' } })}
-              className="mt-4 w-full py-3 bg-primary/10 text-primary rounded-xl font-black text-xs flex items-center justify-center gap-2 group-hover:bg-primary group-hover:text-white transition-all"
-            >
-              مراجعة هذه النقطة <ArrowRight className="w-4 h-4" />
-            </button>
-          </div>
-        ))}
-      </div>
-      <div className="p-6 bg-indigo-500/10 rounded-2xl border-2 border-indigo-500/20">
-        <p className="text-sm font-bold text-indigo-700 leading-relaxed">
-          <Target className="w-5 h-5 inline mr-2" />
-          بناءً على أدائك، ننصح بالتركيز على هذه المواد لتحسين معدل دقة الإجابات.
-        </p>
-      </div>
-    </div>
+          ))}
+        </div>
+        <div className="p-4 bg-primary/5 rounded-xl border border-primary/10">
+          <p className="text-xs font-medium text-primary/80 leading-relaxed text-right" dir="rtl">
+            <Target className="w-4 h-4 inline ml-2 text-primary" />
+            بناءً على أدائك، ننصح بالتركيز على هذه المواد لتحسين معدل دقة الإجابات.
+          </p>
+        </div>
+      </CardContent>
+    </Card>
   );
 }

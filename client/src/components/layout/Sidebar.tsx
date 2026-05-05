@@ -3,11 +3,11 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { db } from '../../lib/firebase';
 import { doc, getDoc } from 'firebase/firestore';
+import { motion, AnimatePresence } from 'framer-motion';
 import SupportModal from '../ui/SupportModal';
 import { 
   LayoutDashboard,
   HelpCircle, 
-  Bookmark, 
   Crown, 
   LogOut, 
   Database,
@@ -17,16 +17,20 @@ import {
   Sun,
   Brain,
   Settings as SettingsIcon,
-  ClipboardList
+  ClipboardList,
+  ChevronRight,
+  Search
 } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
+import { cn } from '../../lib/utils';
+import { Button } from '../ui/Button';
 
 export default function Sidebar({ isOpen = false, setIsOpen = (_: boolean) => {} }: any) {
   const navigate = useNavigate();
   const location = useLocation();
   const { theme, toggleTheme } = useTheme();
   const { logout, userRole, userPlan } = useAuth();
-  const [isTelegramOpen, setIsTelegramOpen] = useState(false);
+  const [isSupportOpen, setIsSupportOpen] = useState(false);
   const [config, setConfig] = useState({ telegramUser: 'omarrkhallaf', whatsappNumber: '', preferredContact: 'telegram' });
 
   useEffect(() => {
@@ -54,116 +58,174 @@ export default function Sidebar({ isOpen = false, setIsOpen = (_: boolean) => {}
     { icon: Database, label: 'إدارة المنصة', path: '/admin' },
   ];
 
-  const handleSupportClick = () => {
-    setIsTelegramOpen(true);
-  };
-
   const navTo = (path: string) => {
     navigate(path);
     setIsOpen(false);
   };
 
   return (
-    <div className={`fixed left-0 top-0 h-screen w-72 bg-card border-r border-border flex flex-col z-50 transition-all duration-300 lg:translate-x-0 ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
-      <div className="p-8 overflow-y-auto flex-1 custom-scrollbar">
-        <div className="flex items-center justify-between mb-10">
-          <button 
-            onClick={() => navTo('/dashboard')}
-            className="flex items-center gap-4 hover:scale-105 transition-transform"
-          >
-            <div className="w-12 h-12 bg-primary rounded-2xl flex items-center justify-center text-white font-black text-2xl shadow-xl shadow-primary/20 italic">
-              M
-            </div>
-            <span className="text-2xl font-black tracking-tighter text-foreground">MEDPREP</span>
-          </button>
-          <button onClick={() => setIsOpen(false)} className="lg:hidden p-2 hover:bg-secondary rounded-xl">
-            <X className="w-6 h-6 text-muted-foreground" />
-          </button>
-        </div>
+    <>
+      {/* Mobile Overlay */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setIsOpen(false)}
+            className="fixed inset-0 bg-background/80 backdrop-blur-sm z-40 lg:hidden"
+          />
+        )}
+      </AnimatePresence>
 
-        <nav className="space-y-2">
-          {menuItems.map((item) => (
-            <button
-              key={item.path}
-              onClick={() => navTo(item.path)}
-              className={`w-full flex items-center gap-4 px-5 py-3.5 rounded-2xl transition-all group ${
-                location.pathname === item.path
-                  ? 'bg-primary text-white shadow-xl shadow-primary/20 translate-x-2'
-                  : 'text-muted-foreground hover:bg-secondary/50 hover:text-foreground'
-              }`}
+      <div className={cn(
+        "fixed left-0 top-0 h-screen w-72 bg-card border-r border-border flex flex-col z-50 transition-transform duration-300 ease-in-out lg:translate-x-0",
+        isOpen ? "translate-x-0" : "-translate-x-full"
+      )}>
+        {/* Brand Header */}
+        <div className="p-6">
+          <div className="flex items-center justify-between mb-8">
+            <button 
+              onClick={() => navTo('/dashboard')}
+              className="flex items-center gap-3 group"
             >
-              <item.icon className={`w-5 h-5 transition-transform group-hover:scale-110 ${location.pathname === item.path ? 'animate-pulse' : ''}`} />
-              <span className="font-black text-sm">{item.label}</span>
+              <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white shadow-lg shadow-primary/20 transition-transform group-hover:scale-110">
+                <Brain className="w-6 h-6" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-xl font-bold tracking-tight text-foreground">MEDPREP</span>
+                <span className="text-[10px] text-muted-foreground font-medium uppercase tracking-widest leading-none">Medical Exam Platform</span>
+              </div>
             </button>
-          ))}
-          <button
-            onClick={handleSupportClick}
-            className="w-full flex items-center gap-4 px-5 py-3.5 rounded-2xl text-muted-foreground hover:bg-secondary/50 hover:text-foreground transition-all group"
-          >
-            <HelpCircle className="w-5 h-5 group-hover:rotate-12 transition-transform" />
-            <span className="font-black text-sm">الدعم الفني</span>
-          </button>
-        </nav>
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              onClick={() => setIsOpen(false)} 
+              className="lg:hidden"
+            >
+              <X className="w-5 h-5" />
+            </Button>
+          </div>
 
-        {userRole === 'admin' && (
-          <div className="mt-10 animate-in slide-in-from-left duration-500">
-            <div className="px-5 mb-4 text-[10px] font-black text-muted-foreground uppercase tracking-widest opacity-50">
-              إدارة النظام
-            </div>
-            {adminItems.map((item) => (
+          {/* Quick Search Trigger */}
+          <button 
+            onClick={() => window.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', ctrlKey: true }))}
+            className="w-full flex items-center gap-2 px-3 py-2 rounded-lg bg-muted/50 border border-transparent hover:border-border transition-all text-muted-foreground group mb-6"
+          >
+            <Search className="w-4 h-4" />
+            <span className="text-xs font-medium flex-1 text-left">Search commands...</span>
+            <kbd className="hidden sm:inline-flex h-5 select-none items-center gap-1 rounded border bg-background px-1.5 font-mono text-[10px] font-medium opacity-100">
+              <span className="text-xs">⌘</span>K
+            </kbd>
+          </button>
+
+          {/* Main Navigation */}
+          <nav className="space-y-1">
+            {menuItems.map((item) => (
               <button
                 key={item.path}
                 onClick={() => navTo(item.path)}
-                className={`w-full flex items-center gap-4 px-5 py-3.5 rounded-2xl transition-all group ${
+                className={cn(
+                  "w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all relative group",
                   location.pathname === item.path
-                    ? 'bg-amber-500 text-white shadow-xl shadow-amber-500/20 translate-x-2'
-                    : 'text-muted-foreground hover:bg-amber-500/5 hover:text-amber-600'
-                }`}
+                    ? "bg-primary/10 text-primary"
+                    : "text-muted-foreground hover:bg-accent hover:text-foreground"
+                )}
               >
-                <item.icon className="w-5 h-5 transition-transform group-hover:scale-110" />
-                <span className="font-black text-sm">{item.label}</span>
+                <item.icon className={cn(
+                  "w-5 h-5 transition-transform group-hover:scale-110",
+                  location.pathname === item.path && "text-primary"
+                )} />
+                <span className="font-semibold text-sm flex-1 text-right" dir="rtl">{item.label}</span>
+                {location.pathname === item.path && (
+                  <motion.div 
+                    layoutId="active-indicator"
+                    className="absolute left-0 w-1 h-6 bg-primary rounded-r-full"
+                  />
+                )}
               </button>
             ))}
-          </div>
-        )}
-      </div>
+            
+            <button
+              onClick={() => setIsSupportOpen(true)}
+              className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-muted-foreground hover:bg-accent hover:text-foreground transition-all group"
+            >
+              <HelpCircle className="w-5 h-5 group-hover:rotate-12 transition-transform" />
+              <span className="font-semibold text-sm flex-1 text-right" dir="rtl">الدعم الفني</span>
+            </button>
+          </nav>
 
-      <div className="p-8 border-t border-border space-y-4 bg-secondary/10">
-        <div className="flex items-center justify-between">
-          <button
-            onClick={toggleTheme}
-            className="p-3 bg-card border border-border rounded-xl text-muted-foreground hover:text-primary hover:border-primary/50 transition-all shadow-sm"
-            title="Toggle Theme"
-          >
-            {theme === 'light' ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
-          </button>
-          
-          <button
-            onClick={() => logout()}
-            className="flex items-center gap-2 px-4 py-2 bg-destructive/10 text-destructive rounded-xl font-black text-xs hover:bg-destructive hover:text-white transition-all shadow-sm shadow-destructive/10"
-          >
-            <LogOut className="w-4 h-4" />
-            خروج
-          </button>
+          {/* Admin Section */}
+          {userRole === 'admin' && (
+            <div className="mt-8">
+              <div className="px-3 mb-2 text-[10px] font-bold text-muted-foreground uppercase tracking-widest opacity-60">
+                إدارة النظام
+              </div>
+              {adminItems.map((item) => (
+                <button
+                  key={item.path}
+                  onClick={() => navTo(item.path)}
+                  className={cn(
+                    "w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all group",
+                    location.pathname === item.path
+                      ? "bg-amber-500/10 text-amber-600"
+                      : "text-muted-foreground hover:bg-amber-500/5 hover:text-amber-600"
+                  )}
+                >
+                  <item.icon className="w-5 h-5 transition-transform group-hover:scale-110" />
+                  <span className="font-semibold text-sm flex-1 text-right" dir="rtl">{item.label}</span>
+                  {location.pathname === item.path && (
+                    <div className="absolute left-0 w-1 h-6 bg-amber-500 rounded-r-full" />
+                  )}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
 
-        {userPlan === 'free' && (
-          <button 
-            onClick={handleSupportClick}
-            className="w-full flex items-center justify-center gap-2 py-3 bg-gradient-to-r from-amber-400 to-amber-600 text-white rounded-2xl font-black text-sm shadow-lg shadow-amber-500/20 hover:scale-105 transition-all"
-          >
-            <Crown className="w-4 h-4" />
-            ترقية الحساب
-          </button>
-        )}
+        {/* Footer Actions */}
+        <div className="mt-auto p-6 space-y-4">
+          {userPlan === 'free' && (
+            <button 
+              onClick={() => setIsSupportOpen(true)}
+              className="relative w-full overflow-hidden flex items-center justify-center gap-2 py-3 bg-gradient-to-br from-amber-400 via-amber-500 to-amber-600 text-white rounded-xl font-bold text-sm shadow-lg shadow-amber-500/20 hover:scale-[1.02] active:scale-95 transition-all group"
+            >
+              <Crown className="w-4 h-4 group-hover:rotate-12 transition-transform" />
+              <span>ترقية الحساب</span>
+              <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+            </button>
+          )}
+
+          <div className="flex items-center gap-2">
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={toggleTheme}
+              className="flex-1 rounded-xl h-12"
+            >
+              {theme === 'light' ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
+            </Button>
+            
+            <Button
+              variant="outline"
+              className="flex-[2] rounded-xl h-12 gap-2 text-destructive border-destructive/20 hover:bg-destructive/10 hover:text-destructive hover:border-destructive/30"
+              onClick={() => logout()}
+            >
+              <LogOut className="w-4 h-4" />
+              <span className="font-bold">خروج</span>
+            </Button>
+          </div>
+        </div>
       </div>
 
       <SupportModal 
-        isOpen={isTelegramOpen}
-        onClose={() => setIsTelegramOpen(false)}
+        isOpen={isSupportOpen}
+        onClose={() => setIsSupportOpen(false)}
         telegramUser={config.telegramUser}
         whatsappNumber={config.whatsappNumber}
       />
-    </div>
+    </>
+  );
+}
   );
 }
