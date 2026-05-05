@@ -14,32 +14,23 @@ export default function AvailableCourses() {
   const [isTelegramOpen, setIsTelegramOpen] = useState(false);
 
   useEffect(() => {
-    console.log("Setting up real-time courses listener...");
-    const q = query(collection(db, 'courses'));
+    console.log("CRITICAL DEBUG: Setting up global courses listener...");
+    const q = collection(db, 'courses');
     
     const unsubscribe = onSnapshot(q, (coursesSnap) => {
       const coursesData = coursesSnap.docs.map(d => ({ id: d.id, ...(d.data() as any) }));
-      console.log("Real-time Courses count:", coursesData.length);
+      console.log("CRITICAL DEBUG: Raw courses from Firestore:", coursesData.length);
       
-      coursesData.sort((a, b) => (a.level || '').localeCompare(b.level || ''));
-      
-      // Show all courses if user is admin, otherwise filter by unique ID only
-      const availableOnly = coursesData.filter(course => {
-        if (userRole === 'admin') return true;
-        // ONLY filter by unique ID to avoid hiding different courses with same level name
-        const isEnrolled = userData?.enrolledCourses?.includes(course.id);
-        return !isEnrolled;
-      });
-      
-      setCourses(availableOnly);
+      // Temporary: Show EVERYTHING to everyone to verify connection
+      setCourses(coursesData);
       setLoading(false);
     }, (err) => {
-      console.error("Courses snapshot error:", err);
+      console.error("CRITICAL ERROR: Firestore rejected request:", err.code, err.message);
       setLoading(false);
     });
 
     return () => unsubscribe();
-  }, [userRole, userData]);
+  }, []);
 
   const colors = [
     { primary: 'bg-primary', shadow: 'shadow-primary/20', border: 'border-primary/20', text: 'text-primary' },
