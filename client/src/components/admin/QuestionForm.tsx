@@ -3,7 +3,7 @@ import type { Question } from '../../types/quiz';
 import { Save, X, ImagePlus } from 'lucide-react';
 import { db, storage } from '../../lib/firebase';
 import { collection, query, getDocs } from 'firebase/firestore';
-import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 interface QuestionFormProps {
   initialData?: Question | null;
@@ -31,28 +31,23 @@ export default function QuestionForm({ initialData, onSave, onCancel }: Question
 
   const handleImageUpload = async (file: File) => {
     if (!file) return;
-    setUploadingImage(true);
-    try {
-      const fileRef = ref(storage, `questions/${Date.now()}_${file.name || 'image.png'}`);
-      const uploadTask = uploadBytesResumable(fileRef, file);
-      
-      uploadTask.on('state_changed', 
-        () => {}, 
-        (error) => {
-          console.error("Upload failed", error);
-          setUploadingImage(false);
-          alert("فشل رفع الصورة");
-        }, 
-        async () => {
-          const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
-          setFormData(prev => ({ ...prev, imageUrl: downloadURL }));
-          setUploadingImage(false);
-        }
-      );
-    } catch (err) {
-      console.error(err);
-      setUploadingImage(false);
+    
+    if (file.size > 800 * 1024) {
+      alert('حجم الصورة كبير جداً. أقصى حجم مسموح هو 800 كيلوبايت لتجنب مشاكل التخزين.');
+      return;
     }
+
+    setUploadingImage(true);
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      setFormData(prev => ({ ...prev, imageUrl: event.target?.result as string }));
+      setUploadingImage(false);
+    };
+    reader.onerror = () => {
+      alert('حدث خطأ أثناء قراءة الصورة');
+      setUploadingImage(false);
+    };
+    reader.readAsDataURL(file);
   };
 
   useEffect(() => {

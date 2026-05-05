@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Save, X, ChevronRight, ChevronLeft, Check, AlertCircle, Clock, Wand2, Zap, Shield, ImagePlus } from 'lucide-react';
 import { db } from '../../lib/firebase';
 import { collection, query, getDocs, where } from 'firebase/firestore';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import type { Question } from '../../types/quiz';
 
 interface QuestionWizardProps {
@@ -18,14 +19,12 @@ export default function QuestionWizard({ initialData, onSave, onCancel }: Questi
   const [autoSaved, setAutoSaved] = useState(false);
   const [uploadingImage, setUploadingImage] = useState(false);
 
-  const handleImageUpload = (file: File) => {
+  const handleImageUpload = async (file: File) => {
     if (!file) return;
-    setUploadingImage(true);
     
     // Check file size (limit to ~800KB to fit well within Firestore 1MB limit)
     if (file.size > 800 * 1024) {
       alert('حجم الصورة كبير جداً. أقصى حجم مسموح هو 800 كيلوبايت.');
-      setUploadingImage(false);
       return;
     }
 

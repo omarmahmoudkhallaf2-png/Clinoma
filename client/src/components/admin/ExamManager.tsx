@@ -4,7 +4,7 @@ import {
   collection, addDoc, getDocs, deleteDoc, doc, serverTimestamp,
   query, orderBy, getDoc, where, Timestamp, updateDoc
 } from 'firebase/firestore';
-import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import {
   Plus, Trash2, Copy, ExternalLink, Loader2, X,
   BookOpen, ChevronDown, ChevronUp, Check, Calendar, Clock, Lock, Unlock, Edit2, ImagePlus
@@ -58,28 +58,23 @@ function ExamQuestionBuilder({ examId }: { examId: string }) {
 
   const handleImageUpload = async (file: File) => {
     if (!file) return;
-    setUploadingImage(true);
-    try {
-      const fileRef = ref(storage, `questions/${Date.now()}_${file.name || 'image.png'}`);
-      const uploadTask = uploadBytesResumable(fileRef, file);
-      
-      uploadTask.on('state_changed', 
-        () => {}, 
-        (error) => {
-          console.error("Upload failed", error);
-          setUploadingImage(false);
-          alert("فشل رفع الصورة");
-        }, 
-        async () => {
-          const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
-          setForm(prev => ({ ...prev, imageUrl: downloadURL }));
-          setUploadingImage(false);
-        }
-      );
-    } catch (err) {
-      console.error(err);
-      setUploadingImage(false);
+    
+    if (file.size > 800 * 1024) {
+      alert('حجم الصورة كبير جداً. أقصى حجم مسموح هو 800 كيلوبايت لتجنب مشاكل التخزين.');
+      return;
     }
+
+    setUploadingImage(true);
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      setForm(prev => ({ ...prev, imageUrl: event.target?.result as string }));
+      setUploadingImage(false);
+    };
+    reader.onerror = () => {
+      alert('حدث خطأ أثناء قراءة الصورة');
+      setUploadingImage(false);
+    };
+    reader.readAsDataURL(file);
   };
 
   const fetchQuestions = async () => {
