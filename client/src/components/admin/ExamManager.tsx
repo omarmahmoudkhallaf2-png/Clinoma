@@ -51,7 +51,7 @@ const STATUS_LABEL: Record<string, string> = {
 function ExamQuestionBuilder({ examId }: { examId: string }) {
   const [questions, setQuestions] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
-  const [form, setForm] = useState({ text: '', optionA: '', optionB: '', optionC: '', optionD: '', correctAnswer: 'A' });
+  const [form, setForm] = useState({ text: '', optionA: '', optionB: '', optionC: '', optionD: '', correctAnswer: 'A', imageUrl: '' });
   const [saving, setSaving] = useState(false);
 
   const fetchQuestions = async () => {
@@ -70,9 +70,10 @@ function ExamQuestionBuilder({ examId }: { examId: string }) {
     const correctAnswer = options[['A', 'B', 'C', 'D'].indexOf(form.correctAnswer)];
     await addDoc(collection(db, 'questions'), {
       text: form.text, options, correctAnswer,
+      imageUrl: form.imageUrl,
       formalExamId: examId, accessType: 'free', createdAt: serverTimestamp()
     });
-    setForm({ text: '', optionA: '', optionB: '', optionC: '', optionD: '', correctAnswer: 'A' });
+    setForm({ text: '', optionA: '', optionB: '', optionC: '', optionD: '', correctAnswer: 'A', imageUrl: '' });
     setSaving(false);
     fetchQuestions();
   };
@@ -94,6 +95,7 @@ function ExamQuestionBuilder({ examId }: { examId: string }) {
               <span className="w-8 h-8 bg-primary text-white rounded-xl flex items-center justify-center font-black text-sm flex-shrink-0">{i + 1}</span>
               <div className="flex-1 min-w-0">
                 <p className="font-bold text-sm leading-relaxed text-right line-clamp-2" dir="rtl">{q.text}</p>
+                {q.imageUrl && <img src={q.imageUrl} alt="Question" className="h-16 w-auto mt-2 rounded-lg border border-border object-cover" />}
                 <p className="text-xs text-emerald-600 font-bold mt-1">✓ {q.correctAnswer}</p>
               </div>
               <button onClick={async () => { await deleteDoc(doc(db, 'questions', q.id)); fetchQuestions(); }}
@@ -110,6 +112,9 @@ function ExamQuestionBuilder({ examId }: { examId: string }) {
         <textarea required value={form.text} onChange={e => setForm({ ...form, text: e.target.value })}
           placeholder="نص السؤال..." rows={2}
           className="w-full p-4 bg-card border-2 border-border rounded-2xl font-bold text-sm outline-none focus:border-primary text-right resize-none" dir="rtl" />
+        <input value={form.imageUrl} onChange={e => setForm({ ...form, imageUrl: e.target.value })}
+          placeholder="رابط الصورة (اختياري)..."
+          className="w-full p-4 bg-card border-2 border-border rounded-2xl font-bold text-sm outline-none focus:border-primary text-left" dir="ltr" />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {optionKeys.map((key, i) => (
             <div key={key} className="flex items-center gap-2">

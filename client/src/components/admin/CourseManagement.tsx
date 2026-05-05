@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { db } from '../../lib/firebase';
 import { collection, doc, getDocs, addDoc, updateDoc, deleteDoc, query, orderBy } from 'firebase/firestore';
-import { Plus, Edit2, Trash2, Loader2, X } from 'lucide-react';
+import { Plus, Edit2, Trash2, Loader2, X, BookOpen } from 'lucide-react';
+import SubjectManagerModal from './SubjectManagerModal';
 
 interface CourseManagementProps {
   onDeleteCourse?: (id: string) => Promise<void>;
@@ -13,6 +14,7 @@ export default function CourseManagement({ onDeleteCourse, isDeletingId }: Cours
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingCourse, setEditingCourse] = useState<any | null>(null);
+  const [selectedCourseForSubjects, setSelectedCourseForSubjects] = useState<any | null>(null);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -121,7 +123,10 @@ export default function CourseManagement({ onDeleteCourse, isDeletingId }: Cours
         {courses.map(course => (
           <div key={course.id} className="bg-card border border-border p-6 rounded-3xl shadow-sm space-y-4 relative group">
             <div className="absolute top-4 right-4 flex gap-2 z-10">
-              <button onClick={() => handleEdit(course)} className="p-3 bg-blue-500 text-white rounded-xl shadow-lg hover:bg-blue-600 transition-all">
+              <button onClick={() => setSelectedCourseForSubjects(course)} className="p-3 bg-indigo-500 text-white rounded-xl shadow-lg hover:bg-indigo-600 transition-all" title="إدارة المواد">
+                <BookOpen className="w-4 h-4" />
+              </button>
+              <button onClick={() => handleEdit(course)} className="p-3 bg-blue-500 text-white rounded-xl shadow-lg hover:bg-blue-600 transition-all" title="تعديل">
                 <Edit2 className="w-4 h-4" />
               </button>
               <button 
@@ -251,6 +256,14 @@ export default function CourseManagement({ onDeleteCourse, isDeletingId }: Cours
             </div>
           </div>
         </div>
+      )}
+      {/* Subject Manager Modal */}
+      {selectedCourseForSubjects && (
+        <SubjectManagerModal
+          courseId={selectedCourseForSubjects.id}
+          courseName={selectedCourseForSubjects.name}
+          onClose={() => setSelectedCourseForSubjects(null)}
+        />
       )}
     </div>
   );

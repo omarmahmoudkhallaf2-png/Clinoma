@@ -39,7 +39,7 @@ export default function SubjectLectures() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((num) => (
+          {Array.from({ length: subject?.lectureCount || 12 }, (_, i) => i + 1).map((num) => (
             <button
               key={num}
               onClick={() => navigate(`/course/${courseId}/subject/${subjectId}/lecture/${num}`)}
