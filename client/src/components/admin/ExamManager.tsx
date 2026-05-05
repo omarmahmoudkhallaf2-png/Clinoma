@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
-import { db } from '../../lib/firebase';
+import { db, storage } from '../../lib/firebase';
 import {
   collection, addDoc, getDocs, deleteDoc, doc, serverTimestamp,
   query, orderBy, getDoc, where, Timestamp, updateDoc
 } from 'firebase/firestore';
+import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import {
   Plus, Trash2, Copy, ExternalLink, Loader2, X,
-  BookOpen, ChevronDown, ChevronUp, Check, Calendar, Clock, Lock, Unlock, Edit2
+  BookOpen, ChevronDown, ChevronUp, Check, Calendar, Clock, Lock, Unlock, Edit2, ImagePlus
 } from 'lucide-react';
 
 // Convert Firestore Timestamp → datetime-local string (local time, not UTC)
@@ -53,6 +54,33 @@ function ExamQuestionBuilder({ examId }: { examId: string }) {
   const [loading, setLoading] = useState(true);
   const [form, setForm] = useState({ text: '', optionA: '', optionB: '', optionC: '', optionD: '', correctAnswer: 'A', imageUrl: '' });
   const [saving, setSaving] = useState(false);
+  const [uploadingImage, setUploadingImage] = useState(false);
+
+  const handleImageUpload = async (file: File) => {
+    if (!file) return;
+    setUploadingImage(true);
+    try {
+      const fileRef = ref(storage, `questions/${Date.now()}_${file.name || 'image.png'}`);
+      const uploadTask = uploadBytesResumable(fileRef, file);
+      
+      uploadTask.on('state_changed', 
+        () => {}, 
+        (error) => {
+          console.error("Upload failed", error);
+          setUploadingImage(false);
+          alert("فشل رفع الصورة");
+        }, 
+        async () => {
+          const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+          setForm(prev => ({ ...prev, imageUrl: downloadURL }));
+          setUploadingImage(false);
+        }
+      );
+    } catch (err) {
+      console.error(err);
+      setUploadingImage(false);
+    }
+  };
 
   const fetchQuestions = async () => {
     setLoading(true);
@@ -112,9 +140,62 @@ function ExamQuestionBuilder({ examId }: { examId: string }) {
         <textarea required value={form.text} onChange={e => setForm({ ...form, text: e.target.value })}
           placeholder="نص السؤال..." rows={2}
           className="w-full p-4 bg-card border-2 border-border rounded-2xl font-bold text-sm outline-none focus:border-primary text-right resize-none" dir="rtl" />
-        <input value={form.imageUrl} onChange={e => setForm({ ...form, imageUrl: e.target.value })}
-          placeholder="رابط الصورة (اختياري)..."
-          className="w-full p-4 bg-card border-2 border-border rounded-2xl font-bold text-sm outline-none focus:border-primary text-left" dir="ltr" />
+        
+        <div>
+          <label className="block text-sm font-bold mb-2 text-right">صورة السؤال (اختياري)</label>
+          <div 
+            className={`relative w-full min-h-[160px] border-2 border-dashed rounded-2xl flex flex-col items-center justify-center gap-3 p-6 transition-all text-center group focus-within:ring-2 focus-within:ring-primary focus-within:border-transparent outline-none
+              ${uploadingImage ? 'border-primary/50 bg-primary/5' : 'border-border hover:border-primary hover:bg-secondary/30'}
+            `}
+            tabIndex={0}
+            onPaste={(e) => {
+              const item = e.clipboardData.items[0];
+              if (item?.type.includes('image')) {
+                e.preventDefault();
+                const blob = item.getAsFile();
+                if (blob) handleImageUpload(blob);
+              }
+            }}
+          >
+            {uploadingImage ? (
+              <>
+                <div className="w-10 h-10 border-4 border-primary border-t-transparent rounded-full animate-spin mb-2"></div>
+                <p className="font-black text-primary animate-pulse text-lg">جاري رفع الصورة...</p>
+                <p className="text-muted-foreground font-bold text-sm">برجاء الانتظار ثواني معدودة</p>
+              </>
+            ) : form.imageUrl ? (
+              <div className="relative w-full flex items-center justify-center">
+                <img src={form.imageUrl} alt="Preview" className="max-h-64 object-contain rounded-xl shadow-md" />
+                <button 
+                  type="button"
+                  onClick={(e) => { e.stopPropagation(); setForm(prev => ({ ...prev, imageUrl: '' })); }}
+                  className="absolute -top-3 -right-3 p-2 bg-destructive text-white rounded-full hover:scale-110 transition-transform shadow-xl"
+                  title="حذف الصورة"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+            ) : (
+              <>
+                <div className="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center group-hover:scale-110 transition-transform mb-2">
+                  <ImagePlus className="w-8 h-8" />
+                </div>
+                <p className="font-black text-lg">اضغط هنا أو قم بلصق الصورة <kbd className="font-mono bg-background px-2 py-1 rounded-lg border border-border text-sm mx-1 shadow-sm">Ctrl+V</kbd></p>
+                <p className="text-muted-foreground font-bold text-sm">أو اضغط لاختيار ملف من جهازك</p>
+                <input 
+                  type="file" 
+                  accept="image/*" 
+                  className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" 
+                  onChange={(e) => {
+                    const file = e.target.files?.[0];
+                    if (file) handleImageUpload(file);
+                    e.target.value = '';
+                  }}
+                />
+              </>
+            )}
+          </div>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {optionKeys.map((key, i) => (
             <div key={key} className="flex items-center gap-2">
