@@ -59,20 +59,51 @@ function ExamQuestionBuilder({ examId }: { examId: string }) {
   const handleImageUpload = async (file: File) => {
     if (!file) return;
     
-    if (file.size > 800 * 1024) {
-      alert('حجم الصورة كبير جداً. أقصى حجم مسموح هو 800 كيلوبايت لتجنب مشاكل التخزين.');
-      return;
-    }
-
     setUploadingImage(true);
     const reader = new FileReader();
     reader.onload = (event) => {
-      setForm(prev => ({ ...prev, imageUrl: event.target?.result as string }));
-      setUploadingImage(false);
-    };
-    reader.onerror = () => {
-      alert('حدث خطأ أثناء قراءة الصورة');
-      setUploadingImage(false);
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        let { width, height } = img;
+        
+        // Resize if too large
+        const MAX_DIM = 1000;
+        if (width > height && width > MAX_DIM) {
+          height *= MAX_DIM / width;
+          width = MAX_DIM;
+        } else if (height > MAX_DIM) {
+          width *= MAX_DIM / height;
+          height = MAX_DIM;
+        }
+        
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        if (ctx) {
+          // Add white background in case of transparent PNG
+          ctx.fillStyle = '#FFFFFF';
+          ctx.fillRect(0, 0, width, height);
+          ctx.drawImage(img, 0, 0, width, height);
+        }
+        
+        // Compress as JPEG
+        const compressedBase64 = canvas.toDataURL('image/jpeg', 0.7);
+        
+        if (compressedBase64.length > 950000) {
+          alert('الصورة معقدة وكبيرة جداً حتى بعد الضغط. يرجى استخدام صورة أبسط.');
+          setUploadingImage(false);
+          return;
+        }
+        
+        setForm(prev => ({ ...prev, imageUrl: compressedBase64 }));
+        setUploadingImage(false);
+      };
+      img.onerror = () => {
+        alert('حدث خطأ أثناء معالجة الصورة');
+        setUploadingImage(false);
+      };
+      img.src = event.target?.result as string;
     };
     reader.readAsDataURL(file);
   };
