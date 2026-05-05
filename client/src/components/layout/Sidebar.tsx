@@ -112,7 +112,7 @@ export default function Sidebar({ isOpen = false, setIsOpen = (_: boolean) => {}
                   <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
                 </div>
                 <span className="text-[10px] text-muted-foreground font-medium uppercase tracking-widest leading-none">Medical Exam Platform</span>
-                <span className="text-[8px] text-primary/50 font-bold mt-1 tracking-tighter">BUILD v3.0.4</span>
+                <span className="text-[8px] text-primary/50 font-bold mt-1 tracking-tighter">BUILD v3.0.5</span>
               </div>
             </button>
             <Button 
