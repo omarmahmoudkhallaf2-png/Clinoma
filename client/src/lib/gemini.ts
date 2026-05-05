@@ -1,7 +1,7 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 // سيتم جلب المفتاح من ملف الإعدادات لضمان الأمان
-const GEN_AI_KEY = "AIzaSyBQAfqrAmnDRs-rPEEC6odo6k90tGL0KTE";
+const GEN_AI_KEY = "AIzaSyDWCJSy-yfAX2F1YDXuRF-Y5G8ZJzYkeqQ";
 
 export const generateAIResponse = async (prompt: string, fileData?: { data: string, mimeType: string }) => {
   try {
