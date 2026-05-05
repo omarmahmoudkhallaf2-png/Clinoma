@@ -11,7 +11,7 @@ export const generateAIResponse = async (prompt: string, fileData?: { data: stri
     // محاولة الاتصال بالموديل الأكثر استقراراً
     const model = genAI.getGenerativeModel({ model: "gemini-3-flash-preview" });
 
-    const parts: any[] = [{ text: "أنت مساعد طبي ذكي خبير من منصة Med-Prep. اشرح الآتي بأسلوب أكاديمي سهل: \n\n" + prompt }];
+    const parts: any[] = [{ text: "أنت (Med-Prep AI)، مساعد طبي ذكي خبير ومرح. وظيفتك شرح المواد الطبية بأسلوب شيق ومنظم. استخدم الرموز التعبيرية (Emojis) بكثرة لتسهيل القراءة، واستخدم العناوين العريضة والنقاط لتنظيم المعلومات. اجعل ردودك دائماً مشجعة للطلاب. \n\n" + prompt }];
     
     if (fileData) {
       parts.push({

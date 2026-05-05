@@ -5,6 +5,8 @@ import { generateAIResponse } from '../lib/gemini';
 import { Button } from '../components/ui/Button';
 import { Card } from '../components/ui/Card';
 import { cn } from '../lib/utils';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 interface Message {
   role: 'user' | 'ai';
@@ -79,12 +81,12 @@ export default function AIAssistant() {
           </div>
           <div>
             <h1 className="text-2xl font-black tracking-tight">المساعد الطبي الذكي</h1>
-            <p className="text-muted-foreground text-xs font-bold uppercase tracking-widest opacity-60">AI Study Assistant v1.0</p>
+            <p className="text-muted-foreground text-xs font-bold uppercase tracking-widest opacity-60">AI Study Assistant v3.0.9</p>
           </div>
         </div>
         <div className="hidden md:flex gap-2">
           <div className="px-4 py-2 bg-emerald-500/10 text-emerald-600 rounded-xl text-[10px] font-black border border-emerald-500/20 uppercase">Online</div>
-          <div className="px-4 py-2 bg-indigo-500/10 text-indigo-600 rounded-xl text-[10px] font-black border border-indigo-500/20 uppercase">Gemini 1.5 Flash</div>
+          <div className="px-4 py-2 bg-indigo-500/10 text-indigo-600 rounded-xl text-[10px] font-black border border-indigo-500/20 uppercase">Gemini 3 Flash</div>
         </div>
       </div>
 
@@ -117,7 +119,15 @@ export default function AIAssistant() {
                     ? "bg-secondary/40 text-foreground rounded-tr-none border border-border" 
                     : "bg-primary text-white rounded-tl-none shadow-primary/20"
                 )} dir="rtl">
-                  {msg.content}
+                  {msg.role === 'ai' ? (
+                    <div className="prose prose-sm dark:prose-invert max-w-none prose-p:leading-relaxed prose-headings:font-black prose-headings:text-primary prose-li:list-disc">
+                      <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                        {msg.content}
+                      </ReactMarkdown>
+                    </div>
+                  ) : (
+                    <div className="whitespace-pre-wrap">{msg.content}</div>
+                  )}
                 </div>
               </motion.div>
             ))}
