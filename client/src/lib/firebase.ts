@@ -19,5 +19,6 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const googleProvider = new GoogleAuthProvider();
 export const db = getFirestore(app);
+// Force firestore to refresh more aggressively if needed (optional based on environment)
 export const storage = getStorage(app);
 export { app };
