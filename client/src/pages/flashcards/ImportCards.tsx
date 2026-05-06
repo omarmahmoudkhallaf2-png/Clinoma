@@ -47,13 +47,17 @@ const ImportCards = () => {
       const content = event.target?.result as string;
       try {
         let data: ImportedCard[] = [];
-        if (selectedFile.name.endsWith('.json')) {
+        const fileName = selectedFile.name.toLowerCase();
+
+        if (fileName.endsWith('.json')) {
           data = JSON.parse(content);
-        } else if (selectedFile.name.endsWith('.csv')) {
+        } else if (fileName.endsWith('.csv') || fileName.endsWith('.txt')) {
           const lines = content.split(/\r?\n/);
+          // Detect separator: Tab for .txt (Anki), Comma for .csv
+          const sep = fileName.endsWith('.txt') ? '\t' : ',';
+          
           data = lines.filter(l => l.trim()).map(line => {
-            // Simple CSV regex to handle commas inside quotes
-            const parts = line.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g);
+            const parts = sep === '\t' ? line.split('\t') : line.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g);
             const front = parts?.[0]?.replace(/^"|"$/g, '') || '';
             const back = parts?.[1]?.replace(/^"|"$/g, '') || '';
             const tags = parts?.[2]?.replace(/^"|"$/g, '') || '';
@@ -64,8 +68,11 @@ const ImportCards = () => {
               tags: tags ? tags.split('|').map(t => t.trim()) : []
             };
           }).filter(c => c.front && c.back);
+        } else if (fileName.endsWith('.apkg')) {
+          toast.error('ملفات .apkg مضغوطة. يرجى تصدير الـ Deck من Anki بصيغة "Notes in Plain Text (.txt)" ثم رفعه هنا.', { duration: 6000 });
+          return;
         } else {
-          toast.error('صيغة الملف غير مدعومة (JSON/CSV فقط)');
+          toast.error('صيغة الملف غير مدعومة. يرجى استخدام JSON أو CSV أو TXT (Anki).');
           return;
         }
 
@@ -207,8 +214,9 @@ const ImportCards = () => {
                 ref={fileInputRef}
                 onChange={handleFileSelect}
                 className="hidden" 
-                accept=".json,.csv,.xlsx,.apkg,application/json,text/csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                accept=".json,.csv,.xlsx,.apkg,.txt,application/json,text/csv,text/plain,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
               />
+
 
             </div>
           </motion.div>
