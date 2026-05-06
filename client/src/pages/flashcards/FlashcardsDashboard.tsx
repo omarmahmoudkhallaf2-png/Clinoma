@@ -174,13 +174,16 @@ const FlashcardsDashboard = () => {
       </div>
 
       {/* Official Decks Section */}
-      {decks.some(d => d.isPublic) && (
+      {decks.some(d => d.isPublic && d.userId !== user?.uid) && (
         <div className="space-y-6">
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-indigo-500/10 text-indigo-600 rounded-lg">
-              <Sparkles size={20} />
+            <div className="p-2.5 bg-blue-600/10 text-blue-600 rounded-xl">
+              <Sparkles size={22} className="animate-pulse" />
             </div>
-            <h2 className="text-2xl font-bold">Official Decks</h2>
+            <div>
+              <h2 className="text-2xl font-bold text-foreground">Official Medical Decks</h2>
+              <p className="text-sm text-muted-foreground">Expert-curated content for your exams.</p>
+            </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {decks.filter(d => d.isPublic && d.userId !== user?.uid).map((deck, idx) => (
@@ -252,21 +255,29 @@ const FlashcardsDashboard = () => {
       )}
 
       {/* Main Content (Personal Decks) */}
-      <div className="space-y-6">
-        <div className="flex items-center justify-between">
-          <h2 className="text-2xl font-semibold">Your Library</h2>
-          <div className="relative w-64">
+      <div className="space-y-6 pt-8 border-t border-border/50">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <div className="p-2.5 bg-primary/10 text-primary rounded-xl">
+              <BookOpen size={22} />
+            </div>
+            <div>
+              <h2 className="text-2xl font-bold text-foreground">My Study Library</h2>
+              <p className="text-sm text-muted-foreground">Your personal and imported flashcard sets.</p>
+            </div>
+          </div>
+          <div className="relative w-full md:w-80">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" size={18} />
             <input 
               type="text" 
-              placeholder="Search decks..."
+              placeholder="Search your library..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 rounded-xl bg-muted border-none focus:ring-2 focus:ring-primary/20 text-sm transition-all"
+              className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-card border border-border focus:ring-2 focus:ring-primary/20 text-sm transition-all shadow-sm"
             />
           </div>
         </div>
-
+      </div>
         {loading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[1, 2, 3].map(i => (
