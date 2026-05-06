@@ -17,6 +17,8 @@ import {
   ArrowLeft
 } from 'lucide-react';
 import toast from 'react-hot-toast';
+import JSZip from 'jszip';
+import initSqlJs from 'sql.js';
 
 interface ImportedCard {
   front: string;
@@ -36,23 +38,65 @@ const ImportCards = () => {
   const [deckTitle, setDeckTitle] = useState('');
   const [subject, setSubject] = useState('');
 
-  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
     if (!selectedFile) return;
 
     setFile(selectedFile);
-    const reader = new FileReader();
+    const fileName = selectedFile.name.toLowerCase();
 
+    // 1. ANKI (.apkg) Logic
+    if (fileName.endsWith('.apkg')) {
+      setImporting(true);
+      try {
+        const zip = new JSZip();
+        const loadedZip = await zip.loadAsync(selectedFile);
+        const dbFile = loadedZip.file('collection.anki2') || loadedZip.file('collection.anki21');
+        
+        if (!dbFile) throw new Error('Could not find Anki database in package');
+        
+        const dbData = await dbFile.async('uint8array');
+        const SQL = await initSqlJs({
+          locateFile: file => `https://sql.js.org/dist/${file}`
+        });
+        
+        const dbConn = new SQL.Database(dbData);
+        // Notes table has 'flds' field (fields separated by 0x1f)
+        const res = dbConn.exec("SELECT flds FROM notes");
+        
+        if (res.length > 0) {
+          const cards: ImportedCard[] = res[0].values.map((row: any) => {
+            const fields = row[0].split('\u001f');
+            return {
+              front: fields[0]?.replace(/<[^>]*>/g, '').trim(), // Basic HTML strip
+              back: fields[1]?.replace(/<[^>]*>/g, '').trim(),
+              tags: []
+            };
+          }).filter(c => c.front && c.back);
+
+          setPreviewData(cards);
+          setDeckTitle(selectedFile.name.replace('.apkg', '') + " (Anki)");
+          setStep(2);
+          toast.success(`تم استخراج ${cards.length} كارت من Anki بنجاح!`);
+        }
+      } catch (err: any) {
+        console.error('Anki parse error:', err);
+        toast.error('فشل في قراءة ملف Anki المباشر. يرجى تصديره كـ TXT كحل بديل.');
+      } finally {
+        setImporting(false);
+      }
+      return;
+    }
+
+    // 2. JSON / CSV / TXT Logic
+    const reader = new FileReader();
     reader.onload = (event) => {
       const content = event.target?.result as string;
       try {
         let data: ImportedCard[] = [];
-        const fileName = selectedFile.name.toLowerCase();
-
         if (fileName.endsWith('.json')) {
           const parsed = JSON.parse(content);
           if (parsed.deck && Array.isArray(parsed.cards)) {
-            // Native Export Format
             setDeckTitle(parsed.deck.title + " (Imported)");
             setSubject(parsed.deck.subject);
             data = parsed.cards;
@@ -60,33 +104,19 @@ const ImportCards = () => {
             data = parsed;
           }
         } else if (fileName.endsWith('.csv') || fileName.endsWith('.txt')) {
-
           const lines = content.split(/\r?\n/);
-          // Detect separator: Tab for .txt (Anki), Comma for .csv
           const sep = fileName.endsWith('.txt') ? '\t' : ',';
           
           data = lines.filter(l => l.trim()).map(line => {
             const parts = sep === '\t' ? line.split('\t') : line.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g);
-            const front = parts?.[0]?.replace(/^"|"$/g, '') || '';
-            const back = parts?.[1]?.replace(/^"|"$/g, '') || '';
-            const tags = parts?.[2]?.replace(/^"|"$/g, '') || '';
-            
             return {
-              front: front.trim(),
-              back: back.trim(),
-              tags: tags ? tags.split('|').map(t => t.trim()) : []
+              front: parts?.[0]?.replace(/^"|"$/g, '').trim() || '',
+              back: parts?.[1]?.replace(/^"|"$/g, '').trim() || '',
+              tags: parts?.[2]?.split('|').map(t => t.trim()) || []
             };
           }).filter(c => c.front && c.back);
-        } else if (fileName.endsWith('.apkg')) {
-          toast.error('ملفات .apkg مضغوطة. يرجى تصدير الـ Deck من Anki بصيغة "Notes in Plain Text (.txt)" ثم رفعه هنا.', { duration: 6000 });
-          return;
         } else {
-          toast.error('صيغة الملف غير مدعومة. يرجى استخدام JSON أو CSV أو TXT (Anki).');
-          return;
-        }
-
-        if (data.length > 1000) {
-          toast.error('الحد الأقصى للاستيراد هو 1000 كارت في المرة الواحدة');
+          toast.error('صيغة الملف غير مدعومة.');
           return;
         }
 
@@ -98,7 +128,7 @@ const ImportCards = () => {
         setPreviewData(data);
         setStep(2);
       } catch (err) {
-        toast.error('فشل في قراءة الملف. تأكد من الصيغة الصحيحة.');
+        toast.error('فشل في قراءة الملف.');
       }
     };
 
@@ -198,16 +228,16 @@ const ImportCards = () => {
                   a.download = "sample_flashcards.json";
                   document.body.appendChild(a);
                   a.click();
-                  window.URL.revokeObjectURL(url);
-                  document.body.removeChild(a);
+                  setTimeout(() => {
+                    window.URL.revokeObjectURL(url);
+                    document.body.removeChild(a);
+                  }, 100);
                 }}
                 className="text-xs font-black text-primary underline uppercase tracking-widest hover:text-primary/80 transition-all"
               >
                 Download Sample Template
               </button>
-
             </div>
-
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {[
@@ -215,8 +245,8 @@ const ImportCards = () => {
                 { name: 'CSV', icon: FileText, color: 'text-green-500', desc: 'Excel / Spreadsheet' },
                 { name: 'APKG', icon: Package, color: 'text-purple-500', desc: 'Anki Package' },
               ].map(type => (
-                <div key={type.name} className="p-6 rounded-3xl bg-card border border-border flex flex-col items-center text-center space-y-3">
-                  <div className={`w-12 h-12 rounded-2xl bg-muted flex items-center justify-center ${type.color}`}>
+                <div key={type.name} onClick={() => fileInputRef.current?.click()} className="p-6 rounded-3xl bg-card border border-border flex flex-col items-center text-center space-y-3 cursor-pointer hover:border-primary/50 transition-all group">
+                  <div className={`w-12 h-12 rounded-2xl bg-muted flex items-center justify-center ${type.color} group-hover:bg-primary/10 transition-colors`}>
                     <type.icon size={24} />
                   </div>
                   <div>
@@ -232,10 +262,10 @@ const ImportCards = () => {
               className="group py-20 border-2 border-dashed border-border rounded-[2.5rem] flex flex-col items-center justify-center space-y-4 hover:border-primary/50 hover:bg-primary/5 transition-all cursor-pointer"
             >
               <div className="w-16 h-16 rounded-2xl bg-muted flex items-center justify-center text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary transition-all">
-                <Upload size={32} />
+                {importing ? <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin" /> : <Upload size={32} />}
               </div>
               <div className="text-center">
-                <p className="text-xl font-bold">Drop your file here</p>
+                <p className="text-xl font-bold">{importing ? 'Processing File...' : 'Drop your file here'}</p>
                 <p className="text-sm text-muted-foreground">or click to browse from your computer</p>
               </div>
               <input 
@@ -243,10 +273,8 @@ const ImportCards = () => {
                 ref={fileInputRef}
                 onChange={handleFileSelect}
                 className="hidden" 
-                accept=".json,.csv,.xlsx,.apkg,.txt,application/json,text/csv,text/plain,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                accept=".json,.csv,.xlsx,.apkg,.txt"
               />
-
-
             </div>
           </motion.div>
         ) : (
@@ -289,6 +317,7 @@ const ImportCards = () => {
                   <option value="Anatomy">Anatomy</option>
                   <option value="Physiology">Physiology</option>
                   <option value="Pathology">Pathology</option>
+                  <option value="Biochemistry">Biochemistry</option>
                 </select>
               </div>
             </div>
@@ -338,8 +367,8 @@ const ImportCards = () => {
       <div className="mt-12 p-6 rounded-3xl bg-orange-500/5 border border-orange-500/10 flex gap-4">
         <AlertCircle className="text-orange-500 shrink-0" size={24} />
         <div>
-          <h4 className="font-bold text-orange-600">CSV Formatting Tip</h4>
-          <p className="text-sm text-orange-600/80">For CSV files, use the format: <code className="bg-orange-500/10 px-1 rounded">Question,Answer,tag1|tag2</code>. Make sure to use a comma as a separator.</p>
+          <h4 className="font-bold text-orange-600">Smart Import Tip</h4>
+          <p className="text-sm text-orange-600/80">You can now upload Anki (.apkg) files directly! We also support TXT and JSON exports from other platforms.</p>
         </div>
       </div>
     </div>
