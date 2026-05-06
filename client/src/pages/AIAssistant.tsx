@@ -114,11 +114,23 @@ export default function AIAssistant() {
                   {msg.role === 'ai' ? <Bot className="w-5 h-5" /> : <User className="w-5 h-5" />}
                 </div>
                 <div className={cn(
-                  "max-w-[80%] p-5 rounded-[2rem] text-sm leading-relaxed font-medium shadow-sm",
+                  "max-w-[80%] p-5 rounded-[2rem] text-sm leading-relaxed font-medium shadow-sm relative group/msg",
                   msg.role === 'ai' 
                     ? "bg-secondary/40 text-foreground rounded-tr-none border border-border" 
                     : "bg-primary text-white rounded-tl-none shadow-primary/20"
                 )} dir="rtl">
+                  {msg.role === 'ai' && (
+                    <button 
+                      onClick={() => {
+                        navigator.clipboard.writeText(msg.content);
+                        toast.success('تم النسخ إلى الحافظة');
+                      }}
+                      className="absolute -left-12 top-2 p-2 bg-card border border-border rounded-xl opacity-0 group-hover/msg:opacity-100 transition-all hover:bg-primary hover:text-white"
+                      title="نسخ النص"
+                    >
+                      <FileText size={16} />
+                    </button>
+                  )}
                   {msg.role === 'ai' ? (
                     <div className="prose prose-sm dark:prose-invert max-w-none prose-p:leading-relaxed prose-headings:font-black prose-headings:text-primary prose-li:list-disc">
                       <ReactMarkdown remarkPlugins={[remarkGfm]}>

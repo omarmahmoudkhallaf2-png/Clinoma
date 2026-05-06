@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { db } from '../lib/firebase';
 import { collection, getDocs, query, orderBy, Timestamp, onSnapshot } from 'firebase/firestore';
-import { Loader2, Clock, BookOpen, ChevronRight, ClipboardList, Lock, Calendar } from 'lucide-react';
+import { Loader2, Clock, BookOpen, ChevronRight, ClipboardList, Lock, Calendar, Sparkles } from 'lucide-react';
 
 const examStatus = (exam: any): 'upcoming' | 'open' | 'closed' | 'no-date' => {
   if (!exam.startAt && !exam.endAt) return 'no-date';
@@ -53,7 +53,7 @@ export default function AvailableExams() {
   return (
     <div className="max-w-4xl mx-auto p-6 md:p-10 space-y-10 animate-in fade-in duration-500">
       {/* Header */}
-      <div className="bg-card border-2 border-border rounded-[3rem] p-10 relative overflow-hidden">
+      <div className="bg-card border-2 border-border rounded-[3rem] p-10 relative overflow-hidden flex flex-col md:flex-row md:items-center justify-between gap-8 shadow-xl shadow-primary/5">
         <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full -mr-32 -mt-32 blur-3xl" />
         <div className="relative flex items-center gap-6">
           <div className="p-5 bg-primary text-white rounded-[2rem] shadow-xl shadow-primary/30">
@@ -64,6 +64,14 @@ export default function AvailableExams() {
             <p className="text-muted-foreground font-bold text-lg">اختر إختباراً لتبدأ</p>
           </div>
         </div>
+        <button 
+          onClick={() => navigate('/exams/ai-generate')}
+          className="relative px-8 py-4 bg-gradient-to-r from-primary to-blue-600 text-white rounded-[1.5rem] font-black text-sm shadow-xl shadow-primary/20 hover:scale-105 active:scale-95 transition-all flex items-center gap-2 group overflow-hidden"
+         dir="rtl">
+          <Sparkles size={20} className="animate-pulse" />
+          إنشاء اختبار بالذكاء الاصطناعي
+          <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+        </button>
       </div>
 
       {/* Exam List */}

@@ -28,6 +28,7 @@ import FlashcardsDashboard from "./pages/flashcards/FlashcardsDashboard";
 import StudyMode from "./pages/flashcards/StudyMode";
 import CreateCard from "./pages/flashcards/CreateCard";
 import ImportCards from "./pages/flashcards/ImportCards";
+import AIExamGenerator from "./pages/AIExamGenerator";
 
 import { CommandPalette } from "./components/ui/CommandPalette";
 import { ThemeProvider } from "./context/ThemeContext";
@@ -80,6 +81,7 @@ const AnimatedRoutes = () => {
         <Route path="/exams" element={<ProtectedRoute><AvailableExams /></ProtectedRoute>} />
         <Route path="/ai-assistant" element={<ProtectedRoute><AIAssistant /></ProtectedRoute>} />
         <Route path="/exam/:examId" element={<ProtectedRoute useLayout={false}><FormalExam /></ProtectedRoute>} />
+        <Route path="/exams/ai-generate" element={<ProtectedRoute><AIExamGenerator /></ProtectedRoute>} />
         
         {/* Flashcards Routes */}
         <Route path="/flashcards" element={<ProtectedRoute><FlashcardsDashboard /></ProtectedRoute>} />

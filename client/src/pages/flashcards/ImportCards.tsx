@@ -14,11 +14,14 @@ import {
   X,
   ChevronRight,
   Database,
-  ArrowLeft
+  ArrowLeft,
+  Sparkles,
+  Brain
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 import JSZip from 'jszip';
 import initSqlJs from 'sql.js';
+import { generateFlashcards } from '../../lib/gemini';
 
 interface ImportedCard {
   front: string;
@@ -30,6 +33,7 @@ const ImportCards = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const aiFileInputRef = useRef<HTMLInputElement>(null);
   
   const [importing, setImporting] = useState(false);
   const [file, setFile] = useState<File | null>(null);
@@ -37,6 +41,7 @@ const ImportCards = () => {
   const [step, setStep] = useState(1);
   const [deckTitle, setDeckTitle] = useState('');
   const [subject, setSubject] = useState('');
+  const [isAIProcessing, setIsAIProcessing] = useState(false);
 
   const handleFileSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
@@ -133,6 +138,42 @@ const ImportCards = () => {
     };
 
     reader.readAsText(selectedFile);
+  };
+
+  const handleAIGenerate = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFile = e.target.files?.[0];
+    if (!selectedFile) return;
+
+    setIsAIProcessing(true);
+    const loadingToast = toast.loading('AI is analyzing your file and generating flashcards...');
+    
+    try {
+      const reader = new FileReader();
+      reader.onload = async (readerEvent) => {
+        try {
+          const fileData = readerEvent.target?.result as string;
+          const result = await generateFlashcards("Generate flashcards from this medical document", { 
+            data: fileData, 
+            mimeType: selectedFile.type 
+          });
+          
+          if (result && Array.isArray(result)) {
+            setPreviewData(result);
+            setDeckTitle(selectedFile.name.split('.')[0] + " (AI Generated)");
+            setStep(2);
+            toast.success(`AI generated ${result.length} high-yield flashcards!`, { id: loadingToast });
+          }
+        } catch (err) {
+          toast.error('AI generation failed. Please try again.', { id: loadingToast });
+        } finally {
+          setIsAIProcessing(false);
+        }
+      };
+      reader.readAsDataURL(selectedFile);
+    } catch (err) {
+      toast.error('Failed to process file', { id: loadingToast });
+      setIsAIProcessing(false);
+    }
   };
 
   const handleImport = async () => {
@@ -236,14 +277,15 @@ const ImportCards = () => {
 
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
               {[
-                { name: 'JSON', icon: FileJson, color: 'text-blue-500', desc: 'Custom JSON format' },
-                { name: 'CSV', icon: FileText, color: 'text-green-500', desc: 'Excel / Spreadsheet' },
-                { name: 'APKG', icon: Package, color: 'text-purple-500', desc: 'Anki Package' },
+                { name: 'JSON', icon: FileJson, color: 'text-blue-500', desc: 'Custom JSON format', onClick: () => fileInputRef.current?.click() },
+                { name: 'CSV', icon: FileText, color: 'text-green-500', desc: 'Excel / Spreadsheet', onClick: () => fileInputRef.current?.click() },
+                { name: 'APKG', icon: Package, color: 'text-purple-500', desc: 'Anki Package', onClick: () => fileInputRef.current?.click() },
+                { name: 'AI Generate', icon: Sparkles, color: 'text-amber-500', desc: 'From PDF or Image', onClick: () => aiFileInputRef.current?.click() },
               ].map(type => (
-                <div key={type.name} onClick={() => fileInputRef.current?.click()} className="p-6 rounded-3xl bg-card border border-border flex flex-col items-center text-center space-y-3 cursor-pointer hover:border-primary/50 transition-all group">
-                  <div className={`w-12 h-12 rounded-2xl bg-muted flex items-center justify-center ${type.color} group-hover:bg-primary/10 transition-colors`}>
+                <div key={type.name} onClick={type.onClick} className="p-6 rounded-3xl bg-card border border-border flex flex-col items-center text-center space-y-3 cursor-pointer hover:border-primary/50 transition-all group shadow-sm">
+                  <div className={`w-12 h-12 rounded-2xl bg-muted flex items-center justify-center ${type.color} group-hover:bg-primary/10 transition-colors shadow-inner`}>
                     <type.icon size={24} />
                   </div>
                   <div>
@@ -259,10 +301,10 @@ const ImportCards = () => {
               className="group py-20 border-2 border-dashed border-border rounded-[2.5rem] flex flex-col items-center justify-center space-y-4 hover:border-primary/50 hover:bg-primary/5 transition-all cursor-pointer"
             >
               <div className="w-16 h-16 rounded-2xl bg-muted flex items-center justify-center text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary transition-all">
-                {importing ? <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin" /> : <Upload size={32} />}
+                {importing || isAIProcessing ? <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin" /> : <Upload size={32} />}
               </div>
               <div className="text-center">
-                <p className="text-xl font-bold">{importing ? 'Processing File...' : 'Drop your file here'}</p>
+                <p className="text-xl font-bold">{importing || isAIProcessing ? 'Processing File...' : 'Drop your file here'}</p>
                 <p className="text-sm text-muted-foreground">or click to browse from your computer</p>
               </div>
               <input 
@@ -271,6 +313,13 @@ const ImportCards = () => {
                 onChange={handleFileSelect}
                 className="hidden" 
                 accept=".json,.csv,.xlsx,.apkg,.txt"
+              />
+              <input 
+                type="file" 
+                ref={aiFileInputRef}
+                onChange={handleAIGenerate}
+                className="hidden" 
+                accept=".pdf,image/*"
               />
             </div>
           </motion.div>

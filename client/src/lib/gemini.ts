@@ -45,7 +45,24 @@ export const generateAIResponse = async (prompt: string, fileData?: { data: stri
 
   for (const key of allKeys) {
     for (const model of models) {
-      const contents: any[] = [{ parts: [{ text: "أنت مساعد طبي ذكي من Med-Prep. اشرح الآتي بأسلوب أكاديمي: \n\n" + prompt }] }];
+      const contents: any[] = [{ 
+        role: 'user', 
+        parts: [{ 
+          text: `
+أنت (Med-Prep Expert AI)، أستاذ طبي وخبير في المناهج الأكاديمية. 
+مهمتك: الشرح باستفاضة، تحري الدقة القصوى، ومراجعة المعلومات قبل عرضها. 
+
+قواعدك:
+1. ابدأ دائماً بملخص سريع للنقاط الأساسية.
+2. اشرح المفاهيم المعقدة بأمثلة طبية واقعية.
+3. نسق الإجابة باستخدام Markdown (عناوين، نقاط، جداول، خط عريض).
+4. إذا سألك المستخدم عن معلومة طبية، ابحث في "قاعدة بياناتك الأكاديمية" وقدم أدق التفاصيل.
+5. لا تذكر أبداً أنك نموذج ذكاء اصطناعي، أنت جزء مدمج في منصة Med-Prep.
+
+الموضوع المطلوب شرحه: 
+${prompt}` 
+        }] 
+      }];
       if (fileData) {
         contents[0].parts.push({
           inline_data: {
@@ -65,7 +82,7 @@ export const generateAIResponse = async (prompt: string, fileData?: { data: stri
   throw new Error("عذراً، واجه النظام مشكلة في الاتصال بمحرك الذكاء الاصطناعي (2026 Update). يرجى التأكد من الـ API Key.");
 };
 
-export const generateFlashcards = async (text: string) => {
+export const generateFlashcards = async (text: string, fileData?: { data: string, mimeType: string }) => {
   const KEYS = [
     "AIzaSyB0GrBSsl3xbr_eDmSQtWk5v4VOS0p2gFQ",
     "AIzaSyALv9jWafoAN9AVh4psyYQUaPpPL-ig-J4"
@@ -81,15 +98,25 @@ export const generateFlashcards = async (text: string) => {
 
   for (const key of allKeys) {
     for (const model of models) {
-      const payload = {
-        contents: [{
-          parts: [{
-            text: `You are a specialized medical educator. Convert this text into a JSON array of flashcards: [{ "front": "...", "back": "...", "tags": ["..."] }]. ONLY return JSON. \n\n Text: ${text}`
-          }]
+      const contents: any[] = [{
+        role: 'user',
+        parts: [{
+          text: `You are a specialized medical educator. Convert this ${fileData ? 'file content' : 'text'} into a JSON array of flashcards: [{ "front": "...", "back": "...", "tags": ["..."] }]. 
+Focus on key medical concepts, definitions, and high-yield exam facts. 
+ONLY return valid JSON. No conversational text. \n\n Input: ${text}`
         }]
-      };
+      }];
 
-      const res = await tryFetch(model, payload, key!);
+      if (fileData) {
+        contents[0].parts.push({
+          inline_data: {
+            mime_type: fileData.mimeType,
+            data: fileData.data.split(',')[1]
+          }
+        });
+      }
+
+      const res = await tryFetch(model, { contents }, key!);
       if (res && res.ok) {
         const data = await res.json();
         const textOutput = data.candidates?.[0]?.content?.parts?.[0]?.text || "";
@@ -99,4 +126,53 @@ export const generateFlashcards = async (text: string) => {
     }
   }
   throw new Error("فشل توليد الفلاش كارد. يرجى التأكد من إعدادات الذكاء الاصطناعي.");
+};
+
+export const generateAIExam = async (content: string, fileData?: { data: string, mimeType: string }) => {
+  const KEYS = [
+    "AIzaSyB0GrBSsl3xbr_eDmSQtWk5v4VOS0p2gFQ",
+    "AIzaSyALv9jWafoAN9AVh4psyYQUaPpPL-ig-J4"
+  ];
+  
+  const models = ["gemini-2.5-flash", "gemini-2.5-pro"];
+  const allKeys = [import.meta.env.VITE_GEMINI_API_KEY, ...KEYS].filter(Boolean);
+
+  for (const key of allKeys) {
+    for (const model of models) {
+      const contents: any[] = [{
+        role: 'user',
+        parts: [{
+          text: `أنت خبير في وضع الامتحانات الطبية. قم بتحويل المحتوى المرفق إلى امتحان MCQ احترافي بتنسيق JSON.
+المطلوب مصفوفة من الأسئلة بالتنسيق التالي:
+[{ 
+  "question": "نص السؤال", 
+  "options": ["A", "B", "C", "D"], 
+  "correctAnswer": 0, 
+  "explanation": "شرح الإجابة" 
+}]
+
+تحرى الدقة القصوى واجعل الأسئلة تحاكي امتحانات المعادلة.
+المحتوى: ${content}`
+        }]
+      }];
+
+      if (fileData) {
+        contents[0].parts.push({
+          inline_data: {
+            mime_type: fileData.mimeType,
+            data: fileData.data.split(',')[1]
+          }
+        });
+      }
+
+      const res = await tryFetch(model, { contents }, key!);
+      if (res && res.ok) {
+        const data = await res.json();
+        const textOutput = data.candidates?.[0]?.content?.parts?.[0]?.text || "";
+        const jsonMatch = textOutput.match(/\[[\s\S]*\]/);
+        if (jsonMatch) return JSON.parse(jsonMatch[0]);
+      }
+    }
+  }
+  throw new Error("فشل توليد الامتحان. يرجى المحاولة لاحقاً.");
 };
