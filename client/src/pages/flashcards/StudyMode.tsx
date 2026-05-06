@@ -48,15 +48,17 @@ const StudyMode = () => {
         const cardsRef = collection(db, 'flashcards');
         const q = query(
           cardsRef,
-          where('deckId', '==', deckId),
-          where('nextReview', '<=', now)
+          where('deckId', '==', deckId)
         );
         
         const querySnapshot = await getDocs(q);
-        const fetchedCards = querySnapshot.docs.map(doc => ({
+        const allCards = querySnapshot.docs.map(doc => ({
           id: doc.id,
           ...doc.data()
         })) as Flashcard[];
+
+        // Filter for due cards in memory to avoid Index requirement
+        const fetchedCards = allCards.filter(card => (card.nextReview || 0) <= now);
 
         // Shuffle cards
         setCards(fetchedCards.sort(() => Math.random() - 0.5));
