@@ -12,7 +12,14 @@ export const generateFlashcards = async (text: string) => {
   const API_KEY = import.meta.env.VITE_GEMINI_API_KEY || "";
   if (!API_KEY) throw new Error("Gemini API Key is missing.");
 
-  const models = ["gemini-1.5-flash", "gemini-pro", "gemini-1.5-flash-latest"];
+  // High-compatibility model list for 2026
+  const models = [
+    "gemini-2.0-flash",
+    "gemini-1.5-flash-latest",
+    "gemini-1.5-flash",
+    "gemini-pro"
+  ];
+  
   let lastError = "";
 
   for (const model of models) {
@@ -41,14 +48,20 @@ export const generateFlashcards = async (text: string) => {
     }
   }
 
-  throw new Error(`AI Error: ${lastError}. Try using gemini-pro if flash is unavailable.`);
+  throw new Error(`AI Error: ${lastError}`);
 };
 
 export const generateAIResponse = async (prompt: string, fileData?: { data: string, mimeType: string }) => {
   const API_KEY = import.meta.env.VITE_GEMINI_API_KEY || "";
   if (!API_KEY) throw new Error("Gemini API Key is missing.");
 
-  const models = ["gemini-1.5-flash", "gemini-pro", "gemini-1.5-flash-latest"];
+  const models = [
+    "gemini-2.0-flash",
+    "gemini-1.5-flash-latest",
+    "gemini-1.5-flash",
+    "gemini-pro"
+  ];
+  
   let lastError = "";
 
   for (const model of models) {
