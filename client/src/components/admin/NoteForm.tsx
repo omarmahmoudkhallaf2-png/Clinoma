@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Save, X, FileUp, FileText, Video, Image as ImageIcon, Loader2 } from 'lucide-react';
-import { db, storage } from '../../lib/firebase';
+import { db } from '../../lib/firebase';
 import { collection, query, getDocs } from 'firebase/firestore';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 interface NoteFormProps {
   onSave: (data: any) => Promise<void>;
