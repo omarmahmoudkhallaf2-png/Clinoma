@@ -86,6 +86,7 @@ const AnimatedRoutes = () => {
         <Route path="/flashcards" element={<ProtectedRoute><FlashcardsDashboard /></ProtectedRoute>} />
         <Route path="/flashcards/study/:deckId" element={<ProtectedRoute useLayout={false}><StudyMode /></ProtectedRoute>} />
         <Route path="/flashcards/create" element={<ProtectedRoute><CreateCard /></ProtectedRoute>} />
+        <Route path="/flashcards/edit/:deckId" element={<ProtectedRoute><CreateCard /></ProtectedRoute>} />
         <Route path="/flashcards/import" element={<ProtectedRoute><ImportCards /></ProtectedRoute>} />
 
         <Route path="/admin/results" element={<ProtectedRoute requireAdmin><ExamResultsDashboard /></ProtectedRoute>} />

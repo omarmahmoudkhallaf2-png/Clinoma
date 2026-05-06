@@ -1,21 +1,22 @@
 import React, { useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { collection, addDoc, serverTimestamp, writeBatch, doc } from 'firebase/firestore';
+import { useNavigate, useParams } from 'react-router-dom';
+import { collection, addDoc, serverTimestamp, writeBatch, doc, getDoc, getDocs, where, query, updateDoc, deleteDoc } from 'firebase/firestore';
 import { db } from '../../lib/firebase';
 import { useAuth } from '../../context/AuthContext';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  Save, 
-  Plus, 
-  Trash2, 
-  Brain, 
+import {
+  Save,
+  Plus,
+  Trash2,
+  Brain,
   Sparkles,
   ChevronLeft,
   Layout,
   Type,
   Tag as TagIcon,
   Upload,
-  X
+  X,
+  Loader2
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { generateFlashcards } from '../../lib/gemini';
@@ -30,36 +31,64 @@ interface CardInput {
 const CreateCard = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
-  
+  const { deckId } = useParams();
+
   const [deckInfo, setDeckInfo] = useState({
     title: '',
     description: '',
     subject: ''
   });
-  
+
   const [cards, setCards] = useState<CardInput[]>([
     { front: '', back: '', tags: [] }
   ]);
-  
+
   const [isGenerating, setIsGenerating] = useState(false);
   const [aiPrompt, setAiPrompt] = useState('');
-  const [selectedFile, setSelectedFile] = useState<{ name: string, data: string, type: string } | null>(null);
+  const [selectedFiles, setSelectedFiles] = useState<{ name: string, data: string, type: string }[]>([]);
   const [saving, setSaving] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (readerEvent) => {
-        setSelectedFile({
-          name: file.name,
-          data: readerEvent.target?.result as string,
-          type: file.type
-        });
+  // Load deck if editing
+  React.useEffect(() => {
+    if (deckId) {
+      const loadDeck = async () => {
+        try {
+          const dRef = doc(db, 'decks', deckId);
+          const dSnap = await getDoc(dRef);
+          if (dSnap.exists()) {
+            setDeckInfo(dSnap.data() as any);
+            const cSnap = await getDocs(query(collection(db, 'flashcards'), where('deckId', '==', deckId)));
+            setCards(cSnap.docs.map(d => d.data() as CardInput));
+          }
+        } catch (err) {
+          toast.error('فشل تحميل المجموعة');
+        }
       };
-      reader.readAsDataURL(file);
+      loadDeck();
     }
+  }, [deckId]);
+
+  const handleFileSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = Array.from(e.target.files || []);
+    if (files.length > 0) {
+      const newFiles = await Promise.all(files.map(async (file) => {
+        return new Promise<{ name: string, data: string, type: string }>((resolve) => {
+          const reader = new FileReader();
+          reader.onload = (re) => resolve({
+            name: file.name,
+            data: re.target?.result as string,
+            type: file.type
+          });
+          reader.readAsDataURL(file);
+        });
+      }));
+      setSelectedFiles(prev => [...prev, ...newFiles]);
+    }
+  };
+
+  const removeFile = (index: number) => {
+    setSelectedFiles(prev => prev.filter((_, i) => i !== index));
   };
 
   const addCard = () => {
@@ -82,37 +111,50 @@ const CreateCard = () => {
   };
 
   const handleSave = async () => {
-    if (!user) return;
-    if (!deckInfo.title || !deckInfo.subject) {
-      toast.error('Please fill in deck title and subject');
-      return;
-    }
-
+    if (!user || !deckInfo.title) return;
     setSaving(true);
+
     try {
-      // 1. Create Deck
-      const deckRef = await addDoc(collection(db, 'decks'), {
-        userId: user.uid,
-        title: deckInfo.title,
-        description: deckInfo.description,
-        subject: deckInfo.subject,
-        createdAt: Date.now(),
-        cardCount: cards.length
-      });
+      let dId = deckId;
+      if (deckId) {
+        // Update existing deck
+        await updateDoc(doc(db, 'decks', deckId), {
+          ...deckInfo,
+          cardCount: cards.length,
+          updatedAt: serverTimestamp()
+        });
+        
+        // Clear old cards and add new ones
+        const oldCards = await getDocs(query(collection(db, 'flashcards'), where('deckId', '==', deckId)));
+        const batch = writeBatch(db);
+        oldCards.forEach(d => batch.delete(d.ref));
+        await batch.commit();
+      } else {
+        // Create new deck
+        const deckRef = await addDoc(collection(db, 'decks'), {
+          userId: user.uid,
+          title: deckInfo.title,
+          description: deckInfo.description,
+          subject: deckInfo.subject,
+          createdAt: Date.now(),
+          cardCount: cards.length
+        });
+        dId = deckRef.id;
+      }
 
       // 2. Create Cards in batch
       const batch = writeBatch(db);
       cards.forEach(card => {
         const cardRef = doc(collection(db, 'flashcards'));
         batch.set(cardRef, {
-          deckId: deckRef.id,
+          deckId: dId,
           userId: user.uid,
           front: card.front,
           back: card.back,
           tags: card.tags,
           subject: deckInfo.subject,
           createdAt: Date.now(),
-          nextReview: Date.now(), // Immediate review for new cards
+          nextReview: Date.now(),
           interval: 0,
           easeFactor: 2.5,
           repetitions: 0,
@@ -121,36 +163,53 @@ const CreateCard = () => {
       });
 
       await batch.commit();
-      toast.success('Deck created successfully!');
+      toast.success(deckId ? 'تم تحديث المجموعة!' : 'تم إنشاء المجموعة بنجاح!');
       navigate('/flashcards');
     } catch (error) {
       console.error('Error saving deck:', error);
-      toast.error('Failed to save deck');
+      toast.error('فشل في حفظ المجموعة');
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const handleDeleteDeck = async () => {
+    if (!deckId || !confirm('هل أنت متأكد من حذف هذه المجموعة بالكامل؟')) return;
+    setSaving(true);
+    try {
+      const oldCards = await getDocs(query(collection(db, 'flashcards'), where('deckId', '==', deckId)));
+      const batch = writeBatch(db);
+      oldCards.forEach(d => batch.delete(d.ref));
+      batch.delete(doc(db, 'decks', deckId));
+      await batch.commit();
+      toast.success('تم حذف المجموعة');
+      navigate('/flashcards');
+    } catch (err) {
+      toast.error('فشل الحذف');
     } finally {
       setSaving(false);
     }
   };
 
   const generateWithAI = async () => {
-    if (!aiPrompt && !selectedFile) return;
+    if (!aiPrompt && selectedFiles.length === 0) return;
     setIsGenerating(true);
-    
+
     try {
       const generatedCards = await generateFlashcards(
-        aiPrompt || "Generate flashcards from this file",
-        selectedFile ? { data: selectedFile.data, mimeType: selectedFile.type } : undefined
+        aiPrompt || "Generate flashcards from provided files",
+        selectedFiles.length > 0 ? selectedFiles.map(f => ({ data: f.data, mimeType: f.type })) : undefined
       );
-      
-      // If the first card is empty placeholder, remove it
+
       const filteredExisting = cards.filter(c => c.front !== '' || c.back !== '');
       setCards([...filteredExisting, ...generatedCards]);
-      
+
       setAiPrompt('');
-      setSelectedFile(null);
-      toast.success(`Generated ${generatedCards.length} cards from your text/file!`);
+      setSelectedFiles([]);
+      toast.success(`تم توليد ${generatedCards.length} كارت بنجاح!`);
     } catch (error) {
       console.error('AI Error:', error);
-      toast.error('AI failed to generate cards. Please try again.');
+      toast.error('فشل الذكاء الاصطناعي في التوليد. حاول مرة أخرى.');
     } finally {
       setIsGenerating(false);
     }
@@ -165,16 +224,23 @@ const CreateCard = () => {
           <button onClick={() => navigate('/flashcards')} className="p-2 hover:bg-muted rounded-full">
             <ChevronLeft size={24} />
           </button>
-          <h1 className="text-3xl font-bold">Create New Deck</h1>
+          <h1 className="text-3xl font-bold">{deckId ? 'Edit Deck' : 'Create New Deck'}</h1>
         </div>
-        <button 
-          onClick={handleSave}
-          disabled={saving}
-          className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-primary text-primary-foreground font-bold shadow-lg shadow-primary/20 disabled:opacity-50"
-        >
-          {saving ? <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" /> : <Save size={20} />}
-          Save Deck
-        </button>
+        <div className="flex gap-2">
+          {deckId && (
+            <button onClick={handleDeleteDeck} className="p-3 text-rose-500 hover:bg-rose-500/10 rounded-xl transition-all" title="حذف المجموعة">
+              <Trash2 size={24} />
+            </button>
+          )}
+          <button
+            onClick={handleSave}
+            disabled={saving}
+            className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-primary text-primary-foreground font-bold shadow-lg shadow-primary/20 disabled:opacity-50"
+          >
+            {saving ? <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" /> : <Save size={20} />}
+            {deckId ? 'Update Deck' : 'Save Deck'}
+          </button>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
@@ -185,24 +251,24 @@ const CreateCard = () => {
               <Layout size={20} />
               <h2 className="font-bold">Deck Settings</h2>
             </div>
-            
+
             <div className="space-y-4">
               <div className="space-y-2">
                 <label className="text-sm font-medium text-muted-foreground">Title</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   placeholder="e.g. Cardiovascular System"
                   value={deckInfo.title}
-                  onChange={e => setDeckInfo({...deckInfo, title: e.target.value})}
+                  onChange={e => setDeckInfo({ ...deckInfo, title: e.target.value })}
                   className="w-full px-4 py-3 rounded-xl bg-muted border-none focus:ring-2 focus:ring-primary/20 transition-all"
                 />
               </div>
 
               <div className="space-y-2">
                 <label className="text-sm font-medium text-muted-foreground">Subject</label>
-                <select 
+                <select
                   value={deckInfo.subject}
-                  onChange={e => setDeckInfo({...deckInfo, subject: e.target.value})}
+                  onChange={e => setDeckInfo({ ...deckInfo, subject: e.target.value })}
                   className="w-full px-4 py-3 rounded-xl bg-muted border-none focus:ring-2 focus:ring-primary/20 transition-all appearance-none"
                 >
                   <option value="">Select Subject</option>
@@ -215,11 +281,11 @@ const CreateCard = () => {
 
               <div className="space-y-2">
                 <label className="text-sm font-medium text-muted-foreground">Description</label>
-                <textarea 
+                <textarea
                   placeholder="What's this deck about?"
                   rows={3}
                   value={deckInfo.description}
-                  onChange={e => setDeckInfo({...deckInfo, description: e.target.value})}
+                  onChange={e => setDeckInfo({ ...deckInfo, description: e.target.value })}
                   className="w-full px-4 py-3 rounded-xl bg-muted border-none focus:ring-2 focus:ring-primary/20 transition-all resize-none"
                 />
               </div>
@@ -232,23 +298,23 @@ const CreateCard = () => {
               <Sparkles size={20} />
               <h2 className="font-bold">AI Flashcard Generator</h2>
             </div>
-            <p className="text-sm text-indigo-100">Paste your notes or upload a file (PDF/Image) to generate cards automatically.</p>
-            
+            <p className="text-sm text-indigo-100 font-bold">Paste your notes AND/OR upload multiple files (PDF/Image) to generate cards.</p>
+
             <div className="space-y-4">
               <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase tracking-widest text-indigo-200">Paste Notes</label>
-                <textarea 
-                  placeholder="Paste your medical notes here..."
+                <label className="text-[10px] font-black uppercase tracking-widest text-indigo-200">Additional Instructions / Notes</label>
+                <textarea
+                  placeholder="e.g. Focus on pharmacology, use Arabic for explanations..."
                   rows={4}
                   value={aiPrompt}
                   onChange={e => setAiPrompt(e.target.value)}
                   className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 placeholder:text-indigo-200 text-white focus:ring-2 focus:ring-white/30 transition-all resize-none"
                 />
               </div>
-              
+
               <div className="relative">
                 <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-white/10"></div></div>
-                <div className="relative flex justify-center text-[10px] uppercase"><span className="bg-indigo-600 px-2 text-indigo-200 font-bold">OR UPLOAD FILE</span></div>
+                <div className="relative flex justify-center text-[10px] uppercase"><span className="bg-indigo-600 px-2 text-indigo-200 font-bold">OR UPLOAD FILES</span></div>
               </div>
 
               <div className="flex flex-col gap-3">
@@ -258,35 +324,41 @@ const CreateCard = () => {
                   onChange={handleFileSelect}
                   className="hidden" 
                   accept=".pdf,image/*,.txt"
+                  multiple
                 />
-                {!selectedFile ? (
-                  <button
-                    onClick={() => fileInputRef.current?.click()}
-                    className="w-full py-4 rounded-xl bg-white/10 border-2 border-dashed border-white/30 text-white font-bold hover:bg-white/20 hover:border-white/50 transition-all flex flex-col items-center justify-center gap-2"
-                  >
-                    <Upload size={24} className="mb-1" />
-                    <span className="text-xs">Upload PDF, Image or Text</span>
-                  </button>
-                ) : (
-                  <div className="w-full py-3 px-4 rounded-xl bg-emerald-500/20 border border-emerald-500/30 text-white flex items-center justify-between">
-                    <div className="flex items-center gap-2 min-w-0">
-                      <div className="p-2 bg-emerald-500 rounded-lg flex-shrink-0"><Upload size={14} /></div>
-                      <span className="text-sm font-medium truncate">{selectedFile.name}</span>
-                    </div>
-                    <button onClick={() => setSelectedFile(null)} className="p-1 hover:bg-white/20 rounded-md transition-colors flex-shrink-0">
-                      <X size={16} />
-                    </button>
+                <button
+                  onClick={() => fileInputRef.current?.click()}
+                  className="w-full py-4 rounded-xl bg-white/10 border-2 border-dashed border-white/30 text-white font-bold hover:bg-white/20 hover:border-white/50 transition-all flex flex-col items-center justify-center gap-2"
+                >
+                  <Upload size={24} className="mb-1" />
+                  <span className="text-xs">Upload PDFs, Images or Text</span>
+                </button>
+
+                {selectedFiles.length > 0 && (
+                  <div className="space-y-2">
+                    {selectedFiles.map((file, idx) => (
+                      <div key={idx} className="w-full py-2 px-3 rounded-lg bg-emerald-500/20 border border-emerald-500/30 text-white flex items-center justify-between animate-in slide-in-from-top-2">
+                        <div className="flex items-center gap-2 min-w-0">
+                          <Upload size={12} className="flex-shrink-0" />
+                          <span className="text-[10px] font-medium truncate">{file.name}</span>
+                        </div>
+                        <button onClick={() => removeFile(idx)} className="p-1 hover:bg-white/20 rounded-md transition-colors flex-shrink-0">
+                          <X size={14} />
+                        </button>
+                      </div>
+                    ))}
                   </div>
                 )}
               </div>
             </div>
-            
-            <button 
+
+            <button
               onClick={generateWithAI}
-              disabled={isGenerating || (!aiPrompt && !selectedFile)}
-              className="w-full py-3 rounded-xl bg-white text-indigo-600 font-bold hover:bg-indigo-50 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+              disabled={isGenerating || (!aiPrompt && selectedFiles.length === 0)}
+              className="w-full py-4 rounded-2xl bg-white text-indigo-600 font-black shadow-lg hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
             >
-              {isGenerating ? "Generating..." : "Generate Cards"}
+              {isGenerating ? <Loader2 className="w-5 h-5 animate-spin" /> : <Sparkles size={18} />}
+              Generate Flashcards
             </button>
           </div>
         </div>
@@ -297,7 +369,7 @@ const CreateCard = () => {
             <h2 className="text-xl font-bold flex items-center gap-2">
               Cards <span className="text-sm font-normal text-muted-foreground bg-muted px-2 py-0.5 rounded-full">{cards.length}</span>
             </h2>
-            <button 
+            <button
               onClick={addCard}
               className="text-primary hover:bg-primary/10 px-4 py-2 rounded-xl transition-all font-bold flex items-center gap-2"
             >
@@ -316,7 +388,7 @@ const CreateCard = () => {
                   exit={{ opacity: 0, x: -20 }}
                   className="p-6 rounded-3xl bg-card border border-border space-y-6 relative group"
                 >
-                  <button 
+                  <button
                     onClick={() => removeCard(idx)}
                     className="absolute top-4 right-4 p-2 text-muted-foreground hover:text-red-500 hover:bg-red-50 rounded-lg transition-all opacity-0 group-hover:opacity-100"
                   >
@@ -329,7 +401,7 @@ const CreateCard = () => {
                         <Type size={12} />
                         Front Side
                       </div>
-                      <textarea 
+                      <textarea
                         placeholder="Enter question..."
                         rows={3}
                         value={card.front}
@@ -342,7 +414,7 @@ const CreateCard = () => {
                         <Type size={12} />
                         Back Side
                       </div>
-                      <textarea 
+                      <textarea
                         placeholder="Enter answer..."
                         rows={3}
                         value={card.back}
@@ -354,8 +426,8 @@ const CreateCard = () => {
 
                   <div className="flex items-center gap-3">
                     <TagIcon size={14} className="text-muted-foreground" />
-                    <input 
-                      type="text" 
+                    <input
+                      type="text"
                       placeholder="Tags (comma separated)"
                       value={card.tags.join(', ')}
                       onChange={e => updateCard(idx, 'tags', e.target.value)}
@@ -366,7 +438,7 @@ const CreateCard = () => {
               ))}
             </AnimatePresence>
 
-            <button 
+            <button
               onClick={addCard}
               className="w-full py-8 rounded-3xl border-2 border-dashed border-border hover:border-primary/50 hover:bg-primary/5 transition-all flex flex-col items-center justify-center gap-2 text-muted-foreground hover:text-primary group"
             >

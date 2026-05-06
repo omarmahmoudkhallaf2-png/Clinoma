@@ -18,8 +18,8 @@ import {
   ArrowRight,
   MoreVertical,
   ChevronRight,
-  Sparkles
-
+  Sparkles,
+  Edit2
 } from 'lucide-react';
 
 import { Link } from 'react-router-dom';
@@ -317,6 +317,14 @@ const FlashcardsDashboard = () => {
                   >
                     <Download size={18} />
                   </button>
+                  <Link 
+                    to={`/flashcards/edit/${deck.id}`}
+                    onClick={(e) => e.stopPropagation()}
+                    className="p-1 hover:bg-primary/10 rounded-lg transition-colors text-primary"
+                    title="Edit Deck"
+                  >
+                    <Edit2 size={18} />
+                  </Link>
                   <button className="p-1 hover:bg-muted rounded-lg transition-colors">
                     <MoreVertical size={18} className="text-muted-foreground" />
                   </button>

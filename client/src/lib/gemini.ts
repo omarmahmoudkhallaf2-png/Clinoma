@@ -84,7 +84,7 @@ ${prompt}`
   throw new Error("عذراً، واجه النظام مشكلة في الاتصال بمحرك الذكاء الاصطناعي (2026 Update). يرجى التأكد من الـ API Key.");
 };
 
-export const generateFlashcards = async (text: string, fileData?: { data: string, mimeType: string }) => {
+export const generateFlashcards = async (text: string, files?: { data: string, mimeType: string }[]) => {
   const KEYS = [
     "AIzaSyB0GrBSsl3xbr_eDmSQtWk5v4VOS0p2gFQ",
     "AIzaSyALv9jWafoAN9AVh4psyYQUaPpPL-ig-J4"
@@ -92,11 +92,8 @@ export const generateFlashcards = async (text: string, fileData?: { data: string
   
   const models = [
     "gemini-3.1-pro-preview",
-    "gemini-3-pro-preview",
     "gemini-flash-latest",
-    "gemini-pro-latest",
     "gemini-2.5-flash",
-    "gemini-2.5-pro",
     "gemini-2.0-flash"
   ];
 
@@ -104,25 +101,24 @@ export const generateFlashcards = async (text: string, fileData?: { data: string
 
   for (const key of allKeys) {
     for (const model of models) {
-      const contents: any[] = [{
-        role: 'user',
-        parts: [{
-          text: `You are a specialized medical educator. Convert this ${fileData ? 'file content' : 'text'} into a JSON array of flashcards: [{ "front": "...", "back": "...", "tags": ["..."] }]. 
+      const parts: any[] = [{
+        text: `You are a specialized medical educator. Convert the provided ${files ? 'files and instructions' : 'text'} into a JSON array of flashcards: [{ "front": "...", "back": "...", "tags": ["..."] }]. 
 Focus on key medical concepts, definitions, and high-yield exam facts. 
-ONLY return valid JSON. No conversational text. \n\n Input: ${text}`
-        }]
+ONLY return valid JSON. No conversational text. \n\n Additional Instructions/Text: ${text}`
       }];
 
-      if (fileData) {
-        contents[0].parts.push({
-          inline_data: {
-            mime_type: fileData.mimeType,
-            data: fileData.data.split(',')[1]
-          }
+      if (files && files.length > 0) {
+        files.forEach(f => {
+          parts.push({
+            inline_data: {
+              mime_type: f.mimeType,
+              data: f.data.split(',')[1]
+            }
+          });
         });
       }
 
-      const res = await tryFetch(model, { contents }, key!);
+      const res = await tryFetch(model, { contents: [{ role: 'user', parts }] }, key!);
       if (res && res.ok) {
         const data = await res.json();
         const textOutput = data.candidates?.[0]?.content?.parts?.[0]?.text || "";
@@ -134,7 +130,7 @@ ONLY return valid JSON. No conversational text. \n\n Input: ${text}`
   throw new Error("فشل توليد الفلاش كارد. يرجى التأكد من إعدادات الذكاء الاصطناعي.");
 };
 
-export const generateAIExam = async (content: string, fileData?: { data: string, mimeType: string }) => {
+export const generateAIExam = async (prompt: string, files?: { data: string, mimeType: string }[]) => {
   const KEYS = [
     "AIzaSyB0GrBSsl3xbr_eDmSQtWk5v4VOS0p2gFQ",
     "AIzaSyALv9jWafoAN9AVh4psyYQUaPpPL-ig-J4"
@@ -142,22 +138,17 @@ export const generateAIExam = async (content: string, fileData?: { data: string,
   
   const models = [
     "gemini-3.1-pro-preview",
-    "gemini-3-pro-preview",
     "gemini-flash-latest",
-    "gemini-pro-latest",
     "gemini-2.5-flash",
-    "gemini-2.5-pro",
     "gemini-2.0-flash"
   ];
   const allKeys = [import.meta.env.VITE_GEMINI_API_KEY, ...KEYS].filter(Boolean);
 
   for (const key of allKeys) {
     for (const model of models) {
-      const contents: any[] = [{
-        role: 'user',
-        parts: [{
-          text: `You are an exact text extractor for medical exams. Your task is to extract the MCQs from the provided file into a JSON array EXACTLY as they appear in the original file. 
-DO NOT TRANSLATE. DO NOT REPHRASE. Keep the exact original language (usually English).
+      const parts: any[] = [{
+        text: `You are an exact text extractor for medical exams. Your task is to extract the MCQs from the provided files and instructions into a JSON array EXACTLY as they appear. 
+DO NOT TRANSLATE. DO NOT REPHRASE. Keep the exact original language.
 
 If the correct answer is marked or provided, ensure "correctAnswer" reflects its index (0-3). 
 If an explanation is provided, extract it exactly. If not, leave it empty or generate a brief accurate one in the same language.
@@ -171,20 +162,21 @@ Format required:
 }]
 
 Return ONLY valid JSON.
-Content context: ${content}`
-        }]
+Instructions: ${prompt}`
       }];
 
-      if (fileData) {
-        contents[0].parts.push({
-          inline_data: {
-            mime_type: fileData.mimeType,
-            data: fileData.data.split(',')[1]
-          }
+      if (files && files.length > 0) {
+        files.forEach(f => {
+          parts.push({
+            inline_data: {
+              mime_type: f.mimeType,
+              data: f.data.split(',')[1]
+            }
+          });
         });
       }
 
-      const res = await tryFetch(model, { contents }, key!);
+      const res = await tryFetch(model, { contents: [{ role: 'user', parts }] }, key!);
       if (res && res.ok) {
         const data = await res.json();
         const textOutput = data.candidates?.[0]?.content?.parts?.[0]?.text || "";

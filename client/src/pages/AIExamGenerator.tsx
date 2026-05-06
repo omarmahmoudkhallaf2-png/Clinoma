@@ -1,13 +1,13 @@
 import { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  Sparkles, 
-  Upload, 
-  ChevronRight, 
-  ArrowLeft, 
-  FileText, 
-  CheckCircle2, 
+import {
+  Sparkles,
+  Upload,
+  ChevronRight,
+  ArrowLeft,
+  FileText,
+  CheckCircle2,
   X,
   Plus,
   Save,
@@ -33,43 +33,51 @@ export default function AIExamGenerator() {
   const { user } = useAuth();
   const navigate = useNavigate();
   const fileInputRef = useRef<HTMLInputElement>(null);
-  
+
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
   const [questions, setQuestions] = useState<AIQuestion[]>([]);
   const [examTitle, setExamTitle] = useState('');
   const [subject, setSubject] = useState('');
-  const [selectedFile, setSelectedFile] = useState<{ name: string, data: string, type: string } | null>(null);
+  const [selectedFiles, setSelectedFiles] = useState<{ name: string, data: string, type: string }[]>([]);
+  const [generationPrompt, setGenerationPrompt] = useState('');
 
-  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (readerEvent) => {
-        setSelectedFile({
-          name: file.name,
-          data: readerEvent.target?.result as string,
-          type: file.type
+  const handleFileSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = Array.from(e.target.files || []);
+    if (files.length > 0) {
+      const newFiles = await Promise.all(files.map(async (file) => {
+        return new Promise<{ name: string, data: string, type: string }>((resolve) => {
+          const reader = new FileReader();
+          reader.onload = (re) => resolve({
+            name: file.name,
+            data: re.target?.result as string,
+            type: file.type
+          });
+          reader.readAsDataURL(file);
         });
-      };
-      reader.readAsDataURL(file);
+      }));
+      setSelectedFiles(prev => [...prev, ...newFiles]);
     }
   };
 
+  const removeFile = (index: number) => {
+    setSelectedFiles(prev => prev.filter((_, i) => i !== index));
+  };
+
   const handleGenerate = async () => {
-    if (!selectedFile) return;
+    if (selectedFiles.length === 0 && !generationPrompt) return;
     setLoading(true);
     const loadingToast = toast.loading('AI is crafting your medical exam...');
-    
+
     try {
-      const result = await generateAIExam("Generate a high-yield medical exam from this file", {
-        data: selectedFile.data,
-        mimeType: selectedFile.type
-      });
-      
+      const result = await generateAIExam(
+        generationPrompt || "Generate a high-yield medical exam from the provided files",
+        selectedFiles.length > 0 ? selectedFiles.map(f => ({ data: f.data, mimeType: f.type })) : undefined
+      );
+
       if (Array.isArray(result)) {
         setQuestions(result);
-        setExamTitle(selectedFile.name.split('.')[0] + " (AI Exam)");
+        setExamTitle(selectedFiles[0]?.name.split('.')[0] || "AI Exam");
         setStep(2);
         toast.success(`Generated ${result.length} professional MCQs!`, { id: loadingToast });
       }
@@ -84,16 +92,11 @@ export default function AIExamGenerator() {
     if (!user || questions.length === 0) return;
     setLoading(true);
     try {
-      const now = Timestamp.now();
-      const oneYearLater = new Timestamp(now.seconds + 365 * 24 * 60 * 60, now.nanoseconds);
-      
       const examRef = await addDoc(collection(db, 'formal_exams'), {
         title: examTitle,
         subject,
         creatorId: user.uid,
-        createdAt: now,
-        startAt: now,
-        endAt: oneYearLater,
+        createdAt: Timestamp.now(), // Use Timestamp for startAt/endAt compatibility
         type: 'ai-generated',
         durationMinutes: Math.round(questions.length * 1.5),
         description: `امتحان تم توليده بالذكاء الاصطناعي يحتوي على ${questions.length} سؤال.`
@@ -113,7 +116,7 @@ export default function AIExamGenerator() {
           createdAt: Timestamp.now()
         });
       });
-      
+
       await batch.commit();
       toast.success('Exam saved to your dashboard!');
       navigate('/admin');
@@ -157,37 +160,66 @@ export default function AIExamGenerator() {
               </p>
             </div>
 
-            <div 
-              onClick={() => fileInputRef.current?.click()}
-              className="group relative h-80 border-4 border-dashed border-border rounded-[3rem] flex flex-col items-center justify-center space-y-6 hover:border-primary/50 hover:bg-primary/[0.02] transition-all cursor-pointer overflow-hidden shadow-2xl shadow-primary/5"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-              
-              <div className="w-24 h-24 rounded-3xl bg-muted flex items-center justify-center text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary transition-all shadow-inner relative">
-                {loading ? <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin" /> : <Upload size={48} />}
-              </div>
-              
-              <div className="text-center relative">
-                <p className="text-2xl font-black">{loading ? 'AI is working...' : (selectedFile ? selectedFile.name : 'Select your medical file')}</p>
-                <p className="text-muted-foreground font-bold uppercase tracking-widest text-[10px] mt-2 opacity-60">PDF / JPG / PNG / TEXT</p>
+            <div className="max-w-2xl mx-auto space-y-6">
+              <div className="space-y-4">
+                <label className="text-sm font-black uppercase tracking-widest text-muted-foreground">Extra Instructions / Topic Info</label>
+                <textarea
+                  placeholder="e.g. Focus on Pediatrics, extract only Arabic questions, etc."
+                  value={generationPrompt}
+                  onChange={e => setGenerationPrompt(e.target.value)}
+                  className="w-full p-4 rounded-2xl bg-card border border-border focus:ring-2 focus:ring-primary/20 transition-all resize-none shadow-sm"
+                  rows={3}
+                />
               </div>
 
-              {selectedFile && !loading && (
-                <button 
+              <div
+                className="group relative h-48 border-4 border-dashed border-border rounded-[2rem] flex flex-col items-center justify-center space-y-4 hover:border-primary/50 hover:bg-primary/[0.02] transition-all cursor-pointer overflow-hidden shadow-xl shadow-primary/5"
+                onClick={() => fileInputRef.current?.click()}
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="w-16 h-16 rounded-2xl bg-muted flex items-center justify-center text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary transition-all">
+                  <Upload size={32} />
+                </div>
+                <div className="text-center relative">
+                  <p className="font-black">Add Medical Files</p>
+                  <p className="text-muted-foreground font-bold uppercase tracking-widest text-[8px] mt-1 opacity-60">PDF / JPG / PNG / TEXT</p>
+                </div>
+              </div>
+
+              {selectedFiles.length > 0 && (
+                <div className="space-y-2">
+                  {selectedFiles.map((file, idx) => (
+                    <div key={idx} className="flex items-center justify-between p-3 bg-card border border-border rounded-xl shadow-sm animate-in slide-in-from-top-2">
+                      <div className="flex items-center gap-3 min-w-0">
+                        <FileText className="text-primary flex-shrink-0" size={18} />
+                        <span className="text-sm font-bold truncate">{file.name}</span>
+                      </div>
+                      <button onClick={(e) => { e.stopPropagation(); removeFile(idx); }} className="p-1.5 hover:bg-rose-500/10 text-rose-500 rounded-lg transition-colors">
+                        <X size={16} />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {(selectedFiles.length > 0 || generationPrompt) && !loading && (
+                <button
                   onClick={handleGenerate}
-                  className="px-10 py-4 bg-primary text-white rounded-2xl font-black text-lg shadow-xl shadow-primary/30 hover:scale-105 active:scale-95 transition-all flex items-center gap-3 relative"
+                  className="w-full py-5 bg-primary text-white rounded-[2rem] font-black text-xl shadow-2xl shadow-primary/30 hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3 mt-4"
                 >
                   <Sparkles size={24} />
                   Start AI Generation
                 </button>
               )}
-              
-              <input 
-                type="file" 
+            </div>
+
+              <input
+                type="file"
                 ref={fileInputRef}
                 onChange={handleFileSelect}
-                className="hidden" 
+                className="hidden"
                 accept=".pdf,image/*,.txt"
+                multiple
               />
             </div>
           </motion.div>
@@ -210,7 +242,7 @@ export default function AIExamGenerator() {
                   <span className="px-3 py-1 bg-amber-500/10 text-amber-600 text-[10px] font-black rounded-full border border-amber-500/20 uppercase tracking-tighter">USMLE Style</span>
                 </div>
               </div>
-              <button 
+              <button
                 onClick={handleSaveExam}
                 className="px-8 py-4 bg-emerald-500 text-white rounded-2xl font-black text-sm shadow-xl shadow-emerald-500/20 hover:scale-105 active:scale-95 transition-all flex items-center gap-2 group"
               >
@@ -221,8 +253,8 @@ export default function AIExamGenerator() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-4">Exam Title</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   value={examTitle}
                   onChange={e => setExamTitle(e.target.value)}
                   className="w-full bg-card border-2 border-border p-4 rounded-2xl outline-none focus:border-primary transition-all font-bold"
@@ -230,7 +262,7 @@ export default function AIExamGenerator() {
               </div>
               <div className="space-y-2">
                 <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-4">Subject Category</label>
-                <select 
+                <select
                   value={subject}
                   onChange={e => setSubject(e.target.value)}
                   className="w-full bg-card border-2 border-border p-4 rounded-2xl outline-none focus:border-primary transition-all font-bold appearance-none"
@@ -267,17 +299,17 @@ export default function AIExamGenerator() {
                       />
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         {q.options.map((opt, optIdx) => (
-                          <div 
+                          <div
                             key={optIdx}
                             className={cn(
                               "p-4 rounded-2xl border-2 text-sm font-bold transition-all flex items-center gap-3",
-                              optIdx === q.correctAnswer 
-                                ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-600" 
+                              optIdx === q.correctAnswer
+                                ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-600"
                                 : "bg-muted/50 border-border text-muted-foreground"
                             )}
                           >
-                            <input 
-                              type="radio" 
+                            <input
+                              type="radio"
                               name={`correct-${idx}`}
                               checked={optIdx === q.correctAnswer}
                               onChange={() => {
@@ -287,7 +319,7 @@ export default function AIExamGenerator() {
                               }}
                               className="w-4 h-4 accent-emerald-500 cursor-pointer"
                             />
-                            <span className="opacity-40">{String.fromCharCode(65 + optIdx)}.</span> 
+                            <span className="opacity-40">{String.fromCharCode(65 + optIdx)}.</span>
                             <input
                               type="text"
                               value={opt}
