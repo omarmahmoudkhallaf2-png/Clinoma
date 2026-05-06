@@ -232,19 +232,50 @@ export default function AIExamGenerator() {
                       {idx + 1}
                     </div>
                     <div className="space-y-6 flex-1">
-                      <p className="text-xl font-bold leading-relaxed">{q.question}</p>
+                      <textarea
+                        value={q.question}
+                        onChange={(e) => {
+                          const newQ = [...questions];
+                          newQ[idx].question = e.target.value;
+                          setQuestions(newQ);
+                        }}
+                        className="w-full text-xl font-bold leading-relaxed bg-transparent border-b-2 border-transparent hover:border-border focus:border-primary outline-none transition-all resize-none min-h-[60px]"
+                        dir="auto"
+                      />
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         {q.options.map((opt, optIdx) => (
                           <div 
                             key={optIdx}
                             className={cn(
-                              "p-4 rounded-2xl border-2 text-sm font-bold transition-all",
+                              "p-4 rounded-2xl border-2 text-sm font-bold transition-all flex items-center gap-3",
                               optIdx === q.correctAnswer 
                                 ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-600" 
-                                : "bg-muted/50 border-transparent text-muted-foreground"
+                                : "bg-muted/50 border-border text-muted-foreground"
                             )}
                           >
-                            <span className="opacity-40 mr-2">{String.fromCharCode(65 + optIdx)}.</span> {opt}
+                            <input 
+                              type="radio" 
+                              name={`correct-${idx}`}
+                              checked={optIdx === q.correctAnswer}
+                              onChange={() => {
+                                const newQ = [...questions];
+                                newQ[idx].correctAnswer = optIdx;
+                                setQuestions(newQ);
+                              }}
+                              className="w-4 h-4 accent-emerald-500 cursor-pointer"
+                            />
+                            <span className="opacity-40">{String.fromCharCode(65 + optIdx)}.</span> 
+                            <input
+                              type="text"
+                              value={opt}
+                              onChange={(e) => {
+                                const newQ = [...questions];
+                                newQ[idx].options[optIdx] = e.target.value;
+                                setQuestions(newQ);
+                              }}
+                              className="w-full bg-transparent outline-none"
+                              dir="auto"
+                            />
                           </div>
                         ))}
                       </div>
@@ -252,7 +283,16 @@ export default function AIExamGenerator() {
                         <p className="text-xs font-black uppercase tracking-widest text-primary mb-2 flex items-center gap-2">
                           <CheckCircle2 size={14} /> Explanation
                         </p>
-                        <p className="text-sm font-medium leading-relaxed opacity-80 italic">{q.explanation}</p>
+                        <textarea
+                          value={q.explanation}
+                          onChange={(e) => {
+                            const newQ = [...questions];
+                            newQ[idx].explanation = e.target.value;
+                            setQuestions(newQ);
+                          }}
+                          className="w-full text-sm font-medium leading-relaxed opacity-80 italic bg-transparent border-none outline-none resize-none min-h-[60px]"
+                          dir="auto"
+                        />
                       </div>
                     </div>
                   </div>

@@ -142,17 +142,22 @@ export const generateAIExam = async (content: string, fileData?: { data: string,
       const contents: any[] = [{
         role: 'user',
         parts: [{
-          text: `أنت خبير في وضع الامتحانات الطبية. قم بتحويل المحتوى المرفق إلى امتحان MCQ احترافي بتنسيق JSON.
-المطلوب مصفوفة من الأسئلة بالتنسيق التالي:
+          text: `You are an exact text extractor for medical exams. Your task is to extract the MCQs from the provided file into a JSON array EXACTLY as they appear in the original file. 
+DO NOT TRANSLATE. DO NOT REPHRASE. Keep the exact original language (usually English).
+
+If the correct answer is marked or provided, ensure "correctAnswer" reflects its index (0-3). 
+If an explanation is provided, extract it exactly. If not, leave it empty or generate a brief accurate one in the same language.
+
+Format required:
 [{ 
-  "question": "نص السؤال", 
-  "options": ["A", "B", "C", "D"], 
+  "question": "Exact question text", 
+  "options": ["Exact option A", "Exact option B", "Exact option C", "Exact option D"], 
   "correctAnswer": 0, 
-  "explanation": "شرح الإجابة" 
+  "explanation": "Exact explanation text" 
 }]
 
-تحرى الدقة القصوى واجعل الأسئلة تحاكي امتحانات المعادلة.
-المحتوى: ${content}`
+Return ONLY valid JSON.
+Content context: ${content}`
         }]
       }];
 
