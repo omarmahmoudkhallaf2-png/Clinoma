@@ -4,6 +4,10 @@ const API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 const genAI = new GoogleGenerativeAI(API_KEY);
 
 export const generateFlashcards = async (text: string) => {
+  if (!API_KEY || API_KEY === 'your_api_key_here') {
+    throw new Error("Gemini API Key is missing. Please add VITE_GEMINI_API_KEY to your environment.");
+  }
+
   try {
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
@@ -19,9 +23,9 @@ export const generateFlashcards = async (text: string) => {
       Text to convert:
       ${text}
       
-      Format example:
+      Return format:
       [
-        { "front": "What is the primary symptom of...", "back": "...", "tags": ["subject", "symptom"] }
+        { "front": "Question", "back": "Answer", "tags": ["tag1"] }
       ]
     `;
 
@@ -29,14 +33,22 @@ export const generateFlashcards = async (text: string) => {
     const response = await result.response;
     const textOutput = response.text();
     
-    // Clean JSON output if AI includes markdown code blocks
-    const jsonString = textOutput.replace(/```json|```/g, '').trim();
-    return JSON.parse(jsonString);
-  } catch (error) {
+    // Robust JSON extraction
+    const jsonMatch = textOutput.match(/\[[\s\S]*\]/);
+    if (!jsonMatch) {
+      throw new Error("AI returned malformed data. Please try again.");
+    }
+
+    return JSON.parse(jsonMatch[0]);
+  } catch (error: any) {
     console.error("Gemini AI Generation Error:", error);
-    throw new Error("Failed to generate flashcards using AI.");
+    if (error.message?.includes("API_KEY_INVALID")) {
+      throw new Error("API Key غير صالح. يرجى التأكد من مفتاح Gemini.");
+    }
+    throw new Error(error.message || "Failed to generate flashcards using AI.");
   }
 };
+
 
 export const generateAIResponse = async (prompt: string, fileData?: { data: string, mimeType: string }) => {
   try {
