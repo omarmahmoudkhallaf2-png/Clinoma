@@ -15,9 +15,12 @@ export default function NoteViewer() {
   const [notes, setNotes] = useState<Note[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedNote, setSelectedNote] = useState<Note | null>(null);
+  const [viewError, setViewError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchNotes = async () => {
+      setLoading(true);
+      setViewError(null);
       try {
         const q = query(
           collection(db, 'notes'),
@@ -30,8 +33,9 @@ export default function NoteViewer() {
         const data = snap.docs.map(doc => ({ id: doc.id, ...doc.data() })) as Note[];
         setNotes(data);
         if (data.length > 0) setSelectedNote(data[0]);
-      } catch (error) {
+      } catch (error: any) {
         console.error(error);
+        setViewError("Failed to load notes list. Please check your connection.");
       } finally {
         setLoading(false);
       }
@@ -61,7 +65,10 @@ export default function NoteViewer() {
             notes.map(note => (
               <button
                 key={note.id}
-                onClick={() => setSelectedNote(note)}
+                onClick={() => {
+                  setSelectedNote(note);
+                  setViewError(null);
+                }}
                 className={`w-full text-left p-4 rounded-2xl border transition-all ${
                   selectedNote?.id === note.id 
                     ? 'bg-primary text-white border-primary shadow-lg shadow-primary/20' 
@@ -70,7 +77,7 @@ export default function NoteViewer() {
               >
                 <div className="font-bold line-clamp-1">{note.title}</div>
                 <div className={`text-xs mt-1 ${selectedNote?.id === note.id ? 'text-white/80' : 'text-muted-foreground'}`}>
-                  Lecture {note.lectureNumber} • {new Date(note.createdAt?.seconds * 1000).toLocaleDateString()}
+                  Lecture {note.lectureNumber} • {note.createdAt?.seconds ? new Date(note.createdAt.seconds * 1000).toLocaleDateString() : 'New'}
                 </div>
               </button>
             ))
@@ -100,23 +107,35 @@ export default function NoteViewer() {
                   const type = selectedNote.fileType || (
                     url.includes('.pdf') || url.includes('raw/upload') ? 'pdf' :
                     url.includes('.mp4') || url.includes('.mov') || url.includes('video/upload') ? 'video' :
-                    'image'
+                    url.includes('.jpg') || url.includes('.png') || url.includes('image/upload') ? 'image' :
+                    'unknown'
                   );
+
+                  if (type === 'unknown') {
+                    return (
+                      <div className="p-20 text-center space-y-4">
+                        <div className="w-16 h-16 bg-rose-500/10 text-rose-500 rounded-full flex items-center justify-center mx-auto">
+                          <FileText className="w-8 h-8" />
+                        </div>
+                        <h3 className="text-xl font-bold">صيغة الملف غير مدعومة</h3>
+                        <p className="text-muted-foreground">هذا الملف قد يكون تالفاً أو تم رفعه بصيغة غير صحيحة.</p>
+                      </div>
+                    );
+                  }
 
                   if (type === 'pdf') {
                     return (
                       <div className="w-full h-[800px] bg-secondary/10 relative group flex items-center justify-center">
                         <div className="absolute inset-0 flex items-center justify-center -z-10">
                           <Loader2 className="w-10 h-10 animate-spin text-primary opacity-20" />
-                          <p className="absolute mt-16 text-xs font-bold text-muted-foreground uppercase tracking-widest">Loading Document...</p>
                         </div>
                         <iframe 
                           src={`https://docs.google.com/viewer?url=${encodeURIComponent(selectedNote.fileUrl)}&embedded=true`}
                           className="w-full h-full border-none relative z-10"
                           title={selectedNote.title}
-                          loading="lazy"
+                          onError={() => setViewError("فشل تحميل مشغل الـ PDF. جرب فتح الملف مباشرة.")}
                         />
-                        <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity z-20">
                            <a 
                             href={selectedNote.fileUrl} 
                             target="_blank" 
@@ -139,9 +158,9 @@ export default function NoteViewer() {
                           playsInline
                           preload="auto"
                           className="w-full h-full"
+                          onError={() => setViewError("فشل تشغيل الفيديو. قد يكون الرابط منتهياً أو الصيغة غير مدعومة.")}
                         >
                           <source src={selectedNote.fileUrl} />
-                          Your browser does not support the video tag.
                         </video>
                       </div>
                     );
@@ -160,12 +179,15 @@ export default function NoteViewer() {
               </div>
             )}
 
-
+            {viewError && (
+              <div className="p-6 bg-rose-500/10 border-2 border-rose-500/20 rounded-3xl text-rose-600 font-bold flex items-center gap-3">
+                <FileText /> {viewError}
+              </div>
+            )}
 
             <div className="prose prose-lg max-w-none text-foreground leading-relaxed whitespace-pre-wrap">
               {selectedNote.content}
             </div>
-
 
           </div>
         ) : (
@@ -179,3 +201,4 @@ export default function NoteViewer() {
     </div>
   );
 }
+
