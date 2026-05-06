@@ -97,18 +97,23 @@ export default function NoteViewer() {
               <div className="w-full bg-secondary/20 border-2 border-border rounded-[2.5rem] overflow-hidden shadow-inner">
                 {selectedNote.fileType === 'pdf' && (
                   <iframe 
-                    src={`${selectedNote.fileUrl}#toolbar=0`} 
+                    src={`https://docs.google.com/viewer?url=${encodeURIComponent(selectedNote.fileUrl)}&embedded=true`}
                     className="w-full h-[800px] border-none"
                     title={selectedNote.title}
                   />
                 )}
                 {selectedNote.fileType === 'video' && (
                   <video 
-                    src={selectedNote.fileUrl} 
-                    controls 
+                    controls
+                    controlsList="nodownload"
+                    playsInline
                     className="w-full max-h-[600px] bg-black"
-                  />
+                  >
+                    <source src={selectedNote.fileUrl} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
                 )}
+
                 {selectedNote.fileType === 'image' && (
                   <img 
                     src={selectedNote.fileUrl} 

@@ -65,7 +65,9 @@ export default function NoteForm({ onSave, onCancel }: NoteFormProps) {
       // Upload with metadata to ensure it's viewed not downloaded
       const metadata = {
         contentType: file.type,
+        contentDisposition: 'inline'
       };
+
 
       await uploadBytes(storageRef, file, metadata);
       const url = await getDownloadURL(storageRef);
