@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { collection, query, where, getDocs, orderBy, doc, writeBatch } from 'firebase/firestore';
+import { collection, query, where, getDocs, orderBy, doc, writeBatch, deleteDoc } from 'firebase/firestore';
 import { db } from '../../lib/firebase';
 import { useAuth } from '../../context/AuthContext';
 import type { Deck, Flashcard } from '../../types/flashcard';
@@ -19,7 +19,8 @@ import {
   MoreVertical,
   ChevronRight,
   Sparkles,
-  Edit2
+  Edit2,
+  Trash2
 } from 'lucide-react';
 
 import { Link } from 'react-router-dom';
@@ -325,8 +326,28 @@ const FlashcardsDashboard = () => {
                   >
                     <Edit2 size={18} />
                   </Link>
-                  <button className="p-1 hover:bg-muted rounded-lg transition-colors">
-                    <MoreVertical size={18} className="text-muted-foreground" />
+                  <button 
+                    onClick={async (e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      if (!confirm('هل أنت متأكد من حذف هذه المجموعة؟')) return;
+                      const loadingToast = toast.loading('جاري الحذف...');
+                      try {
+                        const batch = writeBatch(db);
+                        const cardsSnap = await getDocs(query(collection(db, 'flashcards'), where('deckId', '==', deck.id)));
+                        cardsSnap.docs.forEach(d => batch.delete(d.ref));
+                        batch.delete(doc(db, 'decks', deck.id));
+                        await batch.commit();
+                        toast.success('تم حذف المجموعة بنجاح', { id: loadingToast });
+                        window.location.reload();
+                      } catch (err) {
+                        toast.error('فشل الحذف', { id: loadingToast });
+                      }
+                    }}
+                    className="p-1 hover:bg-rose-500/10 rounded-lg transition-colors text-rose-500"
+                    title="Delete Deck"
+                  >
+                    <Trash2 size={18} />
                   </button>
                 </div>
 
