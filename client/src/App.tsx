@@ -24,6 +24,11 @@ import FormalExam from "./pages/FormalExam";
 import ExamResultsDashboard from "./pages/ExamResultsDashboard";
 import AvailableExams from "./pages/AvailableExams";
 import AIAssistant from "./pages/AIAssistant";
+import FlashcardsDashboard from "./pages/flashcards/FlashcardsDashboard";
+import StudyMode from "./pages/flashcards/StudyMode";
+import CreateCard from "./pages/flashcards/CreateCard";
+import ImportCards from "./pages/flashcards/ImportCards";
+
 import { CommandPalette } from "./components/ui/CommandPalette";
 import { ThemeProvider } from "./context/ThemeContext";
 
@@ -75,6 +80,13 @@ const AnimatedRoutes = () => {
         <Route path="/exams" element={<ProtectedRoute><AvailableExams /></ProtectedRoute>} />
         <Route path="/ai-assistant" element={<ProtectedRoute><AIAssistant /></ProtectedRoute>} />
         <Route path="/exam/:examId" element={<ProtectedRoute useLayout={false}><FormalExam /></ProtectedRoute>} />
+        
+        {/* Flashcards Routes */}
+        <Route path="/flashcards" element={<ProtectedRoute><FlashcardsDashboard /></ProtectedRoute>} />
+        <Route path="/flashcards/study/:deckId" element={<ProtectedRoute useLayout={false}><StudyMode /></ProtectedRoute>} />
+        <Route path="/flashcards/create" element={<ProtectedRoute><CreateCard /></ProtectedRoute>} />
+        <Route path="/flashcards/import" element={<ProtectedRoute><ImportCards /></ProtectedRoute>} />
+
         <Route path="/admin/results" element={<ProtectedRoute requireAdmin><ExamResultsDashboard /></ProtectedRoute>} />
 
         <Route path="/admin" element={<ProtectedRoute requireAdmin><AdminDashboard /></ProtectedRoute>} />

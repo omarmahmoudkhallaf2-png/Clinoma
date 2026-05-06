@@ -1,0 +1,242 @@
+import React, { useState, useEffect } from 'react';
+import { collection, query, where, getDocs, orderBy } from 'firebase/firestore';
+import { db } from '../../lib/firebase';
+import { useAuth } from '../../context/AuthContext';
+import { Deck, Flashcard } from '../../types/flashcard';
+import { motion } from 'framer-motion';
+import { 
+  Plus, 
+  Upload, 
+  Brain, 
+  Clock, 
+  Flame, 
+  Search,
+  BookOpen,
+  ArrowRight,
+  MoreVertical,
+  ChevronRight
+} from 'lucide-react';
+import { Link } from 'react-router-dom';
+
+const FlashcardsDashboard = () => {
+  const { user } = useAuth();
+  const [decks, setDecks] = useState<Deck[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [dueCount, setDueCount] = useState(0);
+  const [searchQuery, setSearchQuery] = useState('');
+
+  useEffect(() => {
+    if (!user) return;
+
+    const fetchDecks = async () => {
+      try {
+        const decksRef = collection(db, 'decks');
+        const q = query(
+          decksRef, 
+          where('userId', '==', user.uid),
+          orderBy('createdAt', 'desc')
+        );
+        
+        const querySnapshot = await getDocs(q);
+        const fetchedDecks = querySnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        })) as Deck[];
+
+        // Fetch due counts for each deck
+        const cardsRef = collection(db, 'flashcards');
+        const now = Date.now();
+        let totalDue = 0;
+
+        const decksWithCounts = await Promise.all(fetchedDecks.map(async (deck) => {
+          const cardsQuery = query(
+            cardsRef,
+            where('deckId', '==', deck.id),
+            where('nextReview', '<=', now)
+          );
+          const cardsSnap = await getDocs(cardsQuery);
+          const count = cardsSnap.size;
+          totalDue += count;
+          return { ...deck, dueCount: count };
+        }));
+
+        setDecks(decksWithCounts);
+        setDueCount(totalDue);
+      } catch (error) {
+        console.error('Error fetching decks:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchDecks();
+  }, [user]);
+
+  const filteredDecks = decks.filter(deck => 
+    deck.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    deck.subject.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  return (
+    <div className="max-w-7xl mx-auto px-4 py-8 space-y-8">
+      {/* Header & Stats */}
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div>
+          <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-600">
+            Flashcards
+          </h1>
+          <p className="text-muted-foreground mt-2">Master your subjects with spaced repetition.</p>
+        </div>
+        
+        <div className="flex gap-4">
+          <Link to="/flashcards/import" className="flex items-center gap-2 px-4 py-2 rounded-xl bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-all font-medium border border-border/50">
+            <Upload size={18} />
+            Import
+          </Link>
+          <Link to="/flashcards/create" className="flex items-center gap-2 px-4 py-2 rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 transition-all font-medium shadow-lg shadow-primary/20">
+            <Plus size={18} />
+            New Deck
+          </Link>
+        </div>
+      </div>
+
+      {/* Stats Row */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="p-6 rounded-2xl bg-card border border-border shadow-sm flex items-center gap-5"
+        >
+          <div className="w-12 h-12 rounded-xl bg-orange-500/10 flex items-center justify-center text-orange-500">
+            <Clock size={24} />
+          </div>
+          <div>
+            <p className="text-sm text-muted-foreground font-medium">Due Today</p>
+            <p className="text-2xl font-bold">{dueCount}</p>
+          </div>
+        </motion.div>
+
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+          className="p-6 rounded-2xl bg-card border border-border shadow-sm flex items-center gap-5"
+        >
+          <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-500">
+            <Brain size={24} />
+          </div>
+          <div>
+            <p className="text-sm text-muted-foreground font-medium">Total Cards</p>
+            <p className="text-2xl font-bold">{decks.reduce((acc, d) => acc + (d.cardCount || 0), 0)}</p>
+          </div>
+        </motion.div>
+
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="p-6 rounded-2xl bg-card border border-border shadow-sm flex items-center gap-5"
+        >
+          <div className="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center text-green-500">
+            <Flame size={24} />
+          </div>
+          <div>
+            <p className="text-sm text-muted-foreground font-medium">Daily Streak</p>
+            <p className="text-2xl font-bold">{useAuth().userData?.streak || 0} Days</p>
+          </div>
+        </motion.div>
+
+      </div>
+
+      {/* Main Content */}
+      <div className="space-y-6">
+        <div className="flex items-center justify-between">
+          <h2 className="text-2xl font-semibold">Your Decks</h2>
+          <div className="relative w-64">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" size={18} />
+            <input 
+              type="text" 
+              placeholder="Search decks..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-10 pr-4 py-2 rounded-xl bg-muted border-none focus:ring-2 focus:ring-primary/20 text-sm transition-all"
+            />
+          </div>
+        </div>
+
+        {loading ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[1, 2, 3].map(i => (
+              <div key={i} className="h-48 rounded-2xl bg-muted animate-pulse" />
+            ))}
+          </div>
+        ) : filteredDecks.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredDecks.map((deck, idx) => (
+              <motion.div
+                key={deck.id}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: idx * 0.05 }}
+                className="group p-6 rounded-2xl bg-card border border-border hover:border-primary/50 hover:shadow-xl hover:shadow-primary/5 transition-all cursor-pointer relative overflow-hidden"
+              >
+                <div className="absolute top-0 right-0 p-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <button className="p-1 hover:bg-muted rounded-lg transition-colors">
+                    <MoreVertical size={18} className="text-muted-foreground" />
+                  </button>
+                </div>
+
+                <div className="flex flex-col h-full space-y-4">
+                  <div className="space-y-1">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-0.5 rounded-full">
+                      {deck.subject}
+                    </span>
+                    <h3 className="text-xl font-bold group-hover:text-primary transition-colors">{deck.title}</h3>
+                    <p className="text-sm text-muted-foreground line-clamp-2">{deck.description}</p>
+                  </div>
+
+                  <div className="mt-auto pt-4 flex items-center justify-between">
+                    <div className="flex items-center gap-4 text-xs font-medium text-muted-foreground">
+                      <span className="flex items-center gap-1">
+                        <BookOpen size={14} />
+                        {deck.cardCount || 0} cards
+                      </span>
+                      {deck.dueCount! > 0 && (
+                        <span className="flex items-center gap-1 text-orange-500 font-bold">
+                          <Clock size={14} />
+                          {deck.dueCount} due
+                        </span>
+                      )}
+                    </div>
+                    
+                    <Link 
+                      to={`/flashcards/study/${deck.id}`}
+                      className="p-2 rounded-full bg-primary text-primary-foreground translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all shadow-lg shadow-primary/20"
+                    >
+                      <ArrowRight size={18} />
+                    </Link>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        ) : (
+          <div className="flex flex-col items-center justify-center py-20 text-center space-y-4 bg-muted/30 rounded-3xl border-2 border-dashed border-border">
+            <div className="w-16 h-16 rounded-2xl bg-muted flex items-center justify-center text-muted-foreground">
+              <Brain size={32} />
+            </div>
+            <div>
+              <h3 className="text-lg font-medium">No decks found</h3>
+              <p className="text-sm text-muted-foreground">Create your first deck to start learning.</p>
+            </div>
+            <Link to="/flashcards/create" className="px-6 py-2 rounded-xl bg-primary text-primary-foreground font-medium">
+              Create New Deck
+            </Link>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default FlashcardsDashboard;

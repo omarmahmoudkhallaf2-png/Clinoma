@@ -61,7 +61,9 @@ export default function Sidebar({ isOpen = false, setIsOpen = (_: boolean) => {}
   const menuItems = [
     { icon: LayoutDashboard, label: 'لوحة التحكم', path: '/dashboard' },
     { icon: Brain, label: 'المراجعة الذكية', path: '/review' },
+    { icon: BookOpen, label: 'الفلاش كارد', path: '/flashcards' },
     { icon: Crown, label: 'الكورسات المتاحة', path: '/available' },
+
     { icon: Sparkles, label: 'المساعد الذكي (AI)', path: '/ai-assistant' },
     { icon: ClipboardList, label: 'الإختبارات', path: '/exams' },
     { icon: History, label: 'سجل المحاولات', path: '/history' },
