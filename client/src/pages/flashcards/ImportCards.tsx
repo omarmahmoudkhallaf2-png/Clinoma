@@ -220,23 +220,20 @@ const ImportCards = () => {
               <button 
                 onClick={() => {
                   const sample = [{ front: "Question 1", back: "Answer 1", tags: ["medical", "anatomy"] }];
-                  const blob = new Blob([JSON.stringify(sample, null, 2)], { type: 'application/json' });
-                  const url = URL.createObjectURL(blob);
+                  const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(sample, null, 2));
                   const a = document.createElement('a');
                   a.style.display = 'none';
-                  a.href = url;
-                  a.download = "sample_flashcards.json";
+                  a.setAttribute("href", dataStr);
+                  a.setAttribute("download", "sample_flashcards.json");
                   document.body.appendChild(a);
                   a.click();
-                  setTimeout(() => {
-                    window.URL.revokeObjectURL(url);
-                    document.body.removeChild(a);
-                  }, 100);
+                  document.body.removeChild(a);
                 }}
                 className="text-xs font-black text-primary underline uppercase tracking-widest hover:text-primary/80 transition-all"
               >
                 Download Sample Template
               </button>
+
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
