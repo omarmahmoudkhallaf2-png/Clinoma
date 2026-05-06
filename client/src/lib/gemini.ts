@@ -1,15 +1,16 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-const API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
+const API_KEY = import.meta.env.VITE_GEMINI_API_KEY || "";
 const genAI = new GoogleGenerativeAI(API_KEY);
 
 export const generateFlashcards = async (text: string) => {
-  if (!API_KEY || API_KEY === 'your_api_key_here') {
-    throw new Error("Gemini API Key is missing. Please add VITE_GEMINI_API_KEY to your environment.");
+  if (!API_KEY) {
+    throw new Error("Gemini API Key is missing. Please add VITE_GEMINI_API_KEY to Cloudflare environment variables.");
   }
 
   try {
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash-latest" });
+
 
     const prompt = `
       You are a specialized medical educator. Your task is to convert the following medical text into a set of high-quality flashcards for medical students.
@@ -52,7 +53,8 @@ export const generateFlashcards = async (text: string) => {
 
 export const generateAIResponse = async (prompt: string, fileData?: { data: string, mimeType: string }) => {
   try {
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash-latest" });
+
     
     let parts: any[] = [{ text: prompt }];
     
