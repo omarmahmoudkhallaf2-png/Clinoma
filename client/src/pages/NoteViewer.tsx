@@ -103,48 +103,54 @@ export default function NoteViewer() {
             {selectedNote.fileUrl && (
               <div key={selectedNote.id + selectedNote.fileUrl} className="w-full bg-secondary/20 border-2 border-border rounded-[2.5rem] overflow-hidden shadow-inner">
                 {(() => {
-                  const url = selectedNote.fileUrl.toLowerCase();
+                  const url = selectedNote.fileUrl;
+                  const isCloudinary = url.includes('cloudinary.com');
                   const type = selectedNote.fileType || (
-                    url.includes('.pdf') || url.includes('raw/upload') ? 'pdf' :
-                    url.includes('.mp4') || url.includes('.mov') || url.includes('video/upload') ? 'video' :
-                    url.includes('.jpg') || url.includes('.png') || url.includes('image/upload') ? 'image' :
-                    'unknown'
+                    url.toLowerCase().includes('.pdf') || url.includes('raw/upload') ? 'pdf' :
+                    url.toLowerCase().includes('.mp4') || url.toLowerCase().includes('.mov') || url.includes('video/upload') ? 'video' :
+                    'image'
                   );
 
-                  if (type === 'unknown') {
+                  // THE NUCLEAR OPTION: Render PDF as High-Quality Images via Cloudinary
+                  if (type === 'pdf' && isCloudinary) {
+                    const baseUrl = url.replace('/raw/upload/', '/image/upload/').replace('.pdf', '.jpg');
+                    // We'll show first 50 pages as a scrollable document
                     return (
-                      <div className="p-20 text-center space-y-4">
-                        <div className="w-16 h-16 bg-rose-500/10 text-rose-500 rounded-full flex items-center justify-center mx-auto">
-                          <FileText className="w-8 h-8" />
+                      <div className="w-full bg-secondary/10 p-4 lg:p-10 space-y-4 max-h-[1000px] overflow-y-auto custom-scrollbar bg-neutral-900">
+                        <div className="flex justify-between items-center mb-8 px-4">
+                           <span className="text-white font-black text-xs uppercase tracking-widest bg-primary px-3 py-1 rounded-full">Secure Reader Mode</span>
+                           <span className="text-white/40 text-[10px] font-bold">Cloudinary HD Rendering</span>
                         </div>
-                        <h3 className="text-xl font-bold">صيغة الملف غير مدعومة</h3>
-                        <p className="text-muted-foreground">هذا الملف قد يكون تالفاً أو تم رفعه بصيغة غير صحيحة.</p>
+                        {[...Array(20)].map((_, i) => (
+                          <div key={i} className="relative group">
+                            <img 
+                              src={baseUrl.replace('/image/upload/', `/image/upload/f_auto,q_auto,pg_${i + 1}/`)} 
+                              alt={`Page ${i + 1}`}
+                              className="w-full h-auto shadow-2xl rounded-sm mb-4"
+                              loading="lazy"
+                              onError={(e) => (e.currentTarget.style.display = 'none')}
+                            />
+                            <div className="absolute bottom-6 right-6 bg-black/50 text-white px-3 py-1 rounded-full text-[10px] font-black opacity-0 group-hover:opacity-100 transition-opacity">
+                              PAGE {i + 1}
+                            </div>
+                          </div>
+                        ))}
+                        <div className="py-20 text-center border-t border-white/10">
+                          <p className="text-white/40 font-bold text-sm">End of Document Preview</p>
+                        </div>
                       </div>
                     );
                   }
 
+                  // Fallback for non-Cloudinary PDFs
                   if (type === 'pdf') {
                     return (
                       <div className="w-full h-[800px] bg-secondary/10 relative group flex items-center justify-center">
-                        <div className="absolute inset-0 flex items-center justify-center -z-10">
-                          <Loader2 className="w-10 h-10 animate-spin text-primary opacity-20" />
-                        </div>
                         <iframe 
                           src={`https://docs.google.com/viewer?url=${encodeURIComponent(selectedNote.fileUrl)}&embedded=true`}
                           className="w-full h-full border-none relative z-10"
                           title={selectedNote.title}
-                          onError={() => setViewError("فشل تحميل مشغل الـ PDF. جرب فتح الملف مباشرة.")}
                         />
-                        <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity z-20">
-                           <a 
-                            href={selectedNote.fileUrl} 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className="px-4 py-2 bg-primary text-white rounded-xl font-bold shadow-lg text-sm"
-                           >
-                             View Original PDF
-                           </a>
-                        </div>
                       </div>
                     );
                   }
@@ -158,7 +164,7 @@ export default function NoteViewer() {
                           playsInline
                           preload="auto"
                           className="w-full h-full"
-                          onError={() => setViewError("فشل تشغيل الفيديو. قد يكون الرابط منتهياً أو الصيغة غير مدعومة.")}
+                          onError={() => setViewError("فشل تشغيل الفيديو.")}
                         >
                           <source src={selectedNote.fileUrl} />
                         </video>
@@ -178,6 +184,7 @@ export default function NoteViewer() {
                 })()}
               </div>
             )}
+
 
             {viewError && (
               <div className="p-6 bg-rose-500/10 border-2 border-rose-500/20 rounded-3xl text-rose-600 font-bold flex items-center gap-3">
