@@ -73,13 +73,14 @@ const FlashcardsDashboard = () => {
         let totalDue = 0;
 
         const decksWithCounts = await Promise.all(fetchedDecks.map(async (deck) => {
+          // Changed to simple query to avoid Index requirements
           const cardsQuery = query(
             cardsRef,
-            where('deckId', '==', deck.id),
-            where('nextReview', '<=', now)
+            where('deckId', '==', deck.id)
           );
           const cardsSnap = await getDocs(cardsQuery);
-          const count = cardsSnap.size;
+          // Filter in memory to avoid "Composite Index" requirement
+          const count = cardsSnap.docs.filter(doc => (doc.data().nextReview || 0) <= now).length;
           totalDue += count;
           return { ...deck, dueCount: count };
         }));

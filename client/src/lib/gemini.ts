@@ -11,7 +11,7 @@ const KEYS = [
 const API_KEY = import.meta.env.VITE_GEMINI_API_KEY || KEYS[0];
 
 const tryFetch = async (model: string, payload: any, key: string) => {
-  const url = `https://generativelanguage.googleapis.com/v1/models/${model}:generateContent?key=${key}`;
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`;
   const response = await fetch(url, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
