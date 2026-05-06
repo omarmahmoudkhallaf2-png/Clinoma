@@ -7,8 +7,11 @@ import {
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import {
   Plus, Trash2, Copy, ExternalLink, Loader2, X,
-  BookOpen, ChevronDown, ChevronUp, Check, Calendar, Clock, Lock, Unlock, Edit2, ImagePlus
+  BookOpen, ChevronDown, ChevronUp, Check, Calendar, Clock, Lock, Unlock, Edit2, ImagePlus,
+  Sparkles, Upload
 } from 'lucide-react';
+import { generateAIExam } from '../../lib/gemini';
+import toast from 'react-hot-toast';
 
 // Convert Firestore Timestamp → datetime-local string (local time, not UTC)
 const tsToInput = (ts: Timestamp | null | undefined): string => {
@@ -55,6 +58,9 @@ function ExamQuestionBuilder({ examId }: { examId: string }) {
   const [form, setForm] = useState({ text: '', optionA: '', optionB: '', optionC: '', optionD: '', correctAnswer: 'A', imageUrl: '' });
   const [saving, setSaving] = useState(false);
   const [uploadingImage, setUploadingImage] = useState(false);
+  const [aiLoading, setAiLoading] = useState(false);
+  const [aiModalOpen, setAiModalOpen] = useState(false);
+  const [aiQuestions, setAiQuestions] = useState<any[]>([]);
 
   const handleImageUpload = async (file: File) => {
     if (!file) return;
@@ -120,16 +126,84 @@ function ExamQuestionBuilder({ examId }: { examId: string }) {
   const handleAdd = async (e: React.FormEvent) => {
     e.preventDefault();
     setSaving(true);
-    const options = [form.optionA, form.optionB, form.optionC, form.optionD];
-    const correctAnswer = options[['A', 'B', 'C', 'D'].indexOf(form.correctAnswer)];
-    await addDoc(collection(db, 'questions'), {
-      text: form.text, options, correctAnswer,
-      imageUrl: form.imageUrl,
-      formalExamId: examId, accessType: 'free', createdAt: serverTimestamp()
-    });
-    setForm({ text: '', optionA: '', optionB: '', optionC: '', optionD: '', correctAnswer: 'A', imageUrl: '' });
-    setSaving(false);
-    fetchQuestions();
+    try {
+      const options = [form.optionA, form.optionB, form.optionC, form.optionD];
+      const correctAnswer = options[['A', 'B', 'C', 'D'].indexOf(form.correctAnswer)];
+      await addDoc(collection(db, 'questions'), {
+        text: form.text, options, correctAnswer,
+        imageUrl: form.imageUrl,
+        formalExamId: examId, accessType: 'free', createdAt: serverTimestamp()
+      });
+      setForm({ text: '', optionA: '', optionB: '', optionC: '', optionD: '', correctAnswer: 'A', imageUrl: '' });
+      await fetchQuestions();
+      fetchExams(); // Update the count in the main list
+      toast.success('تم إضافة السؤال!');
+    } catch (err) {
+      toast.error('فشل إضافة السؤال');
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const handleAIUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setAiLoading(true);
+    const loadingToast = toast.loading('جاري استخراج الأسئلة بالذكاء الاصطناعي...');
+
+    try {
+      const reader = new FileReader();
+      const fileData = await new Promise<{data: string, type: string}>((resolve) => {
+        reader.onload = (re) => resolve({ data: re.target?.result as string, type: file.type });
+        reader.readAsDataURL(file);
+      });
+
+      const result = await generateAIExam("Extract medical MCQs from this file", fileData);
+      
+      if (Array.isArray(result)) {
+        setAiQuestions(result);
+        setAiModalOpen(true);
+        toast.success(`تم استخراج ${result.length} سؤال بنجاح!`, { id: loadingToast });
+      }
+    } catch (err) {
+      toast.error('فشل استخراج الأسئلة. حاول مرة أخرى.', { id: loadingToast });
+    } finally {
+      setAiLoading(false);
+    }
+  };
+
+  const importAIQuestions = async () => {
+    setSaving(true);
+    const loadingToast = toast.loading('جاري إضافة الأسئلة للاختبار...');
+    try {
+      const writeBatch = (await import('firebase/firestore')).writeBatch;
+      const batch = writeBatch(db);
+      
+      aiQuestions.forEach((q) => {
+        const qRef = doc(collection(db, 'questions'));
+        batch.set(qRef, {
+          text: q.question,
+          options: q.options,
+          correctAnswer: q.options[q.correctAnswer] || q.options[0],
+          formalExamId: examId,
+          explanation: q.explanation || '',
+          accessType: 'free',
+          createdAt: serverTimestamp()
+        });
+      });
+
+      await batch.commit();
+      setAiModalOpen(false);
+      setAiQuestions([]);
+      await fetchQuestions();
+      fetchExams(); // Update the count in the main list
+      toast.success(`تمت إضافة ${aiQuestions.length} سؤال بنجاح!`, { id: loadingToast });
+    } catch (err) {
+      toast.error('فشل حفظ الأسئلة', { id: loadingToast });
+    } finally {
+      setSaving(false);
+    }
   };
 
   const letters = ['A', 'B', 'C', 'D'];
@@ -137,9 +211,24 @@ function ExamQuestionBuilder({ examId }: { examId: string }) {
 
   return (
     <div className="space-y-6 pt-4 border-t-2 border-border mt-4">
-      <h4 className="font-black text-lg flex items-center gap-2">
-        <BookOpen className="w-5 h-5 text-primary" /> أسئلة الإختبار ({questions.length})
-      </h4>
+      <div className="flex items-center justify-between">
+        <h4 className="font-black text-lg flex items-center gap-2">
+          <BookOpen className="w-5 h-5 text-primary" /> أسئلة الإختبار ({questions.length})
+        </h4>
+        
+        <div className="flex gap-2">
+          <input type="file" id={`ai-upload-${examId}`} className="hidden" accept=".pdf,image/*,.txt" onChange={handleAIUpload} />
+          <button 
+            type="button"
+            onClick={() => document.getElementById(`ai-upload-${examId}`)?.click()}
+            disabled={aiLoading}
+            className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-indigo-600 to-violet-700 text-white rounded-xl font-black text-sm shadow-lg shadow-indigo-600/20 hover:scale-105 transition-all disabled:opacity-50"
+          >
+            {aiLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Sparkles size={16} />}
+            استخراج بالذكاء
+          </button>
+        </div>
+      </div>
       {loading ? (
         <div className="flex justify-center py-6"><Loader2 className="w-6 h-6 animate-spin text-primary" /></div>
       ) : (
@@ -243,9 +332,73 @@ function ExamQuestionBuilder({ examId }: { examId: string }) {
         </div>
         <button type="submit" disabled={saving}
           className="w-full py-3 bg-primary text-white rounded-2xl font-black hover:scale-[1.01] transition-all disabled:opacity-50 flex items-center justify-center gap-2">
-          {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <><Plus className="w-4 h-4" /> إضافة السؤال</>}
+          {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <><Plus className="w-4 h-4" /> إضافة السؤال يدوياً</>}
         </button>
       </form>
+
+      {/* AI Preview Modal */}
+      {aiModalOpen && (
+        <div className="fixed inset-0 bg-background/80 backdrop-blur-md z-[100] flex items-center justify-center p-4">
+          <div className="bg-card w-full max-w-4xl max-h-[90vh] rounded-[3rem] shadow-2xl border-2 border-border overflow-hidden flex flex-col animate-in zoom-in-95">
+            <div className="p-8 border-b border-border bg-secondary/30 flex justify-between items-center">
+              <div>
+                <h3 className="text-2xl font-black flex items-center gap-2">
+                  <Sparkles className="text-primary" /> مراجعة الأسئلة المستخرجة
+                </h3>
+                <p className="text-muted-foreground font-bold text-sm">راجع الأسئلة قبل إضافتها للاختبار</p>
+              </div>
+              <button onClick={() => setAiModalOpen(false)} className="p-2 hover:bg-border rounded-xl transition-all">
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+
+            <div className="flex-1 overflow-y-auto p-8 space-y-6">
+              {aiQuestions.map((q, idx) => (
+                <div key={idx} className="p-6 bg-secondary/20 rounded-3xl border border-border space-y-4">
+                  <div className="flex items-center gap-4">
+                    <span className="w-10 h-10 bg-primary text-white rounded-xl flex items-center justify-center font-black">{idx + 1}</span>
+                    <input 
+                      type="text" 
+                      value={q.question} 
+                      onChange={(e) => {
+                        const newQs = [...aiQuestions];
+                        newQs[idx].question = e.target.value;
+                        setAiQuestions(newQs);
+                      }}
+                      className="flex-1 bg-transparent border-none font-bold text-lg focus:ring-0 text-right" dir="rtl"
+                    />
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {q.options.map((opt: string, optIdx: number) => (
+                      <div key={optIdx} className={`p-3 rounded-xl border flex items-center gap-2 ${optIdx === q.correctAnswer ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-700' : 'bg-card border-border'}`}>
+                        <span className="text-xs font-black opacity-40">{String.fromCharCode(65 + optIdx)}.</span>
+                        <input 
+                          type="text" 
+                          value={opt} 
+                          onChange={(e) => {
+                            const newQs = [...aiQuestions];
+                            newQs[idx].options[optIdx] = e.target.value;
+                            setAiQuestions(newQs);
+                          }}
+                          className="flex-1 bg-transparent border-none text-sm font-bold focus:ring-0 text-right" dir="rtl"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="p-8 border-t border-border bg-secondary/30 flex gap-4">
+              <button onClick={() => setAiModalOpen(false)} className="flex-1 py-4 bg-secondary rounded-2xl font-black hover:bg-border transition-all">إلغاء</button>
+              <button onClick={importAIQuestions} disabled={saving} className="flex-1 py-4 bg-primary text-white rounded-2xl font-black shadow-lg shadow-primary/20 hover:scale-[1.02] transition-all flex items-center justify-center gap-2">
+                {saving ? <Loader2 className="w-5 h-5 animate-spin" /> : <Plus className="w-5 h-5" />}
+                إضافة الكل للاختبار ({aiQuestions.length} سؤال)
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -268,8 +421,18 @@ export default function ExamManager() {
   const fetchExams = async () => {
     setLoading(true);
     try {
-      const snap = await getDocs(query(collection(db, 'formal_exams'), orderBy('createdAt', 'desc')));
-      setExams(snap.docs.map(d => ({ id: d.id, ...d.data() })));
+      const examsSnap = await getDocs(query(collection(db, 'formal_exams'), orderBy('createdAt', 'desc')));
+      const examsData = examsSnap.docs.map(d => ({ id: d.id, ...d.data() }));
+      
+      // Fetch counts for all exams
+      const questionsSnap = await getDocs(collection(db, 'questions'));
+      const counts: Record<string, number> = {};
+      questionsSnap.docs.forEach(doc => {
+        const eid = doc.data().formalExamId;
+        if (eid) counts[eid] = (counts[eid] || 0) + 1;
+      });
+
+      setExams(examsData.map(e => ({ ...e, questionCount: counts[e.id] || 0 })));
     } catch (err) { console.error(err); }
     finally { setLoading(false); }
   };
@@ -407,6 +570,9 @@ export default function ExamManager() {
                             <Calendar className="w-3.5 h-3.5" /> {fmt(exam.startAt)} — {fmt(exam.endAt)}
                           </span>
                         )}
+                        <span className="flex items-center gap-1 text-xs font-black text-primary bg-primary/5 px-2 py-0.5 rounded-lg border border-primary/10">
+                          <BookOpen className="w-3.5 h-3.5" /> {exam.questionCount || 0} أسئلة
+                        </span>
                       </div>
                     </div>
                     <div className="text-muted-foreground flex-shrink-0">
