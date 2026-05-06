@@ -5,7 +5,7 @@ import { db } from '../lib/firebase';
 import {
   collection, query, where, getDocs, doc, getDoc, addDoc, serverTimestamp, Timestamp
 } from 'firebase/firestore';
-import { Loader2, Clock, ChevronLeft, ChevronRight, Send, CheckCircle2, AlertTriangle, Flag, Lock, XCircle, ZoomIn, ZoomOut, X } from 'lucide-react';
+import { Loader2, Clock, ChevronLeft, ChevronRight, Send, CheckCircle2, AlertTriangle, Flag, Lock, XCircle, ZoomIn, ZoomOut, X, BookOpen, Sparkles } from 'lucide-react';
 
 export default function FormalExam() {
   const { examId } = useParams();
