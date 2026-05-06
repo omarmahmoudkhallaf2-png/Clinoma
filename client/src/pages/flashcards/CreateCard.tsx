@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { collection, addDoc, serverTimestamp, writeBatch, doc } from 'firebase/firestore';
 import { db } from '../../lib/firebase';
@@ -13,7 +13,9 @@ import {
   ChevronLeft,
   Layout,
   Type,
-  Tag as TagIcon
+  Tag as TagIcon,
+  Upload,
+  X
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { generateFlashcards } from '../../lib/gemini';
@@ -41,7 +43,24 @@ const CreateCard = () => {
   
   const [isGenerating, setIsGenerating] = useState(false);
   const [aiPrompt, setAiPrompt] = useState('');
+  const [selectedFile, setSelectedFile] = useState<{ name: string, data: string, type: string } | null>(null);
   const [saving, setSaving] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (readerEvent) => {
+        setSelectedFile({
+          name: file.name,
+          data: readerEvent.target?.result as string,
+          type: file.type
+        });
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   const addCard = () => {
     setCards([...cards, { front: '', back: '', tags: [] }]);
@@ -113,18 +132,22 @@ const CreateCard = () => {
   };
 
   const generateWithAI = async () => {
-    if (!aiPrompt) return;
+    if (!aiPrompt && !selectedFile) return;
     setIsGenerating(true);
     
     try {
-      const generatedCards = await generateFlashcards(aiPrompt);
+      const generatedCards = await generateFlashcards(
+        aiPrompt || "Generate flashcards from this file",
+        selectedFile ? { data: selectedFile.data, mimeType: selectedFile.type } : undefined
+      );
       
       // If the first card is empty placeholder, remove it
       const filteredExisting = cards.filter(c => c.front !== '' || c.back !== '');
       setCards([...filteredExisting, ...generatedCards]);
       
       setAiPrompt('');
-      toast.success(`Generated ${generatedCards.length} cards from your text!`);
+      setSelectedFile(null);
+      toast.success(`Generated ${generatedCards.length} cards from your text/file!`);
     } catch (error) {
       console.error('AI Error:', error);
       toast.error('AI failed to generate cards. Please try again.');
@@ -209,19 +232,47 @@ const CreateCard = () => {
               <Sparkles size={20} />
               <h2 className="font-bold">AI Flashcard Generator</h2>
             </div>
-            <p className="text-sm text-indigo-100">Paste your notes here and let AI generate the cards for you.</p>
+            <p className="text-sm text-indigo-100">Paste your notes or upload a file (PDF/Image) to generate cards automatically.</p>
             
-            <textarea 
-              placeholder="Paste text here..."
-              rows={4}
-              value={aiPrompt}
-              onChange={e => setAiPrompt(e.target.value)}
-              className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 placeholder:text-indigo-200 text-white focus:ring-2 focus:ring-white/30 transition-all resize-none"
-            />
+            <div className="space-y-3">
+              <textarea 
+                placeholder="Paste text here..."
+                rows={4}
+                value={aiPrompt}
+                onChange={e => setAiPrompt(e.target.value)}
+                className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 placeholder:text-indigo-200 text-white focus:ring-2 focus:ring-white/30 transition-all resize-none"
+              />
+              
+              <div className="flex items-center gap-2">
+                <input 
+                  type="file" 
+                  ref={fileInputRef}
+                  onChange={handleFileSelect}
+                  className="hidden" 
+                  accept=".pdf,image/*,.txt"
+                />
+                {!selectedFile ? (
+                  <button
+                    onClick={() => fileInputRef.current?.click()}
+                    className="w-full py-3 rounded-xl bg-white/10 border border-white/20 text-white font-medium hover:bg-white/20 transition-all flex items-center justify-center gap-2"
+                  >
+                    <Upload size={18} />
+                    Upload File Instead
+                  </button>
+                ) : (
+                  <div className="w-full py-3 px-4 rounded-xl bg-white/20 border border-white/30 text-white flex items-center justify-between">
+                    <span className="text-sm font-medium truncate pr-4">{selectedFile.name}</span>
+                    <button onClick={() => setSelectedFile(null)} className="p-1 hover:bg-white/20 rounded-md transition-colors">
+                      <X size={16} />
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
             
             <button 
               onClick={generateWithAI}
-              disabled={isGenerating || !aiPrompt}
+              disabled={isGenerating || (!aiPrompt && !selectedFile)}
               className="w-full py-3 rounded-xl bg-white text-indigo-600 font-bold hover:bg-indigo-50 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
             >
               {isGenerating ? "Generating..." : "Generate Cards"}

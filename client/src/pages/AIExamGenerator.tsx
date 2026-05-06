@@ -17,7 +17,7 @@ import { generateAIExam } from '../lib/gemini';
 import { Button } from '../components/ui/Button';
 import { Card } from '../components/ui/Card';
 import { db } from '../lib/firebase';
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc, Timestamp } from 'firebase/firestore';
 import { useAuth } from '../context/AuthContext';
 import toast from 'react-hot-toast';
 import { cn } from '../lib/utils';
@@ -84,12 +84,12 @@ export default function AIExamGenerator() {
     if (!user || questions.length === 0) return;
     setLoading(true);
     try {
-      await addDoc(collection(db, 'exams'), {
+      await addDoc(collection(db, 'formal_exams'), {
         title: examTitle,
         subject,
         creatorId: user.uid,
         questions: questions.map((q, id) => ({ ...q, id })),
-        createdAt: Date.now(),
+        createdAt: Timestamp.now(), // Use Timestamp for startAt/endAt compatibility
         type: 'ai-generated'
       });
       toast.success('Exam saved to your dashboard!');
