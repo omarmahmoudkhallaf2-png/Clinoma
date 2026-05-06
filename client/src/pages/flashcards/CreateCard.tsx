@@ -20,6 +20,7 @@ import {
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { generateFlashcards } from '../../lib/gemini';
+import { cn } from '../../lib/utils';
 
 interface CardInput {
 
@@ -29,14 +30,15 @@ interface CardInput {
 }
 
 const CreateCard = () => {
-  const { user } = useAuth();
+  const { user, userRole } = useAuth();
   const navigate = useNavigate();
   const { deckId } = useParams();
 
   const [deckInfo, setDeckInfo] = useState({
     title: '',
     description: '',
-    subject: ''
+    subject: '',
+    isPublic: false
   });
 
   const [cards, setCards] = useState<CardInput[]>([
@@ -57,7 +59,13 @@ const CreateCard = () => {
           const dRef = doc(db, 'decks', deckId);
           const dSnap = await getDoc(dRef);
           if (dSnap.exists()) {
-            setDeckInfo(dSnap.data() as any);
+            const data = dSnap.data();
+            setDeckInfo({
+              title: data.title || '',
+              description: data.description || '',
+              subject: data.subject || '',
+              isPublic: data.isPublic || false
+            });
             const cSnap = await getDocs(query(collection(db, 'flashcards'), where('deckId', '==', deckId)));
             setCards(cSnap.docs.map(d => d.data() as CardInput));
           }
@@ -136,6 +144,7 @@ const CreateCard = () => {
           title: deckInfo.title,
           description: deckInfo.description,
           subject: deckInfo.subject,
+          isPublic: deckInfo.isPublic || false,
           createdAt: Date.now(),
           cardCount: cards.length
         });
@@ -148,7 +157,7 @@ const CreateCard = () => {
         const cardRef = doc(collection(db, 'flashcards'));
         batch.set(cardRef, {
           deckId: dId,
-          userId: user.uid,
+          userId: deckInfo.isPublic ? 'PUBLIC' : user.uid,
           front: card.front,
           back: card.back,
           tags: card.tags,
@@ -289,6 +298,29 @@ const CreateCard = () => {
                   className="w-full px-4 py-3 rounded-xl bg-muted border-none focus:ring-2 focus:ring-primary/20 transition-all resize-none"
                 />
               </div>
+
+              {userRole === 'admin' && (
+                <div className="flex items-center justify-between p-4 rounded-xl bg-primary/5 border border-primary/20">
+                  <div className="space-y-0.5">
+                    <div className="text-sm font-bold text-primary flex items-center gap-2">
+                      <Sparkles size={14} /> Official Deck
+                    </div>
+                    <p className="text-[10px] text-muted-foreground">This deck will be public to all students.</p>
+                  </div>
+                  <button
+                    onClick={() => setDeckInfo({ ...deckInfo, isPublic: !deckInfo.isPublic })}
+                    className={cn(
+                      "w-12 h-6 rounded-full transition-all relative p-1",
+                      deckInfo.isPublic ? "bg-primary" : "bg-muted"
+                    )}
+                  >
+                    <div className={cn(
+                      "w-4 h-4 rounded-full bg-white transition-all shadow-sm",
+                      deckInfo.isPublic ? "translate-x-6" : "translate-x-0"
+                    )} />
+                  </button>
+                </div>
+              )}
             </div>
           </div>
 
