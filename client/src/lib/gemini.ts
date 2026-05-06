@@ -33,12 +33,15 @@ export const generateAIResponse = async (prompt: string, fileData?: { data: stri
     "AIzaSyALv9jWafoAN9AVh4psyYQUaPpPL-ig-J4"
   ];
   
-  // 2026 Stable Models
+  // 2026 Stable & Preview Models
   const models = [
-    "gemini-2.5-flash",
+    "gemini-3.1-pro-preview",
+    "gemini-3-pro-preview",
     "gemini-flash-latest",
+    "gemini-pro-latest",
+    "gemini-2.5-flash",
     "gemini-2.5-pro",
-    "gemini-3-flash-preview"
+    "gemini-2.0-flash"
   ];
 
   const allKeys = [import.meta.env.VITE_GEMINI_API_KEY, ...KEYS].filter(Boolean);
@@ -89,9 +92,13 @@ export const generateFlashcards = async (text: string, fileData?: { data: string
   ];
   
   const models = [
-    "gemini-2.5-flash",
+    "gemini-3.1-pro-preview",
+    "gemini-3-pro-preview",
     "gemini-flash-latest",
-    "gemini-2.5-pro"
+    "gemini-pro-latest",
+    "gemini-2.5-flash",
+    "gemini-2.5-pro",
+    "gemini-2.0-flash"
   ];
 
   const allKeys = [import.meta.env.VITE_GEMINI_API_KEY, ...KEYS].filter(Boolean);
@@ -134,7 +141,15 @@ export const generateAIExam = async (content: string, fileData?: { data: string,
     "AIzaSyALv9jWafoAN9AVh4psyYQUaPpPL-ig-J4"
   ];
   
-  const models = ["gemini-2.5-flash", "gemini-2.5-pro"];
+  const models = [
+    "gemini-3.1-pro-preview",
+    "gemini-3-pro-preview",
+    "gemini-flash-latest",
+    "gemini-pro-latest",
+    "gemini-2.5-flash",
+    "gemini-2.5-pro",
+    "gemini-2.0-flash"
+  ];
   const allKeys = [import.meta.env.VITE_GEMINI_API_KEY, ...KEYS].filter(Boolean);
 
   for (const key of allKeys) {
