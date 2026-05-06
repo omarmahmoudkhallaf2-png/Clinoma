@@ -52,7 +52,7 @@ const STATUS_LABEL: Record<string, string> = {
 };
 
 // ── Question Builder ──────────────────────────────────────────────────────────
-function ExamQuestionBuilder({ examId }: { examId: string }) {
+function ExamQuestionBuilder({ examId, fetchExams }: { examId: string, fetchExams: () => void }) {
   const [questions, setQuestions] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [form, setForm] = useState({ text: '', optionA: '', optionB: '', optionC: '', optionD: '', correctAnswer: 'A', imageUrl: '' });
@@ -159,7 +159,10 @@ function ExamQuestionBuilder({ examId }: { examId: string }) {
         reader.readAsDataURL(file);
       });
 
-      const result = await generateAIExam("Extract medical MCQs from this file", fileData);
+      const result = await generateAIExam("Extract medical MCQs from this file", { 
+        data: fileData.data, 
+        mimeType: fileData.type 
+      });
       
       if (Array.isArray(result)) {
         setAiQuestions(result);
@@ -602,7 +605,7 @@ export default function ExamManager() {
 
                 {expandedExam === exam.id && (
                   <div className="px-6 pb-8 animate-in slide-in-from-top-2 duration-300">
-                    <ExamQuestionBuilder examId={exam.id} />
+                    <ExamQuestionBuilder examId={exam.id} fetchExams={fetchExams} />
                   </div>
                 )}
               </div>
