@@ -39,9 +39,9 @@ const FlashcardsDashboard = () => {
         // Fetch personal decks
         const qPersonal = query(
           decksRef, 
-          where('userId', '==', user.uid),
-          orderBy('createdAt', 'desc')
+          where('userId', '==', user.uid)
         );
+
         
         // Fetch public/official decks
         const qPublic = query(
@@ -60,7 +60,9 @@ const FlashcardsDashboard = () => {
         // Merge and remove duplicates if any
         const allDecksMap = new Map();
         [...publicDecks, ...personalDecks].forEach(d => allDecksMap.set(d.id, d));
-        const fetchedDecks = Array.from(allDecksMap.values()) as Deck[];
+        const fetchedDecks = (Array.from(allDecksMap.values()) as Deck[])
+          .sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+
 
 
         // Fetch due counts for each deck
