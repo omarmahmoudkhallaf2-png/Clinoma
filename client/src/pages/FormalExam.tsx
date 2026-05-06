@@ -12,7 +12,7 @@ export default function FormalExam() {
   const navigate = useNavigate();
   const { user } = useAuth();
 
-  const [step, setStep] = useState<'name' | 'checking' | 'blocked' | 'closed' | 'upcoming' | 'quiz' | 'result'>('name');
+  const [step, setStep] = useState<'name' | 'checking' | 'blocked' | 'closed' | 'upcoming' | 'quiz' | 'result' | 'review'>('name');
   const [studentName, setStudentName] = useState('');
   const [loading, setLoading] = useState(true);
   const [isImageOpen, setIsImageOpen] = useState(false);
@@ -250,7 +250,93 @@ export default function FormalExam() {
             <div className={`text-8xl font-black ${color}`}>{finalScore} / {questions.length}</div>
             <div className={`text-2xl font-black ${color}`}>{pct}%</div>
           </div>
-          <button onClick={() => navigate('/exams')} className="w-full py-5 bg-secondary rounded-2xl font-black text-lg hover:bg-border transition-all">العودة للإختبارات</button>
+          <div className="flex flex-col gap-3">
+            <button onClick={() => setStep('review')} className="w-full py-5 bg-primary text-white rounded-2xl font-black text-lg shadow-xl shadow-primary/20 hover:scale-[1.02] transition-all flex items-center justify-center gap-2">
+              <BookOpen className="w-5 h-5" /> مراجعة إجاباتك
+            </button>
+            <button onClick={() => navigate('/exams')} className="w-full py-5 bg-secondary rounded-2xl font-black text-lg hover:bg-border transition-all">العودة للإختبارات</button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Review Mode
+  if (step === 'review') {
+    return (
+      <div className="min-h-screen bg-background flex flex-col">
+        <div className="bg-card border-b-2 border-border p-6 flex justify-between items-center sticky top-0 z-50">
+          <div className="flex items-center gap-4">
+            <button onClick={() => setStep('result')} className="p-3 bg-secondary rounded-xl hover:bg-border transition-all">
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <h2 className="text-xl font-black">مراجعة الإختبار: {examData?.title}</h2>
+          </div>
+          <span className="px-4 py-2 bg-primary/10 text-primary rounded-xl font-black text-sm">
+            {finalScore} / {questions.length}
+          </span>
+        </div>
+
+        <div className="flex-1 max-w-4xl mx-auto w-full p-6 space-y-8 pb-20">
+          {questions.map((q, i) => {
+            const studentAns = answers[i];
+            const isCorrect = studentAns === q.correctAnswer;
+            
+            return (
+              <div key={i} className={`bg-card border-2 rounded-[2.5rem] p-8 md:p-12 space-y-6 shadow-sm transition-all ${isCorrect ? 'border-emerald-500/20' : 'border-rose-500/20'}`}>
+                <div className="flex items-center justify-between gap-4">
+                  <span className={`px-4 py-2 rounded-xl font-black text-sm ${isCorrect ? 'bg-emerald-500 text-white' : 'bg-rose-500 text-white'}`}>
+                    {isCorrect ? '✓ إجابة صحيحة' : '✗ إجابة خاطئة'}
+                  </span>
+                  <span className="text-muted-foreground font-black">السؤال {i + 1}</span>
+                </div>
+
+                <h3 className="text-xl md:text-2xl font-black leading-relaxed text-right" dir="rtl">{q.text}</h3>
+
+                {q.imageUrl && (
+                  <div className="flex justify-center">
+                    <img src={q.imageUrl} alt="Question" className="max-h-64 object-contain rounded-2xl border border-border" />
+                  </div>
+                )}
+
+                <div className="grid grid-cols-1 gap-3">
+                  {(q.options as string[]).map(option => {
+                    const isSelected = studentAns === option;
+                    const isCorrectOption = q.correctAnswer === option;
+                    
+                    let style = "bg-secondary/30 border-border opacity-60";
+                    if (isCorrectOption) style = "bg-emerald-500/10 border-emerald-500 text-emerald-700 shadow-sm";
+                    if (isSelected && !isCorrectOption) style = "bg-rose-500/10 border-rose-500 text-rose-700 shadow-sm";
+
+                    return (
+                      <div key={option} className={`p-4 md:p-6 rounded-2xl border-2 text-right font-bold flex items-center justify-between transition-all ${style}`} dir="rtl">
+                        <span>{option}</span>
+                        <div className="flex items-center gap-2">
+                          {isCorrectOption && <CheckCircle2 className="w-5 h-5 text-emerald-600" />}
+                          {isSelected && !isCorrectOption && <XCircle className="w-5 h-5 text-rose-600" />}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {q.explanation && (
+                  <div className="mt-8 p-6 bg-primary/5 rounded-3xl border-2 border-primary/10 space-y-3 animate-in fade-in slide-in-from-top-4">
+                    <div className="flex items-center gap-2 text-primary font-black text-sm">
+                      <Sparkles size={16} /> شرح الإجابة:
+                    </div>
+                    <p className="text-muted-foreground font-bold leading-relaxed text-right text-sm" dir="rtl">
+                      {q.explanation}
+                    </p>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="fixed bottom-0 left-0 right-0 p-6 bg-background/80 backdrop-blur-md border-t border-border flex justify-center">
+          <button onClick={() => navigate('/exams')} className="px-10 py-4 bg-secondary rounded-2xl font-black hover:bg-border transition-all">العودة للرئيسية</button>
         </div>
       </div>
     );

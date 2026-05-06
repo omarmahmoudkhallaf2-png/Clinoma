@@ -55,8 +55,9 @@ const STATUS_LABEL: Record<string, string> = {
 function ExamQuestionBuilder({ examId, fetchExams }: { examId: string, fetchExams: () => void }) {
   const [questions, setQuestions] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
-  const [form, setForm] = useState({ text: '', optionA: '', optionB: '', optionC: '', optionD: '', correctAnswer: 'A', imageUrl: '' });
+  const [form, setForm] = useState({ text: '', optionA: '', optionB: '', optionC: '', optionD: '', correctAnswer: 'A', imageUrl: '', explanation: '' });
   const [saving, setSaving] = useState(false);
+  const [editingId, setEditingId] = useState<string | null>(null);
   const [uploadingImage, setUploadingImage] = useState(false);
   const [aiLoading, setAiLoading] = useState(false);
   const [aiModalOpen, setAiModalOpen] = useState(false);
@@ -129,20 +130,52 @@ function ExamQuestionBuilder({ examId, fetchExams }: { examId: string, fetchExam
     try {
       const options = [form.optionA, form.optionB, form.optionC, form.optionD];
       const correctAnswer = options[['A', 'B', 'C', 'D'].indexOf(form.correctAnswer)];
-      await addDoc(collection(db, 'questions'), {
+      const questionData = {
         text: form.text, options, correctAnswer,
         imageUrl: form.imageUrl,
-        formalExamId: examId, accessType: 'free', createdAt: serverTimestamp()
-      });
-      setForm({ text: '', optionA: '', optionB: '', optionC: '', optionD: '', correctAnswer: 'A', imageUrl: '' });
+        explanation: form.explanation,
+        formalExamId: examId, accessType: 'free', 
+        updatedAt: serverTimestamp()
+      };
+
+      if (editingId) {
+        await updateDoc(doc(db, 'questions', editingId), questionData);
+        toast.success('تم تحديث السؤال!');
+      } else {
+        await addDoc(collection(db, 'questions'), {
+          ...questionData,
+          createdAt: serverTimestamp()
+        });
+        toast.success('تم إضافة السؤال!');
+      }
+
+      setForm({ text: '', optionA: '', optionB: '', optionC: '', optionD: '', correctAnswer: 'A', imageUrl: '', explanation: '' });
+      setEditingId(null);
       await fetchQuestions();
-      fetchExams(); // Update the count in the main list
-      toast.success('تم إضافة السؤال!');
+      fetchExams();
     } catch (err) {
-      toast.error('فشل إضافة السؤال');
+      toast.error('فشل حفظ السؤال');
     } finally {
       setSaving(false);
     }
+  };
+
+  const handleEditClick = (q: any) => {
+    const letters = ['A', 'B', 'C', 'D'];
+    const correctIdx = q.options.indexOf(q.correctAnswer);
+    setEditingId(q.id);
+    setForm({
+      text: q.text,
+      optionA: q.options[0] || '',
+      optionB: q.options[1] || '',
+      optionC: q.options[2] || '',
+      optionD: q.options[3] || '',
+      correctAnswer: correctIdx !== -1 ? letters[correctIdx] : 'A',
+      imageUrl: q.imageUrl || '',
+      explanation: q.explanation || ''
+    });
+    // Scroll to form
+    document.getElementById(`form-${examId}`)?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const handleAIUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -243,21 +276,40 @@ function ExamQuestionBuilder({ examId, fetchExams }: { examId: string, fetchExam
                 <p className="font-bold text-sm leading-relaxed text-right line-clamp-2" dir="rtl">{q.text}</p>
                 {q.imageUrl && <img src={q.imageUrl} alt="Question" className="h-16 w-auto mt-2 rounded-lg border border-border object-cover" />}
                 <p className="text-xs text-emerald-600 font-bold mt-1">✓ {q.correctAnswer}</p>
+                {q.explanation && <p className="text-[10px] text-muted-foreground mt-1 italic" dir="rtl line-clamp-1">{q.explanation}</p>}
               </div>
-              <button onClick={async () => { await deleteDoc(doc(db, 'questions', q.id)); fetchQuestions(); }}
-                className="p-2 text-rose-500 opacity-0 group-hover:opacity-100 hover:bg-rose-500/10 rounded-xl transition-all">
-                <Trash2 className="w-4 h-4" />
-              </button>
+              <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-all">
+                <button onClick={() => handleEditClick(q)}
+                  className="p-2 text-primary hover:bg-primary/10 rounded-xl" title="تعديل">
+                  <Edit2 className="w-4 h-4" />
+                </button>
+                <button onClick={async () => { if(confirm('هل أنت متأكد من الحذف؟')) { await deleteDoc(doc(db, 'questions', q.id)); fetchQuestions(); fetchExams(); } }}
+                  className="p-2 text-rose-500 hover:bg-rose-500/10 rounded-xl" title="حذف">
+                  <Trash2 className="w-4 h-4" />
+                </button>
+              </div>
             </div>
           ))}
         </div>
       )}
 
-      <form onSubmit={handleAdd} className="space-y-4 bg-secondary/20 p-6 rounded-3xl border-2 border-dashed border-border">
-        <p className="font-black text-sm text-muted-foreground uppercase tracking-widest">إضافة سؤال جديد</p>
+      <form id={`form-${examId}`} onSubmit={handleAdd} className="space-y-4 bg-secondary/20 p-6 rounded-3xl border-2 border-dashed border-border relative">
+        {editingId && (
+          <div className="absolute top-4 left-4 flex items-center gap-2 bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-black animate-pulse">
+            <Edit2 size={12} /> جاري التعديل حالياً
+          </div>
+        )}
+        <p className="font-black text-sm text-muted-foreground uppercase tracking-widest">{editingId ? 'تحديث السؤال' : 'إضافة سؤال جديد'}</p>
         <textarea required value={form.text} onChange={e => setForm({ ...form, text: e.target.value })}
           placeholder="نص السؤال..." rows={2}
           className="w-full p-4 bg-card border-2 border-border rounded-2xl font-bold text-sm outline-none focus:border-primary text-right resize-none" dir="rtl" />
+        
+        <div className="space-y-2">
+          <label className="block text-sm font-bold text-right">شرح الإجابة (اختياري)</label>
+          <textarea value={form.explanation} onChange={e => setForm({ ...form, explanation: e.target.value })}
+            placeholder="اكتب شرحاً مبسطاً للطالب يظهر له بعد الانتهاء..." rows={2}
+            className="w-full p-4 bg-card border-2 border-border rounded-2xl font-bold text-xs outline-none focus:border-primary text-right resize-none" dir="rtl" />
+        </div>
         
         <div>
           <label className="block text-sm font-bold mb-2 text-right">صورة السؤال (اختياري)</label>
@@ -333,10 +385,18 @@ function ExamQuestionBuilder({ examId, fetchExams }: { examId: string, fetchExam
             {letters[['A', 'B', 'C', 'D'].indexOf(form.correctAnswer)]} — {form[optionKeys[['A', 'B', 'C', 'D'].indexOf(form.correctAnswer)]] || '...'}
           </span>
         </div>
-        <button type="submit" disabled={saving}
-          className="w-full py-3 bg-primary text-white rounded-2xl font-black hover:scale-[1.01] transition-all disabled:opacity-50 flex items-center justify-center gap-2">
-          {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <><Plus className="w-4 h-4" /> إضافة السؤال يدوياً</>}
-        </button>
+        <div className="flex gap-3">
+          {editingId && (
+            <button type="button" onClick={() => { setEditingId(null); setForm({ text: '', optionA: '', optionB: '', optionC: '', optionD: '', correctAnswer: 'A', imageUrl: '', explanation: '' }); }}
+              className="flex-1 py-3 bg-secondary text-foreground rounded-2xl font-black hover:bg-border transition-all">
+              إلغاء التعديل
+            </button>
+          )}
+          <button type="submit" disabled={saving}
+            className={`flex-[2] py-3 text-white rounded-2xl font-black hover:scale-[1.01] transition-all disabled:opacity-50 flex items-center justify-center gap-2 ${editingId ? 'bg-indigo-600' : 'bg-primary'}`}>
+            {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : editingId ? <><Edit2 className="w-4 h-4" /> تحديث السؤال</> : <><Plus className="w-4 h-4" /> إضافة السؤال يدوياً</>}
+          </button>
+        </div>
       </form>
 
       {/* AI Preview Modal */}
