@@ -192,10 +192,10 @@ function ExamQuestionBuilder({ examId, fetchExams }: { examId: string, fetchExam
         reader.readAsDataURL(file);
       });
 
-      const result = await generateAIExam("Extract medical MCQs from this file", { 
+      const result = await generateAIExam("Extract medical MCQs from this file", [{ 
         data: fileData.data, 
         mimeType: fileData.type 
-      });
+      }]);
       
       if (Array.isArray(result)) {
         setAiQuestions(result);

@@ -211,7 +211,6 @@ export default function AIExamGenerator() {
                   Start AI Generation
                 </button>
               )}
-            </div>
 
               <input
                 type="file"

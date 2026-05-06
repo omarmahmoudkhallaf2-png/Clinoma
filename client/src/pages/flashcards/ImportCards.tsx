@@ -152,10 +152,10 @@ const ImportCards = () => {
       reader.onload = async (readerEvent) => {
         try {
           const fileData = readerEvent.target?.result as string;
-          const result = await generateFlashcards("Generate flashcards from this medical document", { 
+          const result = await generateFlashcards("Generate flashcards from this medical document", [{ 
             data: fileData, 
             mimeType: selectedFile.type 
-          });
+          }]);
           
           if (result && Array.isArray(result)) {
             setPreviewData(result);
