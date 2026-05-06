@@ -95,58 +95,71 @@ export default function NoteViewer() {
             
             {selectedNote.fileUrl && (
               <div key={selectedNote.id + selectedNote.fileUrl} className="w-full bg-secondary/20 border-2 border-border rounded-[2.5rem] overflow-hidden shadow-inner">
-                {selectedNote.fileType === 'pdf' && (
-                  <div className="w-full h-[800px] bg-secondary/10 relative group flex items-center justify-center">
-                    <div className="absolute inset-0 flex items-center justify-center -z-10">
-                      <Loader2 className="w-10 h-10 animate-spin text-primary opacity-20" />
-                      <p className="absolute mt-16 text-xs font-bold text-muted-foreground uppercase tracking-widest">Loading Document...</p>
-                    </div>
-                    <iframe 
-                      src={`https://docs.google.com/viewer?url=${encodeURIComponent(selectedNote.fileUrl)}&embedded=true`}
-                      className="w-full h-full border-none relative z-10"
-                      title={selectedNote.title}
-                      loading="lazy"
-                    />
+                {(() => {
+                  const url = selectedNote.fileUrl.toLowerCase();
+                  const type = selectedNote.fileType || (
+                    url.includes('.pdf') || url.includes('raw/upload') ? 'pdf' :
+                    url.includes('.mp4') || url.includes('.mov') || url.includes('video/upload') ? 'video' :
+                    'image'
+                  );
 
-                    <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                       <a 
-                        href={selectedNote.fileUrl} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="px-4 py-2 bg-primary text-white rounded-xl font-bold shadow-lg text-sm"
-                       >
-                         Open PDF Directly
-                       </a>
-                    </div>
-                  </div>
-                )}
-                
-                {selectedNote.fileType === 'video' && (
-                  <div className="w-full aspect-video bg-black flex items-center justify-center">
-                    <video 
-                      controls
-                      controlsList="nodownload"
-                      playsInline
-                      preload="auto"
-                      className="w-full h-full"
-                    >
-                      <source src={selectedNote.fileUrl} />
-                      Your browser does not support the video tag.
-                    </video>
-                  </div>
-                )}
+                  if (type === 'pdf') {
+                    return (
+                      <div className="w-full h-[800px] bg-secondary/10 relative group flex items-center justify-center">
+                        <div className="absolute inset-0 flex items-center justify-center -z-10">
+                          <Loader2 className="w-10 h-10 animate-spin text-primary opacity-20" />
+                          <p className="absolute mt-16 text-xs font-bold text-muted-foreground uppercase tracking-widest">Loading Document...</p>
+                        </div>
+                        <iframe 
+                          src={`https://docs.google.com/viewer?url=${encodeURIComponent(selectedNote.fileUrl)}&embedded=true`}
+                          className="w-full h-full border-none relative z-10"
+                          title={selectedNote.title}
+                          loading="lazy"
+                        />
+                        <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                           <a 
+                            href={selectedNote.fileUrl} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="px-4 py-2 bg-primary text-white rounded-xl font-bold shadow-lg text-sm"
+                           >
+                             View Original PDF
+                           </a>
+                        </div>
+                      </div>
+                    );
+                  }
 
-                {selectedNote.fileType === 'image' && (
-                  <div className="w-full flex items-center justify-center p-4 bg-secondary/10">
-                    <img 
-                      src={selectedNote.fileUrl} 
-                      alt={selectedNote.title} 
-                      className="max-w-full h-auto rounded-xl shadow-lg"
-                    />
-                  </div>
-                )}
+                  if (type === 'video') {
+                    return (
+                      <div className="w-full aspect-video bg-black flex items-center justify-center">
+                        <video 
+                          controls
+                          controlsList="nodownload"
+                          playsInline
+                          preload="auto"
+                          className="w-full h-full"
+                        >
+                          <source src={selectedNote.fileUrl} />
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
+                    );
+                  }
+
+                  return (
+                    <div className="w-full flex items-center justify-center p-4 bg-secondary/10">
+                      <img 
+                        src={selectedNote.fileUrl} 
+                        alt={selectedNote.title} 
+                        className="max-w-full h-auto rounded-xl shadow-lg"
+                      />
+                    </div>
+                  );
+                })()}
               </div>
             )}
+
 
 
             <div className="prose prose-lg max-w-none text-foreground leading-relaxed whitespace-pre-wrap">
