@@ -207,8 +207,9 @@ const ImportCards = () => {
                 ref={fileInputRef}
                 onChange={handleFileSelect}
                 className="hidden" 
-                accept=".json,.csv"
+                accept=".json,.csv,.xlsx,.apkg,application/json,text/csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
               />
+
             </div>
           </motion.div>
         ) : (
