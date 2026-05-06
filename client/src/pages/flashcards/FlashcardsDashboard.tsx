@@ -187,7 +187,7 @@ const FlashcardsDashboard = () => {
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {decks.filter(d => d.isPublic && d.userId !== user?.uid).map((deck, idx) => (
+            {decks.filter(d => d.isPublic).map((deck, idx) => (
               <motion.div
                 key={deck.id}
                 initial={{ opacity: 0, y: 20 }}
@@ -203,51 +203,67 @@ const FlashcardsDashboard = () => {
                     <h3 className="text-xl font-bold">{deck.title}</h3>
                     <p className="text-sm text-muted-foreground line-clamp-2">{deck.description}</p>
                   </div>
-                  <button 
-                    onClick={async () => {
-                      if (!user) return;
-                      const loadingToast = toast.loading('Adding to your library...');
-                      try {
-                        const batch = writeBatch(db);
-                        // Clone deck
-                        const newDeckRef = doc(collection(db, 'decks'));
-                        batch.set(newDeckRef, {
-                          ...deck,
-                          id: newDeckRef.id,
-                          userId: user.uid,
-                          isPublic: false, // Personal copy
-                          createdAt: Date.now(),
-                          originalDeckId: deck.id
-                        });
+                    <button 
+                      onClick={async (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        
+                        const isAlreadyAdded = decks.some(d => d.originalDeckId === deck.id && d.userId === user?.uid);
+                        if (isAlreadyAdded) {
+                          toast.error('هذه المجموعة موجودة بالفعل في مكتبتك!');
+                          return;
+                        }
 
-                        // Clone cards
-                        const cardsSnap = await getDocs(query(collection(db, 'flashcards'), where('deckId', '==', deck.id)));
-                        cardsSnap.docs.forEach(cardDoc => {
-                          const newCardRef = doc(collection(db, 'flashcards'));
-                          batch.set(newCardRef, {
-                            ...cardDoc.data(),
-                            id: newCardRef.id,
-                            deckId: newDeckRef.id,
+                        const loadingToast = toast.loading('Adding to library...');
+                        try {
+                          const batch = writeBatch(db);
+                          const newDeckRef = doc(collection(db, 'decks'));
+                          batch.set(newDeckRef, {
+                            ...deck,
+                            id: newDeckRef.id,
                             userId: user.uid,
+                            isPublic: false,
                             createdAt: Date.now(),
-                            nextReview: Date.now(),
-                            interval: 0,
-                            repetitions: 0,
-                            status: 'new'
+                            originalDeckId: deck.id
                           });
-                        });
 
-                        await batch.commit();
-                        toast.success('Deck added to library!', { id: loadingToast });
-                        window.location.reload();
-                      } catch (err) {
-                        toast.error('Failed to add deck', { id: loadingToast });
-                      }
-                    }}
-                    className="w-full py-3 rounded-2xl bg-indigo-600 text-white font-black text-sm shadow-xl shadow-indigo-600/20 hover:scale-[1.02] transition-all flex items-center justify-center gap-2"
-                  >
-                    <Plus size={16} /> Add to My Library
-                  </button>
+                          const cardsSnap = await getDocs(query(collection(db, 'flashcards'), where('deckId', '==', deck.id)));
+                          cardsSnap.docs.forEach(cardDoc => {
+                            const newCardRef = doc(collection(db, 'flashcards'));
+                            batch.set(newCardRef, {
+                              ...cardDoc.data(),
+                              id: newCardRef.id,
+                              deckId: newDeckRef.id,
+                              userId: user.uid,
+                              createdAt: Date.now(),
+                              nextReview: Date.now(),
+                              interval: 0,
+                              repetitions: 0,
+                              status: 'new'
+                            });
+                          });
+
+                          await batch.commit();
+                          toast.success('Deck added to library!', { id: loadingToast });
+                          window.location.reload();
+                        } catch (err) {
+                          toast.error('Failed to add deck', { id: loadingToast });
+                        }
+                      }}
+                      disabled={decks.some(d => d.originalDeckId === deck.id && d.userId === user?.uid)}
+                      className={cn(
+                        "w-full py-3 rounded-2xl font-black text-sm transition-all flex items-center justify-center gap-2 shadow-xl",
+                        decks.some(d => d.originalDeckId === deck.id && d.userId === user?.uid)
+                          ? "bg-emerald-500/10 text-emerald-600 cursor-default"
+                          : "bg-indigo-600 text-white shadow-indigo-600/20 hover:scale-[1.02]"
+                      )}
+                    >
+                      {decks.some(d => d.originalDeckId === deck.id && d.userId === user?.uid) ? (
+                        <><CheckCircle2 size={16} /> In Your Library</>
+                      ) : (
+                        <><Plus size={16} /> Add to My Library</>
+                      )}
+                    </button>
                 </div>
               </motion.div>
             ))}
