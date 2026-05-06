@@ -96,17 +96,36 @@ export default function NoteViewer() {
             {selectedNote.fileUrl && (
               <div className="w-full bg-secondary/20 border-2 border-border rounded-[2.5rem] overflow-hidden shadow-inner">
                 {selectedNote.fileType === 'pdf' && (
-                  <iframe 
-                    src={`https://docs.google.com/viewer?url=${encodeURIComponent(selectedNote.fileUrl)}&embedded=true`}
-                    className="w-full h-[800px] border-none"
-                    title={selectedNote.title}
-                  />
+                  <div className="w-full h-[800px] bg-secondary/10 relative group">
+                    <object
+                      data={selectedNote.fileUrl}
+                      type="application/pdf"
+                      className="w-full h-full"
+                    >
+                      <iframe 
+                        src={`https://docs.google.com/viewer?url=${encodeURIComponent(selectedNote.fileUrl)}&embedded=true`}
+                        className="w-full h-full border-none"
+                        title={selectedNote.title}
+                      />
+                    </object>
+                    <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                       <a 
+                        href={selectedNote.fileUrl} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="px-4 py-2 bg-primary text-white rounded-xl font-bold shadow-lg text-sm"
+                       >
+                         Open Full Screen
+                       </a>
+                    </div>
+                  </div>
                 )}
                 {selectedNote.fileType === 'video' && (
                   <video 
                     controls
                     controlsList="nodownload"
                     playsInline
+                    preload="auto"
                     className="w-full max-h-[600px] bg-black"
                   >
                     <source src={selectedNote.fileUrl} type="video/mp4" />
@@ -127,6 +146,7 @@ export default function NoteViewer() {
             <div className="prose prose-lg max-w-none text-foreground leading-relaxed whitespace-pre-wrap">
               {selectedNote.content}
             </div>
+
 
           </div>
         ) : (
