@@ -20,8 +20,10 @@ import {
   ChevronRight,
   Sparkles,
   Edit2,
-  Trash2
+  Trash2,
+  CheckCircle2
 } from 'lucide-react';
+import { cn } from '../../lib/utils';
 
 import { Link } from 'react-router-dom';
 
@@ -207,8 +209,9 @@ const FlashcardsDashboard = () => {
                       onClick={async (e) => {
                         e.preventDefault();
                         e.stopPropagation();
+                        if (!user) return;
                         
-                        const isAlreadyAdded = decks.some(d => d.originalDeckId === deck.id && d.userId === user?.uid);
+                        const isAlreadyAdded = decks.some(d => d.originalDeckId === deck.id && d.userId === user.uid);
                         if (isAlreadyAdded) {
                           toast.error('هذه المجموعة موجودة بالفعل في مكتبتك!');
                           return;
@@ -250,15 +253,15 @@ const FlashcardsDashboard = () => {
                           toast.error('Failed to add deck', { id: loadingToast });
                         }
                       }}
-                      disabled={decks.some(d => d.originalDeckId === deck.id && d.userId === user?.uid)}
+                      disabled={!!user && decks.some(d => d.originalDeckId === deck.id && d.userId === user.uid)}
                       className={cn(
                         "w-full py-3 rounded-2xl font-black text-sm transition-all flex items-center justify-center gap-2 shadow-xl",
-                        decks.some(d => d.originalDeckId === deck.id && d.userId === user?.uid)
+                        user && decks.some(d => d.originalDeckId === deck.id && d.userId === user.uid)
                           ? "bg-emerald-500/10 text-emerald-600 cursor-default"
                           : "bg-indigo-600 text-white shadow-indigo-600/20 hover:scale-[1.02]"
                       )}
                     >
-                      {decks.some(d => d.originalDeckId === deck.id && d.userId === user?.uid) ? (
+                      {user && decks.some(d => d.originalDeckId === deck.id && d.userId === user.uid) ? (
                         <><CheckCircle2 size={16} /> In Your Library</>
                       ) : (
                         <><Plus size={16} /> Add to My Library</>

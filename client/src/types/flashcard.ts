@@ -26,6 +26,7 @@ export interface Deck {
   cardCount: number;
   isPublic?: boolean;
   dueCount?: number;
+  originalDeckId?: string;
 }
 
 
