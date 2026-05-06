@@ -234,16 +234,24 @@ const CreateCard = () => {
             </div>
             <p className="text-sm text-indigo-100">Paste your notes or upload a file (PDF/Image) to generate cards automatically.</p>
             
-            <div className="space-y-3">
-              <textarea 
-                placeholder="Paste text here..."
-                rows={4}
-                value={aiPrompt}
-                onChange={e => setAiPrompt(e.target.value)}
-                className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 placeholder:text-indigo-200 text-white focus:ring-2 focus:ring-white/30 transition-all resize-none"
-              />
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <label className="text-[10px] font-black uppercase tracking-widest text-indigo-200">Paste Notes</label>
+                <textarea 
+                  placeholder="Paste your medical notes here..."
+                  rows={4}
+                  value={aiPrompt}
+                  onChange={e => setAiPrompt(e.target.value)}
+                  className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 placeholder:text-indigo-200 text-white focus:ring-2 focus:ring-white/30 transition-all resize-none"
+                />
+              </div>
               
-              <div className="flex items-center gap-2">
+              <div className="relative">
+                <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-white/10"></div></div>
+                <div className="relative flex justify-center text-[10px] uppercase"><span className="bg-indigo-600 px-2 text-indigo-200 font-bold">OR UPLOAD FILE</span></div>
+              </div>
+
+              <div className="flex flex-col gap-3">
                 <input 
                   type="file" 
                   ref={fileInputRef}
@@ -254,15 +262,18 @@ const CreateCard = () => {
                 {!selectedFile ? (
                   <button
                     onClick={() => fileInputRef.current?.click()}
-                    className="w-full py-3 rounded-xl bg-white/10 border border-white/20 text-white font-medium hover:bg-white/20 transition-all flex items-center justify-center gap-2"
+                    className="w-full py-4 rounded-xl bg-white/10 border-2 border-dashed border-white/30 text-white font-bold hover:bg-white/20 hover:border-white/50 transition-all flex flex-col items-center justify-center gap-2"
                   >
-                    <Upload size={18} />
-                    Upload File Instead
+                    <Upload size={24} className="mb-1" />
+                    <span className="text-xs">Upload PDF, Image or Text</span>
                   </button>
                 ) : (
-                  <div className="w-full py-3 px-4 rounded-xl bg-white/20 border border-white/30 text-white flex items-center justify-between">
-                    <span className="text-sm font-medium truncate pr-4">{selectedFile.name}</span>
-                    <button onClick={() => setSelectedFile(null)} className="p-1 hover:bg-white/20 rounded-md transition-colors">
+                  <div className="w-full py-3 px-4 rounded-xl bg-emerald-500/20 border border-emerald-500/30 text-white flex items-center justify-between">
+                    <div className="flex items-center gap-2 min-w-0">
+                      <div className="p-2 bg-emerald-500 rounded-lg flex-shrink-0"><Upload size={14} /></div>
+                      <span className="text-sm font-medium truncate">{selectedFile.name}</span>
+                    </div>
+                    <button onClick={() => setSelectedFile(null)} className="p-1 hover:bg-white/20 rounded-md transition-colors flex-shrink-0">
                       <X size={16} />
                     </button>
                   </div>

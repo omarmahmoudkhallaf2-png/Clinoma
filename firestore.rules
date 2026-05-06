@@ -1,93 +1,74 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    
-    // --- 1. Helper Functions (Security Core) ---
+    // Helper function
     function isSignedIn() {
       return request.auth != null;
     }
-    
-    function getUserData() {
-      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
-    }
-    
+
     function isAdmin() {
-      return isSignedIn() && (getUserData().role == 'admin' || request.auth.token.email == 'omarmahmoudkhallaf2@gmail.com');
+      return isSignedIn() && (
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin' ||
+        request.auth.token.email == 'admin@medprep.com'
+      );
     }
 
-    function isEditor() {
-      return isSignedIn() && (getUserData().role == 'editor' || isAdmin());
-    }
-
-    function isOwner(userId) {
-      return isSignedIn() && request.auth.uid == userId;
-    }
-
-    // --- 2. User Profiles & Progress ---
+    // --- 1. Users ---
     match /users/{userId} {
       allow read: if isSignedIn();
-      allow write: if isOwner(userId) || isAdmin();
-      
-      match /{allSubcollections=**} {
-        allow read, write: if isOwner(userId) || isAdmin();
-      }
+      allow write: if isSignedIn() && request.auth.uid == userId;
     }
 
-    // --- 3. Educational Content (Courses, Subjects, Lectures) ---
+    // --- 2. Courses & Subjects ---
     match /courses/{id} {
       allow read: if isSignedIn();
-      allow write: if isEditor();
+      allow write: if isAdmin();
     }
-    
     match /subjects/{id} {
       allow read: if isSignedIn();
-      allow write: if isEditor();
+      allow write: if isAdmin();
     }
-
     match /lectures/{id} {
-      allow read: if isSignedIn();
-      allow write: if isEditor();
-    }
-
-    // --- 4. Question Bank & Exams ---
-    match /questions/{id} {
-      allow read: if isSignedIn();
-      allow write: if isEditor();
-    }
-
-    match /formal_exams/{id} {
-      allow read: if isSignedIn();
-      allow write: if isEditor();
-    }
-
-    // --- 5. Results & Attempts (Privacy Protection) ---
-    match /results/{id} {
-      allow create: if isSignedIn();
-      allow read: if isSignedIn() && (resource.data.userId == request.auth.uid || isAdmin());
-      allow update, delete: if isAdmin();
-    }
-
-    match /exam_attempts/{id} {
-      allow create: if isSignedIn();
-      allow read: if isSignedIn() && (resource.data.userId == request.auth.uid || isAdmin());
-      allow update, delete: if isAdmin();
-    }
-
-    // --- 6. Notes & Attachments ---
-    match /notes/{id} {
-      allow read: if isSignedIn();
-      allow write: if isEditor();
-    }
-
-    // --- 7. System Config & Logs ---
-    match /settings/{id} {
       allow read: if isSignedIn();
       allow write: if isAdmin();
     }
 
-    match /audit_logs/{id} {
+    // --- 3. Exams & Questions (Formal) ---
+    match /formal_exams/{id} {
+      allow read: if isSignedIn();
+      allow write: if isSignedIn(); // Allow AI generation by users
+    }
+    match /questions/{id} {
+      allow read: if isSignedIn();
+      allow write: if isSignedIn(); // Allow AI question creation
+    }
+
+    // --- 4. User Progress & Attempts ---
+    match /attempts/{id} {
+      allow read, write: if isSignedIn() && request.resource.data.userId == request.auth.uid;
+    }
+    match /stats/{id} {
+      allow read, write: if isSignedIn() && request.auth.uid == id;
+    }
+
+    // --- 5. Notes & Bookmarks ---
+    match /notes/{id} {
+      allow read, write: if isSignedIn() && request.resource.data.userId == request.auth.uid;
+    }
+    match /bookmarks/{id} {
+      allow read, write: if isSignedIn() && request.resource.data.userId == request.auth.uid;
+    }
+
+    // --- 6. Feedback & Errors ---
+    match /feedback/{id} {
       allow read: if isAdmin();
       allow create: if isSignedIn();
+    }
+
+    // --- 7. Settings & Config ---
+    match /config/{id} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin();
     }
 
     // --- 8. Flashcards & Decks ---
@@ -97,14 +78,6 @@ service cloud.firestore {
 
     match /flashcards/{id} {
       allow read, write: if isSignedIn();
-    }
-
-
-    // --- 9. Future-Proof Catch-all Rule ---
-
-    match /{allPaths=**} {
-      allow read: if isSignedIn();
-      allow write: if isAdmin();
     }
   }
 }

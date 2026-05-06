@@ -84,11 +84,16 @@ export default function AIExamGenerator() {
     if (!user || questions.length === 0) return;
     setLoading(true);
     try {
+      const now = Timestamp.now();
+      const oneYearLater = new Timestamp(now.seconds + 365 * 24 * 60 * 60, now.nanoseconds);
+      
       const examRef = await addDoc(collection(db, 'formal_exams'), {
         title: examTitle,
         subject,
         creatorId: user.uid,
-        createdAt: Timestamp.now(), // Use Timestamp for startAt/endAt compatibility
+        createdAt: now,
+        startAt: now,
+        endAt: oneYearLater,
         type: 'ai-generated',
         durationMinutes: Math.round(questions.length * 1.5),
         description: `امتحان تم توليده بالذكاء الاصطناعي يحتوي على ${questions.length} سؤال.`
