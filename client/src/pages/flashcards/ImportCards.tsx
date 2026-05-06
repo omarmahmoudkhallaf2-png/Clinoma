@@ -50,8 +50,17 @@ const ImportCards = () => {
         const fileName = selectedFile.name.toLowerCase();
 
         if (fileName.endsWith('.json')) {
-          data = JSON.parse(content);
+          const parsed = JSON.parse(content);
+          if (parsed.deck && Array.isArray(parsed.cards)) {
+            // Native Export Format
+            setDeckTitle(parsed.deck.title + " (Imported)");
+            setSubject(parsed.deck.subject);
+            data = parsed.cards;
+          } else if (Array.isArray(parsed)) {
+            data = parsed;
+          }
         } else if (fileName.endsWith('.csv') || fileName.endsWith('.txt')) {
+
           const lines = content.split(/\r?\n/);
           // Detect separator: Tab for .txt (Anki), Comma for .csv
           const sep = fileName.endsWith('.txt') ? '\t' : ',';
@@ -178,7 +187,22 @@ const ImportCards = () => {
             <div className="text-center space-y-2">
               <h1 className="text-4xl font-bold">Import Flashcards</h1>
               <p className="text-muted-foreground">Upload your existing decks from other platforms.</p>
+              <button 
+                onClick={() => {
+                  const sample = [{ front: "Question 1", back: "Answer 1", tags: ["medical", "anatomy"] }];
+                  const blob = new Blob([JSON.stringify(sample, null, 2)], { type: 'application/json' });
+                  const url = URL.createObjectURL(blob);
+                  const a = document.createElement('a');
+                  a.href = url;
+                  a.download = "sample_flashcards.json";
+                  a.click();
+                }}
+                className="text-xs font-black text-primary underline uppercase tracking-widest hover:text-primary/80 transition-all"
+              >
+                Download Sample Template
+              </button>
             </div>
+
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {[

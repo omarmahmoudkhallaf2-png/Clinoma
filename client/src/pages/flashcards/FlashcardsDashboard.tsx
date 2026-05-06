@@ -280,11 +280,35 @@ const FlashcardsDashboard = () => {
                 transition={{ delay: idx * 0.05 }}
                 className="group p-6 rounded-2xl bg-card border border-border hover:border-primary/50 hover:shadow-xl hover:shadow-primary/5 transition-all cursor-pointer relative overflow-hidden"
               >
-                <div className="absolute top-0 right-0 p-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="absolute top-0 right-0 p-2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <button 
+                    onClick={async (e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      const cardsSnap = await getDocs(query(collection(db, 'flashcards'), where('deckId', '==', deck.id)));
+                      const cards = cardsSnap.docs.map(doc => doc.data());
+                      const exportData = {
+                        deck: { ...deck, cards: undefined },
+                        cards: cards
+                      };
+                      const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+                      const url = URL.createObjectURL(blob);
+                      const a = document.createElement('a');
+                      a.href = url;
+                      a.download = `${deck.title.replace(/\s+/g, '_')}_export.json`;
+                      a.click();
+                      toast.success('Deck exported successfully!');
+                    }}
+                    className="p-1 hover:bg-primary/10 rounded-lg transition-colors text-primary"
+                    title="Export Deck"
+                  >
+                    <Download size={18} />
+                  </button>
                   <button className="p-1 hover:bg-muted rounded-lg transition-colors">
                     <MoreVertical size={18} className="text-muted-foreground" />
                   </button>
                 </div>
+
 
                 <div className="flex flex-col h-full space-y-4">
                   <div className="space-y-1">
