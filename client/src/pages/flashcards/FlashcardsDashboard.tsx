@@ -21,7 +21,8 @@ import {
   Sparkles,
   Edit2,
   Trash2,
-  CheckCircle2
+  CheckCircle2,
+  Filter
 } from 'lucide-react';
 import { cn } from '../../lib/utils';
 
@@ -33,6 +34,8 @@ const FlashcardsDashboard = () => {
   const [loading, setLoading] = useState(true);
   const [dueCount, setDueCount] = useState(0);
   const [searchQuery, setSearchQuery] = useState('');
+  const [selectedYear, setSelectedYear] = useState<string>('Third Year');
+  const [selectedModule, setSelectedModule] = useState<string>('All');
 
   useEffect(() => {
     if (!user) return;
@@ -177,34 +180,90 @@ const FlashcardsDashboard = () => {
       </div>
 
       {/* Official Decks Section */}
-      {decks.some(d => d.isPublic && d.userId !== user?.uid) && (
-        <div className="space-y-6">
-          <div className="flex items-center gap-3">
-            <div className="p-2.5 bg-blue-600/10 text-blue-600 rounded-xl">
-              <Sparkles size={22} className="animate-pulse" />
+      {decks.some(d => d.isPublic) && (
+        <div className="space-y-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div className="flex items-center gap-3">
+              <div className="p-2.5 bg-blue-600/10 text-blue-600 rounded-xl">
+                <Sparkles size={22} className="animate-pulse" />
+              </div>
+              <div>
+                <h2 className="text-2xl font-bold text-foreground">Official Medical Decks</h2>
+                <p className="text-sm text-muted-foreground">Expert-curated content for your exams.</p>
+              </div>
             </div>
-            <div>
-              <h2 className="text-2xl font-bold text-foreground">Official Medical Decks</h2>
-              <p className="text-sm text-muted-foreground">Expert-curated content for your exams.</p>
+
+            {/* Year Selection Tabs */}
+            <div className="flex bg-muted p-1 rounded-2xl overflow-x-auto no-scrollbar">
+              {['First Year', 'Second Year', 'Third Year', 'Fourth Year', 'Fifth Year', 'Sixth Year'].map(year => (
+                <button
+                  key={year}
+                  onClick={() => {
+                    setSelectedYear(year);
+                    setSelectedModule('All');
+                  }}
+                  className={cn(
+                    "px-4 py-2 rounded-xl text-xs font-black transition-all whitespace-nowrap",
+                    selectedYear === year ? "bg-white text-primary shadow-sm" : "text-muted-foreground hover:text-foreground"
+                  )}
+                >
+                  {year}
+                </button>
+              ))}
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {decks.filter(d => d.isPublic).map((deck, idx) => (
-              <motion.div
-                key={deck.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.05 }}
-                className="group p-6 rounded-3xl bg-indigo-500/[0.03] border-2 border-indigo-500/10 hover:border-indigo-500/30 transition-all cursor-pointer"
+
+          {/* Module Selection Chips */}
+          <div className="flex items-center gap-3 overflow-x-auto pb-2 no-scrollbar">
+            <div className="flex items-center gap-2 text-muted-foreground px-2">
+              <Filter size={14} />
+              <span className="text-[10px] font-black uppercase tracking-widest">Modules</span>
+            </div>
+            {['All', ...new Set(decks.filter(d => d.isPublic && d.year === selectedYear).map(d => d.module).filter(Boolean))].map(mod => (
+              <button
+                key={mod as string}
+                onClick={() => setSelectedModule(mod as string)}
+                className={cn(
+                  "px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest border-2 transition-all whitespace-nowrap",
+                  selectedModule === mod 
+                    ? "bg-indigo-600 border-indigo-600 text-white" 
+                    : "border-border text-muted-foreground hover:border-indigo-500/30"
+                )}
               >
-                <div className="flex flex-col h-full space-y-4">
-                  <div className="space-y-1">
-                    <span className="text-[10px] font-black uppercase tracking-widest text-indigo-600 bg-indigo-500/10 px-3 py-1 rounded-full">
-                      {deck.subject}
-                    </span>
-                    <h3 className="text-xl font-bold">{deck.title}</h3>
-                    <p className="text-sm text-muted-foreground line-clamp-2">{deck.description}</p>
-                  </div>
+                {mod as string}
+              </button>
+            ))}
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {decks
+              .filter(d => d.isPublic && 
+                d.year === selectedYear && 
+                (selectedModule === 'All' || d.module === selectedModule)
+              )
+              .map((deck, idx) => (
+                <motion.div
+                  key={deck.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: idx * 0.05 }}
+                  className="group p-6 rounded-3xl bg-indigo-500/[0.03] border-2 border-indigo-500/10 hover:border-indigo-500/30 transition-all cursor-pointer"
+                >
+                  <div className="flex flex-col h-full space-y-4">
+                    <div className="space-y-2">
+                      <div className="flex flex-wrap gap-2">
+                        <span className="text-[9px] font-black uppercase tracking-widest text-indigo-600 bg-indigo-500/10 px-2 py-0.5 rounded-lg border border-indigo-500/20">
+                          {deck.subject}
+                        </span>
+                        {deck.module && (
+                          <span className="text-[9px] font-black uppercase tracking-widest text-emerald-600 bg-emerald-500/10 px-2 py-0.5 rounded-lg border border-emerald-500/20">
+                            {deck.module}
+                          </span>
+                        )}
+                      </div>
+                      <h3 className="text-xl font-bold line-clamp-1">{deck.title}</h3>
+                      <p className="text-sm text-muted-foreground line-clamp-2 leading-relaxed">{deck.description}</p>
+                    </div>
                     <button 
                       onClick={async (e) => {
                         e.preventDefault();
@@ -267,9 +326,14 @@ const FlashcardsDashboard = () => {
                         <><Plus size={16} /> Add to My Library</>
                       )}
                     </button>
-                </div>
-              </motion.div>
-            ))}
+                  </div>
+                </motion.div>
+              ))}
+            {decks.filter(d => d.isPublic && d.year === selectedYear && (selectedModule === 'All' || d.module === selectedModule)).length === 0 && (
+              <div className="col-span-full py-12 text-center bg-muted/20 rounded-[2rem] border-2 border-dashed border-border">
+                <p className="text-muted-foreground font-bold">No decks available for this module yet.</p>
+              </div>
+            )}
           </div>
         </div>
       )}

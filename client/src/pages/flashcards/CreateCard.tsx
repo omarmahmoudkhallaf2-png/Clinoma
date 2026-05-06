@@ -38,7 +38,9 @@ const CreateCard = () => {
     title: '',
     description: '',
     subject: '',
-    isPublic: false
+    isPublic: false,
+    year: '',
+    module: ''
   });
 
   const [cards, setCards] = useState<CardInput[]>([
@@ -64,7 +66,9 @@ const CreateCard = () => {
               title: data.title || '',
               description: data.description || '',
               subject: data.subject || '',
-              isPublic: data.isPublic || false
+              isPublic: data.isPublic || false,
+              year: data.year || '',
+              module: data.module || ''
             });
             const cSnap = await getDocs(query(collection(db, 'flashcards'), where('deckId', '==', deckId)));
             setCards(cSnap.docs.map(d => d.data() as CardInput));
@@ -145,6 +149,8 @@ const CreateCard = () => {
           description: deckInfo.description,
           subject: deckInfo.subject,
           isPublic: deckInfo.isPublic || false,
+          year: deckInfo.year || '',
+          module: deckInfo.module || '',
           createdAt: Date.now(),
           cardCount: cards.length
         });
@@ -274,18 +280,55 @@ const CreateCard = () => {
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-medium text-muted-foreground">Subject</label>
-                <select
+                <label className="text-sm font-medium text-muted-foreground">Subject / Topic Name</label>
+                <input
+                  type="text"
+                  placeholder="e.g. Cardiology, Anatomy, etc."
                   value={deckInfo.subject}
                   onChange={e => setDeckInfo({ ...deckInfo, subject: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl bg-muted border-none focus:ring-2 focus:ring-primary/20 transition-all appearance-none"
-                >
-                  <option value="">Select Subject</option>
-                  <option value="Anatomy">Anatomy</option>
-                  <option value="Physiology">Physiology</option>
-                  <option value="Pathology">Pathology</option>
-                  <option value="Biochemistry">Biochemistry</option>
-                </select>
+                  className="w-full px-4 py-3 rounded-xl bg-muted border-none focus:ring-2 focus:ring-primary/20 transition-all"
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-muted-foreground">Year / Level</label>
+                  <select
+                    value={deckInfo.year}
+                    onChange={e => setDeckInfo({ ...deckInfo, year: e.target.value })}
+                    className="w-full px-4 py-3 rounded-xl bg-muted border-none focus:ring-2 focus:ring-primary/20 transition-all appearance-none"
+                  >
+                    <option value="">Select Year</option>
+                    <option value="First Year">First Year</option>
+                    <option value="Second Year">Second Year</option>
+                    <option value="Third Year">Third Year</option>
+                    <option value="Fourth Year">Fourth Year</option>
+                    <option value="Fifth Year">Fifth Year</option>
+                    <option value="Sixth Year">Sixth Year</option>
+                  </select>
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-muted-foreground">Module / Specialty</label>
+                  <select
+                    value={deckInfo.module}
+                    onChange={e => setDeckInfo({ ...deckInfo, module: e.target.value })}
+                    className="w-full px-4 py-3 rounded-xl bg-muted border-none focus:ring-2 focus:ring-primary/20 transition-all appearance-none"
+                  >
+                    <option value="">Select Module</option>
+                    <optgroup label="General Modules">
+                      <option value="Basic Sciences">Basic Sciences</option>
+                      <option value="Clinical Skills">Clinical Skills</option>
+                    </optgroup>
+                    <optgroup label="Specialties (Year 3+)">
+                      <option value="Pediatrics">Pediatrics</option>
+                      <option value="Ophthalmology">Ophthalmology</option>
+                      <option value="Family Medicine">Family Medicine</option>
+                      <option value="Internal Medicine">Internal Medicine</option>
+                      <option value="Surgery">Surgery</option>
+                      <option value="Obstetrics & Gynecology">Obstetrics & Gynecology</option>
+                    </optgroup>
+                  </select>
+                </div>
               </div>
 
               <div className="space-y-2">

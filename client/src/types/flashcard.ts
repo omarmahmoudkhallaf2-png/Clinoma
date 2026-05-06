@@ -27,6 +27,8 @@ export interface Deck {
   isPublic?: boolean;
   dueCount?: number;
   originalDeckId?: string;
+  year?: string;
+  module?: string;
 }
 
 
