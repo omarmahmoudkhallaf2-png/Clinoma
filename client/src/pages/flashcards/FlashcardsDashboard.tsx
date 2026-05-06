@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { collection, query, where, getDocs, orderBy } from 'firebase/firestore';
+import { collection, query, where, getDocs, orderBy, doc, writeBatch } from 'firebase/firestore';
 import { db } from '../../lib/firebase';
 import { useAuth } from '../../context/AuthContext';
 import type { Deck, Flashcard } from '../../types/flashcard';
 import { motion } from 'framer-motion';
+import toast from 'react-hot-toast';
 
 import { 
   Plus, 
@@ -15,8 +16,10 @@ import {
   BookOpen,
   ArrowRight,
   MoreVertical,
-  ChevronRight
+  ChevronRight,
+  Sparkles
 } from 'lucide-react';
+
 import { Link } from 'react-router-dom';
 
 const FlashcardsDashboard = () => {
@@ -332,5 +335,8 @@ const FlashcardsDashboard = () => {
       </div>
     </div>
   );
+};
+
 export default FlashcardsDashboard;
+
 
