@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
-import { Save, X } from 'lucide-react';
-import { db } from '../../lib/firebase';
+import { Save, X, FileUp, FileText, Video, Image as ImageIcon, Loader2 } from 'lucide-react';
+import { db, storage } from '../../lib/firebase';
 import { collection, query, getDocs } from 'firebase/firestore';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 interface NoteFormProps {
   onSave: (data: any) => Promise<void>;
@@ -11,12 +12,15 @@ interface NoteFormProps {
 export default function NoteForm({ onSave, onCancel }: NoteFormProps) {
   const [courses, setCourses] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
+  const [uploading, setUploading] = useState(false);
   const [formData, setFormData] = useState({
     title: '',
     content: '',
     category: '',
     folder: 'f1_premium',
-    lectureNumber: 1
+    lectureNumber: 1,
+    fileUrl: '',
+    fileType: '' as 'pdf' | 'video' | 'image' | ''
   });
 
   useEffect(() => {
@@ -43,12 +47,49 @@ export default function NoteForm({ onSave, onCancel }: NoteFormProps) {
     fetchCourses();
   }, []);
 
+  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setUploading(true);
+    try {
+      const fileName = `${Date.now()}_${file.name}`;
+      const storageRef = ref(storage, `notes_files/${fileName}`);
+      
+      // Determine file type
+      let fileType: 'pdf' | 'video' | 'image' = 'pdf';
+      if (file.type.startsWith('video/')) fileType = 'video';
+      else if (file.type.startsWith('image/')) fileType = 'image';
+      else if (file.type === 'application/pdf') fileType = 'pdf';
+
+      // Upload with metadata to ensure it's viewed not downloaded
+      const metadata = {
+        contentType: file.type,
+      };
+
+      await uploadBytes(storageRef, file, metadata);
+      const url = await getDownloadURL(storageRef);
+      
+      setFormData(prev => ({ 
+        ...prev, 
+        fileUrl: url, 
+        fileType: fileType 
+      }));
+    } catch (error) {
+      console.error("Upload error:", error);
+      alert("فشل رفع الملف. تأكد من حجم الملف والاتصال.");
+    } finally {
+      setUploading(false);
+    }
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => {
       const next = { ...prev, [name]: value };
       if (name === 'folder') {
-        const selectedCourse = courses.find(c => c.level?.toLowerCase() === value.replace('_premium','').replace('_free','').toLowerCase());
+        const level = value.replace('_premium','').replace('_free','').toLowerCase();
+        const selectedCourse = courses.find(c => c.level?.toLowerCase() === level);
         if (selectedCourse?.subjects) {
           next.category = selectedCourse.subjects.split(',')[0].trim();
         }
@@ -59,7 +100,7 @@ export default function NoteForm({ onSave, onCancel }: NoteFormProps) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.title || !formData.content) return;
+    if (!formData.title || (!formData.content && !formData.fileUrl)) return;
     setLoading(true);
     try {
       await onSave(formData);
@@ -67,6 +108,7 @@ export default function NoteForm({ onSave, onCancel }: NoteFormProps) {
       setLoading(false);
     }
   };
+
 
   return (
     <form onSubmit={handleSubmit} className="bg-card border-2 border-border rounded-[3rem] shadow-2xl p-10 space-y-8 animate-in zoom-in-95 duration-300">
@@ -145,14 +187,76 @@ export default function NoteForm({ onSave, onCancel }: NoteFormProps) {
           className="w-full bg-secondary/30 p-5 rounded-2xl border-2 border-border focus:border-primary outline-none font-black text-xl" 
           placeholder="عنوان النوتس (e.g., Introduction to Anatomy)" 
         />
+        
+        {/* File Upload Section */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="space-y-2">
+            <label className="text-xs font-black uppercase tracking-widest text-muted-foreground ml-1">إرفاق ملف (PDF, Video, Image)</label>
+            <div className={`relative group transition-all ${uploading ? 'opacity-50 pointer-events-none' : ''}`}>
+              <input 
+                type="file" 
+                onChange={handleFileUpload}
+                className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
+                accept=".pdf,image/*,video/*"
+              />
+              <div className="flex items-center gap-4 p-5 bg-secondary/20 border-2 border-dashed border-border rounded-2xl group-hover:border-primary transition-all">
+                <div className="p-3 bg-primary text-white rounded-xl">
+                  {uploading ? <Loader2 className="w-6 h-6 animate-spin" /> : <FileUp className="w-6 h-6" />}
+                </div>
+                <div className="text-left">
+                  <p className="font-black text-sm">اضغط لرفع ملف</p>
+                  <p className="text-[10px] font-bold text-muted-foreground uppercase">PDF or MP4 Supported</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="space-y-2">
+            <label className="text-xs font-black uppercase tracking-widest text-muted-foreground ml-1">معاينة الملف (Preview)</label>
+            {formData.fileUrl ? (
+              <div className="flex items-center justify-between p-5 bg-emerald-500/10 border-2 border-emerald-500/20 rounded-2xl">
+                <div className="flex items-center gap-4">
+                  <div className="p-3 bg-emerald-500 text-white rounded-xl">
+                    {formData.fileType === 'pdf' && <FileText className="w-6 h-6" />}
+                    {formData.fileType === 'video' && <Video className="w-6 h-6" />}
+                    {formData.fileType === 'image' && <ImageIcon className="w-6 h-6" />}
+                  </div>
+                  <div>
+                    <p className="font-black text-sm text-emerald-700 capitalize">{formData.fileType} Attached</p>
+                    <button 
+                      type="button"
+                      onClick={() => window.open(formData.fileUrl, '_blank')}
+                      className="text-[10px] font-black text-emerald-600 underline uppercase hover:text-emerald-800"
+                    >
+                      View Source
+                    </button>
+                  </div>
+                </div>
+                <button 
+                  type="button"
+                  onClick={() => setFormData(prev => ({ ...prev, fileUrl: '', fileType: '' }))}
+                  className="p-2 text-rose-500 hover:bg-rose-500/10 rounded-xl transition-all"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+            ) : (
+              <div className="p-5 bg-secondary/10 border-2 border-border border-dashed rounded-2xl text-center">
+                <p className="text-xs font-bold text-muted-foreground py-2">لا يوجد ملف مرفق</p>
+              </div>
+            )}
+          </div>
+        </div>
+
         <textarea 
           name="content"
           value={formData.content} 
           onChange={handleChange} 
-          className="w-full h-80 bg-secondary/30 p-5 rounded-2xl border-2 border-border focus:border-primary outline-none font-medium leading-relaxed" 
-          placeholder="المحتوى التعليمي (Support Markdown)..." 
+          className="w-full h-64 bg-secondary/30 p-5 rounded-2xl border-2 border-border focus:border-primary outline-none font-medium leading-relaxed" 
+          placeholder="المحتوى النصي أو الشرح الإضافي (Support Markdown)..." 
         />
       </div>
+
 
       <button 
         onClick={handleSubmit} 

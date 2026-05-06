@@ -37,8 +37,11 @@ export interface Note {
   category: string;
   folder: string;
   lectureNumber: number;
+  fileUrl?: string;
+  fileType?: 'pdf' | 'video' | 'image';
   createdAt?: any;
 }
+
 
 export interface QuizAttempt {
   questionId: string;

@@ -93,9 +93,36 @@ export default function NoteViewer() {
               <h2 className="text-4xl font-bold text-foreground">{selectedNote.title}</h2>
             </div>
             
+            {selectedNote.fileUrl && (
+              <div className="w-full bg-secondary/20 border-2 border-border rounded-[2.5rem] overflow-hidden shadow-inner">
+                {selectedNote.fileType === 'pdf' && (
+                  <iframe 
+                    src={`${selectedNote.fileUrl}#toolbar=0`} 
+                    className="w-full h-[800px] border-none"
+                    title={selectedNote.title}
+                  />
+                )}
+                {selectedNote.fileType === 'video' && (
+                  <video 
+                    src={selectedNote.fileUrl} 
+                    controls 
+                    className="w-full max-h-[600px] bg-black"
+                  />
+                )}
+                {selectedNote.fileType === 'image' && (
+                  <img 
+                    src={selectedNote.fileUrl} 
+                    alt={selectedNote.title} 
+                    className="w-full h-auto"
+                  />
+                )}
+              </div>
+            )}
+
             <div className="prose prose-lg max-w-none text-foreground leading-relaxed whitespace-pre-wrap">
               {selectedNote.content}
             </div>
+
           </div>
         ) : (
           <div className="flex flex-col items-center justify-center h-full text-muted-foreground p-12 text-center">
