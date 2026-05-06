@@ -93,7 +93,7 @@ export default function AIExamGenerator() {
         type: 'ai-generated'
       });
       toast.success('Exam saved to your dashboard!');
-      navigate('/exams');
+      navigate('/admin');
     } catch (err) {
       toast.error('Failed to save exam');
     } finally {

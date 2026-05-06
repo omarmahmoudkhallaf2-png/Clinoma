@@ -5,7 +5,7 @@ import {
   Plus, Search, Loader2, 
   BarChart3, HelpCircle, Users, Settings, 
   Database, FileText, Zap, ChevronRight, ChevronLeft, 
-  Download, Activity, Terminal, Edit2, Trash2, X, Shield, Brain, Trophy, ClipboardList
+  Download, Activity, Terminal, Edit2, Trash2, X, Shield, Brain, Trophy, ClipboardList, Sparkles
 } from 'lucide-react';
 import ExamResultsDashboard from '../ExamResultsDashboard';
 import { db } from '../../lib/firebase';
@@ -211,6 +211,9 @@ export default function AdminDashboard() {
 
         <div className="flex flex-wrap gap-4 relative">
           <AdminNotifications />
+          <button onClick={() => navigate('/admin/ai-generate')} className="flex items-center gap-3 px-8 py-5 bg-gradient-to-r from-primary to-blue-600 text-white rounded-[2.5rem] font-black shadow-xl shadow-primary/20 hover:scale-105 active:scale-95 transition-all">
+            <Sparkles className="w-6 h-6 animate-pulse" /> AI Exam Generator
+          </button>
           <button onClick={() => setIsBulkModalOpen(true)} className="flex items-center gap-3 px-8 py-5 bg-indigo-600 text-white rounded-[2.5rem] font-black shadow-xl shadow-indigo-600/20 hover:scale-105 active:scale-95 transition-all">
             <Zap className="w-6 h-6" /> Bulk Ops
           </button>

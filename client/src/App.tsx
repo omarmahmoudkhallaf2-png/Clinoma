@@ -81,7 +81,6 @@ const AnimatedRoutes = () => {
         <Route path="/exams" element={<ProtectedRoute><AvailableExams /></ProtectedRoute>} />
         <Route path="/ai-assistant" element={<ProtectedRoute><AIAssistant /></ProtectedRoute>} />
         <Route path="/exam/:examId" element={<ProtectedRoute useLayout={false}><FormalExam /></ProtectedRoute>} />
-        <Route path="/exams/ai-generate" element={<ProtectedRoute><AIExamGenerator /></ProtectedRoute>} />
         
         {/* Flashcards Routes */}
         <Route path="/flashcards" element={<ProtectedRoute><FlashcardsDashboard /></ProtectedRoute>} />
@@ -90,7 +89,7 @@ const AnimatedRoutes = () => {
         <Route path="/flashcards/import" element={<ProtectedRoute><ImportCards /></ProtectedRoute>} />
 
         <Route path="/admin/results" element={<ProtectedRoute requireAdmin><ExamResultsDashboard /></ProtectedRoute>} />
-
+        <Route path="/admin/ai-generate" element={<ProtectedRoute requireAdmin><AIExamGenerator /></ProtectedRoute>} />
         <Route path="/admin" element={<ProtectedRoute requireAdmin><AdminDashboard /></ProtectedRoute>} />
         
         <Route path="*" element={<Navigate to="/" />} />
