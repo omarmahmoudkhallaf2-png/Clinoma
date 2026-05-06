@@ -1,7 +1,7 @@
 
 const tryFetch = async (model: string, payload: any, key: string) => {
-  // Try stable v1 first, then fallback to v1beta
-  const endpoints = ['v1', 'v1beta'];
+  // Try v1beta first as it has the best support for multimodal (PDF, etc) in 2026
+  const endpoints = ['v1beta', 'v1'];
   
   for (const version of endpoints) {
     try {
@@ -14,11 +14,10 @@ const tryFetch = async (model: string, payload: any, key: string) => {
       
       if (response.ok) return response;
       
-      const errData = await response.json();
-      // If model not found (404), try next model/version
-      if (response.status === 404) continue;
+      // If error is 404 (model not found) or 400 (bad request/unsupported feature), try next version
+      if (response.status === 404 || response.status === 400) continue;
       
-      // If other error (quota, auth), return the response to handle it
+      // If other error (quota 429, auth), return it to handle it in the caller
       return response;
     } catch (err) {
       continue;
