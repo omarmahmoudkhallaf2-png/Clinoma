@@ -46,28 +46,43 @@ const ImportCards = () => {
     reader.onload = (event) => {
       const content = event.target?.result as string;
       try {
+        let data: ImportedCard[] = [];
         if (selectedFile.name.endsWith('.json')) {
-          const data = JSON.parse(content);
-          // Expecting format: [{ front: '', back: '', tags: [] }]
-          setPreviewData(data);
+          data = JSON.parse(content);
         } else if (selectedFile.name.endsWith('.csv')) {
-          const lines = content.split('\n');
-          const data = lines.filter(l => l.trim()).map(line => {
-            const [front, back, tags] = line.split(',');
+          const lines = content.split(/\r?\n/);
+          data = lines.filter(l => l.trim()).map(line => {
+            // Simple CSV regex to handle commas inside quotes
+            const parts = line.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g);
+            const front = parts?.[0]?.replace(/^"|"$/g, '') || '';
+            const back = parts?.[1]?.replace(/^"|"$/g, '') || '';
+            const tags = parts?.[2]?.replace(/^"|"$/g, '') || '';
+            
             return {
-              front: front?.trim(),
-              back: back?.trim(),
+              front: front.trim(),
+              back: back.trim(),
               tags: tags ? tags.split('|').map(t => t.trim()) : []
             };
-          });
-          setPreviewData(data);
+          }).filter(c => c.front && c.back);
         } else {
-          toast.error('Unsupported file format');
+          toast.error('صيغة الملف غير مدعومة (JSON/CSV فقط)');
           return;
         }
+
+        if (data.length > 1000) {
+          toast.error('الحد الأقصى للاستيراد هو 1000 كارت في المرة الواحدة');
+          return;
+        }
+
+        if (data.length === 0) {
+          toast.error('لم يتم العثور على أي كروت في الملف');
+          return;
+        }
+
+        setPreviewData(data);
         setStep(2);
       } catch (err) {
-        toast.error('Failed to parse file');
+        toast.error('فشل في قراءة الملف. تأكد من الصيغة الصحيحة.');
       }
     };
 
@@ -76,49 +91,59 @@ const ImportCards = () => {
 
   const handleImport = async () => {
     if (!user || !deckTitle || !subject) {
-      toast.error('Please provide deck title and subject');
+      toast.error('يرجى إدخال عنوان الكورس والمادة');
       return;
     }
 
     setImporting(true);
     try {
+      // 1. Create the Deck
       const deckRef = await addDoc(collection(db, 'decks'), {
         userId: user.uid,
         title: deckTitle,
         subject,
+        isPublic: false,
         createdAt: Date.now(),
         cardCount: previewData.length
       });
 
-      const batch = writeBatch(db);
-      previewData.forEach(card => {
-        const cardRef = doc(collection(db, 'flashcards'));
-        batch.set(cardRef, {
-          deckId: deckRef.id,
-          userId: user.uid,
-          front: card.front,
-          back: card.back,
-          tags: card.tags,
-          subject,
-          createdAt: Date.now(),
-          nextReview: Date.now(),
-          interval: 0,
-          easeFactor: 2.5,
-          repetitions: 0,
-          status: 'new'
+      // 2. Batch Import Cards (Max 500 per batch)
+      const CHUNK_SIZE = 450;
+      for (let i = 0; i < previewData.length; i += CHUNK_SIZE) {
+        const batch = writeBatch(db);
+        const chunk = previewData.slice(i, i + CHUNK_SIZE);
+        
+        chunk.forEach(card => {
+          const cardRef = doc(collection(db, 'flashcards'));
+          batch.set(cardRef, {
+            deckId: deckRef.id,
+            userId: user.uid,
+            front: card.front,
+            back: card.back,
+            tags: card.tags || [],
+            subject,
+            createdAt: Date.now(),
+            nextReview: Date.now(),
+            interval: 0,
+            easeFactor: 2.5,
+            repetitions: 0,
+            status: 'new'
+          });
         });
-      });
+        
+        await batch.commit();
+      }
 
-      await batch.commit();
-      toast.success(`Successfully imported ${previewData.length} cards!`);
+      toast.success(`تم استيراد ${previewData.length} كارت بنجاح!`);
       navigate('/flashcards');
-    } catch (err) {
+    } catch (err: any) {
       console.error('Import error:', err);
-      toast.error('Failed to import cards');
+      toast.error('فشل في عملية الاستيراد: ' + err.message);
     } finally {
       setImporting(false);
     }
   };
+
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-12">
