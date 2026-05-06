@@ -53,37 +53,47 @@ export default function NoteForm({ onSave, onCancel }: NoteFormProps) {
 
     setUploading(true);
     try {
-      const fileName = `${Date.now()}_${file.name}`;
-      const storageRef = ref(storage, `notes_files/${fileName}`);
+      // Cloudinary Upload Logic
+      const cloudName = 'dptxq4yaa';
+      const uploadPreset = 'med_prep_preset'; // User needs to create this as "Unsigned" in Cloudinary settings
       
-      // Determine file type
+      const formDataUpload = new FormData();
+      formDataUpload.append('file', file);
+      formDataUpload.append('upload_preset', uploadPreset);
+      formDataUpload.append('folder', 'notes_files');
+
+      const response = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/auto/upload`, {
+        method: 'POST',
+        body: formDataUpload
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error?.message || 'Failed to upload to Cloudinary');
+      }
+
+      const data = await response.json();
+      const url = data.secure_url;
+      
+      // Determine file type from Cloudinary response
       let fileType: 'pdf' | 'video' | 'image' = 'pdf';
-      if (file.type.startsWith('video/')) fileType = 'video';
-      else if (file.type.startsWith('image/')) fileType = 'image';
-      else if (file.type === 'application/pdf') fileType = 'pdf';
+      if (data.resource_type === 'video') fileType = 'video';
+      else if (data.resource_type === 'image') fileType = 'image';
+      else if (data.format === 'pdf' || data.original_filename?.toLowerCase().endsWith('.pdf')) fileType = 'pdf';
 
-      // Upload with metadata to ensure it's viewed not downloaded
-      const metadata = {
-        contentType: file.type,
-        contentDisposition: 'inline'
-      };
-
-
-      await uploadBytes(storageRef, file, metadata);
-      const url = await getDownloadURL(storageRef);
-      
       setFormData(prev => ({ 
         ...prev, 
         fileUrl: url, 
         fileType: fileType 
       }));
-    } catch (error) {
+    } catch (error: any) {
       console.error("Upload error:", error);
-      alert("فشل رفع الملف. تأكد من حجم الملف والاتصال.");
+      alert(`فشل رفع الملف: ${error.message}. تأكد من إعداد Upload Preset باسم med_prep_preset في Cloudinary وتفعيل خيار Unsigned.`);
     } finally {
       setUploading(false);
     }
   };
+
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
