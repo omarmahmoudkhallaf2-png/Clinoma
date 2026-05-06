@@ -32,17 +32,33 @@ const FlashcardsDashboard = () => {
     const fetchDecks = async () => {
       try {
         const decksRef = collection(db, 'decks');
-        const q = query(
+        
+        // Fetch personal decks
+        const qPersonal = query(
           decksRef, 
           where('userId', '==', user.uid),
           orderBy('createdAt', 'desc')
         );
         
-        const querySnapshot = await getDocs(q);
-        const fetchedDecks = querySnapshot.docs.map(doc => ({
-          id: doc.id,
-          ...doc.data()
-        })) as Deck[];
+        // Fetch public/official decks
+        const qPublic = query(
+          decksRef,
+          where('isPublic', '==', true)
+        );
+        
+        const [personalSnap, publicSnap] = await Promise.all([
+          getDocs(qPersonal),
+          getDocs(qPublic)
+        ]);
+
+        const personalDecks = personalSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        const publicDecks = publicSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+
+        // Merge and remove duplicates if any
+        const allDecksMap = new Map();
+        [...publicDecks, ...personalDecks].forEach(d => allDecksMap.set(d.id, d));
+        const fetchedDecks = Array.from(allDecksMap.values()) as Deck[];
+
 
         // Fetch due counts for each deck
         const cardsRef = collection(db, 'flashcards');
@@ -149,10 +165,88 @@ const FlashcardsDashboard = () => {
 
       </div>
 
-      {/* Main Content */}
+      {/* Official Decks Section */}
+      {decks.some(d => d.isPublic) && (
+        <div className="space-y-6">
+          <div className="flex items-center gap-3">
+            <div className="p-2 bg-indigo-500/10 text-indigo-600 rounded-lg">
+              <Sparkles size={20} />
+            </div>
+            <h2 className="text-2xl font-bold">Official Decks</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {decks.filter(d => d.isPublic && d.userId !== user?.uid).map((deck, idx) => (
+              <motion.div
+                key={deck.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: idx * 0.05 }}
+                className="group p-6 rounded-3xl bg-indigo-500/[0.03] border-2 border-indigo-500/10 hover:border-indigo-500/30 transition-all cursor-pointer"
+              >
+                <div className="flex flex-col h-full space-y-4">
+                  <div className="space-y-1">
+                    <span className="text-[10px] font-black uppercase tracking-widest text-indigo-600 bg-indigo-500/10 px-3 py-1 rounded-full">
+                      {deck.subject}
+                    </span>
+                    <h3 className="text-xl font-bold">{deck.title}</h3>
+                    <p className="text-sm text-muted-foreground line-clamp-2">{deck.description}</p>
+                  </div>
+                  <button 
+                    onClick={async () => {
+                      if (!user) return;
+                      const loadingToast = toast.loading('Adding to your library...');
+                      try {
+                        const batch = writeBatch(db);
+                        // Clone deck
+                        const newDeckRef = doc(collection(db, 'decks'));
+                        batch.set(newDeckRef, {
+                          ...deck,
+                          id: newDeckRef.id,
+                          userId: user.uid,
+                          isPublic: false, // Personal copy
+                          createdAt: Date.now(),
+                          originalDeckId: deck.id
+                        });
+
+                        // Clone cards
+                        const cardsSnap = await getDocs(query(collection(db, 'flashcards'), where('deckId', '==', deck.id)));
+                        cardsSnap.docs.forEach(cardDoc => {
+                          const newCardRef = doc(collection(db, 'flashcards'));
+                          batch.set(newCardRef, {
+                            ...cardDoc.data(),
+                            id: newCardRef.id,
+                            deckId: newDeckRef.id,
+                            userId: user.uid,
+                            createdAt: Date.now(),
+                            nextReview: Date.now(),
+                            interval: 0,
+                            repetitions: 0,
+                            status: 'new'
+                          });
+                        });
+
+                        await batch.commit();
+                        toast.success('Deck added to library!', { id: loadingToast });
+                        window.location.reload();
+                      } catch (err) {
+                        toast.error('Failed to add deck', { id: loadingToast });
+                      }
+                    }}
+                    className="w-full py-3 rounded-2xl bg-indigo-600 text-white font-black text-sm shadow-xl shadow-indigo-600/20 hover:scale-[1.02] transition-all flex items-center justify-center gap-2"
+                  >
+                    <Plus size={16} /> Add to My Library
+                  </button>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Main Content (Personal Decks) */}
       <div className="space-y-6">
         <div className="flex items-center justify-between">
-          <h2 className="text-2xl font-semibold">Your Decks</h2>
+          <h2 className="text-2xl font-semibold">Your Library</h2>
           <div className="relative w-64">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" size={18} />
             <input 
@@ -171,9 +265,9 @@ const FlashcardsDashboard = () => {
               <div key={i} className="h-48 rounded-2xl bg-muted animate-pulse" />
             ))}
           </div>
-        ) : filteredDecks.length > 0 ? (
+        ) : filteredDecks.filter(d => !d.isPublic || d.userId === user?.uid).length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredDecks.map((deck, idx) => (
+            {filteredDecks.filter(d => !d.isPublic || d.userId === user?.uid).map((deck, idx) => (
               <motion.div
                 key={deck.id}
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -227,8 +321,8 @@ const FlashcardsDashboard = () => {
               <Brain size={32} />
             </div>
             <div>
-              <h3 className="text-lg font-medium">No decks found</h3>
-              <p className="text-sm text-muted-foreground">Create your first deck to start learning.</p>
+              <h3 className="text-lg font-medium">No personal decks found</h3>
+              <p className="text-sm text-muted-foreground">Create your own or add an official deck above.</p>
             </div>
             <Link to="/flashcards/create" className="px-6 py-2 rounded-xl bg-primary text-primary-foreground font-medium">
               Create New Deck
@@ -238,6 +332,5 @@ const FlashcardsDashboard = () => {
       </div>
     </div>
   );
-};
-
 export default FlashcardsDashboard;
+

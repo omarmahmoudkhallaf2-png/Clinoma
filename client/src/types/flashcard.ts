@@ -24,8 +24,10 @@ export interface Deck {
   subject: string;
   createdAt: number;
   cardCount: number;
+  isPublic?: boolean;
   dueCount?: number;
 }
+
 
 export interface SRSResult {
   nextReview: number;
