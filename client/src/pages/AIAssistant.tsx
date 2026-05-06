@@ -7,6 +7,7 @@ import { Card } from '../components/ui/Card';
 import { cn } from '../lib/utils';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import toast from 'react-hot-toast';
 
 interface Message {
   role: 'user' | 'ai';

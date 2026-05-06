@@ -20,6 +20,7 @@ import { db } from '../lib/firebase';
 import { collection, addDoc } from 'firebase/firestore';
 import { useAuth } from '../context/AuthContext';
 import toast from 'react-hot-toast';
+import { cn } from '../lib/utils';
 
 interface AIQuestion {
   question: string;
