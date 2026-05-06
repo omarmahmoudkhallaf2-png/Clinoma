@@ -193,14 +193,19 @@ const ImportCards = () => {
                   const blob = new Blob([JSON.stringify(sample, null, 2)], { type: 'application/json' });
                   const url = URL.createObjectURL(blob);
                   const a = document.createElement('a');
+                  a.style.display = 'none';
                   a.href = url;
                   a.download = "sample_flashcards.json";
+                  document.body.appendChild(a);
                   a.click();
+                  window.URL.revokeObjectURL(url);
+                  document.body.removeChild(a);
                 }}
                 className="text-xs font-black text-primary underline uppercase tracking-widest hover:text-primary/80 transition-all"
               >
                 Download Sample Template
               </button>
+
             </div>
 
 
