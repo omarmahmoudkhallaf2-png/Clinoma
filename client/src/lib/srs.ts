@@ -1,4 +1,4 @@
-import { SRSResult, Flashcard } from "../types/flashcard";
+import type { SRSResult, Flashcard } from "../types/flashcard";
 
 /**
  * SuperMemo-2 (SM-2) algorithm implementation for Spaced Repetition

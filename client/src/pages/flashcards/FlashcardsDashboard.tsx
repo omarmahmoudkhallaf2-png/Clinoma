@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { collection, query, where, getDocs, orderBy } from 'firebase/firestore';
 import { db } from '../../lib/firebase';
 import { useAuth } from '../../context/AuthContext';
-import { Deck, Flashcard } from '../../types/flashcard';
+import type { Deck, Flashcard } from '../../types/flashcard';
 import { motion } from 'framer-motion';
+
 import { 
   Plus, 
   Upload, 

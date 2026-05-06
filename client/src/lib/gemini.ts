@@ -37,3 +37,28 @@ export const generateFlashcards = async (text: string) => {
     throw new Error("Failed to generate flashcards using AI.");
   }
 };
+
+export const generateAIResponse = async (prompt: string, fileData?: { data: string, mimeType: string }) => {
+  try {
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    
+    let parts: any[] = [{ text: prompt }];
+    
+    if (fileData) {
+      parts.push({
+        inlineData: {
+          data: fileData.data.split(',')[1],
+          mimeType: fileData.mimeType
+        }
+      });
+    }
+
+    const result = await model.generateContent(parts);
+    const response = await result.response;
+    return response.text();
+  } catch (error) {
+    console.error("Gemini AI Error:", error);
+    throw new Error("Failed to get AI response.");
+  }
+};
+

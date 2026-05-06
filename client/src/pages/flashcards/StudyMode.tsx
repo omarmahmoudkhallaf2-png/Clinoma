@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { collection, query, where, getDocs, doc, updateDoc, getDoc } from 'firebase/firestore';
+import { doc, updateDoc, getDoc, collection, query, where, getDocs } from 'firebase/firestore';
 import { db } from '../../lib/firebase';
 import { useAuth } from '../../context/AuthContext';
-import { Flashcard, Deck } from '../../types/flashcard';
+import type { Flashcard, Deck } from '../../types/flashcard';
 import { calculateSRS } from '../../lib/srs';
+
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   X, 
