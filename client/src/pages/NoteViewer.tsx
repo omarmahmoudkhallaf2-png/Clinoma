@@ -96,13 +96,18 @@ export default function NoteViewer() {
             {selectedNote.fileUrl && (
               <div key={selectedNote.id + selectedNote.fileUrl} className="w-full bg-secondary/20 border-2 border-border rounded-[2.5rem] overflow-hidden shadow-inner">
                 {selectedNote.fileType === 'pdf' && (
-                  <div className="w-full h-[800px] bg-secondary/10 relative group">
+                  <div className="w-full h-[800px] bg-secondary/10 relative group flex items-center justify-center">
+                    <div className="absolute inset-0 flex items-center justify-center -z-10">
+                      <Loader2 className="w-10 h-10 animate-spin text-primary opacity-20" />
+                      <p className="absolute mt-16 text-xs font-bold text-muted-foreground uppercase tracking-widest">Loading Document...</p>
+                    </div>
                     <iframe 
                       src={`https://docs.google.com/viewer?url=${encodeURIComponent(selectedNote.fileUrl)}&embedded=true`}
-                      className="w-full h-full border-none"
+                      className="w-full h-full border-none relative z-10"
                       title={selectedNote.title}
                       loading="lazy"
                     />
+
                     <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
                        <a 
                         href={selectedNote.fileUrl} 
