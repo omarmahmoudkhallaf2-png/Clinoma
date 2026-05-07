@@ -27,6 +27,8 @@ interface ImportedCard {
   front: string;
   back: string;
   tags: string[];
+  frontImage?: { url: string; masks: any[]; scale?: number };
+  backImage?: { url: string; masks: any[]; scale?: number };
 }
 
 const ImportCards = () => {
@@ -208,6 +210,8 @@ const ImportCards = () => {
             front: card.front,
             back: card.back,
             tags: card.tags || [],
+            frontImage: card.frontImage || null,
+            backImage: card.backImage || null,
             subject,
             createdAt: Date.now(),
             nextReview: Date.now(),
