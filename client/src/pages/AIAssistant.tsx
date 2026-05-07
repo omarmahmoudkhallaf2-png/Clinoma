@@ -279,14 +279,26 @@ export default function AIAssistant() {
                   <div className={cn("w-10 h-10 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg", msg.role === 'ai' ? "bg-primary text-white" : "bg-secondary text-foreground")}>
                     {msg.role === 'ai' ? <Bot size={20} /> : <User size={20} />}
                   </div>
-                  <div className={cn("max-w-[85%] p-6 rounded-[2rem] leading-relaxed font-medium shadow-sm relative", msg.role === 'ai' ? "bg-secondary/30 text-white rounded-tr-none border border-border" : "bg-primary text-white rounded-tl-none")} dir="rtl">
+                  <div className={cn("max-w-[85%] p-6 rounded-[2rem] leading-relaxed font-medium shadow-sm relative", msg.role === 'ai' ? "bg-secondary/40 rounded-tr-none border border-border" : "bg-primary text-white rounded-tl-none")} dir="rtl" style={msg.role === 'ai' ? { color: '#FFFFFF', backgroundColor: 'rgba(30, 41, 59, 0.5)' } : {}}>
                     {msg.role === 'ai' ? (
-                      <div className="prose prose-sm prose-invert max-w-none prose-p:leading-relaxed prose-headings:font-black prose-headings:text-primary prose-table:border-2 prose-table:border-border text-white">
-                        <ReactMarkdown remarkPlugins={[remarkGfm]} components={{ strong: ({...props}) => <span className="text-primary font-black px-1 rounded-sm bg-primary/5" {...props} /> }}>
+                      <div className="prose prose-sm prose-invert max-w-none prose-p:leading-relaxed prose-headings:font-black prose-table:border-2 prose-table:border-border" style={{ color: '#FFFFFF' }}>
+                        <ReactMarkdown 
+                          remarkPlugins={[remarkGfm]} 
+                          components={{ 
+                            strong: ({...props}) => <span className="text-primary font-black px-1 rounded-sm bg-primary/5" {...props} />,
+                            p: ({...props}) => <p style={{ color: '#FFFFFF', marginBottom: '1rem' }} {...props} />,
+                            h1: ({...props}) => <h1 style={{ color: '#FFFFFF', fontWeight: '900' }} {...props} />,
+                            h2: ({...props}) => <h2 style={{ color: '#FFFFFF', fontWeight: '900' }} {...props} />,
+                            h3: ({...props}) => <h3 style={{ color: '#FFFFFF', fontWeight: '900' }} {...props} />,
+                            li: ({...props}) => <li style={{ color: '#FFFFFF' }} {...props} />,
+                            td: ({...props}) => <td style={{ color: '#FFFFFF', padding: '8px', border: '1px solid #444' }} {...props} />,
+                            th: ({...props}) => <th style={{ color: '#FFFFFF', padding: '8px', border: '1px solid #444', backgroundColor: 'rgba(255,255,255,0.1)' }} {...props} />
+                          }}
+                        >
                           {msg.content}
                         </ReactMarkdown>
                       </div>
-                    ) : <div className="whitespace-pre-wrap font-bold">{msg.content}</div>}
+                    ) : <div className="whitespace-pre-wrap font-bold" style={{ color: '#FFFFFF' }}>{msg.content}</div>}
                   </div>
                 </motion.div>
               ))}
