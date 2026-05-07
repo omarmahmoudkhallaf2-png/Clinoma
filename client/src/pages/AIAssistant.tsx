@@ -280,38 +280,33 @@ export default function AIAssistant() {
                     {msg.role === 'ai' ? <Bot size={20} /> : <User size={20} />}
                   </div>
                   <div 
-                    className={cn("max-w-[85%] p-6 rounded-[2rem] leading-relaxed font-medium relative", msg.role === 'ai' ? "rounded-tr-none" : "rounded-tl-none")} 
-                    dir="rtl" 
-                    style={{ 
-                      color: '#FFFFFF', 
-                      backgroundColor: msg.role === 'ai' ? '#1e293b' : '#3b82f6',
-                      border: msg.role === 'ai' ? '2px solid #FFFFFF' : 'none',
-                      opacity: 1,
-                      visibility: 'visible',
-                      display: 'block',
-                      zIndex: 10
-                    }}
+                    className={cn(
+                      "max-w-[85%] p-6 rounded-[2rem] leading-relaxed font-medium relative border shadow-sm transition-colors duration-300",
+                      msg.role === 'ai' 
+                        ? "bg-card text-card-foreground border-border rounded-tr-none" 
+                        : "bg-primary text-primary-foreground rounded-tl-none shadow-primary/20"
+                    )} 
+                    dir="rtl"
                   >
                     {msg.role === 'ai' ? (
-                      <div className="max-w-none text-white" style={{ color: '#FFFFFF', opacity: 1 }}>
+                      <div className="prose prose-sm dark:prose-invert max-w-none">
                         <ReactMarkdown 
                           remarkPlugins={[remarkGfm]} 
                           components={{ 
-                            strong: ({...props}) => <span style={{ color: '#60a5fa', fontWeight: 'bold' }} {...props} />,
-                            p: ({...props}) => <p style={{ color: '#FFFFFF', marginBottom: '1.5rem', fontSize: '1.1rem', lineHeight: '1.8', opacity: 1 }} {...props} />,
-                            h1: ({...props}) => <h1 style={{ color: '#FFFFFF', fontWeight: '900', fontSize: '1.8rem', marginBottom: '1rem', borderBottom: '1px solid #FFFFFF', paddingBottom: '0.5rem' }} {...props} />,
-                            h2: ({...props}) => <h2 style={{ color: '#FFFFFF', fontWeight: '800', fontSize: '1.5rem', marginBottom: '0.8rem' }} {...props} />,
-                            h3: ({...props}) => <h3 style={{ color: '#FFFFFF', fontWeight: '700', fontSize: '1.3rem', marginBottom: '0.6rem' }} {...props} />,
-                            li: ({...props}) => <li style={{ color: '#FFFFFF', marginBottom: '0.5rem', listStyleType: 'disc', marginRight: '1.5rem' }} {...props} />,
-                            table: ({...props}) => <div className="overflow-x-auto my-4"><table style={{ borderCollapse: 'collapse', width: '100%', border: '2px solid #FFFFFF' }} {...props} /></div>,
-                            td: ({...props}) => <td style={{ color: '#FFFFFF', padding: '12px', border: '1px solid #FFFFFF', textAlign: 'right' }} {...props} />,
-                            th: ({...props}) => <th style={{ color: '#FFFFFF', padding: '12px', border: '2px solid #FFFFFF', backgroundColor: '#334155', fontWeight: 'bold', textAlign: 'right' }} {...props} />
+                            strong: ({...props}) => <span className="text-primary font-bold px-1" {...props} />,
+                            p: ({...props}) => <p className="leading-relaxed mb-4" {...props} />,
+                            h1: ({...props}) => <h1 className="font-black text-2xl mb-4 border-b pb-2 text-primary" {...props} />,
+                            h2: ({...props}) => <h2 className="font-black text-xl mb-3 text-primary" {...props} />,
+                            h3: ({...props}) => <h3 className="font-bold text-lg mb-2 text-primary" {...props} />,
+                            table: ({...props}) => <div className="overflow-x-auto my-4 border rounded-xl"><table className="w-full border-collapse" {...props} /></div>,
+                            td: ({...props}) => <td className="p-3 border text-right" {...props} />,
+                            th: ({...props}) => <th className="p-3 border bg-muted font-bold text-right" {...props} />
                           }}
                         >
                           {msg.content}
                         </ReactMarkdown>
                       </div>
-                    ) : <div className="whitespace-pre-wrap font-bold" style={{ color: '#FFFFFF', opacity: 1 }}>{msg.content}</div>}
+                    ) : <div className="whitespace-pre-wrap font-bold">{msg.content}</div>}
                   </div>
                 </motion.div>
               ))}
