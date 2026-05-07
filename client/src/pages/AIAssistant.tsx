@@ -129,12 +129,14 @@ export default function AIAssistant() {
   };
 
   const handleSendRequest = () => {
+    console.log("handleSendRequest called. Input:", input, "Topic:", selectedTopic);
     if (!input.trim() && !selectedTopic) return;
     setPendingMessage(input.trim() || `اشرح لي موضوع: ${selectedTopic}`);
     setConfigOpen(true);
   };
 
   const executeSend = async () => {
+    console.log("executeSend starting. PendingMessage:", pendingMessage);
     if (!pendingMessage) return;
     const msg = pendingMessage;
     
