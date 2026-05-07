@@ -307,14 +307,14 @@ const StudyMode = () => {
         />
       </div>
 
-      {/* Main Study Area */}
-      <main className="flex-1 flex flex-col relative overflow-hidden bg-background/50">
+      {/* Main Study Area - Using Grid to enforce heights */}
+      <main className="flex-1 grid grid-rows-[1fr_auto] overflow-hidden bg-background/50 relative">
         {/* Background Decorations */}
-        <div className="absolute top-1/4 -left-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 -right-20 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 -left-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-1/4 -right-20 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl pointer-events-none" />
 
-        {/* Content Container - Takes all space except footer */}
-        <div className="flex-1 w-full max-w-[98vw] lg:max-w-[96vw] mx-auto p-2 md:p-4 flex flex-col items-center justify-center overflow-hidden">
+        {/* 1. Workspace Area (Scrollable/Flexible) */}
+        <div className="relative w-full h-full flex items-center justify-center p-2 md:p-6 overflow-hidden">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentIndex}
@@ -322,7 +322,7 @@ const StudyMode = () => {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="w-full h-full max-h-[75vh] md:max-h-[80vh] relative"
+              className="w-full h-full max-w-[98vw] lg:max-w-[96vw] mx-auto"
             >
               <motion.div
                 animate={{ rotateY: isFlipped ? 180 : 0 }}
@@ -330,10 +330,10 @@ const StudyMode = () => {
                 className="w-full h-full relative preserve-3d cursor-pointer"
                 onClick={() => setIsFlipped(!isFlipped)}
               >
-                {/* Front */}
+                {/* Front Side */}
                 <div className="absolute inset-0 backface-hidden bg-card border-2 border-border p-4 md:p-8 rounded-[2rem] md:rounded-[3rem] shadow-2xl flex flex-col items-center justify-start text-center overflow-hidden">
                   <div className="absolute top-4 left-1/2 -translate-x-1/2 flex items-center gap-2 z-20">
-                    <div className="px-4 py-1.5 rounded-full bg-muted/80 backdrop-blur-sm text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground shadow-sm border border-border/50">
+                    <div className="px-4 py-1.5 rounded-full bg-muted/90 backdrop-blur-sm text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground shadow-sm border border-border/50">
                       Question
                     </div>
                     {currentCard.frontImage && (
@@ -380,7 +380,7 @@ const StudyMode = () => {
                   </div>
                 </div>
 
-                {/* Back */}
+                {/* Back Side */}
                 <div className="absolute inset-0 backface-hidden bg-card border-4 border-primary/20 p-4 md:p-8 rounded-[2rem] md:rounded-[3rem] shadow-2xl flex flex-col items-center justify-start text-center rotate-y-180 overflow-hidden">
                   <div className="absolute top-4 left-1/2 -translate-x-1/2 flex items-center gap-2 z-20">
                     <div className="px-4 py-1.5 rounded-full bg-primary/10 text-[10px] font-black uppercase tracking-[0.2em] text-primary shadow-sm border border-primary/20">
@@ -450,8 +450,8 @@ const StudyMode = () => {
           </AnimatePresence>
         </div>
 
-        {/* Fixed Controls Footer */}
-        <div className="w-full bg-background/95 backdrop-blur-xl border-t border-border p-4 md:p-6 shadow-[0_-10px_40px_rgba(0,0,0,0.3)] z-30">
+        {/* 2. Fixed Controls Area */}
+        <footer className="w-full bg-background/95 backdrop-blur-2xl border-t border-border p-4 md:p-6 shadow-[0_-15px_50px_rgba(0,0,0,0.4)] z-30">
           <div className="max-w-4xl mx-auto">
             <AnimatePresence mode="wait">
               {!isFlipped ? (
@@ -461,9 +461,9 @@ const StudyMode = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   onClick={() => setIsFlipped(true)}
-                  className="w-full py-5 rounded-[2rem] bg-primary text-primary-foreground font-black text-xl shadow-2xl shadow-primary/40 flex items-center justify-center gap-3 group hover:scale-[1.02] active:scale-95 transition-all"
+                  className="w-full py-5 rounded-[2.5rem] bg-primary text-primary-foreground font-black text-2xl shadow-2xl shadow-primary/40 flex items-center justify-center gap-3 group active:scale-95 transition-all"
                 >
-                  <Zap size={24} className="fill-current group-hover:animate-pulse" />
+                  <Zap size={28} className="fill-current group-hover:animate-pulse" />
                   Show Answer
                 </motion.button>
               ) : (
@@ -483,20 +483,20 @@ const StudyMode = () => {
                       key={btn.l}
                       onClick={() => handleRate(btn.r as 0|1|2|3)}
                       className={cn(
-                        "flex flex-col items-center justify-center py-4 md:py-5 rounded-2xl md:rounded-[1.5rem] border transition-all group",
+                        "flex flex-col items-center justify-center py-4 md:py-6 rounded-2xl md:rounded-[2rem] border transition-all group",
                         btn.c,
-                        "hover:text-white hover:shadow-lg hover:-translate-y-1"
+                        "hover:text-white hover:shadow-xl hover:-translate-y-1"
                       )}
                     >
-                      <span className="text-xs md:text-lg font-black">{btn.l}</span>
-                      <span className="text-[9px] md:text-[10px] font-bold opacity-60 group-hover:opacity-100">{btn.t}</span>
+                      <span className="text-xs md:text-xl font-black">{btn.l}</span>
+                      <span className="text-[9px] md:text-xs font-bold opacity-60 group-hover:opacity-100">{btn.t}</span>
                     </button>
                   ))}
                 </motion.div>
               )}
             </AnimatePresence>
           </div>
-        </div>
+        </footer>
       </main>
     </div>
   );
