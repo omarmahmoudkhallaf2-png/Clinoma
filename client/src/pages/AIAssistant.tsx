@@ -168,6 +168,7 @@ export default function AIAssistant() {
         selectedFile ? { data: selectedFile.data, mimeType: selectedFile.type } : undefined, 
         config
       );
+      console.log("AI Response successfully received. Content preview:", response.substring(0, 100));
       const aiMsg: Message = { role: 'ai', content: response, timestamp: new Date() };
       const updatedMessages = [...newMessages, aiMsg];
       setMessages(updatedMessages);
