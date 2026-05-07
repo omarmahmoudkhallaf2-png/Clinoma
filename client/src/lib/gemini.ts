@@ -122,20 +122,21 @@ export const generateAIResponse = async (
 4. اجعل الإجابة منظمة جداً.
 5. إذا ذكرت كلمات مفتاحية، ضعها في خط عريض **Keyword**.`;
 
-  // TRY GROQ FIRST (AS REQUESTED)
-  const groqModels = [
-    "llama-3.3-70b-versatile",
-    "meta-llama/llama-4-scout-17b-16e-instruct",
-    "llama-3.1-8b-instant",
-    "allam-2-7b"
-  ];
-  for (const model of groqModels) {
-    const res = await tryGroqFetch(model, [
-      { role: "system", content: systemPrompt },
-      { role: "user", content: prompt }
-    ]);
-    if (res) return res;
+  for (const key of allKeys) {
+    for (const model of groqModels) {
+      console.log(`Trying Groq Model: ${model} with key starting with ${key.substring(0, 8)}...`);
+      const res = await tryGroqFetch(model, [
+        { role: "system", content: systemPrompt },
+        { role: "user", content: prompt }
+      ]);
+      if (res) {
+        console.log(`Success with Groq Model: ${model}`);
+        return res;
+      }
+    }
   }
+
+  console.warn("Groq failed, falling back to Gemini...");
 
   // FALLBACK TO GEMINI IF GROQ FAILS
   const geminiKeys = [
@@ -147,15 +148,18 @@ export const generateAIResponse = async (
   ].sort(() => Math.random() - 0.5);
 
   for (const key of geminiKeys) {
+    console.log(`Trying Gemini fallback with key starting with ${key.substring(0, 8)}...`);
     const res = await tryGeminiFetch("gemini-2.5-flash", {
       contents: [{ role: 'user', parts: [{ text: `${systemPrompt}\n\n${prompt}` }] }]
     }, key);
     if (res && res.ok) {
+      console.log("Success with Gemini fallback.");
       const data = await (res as Response).json();
       return data.candidates?.[0]?.content?.parts?.[0]?.text || "";
     }
   }
 
+  console.error("All AI engines failed.");
   throw new Error("عذراً، جميع المحركات حالياً تحت ضغط كبير. يرجى المحاولة بعد قليل.");
 };
 
