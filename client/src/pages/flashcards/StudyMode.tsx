@@ -344,13 +344,16 @@ const StudyMode = () => {
                     )}
                   </div>
                   
-                  <div className="w-full h-full flex flex-col gap-6 items-center justify-center overflow-hidden pt-10">
+                  <div className="w-full h-full flex flex-col gap-6 items-center justify-start overflow-y-auto pt-16 px-4">
                     {currentCard.frontImage && (
                       <div 
-                        className="relative inline-block mx-auto max-h-[60%] rounded-2xl border border-border bg-muted/50 transition-transform duration-200"
-                        style={{ transform: `scale(${zoom * (currentCard.frontImage.scale || 1)})` }}
+                        className="relative shrink-0 mx-auto rounded-2xl border border-border bg-muted/50 transition-all duration-200 shadow-lg"
+                        style={{ 
+                          width: `${Math.min(100, zoom * (currentCard.frontImage.scale || 1) * 60)}%`,
+                          minWidth: '200px'
+                        }}
                       >
-                        <img src={currentCard.frontImage.url} alt="Front" className="max-h-full w-auto object-contain" />
+                        <img src={currentCard.frontImage.url} alt="Front" className="w-full h-auto object-contain rounded-2xl" />
                         <svg viewBox="0 0 1000 1000" preserveAspectRatio="none" className="absolute inset-0 w-full h-full pointer-events-none">
                           {currentCard.frontImage.masks.map(mask => (
                             <g key={mask.id}>
@@ -365,7 +368,7 @@ const StudyMode = () => {
                       </div>
                     )}
                     <div 
-                      className="prose prose-xl md:prose-2xl font-bold dark:prose-invert max-w-none text-center flex-1 overflow-y-auto w-full px-4"
+                      className="prose prose-xl md:prose-2xl font-bold dark:prose-invert max-w-none text-center pb-12 w-full"
                       dangerouslySetInnerHTML={{ __html: currentCard.front }}
                     />
                   </div>
@@ -391,13 +394,16 @@ const StudyMode = () => {
                     )}
                   </div>
                   
-                  <div className="w-full h-full flex flex-col gap-6 items-center justify-center overflow-hidden pt-10">
+                  <div className="w-full h-full flex flex-col gap-6 items-center justify-start overflow-y-auto pt-16 px-4">
                     {currentCard.backImage ? (
                       <div 
-                        className="relative inline-block mx-auto max-h-[60%] rounded-2xl border border-border bg-muted/50 transition-transform duration-200"
-                        style={{ transform: `scale(${zoom * (currentCard.backImage.scale || 1)})` }}
+                        className="relative shrink-0 mx-auto rounded-2xl border border-border bg-muted/50 transition-all duration-200 shadow-lg"
+                        style={{ 
+                          width: `${Math.min(100, zoom * (currentCard.backImage.scale || 1) * 60)}%`,
+                          minWidth: '200px'
+                        }}
                       >
-                        <img src={currentCard.backImage.url} alt="Back" className="max-h-full w-auto object-contain" />
+                        <img src={currentCard.backImage.url} alt="Back" className="w-full h-auto object-contain rounded-2xl" />
                         <svg viewBox="0 0 1000 1000" preserveAspectRatio="none" className="absolute inset-0 w-full h-full pointer-events-none">
                           {currentCard.backImage.masks.map(mask => (
                             <g key={mask.id}>
@@ -412,10 +418,13 @@ const StudyMode = () => {
                       </div>
                     ) : currentCard.frontImage && (
                        <div 
-                        className="relative inline-block mx-auto max-h-[50%] opacity-80 transition-transform duration-200"
-                        style={{ transform: `scale(${zoom * (currentCard.frontImage.scale || 1)})` }}
+                        className="relative shrink-0 mx-auto opacity-80 transition-all duration-200"
+                        style={{ 
+                          width: `${Math.min(100, zoom * (currentCard.frontImage.scale || 1) * 50)}%`,
+                          minWidth: '150px'
+                        }}
                        >
-                        <img src={currentCard.frontImage.url} alt="Front Revealed" className="max-h-full w-auto object-contain rounded-2xl" />
+                        <img src={currentCard.frontImage.url} alt="Front Revealed" className="w-full h-auto object-contain rounded-2xl" />
                         <svg viewBox="0 0 1000 1000" preserveAspectRatio="none" className="absolute inset-0 w-full h-full pointer-events-none">
                           {currentCard.frontImage.masks.map(mask => (
                             <g key={mask.id}>
@@ -430,7 +439,7 @@ const StudyMode = () => {
                       </div>
                     )}
                     <div 
-                      className="prose prose-xl md:prose-2xl font-bold dark:prose-invert max-w-none text-center flex-1 overflow-y-auto w-full px-4"
+                      className="prose prose-xl md:prose-2xl font-bold dark:prose-invert max-w-none text-center pb-12 w-full"
                       dangerouslySetInnerHTML={{ __html: currentCard.back }}
                     />
                   </div>
