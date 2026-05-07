@@ -105,7 +105,7 @@ export default function AIAssistant() {
         setLoading(true);
         try {
           const topicsRaw = await extractTopics({ data: fileData.data, mimeType: fileData.type });
-          const topics = topicsRaw.split('\n').filter(t => t.trim().length > 0);
+          const topics = topicsRaw.split('\n').filter((t: string) => t.trim().length > 0);
           setExtractedTopics(topics);
           setWorkflowStep('topics');
         } catch (error) {
@@ -129,7 +129,11 @@ export default function AIAssistant() {
     setMessages(newMessages);
 
     try {
-      const response = await generateAIResponse(prompt, selectedFile || undefined, config);
+      const response = await generateAIResponse(
+        prompt, 
+        selectedFile ? { data: selectedFile.data, mimeType: selectedFile.type } : undefined, 
+        config
+      );
       const aiMsg: Message = { role: 'ai', content: response, timestamp: new Date() };
       const updatedMessages = [...newMessages, aiMsg];
       setMessages(updatedMessages);
