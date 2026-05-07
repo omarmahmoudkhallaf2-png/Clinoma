@@ -265,8 +265,14 @@ const StudyMode = () => {
     );
   }
 
+  const [zoom, setZoom] = useState(1);
+
   const currentCard = cards[currentIndex];
   const progress = ((currentIndex + 1) / cards.length) * 100;
+
+  useEffect(() => {
+    setZoom(1); // Reset zoom when card changes
+  }, [currentIndex]);
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
@@ -326,15 +332,24 @@ const StudyMode = () => {
               >
                 {/* Front */}
                 <div className="absolute inset-0 backface-hidden bg-card border-2 border-border p-8 md:p-12 rounded-[3rem] shadow-2xl flex flex-col items-center justify-center text-center overflow-hidden">
-                  <div className="absolute top-6 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-muted text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground z-10">
-                    Question
+                  <div className="absolute top-6 left-1/2 -translate-x-1/2 flex items-center gap-2 z-20">
+                    <div className="px-4 py-1.5 rounded-full bg-muted text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground">
+                      Question
+                    </div>
+                    {currentCard.frontImage && (
+                      <div className="flex items-center gap-1 bg-background/80 backdrop-blur-sm px-2 py-1 rounded-full border border-border shadow-sm" onClick={e => e.stopPropagation()}>
+                        <button onClick={() => setZoom(z => Math.max(0.5, z - 0.1))} className="p-1 hover:bg-muted rounded-full transition-colors text-muted-foreground"><RotateCcw size={14} className="-scale-x-100" /></button>
+                        <span className="text-[10px] font-black w-10 text-center">{Math.round(zoom * (currentCard.frontImage.scale || 1) * 100)}%</span>
+                        <button onClick={() => setZoom(z => Math.min(3, z + 0.1))} className="p-1 hover:bg-muted rounded-full transition-colors text-muted-foreground"><Zap size={14} /></button>
+                      </div>
+                    )}
                   </div>
                   
                   <div className="w-full h-full flex flex-col gap-6 items-center justify-center overflow-hidden pt-10">
                     {currentCard.frontImage && (
                       <div 
-                        className="relative inline-block mx-auto max-h-[60%] rounded-2xl border border-border overflow-hidden bg-muted/50"
-                        style={{ transform: `scale(${currentCard.frontImage.scale || 1})` }}
+                        className="relative inline-block mx-auto max-h-[60%] rounded-2xl border border-border bg-muted/50 transition-transform duration-200"
+                        style={{ transform: `scale(${zoom * (currentCard.frontImage.scale || 1)})` }}
                       >
                         <img src={currentCard.frontImage.url} alt="Front" className="max-h-full w-auto object-contain" />
                         <svg viewBox="0 0 1000 1000" preserveAspectRatio="none" className="absolute inset-0 w-full h-full pointer-events-none">
@@ -364,15 +379,24 @@ const StudyMode = () => {
 
                 {/* Back */}
                 <div className="absolute inset-0 backface-hidden bg-card border-4 border-primary/20 p-8 md:p-12 rounded-[3rem] shadow-2xl flex flex-col items-center justify-center text-center rotate-y-180 overflow-hidden">
-                  <div className="absolute top-6 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-primary/10 text-[10px] font-black uppercase tracking-[0.2em] text-primary z-10">
-                    Answer
+                  <div className="absolute top-6 left-1/2 -translate-x-1/2 flex items-center gap-2 z-20">
+                    <div className="px-4 py-1.5 rounded-full bg-primary/10 text-[10px] font-black uppercase tracking-[0.2em] text-primary">
+                      Answer
+                    </div>
+                    {(currentCard.backImage || currentCard.frontImage) && (
+                      <div className="flex items-center gap-1 bg-background/80 backdrop-blur-sm px-2 py-1 rounded-full border border-border shadow-sm" onClick={e => e.stopPropagation()}>
+                        <button onClick={() => setZoom(z => Math.max(0.5, z - 0.1))} className="p-1 hover:bg-muted rounded-full transition-colors text-muted-foreground"><RotateCcw size={14} className="-scale-x-100" /></button>
+                        <span className="text-[10px] font-black w-10 text-center">{Math.round(zoom * (currentCard.backImage?.scale || currentCard.frontImage?.scale || 1) * 100)}%</span>
+                        <button onClick={() => setZoom(z => Math.min(3, z + 0.1))} className="p-1 hover:bg-muted rounded-full transition-colors text-muted-foreground"><Zap size={14} /></button>
+                      </div>
+                    )}
                   </div>
                   
                   <div className="w-full h-full flex flex-col gap-6 items-center justify-center overflow-hidden pt-10">
                     {currentCard.backImage ? (
                       <div 
-                        className="relative inline-block mx-auto max-h-[60%] rounded-2xl border border-border overflow-hidden bg-muted/50"
-                        style={{ transform: `scale(${currentCard.backImage.scale || 1})` }}
+                        className="relative inline-block mx-auto max-h-[60%] rounded-2xl border border-border bg-muted/50 transition-transform duration-200"
+                        style={{ transform: `scale(${zoom * (currentCard.backImage.scale || 1)})` }}
                       >
                         <img src={currentCard.backImage.url} alt="Back" className="max-h-full w-auto object-contain" />
                         <svg viewBox="0 0 1000 1000" preserveAspectRatio="none" className="absolute inset-0 w-full h-full pointer-events-none">
@@ -389,8 +413,8 @@ const StudyMode = () => {
                       </div>
                     ) : currentCard.frontImage && (
                        <div 
-                        className="relative inline-block mx-auto max-h-[50%] opacity-80"
-                        style={{ transform: `scale(${currentCard.frontImage.scale || 1})` }}
+                        className="relative inline-block mx-auto max-h-[50%] opacity-80 transition-transform duration-200"
+                        style={{ transform: `scale(${zoom * (currentCard.frontImage.scale || 1)})` }}
                        >
                         <img src={currentCard.frontImage.url} alt="Front Revealed" className="max-h-full w-auto object-contain rounded-2xl" />
                         <svg viewBox="0 0 1000 1000" preserveAspectRatio="none" className="absolute inset-0 w-full h-full pointer-events-none">
