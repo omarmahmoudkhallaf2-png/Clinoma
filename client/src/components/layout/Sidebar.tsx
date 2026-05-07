@@ -64,7 +64,7 @@ export default function Sidebar({ isOpen = false, setIsOpen = (_: boolean) => {}
     { icon: BookOpen, label: 'الفلاش كارد', path: '/flashcards' },
     { icon: Crown, label: 'الكورسات المتاحة', path: '/available' },
 
-    { icon: Sparkles, label: 'المساعد الذكي (AI)', path: '/ai-assistant' },
+    { icon: Sparkles, label: 'Med-X (الدليل الذكي)', path: '/ai-assistant' },
     { icon: ClipboardList, label: 'الإختبارات', path: '/exams' },
     { icon: History, label: 'سجل المحاولات', path: '/history' },
     { icon: SettingsIcon, label: 'الإعدادات', path: '/settings' },

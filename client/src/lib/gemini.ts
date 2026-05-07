@@ -26,24 +26,63 @@ const tryFetch = async (model: string, payload: any, key: string) => {
   return null;
 };
 
-export const generateAIResponse = async (prompt: string, fileData?: { data: string, mimeType: string }) => {
+export const extractTopics = async (fileData: { data: string, mimeType: string }) => {
+  const KEYS = [
+    "AIzaSyB0GrBSsl3xbr_eDmSQtWk5v4VOS0p2gFQ",
+    "AIzaSyALv9jWafoAN9AVh4psyYQUaPpPL-ig-J4"
+  ];
+  const models = ["gemini-flash-latest", "gemini-2.5-flash", "gemini-2.0-flash"];
+  const allKeys = [import.meta.env.VITE_GEMINI_API_KEY, ...KEYS].filter(Boolean);
+
+  for (const key of allKeys) {
+    for (const model of models) {
+      const contents = [{ 
+        role: 'user', 
+        parts: [
+          { text: "Extract the main scientific/medical topics from this file. Return them as a simple numbered list. Example:\n1. Myopia\n2. Hypermetropia\n\nOnly the list, no other text." },
+          { inline_data: { mime_type: fileData.mimeType, data: fileData.data.split(',')[1] } }
+        ] 
+      }];
+
+      const res = await tryFetch(model, { contents }, key!);
+      if (res && res.ok) {
+        const data = await res.json();
+        return data.candidates?.[0]?.content?.parts?.[0]?.text || "";
+      }
+    }
+  }
+  return "";
+};
+
+export const generateAIResponse = async (
+  prompt: string, 
+  fileData?: { data: string, mimeType: string }, 
+  options?: { depth?: string, language?: string }
+) => {
   const KEYS = [
     "AIzaSyB0GrBSsl3xbr_eDmSQtWk5v4VOS0p2gFQ",
     "AIzaSyALv9jWafoAN9AVh4psyYQUaPpPL-ig-J4"
   ];
   
-  // 2026 Stable & Preview Models
   const models = [
     "gemini-3.1-pro-preview",
     "gemini-3-pro-preview",
     "gemini-flash-latest",
-    "gemini-pro-latest",
     "gemini-2.5-flash",
-    "gemini-2.5-pro",
-    "gemini-2.0-flash"
+    "gemini-2.5-pro"
   ];
 
   const allKeys = [import.meta.env.VITE_GEMINI_API_KEY, ...KEYS].filter(Boolean);
+
+  const depthPrompt = options?.depth === 'detailed' 
+    ? 'اشرح كل شيء بالتفصيل الممل، لا تترك أي نقطة.' 
+    : options?.depth === 'medium' 
+    ? 'اشرح غالبية الموضوع مع التركيز على النقاط المهمة.' 
+    : 'اشرح فقط المعلومات الجوهرية والمهمة باختصار.';
+
+  const langPrompt = options?.language === 'ar-en'
+    ? 'استخدم اللغة العربية مع ذكر المصطلحات العلمية بالإنجليزية بين قوسين.'
+    : 'استخدم اللغة الإنجليزية فقط في الشرح.';
 
   for (const key of allKeys) {
     for (const model of models) {
@@ -51,20 +90,25 @@ export const generateAIResponse = async (prompt: string, fileData?: { data: stri
         role: 'user', 
         parts: [{ 
           text: `
-أنت (Med-Prep Expert AI)، أستاذ طبي وخبير في المناهج الأكاديمية. 
-مهمتك: الشرح باستفاضة، تحري الدقة القصوى، ومراجعة المعلومات قبل عرضها. 
+أنت (Med-Guide)، الدليل الطبي الذكي لمنصة Med-Prep. خبير في المناهج الطبية والأكاديمية.
 
-قواعدك:
-1. ابدأ دائماً بملخص سريع للنقاط الأساسية.
-2. اشرح المفاهيم المعقدة بأمثلة طبية واقعية.
-3. نسق الإجابة باستخدام Markdown (عناوين، نقاط، جداول، خط عريض).
-4. إذا سألك المستخدم عن معلومة طبية، ابحث في "قاعدة بياناتك الأكاديمية" وقدم أدق التفاصيل.
-5. لا تذكر أبداً أنك نموذج ذكاء اصطناعي، أنت جزء مدمج في منصة Med-Prep.
+مهمتك الحالية:
+${depthPrompt}
+${langPrompt}
 
-الموضوع المطلوب شرحه: 
+قواعد التنسيق الإجبارية (Wowed Aesthetics):
+1. استخدم الجداول المقارنة (Tables) كلما أمكن.
+2. استخدم الإيموجي (Emojis) المناسبة للسياق الطبي.
+3. استخدم العناوين (Headings) والخط العريض (Bold) للكلمات المفتاحية.
+4. اجعل الإجابة منظمة جداً وسهلة القراءة.
+5. نوع في أحجام العناوين واستخدم القوائم.
+6. إذا كان هناك كلمات مفتاحية (Keywords)، قم بتمييزها بوضوح.
+
+الموضوع المطلوب: 
 ${prompt}` 
         }] 
       }];
+
       if (fileData) {
         contents[0].parts.push({
           inline_data: {
@@ -81,7 +125,7 @@ ${prompt}`
       }
     }
   }
-  throw new Error("عذراً، واجه النظام مشكلة في الاتصال بمحرك الذكاء الاصطناعي (2026 Update). يرجى التأكد من الـ API Key.");
+  throw new Error("عذراً، واجه النظام مشكلة في الاتصال بمحرك الذكاء الاصطناعي. يرجى المحاولة مرة أخرى.");
 };
 
 export const generateFlashcards = async (text: string, files?: { data: string, mimeType: string }[]) => {
