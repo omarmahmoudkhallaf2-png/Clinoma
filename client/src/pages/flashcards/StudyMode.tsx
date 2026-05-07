@@ -313,15 +313,15 @@ const StudyMode = () => {
         <div className="absolute top-1/4 -left-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 -right-20 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl" />
 
-        <div className="w-full max-w-[95vw] lg:max-w-6xl perspective-1000 flex-1 flex items-center justify-center min-h-[500px]">
+        <div className="w-full max-w-[98vw] lg:max-w-[95vw] perspective-1000 flex-1 flex items-center justify-center min-h-[500px] py-4">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentIndex}
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 1.05 }}
+              exit={{ opacity: 0, scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="relative w-full aspect-[21/9] min-h-[500px] md:min-h-[600px]"
+              className="relative w-full h-[85vh] lg:h-[80vh]"
             >
               <motion.div
                 animate={{ rotateY: isFlipped ? 180 : 0 }}
@@ -330,30 +330,30 @@ const StudyMode = () => {
                 onClick={() => setIsFlipped(!isFlipped)}
               >
                 {/* Front */}
-                <div className="absolute inset-0 backface-hidden bg-card border-2 border-border p-8 md:p-12 rounded-[3rem] shadow-2xl flex flex-col items-center justify-center text-center overflow-hidden">
+                <div className="absolute inset-0 backface-hidden bg-card border-2 border-border p-4 md:p-8 rounded-[2rem] md:rounded-[3rem] shadow-2xl flex flex-col items-center justify-center text-center overflow-hidden">
                   <div className="absolute top-6 left-1/2 -translate-x-1/2 flex items-center gap-2 z-20">
                     <div className="px-4 py-1.5 rounded-full bg-muted text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground">
                       Question
                     </div>
                     {currentCard.frontImage && (
                       <div className="flex items-center gap-1 bg-background/80 backdrop-blur-sm px-2 py-1 rounded-full border border-border shadow-sm" onClick={e => e.stopPropagation()}>
-                        <button onClick={() => setZoom(z => Math.max(0.5, z - 0.1))} className="p-1 hover:bg-muted rounded-full transition-colors text-muted-foreground"><RotateCcw size={14} className="-scale-x-100" /></button>
+                        <button onClick={() => setZoom(z => Math.max(0.1, z - 0.1))} className="p-1 hover:bg-muted rounded-full transition-colors text-muted-foreground"><RotateCcw size={14} className="-scale-x-100" /></button>
                         <span className="text-[10px] font-black w-10 text-center">{Math.round(zoom * (currentCard.frontImage.scale || 1) * 100)}%</span>
-                        <button onClick={() => setZoom(z => Math.min(3, z + 0.1))} className="p-1 hover:bg-muted rounded-full transition-colors text-muted-foreground"><Zap size={14} /></button>
+                        <button onClick={() => setZoom(z => Math.min(5, z + 0.1))} className="p-1 hover:bg-muted rounded-full transition-colors text-muted-foreground"><Zap size={14} /></button>
                       </div>
                     )}
                   </div>
                   
-                  <div className="w-full h-full flex flex-col gap-6 items-center justify-start overflow-y-auto pt-16 px-4">
+                  <div className="w-full h-full flex flex-col gap-6 items-center justify-start overflow-y-auto pt-16 pb-12 px-2 md:px-4 custom-scrollbar">
                     {currentCard.frontImage && (
                       <div 
-                        className="relative shrink-0 mx-auto rounded-2xl border border-border bg-muted/50 transition-all duration-200 shadow-lg"
+                        className="relative shrink-0 mx-auto rounded-xl md:rounded-2xl border border-border bg-muted/50 transition-all duration-200 shadow-lg"
                         style={{ 
-                          width: `${Math.min(100, zoom * (currentCard.frontImage.scale || 1) * 60)}%`,
-                          minWidth: '200px'
+                          width: `${Math.min(100, zoom * (currentCard.frontImage.scale || 1) * 70)}%`,
+                          minWidth: '150px'
                         }}
                       >
-                        <img src={currentCard.frontImage.url} alt="Front" className="w-full h-auto object-contain rounded-2xl" />
+                        <img src={currentCard.frontImage.url} alt="Front" className="w-full h-auto object-contain rounded-xl md:rounded-2xl" />
                         <svg viewBox="0 0 1000 1000" preserveAspectRatio="none" className="absolute inset-0 w-full h-full pointer-events-none">
                           {currentCard.frontImage.masks.map(mask => (
                             <g key={mask.id}>
@@ -368,42 +368,42 @@ const StudyMode = () => {
                       </div>
                     )}
                     <div 
-                      className="prose prose-xl md:prose-2xl font-bold dark:prose-invert max-w-none text-center pb-12 w-full"
+                      className="prose prose-lg md:prose-2xl font-bold dark:prose-invert max-w-none text-center w-full"
                       dangerouslySetInnerHTML={{ __html: currentCard.front }}
                     />
                   </div>
 
-                  <div className="absolute bottom-6 text-sm text-muted-foreground flex items-center gap-2 animate-bounce opacity-50">
-                    <Eye size={18} />
-                    Click to reveal answer
+                  <div className="absolute bottom-4 text-xs text-muted-foreground flex items-center gap-2 animate-bounce opacity-50">
+                    <Eye size={16} />
+                    Tap to reveal answer
                   </div>
                 </div>
 
                 {/* Back */}
-                <div className="absolute inset-0 backface-hidden bg-card border-4 border-primary/20 p-8 md:p-12 rounded-[3rem] shadow-2xl flex flex-col items-center justify-center text-center rotate-y-180 overflow-hidden">
+                <div className="absolute inset-0 backface-hidden bg-card border-4 border-primary/20 p-4 md:p-8 rounded-[2rem] md:rounded-[3rem] shadow-2xl flex flex-col items-center justify-center text-center rotate-y-180 overflow-hidden">
                   <div className="absolute top-6 left-1/2 -translate-x-1/2 flex items-center gap-2 z-20">
                     <div className="px-4 py-1.5 rounded-full bg-primary/10 text-[10px] font-black uppercase tracking-[0.2em] text-primary">
                       Answer
                     </div>
                     {(currentCard.backImage || currentCard.frontImage) && (
                       <div className="flex items-center gap-1 bg-background/80 backdrop-blur-sm px-2 py-1 rounded-full border border-border shadow-sm" onClick={e => e.stopPropagation()}>
-                        <button onClick={() => setZoom(z => Math.max(0.5, z - 0.1))} className="p-1 hover:bg-muted rounded-full transition-colors text-muted-foreground"><RotateCcw size={14} className="-scale-x-100" /></button>
+                        <button onClick={() => setZoom(z => Math.max(0.1, z - 0.1))} className="p-1 hover:bg-muted rounded-full transition-colors text-muted-foreground"><RotateCcw size={14} className="-scale-x-100" /></button>
                         <span className="text-[10px] font-black w-10 text-center">{Math.round(zoom * (currentCard.backImage?.scale || currentCard.frontImage?.scale || 1) * 100)}%</span>
-                        <button onClick={() => setZoom(z => Math.min(3, z + 0.1))} className="p-1 hover:bg-muted rounded-full transition-colors text-muted-foreground"><Zap size={14} /></button>
+                        <button onClick={() => setZoom(z => Math.min(5, z + 0.1))} className="p-1 hover:bg-muted rounded-full transition-colors text-muted-foreground"><Zap size={14} /></button>
                       </div>
                     )}
                   </div>
                   
-                  <div className="w-full h-full flex flex-col gap-6 items-center justify-start overflow-y-auto pt-16 px-4">
+                  <div className="w-full h-full flex flex-col gap-6 items-center justify-start overflow-y-auto pt-16 pb-12 px-2 md:px-4 custom-scrollbar">
                     {currentCard.backImage ? (
                       <div 
-                        className="relative shrink-0 mx-auto rounded-2xl border border-border bg-muted/50 transition-all duration-200 shadow-lg"
+                        className="relative shrink-0 mx-auto rounded-xl md:rounded-2xl border border-border bg-muted/50 transition-all duration-200 shadow-lg"
                         style={{ 
-                          width: `${Math.min(100, zoom * (currentCard.backImage.scale || 1) * 60)}%`,
-                          minWidth: '200px'
+                          width: `${Math.min(100, zoom * (currentCard.backImage.scale || 1) * 70)}%`,
+                          minWidth: '150px'
                         }}
                       >
-                        <img src={currentCard.backImage.url} alt="Back" className="w-full h-auto object-contain rounded-2xl" />
+                        <img src={currentCard.backImage.url} alt="Back" className="w-full h-auto object-contain rounded-xl md:rounded-2xl" />
                         <svg viewBox="0 0 1000 1000" preserveAspectRatio="none" className="absolute inset-0 w-full h-full pointer-events-none">
                           {currentCard.backImage.masks.map(mask => (
                             <g key={mask.id}>
@@ -420,11 +420,11 @@ const StudyMode = () => {
                        <div 
                         className="relative shrink-0 mx-auto opacity-80 transition-all duration-200"
                         style={{ 
-                          width: `${Math.min(100, zoom * (currentCard.frontImage.scale || 1) * 50)}%`,
-                          minWidth: '150px'
+                          width: `${Math.min(100, zoom * (currentCard.frontImage.scale || 1) * 60)}%`,
+                          minWidth: '120px'
                         }}
                        >
-                        <img src={currentCard.frontImage.url} alt="Front Revealed" className="w-full h-auto object-contain rounded-2xl" />
+                        <img src={currentCard.frontImage.url} alt="Front Revealed" className="w-full h-auto object-contain rounded-xl md:rounded-2xl" />
                         <svg viewBox="0 0 1000 1000" preserveAspectRatio="none" className="absolute inset-0 w-full h-full pointer-events-none">
                           {currentCard.frontImage.masks.map(mask => (
                             <g key={mask.id}>
@@ -439,7 +439,7 @@ const StudyMode = () => {
                       </div>
                     )}
                     <div 
-                      className="prose prose-xl md:prose-2xl font-bold dark:prose-invert max-w-none text-center pb-12 w-full"
+                      className="prose prose-lg md:prose-2xl font-bold dark:prose-invert max-w-none text-center w-full"
                       dangerouslySetInnerHTML={{ __html: currentCard.back }}
                     />
                   </div>
