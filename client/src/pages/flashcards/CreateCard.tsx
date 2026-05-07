@@ -693,6 +693,7 @@ const CreateCard = () => {
                 <RichTextEditor
                   value={currentCard.back}
                   onChange={val => updateCard(currentCardIdx, 'back', val)}
+                  onFocus={() => { /* Focus sync */ }}
                   placeholder="Write the answer here..."
                   minHeight="350px"
                 />

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { doc, updateDoc, getDoc, collection, query, where, getDocs } from 'firebase/firestore';
+import { doc, updateDoc, getDoc, collection, query, where, getDocs, writeBatch } from 'firebase/firestore';
 import { db } from '../../lib/firebase';
 import { useAuth } from '../../context/AuthContext';
 import type { Flashcard, Deck, CardImage } from '../../types/flashcard';
@@ -107,6 +107,37 @@ const StudyMode = () => {
     }
   };
 
+  const resetProgress = async () => {
+    if (!deckId || !user) return;
+    const confirmReset = window.confirm('هل أنت متأكد من مسح كل التقدم في هذه المجموعة والبدء من جديد؟');
+    if (!confirmReset) return;
+    
+    setLoading(true);
+    try {
+      const q = query(collection(db, 'flashcards'), where('deckId', '==', deckId));
+      const snapshot = await getDocs(q);
+      const batch = writeBatch(db);
+      snapshot.docs.forEach(doc => {
+        batch.update(doc.ref, {
+          nextReview: Date.now(),
+          interval: 0,
+          easeFactor: 2.5,
+          repetitions: 0,
+          status: 'new',
+          lastReviewed: null
+        });
+      });
+      await batch.commit();
+      toast.success('تم إعادة تعيين التقدم بنجاح!');
+      window.location.reload();
+    } catch (error) {
+      console.error('Error resetting progress:', error);
+      toast.error('فشل إعادة التعيين');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const updateUserStreak = async () => {
     if (!user) return;
     try {
@@ -129,7 +160,6 @@ const StudyMode = () => {
           } else if (diffDays > 1) {
             newStreak = 1;
           }
-          // if diffDays === 0, streak stays same
         } else {
           newStreak = 1;
         }
@@ -208,13 +238,20 @@ const StudyMode = () => {
             ))}
           </div>
 
-          <div className="pt-6 flex gap-4">
+          <div className="pt-6 flex flex-col md:flex-row gap-4">
             <button 
               onClick={() => window.location.reload()}
               className="flex-1 py-3 rounded-xl bg-secondary text-secondary-foreground font-semibold flex items-center justify-center gap-2"
             >
               <RotateCcw size={18} />
               Study Again
+            </button>
+            <button 
+              onClick={resetProgress}
+              className="flex-1 py-3 rounded-xl bg-orange-500/10 text-orange-500 font-semibold flex items-center justify-center gap-2 border border-orange-500/20 hover:bg-orange-500 hover:text-white transition-all"
+            >
+              <Zap size={18} />
+              Reset & Restart
             </button>
             <button 
               onClick={() => navigate('/flashcards')}
