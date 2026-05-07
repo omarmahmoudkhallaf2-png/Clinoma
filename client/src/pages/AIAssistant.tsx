@@ -4,7 +4,7 @@ import {
   Send, FileUp, Sparkles, Bot, User, Loader2, X, 
   FileText, History, Settings, Type, Languages, 
   ChevronRight, Trash2, Plus, MessageSquare, List,
-  BookOpen, Info, CheckCircle2
+  BookOpen, Info, CheckCircle2, Sliders
 } from 'lucide-react';
 import { generateAIResponse, extractTopics } from '../lib/gemini';
 import { Button } from '../components/ui/Button';
@@ -80,7 +80,6 @@ export default function AIAssistant() {
         ...doc.data()
       })) as ChatSession[];
       
-      // Sort locally to avoid composite index requirement
       chats.sort((a, b) => {
         const timeA = a.timestamp?.seconds || 0;
         const timeB = b.timestamp?.seconds || 0;
@@ -88,17 +87,18 @@ export default function AIAssistant() {
       });
 
       setHistory(chats);
+    }, (error) => {
+      console.error("Firestore Error:", error);
     });
 
     return () => unsubscribe();
   }, [user]);
 
-  // Scroll to bottom
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
-  }, [messages, workflowStep]);
+  }, [messages, workflowStep, loading]);
 
   const handleFileSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -138,9 +138,8 @@ export default function AIAssistant() {
     setMessages(newMessages);
 
     try {
-      const promptToUse = pendingMessage || prompt;
       const response = await generateAIResponse(
-        promptToUse, 
+        prompt, 
         selectedFile ? { data: selectedFile.data, mimeType: selectedFile.type } : undefined, 
         config
       );
@@ -148,7 +147,6 @@ export default function AIAssistant() {
       const updatedMessages = [...newMessages, aiMsg];
       setMessages(updatedMessages);
       
-      // Save to History
       if (user) {
         if (!currentSessionId) {
           const docRef = await addDoc(collection(db, 'assistant_chats'), {
@@ -176,25 +174,29 @@ export default function AIAssistant() {
     }
   };
 
-  const handleSend = async () => {
-    if (!input.trim()) return;
-    setPendingMessage(input);
-    setSelectedTopic(input.substring(0, 50));
-    setWorkflowStep('config');
+  const handleSend = () => {
+    const text = input.trim();
+    if (!text) return;
+    
+    // Clear input first to provide feedback
     setInput('');
+    setPendingMessage(text);
+    setWorkflowStep('config');
   };
 
   const processPendingSend = async () => {
     if (!pendingMessage) return;
+    const msg = pendingMessage;
+    setPendingMessage(null);
     setWorkflowStep('chat');
     setLoading(true);
 
-    const userMsg: Message = { role: 'user', content: pendingMessage, timestamp: new Date() };
+    const userMsg: Message = { role: 'user', content: msg, timestamp: new Date() };
     const newMessages = [...messages, userMsg];
     setMessages(newMessages);
 
     try {
-      const response = await generateAIResponse(pendingMessage, undefined, config);
+      const response = await generateAIResponse(msg, undefined, config);
       const aiMsg: Message = { role: 'ai', content: response, timestamp: new Date() };
       const updatedMessages = [...newMessages, aiMsg];
       setMessages(updatedMessages);
@@ -203,7 +205,7 @@ export default function AIAssistant() {
         if (!currentSessionId) {
           const docRef = await addDoc(collection(db, 'assistant_chats'), {
             userId: user.uid,
-            title: pendingMessage.substring(0, 30),
+            title: msg.substring(0, 30),
             lastMessage: response.substring(0, 100),
             messages: updatedMessages,
             timestamp: serverTimestamp()
@@ -221,7 +223,6 @@ export default function AIAssistant() {
       toast.error('حدث خطأ أثناء معالجة طلبك');
     } finally {
       setLoading(false);
-      setPendingMessage(null);
     }
   };
 
@@ -230,6 +231,8 @@ export default function AIAssistant() {
     setCurrentSessionId(session.id);
     setShowHistory(false);
     setWorkflowStep('chat');
+    setSelectedFile(null);
+    setPendingMessage(null);
   };
 
   const createNewChat = () => {
@@ -237,6 +240,7 @@ export default function AIAssistant() {
     setCurrentSessionId(null);
     setWorkflowStep('chat');
     setSelectedFile(null);
+    setPendingMessage(null);
   };
 
   const deleteSession = async (id: string, e: React.MouseEvent) => {
@@ -358,200 +362,208 @@ export default function AIAssistant() {
         {/* Chat Messages */}
         <div 
           ref={scrollRef}
-          className="flex-1 overflow-y-auto p-6 md:p-10 space-y-8 scrollbar-hide bg-dot-pattern"
+          className="flex-1 overflow-y-auto p-6 md:p-10 space-y-8 scrollbar-hide bg-dot-pattern relative"
           style={{ fontSize: `${fontSize}px` }}
         >
-          {workflowStep === 'chat' && (
-            <AnimatePresence initial={false}>
-              {messages.map((msg, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 10, scale: 0.98 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  className={cn(
-                    "flex items-start gap-4",
-                    msg.role === 'user' ? "flex-row-reverse" : "flex-row"
-                  )}
-                >
-                  <div className={cn(
-                    "w-10 h-10 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg",
-                    msg.role === 'ai' ? "bg-primary text-white" : "bg-secondary text-foreground"
-                  )}>
-                    {msg.role === 'ai' ? <Bot className="w-5 h-5" /> : <User className="w-5 h-5" />}
-                  </div>
-                  <div className={cn(
-                    "max-w-[85%] p-6 rounded-[2rem] leading-relaxed font-medium shadow-sm relative group/msg",
-                    msg.role === 'ai' 
-                      ? "bg-secondary/30 text-foreground rounded-tr-none border border-border" 
-                      : "bg-primary text-white rounded-tl-none shadow-primary/20"
-                  )} dir="rtl">
-                    {msg.role === 'ai' && (
-                      <button 
-                        onClick={() => {
-                          navigator.clipboard.writeText(msg.content);
-                          toast.success('تم النسخ إلى الحافظة');
-                        }}
-                        className="absolute -left-12 top-2 p-2 bg-card border border-border rounded-xl opacity-0 group-hover/msg:opacity-100 transition-all hover:bg-primary hover:text-white"
-                        title="نسخ النص"
-                      >
-                        <FileText size={16} />
-                      </button>
-                    )}
-                    {msg.role === 'ai' ? (
-                      <div className="prose prose-sm dark:prose-invert max-w-none prose-p:leading-relaxed prose-headings:font-black prose-headings:text-primary prose-li:list-disc prose-table:border-2 prose-table:border-border prose-th:bg-primary/5 prose-td:p-3">
-                        <ReactMarkdown 
-                          remarkPlugins={[remarkGfm]}
-                          components={{
-                            strong: ({node, ...props}) => <span className="text-primary font-black px-1 rounded-sm bg-primary/5" {...props} />
-                          }}
-                        >
-                          {msg.content}
-                        </ReactMarkdown>
-                      </div>
-                    ) : (
-                      <div className="whitespace-pre-wrap font-bold">{msg.content}</div>
-                    )}
-                  </div>
-                </motion.div>
-              ))}
-            </AnimatePresence>
-          )}
-
-          {/* Workflow Steps */}
-          {workflowStep === 'topics' && (
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="max-w-2xl mx-auto space-y-6 py-10 text-center"
-            >
-              <div className="w-20 h-20 bg-primary/10 text-primary rounded-[2rem] flex items-center justify-center mx-auto mb-6 shadow-inner">
-                <List size={40} />
-              </div>
-              <h2 className="text-3xl font-black">المواضيع العلمية المكتشفة</h2>
-              <p className="text-muted-foreground font-bold">تم تحليل الملف بنجاح. اختر الموضوع الذي تريد البدء بشرحه:</p>
-              <div className="grid grid-cols-1 gap-3 mt-8">
-                {extractedTopics.map((topic, i) => (
-                  <button
+          {/* Main Chat View */}
+          <AnimatePresence mode="wait">
+            {workflowStep === 'chat' ? (
+              <motion.div 
+                key="chat"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="space-y-8"
+              >
+                {messages.map((msg, i) => (
+                  <motion.div
                     key={i}
-                    onClick={() => {
-                      setSelectedTopic(topic);
-                      setWorkflowStep('config');
-                    }}
-                    className="p-5 bg-card border-2 border-border rounded-2xl hover:border-primary hover:bg-primary/5 transition-all text-right flex items-center justify-between group"
+                    initial={{ opacity: 0, y: 10, scale: 0.98 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    className={cn(
+                      "flex items-start gap-4",
+                      msg.role === 'user' ? "flex-row-reverse" : "flex-row"
+                    )}
                   >
-                    <span className="font-black text-lg">{topic}</span>
-                    <ChevronRight className="w-5 h-5 text-primary opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all" />
-                  </button>
+                    <div className={cn(
+                      "w-10 h-10 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg",
+                      msg.role === 'ai' ? "bg-primary text-white" : "bg-secondary text-foreground"
+                    )}>
+                      {msg.role === 'ai' ? <Bot className="w-5 h-5" /> : <User className="w-5 h-5" />}
+                    </div>
+                    <div className={cn(
+                      "max-w-[85%] p-6 rounded-[2rem] leading-relaxed font-medium shadow-sm relative group/msg",
+                      msg.role === 'ai' 
+                        ? "bg-secondary/30 text-foreground rounded-tr-none border border-border" 
+                        : "bg-primary text-white rounded-tl-none shadow-primary/20"
+                    )} dir="rtl">
+                      {msg.role === 'ai' && (
+                        <button 
+                          onClick={() => {
+                            navigator.clipboard.writeText(msg.content);
+                            toast.success('تم النسخ إلى الحافظة');
+                          }}
+                          className="absolute -left-12 top-2 p-2 bg-card border border-border rounded-xl opacity-0 group-hover/msg:opacity-100 transition-all hover:bg-primary hover:text-white"
+                          title="نسخ النص"
+                        >
+                          <FileText size={16} />
+                        </button>
+                      )}
+                      {msg.role === 'ai' ? (
+                        <div className="prose prose-sm dark:prose-invert max-w-none prose-p:leading-relaxed prose-headings:font-black prose-headings:text-primary prose-li:list-disc prose-table:border-2 prose-table:border-border prose-th:bg-primary/5 prose-td:p-3">
+                          <ReactMarkdown 
+                            remarkPlugins={[remarkGfm]}
+                            components={{
+                              strong: ({node, ...props}) => <span className="text-primary font-black px-1 rounded-sm bg-primary/5" {...props} />
+                            }}
+                          >
+                            {msg.content}
+                          </ReactMarkdown>
+                        </div>
+                      ) : (
+                        <div className="whitespace-pre-wrap font-bold">{msg.content}</div>
+                      )}
+                    </div>
+                  </motion.div>
                 ))}
-              </div>
-              <Button variant="ghost" onClick={() => setWorkflowStep('chat')} className="font-bold opacity-60">
-                إلغاء والعودة للدردشة
-              </Button>
-            </motion.div>
-          )}
-
-          {workflowStep === 'config' && (
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="max-w-2xl mx-auto space-y-10 py-10"
-            >
-              <div className="text-center space-y-4">
-                <div className="w-20 h-20 bg-indigo-500/10 text-indigo-600 rounded-[2rem] flex items-center justify-center mx-auto mb-6 shadow-inner">
-                  <Settings size={40} className="animate-spin-slow" />
+                
+                {loading && (
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-2xl bg-primary text-white flex items-center justify-center animate-pulse">
+                      <Bot className="w-5 h-5" />
+                    </div>
+                    <div className="bg-secondary/30 p-5 rounded-[2rem] rounded-tr-none border border-border flex items-center gap-3 shadow-sm">
+                      <Loader2 className="w-4 h-4 animate-spin text-primary" />
+                      <span className="text-xs font-black animate-pulse uppercase tracking-widest opacity-60">
+                        Med-X يقوم بالتحليل...
+                      </span>
+                    </div>
+                  </div>
+                )}
+              </motion.div>
+            ) : workflowStep === 'topics' ? (
+              <motion.div 
+                key="topics"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                className="max-w-2xl mx-auto space-y-6 py-10 text-center"
+              >
+                <div className="w-20 h-20 bg-primary/10 text-primary rounded-[2rem] flex items-center justify-center mx-auto mb-6 shadow-inner">
+                  <List size={40} />
                 </div>
-                <h2 className="text-3xl font-black">تخصيص أسلوب الإجابة</h2>
-                <p className="text-muted-foreground font-bold">الموضوع: <span className="text-primary">{pendingMessage || selectedTopic}</span></p>
-              </div>
+                <h2 className="text-3xl font-black">المواضيع العلمية المكتشفة</h2>
+                <p className="text-muted-foreground font-bold">تم تحليل الملف بنجاح. اختر الموضوع الذي تريد البدء بشرحه:</p>
+                <div className="grid grid-cols-1 gap-3 mt-8">
+                  {extractedTopics.map((topic, i) => (
+                    <button
+                      key={i}
+                      onClick={() => {
+                        setSelectedTopic(topic);
+                        setWorkflowStep('config');
+                      }}
+                      className="p-5 bg-card border-2 border-border rounded-2xl hover:border-primary hover:bg-primary/5 transition-all text-right flex items-center justify-between group"
+                    >
+                      <span className="font-black text-lg">{topic}</span>
+                      <ChevronRight className="w-5 h-5 text-primary opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all" />
+                    </button>
+                  ))}
+                </div>
+                <Button variant="ghost" onClick={() => setWorkflowStep('chat')} className="font-bold opacity-60">
+                  إلغاء والعودة للدردشة
+                </Button>
+              </motion.div>
+            ) : (
+              <motion.div 
+                key="config"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
+                className="max-w-2xl mx-auto space-y-10 py-10"
+              >
+                <div className="text-center space-y-4">
+                  <div className="w-20 h-20 bg-indigo-500/10 text-indigo-600 rounded-[2rem] flex items-center justify-center mx-auto mb-6 shadow-inner">
+                    <Settings size={40} className="animate-spin-slow" />
+                  </div>
+                  <h2 className="text-3xl font-black">تخصيص أسلوب الإجابة</h2>
+                  <p className="text-muted-foreground font-bold">الموضوع: <span className="text-primary truncate block max-w-md mx-auto">{pendingMessage || selectedTopic}</span></p>
+                </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="space-y-4">
-                  <label className="flex items-center gap-2 font-black text-sm uppercase tracking-widest opacity-60">
-                    <BookOpen size={16} /> عمق الاستفاضة
-                  </label>
-                  <div className="space-y-2">
-                    {[
-                      { id: 'detailed', label: 'استفاضة كبيرة', desc: 'يعرض كل شيء بالتفصيل' },
-                      { id: 'medium', label: 'شرح متوسط', desc: 'يركز على النقاط المهمة' },
-                      { id: 'short', label: 'ملخص سريع', desc: 'أهم المعلومات فقط' }
-                    ].map(opt => (
-                      <button
-                        key={opt.id}
-                        onClick={() => setConfig({ ...config, depth: opt.id })}
-                        className={cn(
-                          "w-full p-4 rounded-2xl border-2 text-right transition-all flex items-start gap-4",
-                          config.depth === opt.id ? "border-primary bg-primary/5 shadow-lg shadow-primary/10" : "border-border hover:bg-secondary/20"
-                        )}
-                      >
-                        <div className={cn("w-5 h-5 rounded-full border-2 mt-1 flex items-center justify-center", config.depth === opt.id ? "border-primary bg-primary" : "border-muted-foreground")}>
-                          {config.depth === opt.id && <CheckCircle2 size={14} className="text-white" />}
-                        </div>
-                        <div>
-                          <p className="font-black text-sm">{opt.label}</p>
-                          <p className="text-[10px] opacity-60 font-bold">{opt.desc}</p>
-                        </div>
-                      </button>
-                    ))}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="space-y-4">
+                    <label className="flex items-center gap-2 font-black text-sm uppercase tracking-widest opacity-60">
+                      <BookOpen size={16} /> عمق الاستفاضة
+                    </label>
+                    <div className="space-y-2">
+                      {[
+                        { id: 'detailed', label: 'استفاضة كبيرة', desc: 'يعرض كل شيء بالتفصيل' },
+                        { id: 'medium', label: 'شرح متوسط', desc: 'يركز على النقاط المهمة' },
+                        { id: 'short', label: 'ملخص سريع', desc: 'أهم المعلومات فقط' }
+                      ].map(opt => (
+                        <button
+                          key={opt.id}
+                          onClick={() => setConfig({ ...config, depth: opt.id })}
+                          className={cn(
+                            "w-full p-4 rounded-2xl border-2 text-right transition-all flex items-start gap-4",
+                            config.depth === opt.id ? "border-primary bg-primary/5 shadow-lg shadow-primary/10" : "border-border hover:bg-secondary/20"
+                          )}
+                        >
+                          <div className={cn("w-5 h-5 rounded-full border-2 mt-1 flex items-center justify-center", config.depth === opt.id ? "border-primary bg-primary" : "border-muted-foreground")}>
+                            {config.depth === opt.id && <CheckCircle2 size={14} className="text-white" />}
+                          </div>
+                          <div>
+                            <p className="font-black text-sm">{opt.label}</p>
+                            <p className="text-[10px] opacity-60 font-bold">{opt.desc}</p>
+                          </div>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="space-y-4">
+                    <label className="flex items-center gap-2 font-black text-sm uppercase tracking-widest opacity-60">
+                      <Languages size={16} /> لغة الشرح
+                    </label>
+                    <div className="space-y-2">
+                      {[
+                        { id: 'ar-en', label: 'عربي + إنجليزي', desc: 'شرح عربي مع مصطلحات علمية' },
+                        { id: 'en', label: 'English Only', desc: 'Full English explanation' }
+                      ].map(opt => (
+                        <button
+                          key={opt.id}
+                          onClick={() => setConfig({ ...config, language: opt.id })}
+                          className={cn(
+                            "w-full p-4 rounded-2xl border-2 text-right transition-all flex items-start gap-4",
+                            config.language === opt.id ? "border-primary bg-primary/5 shadow-lg shadow-primary/10" : "border-border hover:bg-secondary/20"
+                          )}
+                        >
+                          <div className={cn("w-5 h-5 rounded-full border-2 mt-1 flex items-center justify-center", config.language === opt.id ? "border-primary bg-primary" : "border-white")}>
+                            {config.language === opt.id && <CheckCircle2 size={14} className="text-white" />}
+                          </div>
+                          <div>
+                            <p className="font-black text-sm">{opt.label}</p>
+                            <p className="text-[10px] opacity-60 font-bold">{opt.desc}</p>
+                          </div>
+                        </button>
+                      ))}
+                    </div>
                   </div>
                 </div>
 
-                <div className="space-y-4">
-                  <label className="flex items-center gap-2 font-black text-sm uppercase tracking-widest opacity-60">
-                    <Languages size={16} /> لغة الشرح
-                  </label>
-                  <div className="space-y-2">
-                    {[
-                      { id: 'ar-en', label: 'عربي + إنجليزي', desc: 'شرح عربي مع مصطلحات علمية' },
-                      { id: 'en', label: 'English Only', desc: 'Full English explanation' }
-                    ].map(opt => (
-                      <button
-                        key={opt.id}
-                        onClick={() => setConfig({ ...config, language: opt.id })}
-                        className={cn(
-                          "w-full p-4 rounded-2xl border-2 text-right transition-all flex items-start gap-4",
-                          config.language === opt.id ? "border-primary bg-primary/5 shadow-lg shadow-primary/10" : "border-border hover:bg-secondary/20"
-                        )}
-                      >
-                        <div className={cn("w-5 h-5 rounded-full border-2 mt-1 flex items-center justify-center", config.language === opt.id ? "border-primary bg-primary" : "border-white")}>
-                          {config.language === opt.id && <CheckCircle2 size={14} className="text-white" />}
-                        </div>
-                        <div>
-                          <p className="font-black text-sm">{opt.label}</p>
-                          <p className="text-[10px] opacity-60 font-bold">{opt.desc}</p>
-                        </div>
-                      </button>
-                    ))}
-                  </div>
+                <div className="flex gap-4 pt-6">
+                  <Button 
+                    onClick={pendingMessage ? processPendingSend : startExplaining} 
+                    className="flex-1 h-16 rounded-2xl text-lg font-black shadow-xl shadow-primary/20"
+                  >
+                    ابدأ الشرح الآن
+                  </Button>
+                  <Button variant="outline" onClick={() => setWorkflowStep(selectedFile ? 'topics' : 'chat')} className="h-16 px-8 rounded-2xl font-bold border-2">
+                    رجوع
+                  </Button>
                 </div>
-              </div>
-
-              <div className="flex gap-4 pt-6">
-                <Button 
-                  onClick={pendingMessage ? processPendingSend : startExplaining} 
-                  className="flex-1 h-16 rounded-2xl text-lg font-black shadow-xl shadow-primary/20"
-                >
-                  ابدأ الشرح الآن
-                </Button>
-                <Button variant="outline" onClick={() => setWorkflowStep('topics')} className="h-16 px-8 rounded-2xl font-bold border-2">
-                  تغيير الموضوع
-                </Button>
-              </div>
-            </motion.div>
-          )}
-
-          {loading && (
-            <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-2xl bg-primary text-white flex items-center justify-center animate-pulse">
-                <Bot className="w-5 h-5" />
-              </div>
-              <div className="bg-secondary/30 p-5 rounded-[2rem] rounded-tr-none border border-border flex items-center gap-3 shadow-sm">
-                <Loader2 className="w-4 h-4 animate-spin text-primary" />
-                <span className="text-xs font-black animate-pulse uppercase tracking-widest opacity-60">
-                  {workflowStep === 'topics' ? 'جاري استخراج المواضيع...' : 'Med-X يقوم بالتحليل...'}
-                </span>
-              </div>
-            </div>
-          )}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
         {/* Input Area */}
@@ -592,7 +604,8 @@ export default function AIAssistant() {
               />
               <button 
                 onClick={() => fileInputRef.current?.click()}
-                className="p-5 bg-secondary/20 border-2 border-border rounded-3xl hover:bg-primary/10 hover:border-primary/40 transition-all shadow-sm group"
+                disabled={workflowStep !== 'chat' || loading}
+                className="p-5 bg-secondary/20 border-2 border-border rounded-3xl hover:bg-primary/10 hover:border-primary/40 transition-all shadow-sm group disabled:opacity-50"
                 title="ارفع ملف المحاضرة"
               >
                 <FileUp className="w-6 h-6 text-muted-foreground group-hover:text-primary transition-colors" />
@@ -603,16 +616,17 @@ export default function AIAssistant() {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && !e.shiftKey && (e.preventDefault(), handleSend())}
-                  placeholder="اسأل Med-X عن أي شيء في الطب..."
-                  className="w-full bg-secondary/20 border-2 border-border p-5 pr-14 rounded-[2rem] outline-none focus:border-primary focus:bg-card transition-all resize-none font-bold text-base h-[64px] flex items-center scrollbar-hide shadow-inner"
+                  placeholder={workflowStep === 'chat' ? "اسأل Med-X عن أي شيء في الطب..." : "بانتظار تخصيص الإعدادات..."}
+                  disabled={workflowStep !== 'chat' || loading}
+                  className="w-full bg-secondary/20 border-2 border-border p-5 pr-14 rounded-[2rem] outline-none focus:border-primary focus:bg-card transition-all resize-none font-bold text-base h-[64px] flex items-center scrollbar-hide shadow-inner disabled:opacity-50 disabled:cursor-not-allowed"
                   dir="rtl"
                 />
                 <button 
                   onClick={handleSend}
-                  disabled={loading || !input.trim()}
+                  disabled={loading || !input.trim() || workflowStep !== 'chat'}
                   className="absolute left-3 top-1/2 -translate-y-1/2 p-3 bg-primary text-white rounded-2xl shadow-lg shadow-primary/30 hover:scale-105 active:scale-95 transition-all disabled:opacity-50 disabled:scale-100"
                 >
-                  <Send className="w-5 h-5 rotate-180" />
+                  {workflowStep === 'chat' ? <Send className="w-5 h-5 rotate-180" /> : <Sliders className="w-5 h-5" />}
                 </button>
               </div>
             </div>
