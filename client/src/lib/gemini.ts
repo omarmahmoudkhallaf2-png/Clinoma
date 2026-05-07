@@ -39,7 +39,7 @@ const tryGeminiFetch = async (model: string, payload: any, key: string) => {
   const versions = ['v1beta', 'v1'];
   for (const version of versions) {
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 30000);
+    const timeoutId = setTimeout(() => controller.abort(), 15000); // 15s timeout
 
     try {
       const url = `https://generativelanguage.googleapis.com/${version}/models/${model}:generateContent?key=${key}`;
@@ -64,7 +64,6 @@ const tryGeminiFetch = async (model: string, payload: any, key: string) => {
 };
 
 export const extractTopics = async (fileData: { data: string, mimeType: string }) => {
-  // Use Gemini for extraction because it supports multimodal (PDF/Images)
   const KEYS = [
     "AIzaSyB0GrBSsl3xbr_eDmSQtWk5v4VOS0p2gFQ",
     "AIzaSyALv9jWafoAN9AVh4psyYQUaPpPL-ig-J4",
@@ -122,6 +121,21 @@ export const generateAIResponse = async (
 4. اجعل الإجابة منظمة جداً.
 5. إذا ذكرت كلمات مفتاحية، ضعها في خط عريض **Keyword**.`;
 
+  const groqModels = [
+    "llama-3.3-70b-versatile",
+    "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llama-3.1-8b-instant",
+    "allam-2-7b"
+  ];
+
+  const allKeys = [
+    "AIzaSyB0GrBSsl3xbr_eDmSQtWk5v4VOS0p2gFQ",
+    "AIzaSyALv9jWafoAN9AVh4psyYQUaPpPL-ig-J4",
+    "AIzaSyAsuqzTQlgwhhhUAUhLy9Wd92xgR_kvVDA",
+    "AIzaSyA05ajCmTzdHKYE1YAU0t6VQHj3DhUE-Zw",
+    "AIzaSyAyZ-gdyKEgGgBwZx77EkPVpC1vDyjsyPc"
+  ].sort(() => Math.random() - 0.5);
+
   for (const key of allKeys) {
     for (const model of groqModels) {
       console.log(`Trying Groq Model: ${model} with key starting with ${key.substring(0, 8)}...`);
@@ -138,16 +152,7 @@ export const generateAIResponse = async (
 
   console.warn("Groq failed, falling back to Gemini...");
 
-  // FALLBACK TO GEMINI IF GROQ FAILS
-  const geminiKeys = [
-    "AIzaSyB0GrBSsl3xbr_eDmSQtWk5v4VOS0p2gFQ",
-    "AIzaSyALv9jWafoAN9AVh4psyYQUaPpPL-ig-J4",
-    "AIzaSyAsuqzTQlgwhhhUAUhLy9Wd92xgR_kvVDA",
-    "AIzaSyA05ajCmTzdHKYE1YAU0t6VQHj3DhUE-Zw",
-    "AIzaSyAyZ-gdyKEgGgBwZx77EkPVpC1vDyjsyPc"
-  ].sort(() => Math.random() - 0.5);
-
-  for (const key of geminiKeys) {
+  for (const key of allKeys) {
     console.log(`Trying Gemini fallback with key starting with ${key.substring(0, 8)}...`);
     const res = await tryGeminiFetch("gemini-2.5-flash", {
       contents: [{ role: 'user', parts: [{ text: `${systemPrompt}\n\n${prompt}` }] }]
@@ -164,8 +169,7 @@ export const generateAIResponse = async (
 };
 
 export const generateFlashcards = async (text: string, files?: { data: string, mimeType: string }[]) => {
-  // Try Groq for Flashcards (Fastest)
-  const res = await tryGroqFetch("llama-3.1-70b-versatile", [
+  const res = await tryGroqFetch("llama-3.3-70b-versatile", [
     { role: "system", content: "You are a medical educator. Convert text into a JSON array: [{ \"front\": \"...\", \"back\": \"...\", \"tags\": [\"...\"] }]. Return ONLY JSON." },
     { role: "user", content: text }
   ]);
@@ -173,13 +177,11 @@ export const generateFlashcards = async (text: string, files?: { data: string, m
     const jsonMatch = res.match(/\[[\s\S]*\]/);
     if (jsonMatch) return JSON.parse(jsonMatch[0]);
   }
-  
-  // Fallback to existing Gemini logic if needed... (Skipping for brevity but kept in code)
   return []; 
 };
 
 export const generateAIExam = async (prompt: string, files?: { data: string, mimeType: string }[]) => {
-  const res = await tryGroqFetch("llama-3.1-70b-versatile", [
+  const res = await tryGroqFetch("llama-3.3-70b-versatile", [
     { role: "system", content: "Extract MCQs into JSON array: [{ \"question\": \"...\", \"options\": [...], \"correctAnswer\": 0, \"explanation\": \"...\" }]. Return ONLY JSON." },
     { role: "user", content: prompt }
   ]);
