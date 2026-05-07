@@ -23,7 +23,7 @@ import { generateFlashcards } from '../../lib/gemini';
 import { cn } from '../../lib/utils';
 import RichTextEditor from '../../components/flashcards/RichTextEditor';
 import ImageOcclusionEditor from '../../components/flashcards/ImageOcclusionEditor';
-import { CardImage, Mask } from '../../types/flashcard';
+import type { CardImage, Mask } from '../../types/flashcard';
 import { Image as ImageIcon, Edit2, Type as TypeIcon } from 'lucide-react';
 
 interface CardInput {
@@ -354,46 +354,48 @@ const CreateCard = () => {
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <label className="text-sm font-medium text-muted-foreground">Year / Level</label>
-                  <select
-                    value={deckInfo.year}
-                    onChange={e => setDeckInfo({ ...deckInfo, year: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-muted border-none focus:ring-2 focus:ring-primary/20 transition-all appearance-none"
-                  >
-                    <option value="">Select Year</option>
-                    <option value="First Year">First Year</option>
-                    <option value="Second Year">Second Year</option>
-                    <option value="Third Year">Third Year</option>
-                    <option value="Fourth Year">Fourth Year</option>
-                    <option value="Fifth Year">Fifth Year</option>
-                    <option value="Sixth Year">Sixth Year</option>
-                  </select>
+              {userRole === 'admin' && (
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium text-muted-foreground">Year / Level</label>
+                    <select
+                      value={deckInfo.year}
+                      onChange={e => setDeckInfo({ ...deckInfo, year: e.target.value })}
+                      className="w-full px-4 py-3 rounded-xl bg-muted border-none focus:ring-2 focus:ring-primary/20 transition-all appearance-none"
+                    >
+                      <option value="">Select Year</option>
+                      <option value="First Year">First Year</option>
+                      <option value="Second Year">Second Year</option>
+                      <option value="Third Year">Third Year</option>
+                      <option value="Fourth Year">Fourth Year</option>
+                      <option value="Fifth Year">Fifth Year</option>
+                      <option value="Sixth Year">Sixth Year</option>
+                    </select>
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium text-muted-foreground">Module / Specialty</label>
+                    <select
+                      value={deckInfo.module}
+                      onChange={e => setDeckInfo({ ...deckInfo, module: e.target.value })}
+                      className="w-full px-4 py-3 rounded-xl bg-muted border-none focus:ring-2 focus:ring-primary/20 transition-all appearance-none"
+                    >
+                      <option value="">Select Module</option>
+                      <optgroup label="General Modules">
+                        <option value="Basic Sciences">Basic Sciences</option>
+                        <option value="Clinical Skills">Clinical Skills</option>
+                      </optgroup>
+                      <optgroup label="Specialties (Year 3+)">
+                        <option value="Pediatrics">Pediatrics</option>
+                        <option value="Ophthalmology">Ophthalmology</option>
+                        <option value="Family Medicine">Family Medicine</option>
+                        <option value="Internal Medicine">Internal Medicine</option>
+                        <option value="Surgery">Surgery</option>
+                        <option value="Obstetrics & Gynecology">Obstetrics & Gynecology</option>
+                      </optgroup>
+                    </select>
+                  </div>
                 </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-medium text-muted-foreground">Module / Specialty</label>
-                  <select
-                    value={deckInfo.module}
-                    onChange={e => setDeckInfo({ ...deckInfo, module: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-muted border-none focus:ring-2 focus:ring-primary/20 transition-all appearance-none"
-                  >
-                    <option value="">Select Module</option>
-                    <optgroup label="General Modules">
-                      <option value="Basic Sciences">Basic Sciences</option>
-                      <option value="Clinical Skills">Clinical Skills</option>
-                    </optgroup>
-                    <optgroup label="Specialties (Year 3+)">
-                      <option value="Pediatrics">Pediatrics</option>
-                      <option value="Ophthalmology">Ophthalmology</option>
-                      <option value="Family Medicine">Family Medicine</option>
-                      <option value="Internal Medicine">Internal Medicine</option>
-                      <option value="Surgery">Surgery</option>
-                      <option value="Obstetrics & Gynecology">Obstetrics & Gynecology</option>
-                    </optgroup>
-                  </select>
-                </div>
-              </div>
+              )}
 
               <div className="space-y-2">
                 <label className="text-sm font-medium text-muted-foreground">Description</label>
@@ -667,7 +669,6 @@ const CreateCard = () => {
             </button>
           </div>
         </div>
-      </div>
       </div>
 
       <input

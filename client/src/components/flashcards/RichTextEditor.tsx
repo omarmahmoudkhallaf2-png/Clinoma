@@ -128,9 +128,9 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({ value, onChange, placeh
         ref={editorRef}
         contentEditable
         onInput={(e) => onChange(e.currentTarget.innerHTML)}
-        className="p-4 min-h-[100px] focus:outline-none bg-transparent prose prose-sm max-w-none"
-        placeholder={placeholder}
-        style={{ direction: 'auto' }}
+        className="p-4 min-h-[100px] focus:outline-none bg-transparent prose prose-sm max-w-none empty:before:content-[attr(data-placeholder)] empty:before:text-muted-foreground/50 empty:before:pointer-events-none"
+        data-placeholder={placeholder}
+        dir="auto"
       />
     </div>
   );

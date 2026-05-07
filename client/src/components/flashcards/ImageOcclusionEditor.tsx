@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Square, Circle, Trash2, Move, Maximize2, X } from 'lucide-react';
-import { Mask } from '../../types/flashcard';
+import type { Mask } from '../../types/flashcard';
 import { cn } from '../../lib/utils';
 
 interface ImageOcclusionEditorProps {
