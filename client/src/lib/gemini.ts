@@ -29,7 +29,9 @@ const tryFetch = async (model: string, payload: any, key: string) => {
 export const extractTopics = async (fileData: { data: string, mimeType: string }) => {
   const KEYS = [
     "AIzaSyB0GrBSsl3xbr_eDmSQtWk5v4VOS0p2gFQ",
-    "AIzaSyALv9jWafoAN9AVh4psyYQUaPpPL-ig-J4"
+    "AIzaSyALv9jWafoAN9AVh4psyYQUaPpPL-ig-J4",
+    "AIzaSyCJGwzTVZupdnoqUJvBoTahVWk6xT5NGck",
+    "AIzaSyA-tNrKNVdX6p1K0dS8g8yxJizw22bUymg"
   ];
   const models = ["gemini-flash-latest", "gemini-2.5-flash", "gemini-2.0-flash"];
   const allKeys = [import.meta.env.VITE_GEMINI_API_KEY, ...KEYS].filter(Boolean);
@@ -61,7 +63,9 @@ export const generateAIResponse = async (
 ) => {
   const KEYS = [
     "AIzaSyB0GrBSsl3xbr_eDmSQtWk5v4VOS0p2gFQ",
-    "AIzaSyALv9jWafoAN9AVh4psyYQUaPpPL-ig-J4"
+    "AIzaSyALv9jWafoAN9AVh4psyYQUaPpPL-ig-J4",
+    "AIzaSyCJGwzTVZupdnoqUJvBoTahVWk6xT5NGck",
+    "AIzaSyA-tNrKNVdX6p1K0dS8g8yxJizw22bUymg"
   ];
   
   const models = [
@@ -102,7 +106,8 @@ ${langPrompt}
 3. استخدم العناوين (Headings) والخط العريض (Bold) للكلمات المفتاحية.
 4. اجعل الإجابة منظمة جداً وسهلة القراءة.
 5. نوع في أحجام العناوين واستخدم القوائم.
-6. إذا كان هناك كلمات مفتاحية (Keywords)، قم بتمييزها بوضوح.
+6. إذا كان هناك كلمات مفتاحية (Keywords)، قم بتمييزها بوضوح باستخدام الخط العريض **Keyword**.
+7. التزم التزاماً تاماً بأسلوب الشرح المطلوب (Depth) واللغة المطلوبة (Language) المذكورين أعلاه.
 
 الموضوع المطلوب: 
 ${prompt}` 
@@ -131,7 +136,9 @@ ${prompt}`
 export const generateFlashcards = async (text: string, files?: { data: string, mimeType: string }[]) => {
   const KEYS = [
     "AIzaSyB0GrBSsl3xbr_eDmSQtWk5v4VOS0p2gFQ",
-    "AIzaSyALv9jWafoAN9AVh4psyYQUaPpPL-ig-J4"
+    "AIzaSyALv9jWafoAN9AVh4psyYQUaPpPL-ig-J4",
+    "AIzaSyCJGwzTVZupdnoqUJvBoTahVWk6xT5NGck",
+    "AIzaSyA-tNrKNVdX6p1K0dS8g8yxJizw22bUymg"
   ];
   
   const models = [
@@ -177,7 +184,9 @@ ONLY return valid JSON. No conversational text. \n\n Additional Instructions/Tex
 export const generateAIExam = async (prompt: string, files?: { data: string, mimeType: string }[]) => {
   const KEYS = [
     "AIzaSyB0GrBSsl3xbr_eDmSQtWk5v4VOS0p2gFQ",
-    "AIzaSyALv9jWafoAN9AVh4psyYQUaPpPL-ig-J4"
+    "AIzaSyALv9jWafoAN9AVh4psyYQUaPpPL-ig-J4",
+    "AIzaSyCJGwzTVZupdnoqUJvBoTahVWk6xT5NGck",
+    "AIzaSyA-tNrKNVdX6p1K0dS8g8yxJizw22bUymg"
   ];
   
   const models = [

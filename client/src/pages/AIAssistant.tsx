@@ -56,6 +56,8 @@ export default function AIAssistant() {
     language: 'ar-en'
   });
 
+  const [pendingMessage, setPendingMessage] = useState<string | null>(null);
+
   const scrollRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -69,8 +71,7 @@ export default function AIAssistant() {
     if (!user) return;
     const q = query(
       collection(db, 'assistant_chats'),
-      where('userId', '==', user.uid),
-      orderBy('timestamp', 'desc')
+      where('userId', '==', user.uid)
     );
 
     const unsubscribe = onSnapshot(q, (snapshot) => {
@@ -78,6 +79,14 @@ export default function AIAssistant() {
         id: doc.id,
         ...doc.data()
       })) as ChatSession[];
+      
+      // Sort locally to avoid composite index requirement
+      chats.sort((a, b) => {
+        const timeA = a.timestamp?.seconds || 0;
+        const timeB = b.timestamp?.seconds || 0;
+        return timeB - timeA;
+      });
+
       setHistory(chats);
     });
 
@@ -129,8 +138,9 @@ export default function AIAssistant() {
     setMessages(newMessages);
 
     try {
+      const promptToUse = pendingMessage || prompt;
       const response = await generateAIResponse(
-        prompt, 
+        promptToUse, 
         selectedFile ? { data: selectedFile.data, mimeType: selectedFile.type } : undefined, 
         config
       );
@@ -162,20 +172,29 @@ export default function AIAssistant() {
     } finally {
       setLoading(false);
       setSelectedFile(null);
+      setPendingMessage(null);
     }
   };
 
   const handleSend = async () => {
     if (!input.trim()) return;
-
-    const userMsg: Message = { role: 'user', content: input, timestamp: new Date() };
-    const newMessages = [...messages, userMsg];
-    setMessages(newMessages);
+    setPendingMessage(input);
+    setSelectedTopic(input.substring(0, 50));
+    setWorkflowStep('config');
     setInput('');
+  };
+
+  const processPendingSend = async () => {
+    if (!pendingMessage) return;
+    setWorkflowStep('chat');
     setLoading(true);
 
+    const userMsg: Message = { role: 'user', content: pendingMessage, timestamp: new Date() };
+    const newMessages = [...messages, userMsg];
+    setMessages(newMessages);
+
     try {
-      const response = await generateAIResponse(input, undefined, config);
+      const response = await generateAIResponse(pendingMessage, undefined, config);
       const aiMsg: Message = { role: 'ai', content: response, timestamp: new Date() };
       const updatedMessages = [...newMessages, aiMsg];
       setMessages(updatedMessages);
@@ -184,7 +203,7 @@ export default function AIAssistant() {
         if (!currentSessionId) {
           const docRef = await addDoc(collection(db, 'assistant_chats'), {
             userId: user.uid,
-            title: input.substring(0, 30),
+            title: pendingMessage.substring(0, 30),
             lastMessage: response.substring(0, 100),
             messages: updatedMessages,
             timestamp: serverTimestamp()
@@ -202,6 +221,7 @@ export default function AIAssistant() {
       toast.error('حدث خطأ أثناء معالجة طلبك');
     } finally {
       setLoading(false);
+      setPendingMessage(null);
     }
   };
 
@@ -440,8 +460,8 @@ export default function AIAssistant() {
                 <div className="w-20 h-20 bg-indigo-500/10 text-indigo-600 rounded-[2rem] flex items-center justify-center mx-auto mb-6 shadow-inner">
                   <Settings size={40} className="animate-spin-slow" />
                 </div>
-                <h2 className="text-3xl font-black">تخصيص الشرح</h2>
-                <p className="text-muted-foreground font-bold">الموضوع: <span className="text-primary">{selectedTopic}</span></p>
+                <h2 className="text-3xl font-black">تخصيص أسلوب الإجابة</h2>
+                <p className="text-muted-foreground font-bold">الموضوع: <span className="text-primary">{pendingMessage || selectedTopic}</span></p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -506,7 +526,10 @@ export default function AIAssistant() {
               </div>
 
               <div className="flex gap-4 pt-6">
-                <Button onClick={startExplaining} className="flex-1 h-16 rounded-2xl text-lg font-black shadow-xl shadow-primary/20">
+                <Button 
+                  onClick={pendingMessage ? processPendingSend : startExplaining} 
+                  className="flex-1 h-16 rounded-2xl text-lg font-black shadow-xl shadow-primary/20"
+                >
                   ابدأ الشرح الآن
                 </Button>
                 <Button variant="outline" onClick={() => setWorkflowStep('topics')} className="h-16 px-8 rounded-2xl font-bold border-2">
