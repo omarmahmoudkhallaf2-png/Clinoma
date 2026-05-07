@@ -10,8 +10,8 @@ const tryFetch = async (model: string, payload: any, key: string) => {
         body: JSON.stringify(payload)
       });
       
-      // If quota exceeded, return special status to skip this key
-      if (response.status === 429) return { ok: false, status: 429 };
+      // If quota exceeded or restricted, return special status to skip this key
+      if (response.status === 429 || response.status === 403) return { ok: false, status: response.status };
       
       if (response.ok) return response;
       if (response.status === 404 || response.status === 400) continue;
@@ -28,11 +28,14 @@ export const extractTopics = async (fileData: { data: string, mimeType: string }
   const KEYS = [
     "AIzaSyB0GrBSsl3xbr_eDmSQtWk5v4VOS0p2gFQ",
     "AIzaSyALv9jWafoAN9AVh4psyYQUaPpPL-ig-J4",
-    "AIzaSyCJGwzTVZupdnoqUJvBoTahVWk6xT5NGck",
-    "AIzaSyA-tNrKNVdX6p1K0dS8g8yxJizw22bUymg"
+    "AIzaSyAsuqzTQlgwhhhUAUhLy9Wd92xgR_kvVDA",
+    "AIzaSyA05ajCmTzdHKYE1YAU0t6VQHj3DhUE-Zw",
+    "AIzaSyAyZ-gdyKEgGgBwZx77EkPVpC1vDyjsyPc"
   ];
   const models = ["gemini-flash-latest", "gemini-2.5-flash", "gemini-2.0-flash"];
-  const allKeys = [import.meta.env.VITE_GEMINI_API_KEY, ...KEYS].filter(Boolean);
+  const allKeys = [import.meta.env.VITE_GEMINI_API_KEY, ...KEYS]
+    .filter(Boolean)
+    .sort(() => Math.random() - 0.5);
 
   for (const key of allKeys) {
     for (const model of models) {
@@ -45,7 +48,7 @@ export const extractTopics = async (fileData: { data: string, mimeType: string }
       }];
 
       const res = await tryFetch(model, { contents }, key!);
-      if (res && res.status === 429) break; // Skip to next key
+      if (res && (res.status === 429 || res.status === 403)) break; // Skip to next key
       if (res && res.ok) {
         const data = await (res as Response).json();
         return data.candidates?.[0]?.content?.parts?.[0]?.text || "";
@@ -63,8 +66,9 @@ export const generateAIResponse = async (
   const KEYS = [
     "AIzaSyB0GrBSsl3xbr_eDmSQtWk5v4VOS0p2gFQ",
     "AIzaSyALv9jWafoAN9AVh4psyYQUaPpPL-ig-J4",
-    "AIzaSyCJGwzTVZupdnoqUJvBoTahVWk6xT5NGck",
-    "AIzaSyA-tNrKNVdX6p1K0dS8g8yxJizw22bUymg"
+    "AIzaSyAsuqzTQlgwhhhUAUhLy9Wd92xgR_kvVDA",
+    "AIzaSyA05ajCmTzdHKYE1YAU0t6VQHj3DhUE-Zw",
+    "AIzaSyAyZ-gdyKEgGgBwZx77EkPVpC1vDyjsyPc"
   ];
   
   const models = [
@@ -127,7 +131,7 @@ ${prompt}`
       }
 
       const res = await tryFetch(model, { contents }, key!);
-      if (res && res.status === 429) break; // Skip to next key
+      if (res && (res.status === 429 || res.status === 403)) break; // Skip to next key
       if (res && res.ok) {
         const data = await (res as Response).json();
         return data.candidates?.[0]?.content?.parts?.[0]?.text || "No response.";
@@ -138,21 +142,21 @@ ${prompt}`
 };
 
 export const generateFlashcards = async (text: string, files?: { data: string, mimeType: string }[]) => {
-  const KEYS = [
+  const allKeys = [
+    import.meta.env.VITE_GEMINI_API_KEY,
     "AIzaSyB0GrBSsl3xbr_eDmSQtWk5v4VOS0p2gFQ",
     "AIzaSyALv9jWafoAN9AVh4psyYQUaPpPL-ig-J4",
-    "AIzaSyCJGwzTVZupdnoqUJvBoTahVWk6xT5NGck",
-    "AIzaSyA-tNrKNVdX6p1K0dS8g8yxJizw22bUymg"
-  ];
+    "AIzaSyAsuqzTQlgwhhhUAUhLy9Wd92xgR_kvVDA",
+    "AIzaSyA05ajCmTzdHKYE1YAU0t6VQHj3DhUE-Zw",
+    "AIzaSyAyZ-gdyKEgGgBwZx77EkPVpC1vDyjsyPc"
+  ].filter(Boolean).sort(() => Math.random() - 0.5);
   
   const models = [
-    "gemini-3.1-pro-preview",
-    "gemini-flash-latest",
     "gemini-2.5-flash",
-    "gemini-2.0-flash"
+    "gemini-2.5-flash-lite",
+    "gemini-3.1-pro-preview",
+    "gemini-flash-latest"
   ];
-
-  const allKeys = [import.meta.env.VITE_GEMINI_API_KEY, ...KEYS].filter(Boolean);
 
   for (const key of allKeys) {
     for (const model of models) {
@@ -174,7 +178,7 @@ ONLY return valid JSON. No conversational text. \n\n Additional Instructions/Tex
       }
 
       const res = await tryFetch(model, { contents: [{ role: 'user', parts }] }, key!);
-      if (res && res.status === 429) break; // Skip key on 429
+      if (res && (res.status === 429 || res.status === 403)) break; 
       if (res && res.ok) {
         const data = await (res as Response).json();
         const textOutput = data.candidates?.[0]?.content?.parts?.[0]?.text || "";
@@ -187,20 +191,21 @@ ONLY return valid JSON. No conversational text. \n\n Additional Instructions/Tex
 };
 
 export const generateAIExam = async (prompt: string, files?: { data: string, mimeType: string }[]) => {
-  const KEYS = [
+  const allKeys = [
+    import.meta.env.VITE_GEMINI_API_KEY,
     "AIzaSyB0GrBSsl3xbr_eDmSQtWk5v4VOS0p2gFQ",
     "AIzaSyALv9jWafoAN9AVh4psyYQUaPpPL-ig-J4",
-    "AIzaSyCJGwzTVZupdnoqUJvBoTahVWk6xT5NGck",
-    "AIzaSyA-tNrKNVdX6p1K0dS8g8yxJizw22bUymg"
-  ];
+    "AIzaSyAsuqzTQlgwhhhUAUhLy9Wd92xgR_kvVDA",
+    "AIzaSyA05ajCmTzdHKYE1YAU0t6VQHj3DhUE-Zw",
+    "AIzaSyAyZ-gdyKEgGgBwZx77EkPVpC1vDyjsyPc"
+  ].filter(Boolean).sort(() => Math.random() - 0.5);
   
   const models = [
-    "gemini-3.1-pro-preview",
-    "gemini-flash-latest",
     "gemini-2.5-flash",
-    "gemini-2.0-flash"
+    "gemini-2.5-flash-lite",
+    "gemini-3.1-pro-preview",
+    "gemini-flash-latest"
   ];
-  const allKeys = [import.meta.env.VITE_GEMINI_API_KEY, ...KEYS].filter(Boolean);
 
   for (const key of allKeys) {
     for (const model of models) {
@@ -235,7 +240,7 @@ Instructions: ${prompt}`
       }
 
       const res = await tryFetch(model, { contents: [{ role: 'user', parts }] }, key!);
-      if (res && res.status === 429) break; // Skip key on 429
+      if (res && (res.status === 429 || res.status === 403)) break; 
       if (res && res.ok) {
         const data = await (res as Response).json();
         const textOutput = data.candidates?.[0]?.content?.parts?.[0]?.text || "";
