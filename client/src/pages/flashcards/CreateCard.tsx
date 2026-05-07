@@ -21,12 +21,17 @@ import {
 import toast from 'react-hot-toast';
 import { generateFlashcards } from '../../lib/gemini';
 import { cn } from '../../lib/utils';
+import RichTextEditor from '../../components/flashcards/RichTextEditor';
+import ImageOcclusionEditor from '../../components/flashcards/ImageOcclusionEditor';
+import { CardImage, Mask } from '../../types/flashcard';
+import { Image as ImageIcon, Edit2, Type as TypeIcon } from 'lucide-react';
 
 interface CardInput {
-
   front: string;
   back: string;
   tags: string[];
+  frontImage?: CardImage;
+  backImage?: CardImage;
 }
 
 const CreateCard = () => {
@@ -51,7 +56,10 @@ const CreateCard = () => {
   const [aiPrompt, setAiPrompt] = useState('');
   const [selectedFiles, setSelectedFiles] = useState<{ name: string, data: string, type: string }[]>([]);
   const [saving, setSaving] = useState(false);
+  const [imageEditor, setImageEditor] = useState<{ idx: number, side: 'front' | 'back' } | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const cardImageInputRef = useRef<HTMLInputElement>(null);
+  const [activeUploadCard, setActiveUploadCard] = useState<{ idx: number, side: 'front' | 'back' } | null>(null);
 
   // Load deck if editing
   React.useEffect(() => {
@@ -99,6 +107,50 @@ const CreateCard = () => {
     }
   };
 
+  const handleCardImageUpload = async (file: File, idx: number, side: 'front' | 'back') => {
+    if (!file) return;
+    
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        let { width, height } = img;
+        
+        const MAX_DIM = 1200;
+        if (width > height && width > MAX_DIM) {
+          height *= MAX_DIM / width;
+          width = MAX_DIM;
+        } else if (height > MAX_DIM) {
+          width *= MAX_DIM / height;
+          height = MAX_DIM;
+        }
+        
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        if (ctx) {
+          ctx.fillStyle = '#FFFFFF';
+          ctx.fillRect(0, 0, width, height);
+          ctx.drawImage(img, 0, 0, width, height);
+        }
+        
+        const compressedBase64 = canvas.toDataURL('image/jpeg', 0.8);
+        
+        const newCards = [...cards];
+        const field = side === 'front' ? 'frontImage' : 'backImage';
+        newCards[idx][field] = {
+          url: compressedBase64,
+          masks: []
+        };
+        setCards(newCards);
+        toast.success('تم رفع الصورة بنجاح');
+      };
+      img.src = event.target?.result as string;
+    };
+    reader.readAsDataURL(file);
+  };
+
   const removeFile = (index: number) => {
     setSelectedFiles(prev => prev.filter((_, i) => i !== index));
   };
@@ -112,14 +164,24 @@ const CreateCard = () => {
     setCards(cards.filter((_, i) => i !== index));
   };
 
-  const updateCard = (index: number, field: keyof CardInput, value: string) => {
+  const updateCard = (index: number, field: keyof CardInput, value: any) => {
     const newCards = [...cards];
-    if (field === 'tags') {
+    if (field === 'tags' && typeof value === 'string') {
       newCards[index].tags = value.split(',').map(t => t.trim());
     } else {
-      newCards[index][field] = value as string;
+      (newCards[index] as any)[field] = value;
     }
     setCards(newCards);
+  };
+
+  const updateMasks = (idx: number, side: 'front' | 'back', masks: Mask[]) => {
+    const newCards = [...cards];
+    const field = side === 'front' ? 'frontImage' : 'backImage';
+    const img = newCards[idx][field];
+    if (img) {
+      newCards[idx][field] = { ...img, masks };
+      setCards(newCards);
+    }
   };
 
   const handleSave = async () => {
@@ -166,6 +228,8 @@ const CreateCard = () => {
           userId: deckInfo.isPublic ? 'PUBLIC' : user.uid,
           front: card.front,
           back: card.back,
+          frontImage: card.frontImage || null,
+          backImage: card.backImage || null,
           tags: card.tags,
           subject: deckInfo.subject,
           createdAt: Date.now(),
@@ -471,30 +535,109 @@ const CreateCard = () => {
                   </button>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-muted-foreground">
-                        <Type size={12} />
-                        Front Side
+                    {/* Front Side */}
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-muted-foreground">
+                          <TypeIcon size={12} />
+                          Front Side
+                        </div>
+                        <button
+                          onClick={() => {
+                            setActiveUploadCard({ idx, side: 'front' });
+                            cardImageInputRef.current?.click();
+                          }}
+                          className="flex items-center gap-1.5 text-[10px] font-black uppercase text-primary hover:bg-primary/10 px-2 py-1 rounded-lg transition-all"
+                        >
+                          <ImageIcon size={12} />
+                          {card.frontImage ? 'Change Image' : 'Add Image'}
+                        </button>
                       </div>
-                      <textarea
-                        placeholder="Enter question..."
-                        rows={3}
+
+                      {card.frontImage && (
+                        <div className="relative group/img aspect-video rounded-2xl overflow-hidden bg-muted border border-border">
+                          <img src={card.frontImage.url} alt="Front" className="w-full h-full object-cover" />
+                          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center gap-2">
+                            <button
+                              onClick={() => setImageEditor({ idx, side: 'front' })}
+                              className="p-2 bg-white text-primary rounded-full hover:scale-110 transition-transform"
+                              title="Edit Occlusion Masks"
+                            >
+                              <Edit2 size={16} />
+                            </button>
+                            <button
+                              onClick={() => updateCard(idx, 'frontImage', undefined)}
+                              className="p-2 bg-white text-rose-500 rounded-full hover:scale-110 transition-transform"
+                              title="Remove Image"
+                            >
+                              <Trash2 size={16} />
+                            </button>
+                          </div>
+                          {card.frontImage.masks.length > 0 && (
+                            <div className="absolute top-2 left-2 px-2 py-0.5 bg-primary text-[8px] text-white font-black rounded-full uppercase tracking-widest shadow-lg">
+                              {card.frontImage.masks.length} Masks
+                            </div>
+                          )}
+                        </div>
+                      )}
+
+                      <RichTextEditor
                         value={card.front}
-                        onChange={e => updateCard(idx, 'front', e.target.value)}
-                        className="w-full px-4 py-3 rounded-xl bg-muted/50 border-none focus:ring-2 focus:ring-primary/20 transition-all resize-none font-medium"
+                        onChange={val => updateCard(idx, 'front', val)}
+                        placeholder="Enter question..."
                       />
                     </div>
-                    <div className="space-y-2">
-                      <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-muted-foreground">
-                        <Type size={12} />
-                        Back Side
+
+                    {/* Back Side */}
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-muted-foreground">
+                          <TypeIcon size={12} />
+                          Back Side
+                        </div>
+                        <button
+                          onClick={() => {
+                            setActiveUploadCard({ idx, side: 'back' });
+                            cardImageInputRef.current?.click();
+                          }}
+                          className="flex items-center gap-1.5 text-[10px] font-black uppercase text-primary hover:bg-primary/10 px-2 py-1 rounded-lg transition-all"
+                        >
+                          <ImageIcon size={12} />
+                          {card.backImage ? 'Change Image' : 'Add Image'}
+                        </button>
                       </div>
-                      <textarea
-                        placeholder="Enter answer..."
-                        rows={3}
+
+                      {card.backImage && (
+                        <div className="relative group/img aspect-video rounded-2xl overflow-hidden bg-muted border border-border">
+                          <img src={card.backImage.url} alt="Back" className="w-full h-full object-cover" />
+                          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center gap-2">
+                            <button
+                              onClick={() => setImageEditor({ idx, side: 'back' })}
+                              className="p-2 bg-white text-primary rounded-full hover:scale-110 transition-transform"
+                              title="Edit Occlusion Masks"
+                            >
+                              <Edit2 size={16} />
+                            </button>
+                            <button
+                              onClick={() => updateCard(idx, 'backImage', undefined)}
+                              className="p-2 bg-white text-rose-500 rounded-full hover:scale-110 transition-transform"
+                              title="Remove Image"
+                            >
+                              <Trash2 size={16} />
+                            </button>
+                          </div>
+                          {card.backImage.masks.length > 0 && (
+                            <div className="absolute top-2 left-2 px-2 py-0.5 bg-primary text-[8px] text-white font-black rounded-full uppercase tracking-widest shadow-lg">
+                              {card.backImage.masks.length} Masks
+                            </div>
+                          )}
+                        </div>
+                      )}
+
+                      <RichTextEditor
                         value={card.back}
-                        onChange={e => updateCard(idx, 'back', e.target.value)}
-                        className="w-full px-4 py-3 rounded-xl bg-muted/50 border-none focus:ring-2 focus:ring-primary/20 transition-all resize-none font-medium"
+                        onChange={val => updateCard(idx, 'back', val)}
+                        placeholder="Enter answer..."
                       />
                     </div>
                   </div>
@@ -525,6 +668,30 @@ const CreateCard = () => {
           </div>
         </div>
       </div>
+      </div>
+
+      <input
+        type="file"
+        ref={cardImageInputRef}
+        className="hidden"
+        accept="image/*"
+        onChange={(e) => {
+          const file = e.target.files?.[0];
+          if (file && activeUploadCard) {
+            handleCardImageUpload(file, activeUploadCard.idx, activeUploadCard.side);
+          }
+          e.target.value = '';
+        }}
+      />
+
+      {imageEditor && (
+        <ImageOcclusionEditor
+          imageUrl={imageEditor.side === 'front' ? cards[imageEditor.idx].frontImage!.url : cards[imageEditor.idx].backImage!.url}
+          masks={imageEditor.side === 'front' ? cards[imageEditor.idx].frontImage!.masks : cards[imageEditor.idx].backImage!.masks}
+          onChange={(masks) => updateMasks(imageEditor.idx, imageEditor.side, masks)}
+          onClose={() => setImageEditor(null)}
+        />
+      )}
     </div>
   );
 };

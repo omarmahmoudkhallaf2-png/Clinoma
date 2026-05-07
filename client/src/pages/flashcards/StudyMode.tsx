@@ -3,8 +3,9 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { doc, updateDoc, getDoc, collection, query, where, getDocs } from 'firebase/firestore';
 import { db } from '../../lib/firebase';
 import { useAuth } from '../../context/AuthContext';
-import type { Flashcard, Deck } from '../../types/flashcard';
+import type { Flashcard, Deck, CardImage } from '../../types/flashcard';
 import { calculateSRS } from '../../lib/srs';
+import { cn } from '../../lib/utils';
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
@@ -287,28 +288,120 @@ const StudyMode = () => {
                 onClick={() => setIsFlipped(!isFlipped)}
               >
                 {/* Front */}
-                <div className="absolute inset-0 backface-hidden bg-card border-2 border-border p-12 rounded-[2rem] shadow-xl flex flex-col items-center justify-center text-center">
+                <div className="absolute inset-0 backface-hidden bg-card border-2 border-border p-8 md:p-12 rounded-[2rem] shadow-xl flex flex-col items-center justify-center text-center">
                   <div className="absolute top-6 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-muted text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
                     Question
                   </div>
-                  <h2 className="text-2xl md:text-3xl font-medium leading-relaxed">
-                    {currentCard.front}
-                  </h2>
-                  <div className="absolute bottom-8 text-sm text-muted-foreground flex items-center gap-2 animate-bounce">
+                  
+                  <div className="w-full h-full flex flex-col gap-6 overflow-hidden mt-4">
+                    {currentCard.frontImage && (
+                      <div className="relative inline-block mx-auto max-h-[60%] overflow-hidden rounded-xl border border-border">
+                        <img src={currentCard.frontImage.url} alt="Front" className="max-h-full w-auto object-contain" />
+                        <svg viewBox="0 0 1000 1000" preserveAspectRatio="none" className="absolute inset-0 w-full h-full pointer-events-none">
+                          {currentCard.frontImage.masks.map(mask => (
+                            <g key={mask.id}>
+                              {mask.type === 'rect' ? (
+                                <rect
+                                  x={mask.x}
+                                  y={mask.y}
+                                  width={mask.width}
+                                  height={mask.height}
+                                  fill={mask.color}
+                                  className="transition-opacity duration-300"
+                                />
+                              ) : (
+                                <ellipse
+                                  cx={mask.x + mask.width / 2}
+                                  cy={mask.y + mask.height / 2}
+                                  rx={mask.width / 2}
+                                  ry={mask.height / 2}
+                                  fill={mask.color}
+                                  className="transition-opacity duration-300"
+                                />
+                              )}
+                            </g>
+                          ))}
+                        </svg>
+                      </div>
+                    )}
+                    <div 
+                      className="prose prose-lg dark:prose-invert max-w-none text-center flex-1 overflow-y-auto"
+                      dangerouslySetInnerHTML={{ __html: currentCard.front }}
+                    />
+                  </div>
+
+                  <div className="absolute bottom-4 text-sm text-muted-foreground flex items-center gap-2 animate-bounce">
                     <Eye size={16} />
                     Click to flip
                   </div>
                 </div>
 
                 {/* Back */}
-                <div className="absolute inset-0 backface-hidden bg-card border-2 border-primary/30 p-12 rounded-[2rem] shadow-xl flex flex-col items-center justify-center text-center rotate-y-180">
+                <div className="absolute inset-0 backface-hidden bg-card border-2 border-primary/30 p-8 md:p-12 rounded-[2rem] shadow-xl flex flex-col items-center justify-center text-center rotate-y-180">
                   <div className="absolute top-6 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-primary/10 text-[10px] font-bold uppercase tracking-widest text-primary">
                     Answer
                   </div>
-                  <div className="w-full overflow-y-auto max-h-[80%] custom-scrollbar">
-                    <p className="text-2xl md:text-3xl font-medium leading-relaxed whitespace-pre-wrap">
-                      {currentCard.back}
-                    </p>
+                  
+                  <div className="w-full h-full flex flex-col gap-6 overflow-hidden mt-4">
+                    {currentCard.backImage ? (
+                      <div className="relative inline-block mx-auto max-h-[50%] overflow-hidden rounded-xl border border-border">
+                        <img src={currentCard.backImage.url} alt="Back" className="max-h-full w-auto object-contain" />
+                        {/* Masks on back side might also hide things until revealed? 
+                            Usually we just show the unmasked image if it's the same image.
+                            But if it's a DIFFERENT image, we might still want masks?
+                            For now, let's show back masks as semi-transparent to indicate what was hidden.
+                        */}
+                        <svg viewBox="0 0 1000 1000" preserveAspectRatio="none" className="absolute inset-0 w-full h-full pointer-events-none">
+                          {currentCard.backImage.masks.map(mask => (
+                            <g key={mask.id}>
+                              {mask.type === 'rect' ? (
+                                <rect
+                                  x={mask.x}
+                                  y={mask.y}
+                                  width={mask.width}
+                                  height={mask.height}
+                                  fill={mask.color}
+                                  fillOpacity={0.3}
+                                  stroke={mask.color}
+                                  strokeWidth={2}
+                                />
+                              ) : (
+                                <ellipse
+                                  cx={mask.x + mask.width / 2}
+                                  cy={mask.y + mask.height / 2}
+                                  rx={mask.width / 2}
+                                  ry={mask.height / 2}
+                                  fill={mask.color}
+                                  fillOpacity={0.3}
+                                  stroke={mask.color}
+                                  strokeWidth={2}
+                                />
+                              )}
+                            </g>
+                          ))}
+                        </svg>
+                      </div>
+                    ) : currentCard.frontImage && (
+                       /* If no back image, but there is a front image, show the front image REVEALED (masks semi-transparent) */
+                       <div className="relative inline-block mx-auto max-h-[40%] opacity-60">
+                        <img src={currentCard.frontImage.url} alt="Front Revealed" className="max-h-full w-auto object-contain rounded-lg" />
+                        <svg viewBox="0 0 1000 1000" preserveAspectRatio="none" className="absolute inset-0 w-full h-full pointer-events-none">
+                          {currentCard.frontImage.masks.map(mask => (
+                            <g key={mask.id}>
+                              {mask.type === 'rect' ? (
+                                <rect x={mask.x} y={mask.y} width={mask.width} height={mask.height} fill="none" stroke={mask.color} strokeWidth={2} />
+                              ) : (
+                                <ellipse cx={mask.x + mask.width / 2} cy={mask.y + mask.height / 2} rx={mask.width / 2} ry={mask.height / 2} fill="none" stroke={mask.color} strokeWidth={2} />
+                              )}
+                            </g>
+                          ))}
+                        </svg>
+                      </div>
+                    )}
+                    <div 
+                      className="prose prose-lg dark:prose-invert max-w-none text-center flex-1 overflow-y-auto"
+                      dangerouslySetInnerHTML={{ __html: currentCard.back }}
+                    />
                   </div>
                 </div>
               </motion.div>

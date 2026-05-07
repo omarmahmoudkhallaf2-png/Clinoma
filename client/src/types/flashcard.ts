@@ -1,9 +1,26 @@
+export interface Mask {
+  id: string;
+  type: 'rect' | 'circle';
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  color: string;
+}
+
+export interface CardImage {
+  url: string;
+  masks: Mask[];
+}
+
 export interface Flashcard {
   id: string;
   deckId: string;
   userId: string;
   front: string;
   back: string;
+  frontImage?: CardImage;
+  backImage?: CardImage;
   tags: string[];
   subject: string;
   createdAt: number;
