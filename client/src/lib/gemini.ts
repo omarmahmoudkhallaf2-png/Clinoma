@@ -122,7 +122,12 @@ export const generateAIResponse = async (
 5. إذا ذكرت كلمات مفتاحية، ضعها في خط عريض **Keyword**.`;
 
   // TRY GROQ FIRST (AS REQUESTED)
-  const groqModels = ["llama-3.1-70b-versatile", "llama3-70b-8192", "mixtral-8x7b-32768"];
+  const groqModels = [
+    "llama-3.3-70b-versatile",
+    "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llama-3.1-8b-instant",
+    "allam-2-7b"
+  ];
   for (const model of groqModels) {
     const res = await tryGroqFetch(model, [
       { role: "system", content: systemPrompt },
