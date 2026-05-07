@@ -25,7 +25,7 @@ const tryGroqFetch = async (model: string, messages: any[]) => {
       console.error("Groq API Error Detail:", {
         status: response.status,
         statusText: response.statusText,
-        body: errorData
+        body: JSON.stringify(errorData, null, 2)
       });
     }
     return null;
