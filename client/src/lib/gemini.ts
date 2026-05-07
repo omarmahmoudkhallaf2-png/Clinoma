@@ -1,9 +1,7 @@
 
 const tryFetch = async (model: string, payload: any, key: string) => {
-  // Try v1beta first as it has the best support for multimodal (PDF, etc) in 2026
-  const endpoints = ['v1beta', 'v1'];
-  
-  for (const version of endpoints) {
+  const versions = ['v1beta', 'v1'];
+  for (const version of versions) {
     try {
       const url = `https://generativelanguage.googleapis.com/${version}/models/${model}:generateContent?key=${key}`;
       const response = await fetch(url, {
@@ -12,12 +10,12 @@ const tryFetch = async (model: string, payload: any, key: string) => {
         body: JSON.stringify(payload)
       });
       
-      if (response.ok) return response;
+      // If quota exceeded, return special status to skip this key
+      if (response.status === 429) return { ok: false, status: 429 };
       
-      // If error is 404 (model not found) or 400 (bad request/unsupported feature), try next version
+      if (response.ok) return response;
       if (response.status === 404 || response.status === 400) continue;
       
-      // If other error (quota 429, auth), return it to handle it in the caller
       return response;
     } catch (err) {
       continue;
@@ -47,8 +45,9 @@ export const extractTopics = async (fileData: { data: string, mimeType: string }
       }];
 
       const res = await tryFetch(model, { contents }, key!);
+      if (res && res.status === 429) break; // Skip to next key
       if (res && res.ok) {
-        const data = await res.json();
+        const data = await (res as Response).json();
         return data.candidates?.[0]?.content?.parts?.[0]?.text || "";
       }
     }
@@ -124,8 +123,9 @@ ${prompt}`
       }
 
       const res = await tryFetch(model, { contents }, key!);
+      if (res && res.status === 429) break; // Skip to next key
       if (res && res.ok) {
-        const data = await res.json();
+        const data = await (res as Response).json();
         return data.candidates?.[0]?.content?.parts?.[0]?.text || "No response.";
       }
     }
@@ -170,8 +170,9 @@ ONLY return valid JSON. No conversational text. \n\n Additional Instructions/Tex
       }
 
       const res = await tryFetch(model, { contents: [{ role: 'user', parts }] }, key!);
+      if (res && res.status === 429) break; // Skip key on 429
       if (res && res.ok) {
-        const data = await res.json();
+        const data = await (res as Response).json();
         const textOutput = data.candidates?.[0]?.content?.parts?.[0]?.text || "";
         const jsonMatch = textOutput.match(/\[[\s\S]*\]/);
         if (jsonMatch) return JSON.parse(jsonMatch[0]);
@@ -230,8 +231,9 @@ Instructions: ${prompt}`
       }
 
       const res = await tryFetch(model, { contents: [{ role: 'user', parts }] }, key!);
+      if (res && res.status === 429) break; // Skip key on 429
       if (res && res.ok) {
-        const data = await res.json();
+        const data = await (res as Response).json();
         const textOutput = data.candidates?.[0]?.content?.parts?.[0]?.text || "";
         const jsonMatch = textOutput.match(/\[[\s\S]*\]/);
         if (jsonMatch) return JSON.parse(jsonMatch[0]);
