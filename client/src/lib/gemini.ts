@@ -2,13 +2,19 @@
 const tryFetch = async (model: string, payload: any, key: string) => {
   const versions = ['v1beta', 'v1'];
   for (const version of versions) {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 30000); // 30s timeout
+
     try {
       const url = `https://generativelanguage.googleapis.com/${version}/models/${model}:generateContent?key=${key}`;
       const response = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
+        body: JSON.stringify(payload),
+        signal: controller.signal
       });
+      
+      clearTimeout(timeoutId);
       
       // If quota exceeded or restricted, return special status to skip this key
       if (response.status === 429 || response.status === 403) return { ok: false, status: response.status };
@@ -18,6 +24,7 @@ const tryFetch = async (model: string, payload: any, key: string) => {
       
       return response;
     } catch (err) {
+      clearTimeout(timeoutId);
       continue;
     }
   }
