@@ -308,15 +308,15 @@ const StudyMode = () => {
         <div className="absolute top-1/4 -left-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 -right-20 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl" />
 
-        <div className="w-full max-w-[95vw] lg:max-w-[85vw] perspective-1000 flex-1 flex items-center justify-center">
+        <div className="w-full max-w-[95vw] lg:max-w-6xl perspective-1000 flex-1 flex items-center justify-center min-h-[500px]">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentIndex}
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -50 }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 1.05 }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="relative w-full h-full max-h-[75vh]"
+              className="relative w-full aspect-[21/9] min-h-[500px] md:min-h-[600px]"
             >
               <motion.div
                 animate={{ rotateY: isFlipped ? 180 : 0 }}
@@ -325,15 +325,15 @@ const StudyMode = () => {
                 onClick={() => setIsFlipped(!isFlipped)}
               >
                 {/* Front */}
-                <div className="absolute inset-0 backface-hidden bg-card border-2 border-border p-10 md:p-16 rounded-[3rem] shadow-2xl flex flex-col items-center justify-center text-center">
-                  <div className="absolute top-8 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-muted text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground">
+                <div className="absolute inset-0 backface-hidden bg-card border-2 border-border p-8 md:p-12 rounded-[3rem] shadow-2xl flex flex-col items-center justify-center text-center overflow-hidden">
+                  <div className="absolute top-6 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-muted text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground z-10">
                     Question
                   </div>
                   
-                  <div className="w-full h-full flex flex-col gap-10 items-center justify-center overflow-hidden mt-6">
+                  <div className="w-full h-full flex flex-col gap-6 items-center justify-center overflow-hidden pt-10">
                     {currentCard.frontImage && (
                       <div 
-                        className="relative inline-block mx-auto max-h-[80%] rounded-2xl border border-border overflow-hidden bg-muted/50"
+                        className="relative inline-block mx-auto max-h-[60%] rounded-2xl border border-border overflow-hidden bg-muted/50"
                         style={{ transform: `scale(${currentCard.frontImage.scale || 1})` }}
                       >
                         <img src={currentCard.frontImage.url} alt="Front" className="max-h-full w-auto object-contain" />
@@ -341,23 +341,9 @@ const StudyMode = () => {
                           {currentCard.frontImage.masks.map(mask => (
                             <g key={mask.id}>
                               {mask.type === 'rect' ? (
-                                <rect
-                                  x={mask.x}
-                                  y={mask.y}
-                                  width={mask.width}
-                                  height={mask.height}
-                                  fill={mask.color}
-                                  className="transition-opacity duration-300"
-                                />
+                                <rect x={mask.x} y={mask.y} width={mask.width} height={mask.height} fill={mask.color} />
                               ) : (
-                                <ellipse
-                                  cx={mask.x + mask.width / 2}
-                                  cy={mask.y + mask.height / 2}
-                                  rx={mask.width / 2}
-                                  ry={mask.height / 2}
-                                  fill={mask.color}
-                                  className="transition-opacity duration-300"
-                                />
+                                <ellipse cx={mask.x + mask.width/2} cy={mask.y + mask.height/2} rx={mask.width/2} ry={mask.height/2} fill={mask.color} />
                               )}
                             </g>
                           ))}
@@ -365,27 +351,27 @@ const StudyMode = () => {
                       </div>
                     )}
                     <div 
-                      className="prose prose-2xl font-bold dark:prose-invert max-w-none text-center flex-1 overflow-y-auto w-full"
+                      className="prose prose-xl md:prose-2xl font-bold dark:prose-invert max-w-none text-center flex-1 overflow-y-auto w-full px-4"
                       dangerouslySetInnerHTML={{ __html: currentCard.front }}
                     />
                   </div>
 
-                  <div className="absolute bottom-6 text-sm text-muted-foreground flex items-center gap-2 animate-bounce">
-                    <Eye size={20} />
+                  <div className="absolute bottom-6 text-sm text-muted-foreground flex items-center gap-2 animate-bounce opacity-50">
+                    <Eye size={18} />
                     Click to reveal answer
                   </div>
                 </div>
 
                 {/* Back */}
-                <div className="absolute inset-0 backface-hidden bg-card border-4 border-primary/20 p-10 md:p-16 rounded-[3rem] shadow-2xl flex flex-col items-center justify-center text-center rotate-y-180">
-                  <div className="absolute top-8 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-primary/10 text-[10px] font-black uppercase tracking-[0.2em] text-primary">
+                <div className="absolute inset-0 backface-hidden bg-card border-4 border-primary/20 p-8 md:p-12 rounded-[3rem] shadow-2xl flex flex-col items-center justify-center text-center rotate-y-180 overflow-hidden">
+                  <div className="absolute top-6 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-primary/10 text-[10px] font-black uppercase tracking-[0.2em] text-primary z-10">
                     Answer
                   </div>
                   
-                  <div className="w-full h-full flex flex-col gap-10 items-center justify-center overflow-hidden mt-6">
+                  <div className="w-full h-full flex flex-col gap-6 items-center justify-center overflow-hidden pt-10">
                     {currentCard.backImage ? (
                       <div 
-                        className="relative inline-block mx-auto max-h-[70%] rounded-2xl border border-border overflow-hidden bg-muted/50"
+                        className="relative inline-block mx-auto max-h-[60%] rounded-2xl border border-border overflow-hidden bg-muted/50"
                         style={{ transform: `scale(${currentCard.backImage.scale || 1})` }}
                       >
                         <img src={currentCard.backImage.url} alt="Back" className="max-h-full w-auto object-contain" />
@@ -393,27 +379,9 @@ const StudyMode = () => {
                           {currentCard.backImage.masks.map(mask => (
                             <g key={mask.id}>
                               {mask.type === 'rect' ? (
-                                <rect
-                                  x={mask.x}
-                                  y={mask.y}
-                                  width={mask.width}
-                                  height={mask.height}
-                                  fill={mask.color}
-                                  fillOpacity={0.3}
-                                  stroke={mask.color}
-                                  strokeWidth={2}
-                                />
+                                <rect x={mask.x} y={mask.y} width={mask.width} height={mask.height} fill={mask.color} fillOpacity={0.2} stroke={mask.color} strokeWidth={2} />
                               ) : (
-                                <ellipse
-                                  cx={mask.x + mask.width / 2}
-                                  cy={mask.y + mask.height / 2}
-                                  rx={mask.width / 2}
-                                  ry={mask.height / 2}
-                                  fill={mask.color}
-                                  fillOpacity={0.3}
-                                  stroke={mask.color}
-                                  strokeWidth={2}
-                                />
+                                <ellipse cx={mask.x + mask.width/2} cy={mask.y + mask.height/2} rx={mask.width/2} ry={mask.height/2} fill={mask.color} fillOpacity={0.2} stroke={mask.color} strokeWidth={2} />
                               )}
                             </g>
                           ))}
@@ -421,7 +389,7 @@ const StudyMode = () => {
                       </div>
                     ) : currentCard.frontImage && (
                        <div 
-                        className="relative inline-block mx-auto max-h-[60%] opacity-80"
+                        className="relative inline-block mx-auto max-h-[50%] opacity-80"
                         style={{ transform: `scale(${currentCard.frontImage.scale || 1})` }}
                        >
                         <img src={currentCard.frontImage.url} alt="Front Revealed" className="max-h-full w-auto object-contain rounded-2xl" />
@@ -431,7 +399,7 @@ const StudyMode = () => {
                               {mask.type === 'rect' ? (
                                 <rect x={mask.x} y={mask.y} width={mask.width} height={mask.height} fill="none" stroke={mask.color} strokeWidth={2} />
                               ) : (
-                                <ellipse cx={mask.x + mask.width / 2} cy={mask.y + mask.height / 2} rx={mask.width / 2} ry={mask.height / 2} fill="none" stroke={mask.color} strokeWidth={2} />
+                                <ellipse cx={mask.x + mask.width/2} cy={mask.y + mask.height/2} rx={mask.width/2} ry={mask.height/2} fill="none" stroke={mask.color} strokeWidth={2} />
                               )}
                             </g>
                           ))}
@@ -439,7 +407,7 @@ const StudyMode = () => {
                       </div>
                     )}
                     <div 
-                      className="prose prose-2xl font-bold dark:prose-invert max-w-none text-center flex-1 overflow-y-auto w-full"
+                      className="prose prose-xl md:prose-2xl font-bold dark:prose-invert max-w-none text-center flex-1 overflow-y-auto w-full px-4"
                       dangerouslySetInnerHTML={{ __html: currentCard.back }}
                     />
                   </div>
