@@ -82,7 +82,11 @@ export default function AIAssistant() {
           const topicsRaw = await extractTopics({ data: fileData.data, mimeType: fileData.type });
           const topics = topicsRaw.split('\n').filter((t: string) => t.trim().length > 0);
           setExtractedTopics(topics);
-          setWorkflowStep('topics');
+          
+          // NEW: Auto-start general explanation
+          setWorkflowStep('chat');
+          setPendingMessage(`قم بتحليل هذا الملف بالكامل واشرح محتواه بشكل عام وشامل، مع ذكر أهم النقاط التي يتناولها.`);
+          setConfigOpen(true);
         } catch (error) {
           toast.error('فشل استخراج المواضيع من الملف');
         } finally {
@@ -219,13 +223,36 @@ export default function AIAssistant() {
           </div>
         </div>
 
+        {/* Topics Quick Access (Only if file is uploaded) */}
+        <AnimatePresence>
+          {extractedTopics.length > 0 && workflowStep === 'chat' && (
+            <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} className="bg-primary/5 border-b border-primary/20 p-3 overflow-hidden">
+              <div className="flex items-center gap-3 overflow-x-auto scrollbar-hide px-4 py-1">
+                <span className="text-[10px] font-black uppercase text-primary whitespace-nowrap bg-primary/10 px-3 py-1.5 rounded-lg">تعمق في موضوع:</span>
+                {extractedTopics.map((topic, i) => (
+                  <button 
+                    key={i} 
+                    onClick={() => {
+                      setPendingMessage(`تعمق في شرح هذا الموضوع من الملف: ${topic}`);
+                      setConfigOpen(true);
+                    }}
+                    className="whitespace-nowrap px-4 py-1.5 bg-card border border-border rounded-xl text-xs font-bold hover:border-primary hover:text-primary transition-all shadow-sm"
+                  >
+                    {topic}
+                  </button>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
         {/* Chat Content */}
         <div className="flex-1 overflow-y-auto p-6 space-y-6 bg-background relative" id="chat-container">
           {workflowStep === 'chat' ? (
             <div className="space-y-8" style={{ fontSize: `${fontSize}px` }}>
               {messages.map((msg, idx) => (
                 <div key={idx} className={cn("flex w-full", msg.role === 'ai' ? "justify-start" : "justify-end")}>
-                  <div className={cn("flex max-w-[85%] items-start gap-4", msg.role === 'ai' ? "flex-row" : "flex-row-reverse")}>
+                  <div className={cn("flex max-w-[85%] items-start gap-4", msg.role === 'ai' ? "flex-row" : "flex-row")}>
                     <div className={cn("w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md", msg.role === 'ai' ? "bg-primary text-white" : "bg-secondary text-foreground")}>
                       {msg.role === 'ai' ? <Bot size={20} /> : <User size={20} />}
                     </div>
