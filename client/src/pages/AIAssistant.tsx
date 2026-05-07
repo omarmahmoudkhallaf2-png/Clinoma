@@ -153,11 +153,16 @@ export default function AIAssistant() {
     // Dynamic loading messages
     const statusInterval = setInterval(() => {
       const statuses = [
-        'جاري تحليل السؤال طبيًا...',
-        'البحث عن أفضل المراجع العلمية...',
-        'جاري صياغة الشرح المناسب...',
-        'تنسيق الجداول والكلمات المفتاحية...',
-        'جاري تجربة محرك ذكاء اصطناعي احتياطي...'
+        `أنت (Med-Guide)، الدليل الطبي الذكي لمنصة Med-Prep. خبير عالمي في المناهج الطبية.
+
+قواعد العمل الصارمة:
+1. قبل الإجابة، قم بتحليل السؤال بعمق وابحث عن أدق المعلومات الطبية المتعلقة به.
+2. التزم التزاماً حرفياً بالفلاتر المختارة (العمق: ${depthPrompt} | اللغة: ${langPrompt}).
+3. قدم أقصى كمية ممكنة من المعلومات (Maximum Comprehensive Detail). لا تختصر إلا إذا طُلب منك ذلك.
+4. استخدم الجداول المقارنة (Tables) والإيموجي الطبية لتسهيل الفهم.
+5. اجعل التنسيق "فخماً" (Premium Aesthetics) باستخدام العناوين والخط العريض.
+6. إذا كان هناك أي مصطلحات علمية، اذكرها بدقة.
+7. لا تتوقف عن الشرح حتى تغطي كافة جوانب الموضوع المطلوبة بكثافة.`
       ];
       setLoadingStatus(statuses[Math.floor(Math.random() * statuses.length)]);
     }, 4000);
@@ -279,9 +284,9 @@ export default function AIAssistant() {
                   <div className={cn("w-10 h-10 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg", msg.role === 'ai' ? "bg-primary text-white" : "bg-secondary text-foreground")}>
                     {msg.role === 'ai' ? <Bot size={20} /> : <User size={20} />}
                   </div>
-                  <div className={cn("max-w-[85%] p-6 rounded-[2rem] leading-relaxed font-medium shadow-sm relative", msg.role === 'ai' ? "bg-secondary/30 text-foreground rounded-tr-none border border-border" : "bg-primary text-white rounded-tl-none")} dir="rtl">
+                  <div className={cn("max-w-[85%] p-6 rounded-[2rem] leading-relaxed font-medium shadow-sm relative", msg.role === 'ai' ? "bg-secondary/30 text-white rounded-tr-none border border-border" : "bg-primary text-white rounded-tl-none")} dir="rtl">
                     {msg.role === 'ai' ? (
-                      <div className="prose prose-sm dark:prose-invert max-w-none prose-p:leading-relaxed prose-headings:font-black prose-headings:text-primary prose-table:border-2 prose-table:border-border">
+                      <div className="prose prose-sm prose-invert max-w-none prose-p:leading-relaxed prose-headings:font-black prose-headings:text-primary prose-table:border-2 prose-table:border-border text-white">
                         <ReactMarkdown remarkPlugins={[remarkGfm]} components={{ strong: ({...props}) => <span className="text-primary font-black px-1 rounded-sm bg-primary/5" {...props} /> }}>
                           {msg.content}
                         </ReactMarkdown>
