@@ -8,7 +8,6 @@ import {
   Save,
   Plus,
   Trash2,
-  Brain,
   Sparkles,
   ChevronLeft,
   Layout,
@@ -16,15 +15,22 @@ import {
   Tag as TagIcon,
   Upload,
   X,
-  Loader2
+  Loader2,
+  ChevronRight,
+  MousePointer2,
+  FileText,
+  Image as ImageIcon,
+  Edit2,
+  Settings,
+  ArrowRight
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { generateFlashcards } from '../../lib/gemini';
 import { cn } from '../../lib/utils';
 import RichTextEditor from '../../components/flashcards/RichTextEditor';
+import RichTextToolbar from '../../components/flashcards/RichTextToolbar';
 import ImageOcclusionEditor from '../../components/flashcards/ImageOcclusionEditor';
 import type { CardImage, Mask } from '../../types/flashcard';
-import { Image as ImageIcon, Edit2, Type as TypeIcon } from 'lucide-react';
 
 interface CardInput {
   front: string;
@@ -34,11 +40,14 @@ interface CardInput {
   backImage?: CardImage;
 }
 
+type Step = 'choice' | 'manual' | 'ai' | 'settings';
+
 const CreateCard = () => {
   const { user, userRole } = useAuth();
   const navigate = useNavigate();
   const { deckId } = useParams();
 
+  const [step, setStep] = useState<Step>(deckId ? 'manual' : 'choice');
   const [deckInfo, setDeckInfo] = useState({
     title: '',
     description: '',
@@ -57,6 +66,8 @@ const CreateCard = () => {
   const [selectedFiles, setSelectedFiles] = useState<{ name: string, data: string, type: string }[]>([]);
   const [saving, setSaving] = useState(false);
   const [imageEditor, setImageEditor] = useState<{ idx: number, side: 'front' | 'back' } | null>(null);
+  const [focusedEditor, setFocusedEditor] = useState<{ idx: number, side: 'front' | 'back' } | null>(null);
+  
   const fileInputRef = useRef<HTMLInputElement>(null);
   const cardImageInputRef = useRef<HTMLInputElement>(null);
   const [activeUploadCard, setActiveUploadCard] = useState<{ idx: number, side: 'front' | 'back' } | null>(null);
@@ -89,6 +100,10 @@ const CreateCard = () => {
     }
   }, [deckId]);
 
+  const handleToolbarCommand = (command: string, value?: string) => {
+    document.execCommand(command, false, value);
+  };
+
   const handleFileSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(e.target.files || []);
     if (files.length > 0) {
@@ -109,14 +124,12 @@ const CreateCard = () => {
 
   const handleCardImageUpload = async (file: File, idx: number, side: 'front' | 'back') => {
     if (!file) return;
-    
     const reader = new FileReader();
     reader.onload = (event) => {
       const img = new Image();
       img.onload = () => {
         const canvas = document.createElement('canvas');
         let { width, height } = img;
-        
         const MAX_DIM = 1200;
         if (width > height && width > MAX_DIM) {
           height *= MAX_DIM / width;
@@ -125,7 +138,6 @@ const CreateCard = () => {
           width *= MAX_DIM / height;
           height = MAX_DIM;
         }
-        
         canvas.width = width;
         canvas.height = height;
         const ctx = canvas.getContext('2d');
@@ -134,15 +146,10 @@ const CreateCard = () => {
           ctx.fillRect(0, 0, width, height);
           ctx.drawImage(img, 0, 0, width, height);
         }
-        
         const compressedBase64 = canvas.toDataURL('image/jpeg', 0.8);
-        
         const newCards = [...cards];
         const field = side === 'front' ? 'frontImage' : 'backImage';
-        newCards[idx][field] = {
-          url: compressedBase64,
-          masks: []
-        };
+        newCards[idx][field] = { url: compressedBase64, masks: [] };
         setCards(newCards);
         toast.success('تم رفع الصورة بنجاح');
       };
@@ -151,12 +158,8 @@ const CreateCard = () => {
     reader.readAsDataURL(file);
   };
 
-  const removeFile = (index: number) => {
-    setSelectedFiles(prev => prev.filter((_, i) => i !== index));
-  };
-
   const addCard = () => {
-    setCards([...cards, { front: '', back: '', tags: [] }]);
+    setCards([{ front: '', back: '', tags: [] }, ...cards]);
   };
 
   const removeCard = (index: number) => {
@@ -184,42 +187,34 @@ const CreateCard = () => {
     }
   };
 
-  const handleSave = async () => {
-    if (!user || !deckInfo.title) return;
+  const handleSaveFinal = async () => {
+    if (!user || !deckInfo.title) {
+      toast.error('يرجى إدخال عنوان للمجموعة');
+      return;
+    }
     setSaving(true);
-
     try {
       let dId = deckId;
       if (deckId) {
-        // Update existing deck
         await updateDoc(doc(db, 'decks', deckId), {
           ...deckInfo,
           cardCount: cards.length,
           updatedAt: serverTimestamp()
         });
-        
-        // Clear old cards and add new ones
         const oldCards = await getDocs(query(collection(db, 'flashcards'), where('deckId', '==', deckId)));
         const batch = writeBatch(db);
         oldCards.forEach(d => batch.delete(d.ref));
         await batch.commit();
       } else {
-        // Create new deck
         const deckRef = await addDoc(collection(db, 'decks'), {
           userId: user.uid,
-          title: deckInfo.title,
-          description: deckInfo.description,
-          subject: deckInfo.subject,
-          isPublic: deckInfo.isPublic || false,
-          year: deckInfo.year || '',
-          module: deckInfo.module || '',
+          ...deckInfo,
           createdAt: Date.now(),
           cardCount: cards.length
         });
         dId = deckRef.id;
       }
 
-      // 2. Create Cards in batch
       const batch = writeBatch(db);
       cards.forEach(card => {
         const cardRef = doc(collection(db, 'flashcards'));
@@ -240,31 +235,11 @@ const CreateCard = () => {
           status: 'new'
         });
       });
-
       await batch.commit();
-      toast.success(deckId ? 'تم تحديث المجموعة!' : 'تم إنشاء المجموعة بنجاح!');
+      toast.success('تم الحفظ بنجاح!');
       navigate('/flashcards');
     } catch (error) {
-      console.error('Error saving deck:', error);
-      toast.error('فشل في حفظ المجموعة');
-    } finally {
-      setSaving(false);
-    }
-  };
-
-  const handleDeleteDeck = async () => {
-    if (!deckId || !confirm('هل أنت متأكد من حذف هذه المجموعة بالكامل؟')) return;
-    setSaving(true);
-    try {
-      const oldCards = await getDocs(query(collection(db, 'flashcards'), where('deckId', '==', deckId)));
-      const batch = writeBatch(db);
-      oldCards.forEach(d => batch.delete(d.ref));
-      batch.delete(doc(db, 'decks', deckId));
-      await batch.commit();
-      toast.success('تم حذف المجموعة');
-      navigate('/flashcards');
-    } catch (err) {
-      toast.error('فشل الحذف');
+      toast.error('فشل في الحفظ');
     } finally {
       setSaving(false);
     }
@@ -273,404 +248,386 @@ const CreateCard = () => {
   const generateWithAI = async () => {
     if (!aiPrompt && selectedFiles.length === 0) return;
     setIsGenerating(true);
-
     try {
       const generatedCards = await generateFlashcards(
         aiPrompt || "Generate flashcards from provided files",
         selectedFiles.length > 0 ? selectedFiles.map(f => ({ data: f.data, mimeType: f.type })) : undefined
       );
-
-      const filteredExisting = cards.filter(c => c.front !== '' || c.back !== '');
-      setCards([...filteredExisting, ...generatedCards]);
-
-      setAiPrompt('');
-      setSelectedFiles([]);
+      setCards([...generatedCards, ...cards.filter(c => c.front !== '' || c.back !== '')]);
+      setStep('manual');
       toast.success(`تم توليد ${generatedCards.length} كارت بنجاح!`);
     } catch (error) {
-      console.error('AI Error:', error);
-      toast.error('فشل الذكاء الاصطناعي في التوليد. حاول مرة أخرى.');
+      toast.error('فشل الذكاء الاصطناعي');
     } finally {
       setIsGenerating(false);
     }
   };
 
-
-  return (
-    <div className="max-w-5xl mx-auto px-4 py-8 space-y-10">
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <button onClick={() => navigate('/flashcards')} className="p-2 hover:bg-muted rounded-full">
-            <ChevronLeft size={24} />
-          </button>
-          <h1 className="text-3xl font-bold">{deckId ? 'Edit Deck' : 'Create New Deck'}</h1>
-        </div>
-        <div className="flex gap-2">
-          {deckId && (
-            <button onClick={handleDeleteDeck} className="p-3 text-rose-500 hover:bg-rose-500/10 rounded-xl transition-all" title="حذف المجموعة">
-              <Trash2 size={24} />
-            </button>
-          )}
-          <button
-            onClick={handleSave}
-            disabled={saving}
-            className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-primary text-primary-foreground font-bold shadow-lg shadow-primary/20 disabled:opacity-50"
+  if (step === 'choice') {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center p-4">
+        <div className="max-w-4xl w-full grid grid-cols-1 md:grid-cols-2 gap-8">
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            onClick={() => setStep('manual')}
+            className="p-10 rounded-[3rem] bg-card border-2 border-border hover:border-primary/50 transition-all flex flex-col items-center text-center gap-6 group shadow-2xl shadow-primary/5"
           >
-            {saving ? <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" /> : <Save size={20} />}
-            {deckId ? 'Update Deck' : 'Save Deck'}
-          </button>
+            <div className="w-24 h-24 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+              <MousePointer2 size={48} />
+            </div>
+            <div className="space-y-2">
+              <h2 className="text-3xl font-black">Manual Creation</h2>
+              <p className="text-muted-foreground font-medium">Create cards manually with our rich text editor</p>
+            </div>
+            <ArrowRight className="mt-4 text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
+          </motion.button>
+
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            onClick={() => setStep('ai')}
+            className="p-10 rounded-[3rem] bg-gradient-to-br from-indigo-600 to-violet-700 text-white border-none flex flex-col items-center text-center gap-6 group shadow-2xl shadow-indigo-500/20"
+          >
+            <div className="w-24 h-24 rounded-full bg-white/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+              <Sparkles size={48} />
+            </div>
+            <div className="space-y-2">
+              <h2 className="text-3xl font-black">AI Generator</h2>
+              <p className="text-indigo-100 font-medium">Upload files or paste notes and let AI do the work</p>
+            </div>
+            <ArrowRight className="mt-4 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
+          </motion.button>
         </div>
       </div>
+    );
+  }
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-        {/* Left: Deck Info */}
-        <div className="space-y-6">
-          <div className="p-6 rounded-3xl bg-card border border-border space-y-4">
-            <div className="flex items-center gap-2 text-primary">
-              <Layout size={20} />
-              <h2 className="font-bold">Deck Settings</h2>
+  if (step === 'ai') {
+    return (
+      <div className="min-h-screen bg-background p-6 md:p-12 flex items-center justify-center">
+        <div className="max-w-2xl w-full space-y-8">
+          <div className="flex items-center gap-4">
+            <button onClick={() => setStep('choice')} className="p-3 hover:bg-muted rounded-full">
+              <ChevronLeft size={24} />
+            </button>
+            <h1 className="text-4xl font-black">AI Generator</h1>
+          </div>
+
+          <div className="p-8 rounded-[2.5rem] bg-card border-2 border-border space-y-6">
+            <textarea
+              placeholder="Paste your notes here or describe what you want..."
+              rows={6}
+              value={aiPrompt}
+              onChange={e => setAiPrompt(e.target.value)}
+              className="w-full px-6 py-4 rounded-3xl bg-muted border-none text-lg font-medium focus:ring-2 focus:ring-primary/20 transition-all resize-none"
+            />
+
+            <div className="flex flex-col gap-4">
+              <input type="file" ref={fileInputRef} onChange={handleFileSelect} className="hidden" accept=".pdf,image/*,.txt" multiple />
+              <button
+                onClick={() => fileInputRef.current?.click()}
+                className="w-full py-6 rounded-3xl border-2 border-dashed border-border hover:border-primary/50 text-muted-foreground font-bold flex flex-col items-center gap-2 transition-all"
+              >
+                <Upload size={32} />
+                <span>Upload PDF or Images</span>
+              </button>
+
+              {selectedFiles.length > 0 && (
+                <div className="flex flex-wrap gap-2">
+                  {selectedFiles.map((file, idx) => (
+                    <div key={idx} className="flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-bold">
+                      <FileText size={14} />
+                      {file.name}
+                      <button onClick={() => setSelectedFiles(f => f.filter((_, i) => i !== idx))}><X size={14} /></button>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
 
-            <div className="space-y-4">
+            <button
+              onClick={generateWithAI}
+              disabled={isGenerating || (!aiPrompt && selectedFiles.length === 0)}
+              className="w-full py-5 rounded-[2rem] bg-primary text-primary-foreground font-black text-xl shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3 disabled:opacity-50"
+            >
+              {isGenerating ? <Loader2 className="animate-spin" /> : <Sparkles />}
+              {isGenerating ? 'Generating...' : 'Start Generating'}
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (step === 'settings') {
+    return (
+      <div className="min-h-screen bg-background p-6 flex items-center justify-center">
+        <div className="max-w-xl w-full space-y-8">
+          <div className="flex items-center gap-4">
+            <button onClick={() => setStep('manual')} className="p-3 hover:bg-muted rounded-full">
+              <ChevronLeft size={24} />
+            </button>
+            <h1 className="text-4xl font-black">Deck Settings</h1>
+          </div>
+
+          <div className="p-10 rounded-[3rem] bg-card border-2 border-border space-y-8 shadow-2xl">
+            <div className="space-y-6">
               <div className="space-y-2">
-                <label className="text-sm font-medium text-muted-foreground">Title</label>
+                <label className="text-sm font-black uppercase tracking-widest text-muted-foreground">Title</label>
                 <input
                   type="text"
                   placeholder="e.g. Cardiovascular System"
                   value={deckInfo.title}
                   onChange={e => setDeckInfo({ ...deckInfo, title: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl bg-muted border-none focus:ring-2 focus:ring-primary/20 transition-all"
+                  className="w-full px-6 py-4 rounded-2xl bg-muted border-none text-xl font-bold focus:ring-2 focus:ring-primary/20 transition-all"
                 />
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-medium text-muted-foreground">Subject / Topic Name</label>
+                <label className="text-sm font-black uppercase tracking-widest text-muted-foreground">Subject</label>
                 <input
                   type="text"
-                  placeholder="e.g. Cardiology, Anatomy, etc."
+                  placeholder="e.g. Anatomy"
                   value={deckInfo.subject}
                   onChange={e => setDeckInfo({ ...deckInfo, subject: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl bg-muted border-none focus:ring-2 focus:ring-primary/20 transition-all"
+                  className="w-full px-6 py-4 rounded-2xl bg-muted border-none text-lg font-bold focus:ring-2 focus:ring-primary/20 transition-all"
                 />
               </div>
 
               {userRole === 'admin' && (
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-muted-foreground">Year / Level</label>
+                    <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Year</label>
                     <select
                       value={deckInfo.year}
                       onChange={e => setDeckInfo({ ...deckInfo, year: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-muted border-none focus:ring-2 focus:ring-primary/20 transition-all appearance-none"
+                      className="w-full px-4 py-3 rounded-xl bg-muted border-none font-bold"
                     >
                       <option value="">Select Year</option>
-                      <option value="First Year">First Year</option>
-                      <option value="Second Year">Second Year</option>
-                      <option value="Third Year">Third Year</option>
-                      <option value="Fourth Year">Fourth Year</option>
-                      <option value="Fifth Year">Fifth Year</option>
-                      <option value="Sixth Year">Sixth Year</option>
+                      {['First', 'Second', 'Third', 'Fourth', 'Fifth', 'Sixth'].map(y => (
+                        <option key={y} value={`${y} Year`}>{y} Year</option>
+                      ))}
                     </select>
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-muted-foreground">Module / Specialty</label>
-                    <select
+                    <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Module</label>
+                    <input
+                      type="text"
+                      placeholder="Specialty"
                       value={deckInfo.module}
                       onChange={e => setDeckInfo({ ...deckInfo, module: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-muted border-none focus:ring-2 focus:ring-primary/20 transition-all appearance-none"
-                    >
-                      <option value="">Select Module</option>
-                      <optgroup label="General Modules">
-                        <option value="Basic Sciences">Basic Sciences</option>
-                        <option value="Clinical Skills">Clinical Skills</option>
-                      </optgroup>
-                      <optgroup label="Specialties (Year 3+)">
-                        <option value="Pediatrics">Pediatrics</option>
-                        <option value="Ophthalmology">Ophthalmology</option>
-                        <option value="Family Medicine">Family Medicine</option>
-                        <option value="Internal Medicine">Internal Medicine</option>
-                        <option value="Surgery">Surgery</option>
-                        <option value="Obstetrics & Gynecology">Obstetrics & Gynecology</option>
-                      </optgroup>
-                    </select>
+                      className="w-full px-4 py-3 rounded-xl bg-muted border-none font-bold"
+                    />
                   </div>
                 </div>
               )}
 
               <div className="space-y-2">
-                <label className="text-sm font-medium text-muted-foreground">Description</label>
+                <label className="text-sm font-black uppercase tracking-widest text-muted-foreground">Description</label>
                 <textarea
-                  placeholder="What's this deck about?"
+                  placeholder="About this deck..."
                   rows={3}
                   value={deckInfo.description}
                   onChange={e => setDeckInfo({ ...deckInfo, description: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl bg-muted border-none focus:ring-2 focus:ring-primary/20 transition-all resize-none"
+                  className="w-full px-6 py-4 rounded-2xl bg-muted border-none font-medium resize-none"
                 />
               </div>
 
               {userRole === 'admin' && (
-                <div className="flex items-center justify-between p-4 rounded-xl bg-primary/5 border border-primary/20">
-                  <div className="space-y-0.5">
-                    <div className="text-sm font-bold text-primary flex items-center gap-2">
-                      <Sparkles size={14} /> Official Deck
-                    </div>
-                    <p className="text-[10px] text-muted-foreground">This deck will be public to all students.</p>
-                  </div>
+                <div className="flex items-center justify-between p-4 rounded-2xl bg-primary/5 border border-primary/20">
+                  <span className="font-bold text-primary">Official Public Deck</span>
                   <button
                     onClick={() => setDeckInfo({ ...deckInfo, isPublic: !deckInfo.isPublic })}
-                    className={cn(
-                      "w-12 h-6 rounded-full transition-all relative p-1",
-                      deckInfo.isPublic ? "bg-primary" : "bg-muted"
-                    )}
+                    className={cn("w-12 h-6 rounded-full relative p-1 transition-all", deckInfo.isPublic ? "bg-primary" : "bg-muted")}
                   >
-                    <div className={cn(
-                      "w-4 h-4 rounded-full bg-white transition-all shadow-sm",
-                      deckInfo.isPublic ? "translate-x-6" : "translate-x-0"
-                    )} />
+                    <div className={cn("w-4 h-4 rounded-full bg-white transition-all", deckInfo.isPublic ? "translate-x-6" : "translate-x-0")} />
                   </button>
                 </div>
               )}
             </div>
-          </div>
-
-          {/* AI Generator Box */}
-          <div className="p-6 rounded-3xl bg-gradient-to-br from-indigo-600 to-violet-700 text-white space-y-4 shadow-xl shadow-indigo-500/20">
-            <div className="flex items-center gap-2">
-              <Sparkles size={20} />
-              <h2 className="font-bold">AI Flashcard Generator</h2>
-            </div>
-            <p className="text-sm text-indigo-100 font-bold">Paste your notes AND/OR upload multiple files (PDF/Image) to generate cards.</p>
-
-            <div className="space-y-4">
-              <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase tracking-widest text-indigo-200">Additional Instructions / Notes</label>
-                <textarea
-                  placeholder="e.g. Focus on pharmacology, use Arabic for explanations..."
-                  rows={4}
-                  value={aiPrompt}
-                  onChange={e => setAiPrompt(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 placeholder:text-indigo-200 text-white focus:ring-2 focus:ring-white/30 transition-all resize-none"
-                />
-              </div>
-
-              <div className="relative">
-                <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-white/10"></div></div>
-                <div className="relative flex justify-center text-[10px] uppercase"><span className="bg-indigo-600 px-2 text-indigo-200 font-bold">OR UPLOAD FILES</span></div>
-              </div>
-
-              <div className="flex flex-col gap-3">
-                <input 
-                  type="file" 
-                  ref={fileInputRef}
-                  onChange={handleFileSelect}
-                  className="hidden" 
-                  accept=".pdf,image/*,.txt"
-                  multiple
-                />
-                <button
-                  onClick={() => fileInputRef.current?.click()}
-                  className="w-full py-4 rounded-xl bg-white/10 border-2 border-dashed border-white/30 text-white font-bold hover:bg-white/20 hover:border-white/50 transition-all flex flex-col items-center justify-center gap-2"
-                >
-                  <Upload size={24} className="mb-1" />
-                  <span className="text-xs">Upload PDFs, Images or Text</span>
-                </button>
-
-                {selectedFiles.length > 0 && (
-                  <div className="space-y-2">
-                    {selectedFiles.map((file, idx) => (
-                      <div key={idx} className="w-full py-2 px-3 rounded-lg bg-emerald-500/20 border border-emerald-500/30 text-white flex items-center justify-between animate-in slide-in-from-top-2">
-                        <div className="flex items-center gap-2 min-w-0">
-                          <Upload size={12} className="flex-shrink-0" />
-                          <span className="text-[10px] font-medium truncate">{file.name}</span>
-                        </div>
-                        <button onClick={() => removeFile(idx)} className="p-1 hover:bg-white/20 rounded-md transition-colors flex-shrink-0">
-                          <X size={14} />
-                        </button>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </div>
 
             <button
-              onClick={generateWithAI}
-              disabled={isGenerating || (!aiPrompt && selectedFiles.length === 0)}
-              className="w-full py-4 rounded-2xl bg-white text-indigo-600 font-black shadow-lg hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+              onClick={handleSaveFinal}
+              disabled={saving}
+              className="w-full py-5 rounded-[2rem] bg-emerald-600 text-white font-black text-xl shadow-xl shadow-emerald-500/20 hover:bg-emerald-700 transition-all flex items-center justify-center gap-3 disabled:opacity-50"
             >
-              {isGenerating ? <Loader2 className="w-5 h-5 animate-spin" /> : <Sparkles size={18} />}
-              Generate Flashcards
-            </button>
-          </div>
-        </div>
-
-        {/* Right: Cards List */}
-        <div className="lg:col-span-2 space-y-6">
-          <div className="flex items-center justify-between">
-            <h2 className="text-xl font-bold flex items-center gap-2">
-              Cards <span className="text-sm font-normal text-muted-foreground bg-muted px-2 py-0.5 rounded-full">{cards.length}</span>
-            </h2>
-            <button
-              onClick={addCard}
-              className="text-primary hover:bg-primary/10 px-4 py-2 rounded-xl transition-all font-bold flex items-center gap-2"
-            >
-              <Plus size={18} />
-              Add Card
-            </button>
-          </div>
-
-          <div className="space-y-4">
-            <AnimatePresence initial={false}>
-              {cards.map((card, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                  className="p-6 rounded-3xl bg-card border border-border space-y-6 relative group"
-                >
-                  <button
-                    onClick={() => removeCard(idx)}
-                    className="absolute top-4 right-4 p-2 text-muted-foreground hover:text-red-500 hover:bg-red-50 rounded-lg transition-all opacity-0 group-hover:opacity-100"
-                  >
-                    <Trash2 size={18} />
-                  </button>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* Front Side */}
-                    <div className="space-y-4">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-muted-foreground">
-                          <TypeIcon size={12} />
-                          Front Side
-                        </div>
-                        <button
-                          onClick={() => {
-                            setActiveUploadCard({ idx, side: 'front' });
-                            cardImageInputRef.current?.click();
-                          }}
-                          className="flex items-center gap-1.5 text-[10px] font-black uppercase text-primary hover:bg-primary/10 px-2 py-1 rounded-lg transition-all"
-                        >
-                          <ImageIcon size={12} />
-                          {card.frontImage ? 'Change Image' : 'Add Image'}
-                        </button>
-                      </div>
-
-                      {card.frontImage && (
-                        <div className="relative group/img aspect-video rounded-2xl overflow-hidden bg-muted border border-border">
-                          <img src={card.frontImage.url} alt="Front" className="w-full h-full object-cover" />
-                          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center gap-2">
-                            <button
-                              onClick={() => setImageEditor({ idx, side: 'front' })}
-                              className="p-2 bg-white text-primary rounded-full hover:scale-110 transition-transform"
-                              title="Edit Occlusion Masks"
-                            >
-                              <Edit2 size={16} />
-                            </button>
-                            <button
-                              onClick={() => updateCard(idx, 'frontImage', undefined)}
-                              className="p-2 bg-white text-rose-500 rounded-full hover:scale-110 transition-transform"
-                              title="Remove Image"
-                            >
-                              <Trash2 size={16} />
-                            </button>
-                          </div>
-                          {card.frontImage.masks.length > 0 && (
-                            <div className="absolute top-2 left-2 px-2 py-0.5 bg-primary text-[8px] text-white font-black rounded-full uppercase tracking-widest shadow-lg">
-                              {card.frontImage.masks.length} Masks
-                            </div>
-                          )}
-                        </div>
-                      )}
-
-                      <RichTextEditor
-                        value={card.front}
-                        onChange={val => updateCard(idx, 'front', val)}
-                        placeholder="Enter question..."
-                      />
-                    </div>
-
-                    {/* Back Side */}
-                    <div className="space-y-4">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-muted-foreground">
-                          <TypeIcon size={12} />
-                          Back Side
-                        </div>
-                        <button
-                          onClick={() => {
-                            setActiveUploadCard({ idx, side: 'back' });
-                            cardImageInputRef.current?.click();
-                          }}
-                          className="flex items-center gap-1.5 text-[10px] font-black uppercase text-primary hover:bg-primary/10 px-2 py-1 rounded-lg transition-all"
-                        >
-                          <ImageIcon size={12} />
-                          {card.backImage ? 'Change Image' : 'Add Image'}
-                        </button>
-                      </div>
-
-                      {card.backImage && (
-                        <div className="relative group/img aspect-video rounded-2xl overflow-hidden bg-muted border border-border">
-                          <img src={card.backImage.url} alt="Back" className="w-full h-full object-cover" />
-                          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center gap-2">
-                            <button
-                              onClick={() => setImageEditor({ idx, side: 'back' })}
-                              className="p-2 bg-white text-primary rounded-full hover:scale-110 transition-transform"
-                              title="Edit Occlusion Masks"
-                            >
-                              <Edit2 size={16} />
-                            </button>
-                            <button
-                              onClick={() => updateCard(idx, 'backImage', undefined)}
-                              className="p-2 bg-white text-rose-500 rounded-full hover:scale-110 transition-transform"
-                              title="Remove Image"
-                            >
-                              <Trash2 size={16} />
-                            </button>
-                          </div>
-                          {card.backImage.masks.length > 0 && (
-                            <div className="absolute top-2 left-2 px-2 py-0.5 bg-primary text-[8px] text-white font-black rounded-full uppercase tracking-widest shadow-lg">
-                              {card.backImage.masks.length} Masks
-                            </div>
-                          )}
-                        </div>
-                      )}
-
-                      <RichTextEditor
-                        value={card.back}
-                        onChange={val => updateCard(idx, 'back', val)}
-                        placeholder="Enter answer..."
-                      />
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-3">
-                    <TagIcon size={14} className="text-muted-foreground" />
-                    <input
-                      type="text"
-                      placeholder="Tags (comma separated)"
-                      value={card.tags.join(', ')}
-                      onChange={e => updateCard(idx, 'tags', e.target.value)}
-                      className="bg-transparent border-none p-0 text-sm focus:ring-0 w-full placeholder:text-muted-foreground/50"
-                    />
-                  </div>
-                </motion.div>
-              ))}
-            </AnimatePresence>
-
-            <button
-              onClick={addCard}
-              className="w-full py-8 rounded-3xl border-2 border-dashed border-border hover:border-primary/50 hover:bg-primary/5 transition-all flex flex-col items-center justify-center gap-2 text-muted-foreground hover:text-primary group"
-            >
-              <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center group-hover:bg-primary/10 transition-colors">
-                <Plus size={24} />
-              </div>
-              <span className="font-bold">Add Another Card</span>
+              {saving ? <Loader2 className="animate-spin" /> : <Save />}
+              {deckId ? 'Update Everything' : 'Create Deck Now'}
             </button>
           </div>
         </div>
       </div>
+    );
+  }
 
+  return (
+    <div className="min-h-screen bg-background pb-24">
+      {/* Shared Toolbar */}
+      <div className="sticky top-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border p-4 flex items-center justify-between gap-4">
+        <div className="flex items-center gap-4">
+          <button onClick={() => setStep('choice')} className="p-2 hover:bg-muted rounded-full">
+            <ChevronLeft size={24} />
+          </button>
+          <RichTextToolbar onCommand={handleToolbarCommand} />
+        </div>
+        
+        <div className="flex items-center gap-3">
+          <button
+            onClick={() => setStep('settings')}
+            className="flex items-center gap-2 px-6 py-3 rounded-2xl bg-muted font-black hover:bg-muted/80 transition-all"
+          >
+            <Settings size={20} />
+            <span className="hidden md:inline">Deck Info</span>
+          </button>
+          <button
+            onClick={() => setStep('settings')}
+            className="flex items-center gap-2 px-8 py-3 rounded-2xl bg-primary text-primary-foreground font-black shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all"
+          >
+            <Save size={20} />
+            <span>Finish & Save</span>
+          </button>
+        </div>
+      </div>
+
+      <div className="max-w-5xl mx-auto px-4 py-12 space-y-12">
+        <div className="flex items-center justify-between">
+          <h1 className="text-5xl font-black tracking-tight flex items-center gap-4">
+            Editor
+            <span className="text-2xl font-medium text-muted-foreground bg-muted px-4 py-1 rounded-full">{cards.length} Cards</span>
+          </h1>
+          <button
+            onClick={addCard}
+            className="p-4 rounded-2xl bg-primary/10 text-primary hover:bg-primary/20 transition-all font-black flex items-center gap-2"
+          >
+            <Plus size={24} />
+            New Card
+          </button>
+        </div>
+
+        <div className="space-y-12">
+          <AnimatePresence initial={false}>
+            {cards.map((card, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, x: -50 }}
+                className="group relative p-10 rounded-[3.5rem] bg-card border-2 border-border shadow-2xl shadow-primary/5 space-y-10"
+              >
+                <button
+                  onClick={() => removeCard(idx)}
+                  className="absolute top-8 right-8 p-3 text-muted-foreground hover:text-red-500 hover:bg-red-50 rounded-2xl transition-all opacity-0 group-hover:opacity-100"
+                >
+                  <Trash2 size={24} />
+                </button>
+
+                <div className="flex flex-col gap-10">
+                  {/* Front Side - Full Width */}
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between px-2">
+                      <div className="flex items-center gap-3 text-sm font-black uppercase tracking-[0.2em] text-primary">
+                        <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center text-xs">1</div>
+                        Question Side
+                      </div>
+                      <button
+                        onClick={() => { setActiveUploadCard({ idx, side: 'front' }); cardImageInputRef.current?.click(); }}
+                        className="flex items-center gap-2 px-4 py-2 rounded-xl bg-muted hover:bg-muted/80 text-xs font-bold transition-all"
+                      >
+                        <ImageIcon size={14} />
+                        {card.frontImage ? 'Change Image' : 'Add Image'}
+                      </button>
+                    </div>
+                    
+                    {card.frontImage && (
+                      <div className="relative group/img max-h-[400px] rounded-3xl overflow-hidden bg-muted border-2 border-border">
+                        <img src={card.frontImage.url} className="w-full h-full object-contain" />
+                        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-all flex items-center justify-center gap-4">
+                          <button onClick={() => setImageEditor({ idx, side: 'front' })} className="p-4 bg-white text-primary rounded-full hover:scale-110 transition-all"><Edit2 /></button>
+                          <button onClick={() => updateCard(idx, 'frontImage', undefined)} className="p-4 bg-white text-rose-500 rounded-full hover:scale-110 transition-all"><Trash2 /></button>
+                        </div>
+                      </div>
+                    )}
+
+                    <RichTextEditor
+                      value={card.front}
+                      onChange={val => updateCard(idx, 'front', val)}
+                      onFocus={() => setFocusedEditor({ idx, side: 'front' })}
+                      placeholder="Start writing the question..."
+                      minHeight="250px"
+                    />
+                  </div>
+
+                  <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent w-full" />
+
+                  {/* Back Side - Full Width */}
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between px-2">
+                      <div className="flex items-center gap-3 text-sm font-black uppercase tracking-[0.2em] text-emerald-600">
+                        <div className="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs">2</div>
+                        Answer Side
+                      </div>
+                      <button
+                        onClick={() => { setActiveUploadCard({ idx, side: 'back' }); cardImageInputRef.current?.click(); }}
+                        className="flex items-center gap-2 px-4 py-2 rounded-xl bg-muted hover:bg-muted/80 text-xs font-bold transition-all"
+                      >
+                        <ImageIcon size={14} />
+                        {card.backImage ? 'Change Image' : 'Add Image'}
+                      </button>
+                    </div>
+
+                    {card.backImage && (
+                      <div className="relative group/img max-h-[400px] rounded-3xl overflow-hidden bg-muted border-2 border-border">
+                        <img src={card.backImage.url} className="w-full h-full object-contain" />
+                        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-all flex items-center justify-center gap-4">
+                          <button onClick={() => setImageEditor({ idx, side: 'back' })} className="p-4 bg-white text-primary rounded-full hover:scale-110 transition-all"><Edit2 /></button>
+                          <button onClick={() => updateCard(idx, 'backImage', undefined)} className="p-4 bg-white text-rose-500 rounded-full hover:scale-110 transition-all"><Trash2 /></button>
+                        </div>
+                      </div>
+                    )}
+
+                    <RichTextEditor
+                      value={card.back}
+                      onChange={val => updateCard(idx, 'back', val)}
+                      onFocus={() => setFocusedEditor({ idx, side: 'back' })}
+                      placeholder="Start writing the answer..."
+                      minHeight="250px"
+                    />
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-4 px-6 py-4 bg-muted/30 rounded-3xl border border-border/50 focus-within:border-primary/30 transition-all">
+                  <TagIcon size={20} className="text-muted-foreground" />
+                  <input
+                    type="text"
+                    placeholder="Add tags (separated by commas)..."
+                    value={card.tags.join(', ')}
+                    onChange={e => updateCard(idx, 'tags', e.target.value)}
+                    className="bg-transparent border-none p-0 text-lg font-medium focus:ring-0 w-full placeholder:text-muted-foreground/30"
+                  />
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+
+          <motion.button
+            whileHover={{ scale: 1.01 }}
+            whileTap={{ scale: 0.99 }}
+            onClick={addCard}
+            className="w-full py-16 rounded-[4rem] border-4 border-dashed border-border hover:border-primary/30 hover:bg-primary/5 transition-all flex flex-col items-center justify-center gap-6 group"
+          >
+            <div className="w-20 h-20 rounded-full bg-muted flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all shadow-xl">
+              <Plus size={40} />
+            </div>
+            <div className="text-center">
+              <span className="text-3xl font-black text-muted-foreground group-hover:text-primary transition-colors">Add Another Card</span>
+              <p className="text-muted-foreground/50 font-bold mt-2">Continue building your collection</p>
+            </div>
+          </motion.button>
+        </div>
+      </div>
+
+      {/* Hidden Inputs & Editors */}
       <input
         type="file"
         ref={cardImageInputRef}
@@ -678,9 +635,7 @@ const CreateCard = () => {
         accept="image/*"
         onChange={(e) => {
           const file = e.target.files?.[0];
-          if (file && activeUploadCard) {
-            handleCardImageUpload(file, activeUploadCard.idx, activeUploadCard.side);
-          }
+          if (file && activeUploadCard) handleCardImageUpload(file, activeUploadCard.idx, activeUploadCard.side);
           e.target.value = '';
         }}
       />
