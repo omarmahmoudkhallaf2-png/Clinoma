@@ -170,23 +170,29 @@ export default function AIAssistant() {
       const updatedMessages = [...newMessages, aiMsg];
       setMessages(updatedMessages);
 
-      if (user) {
-        if (!currentSessionId) {
-          const docRef = await addDoc(collection(db, 'assistant_chats'), {
-            userId: user.uid,
-            title: msg.substring(0, 30),
-            lastMessage: response.substring(0, 100),
-            messages: updatedMessages,
-            timestamp: serverTimestamp()
-          });
-          setCurrentSessionId(docRef.id);
-        } else {
-          await updateDoc(doc(db, 'assistant_chats', currentSessionId), {
-            messages: updatedMessages,
-            lastMessage: response.substring(0, 100),
-            timestamp: serverTimestamp()
-          });
+      // Save to history (Non-blocking)
+      try {
+        if (user) {
+          if (!currentSessionId) {
+            const docRef = await addDoc(collection(db, 'assistant_chats'), {
+              userId: user.uid,
+              title: msg.substring(0, 30),
+              lastMessage: response.substring(0, 100),
+              messages: updatedMessages,
+              timestamp: serverTimestamp()
+            });
+            setCurrentSessionId(docRef.id);
+          } else {
+            await updateDoc(doc(db, 'assistant_chats', currentSessionId), {
+              messages: updatedMessages,
+              lastMessage: response.substring(0, 100),
+              timestamp: serverTimestamp()
+            });
+          }
         }
+      } catch (dbError) {
+        console.warn("Failed to save chat history to Firestore:", dbError);
+        // We don't toast error here to avoid interrupting the user's AI experience
       }
     } catch (error) {
       console.error("AI Assistant Critical Error:", error);
