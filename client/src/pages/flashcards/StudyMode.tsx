@@ -308,12 +308,12 @@ const StudyMode = () => {
       </div>
 
       {/* Main Study Area */}
-      <main className="flex-1 flex flex-col items-center justify-center p-4 md:p-8 relative overflow-hidden">
+      <main className="flex-1 flex flex-col relative overflow-hidden bg-background/50">
         {/* Background Decorations */}
         <div className="absolute top-1/4 -left-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 -right-20 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl" />
 
-        <div className="w-full max-w-[98vw] lg:max-w-[95vw] perspective-1000 flex-1 flex items-center justify-center min-h-[500px] py-4">
+        <div className="flex-1 w-full max-w-[98vw] lg:max-w-[95vw] mx-auto flex items-center justify-center p-2 md:p-6 overflow-hidden">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentIndex}
@@ -321,7 +321,7 @@ const StudyMode = () => {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="relative w-full h-[85vh] lg:h-[80vh]"
+              className="relative w-full h-full"
             >
               <motion.div
                 animate={{ rotateY: isFlipped ? 180 : 0 }}
@@ -330,9 +330,9 @@ const StudyMode = () => {
                 onClick={() => setIsFlipped(!isFlipped)}
               >
                 {/* Front */}
-                <div className="absolute inset-0 backface-hidden bg-card border-2 border-border p-4 md:p-8 rounded-[2rem] md:rounded-[3rem] shadow-2xl flex flex-col items-center justify-center text-center overflow-hidden">
+                <div className="absolute inset-0 backface-hidden bg-card border-2 border-border p-4 md:p-8 rounded-[2rem] md:rounded-[3rem] shadow-2xl flex flex-col items-center justify-start text-center overflow-hidden">
                   <div className="absolute top-6 left-1/2 -translate-x-1/2 flex items-center gap-2 z-20">
-                    <div className="px-4 py-1.5 rounded-full bg-muted text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground">
+                    <div className="px-4 py-1.5 rounded-full bg-muted text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground shadow-sm border border-border/50">
                       Question
                     </div>
                     {currentCard.frontImage && (
@@ -344,13 +344,13 @@ const StudyMode = () => {
                     )}
                   </div>
                   
-                  <div className="w-full h-full flex flex-col gap-6 items-center justify-start overflow-y-auto pt-16 pb-12 px-2 md:px-4 custom-scrollbar">
+                  <div className="w-full h-full flex flex-col gap-8 items-center justify-start overflow-y-auto pt-20 pb-20 px-2 md:px-8 custom-scrollbar scroll-smooth">
                     {currentCard.frontImage && (
                       <div 
-                        className="relative shrink-0 mx-auto rounded-xl md:rounded-2xl border border-border bg-muted/50 transition-all duration-200 shadow-lg"
+                        className="relative shrink-0 mx-auto rounded-xl md:rounded-2xl border border-border bg-muted/50 transition-all duration-200 shadow-xl"
                         style={{ 
-                          width: `${Math.min(100, zoom * (currentCard.frontImage.scale || 1) * 70)}%`,
-                          minWidth: '150px'
+                          width: `${Math.min(100, zoom * (currentCard.frontImage.scale || 1) * 75)}%`,
+                          minWidth: '200px'
                         }}
                       >
                         <img src={currentCard.frontImage.url} alt="Front" className="w-full h-auto object-contain rounded-xl md:rounded-2xl" />
@@ -368,21 +368,21 @@ const StudyMode = () => {
                       </div>
                     )}
                     <div 
-                      className="prose prose-lg md:prose-2xl font-bold dark:prose-invert max-w-none text-center w-full"
+                      className="prose prose-lg md:prose-2xl font-bold dark:prose-invert max-w-4xl text-center pb-24 w-full"
                       dangerouslySetInnerHTML={{ __html: currentCard.front }}
                     />
                   </div>
 
-                  <div className="absolute bottom-4 text-xs text-muted-foreground flex items-center gap-2 animate-bounce opacity-50">
-                    <Eye size={16} />
-                    Tap to reveal answer
+                  <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-[10px] font-black uppercase tracking-widest text-muted-foreground/30 flex items-center gap-2 animate-pulse">
+                    <Eye size={14} />
+                    Tap to reveal
                   </div>
                 </div>
 
                 {/* Back */}
-                <div className="absolute inset-0 backface-hidden bg-card border-4 border-primary/20 p-4 md:p-8 rounded-[2rem] md:rounded-[3rem] shadow-2xl flex flex-col items-center justify-center text-center rotate-y-180 overflow-hidden">
+                <div className="absolute inset-0 backface-hidden bg-card border-4 border-primary/20 p-4 md:p-8 rounded-[2rem] md:rounded-[3rem] shadow-2xl flex flex-col items-center justify-start text-center rotate-y-180 overflow-hidden">
                   <div className="absolute top-6 left-1/2 -translate-x-1/2 flex items-center gap-2 z-20">
-                    <div className="px-4 py-1.5 rounded-full bg-primary/10 text-[10px] font-black uppercase tracking-[0.2em] text-primary">
+                    <div className="px-4 py-1.5 rounded-full bg-primary/10 text-[10px] font-black uppercase tracking-[0.2em] text-primary shadow-sm border border-primary/20">
                       Answer
                     </div>
                     {(currentCard.backImage || currentCard.frontImage) && (
@@ -394,13 +394,13 @@ const StudyMode = () => {
                     )}
                   </div>
                   
-                  <div className="w-full h-full flex flex-col gap-6 items-center justify-start overflow-y-auto pt-16 pb-12 px-2 md:px-4 custom-scrollbar">
+                  <div className="w-full h-full flex flex-col gap-8 items-center justify-start overflow-y-auto pt-20 pb-20 px-2 md:px-8 custom-scrollbar scroll-smooth">
                     {currentCard.backImage ? (
                       <div 
-                        className="relative shrink-0 mx-auto rounded-xl md:rounded-2xl border border-border bg-muted/50 transition-all duration-200 shadow-lg"
+                        className="relative shrink-0 mx-auto rounded-xl md:rounded-2xl border border-border bg-muted/50 transition-all duration-200 shadow-xl"
                         style={{ 
-                          width: `${Math.min(100, zoom * (currentCard.backImage.scale || 1) * 70)}%`,
-                          minWidth: '150px'
+                          width: `${Math.min(100, zoom * (currentCard.backImage.scale || 1) * 75)}%`,
+                          minWidth: '200px'
                         }}
                       >
                         <img src={currentCard.backImage.url} alt="Back" className="w-full h-auto object-contain rounded-xl md:rounded-2xl" />
@@ -421,7 +421,7 @@ const StudyMode = () => {
                         className="relative shrink-0 mx-auto opacity-80 transition-all duration-200"
                         style={{ 
                           width: `${Math.min(100, zoom * (currentCard.frontImage.scale || 1) * 60)}%`,
-                          minWidth: '120px'
+                          minWidth: '150px'
                         }}
                        >
                         <img src={currentCard.frontImage.url} alt="Front Revealed" className="w-full h-auto object-contain rounded-xl md:rounded-2xl" />
@@ -439,7 +439,7 @@ const StudyMode = () => {
                       </div>
                     )}
                     <div 
-                      className="prose prose-lg md:prose-2xl font-bold dark:prose-invert max-w-none text-center w-full"
+                      className="prose prose-lg md:prose-2xl font-bold dark:prose-invert max-w-4xl text-center pb-24 w-full"
                       dangerouslySetInnerHTML={{ __html: currentCard.back }}
                     />
                   </div>
@@ -449,62 +449,54 @@ const StudyMode = () => {
           </AnimatePresence>
         </div>
 
-        {/* Controls */}
-        <div className="mt-16 w-full max-w-4xl">
-          <AnimatePresence mode="wait">
-            {!isFlipped ? (
-              <motion.button
-                key="show-btn"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                onClick={() => setIsFlipped(true)}
-                className="w-full py-4 rounded-2xl bg-primary text-primary-foreground font-bold text-lg shadow-xl shadow-primary/20 flex items-center justify-center gap-2 group"
-              >
-                <Zap size={20} className="group-hover:scale-125 transition-transform" />
-                Show Answer
-              </motion.button>
-            ) : (
-              <motion.div
-                key="rate-btns"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="grid grid-cols-4 gap-3"
-              >
-                <button 
-                  onClick={() => handleRate(0)}
-                  className="flex flex-col items-center justify-center py-4 rounded-2xl bg-red-500/10 border border-red-500/20 text-red-500 hover:bg-red-500 hover:text-white transition-all group"
+        {/* Fixed Controls Footer */}
+        <div className="w-full bg-background/80 backdrop-blur-xl border-t border-border p-4 md:p-6 safe-bottom">
+          <div className="max-w-4xl mx-auto">
+            <AnimatePresence mode="wait">
+              {!isFlipped ? (
+                <motion.button
+                  key="show-btn"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  onClick={() => setIsFlipped(true)}
+                  className="w-full py-5 rounded-[2rem] bg-primary text-primary-foreground font-black text-xl shadow-2xl shadow-primary/30 flex items-center justify-center gap-3 group hover:scale-[1.02] active:scale-95 transition-all"
                 >
-                  <span className="text-xl font-bold">Again</span>
-                  <span className="text-[10px] font-medium opacity-60 group-hover:opacity-100">&lt; 1m</span>
-                </button>
-                <button 
-                  onClick={() => handleRate(1)}
-                  className="flex flex-col items-center justify-center py-4 rounded-2xl bg-orange-500/10 border border-orange-500/20 text-orange-500 hover:bg-orange-500 hover:text-white transition-all group"
+                  <Zap size={24} className="fill-current group-hover:animate-pulse" />
+                  Show Answer
+                </motion.button>
+              ) : (
+                <motion.div
+                  key="rate-btns"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="grid grid-cols-4 gap-3 md:gap-4"
                 >
-                  <span className="text-xl font-bold">Hard</span>
-                  <span className="text-[10px] font-medium opacity-60 group-hover:opacity-100">2d</span>
-                </button>
-                <button 
-                  onClick={() => handleRate(2)}
-                  className="flex flex-col items-center justify-center py-4 rounded-2xl bg-blue-500/10 border border-blue-500/20 text-blue-500 hover:bg-blue-500 hover:text-white transition-all group"
-                >
-                  <span className="text-xl font-bold">Good</span>
-                  <span className="text-[10px] font-medium opacity-60 group-hover:opacity-100">4d</span>
-                </button>
-                <button 
-                  onClick={() => handleRate(3)}
-                  className="flex flex-col items-center justify-center py-4 rounded-2xl bg-green-500/10 border border-green-500/20 text-green-500 hover:bg-green-500 hover:text-white transition-all group"
-                >
-                  <span className="text-xl font-bold">Easy</span>
-                  <span className="text-[10px] font-medium opacity-60 group-hover:opacity-100">7d</span>
-                </button>
-              </motion.div>
-            )}
-          </AnimatePresence>
+                  {[
+                    { r: 0, l: 'Again', t: '< 1m', c: 'bg-red-500/10 text-red-500 border-red-500/20 hover:bg-red-500' },
+                    { r: 1, l: 'Hard', t: '2d', c: 'bg-orange-500/10 text-orange-500 border-orange-500/20 hover:bg-orange-500' },
+                    { r: 2, l: 'Good', t: '4d', c: 'bg-blue-500/10 text-blue-500 border-blue-500/20 hover:bg-blue-500' },
+                    { r: 3, l: 'Easy', t: '7d', c: 'bg-green-500/10 text-green-500 border-green-500/20 hover:bg-green-500' },
+                  ].map(btn => (
+                    <button 
+                      key={btn.l}
+                      onClick={() => handleRate(btn.r as 0|1|2|3)}
+                      className={cn(
+                        "flex flex-col items-center justify-center py-4 md:py-5 rounded-2xl md:rounded-[1.5rem] border transition-all group",
+                        btn.c,
+                        "hover:text-white hover:shadow-lg hover:-translate-y-1"
+                      )}
+                    >
+                      <span className="text-sm md:text-lg font-black">{btn.l}</span>
+                      <span className="text-[10px] font-bold opacity-60 group-hover:opacity-100">{btn.t}</span>
+                    </button>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
         </div>
       </main>
-
     </div>
   );
 };
