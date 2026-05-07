@@ -4,7 +4,7 @@ import {
   Send, FileUp, Sparkles, Bot, User, Loader2, X, 
   FileText, History, Settings, Type, Languages, 
   ChevronRight, Trash2, Plus, MessageSquare, List,
-  BookOpen, Info, CheckCircle2, Sliders, Check
+  BookOpen, Info, CheckCircle2, Sliders, Check, RefreshCw
 } from 'lucide-react';
 import { generateAIResponse, extractTopics } from '../lib/gemini';
 import { Button } from '../components/ui/Button';
@@ -41,6 +41,7 @@ export default function AIAssistant() {
   ]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
+  const [loadingStatus, setLoadingStatus] = useState('جاري المعالجة...');
   const [selectedFile, setSelectedFile] = useState<{ name: string, data: string, type: string } | null>(null);
   const [fontSize, setFontSize] = useState(Number(localStorage.getItem('assistant-font-size')) || 16);
   const [history, setHistory] = useState<ChatSession[]>([]);
@@ -111,6 +112,7 @@ export default function AIAssistant() {
         };
         setSelectedFile(fileData);
         setLoading(true);
+        setLoadingStatus('جاري استخراج المواضيع من الملف...');
         try {
           const topicsRaw = await extractTopics({ data: fileData.data, mimeType: fileData.type });
           const topics = topicsRaw.split('\n').filter((t: string) => t.trim().length > 0);
@@ -139,11 +141,24 @@ export default function AIAssistant() {
     setConfigOpen(false);
     setWorkflowStep('chat');
     setLoading(true);
+    setLoadingStatus('Med-X يستعد للإجابة...');
     setInput('');
 
     const userMsg: Message = { role: 'user', content: msg, timestamp: new Date() };
     const newMessages = [...messages, userMsg];
     setMessages(newMessages);
+
+    // Dynamic loading messages
+    const statusInterval = setInterval(() => {
+      const statuses = [
+        'جاري تحليل السؤال طبيًا...',
+        'البحث عن أفضل المراجع العلمية...',
+        'جاري صياغة الشرح المناسب...',
+        'تنسيق الجداول والكلمات المفتاحية...',
+        'جاري تجربة محرك ذكاء اصطناعي احتياطي...'
+      ];
+      setLoadingStatus(statuses[Math.floor(Math.random() * statuses.length)]);
+    }, 4000);
 
     try {
       const response = await generateAIResponse(
@@ -176,6 +191,7 @@ export default function AIAssistant() {
     } catch (error) {
       toast.error('حدث خطأ أثناء معالجة طلبك');
     } finally {
+      clearInterval(statusInterval);
       setLoading(false);
       setPendingMessage(null);
       setSelectedFile(null);
@@ -264,11 +280,36 @@ export default function AIAssistant() {
                   </div>
                 </motion.div>
               ))}
+              
               {loading && (
-                <div className="flex items-start gap-4 animate-pulse">
-                  <div className="w-10 h-10 rounded-2xl bg-primary text-white flex items-center justify-center"><Loader2 className="animate-spin" /></div>
-                  <div className="bg-secondary/30 p-5 rounded-[2rem] rounded-tr-none border border-border text-xs font-black uppercase tracking-widest opacity-60">Med-X Guide is thinking...</div>
-                </div>
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="flex items-start gap-4"
+                >
+                  <div className="w-10 h-10 rounded-2xl bg-primary text-white flex items-center justify-center shadow-lg shadow-primary/20">
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                  </div>
+                  <div className="bg-secondary/30 p-6 rounded-[2rem] rounded-tr-none border border-border flex flex-col gap-3 shadow-sm min-w-[200px]">
+                    <div className="flex items-center gap-3">
+                      <div className="flex gap-1">
+                        <motion.div animate={{ scale: [1, 1.5, 1] }} transition={{ repeat: Infinity, duration: 1 }} className="w-1.5 h-1.5 bg-primary rounded-full" />
+                        <motion.div animate={{ scale: [1, 1.5, 1] }} transition={{ repeat: Infinity, duration: 1, delay: 0.2 }} className="w-1.5 h-1.5 bg-primary rounded-full" />
+                        <motion.div animate={{ scale: [1, 1.5, 1] }} transition={{ repeat: Infinity, duration: 1, delay: 0.4 }} className="w-1.5 h-1.5 bg-primary rounded-full" />
+                      </div>
+                      <span className="text-xs font-black text-primary uppercase tracking-widest">{loadingStatus}</span>
+                    </div>
+                    <div className="w-full h-1.5 bg-secondary rounded-full overflow-hidden">
+                      <motion.div 
+                        initial={{ x: '-100%' }}
+                        animate={{ x: '100%' }}
+                        transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
+                        className="w-1/2 h-full bg-primary"
+                      />
+                    </div>
+                    <p className="text-[10px] opacity-60 font-bold">بانتظار استجابة محرك Med-X الذكي...</p>
+                  </div>
+                </motion.div>
               )}
             </div>
           ) : (
