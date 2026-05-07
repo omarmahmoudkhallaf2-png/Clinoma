@@ -22,7 +22,8 @@ import {
   Edit2,
   Trash2,
   CheckCircle2,
-  Filter
+  Filter,
+  RotateCcw
 } from 'lucide-react';
 import { cn } from '../../lib/utils';
 
@@ -36,6 +37,31 @@ const FlashcardsDashboard = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedYear, setSelectedYear] = useState<string>('Third Year');
   const [selectedModule, setSelectedModule] = useState<string>('All');
+
+  const handleResetProgress = async (deckId: string) => {
+    if (!window.confirm('هل أنت متأكد من مسح كل التقدم في هذه المجموعة والبدء من جديد؟')) return;
+    const loadingToast = toast.loading('جاري إعادة التعيين...');
+    try {
+      const q = query(collection(db, 'flashcards'), where('deckId', '==', deckId));
+      const snapshot = await getDocs(q);
+      const batch = writeBatch(db);
+      snapshot.docs.forEach(doc => {
+        batch.update(doc.ref, {
+          nextReview: Date.now(),
+          interval: 0,
+          easeFactor: 2.5,
+          repetitions: 0,
+          status: 'new',
+          lastReviewed: null
+        });
+      });
+      await batch.commit();
+      toast.success('تم إعادة تعيين التقدم بنجاح!', { id: loadingToast });
+      window.location.reload();
+    } catch (err) {
+      toast.error('فشل إعادة التعيين', { id: loadingToast });
+    }
+  };
 
   useEffect(() => {
     if (!user) return;
@@ -409,6 +435,17 @@ const FlashcardsDashboard = () => {
                   >
                     <Edit2 size={18} />
                   </Link>
+                  <button 
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      handleResetProgress(deck.id);
+                    }}
+                    className="p-1 hover:bg-orange-500/10 rounded-lg transition-colors text-orange-500"
+                    title="Reset Progress"
+                  >
+                    <RotateCcw size={18} />
+                  </button>
                   <button 
                     onClick={async (e) => {
                       e.preventDefault();
