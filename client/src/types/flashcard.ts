@@ -11,6 +11,7 @@ export interface Mask {
 export interface CardImage {
   url: string;
   masks: Mask[];
+  scale?: number;
 }
 
 export interface Flashcard {

@@ -266,12 +266,12 @@ const StudyMode = () => {
       </div>
 
       {/* Main Study Area */}
-      <main className="flex-1 flex flex-col items-center justify-center p-6 relative overflow-hidden">
+      <main className="flex-1 flex flex-col items-center justify-center p-4 md:p-8 relative overflow-hidden">
         {/* Background Decorations */}
         <div className="absolute top-1/4 -left-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 -right-20 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl" />
 
-        <div className="w-full max-w-2xl perspective-1000">
+        <div className="w-full max-w-[95vw] lg:max-w-[85vw] perspective-1000 flex-1 flex items-center justify-center">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentIndex}
@@ -279,7 +279,7 @@ const StudyMode = () => {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -50 }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="relative w-full aspect-[4/3] md:aspect-[16/10]"
+              className="relative w-full h-full max-h-[75vh]"
             >
               <motion.div
                 animate={{ rotateY: isFlipped ? 180 : 0 }}
@@ -288,14 +288,17 @@ const StudyMode = () => {
                 onClick={() => setIsFlipped(!isFlipped)}
               >
                 {/* Front */}
-                <div className="absolute inset-0 backface-hidden bg-card border-2 border-border p-8 md:p-12 rounded-[2rem] shadow-xl flex flex-col items-center justify-center text-center">
-                  <div className="absolute top-6 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-muted text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+                <div className="absolute inset-0 backface-hidden bg-card border-2 border-border p-10 md:p-16 rounded-[3rem] shadow-2xl flex flex-col items-center justify-center text-center">
+                  <div className="absolute top-8 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-muted text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground">
                     Question
                   </div>
                   
-                  <div className="w-full h-full flex flex-col gap-6 overflow-hidden mt-4">
+                  <div className="w-full h-full flex flex-col gap-10 items-center justify-center overflow-hidden mt-6">
                     {currentCard.frontImage && (
-                      <div className="relative inline-block mx-auto max-h-[60%] overflow-hidden rounded-xl border border-border">
+                      <div 
+                        className="relative inline-block mx-auto max-h-[80%] rounded-2xl border border-border overflow-hidden bg-muted/50"
+                        style={{ transform: `scale(${currentCard.frontImage.scale || 1})` }}
+                      >
                         <img src={currentCard.frontImage.url} alt="Front" className="max-h-full w-auto object-contain" />
                         <svg viewBox="0 0 1000 1000" preserveAspectRatio="none" className="absolute inset-0 w-full h-full pointer-events-none">
                           {currentCard.frontImage.masks.map(mask => (
@@ -325,32 +328,30 @@ const StudyMode = () => {
                       </div>
                     )}
                     <div 
-                      className="prose prose-lg dark:prose-invert max-w-none text-center flex-1 overflow-y-auto"
+                      className="prose prose-2xl font-bold dark:prose-invert max-w-none text-center flex-1 overflow-y-auto w-full"
                       dangerouslySetInnerHTML={{ __html: currentCard.front }}
                     />
                   </div>
 
-                  <div className="absolute bottom-4 text-sm text-muted-foreground flex items-center gap-2 animate-bounce">
-                    <Eye size={16} />
-                    Click to flip
+                  <div className="absolute bottom-6 text-sm text-muted-foreground flex items-center gap-2 animate-bounce">
+                    <Eye size={20} />
+                    Click to reveal answer
                   </div>
                 </div>
 
                 {/* Back */}
-                <div className="absolute inset-0 backface-hidden bg-card border-2 border-primary/30 p-8 md:p-12 rounded-[2rem] shadow-xl flex flex-col items-center justify-center text-center rotate-y-180">
-                  <div className="absolute top-6 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-primary/10 text-[10px] font-bold uppercase tracking-widest text-primary">
+                <div className="absolute inset-0 backface-hidden bg-card border-4 border-primary/20 p-10 md:p-16 rounded-[3rem] shadow-2xl flex flex-col items-center justify-center text-center rotate-y-180">
+                  <div className="absolute top-8 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-primary/10 text-[10px] font-black uppercase tracking-[0.2em] text-primary">
                     Answer
                   </div>
                   
-                  <div className="w-full h-full flex flex-col gap-6 overflow-hidden mt-4">
+                  <div className="w-full h-full flex flex-col gap-10 items-center justify-center overflow-hidden mt-6">
                     {currentCard.backImage ? (
-                      <div className="relative inline-block mx-auto max-h-[50%] overflow-hidden rounded-xl border border-border">
+                      <div 
+                        className="relative inline-block mx-auto max-h-[70%] rounded-2xl border border-border overflow-hidden bg-muted/50"
+                        style={{ transform: `scale(${currentCard.backImage.scale || 1})` }}
+                      >
                         <img src={currentCard.backImage.url} alt="Back" className="max-h-full w-auto object-contain" />
-                        {/* Masks on back side might also hide things until revealed? 
-                            Usually we just show the unmasked image if it's the same image.
-                            But if it's a DIFFERENT image, we might still want masks?
-                            For now, let's show back masks as semi-transparent to indicate what was hidden.
-                        */}
                         <svg viewBox="0 0 1000 1000" preserveAspectRatio="none" className="absolute inset-0 w-full h-full pointer-events-none">
                           {currentCard.backImage.masks.map(mask => (
                             <g key={mask.id}>
@@ -382,9 +383,11 @@ const StudyMode = () => {
                         </svg>
                       </div>
                     ) : currentCard.frontImage && (
-                       /* If no back image, but there is a front image, show the front image REVEALED (masks semi-transparent) */
-                       <div className="relative inline-block mx-auto max-h-[40%] opacity-60">
-                        <img src={currentCard.frontImage.url} alt="Front Revealed" className="max-h-full w-auto object-contain rounded-lg" />
+                       <div 
+                        className="relative inline-block mx-auto max-h-[60%] opacity-80"
+                        style={{ transform: `scale(${currentCard.frontImage.scale || 1})` }}
+                       >
+                        <img src={currentCard.frontImage.url} alt="Front Revealed" className="max-h-full w-auto object-contain rounded-2xl" />
                         <svg viewBox="0 0 1000 1000" preserveAspectRatio="none" className="absolute inset-0 w-full h-full pointer-events-none">
                           {currentCard.frontImage.masks.map(mask => (
                             <g key={mask.id}>
@@ -399,7 +402,7 @@ const StudyMode = () => {
                       </div>
                     )}
                     <div 
-                      className="prose prose-lg dark:prose-invert max-w-none text-center flex-1 overflow-y-auto"
+                      className="prose prose-2xl font-bold dark:prose-invert max-w-none text-center flex-1 overflow-y-auto w-full"
                       dangerouslySetInnerHTML={{ __html: currentCard.back }}
                     />
                   </div>
@@ -410,7 +413,7 @@ const StudyMode = () => {
         </div>
 
         {/* Controls */}
-        <div className="mt-12 w-full max-w-2xl">
+        <div className="mt-16 w-full max-w-4xl">
           <AnimatePresence mode="wait">
             {!isFlipped ? (
               <motion.button

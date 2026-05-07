@@ -543,7 +543,7 @@ const CreateCard = () => {
 
         {/* Main Workspace */}
         <div className="flex-1 overflow-y-auto p-6 md:p-12">
-          <div className="max-w-4xl mx-auto space-y-12">
+          <div className="max-w-5xl mx-auto space-y-12">
             <div className="flex items-center justify-between mb-8">
               <div className="flex items-center gap-4">
                 <div className="w-16 h-16 rounded-[1.5rem] bg-primary text-white flex items-center justify-center text-2xl font-black shadow-xl shadow-primary/20">
@@ -580,107 +580,149 @@ const CreateCard = () => {
 
             <motion.div
               key={currentCardIdx}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="space-y-12"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="p-10 rounded-[4rem] bg-card border-2 border-border shadow-2xl shadow-primary/5 space-y-12"
             >
-              <div className="p-10 rounded-[4rem] bg-card border-2 border-border shadow-2xl shadow-primary/5 space-y-12">
-                {/* Front */}
-                <div className="space-y-6">
-                  <div className="flex items-center justify-between px-2">
-                    <div className="flex items-center gap-3 text-sm font-black uppercase tracking-[0.2em] text-primary">
-                      <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center text-xs">Q</div>
-                      The Question
-                    </div>
+              {/* Question Side */}
+              <div className="space-y-6">
+                <div className="flex items-center justify-between px-2">
+                  <div className="flex items-center gap-3 text-sm font-black uppercase tracking-[0.2em] text-primary">
+                    <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center text-[10px]">Q</div>
+                    The Question
+                  </div>
+                  <div className="flex items-center gap-2">
+                    {currentCard.frontImage && (
+                      <div className="flex items-center gap-1 bg-muted px-3 py-1 rounded-lg border border-border">
+                        <span className="text-[10px] font-black uppercase text-muted-foreground mr-2">Size</span>
+                        <button 
+                          onClick={() => updateCard(currentCardIdx, 'frontImage', { ...currentCard.frontImage, scale: Math.max(0.5, (currentCard.frontImage?.scale || 1) - 0.1) })}
+                          className="p-1 hover:bg-background rounded"
+                        >
+                          -
+                        </button>
+                        <span className="text-[10px] font-bold w-12 text-center">{Math.round((currentCard.frontImage.scale || 1) * 100)}%</span>
+                        <button 
+                          onClick={() => updateCard(currentCardIdx, 'frontImage', { ...currentCard.frontImage, scale: Math.min(2, (currentCard.frontImage?.scale || 1) + 0.1) })}
+                          className="p-1 hover:bg-background rounded"
+                        >
+                          +
+                        </button>
+                      </div>
+                    )}
                     <button
                       onClick={() => { setActiveUploadCard({ idx: currentCardIdx, side: 'front' }); cardImageInputRef.current?.click(); }}
-                      className="flex items-center gap-2 px-6 py-2 rounded-xl bg-muted hover:bg-muted/80 text-sm font-bold transition-all"
+                      className="flex items-center gap-2 px-6 py-2 rounded-xl bg-muted hover:bg-muted/80 text-xs font-bold transition-all border border-border"
                     >
-                      <ImageIcon size={18} />
+                      <ImageIcon size={16} />
                       {currentCard.frontImage ? 'Change Image' : 'Add Image'}
                     </button>
                   </div>
-                  
-                  {currentCard.frontImage && (
-                    <div className="relative group/img max-h-[500px] rounded-[2.5rem] overflow-hidden bg-muted border-2 border-border">
-                      <img src={currentCard.frontImage.url} className="w-full h-full object-contain" />
-                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-all flex items-center justify-center gap-4">
-                        <button onClick={() => setImageEditor({ idx: currentCardIdx, side: 'front' })} className="p-5 bg-white text-primary rounded-full hover:scale-110 transition-all shadow-xl"><Edit2 /></button>
-                        <button onClick={() => updateCard(currentCardIdx, 'frontImage', undefined)} className="p-5 bg-white text-rose-500 rounded-full hover:scale-110 transition-all shadow-xl"><Trash2 /></button>
-                      </div>
-                    </div>
-                  )}
-
-                  <RichTextEditor
-                    value={currentCard.front}
-                    onChange={val => updateCard(currentCardIdx, 'front', val)}
-                    placeholder="Write the question here..."
-                    minHeight="300px"
-                  />
                 </div>
-
-                <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent w-full opacity-50" />
-
-                {/* Back */}
-                <div className="space-y-6">
-                  <div className="flex items-center justify-between px-2">
-                    <div className="flex items-center gap-3 text-sm font-black uppercase tracking-[0.2em] text-emerald-600">
-                      <div className="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs">A</div>
-                      The Answer
+                
+                {currentCard.frontImage && (
+                  <div className="relative group/img max-h-[600px] rounded-[2.5rem] overflow-hidden bg-muted/30 border-2 border-border flex items-center justify-center">
+                    <div style={{ transform: `scale(${currentCard.frontImage.scale || 1})` }} className="transition-transform duration-200">
+                      <img src={currentCard.frontImage.url} className="max-h-[600px] w-auto object-contain" />
                     </div>
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-all flex items-center justify-center gap-4">
+                      <button onClick={() => setImageEditor({ idx: currentCardIdx, side: 'front' })} className="p-5 bg-white text-primary rounded-full hover:scale-110 transition-all shadow-xl"><Edit2 /></button>
+                      <button onClick={() => updateCard(currentCardIdx, 'frontImage', undefined)} className="p-5 bg-white text-rose-500 rounded-full hover:scale-110 transition-all shadow-xl"><Trash2 /></button>
+                    </div>
+                  </div>
+                )}
+
+                <RichTextEditor
+                  value={currentCard.front}
+                  onChange={val => updateCard(currentCardIdx, 'front', val)}
+                  placeholder="Write the question here..."
+                  minHeight="350px"
+                />
+              </div>
+
+              <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent w-full opacity-50" />
+
+              {/* Answer Side */}
+              <div className="space-y-6">
+                <div className="flex items-center justify-between px-2">
+                  <div className="flex items-center gap-3 text-sm font-black uppercase tracking-[0.2em] text-emerald-600">
+                    <div className="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center text-[10px]">A</div>
+                    The Answer
+                  </div>
+                  <div className="flex items-center gap-2">
+                    {currentCard.backImage && (
+                      <div className="flex items-center gap-1 bg-muted px-3 py-1 rounded-lg border border-border">
+                        <span className="text-[10px] font-black uppercase text-muted-foreground mr-2">Size</span>
+                        <button 
+                          onClick={() => updateCard(currentCardIdx, 'backImage', { ...currentCard.backImage, scale: Math.max(0.5, (currentCard.backImage?.scale || 1) - 0.1) })}
+                          className="p-1 hover:bg-background rounded"
+                        >
+                          -
+                        </button>
+                        <span className="text-[10px] font-bold w-12 text-center">{Math.round((currentCard.backImage.scale || 1) * 100)}%</span>
+                        <button 
+                          onClick={() => updateCard(currentCardIdx, 'backImage', { ...currentCard.backImage, scale: Math.min(2, (currentCard.backImage?.scale || 1) + 0.1) })}
+                          className="p-1 hover:bg-background rounded"
+                        >
+                          +
+                        </button>
+                      </div>
+                    )}
                     <button
                       onClick={() => { setActiveUploadCard({ idx: currentCardIdx, side: 'back' }); cardImageInputRef.current?.click(); }}
-                      className="flex items-center gap-2 px-6 py-2 rounded-xl bg-muted hover:bg-muted/80 text-sm font-bold transition-all"
+                      className="flex items-center gap-2 px-6 py-2 rounded-xl bg-muted hover:bg-muted/80 text-sm font-bold transition-all border border-border"
                     >
                       <ImageIcon size={18} />
                       {currentCard.backImage ? 'Change Image' : 'Add Image'}
                     </button>
                   </div>
+                </div>
 
-                  {currentCard.backImage && (
-                    <div className="relative group/img max-h-[500px] rounded-[2.5rem] overflow-hidden bg-muted border-2 border-border">
-                      <img src={currentCard.backImage.url} className="w-full h-full object-contain" />
-                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-all flex items-center justify-center gap-4">
-                        <button onClick={() => setImageEditor({ idx: currentCardIdx, side: 'back' })} className="p-5 bg-white text-primary rounded-full hover:scale-110 transition-all shadow-xl"><Edit2 /></button>
-                        <button onClick={() => updateCard(currentCardIdx, 'backImage', undefined)} className="p-5 bg-white text-rose-500 rounded-full hover:scale-110 transition-all shadow-xl"><Trash2 /></button>
-                      </div>
+                {currentCard.backImage && (
+                  <div className="relative group/img max-h-[600px] rounded-[2.5rem] overflow-hidden bg-muted/30 border-2 border-border flex items-center justify-center">
+                    <div style={{ transform: `scale(${currentCard.backImage.scale || 1})` }} className="transition-transform duration-200">
+                      <img src={currentCard.backImage.url} className="max-h-[600px] w-auto object-contain" />
                     </div>
-                  )}
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-all flex items-center justify-center gap-4">
+                      <button onClick={() => setImageEditor({ idx: currentCardIdx, side: 'back' })} className="p-5 bg-white text-primary rounded-full hover:scale-110 transition-all shadow-xl"><Edit2 /></button>
+                      <button onClick={() => updateCard(currentCardIdx, 'backImage', undefined)} className="p-5 bg-white text-rose-500 rounded-full hover:scale-110 transition-all shadow-xl"><Trash2 /></button>
+                    </div>
+                  </div>
+                )}
 
-                  <RichTextEditor
-                    value={currentCard.back}
-                    onChange={val => updateCard(currentCardIdx, 'back', val)}
-                    placeholder="Write the answer here..."
-                    minHeight="300px"
-                  />
-                </div>
-
-                <div className="flex items-center gap-4 px-8 py-5 bg-muted/20 rounded-[2rem] border border-border/50 focus-within:border-primary/30 transition-all">
-                  <TagIcon size={24} className="text-muted-foreground" />
-                  <input
-                    type="text"
-                    placeholder="Tags (separated by commas)..."
-                    value={currentCard.tags.join(', ')}
-                    onChange={e => updateCard(currentCardIdx, 'tags', e.target.value)}
-                    className="bg-transparent border-none p-0 text-xl font-bold focus:ring-0 w-full placeholder:text-muted-foreground/30"
-                  />
-                </div>
+                <RichTextEditor
+                  value={currentCard.back}
+                  onChange={val => updateCard(currentCardIdx, 'back', val)}
+                  placeholder="Write the answer here..."
+                  minHeight="350px"
+                />
               </div>
 
-              {/* Progress Indicators */}
-              <div className="flex justify-center gap-3">
-                {cards.map((_, i) => (
-                  <div 
-                    key={i} 
-                    className={cn(
-                      "w-3 h-3 rounded-full transition-all duration-300",
-                      currentCardIdx === i ? "bg-primary w-10" : "bg-muted hover:bg-muted-foreground/30 cursor-pointer"
-                    )}
-                    onClick={() => setCurrentCardIdx(i)}
-                  />
-                ))}
+              <div className="flex items-center gap-4 px-8 py-5 bg-muted/20 rounded-[2rem] border border-border/50 focus-within:border-primary/30 transition-all">
+                <TagIcon size={24} className="text-muted-foreground" />
+                <input
+                  type="text"
+                  placeholder="Tags (separated by commas)..."
+                  value={currentCard.tags.join(', ')}
+                  onChange={e => updateCard(currentCardIdx, 'tags', e.target.value)}
+                  className="bg-transparent border-none p-0 text-xl font-bold focus:ring-0 w-full placeholder:text-muted-foreground/30"
+                />
               </div>
             </motion.div>
+
+            {/* Progress Indicators */}
+            <div className="flex justify-center gap-3">
+              {cards.map((_, i) => (
+                <div 
+                  key={i} 
+                  className={cn(
+                    "w-3 h-3 rounded-full transition-all duration-300",
+                    currentCardIdx === i ? "bg-primary w-10" : "bg-muted hover:bg-muted-foreground/30 cursor-pointer"
+                  )}
+                  onClick={() => setCurrentCardIdx(i)}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>
