@@ -486,20 +486,20 @@ const CreateCard = () => {
           <RichTextToolbar onCommand={handleToolbarCommand} />
         </div>
         
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
           <button
             onClick={() => setStep('settings')}
-            className="flex items-center gap-2 px-6 py-3 rounded-2xl bg-muted font-black hover:bg-muted/80 transition-all"
+            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-muted font-bold text-xs hover:bg-muted/80 transition-all border border-border"
           >
-            <Settings size={20} />
-            <span className="hidden md:inline">Deck Info</span>
+            <Settings size={14} />
+            <span className="hidden sm:inline">Deck Info</span>
           </button>
           <button
             onClick={() => setStep('settings')}
-            className="flex items-center gap-2 px-8 py-3 rounded-2xl bg-primary text-primary-foreground font-black shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all"
+            className="flex items-center gap-2 px-5 py-2 rounded-xl bg-primary text-primary-foreground font-black text-xs shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all"
           >
-            <Save size={20} />
-            <span>Finish & Save</span>
+            <Save size={14} />
+            <span>Finish</span>
           </button>
         </div>
       </div>
