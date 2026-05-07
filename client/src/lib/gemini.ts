@@ -68,14 +68,18 @@ export const generateAIResponse = async (
   ];
   
   const models = [
-    "gemini-3.1-pro-preview",
-    "gemini-3-pro-preview",
-    "gemini-flash-latest",
     "gemini-2.5-flash",
-    "gemini-2.5-pro"
+    "gemini-3.1-flash-lite",
+    "gemini-2.0-flash",
+    "gemini-flash-latest",
+    "gemini-3.1-pro-preview",
+    "gemini-1.5-flash"
   ];
 
-  const allKeys = [import.meta.env.VITE_GEMINI_API_KEY, ...KEYS].filter(Boolean);
+  // Shuffle keys to distribute load
+  const allKeys = [import.meta.env.VITE_GEMINI_API_KEY, ...KEYS]
+    .filter(Boolean)
+    .sort(() => Math.random() - 0.5);
 
   const depthPrompt = options?.depth === 'detailed' 
     ? 'اشرح كل شيء بالتفصيل الممل، لا تترك أي نقطة.' 
