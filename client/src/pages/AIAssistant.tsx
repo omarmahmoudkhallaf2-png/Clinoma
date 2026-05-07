@@ -279,27 +279,39 @@ export default function AIAssistant() {
                   <div className={cn("w-10 h-10 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg", msg.role === 'ai' ? "bg-primary text-white" : "bg-secondary text-foreground")}>
                     {msg.role === 'ai' ? <Bot size={20} /> : <User size={20} />}
                   </div>
-                  <div className={cn("max-w-[85%] p-6 rounded-[2rem] leading-relaxed font-medium shadow-sm relative", msg.role === 'ai' ? "bg-[#1e293b]/80 rounded-tr-none border border-slate-700" : "bg-primary text-white rounded-tl-none")} dir="rtl" style={{ color: '#FFFFFF' }}>
+                  <div 
+                    className={cn("max-w-[85%] p-6 rounded-[2rem] leading-relaxed font-medium relative", msg.role === 'ai' ? "rounded-tr-none" : "rounded-tl-none")} 
+                    dir="rtl" 
+                    style={{ 
+                      color: '#FFFFFF', 
+                      backgroundColor: msg.role === 'ai' ? '#1e293b' : '#3b82f6',
+                      border: msg.role === 'ai' ? '2px solid #FFFFFF' : 'none',
+                      opacity: 1,
+                      visibility: 'visible',
+                      display: 'block',
+                      zIndex: 10
+                    }}
+                  >
                     {msg.role === 'ai' ? (
-                      <div className="max-w-none text-white" style={{ color: '#FFFFFF' }}>
+                      <div className="max-w-none text-white" style={{ color: '#FFFFFF', opacity: 1 }}>
                         <ReactMarkdown 
                           remarkPlugins={[remarkGfm]} 
                           components={{ 
-                            strong: ({...props}) => <span style={{ color: '#3b82f6', fontWeight: 'bold' }} {...props} />,
-                            p: ({...props}) => <p style={{ color: '#FFFFFF', marginBottom: '1.5rem', fontSize: '1.1rem', lineHeight: '1.8' }} {...props} />,
-                            h1: ({...props}) => <h1 style={{ color: '#FFFFFF', fontWeight: '900', fontSize: '1.8rem', marginBottom: '1rem', borderBottom: '1px solid #334155', paddingBottom: '0.5rem' }} {...props} />,
+                            strong: ({...props}) => <span style={{ color: '#60a5fa', fontWeight: 'bold' }} {...props} />,
+                            p: ({...props}) => <p style={{ color: '#FFFFFF', marginBottom: '1.5rem', fontSize: '1.1rem', lineHeight: '1.8', opacity: 1 }} {...props} />,
+                            h1: ({...props}) => <h1 style={{ color: '#FFFFFF', fontWeight: '900', fontSize: '1.8rem', marginBottom: '1rem', borderBottom: '1px solid #FFFFFF', paddingBottom: '0.5rem' }} {...props} />,
                             h2: ({...props}) => <h2 style={{ color: '#FFFFFF', fontWeight: '800', fontSize: '1.5rem', marginBottom: '0.8rem' }} {...props} />,
                             h3: ({...props}) => <h3 style={{ color: '#FFFFFF', fontWeight: '700', fontSize: '1.3rem', marginBottom: '0.6rem' }} {...props} />,
                             li: ({...props}) => <li style={{ color: '#FFFFFF', marginBottom: '0.5rem', listStyleType: 'disc', marginRight: '1.5rem' }} {...props} />,
-                            table: ({...props}) => <div className="overflow-x-auto my-4"><table style={{ borderCollapse: 'collapse', width: '100%', border: '1px solid #475569' }} {...props} /></div>,
-                            td: ({...props}) => <td style={{ color: '#FFFFFF', padding: '12px', border: '1px solid #475569', textAlign: 'right' }} {...props} />,
-                            th: ({...props}) => <th style={{ color: '#FFFFFF', padding: '12px', border: '1px solid #475569', backgroundColor: '#334155', fontWeight: 'bold', textAlign: 'right' }} {...props} />
+                            table: ({...props}) => <div className="overflow-x-auto my-4"><table style={{ borderCollapse: 'collapse', width: '100%', border: '2px solid #FFFFFF' }} {...props} /></div>,
+                            td: ({...props}) => <td style={{ color: '#FFFFFF', padding: '12px', border: '1px solid #FFFFFF', textAlign: 'right' }} {...props} />,
+                            th: ({...props}) => <th style={{ color: '#FFFFFF', padding: '12px', border: '2px solid #FFFFFF', backgroundColor: '#334155', fontWeight: 'bold', textAlign: 'right' }} {...props} />
                           }}
                         >
                           {msg.content}
                         </ReactMarkdown>
                       </div>
-                    ) : <div className="whitespace-pre-wrap font-bold" style={{ color: '#FFFFFF' }}>{msg.content}</div>}
+                    ) : <div className="whitespace-pre-wrap font-bold" style={{ color: '#FFFFFF', opacity: 1 }}>{msg.content}</div>}
                   </div>
                 </motion.div>
               ))}
