@@ -20,6 +20,13 @@ const tryGroqFetch = async (model: string, messages: any[]) => {
     if (response.ok) {
       const data = await response.json();
       return data.choices?.[0]?.message?.content || "";
+    } else {
+      const errorData = await response.json().catch(() => ({}));
+      console.error("Groq API Error Detail:", {
+        status: response.status,
+        statusText: response.statusText,
+        body: errorData
+      });
     }
     return null;
   } catch (err) {
