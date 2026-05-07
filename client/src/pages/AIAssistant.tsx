@@ -189,6 +189,7 @@ export default function AIAssistant() {
         }
       }
     } catch (error) {
+      console.error("AI Assistant Critical Error:", error);
       toast.error('حدث خطأ أثناء معالجة طلبك');
     } finally {
       clearInterval(statusInterval);

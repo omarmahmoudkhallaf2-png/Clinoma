@@ -30,6 +30,7 @@ const tryGroqFetch = async (model: string, messages: any[]) => {
     }
     return null;
   } catch (err) {
+    console.error("Groq Network/System Error:", err);
     return null;
   }
 };
