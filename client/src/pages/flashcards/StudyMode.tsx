@@ -32,6 +32,11 @@ const StudyMode = () => {
   const [loading, setLoading] = useState(true);
   const [results, setResults] = useState({ again: 0, hard: 0, good: 0, easy: 0 });
   const [finished, setFinished] = useState(false);
+  const [zoom, setZoom] = useState(1);
+
+  useEffect(() => {
+    setZoom(1); // Reset zoom when card changes
+  }, [currentIndex]);
 
   useEffect(() => {
     if (!user || !deckId) return;
@@ -265,14 +270,8 @@ const StudyMode = () => {
     );
   }
 
-  const [zoom, setZoom] = useState(1);
-
   const currentCard = cards[currentIndex];
   const progress = ((currentIndex + 1) / cards.length) * 100;
-
-  useEffect(() => {
-    setZoom(1); // Reset zoom when card changes
-  }, [currentIndex]);
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
