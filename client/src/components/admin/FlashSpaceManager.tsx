@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { db, storage } from '../../lib/firebase';
+import { db } from '../../lib/firebase';
 import { cn } from '../../lib/utils';
 import toast from 'react-hot-toast';
 import { 
@@ -13,7 +13,6 @@ import {
   orderBy, 
   where 
 } from 'firebase/firestore';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { 
   Plus, 
   Search, 
@@ -94,29 +93,39 @@ const FlashSpaceManager = () => {
     }
   }, [editingBoard]);
 
-  // Firebase Cloud Storage Upload
+  // Cloudinary Cloud Upload
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
     setUploading(true);
-    const t = toast.loading('Uploading to Google Cloud (Firebase)...');
+    const t = toast.loading('Uploading to CLINOMA Cloud (via Cloudinary)...');
     
     try {
-      // Create a unique path using timestamp to avoid overwrites
-      const storageRef = ref(storage, `flashspace_boards/${Date.now()}_${file.name.replace(/\s+/g, '_')}`);
+      const cloudName = 'dptxq4yaa';
+      const uploadPreset = 'med_prep_preset';
       
-      // Upload the file
-      const snapshot = await uploadBytes(storageRef, file);
-      
-      // Get the persistent download URL
-      const url = await getDownloadURL(snapshot.ref);
-      
-      setForm(prev => ({ ...prev, medicalImage: url }));
-      toast.success('Image uploaded to Google Cloud!', { id: t });
+      const formDataUpload = new FormData();
+      formDataUpload.append('file', file);
+      formDataUpload.append('upload_preset', uploadPreset);
+      formDataUpload.append('folder', 'flashspace_boards');
+
+      const response = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/auto/upload`, {
+        method: 'POST',
+        body: formDataUpload
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error?.message || 'Cloudinary upload failed');
+      }
+
+      const data = await response.json();
+      setForm(prev => ({ ...prev, medicalImage: data.secure_url }));
+      toast.success('Image uploaded successfully!', { id: t });
     } catch (err: any) {
-      console.error("Firebase Storage Error:", err);
-      toast.error(`Upload failed: ${err.message}. Make sure Storage is enabled in Firebase Console.`, { id: t });
+      console.error(err);
+      toast.error(`Upload failed: ${err.message}. Make sure to create an "Unsigned" preset named "med_prep_preset" in Cloudinary settings.`, { id: t });
     } finally {
       setUploading(false);
     }
