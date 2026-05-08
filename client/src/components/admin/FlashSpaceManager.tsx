@@ -40,6 +40,9 @@ interface Board {
   createdAt: number;
 }
 
+import { storage } from '../../lib/firebase';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+
 const FlashSpaceManager = () => {
   const [boards, setBoards] = useState<Board[]>([]);
   const [loading, setLoading] = useState(true);
@@ -93,53 +96,32 @@ const FlashSpaceManager = () => {
     }
   }, [editingBoard]);
 
-  // Image Processing Helper
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  // Firebase Cloud Storage Upload
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    if (file.size > 2 * 1024 * 1024) {
-      toast.error('Image is too large. Max 2MB.');
-      return;
-    }
-
     setUploading(true);
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      const img = new Image();
-      img.src = event.target?.result as string;
-      img.onload = () => {
-        const canvas = document.createElement('canvas');
-        const MAX_WIDTH = 1200;
-        const MAX_HEIGHT = 1200;
-        let width = img.width;
-        let height = img.height;
-
-        if (width > height) {
-          if (width > MAX_WIDTH) {
-            height *= MAX_WIDTH / width;
-            width = MAX_WIDTH;
-          }
-        } else {
-          if (height > MAX_HEIGHT) {
-            width *= MAX_HEIGHT / height;
-            height = MAX_HEIGHT;
-          }
-        }
-
-        canvas.width = width;
-        canvas.height = height;
-        const ctx = canvas.getContext('2d');
-        ctx?.drawImage(img, 0, 0, width, height);
-        
-        // Convert to compressed base64
-        const compressed = canvas.toDataURL('image/jpeg', 0.7);
-        setForm(prev => ({ ...prev, medicalImage: compressed }));
-        setUploading(false);
-        toast.success('Image processed and ready');
-      };
-    };
-    reader.readAsDataURL(file);
+    const t = toast.loading('Uploading to CLINOMA Cloud...');
+    
+    try {
+      // Create a unique path
+      const storageRef = ref(storage, `flashspace_boards/${Date.now()}_${file.name}`);
+      
+      // Upload
+      const snapshot = await uploadBytes(storageRef, file);
+      
+      // Get URL
+      const url = await getDownloadURL(snapshot.ref);
+      
+      setForm(prev => ({ ...prev, medicalImage: url }));
+      toast.success('Image uploaded to cloud!', { id: t });
+    } catch (err) {
+      console.error(err);
+      toast.error('Cloud upload failed', { id: t });
+    } finally {
+      setUploading(false);
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
