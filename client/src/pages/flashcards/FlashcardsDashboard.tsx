@@ -139,10 +139,10 @@ const FlashcardsDashboard = () => {
       {/* Header & Stats */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div>
-          <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-600">
-            Flashcards
+          <h1 className="text-4xl font-black bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
+            Flash Cards
           </h1>
-          <p className="text-muted-foreground mt-2">Master your subjects with spaced repetition.</p>
+          <p className="text-muted-foreground mt-2 font-medium">Master your medical knowledge with intelligent spaced repetition.</p>
         </div>
         
         <div className="flex gap-4">
@@ -401,7 +401,7 @@ const FlashcardsDashboard = () => {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: idx * 0.05 }}
-                className="group p-6 rounded-2xl bg-card border border-border hover:border-primary/50 hover:shadow-xl hover:shadow-primary/5 transition-all cursor-pointer relative overflow-hidden"
+                className="group p-7 rounded-[2rem] bg-card border-2 border-border/50 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/10 transition-all cursor-pointer relative overflow-hidden"
               >
                 <div className="absolute top-0 right-0 p-2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
                   <button 

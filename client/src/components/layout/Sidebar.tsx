@@ -61,7 +61,7 @@ export default function Sidebar({ isOpen = false, setIsOpen = (_: boolean) => {}
   const menuItems = [
     { icon: LayoutDashboard, label: 'لوحة التحكم', path: '/dashboard' },
     { icon: Brain, label: 'المراجعة الذكية', path: '/review' },
-    { icon: BookOpen, label: 'الفلاش كارد', path: '/flashcards' },
+    { icon: BookOpen, label: 'Flash', path: '/flashcards' },
     { icon: Crown, label: 'الكورسات المتاحة', path: '/available' },
 
     { icon: Sparkles, label: 'Med-X (الدليل الذكي)', path: '/ai-assistant' },

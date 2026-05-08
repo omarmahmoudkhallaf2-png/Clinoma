@@ -24,10 +24,12 @@ import FormalExam from "./pages/FormalExam";
 import ExamResultsDashboard from "./pages/ExamResultsDashboard";
 import AvailableExams from "./pages/AvailableExams";
 import AIAssistant from "./pages/AIAssistant";
+import FlashSelection from "./pages/flashcards/FlashSelection";
 import FlashcardsDashboard from "./pages/flashcards/FlashcardsDashboard";
 import StudyMode from "./pages/flashcards/StudyMode";
 import CreateCard from "./pages/flashcards/CreateCard";
 import ImportCards from "./pages/flashcards/ImportCards";
+import FlashSpace from "./pages/flashcards/FlashSpace";
 import AIExamGenerator from "./pages/AIExamGenerator";
 
 import { CommandPalette } from "./components/ui/CommandPalette";
@@ -83,7 +85,9 @@ const AnimatedRoutes = () => {
         <Route path="/exam/:examId" element={<ProtectedRoute useLayout={false}><FormalExam /></ProtectedRoute>} />
         
         {/* Flashcards Routes */}
-        <Route path="/flashcards" element={<ProtectedRoute><FlashcardsDashboard /></ProtectedRoute>} />
+        <Route path="/flashcards" element={<ProtectedRoute><FlashSelection /></ProtectedRoute>} />
+        <Route path="/flashcards/decks" element={<ProtectedRoute><FlashcardsDashboard /></ProtectedRoute>} />
+        <Route path="/flashcards/space" element={<ProtectedRoute useLayout={false}><FlashSpace /></ProtectedRoute>} />
         <Route path="/flashcards/study/:deckId" element={<ProtectedRoute useLayout={false}><StudyMode /></ProtectedRoute>} />
         <Route path="/flashcards/create" element={<ProtectedRoute><CreateCard /></ProtectedRoute>} />
         <Route path="/flashcards/edit/:deckId" element={<ProtectedRoute><CreateCard /></ProtectedRoute>} />

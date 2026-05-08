@@ -25,6 +25,7 @@ import AuditLogViewer from '../../components/admin/AuditLogViewer';
 import AdminNotifications, { sendAdminNotification } from '../../components/admin/NotificationSystem';
 import ExamManager from '../../components/admin/ExamManager';
 import FlashcardManager from '../../components/admin/FlashcardManager';
+import FlashSpaceManager from '../../components/admin/FlashSpaceManager';
 
 
 import { runSystemAudit } from '../../lib/systemHealer';
@@ -35,7 +36,7 @@ import type { Question } from '../../types/quiz';
 export default function AdminDashboard() {
   const { user, userRole } = useAuth();
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState<'analytics' | 'questions' | 'users' | 'courses' | 'settings' | 'notes' | 'audit' | 'health' | 'formal_results' | 'exams' | 'flashcards'>('analytics');
+  const [activeTab, setActiveTab] = useState<'analytics' | 'questions' | 'users' | 'courses' | 'settings' | 'notes' | 'audit' | 'health' | 'formal_results' | 'exams' | 'flashcards' | 'flashspace'>('analytics');
   const [questions, setQuestions] = useState<Question[]>([]);
   const [notes, setNotes] = useState<any[]>([]);
   const [courses, setCourses] = useState<any[]>([]);
@@ -236,6 +237,7 @@ export default function AdminDashboard() {
           { id: 'settings', label: 'OS Config', icon: Settings },
           { id: 'exams', label: 'Exams', icon: ClipboardList },
           { id: 'flashcards', label: 'Flashcards', icon: Brain },
+          { id: 'flashspace', label: 'Flash Space', icon: Layout },
           { id: 'formal_results', label: 'Formal Results', icon: Trophy },
         ].map(tab => (
           <button
@@ -325,6 +327,7 @@ export default function AdminDashboard() {
             {activeTab === 'exams' && <ExamManager />}
             {activeTab === 'audit' && <AuditLogViewer />}
             {activeTab === 'flashcards' && <FlashcardManager />}
+            {activeTab === 'flashspace' && <FlashSpaceManager />}
             {activeTab === 'settings' && <AppConfig />}
             {activeTab === 'notes' && (
               <div className="p-12 space-y-12 animate-in slide-in-from-bottom-8 duration-500">
