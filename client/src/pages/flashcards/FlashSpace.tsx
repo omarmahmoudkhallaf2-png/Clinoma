@@ -132,6 +132,15 @@ const FlashSpace = () => {
     );
   };
 
+  // --- Timer Engine (Restored) ---
+  useEffect(() => {
+    let interval: any;
+    if (isTimerActive) {
+      interval = setInterval(() => setSessionSeconds(s => s + 1), 1000);
+    }
+    return () => clearInterval(interval);
+  }, [isTimerActive]);
+
   // --- Data Fetching (Restored) ---
   useEffect(() => {
     const fetchData = async () => {
