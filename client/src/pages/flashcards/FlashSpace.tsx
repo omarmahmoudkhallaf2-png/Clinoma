@@ -102,33 +102,40 @@ const FlashSpace = () => {
     text: { size: 24, opacity: 1, color: '#1e293b' }
   });
 
-  // --- Smart Size Cursor ---
+  // --- Dynamic Performance Cursor ---
   const ToolCursor = () => {
+    // Only show the circle when drawing/erasing to eliminate lag
+    if (!currentPath) return null;
+
     const currentSize = toolSettings[activeTool].size * zoom;
     return (
       <div 
         ref={cursorRef}
-        className="fixed pointer-events-none z-[1000] border-2 border-slate-400/50 rounded-full bg-slate-400/10 flex items-center justify-center transition-all duration-75"
+        className="fixed pointer-events-none z-[1000] border-2 border-slate-400/50 rounded-full bg-slate-400/20"
         style={{ 
           width: `${currentSize}px`, 
           height: `${currentSize}px`,
-          display: activeTool === 'text' ? 'none' : 'block'
+          transform: 'translate(-50%, -50%)',
+          left: '-1000px', // Initial hide
+          top: '-1000px'
         }}
       />
     );
   };
 
+  // Sync cursor position ONLY when currentPath exists (Active Drawing)
   useEffect(() => {
     const handleCursorMove = (e: MouseEvent) => {
-      if (cursorRef.current) {
+      if (currentPath && cursorRef.current) {
         cursorRef.current.style.left = `${e.clientX}px`;
         cursorRef.current.style.top = `${e.clientY}px`;
-        cursorRef.current.style.transform = `translate(-50%, -50%)`;
       }
     };
-    window.addEventListener('mousemove', handleCursorMove);
+    if (currentPath) {
+      window.addEventListener('mousemove', handleCursorMove);
+    }
     return () => window.removeEventListener('mousemove', handleCursorMove);
-  }, []);
+  }, [currentPath]);
 
   // Fetch Data
   useEffect(() => {
@@ -165,7 +172,7 @@ const FlashSpace = () => {
     return () => clearInterval(interval);
   }, [isTimerActive]);
 
-  // --- Professional 3D Laser & Vector Engine ---
+  // --- Rendering Engine ---
   const drawPath = useCallback((ctx: CanvasRenderingContext2D, path: Path, opacityOverride?: number) => {
     if (path.points.length < 2) return;
     
@@ -181,12 +188,8 @@ const FlashSpace = () => {
     else ctx.globalCompositeOperation = 'source-over';
 
     if (path.tool === 'laser') {
-      // 3D/Glowing Laser Effect
       ctx.shadowBlur = 15;
       ctx.shadowColor = path.color;
-      // Multi-layered stroke for 3D depth
-      ctx.lineWidth = path.size;
-      ctx.strokeStyle = path.color;
     } else {
       ctx.shadowBlur = 0;
     }
@@ -205,7 +208,6 @@ const FlashSpace = () => {
     
     ctx.stroke();
 
-    // Inner 3D highlight for Laser
     if (path.tool === 'laser') {
       ctx.beginPath();
       ctx.lineWidth = path.size / 3;
@@ -298,12 +300,10 @@ const FlashSpace = () => {
     }));
   };
 
-  // UI Selection & Study View logic...
+  // UI Selection Views (Module, System, Board)
   if (loading) return (
     <div className="h-screen w-full flex flex-col items-center justify-center bg-slate-50 gap-6">
-      <div className="w-20 h-20 bg-primary/10 rounded-[2.5rem] flex items-center justify-center animate-bounce">
-        <Brain className="w-10 h-10 text-primary" />
-      </div>
+      <div className="w-20 h-20 bg-primary/10 rounded-[2.5rem] flex items-center justify-center animate-bounce"><Brain className="w-10 h-10 text-primary" /></div>
       <p className="text-xl font-black text-slate-400 animate-pulse uppercase tracking-widest">Initialising CLINOMA Space...</p>
     </div>
   );
@@ -312,13 +312,8 @@ const FlashSpace = () => {
     return (
       <div className="h-screen w-full bg-[#f8fafc] flex flex-col overflow-hidden font-sans">
         <div className="h-20 bg-white border-b border-slate-200 px-12 flex items-center justify-between shrink-0">
-          <div className="flex items-center gap-4">
-            <div className="w-10 h-10 bg-primary rounded-2xl flex items-center justify-center text-white"><Brain className="w-6 h-6" /></div>
-            <h1 className="text-2xl font-black tracking-tight">CLINOMA Flash Space</h1>
-          </div>
-          <button onClick={() => navigate('/flashcards')} className="p-3 bg-slate-100 rounded-2xl hover:bg-slate-200 transition-all font-bold text-xs flex items-center gap-2">
-            <ChevronLeft className="w-4 h-4" /> Back to Library
-          </button>
+          <div className="flex items-center gap-4"><div className="w-10 h-10 bg-primary rounded-2xl flex items-center justify-center text-white"><Brain className="w-6 h-6" /></div><h1 className="text-2xl font-black tracking-tight">CLINOMA Flash Space</h1></div>
+          <button onClick={() => navigate('/flashcards')} className="p-3 bg-slate-100 rounded-2xl hover:bg-slate-200 transition-all font-bold text-xs flex items-center gap-2"><ChevronLeft className="w-4 h-4" /> Back</button>
         </div>
         <div className="flex-1 overflow-y-auto p-12 bg-slate-50/50">
           <div className="max-w-7xl mx-auto space-y-12">
@@ -326,11 +321,7 @@ const FlashSpace = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-in fade-in slide-in-from-bottom-8">
                 {modules.map(mod => (
                   <button key={mod} onClick={() => setSelectedModule(mod)} className="group bg-white p-10 rounded-[3rem] border-2 border-slate-100 hover:border-primary transition-all text-left shadow-xl shadow-slate-200/50 relative overflow-hidden">
-                    <div className="relative z-10 space-y-4">
-                      <div className="w-16 h-16 bg-primary/10 rounded-3xl flex items-center justify-center text-primary group-hover:scale-110 transition-transform"><BookOpen className="w-8 h-8" /></div>
-                      <h3 className="text-2xl font-black text-slate-800">{mod}</h3>
-                      <p className="text-slate-400 font-bold text-sm uppercase tracking-widest">{systems[mod]?.length || 0} Systems</p>
-                    </div>
+                    <div className="relative z-10 space-y-4"><div className="w-16 h-16 bg-primary/10 rounded-3xl flex items-center justify-center text-primary group-hover:scale-110 transition-transform"><BookOpen className="w-8 h-8" /></div><h3 className="text-2xl font-black text-slate-800">{mod}</h3><p className="text-slate-400 font-bold text-sm uppercase tracking-widest">{systems[mod]?.length || 0} Systems</p></div>
                   </button>
                 ))}
               </div>
@@ -363,7 +354,7 @@ const FlashSpace = () => {
   }
 
   return (
-    <div className="h-screen w-full bg-[#f8fafc] flex overflow-hidden font-sans no-select cursor-none">
+    <div className="h-screen w-full bg-[#f8fafc] flex overflow-hidden font-sans no-select">
       <ToolCursor />
       
       <div onMouseEnter={() => setIsSidebarHovered(true)} onMouseLeave={() => setIsSidebarHovered(false)} className={cn("h-full bg-white border-r border-slate-200 transition-all duration-500 z-[100] flex flex-col shadow-2xl", isSidebarHovered ? "w-80" : "w-16")}>
@@ -443,7 +434,7 @@ const FlashSpace = () => {
           <div className="relative w-full h-full bg-white rounded-[4rem] shadow-2xl border border-slate-200 overflow-hidden flex items-center justify-center">
             <div className="relative transition-transform duration-300" style={{ transform: `scale(${zoom})` }}>
               <img src={selectedBoard.medicalImage} alt="" className="max-w-full max-h-[85vh] rounded-3xl pointer-events-none" draggable={false} />
-              <canvas ref={canvasRef} width={2500} height={1800} onMouseDown={handleStart} onMouseMove={handleMove} onMouseUp={handleEnd} onMouseLeave={handleEnd} onTouchStart={handleStart} onTouchMove={handleMove} onTouchEnd={handleEnd} className="absolute inset-0 z-10 w-full h-full touch-none" />
+              <canvas ref={canvasRef} width={2500} height={1800} onMouseDown={handleStart} onMouseMove={handleMove} onMouseUp={handleEnd} onMouseLeave={handleEnd} onTouchStart={handleStart} onTouchMove={handleMove} onTouchEnd={handleEnd} className={cn("absolute inset-0 z-10 w-full h-full touch-none", currentPath ? "cursor-none" : "cursor-crosshair")} />
             </div>
             <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-4 z-50">
               <button onClick={() => setShowExplanation(!showExplanation)} className="px-10 py-5 bg-slate-900 text-white rounded-[2.5rem] font-black text-[10px] uppercase tracking-widest shadow-2xl hover:bg-primary transition-all flex items-center gap-3"><FileText className="w-5 h-5" /> View Notes</button>
