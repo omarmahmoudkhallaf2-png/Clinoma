@@ -116,9 +116,10 @@ const FlashSpace = () => {
   }, []);
 
   const CursorUI = () => {
-    // Persistent subtle outline for Eraser, tiny dot for others
-    const isEraser = activeTool === 'eraser';
-    const size = isEraser ? toolSettings.eraser.size * zoom : 4;
+    // ONLY show custom preview for Eraser. For others, we use the standard crosshair cursor.
+    if (activeTool !== 'eraser') return null;
+
+    const size = toolSettings.eraser.size * zoom;
     
     return (
       <div 
@@ -126,10 +127,7 @@ const FlashSpace = () => {
         className="fixed top-0 left-0 pointer-events-none z-[2000] -translate-x-1/2 -translate-y-1/2"
         style={{ width: `${size}px`, height: `${size}px` }}
       >
-        <div className={cn(
-          "w-full h-full rounded-full border transition-all duration-200",
-          isEraser ? "border-slate-400 bg-white/20" : "bg-primary border-white scale-50"
-        )} />
+        <div className="w-full h-full rounded-full border border-slate-400 bg-white/20 transition-all duration-200" />
       </div>
     );
   };
@@ -391,7 +389,7 @@ const FlashSpace = () => {
   }
 
   return (
-    <div className="h-screen w-full bg-[#f8fafc] flex overflow-hidden font-sans no-select cursor-none">
+    <div className="h-screen w-full bg-[#f8fafc] flex overflow-hidden font-sans no-select">
       <CursorUI />
       
       <div onMouseEnter={() => setIsSidebarHovered(true)} onMouseLeave={() => setIsSidebarHovered(false)} className={cn("h-full bg-white border-r border-slate-200 transition-all duration-500 z-[100] flex flex-col shadow-2xl", isSidebarHovered ? "w-80" : "w-16")}>
@@ -471,7 +469,7 @@ const FlashSpace = () => {
           <div className="relative w-full h-full bg-white rounded-[4rem] shadow-2xl border border-slate-200 overflow-hidden flex items-center justify-center">
             <div className="relative transition-transform duration-300" style={{ transform: `scale(${zoom})` }}>
               <img src={selectedBoard.medicalImage} alt="" className="max-w-full max-h-[85vh] rounded-3xl pointer-events-none" draggable={false} />
-              <canvas ref={canvasRef} width={2500} height={1800} onMouseDown={handleStart} onMouseMove={handleMove} onMouseUp={handleEnd} onMouseLeave={handleEnd} onTouchStart={handleStart} onTouchMove={handleMove} onTouchEnd={handleEnd} className="absolute inset-0 z-10 w-full h-full touch-none" />
+              <canvas ref={canvasRef} width={2500} height={1800} onMouseDown={handleStart} onMouseMove={handleMove} onMouseUp={handleEnd} onMouseLeave={handleEnd} onTouchStart={handleStart} onTouchMove={handleMove} onTouchEnd={handleEnd} className="absolute inset-0 z-10 w-full h-full touch-none cursor-crosshair" />
             </div>
             <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-4 z-50">
               <button onClick={() => setShowExplanation(!showExplanation)} className="px-10 py-5 bg-slate-900 text-white rounded-[2.5rem] font-black text-[10px] uppercase tracking-widest shadow-2xl hover:bg-primary transition-all flex items-center gap-3"><FileText className="w-5 h-5" /> View Notes</button>
