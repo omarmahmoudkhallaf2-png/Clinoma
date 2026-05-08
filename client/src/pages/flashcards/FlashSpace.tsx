@@ -80,7 +80,7 @@ const FlashSpace = () => {
   const [showExplanation, setShowExplanation] = useState(false);
   const [showSummary, setShowSummary] = useState(false);
 
-  // Vector Engine State
+  // Vector Engine
   const [paths, setPaths] = useState<Path[]>([]);
   const [redoPaths, setRedoPaths] = useState<Path[]>([]);
   const [currentPath, setCurrentPath] = useState<Path | null>(null);
@@ -95,104 +95,60 @@ const FlashSpace = () => {
   const cursorRef = useRef<HTMLDivElement>(null);
 
   const [toolSettings, setToolSettings] = useState<Record<Tool, { size: number, opacity: number, color: string }>>({
-    pen: { size: 4, opacity: 1, color: '#3b82f6' },
-    highlighter: { size: 40, opacity: 0.3, color: '#eab308' },
-    eraser: { size: 50, opacity: 1, color: '#ffffff' },
-    laser: { size: 12, opacity: 1, color: '#ef4444' },
+    pen: { size: 3, opacity: 1, color: '#3b82f6' },
+    highlighter: { size: 35, opacity: 0.3, color: '#eab308' },
+    eraser: { size: 40, opacity: 1, color: '#ffffff' },
+    laser: { size: 10, opacity: 1, color: '#ef4444' },
     text: { size: 24, opacity: 1, color: '#1e293b' }
   });
 
-  // --- Dynamic Performance Cursor ---
-  const ToolCursor = () => {
-    // Only show the circle when drawing/erasing to eliminate lag
-    if (!currentPath) return null;
+  // --- Professional Zero-Lag Cursor ---
+  useEffect(() => {
+    const cursor = cursorRef.current;
+    const handleMove = (e: MouseEvent) => {
+      if (cursor) {
+        // Direct DOM update for performance (No React re-render)
+        cursor.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
+      }
+    };
+    window.addEventListener('mousemove', handleMove);
+    return () => window.removeEventListener('mousemove', handleMove);
+  }, []);
 
-    const currentSize = toolSettings[activeTool].size * zoom;
+  const CursorUI = () => {
+    // Persistent subtle outline for Eraser, tiny dot for others
+    const isEraser = activeTool === 'eraser';
+    const size = isEraser ? toolSettings.eraser.size * zoom : 4;
+    
     return (
       <div 
         ref={cursorRef}
-        className="fixed pointer-events-none z-[1000] border-2 border-slate-400/50 rounded-full bg-slate-400/20"
-        style={{ 
-          width: `${currentSize}px`, 
-          height: `${currentSize}px`,
-          transform: 'translate(-50%, -50%)',
-          left: '-1000px', // Initial hide
-          top: '-1000px'
-        }}
-      />
+        className="fixed top-0 left-0 pointer-events-none z-[2000] -translate-x-1/2 -translate-y-1/2"
+        style={{ width: `${size}px`, height: `${size}px` }}
+      >
+        <div className={cn(
+          "w-full h-full rounded-full border transition-all duration-200",
+          isEraser ? "border-slate-400 bg-white/20" : "bg-primary border-white scale-50"
+        )} />
+      </div>
     );
   };
 
-  // Sync cursor position ONLY when currentPath exists (Active Drawing)
-  useEffect(() => {
-    const handleCursorMove = (e: MouseEvent) => {
-      if (currentPath && cursorRef.current) {
-        cursorRef.current.style.left = `${e.clientX}px`;
-        cursorRef.current.style.top = `${e.clientY}px`;
-      }
-    };
-    if (currentPath) {
-      window.addEventListener('mousemove', handleCursorMove);
-    }
-    return () => window.removeEventListener('mousemove', handleCursorMove);
-  }, [currentPath]);
-
-  // Fetch Data
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const snap = await getDocs(query(collection(db, 'flashspace_boards'), orderBy('createdAt', 'desc')));
-        const fetched = snap.docs.map(doc => ({ id: doc.id, ...doc.data() } as Board));
-        setBoards(fetched);
-        const mods = Array.from(new Set(fetched.map(b => b.module))).filter(Boolean);
-        const sysMap: Record<string, string[]> = {};
-        fetched.forEach(b => {
-          if (b.module && b.system) {
-            if (!sysMap[b.module]) sysMap[b.module] = [];
-            if (!sysMap[b.module].includes(b.system)) sysMap[b.module].push(b.system);
-          }
-        });
-        setModules(mods);
-        setSystems(sysMap);
-      } catch (err) {
-        toast.error('Failed to connect to cloud');
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
-
-  // Timer
-  useEffect(() => {
-    let interval: any;
-    if (isTimerActive) {
-      interval = setInterval(() => setSessionSeconds(s => s + 1), 1000);
-    }
-    return () => clearInterval(interval);
-  }, [isTimerActive]);
-
-  // --- Rendering Engine ---
+  // --- Pro Rendering Engine (Optimized) ---
   const drawPath = useCallback((ctx: CanvasRenderingContext2D, path: Path, opacityOverride?: number) => {
     if (path.points.length < 2) return;
     
     ctx.beginPath();
     ctx.lineJoin = 'round';
     ctx.lineCap = 'round';
-    ctx.lineWidth = path.size;
-    ctx.strokeStyle = path.color;
     ctx.globalAlpha = opacityOverride ?? path.opacity;
 
     if (path.tool === 'highlighter') ctx.globalCompositeOperation = 'multiply';
     else if (path.tool === 'eraser') ctx.globalCompositeOperation = 'destination-out';
     else ctx.globalCompositeOperation = 'source-over';
 
-    if (path.tool === 'laser') {
-      ctx.shadowBlur = 15;
-      ctx.shadowColor = path.color;
-    } else {
-      ctx.shadowBlur = 0;
-    }
+    ctx.lineWidth = path.size;
+    ctx.strokeStyle = path.color;
 
     ctx.moveTo(path.points[0].x, path.points[0].y);
     for (let i = 1; i < path.points.length - 2; i++) {
@@ -200,18 +156,17 @@ const FlashSpace = () => {
       const yc = (path.points[i].y + path.points[i + 1].y) / 2;
       ctx.quadraticCurveTo(path.points[i].x, path.points[i].y, xc, yc);
     }
-    
     if (path.points.length > 2) {
       const n = path.points.length;
       ctx.quadraticCurveTo(path.points[n - 2].x, path.points[n - 2].y, path.points[n - 1].x, path.points[n - 1].y);
     }
-    
     ctx.stroke();
 
+    // Zero-Lag 3D Laser Effect (Double Stroke instead of Shadows)
     if (path.tool === 'laser') {
       ctx.beginPath();
-      ctx.lineWidth = path.size / 3;
-      ctx.strokeStyle = 'white';
+      ctx.lineWidth = path.size / 2.5;
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.9)';
       ctx.moveTo(path.points[0].x, path.points[0].y);
       for (let i = 1; i < path.points.length - 1; i++) {
         ctx.lineTo(path.points[i].x, path.points[i].y);
@@ -221,7 +176,6 @@ const FlashSpace = () => {
 
     ctx.globalAlpha = 1;
     ctx.globalCompositeOperation = 'source-over';
-    ctx.shadowBlur = 0;
   }, []);
 
   const renderFrame = useCallback(() => {
@@ -250,6 +204,20 @@ const FlashSpace = () => {
     return () => { if (requestRef.current) cancelAnimationFrame(requestRef.current); };
   }, [renderFrame]);
 
+  // --- Object-Based Pro Eraser ---
+  const handleEraser = (pos: Point) => {
+    const eraserSize = toolSettings.eraser.size;
+    setPaths(prev => prev.filter(path => {
+      // If any point in the path is near the eraser, remove the entire path (Object Eraser)
+      const isHit = path.points.some(p => {
+        const dx = p.x - pos.x;
+        const dy = p.y - pos.y;
+        return Math.sqrt(dx * dx + dy * dy) < eraserSize / 2;
+      });
+      return !isHit;
+    }));
+  };
+
   const getPos = (e: React.MouseEvent | React.TouchEvent) => {
     const canvas = canvasRef.current;
     if (!canvas) return { x: 0, y: 0 };
@@ -265,6 +233,13 @@ const FlashSpace = () => {
   const handleStart = (e: React.MouseEvent | React.TouchEvent) => {
     if (!selectedBoard) return;
     const pos = getPos(e);
+    
+    if (activeTool === 'eraser') {
+      handleEraser(pos);
+      setCurrentPath({ id: 'eraser-mark', points: [pos], tool: 'eraser', color: '#fff', size: 1, opacity: 0 });
+      return;
+    }
+
     const settings = toolSettings[activeTool];
     setCurrentPath({
       id: Math.random().toString(),
@@ -279,6 +254,10 @@ const FlashSpace = () => {
   const handleMove = (e: React.MouseEvent | React.TouchEvent) => {
     if (!currentPath) return;
     const pos = getPos(e);
+    if (activeTool === 'eraser') {
+      handleEraser(pos);
+      return;
+    }
     setCurrentPath(prev => prev ? ({ ...prev, points: [...prev.points, pos] }) : null);
   };
 
@@ -286,7 +265,7 @@ const FlashSpace = () => {
     if (!currentPath) return;
     if (activeTool === 'laser') {
       fadingLasersRef.current.push({ ...currentPath, fadeStart: Date.now(), isFading: true });
-    } else {
+    } else if (activeTool !== 'eraser') {
       setPaths(prev => [...prev, currentPath]);
       setRedoPaths([]);
     }
@@ -294,13 +273,10 @@ const FlashSpace = () => {
   };
 
   const updateSetting = (tool: Tool, key: string, val: any) => {
-    setToolSettings(prev => ({
-      ...prev,
-      [tool]: { ...prev[tool], [key]: val }
-    }));
+    setToolSettings(prev => ({ ...prev, [tool]: { ...prev[tool], [key]: val } }));
   };
 
-  // UI Selection Views (Module, System, Board)
+  // UI Components (Same beautiful structure)
   if (loading) return (
     <div className="h-screen w-full flex flex-col items-center justify-center bg-slate-50 gap-6">
       <div className="w-20 h-20 bg-primary/10 rounded-[2.5rem] flex items-center justify-center animate-bounce"><Brain className="w-10 h-10 text-primary" /></div>
@@ -320,14 +296,14 @@ const FlashSpace = () => {
             {!selectedModule ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-in fade-in slide-in-from-bottom-8">
                 {modules.map(mod => (
-                  <button key={mod} onClick={() => setSelectedModule(mod)} className="group bg-white p-10 rounded-[3rem] border-2 border-slate-100 hover:border-primary transition-all text-left shadow-xl shadow-slate-200/50 relative overflow-hidden">
-                    <div className="relative z-10 space-y-4"><div className="w-16 h-16 bg-primary/10 rounded-3xl flex items-center justify-center text-primary group-hover:scale-110 transition-transform"><BookOpen className="w-8 h-8" /></div><h3 className="text-2xl font-black text-slate-800">{mod}</h3><p className="text-slate-400 font-bold text-sm uppercase tracking-widest">{systems[mod]?.length || 0} Systems</p></div>
+                  <button key={mod} onClick={() => setSelectedModule(mod)} className="group bg-white p-10 rounded-[3rem] border-2 border-slate-100 hover:border-primary transition-all text-left shadow-xl relative overflow-hidden">
+                    <div className="relative z-10 space-y-4"><div className="w-16 h-16 bg-primary/10 rounded-3xl flex items-center justify-center text-primary"><BookOpen className="w-8 h-8" /></div><h3 className="text-2xl font-black text-slate-800">{mod}</h3></div>
                   </button>
                 ))}
               </div>
             ) : !selectedSystem ? (
               <div className="space-y-8">
-                <button onClick={() => setSelectedModule(null)} className="text-primary font-black flex items-center gap-2 hover:underline"><ChevronLeft className="w-5 h-5" /> Back</button>
+                <button onClick={() => setSelectedModule(null)} className="text-primary font-black flex items-center gap-2"><ChevronLeft className="w-5 h-5" /> Back</button>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-in fade-in slide-in-from-left-8">
                   {systems[selectedModule]?.map(sys => (
                     <button key={sys} onClick={() => setSelectedSystem(sys)} className="bg-white p-8 rounded-[2.5rem] border-2 border-slate-100 hover:border-primary transition-all text-center shadow-lg"><h4 className="text-xl font-black text-slate-800">{sys}</h4></button>
@@ -336,11 +312,11 @@ const FlashSpace = () => {
               </div>
             ) : (
               <div className="space-y-8">
-                <button onClick={() => setSelectedSystem(null)} className="text-primary font-black flex items-center gap-2 hover:underline"><ChevronLeft className="w-5 h-5" /> Back</button>
+                <button onClick={() => setSelectedSystem(null)} className="text-primary font-black flex items-center gap-2"><ChevronLeft className="w-5 h-5" /> Back</button>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 animate-in fade-in zoom-in-95">
                   {boards.filter(b => b.module === selectedModule && b.system === selectedSystem).map(board => (
                     <button key={board.id} onClick={() => { setSelectedBoard(board); setIsTimerActive(true); }} className="group bg-white p-6 rounded-[2rem] border-2 border-slate-100 hover:border-emerald-500 transition-all text-left shadow-md flex flex-col gap-4">
-                      <div className="aspect-video rounded-2xl overflow-hidden border border-slate-100"><img src={board.medicalImage} alt="" className="w-full h-full object-cover" /></div>
+                      <div className="aspect-video rounded-2xl overflow-hidden"><img src={board.medicalImage} alt="" className="w-full h-full object-cover" /></div>
                       <h5 className="font-black text-slate-800 line-clamp-2">{board.disease}</h5>
                     </button>
                   ))}
@@ -354,15 +330,15 @@ const FlashSpace = () => {
   }
 
   return (
-    <div className="h-screen w-full bg-[#f8fafc] flex overflow-hidden font-sans no-select">
-      <ToolCursor />
+    <div className="h-screen w-full bg-[#f8fafc] flex overflow-hidden font-sans no-select cursor-none">
+      <CursorUI />
       
       <div onMouseEnter={() => setIsSidebarHovered(true)} onMouseLeave={() => setIsSidebarHovered(false)} className={cn("h-full bg-white border-r border-slate-200 transition-all duration-500 z-[100] flex flex-col shadow-2xl", isSidebarHovered ? "w-80" : "w-16")}>
         <div className="h-16 flex items-center px-4 border-b border-slate-100"><div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white shrink-0"><Brain className="w-5 h-5" /></div></div>
         <div className="flex-1 overflow-y-auto custom-scrollbar p-2 space-y-4">
           {modules.map(mod => (
             <div key={mod} className="space-y-1">
-              <button onClick={() => { setSelectedModule(selectedModule === mod ? null : mod); setSelectedSystem(null); }} className={cn("w-full flex items-center gap-3 p-3 rounded-xl transition-all", selectedModule === mod ? "bg-primary/10 text-primary" : "hover:bg-slate-50 text-slate-600")}><BookOpen className="w-5 h-5 shrink-0" /><span className={cn("font-bold text-sm whitespace-nowrap", isSidebarHovered ? "opacity-100" : "opacity-0")}>{mod}</span></button>
+              <button onClick={() => { setSelectedModule(selectedModule === mod ? null : mod); setSelectedSystem(null); }} className={cn("w-full flex items-center gap-3 p-3 rounded-xl transition-all", selectedModule === mod ? "bg-primary/10 text-primary" : "hover:bg-slate-50 text-slate-600")}><BookOpen className="w-5 h-5 shrink-0" /><span className={cn("font-bold text-sm", isSidebarHovered ? "opacity-100" : "opacity-0")}>{mod}</span></button>
               {selectedModule === mod && isSidebarHovered && systems[mod]?.map(sys => (
                 <div key={sys} className="ml-6 space-y-1">
                   <button onClick={() => setSelectedSystem(selectedSystem === sys ? null : sys)} className={cn("w-full flex items-center gap-3 p-2 rounded-lg text-left transition-all", selectedSystem === sys ? "text-primary font-black" : "text-slate-500 hover:text-slate-800")}><ChevronRight className={cn("w-3 h-3 transition-transform", selectedSystem === sys ? "rotate-90" : "")} /><span className="text-xs font-bold">{sys}</span></button>
@@ -402,7 +378,7 @@ const FlashSpace = () => {
                     <div className="absolute top-full mt-4 left-1/2 -translate-x-1/2 bg-white border-2 border-slate-100 rounded-3xl shadow-2xl p-6 w-64 z-[2000] animate-in slide-in-from-top-2">
                       <div className="space-y-6">
                         <div className="space-y-2">
-                          <div className="flex justify-between items-center text-[10px] font-black uppercase text-slate-400"><span>Brush Size</span><span className="text-primary">{toolSettings[tool.id as Tool].size}px</span></div>
+                          <div className="flex justify-between items-center text-[10px] font-black uppercase text-slate-400"><span>Size</span><span className="text-primary">{toolSettings[tool.id as Tool].size}px</span></div>
                           <input type="range" min="1" max="100" value={toolSettings[tool.id as Tool].size} onChange={(e) => updateSetting(tool.id as Tool, 'size', parseInt(e.target.value))} className="w-full accent-primary h-1 bg-slate-100 rounded-lg appearance-none cursor-pointer" />
                         </div>
                         {tool.id === 'highlighter' && (
@@ -413,7 +389,7 @@ const FlashSpace = () => {
                         )}
                         <div className="grid grid-cols-5 gap-2">
                           {['#3b82f6', '#ef4444', '#10b981', '#f59e0b', '#1e293b'].map(c => (
-                            <button key={c} onClick={() => updateSetting(tool.id as Tool, 'color', c)} className={cn("w-6 h-6 rounded-full border-2 transition-transform hover:scale-110", toolSettings[tool.id as Tool].color === c ? "border-slate-800" : "border-transparent")} style={{ backgroundColor: c }} />
+                            <button key={c} onClick={() => updateSetting(tool.id as Tool, 'color', c)} className={cn("w-6 h-6 rounded-full border-2 transition-transform", toolSettings[tool.id as Tool].color === c ? "border-slate-800 scale-110" : "border-transparent")} style={{ backgroundColor: c }} />
                           ))}
                         </div>
                       </div>
@@ -434,7 +410,7 @@ const FlashSpace = () => {
           <div className="relative w-full h-full bg-white rounded-[4rem] shadow-2xl border border-slate-200 overflow-hidden flex items-center justify-center">
             <div className="relative transition-transform duration-300" style={{ transform: `scale(${zoom})` }}>
               <img src={selectedBoard.medicalImage} alt="" className="max-w-full max-h-[85vh] rounded-3xl pointer-events-none" draggable={false} />
-              <canvas ref={canvasRef} width={2500} height={1800} onMouseDown={handleStart} onMouseMove={handleMove} onMouseUp={handleEnd} onMouseLeave={handleEnd} onTouchStart={handleStart} onTouchMove={handleMove} onTouchEnd={handleEnd} className={cn("absolute inset-0 z-10 w-full h-full touch-none", currentPath ? "cursor-none" : "cursor-crosshair")} />
+              <canvas ref={canvasRef} width={2500} height={1800} onMouseDown={handleStart} onMouseMove={handleMove} onMouseUp={handleEnd} onMouseLeave={handleEnd} onTouchStart={handleStart} onTouchMove={handleMove} onTouchEnd={handleEnd} className="absolute inset-0 z-10 w-full h-full touch-none" />
             </div>
             <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-4 z-50">
               <button onClick={() => setShowExplanation(!showExplanation)} className="px-10 py-5 bg-slate-900 text-white rounded-[2.5rem] font-black text-[10px] uppercase tracking-widest shadow-2xl hover:bg-primary transition-all flex items-center gap-3"><FileText className="w-5 h-5" /> View Notes</button>
