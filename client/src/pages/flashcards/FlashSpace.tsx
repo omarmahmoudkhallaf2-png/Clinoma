@@ -298,8 +298,20 @@ const FlashSpace = () => {
     setRedoPaths(prev => prev.slice(0, -1));
   };
 
+  // --- State Handlers ---
+  if (loading) {
+    return (
+      <div className="h-screen w-full flex flex-col items-center justify-center bg-slate-50 gap-6">
+        <div className="w-20 h-20 bg-primary/10 rounded-[2.5rem] flex items-center justify-center animate-bounce">
+          <Brain className="w-10 h-10 text-primary" />
+        </div>
+        <p className="text-xl font-black text-slate-400 animate-pulse uppercase tracking-widest">Initialising CLINOMA Space...</p>
+      </div>
+    );
+  }
+
   // --- Initial Selection View ---
-  if (!selectedBoard && !loading) {
+  if (!selectedBoard) {
     return (
       <div className="h-screen w-full bg-[#f8fafc] flex flex-col overflow-hidden font-sans">
         {/* Selection Header */}
@@ -478,9 +490,9 @@ const FlashSpace = () => {
             </button>
             <div className="h-6 w-px bg-slate-200" />
             <div className="flex items-center gap-2 text-[10px] font-black text-slate-400 uppercase tracking-widest">
-              <span>{selectedModule}</span>
+              <span>{selectedBoard.module}</span>
               <ChevronRight className="w-3 h-3" />
-              <span className="text-slate-800">{selectedBoard?.disease}</span>
+              <span className="text-slate-800">{selectedBoard.disease}</span>
             </div>
           </div>
 
