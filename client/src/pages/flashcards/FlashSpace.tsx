@@ -279,10 +279,41 @@ const FlashSpace = () => {
   // UI Components (Same beautiful structure)
   if (loading) return (
     <div className="h-screen w-full flex flex-col items-center justify-center bg-slate-50 gap-6">
-      <div className="w-20 h-20 bg-primary/10 rounded-[2.5rem] flex items-center justify-center animate-bounce"><Brain className="w-10 h-10 text-primary" /></div>
-      <p className="text-xl font-black text-slate-400 animate-pulse uppercase tracking-widest">Initialising CLINOMA Space...</p>
+      <div className="w-20 h-20 bg-primary/10 rounded-[2.5rem] flex items-center justify-center animate-bounce">
+        <Brain className="w-10 h-10 text-primary" />
+      </div>
+      <div className="text-center space-y-2">
+        <p className="text-xl font-black text-slate-800 uppercase tracking-widest">Initialising CLINOMA Space...</p>
+        <p className="text-slate-400 font-medium">Checking clinical database</p>
+      </div>
+      <button 
+        onClick={() => navigate('/flashcards')}
+        className="mt-8 px-6 py-3 bg-white border border-slate-200 rounded-2xl text-slate-500 font-bold text-sm hover:bg-slate-100 transition-all shadow-sm"
+      >
+        Back to Library
+      </button>
     </div>
   );
+
+  if (boards.length === 0) {
+    return (
+      <div className="h-screen w-full flex flex-col items-center justify-center bg-white p-12 text-center">
+        <div className="w-32 h-32 bg-slate-50 rounded-[3rem] flex items-center justify-center text-slate-300 mb-8">
+          <Layout className="w-16 h-16" />
+        </div>
+        <h2 className="text-3xl font-black text-slate-800 mb-4">No Clinical Boards Found</h2>
+        <p className="text-slate-500 max-w-md mb-10 font-medium">
+          The Flash Space is currently empty. Please ensure you have added boards in the Admin Panel.
+        </p>
+        <button 
+          onClick={() => navigate('/flashcards')}
+          className="px-10 py-5 bg-slate-900 text-white rounded-[2rem] font-black text-sm uppercase tracking-widest hover:bg-primary transition-all shadow-xl"
+        >
+          Return to Library
+        </button>
+      </div>
+    );
+  }
 
   if (!selectedBoard) {
     return (
