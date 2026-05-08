@@ -86,7 +86,7 @@ const FlashSpace = () => {
   const [isTimerActive, setIsTimerActive] = useState(false);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const requestRef = useRef<number>();
+  const requestRef = useRef<number | null>(null);
 
   const toolSettings = useMemo(() => ({
     pen: { size: 3, opacity: 1, color: '#3b82f6' },
@@ -216,7 +216,9 @@ const FlashSpace = () => {
 
   useEffect(() => {
     requestRef.current = requestAnimationFrame(renderFrame);
-    return () => cancelAnimationFrame(requestRef.current!);
+    return () => {
+      if (requestRef.current) cancelAnimationFrame(requestRef.current);
+    };
   }, [renderFrame]);
 
   // Coordinate Mapping
