@@ -5,7 +5,7 @@ import {
   Plus, Search, Loader2, 
   BarChart3, HelpCircle, Users, Settings, 
   Database, FileText, Zap, ChevronRight, ChevronLeft, 
-  Download, Activity, Terminal, Edit2, Trash2, X, Shield, Brain, Trophy, ClipboardList, Sparkles
+  Download, Activity, Terminal, Edit2, Trash2, X, Shield, Brain, Trophy, ClipboardList, Sparkles, Layout
 } from 'lucide-react';
 import ExamResultsDashboard from '../ExamResultsDashboard';
 import { db } from '../../lib/firebase';
@@ -202,7 +202,7 @@ export default function AdminDashboard() {
             <div className="absolute inset-0 bg-primary/20 blur-2xl rounded-full animate-pulse" />
           </div>
           <div>
-            <h1 className="text-6xl font-black tracking-tighter">Command Center</h1>
+            <h1 className="text-6xl font-black tracking-tighter">CLINOMA Command Center</h1>
             <div className="flex items-center gap-3 mt-2">
               <span className="px-3 py-1 bg-emerald-500/10 text-emerald-600 rounded-lg text-[10px] font-black uppercase tracking-widest border border-emerald-500/20">Active Session</span>
               <p className="text-muted-foreground font-black text-lg opacity-40 uppercase tracking-[0.2em]">SaaS OS v3.0</p>

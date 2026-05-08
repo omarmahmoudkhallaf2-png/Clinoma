@@ -46,7 +46,7 @@ export default function CompleteProfile() {
           <div className="w-20 h-20 bg-primary/20 rounded-3xl flex items-center justify-center text-primary mb-2">
             <Brain className="w-10 h-10" />
           </div>
-          <h1 className="text-3xl font-black text-white tracking-tight">أهلاً بك في MedPrep</h1>
+          <h1 className="text-3xl font-black text-white tracking-tight">أهلاً بك في CLINOMA</h1>
           <p className="text-slate-400 font-bold">يرجى إكمال بياناتك للمتابعة</p>
         </div>
 

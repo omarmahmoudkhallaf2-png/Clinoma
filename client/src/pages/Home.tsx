@@ -38,11 +38,11 @@ export default function Home() {
       {/* Intelligent Navigation */}
       <nav className="fixed top-0 w-full z-[100] bg-background/80 backdrop-blur-xl border-b border-border px-6 py-4">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <div className="flex items-center gap-3">
-            <div className="p-2 bg-primary text-white rounded-xl shadow-lg shadow-primary/20">
-              <Brain className="w-6 h-6" />
+          <div className="flex items-center gap-3 group cursor-pointer" onClick={() => navigate('/')}>
+            <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-lg shadow-primary/20 overflow-hidden">
+              <img src="/logo.png" alt="Clinoma Logo" className="w-6 h-6 object-contain brightness-0 invert" />
             </div>
-            <span className="text-2xl font-black tracking-tighter">MedPrep</span>
+            <span className="text-2xl font-black tracking-tighter">CLINOMA</span>
           </div>
           <div className="flex items-center gap-6">
             <Link to="/available" className="hidden md:block font-bold text-sm text-muted-foreground hover:text-primary transition-colors">Courses</Link>
@@ -166,11 +166,11 @@ export default function Home() {
       <footer className="py-20 border-t border-border bg-card">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
           <div className="col-span-2 space-y-6">
-            <div className="flex items-center gap-3">
-              <div className="p-2 bg-primary text-white rounded-xl shadow-lg shadow-primary/20">
-                <Brain className="w-6 h-6" />
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center overflow-hidden">
+                <img src="/logo.png" alt="Clinoma Logo" className="w-6 h-6 object-contain brightness-0 invert" />
               </div>
-              <span className="text-2xl font-black tracking-tighter">MedPrep</span>
+              <span className="text-2xl font-black tracking-tighter">CLINOMA</span>
             </div>
             <p className="text-muted-foreground font-bold max-w-sm">The world's most advanced question bank for medical students. Built by doctors, for future doctors.</p>
           </div>
@@ -192,7 +192,7 @@ export default function Home() {
           </div>
         </div>
         <div className="max-w-7xl mx-auto px-6 pt-12 mt-12 border-t border-border flex justify-between items-center text-xs font-black text-muted-foreground uppercase tracking-widest">
-          <span>© 2026 MedPrep Intelligence. All rights reserved.</span>
+          <span>© 2026 CLINOMA Intelligence. All rights reserved.</span>
           <div className="flex gap-6">
             <span>English</span>
             <span>Arabic</span>

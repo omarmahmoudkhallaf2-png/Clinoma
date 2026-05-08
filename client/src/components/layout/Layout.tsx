@@ -12,7 +12,7 @@ export default function Layout({ children }: LayoutProps) {
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
       <header className="border-b border-border p-4 flex justify-between items-center">
-        <div className="font-bold text-xl text-primary">MedPrep</div>
+        <div className="font-bold text-xl text-primary">CLINOMA</div>
         <nav>
           <ul className="flex space-x-4">
             <li><Link to="/" className="hover:text-primary transition-colors">Home</Link></li>
@@ -33,7 +33,7 @@ export default function Layout({ children }: LayoutProps) {
         {children}
       </main>
       <footer className="border-t border-border p-4 text-center text-sm text-muted-foreground">
-        &copy; {new Date().getFullYear()} MedPrep. All rights reserved.
+        &copy; {new Date().getFullYear()} CLINOMA. All rights reserved.
       </footer>
     </div>
   );

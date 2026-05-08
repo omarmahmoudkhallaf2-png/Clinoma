@@ -101,22 +101,18 @@ export default function Sidebar({ isOpen = false, setIsOpen = (_: boolean) => {}
         {/* Brand Header */}
         <div className="p-6 overflow-y-auto flex-1 custom-scrollbar">
           <div className="flex items-center justify-between mb-8">
-            <button 
-              onClick={() => navTo('/dashboard')}
-              className="flex items-center gap-3 group"
-            >
-              <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white shadow-lg shadow-primary/20 transition-transform group-hover:scale-110">
-                <Brain className="w-6 h-6" />
-              </div>
-              <div className="flex flex-col">
-                <div className="flex items-center gap-1.5">
-                  <span className="text-xl font-bold tracking-tight text-foreground">MEDPREP</span>
-                  <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
+            <div className="flex items-center gap-3 px-2 mb-10 group cursor-pointer" onClick={() => navigate('/dashboard')}>
+              <div className="relative">
+                <div className="p-3 bg-primary rounded-2xl shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform duration-500 overflow-hidden">
+                  <img src="/logo.png" alt="Clinoma Logo" className="w-8 h-8 object-contain brightness-0 invert" />
                 </div>
-                <span className="text-[10px] text-muted-foreground font-medium uppercase tracking-widest leading-none">Medical Exam Platform</span>
-                <span className="text-[8px] text-primary/50 font-bold mt-1 tracking-tighter">BUILD v3.0.6</span>
+                <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full scale-0 group-hover:scale-150 transition-transform duration-500" />
               </div>
-            </button>
+              <div className="flex flex-col animate-in fade-in slide-in-from-left-4 duration-500">
+                <span className="text-2xl font-black tracking-tighter text-foreground leading-none">CLINOMA</span>
+                <span className="text-[10px] font-bold text-primary uppercase tracking-[0.2em] mt-1 opacity-60">Medical Hub</span>
+              </div>
+            </div>
             <Button 
               variant="ghost" 
               size="icon" 

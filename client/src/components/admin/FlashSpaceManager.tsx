@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { db } from '../../lib/firebase';
+import { cn } from '../../lib/utils';
+import toast from 'react-hot-toast';
 import { 
   collection, 
   query, 
@@ -24,8 +26,30 @@ import {
   Settings,
   MoreVertical,
   X,
-  CheckCircle2
+  CheckCircle2,
+  Heart,
+  Brain,
+  Zap,
+  Activity,
+  Shield
 } from 'lucide-react';
+
+interface Board {
+  id: string;
+  categoryId: string;
+  disease: string;
+  medicalImage: string;
+  explanation: string;
+  createdAt: number;
+}
+
+interface Category {
+  id: string;
+  name: string;
+  icon: string;
+  color: string;
+}
+
 const getIcon = (iconName: string) => {
   switch (iconName) {
     case 'Baby': return Baby;

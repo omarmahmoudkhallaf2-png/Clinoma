@@ -60,7 +60,7 @@ export default function Dashboard() {
         ));
         const activities = activitySnap.docs.map(doc => doc.data());
         setRecentActions(activities.length > 0 ? activities : [
-          { action: 'Welcome to Med Prep!', timestamp: { toDate: () => new Date() }, meta: 'Explore our courses' }
+          { action: 'Welcome to CLINOMA!', timestamp: { toDate: () => new Date() }, meta: 'Explore our courses' }
         ]);
 
       } catch (err) {
