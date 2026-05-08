@@ -134,6 +134,36 @@ const FlashSpace = () => {
     );
   };
 
+  // --- Data Fetching (Restored) ---
+  useEffect(() => {
+    const fetchData = async () => {
+      const timeoutId = setTimeout(() => setLoading(false), 5000);
+      try {
+        const snap = await getDocs(query(collection(db, 'flashspace_boards'), orderBy('createdAt', 'desc')));
+        const fetched = snap.docs.map(doc => ({ id: doc.id, ...doc.data() } as Board));
+        setBoards(fetched);
+        
+        const mods = Array.from(new Set(fetched.map(b => b.module))).filter(Boolean);
+        const sysMap: Record<string, string[]> = {};
+        fetched.forEach(b => {
+          if (b.module && b.system) {
+            if (!sysMap[b.module]) sysMap[b.module] = [];
+            if (!sysMap[b.module].includes(b.system)) sysMap[b.module].push(b.system);
+          }
+        });
+        setModules(mods);
+        setSystems(sysMap);
+      } catch (err) {
+        console.error("FlashSpace Fetch Error:", err);
+        toast.error('Failed to connect to cloud');
+      } finally {
+        clearTimeout(timeoutId);
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
+
   // --- Pro Rendering Engine (Optimized) ---
   const drawPath = useCallback((ctx: CanvasRenderingContext2D, path: Path, opacityOverride?: number) => {
     if (path.points.length < 2) return;
