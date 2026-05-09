@@ -34,6 +34,8 @@ import AIExamGenerator from "./pages/AIExamGenerator";
 
 import { CommandPalette } from "./components/ui/CommandPalette";
 import { ThemeProvider } from "./context/ThemeContext";
+import SplashScreen from "./components/ui/SplashScreen";
+import { useState } from "react";
 
 const ProtectedRoute = ({ children, requireAdmin = false, useLayout = true }: { children: ReactElement, requireAdmin?: boolean, useLayout?: boolean }) => {
   const { user, userRole, loading, needsProfileCompletion } = useAuth();
@@ -104,8 +106,11 @@ const AnimatedRoutes = () => {
 };
 
 export default function App() {
+  const [showSplash, setShowSplash] = useState(true);
+
   return (
     <ThemeProvider>
+      {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
       <Router>
         <CommandPalette />
         <Toaster position="top-right" toastOptions={{

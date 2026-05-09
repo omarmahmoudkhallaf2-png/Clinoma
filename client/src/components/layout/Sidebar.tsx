@@ -5,11 +5,11 @@ import { db } from '../../lib/firebase';
 import { doc, getDoc, getDocs, collection, query } from 'firebase/firestore';
 import { motion, AnimatePresence } from 'framer-motion';
 import SupportModal from '../ui/SupportModal';
-import { 
+import {
   LayoutDashboard,
-  HelpCircle, 
-  Crown, 
-  LogOut, 
+  HelpCircle,
+  Crown,
+  LogOut,
   Database,
   History,
   X,
@@ -27,7 +27,7 @@ import { useTheme } from '../../context/ThemeContext';
 import { cn } from '../../lib/utils';
 import { Button } from '../ui/Button';
 
-export default function Sidebar({ isOpen = false, setIsOpen = (_: boolean) => {} }: any) {
+export default function Sidebar({ isOpen = false, setIsOpen = (_: boolean) => { } }: any) {
   const navigate = useNavigate();
   const location = useLocation();
   const { theme, toggleTheme } = useTheme();
@@ -45,7 +45,7 @@ export default function Sidebar({ isOpen = false, setIsOpen = (_: boolean) => {}
         ]);
 
         if (configSnap.exists()) setConfig(configSnap.data() as any);
-        
+
         const allCourses = coursesSnap.docs.map(d => ({ id: d.id, ...d.data() } as any));
         const myCourses = allCourses.filter(c => isSubscribed(c.id));
         setSubscribedCourses(myCourses);
@@ -113,10 +113,10 @@ export default function Sidebar({ isOpen = false, setIsOpen = (_: boolean) => {}
                 <span className="text-[10px] font-bold text-primary uppercase tracking-[0.2em] mt-1 opacity-60">Medical Hub</span>
               </div>
             </div>
-            <Button 
-              variant="ghost" 
-              size="icon" 
-              onClick={() => setIsOpen(false)} 
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setIsOpen(false)}
               className="lg:hidden"
             >
               <X className="w-5 h-5" />
@@ -124,7 +124,7 @@ export default function Sidebar({ isOpen = false, setIsOpen = (_: boolean) => {}
           </div>
 
           {/* Quick Search Trigger */}
-          <button 
+          <button
             onClick={() => window.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', ctrlKey: true }))}
             className="w-full flex items-center gap-2 px-3 py-2 rounded-lg bg-muted/50 border border-transparent hover:border-border transition-all text-muted-foreground group mb-6"
           >
@@ -154,14 +154,14 @@ export default function Sidebar({ isOpen = false, setIsOpen = (_: boolean) => {}
                 )} />
                 <span className="font-semibold text-sm flex-1 text-right" dir="rtl">{item.label}</span>
                 {location.pathname === item.path && (
-                  <motion.div 
+                  <motion.div
                     layoutId="active-indicator"
                     className="absolute left-0 w-1 h-6 bg-primary rounded-r-full"
                   />
                 )}
               </button>
             ))}
-            
+
             {/* My Courses Section */}
             <div className="pt-6 pb-2">
               <div className="px-3 mb-2 text-[10px] font-bold text-muted-foreground uppercase tracking-widest opacity-60 text-right" dir="rtl">
@@ -191,7 +191,7 @@ export default function Sidebar({ isOpen = false, setIsOpen = (_: boolean) => {}
                 )}
               </div>
             </div>
-            
+
             <button
               onClick={() => setIsSupportOpen(true)}
               className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-muted-foreground hover:bg-accent hover:text-foreground transition-all group"
@@ -232,7 +232,7 @@ export default function Sidebar({ isOpen = false, setIsOpen = (_: boolean) => {}
         {/* Footer Actions */}
         <div className="p-6 space-y-4 border-t">
           {userPlan === 'free' && (
-            <button 
+            <button
               onClick={() => setIsSupportOpen(true)}
               className="relative w-full overflow-hidden flex items-center justify-center gap-2 py-3 bg-gradient-to-br from-amber-400 via-amber-500 to-amber-600 text-white rounded-xl font-bold text-sm shadow-lg shadow-amber-500/20 hover:scale-[1.02] active:scale-95 transition-all group"
             >
@@ -251,7 +251,7 @@ export default function Sidebar({ isOpen = false, setIsOpen = (_: boolean) => {}
             >
               {theme === 'light' ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
             </Button>
-            
+
             <Button
               variant="outline"
               className="flex-[2] rounded-xl h-12 gap-2 text-destructive border-destructive/20 hover:bg-destructive/10 hover:text-destructive hover:border-destructive/30"
@@ -264,7 +264,7 @@ export default function Sidebar({ isOpen = false, setIsOpen = (_: boolean) => {}
         </div>
       </div>
 
-      <SupportModal 
+      <SupportModal
         isOpen={isSupportOpen}
         onClose={() => setIsSupportOpen(false)}
         telegramUser={config.telegramUser}

@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { 
-  Brain, TrendingUp, CheckCircle, 
+import {
+  Brain, TrendingUp, CheckCircle,
   ArrowRight, Sparkles,
   Zap, Shield, Users, Star
 } from 'lucide-react';
@@ -66,7 +66,7 @@ export default function Home() {
       <section className="relative pt-40 pb-32 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] -z-10 animate-pulse" />
-        
+
         <div className="max-w-5xl mx-auto px-6 text-center space-y-10 relative">
           <div className="inline-flex items-center gap-3 px-6 py-2 bg-secondary/50 backdrop-blur-md rounded-full border border-border animate-in fade-in slide-in-from-top-4 duration-1000">
             <Sparkles className="w-4 h-4 text-amber-500" />
@@ -83,46 +83,14 @@ export default function Home() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-6">
-            <Link to="/register" className="w-full sm:w-auto px-12 py-6 bg-primary text-white rounded-[2.5rem] font-black text-xl shadow-2xl shadow-primary/30 hover:scale-105 active:scale-95 transition-all flex flex-col items-center gap-1">
-              <span>ابدأ رحلتك في F1 الآن 🚀</span>
-              <span className="text-xs opacity-80 font-bold">محتوى مجاني + نظام أسئلة احترافي</span>
+            <Link to="/register" className="w-full sm:w-auto px-16 py-6 bg-primary text-white rounded-[2.5rem] font-black text-2xl shadow-2xl shadow-primary/30 hover:scale-105 active:scale-95 transition-all flex items-center justify-center">
+              <span>ابدأ الآن 🚀</span>
             </Link>
-            <div className="flex items-center -space-x-4">
-              {[1,2,3,4].map(i => (
-                <div key={i} className="w-12 h-12 rounded-full border-4 border-background bg-secondary flex items-center justify-center font-black text-xs">
-                  U{i}
-                </div>
-              ))}
-              <div className="pl-8 text-left">
-                <div className="flex text-amber-500"><Star className="w-4 h-4 fill-amber-500" /> <Star className="w-4 h-4 fill-amber-500" /> <Star className="w-4 h-4 fill-amber-500" /> <Star className="w-4 h-4 fill-amber-500" /> <Star className="w-4 h-4 fill-amber-500" /></div>
-                <div className="text-[10px] font-black uppercase text-muted-foreground">Joined by 2,500+ Students</div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
 
-      {/* Proof Section: Dynamic Stats */}
-      <section className="py-20 border-y border-border bg-secondary/10">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-12">
-            {[
-              { label: 'High-Yield Questions', value: '15,000+', icon: Zap },
-              { label: 'Active Students', value: '2.5k+', icon: Users },
-              { label: 'Accuracy Improvement', value: '38%', icon: TrendingUp },
-              { label: 'Pass Rate', value: '94%', icon: Shield },
-            ].map((stat, i) => (
-              <div key={i} className="text-center space-y-2">
-                <div className="w-12 h-12 bg-primary/10 text-primary rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <stat.icon className="w-6 h-6" />
-                </div>
-                <div className="text-4xl font-black tracking-tight">{stat.value}</div>
-                <div className="text-xs font-black uppercase text-muted-foreground tracking-widest">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       {/* Courses Explore: Premium Cards */}
       <section className="py-32">
@@ -179,28 +147,21 @@ export default function Home() {
             <ul className="space-y-4 font-bold text-sm text-muted-foreground">
               <li><Link to="/available" className="hover:text-primary transition-colors">Courses</Link></li>
               <li><Link to="/quiz-setup" className="hover:text-primary transition-colors">Question Bank</Link></li>
-              <li><Link to="/notes/all" className="hover:text-primary transition-colors">Study Notes</Link></li>
             </ul>
           </div>
           <div>
             <h5 className="font-black mb-6 uppercase tracking-widest text-xs">Support</h5>
             <ul className="space-y-4 font-bold text-sm text-muted-foreground">
               <li><button onClick={() => setIsSupportOpen(true)} className="hover:text-primary transition-colors">Contact Support</button></li>
-              <li><Link to="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
-              <li><Link to="/terms" className="hover:text-primary transition-colors">Terms of Service</Link></li>
             </ul>
           </div>
         </div>
         <div className="max-w-7xl mx-auto px-6 pt-12 mt-12 border-t border-border flex justify-between items-center text-xs font-black text-muted-foreground uppercase tracking-widest">
           <span>© 2026 CLINOMA Intelligence. All rights reserved.</span>
-          <div className="flex gap-6">
-            <span>English</span>
-            <span>Arabic</span>
-          </div>
         </div>
       </footer>
 
-      <SupportModal 
+      <SupportModal
         isOpen={isSupportOpen}
         onClose={() => setIsSupportOpen(false)}
         telegramUser={config.telegramUser}
