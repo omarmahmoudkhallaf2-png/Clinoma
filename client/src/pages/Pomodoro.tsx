@@ -47,6 +47,13 @@ export default function Pomodoro() {
     return () => clearInterval(interval);
   }, []);
 
+  // Auto-switch to dark mode in Focus Mode
+  useEffect(() => {
+    if (isFocusMode && theme === 'light') {
+      toggleTheme();
+    }
+  }, [isFocusMode, theme, toggleTheme]);
+
   // Keyboard Shortcuts
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
@@ -56,11 +63,11 @@ export default function Pomodoro() {
       }
       if (e.code === 'KeyF') setIsFocusMode(prev => !prev);
       if (e.code === 'KeyR') resetTimer();
-      if (e.code === 'KeyL') toggleTheme();
+      if (e.code === 'KeyL' && !isFocusMode) toggleTheme();
     };
     window.addEventListener('keydown', handleKey);
     return () => window.removeEventListener('keydown', handleKey);
-  }, [toggleTimer, resetTimer, toggleTheme]);
+  }, [toggleTimer, resetTimer, toggleTheme, isFocusMode]);
 
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
@@ -143,9 +150,11 @@ export default function Pomodoro() {
             </div>
 
             <div className="flex items-center gap-2">
-              <Button variant="outline" size="icon" onClick={toggleTheme} className="rounded-2xl">
-                {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-              </Button>
+              {!isFocusMode && (
+                <Button variant="outline" size="icon" onClick={toggleTheme} className="rounded-2xl">
+                  {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+                </Button>
+              )}
               <Button variant="outline" size="icon" onClick={() => setShowSettings(true)} className="rounded-2xl">
                 <Settings className="w-5 h-5" />
               </Button>
