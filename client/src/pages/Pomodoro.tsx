@@ -80,7 +80,7 @@ export default function Pomodoro() {
             rotate: [0, 90, 180, 270, 360],
           }}
           transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-          className="absolute -top-1/2 -left-1/2 w-[200%] h-[200%] bg-[radial-gradient(circle,rgba(244,63,94,0.15)_0%,transparent_50%)]"
+          className="absolute -top-1/2 -left-1/2 w-[200%] h-[200%] bg-[radial-gradient(circle,rgba(99,102,241,0.15)_0%,transparent_50%)]"
         />
       </div>
 
@@ -99,7 +99,7 @@ export default function Pomodoro() {
               </Button>
               <div className="flex flex-col">
                 <span className="text-xl font-black tracking-tighter">POMODORO</span>
-                <span className="text-[10px] font-bold text-rose-500 uppercase tracking-widest">Premium Focus Studio</span>
+                <span className="text-[10px] font-bold text-primary uppercase tracking-widest">Premium Focus Studio</span>
               </div>
             </div>
 
@@ -118,7 +118,7 @@ export default function Pomodoro() {
                   )}
                 >
                   {activeTab === tab.id && (
-                    <motion.div layoutId="tab-bg" className="absolute inset-0 bg-rose-500 rounded-xl" />
+                    <motion.div layoutId="tab-bg" className="absolute inset-0 bg-primary rounded-xl" />
                   )}
                   <tab.icon className="w-4 h-4 relative z-10" />
                   <span className="relative z-10">{tab.label}</span>
@@ -130,7 +130,7 @@ export default function Pomodoro() {
               <Button variant="outline" size="icon" onClick={() => setShowSettings(true)} className="rounded-2xl">
                 <Settings className="w-5 h-5" />
               </Button>
-              <Button variant="outline" onClick={() => setIsFocusMode(true)} className="rounded-2xl gap-2 font-black border-rose-500/20 hover:bg-rose-500/10">
+               <Button variant="primary" onClick={() => setIsFocusMode(true)} className="rounded-2xl gap-2 font-black">
                 <Maximize2 className="w-4 h-4" /> Focus Mode
               </Button>
             </div>
@@ -168,7 +168,7 @@ export default function Pomodoro() {
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                 className={cn(
                   "absolute inset-0 rounded-full blur-[100px]",
-                  mode === 'work' ? "bg-rose-500" : "bg-emerald-500"
+                   mode === 'work' ? "bg-primary" : "bg-emerald-500"
                 )}
               />
 
@@ -180,7 +180,7 @@ export default function Pomodoro() {
                     fill="none" strokeWidth="8" strokeLinecap="round"
                     className={cn(
                       "transition-all duration-1000 shadow-2xl",
-                      mode === 'work' ? "text-rose-500" : "text-emerald-500"
+                      mode === 'work' ? "text-primary" : "text-emerald-500"
                     )}
                     strokeDasharray="100 100"
                     animate={{ strokeDashoffset: 100 - progress }}
@@ -194,7 +194,7 @@ export default function Pomodoro() {
                     animate={{ y: 0, opacity: 1 }}
                     className={cn(
                       "text-[10px] md:text-[14px] font-black uppercase tracking-[0.5em] opacity-60",
-                      mode === 'work' ? "text-rose-500" : "text-emerald-500"
+                      mode === 'work' ? "text-primary" : "text-emerald-500"
                     )}
                   >
                     {mode === 'work' ? 'Deep Study Session' : 'Peaceful Break'}
@@ -208,7 +208,7 @@ export default function Pomodoro() {
                       onClick={toggleTimer}
                       className={cn(
                         "h-20 w-20 md:h-24 md:w-24 rounded-[2.5rem] shadow-2xl transition-all hover:scale-110",
-                        isActive ? "bg-secondary text-foreground" : "bg-rose-500 text-white"
+                         isActive ? "bg-secondary text-foreground" : "bg-primary text-white"
                       )}
                     >
                       {isActive ? <Pause className="w-8 h-8 md:w-10 md:h-10" /> : <Play className="w-8 h-8 md:w-10 md:h-10 fill-current ml-1" />}
@@ -263,24 +263,22 @@ export default function Pomodoro() {
           </div>
         )}
 
-        {activeTab === 'mixer' && !isFocusMode && (
-          <div className="w-full max-w-5xl space-y-12">
-            <div className="text-center space-y-2">
-              <h2 className="text-4xl font-black tracking-tight">Ambient Audio Studio</h2>
-              <p className="text-muted-foreground font-bold">Craft your perfect study atmosphere</p>
-            </div>
-            <AmbientMixer 
-              mix={settings.ambientMix} 
-              onUpdate={(id, vol) => updateSettings({ ambientMix: { ...settings.ambientMix, [id]: vol } })} 
-            />
-          </div>
-        )}
+         <div className={cn("w-full max-w-5xl space-y-12", activeTab !== 'mixer' && "hidden")}>
+           <div className="text-center space-y-2">
+             <h2 className="text-4xl font-black tracking-tight">Ambient Audio Studio</h2>
+             <p className="text-muted-foreground font-bold">Craft your perfect study atmosphere</p>
+           </div>
+           <AmbientMixer 
+             mix={settings.ambientMix} 
+             onUpdate={(id, vol) => updateSettings({ ambientMix: { ...settings.ambientMix, [id]: vol } })} 
+           />
+         </div>
 
-        {activeTab === 'stats' && !isFocusMode && (
-          <div className="w-full max-w-6xl">
-            <PomodoroAnalytics stats={stats} />
-          </div>
-        )}
+         {activeTab === 'stats' && !isFocusMode && (
+           <div className="w-full max-w-6xl">
+             <PomodoroAnalytics stats={stats} />
+           </div>
+         )}
 
       </main>
 
