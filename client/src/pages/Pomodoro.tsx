@@ -1,55 +1,63 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Play, Pause, RotateCcw, Coffee, Brain, Bell, Settings, ArrowLeft, Volume2, VolumeX } from 'lucide-react';
+import { 
+  Play, Pause, RotateCcw, Brain, Coffee, 
+  Settings, Maximize2, Minimize2, ArrowLeft,
+  Volume2, BarChart3, Clock, Zap, SkipForward,
+  Info, Bell, Moon, Sun, Sparkles
+} from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+import { usePomodoro } from '../hooks/usePomodoro';
 import { Button } from '../components/ui/Button';
 import { Card, CardContent } from '../components/ui/Card';
 import { cn } from '../lib/utils';
+import AmbientMixer from '../components/pomodoro/AmbientMixer';
+import PomodoroAnalytics from '../components/pomodoro/PomodoroAnalytics';
 
-type Mode = 'work' | 'shortBreak' | 'longBreak';
-
-const MODES: Record<Mode, { label: string; time: number; color: string; icon: any }> = {
-  work: { label: 'وقت المذاكرة', time: 25 * 60, color: 'text-primary', icon: Brain },
-  shortBreak: { label: 'استراحة قصيرة', time: 5 * 60, color: 'text-emerald-500', icon: Coffee },
-  longBreak: { label: 'استراحة طويلة', time: 15 * 60, color: 'text-blue-500', icon: Coffee },
-};
+const QUOTES = [
+  "The secret of getting ahead is getting started.",
+  "Focus on being productive instead of busy.",
+  "Your mind is for having ideas, not holding them.",
+  "Don't stop when you're tired. Stop when you're done.",
+  "Success is the sum of small efforts repeated daily.",
+  "It always seems impossible until it's done.",
+];
 
 export default function Pomodoro() {
   const navigate = useNavigate();
-  const [mode, setMode] = useState<Mode>('work');
-  const [timeLeft, setTimeLeft] = useState(MODES.work.time);
-  const [isActive, setIsActive] = useState(false);
-  const [soundEnabled, setSoundEnabled] = useState(true);
-  const [completedSessions, setCompletedSessions] = useState(0);
+  const { user } = useAuth();
+  const { 
+    timeLeft, isActive, mode, sessionCount, settings, stats,
+    toggleTimer, resetTimer, skipSession, updateSettings, setMode 
+  } = usePomodoro(user?.uid);
 
-  const switchMode = useCallback((newMode: Mode) => {
-    setMode(newMode);
-    setTimeLeft(MODES[newMode].time);
-    setIsActive(false);
+  const [activeTab, setActiveTab] = useState<'timer' | 'mixer' | 'stats'>('timer');
+  const [isFocusMode, setIsFocusMode] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
+  const [quoteIndex, setQuoteIndex] = useState(0);
+
+  // Quote rotation
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setQuoteIndex((prev) => (prev + 1) % QUOTES.length);
+    }, 10000);
+    return () => clearInterval(interval);
   }, []);
 
+  // Keyboard Shortcuts
   useEffect(() => {
-    let interval: any = null;
-    if (isActive && timeLeft > 0) {
-      interval = setInterval(() => {
-        setTimeLeft((prev) => prev - 1);
-      }, 1000);
-    } else if (timeLeft === 0) {
-      clearInterval(interval);
-      setIsActive(false);
-      if (soundEnabled) {
-        const audio = new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3');
-        audio.play();
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.code === 'Space') {
+        e.preventDefault();
+        toggleTimer();
       }
-      if (mode === 'work') {
-        setCompletedSessions(p => p + 1);
-        switchMode('shortBreak');
-      } else {
-        switchMode('work');
-      }
-    }
-    return () => clearInterval(interval);
-  }, [isActive, timeLeft, mode, soundEnabled, switchMode]);
+      if (e.code === 'KeyF') setIsFocusMode(prev => !prev);
+      if (e.code === 'KeyR') resetTimer();
+    };
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, [toggleTimer, resetTimer]);
 
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
@@ -57,139 +65,293 @@ export default function Pomodoro() {
     return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   };
 
-  const progress = (timeLeft / MODES[mode].time) * 100;
+  const progress = (timeLeft / (mode === 'work' ? settings.workTime : mode === 'shortBreak' ? settings.shortBreakTime : settings.longBreakTime) / 60) * 100;
 
   return (
-    <div className="min-h-screen bg-background flex flex-col items-center justify-center p-6 lg:p-12">
-      <Button 
-        variant="ghost" 
-        onClick={() => navigate('/dashboard')}
-        className="absolute top-8 left-8 gap-2 font-bold hover:bg-secondary"
-      >
-        <ArrowLeft className="w-5 h-5" /> العودة للوحة التحكم
-      </Button>
+    <div className={cn(
+      "min-h-screen transition-all duration-1000 overflow-hidden relative",
+      isFocusMode ? "bg-black" : "bg-background"
+    )}>
+      {/* Animated Background */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-20">
+        <motion.div 
+          animate={{ 
+            scale: [1, 1.2, 1],
+            rotate: [0, 90, 180, 270, 360],
+          }}
+          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+          className="absolute -top-1/2 -left-1/2 w-[200%] h-[200%] bg-[radial-gradient(circle,rgba(99,102,241,0.15)_0%,transparent_50%)]"
+        />
+      </div>
 
-      <div className="max-w-4xl w-full space-y-12">
-        {/* Header Section */}
-        <div className="text-center space-y-4">
+      {/* Navigation */}
+      <AnimatePresence>
+        {!isFocusMode && (
           <motion.div 
-            key={mode}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className={cn("text-5xl lg:text-7xl font-black tracking-tight", MODES[mode].color)}
+            initial={{ y: -100 }}
+            animate={{ y: 0 }}
+            exit={{ y: -100 }}
+            className="fixed top-0 left-0 right-0 z-50 p-6 flex items-center justify-between backdrop-blur-xl border-b border-border/10"
           >
-            {MODES[mode].label}
-          </motion.div>
-          <div className="flex items-center justify-center gap-4 text-muted-foreground font-bold">
-            <span className="flex items-center gap-2 px-4 py-1 bg-secondary rounded-full">
-              <Brain className="w-4 h-4" /> الجلسة رقم {completedSessions + 1}
-            </span>
-          </div>
-        </div>
-
-        {/* Timer UI */}
-        <div className="relative flex flex-col items-center justify-center">
-          {/* Progress Ring */}
-          <div className="relative w-80 h-80 lg:w-[450px] lg:h-[450px] flex items-center justify-center">
-            <svg className="absolute inset-0 w-full h-full -rotate-90 transform">
-              <circle
-                cx="50%" cy="50%" r="48%"
-                className="stroke-muted fill-none"
-                strokeWidth="4"
-              />
-              <motion.circle
-                cx="50%" cy="50%" r="48%"
-                className={cn("fill-none transition-all duration-1000", 
-                  mode === 'work' ? 'stroke-primary' : 
-                  mode === 'shortBreak' ? 'stroke-emerald-500' : 'stroke-blue-500'
-                )}
-                strokeWidth="4"
-                strokeDasharray="301.59"
-                animate={{ strokeDashoffset: 301.59 - (301.59 * (100 - progress)) / 100 }}
-                strokeLinecap="round"
-              />
-            </svg>
-
-            {/* Time Display */}
-            <div className="relative text-center space-y-2">
-              <div className="text-8xl lg:text-[10rem] font-black tracking-tighter tabular-nums drop-shadow-xl">
-                {formatTime(timeLeft)}
+            <div className="flex items-center gap-4">
+              <Button variant="ghost" size="icon" onClick={() => navigate('/dashboard')} className="rounded-2xl">
+                <ArrowLeft className="w-6 h-6" />
+              </Button>
+              <div className="flex flex-col">
+                <span className="text-xl font-black tracking-tighter">POMODORO</span>
+                <span className="text-[10px] font-bold text-primary uppercase tracking-widest">Premium Focus Studio</span>
               </div>
-              <div className="flex items-center justify-center gap-4">
-                <Button 
-                  size="lg"
-                  onClick={() => setIsActive(!isActive)}
-                  className={cn("h-20 w-20 rounded-full shadow-2xl transition-all hover:scale-110", 
-                    isActive ? "bg-secondary text-foreground" : "bg-primary text-white"
+            </div>
+
+            <div className="flex items-center gap-2 bg-secondary/50 p-1 rounded-2xl border border-border/50">
+              {[
+                { id: 'timer', icon: Clock, label: 'Timer' },
+                { id: 'mixer', icon: Volume2, label: 'Mixer' },
+                { id: 'stats', icon: BarChart3, label: 'Analytics' }
+              ].map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id as any)}
+                  className={cn(
+                    "flex items-center gap-2 px-6 py-2.5 rounded-xl font-black text-sm transition-all relative",
+                    activeTab === tab.id ? "text-white" : "text-muted-foreground hover:text-foreground"
                   )}
                 >
-                  {isActive ? <Pause className="w-8 h-8" /> : <Play className="w-8 h-8 fill-current ml-1" />}
-                </Button>
-                <Button 
-                  variant="outline"
-                  size="icon"
-                  onClick={() => setTimeLeft(MODES[mode].time)}
-                  className="h-14 w-14 rounded-full border-2"
-                >
-                  <RotateCcw className="w-6 h-6" />
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Controls and Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <Card className="border-none shadow-xl bg-card">
-            <CardContent className="p-6 space-y-4">
-              <div className="flex items-center justify-between">
-                <h3 className="font-bold flex items-center gap-2"><Settings className="w-4 h-4" /> الإعدادات</h3>
-                <button onClick={() => setSoundEnabled(!soundEnabled)} className="p-2 bg-secondary rounded-lg">
-                  {soundEnabled ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
+                  {activeTab === tab.id && (
+                    <motion.div layoutId="tab-bg" className="absolute inset-0 bg-primary rounded-xl" />
+                  )}
+                  <tab.icon className="w-4 h-4 relative z-10" />
+                  <span className="relative z-10">{tab.label}</span>
                 </button>
-              </div>
-              <div className="space-y-2">
-                {(['work', 'shortBreak', 'longBreak'] as Mode[]).map((m) => (
-                  <button
-                    key={m}
-                    onClick={() => switchMode(m)}
+              ))}
+            </div>
+
+            <div className="flex items-center gap-2">
+              <Button variant="outline" size="icon" onClick={() => setShowSettings(true)} className="rounded-2xl">
+                <Settings className="w-5 h-5" />
+              </Button>
+              <Button variant="primary" onClick={() => setIsFocusMode(true)} className="rounded-2xl gap-2 font-black">
+                <Maximize2 className="w-4 h-4" /> Focus Mode
+              </Button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Focus Mode Exit Trigger */}
+      {isFocusMode && (
+        <motion.button
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.2 }}
+          whileHover={{ opacity: 1 }}
+          onClick={() => setIsFocusMode(false)}
+          className="fixed top-8 left-1/2 -translate-x-1/2 z-[100] px-6 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-xl rounded-full text-white font-black text-sm gap-2 flex items-center transition-all"
+        >
+          <Minimize2 className="w-4 h-4" /> Press ESC or Click to Exit
+        </motion.button>
+      )}
+
+      {/* Main Content Area */}
+      <main className={cn(
+        "relative z-10 flex flex-col items-center justify-center min-h-screen transition-all duration-1000",
+        isFocusMode ? "p-0" : "pt-24 pb-12 px-6"
+      )}>
+        
+        {activeTab === 'timer' && (
+          <div className="flex flex-col items-center justify-center w-full max-w-4xl space-y-16">
+            
+            {/* Breathing / Status Ring */}
+            <div className="relative flex items-center justify-center">
+              {/* Breathing Glow */}
+              <motion.div 
+                animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.6, 0.3] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className={cn(
+                  "absolute inset-0 rounded-full blur-[100px]",
+                  mode === 'work' ? "bg-primary" : "bg-emerald-500"
+                )}
+              />
+
+              <div className="relative w-80 h-80 md:w-[500px] md:h-[500px] flex items-center justify-center">
+                <svg className="absolute inset-0 w-full h-full -rotate-90">
+                  <circle cx="50%" cy="50%" r="48%" fill="none" stroke="currentColor" strokeWidth="2" className="text-border/10" />
+                  <motion.circle 
+                    cx="50%" cy="50%" r="48%" 
+                    fill="none" strokeWidth="8" strokeLinecap="round"
                     className={cn(
-                      "w-full flex items-center justify-between p-3 rounded-xl font-bold transition-all",
-                      mode === m ? "bg-primary/10 text-primary border-primary/20" : "hover:bg-secondary/50 text-muted-foreground"
+                      "transition-all duration-1000 shadow-2xl",
+                      mode === 'work' ? "text-primary" : "text-emerald-500"
+                    )}
+                    strokeDasharray="100 100"
+                    animate={{ strokeDashoffset: 100 - progress }}
+                  />
+                </svg>
+
+                <div className="text-center space-y-6">
+                  <motion.div 
+                    key={mode}
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    className={cn(
+                      "text-[10px] md:text-[14px] font-black uppercase tracking-[0.5em] opacity-60",
+                      mode === 'work' ? "text-primary" : "text-emerald-500"
                     )}
                   >
-                    <span>{MODES[m].label}</span>
-                    <span className="text-xs opacity-60">{MODES[m].time / 60}m</span>
-                  </button>
-                ))}
+                    {mode === 'work' ? 'Deep Study Session' : 'Peaceful Break'}
+                  </motion.div>
+                  <div className="text-8xl md:text-[11rem] font-black tracking-tighter tabular-nums leading-none">
+                    {formatTime(timeLeft)}
+                  </div>
+                  <div className="flex items-center justify-center gap-6 pt-8">
+                    <Button 
+                      size="lg" 
+                      onClick={toggleTimer}
+                      className={cn(
+                        "h-20 w-20 md:h-24 md:w-24 rounded-[2.5rem] shadow-2xl transition-all hover:scale-110",
+                        isActive ? "bg-secondary text-foreground" : "bg-primary text-white"
+                      )}
+                    >
+                      {isActive ? <Pause className="w-8 h-8 md:w-10 md:h-10" /> : <Play className="w-8 h-8 md:w-10 md:h-10 fill-current ml-1" />}
+                    </Button>
+                    <div className="flex flex-col gap-2">
+                      <Button variant="outline" size="icon" onClick={resetTimer} className="h-10 w-10 md:h-12 md:w-12 rounded-2xl">
+                        <RotateCcw className="w-4 h-4 md:w-5 md:h-5" />
+                      </Button>
+                      <Button variant="outline" size="icon" onClick={skipSession} className="h-10 w-10 md:h-12 md:w-12 rounded-2xl">
+                        <SkipForward className="w-4 h-4 md:w-5 md:h-5" />
+                      </Button>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </CardContent>
-          </Card>
-
-          <Card className="md:col-span-2 border-none shadow-xl bg-primary text-white overflow-hidden relative group">
-            <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-150 transition-transform duration-1000">
-              <Brain className="w-32 h-32" />
             </div>
-            <CardContent className="p-10 space-y-6 relative z-10">
-              <h3 className="text-2xl font-black">نصيحة CLINOMA اليومية 💡</h3>
-              <p className="text-lg text-primary-foreground/90 font-medium leading-relaxed" dir="rtl">
-                "تقنية البومودورو تساعدك على الحفاظ على تركيزك العالي عبر تقسيم المذاكرة لفترات زمنية مركزة تليها استراحات قصيرة. هذا يمنع إجهاد العقل ويحسن الذاكرة طويلة الأمد."
+
+            {/* Motivational Quote */}
+            <motion.div 
+              key={quoteIndex}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="text-center max-w-xl px-10"
+            >
+              <p className="text-lg md:text-2xl font-medium text-muted-foreground italic leading-relaxed">
+                "{QUOTES[quoteIndex]}"
               </p>
-              <div className="flex items-center gap-6 pt-4">
-                <div className="space-y-1">
-                  <div className="text-2xl font-bold">{completedSessions}</div>
-                  <div className="text-[10px] uppercase font-bold opacity-60">جلسات مكتملة</div>
+            </motion.div>
+
+            {/* Micro Stats */}
+            {!isFocusMode && (
+              <div className="flex items-center gap-12 bg-secondary/30 backdrop-blur-xl p-8 rounded-[2.5rem] border border-border/50 shadow-xl">
+                <div className="text-center space-y-1">
+                  <div className="text-3xl font-black">{sessionCount}</div>
+                  <div className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Sessions</div>
                 </div>
-                <div className="w-px h-10 bg-white/20" />
-                <div className="space-y-1">
-                  <div className="text-2xl font-bold">{completedSessions * 25}m</div>
-                  <div className="text-[10px] uppercase font-bold opacity-60">إجمالي وقت المذاكرة</div>
+                <div className="w-px h-10 bg-border/50" />
+                <div className="text-center space-y-1">
+                  <div className="text-3xl font-black">{sessionCount * settings.workTime}m</div>
+                  <div className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Focus Time</div>
+                </div>
+                <div className="w-px h-10 bg-border/50" />
+                <div className="text-center space-y-1">
+                  <div className="text-3xl font-black flex items-center justify-center gap-2 text-amber-500">
+                    <Zap className="w-6 h-6 fill-current" /> {stats?.dailyStreak || 0}
+                  </div>
+                  <div className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Daily Streak</div>
                 </div>
               </div>
-            </CardContent>
-          </Card>
-        </div>
-      </div>
+            )}
+          </div>
+        )}
+
+        {activeTab === 'mixer' && !isFocusMode && (
+          <div className="w-full max-w-5xl space-y-12">
+            <div className="text-center space-y-2">
+              <h2 className="text-4xl font-black tracking-tight">Ambient Audio Studio</h2>
+              <p className="text-muted-foreground font-bold">Craft your perfect study atmosphere</p>
+            </div>
+            <AmbientMixer 
+              mix={settings.ambientMix} 
+              onUpdate={(id, vol) => updateSettings({ ambientMix: { ...settings.ambientMix, [id]: vol } })} 
+            />
+          </div>
+        )}
+
+        {activeTab === 'stats' && !isFocusMode && (
+          <div className="w-full max-w-6xl">
+            <PomodoroAnalytics stats={stats} />
+          </div>
+        )}
+
+      </main>
+
+      {/* Settings Modal */}
+      <AnimatePresence>
+        {showSettings && (
+          <motion.div 
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-black/60 backdrop-blur-md"
+          >
+            <motion.div 
+              initial={{ scale: 0.9, y: 20 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.9, y: 20 }}
+              className="bg-card border-2 border-border p-10 rounded-[3rem] shadow-2xl max-w-xl w-full space-y-10"
+            >
+              <div className="flex items-center justify-between">
+                <h2 className="text-3xl font-black">Preferences</h2>
+                <Button variant="ghost" size="icon" onClick={() => setShowSettings(false)} className="rounded-xl"><ArrowLeft className="w-5 h-5 rotate-180" /></Button>
+              </div>
+
+              <div className="grid grid-cols-2 gap-8">
+                <div className="space-y-4">
+                  <label className="text-xs font-black uppercase tracking-widest text-muted-foreground">Work Duration</label>
+                  <input 
+                    type="number" value={settings.workTime} 
+                    onChange={(e) => updateSettings({ workTime: parseInt(e.target.value) })}
+                    className="w-full p-4 bg-secondary rounded-2xl font-black text-xl border-2 border-transparent focus:border-primary focus:outline-none" 
+                  />
+                </div>
+                <div className="space-y-4">
+                  <label className="text-xs font-black uppercase tracking-widest text-muted-foreground">Break Duration</label>
+                  <input 
+                    type="number" value={settings.shortBreakTime} 
+                    onChange={(e) => updateSettings({ shortBreakTime: parseInt(e.target.value) })}
+                    className="w-full p-4 bg-secondary rounded-2xl font-black text-xl border-2 border-transparent focus:border-primary focus:outline-none" 
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-6">
+                <div className="flex items-center justify-between p-6 bg-secondary/50 rounded-2xl">
+                  <div className="flex items-center gap-4">
+                    <div className="p-3 bg-primary/10 text-primary rounded-xl"><Sparkles className="w-5 h-5" /></div>
+                    <div className="font-bold">Auto-Start Breaks</div>
+                  </div>
+                  <button 
+                    onClick={() => updateSettings({ autoStartBreaks: !settings.autoStartBreaks })}
+                    className={cn("w-12 h-6 rounded-full p-1 transition-all", settings.autoStartBreaks ? "bg-primary" : "bg-muted")}
+                  >
+                    <div className={cn("w-4 h-4 bg-white rounded-full transition-all", settings.autoStartBreaks ? "translate-x-6" : "translate-x-0")} />
+                  </button>
+                </div>
+
+                <div className="flex items-center justify-between p-6 bg-secondary/50 rounded-2xl">
+                  <div className="flex items-center gap-4">
+                    <div className="p-3 bg-primary/10 text-primary rounded-xl"><Bell className="w-5 h-5" /></div>
+                    <div className="font-bold">Timer Notification Sound</div>
+                  </div>
+                  <input 
+                    type="range" min="0" max="1" step="0.1" value={settings.soundVolume}
+                    onChange={(e) => updateSettings({ soundVolume: parseFloat(e.target.value) })}
+                    className="w-32 h-1.5 bg-muted rounded-lg appearance-none cursor-pointer accent-primary"
+                  />
+                </div>
+              </div>
+
+              <Button onClick={() => setShowSettings(false)} className="w-full h-16 rounded-3xl text-lg font-black shadow-xl shadow-primary/30">Save Preferences</Button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
     </div>
   );
 }
