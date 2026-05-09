@@ -261,7 +261,6 @@ export default function Pomodoro() {
                   <div className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Daily Streak</div>
                 </div>
               </div>
-            )}
           </div>
         )}
 
