@@ -14,7 +14,7 @@ export default function Home() {
   const { user } = useAuth();
   const navigate = useNavigate();
   const [courses, setCourses] = useState<any[]>([]);
-  const [config, setConfig] = useState({ telegramUser: 'ClinomaOwner', whatsappNumber: '', preferredContact: 'telegram' });
+  const [config, setConfig] = useState({ telegramUser: 'ClinomaOwner', whatsappNumber: '01040981906', preferredContact: 'telegram' });
   const [isSupportOpen, setIsSupportOpen] = useState(false);
 
   useEffect(() => {
