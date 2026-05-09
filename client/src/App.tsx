@@ -31,6 +31,7 @@ import CreateCard from "./pages/flashcards/CreateCard";
 import ImportCards from "./pages/flashcards/ImportCards";
 import FlashSpace from "./pages/flashcards/FlashSpace";
 import AIExamGenerator from "./pages/AIExamGenerator";
+import Pomodoro from "./pages/Pomodoro";
 
 import { CommandPalette } from "./components/ui/CommandPalette";
 import { ThemeProvider } from "./context/ThemeContext";
@@ -100,6 +101,7 @@ const AnimatedRoutes = () => {
         <Route path="/admin/results" element={<ProtectedRoute requireAdmin><ExamResultsDashboard /></ProtectedRoute>} />
         <Route path="/admin/ai-generate" element={<ProtectedRoute requireAdmin><AIExamGenerator /></ProtectedRoute>} />
         <Route path="/admin" element={<ProtectedRoute requireAdmin><AdminDashboard /></ProtectedRoute>} />
+        <Route path="/pomodoro" element={<ProtectedRoute useLayout={false}><Pomodoro /></ProtectedRoute>} />
         
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>

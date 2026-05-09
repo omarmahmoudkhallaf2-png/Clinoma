@@ -64,7 +64,8 @@ export default function QuizSetup() {
         lectureNumber: selectedLecture,
         questionType: questionMode,
         feedbackMode,
-        retakeIncorrect
+        retakeIncorrect,
+        isExam: feedbackMode === 'deferred'
       } 
     });
   };

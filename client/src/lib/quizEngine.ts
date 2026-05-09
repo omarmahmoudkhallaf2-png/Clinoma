@@ -170,7 +170,8 @@ export const generateSmartExam = async (config: {
   return questions.sort(() => Math.random() - 0.5);
 };
 
-export const toggleBookmark = async (userId: string, questionId: string) => {
+export const toggleBookmark = async (userId: string, questionId: string, isExam: boolean = false) => {
+  if (isExam) return false;
   const bookmarkRef = doc(db, `users/${userId}/bookmarks/${questionId}`);
   const snap = await getDoc(bookmarkRef);
 
@@ -208,4 +209,16 @@ export const getIncorrectQuestions = async (userId: string) => {
     chunks.push(...qSnap.docs.map(d => ({ id: d.id, ...d.data() })));
   }
   return chunks;
+};
+
+export const resetBookmarks = async (userId: string) => {
+  const snap = await getDocs(collection(db, `users/${userId}/bookmarks`));
+  const promises = snap.docs.map(d => deleteDoc(doc(db, `users/${userId}/bookmarks`, d.id)));
+  await Promise.all(promises);
+};
+
+export const resetIncorrect = async (userId: string) => {
+  const snap = await getDocs(query(collection(db, `users/${userId}/progress`), where('status', '==', 'wrong')));
+  const promises = snap.docs.map(d => deleteDoc(doc(db, `users/${userId}/progress`, d.id)));
+  await Promise.all(promises);
 };

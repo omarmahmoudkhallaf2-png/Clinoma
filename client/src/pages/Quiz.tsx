@@ -24,6 +24,7 @@ export default function Quiz() {
   const retakeIncorrectEnabled = setupParams?.retakeIncorrect ?? false;
   const SECONDS_PER_QUESTION = 60;
   const courseId = setupParams?.courseId || 'F1';
+  const isExam = setupParams?.isExam || false;
   const subscribed = isSubscribed(courseId);
 
   const [questions, setQuestions] = useState<Question[]>([]);
@@ -97,7 +98,7 @@ export default function Quiz() {
     const isCorrect = option === currentQuestion.correctAnswer;
     setAnswers(prev => ({ ...prev, [currentIndex]: option }));
 
-    if (user) updateUserProgress(user.uid, currentQuestion.id, isCorrect, isCorrect ? 3 : 0);
+    if (user) updateUserProgress(user.uid, currentQuestion.id, isCorrect, isCorrect ? 3 : 0, isExam);
 
     if (isStudyMode) {
       setIsAnswered(true);
@@ -111,8 +112,8 @@ export default function Quiz() {
   };
 
   const handleFlag = async () => {
-    if (!user) return;
-    const isBookmarked = await toggleBookmark(user.uid, questions[currentIndex].id);
+    if (!user || isExam) return;
+    const isBookmarked = await toggleBookmark(user.uid, questions[currentIndex].id, isExam);
     setFlagged(prev => ({ ...prev, [currentIndex]: isBookmarked }));
   };
 

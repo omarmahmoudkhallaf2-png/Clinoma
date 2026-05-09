@@ -8,13 +8,10 @@ import {
   Play, BookOpen, Brain, TrendingUp, 
   ChevronRight, Clock, Zap, CheckCircle, 
   XCircle, Bookmark, ArrowRight, Activity,
-  Crown, Search, Settings as SettingsIcon
+  Crown, Search, Settings as SettingsIcon, RotateCcw
 } from 'lucide-react';
-
-// Components
-import UserStatsGrid from '../components/dashboard/UserStatsGrid';
-import DailyGoals from '../components/dashboard/DailyGoals';
-import { getWeakAreas } from '../lib/quizEngine';
+import toast from 'react-hot-toast';
+import { getWeakAreas, resetBookmarks, resetIncorrect } from '../lib/quizEngine';
 import WeakAreas from '../components/dashboard/WeakAreas';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
@@ -28,6 +25,21 @@ export default function Dashboard() {
   const [userStats, setUserStats] = useState({ accuracy: 0, streak: 1, points: 0, totalSolved: 0 });
   const [weakAreas, setWeakAreas] = useState<any[]>([]);
   const [recentActions, setRecentActions] = useState<any[]>([]);
+
+  const handleReset = async (type: 'flagged' | 'incorrect') => {
+    if (!user) return;
+    const confirm = window.confirm(type === 'flagged' ? 'هل أنت متأكد من مسح جميع الأسئلة المعلمة؟' : 'هل أنت متأكد من مسح قائمة الأسئلة الخاطئة؟');
+    if (!confirm) return;
+
+    try {
+      if (type === 'flagged') await resetBookmarks(user.uid);
+      else await resetIncorrect(user.uid);
+      toast.success('تم المسح بنجاح');
+      window.location.reload(); 
+    } catch (err) {
+      toast.error('حدث خطأ أثناء المسح');
+    }
+  };
 
   useEffect(() => {
     if (!user) return;
@@ -150,6 +162,28 @@ export default function Dashboard() {
         </div>
       </section>
 
+      {/* Pomodoro Moving Banner */}
+      <div 
+        onClick={() => navigate('/pomodoro')}
+        className="relative h-14 bg-gradient-to-r from-primary/10 via-primary/20 to-primary/10 border-y border-primary/20 overflow-hidden cursor-pointer group hover:bg-primary/20 transition-all"
+      >
+        <div className="absolute inset-0 flex items-center">
+          <motion.div 
+            animate={{ x: ["100%", "-100%"] }}
+            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            className="flex items-center gap-12 whitespace-nowrap"
+          >
+            {[1, 2, 3].map(i => (
+              <div key={i} className="flex items-center gap-4 text-primary font-black text-sm uppercase tracking-widest">
+                <Clock className="w-5 h-5 animate-pulse" />
+                نظام بومودورو CLINOMA متاح الآن - اضغط هنا لزيادة تركيزك وتحسين إنتاجيتك في المذاكرة
+                <div className="w-2 h-2 bg-primary rounded-full" />
+              </div>
+            ))}
+          </motion.div>
+        </div>
+      </div>
+
       {/* Core Stats & Quick Revision Row */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Accuracy */}
@@ -185,34 +219,52 @@ export default function Dashboard() {
         </Card>
 
         {/* Incorrect Questions */}
-        <Card onClick={() => navigate('/incorrect')} className="overflow-hidden group cursor-pointer hover:border-destructive/30 transition-all">
+        <Card className="overflow-hidden group relative hover:border-destructive/30 transition-all">
           <CardContent className="p-6 relative">
-            <div className="absolute top-0 right-0 w-24 h-24 rounded-full -mr-12 -mt-12 blur-3xl opacity-20 bg-destructive/10" />
-            <div className="flex justify-between items-center mb-4">
-              <div className="p-2 rounded-lg transition-transform group-hover:scale-110 bg-destructive/10 text-destructive">
-                <XCircle className="w-5 h-5" />
+            <div onClick={() => navigate('/incorrect')} className="cursor-pointer">
+              <div className="absolute top-0 right-0 w-24 h-24 rounded-full -mr-12 -mt-12 blur-3xl opacity-20 bg-destructive/10" />
+              <div className="flex justify-between items-center mb-4">
+                <div className="p-2 rounded-lg transition-transform group-hover:scale-110 bg-destructive/10 text-destructive">
+                  <XCircle className="w-5 h-5" />
+                </div>
+              </div>
+              <div className="space-y-1">
+                <div className="text-xl font-bold tracking-tight">الأسئلة الخاطئة</div>
+                <div className="text-[10px] font-bold uppercase text-muted-foreground tracking-widest">مراجعة الأخطاء</div>
               </div>
             </div>
-            <div className="space-y-1">
-              <div className="text-xl font-bold tracking-tight">الأسئلة الخاطئة</div>
-              <div className="text-[10px] font-bold uppercase text-muted-foreground tracking-widest">مراجعة الأخطاء</div>
-            </div>
+            <button 
+              onClick={(e) => { e.stopPropagation(); handleReset('incorrect'); }}
+              className="absolute top-4 left-4 p-2 bg-secondary/50 rounded-lg hover:bg-destructive hover:text-white transition-all opacity-0 group-hover:opacity-100"
+              title="Reset List"
+            >
+              <RotateCcw className="w-3.5 h-3.5" />
+            </button>
           </CardContent>
         </Card>
 
         {/* Flagged Questions */}
-        <Card onClick={() => navigate('/flagged')} className="overflow-hidden group cursor-pointer hover:border-amber-500/30 transition-all">
+        <Card className="overflow-hidden group relative hover:border-amber-500/30 transition-all">
           <CardContent className="p-6 relative">
-            <div className="absolute top-0 right-0 w-24 h-24 rounded-full -mr-12 -mt-12 blur-3xl opacity-20 bg-amber-500/10" />
-            <div className="flex justify-between items-center mb-4">
-              <div className="p-2 rounded-lg transition-transform group-hover:scale-110 bg-amber-500/10 text-amber-600">
-                <Bookmark className="w-5 h-5" />
+            <div onClick={() => navigate('/flagged')} className="cursor-pointer">
+              <div className="absolute top-0 right-0 w-24 h-24 rounded-full -mr-12 -mt-12 blur-3xl opacity-20 bg-amber-500/10" />
+              <div className="flex justify-between items-center mb-4">
+                <div className="p-2 rounded-lg transition-transform group-hover:scale-110 bg-amber-500/10 text-amber-600">
+                  <Bookmark className="w-5 h-5" />
+                </div>
+              </div>
+              <div className="space-y-1">
+                <div className="text-xl font-bold tracking-tight">الأسئلة المعلمة</div>
+                <div className="text-[10px] font-bold uppercase text-muted-foreground tracking-widest">الوصول السريع</div>
               </div>
             </div>
-            <div className="space-y-1">
-              <div className="text-xl font-bold tracking-tight">الأسئلة المعلمة</div>
-              <div className="text-[10px] font-bold uppercase text-muted-foreground tracking-widest">الوصول السريع</div>
-            </div>
+            <button 
+              onClick={(e) => { e.stopPropagation(); handleReset('flagged'); }}
+              className="absolute top-4 left-4 p-2 bg-secondary/50 rounded-lg hover:bg-amber-500 hover:text-white transition-all opacity-0 group-hover:opacity-100"
+              title="Reset List"
+            >
+              <RotateCcw className="w-3.5 h-3.5" />
+            </button>
           </CardContent>
         </Card>
       </div>
