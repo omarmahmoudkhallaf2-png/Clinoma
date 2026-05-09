@@ -154,32 +154,35 @@ export default function Dashboard() {
         </div>
       </section>
 
-      {/* Pomodoro Moving Banner - Premium Red Edition */}
+      {/* Pomodoro Premium Banner - Static Edition */}
       <div 
         onClick={() => navigate('/pomodoro')}
-        className="relative h-20 bg-gradient-to-r from-rose-600 via-rose-500 to-rose-600 border-y border-white/10 overflow-hidden cursor-pointer group hover:brightness-110 transition-all shadow-lg shadow-rose-500/20 rounded-2xl mx-2"
+        className="relative group cursor-pointer"
       >
-        <div className="absolute inset-0 flex items-center">
-          <motion.div 
-            animate={{ x: ["100%", "-100%"] }}
-            transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-            className="flex items-center gap-16 whitespace-nowrap"
-          >
-            {[1, 2, 3].map(i => (
-              <div key={i} className="flex items-center gap-8 text-white">
-                <div className="flex items-center gap-3">
-                  <span className="text-4xl font-black tracking-tighter opacity-20">POMODORO</span>
-                  <div className="w-1.5 h-1.5 bg-white/40 rounded-full" />
-                  <Clock className="w-6 h-6 animate-pulse" />
-                  <span className="text-lg font-bold tracking-tight">نظام بومودورو متاح الآن - اضغط هنا لزيادة تركيزك</span>
-                  <span className="text-4xl font-black tracking-tighter opacity-20">POMODORO</span>
-                </div>
+        <div className="absolute -inset-1 bg-gradient-to-r from-rose-600 to-rose-400 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200" />
+        <Card className="relative bg-gradient-to-r from-rose-600 via-rose-500 to-rose-400 border-none overflow-hidden h-24 flex items-center px-8 shadow-2xl shadow-rose-500/20">
+          <div className="absolute top-0 right-0 -mr-10 -mt-10 h-40 w-40 rounded-full bg-white/10 blur-3xl group-hover:scale-150 transition-transform duration-700" />
+          <div className="absolute bottom-0 left-0 -ml-10 -mb-10 h-40 w-40 rounded-full bg-black/10 blur-3xl group-hover:scale-150 transition-transform duration-700" />
+          
+          <div className="relative z-10 flex items-center justify-between w-full">
+            <div className="flex items-center gap-6">
+              <div className="p-3 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 group-hover:rotate-12 transition-transform duration-500">
+                <Clock className="w-8 h-8 text-white" />
               </div>
-            ))}
-          </motion.div>
-        </div>
-        {/* Glassmorphic Overlay */}
-        <div className="absolute inset-0 bg-white/5 backdrop-blur-[1px] pointer-events-none" />
+              <div className="flex flex-col">
+                <span className="text-3xl font-black text-white tracking-tighter leading-none">POMODORO</span>
+                <span className="text-xs font-bold text-white/60 uppercase tracking-[0.3em] mt-1">Focus Studio</span>
+              </div>
+            </div>
+            
+            <div className="flex items-center gap-4 text-white font-bold text-lg" dir="rtl">
+              <span className="hidden md:block">نظام التركيز العالمي - متاح الآن مجاناً</span>
+              <div className="p-2 bg-white/20 rounded-full">
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-[-4px] transition-transform" />
+              </div>
+            </div>
+          </div>
+        </Card>
       </div>
 
       {/* Core Stats & Quick Revision Row */}
