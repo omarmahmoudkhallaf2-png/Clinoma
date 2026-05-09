@@ -4,13 +4,13 @@ import { motion } from 'framer-motion';
 import { cn } from '../../lib/utils';
 
 const AMBIENT_SOUNDS = [
-  { id: 'rain', label: 'Rain', icon: CloudRain, url: 'https://www.soundjay.com/nature/sounds/rain-01.mp3' },
-  { id: 'coffee', label: 'Coffee Shop', icon: Coffee, url: 'https://www.soundjay.com/misc/sounds/coffee-shop-1.mp3' },
-  { id: 'wind', label: 'Wind', icon: Wind, url: 'https://www.soundjay.com/nature/sounds/wind-01.mp3' },
-  { id: 'fire', label: 'Fireplace', icon: Flame, url: 'https://www.soundjay.com/household/sounds/fireplace-1.mp3' },
-  { id: 'typing', label: 'Keyboard', icon: Keyboard, url: 'https://www.soundjay.com/mechanical/sounds/mechanical-keyboard-1.mp3' },
-  { id: 'night', label: 'Night', icon: Moon, url: 'https://www.soundjay.com/nature/sounds/cricket-chirp-1.mp3' },
-  { id: 'waves', label: 'Ocean', icon: Waves, url: 'https://www.soundjay.com/nature/sounds/ocean-wave-1.mp3' },
+  { id: 'rain', label: 'Rain', icon: CloudRain, url: 'https://github.com/rafael-m-silva/pomodoro-sounds/raw/main/rain.mp3' },
+  { id: 'coffee', label: 'Coffee Shop', icon: Coffee, url: 'https://github.com/rafael-m-silva/pomodoro-sounds/raw/main/cafe.mp3' },
+  { id: 'wind', label: 'Wind', icon: Wind, url: 'https://github.com/rafael-m-silva/pomodoro-sounds/raw/main/wind.mp3' },
+  { id: 'fire', label: 'Fireplace', icon: Flame, url: 'https://github.com/rafael-m-silva/pomodoro-sounds/raw/main/fire.mp3' },
+  { id: 'typing', label: 'Keyboard', icon: Keyboard, url: 'https://github.com/rafael-m-silva/pomodoro-sounds/raw/main/keyboard.mp3' },
+  { id: 'night', label: 'Night', icon: Moon, url: 'https://github.com/rafael-m-silva/pomodoro-sounds/raw/main/night.mp3' },
+  { id: 'waves', label: 'Ocean', icon: Waves, url: 'https://github.com/rafael-m-silva/pomodoro-sounds/raw/main/waves.mp3' },
 ];
 
 interface MixerProps {
