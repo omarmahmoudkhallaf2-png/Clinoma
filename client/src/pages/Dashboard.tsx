@@ -150,7 +150,72 @@ export default function Dashboard() {
         </div>
       </section>
 
-      <UserStatsGrid stats={userStats} />
+      {/* Core Stats & Quick Revision Row */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {/* Accuracy */}
+        <Card className="overflow-hidden group">
+          <CardContent className="p-6 relative">
+            <div className="absolute top-0 right-0 w-24 h-24 rounded-full -mr-12 -mt-12 blur-3xl opacity-20 bg-emerald-500/10" />
+            <div className="flex justify-between items-center mb-4">
+              <div className="p-2 rounded-lg transition-transform group-hover:scale-110 bg-emerald-500/10 text-emerald-500">
+                <TrendingUp className="w-5 h-5" />
+              </div>
+            </div>
+            <div className="space-y-1">
+              <div className="text-2xl font-bold tracking-tight">%{userStats.accuracy}</div>
+              <div className="text-[10px] font-bold uppercase text-muted-foreground tracking-widest">نسبة الدقة</div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Streak */}
+        <Card className="overflow-hidden group">
+          <CardContent className="p-6 relative">
+            <div className="absolute top-0 right-0 w-24 h-24 rounded-full -mr-12 -mt-12 blur-3xl opacity-20 bg-orange-500/10" />
+            <div className="flex justify-between items-center mb-4">
+              <div className="p-2 rounded-lg transition-transform group-hover:scale-110 bg-orange-500/10 text-orange-500">
+                <Zap className="w-5 h-5" />
+              </div>
+            </div>
+            <div className="space-y-1">
+              <div className="text-2xl font-bold tracking-tight">{userStats.streak}</div>
+              <div className="text-[10px] font-bold uppercase text-muted-foreground tracking-widest">التفاعل اليومي</div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Incorrect Questions */}
+        <Card onClick={() => navigate('/incorrect')} className="overflow-hidden group cursor-pointer hover:border-destructive/30 transition-all">
+          <CardContent className="p-6 relative">
+            <div className="absolute top-0 right-0 w-24 h-24 rounded-full -mr-12 -mt-12 blur-3xl opacity-20 bg-destructive/10" />
+            <div className="flex justify-between items-center mb-4">
+              <div className="p-2 rounded-lg transition-transform group-hover:scale-110 bg-destructive/10 text-destructive">
+                <XCircle className="w-5 h-5" />
+              </div>
+            </div>
+            <div className="space-y-1">
+              <div className="text-xl font-bold tracking-tight">الأسئلة الخاطئة</div>
+              <div className="text-[10px] font-bold uppercase text-muted-foreground tracking-widest">مراجعة الأخطاء</div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Flagged Questions */}
+        <Card onClick={() => navigate('/flagged')} className="overflow-hidden group cursor-pointer hover:border-amber-500/30 transition-all">
+          <CardContent className="p-6 relative">
+            <div className="absolute top-0 right-0 w-24 h-24 rounded-full -mr-12 -mt-12 blur-3xl opacity-20 bg-amber-500/10" />
+            <div className="flex justify-between items-center mb-4">
+              <div className="p-2 rounded-lg transition-transform group-hover:scale-110 bg-amber-500/10 text-amber-600">
+                <Bookmark className="w-5 h-5" />
+              </div>
+            </div>
+            <div className="space-y-1">
+              <div className="text-xl font-bold tracking-tight">الأسئلة المعلمة</div>
+              <div className="text-[10px] font-bold uppercase text-muted-foreground tracking-widest">الوصول السريع</div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-10">
@@ -197,38 +262,6 @@ export default function Dashboard() {
               </div>
             </section>
           )}
-
-          {/* Smart Revision Hub */}
-          <section className="space-y-4">
-            <h2 className="text-xl font-bold flex items-center gap-2 px-2">
-              <Brain className="w-5 h-5 text-primary" /> المراجعة الذكية
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <Card onClick={() => navigate('/incorrect')} className="cursor-pointer border-destructive/20 hover:border-destructive/50 hover:bg-destructive/5">
-                <CardContent className="p-6 flex items-center gap-4">
-                  <div className="w-12 h-12 bg-destructive/10 text-destructive rounded-xl flex items-center justify-center">
-                    <XCircle className="w-6 h-6" />
-                  </div>
-                  <div className="text-right flex-1" dir="rtl">
-                    <h3 className="font-bold">الأسئلة الخاطئة</h3>
-                    <p className="text-xs text-muted-foreground">راجع أخطائك وصحح مفاهيمك</p>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card onClick={() => navigate('/flagged')} className="cursor-pointer border-amber-500/20 hover:border-amber-500/50 hover:bg-amber-500/5">
-                <CardContent className="p-6 flex items-center gap-4">
-                  <div className="w-12 h-12 bg-amber-500/10 text-amber-600 rounded-xl flex items-center justify-center">
-                    <Bookmark className="w-6 h-6" />
-                  </div>
-                  <div className="text-right flex-1" dir="rtl">
-                    <h3 className="font-bold">الأسئلة المعلمة</h3>
-                    <p className="text-xs text-muted-foreground">الوصول السريع للأسئلة الهامة</p>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </section>
 
           {/* Explore More */}
           {otherCourses.length > 0 && (
