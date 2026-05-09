@@ -4,7 +4,7 @@ import {
   Play, Pause, RotateCcw, Brain, Coffee, 
   Settings, Maximize2, Minimize2, ArrowLeft,
   Volume2, BarChart3, Clock, Zap, SkipForward,
-  Info, Bell, Moon, Sun, Sparkles
+  Info, Bell, Moon, Sun, Sparkles, Hourglass
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
@@ -103,9 +103,19 @@ export default function Pomodoro() {
               <Button variant="ghost" size="icon" onClick={() => navigate('/dashboard')} className="rounded-2xl">
                 <ArrowLeft className="w-6 h-6" />
               </Button>
-              <div className="flex flex-col">
-                <span className="text-xl font-black tracking-tighter">POMODORO</span>
-                <span className="text-[10px] font-bold text-primary uppercase tracking-widest">Premium Focus Studio</span>
+              <div className="flex items-center gap-3">
+                <div className="p-2.5 bg-primary/10 rounded-2xl">
+                  <motion.div
+                    animate={{ rotate: [0, 180] }}
+                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    <Hourglass className="w-6 h-6 text-primary" />
+                  </motion.div>
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-xl font-black tracking-tighter">POMODORO</span>
+                  <span className="text-[10px] font-bold text-primary uppercase tracking-widest">Premium Focus Studio</span>
+                </div>
               </div>
             </div>
 
