@@ -4,13 +4,10 @@ import { motion } from 'framer-motion';
 import { cn } from '../../lib/utils';
 
 const AMBIENT_SOUNDS = [
-  { id: 'rain', label: 'Rain', icon: CloudRain, url: 'https://cdn.pixabay.com/audio/2021/09/08/audio_3070c58567.mp3' },
-  { id: 'coffee', label: 'Coffee Shop', icon: Coffee, url: 'https://cdn.pixabay.com/audio/2022/03/23/audio_0313f88647.mp3' },
-  { id: 'wind', label: 'Wind', icon: Wind, url: 'https://cdn.pixabay.com/audio/2022/02/07/audio_659074092d.mp3' },
-  { id: 'fire', label: 'Fireplace', icon: Flame, url: 'https://cdn.pixabay.com/audio/2021/09/06/audio_9593f666f7.mp3' },
-  { id: 'typing', label: 'Keyboard', icon: Keyboard, url: 'https://cdn.pixabay.com/audio/2022/03/15/audio_296996d933.mp3' },
-  { id: 'night', label: 'Night', icon: Moon, url: 'https://cdn.pixabay.com/audio/2021/09/08/audio_548679f046.mp3' },
-  { id: 'waves', label: 'Ocean', icon: Waves, url: 'https://cdn.pixabay.com/audio/2022/03/10/audio_c8c8a73430.mp3' },
+  { id: 'rain', label: 'Rain', icon: CloudRain, url: '/sounds/rain.mp3' },
+  { id: 'wind', label: 'Wind', icon: Wind, url: '/sounds/wind.mp3' },
+  { id: 'fire', label: 'Fireplace', icon: Flame, url: '/sounds/fire.mp3' },
+  { id: 'waves', label: 'Ocean', icon: Waves, url: '/sounds/waves.mp3' },
 ];
 
 interface MixerProps {
