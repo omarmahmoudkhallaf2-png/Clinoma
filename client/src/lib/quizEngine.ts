@@ -27,7 +27,7 @@ export const calculateSRS = (quality: number, previousSRS: any) => {
   return { interval, repetition, efactor, nextReview };
 };
 
-export const updateUserProgress = async (userId: string, questionId: string, isCorrect: boolean, quality: number = 3) => {
+export const updateUserProgress = async (userId: string, questionId: string, isCorrect: boolean, quality: number = 3, isExam: boolean = false) => {
   const qSnap = await getDoc(doc(db, 'questions', questionId));
   const qData = qSnap.exists() ? qSnap.data() : null;
   
@@ -56,15 +56,24 @@ export const updateUserProgress = async (userId: string, questionId: string, isC
   }, { merge: true });
 
   // Update User Cumulative Stats
-  await updateUserStats(userId, isCorrect);
+  await updateUserStats(userId, isCorrect, isExam);
 };
 
-export const updateUserStats = async (userId: string, lastAttemptCorrect: boolean) => {
+export const updateUserStats = async (userId: string, lastAttemptCorrect: boolean, isExam: boolean = false) => {
   const userRef = doc(db, 'users', userId);
   const userSnap = await getDoc(userRef);
   if (!userSnap.exists()) return;
 
   const data = userSnap.data();
+  
+  // If it's an exam, we don't update global accuracy/totalSolved
+  if (isExam) {
+    await setDoc(userRef, {
+      lastActiveAt: serverTimestamp()
+    }, { merge: true });
+    return;
+  }
+
   const totalSolved = (data.totalSolved || 0) + 1;
   const totalCorrect = (data.totalCorrect || 0) + (lastAttemptCorrect ? 1 : 0);
   const accuracy = Math.round((totalCorrect / totalSolved) * 100);

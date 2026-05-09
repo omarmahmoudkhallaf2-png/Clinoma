@@ -13,14 +13,12 @@ interface StatsProps {
 
 export default function UserStatsGrid({ stats }: StatsProps) {
   const items = [
-    { label: 'Accuracy', value: `${stats.accuracy}%`, icon: Target, color: 'text-emerald-500', bg: 'bg-emerald-500/10' },
-    { label: 'Current Streak', value: stats.streak, icon: Flame, color: 'text-orange-500', bg: 'bg-orange-500/10' },
-    { label: 'Mastery Points', value: stats.points, icon: Zap, color: 'text-indigo-500', bg: 'bg-indigo-500/10' },
-    { label: 'Global Rank', value: '#124', icon: Trophy, color: 'text-amber-500', bg: 'bg-amber-500/10' },
+    { label: 'نسبة الدقة', value: `${stats.accuracy}%`, icon: Target, color: 'text-emerald-500', bg: 'bg-emerald-500/10' },
+    { label: 'أيام التفاعل متواصلة', value: stats.streak, icon: Flame, color: 'text-orange-500', bg: 'bg-orange-500/10' },
   ];
 
   return (
-    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       {items.map((item, i) => (
         <Card key={i} className="overflow-hidden group">
           <CardContent className="p-6 relative">

@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 import type { User } from 'firebase/auth';
 import { signInWithPopup, signOut, onAuthStateChanged } from 'firebase/auth';
 import { auth, googleProvider, db } from '../lib/firebase';
-import { doc, getDoc, setDoc, updateDoc, arrayUnion } from 'firebase/firestore';
+import { doc, getDoc, setDoc, updateDoc, arrayUnion, serverTimestamp } from 'firebase/firestore';
 
 interface AuthContextType {
   user: User | null;
@@ -32,7 +32,36 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const userRef = doc(db, 'users', uid);
     const userSnap = await getDoc(userRef);
     if (userSnap.exists()) {
-      setUserData(userSnap.data());
+      const data = userSnap.data();
+      
+      // Update Streak Logic
+      const now = new Date();
+      const lastActive = data.lastActiveAt?.toDate() || null;
+      let newStreak = data.streak || 0;
+
+      if (lastActive) {
+        const diffInHours = (now.getTime() - lastActive.getTime()) / (1000 * 60 * 60);
+        const lastActiveDate = new Date(lastActive).setHours(0,0,0,0);
+        const todayDate = new Date(now).setHours(0,0,0,0);
+        const isNextDay = (todayDate - lastActiveDate) === (1000 * 60 * 60 * 24);
+        const isSameDay = todayDate === lastActiveDate;
+
+        if (isNextDay) {
+          newStreak += 1;
+        } else if (!isSameDay) {
+          // If more than 1 day difference, reset
+          newStreak = 1; 
+        }
+      } else {
+        newStreak = 1;
+      }
+
+      await updateDoc(userRef, { 
+        lastActiveAt: serverTimestamp(),
+        streak: newStreak
+      });
+
+      setUserData({ ...data, streak: newStreak });
     }
   };
 

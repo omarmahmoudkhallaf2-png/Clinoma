@@ -139,12 +139,12 @@ export default function Dashboard() {
             <Card isGlass className="border-white/20 p-6 text-center shadow-none hover:scale-105 transition-transform duration-500">
               <TrendingUp className="w-8 h-8 mx-auto mb-2 text-emerald-300" />
               <div className="text-3xl font-bold">%{userStats.accuracy}</div>
-              <div className="text-[10px] uppercase tracking-widest font-bold opacity-60">Accuracy</div>
+              <div className="text-[10px] uppercase tracking-widest font-bold opacity-60">نسبة الدقة</div>
             </Card>
             <Card isGlass className="border-white/20 p-6 text-center shadow-none hover:scale-105 transition-transform duration-500 delay-75">
               <Zap className="w-8 h-8 mx-auto mb-2 text-amber-300" />
               <div className="text-3xl font-bold">{userStats.streak}</div>
-              <div className="text-[10px] uppercase tracking-widest font-bold opacity-60">Streak</div>
+              <div className="text-[10px] uppercase tracking-widest font-bold opacity-60">التفاعل اليومي</div>
             </Card>
           </div>
         </div>
@@ -263,26 +263,7 @@ export default function Dashboard() {
           <WeakAreas areas={weakAreas} />
           <DailyGoals completed={userStats.totalSolved % 10} target={10} />
           
-          <Card>
-            <CardHeader className="p-6 pb-2">
-              <CardTitle className="text-lg font-bold flex items-center gap-2 flex-row-reverse" dir="rtl">
-                <Clock className="w-4 h-4 text-primary" /> النشاط الأخير
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="p-6 pt-2 space-y-6">
-              {recentActions.map((act, i) => (
-                <div key={i} className="flex gap-4 group">
-                  <div className="w-1 bg-muted group-hover:bg-primary transition-colors rounded-full" />
-                  <div className="text-right flex-1" dir="rtl">
-                    <p className="font-bold text-sm">{act.action}</p>
-                    <p className="text-[10px] font-medium text-muted-foreground uppercase tracking-tight">
-                      {act.timestamp?.toDate ? act.timestamp.toDate().toLocaleTimeString() : 'Just now'} • {act.meta}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </CardContent>
-          </Card>
+
         </aside>
       </div>
 
