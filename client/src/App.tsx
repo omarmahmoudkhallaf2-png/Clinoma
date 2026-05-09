@@ -83,7 +83,7 @@ const AnimatedRoutes = () => {
         <Route path="/incorrect" element={<ProtectedRoute><FilteredQuiz type="incorrect" /></ProtectedRoute>} />
         <Route path="/flagged" element={<ProtectedRoute><FilteredQuiz type="flagged" /></ProtectedRoute>} />
         <Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
-        <Route path="/notes/:category" element={<ProtectedRoute><NoteViewer /></ProtectedRoute>} />
+
         
         <Route path="/exams" element={<ProtectedRoute><AvailableExams /></ProtectedRoute>} />
         <Route path="/ai-assistant" element={<ProtectedRoute><AIAssistant /></ProtectedRoute>} />

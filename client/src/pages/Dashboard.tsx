@@ -130,14 +130,6 @@ export default function Dashboard() {
             </p>
             <div className="flex flex-wrap items-center gap-4 mt-6 justify-center md:justify-start">
               <Button 
-                variant="glass" 
-                onClick={() => navigate('/quiz-setup')}
-                className="gap-2 bg-white/20 hover:bg-white/30 border-white/30 text-white"
-              >
-                <Play className="w-4 h-4 fill-current" />
-                ابدأ تدريب سريع
-              </Button>
-              <Button 
                 variant="ghost" 
                 onClick={() => navigate('/review')}
                 className="text-white hover:bg-white/10"
@@ -346,7 +338,7 @@ export default function Dashboard() {
         {/* Sidebar Context */}
         <aside className="space-y-8">
           <WeakAreas areas={weakAreas} />
-          <DailyGoals completed={userStats.totalSolved % 10} target={10} />
+
           
 
         </aside>

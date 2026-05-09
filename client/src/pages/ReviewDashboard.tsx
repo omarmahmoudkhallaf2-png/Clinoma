@@ -3,7 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { db } from '../lib/firebase';
 import { collection, query, where, getDocs, limit, documentId, doc, getDoc } from 'firebase/firestore';
-import { getBookmarks, getIncorrectQuestions } from '../lib/quizEngine';
+import { getBookmarks, getIncorrectQuestions, getSolvedToday } from '../lib/quizEngine';
+import { motion, AnimatePresence } from 'framer-motion';
+import toast from 'react-hot-toast';
 import { 
   BookOpen, Brain, Flag, 
   ChevronRight, TrendingDown,
@@ -16,6 +18,7 @@ export default function ReviewDashboard() {
   const [dueCount, setDueCount] = useState(0);
   const [wrongQuestions, setWrongQuestions] = useState<any[]>([]);
   const [flaggedCount, setFlaggedCount] = useState(0);
+  const [showModeSelection, setShowModeSelection] = useState(false);
 
   useEffect(() => {
     if (!user) return;
@@ -47,7 +50,42 @@ export default function ReviewDashboard() {
   }, [user]);
 
   const startReview = (mode: 'srs' | 'wrong' | 'flagged') => {
+    if (mode === 'srs') {
+      setShowModeSelection(true);
+      return;
+    }
     navigate('/quiz', { state: { mode, isTimed: false, count: 20 } });
+  };
+
+  const handleSessionType = async (type: 'today' | 'needs_review') => {
+    try {
+      setShowModeSelection(false);
+      let questions: any[] = [];
+      
+      if (type === 'today') {
+        questions = await getSolvedToday(user!.uid);
+      } else {
+        const [wrong, flagged] = await Promise.all([
+          getIncorrectQuestions(user!.uid),
+          getBookmarks(user!.uid)
+        ]);
+        // Combine and remove duplicates
+        const combined = [...wrong];
+        flagged.forEach(f => {
+          if (!combined.find(c => c.id === f.id)) combined.push(f);
+        });
+        questions = combined;
+      }
+
+      if (questions.length === 0) {
+        toast.error('لم يتم العثور على أسئلة لمراجعتها في هذا القسم حالياً.');
+        return;
+      }
+
+      navigate('/quiz', { state: { questions, isStudyMode: true } });
+    } catch (err) {
+      toast.error('حدث خطأ أثناء تحميل الأسئلة');
+    }
   };
 
   return (
@@ -149,20 +187,65 @@ export default function ReviewDashboard() {
           </div>
           <ChevronRight className="w-8 h-8 text-muted-foreground group-hover:translate-x-2 transition-all" />
         </div>
-
-        <div className="bg-card border-2 border-border p-8 rounded-[3rem] flex items-center justify-between group hover:bg-primary/5 transition-all cursor-pointer" onClick={() => navigate('/notes/all')}>
-          <div className="flex items-center gap-6">
-            <div className="p-5 bg-primary/10 text-primary rounded-[2rem]">
-              <BookOpen className="w-8 h-8" />
-            </div>
-            <div>
-              <h4 className="text-2xl font-black">النوتس المترابطة</h4>
-              <p className="text-muted-foreground font-bold">ربط النظري بالأسئلة العلمية</p>
-            </div>
-          </div>
-          <ChevronRight className="w-8 h-8 text-muted-foreground group-hover:translate-x-2 transition-all" />
-        </div>
       </div>
+
+      {/* Review Mode Modal/Overlay */}
+      <AnimatePresence>
+        {showModeSelection && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-background/80 backdrop-blur-xl"
+          >
+            <motion.div 
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              className="bg-card border-2 border-border p-10 rounded-[4rem] shadow-2xl max-w-2xl w-full space-y-10"
+            >
+              <div className="text-center space-y-2">
+                <h2 className="text-3xl font-black">اختر نمط مراجعة اليوم</h2>
+                <p className="text-muted-foreground font-bold">حدد نوع الأسئلة التي تود مراجعتها الآن</p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <button 
+                  onClick={() => handleSessionType('today')}
+                  className="p-8 bg-primary/5 border-2 border-primary/20 rounded-[3rem] hover:bg-primary hover:text-white transition-all group text-center space-y-4"
+                >
+                  <div className="w-16 h-16 bg-primary/10 text-primary rounded-[2rem] mx-auto flex items-center justify-center group-hover:bg-white/20 group-hover:text-white">
+                    <History className="w-8 h-8" />
+                  </div>
+                  <div>
+                    <div className="font-black text-xl">أسئلة اليوم</div>
+                    <div className="text-xs opacity-60 font-bold">كل ما قمت بحله اليوم</div>
+                  </div>
+                </button>
+
+                <button 
+                  onClick={() => handleSessionType('needs_review')}
+                  className="p-8 bg-rose-500/5 border-2 border-rose-500/20 rounded-[3rem] hover:bg-rose-500 hover:text-white transition-all group text-center space-y-4"
+                >
+                  <div className="w-16 h-16 bg-rose-500/10 text-rose-500 rounded-[2rem] mx-auto flex items-center justify-center group-hover:bg-white/20 group-hover:text-white">
+                    <Brain className="w-8 h-8" />
+                  </div>
+                  <div>
+                    <div className="font-black text-xl">تحتاج تركيز</div>
+                    <div className="text-xs opacity-60 font-bold">الأخطاء + الأسئلة المعلمة</div>
+                  </div>
+                </button>
+              </div>
+
+              <button 
+                onClick={() => setShowModeSelection(false)}
+                className="w-full py-4 text-muted-foreground font-black hover:text-foreground transition-colors"
+              >
+                إلغاء
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

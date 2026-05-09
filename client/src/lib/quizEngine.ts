@@ -211,6 +211,25 @@ export const getIncorrectQuestions = async (userId: string) => {
   return chunks;
 };
 
+export const getSolvedToday = async (userId: string) => {
+  const progressRef = collection(db, `users/${userId}/progress`);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  
+  const snap = await getDocs(query(progressRef, where('lastAttemptAt', '>=', today)));
+  const ids = snap.docs.map(d => d.id);
+  if (ids.length === 0) return [];
+
+  const qRef = collection(db, 'questions');
+  const chunks = [];
+  for (let i = 0; i < ids.length; i += 10) {
+    const chunk = ids.slice(i, i + 10);
+    const qSnap = await getDocs(query(qRef, where('__name__', 'in', chunk)));
+    chunks.push(...qSnap.docs.map(d => ({ id: d.id, ...d.data() })));
+  }
+  return chunks;
+};
+
 export const resetBookmarks = async (userId: string) => {
   const snap = await getDocs(collection(db, `users/${userId}/bookmarks`));
   const promises = snap.docs.map(d => deleteDoc(doc(db, `users/${userId}/bookmarks`, d.id)));
