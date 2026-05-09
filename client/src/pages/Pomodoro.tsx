@@ -73,7 +73,8 @@ export default function Pomodoro() {
       isFocusMode ? "bg-black" : "bg-background"
     )}>
       {/* Animated Background */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-20">
+      {!isFocusMode && (
+        <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-20">
         <motion.div 
           animate={{ 
             scale: [1, 1.2, 1],
@@ -82,7 +83,8 @@ export default function Pomodoro() {
           transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
           className="absolute -top-1/2 -left-1/2 w-[200%] h-[200%] bg-[radial-gradient(circle,rgba(99,102,241,0.15)_0%,transparent_50%)]"
         />
-      </div>
+        </div>
+      )}
 
       {/* Navigation */}
       <AnimatePresence>
@@ -91,7 +93,7 @@ export default function Pomodoro() {
             animate={{ y: 0 }}
             className={cn(
               "fixed top-0 left-0 right-0 z-50 p-6 flex items-center justify-between backdrop-blur-xl border-b border-border/10 transition-all duration-500",
-              isFocusMode && "opacity-40 hover:opacity-100 bg-black/40"
+              isFocusMode ? "opacity-0 hover:opacity-100 bg-black/80" : "opacity-100"
             )}
           >
             <div className="flex items-center gap-4">
@@ -131,9 +133,11 @@ export default function Pomodoro() {
               <Button variant="outline" size="icon" onClick={() => setShowSettings(true)} className="rounded-2xl">
                 <Settings className="w-5 h-5" />
               </Button>
-               <Button variant="primary" onClick={() => setIsFocusMode(true)} className="rounded-2xl gap-2 font-black">
-                <Maximize2 className="w-4 h-4" /> Focus Mode
-              </Button>
+               {!isFocusMode && (
+                <Button variant="primary" onClick={() => setIsFocusMode(true)} className="rounded-2xl gap-2 font-black">
+                  <Maximize2 className="w-4 h-4" /> Focus Mode
+                </Button>
+               )}
             </div>
           </motion.div>
       </AnimatePresence>
@@ -145,9 +149,9 @@ export default function Pomodoro() {
           animate={{ opacity: 0.2 }}
           whileHover={{ opacity: 1 }}
           onClick={() => setIsFocusMode(false)}
-          className="fixed top-8 left-1/2 -translate-x-1/2 z-[100] px-6 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-xl rounded-full text-white font-black text-sm gap-2 flex items-center transition-all"
+          className="fixed bottom-12 left-1/2 -translate-x-1/2 z-[100] px-6 py-3 bg-white/5 hover:bg-white/20 backdrop-blur-xl border border-white/10 rounded-full text-white/40 hover:text-white font-black text-sm gap-2 flex items-center transition-all"
         >
-          <Minimize2 className="w-4 h-4" /> Press ESC or Click to Exit
+          <Minimize2 className="w-4 h-4" /> Press ESC or Click to Exit Focus
         </motion.button>
       )}
 
@@ -162,15 +166,16 @@ export default function Pomodoro() {
             
             {/* Breathing / Status Ring */}
             <div className="relative flex items-center justify-center">
-              {/* Breathing Glow */}
-              <motion.div 
-                animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.6, 0.3] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className={cn(
-                  "absolute inset-0 rounded-full blur-[100px]",
-                   mode === 'work' ? "bg-primary" : "bg-emerald-500"
-                )}
-              />
+              {!isFocusMode && (
+                <motion.div 
+                  animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.6, 0.3] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  className={cn(
+                    "absolute inset-0 rounded-full blur-[100px]",
+                     mode === 'work' ? "bg-primary" : "bg-emerald-500"
+                  )}
+                />
+              )}
 
               <div className="relative w-80 h-80 md:w-[500px] md:h-[500px] flex items-center justify-center">
                 <svg className="absolute inset-0 w-full h-full -rotate-90">
