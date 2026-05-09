@@ -86,12 +86,13 @@ export default function Pomodoro() {
 
       {/* Navigation */}
       <AnimatePresence>
-        {!isFocusMode && (
           <motion.div 
             initial={{ y: -100 }}
             animate={{ y: 0 }}
-            exit={{ y: -100 }}
-            className="fixed top-0 left-0 right-0 z-50 p-6 flex items-center justify-between backdrop-blur-xl border-b border-border/10"
+            className={cn(
+              "fixed top-0 left-0 right-0 z-50 p-6 flex items-center justify-between backdrop-blur-xl border-b border-border/10 transition-all duration-500",
+              isFocusMode && "opacity-40 hover:opacity-100 bg-black/40"
+            )}
           >
             <div className="flex items-center gap-4">
               <Button variant="ghost" size="icon" onClick={() => navigate('/dashboard')} className="rounded-2xl">
@@ -135,7 +136,6 @@ export default function Pomodoro() {
               </Button>
             </div>
           </motion.div>
-        )}
       </AnimatePresence>
 
       {/* Focus Mode Exit Trigger */}
@@ -199,7 +199,7 @@ export default function Pomodoro() {
                   >
                     {mode === 'work' ? 'Deep Study Session' : 'Peaceful Break'}
                   </motion.div>
-                  <div className="text-8xl md:text-[11rem] font-black tracking-tighter tabular-nums leading-none">
+                   <div className="text-8xl md:text-[11rem] font-black tracking-tighter tabular-nums leading-none dark:text-white text-black">
                     {formatTime(timeLeft)}
                   </div>
                   <div className="flex items-center justify-center gap-6 pt-8">
@@ -240,8 +240,10 @@ export default function Pomodoro() {
             </motion.div>
 
             {/* Micro Stats */}
-            {!isFocusMode && (
-              <div className="flex items-center gap-12 bg-secondary/30 backdrop-blur-xl p-8 rounded-[2.5rem] border border-border/50 shadow-xl">
+              <div className={cn(
+                "flex items-center gap-12 bg-secondary/30 backdrop-blur-xl p-8 rounded-[2.5rem] border border-border/50 shadow-xl transition-all",
+                isFocusMode && "opacity-40 hover:opacity-100"
+              )}>
                 <div className="text-center space-y-1">
                   <div className="text-3xl font-black">{sessionCount}</div>
                   <div className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Sessions</div>
@@ -274,11 +276,9 @@ export default function Pomodoro() {
            />
          </div>
 
-         {activeTab === 'stats' && !isFocusMode && (
-           <div className="w-full max-w-6xl">
+          <div className={cn("w-full max-w-6xl", activeTab !== 'stats' && "hidden")}>
              <PomodoroAnalytics stats={stats} />
            </div>
-         )}
 
       </main>
 
