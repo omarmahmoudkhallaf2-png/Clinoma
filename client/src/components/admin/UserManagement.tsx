@@ -3,6 +3,7 @@ import { db } from '../../lib/firebase';
 import { collection, getDocs } from 'firebase/firestore';
 import { useAuth } from '../../context/AuthContext';
 import { Shield, User as UserIcon, CheckCircle2, XCircle, Search, Loader2, Mail } from 'lucide-react';
+import { sendNotification } from '../../lib/notificationService';
 
 interface UserData {
   id: string;
@@ -61,6 +62,14 @@ export default function UserManagement() {
     try {
       await updateUserStatus(user.id, { [key]: newValue });
       setUsers(users.map(u => u.id === user.id ? { ...u, [key]: newValue } : u));
+      
+      if (newValue) {
+        await sendNotification(user.id, {
+          title: 'تم تفعيل الاشتراك! 🎉',
+          message: `لقد تم تفعيل اشتراكك في كورس ${courseLevel.toUpperCase()} بنجاح. يمكنك الآن البدء في المذاكرة والوصول لكافة المحتويات.`,
+          type: 'success'
+        });
+      }
     } catch (error) {
       alert(`Failed to update ${courseLevel} subscription`);
     }

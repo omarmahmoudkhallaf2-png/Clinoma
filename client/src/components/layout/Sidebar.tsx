@@ -26,6 +26,7 @@ import {
 import { useTheme } from '../../context/ThemeContext';
 import { cn } from '../../lib/utils';
 import { Button } from '../ui/Button';
+import NotificationCenter from './NotificationCenter';
 
 export default function Sidebar({ isOpen = false, setIsOpen = (_: boolean) => { } }: any) {
   const navigate = useNavigate();
@@ -243,6 +244,8 @@ export default function Sidebar({ isOpen = false, setIsOpen = (_: boolean) => { 
           )}
 
           <div className="flex items-center gap-2">
+            <NotificationCenter />
+            
             <Button
               variant="outline"
               size="icon"

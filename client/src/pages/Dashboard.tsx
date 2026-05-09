@@ -286,38 +286,7 @@ export default function Dashboard() {
         </aside>
       </div>
 
-      {/* Floating Quick Action */}
-      <motion.div 
-        initial={{ y: 100 }}
-        animate={{ y: 0 }}
-        className="fixed bottom-8 left-1/2 -translate-x-1/2 z-40"
-      >
-        <Card isGlass className="p-2 flex items-center gap-2 rounded-2xl shadow-2xl border-white/10">
-          <Button 
-            onClick={() => navigate('/quiz-setup')} 
-            className="rounded-xl h-12 w-12 p-0 shadow-lg shadow-primary/20"
-          >
-            <Play className="w-6 h-6 fill-current" />
-          </Button>
-          <Button 
-            variant="ghost" 
-            size="icon" 
-            onClick={() => window.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', ctrlKey: true }))}
-            className="h-12 w-12 rounded-xl"
-          >
-            <Search className="w-5 h-5" />
-          </Button>
-          <div className="w-px h-8 bg-border mx-1" />
-          <Button 
-            variant="ghost" 
-            size="icon" 
-            onClick={() => navigate('/settings')}
-            className="h-12 w-12 rounded-xl"
-          >
-            <SettingsIcon className="w-5 h-5" />
-          </Button>
-        </Card>
-      </motion.div>
+
     </motion.div>
   );
 }
