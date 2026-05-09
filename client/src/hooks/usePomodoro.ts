@@ -35,7 +35,7 @@ const DEFAULT_SETTINGS: PomodoroSettings = {
 export function usePomodoro(userId: string | undefined) {
   const [settings, setSettings] = useState<PomodoroSettings>(DEFAULT_SETTINGS);
   const [mode, setMode] = useState<'work' | 'shortBreak' | 'longBreak'>('work');
-  const [timeLeft, setTimeLeft] = useState(settings.workTime * 60);
+  const [timeLeft, setTimeLeft] = useState(DEFAULT_SETTINGS.workTime * 60);
   const [isActive, setIsActive] = useState(false);
   const [sessionCount, setSessionCount] = useState(0);
   const [stats, setStats] = useState<PomodoroStats | null>(null);
@@ -50,13 +50,20 @@ export function usePomodoro(userId: string | undefined) {
       const snap = await getDoc(userRef);
       if (snap.exists()) {
         const data = snap.data();
-        if (data.pomodoroSettings) setSettings(data.pomodoroSettings);
+        if (data.pomodoroSettings) {
+          setSettings(data.pomodoroSettings);
+          // Only update timeLeft if not currently running
+          if (!isActive) {
+            const time = data.pomodoroSettings.workTime;
+            setTimeLeft(time * 60);
+          }
+        }
         if (data.pomodoroStats) setStats(data.pomodoroStats);
         else {
            const initialStats = { 
              totalStudyTime: 0, 
              sessionsCompleted: 0, 
-             dailyStreak: 0, 
+             dailyStreak: data.streak || 0, 
              lastActiveDate: new Date().toISOString().split('T')[0],
              history: [] 
            };
@@ -66,6 +73,14 @@ export function usePomodoro(userId: string | undefined) {
     };
     fetchData();
   }, [userId]);
+
+  // Sync settings changes to timeLeft
+  useEffect(() => {
+    if (!isActive) {
+      const time = mode === 'work' ? settings.workTime : mode === 'shortBreak' ? settings.shortBreakTime : settings.longBreakTime;
+      setTimeLeft(time * 60);
+    }
+  }, [settings.workTime, settings.shortBreakTime, settings.longBreakTime, mode, isActive]);
 
   // Sync settings to Firebase
   const updateSettings = async (newSettings: Partial<PomodoroSettings>) => {
@@ -85,23 +100,40 @@ export function usePomodoro(userId: string | undefined) {
       
       // Update Stats
       const minutes = settings.workTime;
-      const today = new Date().toISOString().split('T')[0];
+      const now = new Date();
+      const today = now.toISOString().split('T')[0];
+      const hour = now.getHours();
       
       const statsRef = doc(db, 'users', userId);
+      
+      // Update local and remote stats
+      setStats(prev => {
+        if (!prev) return prev;
+        const newHistory = [...(prev.history || [])];
+        const dayIdx = newHistory.findIndex(h => h.date === today);
+        if (dayIdx > -1) newHistory[dayIdx].minutes += minutes;
+        else newHistory.push({ date: today, minutes });
+
+        return {
+          ...prev,
+          totalStudyTime: prev.totalStudyTime + minutes,
+          sessionsCompleted: prev.sessionsCompleted + 1,
+          history: newHistory.slice(-30) // Keep last 30 days
+        };
+      });
+
       await updateDoc(statsRef, {
         'pomodoroStats.totalStudyTime': increment(minutes),
         'pomodoroStats.sessionsCompleted': increment(1),
+        [`pomodoroStats.hourlyIntensity.${hour}`]: increment(1),
         'pomodoroStats.lastActiveDate': today,
-        // Logic for history and streak can be more complex, simplified for now
       });
 
       // Switch mode
       if (newSessionCount % settings.sessionsUntilLongBreak === 0) {
         setMode('longBreak');
-        setTimeLeft(settings.longBreakTime * 60);
       } else {
         setMode('shortBreak');
-        setTimeLeft(settings.shortBreakTime * 60);
       }
       
       if (settings.autoStartBreaks) setIsActive(true);
@@ -109,15 +141,16 @@ export function usePomodoro(userId: string | undefined) {
 
     } else {
       setMode('work');
-      setTimeLeft(settings.workTime * 60);
       if (settings.autoStartWork) setIsActive(true);
       else setIsActive(false);
     }
 
     // Sound Notification
-    const bell = new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3');
-    bell.volume = settings.soundVolume;
-    bell.play();
+    try {
+      const bell = new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3');
+      bell.volume = settings.soundVolume;
+      bell.play();
+    } catch (e) { console.error("Audio error", e); }
   }, [userId, mode, sessionCount, settings]);
 
   useEffect(() => {

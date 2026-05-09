@@ -154,26 +154,32 @@ export default function Dashboard() {
         </div>
       </section>
 
-      {/* Pomodoro Moving Banner */}
+      {/* Pomodoro Moving Banner - Premium Red Edition */}
       <div 
         onClick={() => navigate('/pomodoro')}
-        className="relative h-14 bg-gradient-to-r from-primary/10 via-primary/20 to-primary/10 border-y border-primary/20 overflow-hidden cursor-pointer group hover:bg-primary/20 transition-all"
+        className="relative h-20 bg-gradient-to-r from-rose-600 via-rose-500 to-rose-600 border-y border-white/10 overflow-hidden cursor-pointer group hover:brightness-110 transition-all shadow-lg shadow-rose-500/20 rounded-2xl mx-2"
       >
         <div className="absolute inset-0 flex items-center">
           <motion.div 
             animate={{ x: ["100%", "-100%"] }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            className="flex items-center gap-12 whitespace-nowrap"
+            transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+            className="flex items-center gap-16 whitespace-nowrap"
           >
             {[1, 2, 3].map(i => (
-              <div key={i} className="flex items-center gap-4 text-primary font-black text-sm uppercase tracking-widest">
-                <Clock className="w-5 h-5 animate-pulse" />
-                نظام بومودورو CLINOMA متاح الآن - اضغط هنا لزيادة تركيزك وتحسين إنتاجيتك في المذاكرة
-                <div className="w-2 h-2 bg-primary rounded-full" />
+              <div key={i} className="flex items-center gap-8 text-white">
+                <div className="flex items-center gap-3">
+                  <span className="text-4xl font-black tracking-tighter opacity-20">POMODORO</span>
+                  <div className="w-1.5 h-1.5 bg-white/40 rounded-full" />
+                  <Clock className="w-6 h-6 animate-pulse" />
+                  <span className="text-lg font-bold tracking-tight">نظام بومودورو متاح الآن - اضغط هنا لزيادة تركيزك</span>
+                  <span className="text-4xl font-black tracking-tighter opacity-20">POMODORO</span>
+                </div>
               </div>
             ))}
           </motion.div>
         </div>
+        {/* Glassmorphic Overlay */}
+        <div className="absolute inset-0 bg-white/5 backdrop-blur-[1px] pointer-events-none" />
       </div>
 
       {/* Core Stats & Quick Revision Row */}

@@ -4,13 +4,13 @@ import { motion } from 'framer-motion';
 import { cn } from '../../lib/utils';
 
 const AMBIENT_SOUNDS = [
-  { id: 'rain', label: 'Rain', icon: CloudRain, url: 'https://www.soundjay.com/nature/rain-01.mp3' },
-  { id: 'coffee', label: 'Coffee Shop', icon: Coffee, url: 'https://www.soundjay.com/misc/sounds/coffee-shop-1.mp3' },
-  { id: 'wind', label: 'Wind', icon: Wind, url: 'https://www.soundjay.com/nature/wind-01.mp3' },
-  { id: 'fire', label: 'Fireplace', icon: Flame, url: 'https://www.soundjay.com/household/sounds/fireplace-1.mp3' },
+  { id: 'rain', label: 'Rain', icon: CloudRain, url: 'https://actions.google.com/sounds/v1/water/rain_on_roof.ogg' },
+  { id: 'coffee', label: 'Coffee Shop', icon: Coffee, url: 'https://actions.google.com/sounds/v1/ambiences/coffee_shop.ogg' },
+  { id: 'wind', label: 'Wind', icon: Wind, url: 'https://actions.google.com/sounds/v1/weather/wind_heavy_gusts.ogg' },
+  { id: 'fire', label: 'Fireplace', icon: Flame, url: 'https://actions.google.com/sounds/v1/ambiences/fireplace_crackling.ogg' },
   { id: 'typing', label: 'Keyboard', icon: Keyboard, url: 'https://www.soundjay.com/mechanical/sounds/mechanical-keyboard-1.mp3' },
-  { id: 'night', label: 'Night', icon: Moon, url: 'https://www.soundjay.com/nature/sounds/cricket-chirp-1.mp3' },
-  { id: 'waves', label: 'Ocean', icon: Waves, url: 'https://www.soundjay.com/nature/ocean-wave-1.mp3' },
+  { id: 'night', label: 'Night', icon: Moon, url: 'https://actions.google.com/sounds/v1/ambiences/night_ambience.ogg' },
+  { id: 'waves', label: 'Ocean', icon: Waves, url: 'https://actions.google.com/sounds/v1/water/ocean_waves.ogg' },
 ];
 
 interface MixerProps {
@@ -20,65 +20,89 @@ interface MixerProps {
 
 export default function AmbientMixer({ mix, onUpdate }: MixerProps) {
   const audioRefs = useRef<Record<string, HTMLAudioElement>>({});
+  const [audioEnabled, setAudioEnabled] = useState(false);
 
+  // Initialize audio objects once
   useEffect(() => {
-    // Initialize or update volumes
     AMBIENT_SOUNDS.forEach(sound => {
-      const vol = mix[sound.id] || 0;
-      if (!audioRefs.current[sound.id]) {
-        const audio = new Audio(sound.url);
-        audio.loop = true;
-        audioRefs.current[sound.id] = audio;
-      }
-      
-      const audio = audioRefs.current[sound.id];
-      if (vol > 0) {
-        if (audio.paused) audio.play().catch(() => {});
-        audio.volume = vol;
-      } else {
-        audio.pause();
-      }
+      const audio = new Audio(sound.url);
+      audio.loop = true;
+      audioRefs.current[sound.id] = audio;
     });
 
     return () => {
-      // Cleanup
-      Object.values(audioRefs.current).forEach(a => a.pause());
+      Object.values(audioRefs.current).forEach(a => {
+        a.pause();
+        a.src = "";
+      });
     };
-  }, [mix]);
+  }, []);
+
+  // Update volumes and play/pause
+  useEffect(() => {
+    if (!audioEnabled) return;
+
+    AMBIENT_SOUNDS.forEach(sound => {
+      const audio = audioRefs.current[sound.id];
+      if (!audio) return;
+
+      const vol = mix[sound.id] || 0;
+      audio.volume = vol;
+
+      if (vol > 0 && audio.paused) {
+        audio.play().catch(e => console.log("Autoplay blocked or error:", e));
+      } else if (vol === 0 && !audio.paused) {
+        audio.pause();
+      }
+    });
+  }, [mix, audioEnabled]);
+
+  const toggleSound = (id: string, currentVol: number) => {
+    setAudioEnabled(true); // User interaction enables audio
+    onUpdate(id, currentVol > 0 ? 0 : 0.5);
+  };
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-6 bg-card/50 backdrop-blur-xl border border-border/50 rounded-3xl">
-      {AMBIENT_SOUNDS.map((sound) => {
-        const volume = mix[sound.id] || 0;
-        const isActive = volume > 0;
+    <div className="space-y-6">
+      {!audioEnabled && (
+        <div className="p-4 bg-primary/10 border border-primary/20 rounded-2xl text-center">
+          <p className="text-sm font-bold text-primary mb-2">اضغط على أي أيقونة لتفعيل محرك الصوت</p>
+        </div>
+      )}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-6 bg-card/50 backdrop-blur-xl border border-border/50 rounded-3xl">
+        {AMBIENT_SOUNDS.map((sound) => {
+          const volume = mix[sound.id] || 0;
+          const isActive = volume > 0;
 
-        return (
-          <div key={sound.id} className="space-y-3 p-4 rounded-2xl bg-secondary/30 border border-transparent hover:border-primary/20 transition-all">
-            <div className="flex items-center justify-between">
-              <div className={cn("p-2 rounded-xl", isActive ? "bg-primary text-white" : "bg-muted text-muted-foreground")}>
-                <sound.icon className="w-5 h-5" />
+          return (
+            <div key={sound.id} className="space-y-3 p-4 rounded-2xl bg-secondary/30 border border-transparent hover:border-primary/20 transition-all">
+              <div className="flex items-center justify-between">
+                <button 
+                  onClick={() => toggleSound(sound.id, volume)}
+                  className={cn("p-2 rounded-xl transition-all", isActive ? "bg-primary text-white scale-110 shadow-lg" : "bg-muted text-muted-foreground hover:bg-muted/80")}
+                >
+                  <sound.icon className="w-5 h-5" />
+                </button>
+                <span className="text-xs font-bold uppercase tracking-widest opacity-60">{sound.label}</span>
               </div>
-              <span className="text-xs font-bold uppercase tracking-widest opacity-60">{sound.label}</span>
+              
+              <div className="flex items-center gap-3">
+                <input 
+                  type="range" 
+                  min="0" max="1" step="0.01"
+                  value={volume}
+                  disabled={!audioEnabled && !isActive}
+                  onChange={(e) => {
+                    setAudioEnabled(true);
+                    onUpdate(sound.id, parseFloat(e.target.value));
+                  }}
+                  className="flex-1 h-1.5 bg-muted rounded-lg appearance-none cursor-pointer accent-primary"
+                />
+              </div>
             </div>
-            
-            <div className="flex items-center gap-3">
-              <button 
-                onClick={() => onUpdate(sound.id, isActive ? 0 : 0.5)}
-                className="text-muted-foreground hover:text-primary transition-colors"
-              >
-                {isActive ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
-              </button>
-              <input 
-                type="range" 
-                min="0" max="1" step="0.01"
-                value={volume}
-                onChange={(e) => onUpdate(sound.id, parseFloat(e.target.value))}
-                className="flex-1 h-1.5 bg-muted rounded-lg appearance-none cursor-pointer accent-primary"
-              />
-            </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
   );
 }

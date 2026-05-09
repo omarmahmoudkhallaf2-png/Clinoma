@@ -26,7 +26,7 @@ const QUOTES = [
 
 export default function Pomodoro() {
   const navigate = useNavigate();
-  const { user } = useAuth();
+  const { user, userData } = useAuth();
   const { 
     timeLeft, isActive, mode, sessionCount, settings, stats,
     toggleTimer, resetTimer, skipSession, updateSettings, setMode 
@@ -254,7 +254,7 @@ export default function Pomodoro() {
                 <div className="w-px h-10 bg-border/50" />
                 <div className="text-center space-y-1">
                   <div className="text-3xl font-black flex items-center justify-center gap-2 text-amber-500">
-                    <Zap className="w-6 h-6 fill-current" /> {stats?.dailyStreak || 0}
+                    <Zap className="w-6 h-6 fill-current" /> {userData?.streak || stats?.dailyStreak || 0}
                   </div>
                   <div className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Daily Streak</div>
                 </div>

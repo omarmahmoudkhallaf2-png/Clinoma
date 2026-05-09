@@ -1,7 +1,9 @@
+import { useMemo } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar, Cell } from 'recharts';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/Card';
 import { Target, Clock, Zap, Award, Calendar } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { cn } from '../../lib/utils';
 
 const MOCK_DATA = [
   { day: 'Sat', minutes: 120 },
@@ -14,15 +16,30 @@ const MOCK_DATA = [
 ];
 
 export default function PomodoroAnalytics({ stats }: { stats: any }) {
+  const chartData = useMemo(() => {
+    if (!stats?.history) return [];
+    return stats.history.slice(-7).map((h: any) => ({
+      day: new Date(h.date).toLocaleDateString('en-US', { weekday: 'short' }),
+      minutes: h.minutes
+    }));
+  }, [stats?.history]);
+
+  const intensityData = useMemo(() => {
+    if (!stats?.hourlyIntensity) return Array(24).fill(0).map((_, i) => ({ hour: i, count: 0 }));
+    return Array(24).fill(0).map((_, i) => ({
+      hour: i,
+      count: stats.hourlyIntensity[i] || 0
+    }));
+  }, [stats?.hourlyIntensity]);
+
   return (
     <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-1000">
       {/* Stats Overview */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
         {[
-          { label: 'Study Time', value: `${stats?.totalStudyTime || 0}m`, icon: Clock, color: 'text-primary' },
-          { label: 'Sessions', value: stats?.sessionsCompleted || 0, icon: Target, color: 'text-emerald-500' },
+          { label: 'Total Study Time', value: `${stats?.totalStudyTime || 0}m`, icon: Clock, color: 'text-rose-500' },
+          { label: 'Sessions Completed', value: stats?.sessionsCompleted || 0, icon: Target, color: 'text-emerald-500' },
           { label: 'Day Streak', value: stats?.dailyStreak || 0, icon: Zap, color: 'text-amber-500' },
-          { label: 'Productivity', value: 'High', icon: Award, color: 'text-indigo-500' },
         ].map((item, i) => (
           <Card key={i} className="border-none bg-card/50 backdrop-blur-xl shadow-xl overflow-hidden group">
             <CardContent className="p-6 relative">
@@ -45,16 +62,16 @@ export default function PomodoroAnalytics({ stats }: { stats: any }) {
         <Card className="border-none bg-card/50 backdrop-blur-xl shadow-2xl p-8 rounded-[3rem]">
           <CardHeader className="px-0 pt-0">
             <CardTitle className="text-xl font-black flex items-center gap-2">
-              <Calendar className="w-5 h-5 text-primary" /> Weekly Progress
+              <Calendar className="w-5 h-5 text-rose-500" /> Weekly Progress
             </CardTitle>
           </CardHeader>
           <div className="h-64 w-full mt-6">
             <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={MOCK_DATA}>
+              <LineChart data={chartData}>
                 <defs>
                   <linearGradient id="lineGradient" x1="0" y1="0" x2="1" y2="0">
-                    <stop offset="0%" stopColor="#6366f1" />
-                    <stop offset="100%" stopColor="#a855f7" />
+                    <stop offset="0%" stopColor="#f43f5e" />
+                    <stop offset="100%" stopColor="#fb7185" />
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="rgba(255,255,255,0.05)" />
@@ -74,7 +91,7 @@ export default function PomodoroAnalytics({ stats }: { stats: any }) {
                   dataKey="minutes" 
                   stroke="url(#lineGradient)" 
                   strokeWidth={4} 
-                  dot={{ r: 4, fill: '#6366f1', strokeWidth: 2, stroke: '#fff' }}
+                  dot={{ r: 4, fill: '#f43f5e', strokeWidth: 2, stroke: '#fff' }}
                   activeDot={{ r: 8, strokeWidth: 0 }}
                 />
               </LineChart>
@@ -82,7 +99,7 @@ export default function PomodoroAnalytics({ stats }: { stats: any }) {
           </div>
         </Card>
 
-        {/* Intensity / Heatmap Concept */}
+        {/* Hourly Intensity Heatmap */}
         <Card className="border-none bg-card/50 backdrop-blur-xl shadow-2xl p-8 rounded-[3rem]">
           <CardHeader className="px-0 pt-0">
             <CardTitle className="text-xl font-black flex items-center gap-2">
@@ -90,18 +107,22 @@ export default function PomodoroAnalytics({ stats }: { stats: any }) {
             </CardTitle>
           </CardHeader>
           <div className="h-64 w-full mt-6 flex items-end justify-between gap-1">
-            {Array.from({ length: 24 }).map((_, i) => (
-              <div 
-                key={i} 
-                className="flex-1 bg-primary/10 rounded-t-sm relative group"
-                style={{ height: `${Math.random() * 80 + 10}%` }}
-              >
-                <div className="absolute inset-0 bg-primary opacity-0 group-hover:opacity-100 transition-opacity rounded-t-sm" />
-                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 bg-popover text-popover-foreground text-[10px] px-2 py-1 rounded hidden group-hover:block whitespace-nowrap">
-                  {i}:00 - High
+            {intensityData.map((d, i) => {
+              const max = Math.max(...intensityData.map(id => id.count)) || 1;
+              const height = (d.count / max) * 100;
+              return (
+                <div 
+                  key={i} 
+                  className="flex-1 bg-rose-500/10 rounded-t-sm relative group"
+                  style={{ height: `${Math.max(height, 5)}%` }}
+                >
+                  <div className={cn("absolute inset-0 bg-rose-500 rounded-t-sm transition-opacity", d.count > 0 ? "opacity-60" : "opacity-0")} />
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 bg-popover text-popover-foreground text-[10px] px-2 py-1 rounded hidden group-hover:block whitespace-nowrap z-50">
+                    {d.hour}:00 - {d.count} sessions
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
           <div className="flex justify-between mt-4 text-[8px] font-bold uppercase tracking-widest text-muted-foreground opacity-40">
             <span>12 AM</span>
