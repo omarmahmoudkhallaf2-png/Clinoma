@@ -36,6 +36,7 @@ export default function Pomodoro() {
   const [activeTab, setActiveTab] = useState<'timer' | 'mixer' | 'stats'>('timer');
   const [isFocusMode, setIsFocusMode] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
+  const [quoteIndex, setQuoteIndex] = useState(0);
   const { theme, toggleTheme } = useTheme();
 
   // Quote rotation
