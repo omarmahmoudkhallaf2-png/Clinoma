@@ -220,7 +220,10 @@ export default function Pomodoro() {
                   >
                     {mode === 'work' ? 'Deep Study Session' : 'Peaceful Break'}
                   </motion.div>
-                   <div className="text-8xl md:text-[11rem] font-black tracking-tighter tabular-nums leading-none dark:text-white text-black">
+                  <div className={cn(
+                    "text-8xl md:text-[11rem] font-black tracking-tighter tabular-nums leading-none transition-colors duration-500",
+                    isFocusMode ? "text-white" : "dark:text-white text-black"
+                  )}>
                     {formatTime(timeLeft)}
                   </div>
                   <div className="flex items-center justify-center gap-6 pt-8">
