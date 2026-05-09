@@ -4,13 +4,13 @@ import { motion } from 'framer-motion';
 import { cn } from '../../lib/utils';
 
 const AMBIENT_SOUNDS = [
-  { id: 'rain', label: 'Rain', icon: CloudRain, url: 'https://actions.google.com/sounds/v1/water/rain_on_roof.ogg' },
-  { id: 'coffee', label: 'Coffee Shop', icon: Coffee, url: 'https://actions.google.com/sounds/v1/ambiences/coffee_shop.ogg' },
-  { id: 'wind', label: 'Wind', icon: Wind, url: 'https://actions.google.com/sounds/v1/weather/wind_heavy_gusts.ogg' },
-  { id: 'fire', label: 'Fireplace', icon: Flame, url: 'https://actions.google.com/sounds/v1/ambiences/fireplace_crackling.ogg' },
+  { id: 'rain', label: 'Rain', icon: CloudRain, url: 'https://www.soundjay.com/nature/sounds/rain-01.mp3' },
+  { id: 'coffee', label: 'Coffee Shop', icon: Coffee, url: 'https://www.soundjay.com/misc/sounds/coffee-shop-1.mp3' },
+  { id: 'wind', label: 'Wind', icon: Wind, url: 'https://www.soundjay.com/nature/sounds/wind-01.mp3' },
+  { id: 'fire', label: 'Fireplace', icon: Flame, url: 'https://www.soundjay.com/household/sounds/fireplace-1.mp3' },
   { id: 'typing', label: 'Keyboard', icon: Keyboard, url: 'https://www.soundjay.com/mechanical/sounds/mechanical-keyboard-1.mp3' },
-  { id: 'night', label: 'Night', icon: Moon, url: 'https://actions.google.com/sounds/v1/ambiences/night_ambience.ogg' },
-  { id: 'waves', label: 'Ocean', icon: Waves, url: 'https://actions.google.com/sounds/v1/water/ocean_waves.ogg' },
+  { id: 'night', label: 'Night', icon: Moon, url: 'https://www.soundjay.com/nature/sounds/cricket-chirp-1.mp3' },
+  { id: 'waves', label: 'Ocean', icon: Waves, url: 'https://www.soundjay.com/nature/sounds/ocean-wave-1.mp3' },
 ];
 
 interface MixerProps {

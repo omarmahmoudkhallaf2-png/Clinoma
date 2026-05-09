@@ -87,7 +87,7 @@ export function usePomodoro(userId: string | undefined) {
     const updated = { ...settings, ...newSettings };
     setSettings(updated);
     if (userId) {
-      await updateDoc(doc(db, 'users', userId), { pomodoroSettings: updated });
+      await setDoc(doc(db, 'users', userId), { pomodoroSettings: updated }, { merge: true });
     }
   };
 
@@ -122,12 +122,16 @@ export function usePomodoro(userId: string | undefined) {
         };
       });
 
-      await updateDoc(statsRef, {
-        'pomodoroStats.totalStudyTime': increment(minutes),
-        'pomodoroStats.sessionsCompleted': increment(1),
-        [`pomodoroStats.hourlyIntensity.${hour}`]: increment(1),
-        'pomodoroStats.lastActiveDate': today,
-      });
+      await setDoc(statsRef, {
+        pomodoroStats: {
+          totalStudyTime: increment(minutes),
+          sessionsCompleted: increment(1),
+          hourlyIntensity: {
+            [hour]: increment(1)
+          },
+          lastActiveDate: today
+        }
+      }, { merge: true });
 
       // Switch mode
       if (newSessionCount % settings.sessionsUntilLongBreak === 0) {
