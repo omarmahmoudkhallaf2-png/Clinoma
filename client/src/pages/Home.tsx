@@ -39,8 +39,8 @@ export default function Home() {
       <nav className="fixed top-0 w-full z-[100] bg-background/80 backdrop-blur-xl border-b border-border px-6 py-4">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="flex items-center gap-3 group cursor-pointer" onClick={() => navigate('/')}>
-            <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-lg shadow-primary/20 overflow-hidden">
-              <img src="/logo.png" alt="Clinoma Logo" className="w-6 h-6 object-contain brightness-0 invert" />
+            <div className="group-hover:scale-110 transition-transform duration-500">
+              <img src="/favicon.svg" alt="Clinoma Logo" className="w-10 h-10 object-contain" />
             </div>
             <span className="text-2xl font-black tracking-tighter">CLINOMA</span>
           </div>
@@ -135,8 +135,8 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
           <div className="col-span-2 space-y-6">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center overflow-hidden">
-                <img src="/logo.png" alt="Clinoma Logo" className="w-6 h-6 object-contain brightness-0 invert" />
+              <div className="hover:scale-110 transition-transform duration-500">
+                <img src="/favicon.svg" alt="Clinoma Logo" className="w-10 h-10 object-contain" />
               </div>
               <span className="text-2xl font-black tracking-tighter">CLINOMA</span>
             </div>

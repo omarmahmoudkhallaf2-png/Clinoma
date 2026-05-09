@@ -103,8 +103,8 @@ export default function Sidebar({ isOpen = false, setIsOpen = (_: boolean) => { 
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center gap-3 px-2 mb-10 group cursor-pointer" onClick={() => navigate('/dashboard')}>
               <div className="relative">
-                <div className="p-3 bg-primary rounded-2xl shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform duration-500 overflow-hidden">
-                  <img src="/logo.png" alt="Clinoma Logo" className="w-8 h-8 object-contain brightness-0 invert" />
+                <div className="group-hover:scale-110 transition-transform duration-500">
+                  <img src="/favicon.svg" alt="Clinoma Logo" className="w-10 h-10 object-contain" />
                 </div>
                 <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full scale-0 group-hover:scale-150 transition-transform duration-500" />
               </div>

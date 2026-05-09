@@ -48,8 +48,8 @@ export default function Login() {
         <div className="bg-card border border-border rounded-2xl shadow-2xl p-10 text-center animate-in fade-in zoom-in-95 duration-500">
           {/* Logo */}
           <div className="flex items-center justify-center gap-2 mb-8">
-            <div className="p-4 bg-primary text-white rounded-3xl shadow-2xl shadow-primary/30 group-hover:scale-110 transition-transform duration-500 overflow-hidden">
-              <img src="/logo.png" alt="Clinoma Logo" className="w-10 h-10 object-contain brightness-0 invert" />
+            <div className="group-hover:scale-110 transition-transform duration-500">
+              <img src="/favicon.svg" alt="Clinoma Logo" className="w-16 h-16 object-contain" />
             </div>
             <span className="text-2xl font-extrabold tracking-tight">CLINOMA</span>
           </div>

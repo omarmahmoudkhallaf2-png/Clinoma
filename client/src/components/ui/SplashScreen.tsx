@@ -24,36 +24,23 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
           {/* Animated Background Shapes */}
           <motion.div 
             animate={{ 
-              scale: [1, 1.2, 1],
+              scale: [1, 1.5, 1],
               rotate: [0, 90, 0],
-              opacity: [0.1, 0.2, 0.1]
+              opacity: [0.15, 0.3, 0.15]
             }}
-            transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-            className="absolute w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px]"
+            transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+            className="absolute w-[800px] h-[800px] bg-primary/20 rounded-full blur-[150px]"
           />
           
-          <div className="relative flex flex-col items-center">
-            {/* Logo Animation */}
-            <motion.div
-              initial={{ scale: 0.5, opacity: 0, y: 20 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              transition={{ 
-                duration: 0.8,
-                ease: [0, 0.71, 0.2, 1.01]
-              }}
-              className="mb-8"
-            >
-              <img src="/logo.png" alt="Logo" className="w-24 h-24 object-contain" />
-            </motion.div>
-
+          <div className="relative flex flex-col items-center scale-125 md:scale-150">
             {/* Site Name Animation */}
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
+              transition={{ delay: 0.2, duration: 0.8 }}
               className="text-center"
             >
-              <h1 className="text-5xl font-black tracking-tighter text-foreground mb-4">
+              <h1 className="text-7xl font-black tracking-tighter text-foreground mb-6">
                 {Array.from("CLINOMA").map((letter, i) => (
                   <motion.span
                     key={i}
@@ -75,9 +62,9 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
 
               <motion.p
                 initial={{ opacity: 0 }}
-                animate={{ opacity: 0.6 }}
-                transition={{ delay: 1.5, duration: 1 }}
-                className="text-xs font-bold uppercase tracking-[0.4em] text-primary"
+                animate={{ opacity: 0.8 }}
+                transition={{ delay: 1.2, duration: 1 }}
+                className="text-sm font-bold uppercase tracking-[0.5em] text-primary"
               >
                 Intelligence Medical Hub
               </motion.p>
