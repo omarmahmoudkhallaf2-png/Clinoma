@@ -12,6 +12,7 @@ import { usePomodoro } from '../hooks/usePomodoro';
 import { Button } from '../components/ui/Button';
 import { Card, CardContent } from '../components/ui/Card';
 import { cn } from '../lib/utils';
+import { useTheme } from '../context/ThemeContext';
 import AmbientMixer from '../components/pomodoro/AmbientMixer';
 import PomodoroAnalytics from '../components/pomodoro/PomodoroAnalytics';
 
@@ -35,7 +36,7 @@ export default function Pomodoro() {
   const [activeTab, setActiveTab] = useState<'timer' | 'mixer' | 'stats'>('timer');
   const [isFocusMode, setIsFocusMode] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
-  const [quoteIndex, setQuoteIndex] = useState(0);
+  const { theme, toggleTheme } = useTheme();
 
   // Quote rotation
   useEffect(() => {
@@ -54,10 +55,11 @@ export default function Pomodoro() {
       }
       if (e.code === 'KeyF') setIsFocusMode(prev => !prev);
       if (e.code === 'KeyR') resetTimer();
+      if (e.code === 'KeyL') toggleTheme();
     };
     window.addEventListener('keydown', handleKey);
     return () => window.removeEventListener('keydown', handleKey);
-  }, [toggleTimer, resetTimer]);
+  }, [toggleTimer, resetTimer, toggleTheme]);
 
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
@@ -130,6 +132,9 @@ export default function Pomodoro() {
             </div>
 
             <div className="flex items-center gap-2">
+              <Button variant="outline" size="icon" onClick={toggleTheme} className="rounded-2xl">
+                {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+              </Button>
               <Button variant="outline" size="icon" onClick={() => setShowSettings(true)} className="rounded-2xl">
                 <Settings className="w-5 h-5" />
               </Button>
