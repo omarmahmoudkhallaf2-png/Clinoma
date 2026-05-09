@@ -23,8 +23,18 @@ export default function AppConfig() {
 
   useEffect(() => {
     const fetchConfig = async () => {
-      const snap = await getDoc(doc(db, 'settings', 'config'));
-      if (snap.exists()) setConfig(snap.data());
+      const snap = await getDoc(doc(db, 'settings', 'general'));
+      if (snap.exists()) {
+        const data = snap.data();
+        setConfig((prev: any) => ({
+          ...prev,
+          general: {
+            telegramUser: data.telegramUser || '',
+            whatsappNumber: data.whatsappNumber || '',
+            preferredContact: data.preferredContact || 'telegram'
+          }
+        }));
+      }
       setLoading(false);
     };
     fetchConfig();
@@ -33,7 +43,11 @@ export default function AppConfig() {
   const handleSave = async () => {
     setLoading(true);
     try {
-      await setDoc(doc(db, 'settings', 'config'), config);
+      await setDoc(doc(db, 'settings', 'general'), {
+        telegramUser: config.general.telegramUser,
+        whatsappNumber: config.general.whatsappNumber,
+        preferredContact: config.general.preferredContact
+      }, { merge: true });
       sendAdminNotification('OS Configuration Updated', 'zap');
     } catch (err) {
       sendAdminNotification('Failed to update config', 'error');

@@ -35,7 +35,9 @@ import AIExamGenerator from "./pages/AIExamGenerator";
 import { CommandPalette } from "./components/ui/CommandPalette";
 import { ThemeProvider } from "./context/ThemeContext";
 import SplashScreen from "./components/ui/SplashScreen";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { db } from "./lib/firebase";
+import { doc, setDoc } from "firebase/firestore";
 
 const ProtectedRoute = ({ children, requireAdmin = false, useLayout = true }: { children: ReactElement, requireAdmin?: boolean, useLayout?: boolean }) => {
   const { user, userRole, loading, needsProfileCompletion } = useAuth();
@@ -107,6 +109,22 @@ const AnimatedRoutes = () => {
 
 export default function App() {
   const [showSplash, setShowSplash] = useState(true);
+
+  useEffect(() => {
+    // Force update contact info in Firestore to ensure it works for everyone
+    const syncContactInfo = async () => {
+      try {
+        await setDoc(doc(db, 'settings', 'general'), {
+          telegramUser: 'ClinomaOwner',
+          whatsappNumber: '01040981906',
+          preferredContact: 'telegram'
+        }, { merge: true });
+      } catch (err) {
+        console.error("Sync error:", err);
+      }
+    };
+    syncContactInfo();
+  }, []);
 
   return (
     <ThemeProvider>
