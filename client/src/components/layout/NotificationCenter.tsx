@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Bell, X, Check, Info, AlertTriangle, AlertCircle, Trash2 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
-import { subscribeToNotifications, markAsRead, markAllAsRead, Notification } from '../../lib/notificationService';
+import { subscribeToNotifications, markAsRead, markAllAsRead, type Notification } from '../../lib/notificationService';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '../../lib/utils';
 
