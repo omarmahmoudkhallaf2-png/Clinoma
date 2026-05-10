@@ -31,39 +31,56 @@ export default function DataThemes() {
   }, []);
 
   const filteredItems = () => {
-    if (step === 'themes') return themes.filter(t => t.name.toLowerCase().includes(searchQuery.toLowerCase()));
-    if (step === 'modules') return selectedTheme.modules?.filter((m: any) => m.name.toLowerCase().includes(searchQuery.toLowerCase())) || [];
-    if (step === 'categories') return selectedModule.categories?.filter((c: any) => c.name.toLowerCase().includes(searchQuery.toLowerCase())) || [];
-    if (step === 'chapters') return selectedCategory.chapters?.filter((ch: any) => ch.name.toLowerCase().includes(searchQuery.toLowerCase())) || [];
-    if (step === 'divisions') return selectedChapter.divisions?.filter((d: any) => d.name.toLowerCase().includes(searchQuery.toLowerCase())) || [];
+    const search = searchQuery.toLowerCase();
+    if (step === 'themes') return themes.filter(t => t.name.toLowerCase().includes(search));
+    
+    if (step === 'modules') {
+      const mods = selectedTheme.modules || [];
+      // Fallback: If no modules but has categories, skip modules step? 
+      // Actually handled in onClick logic to jump steps.
+      return mods.filter((m: any) => m.name.toLowerCase().includes(search));
+    }
+    
+    if (step === 'categories') {
+      // Handle both new structure (selectedModule.categories) and old structure (selectedTheme.categories)
+      const cats = selectedModule ? (selectedModule.categories || []) : (selectedTheme.categories || []);
+      return cats.filter((c: any) => c.name.toLowerCase().includes(search));
+    }
+    
+    if (step === 'chapters') {
+      return (selectedCategory?.chapters || []).filter((ch: any) => ch.name.toLowerCase().includes(search));
+    }
+    
+    if (step === 'divisions') {
+      return (selectedChapter?.divisions || []).filter((d: any) => d.name.toLowerCase().includes(search));
+    }
+    
     return [];
   };
 
   const handleBack = () => {
     if (step === 'divisions') setStep('chapters');
     else if (step === 'chapters') setStep('categories');
-    else if (step === 'categories') setStep('modules');
+    else if (step === 'categories') {
+      if (selectedTheme.modules && selectedTheme.modules.length > 0) setStep('modules');
+      else setStep('themes');
+    }
     else if (step === 'modules') setStep('themes');
     else navigate('/dashboard');
   };
 
   const startQuiz = (divisionId: string) => {
-    navigate(`/quiz?themeId=${selectedTheme.id}&moduleId=${selectedModule.id}&categoryId=${selectedCategory.id}&chapterId=${selectedChapter.id}&divisionId=${divisionId}`);
+    navigate(`/quiz?themeId=${selectedTheme.id}&moduleId=${selectedModule?.id || ''}&categoryId=${selectedCategory.id}&chapterId=${selectedChapter.id}&divisionId=${divisionId}`);
   };
 
   return (
     <div className="min-h-screen bg-background pb-20 overflow-hidden relative">
-      {/* Header Compact */}
       <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50 px-4 md:px-6 py-3">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <Button variant="ghost" size="icon" onClick={handleBack} className="rounded-xl h-9 w-9">
-              <ArrowLeft className="w-5 h-5" />
-            </Button>
+            <Button variant="ghost" size="icon" onClick={handleBack} className="rounded-xl h-9 w-9"><ArrowLeft className="w-5 h-5" /></Button>
             <div>
-              <h1 className="text-lg font-black tracking-tight flex items-center gap-2">
-                <Database className="w-4 h-4 text-primary" /> تيمات الداتا
-              </h1>
+              <h1 className="text-lg font-black tracking-tight flex items-center gap-2"><Database className="w-4 h-4 text-primary" /> تيمات الداتا</h1>
               <div className="flex items-center gap-1.5 text-[7px] font-bold text-muted-foreground uppercase tracking-widest mt-0.5">
                 <span className={cn(step === 'themes' ? "text-primary" : "")}>Themes</span>
                 <ChevronRight className="w-2 h-2" />
@@ -89,7 +106,6 @@ export default function DataThemes() {
           <div className="flex flex-col items-center justify-center py-40 opacity-50"><Database className="w-12 h-12 text-primary animate-pulse" /></div>
         ) : (
           <div className="space-y-8">
-            {/* Context Card Compact */}
             <AnimatePresence mode="wait">
               {step !== 'themes' && (
                 <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="bg-primary/5 border border-primary/10 p-5 rounded-[2rem] flex flex-col md:flex-row justify-between items-center gap-4">
@@ -97,7 +113,7 @@ export default function DataThemes() {
                     <div className="w-12 h-12 bg-primary text-white rounded-2xl flex items-center justify-center shadow-lg shadow-primary/10"><Box className="w-6 h-6" /></div>
                     <div>
                       <p className="text-[8px] font-black uppercase tracking-widest text-primary">Path</p>
-                      <h2 className="text-xl md:text-2xl font-black tracking-tighter">
+                      <h2 className="text-xl md:text-2xl font-black tracking-tighter truncate max-w-md">
                         {selectedTheme?.name} 
                         {selectedModule && ` / ${selectedModule.name}`}
                         {selectedCategory && ` / ${selectedCategory.name}`}
@@ -110,7 +126,6 @@ export default function DataThemes() {
               )}
             </AnimatePresence>
 
-            {/* Grid Compact */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               {filteredItems().map((item: any, i: number) => (
                 <motion.button
@@ -119,7 +134,11 @@ export default function DataThemes() {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: i * 0.02 }}
                   onClick={() => {
-                    if (step === 'themes') { setSelectedTheme(item); setStep('modules'); }
+                    if (step === 'themes') { 
+                      setSelectedTheme(item); 
+                      if (item.modules && item.modules.length > 0) setStep('modules');
+                      else setStep('categories');
+                    }
                     else if (step === 'modules') { setSelectedModule(item); setStep('categories'); }
                     else if (step === 'categories') { setSelectedCategory(item); setStep('chapters'); }
                     else if (step === 'chapters') { setSelectedChapter(item); setStep('divisions'); }
@@ -146,7 +165,7 @@ export default function DataThemes() {
                     <div className="text-center">
                       <h3 className="text-lg font-black tracking-tight leading-tight">{item.name}</h3>
                       <p className="text-[10px] font-bold text-muted-foreground mt-1 opacity-60">
-                        {step === 'themes' ? `${item.modules?.length || 0} Modules` : 
+                        {step === 'themes' ? `${item.modules?.length || item.categories?.length || 0} Items` : 
                          step === 'modules' ? `${item.categories?.length || 0} Categories` : 
                          step === 'categories' ? `${item.chapters?.length || 0} Chapters` : 
                          step === 'chapters' ? `${item.divisions?.length || 0} Divisions` :

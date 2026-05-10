@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Save, X, ChevronRight, ChevronLeft, Check, AlertCircle, Clock, Wand2, Zap, Shield, ImagePlus } from 'lucide-react';
+import { Save, X, ChevronRight, ChevronLeft, Check, AlertCircle, Clock, Wand2, Zap, Shield, ImagePlus, Hash, FileStack } from 'lucide-react';
 import { db } from '../../lib/firebase';
 import { collection, query, getDocs, where } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
@@ -92,6 +92,8 @@ export default function QuestionWizard({ initialData, onSave, onCancel }: Questi
     categoryId: initialData?.categoryId || '',
     chapterId: initialData?.chapterId || '',
     divisionId: initialData?.divisionId || '',
+    format: initialData?.format || 'mcq',
+    essayAnswer: initialData?.essayAnswer || '',
   });
 
   useEffect(() => {
@@ -327,6 +329,28 @@ export default function QuestionWizard({ initialData, onSave, onCancel }: Questi
         {step === 2 && (
           <div className="space-y-8 animate-in slide-in-from-right-4 duration-300">
             <h3 className="text-2xl font-black">الخطوة 2: محتوى السؤال</h3>
+            
+            <div className="flex gap-4 p-2 bg-secondary/20 rounded-2xl border-2 border-border mb-6">
+              <button 
+                onClick={() => setFormData(prev => ({ ...prev, format: 'mcq' }))}
+                className={cn(
+                  "flex-1 py-3 rounded-xl font-black transition-all flex items-center justify-center gap-2",
+                  formData.format === 'mcq' ? "bg-primary text-white shadow-lg" : "text-muted-foreground hover:bg-secondary/40"
+                )}
+              >
+                <Hash className="w-4 h-4" /> MCQ (اختياري)
+              </button>
+              <button 
+                onClick={() => setFormData(prev => ({ ...prev, format: 'essay' }))}
+                className={cn(
+                  "flex-1 py-3 rounded-xl font-black transition-all flex items-center justify-center gap-2",
+                  formData.format === 'essay' ? "bg-primary text-white shadow-lg" : "text-muted-foreground hover:bg-secondary/40"
+                )}
+              >
+                <FileStack className="w-4 h-4" /> Essay (مقالي)
+              </button>
+            </div>
+
             <div className="space-y-4">
               <label className="text-sm font-black uppercase tracking-widest text-muted-foreground ml-1">نص السؤال</label>
               <textarea name="text" value={formData.text} onChange={handleChange} className="w-full h-40 p-5 bg-secondary/30 border-2 border-border rounded-3xl outline-none focus:border-primary font-bold text-lg text-right" dir="rtl" placeholder="اكتب السؤال الطبي هنا..." />
@@ -352,7 +376,6 @@ export default function QuestionWizard({ initialData, onSave, onCancel }: Questi
                   <>
                     <div className="w-10 h-10 border-4 border-primary border-t-transparent rounded-full animate-spin mb-2"></div>
                     <p className="font-black text-primary animate-pulse text-lg">جاري رفع الصورة...</p>
-                    <p className="text-muted-foreground font-bold text-sm">برجاء الانتظار ثواني معدودة</p>
                   </>
                 ) : formData.imageUrl ? (
                   <div className="relative w-full flex items-center justify-center">
@@ -361,45 +384,47 @@ export default function QuestionWizard({ initialData, onSave, onCancel }: Questi
                       type="button"
                       onClick={(e) => { e.stopPropagation(); setFormData(prev => ({ ...prev, imageUrl: '' })); }}
                       className="absolute -top-3 -right-3 p-2 bg-destructive text-white rounded-full hover:scale-110 transition-transform shadow-xl"
-                      title="حذف الصورة"
                     >
                       <X className="w-5 h-5" />
                     </button>
                   </div>
                 ) : (
                   <>
-                    <div className="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center group-hover:scale-110 transition-transform mb-2">
-                      <ImagePlus className="w-8 h-8" />
-                    </div>
-                    <p className="font-black text-lg">اضغط هنا أو قم بلصق الصورة <kbd className="font-mono bg-background px-2 py-1 rounded-lg border border-border text-sm mx-1 shadow-sm">Ctrl+V</kbd></p>
-                    <p className="text-muted-foreground font-bold text-sm">أو اضغط لاختيار ملف من جهازك</p>
-                    <input 
-                      type="file" 
-                      accept="image/*" 
-                      className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" 
-                      onChange={(e) => {
-                        const file = e.target.files?.[0];
-                        if (file) handleImageUpload(file);
-                        e.target.value = '';
-                      }}
-                    />
+                    <div className="w-12 h-12 bg-primary/10 text-primary rounded-full flex items-center justify-center mb-2"><ImagePlus className="w-6 h-6" /></div>
+                    <p className="font-black">اسحب الصورة أو اضغط للرفع</p>
                   </>
                 )}
+                <input type="file" accept="image/*" className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" onChange={(e) => { const file = e.target.files?.[0]; if (file) handleImageUpload(file); e.target.value = ''; }} />
               </div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {(formData.options || []).map((opt, i) => (
-                <div key={i} className="flex items-center gap-3">
-                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center font-black ${formData.correctAnswer === opt && opt !== '' ? 'bg-emerald-500 text-white' : 'bg-secondary text-muted-foreground'}`}>
-                    {String.fromCharCode(65 + i)}
+
+            {formData.format === 'mcq' ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {(formData.options || []).map((opt, i) => (
+                  <div key={i} className="flex items-center gap-3">
+                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center font-black ${formData.correctAnswer === opt && opt !== '' ? 'bg-emerald-500 text-white' : 'bg-secondary text-muted-foreground'}`}>
+                      {String.fromCharCode(65 + i)}
+                    </div>
+                    <input value={opt} onChange={e => handleOptionChange(i, e.target.value)} className="flex-1 p-4 bg-secondary/30 border-2 border-border rounded-2xl outline-none focus:border-primary font-bold" placeholder={`Option ${i+1}`} />
+                    <button onClick={() => setFormData(prev => ({ ...prev, correctAnswer: opt }))} className={`p-3 rounded-xl transition-all ${formData.correctAnswer === opt && opt !== '' ? 'bg-emerald-500/20 text-emerald-500' : 'bg-secondary text-muted-foreground hover:bg-emerald-500/10 hover:text-emerald-500'}`}>
+                      <Check />
+                    </button>
                   </div>
-                  <input value={opt} onChange={e => handleOptionChange(i, e.target.value)} className="flex-1 p-4 bg-secondary/30 border-2 border-border rounded-2xl outline-none focus:border-primary font-bold" placeholder={`Option ${i+1}`} />
-                  <button onClick={() => setFormData(prev => ({ ...prev, correctAnswer: opt }))} className={`p-3 rounded-xl transition-all ${formData.correctAnswer === opt && opt !== '' ? 'bg-emerald-500/20 text-emerald-500' : 'bg-secondary text-muted-foreground hover:bg-emerald-500/10 hover:text-emerald-500'}`}>
-                    <Check />
-                  </button>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            ) : (
+              <div className="space-y-4">
+                <label className="text-sm font-black uppercase tracking-widest text-muted-foreground ml-1">الإجابة النموذجية (Model Answer)</label>
+                <textarea 
+                  name="essayAnswer" 
+                  value={formData.essayAnswer} 
+                  onChange={handleChange} 
+                  className="w-full h-64 p-5 bg-emerald-500/5 border-2 border-emerald-500/20 rounded-3xl outline-none focus:border-emerald-500 font-bold text-lg" 
+                  placeholder="اكتب الإجابة النموذجية للسؤال المقالي هنا..." 
+                />
+              </div>
+            )}
+
             <div className="space-y-4">
               <label className="text-sm font-black uppercase tracking-widest text-muted-foreground ml-1">التفسير العلمي (Explanation)</label>
               <textarea name="explanation" value={formData.explanation} onChange={handleChange} className="w-full h-32 p-5 bg-secondary/30 border-2 border-border rounded-3xl outline-none focus:border-primary font-bold" placeholder="اشرح الإجابة الصحيحة..." />

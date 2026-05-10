@@ -19,6 +19,8 @@ export interface Question {
   categoryId?: string;
   chapterId?: string;
   divisionId?: string;
+  format?: 'mcq' | 'essay';
+  essayAnswer?: string;
   createdAt?: any;
   version?: number;
   status?: 'draft' | 'published' | 'review';
