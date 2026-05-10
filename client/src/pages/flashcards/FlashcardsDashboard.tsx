@@ -145,6 +145,7 @@ const FlashcardsDashboard = () => {
           <p className="text-muted-foreground mt-2 font-medium">Master your medical knowledge with intelligent spaced repetition.</p>
         </div>
         
+        {/* Disabled for now - only study existing decks
         <div className="flex gap-4">
           <Link to="/flashcards/import" className="flex items-center gap-2 px-4 py-2 rounded-xl bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-all font-medium border border-border/50">
             <Upload size={18} />
@@ -155,6 +156,7 @@ const FlashcardsDashboard = () => {
             New Deck
           </Link>
         </div>
+        */}
       </div>
 
       {/* Stats Row */}
@@ -515,9 +517,11 @@ const FlashcardsDashboard = () => {
               <h3 className="text-lg font-medium">No personal decks found</h3>
               <p className="text-sm text-muted-foreground">Create your own or add an official deck above.</p>
             </div>
+            {/* 
             <Link to="/flashcards/create" className="px-6 py-2 rounded-xl bg-primary text-primary-foreground font-medium">
               Create New Deck
             </Link>
+            */}
           </div>
         )}
       </div>
