@@ -110,6 +110,7 @@ const AnimatedRoutes = () => {
 };
 
 export default function App() {
+  const { userRole } = useAuth();
   const [showSplash, setShowSplash] = useState(true);
 
   useEffect(() => {
