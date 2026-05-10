@@ -181,13 +181,13 @@ export default function Pomodoro() {
       {/* Focus Mode Exit Trigger */}
       {isFocusMode && (
         <motion.button
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.2 }}
-          whileHover={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
           onClick={() => setIsFocusMode(false)}
-          className="fixed bottom-12 left-1/2 -translate-x-1/2 z-[100] px-6 py-3 bg-white/5 hover:bg-white/20 backdrop-blur-xl border border-white/10 rounded-full text-white/40 hover:text-white font-black text-sm gap-2 flex items-center transition-all"
+          className="fixed bottom-10 left-1/2 -translate-x-1/2 z-[100] px-6 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-xl border border-white/20 rounded-full text-white font-black text-sm gap-2 flex items-center transition-all shadow-2xl md:opacity-40 md:hover:opacity-100"
         >
-          <Minimize2 className="w-4 h-4" /> Press ESC or Click to Exit Focus
+          <Minimize2 className="w-4 h-4" /> 
+          <span>Exit Focus Mode</span>
         </motion.button>
       )}
 
