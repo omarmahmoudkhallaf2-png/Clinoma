@@ -21,6 +21,7 @@ export default function Quiz() {
   const searchParams = new URLSearchParams(location.search);
   
   const themeId = searchParams.get('themeId');
+  const moduleId = searchParams.get('moduleId');
   const categoryId = searchParams.get('categoryId');
   const chapterId = searchParams.get('chapterId');
   const divisionId = searchParams.get('divisionId');
@@ -65,6 +66,7 @@ export default function Quiz() {
             q = query(
               collection(db, 'questions'), 
               where('themeId', '==', themeId),
+              where('moduleId', '==', moduleId),
               where('categoryId', '==', categoryId),
               where('chapterId', '==', chapterId),
               where('divisionId', '==', divisionId)
@@ -73,6 +75,7 @@ export default function Quiz() {
             q = query(
               collection(db, 'questions'), 
               where('themeId', '==', themeId),
+              where('moduleId', '==', moduleId),
               where('categoryId', '==', categoryId),
               where('chapterId', '==', chapterId)
             );
@@ -112,7 +115,7 @@ export default function Quiz() {
       }
     };
     fetchQuestions();
-  }, [user, courseId, subscribed, themeId, categoryId, chapterId, divisionId]);
+  }, [user, courseId, subscribed, themeId, moduleId, categoryId, chapterId, divisionId]);
 
   useEffect(() => {
     if (!isTimed || isFinished || questions.length === 0) return;

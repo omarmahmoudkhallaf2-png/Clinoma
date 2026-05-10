@@ -88,6 +88,7 @@ export default function QuestionWizard({ initialData, onSave, onCancel }: Questi
     },
     ...initialData,
     themeId: initialData?.themeId || '',
+    moduleId: initialData?.moduleId || '',
     categoryId: initialData?.categoryId || '',
     chapterId: initialData?.chapterId || '',
     divisionId: initialData?.divisionId || '',
@@ -268,10 +269,21 @@ export default function QuestionWizard({ initialData, onSave, onCancel }: Questi
                   </select>
                 </div>
                 <div className="space-y-3">
+                  <label className="text-sm font-black uppercase tracking-widest text-muted-foreground ml-1">المديول (Module)</label>
+                  <select name="moduleId" value={formData.moduleId} onChange={handleChange} className="w-full p-4 bg-secondary/30 border-2 border-border rounded-2xl outline-none focus:border-primary font-black">
+                    <option value="">اختر مديول...</option>
+                    {dataThemes.find(t => t.id === formData.themeId)?.modules?.map((m: any) => (
+                      <option key={m.id} value={m.id}>{m.name}</option>
+                    ))}
+                  </select>
+                </div>
+                <div className="space-y-3">
                   <label className="text-sm font-black uppercase tracking-widest text-muted-foreground ml-1">التصنيف (Category)</label>
                   <select name="categoryId" value={formData.categoryId} onChange={handleChange} className="w-full p-4 bg-secondary/30 border-2 border-border rounded-2xl outline-none focus:border-primary font-black">
                     <option value="">اختر تصنيف...</option>
-                    {dataThemes.find(t => t.id === formData.themeId)?.categories.map((c: any) => (
+                    {dataThemes.find(t => t.id === formData.themeId)
+                      ?.modules?.find((m: any) => m.id === formData.moduleId)
+                      ?.categories?.map((c: any) => (
                       <option key={c.id} value={c.id}>{c.name}</option>
                     ))}
                   </select>
@@ -280,7 +292,10 @@ export default function QuestionWizard({ initialData, onSave, onCancel }: Questi
                   <label className="text-sm font-black uppercase tracking-widest text-muted-foreground ml-1">الشابتر (Chapter)</label>
                   <select name="chapterId" value={formData.chapterId} onChange={handleChange} className="w-full p-4 bg-secondary/30 border-2 border-border rounded-2xl outline-none focus:border-primary font-black">
                     <option value="">اختر شابتر...</option>
-                    {dataThemes.find(t => t.id === formData.themeId)?.categories.find((c: any) => c.id === formData.categoryId)?.chapters.map((ch: any) => (
+                    {dataThemes.find(t => t.id === formData.themeId)
+                      ?.modules?.find((m: any) => m.id === formData.moduleId)
+                      ?.categories?.find((c: any) => c.id === formData.categoryId)
+                      ?.chapters?.map((ch: any) => (
                       <option key={ch.id} value={ch.id}>{ch.name}</option>
                     ))}
                   </select>
@@ -290,8 +305,9 @@ export default function QuestionWizard({ initialData, onSave, onCancel }: Questi
                   <select name="divisionId" value={formData.divisionId} onChange={handleChange} className="w-full p-4 bg-secondary/30 border-2 border-border rounded-2xl outline-none focus:border-primary font-black">
                     <option value="">اختر التقسيمة...</option>
                     {dataThemes.find(t => t.id === formData.themeId)
-                      ?.categories.find((c: any) => c.id === formData.categoryId)
-                      ?.chapters.find((ch: any) => ch.id === formData.chapterId)
+                      ?.modules?.find((m: any) => m.id === formData.moduleId)
+                      ?.categories?.find((c: any) => c.id === formData.categoryId)
+                      ?.chapters?.find((ch: any) => ch.id === formData.chapterId)
                       ?.divisions?.map((d: any) => (
                       <option key={d.id} value={d.id}>{d.name}</option>
                     ))}

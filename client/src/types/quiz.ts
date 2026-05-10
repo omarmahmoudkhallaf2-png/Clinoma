@@ -15,6 +15,7 @@ export interface Question {
   showInFree?: boolean;
   isPremium?: boolean;
   themeId?: string;
+  moduleId?: string;
   categoryId?: string;
   chapterId?: string;
   divisionId?: string;
