@@ -2,22 +2,22 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Database, ChevronRight, Folder, Hash, 
-  ArrowLeft, Search, Sparkles, Brain, Zap, Clock, Star
+  ArrowLeft, Search, Sparkles, Brain, FileStack
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { db } from '../lib/firebase';
 import { collection, query, getDocs, orderBy } from 'firebase/firestore';
 import { Button } from '../components/ui/Button';
-import { Card } from '../components/ui/Card';
 import { cn } from '../lib/utils';
 
 export default function DataThemes() {
   const navigate = useNavigate();
   const [themes, setThemes] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
-  const [step, setStep] = useState<'themes' | 'categories' | 'chapters'>('themes');
+  const [step, setStep] = useState<'themes' | 'categories' | 'chapters' | 'divisions'>('themes');
   const [selectedTheme, setSelectedTheme] = useState<any>(null);
   const [selectedCategory, setSelectedCategory] = useState<any>(null);
+  const [selectedChapter, setSelectedChapter] = useState<any>(null);
   const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
@@ -39,17 +39,21 @@ export default function DataThemes() {
     if (step === 'chapters') {
       return selectedCategory.chapters.filter((ch: any) => ch.name.toLowerCase().includes(searchQuery.toLowerCase()));
     }
+    if (step === 'divisions') {
+      return selectedChapter.divisions?.filter((d: any) => d.name.toLowerCase().includes(searchQuery.toLowerCase())) || [];
+    }
     return [];
   };
 
   const handleBack = () => {
-    if (step === 'chapters') setStep('categories');
+    if (step === 'divisions') setStep('chapters');
+    else if (step === 'chapters') setStep('categories');
     else if (step === 'categories') setStep('themes');
     else navigate('/dashboard');
   };
 
-  const startQuiz = (chapterId: string) => {
-    navigate(`/quiz?themeId=${selectedTheme.id}&categoryId=${selectedCategory.id}&chapterId=${chapterId}`);
+  const startQuiz = (divisionId: string) => {
+    navigate(`/quiz?themeId=${selectedTheme.id}&categoryId=${selectedCategory.id}&chapterId=${selectedChapter.id}&divisionId=${divisionId}`);
   };
 
   return (
@@ -75,6 +79,8 @@ export default function DataThemes() {
                 <span className={cn(step === 'categories' ? "text-primary" : "")}>Categories</span>
                 <ChevronRight className="w-3 h-3" />
                 <span className={cn(step === 'chapters' ? "text-primary" : "")}>Chapters</span>
+                <ChevronRight className="w-3 h-3" />
+                <span className={cn(step === 'divisions' ? "text-primary" : "")}>Divisions</span>
               </div>
             </div>
           </div>
@@ -119,8 +125,10 @@ export default function DataThemes() {
                     </div>
                     <div>
                       <p className="text-xs font-black uppercase tracking-widest text-primary mb-1">Current selection</p>
-                      <h2 className="text-4xl font-black tracking-tighter">
-                        {selectedTheme?.name} {selectedCategory && `/ ${selectedCategory.name}`}
+                      <h2 className="text-3xl md:text-4xl font-black tracking-tighter">
+                        {selectedTheme?.name} 
+                        {selectedCategory && ` / ${selectedCategory.name}`}
+                        {selectedChapter && ` / ${selectedChapter.name}`}
                       </h2>
                     </div>
                   </div>
@@ -134,6 +142,7 @@ export default function DataThemes() {
               )}
             </AnimatePresence>
 
+            {/* Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredItems().map((item: any, i: number) => (
                 <motion.button
@@ -148,6 +157,9 @@ export default function DataThemes() {
                     } else if (step === 'categories') {
                       setSelectedCategory(item);
                       setStep('chapters');
+                    } else if (step === 'chapters') {
+                      setSelectedChapter(item);
+                      setStep('divisions');
                     } else {
                       startQuiz(item.id);
                     }
@@ -164,10 +176,12 @@ export default function DataThemes() {
                       "w-20 h-20 rounded-[2rem] flex items-center justify-center transition-transform group-hover:scale-110 duration-500",
                       step === 'themes' ? "bg-amber-500/10 text-amber-500" : 
                       step === 'categories' ? "bg-indigo-500/10 text-indigo-500" : 
+                      step === 'chapters' ? "bg-primary/10 text-primary" :
                       "bg-emerald-500/10 text-emerald-500"
                     )}>
                       {step === 'themes' ? <Database className="w-10 h-10" /> : 
                        step === 'categories' ? <Folder className="w-10 h-10" /> : 
+                       step === 'chapters' ? <FileStack className="w-10 h-10" /> :
                        <Hash className="w-10 h-10" />}
                     </div>
                     <div className="text-center">
@@ -175,6 +189,7 @@ export default function DataThemes() {
                       <p className="text-sm font-bold text-muted-foreground mt-1 opacity-60">
                         {step === 'themes' ? `${item.categories?.length || 0} Categories` : 
                          step === 'categories' ? `${item.chapters?.length || 0} Chapters` : 
+                         step === 'chapters' ? `${item.divisions?.length || 0} Divisions` :
                          'Open Question Bank'}
                       </p>
                     </div>

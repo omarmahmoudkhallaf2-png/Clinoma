@@ -23,6 +23,7 @@ export default function Quiz() {
   const themeId = searchParams.get('themeId');
   const categoryId = searchParams.get('categoryId');
   const chapterId = searchParams.get('chapterId');
+  const divisionId = searchParams.get('divisionId');
 
   const isTimed = setupParams?.isTimed ?? false;
   const isStudyMode = setupParams?.feedbackMode === 'instant';
@@ -60,12 +61,22 @@ export default function Quiz() {
         let q;
         if (themeId && categoryId && chapterId) {
           // Data Themes Mode
-          q = query(
-            collection(db, 'questions'), 
-            where('themeId', '==', themeId),
-            where('categoryId', '==', categoryId),
-            where('chapterId', '==', chapterId)
-          );
+          if (divisionId) {
+            q = query(
+              collection(db, 'questions'), 
+              where('themeId', '==', themeId),
+              where('categoryId', '==', categoryId),
+              where('chapterId', '==', chapterId),
+              where('divisionId', '==', divisionId)
+            );
+          } else {
+            q = query(
+              collection(db, 'questions'), 
+              where('themeId', '==', themeId),
+              where('categoryId', '==', categoryId),
+              where('chapterId', '==', chapterId)
+            );
+          }
         } else {
           // Standard Course Mode
           q = query(collection(db, 'questions'), where('courseId', '==', courseId));
@@ -101,7 +112,7 @@ export default function Quiz() {
       }
     };
     fetchQuestions();
-  }, [user, courseId, subscribed, themeId, categoryId, chapterId]);
+  }, [user, courseId, subscribed, themeId, categoryId, chapterId, divisionId]);
 
   useEffect(() => {
     if (!isTimed || isFinished || questions.length === 0) return;

@@ -17,6 +17,7 @@ export interface Question {
   themeId?: string;
   categoryId?: string;
   chapterId?: string;
+  divisionId?: string;
   createdAt?: any;
   version?: number;
   status?: 'draft' | 'published' | 'review';
