@@ -185,7 +185,7 @@ export default function Dashboard() {
         </Card>
       </div>
 
-      {/* Data Themes Card */}
+      {/* Data Themes Card - Hidden for now
       <div 
         onClick={() => navigate('/data-themes')}
         className="relative group cursor-pointer"
@@ -215,6 +215,7 @@ export default function Dashboard() {
           </div>
         </Card>
       </div>
+      */}
 
       {/* Core Stats & Quick Revision Row */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">

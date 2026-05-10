@@ -23,11 +23,32 @@ service cloud.firestore {
       }
     }
 
+    // --- محتوى المذاكرة (تيمات، أسئلة، كورسات، امتحانات) ---
+    // السماح بالقراءة لجميع المسجلين، والكتابة للأدمن فقط
+    match /data_themes/{themeId} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin();
+    }
+    
+    match /questions/{questionId} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin();
+    }
+    
+    match /courses/{courseId} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin();
+    }
+
+    match /exams/{examId} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin();
+    }
+
     // --- Study Room (Realtime Collaboration) ---
     match /study_rooms/{roomId} {
       allow read, create: if isSignedIn();
       allow update: if isSignedIn();
-      // السماح بالحذف إذا كان المستخدم هو الـ Host أو Admin
       allow delete: if isSignedIn() && (
         resource.data.hostId == request.auth.uid || isAdmin()
       );
@@ -38,6 +59,7 @@ service cloud.firestore {
       allow read: if isSignedIn();
     }
     
+    // أي مسار آخر غير محدد أعلاه متاح للأدمن فقط
     match /{allPaths=**} {
       allow read, write: if isAdmin();
     }
