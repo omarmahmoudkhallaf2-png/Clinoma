@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { collection, addDoc, writeBatch, doc } from 'firebase/firestore';
 import { db } from '../../lib/firebase';
@@ -32,7 +32,7 @@ interface ImportedCard {
 }
 
 const ImportCards = () => {
-  const { user } = useAuth();
+  const { user, userRole } = useAuth();
   const navigate = useNavigate();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const aiFileInputRef = useRef<HTMLInputElement>(null);
@@ -45,6 +45,17 @@ const ImportCards = () => {
   const [subject, setSubject] = useState('');
   const [isAIProcessing, setIsAIProcessing] = useState(false);
   const [aiCustomInstructions, setAiCustomInstructions] = useState('');
+  const [aiUsage, setAiUsage] = useState({ count: 0, lastReset: Date.now() });
+
+  const checkAIUsage = () => {
+    if (userRole === 'admin') return true;
+    const userData = (window as any).userData; // Assuming global user data for now or fetch it
+    const today = new Date().toDateString();
+    const lastReset = new Date(aiUsage.lastReset).toDateString();
+    
+    if (today !== lastReset) return true; // It's a new day
+    return aiUsage.count < 5;
+  };
 
   const handleFileSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
@@ -144,6 +155,10 @@ const ImportCards = () => {
   };
 
   const handleAIGenerate = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!checkAIUsage()) {
+      toast.error('لقد استنفدت حدك اليومي (5 محاولات). انتظر حتى الغد أو قم بالترقية!');
+      return;
+    }
     const selectedFile = e.target.files?.[0];
     if (!selectedFile) return;
 
@@ -309,9 +324,16 @@ const ImportCards = () => {
               animate={{ opacity: 1, height: 'auto' }}
               className="bg-card border border-border p-6 rounded-3xl space-y-4"
             >
-              <div className="flex items-center gap-3 text-primary">
-                <Sparkles size={20} />
-                <h3 className="font-bold">AI Instructions (Optional)</h3>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3 text-primary">
+                  <Sparkles size={20} />
+                  <h3 className="font-bold">AI Instructions (Optional)</h3>
+                </div>
+                {userRole !== 'admin' && (
+                  <div className="px-3 py-1 bg-primary/10 rounded-full text-[10px] font-black uppercase text-primary border border-primary/20">
+                    Remaining: {Math.max(0, 5 - (new Date().toDateString() === new Date(aiUsage.lastReset).toDateString() ? aiUsage.count : 0))}/5
+                  </div>
+                )}
               </div>
               <textarea 
                 value={aiCustomInstructions}

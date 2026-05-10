@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { collection, addDoc, serverTimestamp, writeBatch, doc, getDoc, getDocs, where, query, updateDoc, deleteDoc } from 'firebase/firestore';
 import { db } from '../../lib/firebase';
@@ -64,6 +64,7 @@ const CreateCard = () => {
   const [isGenerating, setIsGenerating] = useState(false);
   const [aiPrompt, setAiPrompt] = useState('');
   const [selectedFiles, setSelectedFiles] = useState<{ name: string, data: string, type: string }[]>([]);
+  const [aiUsage, setAiUsage] = useState({ count: 0, lastReset: Date.now() });
   const [saving, setSaving] = useState(false);
   const [imageEditor, setImageEditor] = useState<{ idx: number, side: 'front' | 'back' } | null>(null);
   const [focusedEditor, setFocusedEditor] = useState<{ idx: number, side: 'front' | 'back' } | null>(null);
@@ -73,6 +74,21 @@ const CreateCard = () => {
   const [activeUploadCard, setActiveUploadCard] = useState<{ idx: number, side: 'front' | 'back' } | null>(null);
 
   const [currentCardIdx, setCurrentCardIdx] = useState(0);
+
+  useEffect(() => {
+    const fetchUsage = async () => {
+      if (user && userRole !== 'admin') {
+        const userDoc = await getDoc(doc(db, 'users', user.uid));
+        if (userDoc.exists()) {
+          const data = userDoc.data();
+          if (data.aiUsage) {
+            setAiUsage(data.aiUsage);
+          }
+        }
+      }
+    };
+    fetchUsage();
+  }, [user, userRole]);
 
   // Load deck if editing
   React.useEffect(() => {
@@ -258,6 +274,17 @@ const CreateCard = () => {
 
   const generateWithAI = async () => {
     if (!aiPrompt && selectedFiles.length === 0) return;
+    
+    // Check usage
+    if (userRole !== 'admin') {
+      const today = new Date().toDateString();
+      const lastReset = new Date(aiUsage.lastReset).toDateString();
+      if (today === lastReset && aiUsage.count >= 5) {
+        toast.error('لقد استنفدت حدك اليومي (5 محاولات). انتظر حتى الغد!');
+        return;
+      }
+    }
+
     setIsGenerating(true);
     try {
       const generatedCards = await generateFlashcards(
@@ -267,6 +294,17 @@ const CreateCard = () => {
       setCards([...cards.filter(c => c.front !== '' || c.back !== ''), ...generatedCards]);
       setStep('manual');
       setCurrentCardIdx(cards.length);
+      
+      // Update usage in Firestore
+      if (user && userRole !== 'admin') {
+        const newUsage = {
+          count: (new Date().toDateString() === new Date(aiUsage.lastReset).toDateString()) ? aiUsage.count + 1 : 1,
+          lastReset: Date.now()
+        };
+        await updateDoc(doc(db, 'users', user.uid), { aiUsage: newUsage });
+        setAiUsage(newUsage);
+      }
+      
       toast.success(`تم توليد ${generatedCards.length} كارت بنجاح!`);
     } catch (error) {
       toast.error('فشل الذكاء الاصطناعي');
@@ -327,6 +365,14 @@ const CreateCard = () => {
           </div>
 
           <div className="p-8 rounded-[2.5rem] bg-card border-2 border-border space-y-6">
+            <div className="flex justify-between items-center px-2">
+              <span className="text-sm font-bold text-muted-foreground">AI Power Grid</span>
+              {userRole !== 'admin' && (
+                <div className="px-3 py-1 bg-primary/10 rounded-full text-[10px] font-black uppercase text-primary border border-primary/20">
+                  Remaining: {Math.max(0, 5 - (new Date().toDateString() === new Date(aiUsage.lastReset).toDateString() ? aiUsage.count : 0))}/5
+                </div>
+              )}
+            </div>
             <textarea
               placeholder="Paste your notes here or describe what you want..."
               rows={6}
