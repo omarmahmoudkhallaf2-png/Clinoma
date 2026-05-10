@@ -43,18 +43,19 @@ const ImportCards = () => {
   const [step, setStep] = useState(1);
   const [deckTitle, setDeckTitle] = useState('');
   const [subject, setSubject] = useState('');
-  const [isAIProcessing, setIsAIProcessing] = useState(false);
   const [aiCustomInstructions, setAiCustomInstructions] = useState('');
-  const [aiUsage, setAiUsage] = useState({ count: 0, lastReset: Date.now() });
+  const [selectedAIFile, setSelectedAIFile] = useState<File | null>(null);
+  const { userData, updateUserStatus } = useAuth();
 
   const checkAIUsage = () => {
-    if (userRole === 'admin') return true;
-    const userData = (window as any).userData; // Assuming global user data for now or fetch it
-    const today = new Date().toDateString();
-    const lastReset = new Date(aiUsage.lastReset).toDateString();
+    if (userRole === 'admin') return { canUse: true, remaining: Infinity };
     
-    if (today !== lastReset) return true; // It's a new day
-    return aiUsage.count < 5;
+    const usage = userData?.aiFlashcardUsage || { count: 0, lastReset: Date.now() };
+    const today = new Date().toDateString();
+    const lastReset = new Date(usage.lastReset).toDateString();
+    
+    if (today !== lastReset) return { canUse: true, remaining: 5 };
+    return { canUse: usage.count < 5, remaining: 5 - usage.count };
   };
 
   const handleFileSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -154,16 +155,21 @@ const ImportCards = () => {
     reader.readAsText(selectedFile);
   };
 
-  const handleAIGenerate = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!checkAIUsage()) {
+  const handleAIFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFile = e.target.files?.[0];
+    if (selectedFile) setSelectedAIFile(selectedFile);
+  };
+
+  const handleAIGenerate = async () => {
+    const { canUse } = checkAIUsage();
+    if (!canUse) {
       toast.error('لقد استنفدت حدك اليومي (5 محاولات). انتظر حتى الغد أو قم بالترقية!');
       return;
     }
-    const selectedFile = e.target.files?.[0];
-    if (!selectedFile) return;
+    if (!selectedAIFile) return;
 
     setIsAIProcessing(true);
-    const loadingToast = toast.loading('AI is analyzing your file and generating flashcards...');
+    const loadingToast = toast.loading('جاري تحليل الملف وتوليد الكروت...');
     
     try {
       const reader = new FileReader();
@@ -174,25 +180,38 @@ const ImportCards = () => {
             aiCustomInstructions || "Generate flashcards from this medical document", 
             [{ 
               data: fileData, 
-              mimeType: selectedFile.type 
+              mimeType: selectedAIFile.type 
             }]
           );
           
           if (result && Array.isArray(result)) {
+            // Update usage in Firestore
+            const currentUsage = userData?.aiFlashcardUsage || { count: 0, lastReset: Date.now() };
+            const today = new Date().toDateString();
+            const lastReset = new Date(currentUsage.lastReset).toDateString();
+            
+            const newCount = today === lastReset ? currentUsage.count + 1 : 1;
+            await updateUserStatus(user!.uid, {
+              aiFlashcardUsage: {
+                count: newCount,
+                lastReset: Date.now()
+              }
+            });
+
             setPreviewData(result);
-            setDeckTitle(selectedFile.name.split('.')[0] + " (AI Generated)");
+            setDeckTitle(selectedAIFile.name.split('.')[0] + " (AI Generated)");
             setStep(2);
-            toast.success(`AI generated ${result.length} high-yield flashcards!`, { id: loadingToast });
+            toast.success(`تم توليد ${result.length} كارت بنجاح!`, { id: loadingToast });
           }
         } catch (err) {
-          toast.error('AI generation failed. Please try again.', { id: loadingToast });
+          toast.error('فشل التوليد، يرجى المحاولة مرة أخرى.', { id: loadingToast });
         } finally {
           setIsAIProcessing(false);
         }
       };
-      reader.readAsDataURL(selectedFile);
+      reader.readAsDataURL(selectedAIFile);
     } catch (err) {
-      toast.error('Failed to process file', { id: loadingToast });
+      toast.error('فشل معالجة الملف', { id: loadingToast });
       setIsAIProcessing(false);
     }
   };
@@ -327,20 +346,76 @@ const ImportCards = () => {
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3 text-primary">
                   <Sparkles size={20} />
-                  <h3 className="font-bold">AI Instructions (Optional)</h3>
+                  <h3 className="font-bold">AI Flashcard Generator</h3>
                 </div>
                 {userRole !== 'admin' && (
                   <div className="px-3 py-1 bg-primary/10 rounded-full text-[10px] font-black uppercase text-primary border border-primary/20">
-                    Remaining: {Math.max(0, 5 - (new Date().toDateString() === new Date(aiUsage.lastReset).toDateString() ? aiUsage.count : 0))}/5
+                    Remaining Today: {checkAIUsage().remaining}/5
                   </div>
                 )}
               </div>
-              <textarea 
-                value={aiCustomInstructions}
-                onChange={(e) => setAiCustomInstructions(e.target.value)}
-                placeholder="e.g. Focus on pharmacology, translate everything to Arabic, or make questions high-yield for USMLE..."
-                className="w-full h-24 bg-muted border-none rounded-2xl p-4 text-sm focus:ring-2 focus:ring-primary/20 transition-all resize-none"
-              />
+
+              <div className="space-y-4">
+                <div className="space-y-2">
+                  <label className="text-xs font-bold text-muted-foreground uppercase tracking-widest ml-1">
+                    Custom Instructions (Optional)
+                  </label>
+                  <textarea 
+                    value={aiCustomInstructions}
+                    onChange={(e) => setAiCustomInstructions(e.target.value)}
+                    placeholder="e.g. Focus on pharmacology, translate everything to Arabic, or make questions high-yield for USMLE..."
+                    className="w-full h-24 bg-muted border-none rounded-2xl p-4 text-sm focus:ring-2 focus:ring-primary/20 transition-all resize-none"
+                  />
+                </div>
+
+                {selectedAIFile ? (
+                  <div className="p-4 rounded-2xl bg-primary/5 border border-primary/20 flex items-center justify-between animate-in fade-in slide-in-from-top-2">
+                    <div className="flex items-center gap-3 overflow-hidden">
+                      <div className="p-2 bg-primary/10 text-primary rounded-lg">
+                        <FileText size={18} />
+                      </div>
+                      <span className="text-sm font-bold truncate">{selectedAIFile.name}</span>
+                    </div>
+                    <button 
+                      onClick={() => setSelectedAIFile(null)}
+                      className="p-1 hover:bg-destructive/10 text-destructive rounded-lg transition-colors"
+                    >
+                      <X size={18} />
+                    </button>
+                  </div>
+                ) : (
+                  <button 
+                    onClick={() => aiFileInputRef.current?.click()}
+                    className="w-full py-4 border-2 border-dashed border-border rounded-2xl flex flex-col items-center justify-center gap-2 hover:border-primary/50 hover:bg-primary/5 transition-all text-muted-foreground group"
+                  >
+                    <Upload size={20} className="group-hover:scale-110 transition-transform" />
+                    <span className="text-xs font-bold uppercase tracking-widest">Select PDF or Image</span>
+                  </button>
+                )}
+
+                <button
+                  onClick={handleAIGenerate}
+                  disabled={!selectedAIFile || isAIProcessing || !checkAIUsage().canUse}
+                  className={cn(
+                    "w-full py-4 rounded-2xl font-black text-sm transition-all flex items-center justify-center gap-3 shadow-xl",
+                    selectedAIFile && !isAIProcessing && checkAIUsage().canUse
+                      ? "bg-primary text-primary-foreground shadow-primary/20 hover:scale-[1.02]"
+                      : "bg-muted text-muted-foreground cursor-not-allowed opacity-50"
+                  )}
+                >
+                  {isAIProcessing ? (
+                    <>
+                      <div className="w-4 h-4 border-2 border-primary-foreground border-t-transparent rounded-full animate-spin" />
+                      Processing...
+                    </>
+                  ) : (
+                    <>
+                      <Sparkles size={18} />
+                      Generate Flashcards Now
+                    </>
+                  )}
+                </button>
+              </div>
             </motion.div>
 
             <div 
@@ -368,8 +443,8 @@ const ImportCards = () => {
                 {importing || isAIProcessing ? <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin" /> : <Upload size={32} />}
               </div>
               <div className="text-center">
-                <p className="text-xl font-bold">{importing || isAIProcessing ? 'Processing File...' : 'Select an option above to start'}</p>
-                <p className="text-sm text-muted-foreground">Click JSON, CSV, or AI Generate to upload</p>
+                <p className="text-xl font-bold">{importing || isAIProcessing ? 'Processing...' : 'Or drag and drop files here'}</p>
+                <p className="text-sm text-muted-foreground">Supported: .json, .csv, .txt, .apkg, .pdf, images</p>
               </div>
               <input 
                 type="file" 
@@ -381,7 +456,7 @@ const ImportCards = () => {
               <input 
                 type="file" 
                 ref={aiFileInputRef}
-                onChange={handleAIGenerate}
+                onChange={handleAIFileSelect}
                 className="hidden" 
                 accept=".pdf,image/*"
               />
