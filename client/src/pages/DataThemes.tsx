@@ -30,18 +30,10 @@ export default function DataThemes() {
   }, []);
 
   const filteredItems = () => {
-    if (step === 'themes') {
-      return themes.filter(t => t.name.toLowerCase().includes(searchQuery.toLowerCase()));
-    }
-    if (step === 'categories') {
-      return selectedTheme.categories.filter((c: any) => c.name.toLowerCase().includes(searchQuery.toLowerCase()));
-    }
-    if (step === 'chapters') {
-      return selectedCategory.chapters.filter((ch: any) => ch.name.toLowerCase().includes(searchQuery.toLowerCase()));
-    }
-    if (step === 'divisions') {
-      return selectedChapter.divisions?.filter((d: any) => d.name.toLowerCase().includes(searchQuery.toLowerCase())) || [];
-    }
+    if (step === 'themes') return themes.filter(t => t.name.toLowerCase().includes(searchQuery.toLowerCase()));
+    if (step === 'categories') return selectedTheme.categories.filter((c: any) => c.name.toLowerCase().includes(searchQuery.toLowerCase()));
+    if (step === 'chapters') return selectedCategory.chapters.filter((ch: any) => ch.name.toLowerCase().includes(searchQuery.toLowerCase()));
+    if (step === 'divisions') return selectedChapter.divisions?.filter((d: any) => d.name.toLowerCase().includes(searchQuery.toLowerCase())) || [];
     return [];
   };
 
@@ -58,139 +50,115 @@ export default function DataThemes() {
 
   return (
     <div className="min-h-screen bg-background pb-20 overflow-hidden relative">
-      {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -mr-64 -mt-64" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-500/5 rounded-full blur-[120px] -ml-64 -mb-64" />
-
-      {/* Header */}
-      <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border/50 px-6 py-4">
+      {/* Header Compact */}
+      <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50 px-4 md:px-6 py-3">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <Button variant="ghost" size="icon" onClick={handleBack} className="rounded-2xl">
-              <ArrowLeft className="w-6 h-6" />
+          <div className="flex items-center gap-3">
+            <Button variant="ghost" size="icon" onClick={handleBack} className="rounded-xl h-9 w-9">
+              <ArrowLeft className="w-5 h-5" />
             </Button>
             <div>
-              <h1 className="text-2xl font-black tracking-tight flex items-center gap-2">
-                <Database className="w-6 h-6 text-primary" /> تيمات الداتا (Data Themes)
+              <h1 className="text-lg font-black tracking-tight flex items-center gap-2">
+                <Database className="w-4 h-4 text-primary" /> تيمات الداتا
               </h1>
-              <div className="flex items-center gap-2 text-[10px] font-bold text-muted-foreground uppercase tracking-widest mt-0.5">
+              <div className="flex items-center gap-1.5 text-[8px] font-bold text-muted-foreground uppercase tracking-widest mt-0.5">
                 <span className={cn(step === 'themes' ? "text-primary" : "")}>Themes</span>
-                <ChevronRight className="w-3 h-3" />
+                <ChevronRight className="w-2 h-2" />
                 <span className={cn(step === 'categories' ? "text-primary" : "")}>Categories</span>
-                <ChevronRight className="w-3 h-3" />
+                <ChevronRight className="w-2 h-2" />
                 <span className={cn(step === 'chapters' ? "text-primary" : "")}>Chapters</span>
-                <ChevronRight className="w-3 h-3" />
+                <ChevronRight className="w-2 h-2" />
                 <span className={cn(step === 'divisions' ? "text-primary" : "")}>Divisions</span>
               </div>
             </div>
           </div>
-          <div className="relative hidden md:block w-72">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+          <div className="relative hidden md:block w-64">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-muted-foreground" />
             <input 
               type="text" 
               placeholder="Search..." 
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 bg-secondary/50 border border-border rounded-xl font-bold text-sm outline-none focus:border-primary"
+              className="w-full pl-9 pr-4 py-1.5 bg-secondary/50 border border-border rounded-xl text-xs font-bold outline-none focus:border-primary"
             />
           </div>
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto px-6 py-12 relative z-10">
+      <main className="max-w-7xl mx-auto px-4 md:px-6 py-8 relative z-10">
         {loading ? (
-          <div className="flex flex-col items-center justify-center py-40 gap-6">
-            <div className="relative">
-              <Database className="w-20 h-20 text-primary animate-pulse opacity-20" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <Sparkles className="w-10 h-10 text-primary animate-spin" />
-              </div>
-            </div>
-            <p className="font-black text-xl animate-pulse">Initializing Data Stream...</p>
+          <div className="flex flex-col items-center justify-center py-40 gap-4 opacity-50">
+            <Database className="w-12 h-12 text-primary animate-pulse" />
+            <p className="font-black text-[10px] uppercase tracking-widest">Initializing...</p>
           </div>
         ) : (
-          <div className="space-y-12">
-            {/* Context Card */}
+          <div className="space-y-8">
+            {/* Context Card Compact */}
             <AnimatePresence mode="wait">
               {step !== 'themes' && (
                 <motion.div 
-                  initial={{ opacity: 0, y: -20 }}
+                  initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  className="bg-primary/5 border border-primary/20 p-8 rounded-[3rem] flex flex-col md:flex-row justify-between items-center gap-6"
+                  exit={{ opacity: 0, y: -10 }}
+                  className="bg-primary/5 border border-primary/10 p-5 rounded-[2rem] flex flex-col md:flex-row justify-between items-center gap-4"
                 >
-                  <div className="flex items-center gap-6">
-                    <div className="w-20 h-20 bg-primary text-white rounded-[2rem] flex items-center justify-center shadow-xl shadow-primary/20">
-                      <Folder className="w-10 h-10" />
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-primary text-white rounded-2xl flex items-center justify-center shadow-lg shadow-primary/10">
+                      <Folder className="w-6 h-6" />
                     </div>
                     <div>
-                      <p className="text-xs font-black uppercase tracking-widest text-primary mb-1">Current selection</p>
-                      <h2 className="text-3xl md:text-4xl font-black tracking-tighter">
+                      <p className="text-[8px] font-black uppercase tracking-widest text-primary">Current selection</p>
+                      <h2 className="text-xl md:text-2xl font-black tracking-tighter">
                         {selectedTheme?.name} 
                         {selectedCategory && ` / ${selectedCategory.name}`}
                         {selectedChapter && ` / ${selectedChapter.name}`}
                       </h2>
                     </div>
                   </div>
-                  <div className="flex gap-4">
-                    <div className="bg-white/50 backdrop-blur-md px-6 py-3 rounded-2xl border border-border text-center">
-                       <p className="text-xl font-black text-primary">Free</p>
-                       <p className="text-[10px] font-bold text-muted-foreground uppercase">Access</p>
-                    </div>
+                  <div className="bg-white/50 backdrop-blur-md px-4 py-2 rounded-xl border border-border text-center">
+                     <p className="text-sm font-black text-primary">Free Access</p>
                   </div>
                 </motion.div>
               )}
             </AnimatePresence>
 
-            {/* Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Grid Compact */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               {filteredItems().map((item: any, i: number) => (
                 <motion.button
                   key={item.id || i}
-                  initial={{ opacity: 0, scale: 0.9 }}
+                  initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: i * 0.05 }}
+                  transition={{ delay: i * 0.03 }}
                   onClick={() => {
-                    if (step === 'themes') {
-                      setSelectedTheme(item);
-                      setStep('categories');
-                    } else if (step === 'categories') {
-                      setSelectedCategory(item);
-                      setStep('chapters');
-                    } else if (step === 'chapters') {
-                      setSelectedChapter(item);
-                      setStep('divisions');
-                    } else {
-                      startQuiz(item.id);
-                    }
+                    if (step === 'themes') { setSelectedTheme(item); setStep('categories'); }
+                    else if (step === 'categories') { setSelectedCategory(item); setStep('chapters'); }
+                    else if (step === 'chapters') { setSelectedChapter(item); setStep('divisions'); }
+                    else { startQuiz(item.id); }
                     setSearchQuery('');
                   }}
-                  className="group relative p-8 bg-card border-2 border-border rounded-[3rem] text-right hover:border-primary hover:shadow-2xl hover:shadow-primary/10 transition-all"
+                  className="group relative p-6 bg-card border border-border rounded-[2rem] text-right hover:border-primary hover:shadow-xl hover:shadow-primary/5 transition-all"
                 >
-                  <div className="absolute top-4 left-4 p-2 rounded-xl bg-secondary opacity-0 group-hover:opacity-100 transition-all translate-x-4 group-hover:translate-x-0">
-                    <ChevronRight className="w-5 h-5 text-primary rotate-180" />
-                  </div>
-                  
-                  <div className="flex flex-col items-center gap-6">
+                  <div className="flex flex-col items-center gap-4">
                     <div className={cn(
-                      "w-20 h-20 rounded-[2rem] flex items-center justify-center transition-transform group-hover:scale-110 duration-500",
+                      "w-14 h-14 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-110 duration-500",
                       step === 'themes' ? "bg-amber-500/10 text-amber-500" : 
                       step === 'categories' ? "bg-indigo-500/10 text-indigo-500" : 
                       step === 'chapters' ? "bg-primary/10 text-primary" :
-                      "bg-emerald-500/10 text-emerald-500"
+                      "bg-emerald-500/10 text-emerald-600"
                     )}>
-                      {step === 'themes' ? <Database className="w-10 h-10" /> : 
-                       step === 'categories' ? <Folder className="w-10 h-10" /> : 
-                       step === 'chapters' ? <FileStack className="w-10 h-10" /> :
-                       <Hash className="w-10 h-10" />}
+                      {step === 'themes' ? <Database className="w-7 h-7" /> : 
+                       step === 'categories' ? <Folder className="w-7 h-7" /> : 
+                       step === 'chapters' ? <FileStack className="w-7 h-7" /> :
+                       <Hash className="w-7 h-7" />}
                     </div>
                     <div className="text-center">
-                      <h3 className="text-2xl font-black tracking-tight">{item.name}</h3>
-                      <p className="text-sm font-bold text-muted-foreground mt-1 opacity-60">
+                      <h3 className="text-lg font-black tracking-tight leading-tight">{item.name}</h3>
+                      <p className="text-[10px] font-bold text-muted-foreground mt-1 opacity-60">
                         {step === 'themes' ? `${item.categories?.length || 0} Categories` : 
                          step === 'categories' ? `${item.chapters?.length || 0} Chapters` : 
                          step === 'chapters' ? `${item.divisions?.length || 0} Divisions` :
-                         'Open Question Bank'}
+                         'ابدأ الاختبار'}
                       </p>
                     </div>
                   </div>
@@ -199,22 +167,22 @@ export default function DataThemes() {
             </div>
 
             {filteredItems().length === 0 && (
-              <div className="text-center py-20 space-y-4 opacity-40">
-                <Search className="w-16 h-16 mx-auto" />
-                <p className="text-2xl font-black">No items found matching your search.</p>
+              <div className="text-center py-20 opacity-20 space-y-2">
+                <Search className="w-10 h-10 mx-auto" />
+                <p className="text-sm font-black italic">لا توجد نتائج</p>
               </div>
             )}
           </div>
         )}
       </main>
 
-      {/* Floating Info */}
-      <div className="fixed bottom-10 right-10 flex flex-col gap-3">
-         <div className="p-4 bg-primary text-white rounded-2xl shadow-2xl flex items-center gap-3 animate-in slide-in-from-right duration-500">
-            <Brain className="w-6 h-6" />
-            <div className="text-xs">
+      {/* Floating Info Compact */}
+      <div className="fixed bottom-6 right-6 hidden md:block">
+         <div className="p-3 bg-primary text-white rounded-xl shadow-xl flex items-center gap-2">
+            <Brain className="w-4 h-4" />
+            <div className="text-[9px]">
               <p className="font-black">Deep Learning System</p>
-              <p className="opacity-80">Tracked & Synced</p>
+              <p className="opacity-70 italic">Tracked & Synced</p>
             </div>
          </div>
       </div>
