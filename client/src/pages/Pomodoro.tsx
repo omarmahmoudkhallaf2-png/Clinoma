@@ -15,6 +15,7 @@ import { cn } from '../lib/utils';
 import { useTheme } from '../context/ThemeContext';
 import AmbientMixer from '../components/pomodoro/AmbientMixer';
 import PomodoroAnalytics from '../components/pomodoro/PomodoroAnalytics';
+import StudyRoomContainer from '../components/pomodoro/study-room/StudyRoomContainer';
 
 const QUOTES = [
   "The secret of getting ahead is getting started.",
@@ -33,7 +34,7 @@ export default function Pomodoro() {
     toggleTimer, resetTimer, skipSession, updateSettings, setMode 
   } = usePomodoro(user?.uid);
 
-  const [activeTab, setActiveTab] = useState<'timer' | 'mixer' | 'stats'>('timer');
+  const [activeTab, setActiveTab] = useState<'timer' | 'room' | 'mixer' | 'stats'>('timer');
   const [isFocusMode, setIsFocusMode] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [quoteIndex, setQuoteIndex] = useState(0);
@@ -57,6 +58,10 @@ export default function Pomodoro() {
   // Keyboard Shortcuts
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
+      // Check if user is typing in an input or textarea
+      const isTyping = e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement;
+      if (isTyping) return;
+
       if (e.code === 'Space') {
         e.preventDefault();
         toggleTimer();
@@ -102,33 +107,34 @@ export default function Pomodoro() {
             initial={{ y: -100 }}
             animate={{ y: 0 }}
             className={cn(
-              "fixed top-0 left-0 right-0 z-50 p-6 flex items-center justify-between backdrop-blur-xl border-b border-border/10 transition-all duration-500",
+              "fixed top-0 left-0 right-0 z-50 p-3 md:p-6 flex items-center justify-between backdrop-blur-xl border-b border-border/10 transition-all duration-500",
               isFocusMode ? "opacity-0 hover:opacity-100 bg-black/80" : "opacity-100"
             )}
           >
-            <div className="flex items-center gap-4">
-              <Button variant="ghost" size="icon" onClick={() => navigate('/dashboard')} className="rounded-2xl">
-                <ArrowLeft className="w-6 h-6" />
+            <div className="flex items-center gap-2 md:gap-4">
+              <Button variant="ghost" size="icon" onClick={() => navigate('/dashboard')} className="rounded-xl md:rounded-2xl shrink-0">
+                <ArrowLeft className="w-5 h-5 md:w-6 md:h-6" />
               </Button>
-              <div className="flex items-center gap-3">
-                <div className="p-2.5 bg-primary/10 rounded-2xl">
+              <div className="flex items-center gap-2 md:gap-3">
+                <div className="p-2 md:p-2.5 bg-primary/10 rounded-xl md:rounded-2xl shrink-0">
                   <motion.div
                     animate={{ rotate: [0, 180] }}
                     transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                   >
-                    <Hourglass className="w-6 h-6 text-primary" />
+                    <Hourglass className="w-5 h-5 md:w-6 md:h-6 text-primary" />
                   </motion.div>
                 </div>
-                <div className="flex flex-col">
-                  <span className="text-xl font-black tracking-tighter">POMODORO</span>
-                  <span className="text-[10px] font-bold text-primary uppercase tracking-widest">Premium Focus Studio</span>
+                <div className="flex flex-col min-w-0">
+                  <span className="text-sm md:text-xl font-black tracking-tighter truncate">POMODORO</span>
+                  <span className="text-[8px] md:text-[10px] font-bold text-primary uppercase tracking-widest truncate hidden md:block">Premium Focus Studio</span>
                 </div>
               </div>
             </div>
 
-            <div className="flex items-center gap-2 bg-secondary/50 p-1 rounded-2xl border border-border/50">
+            <div className="flex items-center gap-1 md:gap-2 bg-secondary/30 md:bg-secondary/50 p-1 rounded-xl md:rounded-2xl border border-border/50">
               {[
                 { id: 'timer', icon: Clock, label: 'Timer' },
+                { id: 'room', icon: Brain, label: 'Study Room' },
                 { id: 'mixer', icon: Volume2, label: 'Mixer' },
                 { id: 'stats', icon: BarChart3, label: 'Analytics' }
               ].map((tab) => (
@@ -136,31 +142,36 @@ export default function Pomodoro() {
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id as any)}
                   className={cn(
-                    "flex items-center gap-2 px-6 py-2.5 rounded-xl font-black text-sm transition-all relative",
+                    "flex items-center gap-2 px-3 md:px-6 py-2 md:py-2.5 rounded-lg md:rounded-xl font-black text-xs md:text-sm transition-all relative",
                     activeTab === tab.id ? "text-white" : "text-muted-foreground hover:text-foreground"
                   )}
                 >
                   {activeTab === tab.id && (
-                    <motion.div layoutId="tab-bg" className="absolute inset-0 bg-primary rounded-xl" />
+                    <motion.div layoutId="tab-bg" className="absolute inset-0 bg-primary rounded-lg md:rounded-xl" />
                   )}
                   <tab.icon className="w-4 h-4 relative z-10" />
-                  <span className="relative z-10">{tab.label}</span>
+                  <span className="relative z-10 hidden md:block">{tab.label}</span>
                 </button>
               ))}
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1 md:gap-2">
               {!isFocusMode && (
-                <Button variant="outline" size="icon" onClick={toggleTheme} className="rounded-2xl">
-                  {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+                <Button variant="outline" size="icon" onClick={toggleTheme} className="rounded-xl md:rounded-2xl hidden sm:flex">
+                  {theme === 'dark' ? <Sun className="w-4 h-4 md:w-5 md:h-5" /> : <Moon className="w-4 h-4 md:w-5 md:h-5" />}
                 </Button>
               )}
-              <Button variant="outline" size="icon" onClick={() => setShowSettings(true)} className="rounded-2xl">
-                <Settings className="w-5 h-5" />
+              <Button variant="outline" size="icon" onClick={() => setShowSettings(true)} className="rounded-xl md:rounded-2xl shrink-0">
+                <Settings className="w-4 h-4 md:w-5 md:h-5" />
               </Button>
                {!isFocusMode && (
-                <Button variant="primary" onClick={() => setIsFocusMode(true)} className="rounded-2xl gap-2 font-black">
-                  <Maximize2 className="w-4 h-4" /> Focus Mode
+                <Button 
+                  variant="primary" 
+                  onClick={() => setIsFocusMode(true)} 
+                  className="rounded-xl md:rounded-2xl px-3 md:px-6 h-10 md:h-12 gap-2 font-black shadow-lg shadow-primary/20 shrink-0"
+                >
+                  <Maximize2 className="w-4 h-4" />
+                  <span className="hidden md:block">Focus Mode</span>
                 </Button>
                )}
             </div>
@@ -294,6 +305,12 @@ export default function Pomodoro() {
                   <div className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Daily Streak</div>
                 </div>
               </div>
+          </div>
+        )}
+
+        {activeTab === 'room' && (
+          <div className="w-full max-w-7xl">
+             <StudyRoomContainer isFocusMode={isFocusMode} />
           </div>
         )}
 
