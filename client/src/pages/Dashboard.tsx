@@ -8,7 +8,7 @@ import {
   Play, BookOpen, Brain, TrendingUp, 
   ChevronRight, Clock, Zap, CheckCircle, 
   XCircle, Bookmark, ArrowRight, Activity,
-  Crown, Search, Settings as SettingsIcon, RotateCcw
+  Crown, Search, Settings as SettingsIcon, RotateCcw, Database
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { getWeakAreas, resetBookmarks, resetIncorrect } from '../lib/quizEngine';
@@ -177,6 +177,37 @@ export default function Dashboard() {
             
             <div className="flex items-center gap-4 text-white font-bold text-lg" dir="rtl">
               <span className="hidden md:block">نظام التركيز العالمي - متاح الآن مجاناً</span>
+              <div className="p-2 bg-white/20 rounded-full">
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-[-4px] transition-transform" />
+              </div>
+            </div>
+          </div>
+        </Card>
+      </div>
+
+      {/* Data Themes Card */}
+      <div 
+        onClick={() => navigate('/data-themes')}
+        className="relative group cursor-pointer"
+      >
+        <div className="absolute -inset-1 bg-gradient-to-r from-indigo-600 to-indigo-400 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200" />
+        <Card className="relative bg-gradient-to-r from-indigo-600 via-indigo-500 to-indigo-400 border-none overflow-hidden h-24 flex items-center px-8 shadow-2xl shadow-indigo-500/20">
+          <div className="absolute top-0 right-0 -mr-10 -mt-10 h-40 w-40 rounded-full bg-white/10 blur-3xl group-hover:scale-150 transition-transform duration-700" />
+          <div className="absolute bottom-0 left-0 -ml-10 -mb-10 h-40 w-40 rounded-full bg-black/10 blur-3xl group-hover:scale-150 transition-transform duration-700" />
+          
+          <div className="relative z-10 flex items-center justify-between w-full">
+            <div className="flex items-center gap-6">
+              <div className="p-3 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 group-hover:rotate-12 transition-transform duration-500">
+                <Database className="w-8 h-8 text-white" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-3xl font-black text-white tracking-tighter leading-none">تيمات الداتا</span>
+                <span className="text-xs font-bold text-white/60 uppercase tracking-[0.3em] mt-1">Data Themes Bank</span>
+              </div>
+            </div>
+            
+            <div className="flex items-center gap-4 text-white font-bold text-lg" dir="rtl">
+              <span className="hidden md:block">تقسيمات الداتا المجانية - بنك أسئلة متكامل</span>
               <div className="p-2 bg-white/20 rounded-full">
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-[-4px] transition-transform" />
               </div>

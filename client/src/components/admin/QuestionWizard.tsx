@@ -3,6 +3,7 @@ import { Save, X, ChevronRight, ChevronLeft, Check, AlertCircle, Clock, Wand2, Z
 import { db } from '../../lib/firebase';
 import { collection, query, getDocs, where } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { cn } from '../../lib/utils';
 import type { Question } from '../../types/quiz';
 
 interface QuestionWizardProps {
@@ -16,6 +17,8 @@ export default function QuestionWizard({ initialData, onSave, onCancel }: Questi
   const [courses, setCourses] = useState<any[]>([]);
   const [subjects, setSubjects] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
+  const [dataThemes, setDataThemes] = useState<any[]>([]);
+  const [organizationMode, setOrganizationMode] = useState<'standard' | 'theme'>(initialData?.themeId ? 'theme' : 'standard');
   const [autoSaved, setAutoSaved] = useState(false);
   const [uploadingImage, setUploadingImage] = useState(false);
 
@@ -83,19 +86,29 @@ export default function QuestionWizard({ initialData, onSave, onCancel }: Questi
     metadata: {
       tags: []
     },
-    ...initialData
+    ...initialData,
+    themeId: initialData?.themeId || '',
+    categoryId: initialData?.categoryId || '',
+    chapterId: initialData?.chapterId || '',
   });
 
   useEffect(() => {
-    const fetchCourses = async () => {
-      const snap = await getDocs(query(collection(db, 'courses')));
-      const data = snap.docs.map(doc => ({ id: doc.id, ...doc.data() } as any));
-      setCourses(data);
-      if (!initialData && data.length > 0) {
-        setFormData(prev => ({ ...prev, courseId: data[0].id }));
+    const fetchCoursesAndThemes = async () => {
+      const [cSnap, tSnap] = await Promise.all([
+        getDocs(query(collection(db, 'courses'))),
+        getDocs(query(collection(db, 'data_themes')))
+      ]);
+      const cData = cSnap.docs.map(doc => ({ id: doc.id, ...doc.data() } as any));
+      const tData = tSnap.docs.map(doc => ({ id: doc.id, ...doc.data() } as any));
+      
+      setCourses(cData);
+      setDataThemes(tData);
+
+      if (!initialData) {
+        if (cData.length > 0) setFormData(prev => ({ ...prev, courseId: cData[0].id }));
       }
     };
-    fetchCourses();
+    fetchCoursesAndThemes();
   }, [initialData]);
 
   useEffect(() => {
@@ -182,50 +195,103 @@ export default function QuestionWizard({ initialData, onSave, onCancel }: Questi
       <div className="p-10 min-h-[500px]">
         {step === 1 && (
           <div className="space-y-8 animate-in slide-in-from-right-4 duration-300">
-            <h3 className="text-2xl font-black">الخطوة 1: التصنيف والربط</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="space-y-3">
-                <label className="text-sm font-black uppercase tracking-widest text-muted-foreground ml-1">الكورس (Course)</label>
-                <select name="courseId" value={formData.courseId} onChange={handleChange} className="w-full p-4 bg-secondary/30 border-2 border-border rounded-2xl outline-none focus:border-primary font-black">
-                  {courses.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
-                </select>
-              </div>
-              <div className="space-y-3">
-                <label className="text-sm font-black uppercase tracking-widest text-muted-foreground ml-1">المادة (Subject)</label>
-                <select name="subjectId" value={formData.subjectId} onChange={handleChange} className="w-full p-4 bg-secondary/30 border-2 border-border rounded-2xl outline-none focus:border-primary font-black">
-                  {subjects.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
-                </select>
-              </div>
-              <div className="space-y-3">
-                <label className="text-sm font-black uppercase tracking-widest text-muted-foreground ml-1">نوع المحتوى (Source Type)</label>
-                <select name="questionType" value={formData.questionType} onChange={handleChange} className="w-full p-4 bg-secondary/30 border-2 border-border rounded-2xl outline-none focus:border-primary font-black">
-                  <option value="practice">تدريبية (Training)</option>
-                  <option value="past_papers">سنين سابقة (Past Exams)</option>
-                  <option value="lectures">محاضرات (Lecture Based)</option>
-                </select>
-              </div>
-              <div className="space-y-3">
-                <label className="text-sm font-black uppercase tracking-widest text-muted-foreground ml-1">نوع الوصول (Access Type)</label>
-                <select name="accessType" value={formData.accessType} onChange={handleChange} className="w-full p-4 bg-secondary/30 border-2 border-border rounded-2xl outline-none focus:border-primary font-black">
-                  <option value="free">مجاني (Free Content)</option>
-                  <option value="paid">مدفوع (Paid Content)</option>
-                </select>
-              </div>
-              <div className="space-y-3">
-                <label className="text-sm font-black uppercase tracking-widest text-muted-foreground ml-1">المحاضرة / السنة</label>
-                <select 
-                  name="lectureNumber" 
-                  value={formData.lectureNumber} 
-                  onChange={(e) => setFormData(prev => ({ ...prev, lectureNumber: parseInt(e.target.value) }))} 
-                  className="w-full p-4 bg-secondary/30 border-2 border-border rounded-2xl outline-none focus:border-primary font-black text-right"
-                  dir="rtl"
-                >
-                  {Array.from({ length: 12 }, (_, i) => i + 1).map(n => (
-                    <option key={n} value={n}>المحاضرة {n}</option>
-                  ))}
-                </select>
-              </div>
+            <div className="flex justify-between items-center">
+               <h3 className="text-2xl font-black">الخطوة 1: التصنيف والربط</h3>
+               <div className="flex p-1 bg-secondary rounded-2xl border border-border">
+                  <button 
+                    onClick={() => setOrganizationMode('standard')}
+                    className={cn("px-6 py-2 rounded-xl font-black text-xs transition-all", organizationMode === 'standard' ? "bg-primary text-white shadow-lg" : "text-muted-foreground")}
+                  >
+                    Standard Course
+                  </button>
+                  <button 
+                    onClick={() => setOrganizationMode('theme')}
+                    className={cn("px-6 py-2 rounded-xl font-black text-xs transition-all", organizationMode === 'theme' ? "bg-primary text-white shadow-lg" : "text-muted-foreground")}
+                  >
+                    Data Theme (Free)
+                  </button>
+               </div>
             </div>
+
+            {organizationMode === 'standard' ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="space-y-3">
+                  <label className="text-sm font-black uppercase tracking-widest text-muted-foreground ml-1">الكورس (Course)</label>
+                  <select name="courseId" value={formData.courseId} onChange={handleChange} className="w-full p-4 bg-secondary/30 border-2 border-border rounded-2xl outline-none focus:border-primary font-black">
+                    {courses.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
+                  </select>
+                </div>
+                <div className="space-y-3">
+                  <label className="text-sm font-black uppercase tracking-widest text-muted-foreground ml-1">المادة (Subject)</label>
+                  <select name="subjectId" value={formData.subjectId} onChange={handleChange} className="w-full p-4 bg-secondary/30 border-2 border-border rounded-2xl outline-none focus:border-primary font-black">
+                    {subjects.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
+                  </select>
+                </div>
+                <div className="space-y-3">
+                  <label className="text-sm font-black uppercase tracking-widest text-muted-foreground ml-1">نوع المحتوى (Source Type)</label>
+                  <select name="questionType" value={formData.questionType} onChange={handleChange} className="w-full p-4 bg-secondary/30 border-2 border-border rounded-2xl outline-none focus:border-primary font-black">
+                    <option value="practice">تدريبية (Training)</option>
+                    <option value="past_papers">سنين سابقة (Past Exams)</option>
+                    <option value="lectures">محاضرات (Lecture Based)</option>
+                  </select>
+                </div>
+                <div className="space-y-3">
+                  <label className="text-sm font-black uppercase tracking-widest text-muted-foreground ml-1">نوع الوصول (Access Type)</label>
+                  <select name="accessType" value={formData.accessType} onChange={handleChange} className="w-full p-4 bg-secondary/30 border-2 border-border rounded-2xl outline-none focus:border-primary font-black">
+                    <option value="free">مجاني (Free Content)</option>
+                    <option value="paid">مدفوع (Paid Content)</option>
+                  </select>
+                </div>
+                <div className="space-y-3">
+                  <label className="text-sm font-black uppercase tracking-widest text-muted-foreground ml-1">المحاضرة / السنة</label>
+                  <select 
+                    name="lectureNumber" 
+                    value={formData.lectureNumber} 
+                    onChange={(e) => setFormData(prev => ({ ...prev, lectureNumber: parseInt(e.target.value) }))} 
+                    className="w-full p-4 bg-secondary/30 border-2 border-border rounded-2xl outline-none focus:border-primary font-black text-right"
+                    dir="rtl"
+                  >
+                    {Array.from({ length: 12 }, (_, i) => i + 1).map(n => (
+                      <option key={n} value={n}>المحاضرة {n}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="space-y-3">
+                  <label className="text-sm font-black uppercase tracking-widest text-muted-foreground ml-1">تيمة الداتا (Theme)</label>
+                  <select name="themeId" value={formData.themeId} onChange={handleChange} className="w-full p-4 bg-secondary/30 border-2 border-border rounded-2xl outline-none focus:border-primary font-black">
+                    <option value="">اختر تيمة...</option>
+                    {dataThemes.map(t => <option key={t.id} value={t.id}>{t.name}</option>)}
+                  </select>
+                </div>
+                <div className="space-y-3">
+                  <label className="text-sm font-black uppercase tracking-widest text-muted-foreground ml-1">التصنيف (Category)</label>
+                  <select name="categoryId" value={formData.categoryId} onChange={handleChange} className="w-full p-4 bg-secondary/30 border-2 border-border rounded-2xl outline-none focus:border-primary font-black">
+                    <option value="">اختر تصنيف...</option>
+                    {dataThemes.find(t => t.id === formData.themeId)?.categories.map((c: any) => (
+                      <option key={c.id} value={c.id}>{c.name}</option>
+                    ))}
+                  </select>
+                </div>
+                <div className="space-y-3">
+                  <label className="text-sm font-black uppercase tracking-widest text-muted-foreground ml-1">الشابتر (Chapter)</label>
+                  <select name="chapterId" value={formData.chapterId} onChange={handleChange} className="w-full p-4 bg-secondary/30 border-2 border-border rounded-2xl outline-none focus:border-primary font-black">
+                    <option value="">اختر شابتر...</option>
+                    {dataThemes.find(t => t.id === formData.themeId)?.categories.find((c: any) => c.id === formData.categoryId)?.chapters.map((ch: any) => (
+                      <option key={ch.id} value={ch.id}>{ch.name}</option>
+                    ))}
+                  </select>
+                </div>
+                <div className="space-y-3">
+                   <label className="text-sm font-black uppercase tracking-widest text-muted-foreground ml-1">نوع المحتوى</label>
+                   <div className="p-4 bg-emerald-500/10 text-emerald-600 rounded-2xl font-black text-center border border-emerald-500/20">
+                     محتوى تيمات الداتا دائماً مجاني
+                   </div>
+                </div>
+              </div>
+            )}
           </div>
         )}
 

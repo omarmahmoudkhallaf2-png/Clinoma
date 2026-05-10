@@ -18,6 +18,11 @@ export default function Quiz() {
   const location = useLocation();
   
   const setupParams = location.state as any;
+  const searchParams = new URLSearchParams(location.search);
+  
+  const themeId = searchParams.get('themeId');
+  const categoryId = searchParams.get('categoryId');
+  const chapterId = searchParams.get('chapterId');
 
   const isTimed = setupParams?.isTimed ?? false;
   const isStudyMode = setupParams?.feedbackMode === 'instant';
@@ -52,19 +57,35 @@ export default function Quiz() {
           return;
         }
 
-        let q = query(collection(db, 'questions'), where('courseId', '==', courseId));
-        if (setupParams?.subjectId && setupParams.subjectId !== 'all') {
-          q = query(q, where('subjectId', '==', setupParams.subjectId));
+        let q;
+        if (themeId && categoryId && chapterId) {
+          // Data Themes Mode
+          q = query(
+            collection(db, 'questions'), 
+            where('themeId', '==', themeId),
+            where('categoryId', '==', categoryId),
+            where('chapterId', '==', chapterId)
+          );
+        } else {
+          // Standard Course Mode
+          q = query(collection(db, 'questions'), where('courseId', '==', courseId));
         }
 
         const snap = await getDocs(q);
         let data = snap.docs.map(doc => ({ id: doc.id, ...doc.data() } as Question));
         
-        if (!subscribed) data = data.filter(item => item.accessType === 'free');
-        if (setupParams?.questionType && setupParams.questionType !== 'all') data = data.filter(item => item.questionType === setupParams.questionType);
-        if (setupParams?.lectureNumber) data = data.filter(item => item.lectureNumber === setupParams.lectureNumber);
+        if (!subscribed && !themeId) data = data.filter(item => item.accessType === 'free');
+        
+        // Only apply standard filters if NOT in theme mode
+        if (!themeId) {
+          if (setupParams?.subjectId && setupParams.subjectId !== 'all') {
+            data = data.filter(item => item.subjectId === setupParams.subjectId);
+          }
+          if (setupParams?.questionType && setupParams.questionType !== 'all') data = data.filter(item => item.questionType === setupParams.questionType);
+          if (setupParams?.lectureNumber) data = data.filter(item => item.lectureNumber === setupParams.lectureNumber);
+        }
 
-        data = data.sort(() => Math.random() - 0.5).slice(0, setupParams?.count || 10);
+        data = data.sort(() => Math.random() - 0.5).slice(0, setupParams?.count || 100);
         
         if (data.length === 0) {
           setError(`لم يتم العثور على أسئلة في هذا القسم حالياً.`);
@@ -73,13 +94,14 @@ export default function Quiz() {
           setTimeLeft(data.length * SECONDS_PER_QUESTION);
         }
       } catch (err) {
+        console.error(err);
         setError('Failed to load questions.');
       } finally {
         setLoading(false);
       }
     };
     fetchQuestions();
-  }, [user, courseId, subscribed]);
+  }, [user, courseId, subscribed, themeId, categoryId, chapterId]);
 
   useEffect(() => {
     if (!isTimed || isFinished || questions.length === 0) return;

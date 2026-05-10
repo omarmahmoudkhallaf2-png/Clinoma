@@ -49,8 +49,17 @@ export default function QuestionTable({ questions, onEdit, onDelete }: QuestionT
                 </td>
                 <td className="px-8 py-6">
                   <div className="space-y-1">
-                    <p className="font-black text-sm uppercase text-primary">{q.courseId}</p>
-                    <p className="font-bold text-xs text-muted-foreground truncate max-w-[150px]">{q.subjectId}</p>
+                    {q.themeId ? (
+                      <>
+                        <p className="font-black text-sm uppercase text-indigo-500">THEME</p>
+                        <p className="font-bold text-[10px] text-muted-foreground truncate max-w-[150px]">ID: {q.themeId}</p>
+                      </>
+                    ) : (
+                      <>
+                        <p className="font-black text-sm uppercase text-primary">{q.courseId}</p>
+                        <p className="font-bold text-xs text-muted-foreground truncate max-w-[150px]">{q.subjectId}</p>
+                      </>
+                    )}
                   </div>
                 </td>
                 <td className="px-8 py-6">

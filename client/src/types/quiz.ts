@@ -14,6 +14,9 @@ export interface Question {
   folder?: string;
   showInFree?: boolean;
   isPremium?: boolean;
+  themeId?: string;
+  categoryId?: string;
+  chapterId?: string;
   createdAt?: any;
   version?: number;
   status?: 'draft' | 'published' | 'review';
