@@ -285,8 +285,6 @@ const ImportCards = () => {
               {[
                 { name: 'JSON', icon: FileJson, color: 'text-blue-500', desc: 'Custom JSON format', onClick: () => fileInputRef.current?.click() },
                 { name: 'CSV', icon: FileText, color: 'text-green-500', desc: 'Excel / Spreadsheet', onClick: () => fileInputRef.current?.click() },
-                { name: 'APKG', icon: Package, color: 'text-purple-500', desc: 'Anki Package', onClick: () => fileInputRef.current?.click() },
-                { name: 'AI Generate', icon: Sparkles, color: 'text-amber-500', desc: 'From PDF or Image', onClick: () => aiFileInputRef.current?.click() },
               ].map(type => (
                 <div key={type.name} onClick={type.onClick} className="p-6 rounded-3xl bg-card border border-border flex flex-col items-center text-center space-y-3 cursor-pointer hover:border-primary/50 transition-all group shadow-sm">
                   <div className={`w-12 h-12 rounded-2xl bg-muted flex items-center justify-center ${type.color} group-hover:bg-primary/10 transition-colors shadow-inner`}>
@@ -418,7 +416,7 @@ const ImportCards = () => {
         <AlertCircle className="text-orange-500 shrink-0" size={24} />
         <div>
           <h4 className="font-bold text-orange-600">Smart Import Tip</h4>
-          <p className="text-sm text-orange-600/80">You can now upload Anki (.apkg) files directly! We also support TXT and JSON exports from other platforms.</p>
+          <p className="text-sm text-orange-600/80">You can now upload JSON, CSV and TXT files directly to import your decks from other platforms.</p>
         </div>
       </div>
     </div>
