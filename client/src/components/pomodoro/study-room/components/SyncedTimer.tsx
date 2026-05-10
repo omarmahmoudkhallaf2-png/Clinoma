@@ -13,7 +13,7 @@ interface SyncedTimerProps {
 }
 
 export default function SyncedTimer({ timeLeft, room, isHost, onToggle, onReset }: SyncedTimerProps) {
-  const { timerState, mode } = room;
+  const { timerState } = room;
   const isActive = timerState.isActive;
   const isWork = timerState.mode === 'work';
 

@@ -86,7 +86,7 @@ export function useStudyRoom(roomId: string | null) {
     if (isWork) {
       Object.keys(roomData.members).forEach(uid => {
         const member = roomData.members[uid];
-        if (getSyncedNow() - member.lastActive.toMillis() < 300000) {
+        if (member.lastActive && (getSyncedNow() - member.lastActive.toMillis() < 300000)) {
           batch.update(roomRef, {
             [`members.${uid}.sessionsToday`]: increment(1)
           });
@@ -150,11 +150,13 @@ export function useStudyRoom(roomId: string | null) {
         workTime: 25,
         shortBreakTime: 5,
         longBreakTime: 15,
+        goalSessions: 4,
         autoStart: false
       },
       timerState: {
         mode: 'work',
         isActive: false,
+        startTime: null,
         timeRemaining: 25 * 60,
         duration: 25 * 60,
         sessionsCompleted: 0,
@@ -169,7 +171,8 @@ export function useStudyRoom(roomId: string | null) {
           lastActive: serverTimestamp(),
           isReady: false,
           streak: 0,
-          sessionsToday: 0
+          sessionsToday: 0,
+          joinedAt: serverTimestamp()
         }
       },
       reactions: [],
@@ -195,7 +198,8 @@ export function useStudyRoom(roomId: string | null) {
         lastActive: serverTimestamp(),
         isReady: false,
         streak: 0,
-        sessionsToday: 0
+        sessionsToday: 0,
+        joinedAt: serverTimestamp()
       }
     });
     return roomId;

@@ -7,7 +7,7 @@ export interface RoomMember {
   name: string;
   photoURL?: string;
   isReady: boolean;
-  status: 'online' | 'afk' | 'studying' | 'break';
+  status: 'online' | 'afk' | 'studying' | 'break' | 'offline';
   lastActive: Timestamp | any;
   streak: number;
   sessionsToday: number;
@@ -16,7 +16,7 @@ export interface RoomMember {
 
 export interface RoomReaction {
   uid: string;
-  type: '👍' | '🔥' | '☕' | '💪' | 'Break?' | 'Ready';
+  type: string; // Allow any emoji/string
   timestamp: number;
 }
 
@@ -31,7 +31,7 @@ export interface RoomSettings {
 export interface TimerState {
   isActive: boolean;
   mode: RoomMode;
-  startTime: Timestamp | null;
+  startTime: Timestamp | any | null;
   duration: number; // in seconds
   timeRemaining: number; // in seconds
   sessionsCompleted: number;
@@ -48,7 +48,5 @@ export interface StudyRoom {
   timerState: TimerState;
   members: Record<string, RoomMember>;
   reactions: RoomReaction[];
-  sharedAmbient: Record<string, number>;
-  createdAt: any; // Timestamp
   totalWorkTime: number; // in seconds
 }
