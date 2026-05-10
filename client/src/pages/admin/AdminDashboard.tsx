@@ -171,6 +171,51 @@ export default function AdminDashboard() {
     }
   };
 
+  const handleNuclearReset = async () => {
+    const confirm1 = window.confirm('⚠ تحذير: أنت على وشك مسح جميع الأسئلة والفلاش كاردز والنوتس والنتائج. هل أنت متأكد؟');
+    if (!confirm1) return;
+    
+    const confirm2 = window.confirm('🔴 تأكيد نهائي: لن تتمكن من استعادة هذه البيانات أبداً. هل تريد الاستمرار؟');
+    if (!confirm2) return;
+
+    setIsRepairing(true);
+    setAuditReports(['Starting Nuclear Reset Protocol...', 'Initializing deep clean...']);
+    
+    try {
+      const collectionsToClear = ['questions', 'decks', 'flashcards', 'exam_results', 'assistant_chats', 'study_rooms', 'notes'];
+      
+      for (const colName of collectionsToClear) {
+        setAuditReports(prev => [...prev, `Cleaning collection: ${colName}...`]);
+        const q = query(collection(db, colName));
+        const snap = await getDocs(q);
+        
+        if (snap.empty) {
+          setAuditReports(prev => [...prev, `${colName} is already empty.`]);
+          continue;
+        }
+
+        // Use batches for efficiency (500 docs limit per batch)
+        const docs = snap.docs;
+        for (let i = 0; i < docs.length; i += 500) {
+          const batch = writeBatch(db);
+          const chunk = docs.slice(i, i + 500);
+          chunk.forEach(d => batch.delete(d.ref));
+          await batch.commit();
+        }
+        setAuditReports(prev => [...prev, `Successfully cleared ${snap.size} documents from ${colName}.`]);
+      }
+
+      setAuditReports(prev => [...prev, 'Nuclear Reset Complete. System is now CLEAN.', 'Ready for fresh content.']);
+      sendAdminNotification('Database Wiped Successfully', 'zap');
+      fetchData();
+    } catch (err: any) {
+      setAuditReports(prev => [...prev, `CRITICAL ERROR DURING RESET: ${err.message}`]);
+      sendAdminNotification('Reset Failed', 'error');
+    } finally {
+      setIsRepairing(false);
+    }
+  };
+
   const filteredQuestions = useMemo(() => {
     return questions.filter(q => {
       const matchSearch = !searchQuery || q.text?.toLowerCase().includes(searchQuery.toLowerCase());
@@ -189,7 +234,6 @@ export default function AdminDashboard() {
 
   return (
     <div className="space-y-10 pb-20 animate-in fade-in duration-500 max-w-[1700px] mx-auto px-4 md:px-8 relative">
-      <CommandBar />
 
       {/* Hero Command Center Header */}
       <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 bg-card border-2 border-border p-10 rounded-[4rem] shadow-sm relative overflow-hidden">
@@ -433,14 +477,14 @@ export default function AdminDashboard() {
 
                   <div className="max-w-2xl mx-auto">
                     <button 
-                      onClick={handleSystemRepair}
+                      onClick={handleNuclearReset}
                       disabled={isRepairing}
-                      className="w-full px-12 py-8 bg-primary text-white rounded-[3rem] font-black text-2xl shadow-2xl shadow-primary/30 hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-4 disabled:opacity-50"
+                      className="w-full px-12 py-8 bg-rose-600 text-white rounded-[3rem] font-black text-2xl shadow-2xl shadow-rose-500/30 hover:bg-rose-700 hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-4 disabled:opacity-50"
                     >
-                      {isRepairing ? <Loader2 className="animate-spin w-8 h-8" /> : <Terminal className="w-8 h-8" />}
-                      {isRepairing ? 'Running Deep Repair...' : 'Execute Manual System Override'}
+                      {isRepairing ? <Loader2 className="animate-spin w-8 h-8" /> : <Trash2 className="w-8 h-8" />}
+                      {isRepairing ? 'Cleaning Up...' : 'Nuclear Database Reset'}
                     </button>
-                    <p className="mt-6 text-xs font-bold text-muted-foreground uppercase tracking-widest opacity-40">Safety Lock Active: Superuser permissions required.</p>
+                    <p className="mt-6 text-xs font-bold text-muted-foreground uppercase tracking-widest opacity-40 text-center">Safety Lock Active: This will permanently delete all content.</p>
                   </div>
                 </div>
               </div>

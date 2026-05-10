@@ -248,7 +248,7 @@ const CreateCard = () => {
       });
       await batch.commit();
       toast.success('تم الحفظ بنجاح!');
-      navigate('/flashcards');
+      navigate('/flashcards/decks');
     } catch (error) {
       toast.error('فشل في الحفظ');
     } finally {

@@ -119,8 +119,13 @@ const FlashcardsDashboard = () => {
 
         setDecks(decksWithCounts);
         setDueCount(totalDue);
-      } catch (error) {
+      } catch (error: any) {
         console.error('Error fetching decks:', error);
+        if (error.code === 'permission-denied') {
+          toast.error('صلاحيات فيربيز مرفوضة. يرجى التأكد من نشر الـ Rules في الكونسول.');
+        } else {
+          toast.error('فشل في تحميل المكتبة.');
+        }
       } finally {
         setLoading(false);
       }

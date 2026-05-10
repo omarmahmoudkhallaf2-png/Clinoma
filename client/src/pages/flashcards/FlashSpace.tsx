@@ -486,7 +486,7 @@ const FlashSpace = () => {
             </div>
             {showExplanation && (
               <div className="absolute inset-0 bg-white/98 backdrop-blur-3xl p-16 z-[100] animate-in slide-in-from-bottom-full duration-700">
-                <div className="max-w-4xl mx-auto space-y-8"><div className="flex justify-between items-center"><h4 className="text-5xl font-black text-slate-900 tracking-tight">{selectedBoard.disease}</h4><button onClick={() => setShowExplanation(false)} className="p-4 bg-slate-100 hover:bg-rose-50 hover:text-rose-600 rounded-[2rem] transition-all"><X className="w-8 h-8" /></button></div><div className="h-px bg-slate-100 w-full" /><p className="text-2xl text-slate-600 leading-relaxed font-medium">{selectedBoard.explanation}</p></div>
+                <div className="max-w-4xl mx-auto space-y-8"><div className="flex justify-between items-center"><h4 className="text-5xl font-black text-slate-900 tracking-tight">{selectedBoard.disease}</h4><button onClick={() => setShowExplanation(false)} className="p-4 bg-slate-100 hover:bg-rose-50 hover:text-rose-600 rounded-[2rem] transition-all"><X className="w-8 h-8" /></button></div><div className="h-px bg-slate-100 w-full" /><p className="text-2xl text-slate-600 leading-relaxed font-medium flashcard-text">{selectedBoard.explanation}</p></div>
               </div>
             )}
           </div>

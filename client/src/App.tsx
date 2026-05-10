@@ -135,7 +135,6 @@ export default function App() {
     <ThemeProvider>
       {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
       <Router>
-        {userRole === 'admin' && <CommandPalette />}
         <Toaster position="top-right" toastOptions={{
           style: {
             background: 'hsl(var(--card))',

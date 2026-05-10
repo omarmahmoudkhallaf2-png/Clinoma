@@ -1,45 +1,23 @@
 
-const GROQ_API_KEY = "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";
+const KEYS = [
+  "AIzaSyB0GrBSsl3xbr_eDmSQtWk5v4VOS0p2gFQ",
+  "AIzaSyALv9jWafoAN9AVh4psyYQUaPpPL-ig-J4",
+  "AIzaSyAsuqzTQlgwhhhUAUhLy9Wd92xgR_kvVDA",
+  "AIzaSyA05ajCmTzdHKYE1YAU0t6VQHj3DhUE-Zw",
+  "AIzaSyAyZ-gdyKEgGgBwZx77EkPVpC1vDyjsyPc"
+];
 
-const tryGroqFetch = async (model: string, messages: any[]) => {
-  try {
-    const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${GROQ_API_KEY}`,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        model: model,
-        messages: messages,
-        temperature: 0.7,
-        max_tokens: 4096
-      })
-    });
-    
-    if (response.ok) {
-      const data = await response.json();
-      return data.choices?.[0]?.message?.content || "";
-    } else {
-      const errorData = await response.json().catch(() => ({}));
-      console.error("Groq API Error Detail:", {
-        status: response.status,
-        statusText: response.statusText,
-        body: JSON.stringify(errorData, null, 2)
-      });
-    }
-    return null;
-  } catch (err) {
-    console.error("Groq Network/System Error:", err);
-    return null;
-  }
-};
+const MODELS = [
+  "gemini-3.1-flash-lite", 
+  "gemini-3-flash",      
+  "gemini-3.1-pro"       
+];
 
 const tryGeminiFetch = async (model: string, payload: any, key: string) => {
   const versions = ['v1beta', 'v1'];
   for (const version of versions) {
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 15000); // 15s timeout
+    const timeoutId = setTimeout(() => controller.abort(), 20000); 
 
     try {
       const url = `https://generativelanguage.googleapis.com/${version}/models/${model}:generateContent?key=${key}`;
@@ -53,8 +31,7 @@ const tryGeminiFetch = async (model: string, payload: any, key: string) => {
       clearTimeout(timeoutId);
       if (response.status === 429 || response.status === 403) return { ok: false, status: response.status };
       if (response.ok) return response;
-      if (response.status === 404 || response.status === 400) continue;
-      return response;
+      continue;
     } catch (err) {
       clearTimeout(timeoutId);
       continue;
@@ -64,29 +41,22 @@ const tryGeminiFetch = async (model: string, payload: any, key: string) => {
 };
 
 export const extractTopics = async (fileData: { data: string, mimeType: string }) => {
-  const KEYS = [
-    "AIzaSyB0GrBSsl3xbr_eDmSQtWk5v4VOS0p2gFQ",
-    "AIzaSyALv9jWafoAN9AVh4psyYQUaPpPL-ig-J4",
-    "AIzaSyAsuqzTQlgwhhhUAUhLy9Wd92xgR_kvVDA",
-    "AIzaSyA05ajCmTzdHKYE1YAU0t6VQHj3DhUE-Zw",
-    "AIzaSyAyZ-gdyKEgGgBwZx77EkPVpC1vDyjsyPc"
-  ];
-  const models = ["gemini-2.5-flash", "gemini-flash-latest"];
   const allKeys = [...KEYS].sort(() => Math.random() - 0.5);
 
   for (const key of allKeys) {
-    for (const model of models) {
-      const contents = [{ 
-        role: 'user', 
-        parts: [
-          { text: "Extract the main scientific/medical topics from this file. Return them as a simple numbered list. Only the list, no other text." },
-          { inline_data: { mime_type: fileData.mimeType, data: fileData.data.split(',')[1] } }
-        ] 
-      }];
+    for (const model of MODELS) {
+      const payload = {
+        contents: [{ 
+          role: 'user', 
+          parts: [
+            { text: "Extract the main scientific/medical topics from this file. Return them as a simple numbered list. Only the list, no other text." },
+            { inline_data: { mime_type: fileData.mimeType, data: fileData.data.split(',')[1] } }
+          ] 
+        }]
+      };
 
-      const res = await tryGeminiFetch(model, { contents }, key!);
-      if (res && (res.status === 429 || res.status === 403)) break; 
-      if (res && res.ok) {
+      const res = await tryGeminiFetch(model, payload, key);
+      if (res && 'ok' in res && res.ok && 'json' in res) {
         const data = await (res as Response).json();
         return data.candidates?.[0]?.content?.parts?.[0]?.text || "";
       }
@@ -112,83 +82,100 @@ export const generateAIResponse = async (
 
   const systemPrompt = `
 أنت (Med-Guide)، الدليل الطبي الذكي لمنصة Med-Prep. خبير عالمي في المناهج الطبية.
+قواعد العمل:
+1. التزم التزاماً حرفياً بالفلاتر المختارة (العمق: ${depthPrompt} | اللغة: ${langPrompt}).
+2. استخدم الجداول المقارنة (Tables) والإيموجي الطبية.
+3. التزم بمحتوى الملف المرفوع إذا وجد.`;
 
-قواعد العمل الصارمة:
-1. قبل الإجابة، قم بتحليل السؤال بعمق وابحث عن أدق المعلومات الطبية المتعلقة به.
-2. التزم التزاماً حرفياً بالفلاتر المختارة (العمق: ${depthPrompt} | اللغة: ${langPrompt}).
-3. قدم أقصى كمية ممكنة من المعلومات (Maximum Comprehensive Detail). لا تختصر إلا إذا طُلب منك ذلك.
-4. استخدم الجداول المقارنة (Tables) والإيموجي الطبية لتسهيل الفهم.
-5. اجعل التنسيق "فخماً" (Premium Aesthetics) باستخدام العناوين والخط العريض.
-6. إذا كان هناك أي مصطلحات علمية، اذكرها بدقة.
-7. لا تتوقف عن الشرح حتى تغطي كافة جوانب الموضوع المطلوبة بكثافة.`;
-
-  const groqModels = [
-    "llama-3.3-70b-versatile",
-    "meta-llama/llama-4-scout-17b-16e-instruct",
-    "llama-3.1-8b-instant",
-    "allam-2-7b"
-  ];
-
-  const allKeys = [
-    "AIzaSyB0GrBSsl3xbr_eDmSQtWk5v4VOS0p2gFQ",
-    "AIzaSyALv9jWafoAN9AVh4psyYQUaPpPL-ig-J4",
-    "AIzaSyAsuqzTQlgwhhhUAUhLy9Wd92xgR_kvVDA",
-    "AIzaSyA05ajCmTzdHKYE1YAU0t6VQHj3DhUE-Zw",
-    "AIzaSyAyZ-gdyKEgGgBwZx77EkPVpC1vDyjsyPc"
-  ].sort(() => Math.random() - 0.5);
+  const allKeys = [...KEYS].sort(() => Math.random() - 0.5);
 
   for (const key of allKeys) {
-    for (const model of groqModels) {
-      console.log(`Trying Groq Model: ${model} with key starting with ${key.substring(0, 8)}...`);
-      const res = await tryGroqFetch(model, [
-        { role: "system", content: systemPrompt },
-        { role: "user", content: prompt }
-      ]);
-      if (res) {
-        console.log(`Success with Groq Model: ${model}`);
-        return res;
+    for (const model of MODELS) {
+      const payload = {
+        contents: [{
+          role: 'user',
+          parts: [
+            { text: `${systemPrompt}\n\nQuestion: ${prompt}` },
+            ...(fileData ? [{ inline_data: { mime_type: fileData.mimeType, data: fileData.data.split(',')[1] } }] : [])
+          ]
+        }]
+      };
+
+      const res = await tryGeminiFetch(model, payload, key);
+      if (res && 'ok' in res && res.ok && 'json' in res) {
+        const data = await (res as Response).json();
+        return data.candidates?.[0]?.content?.parts?.[0]?.text || "";
       }
     }
   }
-
-  console.warn("Groq failed, falling back to Gemini...");
-
-  for (const key of allKeys) {
-    console.log(`Trying Gemini fallback with key starting with ${key.substring(0, 8)}...`);
-    const res = await tryGeminiFetch("gemini-2.5-flash", {
-      contents: [{ role: 'user', parts: [{ text: `${systemPrompt}\n\n${prompt}` }] }]
-    }, key);
-    if (res && res.ok) {
-      console.log("Success with Gemini fallback.");
-      const data = await (res as Response).json();
-      return data.candidates?.[0]?.content?.parts?.[0]?.text || "";
-    }
-  }
-
-  console.error("All AI engines failed.");
-  throw new Error("عذراً، جميع المحركات حالياً تحت ضغط كبير. يرجى المحاولة بعد قليل.");
+  throw new Error("عذراً، جميع المحركات حالياً تحت ضغط كبير.");
 };
 
 export const generateFlashcards = async (text: string, files?: { data: string, mimeType: string }[]) => {
-  const res = await tryGroqFetch("llama-3.3-70b-versatile", [
-    { role: "system", content: "You are a medical educator. Convert text into a JSON array: [{ \"front\": \"...\", \"back\": \"...\", \"tags\": [\"...\"] }]. Return ONLY JSON." },
-    { role: "user", content: text }
-  ]);
-  if (res) {
-    const jsonMatch = res.match(/\[[\s\S]*\]/);
-    if (jsonMatch) return JSON.parse(jsonMatch[0]);
+  const allKeys = [...KEYS].sort(() => Math.random() - 0.5);
+
+  const systemPrompt = `You are a professional medical educator. 
+  CRITICAL RULE: Generate flashcards ONLY from the provided content. 
+  If the user provides specific instructions below, follow them strictly.
+  Return a JSON array: [{ "front": "...", "back": "...", "tags": ["subject"] }].
+  Return ONLY the JSON array.`;
+
+  for (const key of allKeys) {
+    for (const model of MODELS) {
+      const payload = {
+        contents: [{
+          role: 'user',
+          parts: [
+            { text: `${systemPrompt}\n\nUSER SPECIFIC INSTRUCTIONS: ${text}\n\nAnalyze the attached document and generate cards based on these rules.` },
+            ...(files || []).map(f => ({
+              inline_data: { mime_type: f.mimeType, data: f.data.split(',')[1] }
+            }))
+          ]
+        }]
+      };
+
+      const res = await tryGeminiFetch(model, payload, key);
+      if (res && 'ok' in res && res.ok && 'json' in res) {
+        const data = await (res as Response).json();
+        const content = data.candidates?.[0]?.content?.parts?.[0]?.text || "";
+        const jsonMatch = content.match(/\[[\s\S]*\]/);
+        if (jsonMatch) return JSON.parse(jsonMatch[0]);
+      }
+    }
   }
   return []; 
 };
 
 export const generateAIExam = async (prompt: string, files?: { data: string, mimeType: string }[]) => {
-  const res = await tryGroqFetch("llama-3.3-70b-versatile", [
-    { role: "system", content: "Extract MCQs into JSON array: [{ \"question\": \"...\", \"options\": [...], \"correctAnswer\": 0, \"explanation\": \"...\" }]. Return ONLY JSON." },
-    { role: "user", content: prompt }
-  ]);
-  if (res) {
-    const jsonMatch = res.match(/\[[\s\S]*\]/);
-    if (jsonMatch) return JSON.parse(jsonMatch[0]);
+  const allKeys = [...KEYS].sort(() => Math.random() - 0.5);
+
+  const systemPrompt = `You are an expert medical examiner. 
+  STRICT RULE: Generate MCQs ONLY from the provided content.
+  Return a JSON array: [{ "question": "...", "options": ["...", "...", "...", "..."], "correctAnswer": 0, "explanation": "..." }].
+  Return ONLY the JSON array.`;
+
+  for (const key of allKeys) {
+    for (const model of MODELS) {
+      const payload = {
+        contents: [{
+          role: 'user',
+          parts: [
+            { text: `${systemPrompt}\n\nTask: ${prompt}` },
+            ...(files || []).map(f => ({
+              inline_data: { mime_type: f.mimeType, data: f.data.split(',')[1] }
+            }))
+          ]
+        }]
+      };
+
+      const res = await tryGeminiFetch(model, payload, key);
+      if (res && 'ok' in res && res.ok && 'json' in res) {
+        const data = await (res as Response).json();
+        const content = data.candidates?.[0]?.content?.parts?.[0]?.text || "";
+        const jsonMatch = content.match(/\[[\s\S]*\]/);
+        if (jsonMatch) return JSON.parse(jsonMatch[0]);
+      }
+    }
   }
   return [];
 };

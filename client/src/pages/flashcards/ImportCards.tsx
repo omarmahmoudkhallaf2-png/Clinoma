@@ -44,6 +44,7 @@ const ImportCards = () => {
   const [deckTitle, setDeckTitle] = useState('');
   const [subject, setSubject] = useState('');
   const [isAIProcessing, setIsAIProcessing] = useState(false);
+  const [aiCustomInstructions, setAiCustomInstructions] = useState('');
 
   const handleFileSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
@@ -154,10 +155,13 @@ const ImportCards = () => {
       reader.onload = async (readerEvent) => {
         try {
           const fileData = readerEvent.target?.result as string;
-          const result = await generateFlashcards("Generate flashcards from this medical document", [{ 
-            data: fileData, 
-            mimeType: selectedFile.type 
-          }]);
+          const result = await generateFlashcards(
+            aiCustomInstructions || "Generate flashcards from this medical document", 
+            [{ 
+              data: fileData, 
+              mimeType: selectedFile.type 
+            }]
+          );
           
           if (result && Array.isArray(result)) {
             setPreviewData(result);
@@ -226,7 +230,7 @@ const ImportCards = () => {
       }
 
       toast.success(`تم استيراد ${previewData.length} كارت بنجاح!`);
-      navigate('/flashcards');
+      navigate('/flashcards/decks');
     } catch (err: any) {
       console.error('Import error:', err);
       toast.error('فشل في عملية الاستيراد: ' + err.message);
@@ -285,6 +289,7 @@ const ImportCards = () => {
               {[
                 { name: 'JSON', icon: FileJson, color: 'text-blue-500', desc: 'Custom JSON format', onClick: () => fileInputRef.current?.click() },
                 { name: 'CSV', icon: FileText, color: 'text-green-500', desc: 'Excel / Spreadsheet', onClick: () => fileInputRef.current?.click() },
+                { name: 'AI Generate', icon: Sparkles, color: 'text-amber-500', desc: 'From PDF or Image', onClick: () => aiFileInputRef.current?.click() },
               ].map(type => (
                 <div key={type.name} onClick={type.onClick} className="p-6 rounded-3xl bg-card border border-border flex flex-col items-center text-center space-y-3 cursor-pointer hover:border-primary/50 transition-all group shadow-sm">
                   <div className={`w-12 h-12 rounded-2xl bg-muted flex items-center justify-center ${type.color} group-hover:bg-primary/10 transition-colors shadow-inner`}>
@@ -297,17 +302,52 @@ const ImportCards = () => {
                 </div>
               ))}
             </div>
+            
+            {/* AI Custom Instructions */}
+            <motion.div 
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              className="bg-card border border-border p-6 rounded-3xl space-y-4"
+            >
+              <div className="flex items-center gap-3 text-primary">
+                <Sparkles size={20} />
+                <h3 className="font-bold">AI Instructions (Optional)</h3>
+              </div>
+              <textarea 
+                value={aiCustomInstructions}
+                onChange={(e) => setAiCustomInstructions(e.target.value)}
+                placeholder="e.g. Focus on pharmacology, translate everything to Arabic, or make questions high-yield for USMLE..."
+                className="w-full h-24 bg-muted border-none rounded-2xl p-4 text-sm focus:ring-2 focus:ring-primary/20 transition-all resize-none"
+              />
+            </motion.div>
 
             <div 
-              onClick={() => fileInputRef.current?.click()}
-              className="group py-20 border-2 border-dashed border-border rounded-[2.5rem] flex flex-col items-center justify-center space-y-4 hover:border-primary/50 hover:bg-primary/5 transition-all cursor-pointer"
+              onDragOver={(e) => { e.preventDefault(); e.stopPropagation(); }}
+              onDrop={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const droppedFile = e.dataTransfer.files?.[0];
+                if (!droppedFile) return;
+                
+                const name = droppedFile.name.toLowerCase();
+                if (name.endsWith('.pdf') || name.match(/\.(jpg|jpeg|png|webp)$/i)) {
+                  // Route to AI
+                  const event = { target: { files: [droppedFile] } } as any;
+                  handleAIGenerate(event);
+                } else {
+                  // Route to Manual
+                  const event = { target: { files: [droppedFile] } } as any;
+                  handleFileSelect(event);
+                }
+              }}
+              className="group py-20 border-2 border-dashed border-border rounded-[2.5rem] flex flex-col items-center justify-center space-y-4 hover:border-primary/50 hover:bg-primary/5 transition-all"
             >
               <div className="w-16 h-16 rounded-2xl bg-muted flex items-center justify-center text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary transition-all">
                 {importing || isAIProcessing ? <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin" /> : <Upload size={32} />}
               </div>
               <div className="text-center">
-                <p className="text-xl font-bold">{importing || isAIProcessing ? 'Processing File...' : 'Drop your file here'}</p>
-                <p className="text-sm text-muted-foreground">or click to browse from your computer</p>
+                <p className="text-xl font-bold">{importing || isAIProcessing ? 'Processing File...' : 'Select an option above to start'}</p>
+                <p className="text-sm text-muted-foreground">Click JSON, CSV, or AI Generate to upload</p>
               </div>
               <input 
                 type="file" 
@@ -355,18 +395,14 @@ const ImportCards = () => {
                 />
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-medium">Subject</label>
-                <select 
+                <label className="text-sm font-medium">Subject / Module</label>
+                <input 
+                  type="text"
                   value={subject}
                   onChange={e => setSubject(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl bg-muted border-none appearance-none"
-                >
-                  <option value="">Select Subject</option>
-                  <option value="Anatomy">Anatomy</option>
-                  <option value="Physiology">Physiology</option>
-                  <option value="Pathology">Pathology</option>
-                  <option value="Biochemistry">Biochemistry</option>
-                </select>
+                  placeholder="e.g. Cardiology, Anatomy, Week 1..."
+                  className="w-full px-4 py-3 rounded-xl bg-muted border-none focus:ring-2 focus:ring-primary/20 transition-all"
+                />
               </div>
             </div>
 
@@ -416,7 +452,7 @@ const ImportCards = () => {
         <AlertCircle className="text-orange-500 shrink-0" size={24} />
         <div>
           <h4 className="font-bold text-orange-600">Smart Import Tip</h4>
-          <p className="text-sm text-orange-600/80">You can now upload JSON, CSV and TXT files directly to import your decks from other platforms.</p>
+          <p className="text-sm text-orange-600/80">You can now generate flashcards using AI from PDFs, or upload JSON/CSV files directly.</p>
         </div>
       </div>
     </div>

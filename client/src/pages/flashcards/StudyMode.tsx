@@ -203,7 +203,7 @@ const StudyMode = () => {
             <p className="text-muted-foreground">You've reviewed all cards due for today in this deck. Great job!</p>
           </div>
           <button 
-            onClick={() => navigate('/flashcards')}
+            onClick={() => navigate('/flashcards/decks')}
             className="w-full py-3 rounded-xl bg-primary text-primary-foreground font-semibold shadow-lg shadow-primary/20"
           >
             Back to Dashboard
@@ -259,7 +259,7 @@ const StudyMode = () => {
               Reset & Restart
             </button>
             <button 
-              onClick={() => navigate('/flashcards')}
+              onClick={() => navigate('/flashcards/decks')}
               className="flex-1 py-3 rounded-xl bg-primary text-primary-foreground font-semibold flex items-center justify-center gap-2 shadow-lg shadow-primary/20"
             >
               Dashboard
@@ -278,7 +278,7 @@ const StudyMode = () => {
       {/* Header */}
       <div className="px-6 py-4 flex items-center justify-between border-b border-border bg-card/50 backdrop-blur-md sticky top-0 z-10">
         <div className="flex items-center gap-4">
-          <button onClick={() => navigate('/flashcards')} className="p-2 hover:bg-muted rounded-full transition-colors">
+          <button onClick={() => navigate('/flashcards/decks')} className="p-2 hover:bg-muted rounded-full transition-colors">
             <ChevronLeft size={24} />
           </button>
           <div>
@@ -293,7 +293,7 @@ const StudyMode = () => {
             <span>{currentIndex + 1} / {cards.length}</span>
           </div>
           <button className="p-2 hover:bg-muted rounded-full transition-colors">
-            <X size={24} onClick={() => navigate('/flashcards')} />
+            <X size={24} onClick={() => navigate('/flashcards/decks')} />
           </button>
         </div>
       </div>
@@ -331,7 +331,7 @@ const StudyMode = () => {
                 onClick={() => setIsFlipped(!isFlipped)}
               >
                 {/* Front Side */}
-                <div className="absolute inset-0 backface-hidden bg-card border-2 border-border p-4 md:p-8 rounded-[2rem] md:rounded-[3rem] shadow-2xl flex flex-col items-center justify-start text-center overflow-hidden">
+                <div className="absolute inset-0 backface-hidden bg-card border-2 border-border p-4 md:p-8 rounded-[2rem] md:rounded-[3rem] shadow-2xl flex flex-col items-center justify-start text-center overflow-hidden flashcard-text">
                   <div className="absolute top-4 left-1/2 -translate-x-1/2 flex items-center gap-2 z-20">
                     <div className="px-4 py-1.5 rounded-full bg-muted/90 backdrop-blur-sm text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground shadow-sm border border-border/50">
                       Question
@@ -369,7 +369,7 @@ const StudyMode = () => {
                       </div>
                     )}
                     <div 
-                      className="prose prose-lg md:prose-2xl font-bold dark:prose-invert max-w-4xl text-center pb-24 w-full"
+                      className="prose prose-lg md:prose-2xl font-bold dark:prose-invert max-w-4xl text-center pb-24 w-full flashcard-text"
                       dangerouslySetInnerHTML={{ __html: currentCard.front }}
                     />
                   </div>
@@ -381,7 +381,7 @@ const StudyMode = () => {
                 </div>
 
                 {/* Back Side */}
-                <div className="absolute inset-0 backface-hidden bg-card border-4 border-primary/20 p-4 md:p-8 rounded-[2rem] md:rounded-[3rem] shadow-2xl flex flex-col items-center justify-start text-center rotate-y-180 overflow-hidden">
+                <div className="absolute inset-0 backface-hidden bg-card border-4 border-primary/20 p-4 md:p-8 rounded-[2rem] md:rounded-[3rem] shadow-2xl flex flex-col items-center justify-start text-center rotate-y-180 overflow-hidden flashcard-text">
                   <div className="absolute top-4 left-1/2 -translate-x-1/2 flex items-center gap-2 z-20">
                     <div className="px-4 py-1.5 rounded-full bg-primary/10 text-[10px] font-black uppercase tracking-[0.2em] text-primary shadow-sm border border-primary/20">
                       Answer
@@ -440,7 +440,7 @@ const StudyMode = () => {
                       </div>
                     )}
                     <div 
-                      className="prose prose-lg md:prose-2xl font-bold dark:prose-invert max-w-4xl text-center pb-24 w-full"
+                      className="prose prose-lg md:prose-2xl font-bold dark:prose-invert max-w-4xl text-center pb-24 w-full flashcard-text"
                       dangerouslySetInnerHTML={{ __html: currentCard.back }}
                     />
                   </div>
