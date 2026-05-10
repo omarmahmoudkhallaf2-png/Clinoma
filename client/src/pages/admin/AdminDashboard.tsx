@@ -216,6 +216,50 @@ export default function AdminDashboard() {
     }
   };
 
+  const handleClearQuestions = async () => {
+    if (!window.confirm('⚠ هل أنت متأكد من مسح جميع الأسئلة؟ لا يمكن التراجع عن هذه الخطوة.')) return;
+    setLoading(true);
+    try {
+      const q = query(collection(db, 'questions'));
+      const snap = await getDocs(q);
+      const docs = snap.docs;
+      for (let i = 0; i < docs.length; i += 500) {
+        const batch = writeBatch(db);
+        const chunk = docs.slice(i, i + 500);
+        chunk.forEach(d => batch.delete(d.ref));
+        await batch.commit();
+      }
+      sendAdminNotification(`تم مسح ${snap.size} سؤال بنجاح`, 'zap');
+      await fetchData();
+    } catch (err: any) {
+      sendAdminNotification('فشل في مسح الأسئلة', 'error');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleClearNotes = async () => {
+    if (!window.confirm('⚠ هل أنت متأكد من مسح جميع النوتس؟ لا يمكن التراجع عن هذه الخطوة.')) return;
+    setLoading(true);
+    try {
+      const q = query(collection(db, 'notes'));
+      const snap = await getDocs(q);
+      const docs = snap.docs;
+      for (let i = 0; i < docs.length; i += 500) {
+        const batch = writeBatch(db);
+        const chunk = docs.slice(i, i + 500);
+        chunk.forEach(d => batch.delete(d.ref));
+        await batch.commit();
+      }
+      sendAdminNotification(`تم مسح ${snap.size} نوتس بنجاح`, 'zap');
+      await fetchData();
+    } catch (err: any) {
+      sendAdminNotification('فشل في مسح النوتس', 'error');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const filteredQuestions = useMemo(() => {
     return questions.filter(q => {
       const matchSearch = !searchQuery || q.text?.toLowerCase().includes(searchQuery.toLowerCase());
@@ -341,6 +385,13 @@ export default function AdminDashboard() {
                   </select>
                   <div className="flex items-center justify-between px-6 bg-primary/10 rounded-[2.5rem] border-2 border-primary/20">
                     <span className="font-black text-primary text-lg">{filteredQuestions.length}</span>
+                    <button 
+                      onClick={handleClearQuestions}
+                      className="p-3 bg-rose-500 text-white rounded-xl shadow-lg shadow-rose-500/20 hover:scale-110 transition-all ml-2"
+                      title="Clear All Questions"
+                    >
+                      <Trash2 className="w-5 h-5" />
+                    </button>
                     <button className="p-3 bg-primary text-white rounded-xl shadow-lg shadow-primary/20 hover:scale-110 transition-all">
                       <Download className="w-5 h-5" />
                     </button>
@@ -383,7 +434,10 @@ export default function AdminDashboard() {
                     <h2 className="text-4xl font-black tracking-tight">Knowledge Base Repository</h2>
                     <p className="text-emerald-700 font-bold opacity-60">Manage study notes and theoretical content links.</p>
                   </div>
-                  <button onClick={() => setIsNoteModalOpen(true)} className="px-10 py-5 bg-emerald-600 text-white rounded-[2.5rem] font-black shadow-xl shadow-emerald-600/20 hover:scale-105 transition-all">Create New Entry</button>
+                  <div className="flex gap-4">
+                    <button onClick={handleClearNotes} className="px-10 py-5 bg-rose-600 text-white rounded-[2.5rem] font-black shadow-xl shadow-rose-600/20 hover:scale-105 transition-all">Clear All Notes</button>
+                    <button onClick={() => setIsNoteModalOpen(true)} className="px-10 py-5 bg-emerald-600 text-white rounded-[2.5rem] font-black shadow-xl shadow-emerald-600/20 hover:scale-105 transition-all">Create New Entry</button>
+                  </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {notes.map(note => (
