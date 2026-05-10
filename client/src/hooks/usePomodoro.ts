@@ -58,8 +58,19 @@ export function usePomodoro(userId: string | undefined) {
             setTimeLeft(time * 60);
           }
         }
-        if (data.pomodoroStats) setStats(data.pomodoroStats);
-        else {
+        if (data.pomodoroStats) {
+          const stats = data.pomodoroStats;
+          // Ensure history is always an array to prevent crashes in Analytics
+          if (stats && stats.history && !Array.isArray(stats.history)) {
+            stats.history = Object.entries(stats.history).map(([date, minutes]) => ({ 
+              date, 
+              minutes: typeof minutes === 'number' ? minutes : 0 
+            }));
+          } else if (stats && !stats.history) {
+            stats.history = [];
+          }
+          setStats(stats);
+        } else {
            const initialStats = { 
              totalStudyTime: 0, 
              sessionsCompleted: 0, 
@@ -152,9 +163,9 @@ export function usePomodoro(userId: string | undefined) {
     // Sound Notification
     try {
       const bell = new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3');
-      bell.volume = settings.soundVolume;
-      bell.play();
-    } catch (e) { console.error("Audio error", e); }
+      bell.volume = settings.soundVolume || 0.5;
+      bell.play().catch(e => console.log("Audio play blocked by browser:", e));
+    } catch (e) { console.error("Audio initialization error", e); }
   }, [userId, mode, sessionCount, settings]);
 
   useEffect(() => {

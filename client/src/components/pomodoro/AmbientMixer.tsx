@@ -47,7 +47,7 @@ export default function AmbientMixer({ mix, onUpdate }: MixerProps) {
       audio.volume = vol;
 
       if (vol > 0 && audio.paused) {
-        audio.play().catch(e => console.log("Autoplay blocked or error:", e));
+        audio.play().catch(e => console.log("Ambient audio play blocked:", sound.id, e));
       } else if (vol === 0 && !audio.paused) {
         audio.pause();
       }

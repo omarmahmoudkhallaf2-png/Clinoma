@@ -9,9 +9,7 @@ import {
   Database,
   HelpCircle,
   Command as CommandIcon,
-  X
 } from "lucide-react"
-import { cn } from "../../lib/utils"
 import { useAuth } from "../../context/AuthContext"
 
 export function CommandPalette() {
@@ -21,6 +19,9 @@ export function CommandPalette() {
   const { logout, userRole } = useAuth()
 
   React.useEffect(() => {
+    // SECURITY: Only register the shortcut listener for admins
+    if (userRole !== 'admin') return;
+
     const down = (e: KeyboardEvent) => {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault()
@@ -29,7 +30,7 @@ export function CommandPalette() {
     }
     document.addEventListener("keydown", down)
     return () => document.removeEventListener("keydown", down)
-  }, [])
+  }, [userRole])
 
   const actions = [
     { icon: LayoutDashboard, label: "لوحة التحكم", path: "/dashboard", category: "Navigation" },
@@ -52,6 +53,9 @@ export function CommandPalette() {
     setOpen(false)
     setSearch("")
   }
+
+  // SECURITY: Don't render anything if not an admin
+  if (userRole !== 'admin') return null;
 
   return (
     <AnimatePresence>

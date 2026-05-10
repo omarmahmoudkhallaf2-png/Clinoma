@@ -47,7 +47,7 @@ export function useAmbientAudio() {
       audio.volume = vol;
 
       if (vol > 0 && audio.paused) {
-        audio.play().catch(() => {});
+        audio.play().catch(e => console.log("Room ambient audio play blocked:", id, e));
       } else if (vol === 0 && !audio.paused) {
         audio.pause();
       }

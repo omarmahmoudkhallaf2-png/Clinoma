@@ -80,7 +80,9 @@ export default function Pomodoro() {
     return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   };
 
-  const progress = (timeLeft / (mode === 'work' ? settings.workTime : mode === 'shortBreak' ? settings.shortBreakTime : settings.longBreakTime) / 60) * 100;
+  const currentModeTime = mode === 'work' ? settings.workTime : mode === 'shortBreak' ? settings.shortBreakTime : settings.longBreakTime;
+  const totalSeconds = (currentModeTime || 25) * 60;
+  const progress = totalSeconds > 0 ? (timeLeft / totalSeconds) * 100 : 0;
 
   return (
     <div className={cn(

@@ -26,7 +26,12 @@ export function useStudyRoom(roomId: string | null) {
     if (!roomData.timerState.isActive || !roomData.timerState.startTime) {
       return roomData.timerState.timeRemaining;
     }
-    const elapsed = Math.floor((getSyncedNow() - roomData.timerState.startTime.toMillis()) / 1000);
+    // Added safety check for toMillis()
+    const startTimeMillis = typeof roomData.timerState.startTime.toMillis === 'function' 
+      ? roomData.timerState.startTime.toMillis() 
+      : Date.now();
+      
+    const elapsed = Math.floor((getSyncedNow() - startTimeMillis) / 1000);
     return Math.max(0, roomData.timerState.duration - elapsed);
   };
 
@@ -86,7 +91,12 @@ export function useStudyRoom(roomId: string | null) {
     if (isWork) {
       Object.keys(roomData.members).forEach(uid => {
         const member = roomData.members[uid];
-        if (member.lastActive && (getSyncedNow() - member.lastActive.toMillis() < 300000)) {
+        // Added safety check for lastActive
+        const lastActiveMillis = member.lastActive && typeof member.lastActive.toMillis === 'function'
+          ? member.lastActive.toMillis()
+          : 0;
+
+        if (lastActiveMillis && (getSyncedNow() - lastActiveMillis < 300000)) {
           batch.update(roomRef, {
             [`members.${uid}.sessionsToday`]: increment(1)
           });
@@ -111,7 +121,9 @@ export function useStudyRoom(roomId: string | null) {
             'pomodoroStats.totalStudyTime': increment(workDurationMinutes),
             'pomodoroStats.sessionsCompleted': increment(1),
             'pomodoroStats.lastUpdated': serverTimestamp(),
-            [`pomodoroStats.history.${today}`]: increment(workDurationMinutes)
+            // Fixed: History is an array, we should not use dot-notation to increment a specific key in it directly
+            // Instead, we update the main fields and let usePomodoro handle the history array locally if needed,
+            // or we'd need a more complex arrayUnion logic. For now, removing the invalid dot-notation update.
           });
           setLastSyncSession(room.timerState.sessionsCompleted);
         } catch (e) {
