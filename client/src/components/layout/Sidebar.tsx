@@ -189,7 +189,7 @@ export default function Sidebar({ isOpen = false, setIsOpen = (_: boolean) => { 
                           className="overflow-hidden mr-4 border-r border-border/50 mt-1 space-y-1"
                         >
                           <button
-                            onClick={() => window.open('https://pediatrics-qbank-clinoma-support.pages.dev/', '_blank')}
+                            onClick={() => window.open(`https://pediatrics-qbank-clinoma-support.pages.dev/?v=${new Date().getTime()}`, '_blank')}
                             className="w-full flex flex-col items-end px-4 py-2 rounded-lg hover:bg-primary/5 transition-all group text-right"
                           >
                             <div className="flex items-center gap-2 text-foreground group-hover:text-primary">
