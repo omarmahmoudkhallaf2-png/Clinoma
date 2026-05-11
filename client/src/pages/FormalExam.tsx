@@ -26,6 +26,7 @@ export default function FormalExam() {
   const [startTime, setStartTime] = useState<number | null>(null);
   const [timeLeft, setTimeLeft] = useState<number | null>(null);
   const [finalScore, setFinalScore] = useState<number | null>(null);
+  const [prevAttempt, setPrevAttempt] = useState<any>(null);
   const [submitting, setSubmitting] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
 
@@ -79,7 +80,14 @@ export default function FormalExam() {
       where('examId', '==', examId),
       where('userId', '==', user.uid)
     ));
-    if (!prevSnap.empty) { setStep('blocked'); return; }
+    if (!prevSnap.empty) { 
+      const attemptData = prevSnap.docs[0].data();
+      setPrevAttempt(attemptData);
+      setFinalScore(attemptData.score);
+      setStudentName(attemptData.studentName || '');
+      setStep('blocked'); 
+      return; 
+    }
 
     // 3. Calculate effective timer
     const durationSecs = examData?.durationMinutes ? examData.durationMinutes * 60 : null;
@@ -137,20 +145,47 @@ export default function FormalExam() {
   );
 
   // Already submitted
-  if (step === 'blocked') return (
-    <div className="min-h-screen flex items-center justify-center p-6">
-      <div className="bg-card border-2 border-rose-400/30 rounded-[3rem] p-14 max-w-md text-center space-y-6 shadow-2xl">
-        <div className="w-24 h-24 bg-rose-500/10 text-rose-500 rounded-full flex items-center justify-center mx-auto">
-          <XCircle className="w-12 h-12" />
+  if (step === 'blocked') {
+    const isPastEnd = examData?.endAt ? Date.now() > (examData.endAt as Timestamp).toDate().getTime() : true;
+    const pct = questions.length ? Math.round(((finalScore ?? 0) / questions.length) * 100) : 0;
+    const color = pct >= 70 ? 'text-emerald-500' : pct >= 50 ? 'text-amber-500' : 'text-rose-500';
+
+    return (
+      <div className="min-h-screen flex items-center justify-center p-6 bg-gradient-to-br from-background to-secondary/20">
+        <div className="bg-card border-2 border-border rounded-[3.5rem] p-10 md:p-14 max-w-lg w-full text-center space-y-8 shadow-2xl animate-in zoom-in-95">
+          <div className="w-24 h-24 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto">
+            <CheckCircle2 className="w-12 h-12" />
+          </div>
+          <div className="space-y-2">
+            <h2 className="text-3xl font-black">لقد شاركت بالفعل</h2>
+            <p className="text-muted-foreground font-bold">أهلاً بك مرة أخرى، {studentName}</p>
+          </div>
+
+          <div className="p-8 bg-secondary/30 rounded-[2.5rem] border-2 border-border space-y-2">
+            <div className="text-xs font-black text-muted-foreground uppercase tracking-widest">نتيجتك في هذا الإختبار</div>
+            <div className={`text-6xl font-black ${color}`}>{finalScore} / {questions.length}</div>
+            <div className={`text-xl font-black ${color}`}>{pct}%</div>
+          </div>
+
+          <div className="space-y-4">
+            {isPastEnd ? (
+              <button onClick={() => setStep('review')} className="w-full py-5 bg-primary text-white rounded-2xl font-black text-lg shadow-xl shadow-primary/20 hover:scale-[1.02] transition-all flex items-center justify-center gap-2">
+                <BookOpen className="w-5 h-5" /> مراجعة إجاباتك الآن
+              </button>
+            ) : (
+              <div className="p-4 bg-amber-500/10 rounded-2xl border border-amber-400/20 space-y-2">
+                <p className="text-amber-700 font-black text-sm">مراجعة الإجابات ستكون متاحة بعد انتهاء موعد الإختبار</p>
+                <p className="text-[10px] text-amber-600 font-bold">
+                  {(examData?.endAt as Timestamp)?.toDate().toLocaleString('ar-EG', { dateStyle: 'full', timeStyle: 'short' })}
+                </p>
+              </div>
+            )}
+            <button onClick={() => navigate('/exams')} className="w-full py-4 bg-secondary rounded-2xl font-black hover:bg-border transition-all">العودة للإختبارات</button>
+          </div>
         </div>
-        <h2 className="text-3xl font-black">تم الإجابة مسبقاً</h2>
-        <p className="text-muted-foreground font-bold text-lg">
-          لقد قدّمت هذا الإختبار من قبل.<br />يُسمح بمحاولة واحدة فقط لكل طالب.
-        </p>
-        <button onClick={() => navigate('/exams')} className="px-10 py-4 bg-secondary rounded-2xl font-black hover:bg-border transition-all">العودة للإختبارات</button>
       </div>
-    </div>
-  );
+    );
+  }
 
   // Exam closed
   if (step === 'closed') return (
@@ -237,23 +272,32 @@ export default function FormalExam() {
   if (step === 'result') {
     const pct = questions.length ? Math.round(((finalScore ?? 0) / questions.length) * 100) : 0;
     const color = pct >= 70 ? 'text-emerald-500' : pct >= 50 ? 'text-amber-500' : 'text-rose-500';
+    const isPastEnd = examData?.endAt ? Date.now() > (examData.endAt as Timestamp).toDate().getTime() : true;
+
     return (
       <div className="min-h-screen bg-gradient-to-br from-background to-secondary/20 flex items-center justify-center p-6">
-        <div className="bg-card w-full max-w-lg p-16 rounded-[4rem] shadow-2xl border-2 border-border space-y-10 text-center animate-in zoom-in-95 duration-500">
+        <div className="bg-card w-full max-w-lg p-12 md:p-16 rounded-[4rem] shadow-2xl border-2 border-border space-y-8 text-center animate-in zoom-in-95 duration-500">
           <div className="text-7xl">{pct >= 70 ? '🎉' : pct >= 50 ? '📚' : '💪'}</div>
           <div className="space-y-3">
             <h2 className="text-4xl font-black">تم تسليم الإجابات بنجاح</h2>
             <p className="text-muted-foreground font-bold text-xl">شكراً لك، {studentName}</p>
           </div>
-          <div className="p-10 bg-card rounded-[3rem] border-4 border-border shadow-inner space-y-4">
+          <div className="p-8 bg-card rounded-[3rem] border-4 border-border shadow-inner space-y-4">
             <div className="text-sm font-black text-muted-foreground uppercase tracking-widest">درجتك النهائية</div>
-            <div className={`text-8xl font-black ${color}`}>{finalScore} / {questions.length}</div>
+            <div className={`text-7xl font-black ${color}`}>{finalScore} / {questions.length}</div>
             <div className={`text-2xl font-black ${color}`}>{pct}%</div>
           </div>
+          
           <div className="flex flex-col gap-3">
-            <button onClick={() => setStep('review')} className="w-full py-5 bg-primary text-white rounded-2xl font-black text-lg shadow-xl shadow-primary/20 hover:scale-[1.02] transition-all flex items-center justify-center gap-2">
-              <BookOpen className="w-5 h-5" /> مراجعة إجاباتك
-            </button>
+            {isPastEnd ? (
+              <button onClick={() => setStep('review')} className="w-full py-5 bg-primary text-white rounded-2xl font-black text-lg shadow-xl shadow-primary/20 hover:scale-[1.02] transition-all flex items-center justify-center gap-2">
+                <BookOpen className="w-5 h-5" /> مراجعة إجاباتك
+              </button>
+            ) : (
+              <div className="p-4 bg-amber-500/10 rounded-2xl border border-amber-400/20">
+                <p className="text-amber-700 font-black text-sm">ستتمكن من مراجعة إجاباتك بعد انتهاء وقت الإختبار للجميع</p>
+              </div>
+            )}
             <button onClick={() => navigate('/exams')} className="w-full py-5 bg-secondary rounded-2xl font-black text-lg hover:bg-border transition-all">العودة للإختبارات</button>
           </div>
         </div>

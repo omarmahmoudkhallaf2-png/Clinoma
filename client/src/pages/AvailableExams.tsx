@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { db } from '../lib/firebase';
 import { collection, getDocs, query, orderBy, Timestamp, onSnapshot } from 'firebase/firestore';
-import { Loader2, Clock, BookOpen, ChevronRight, ClipboardList, Lock, Calendar, Sparkles } from 'lucide-react';
+import { Loader2, Clock, BookOpen, ChevronRight, ClipboardList, Lock, Calendar, Sparkles, CheckCircle2 } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
 
 const examStatus = (exam: any): 'upcoming' | 'open' | 'closed' | 'no-date' => {
   if (!exam.startAt && !exam.endAt) return 'no-date';
@@ -15,8 +16,10 @@ const examStatus = (exam: any): 'upcoming' | 'open' | 'closed' | 'no-date' => {
 };
 
 export default function AvailableExams() {
+  const { user } = useAuth();
   const navigate = useNavigate();
   const [exams, setExams] = useState<any[]>([]);
+  const [attempts, setAttempts] = useState<Record<string, any>>({});
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     console.log("Setting up real-time exams listener...");
@@ -41,6 +44,19 @@ export default function AvailableExams() {
 
     return () => unsubscribe();
   }, []);
+
+  useEffect(() => {
+    if (!user) return;
+    const q = query(collection(db, 'exam_attempts'), where('userId', '==', user.uid));
+    const unsubscribe = onSnapshot(q, (snap) => {
+      const attemptsData: Record<string, any> = {};
+      snap.docs.forEach(d => {
+        attemptsData[d.data().examId] = d.data();
+      });
+      setAttempts(attemptsData);
+    });
+    return () => unsubscribe();
+  }, [user]);
 
   if (loading) {
     return (
@@ -111,6 +127,11 @@ export default function AvailableExams() {
                     <div className="flex items-center gap-3 flex-wrap">
                       <h3 className={`text-2xl font-black ${isClickable ? 'group-hover:text-primary transition-colors' : ''}`}>{exam.title}</h3>
                       <span className={`text-xs px-3 py-1 rounded-lg font-black ${statusBadge[status]}`}>{statusLabel[status]}</span>
+                      {attempts[exam.id] && (
+                        <span className="text-xs px-3 py-1 rounded-lg font-black bg-primary/10 text-primary border border-primary/20">
+                          ✓ تم الحل: {attempts[exam.id].score} / {attempts[exam.id].totalQuestions}
+                        </span>
+                      )}
                     </div>
                     {exam.description && <p className="text-muted-foreground font-bold text-sm mt-1 line-clamp-1">{exam.description}</p>}
                     <div className="flex items-center gap-4 mt-2 flex-wrap">
