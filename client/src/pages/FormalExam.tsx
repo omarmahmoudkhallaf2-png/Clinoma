@@ -147,6 +147,7 @@ export default function FormalExam() {
   // Already submitted
   if (step === 'blocked') {
     const isPastEnd = examData?.endAt ? Date.now() > (examData.endAt as Timestamp).toDate().getTime() : true;
+    const canReview = isPastEnd || userRole === 'admin';
     const pct = questions.length ? Math.round(((finalScore ?? 0) / questions.length) * 100) : 0;
     const color = pct >= 70 ? 'text-emerald-500' : pct >= 50 ? 'text-amber-500' : 'text-rose-500';
 
@@ -168,9 +169,9 @@ export default function FormalExam() {
           </div>
 
           <div className="space-y-4">
-            {isPastEnd ? (
+            {canReview ? (
               <button onClick={() => setStep('review')} className="w-full py-5 bg-primary text-white rounded-2xl font-black text-lg shadow-xl shadow-primary/20 hover:scale-[1.02] transition-all flex items-center justify-center gap-2">
-                <BookOpen className="w-5 h-5" /> مراجعة إجاباتك الآن
+                <BookOpen className="w-5 h-5" /> {userRole === 'admin' ? 'مراجعة (أدمن)' : 'مراجعة إجاباتك الآن'}
               </button>
             ) : (
               <div className="p-4 bg-amber-500/10 rounded-2xl border border-amber-400/20 space-y-2">
@@ -289,9 +290,9 @@ export default function FormalExam() {
           </div>
           
           <div className="flex flex-col gap-3">
-            {isPastEnd ? (
+            {(isPastEnd || userRole === 'admin') ? (
               <button onClick={() => setStep('review')} className="w-full py-5 bg-primary text-white rounded-2xl font-black text-lg shadow-xl shadow-primary/20 hover:scale-[1.02] transition-all flex items-center justify-center gap-2">
-                <BookOpen className="w-5 h-5" /> مراجعة إجاباتك
+                <BookOpen className="w-5 h-5" /> {userRole === 'admin' ? 'مراجعة (أدمن)' : 'مراجعة إجاباتك'}
               </button>
             ) : (
               <div className="p-4 bg-amber-500/10 rounded-2xl border border-amber-400/20">
