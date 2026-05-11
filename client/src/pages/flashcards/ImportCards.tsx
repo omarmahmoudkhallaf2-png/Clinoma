@@ -22,6 +22,7 @@ import toast from 'react-hot-toast';
 import JSZip from 'jszip';
 import initSqlJs from 'sql.js';
 import { generateFlashcards } from '../../lib/gemini';
+import { cn } from '../../lib/utils';
 
 interface ImportedCard {
   front: string;
@@ -45,6 +46,7 @@ const ImportCards = () => {
   const [subject, setSubject] = useState('');
   const [aiCustomInstructions, setAiCustomInstructions] = useState('');
   const [selectedAIFile, setSelectedAIFile] = useState<File | null>(null);
+  const [isAIProcessing, setIsAIProcessing] = useState(false);
   const { userData, updateUserStatus } = useAuth();
 
   const checkAIUsage = () => {
@@ -429,8 +431,11 @@ const ImportCards = () => {
                 const name = droppedFile.name.toLowerCase();
                 if (name.endsWith('.pdf') || name.match(/\.(jpg|jpeg|png|webp)$/i)) {
                   // Route to AI
-                  const event = { target: { files: [droppedFile] } } as any;
-                  handleAIGenerate(event);
+                  setSelectedAIFile(droppedFile);
+                  // We can't call handleAIGenerate directly with the file because it uses state
+                  // So we just set the state and the user will click generate, 
+                  // or we can trigger it in a useEffect or by passing the file.
+                  // For now, let's just set the file for AI.
                 } else {
                   // Route to Manual
                   const event = { target: { files: [droppedFile] } } as any;
