@@ -10,7 +10,7 @@ import { Loader2, Clock, ChevronLeft, ChevronRight, Send, CheckCircle2, AlertTri
 export default function FormalExam() {
   const { examId } = useParams();
   const navigate = useNavigate();
-  const { user } = useAuth();
+  const { user, userRole } = useAuth();
 
   const [step, setStep] = useState<'name' | 'checking' | 'blocked' | 'closed' | 'upcoming' | 'quiz' | 'result' | 'review'>('name');
   const [studentName, setStudentName] = useState('');
@@ -36,7 +36,7 @@ export default function FormalExam() {
       try {
         const examDoc = await getDoc(doc(db, 'formal_exams', examId!));
         if (!examDoc.exists()) { setStep('closed'); setLoading(false); return; }
-        const data = { id: examDoc.id, ...examDoc.data() };
+        const data: any = { id: examDoc.id, ...examDoc.data() };
         setExamData(data);
 
         // Immediate schedule check
