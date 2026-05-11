@@ -15,7 +15,6 @@ import {
 export default function ReviewDashboard() {
   const { user } = useAuth();
   const navigate = useNavigate();
-  const [dueCount, setDueCount] = useState(0);
   const [wrongQuestions, setWrongQuestions] = useState<any[]>([]);
   const [flaggedCount, setFlaggedCount] = useState(0);
   const [showModeSelection, setShowModeSelection] = useState(false);
@@ -27,13 +26,7 @@ export default function ReviewDashboard() {
       try {
         const progressRef = collection(db, `users/${user.uid}/progress`);
         
-        // 1. SRS Due Questions
-        const now = new Date();
-        const srsQuery = query(progressRef, where('srsData.nextReview', '<=', now));
-        const srsSnap = await getDocs(srsQuery);
-        setDueCount(srsSnap.size);
-
-        // 2. Wrong Questions
+        // 1. Wrong Questions
         const wrongData = await getIncorrectQuestions(user.uid);
         setWrongQuestions(wrongData.slice(0, 5));
 
@@ -110,28 +103,9 @@ export default function ReviewDashboard() {
         </button>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* SRS Status */}
-        <div className="bg-card border-2 border-border rounded-[4rem] p-10 shadow-sm space-y-8">
-          <div className="flex items-center gap-4">
-            <div className="p-4 bg-emerald-500/10 text-emerald-600 rounded-2xl">
-              <History className="w-8 h-8" />
-            </div>
-            <h3 className="text-2xl font-black">الذاكرة طويلة المدى</h3>
-          </div>
-          <div className="text-center py-10 space-y-4">
-            <div className="text-7xl font-black text-emerald-500">{dueCount}</div>
-            <p className="text-muted-foreground font-bold">سؤال جاهز للمراجعة الآن</p>
-          </div>
-          <div className="p-6 bg-emerald-500/5 rounded-3xl border border-emerald-500/20">
-            <p className="text-sm text-emerald-700 font-bold leading-relaxed">
-              تعتمد المراجعة المتباعدة (SRS) على تكرار المعلومة قبل نسيانها مباشرة لضمان بقائها في الذاكرة.
-            </p>
-          </div>
-        </div>
-
+      <div className="grid grid-cols-1 gap-8">
         {/* Errors Analysis */}
-        <div className="lg:col-span-2 bg-card border-2 border-border rounded-[4rem] p-10 shadow-sm">
+        <div className="bg-card border-2 border-border rounded-[4rem] p-10 shadow-sm">
           <div className="flex justify-between items-center mb-10">
             <div className="flex items-center gap-4">
               <div className="p-4 bg-rose-500/10 text-rose-600 rounded-2xl">
