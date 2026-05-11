@@ -74,6 +74,7 @@ const CreateCard = () => {
   const [activeUploadCard, setActiveUploadCard] = useState<{ idx: number, side: 'front' | 'back' } | null>(null);
 
   const [currentCardIdx, setCurrentCardIdx] = useState(0);
+  const [isSidebarExpanded, setIsSidebarExpanded] = useState(false);
 
   useEffect(() => {
     const fetchUsage = async () => {
@@ -552,10 +553,18 @@ const CreateCard = () => {
 
       <div className="flex-1 flex overflow-hidden">
         {/* Sidebar: Cards List */}
-        <div className="w-80 border-r border-border bg-muted/20 overflow-y-auto hidden lg:flex flex-col p-6 space-y-6">
-          <div className="flex items-center justify-between">
-            <h2 className="text-xl font-black">Cards ({cards.length})</h2>
-            <button onClick={addCard} className="p-2 bg-primary text-white rounded-xl shadow-lg shadow-primary/20 hover:scale-105 active:scale-95 transition-all">
+        <motion.div 
+          animate={{ width: isSidebarExpanded ? 320 : 100 }}
+          className="border-r border-border bg-muted/20 overflow-y-auto hidden lg:flex flex-col p-4 space-y-6 transition-all duration-300 relative"
+        >
+          <div className={cn("flex items-center justify-between", !isSidebarExpanded && "flex-col gap-4")}>
+            <h2 className={cn("text-xl font-black transition-all", !isSidebarExpanded && "text-[10px] uppercase opacity-50")}>
+              {isSidebarExpanded ? `Cards (${cards.length})` : 'Cards'}
+            </h2>
+            <button 
+              onClick={addCard} 
+              className="p-2 bg-primary text-white rounded-xl shadow-lg shadow-primary/20 hover:scale-105 active:scale-95 transition-all"
+            >
               <Plus size={20} />
             </button>
           </div>
@@ -564,17 +573,25 @@ const CreateCard = () => {
             {cards.map((card, idx) => (
               <button
                 key={idx}
-                onClick={() => setCurrentCardIdx(idx)}
+                onClick={() => {
+                  setCurrentCardIdx(idx);
+                  if (!isSidebarExpanded) setIsSidebarExpanded(true);
+                }}
                 className={cn(
-                  "w-full p-4 rounded-2xl text-left transition-all border-2 flex items-center justify-between group",
-                  currentCardIdx === idx ? "bg-card border-primary shadow-lg" : "bg-transparent border-transparent hover:bg-card/50"
+                  "w-full p-3 rounded-2xl text-left transition-all border-2 flex items-center justify-between group",
+                  currentCardIdx === idx ? "bg-card border-primary shadow-lg" : "bg-transparent border-transparent hover:bg-card/50",
+                  !isSidebarExpanded && "justify-center px-0"
                 )}
               >
-                <div className="min-w-0">
-                  <p className="text-xs font-black text-muted-foreground mb-1 uppercase tracking-widest">Card {idx + 1}</p>
-                  <p className="font-bold truncate text-sm" dangerouslySetInnerHTML={{ __html: card.front || "Empty Question" }} />
+                <div className={cn("min-w-0", !isSidebarExpanded && "text-center")}>
+                  <p className={cn("text-[10px] font-black text-muted-foreground mb-1 uppercase tracking-widest", currentCardIdx === idx && "text-primary")}>
+                    {isSidebarExpanded ? `Card ${idx + 1}` : idx + 1}
+                  </p>
+                  {isSidebarExpanded && (
+                    <p className="font-bold truncate text-sm" dangerouslySetInnerHTML={{ __html: card.front || "Empty Question" }} />
+                  )}
                 </div>
-                {cards.length > 1 && (
+                {isSidebarExpanded && cards.length > 1 && (
                   <button
                     onClick={(e) => { e.stopPropagation(); removeCard(idx); }}
                     className="p-1.5 text-muted-foreground hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity"
@@ -585,7 +602,15 @@ const CreateCard = () => {
               </button>
             ))}
           </div>
-        </div>
+
+          {/* Expand Toggle Button */}
+          <button 
+            onClick={() => setIsSidebarExpanded(!isSidebarExpanded)}
+            className="absolute bottom-6 left-1/2 -translate-x-1/2 p-3 bg-card border-2 border-border rounded-full shadow-xl hover:text-primary transition-all z-10"
+          >
+            {isSidebarExpanded ? <ChevronLeft size={20} /> : <ChevronRight size={20} />}
+          </button>
+        </motion.div>
 
         {/* Main Workspace */}
         <div className="flex-1 overflow-y-auto p-6 md:p-12">
@@ -682,7 +707,7 @@ const CreateCard = () => {
                   value={currentCard.front}
                   onChange={val => updateCard(currentCardIdx, 'front', val)}
                   placeholder="Write the question here..."
-                  minHeight="350px"
+                  minHeight="120px"
                 />
               </div>
 
@@ -741,7 +766,7 @@ const CreateCard = () => {
                   onChange={val => updateCard(currentCardIdx, 'back', val)}
                   onFocus={() => { /* Focus sync */ }}
                   placeholder="Write the answer here..."
-                  minHeight="350px"
+                  minHeight="120px"
                 />
               </div>
 
