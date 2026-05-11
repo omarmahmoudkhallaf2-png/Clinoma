@@ -37,7 +37,7 @@ export default function Sidebar({ isOpen = false, setIsOpen = (_: boolean) => { 
   const { logout, userRole, userPlan, isSubscribed, userData } = useAuth();
   const [isSupportOpen, setIsSupportOpen] = useState(false);
   const [isQBOpen, setIsQBOpen] = useState(false);
-  const [config, setConfig] = useState({ telegramUser: 'Clinoma_Admins', whatsappNumber: '+20 10 3932 2938', preferredContact: 'telegram' });
+  const [config, setConfig] = useState({ telegramUser: 'Clinoma_Admins', whatsappNumber: '01039322938', preferredContact: 'telegram' });
   const [subscribedCourses, setSubscribedCourses] = useState<any[]>([]);
 
   useEffect(() => {

@@ -121,7 +121,7 @@ export default function App() {
       try {
         await setDoc(doc(db, 'settings', 'general'), {
           telegramUser: 'Clinoma_Admins',
-          whatsappNumber: '+20 10 3932 2938',
+          whatsappNumber: '01039322938',
           preferredContact: 'telegram'
         }, { merge: true });
       } catch (err) {

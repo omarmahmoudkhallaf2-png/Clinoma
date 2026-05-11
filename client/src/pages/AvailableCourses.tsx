@@ -10,7 +10,7 @@ export default function AvailableCourses() {
   const { isSubscribed, userRole, userData } = useAuth();
   const [courses, setCourses] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
-  const [config, setConfig] = useState({ telegramUser: 'Clinoma_Admins', whatsappNumber: '+20 10 3932 2938', preferredContact: 'telegram' });
+  const [config, setConfig] = useState({ telegramUser: 'Clinoma_Admins', whatsappNumber: '01039322938', preferredContact: 'telegram' });
   const [isTelegramOpen, setIsTelegramOpen] = useState(false);
 
   useEffect(() => {
