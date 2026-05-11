@@ -14,8 +14,8 @@ export default function AppConfig() {
       registrationOpen: true
     },
     general: {
-      telegramUser: '',
-      whatsappNumber: '',
+      telegramUser: 'Clinoma_Admins',
+      whatsappNumber: '+20 10 3932 2938',
       preferredContact: 'telegram'
     }
   });

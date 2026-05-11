@@ -120,8 +120,8 @@ export default function App() {
     const syncContactInfo = async () => {
       try {
         await setDoc(doc(db, 'settings', 'general'), {
-          telegramUser: 'ClinomaOwner',
-          whatsappNumber: '01040981906',
+          telegramUser: 'Clinoma_Admins',
+          whatsappNumber: '+20 10 3932 2938',
           preferredContact: 'telegram'
         }, { merge: true });
       } catch (err) {

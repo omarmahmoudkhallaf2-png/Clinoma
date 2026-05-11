@@ -40,6 +40,7 @@ export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState<'analytics' | 'questions' | 'users' | 'courses' | 'settings' | 'notes' | 'audit' | 'health' | 'formal_results' | 'exams' | 'flashcards' | 'flashspace' | 'data_themes'>('analytics');
   const [questions, setQuestions] = useState<Question[]>([]);
   const [notes, setNotes] = useState<any[]>([]);
+  const [users, setUsers] = useState<any[]>([]);
   const [courses, setCourses] = useState<any[]>([]);
   const [availableSubjects, setAvailableSubjects] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -64,15 +65,17 @@ export default function AdminDashboard() {
   const fetchData = async () => {
     setLoading(true);
     try {
-      const [qSnap, nSnap, cSnap] = await Promise.all([
+      const [qSnap, nSnap, cSnap, uSnap] = await Promise.all([
         getDocs(query(collection(db, 'questions'), orderBy('createdAt', 'desc'))),
         getDocs(query(collection(db, 'notes'), orderBy('createdAt', 'desc'))),
-        getDocs(query(collection(db, 'courses')))
+        getDocs(query(collection(db, 'courses'))),
+        getDocs(collection(db, 'users'))
       ]);
 
       setQuestions(qSnap.docs.map(doc => ({ id: doc.id, ...doc.data() } as Question)));
       setNotes(nSnap.docs.map(doc => ({ id: doc.id, ...doc.data() })));
       setCourses(cSnap.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+      setUsers(uSnap.docs.map(doc => ({ id: doc.id, ...doc.data() })));
     } catch (err) {
       console.error(err);
       sendAdminNotification('Failed to fetch admin data', 'error');
@@ -360,7 +363,7 @@ export default function AdminDashboard() {
           </div>
         ) : (
           <>
-            {activeTab === 'analytics' && <AdminAnalytics questions={questions} notes={notes} />}
+            {activeTab === 'analytics' && <AdminAnalytics questions={questions} notes={notes} users={users} />}
             {activeTab === 'questions' && (
               <div className="p-12 space-y-8 animate-in slide-in-from-bottom-8 duration-500">
                 {/* Advanced Search Filter Bar */}
