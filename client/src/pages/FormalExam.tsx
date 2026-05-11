@@ -39,6 +39,17 @@ export default function FormalExam() {
         const data = { id: examDoc.id, ...examDoc.data() };
         setExamData(data);
 
+        // Immediate schedule check
+        const now = Date.now();
+        if (data.startAt) {
+          const start = (data.startAt as Timestamp).toDate().getTime();
+          if (now < start) { setStep('upcoming'); setLoading(false); return; }
+        }
+        if (data.endAt) {
+          const end = (data.endAt as Timestamp).toDate().getTime();
+          if (now > end) { setStep('closed'); setLoading(false); return; }
+        }
+
         const qSnap = await getDocs(query(collection(db, 'questions'), where('formalExamId', '==', examId)));
         setQuestions(qSnap.docs.map(d => ({ id: d.id, ...d.data() })));
       } catch (err) { console.error(err); }
@@ -190,14 +201,17 @@ export default function FormalExam() {
 
   // Exam closed
   if (step === 'closed') return (
-    <div className="min-h-screen flex items-center justify-center p-6">
-      <div className="bg-card border-2 border-border rounded-[3rem] p-14 max-w-md text-center space-y-6 shadow-2xl">
-        <div className="w-24 h-24 bg-secondary text-muted-foreground rounded-full flex items-center justify-center mx-auto">
+    <div className="min-h-screen flex items-center justify-center p-6 bg-gradient-to-br from-background to-rose-500/5">
+      <div className="bg-card border-2 border-border rounded-[3rem] p-14 max-w-md text-center space-y-6 shadow-2xl animate-in zoom-in-95">
+        <div className="text-7xl">🏁</div>
+        <div className="w-24 h-24 bg-rose-500/10 text-rose-500 rounded-full flex items-center justify-center mx-auto">
           <Lock className="w-12 h-12" />
         </div>
-        <h2 className="text-3xl font-black">الإختبار منتهٍ</h2>
-        <p className="text-muted-foreground font-bold text-lg">انتهى وقت هذا الإختبار ولم يعد متاحاً.</p>
-        <button onClick={() => navigate('/exams')} className="px-10 py-4 bg-secondary rounded-2xl font-black hover:bg-border transition-all">العودة للإختبارات</button>
+        <h2 className="text-3xl font-black">عذراً، انتهى وقت الإختبار</h2>
+        <p className="text-muted-foreground font-bold text-lg leading-relaxed">
+          هذا الإختبار لم يعد متاحاً للمشاركة حالياً.<br />لقد انتهى الموعد المحدد للتسليم. 🔴
+        </p>
+        <button onClick={() => navigate('/exams')} className="w-full py-4 bg-secondary rounded-2xl font-black hover:bg-border transition-all">العودة للإختبارات</button>
       </div>
     </div>
   );
