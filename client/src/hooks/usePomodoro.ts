@@ -144,12 +144,8 @@ export function usePomodoro(userId: string | undefined) {
         }
       }, { merge: true });
 
-      // Switch mode
-      if (newSessionCount % settings.sessionsUntilLongBreak === 0) {
-        setMode('longBreak');
-      } else {
-        setMode('shortBreak');
-      }
+      // Switch mode - Always go to shortBreak (one break system)
+      setMode('shortBreak');
       
       if (settings.autoStartBreaks) setIsActive(true);
       else setIsActive(false);

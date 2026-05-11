@@ -40,6 +40,8 @@ import SplashScreen from "./components/ui/SplashScreen";
 import { useState, useEffect } from "react";
 import { db } from "./lib/firebase";
 import { doc, setDoc } from "firebase/firestore";
+import { PomodoroProvider } from "./context/PomodoroContext";
+import FloatingTimer from "./components/pomodoro/FloatingTimer";
 
 const ProtectedRoute = ({ children, requireAdmin = false, useLayout = true }: { children: ReactElement, requireAdmin?: boolean, useLayout?: boolean }) => {
   const { user, userRole, loading, needsProfileCompletion } = useAuth();
@@ -133,18 +135,21 @@ export default function App() {
 
   return (
     <ThemeProvider>
-      {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
-      <Router>
-        <Toaster position="top-right" toastOptions={{
-          style: {
-            background: 'hsl(var(--card))',
-            color: 'hsl(var(--card-foreground))',
-            border: '1px border border-border',
-            borderRadius: 'var(--radius)',
-          }
-        }} />
-        <AnimatedRoutes />
-      </Router>
+      <PomodoroProvider>
+        {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
+        <Router>
+          <Toaster position="top-right" toastOptions={{
+            style: {
+              background: 'hsl(var(--card))',
+              color: 'hsl(var(--card-foreground))',
+              border: '1px border border-border',
+              borderRadius: 'var(--radius)',
+            }
+          }} />
+          <AnimatedRoutes />
+          <FloatingTimer />
+        </Router>
+      </PomodoroProvider>
     </ThemeProvider>
   );
 }

@@ -8,7 +8,7 @@ import {
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { usePomodoro } from '../hooks/usePomodoro';
+import { usePomodoroContext } from '../context/PomodoroContext';
 import { Button } from '../components/ui/Button';
 import { Card, CardContent } from '../components/ui/Card';
 import { cn } from '../lib/utils';
@@ -30,9 +30,9 @@ export default function Pomodoro() {
   const navigate = useNavigate();
   const { user, userData } = useAuth();
   const { 
-    timeLeft, isActive, mode, sessionCount, settings, stats,
+    timeLeft, isActive, mode, settings, stats, sessionCount,
     toggleTimer, resetTimer, skipSession, updateSettings, setMode 
-  } = usePomodoro(user?.uid);
+  } = usePomodoroContext();
 
   const [activeTab, setActiveTab] = useState<'timer' | 'room' | 'mixer' | 'stats'>('timer');
   const [isFocusMode, setIsFocusMode] = useState(false);
@@ -80,7 +80,7 @@ export default function Pomodoro() {
     return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   };
 
-  const currentModeTime = mode === 'work' ? settings.workTime : mode === 'shortBreak' ? settings.shortBreakTime : settings.longBreakTime;
+  const currentModeTime = mode === 'work' ? settings.workTime : settings.shortBreakTime;
   const totalSeconds = (currentModeTime || 25) * 60;
   const progress = totalSeconds > 0 ? (timeLeft / totalSeconds) * 100 : 0;
 
@@ -291,8 +291,8 @@ export default function Pomodoro() {
                 isFocusMode && "opacity-40 hover:opacity-100"
               )}>
                 <div className="text-center space-y-1">
-                  <div className="text-3xl font-black">{sessionCount}</div>
-                  <div className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Sessions</div>
+                  <div className="text-3xl font-black">{sessionCount} / {settings.sessionsUntilLongBreak}</div>
+                  <div className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Sessions Goal</div>
                 </div>
                 <div className="w-px h-10 bg-border/50" />
                 <div className="text-center space-y-1">
@@ -366,6 +366,15 @@ export default function Pomodoro() {
                     className="w-full p-4 bg-secondary rounded-2xl font-black text-xl border-2 border-transparent focus:border-primary focus:outline-none" 
                   />
                 </div>
+              </div>
+
+              <div className="space-y-4">
+                <label className="text-xs font-black uppercase tracking-widest text-muted-foreground">Sessions Goal</label>
+                <input 
+                  type="number" value={settings.sessionsUntilLongBreak} 
+                  onChange={(e) => updateSettings({ sessionsUntilLongBreak: parseInt(e.target.value) })}
+                  className="w-full p-4 bg-secondary rounded-2xl font-black text-xl border-2 border-transparent focus:border-primary focus:outline-none" 
+                />
               </div>
 
               <div className="space-y-6">

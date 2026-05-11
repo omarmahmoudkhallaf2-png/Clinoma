@@ -72,6 +72,7 @@ export function useStudyRoom(roomId: string | null) {
   const completeSession = async (roomData: StudyRoom) => {
     const isWork = roomData.timerState.mode === 'work';
     const nextMode: RoomMode = isWork ? 'shortBreak' : 'work';
+    // Always use shortBreakTime (one break system)
     const nextDuration = (nextMode === 'work' ? roomData.settings.workTime : roomData.settings.shortBreakTime) * 60;
 
     const batch = writeBatch(db);
@@ -280,6 +281,21 @@ export function useStudyRoom(roomId: string | null) {
     await deleteDoc(doc(db, ROOMS_COLLECTION, roomId));
   };
 
+  const updateRoomSettings = async (newSettings: Partial<StudyRoom['settings']>) => {
+    if (!room || !roomId || room.hostId !== userId) return;
+    const updatedSettings = { ...room.settings, ...newSettings };
+    const updates: any = { settings: updatedSettings };
+    
+    // If timer is NOT active, update the displayed time immediately to match new settings
+    if (!room.timerState.isActive) {
+      const newDuration = (room.timerState.mode === 'work' ? updatedSettings.workTime : updatedSettings.shortBreakTime) * 60;
+      updates['timerState.duration'] = newDuration;
+      updates['timerState.timeRemaining'] = newDuration;
+    }
+    
+    await updateDoc(doc(db, ROOMS_COLLECTION, roomId), updates);
+  };
+
   const leaveRoom = async () => {
     if (!room || !roomId || !userId) return;
     await updateDoc(doc(db, ROOMS_COLLECTION, roomId), {
@@ -290,6 +306,7 @@ export function useStudyRoom(roomId: string | null) {
   return {
     room, timeLeft, loading, error,
     createRoom, joinRoomByCode, toggleTimer, resetTimer,
-    updateStatus, setReady, sendReaction, kickMember, deleteRoom, leaveRoom
+    updateStatus, setReady, sendReaction, kickMember, deleteRoom, leaveRoom,
+    updateRoomSettings
   };
 }

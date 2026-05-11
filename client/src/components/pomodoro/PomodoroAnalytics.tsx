@@ -17,7 +17,7 @@ const MOCK_DATA = [
 
 export default function PomodoroAnalytics({ stats }: { stats: any }) {
   const chartData = useMemo(() => {
-    if (!stats?.history) return [];
+    if (!stats?.history || !Array.isArray(stats.history)) return [];
     return stats.history.slice(-7).map((h: any) => ({
       day: new Date(h.date).toLocaleDateString('en-US', { weekday: 'short' }),
       minutes: h.minutes

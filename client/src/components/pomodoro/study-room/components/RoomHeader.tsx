@@ -83,13 +83,13 @@ export default function RoomHeader({ room, onLeave, isHost, onOpenSettings }: Ro
         <div className="mt-4 pt-4 border-t border-border/20">
           <div className="flex items-center justify-between text-[9px] font-black uppercase tracking-[0.2em] text-muted-foreground mb-2">
             <span>Room Progress</span>
-            <span className="text-primary">{room.timerState.sessionsCompleted} / 10 Sessions</span>
+            <span className="text-primary">{room.timerState.sessionsCompleted} / {room.settings.goalSessions} Sessions</span>
           </div>
           <div className="h-1.5 w-full bg-secondary/50 rounded-full overflow-hidden">
             <motion.div 
               initial={{ width: 0 }}
-              animate={{ width: `${Math.min((room.timerState.sessionsCompleted / 10) * 100, 100)}%` }}
-              className="h-full bg-primary shadow-[0_0_10px_rgba(99,102,241,0.5)]"
+              animate={{ width: `${Math.min((room.timerState.sessionsCompleted / room.settings.goalSessions) * 100, 100)}%` }}
+              className="h-full bg-primary shadow-[0_0_10px_rgba(var(--primary),0.5)]"
             />
           </div>
         </div>
