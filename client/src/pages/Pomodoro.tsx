@@ -16,6 +16,7 @@ import { useTheme } from '../context/ThemeContext';
 import AmbientMixer from '../components/pomodoro/AmbientMixer';
 import PomodoroAnalytics from '../components/pomodoro/PomodoroAnalytics';
 import StudyRoomContainer from '../components/pomodoro/study-room/StudyRoomContainer';
+import PomodoroTasks from '../components/pomodoro/PomodoroTasks';
 
 const QUOTES = [
   "The secret of getting ahead is getting started.",
@@ -199,116 +200,138 @@ export default function Pomodoro() {
         isFocusMode ? "p-0" : "pt-24 pb-12 px-6"
       )}>
         
+
         {activeTab === 'timer' && (
-          <div className="flex flex-col items-center justify-center w-full max-w-4xl space-y-16">
+          <div className={cn(
+            "flex flex-col lg:flex-row items-center justify-center w-full max-w-7xl gap-12 lg:gap-24",
+            isFocusMode ? "space-y-16 lg:space-y-0" : "space-y-16 lg:space-y-0"
+          )}>
             
-            {/* Breathing / Status Ring */}
-            <div className="relative flex items-center justify-center">
-              {!isFocusMode && (
-                <motion.div 
-                  animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.6, 0.3] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                  className={cn(
-                    "absolute inset-0 rounded-full blur-[100px]",
-                     mode === 'work' ? "bg-primary" : "bg-emerald-500"
-                  )}
-                />
-              )}
-
-              <div className="relative w-80 h-80 md:w-[500px] md:h-[500px] flex items-center justify-center">
-                <svg className="absolute inset-0 w-full h-full -rotate-90">
-                  <circle cx="50%" cy="50%" r="48%" fill="none" stroke="currentColor" strokeWidth="2" className="text-border/10" />
-                  <motion.circle 
-                    cx="50%" cy="50%" r="48%" 
-                    fill="none" strokeWidth="8" strokeLinecap="round"
-                    className={cn(
-                      "transition-all duration-1000 shadow-2xl",
-                      mode === 'work' ? "text-primary" : "text-emerald-500"
-                    )}
-                    strokeDasharray="100 100"
-                    animate={{ strokeDashoffset: 100 - progress }}
-                  />
-                </svg>
-
-                <div className="text-center space-y-6">
+            <div className="flex flex-col items-center space-y-16">
+              {/* Breathing / Status Ring */}
+              <div className="relative flex items-center justify-center">
+                {!isFocusMode && (
                   <motion.div 
-                    key={mode}
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
+                    animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.6, 0.3] }}
+                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                     className={cn(
-                      "text-[10px] md:text-[14px] font-black uppercase tracking-[0.5em] opacity-60",
-                      mode === 'work' ? "text-primary" : "text-emerald-500"
+                      "absolute inset-0 rounded-full blur-[100px]",
+                       mode === 'work' ? "bg-primary" : "bg-emerald-500"
                     )}
-                  >
-                    {mode === 'work' ? 'Deep Study Session' : 'Peaceful Break'}
-                  </motion.div>
-                  <div className={cn(
-                    "text-8xl md:text-[11rem] font-black tracking-tighter tabular-nums leading-none transition-colors duration-500",
-                    isFocusMode ? "text-white" : "dark:text-white text-black"
-                  )}>
-                    {formatTime(timeLeft)}
-                  </div>
-                  <div className="flex items-center justify-center gap-6 pt-8">
-                    <Button 
-                      size="lg" 
-                      onClick={toggleTimer}
+                  />
+                )}
+
+                <div className="relative w-80 h-80 md:w-[450px] md:h-[450px] flex items-center justify-center">
+                  <svg className="absolute inset-0 w-full h-full -rotate-90">
+                    <circle cx="50%" cy="50%" r="48%" fill="none" stroke="currentColor" strokeWidth="2" className="text-border/10" />
+                    <motion.circle 
+                      cx="50%" cy="50%" r="48%" 
+                      fill="none" strokeWidth="8" strokeLinecap="round"
                       className={cn(
-                        "h-20 w-20 md:h-24 md:w-24 rounded-[2.5rem] shadow-2xl transition-all hover:scale-110",
-                         isActive ? "bg-secondary text-foreground" : "bg-primary text-white"
+                        "transition-all duration-1000 shadow-2xl",
+                        mode === 'work' ? "text-primary" : "text-emerald-500"
+                      )}
+                      strokeDasharray="100 100"
+                      animate={{ strokeDashoffset: 100 - progress }}
+                    />
+                  </svg>
+
+                  <div className="text-center space-y-4 md:space-y-6">
+                    <motion.div 
+                      key={mode}
+                      initial={{ y: 20, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      className={cn(
+                        "text-[10px] md:text-[14px] font-black uppercase tracking-[0.5em] opacity-60",
+                        mode === 'work' ? "text-primary" : "text-emerald-500"
                       )}
                     >
-                      {isActive ? <Pause className="w-8 h-8 md:w-10 md:h-10" /> : <Play className="w-8 h-8 md:w-10 md:h-10 fill-current ml-1" />}
-                    </Button>
-                    <div className="flex flex-col gap-2">
-                      <Button variant="outline" size="icon" onClick={resetTimer} className="h-10 w-10 md:h-12 md:w-12 rounded-2xl">
-                        <RotateCcw className="w-4 h-4 md:w-5 md:h-5" />
+                      {mode === 'work' ? 'Deep Study Session' : 'Peaceful Break'}
+                    </motion.div>
+                    <div className={cn(
+                      "text-8xl md:text-[9rem] font-black tracking-tighter tabular-nums leading-none transition-colors duration-500",
+                      isFocusMode ? "text-white" : "dark:text-white text-black"
+                    )}>
+                      {formatTime(timeLeft)}
+                    </div>
+                    <div className="flex items-center justify-center gap-6 pt-4 md:pt-8">
+                      <Button 
+                        size="lg" 
+                        onClick={toggleTimer}
+                        className={cn(
+                          "h-16 w-16 md:h-24 md:w-24 rounded-[2rem] md:rounded-[2.5rem] shadow-2xl transition-all hover:scale-110",
+                           isActive ? "bg-secondary text-foreground" : "bg-primary text-white"
+                        )}
+                      >
+                        {isActive ? <Pause className="w-6 h-6 md:w-10 md:h-10" /> : <Play className="w-6 h-6 md:w-10 md:h-10 fill-current ml-1" />}
                       </Button>
-                      <Button variant="outline" size="icon" onClick={skipSession} className="h-10 w-10 md:h-12 md:w-12 rounded-2xl">
-                        <SkipForward className="w-4 h-4 md:w-5 md:h-5" />
-                      </Button>
+                      <div className="flex flex-col gap-2">
+                        <Button variant="outline" size="icon" onClick={resetTimer} className="h-10 w-10 md:h-12 md:w-12 rounded-2xl">
+                          <RotateCcw className="w-4 h-4 md:w-5 md:h-5" />
+                        </Button>
+                        <Button variant="outline" size="icon" onClick={skipSession} className="h-10 w-10 md:h-12 md:w-12 rounded-2xl">
+                          <SkipForward className="w-4 h-4 md:w-5 md:h-5" />
+                        </Button>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            {/* Motivational Quote */}
-            <motion.div 
-              key={quoteIndex}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="text-center max-w-xl px-10"
-            >
-              <p className="text-lg md:text-2xl font-medium text-muted-foreground italic leading-relaxed">
-                "{QUOTES[quoteIndex]}"
-              </p>
-            </motion.div>
-
-            {/* Micro Stats */}
+              {/* Micro Stats */}
               <div className={cn(
-                "flex items-center gap-12 bg-secondary/30 backdrop-blur-xl p-8 rounded-[2.5rem] border border-border/50 shadow-xl transition-all",
+                "flex items-center gap-6 md:gap-12 bg-secondary/30 backdrop-blur-xl p-6 md:p-8 rounded-[2.5rem] border border-border/50 shadow-xl transition-all",
                 isFocusMode && "opacity-40 hover:opacity-100"
               )}>
                 <div className="text-center space-y-1">
-                  <div className="text-3xl font-black">{sessionCount} / {settings.sessionsUntilLongBreak}</div>
-                  <div className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Sessions Goal</div>
+                  <div className="text-xl md:text-3xl font-black">{sessionCount} / {settings.sessionsUntilLongBreak}</div>
+                  <div className="text-[8px] md:text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Goal</div>
                 </div>
                 <div className="w-px h-10 bg-border/50" />
                 <div className="text-center space-y-1">
-                  <div className="text-3xl font-black">{sessionCount * settings.workTime}m</div>
-                  <div className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Focus Time</div>
+                  <div className="text-xl md:text-3xl font-black">{sessionCount * settings.workTime}m</div>
+                  <div className="text-[8px] md:text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Focus</div>
                 </div>
                 <div className="w-px h-10 bg-border/50" />
                 <div className="text-center space-y-1">
-                  <div className="text-3xl font-black flex items-center justify-center gap-2 text-amber-500">
-                    <Zap className="w-6 h-6 fill-current" /> {userData?.streak || stats?.dailyStreak || 0}
+                  <div className="text-xl md:text-3xl font-black flex items-center justify-center gap-2 text-amber-500">
+                    <Zap className="w-5 h-5 md:w-6 md:h-6 fill-current" /> {userData?.streak || stats?.dailyStreak || 0}
                   </div>
-                  <div className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Daily Streak</div>
+                  <div className="text-[8px] md:text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Streak</div>
                 </div>
               </div>
+            </div>
+
+            {/* Task List / Session Goals */}
+            <AnimatePresence>
+              {(!isFocusMode || (isFocusMode && !isActive)) && (
+                <motion.div 
+                  initial={{ opacity: 0, x: 50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 50 }}
+                  className="w-full lg:w-auto space-y-8"
+                >
+                  <PomodoroTasks />
+                  
+                  {/* Motivational Quote */}
+                  <motion.div 
+                    key={quoteIndex}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="text-center lg:text-left max-w-md px-4"
+                  >
+                    <p className="text-sm md:text-lg font-medium text-muted-foreground italic leading-relaxed">
+                      "{QUOTES[quoteIndex]}"
+                    </p>
+                  </motion.div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
           </div>
         )}
+
 
         {activeTab === 'room' && (
           <div className="w-full max-w-7xl">
