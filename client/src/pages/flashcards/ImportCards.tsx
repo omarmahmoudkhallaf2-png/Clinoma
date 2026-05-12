@@ -312,8 +312,26 @@ const ImportCards = () => {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
               {[
                 { name: 'JSON', icon: FileJson, color: 'text-blue-500', desc: 'Custom JSON format', onClick: () => fileInputRef.current?.click() },
+                { name: 'AI Studio Export', icon: Brain, color: 'text-purple-500', desc: 'Load your recent AI cards', onClick: async () => {
+                  try {
+                    setImporting(true);
+                    const response = await fetch('/ai_flashcards_export.json');
+                    if (!response.ok) throw new Error();
+                    const data = await response.json();
+                    setPreviewData(data.cards);
+                    setDeckTitle(data.deck.title);
+                    setSubject(data.deck.subject);
+                    setStep(2);
+                    toast.success('تم تحميل كروت AI Studio بنجاح!');
+                  } catch (err) {
+                    toast.error('لم يتم العثور على ملف التصدير.');
+                  } finally {
+                    setImporting(false);
+                  }
+                }},
                 { name: 'AI Generate', icon: Sparkles, color: 'text-amber-500', desc: 'From PDF or Image', onClick: () => aiFileInputRef.current?.click() },
               ].map(type => (
+
                 <div key={type.name} onClick={type.onClick} className="p-6 rounded-3xl bg-card border border-border flex flex-col items-center text-center space-y-3 cursor-pointer hover:border-primary/50 transition-all group shadow-sm">
                   <div className={`w-12 h-12 rounded-2xl bg-muted flex items-center justify-center ${type.color} group-hover:bg-primary/10 transition-colors shadow-inner`}>
                     <type.icon size={24} />

@@ -1,0 +1,560 @@
+{
+  "deck": {
+    "title": "Cardiology - AI Studio Export",
+    "subject": "Cardiology"
+  },
+  "cards": [
+    {
+      "front": "What are the Intended Learning Outcomes (ILOs) for the Cardiovascular Diseases chapter?",
+      "back": "\n      <u>Intended learning outcomes:</u><br/>\n      <span class=\"text-blue-600 text-sm\">By the end of this chapter, the student should be able to:</span><br/>\n      <ul class=\"list-disc ml-5\">\n        <li>Identify the three commonest types of congenital heart diseases: <span class=\"text-red-600\">Ventricular Septal Defect (VSD), Patent Ductus Arteriosus (PDA), and Atrial Septal Defect (ASD).</span></li>\n        <li>State the genetic and environmental factors that contribute to the etiology of congenital heart defects.</li>\n        <li>Analyze various cardiovascular disease conditions by examining the underlying structural and functional abnormalities of the heart and vascular system.</li>\n        <li>Explain the hemodynamics of left-to-right shunt lesions and how it leads to pulmonary plethora and hypertension.</li>\n        <li>Explain the hemodynamics of obstructive lesions & cyanotic congenital heart diseases.</li>\n        <li>Formulate appropriate management strategies for cardiac abnormalities that negatively impact a child's growth and development.</li>\n        <li>Appraise the multifaceted impact that congenital and inherited heart diseases have on pediatric patients and their family units.</li>\n        <li>Distinguish between the clinical presentations and management protocols of cyanotic and acyanotic heart disorders.</li>\n        <li>Evaluate the physiological state of heart failure in children to determine the necessary clinical interventions.</li>\n        <li>Apply medical management protocols, such as the use of diuretics and ACE inhibitors, for infants developing heart failure due to large ventricular defects.</li>\n        <li>Diagnose acute rheumatic fever by applying established clinical criteria and managing the condition with sufficient medical knowledge.</li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "What is the magnitude of the problem of Congenital Heart Disease (CHD)?",
+      "back": "\n      <u>Magnitude of the problem:</u><br/>\n      <ul class=\"list-disc ml-5\">\n        <li>Congenital heart disease is the most common birth defect (affects <span class=\"text-red-600\">8-10/ 1000 live births</span>).</li>\n        <li>It accounts for significant global morbidity and mortality. <span class=\"text-red-600\">4.2% of all neonatal deaths</span> are due to a heart defect.</li>\n        <li>The commonest are <span class=\"text-red-600\">VSD, PDA & ASD.</span></li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "What are the Genetic Factors involved in the etiology of Congenital Heart Diseases?",
+      "back": "\n      <u>Genetic factors:</u><br/>\n      <span class=\"text-blue-600 text-sm\">1. Specific chromosomal abnormalities:</span><br/>\n      <ul class=\"list-disc ml-8\">\n        <li><span class=\"text-red-600\">Trisomy 21:</span> A-V canal defects, PDA, VSD.</li>\n        <li><span class=\"text-red-600\">Trisomy 18:</span> VSD, PDA, PS.</li>\n        <li><span class=\"text-red-600\">Trisomy 13:</span> VSD, PDA, ASD.</li>\n      </ul>\n      <span class=\"text-blue-600 text-sm\">2. Identical malformation occurs in some monozygotic and dizygotic twins.</span><br/>\n      <span class=\"text-blue-600 text-sm\">3. Some cardiac diseases have autosomal inheritance:</span><br/>\n      <ul class=\"list-disc ml-8\">\n        <li><span class=\"text-red-600\">Example:</span> Cardiomyopathy.</li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "What are the Environmental Factors (Teratogens) involved in the etiology of Congenital Heart Diseases?",
+      "back": "\n      <u>Environmental factors (teratogens):</u><br/>\n      <ul class=\"list-disc ml-5\">\n        <li><span class=\"text-red-600\">I. Maternal rubella</span> → PDA</li>\n        <li><span class=\"text-red-600\">II. Other viral infection:</span> TORCH infection, coxachie</li>\n        <li><span class=\"text-red-600\">III. Drugs:</span> Warfarin, anticonvulsants, alcohol, cytotoxic drugs.</li>\n        <li><span class=\"text-red-600\">IV. Irradiation.</span></li>\n        <li><span class=\"text-red-600\">V. Maternal diabetes.</span></li>\n        <li><span class=\"text-red-600\">VI. Maternal collagen diseases:</span> SLE, rheumatoid arthritis.</li>\n      </ul>\n      <u>Genetic environmental interaction:</u><br/>\n      <span class=\"text-blue-600 text-sm\">VII. Genetically determined and exposed to environmental factor.</span>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "How are Congenital Heart Diseases classified?",
+      "back": "\n      <u>Classification:</u><br/>\n      <span class=\"text-blue-600 text-sm\">I. Acyanotic congenital heart diseases:</span><br/>\n      <ul class=\"list-disc ml-8\">\n        <li><span class=\"text-red-600\">With left to right shunt:</span> VSD, PDA, ASD, Endocardial cushion defect (ECD).</li>\n        <li><span class=\"text-red-600\">Without shunt:</span>\n          <ul class=\"list-circle ml-5\">\n            <li>Obstructive lesions: Aortic coarctation, Aortic stenosis, Pulmonary stenosis.</li>\n            <li>Non-obstructive lesions: Dextrocardia.</li>\n          </ul>\n        </li>\n      </ul>\n      <span class=\"text-blue-600 text-sm\">II. Cyanotic congenital heart diseases.</span>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "Define Ventricular Septal Defect (VSD) and state its prevalence.",
+      "back": "\n      <u>Ventricular Septal Defect (VSD):</u><br/>\n      <span class=\"text-blue-600 text-sm\">Definition:</span> A defect in the interventricular septum.<br/>\n      <span class=\"text-blue-600 text-sm\">Prevalence:</span> Ventricular septal defect is the most common form of CHD and accounts for about <span class=\"text-red-600\">30% of all such defects.</span>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "What are the types of VSD according to the site of the defect?",
+      "back": "\n      <u>Types According to the site of defect:</u><br/>\n      <ul class=\"list-disc ml-5\">\n        <li><span class=\"text-red-600\">1. Common:</span> Single defect in membranous part. Usually involves part of the muscular tissue adjacent to the membranous septum (perimembranous defect).</li>\n        <li><span class=\"text-red-600\">2. Less common:</span> Single or multiple defects in muscular part of the septum (inlet, trabecular, outlet “infundibular” component).</li>\n      </ul>\n      <span class=\"text-blue-600 text-sm\">N.B.: The ventricular septum is divided into small membranous part & large muscular part. The muscular part has 3 components: inlet, trabecular & outlet (infundibular).</span>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "What are the types of VSD according to the size of the defect?",
+      "back": "\n      <u>Types According to the size of the defect:</u><br/>\n      <ul class=\"list-disc ml-5\">\n        <li><span class=\"text-red-600\">1. Small defect (Roger’s disease):</span> Usually asymptomatic, discovered accidentally. Small defects have a better chance to close spontaneously than large defects.</li>\n        <li><span class=\"text-red-600\">2. Moderate defect.</span></li>\n        <li><span class=\"text-red-600\">3. Large defects:</span> Causes hemodynamic changes & patient is symptomatic.</li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "Explain the Hemodynamics of VSD.",
+      "back": "\n      <u>Hemodynamics of VSD:</u><br/>\n      <ul class=\"list-disc ml-5\">\n        <li>The blood from the Lt. ventricle is divided into 2 portions: one passes to the aorta and the other passes through the defect to the Rt ventricle.</li>\n        <li>The amount of shunted blood depends on the size of the VSD and the level of pulmonary vascular resistance.</li>\n        <li>All this blood (RV output & part from LV output that came through VSD) will pass through the pulmonary artery → <span class=\"text-red-600\">pulmonary plethora.</span></li>\n        <li>Then, pass to the Lt Atrium → <span class=\"text-red-600\">Lt Atrium dilatation (LVH or LV dilatation).</span></li>\n        <li>Persistence of pulmonary plethora → <span class=\"text-red-600\">pulmonary hypertension</span> → Low COP symptoms.</li>\n        <li>Pulmonary hypertension → ↑↑Rt ventricular pressure → <span class=\"text-red-600\">Eisenmenger Syndrome</span> → \"Persistent cyanosis\".</li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "What are the Clinical Manifestations (Symptoms) of VSD?",
+      "back": "\n      <u>Symptoms of VSD:</u><br/>\n      <ul class=\"list-disc ml-5\">\n        <li><span class=\"text-red-600\">1. Small VSD:</span> Patient is asymptomatic with normal growth and development.</li>\n        <li><span class=\"text-red-600\">2. Moderate to large VSD:</span> Delayed growth and development, decreased exercise tolerance (tachypnea & excessive sweating with feeding), repeated pulmonary infections, and symptoms of CHF are relatively common during infancy. Exertional dyspnea may be present in older children.</li>\n        <li><span class=\"text-red-600\">3. Long-standing pulmonary hypertension:</span> Cyanosis, clubbing and a decreased level of activity may be present in patients with pulmonary vascular obstructive disease (Eisenmenger’s syndrome).</li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "What are the Clinical Signs of VSD on inspection, palpation, and auscultation?",
+      "back": "\n      <u>Signs of VSD:</u><br/>\n      <span class=\"text-blue-600 text-sm\">Combined inspection & palpation:</span><br/>\n      <ul class=\"list-disc ml-8\">\n        <li>Precordial bulge and hyperkinetic apex are present with a large VSD.</li>\n        <li>A systolic thrill may be present at the lower left sternal border.</li>\n      </ul>\n      <span class=\"text-blue-600 text-sm\">Auscultation (Heart sounds):</span><br/>\n      <ul class=\"list-disc ml-8\">\n        <li>The intensity of the P2 is normal with a small shunt and increased with a large shunt.</li>\n        <li>The S2 is loud and single in patients with pulmonary hypertension or pulmonary vascular obstructive disease.</li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "Describe the Murmurs associated with VSD.",
+      "back": "\n      <u>Murmurs of VSD:</u><br/>\n      <ul class=\"list-disc ml-5\">\n        <li><span class=\"text-red-600\">Harsh (grade 3 to 5 of 6) pansystolic murmur</span> on lower Lt sternal border (3rd and 4th intercostals spaces) propagated all over the precordium. Sometimes the murmur is early systolic.</li>\n        <li>With <span class=\"text-red-600\">infundibular VSD</span>, a grade soft early diastolic decrescendo murmur of AR may be audible, possibly caused by herniation of an aortic cusp.</li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "What investigations are used for VSD and what are their findings?",
+      "back": "\n      <u>Investigations for VSD:</u><br/>\n      <span class=\"text-blue-600 text-sm\">[1] Electrocardiography (ECG):</span><br/>\n      <ul class=\"list-disc ml-8\">\n        <li>Small VSD: Normal findings.</li>\n        <li>Moderate VSD: LVH and occasional LAH.</li>\n        <li>Large defect: Biventricular hypertrophy (BVH) with or without LAH.</li>\n        <li>Pulmonary vascular obstructive disease: RVH only.</li>\n      </ul>\n      <span class=\"text-blue-600 text-sm\">Radiography:</span><br/>\n      <ul class=\"list-disc ml-8\">\n        <li>Cardiomegaly (LA, LV, sometimes RV).</li>\n        <li>Increased pulmonary vascular markings.</li>\n      </ul>\n      <span class=\"text-blue-600 text-sm\">[2] Echocardiography:</span><br/>\n      <span class=\"text-blue-600 text-sm\">Can identify the number, size, and exact location of the defect; estimate PA pressure; detect chambers enlargement; identify other associated defects; and estimate the magnitude of the shunt.</span>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "Describe the Natural History of VSD.",
+      "back": "\n      <u>Natural History of VSD:</u><br/>\n      <ul class=\"list-disc ml-5\">\n        <li><span class=\"text-red-600\">Spontaneous closure:</span> Occurs more frequently with small defects and during the first 6 months of life.</li>\n        <li>About <span class=\"text-red-600\">60% of small to moderate muscular VSDs</span> close spontaneously but not after 8 years of age.</li>\n        <li>About <span class=\"text-red-600\">35% of small perimembranous VSDs</span> close spontaneously but not after 5 years of age.</li>\n        <li><span class=\"text-red-600\">Inlet and outlet (infundibular) defects</span> do not become smaller or close spontaneously.</li>\n        <li><span class=\"text-red-600\">CHF</span> develops in infants with large VSDs usually at 6 to 8 weeks of age.</li>\n        <li><span class=\"text-red-600\">Pulmonary vascular obstructive disease</span> may begin at 6 to 12 months with large VSDs, but right-to-left shunt usually develops in teenage years.</li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "What is the Medical Management for VSD?",
+      "back": "\n      <u>Medical Management of VSD:</u><br/>\n      <ul class=\"list-disc ml-5\">\n        <li>1. Treatment of CHF with <span class=\"text-red-600\">diuretics & ACE inhibitors</span> for 2 to 4 months.</li>\n        <li>2. Frequent feedings of <span class=\"text-red-600\">high-calorie formulas</span> (nasogastric or oral).</li>\n        <li>3. These measures may allow delay of surgery and promote spontaneous reduction or closure.</li>\n        <li>4. No exercise restriction in the absence of pulmonary hypertension.</li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "What are the indications, timing, and procedures for VSD closure?",
+      "back": "\n      <u>Closure of the defect:</u><br/>\n      <span class=\"text-blue-600 text-sm\">Indications and Timing:</span><br/>\n      <ul class=\"list-disc ml-8\">\n        <li>Failure to thrive (if medical therapy fails).</li>\n        <li>PA pressure > 50% of systemic pressure (surgical closure by end of 1st year).</li>\n        <li>Dilated left sided chambers.</li>\n        <li>Intractable congestive heart failure.</li>\n        <li>Subaortic VSD causing AR.</li>\n      </ul>\n      <span class=\"text-blue-600 text-sm\">Procedure:</span><br/>\n      <ul class=\"list-disc ml-8\">\n        <li><span class=\"text-red-600\">1. Nonsurgical device closure:</span> For selected muscular VSDs away from valves and difficult to access surgically.</li>\n        <li><span class=\"text-red-600\">2. PA banding:</span> Palliative, no longer performed unless additional lesions make repair difficult.</li>\n        <li><span class=\"text-red-600\">3. Surgical closure (patch closure):</span> Carried out under cardiopulmonary bypass.</li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "Define Atrial Septal Defect (ASD) and state its prevalence and types.",
+      "back": "\n      <u>Atrial Septal Defect (ASD):</u><br/>\n      <span class=\"text-blue-600 text-sm\">Definition:</span> A defect in the inter-atrial septum.<br/>\n      <span class=\"text-blue-600 text-sm\">Prevalence:</span> Isolated anomaly in <span class=\"text-red-600\">5% to 10% of all CHDs.</span> More common in females (male-to-female ratio of 1:2).<br/>\n      <u>Types of ASD:</u><br/>\n      <ul class=\"list-disc ml-5\">\n        <li><span class=\"text-red-600\">Ostium secundum defect</span> (most common).</li>\n        <li><span class=\"text-red-600\">Ostium primum defect.</span></li>\n        <li><span class=\"text-red-600\">Sinus venosus defect.</span></li>\n        <li><span class=\"text-red-600\">Coronary sinus ASD.</span></li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "Explain the Hemodynamics of ASD.",
+      "back": "\n      <u>Hemodynamics of ASD:</u><br/>\n      <ul class=\"list-disc ml-5\">\n        <li>Left atrial pressure > right atrial pressure. Blood shunted from LA to RA.</li>\n        <li>RA receives blood from superior & inferior vena-cava + shunt → <span class=\"text-red-600\">right atrial dilatation and enlargement.</span></li>\n        <li>Blood goes to RV → RV ++ → pulmonary artery → enlargement of pulmonary artery → <span class=\"text-red-600\">Lung plethora</span> → repeated chest infections.</li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "What are the Clinical Manifestations (Symptoms and Signs) of ASD?",
+      "back": "\n      <u>Clinical Manifestations of ASD:</u><br/>\n      <span class=\"text-blue-600 text-sm\">Symptoms:</span><br/>\n      <ul class=\"list-disc ml-8\">\n        <li>Small ASDs: Well developed and asymptomatic.</li>\n        <li>Large ASDs: Poor weight gain or symptoms/signs of CHF.</li>\n      </ul>\n      <span class=\"text-blue-600 text-sm\">Signs:</span><br/>\n      <ul class=\"list-disc ml-8\">\n        <li>Large ASD: Precordial bulge, prominent RV cardiac impulse, palpable PA pulsations.</li>\n        <li><span class=\"text-red-600\">Heart sounds:</span> Second heart sound is <span class=\"text-red-600\">widely split and fixed</span> (characteristic finding).</li>\n        <li><span class=\"text-red-600\">Murmurs:</span> Soft (grade 2-3/6) systolic ejection murmur over pulmonary area. Large shunt may cause mid-diastolic rumble (relative tricuspid stenosis).</li>\n        <li><span class=\"text-blue-600 text-sm\">N.B.: There is NO MURMUR due to passage of blood through ASD.</span></li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "What investigations are used for ASD and what are their findings?",
+      "back": "\n      <u>Investigations for ASD:</u><br/>\n      <span class=\"text-blue-600 text-sm\">I. Electrocardiography (ECG):</span><br/>\n      <ul class=\"list-disc ml-8\">\n        <li>Right axis deviation, mild RVH, or <span class=\"text-red-600\">RBBB pattern in V1</span> (due to dilated RV cavity, not actual block).</li>\n      </ul>\n      <span class=\"text-blue-600 text-sm\">II. Radiography:</span><br/>\n      <ul class=\"list-disc ml-8\">\n        <li>Cardiomegaly (RA and RV enlargement).</li>\n        <li>Prominent PA segment and increased pulmonary vascular markings.</li>\n      </ul>\n      <span class=\"text-blue-600 text-sm\">III. Echocardiography:</span><br/>\n      <span class=\"text-blue-600 text-sm\">Can identify type & size; estimate PA pressure; detect chambers enlargement; and estimate shunt magnitude.</span>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "What is the Management for ASD?",
+      "back": "\n      <u>Management of ASD:</u><br/>\n      <span class=\"text-blue-600 text-sm\">Medical:</span><br/>\n      <ul class=\"list-disc ml-8\">\n        <li>Exercise restriction is unnecessary.</li>\n        <li>In infants with CHF, medical management is recommended (high success rate, possibility of spontaneous closure).</li>\n      </ul>\n      <span class=\"text-blue-600 text-sm\">Closure (Indications and Timing):</span><br/>\n      <ul class=\"list-disc ml-8\">\n        <li>Preferably closed at <span class=\"text-red-600\">2–4 years of age.</span></li>\n        <li>Earlier if: Significant shunt with RV volume overload (Qp/Qs ≥ 1.5:1), failure to thrive, or CHF not responding to medical management.</li>\n      </ul>\n      <span class=\"text-blue-600 text-sm\">Procedure:</span><br/>\n      <ul class=\"list-disc ml-8\">\n        <li><span class=\"text-red-600\">Nonsurgical:</span> Catheter-delivered device (preferred for secundum ASD).</li>\n        <li><span class=\"text-red-600\">Surgical:</span> Simple suture or patch under cardiopulmonary bypass.</li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "Define Patent Ductus Arteriosus (PDA) and state its prevalence.",
+      "back": "\n      <u>Patent Ductus Arteriosus (PDA):</u><br/>\n      <span class=\"text-blue-600 text-sm\">Definition:</span> Persistence of the fetal communication between the main pulmonary artery & the aortic arch after the origin of the Lt subclavian artery.<br/>\n      <span class=\"text-blue-600 text-sm\">Prevalence:</span> Occurs in <span class=\"text-red-600\">5% to 10% of all CHDs</span> (excluding premature infants). More common in females (ratio 1:3). Common problem in premature infants.\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "Explain the Hemodynamics of PDA.",
+      "back": "\n      <u>Hemodynamics of PDA:</u><br/>\n      <ul class=\"list-disc ml-5\">\n        <li>Aorta pressure > pulmonary artery pressure during systole & diastole.</li>\n        <li>Blood shunted from aorta to pulmonary artery.</li>\n        <li>Increased pulmonary blood flow → <span class=\"text-red-600\">Lung plethora</span> → LA++ and LV++ (similar to VSD).</li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "What are the Clinical Manifestations (Symptoms and Signs) of PDA?",
+      "back": "\n      <u>Clinical Manifestations of PDA:</u><br/>\n      <span class=\"text-blue-600 text-sm\">Symptoms:</span><br/>\n      <ul class=\"list-disc ml-8\">\n        <li>Small PDA: Asymptomatic.</li>\n        <li>Large PDA: Poor weight gain, decreased exercise tolerance, repeated lower respiratory infections, and CHF common in infancy. Exertional dyspnea in older children.</li>\n      </ul>\n      <span class=\"text-blue-600 text-sm\">Signs:</span><br/>\n      <ul class=\"list-disc ml-8\">\n        <li>General: Tachycardia, tachypnea (in CHF).</li>\n        <li><span class=\"text-red-600\">Bounding peripheral pulses with water hammer pulse</span> (due to wide pulse pressure).</li>\n        <li><span class=\"text-red-600\">Differential cyanosis:</span> Cyanosis only in lower half of body if pulmonary vascular obstructive disease develops.</li>\n        <li>Local: Hyperactive precordium, systolic thrill at upper left sternal border.</li>\n        <li><span class=\"text-red-600\">Murmur:</span> Grade 1-4/6 <span class=\"text-red-600\">continuous “machinery” murmur</span> at left infraclavicular area.</li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "What investigations are used for PDA and what are their findings?",
+      "back": "\n      <u>Investigations for PDA:</u><br/>\n      <span class=\"text-blue-600 text-sm\">I. Electrocardiography (ECG):</span><br/>\n      <ul class=\"list-disc ml-8\">\n        <li>Similar to VSD. Normal or LVH in small/moderate PDA. BVH in large PDA.</li>\n      </ul>\n      <span class=\"text-blue-600 text-sm\">II. Radiography:</span><br/>\n      <ul class=\"list-disc ml-8\">\n        <li>Similar to VSD. Cardiomegaly (LA, LV, ascending aorta). Increased pulmonary markings.</li>\n      </ul>\n      <span class=\"text-blue-600 text-sm\">III. Echocardiography:</span><br/>\n      <span class=\"text-blue-600 text-sm\">Can assess size, site, shape, and flow direction. LA and LV dimensions provide indirect assessment of shunt magnitude.</span>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "Describe the Natural History of PDA.",
+      "back": "\n      <u>Natural History of PDA:</u><br/>\n      <ul class=\"list-disc ml-5\">\n        <li>Spontaneous closure is <span class=\"text-red-600\">rare in full-term infants</span> (due to structural abnormality of ductal smooth muscle).</li>\n        <li>CHF or recurrent pneumonia develops if shunt is large.</li>\n        <li>Pulmonary vascular obstructive disease may develop if untreated.</li>\n        <li>Rarely, an aneurysm of PDA may develop and possibly rupture in adult life.</li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "What is the Management for PDA?",
+      "back": "\n      <u>Management of PDA:</u><br/>\n      <span class=\"text-blue-600 text-sm\">Medical (only in premature infants):</span><br/>\n      <ul class=\"list-disc ml-8\">\n        <li><span class=\"text-red-600\">Indomethacin, ibuprofen, and paracetamol</span> are effective to close the PDA.</li>\n        <li>No exercise restriction in absence of pulmonary hypertension.</li>\n      </ul>\n      <span class=\"text-blue-600 text-sm\">Closure:</span><br/>\n      <ul class=\"list-disc ml-8\">\n        <li>Diagnosis is indication for closure (except silent PDA).</li>\n        <li><span class=\"text-red-600\">Nonsurgical:</span> Device occlusion (standard of care).</li>\n        <li><span class=\"text-red-600\">Surgical:</span> Reserved for when device closure is not applicable.</li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "Define Pulmonary Stenosis (PS) and state its prevalence and pathology.",
+      "back": "\n      <u>Pulmonary Stenosis (PS):</u><br/>\n      <span class=\"text-blue-600 text-sm\">Definition:</span> Obstruction to right ventricular outflow.<br/>\n      <span class=\"text-blue-600 text-sm\">Prevalence:</span> Isolated PS occurs in <span class=\"text-red-600\">4% to 8% of children with CHDs.</span> Often associated with Tetralogy of Fallot.<br/>\n      <u>Pathology:</u><br/>\n      <ul class=\"list-disc ml-5\">\n        <li>May be <span class=\"text-red-600\">valvular (90%)</span>, subvalvular (infundibular), or supravalvular.</li>\n        <li>Leads to RVH.</li>\n        <li>Pathophysiologic changes: Systolic ejection murmur, hypertrophy of related ventricle, post stenotic dilatation.</li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "What are the Clinical Manifestations (Symptoms and Signs) of PS?",
+      "back": "\n      <u>Clinical Manifestations of PS:</u><br/>\n      <span class=\"text-blue-600 text-sm\">Symptoms:</span><br/>\n      <ul class=\"list-disc ml-8\">\n        <li>Mild PS: Asymptomatic.</li>\n        <li>Moderate PS: Exertional dyspnea and easy fatigability.</li>\n        <li>Severe PS: CHF.</li>\n        <li>Critical PS (neonates): Cyanotic and tachypneic.</li>\n      </ul>\n      <span class=\"text-blue-600 text-sm\">Signs:</span><br/>\n      <ul class=\"list-disc ml-8\">\n        <li>RV tap and systolic thrill at upper left sternal border (ULSB).</li>\n        <li><span class=\"text-red-600\">Heart sounds:</span> S2 may split widely, P2 diminished. <span class=\"text-red-600\">Systolic ejection click</span> present in valvular PS.</li>\n        <li><span class=\"text-red-600\">Murmur:</span> Systolic ejection murmur (grade 2-5/6) at ULSB, transmits to back and axillae.</li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "What investigations are used for PS and what are their findings?",
+      "back": "\n      <u>Investigations for PS:</u><br/>\n      <span class=\"text-blue-600 text-sm\">1. Chest x-ray:</span><br/>\n      <ul class=\"list-disc ml-8\">\n        <li>Heart size usually normal (cardiomegaly in CHF).</li>\n        <li>Prominent main PA segment (post stenotic dilatation).</li>\n        <li>Pulmonary vascularity normal (decreased in severe PS).</li>\n      </ul>\n      <span class=\"text-blue-600 text-sm\">2. ECG:</span><br/>\n      <ul class=\"list-disc ml-8\">\n        <li>Normal in mild PS. RAD and RVH in moderate/severe PS.</li>\n      </ul>\n      <span class=\"text-blue-600 text-sm\">3. Echocardiography:</span><br/>\n      <span class=\"text-blue-600 text-sm\">Assesses shape of valve and degree of stenosis; reveals associated lesions.</span>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "What is the Management for PS?",
+      "back": "\n      <u>Management of PS:</u><br/>\n      <ul class=\"list-disc ml-5\">\n        <li><span class=\"text-red-600\">Prostaglandin (PGE1):</span> For neonates with critical PS and cyanosis to reopen the ductus.</li>\n        <li><span class=\"text-red-600\">Balloon valvuloplasty:</span> Procedure of choice for significant valvular PS.</li>\n        <li><span class=\"text-red-600\">Surgery:</span> If balloon fails or for non-valvular/complex stenosis.</li>\n        <li><span class=\"text-red-600\">Follow-up:</span> Periodic echo to detect recurrence.</li>\n        <li><span class=\"text-red-600\">Prophylaxis:</span> Against infective endocarditis.</li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "Define Aortic Stenosis (AS) and state its prevalence and pathology.",
+      "back": "\n      <u>Aortic Stenosis (AS):</u><br/>\n      <span class=\"text-blue-600 text-sm\">Definition:</span> Left ventricular outflow tract (LVOT) obstruction.<br/>\n      <span class=\"text-blue-600 text-sm\">Prevalence:</span> Accounts for <span class=\"text-red-600\">10% of all CHD.</span> More common in males (ratio 4:1).<br/>\n      <u>Pathology:</u><br/>\n      <ul class=\"list-disc ml-5\">\n        <li>Obstruction at valvular, subvalvular, or supravalvular levels.</li>\n        <li>Leads to LVH.</li>\n        <li>Post-stenotic dilatation of ascending aorta in valvular AS.</li>\n        <li>AR usually develops with subaortic AS.</li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "What are the Clinical Manifestations (Symptoms and Signs) of AS?",
+      "back": "\n      <u>Clinical Manifestations of AS:</u><br/>\n      <span class=\"text-blue-600 text-sm\">Symptoms:</span><br/>\n      <ul class=\"list-disc ml-8\">\n        <li>Mild AS: Asymptomatic.</li>\n        <li>Moderate AS: Exercise intolerance.</li>\n        <li>Severe AS: Exertional chest pain, easy fatigability, or syncope.</li>\n      </ul>\n      <span class=\"text-blue-600 text-sm\">Signs:</span><br/>\n      <ul class=\"list-disc ml-8\">\n        <li>Blood pressure: Normal (narrow pulse pressure in severe AS).</li>\n        <li>Systolic thrill at URSB, suprasternal notch, or carotid arteries.</li>\n        <li><span class=\"text-red-600\">Ejection systolic click</span> with valvular AS.</li>\n        <li><span class=\"text-red-600\">Murmur:</span> Harsh systolic ejection murmur (grade 2-4/6) at 2nd right or 3rd left intercostal space, transmits to neck and apex.</li>\n        <li>High-pitched early diastolic decrescendo murmur of AR in bicuspid aortic valve.</li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "What investigations are used for AS and what are their findings?",
+      "back": "\n      <u>Investigations for AS:</u><br/>\n      <span class=\"text-blue-600 text-sm\">1. Chest x-ray:</span><br/>\n      <ul class=\"list-disc ml-8\">\n        <li>Usually normal in children. Dilated ascending aorta in valvular AS. Cardiomegaly in CHF or substantial AR.</li>\n      </ul>\n      <span class=\"text-blue-600 text-sm\">2. ECG:</span><br/>\n      <ul class=\"list-disc ml-8\">\n        <li>Normal in mild cases. LVH in severe cases.</li>\n      </ul>\n      <span class=\"text-blue-600 text-sm\">3. Echocardiography:</span><br/>\n      <span class=\"text-blue-600 text-sm\">Shows anatomy (bicuspid, tricuspid, unicuspid), site, and degree of stenosis; reveals AR and associated lesions.</span>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "What is the Management for AS?",
+      "back": "\n      <u>Management of AS:</u><br/>\n      <ul class=\"list-disc ml-5\">\n        <li><span class=\"text-red-600\">Anticongestive measures:</span> For critically ill with CHF (inotropic agents, diuretics).</li>\n        <li><span class=\"text-red-600\">PGE1 infusion</span> may be indicated.</li>\n        <li><span class=\"text-red-600\">Percutaneous balloon valvuloplasty:</span> First step for symptomatic neonates.</li>\n        <li><span class=\"text-red-600\">Activity restrictions:</span> For moderate & severe AS.</li>\n        <li><span class=\"text-red-600\">Surgical:</span> Aortic valve commissurotomy, replacement, or Ross procedure.</li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "Define Coarctation of the Aorta (COA) and state its prevalence and types.",
+      "back": "\n      <u>Coarctation of the Aorta (COA):</u><br/>\n      <span class=\"text-blue-600 text-sm\">Prevalence:</span> <span class=\"text-red-600\">4% to 8% of all CHD</span>, male preponderance (2:1). 30% of Turner syndrome patients have COA.<br/>\n      <u>Types:</u><br/>\n      <ul class=\"list-disc ml-5\">\n        <li><span class=\"text-red-600\">A. Preductal:</span> CoA above the entrance of ductus arteriosus.</li>\n        <li><span class=\"text-red-600\">B. Postductal:</span> CoA below the entrance of ductus arteriosus.</li>\n      </ul>\n      <u>Pathology Groups:</u><br/>\n      <span class=\"text-blue-600 text-sm\">1. Symptomatic newborns.</span><br/>\n      <span class=\"text-blue-600 text-sm\">2. Asymptomatic infants & children.</span>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "Explain the Pathophysiology of COA in newborns and children.",
+      "back": "\n      <u>Pathophysiology of COA:</u><br/>\n      <span class=\"text-blue-600 text-sm\">Symptomatic newborns:</span><br/>\n      <ul class=\"list-disc ml-8\">\n        <li>Associated with VSD or left-sided obstructive lesions.</li>\n        <li>Structures become hypoplastic. After birth, deoxygenated blood passes from RV to descending aorta through PDA → <span class=\"text-red-600\">Differential cyanosis.</span></li>\n        <li>Ductus closure leads to sudden increase in LV pressure work → circulatory shock, renal failure, left sided heart failure.</li>\n      </ul>\n      <span class=\"text-blue-600 text-sm\">Asymptomatic infants & children:</span><br/>\n      <ul class=\"list-disc ml-8\">\n        <li>No associated anomalies. Normal blood reaches proximal aorta.</li>\n        <li>Pressure gradient stimulates collateral circulation. Most tolerate postnatal ductus closure well.</li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "What are the Clinical Manifestations and investigations of COA in Symptomatic Newborns?",
+      "back": "\n      <u>Symptomatic Newborns (COA):</u><br/>\n      <span class=\"text-blue-600 text-sm\">Manifestations:</span><br/>\n      <ul class=\"list-disc ml-8\">\n        <li>Signs of CHF (poor feeding, dyspnea) and renal failure (oliguria, anuria) at 2-6 weeks.</li>\n        <li>Loud gallop, weak and thready pulses.</li>\n      </ul>\n      <span class=\"text-blue-600 text-sm\">Investigations:</span><br/>\n      <ul class=\"list-disc ml-8\">\n        <li>ECG: RVH, RAD.</li>\n        <li>Chest X-ray: Marked cardiomegaly, signs of pulmonary edema.</li>\n        <li>Echocardiography: Shows site and extent of COA.</li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "What are the Clinical Manifestations and investigations of COA in Asymptomatic Children?",
+      "back": "\n      <u>Asymptomatic Children (COA):</u><br/>\n      <span class=\"text-blue-600 text-sm\">Manifestations:</span><br/>\n      <ul class=\"list-disc ml-8\">\n        <li>Usually asymptomatic except rare leg pain.</li>\n        <li>Classic sign: <span class=\"text-red-600\">Disparity in pulsations and blood pressures</span> between upper and lower limbs (weak femoral/popliteal pulses vs bounding arm pulses).</li>\n        <li>Local: LV ++ & Heaving apex.</li>\n        <li>Murmurs: Ejection systolic (grade 2-3/6) at upper left sternal border; murmurs due to collateral flow.</li>\n      </ul>\n      <span class=\"text-blue-600 text-sm\">Investigations:</span><br/>\n      <ul class=\"list-disc ml-8\">\n        <li>ECG: LVH or normal.</li>\n        <li>Chest X-ray: Normal/enlarged heart. After 1st decade: <span class=\"text-red-600\">3 sign</span> (indentation of AO), <span class=\"text-red-600\">notching of inferior border of ribs.</span></li>\n        <li>Echocardiography: Shows site, flow velocities, and collaterals.</li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "What is the Management for COA?",
+      "back": "\n      <u>Management of COA:</u><br/>\n      <span class=\"text-blue-600 text-sm\">Medical:</span><br/>\n      <ul class=\"list-disc ml-8\">\n        <li>Neonates: <span class=\"text-red-600\">PGE1 infusion</span> to open the ductus.</li>\n        <li>Anticongestive measures for HF.</li>\n      </ul>\n      <span class=\"text-blue-600 text-sm\">Surgical:</span><br/>\n      <ul class=\"list-disc ml-8\">\n        <li>Extended resection with end-to-end anastomosis (preferred).</li>\n        <li>Subclavian flap aortoplasty.</li>\n        <li>Patch angioplasty.</li>\n        <li>Conduit insertion.</li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "Define Complete Transposition of the Great Arteries (TGA) and state its prevalence.",
+      "back": "\n      <u>Complete Transposition of the Great Arteries (TGA):</u><br/>\n      <span class=\"text-blue-600 text-sm\">Prevalence:</span> Most common cyanotic disorder in neonates. More frequent in males (ratio 3:1).<br/>\n      <u>Pathophysiology:</u><br/>\n      <ul class=\"list-disc ml-5\">\n        <li>Aorta is anterior and rightward (from RV); pulmonary artery is posterior and leftward (from LV).</li>\n        <li>Two independent circulations exist. Not compatible with life unless communication exists (PFO, ASD, VSD, or PDA).</li>\n        <li>60% have intact ventricular septum (atrial shunt); 40% have VSD.</li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "What are the Clinical Manifestations and investigations of TGA?",
+      "back": "\n      <u>Clinical Manifestations of TGA:</u><br/>\n      <span class=\"text-blue-600 text-sm\">History:</span><br/>\n      <ul class=\"list-disc ml-8\">\n        <li>Cyanosis since birth. Symptoms of CHF (dyspnea, feeding difficulties).</li>\n      </ul>\n      <span class=\"text-blue-600 text-sm\">Physical Examination:</span><br/>\n      <ul class=\"list-disc ml-8\">\n        <li>Cyanosis within hours/days, not relieved by 100% O2.</li>\n        <li>Murmur depends on associated defects (VSD, PS).</li>\n        <li>Hepatomegaly and dyspnea if CHF present.</li>\n      </ul>\n      <span class=\"text-blue-600 text-sm\">Investigations:</span><br/>\n      <ul class=\"list-disc ml-8\">\n        <li>ECG: RAD and RVH.</li>\n        <li>Chest X-ray: Cardiomegaly, increased pulmonary markings. Characteristic <span class=\"text-red-600\">egg-shaped (egg on a string)</span> appearance.</li>\n        <li>Echocardiogram: Diagnostic.</li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "What is the Management for TGA?",
+      "back": "\n      <u>Management of TGA:</u><br/>\n      <span class=\"text-blue-600 text-sm\">Palliative procedures:</span><br/>\n      <ul class=\"list-disc ml-8\">\n        <li><span class=\"text-red-600\">Intravenous prostaglandin:</span> Maintains PDA.</li>\n        <li><span class=\"text-red-600\">Rashkind balloon atrial septostomy:</span> Creation of an ASD to improve mixing.</li>\n      </ul>\n      <span class=\"text-blue-600 text-sm\">Corrective operation:</span><br/>\n      <ul class=\"list-disc ml-8\">\n        <li><span class=\"text-red-600\">Arterial switch operation:</span> Procedure of choice (within first 3 to 8 weeks).</li>\n        <li>Atrial (venous) switch (Mustard/Senning).</li>\n        <li>Ventricular switch (Rastelli) for VSD and severe PS.</li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "Define Tetralogy of Fallot (TOF) and state its prevalence and components.",
+      "back": "\n      <u>Tetralogy of Fallot (TOF):</u><br/>\n      <span class=\"text-blue-600 text-sm\">Prevalence:</span> Most common cyanotic disorder in children.<br/>\n      <u>Four Components:</u><br/>\n      <ul class=\"list-disc ml-5\">\n        <li><span class=\"text-red-600\">1. Ventricular septal defect.</span></li>\n        <li><span class=\"text-red-600\">2. Aorta overriding the VSD.</span></li>\n        <li><span class=\"text-red-600\">3. Pulmonary stenosis (generally infundibular).</span></li>\n        <li><span class=\"text-red-600\">4. Right ventricular hypertrophy.</span></li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "Explain the Hemodynamics and Pathophysiology of TOF.",
+      "back": "\n      <u>Hemodynamics of TOF:</u><br/>\n      <ul class=\"list-disc ml-5\">\n        <li>Combination of large VSD and severe pulmonary stenosis.</li>\n        <li>Mixing of blood at VSD with right-to-left shunt causing cyanosis.</li>\n        <li>Shunt magnitude depends on relative resistances of PS and systemic circulation.</li>\n        <li>PS responds to catecholamines; shunt/cyanosis vary with emotion or exercise.</li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "What are the Clinical Manifestations (History and Examination) of TOF?",
+      "back": "\n      <u>Clinical Manifestations of TOF:</u><br/>\n      <span class=\"text-blue-600 text-sm\">History:</span><br/>\n      <ul class=\"list-disc ml-8\">\n        <li>Cyanosis failing to respond to O2.</li>\n        <li><span class=\"text-red-600\">Characteristic complexes:</span> Variable cyanosis, hypercyanotic (tet) spells, and <span class=\"text-red-600\">squatting</span> (increases systemic resistance, reduces shunt).</li>\n      </ul>\n      <span class=\"text-blue-600 text-sm\">Physical Examination:</span><br/>\n      <ul class=\"list-disc ml-8\">\n        <li>Cyanosis and clubbing (in older children).</li>\n        <li>Systolic thrill at upper/mid LSB.</li>\n        <li><span class=\"text-red-600\">Murmur:</span> Systolic ejection murmur at mid/upper LSB (caused by PS, not VSD). Loudness inversely related to stenosis severity.</li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "What are Cyanotic (Tet) Spells, their causes, and precipitating factors?",
+      "back": "\n      <u>Cyanotic (Tet) Spells:</u><br/>\n      <span class=\"text-blue-600 text-sm\">Definition:</span> Attacks of deepening cyanosis, tachypnea, irritability, crying. May lead to unconsciousness, convulsions, death.<br/>\n      <span class=\"text-blue-600 text-sm\">Cause:</span> Reduction of pulmonary blood flow due to increased pulmonary resistance or decreased systemic resistance.<br/>\n      <span class=\"text-blue-600 text-sm\">Precipitating factors:</span> Crying, defecation, fever, awakening from naps, feeding, tachycardia, iron deficiency.\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "What investigations are used for TOF and what are their findings?",
+      "back": "\n      <u>Investigations for TOF:</u><br/>\n      <span class=\"text-blue-600 text-sm\">1. ECG:</span> RAD, right atrial enlargement, RVH.<br/>\n      <span class=\"text-blue-600 text-sm\">2. Chest X-ray:</span> Normal heart size, decreased pulmonary markings. Characteristic <span class=\"text-red-600\">boot-shaped (coeur en sabot)</span> contour. Apex turned upwards, concave PA segment.<br/>\n      <span class=\"text-blue-600 text-sm\">3. Echocardiogram:</span> Diagnostic.\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "What is the Medical Management for TOF and Tet Spells?",
+      "back": "\n      <u>Medical Management of TOF:</u><br/>\n      <ul class=\"list-disc ml-5\">\n        <li>Prevent/treat iron deficiency anaemia.</li>\n      </ul>\n      <u>Management of TET spells:</u><br/>\n      <ul class=\"list-disc ml-5\">\n        <li><span class=\"text-red-600\">Knee-chest position.</span></li>\n        <li>Calm the child, avoid agitation.</li>\n        <li>Supplemental oxygen.</li>\n        <li><span class=\"text-red-600\">Morphine sulfate</span> (decreases sympathetic tone).</li>\n        <li>IV sodium bicarbonate for acidosis.</li>\n        <li>Fluid bolus.</li>\n        <li><span class=\"text-red-600\">β-Blockers</span> (Esmolol).</li>\n        <li>Ketamine or Phenylephrine (increases systemic resistance).</li>\n        <li><span class=\"text-blue-600 text-sm\">NO INOTROPES, NO DIURETICS.</span></li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "What is the Surgical Management for TOF?",
+      "back": "\n      <u>Surgical Management of TOF:</u><br/>\n      <ul class=\"list-disc ml-5\">\n        <li><span class=\"text-red-600\">Palliative:</span> Modified Blalock Taussig shunt (between aortic branch and pulmonary branch).</li>\n        <li><span class=\"text-red-600\">Complete repair:</span> Preferred method after 6 to 9 months of age.</li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "Define Acute Rheumatic Fever (ARF) and state its cause and predisposing factors.",
+      "back": "\n      <u>Acute Rheumatic Fever (ARF):</u><br/>\n      <span class=\"text-blue-600 text-sm\">Cause:</span> Immunologic response occurring as a delayed sequel of <span class=\"text-red-600\">group A streptococcal infection of the pharynx</span> (not skin). Attack rate 0.3% to 3%.<br/>\n      <span class=\"text-blue-600 text-sm\">Predisposing factors:</span> Family history, low socioeconomic status (poverty, poor hygiene), age 6-15 years (peak at 8).\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "Describe the Pathology of Acute Rheumatic Fever.",
+      "back": "\n      <u>Pathology of ARF:</u><br/>\n      <ul class=\"list-disc ml-5\">\n        <li>Inflammatory lesions in heart, brain, joints, and skin.</li>\n        <li><span class=\"text-red-600\">Rheumatic carditis:</span> Pancarditis. Valvular component is critical. Mitral valve most frequently involved.</li>\n        <li><span class=\"text-red-600\">Aschoff bodies:</span> Characteristic inflammatory lesions in atrial myocardium.</li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "What are the Revised Jones Criteria for diagnosing ARF?",
+      "back": "\n      <u>Revised Jones Criteria (Modified 2015):</u><br/>\n      <span class=\"text-blue-600 text-sm\">Major Criteria:</span><br/>\n      <ul class=\"list-disc ml-8\">\n        <li>Carditis (clinical or subclinical).</li>\n        <li>Arthritis (polyarthritis in low risk; mono/poly/polyarthralgia in high risk).</li>\n        <li>Chorea.</li>\n        <li>Erythema marginatum.</li>\n        <li>Subcutaneous nodules.</li>\n      </ul>\n      <span class=\"text-blue-600 text-sm\">Minor Criteria:</span><br/>\n      <ul class=\"list-disc ml-8\">\n        <li>Polyarthralgia/Monoarthralgia.</li>\n        <li>Fever (≥ 38.5°C low risk; ≥ 38.0°C high risk).</li>\n        <li>Elevated ESR/CRP.</li>\n        <li>Prolonged PR interval.</li>\n      </ul>\n      <span class=\"text-blue-600 text-sm\">Diagnosis:</span> 2 major OR 1 major + 2 minor AND evidence of antecedent streptococcal infection.\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "Describe the Major Manifestations of ARF (Arthritis, Carditis, Erythema Marginatum, Nodules, Chorea).",
+      "back": "\n      <u>Major Manifestations:</u><br/>\n      <ul class=\"list-disc ml-5\">\n        <li><span class=\"text-red-600\">Arthritis (70%):</span> Migratory polyarthritis of large joints. Dramatic response to salicylates.</li>\n        <li><span class=\"text-red-600\">Carditis (50%):</span> Most serious. Myocarditis (tachycardia, muffled sounds), Endocarditis (mitral/aortic regurgitation, <span class=\"text-red-600\">Carey Coombs murmur</span>), Pericarditis.</li>\n        <li><span class=\"text-red-600\">Erythema Marginatum (<10%):</span> Nonpruritic serpiginous rashes on trunk/extremities. Evanescent.</li>\n        <li><span class=\"text-red-600\">Subcutaneous Nodules (2-10%):</span> Hard, painless, movable nodules over bony prominences. Associated with carditis.</li>\n        <li><span class=\"text-red-600\">Sydenham’s chorea (15%):</span> Neuropsychiatric disorder (choreic movements, hypotonia). Signs: Darting tongue, Milkmaid’s grip, Piano player sign.</li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "What is the Management for Acute Rheumatic Fever?",
+      "back": "\n      <u>Management of ARF:</u><br/>\n      <ul class=\"list-disc ml-5\">\n        <li>1. Eradicate streptococci: <span class=\"text-red-600\">Benzathine penicillin G</span> (or erythromycin if allergic).</li>\n        <li>2. Anti-inflammatory therapy: <span class=\"text-red-600\">Aspirin</span> for arthritis; <span class=\"text-red-600\">Prednisone</span> for severe carditis.</li>\n        <li>3. Bed rest: Duration depends on severity (1 week to several weeks).</li>\n        <li>4. Management of Chorea: Reduce stress, penicillin, phenobarbital/haloperidol for severe cases.</li>\n        <li>5. Prophylaxis: Duration depends on carditis/residual disease (5 years to lifelong).</li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "Define Heart Failure and explain its Pathogenesis.",
+      "back": "\n      <u>Heart Failure:</u><br/>\n      <span class=\"text-blue-600 text-sm\">Definition:</span> State in which the heart cannot deliver adequate cardiac output to meet metabolic needs.<br/>\n      <u>Pathogenesis:</u><br/>\n      <ul class=\"list-disc ml-5\">\n        <li>1. <span class=\"text-red-600\">Increased afterload</span> (pressure overload): AS, COA.</li>\n        <li>2. <span class=\"text-red-600\">Increased preload</span> (volume overload): Lt-to-Rt shunts, regurgitation.</li>\n        <li>3. <span class=\"text-red-600\">Decreased contractility:</span> Cardiomyopathy, Myocarditis.</li>\n        <li>4. <span class=\"text-red-600\">Tachyarrhythmias:</span> Shorten diastolic filling time.</li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "What is the Clinical Picture of Heart Failure in infants and older children?",
+      "back": "\n      <u>Clinical Picture of HF:</u><br/>\n      <span class=\"text-blue-600 text-sm\">In Infants:</span><br/>\n      <ul class=\"list-disc ml-8\">\n        <li><span class=\"text-red-600\">Triad:</span> Tachypnea, tachycardia, and enlarged tender liver.</li>\n        <li>Poor weight gain, irritability, weak cry, feeding difficulty.</li>\n      </ul>\n      <span class=\"text-blue-600 text-sm\">In Older Children (Left sided):</span><br/>\n      <ul class=\"list-disc ml-8\">\n        <li>Low COP: Headache, syncope, pale cold skin, easy fatigability, oliguria.</li>\n        <li>Pulmonary congestion: Dyspnea, cough, hemoptysis, crepitations.</li>\n      </ul>\n      <span class=\"text-blue-600 text-sm\">In Older Children (Right sided):</span><br/>\n      <ul class=\"list-disc ml-8\">\n        <li>Systemic congestion: Pulsating neck veins, enlarged tender liver, ascites, edema (late).</li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "What are the major classes of drugs used in the treatment of CHF in children?",
+      "back": "\n      <u>Drug Therapy for CHF:</u><br/>\n      <ul class=\"list-disc ml-5\">\n        <li><span class=\"text-red-600\">1. Diuretics:</span> Loop diuretics (Furosemide) are choice. Aldosterone antagonists (Spironolactone).</li>\n        <li><span class=\"text-red-600\">2. Inotropic agents:</span> Digitalis (Digoxin), rapid acting agents (Dopamine, Epinephrine).</li>\n        <li><span class=\"text-red-600\">3. Afterload-reducing agents:</span> ACE inhibitors (Captopril, Enalapril), Hydralazine.</li>\n        <li><span class=\"text-red-600\">4. Beta-blockers:</span> Carvedilol (for dilated cardiomyopathy).</li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "What are the signs and treatment of Digitalis Toxicity?",
+      "back": "\n      <u>Digitalis Toxicity:</u><br/>\n      <span class=\"text-blue-600 text-sm\">Clinical signs:</span> Anorexia, nausea, vomiting, diarrhea, headache, dizziness, visual disturbance, arrhythmias.<br/>\n      <span class=\"text-blue-600 text-sm\">ECG:</span> Extrasystole, paroxysmal atrial tachycardia with block, AF.<br/>\n      <u>Treatment:</u><br/>\n      <ul class=\"list-disc ml-5\">\n        <li>Stop digitalis.</li>\n        <li>Correct hypokalemia/hypercalcemia.</li>\n        <li>Symptomatic treatment of arrhythmias.</li>\n        <li>Digitalis antibodies.</li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "Ventricular Septal Defect (VSD)",
+      "back": "\n      <u>Clinical Points & Signs:</u><br/>\n      <ul class=\"list-disc ml-5\">\n        <li><span class=\"text-blue-600\">Most common CHD</span> (30% of defects).</li>\n        <li><span class=\"text-red-600\">Murmur:</span> Harsh (grade 3-5/6) pansystolic murmur at lower Lt sternal border.</li>\n        <li><span class=\"text-red-600\">Signs:</span> Precordial bulge, hyperkinetic apex, systolic thrill.</li>\n        <li><span class=\"text-blue-600\">Hemodynamics:</span> Left-to-right shunt → pulmonary plethora → pulmonary hypertension → Eisenmenger Syndrome (cyanosis).</li>\n        <li><span class=\"text-blue-600\">Natural History:</span> Spontaneous closure common in small/muscular defects (60%) before age 8.</li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "Atrial Septal Defect (ASD)",
+      "back": "\n      <u>Clinical Points & Signs:</u><br/>\n      <ul class=\"list-disc ml-5\">\n        <li><span class=\"text-blue-600\">Types:</span> Ostium secundum (most common), primum, sinus venosus.</li>\n        <li><span class=\"text-red-600\">Heart Sounds:</span> Widely split and fixed S2 (Pathognomonic).</li>\n        <li><span class=\"text-red-600\">Murmur:</span> Soft systolic ejection murmur over pulmonary area (relative PS).</li>\n        <li><span class=\"text-blue-600\">N.B.:</span> No murmur due to blood passage through ASD itself.</li>\n        <li><span class=\"text-blue-600\">ECG:</span> Right axis deviation, RBBB pattern in V1.</li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "Patent Ductus Arteriosus (PDA)",
+      "back": "\n      <u>Clinical Points & Signs:</u><br/>\n      <ul class=\"list-disc ml-5\">\n        <li><span class=\"text-blue-600\">Common in:</span> Premature infants.</li>\n        <li><span class=\"text-red-600\">Murmur:</span> Continuous \"machinery\" murmur at left infraclavicular area.</li>\n        <li><span class=\"text-red-600\">Pulses:</span> Bounding peripheral pulses with <span class=\"text-red-600\">water hammer pulse</span>.</li>\n        <li><span class=\"text-red-600\">Differential Cyanosis:</span> Cyanosis only in lower half of body (if Eisenmenger develops).</li>\n        <li><span class=\"text-blue-600\">Treatment:</span> Indomethacin/Ibuprofen in premature infants.</li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "Pulmonary Stenosis (PS)",
+      "back": "\n      <u>Clinical Points & Signs:</u><br/>\n      <ul class=\"list-disc ml-5\">\n        <li><span class=\"text-red-600\">Murmur:</span> Systolic ejection murmur at ULSB transmitting to back/axillae.</li>\n        <li><span class=\"text-red-600\">Signs:</span> RV tap, systolic thrill at ULSB, <span class=\"text-red-600\">systolic ejection click</span> (valvular).</li>\n        <li><span class=\"text-blue-600\">Pathophysiology:</span> RVH, post-stenotic dilatation of PA.</li>\n        <li><span class=\"text-blue-600\">Management:</span> Balloon valvuloplasty is procedure of choice.</li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "Aortic Stenosis (AS)",
+      "back": "\n      <u>Clinical Points & Signs:</u><br/>\n      <ul class=\"list-disc ml-5\">\n        <li><span class=\"text-red-600\">Murmur:</span> Harsh systolic ejection murmur at 2nd RICS, transmits to neck.</li>\n        <li><span class=\"text-red-600\">Signs:</span> Narrow pulse pressure (severe), systolic thrill at URSB/suprasternal notch, ejection click.</li>\n        <li><span class=\"text-blue-600\">Symptoms:</span> Exercise intolerance, chest pain, syncope.</li>\n        <li><span class=\"text-blue-600\">Pathophysiology:</span> LVH, post-stenotic dilatation of ascending aorta.</li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "Coarctation of the Aorta (COA)",
+      "back": "\n      <u>Clinical Points & Signs:</u><br/>\n      <ul class=\"list-disc ml-5\">\n        <li><span class=\"text-red-600\">Classic Sign:</span> Disparity in pulsations/BP between upper and lower limbs (weak femoral vs bounding arm pulses).</li>\n        <li><span class=\"text-red-600\">X-ray:</span> \"3 sign\" (indentation of AO), rib notching.</li>\n        <li><span class=\"text-blue-600\">Associations:</span> Turner syndrome (30%).</li>\n        <li><span class=\"text-blue-600\">Newborns:</span> May present with circulatory shock and differential cyanosis.</li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "Transposition of the Great Arteries (TGA)",
+      "back": "\n      <u>Clinical Points & Signs:</u><br/>\n      <ul class=\"list-disc ml-5\">\n        <li><span class=\"text-blue-600\">Most common cyanotic disorder in neonates.</span></li>\n        <li><span class=\"text-red-600\">History:</span> Cyanosis since birth, not relieved by 100% O2.</li>\n        <li><span class=\"text-red-600\">X-ray:</span> <span class=\"text-red-600\">\"Egg-on-a-string\"</span> appearance.</li>\n        <li><span class=\"text-blue-600\">Management:</span> PGE1 to keep ductus open, Rashkind septostomy, <span class=\"text-red-600\">Arterial Switch (Jatene)</span> within 3-8 weeks.</li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "Tetralogy of Fallot (TOF)",
+      "back": "\n      <u>Clinical Points & Signs:</u><br/>\n      <ul class=\"list-disc ml-5\">\n        <li><span class=\"text-blue-600\">Components:</span> VSD, Overriding aorta, PS (infundibular), RVH.</li>\n        <li><span class=\"text-red-600\">X-ray:</span> <span class=\"text-red-600\">\"Boot-shaped\" (coeur en sabot)</span> heart.</li>\n        <li><span class=\"text-red-600\">Clinical:</span> <span class=\"text-red-600\">Squatting</span> (increases SVR, reduces shunt), Tet spells.</li>\n        <li><span class=\"text-red-600\">Murmur:</span> Systolic ejection murmur at LSB (due to PS, not VSD).</li>\n        <li><span class=\"text-blue-600\">Management:</span> Knee-chest for spells, BT shunt (palliative), complete repair at 6-9 months.</li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "Acute Rheumatic Fever (ARF)",
+      "back": "\n      <u>Clinical Points & Signs:</u><br/>\n      <ul class=\"list-disc ml-5\">\n        <li><span class=\"text-blue-600\">Cause:</span> Delayed sequel of Group A Strep pharyngitis.</li>\n        <li><span class=\"text-red-600\">Major Criteria (Jones):</span> Carditis, Polyarthritis, Chorea, Erythema marginatum, Subcutaneous nodules.</li>\n        <li><span class=\"text-red-600\">Signs:</span> <span class=\"text-red-600\">Carey Coombs murmur</span> (mitral valvulitis), Aschoff bodies (pathology).</li>\n        <li><span class=\"text-blue-600\">Chorea Signs:</span> Darting tongue, Milkmaid’s grip, Piano player sign.</li>\n        <li><span class=\"text-blue-600\">Treatment:</span> Penicillin, Aspirin (arthritis), Steroids (severe carditis).</li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    },
+    {
+      "front": "Heart Failure (HF)",
+      "back": "\n      <u>Clinical Points & Signs:</u><br/>\n      <ul class=\"list-disc ml-5\">\n        <li><span class=\"text-red-600\">Infant Triad:</span> Tachypnea, tachycardia, and enlarged tender liver.</li>\n        <li><span class=\"text-blue-600\">Older Children (Left):</span> Pulmonary congestion (dyspnea, cough, crepitations).</li>\n        <li><span class=\"text-blue-600\">Older Children (Right):</span> Systemic congestion (pulsating neck veins, ascites, edema).</li>\n        <li><span class=\"text-blue-600\">Management:</span> Diuretics (Furosemide), Inotropes (Digoxin), Afterload reducers (ACEi).</li>\n        <li><span class=\"text-red-600\">Digoxin Toxicity:</span> Anorexia, vomiting, arrhythmias (extrasystole, block).</li>\n      </ul>\n    ",
+      "tags": [
+        "AI-Studio",
+        "Cardiology"
+      ]
+    }
+  ]
+}
