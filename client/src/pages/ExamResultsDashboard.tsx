@@ -10,6 +10,7 @@ import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import toast from 'react-hot-toast';
 import * as XLSX from 'xlsx';
+import { cn } from '../lib/utils';
 
 export default function ExamResultsDashboard() {
   const [attempts, setAttempts] = useState<any[]>([]);
@@ -119,8 +120,8 @@ export default function ExamResultsDashboard() {
 
     const ws = XLSX.utils.json_to_sheet(data);
     const wb = XLSX.utils.book_new();
-    XXLSX.utils.book_append_sheet(wb, ws, "Results");
-    XXLSX.writeFile(wb, `${selectedExam?.title || 'results'}.xlsx`);
+    XLSX.utils.book_append_sheet(wb, ws, "Results");
+    XLSX.writeFile(wb, `${selectedExam?.title || 'results'}.xlsx`);
     toast.success('تم تصدير ملف Excel بنجاح');
   };
 
