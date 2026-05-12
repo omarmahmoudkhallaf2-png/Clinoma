@@ -232,16 +232,7 @@ export default function Sidebar({ isOpen = false, setIsOpen = (_: boolean) => { 
 
         {/* Footer Actions */}
         <div className="p-6 space-y-4 border-t">
-          {userPlan === 'free' && (
-            <button
-              onClick={() => setIsSupportOpen(true)}
-              className="relative w-full overflow-hidden flex items-center justify-center gap-2 py-3 bg-gradient-to-br from-amber-400 via-amber-500 to-amber-600 text-white rounded-xl font-bold text-sm shadow-lg shadow-amber-500/20 hover:scale-[1.02] active:scale-95 transition-all group"
-            >
-              <Crown className="w-4 h-4 group-hover:rotate-12 transition-transform" />
-              <span>ترقية الحساب</span>
-              <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
-            </button>
-          )}
+
 
           <div className="flex items-center gap-2">
             <NotificationCenter />
