@@ -144,9 +144,9 @@ export default function AdminAnalytics({ questions, notes, users }: AnalyticsPro
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
-            { user: 'Admin Mahmoud', action: 'Added 24 new questions to Physiology', time: '2 mins ago' },
+            { user: 'Admin System', action: 'Added 24 new questions to Physiology', time: '2 mins ago' },
             { user: 'Editor Sara', action: 'Published Cardiology Note set', time: '15 mins ago' },
-            { user: 'Reviewer Omar', action: 'Flagged 2 questions for review', time: '1 hour ago' },
+            { user: 'Reviewer Team', action: 'Flagged 2 questions for review', time: '1 hour ago' },
           ].map((item, i) => (
             <div key={i} className="p-6 bg-secondary/10 border-2 border-border rounded-3xl space-y-3">
               <div className="flex items-center gap-2">

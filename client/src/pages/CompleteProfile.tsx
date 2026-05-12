@@ -59,7 +59,7 @@ export default function CompleteProfile() {
                 type="text" 
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
-                placeholder="مثال: عمر محمود"
+                placeholder="مثال: يوسف محمد"
                 className="w-full bg-slate-950 border border-slate-800 p-4 pl-12 rounded-2xl text-white font-bold outline-none focus:ring-2 focus:ring-primary transition-all text-right"
                 dir="rtl"
                 required
