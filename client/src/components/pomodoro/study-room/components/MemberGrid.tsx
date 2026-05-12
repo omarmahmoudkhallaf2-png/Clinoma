@@ -1,5 +1,6 @@
+import { memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Crown, Zap, Clock, XCircle, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { Crown, Zap, Clock, XCircle, CheckCircle2 } from 'lucide-react';
 import type { RoomMember } from '../../../../types/studyRoom';
 import { cn } from '../../../../lib/utils';
 
@@ -10,7 +11,7 @@ interface MemberGridProps {
   onKick: (uid: string) => void;
 }
 
-export default function MemberGrid({ members, hostId, isHost, onKick }: MemberGridProps) {
+const MemberGrid = memo(({ members, hostId, isHost, onKick }: MemberGridProps) => {
   const memberList = Object.values(members).sort((a, b) => {
     if (a.uid === hostId) return -1;
     if (b.uid === hostId) return 1;
@@ -112,4 +113,6 @@ export default function MemberGrid({ members, hostId, isHost, onKick }: MemberGr
       </AnimatePresence>
     </div>
   );
-}
+});
+
+export default MemberGrid;

@@ -18,17 +18,16 @@ import WeakAreas from '../components/dashboard/WeakAreas';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
 import { Skeleton } from '../components/ui/Skeleton';
+import { useData } from '../context/DataContext';
 
 export default function Dashboard() {
   const { user, isSubscribed } = useAuth();
   const navigate = useNavigate();
+  const { courses, videoFolders, videos: allVideos, loading: dataLoading } = useData();
   const [loading, setLoading] = useState(true);
-  const [courses, setCourses] = useState<any[]>([]);
   const [userStats, setUserStats] = useState({ accuracy: 0, streak: 1, points: 0, totalSolved: 0 });
   const [weakAreas, setWeakAreas] = useState<any[]>([]);
   const [recentActions, setRecentActions] = useState<any[]>([]);
-  const [videoFolders, setVideoFolders] = useState<any[]>([]);
-  const [allVideos, setAllVideos] = useState<any[]>([]);
   const [currentFolderId, setCurrentFolderId] = useState<string | null>(null);
 
   const handleReset = async (type: 'flagged' | 'incorrect') => {
@@ -51,9 +50,8 @@ export default function Dashboard() {
 
     const fetchDashboardData = async () => {
       try {
-        const [uSnap, cSnap, weak] = await Promise.all([
+        const [uSnap, weak] = await Promise.all([
           getDoc(doc(db, 'users', user.uid)),
-          getDocs(collection(db, 'courses')),
           getWeakAreas(user.uid)
         ]);
         
@@ -67,7 +65,6 @@ export default function Dashboard() {
           });
         }
 
-        setCourses(cSnap.docs.map(d => ({ id: d.id, ...d.data() })));
         setWeakAreas(weak);
 
         const activitySnap = await getDocs(query(
@@ -80,12 +77,6 @@ export default function Dashboard() {
           { action: 'Welcome to CLINOMA!', timestamp: { toDate: () => new Date() }, meta: 'Explore our courses' }
         ]);
 
-        const [fSnap, vSnap] = await Promise.all([
-          getDocs(query(collection(db, 'video_folders'), orderBy('order', 'asc'))),
-          getDocs(query(collection(db, 'videos'), orderBy('order', 'asc')))
-        ]);
-        setVideoFolders(fSnap.docs.map(d => ({ id: d.id, ...d.data() })));
-        setAllVideos(vSnap.docs.map(d => ({ id: d.id, ...d.data() })));
         setCurrentFolderId(null);
 
       } catch (err) {
@@ -103,7 +94,7 @@ export default function Dashboard() {
 
   const [activeTab, setActiveTab] = useState<'home' | 'videos'>('home');
 
-  if (loading) {
+  if (loading || dataLoading) {
     return (
       <div className="max-w-7xl mx-auto p-6 lg:p-8 space-y-10">
         <Skeleton className="h-64 rounded-2xl w-full" />

@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { motion } from 'framer-motion';
 import type { RoomReaction } from '../../../../types/studyRoom';
 
@@ -7,7 +8,7 @@ interface ReactionPadProps {
 
 const REACTIONS: RoomReaction['type'][] = ['👍', '🔥', '☕', '💪', 'Break?', 'Ready'];
 
-export default function ReactionPad({ onSend }: ReactionPadProps) {
+const ReactionPad = memo(({ onSend }: ReactionPadProps) => {
   return (
     <div className="p-6 rounded-[2rem] bg-card/50 backdrop-blur-xl border border-border/50 shadow-xl">
       <h4 className="text-xs font-black uppercase tracking-widest text-muted-foreground mb-6 text-center">
@@ -35,4 +36,6 @@ export default function ReactionPad({ onSend }: ReactionPadProps) {
       </div>
     </div>
   );
-}
+});
+
+export default ReactionPad;

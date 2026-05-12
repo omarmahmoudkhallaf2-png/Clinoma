@@ -4,32 +4,25 @@ import { Crown, CheckCircle, Infinity as InfinityIcon } from 'lucide-react';
 import SupportModal from '../components/ui/SupportModal';
 import { Button } from '../components/ui/Button';
 import { db } from '../lib/firebase';
-import { doc, getDoc, getDocs, collection, query, onSnapshot } from 'firebase/firestore';
+import { doc, getDoc } from 'firebase/firestore';
+import { useData } from '../context/DataContext';
 
 export default function AvailableCourses() {
-  const { isSubscribed, userRole, userData } = useAuth();
-  const [courses, setCourses] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
+  const { isSubscribed } = useAuth();
+  const { courses, loading: dataLoading } = useData();
   const [config, setConfig] = useState({ telegramUser: 'Clinoma_Admins', whatsappNumber: '01039322938', preferredContact: 'telegram' });
   const [isTelegramOpen, setIsTelegramOpen] = useState(false);
 
   useEffect(() => {
-    console.log("CRITICAL DEBUG: Setting up global courses listener...");
-    const q = collection(db, 'courses');
-    
-    const unsubscribe = onSnapshot(q, (coursesSnap) => {
-      const coursesData = coursesSnap.docs.map(d => ({ id: d.id, ...(d.data() as any) }));
-      console.log("CRITICAL DEBUG: Raw courses from Firestore:", coursesData.length);
-      
-      // Temporary: Show EVERYTHING to everyone to verify connection
-      setCourses(coursesData);
-      setLoading(false);
-    }, (err) => {
-      console.error("CRITICAL ERROR: Firestore rejected request:", err.code, err.message);
-      setLoading(false);
-    });
-
-    return () => unsubscribe();
+    const fetchConfig = async () => {
+      try {
+        const configSnap = await getDoc(doc(db, 'settings', 'general'));
+        if (configSnap.exists()) setConfig(configSnap.data() as any);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    fetchConfig();
   }, []);
 
   const colors = [
@@ -54,7 +47,7 @@ export default function AvailableCourses() {
         </p>
       </div>
 
-      {loading ? (
+      {dataLoading ? (
         <div className="flex justify-center p-20">
           <div className="w-16 h-16 border-8 border-primary border-t-transparent rounded-full animate-spin shadow-2xl" />
         </div>

@@ -29,12 +29,14 @@ import { useTheme } from '../../context/ThemeContext';
 import { cn } from '../../lib/utils';
 import { Button } from '../ui/Button';
 import NotificationCenter from './NotificationCenter';
+import { useData } from '../../context/DataContext';
 
 export default function Sidebar({ isOpen = false, setIsOpen = (_: boolean) => { } }: any) {
   const navigate = useNavigate();
   const location = useLocation();
   const { theme, toggleTheme } = useTheme();
   const { logout, userRole, userPlan, isSubscribed, userData } = useAuth();
+  const { courses } = useData();
   const [isSupportOpen, setIsSupportOpen] = useState(false);
   const [isQBOpen, setIsQBOpen] = useState(false);
   const [config, setConfig] = useState({ telegramUser: 'Clinoma_Admins', whatsappNumber: '01039322938', preferredContact: 'telegram' });
@@ -43,24 +45,19 @@ export default function Sidebar({ isOpen = false, setIsOpen = (_: boolean) => { 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [configSnap, coursesSnap] = await Promise.all([
-          getDoc(doc(db, 'settings', 'general')),
-          getDocs(query(collection(db, 'courses')))
-        ]);
-
+        const configSnap = await getDoc(doc(db, 'settings', 'general'));
         if (configSnap.exists()) setConfig(configSnap.data() as any);
-
-        const allCourses = coursesSnap.docs.map(d => ({ id: d.id, ...d.data() } as any));
-        const myCourses = allCourses.filter(c => isSubscribed(c.id));
-        setSubscribedCourses(myCourses);
       } catch (err) {
         console.error(err);
       }
     };
-    if (userData) {
-      fetchData();
-    }
-  }, [userData, isSubscribed]);
+    if (userData) fetchData();
+  }, [userData]);
+
+  useEffect(() => {
+    const myCourses = courses.filter(c => isSubscribed(c.id));
+    setSubscribedCourses(myCourses);
+  }, [courses, isSubscribed]);
 
   const menuItems = [
     { icon: LayoutDashboard, label: 'لوحة التحكم', path: '/dashboard' },

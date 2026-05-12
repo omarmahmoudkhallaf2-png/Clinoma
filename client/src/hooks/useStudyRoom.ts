@@ -264,8 +264,13 @@ export function useStudyRoom(roomId: string | null) {
       type,
       timestamp: Date.now()
     };
+    
+    // Keep only the last 10 reactions to prevent array bloat and high read costs
+    const currentReactions = room.reactions || [];
+    const updatedReactions = [...currentReactions, reaction].slice(-10);
+
     await updateDoc(doc(db, ROOMS_COLLECTION, roomId), {
-      reactions: arrayUnion(reaction)
+      reactions: updatedReactions
     });
   };
 

@@ -2,28 +2,51 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // دالة للتحقق من تسجيل الدخول
+    // Helper functions
     function isSignedIn() {
       return request.auth != null;
     }
 
-    // دالة للتحقق هل المستخدم أدمن أم لا
     function isAdmin() {
       return isSignedIn() && 
-        exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
     }
 
-    // قواعد بيانات الطلاب
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    // --- User Profiles ---
     match /users/{userId} {
-      allow read, write, delete: if isSignedIn() && (request.auth.uid == userId || isAdmin());
+      allow read: if isSignedIn();
+      // Allow users to update their own profile, but NOT role or plan
+      allow update: if isOwner(userId) && 
+        (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['role', 'plan', 'isPremium']))
+        || isAdmin();
+      allow create: if isSignedIn();
+      allow delete: if isAdmin();
       
-      match /{allPaths=**} {
-        allow read, write, delete: if isSignedIn() && (request.auth.uid == userId || isAdmin());
+      match /activity/{activityId} {
+        allow read, write: if isOwner(userId) || isAdmin();
       }
     }
 
-    // --- المكتبة المرئية ---
+    // --- Study Rooms ---
+    match /study_rooms/{roomId} {
+      allow read: if isSignedIn();
+      allow create: if isSignedIn();
+      // Only host or members can update room state
+      allow update: if isSignedIn() && (
+        resource.data.hostId == request.auth.uid || 
+        resource.data.members.keys().hasAny([request.auth.uid]) ||
+        isAdmin()
+      );
+      allow delete: if isSignedIn() && (
+        resource.data.hostId == request.auth.uid || isAdmin()
+      );
+    }
+
+    // --- Educational Content (Read-only for users) ---
     match /video_folders/{folderId} {
       allow read: if isSignedIn();
       allow write: if isAdmin();
@@ -34,41 +57,26 @@ service cloud.firestore {
       allow write: if isAdmin();
     }
 
-    // --- محتوى المذاكرة (تيمات، أسئلة، كورسات، امتحانات) ---
-    // السماح بالقراءة لجميع المسجلين، والكتابة للأدمن فقط
-    match /data_themes/{themeId} {
-      allow read: if isSignedIn();
-      allow write: if isAdmin();
-    }
-    
-    match /questions/{questionId} {
-      allow read: if isSignedIn();
-      allow write: if isAdmin();
-    }
-    
     match /courses/{courseId} {
       allow read: if isSignedIn();
       allow write: if isAdmin();
     }
 
-    match /exams/{examId} {
+    match /questions/{questionId} {
       allow read: if isSignedIn();
       allow write: if isAdmin();
     }
 
-    // --- Study Room (Realtime Collaboration) ---
-    match /study_rooms/{roomId} {
-      allow read, create: if isSignedIn();
-      allow update: if isSignedIn();
-      allow delete: if isSignedIn() && (
-        resource.data.hostId == request.auth.uid || isAdmin()
-      );
+    match /formal_exams/{examId} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin();
     }
 
-    // --- Flashcards & Decks ---
+    // --- Flashcards ---
     match /decks/{deckId} {
-      allow read, write: if isSignedIn() && (resource == null || resource.data.userId == request.auth.uid || isAdmin() || resource.data.isPublic == true);
+      allow read: if isSignedIn() && (resource.data.userId == request.auth.uid || resource.data.isPublic == true || isAdmin());
       allow create: if isSignedIn();
+      allow update, delete: if isSignedIn() && (resource.data.userId == request.auth.uid || isAdmin());
     }
     
     match /flashcards/{cardId} {
@@ -76,24 +84,26 @@ service cloud.firestore {
       allow create: if isSignedIn();
     }
 
+    // --- Exam Attempts ---
+    match /exam_attempts/{attemptId} {
+      allow create: if isSignedIn();
+      allow read: if isSignedIn() && (resource.data.userId == request.auth.uid || isAdmin());
+      allow update: if isAdmin(); // Only admin can modify scores after submission
+    }
+
+    // --- AI Assistant ---
     match /assistant_chats/{chatId} {
       allow read, write: if isSignedIn() && (resource == null || resource.data.userId == request.auth.uid || isAdmin());
       allow create: if isSignedIn();
     }
 
-    // --- Formal Exams & Attempts ---
-    match /formal_exams/{examId} {
+    // --- Global Settings ---
+    match /settings/{settingId} {
       allow read: if isSignedIn();
       allow write: if isAdmin();
     }
 
-    match /exam_attempts/{attemptId} {
-      allow create: if isSignedIn();
-      allow read: if isSignedIn() && (resource.data.userId == request.auth.uid || isAdmin());
-    }
-
-
-    // أي مسار آخر غير محدد أعلاه متاح للأدمن فقط
+    // Fallback
     match /{allPaths=**} {
       allow read, write: if isAdmin();
     }
