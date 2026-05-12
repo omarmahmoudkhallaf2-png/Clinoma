@@ -160,3 +160,35 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.screenshot-blur {
+  filter: blur(40px) grayscale(1);
+  pointer-events: none;
+  transition: filter 0.1s ease;
+}
+
+.watermark {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 100px;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 5;
+  transform: rotate(-30deg) scale(1.5);
+  font-weight: 900;
+  font-size: 2rem;
+  color: currentColor;
+  user-select: none;
+}
+

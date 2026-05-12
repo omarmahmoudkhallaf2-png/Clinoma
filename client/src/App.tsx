@@ -135,9 +135,9 @@ export default function App() {
 
   return (
     <ThemeProvider>
-      <PomodoroProvider>
-        {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
-        <Router>
+      {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
+      <Router>
+        <PomodoroProvider>
           <Toaster position="top-right" toastOptions={{
             style: {
               background: 'hsl(var(--card))',
@@ -148,8 +148,8 @@ export default function App() {
           }} />
           <AnimatedRoutes />
           <FloatingTimer />
-        </Router>
-      </PomodoroProvider>
+        </PomodoroProvider>
+      </Router>
     </ThemeProvider>
   );
 }

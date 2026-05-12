@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, useRef, useCallback } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { db, auth } from '../lib/firebase';
 import { doc, setDoc, getDoc, updateDoc, increment } from 'firebase/firestore';
 
@@ -62,6 +63,7 @@ export function PomodoroProvider({ children }: { children: React.ReactNode }) {
   const [isActive, setIsActive] = useState(false);
   const [sessionCount, setSessionCount] = useState(0);
   const [stats, setStats] = useState<PomodoroStats | null>(null);
+  const [audioEnabled, setAudioEnabled] = useState(false);
   
   const expectedEndTimeRef = useRef<number | null>(null);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
@@ -85,20 +87,26 @@ export function PomodoroProvider({ children }: { children: React.ReactNode }) {
     };
   }, []);
 
-  // Sync Audio Volumes
+  // Sync Audio Volumes & Handle Exam Silence
+  const location = useLocation();
   useEffect(() => {
+    const isExamPage = location.pathname.startsWith('/exam/');
+    
     Object.entries(settings.ambientMix || {}).forEach(([id, vol]) => {
       const audio = audioRefs.current[id];
       if (audio) {
-        audio.volume = vol;
-        if (vol > 0 && audio.paused) {
+        // Force volume to 0 if on exam page OR if audio hasn't been manually enabled
+        const finalVol = (isExamPage || !audioEnabled) ? 0 : vol;
+        audio.volume = finalVol;
+        
+        if (finalVol > 0 && audio.paused) {
           audio.play().catch(() => {});
-        } else if (vol === 0 && !audio.paused) {
+        } else if ((finalVol === 0 || isExamPage) && !audio.paused) {
           audio.pause();
         }
       }
     });
-  }, [settings.ambientMix]);
+  }, [settings.ambientMix, location.pathname, audioEnabled]);
 
   // Load Data
   useEffect(() => {
@@ -107,7 +115,11 @@ export function PomodoroProvider({ children }: { children: React.ReactNode }) {
       const snap = await getDoc(doc(db, 'users', userId));
       if (snap.exists()) {
         const data = snap.data();
-        if (data.pomodoroSettings) setSettings(data.pomodoroSettings);
+        if (data.pomodoroSettings) {
+          setSettings(data.pomodoroSettings);
+          // Sync timer with loaded settings if not already active
+          setTimeLeft(data.pomodoroSettings.workTime * 60);
+        }
         if (data.pomodoroStats) {
           const s = data.pomodoroStats;
           // Ensure history is an array
@@ -190,6 +202,17 @@ export function PomodoroProvider({ children }: { children: React.ReactNode }) {
   const updateSettings = async (newSettings: Partial<PomodoroSettings>) => {
     const updated = { ...settings, ...newSettings };
     setSettings(updated);
+
+    // Sync current timer if it's not active to reflect new durations immediately
+    if (!isActive) {
+      const newTime = (mode === 'work' ? updated.workTime : updated.shortBreakTime) * 60;
+      setTimeLeft(newTime);
+    }
+
+    // If the user is adjusting ambient sounds, enable audio for the session
+    if (newSettings.ambientMix) {
+      setAudioEnabled(true);
+    }
     if (userId) {
       await updateDoc(doc(db, 'users', userId), { pomodoroSettings: updated });
     }

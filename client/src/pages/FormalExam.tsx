@@ -29,6 +29,69 @@ export default function FormalExam() {
   const [prevAttempt, setPrevAttempt] = useState<any>(null);
   const [submitting, setSubmitting] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
+  const [isBlurred, setIsBlurred] = useState(false);
+
+  // ── Protection: Prevent copying and right-click ─────────────────────────
+  useEffect(() => {
+    const preventAction = (e: Event) => e.preventDefault();
+    const preventKeyboard = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && (e.key === 'c' || e.key === 'v' || e.key === 'p' || e.key === 'u' || e.key === 's' || e.key === 'i')) {
+        e.preventDefault();
+        return false;
+      }
+    };
+
+    window.addEventListener('contextmenu', preventAction);
+    window.addEventListener('keydown', preventKeyboard);
+
+    // Screenshot/Focus detection (Aggressive)
+    const handleProtection = () => {
+      if (!document.hasFocus() || document.hidden) {
+        setIsBlurred(true);
+      } else {
+        // Only remove blur if we are not in a "Snapshot" cooldown
+        setIsBlurred(prev => {
+          // If it was a snapshot key, we might want to stay blurred for a bit
+          // but for now let's just sync with focus
+          return false;
+        });
+      }
+    };
+
+    const handleBlur = () => setIsBlurred(true);
+    const handleFocus = () => setIsBlurred(false);
+
+    const interval = setInterval(handleProtection, 100);
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Common screenshot keys including legacy keyCode 44 for PrintScreen
+      if (
+        e.key === 'PrintScreen' || 
+        e.key === 'Snapshot' || 
+        e.keyCode === 44 || 
+        (e.ctrlKey && e.shiftKey && (e.key === 'S' || e.key === 's')) ||
+        (e.metaKey && e.shiftKey && (e.key === '4' || e.key === '3')) // Mac
+      ) {
+        setIsBlurred(true);
+        setTimeout(() => setIsBlurred(false), 3000);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('keyup', handleKeyDown);
+    window.addEventListener('mouseleave', handleBlur);
+    window.addEventListener('mouseenter', handleFocus);
+    
+    return () => {
+      window.removeEventListener('contextmenu', preventAction);
+      window.removeEventListener('keydown', preventKeyboard);
+      clearInterval(interval);
+      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('keyup', handleKeyDown);
+      window.removeEventListener('mouseleave', handleBlur);
+      window.removeEventListener('mouseenter', handleFocus);
+    };
+  }, []);
 
   // ── Fetch exam & questions ─────────────────────────────────────────────────
   useEffect(() => {
@@ -38,6 +101,13 @@ export default function FormalExam() {
         if (!examDoc.exists()) { setStep('closed'); setLoading(false); return; }
         const data: any = { id: examDoc.id, ...examDoc.data() };
         setExamData(data);
+
+        // Security: Prevent entry if not published (unless admin)
+        if (data.status !== 'published' && userRole !== 'admin') {
+          setStep('closed');
+          setLoading(false);
+          return;
+        }
 
         // Immediate schedule check
         const now = Date.now();
@@ -52,6 +122,22 @@ export default function FormalExam() {
 
         const qSnap = await getDocs(query(collection(db, 'questions'), where('formalExamId', '==', examId)));
         setQuestions(qSnap.docs.map(d => ({ id: d.id, ...d.data() })));
+
+        // Immediate one-attempt check (unless admin)
+        if (user) {
+          const prevSnap = await getDocs(query(
+            collection(db, 'exam_attempts'),
+            where('examId', '==', examId),
+            where('userId', '==', user.uid)
+          ));
+          if (!prevSnap.empty) {
+            const attemptData = prevSnap.docs[0].data();
+            setPrevAttempt(attemptData);
+            setFinalScore(attemptData.score);
+            setStudentName(attemptData.studentName || '');
+            setStep('blocked');
+          }
+        }
       } catch (err) { console.error(err); }
       finally { setLoading(false); }
     };
@@ -413,7 +499,26 @@ export default function FormalExam() {
   const currentQ = questions[currentIndex];
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className={`min-h-screen bg-background flex flex-col no-select relative ${isBlurred ? 'screenshot-blur' : ''}`}>
+      {/* Watermark */}
+      <div className="watermark whitespace-pre">
+        {Array(20).fill(`${studentName || user?.displayName || 'CLINOMA STUDENT'} - ${user?.email || ''}\n`).join(' ')}
+      </div>
+
+      {isBlurred && (
+        <div className="fixed inset-0 z-[9999] bg-background/50 backdrop-blur-3xl flex flex-col items-center justify-center text-center p-10 animate-in fade-in duration-300">
+          <div className="w-24 h-24 bg-rose-500/20 text-rose-500 rounded-full flex items-center justify-center mb-6">
+            <Lock className="w-12 h-12" />
+          </div>
+          <h2 className="text-4xl font-black text-foreground mb-4">حماية المحتوى نشطة</h2>
+          <p className="text-xl font-bold text-muted-foreground max-w-md">
+            يُمنع تصوير الشاشة أو الخروج من نافذة الامتحان للحفاظ على سرية الأسئلة.
+          </p>
+          <div className="mt-10 px-8 py-4 bg-primary text-white rounded-2xl font-black animate-pulse">
+            اضغط هنا للعودة للامتحان
+          </div>
+        </div>
+      )}
       {/* Header */}
       <div className={`bg-card border-b-2 p-4 md:p-5 flex justify-between items-center sticky top-0 z-50 shadow-sm transition-colors ${isCurrentFlagged ? 'border-amber-400/60 bg-amber-500/5' : 'border-border'}`}>
         <div className="flex items-center gap-3">

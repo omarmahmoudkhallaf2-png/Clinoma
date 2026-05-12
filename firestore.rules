@@ -70,6 +70,18 @@ service cloud.firestore {
       allow create: if isSignedIn();
     }
 
+    // --- Formal Exams & Attempts ---
+    match /formal_exams/{examId} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin();
+    }
+
+    match /exam_attempts/{attemptId} {
+      allow create: if isSignedIn();
+      allow read: if isSignedIn() && (resource.data.userId == request.auth.uid || isAdmin());
+    }
+
+
     // أي مسار آخر غير محدد أعلاه متاح للأدمن فقط
     match /{allPaths=**} {
       allow read, write: if isAdmin();

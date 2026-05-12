@@ -27,7 +27,11 @@ export default function AvailableExams() {
     const q = collection(db, 'formal_exams');
     
     const unsubscribe = onSnapshot(q, (snap) => {
-      const examsData = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+      let examsData = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+      
+      // Filter out drafts (unpublished exams) for students
+      examsData = examsData.filter((e: any) => e.status === 'published');
+
       // Sort manually to avoid Firebase index requirements that might hide new docs
       examsData.sort((a: any, b: any) => {
         const timeA = a.createdAt?.toDate?.()?.getTime() || 0;

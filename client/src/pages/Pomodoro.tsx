@@ -354,7 +354,7 @@ export default function Pomodoro() {
                   <label className="text-xs font-black uppercase tracking-widest text-muted-foreground">Work Duration</label>
                   <input 
                     type="number" value={settings.workTime} 
-                    onChange={(e) => updateSettings({ workTime: parseInt(e.target.value) })}
+                    onChange={(e) => updateSettings({ workTime: parseInt(e.target.value) || 1 })}
                     className="w-full p-4 bg-secondary rounded-2xl font-black text-xl border-2 border-transparent focus:border-primary focus:outline-none" 
                   />
                 </div>
@@ -362,7 +362,7 @@ export default function Pomodoro() {
                   <label className="text-xs font-black uppercase tracking-widest text-muted-foreground">Break Duration</label>
                   <input 
                     type="number" value={settings.shortBreakTime} 
-                    onChange={(e) => updateSettings({ shortBreakTime: parseInt(e.target.value) })}
+                    onChange={(e) => updateSettings({ shortBreakTime: parseInt(e.target.value) || 1 })}
                     className="w-full p-4 bg-secondary rounded-2xl font-black text-xl border-2 border-transparent focus:border-primary focus:outline-none" 
                   />
                 </div>

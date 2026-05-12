@@ -476,7 +476,7 @@ export default function ExamManager() {
   const [copied, setCopied] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
 
-  const emptyForm = { title: '', durationMinutes: '', description: '', startAt: '', endAt: '' };
+  const emptyForm = { title: '', durationMinutes: '', description: '', startAt: '', endAt: '', status: 'draft' as 'draft' | 'published' };
   const [form, setForm] = useState(emptyForm);
   const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
   const [deleting, setDeleting] = useState(false);
@@ -512,6 +512,7 @@ export default function ExamManager() {
         durationMinutes: Number(form.durationMinutes) || null,
         startAt: form.startAt ? Timestamp.fromDate(new Date(form.startAt)) : null,
         endAt: form.endAt ? Timestamp.fromDate(new Date(form.endAt)) : null,
+        status: 'draft', // Default to draft for safety
         createdAt: serverTimestamp()
       });
       setForm(emptyForm);
@@ -532,6 +533,7 @@ export default function ExamManager() {
         durationMinutes: Number(form.durationMinutes) || null,
         startAt: form.startAt ? Timestamp.fromDate(new Date(form.startAt)) : null,
         endAt: form.endAt ? Timestamp.fromDate(new Date(form.endAt)) : null,
+        status: form.status
       });
       setEditingExam(null);
       setIsModalOpen(false);
@@ -555,6 +557,7 @@ export default function ExamManager() {
       description: exam.description ?? '',
       startAt: tsToInput(exam.startAt),
       endAt: tsToInput(exam.endAt),
+      status: exam.status || 'draft'
     });
     setIsModalOpen(true);
   };
@@ -575,6 +578,17 @@ export default function ExamManager() {
       alert('حدث خطأ أثناء الحذف');
     } finally {
       setDeleting(false);
+    }
+  };
+
+  const handleTogglePublish = async (id: string, currentStatus: string) => {
+    const newStatus = currentStatus === 'published' ? 'draft' : 'published';
+    try {
+      await updateDoc(doc(db, 'formal_exams', id), { status: newStatus });
+      toast.success(newStatus === 'published' ? 'تم نشر الإختبار للجميع!' : 'تم تحويل الإختبار لمسودة');
+      fetchExams();
+    } catch (err) {
+      toast.error('فشل تحديث حالة النشر');
     }
   };
 
@@ -644,6 +658,10 @@ export default function ExamManager() {
                   </button>
 
                   <div className="flex items-center gap-2 flex-shrink-0">
+                    <button onClick={() => handleTogglePublish(exam.id, exam.status)}
+                      className={`flex items-center gap-2 px-4 py-2 rounded-xl font-black text-sm transition-all ${exam.status === 'published' ? 'bg-emerald-500/10 text-emerald-600 border border-emerald-500/20' : 'bg-amber-500 text-white shadow-lg shadow-amber-500/20'}`} title={exam.status === 'published' ? 'إلغاء النشر' : 'نشر الإختبار'}>
+                      {exam.status === 'published' ? <><Check className="w-4 h-4" /> منشور</> : <><Sparkles className="w-4 h-4" /> نشر</>}
+                    </button>
                     <button onClick={() => openEdit(exam)}
                       className="p-2 bg-primary/10 text-primary rounded-xl hover:bg-primary hover:text-white transition-all" title="تعديل الإختبار">
                       <Edit2 className="w-4 h-4" />
