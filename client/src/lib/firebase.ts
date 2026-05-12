@@ -15,6 +15,7 @@ const firebaseConfig = {
 };
 
 // Secondary Project Config (Exams & Quotas)
+// Note: Double check the API Key in Google Cloud Console if 'api-key-not-valid' persists
 const examFirebaseConfig = {
   apiKey: "AIzaSyBiHRSTzGMNQHyzbCtQ1cbQLphm-7lsE_g",
   authDomain: "exams-19980.firebaseapp.com",
@@ -40,6 +41,6 @@ export const dbExam = initializeFirestore(examApp, {
   localCache: persistentLocalCache({ tabManager: persistentMultipleTabManager() })
 });
 export const authExam = getAuth(examApp);
-export const storageExam = getStorage(examApp); // Added for exam images
+export const storageExam = getStorage(examApp);
 
 export { app, examApp };

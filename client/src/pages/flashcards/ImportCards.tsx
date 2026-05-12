@@ -125,18 +125,6 @@ const ImportCards = () => {
           } else if (Array.isArray(parsed)) {
             data = parsed;
           }
-        } else if (fileName.endsWith('.csv') || fileName.endsWith('.txt')) {
-          const lines = content.split(/\r?\n/);
-          const sep = fileName.endsWith('.txt') ? '\t' : ',';
-          
-          data = lines.filter(l => l.trim()).map(line => {
-            const parts = sep === '\t' ? line.split('\t') : line.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g);
-            return {
-              front: parts?.[0]?.replace(/^"|"$/g, '').trim() || '',
-              back: parts?.[1]?.replace(/^"|"$/g, '').trim() || '',
-              tags: parts?.[2]?.split('|').map(t => t.trim()) || []
-            };
-          }).filter(c => c.front && c.back);
         } else {
           toast.error('صيغة الملف غير مدعومة.');
           return;
@@ -324,7 +312,6 @@ const ImportCards = () => {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
               {[
                 { name: 'JSON', icon: FileJson, color: 'text-blue-500', desc: 'Custom JSON format', onClick: () => fileInputRef.current?.click() },
-                { name: 'CSV', icon: FileText, color: 'text-green-500', desc: 'Excel / Spreadsheet', onClick: () => fileInputRef.current?.click() },
                 { name: 'AI Generate', icon: Sparkles, color: 'text-amber-500', desc: 'From PDF or Image', onClick: () => aiFileInputRef.current?.click() },
               ].map(type => (
                 <div key={type.name} onClick={type.onClick} className="p-6 rounded-3xl bg-card border border-border flex flex-col items-center text-center space-y-3 cursor-pointer hover:border-primary/50 transition-all group shadow-sm">
@@ -449,14 +436,14 @@ const ImportCards = () => {
               </div>
               <div className="text-center">
                 <p className="text-xl font-bold">{importing || isAIProcessing ? 'Processing...' : 'Or drag and drop files here'}</p>
-                <p className="text-sm text-muted-foreground">Supported: .json, .csv, .txt, .apkg, .pdf, images</p>
+                <p className="text-sm text-muted-foreground">Supported: .json, .apkg, .pdf, images</p>
               </div>
               <input 
                 type="file" 
                 ref={fileInputRef}
                 onChange={handleFileSelect}
                 className="hidden" 
-                accept=".json,.csv,.xlsx,.apkg,.txt"
+                accept=".json,.apkg"
               />
               <input 
                 type="file" 
