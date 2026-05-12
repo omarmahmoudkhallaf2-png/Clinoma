@@ -15,9 +15,8 @@ const firebaseConfig = {
 };
 
 // Secondary Project Config (Exams & Quotas)
-// Note: Double check the API Key in Google Cloud Console if 'api-key-not-valid' persists
 const examFirebaseConfig = {
-  apiKey: "AIzaSyBiHRSTzGMNQHyzbCtQ1cbQLphm-7lsE_g",
+  apiKey: "AIzaSyBIhRSTzGMNQHyzbCtQ1cbQLphm-7lsE_g",
   authDomain: "exams-19980.firebaseapp.com",
   projectId: "exams-19980",
   storageBucket: "exams-19980.firebasestorage.app",
