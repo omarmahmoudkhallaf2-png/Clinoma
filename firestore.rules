@@ -16,11 +16,22 @@ service cloud.firestore {
 
     // قواعد بيانات الطلاب
     match /users/{userId} {
-      allow read, write: if isSignedIn() && request.auth.uid == userId;
+      allow read, write, delete: if isSignedIn() && (request.auth.uid == userId || isAdmin());
       
       match /{allPaths=**} {
-        allow read, write: if isSignedIn() && request.auth.uid == userId;
+        allow read, write, delete: if isSignedIn() && (request.auth.uid == userId || isAdmin());
       }
+    }
+
+    // --- المكتبة المرئية ---
+    match /video_folders/{folderId} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin();
+    }
+    
+    match /videos/{videoId} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin();
     }
 
     // --- محتوى المذاكرة (تيمات، أسئلة، كورسات، امتحانات) ---
