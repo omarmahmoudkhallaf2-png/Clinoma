@@ -215,9 +215,9 @@ export default function FormalExam() {
 
   // ── Screens ──────────────────────────────────────────────────────────────────
   if (loading) return (
-    <div className="min-h-screen flex flex-col items-center justify-center gap-4 bg-background">
+    <div className="light min-h-screen flex flex-col items-center justify-center gap-4 bg-white text-black">
       <Loader2 className="w-16 h-16 animate-spin text-primary" />
-      <p className="font-black text-xl text-muted-foreground animate-pulse">جاري تحميل الإختبار...</p>
+      <p className="font-black text-xl text-slate-500 animate-pulse">جاري تحميل الإختبار...</p>
     </div>
   );
 
@@ -229,7 +229,7 @@ export default function FormalExam() {
     const color = pct >= 70 ? 'text-emerald-500' : pct >= 50 ? 'text-amber-500' : 'text-rose-500';
 
     return (
-      <div className="min-h-screen flex items-center justify-center p-6 bg-gradient-to-br from-background to-secondary/20">
+      <div className="light min-h-screen flex items-center justify-center p-6 bg-slate-50">
         <div className="bg-card border-2 border-border rounded-[3.5rem] p-10 md:p-14 max-w-lg w-full text-center space-y-8 shadow-2xl animate-in zoom-in-95">
           <div className="w-24 h-24 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto">
             <CheckCircle2 className="w-12 h-12" />
@@ -267,7 +267,7 @@ export default function FormalExam() {
 
   // Exam closed
   if (step === 'closed') return (
-    <div className="min-h-screen flex items-center justify-center p-6 bg-gradient-to-br from-background to-rose-500/5">
+    <div className="light min-h-screen flex items-center justify-center p-6 bg-slate-50">
       <div className="bg-card border-2 border-border rounded-[3rem] p-14 max-w-md text-center space-y-6 shadow-2xl animate-in zoom-in-95">
         <div className="text-7xl">🏁</div>
         <div className="w-24 h-24 bg-rose-500/10 text-rose-500 rounded-full flex items-center justify-center mx-auto">
@@ -288,7 +288,7 @@ export default function FormalExam() {
       ? (examData.startAt as Timestamp).toDate().toLocaleString('ar-EG', { dateStyle: 'full', timeStyle: 'short' })
       : '';
     return (
-      <div className="min-h-screen flex items-center justify-center p-6">
+      <div className="light min-h-screen flex items-center justify-center p-6 bg-white text-black">
         <div className="bg-card border-2 border-amber-400/30 rounded-[3rem] p-14 max-w-md text-center space-y-6 shadow-2xl">
           <div className="w-24 h-24 bg-amber-400/10 text-amber-500 rounded-full flex items-center justify-center mx-auto">
             <Clock className="w-12 h-12" />
@@ -303,7 +303,7 @@ export default function FormalExam() {
 
   // Checking spinner
   if (step === 'checking') return (
-    <div className="min-h-screen flex items-center justify-center">
+    <div className="light min-h-screen flex items-center justify-center bg-white text-black">
       <div className="text-center space-y-4">
         <Loader2 className="w-12 h-12 animate-spin text-primary mx-auto" />
         <p className="font-black text-muted-foreground">جاري التحقق من بياناتك...</p>
@@ -313,7 +313,7 @@ export default function FormalExam() {
 
   // Name entry
   if (step === 'name') return (
-    <div className="min-h-screen bg-gradient-to-br from-background to-secondary/30 flex items-center justify-center p-6">
+    <div className="light min-h-screen bg-slate-50 flex items-center justify-center p-6 text-black">
       <div className="bg-card w-full max-w-md p-10 rounded-[3rem] shadow-2xl border-2 border-border space-y-8 animate-in zoom-in-95 duration-500">
         <div className="text-center space-y-4">
           <div className="w-24 h-24 bg-primary/10 text-primary rounded-[2rem] flex items-center justify-center mx-auto">
@@ -356,7 +356,7 @@ export default function FormalExam() {
     const isPastEnd = examData?.endAt ? Date.now() > (examData.endAt as Timestamp).toDate().getTime() : true;
 
     return (
-      <div className="min-h-screen bg-gradient-to-br from-background to-secondary/20 flex items-center justify-center p-6">
+      <div className="light min-h-screen bg-slate-50 flex items-center justify-center p-6 text-black">
         <div className="bg-card w-full max-w-lg p-12 md:p-16 rounded-[4rem] shadow-2xl border-2 border-border space-y-8 text-center animate-in zoom-in-95 duration-500">
           <div className="text-7xl">{pct >= 70 ? '🎉' : pct >= 50 ? '📚' : '💪'}</div>
           <div className="space-y-3">
@@ -389,7 +389,7 @@ export default function FormalExam() {
   // Review Mode
   if (step === 'review') {
     return (
-      <div className="min-h-screen bg-background flex flex-col">
+      <div className="light min-h-screen bg-white text-black flex flex-col">
         <div className="bg-card border-b-2 border-border p-6 flex justify-between items-center sticky top-0 z-50">
           <div className="flex items-center gap-4">
             <button onClick={() => setStep('result')} className="p-3 bg-secondary rounded-xl hover:bg-border transition-all">
@@ -479,7 +479,7 @@ export default function FormalExam() {
   const currentQ = questions[currentIndex];
 
   return (
-    <div className="min-h-screen bg-background flex flex-col no-select relative">
+    <div className="light min-h-screen bg-white text-black flex flex-col no-select relative">
       {/* Watermark */}
       <div className="watermark whitespace-pre">
         {Array(20).fill(`${studentName || user?.displayName || 'CLINOMA STUDENT'} - ${user?.email || ''}\n`).join(' ')}

@@ -315,31 +315,33 @@ export default function ExamResultsDashboard() {
         <div className="absolute top-0 right-0 w-64 h-64 bg-slate-50 rounded-full -mr-32 -mt-32 opacity-50" />
         
         <div className="relative border-b-4 border-slate-900 pb-10 mb-12 flex justify-between items-end">
-          <div className="space-y-4">
-            <div className="flex items-center gap-4">
-              <div className="w-16 h-16 bg-slate-900 rounded-3xl flex items-center justify-center shadow-2xl">
-                <img src="/favicon.svg" alt="Clinoma" className="w-10 h-10 brightness-0 invert" />
-              </div>
-              <div>
-                <h1 className="text-4xl font-black tracking-tighter text-slate-900 uppercase">CLINOMA</h1>
-                <p className="text-xs font-black tracking-[0.3em] text-slate-400">OFFICIAL ACADEMIC REPORT</p>
-              </div>
-            </div>
-            <div className="space-y-1">
-              <h2 className="text-2xl font-black text-slate-800">{selectedExam?.title}</h2>
-              <div className="flex items-center gap-4 text-slate-500 font-bold text-sm">
-                <div className="flex items-center gap-1.5"><Calendar className="w-4 h-4" /> {new Date().toLocaleDateString('ar-EG')}</div>
-                <div className="flex items-center gap-1.5"><Users className="w-4 h-4" /> {sortedAttempts.length} محاولة</div>
-              </div>
-            </div>
-          </div>
-          
-          <div className="text-left bg-slate-50 p-6 rounded-3xl border border-slate-100">
-            <div className="flex items-center gap-2 text-slate-400 text-[10px] font-black uppercase tracking-widest mb-1">
+          {/* Verified Status on the Right in RTL (Visually Right) */}
+          <div className="text-right bg-slate-50 p-6 rounded-3xl border border-slate-100">
+            <div className="flex items-center gap-2 text-slate-400 text-[10px] font-black uppercase tracking-widest mb-1 justify-end">
               <ShieldCheck className="w-4 h-4 text-emerald-500" />
               Verified Report
             </div>
             <p className="text-xs font-bold text-slate-600">ID: {selectedExamId?.slice(0, 8).toUpperCase()}</p>
+          </div>
+
+          {/* Logo Block on the Left in RTL (Visually Left) */}
+          <div className="space-y-4">
+            <div className="flex items-center gap-4 justify-end">
+              <div>
+                <h1 className="text-4xl font-black tracking-tighter text-slate-900 uppercase">CLINOMA</h1>
+                <p className="text-xs font-black tracking-[0.3em] text-slate-400 text-right">OFFICIAL ACADEMIC REPORT</p>
+              </div>
+              <div className="w-16 h-16 bg-slate-900 rounded-3xl flex items-center justify-center shadow-2xl">
+                <img src="/favicon.svg" alt="Clinoma" className="w-10 h-10 brightness-0 invert" />
+              </div>
+            </div>
+            <div className="space-y-1 text-right">
+              <h2 className="text-2xl font-black text-slate-800">{selectedExam?.title}</h2>
+              <div className="flex items-center gap-4 text-slate-500 font-bold text-sm justify-end">
+                <div className="flex items-center gap-1.5"><Calendar className="w-4 h-4" /> {new Date().toLocaleDateString('ar-EG')}</div>
+                <div className="flex items-center gap-1.5"><Users className="w-4 h-4" /> {sortedAttempts.length} محاولة</div>
+              </div>
+            </div>
           </div>
         </div>
 
