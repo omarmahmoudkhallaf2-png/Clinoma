@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { db } from '../../lib/firebase';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, deleteDoc, doc } from 'firebase/firestore';
 import { useAuth } from '../../context/AuthContext';
-import { Shield, User as UserIcon, CheckCircle2, XCircle, Search, Loader2, Mail } from 'lucide-react';
+import { Shield, User as UserIcon, CheckCircle2, XCircle, Search, Loader2, Mail, Trash2 } from 'lucide-react';
 import { sendNotification } from '../../lib/notificationService';
 
 interface UserData {
@@ -72,6 +72,23 @@ export default function UserManagement() {
       }
     } catch (error) {
       alert(`Failed to update ${courseLevel} subscription`);
+    }
+  };
+
+  const handleDeleteUser = async (user: UserData) => {
+    if (user.role === 'admin') {
+      alert('لا يمكن حذف حساب أدمن آخر بهذه الطريقة.');
+      return;
+    }
+
+    if (confirm(`تحذير: هل أنت متأكد من إزالة تسجيل ${user.displayName}؟\nسيتم حذف بياناته بالكامل من المنصة ولن يتمكن من الدخول إلا بإعادة التسجيل.`)) {
+      try {
+        await deleteDoc(doc(db, 'users', user.id));
+        setUsers(users.filter(u => u.id !== user.id));
+        alert('تمت إزالة التسجيل بنجاح.');
+      } catch (error) {
+        alert('حدث خطأ أثناء الحذف.');
+      }
     }
   };
 
@@ -168,18 +185,28 @@ export default function UserManagement() {
                   </td>
 
                   <td className="px-8 py-6 text-left">
-                    <button
-                      onClick={async () => {
-                        const newRole = user.role === 'admin' ? 'user' : 'admin';
-                        if (confirm(`هل أنت متأكد من تغيير صلاحية ${user.displayName} إلى ${newRole}؟`)) {
-                          await updateUserStatus(user.id, { role: newRole });
-                          fetchData();
-                        }
-                      }}
-                      className="px-4 py-2 text-xs font-black bg-background border border-border hover:bg-secondary rounded-xl transition-all shadow-sm"
-                    >
-                      تغيير الصلاحية
-                    </button>
+                    <div className="flex items-center gap-2 justify-end">
+                      <button
+                        onClick={async () => {
+                          const newRole = user.role === 'admin' ? 'user' : 'admin';
+                          if (confirm(`هل أنت متأكد من تغيير صلاحية ${user.displayName} إلى ${newRole}؟`)) {
+                            await updateUserStatus(user.id, { role: newRole });
+                            fetchData();
+                          }
+                        }}
+                        className="px-4 py-2 text-xs font-black bg-background border border-border hover:bg-secondary rounded-xl transition-all shadow-sm"
+                      >
+                        تغيير الصلاحية
+                      </button>
+
+                      <button
+                        onClick={() => handleDeleteUser(user)}
+                        className="p-2.5 text-rose-500 bg-rose-500/5 hover:bg-rose-500 hover:text-white border border-rose-500/20 rounded-xl transition-all"
+                        title="إزالة التسجيل"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}

@@ -1,7 +1,15 @@
 import { useState, useEffect } from 'react';
 import { db } from '../lib/firebase';
 import { collection, query, orderBy, onSnapshot } from 'firebase/firestore';
-import { Loader2, Search, ArrowUpDown, Clock, Trophy, User, ArrowRight, FileText, Users } from 'lucide-react';
+import { 
+  Loader2, Search, ArrowUpDown, Clock, Trophy, User, ArrowRight, FileText, Users, Download, 
+  FileSpreadsheet, ShieldCheck, GraduationCap, Calendar
+} from 'lucide-react';
+import { Button } from '../components/ui/Button';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
+import toast from 'react-hot-toast';
+import * as XLSX from 'xlsx';
 
 export default function ExamResultsDashboard() {
   const [attempts, setAttempts] = useState<any[]>([]);
@@ -10,6 +18,7 @@ export default function ExamResultsDashboard() {
   const [search, setSearch] = useState('');
   const [selectedExamId, setSelectedExamId] = useState<string | null>(null);
   const [sortConfig, setSortConfig] = useState<{ key: string, direction: 'asc' | 'desc' }>({ key: 'score', direction: 'desc' });
+  const [isExporting, setIsExporting] = useState(false);
 
   useEffect(() => {
     const q = query(collection(db, 'exam_attempts'), orderBy('createdAt', 'desc'));
@@ -61,6 +70,58 @@ export default function ExamResultsDashboard() {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
     return `${mins}m ${secs}s`;
+  };
+
+  const handleExportPDF = async () => {
+    const table = document.getElementById('premium-report');
+    if (!table) return;
+
+    setIsExporting(true);
+    const toastId = toast.loading('جاري تجهيز تقرير PDF بريميوم...');
+
+    // Temporarily show the template for capture
+    table.style.display = 'block';
+
+    try {
+      const canvas = await html2canvas(table, {
+        scale: 3, // Higher scale for premium quality
+        useCORS: true,
+        logging: false,
+        backgroundColor: '#ffffff'
+      });
+      
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+      
+      pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight, undefined, 'FAST');
+      pdf.save(`${selectedExam?.title || 'CLINOMA_Report'}.pdf`);
+      toast.success('تم تحميل التقرير البريميوم بنجاح', { id: toastId });
+    } catch (err) {
+      console.error(err);
+      toast.error('حدث خطأ أثناء تحميل الملف', { id: toastId });
+    } finally {
+      table.style.display = 'none';
+      setIsExporting(false);
+    }
+  };
+
+  const handleExportExcel = () => {
+    const data = sortedAttempts.map(a => ({
+      'اسم الطالب': a.studentName,
+      'البريد الإلكتروني': a.userEmail,
+      'الدرجة': `${a.score} / ${a.totalQuestions}`,
+      'النسبة المئوية': `${Math.round((a.score / a.totalQuestions) * 100)}%`,
+      'الوقت المستغرق': formatTime(a.timeSpentSeconds),
+      'التاريخ': a.startTime?.toDate ? a.startTime.toDate().toLocaleString('ar-EG') : 'N/A'
+    }));
+
+    const ws = XLSX.utils.json_to_sheet(data);
+    const wb = XLSX.utils.book_new();
+    XXLSX.utils.book_append_sheet(wb, ws, "Results");
+    XXLSX.writeFile(wb, `${selectedExam?.title || 'results'}.xlsx`);
+    toast.success('تم تصدير ملف Excel بنجاح');
   };
 
   if (loading) return <div className="p-20 flex justify-center"><Loader2 className="w-10 h-10 animate-spin text-primary" /></div>;
@@ -132,21 +193,42 @@ export default function ExamResultsDashboard() {
             <p className="text-muted-foreground font-bold text-lg">نتائج الطلاب والوقت المستغرق</p>
           </div>
           
-          <div className="relative w-full md:w-96">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground w-5 h-5" />
-            <input 
-              type="text"
-              placeholder="بحث عن طالب بالاسم أو الإيميل..."
-              value={search}
-              onChange={e => setSearch(e.target.value)}
-              className="w-full pl-12 pr-6 py-4 bg-card border-2 border-border rounded-2xl font-bold outline-none focus:border-primary transition-all text-right"
-              dir="rtl"
-            />
+            <div className="flex flex-col md:flex-row items-center gap-3 w-full md:w-auto">
+              <Button 
+                onClick={handleExportPDF}
+                disabled={isExporting || sortedAttempts.length === 0}
+                className="w-full md:w-auto h-14 px-8 rounded-2xl font-black gap-2 bg-slate-900 hover:bg-slate-800 text-white shadow-xl"
+              >
+                {isExporting ? <Loader2 className="w-5 h-5 animate-spin" /> : <ShieldCheck className="w-5 h-5 text-amber-400" />}
+                تقرير PDF بريميوم
+              </Button>
+
+              <Button 
+                onClick={handleExportExcel}
+                disabled={isExporting || sortedAttempts.length === 0}
+                variant="outline"
+                className="w-full md:w-auto h-14 px-8 rounded-2xl font-black gap-2 border-2 border-emerald-500/20 text-emerald-600 hover:bg-emerald-50 shadow-lg shadow-emerald-500/5"
+              >
+                <FileSpreadsheet className="w-5 h-5" />
+                تصدير Excel
+              </Button>
+
+            <div className="relative w-full md:w-96">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground w-5 h-5" />
+              <input 
+                type="text"
+                placeholder="بحث عن طالب بالاسم أو الإيميل..."
+                value={search}
+                onChange={e => setSearch(e.target.value)}
+                className="w-full pl-12 pr-6 py-4 bg-card border-2 border-border rounded-2xl font-bold outline-none focus:border-primary transition-all text-right"
+                dir="rtl"
+              />
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="bg-card border-2 border-border rounded-[3rem] overflow-hidden shadow-sm">
+      <div id="results-table" className="bg-card border-2 border-border rounded-[3rem] overflow-hidden shadow-sm p-4">
         <div className="overflow-x-auto">
           <table className="w-full text-right" dir="rtl">
             <thead>
@@ -219,6 +301,85 @@ export default function ExamResultsDashboard() {
               <p className="text-xl font-black text-muted-foreground">لا توجد محاولات حالياً</p>
             </div>
           )}
+        </div>
+      </div>
+      {/* Hidden Premium PDF Template */}
+      <div 
+        id="premium-report" 
+        style={{ display: 'none', position: 'absolute', left: '-9999px', width: '800px' }} 
+        className="bg-white p-16 font-sans"
+        dir="rtl"
+      >
+        {/* Header Decor */}
+        <div className="absolute top-0 right-0 w-64 h-64 bg-slate-50 rounded-full -mr-32 -mt-32 opacity-50" />
+        
+        <div className="relative border-b-4 border-slate-900 pb-10 mb-12 flex justify-between items-end">
+          <div className="space-y-4">
+            <div className="flex items-center gap-4">
+              <div className="w-16 h-16 bg-slate-900 rounded-3xl flex items-center justify-center shadow-2xl">
+                <img src="/favicon.svg" alt="Clinoma" className="w-10 h-10 brightness-0 invert" />
+              </div>
+              <div>
+                <h1 className="text-4xl font-black tracking-tighter text-slate-900 uppercase">CLINOMA</h1>
+                <p className="text-xs font-black tracking-[0.3em] text-slate-400">OFFICIAL ACADEMIC REPORT</p>
+              </div>
+            </div>
+            <div className="space-y-1">
+              <h2 className="text-2xl font-black text-slate-800">{selectedExam?.title}</h2>
+              <div className="flex items-center gap-4 text-slate-500 font-bold text-sm">
+                <div className="flex items-center gap-1.5"><Calendar className="w-4 h-4" /> {new Date().toLocaleDateString('ar-EG')}</div>
+                <div className="flex items-center gap-1.5"><Users className="w-4 h-4" /> {sortedAttempts.length} محاولة</div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="text-left bg-slate-50 p-6 rounded-3xl border border-slate-100">
+            <div className="flex items-center gap-2 text-slate-400 text-[10px] font-black uppercase tracking-widest mb-1">
+              <ShieldCheck className="w-4 h-4 text-emerald-500" />
+              Verified Report
+            </div>
+            <p className="text-xs font-bold text-slate-600">ID: {selectedExamId?.slice(0, 8).toUpperCase()}</p>
+          </div>
+        </div>
+
+        <table className="w-full text-right mb-12 border-separate border-spacing-y-2">
+          <thead>
+            <tr className="bg-slate-900 text-white">
+              <th className="p-4 rounded-r-2xl font-black text-xs first:rounded-r-2xl last:rounded-l-2xl">اسم الطالب</th>
+              <th className="p-4 font-black text-xs text-center">الدرجة</th>
+              <th className="p-4 font-black text-xs text-center">النسبة</th>
+              <th className="p-4 font-black text-xs text-center">الوقت</th>
+              <th className="p-4 rounded-l-2xl font-black text-xs text-left">التاريخ</th>
+            </tr>
+          </thead>
+          <tbody>
+            {sortedAttempts.map((a, i) => (
+              <tr key={a.id} className={cn("text-slate-700", i % 2 === 0 ? "bg-slate-50" : "bg-white")}>
+                <td className="p-4 rounded-r-xl font-black text-sm">{a.studentName}</td>
+                <td className="p-4 font-black text-sm text-center text-slate-900">{a.score} / {a.totalQuestions}</td>
+                <td className="p-4 font-black text-sm text-center">
+                  <span className={cn(
+                    "px-2 py-1 rounded-lg text-xs",
+                    (a.score / a.totalQuestions) >= 0.5 ? "bg-emerald-100 text-emerald-700" : "bg-rose-100 text-rose-700"
+                  )}>
+                    {Math.round((a.score / a.totalQuestions) * 100)}%
+                  </span>
+                </td>
+                <td className="p-4 font-bold text-sm text-center text-slate-500">{formatTime(a.timeSpentSeconds)}</td>
+                <td className="p-4 rounded-l-xl font-bold text-xs text-left text-slate-400">
+                  {a.startTime?.toDate ? a.startTime.toDate().toLocaleDateString('ar-EG') : 'N/A'}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+        <div className="mt-20 pt-10 border-t border-slate-100 flex justify-between items-center text-slate-300">
+          <div className="flex items-center gap-2">
+            <GraduationCap className="w-5 h-5" />
+            <span className="text-[10px] font-black uppercase tracking-widest">Clinoma Medical Academy</span>
+          </div>
+          <span className="text-[10px] font-medium italic">Confidential - For Academic Use Only</span>
         </div>
       </div>
     </div>
