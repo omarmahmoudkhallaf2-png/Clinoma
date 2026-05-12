@@ -129,6 +129,17 @@ export default function VideoManager() {
     }
   };
 
+  const handleDeleteVideo = async (id: string) => {
+    if (!window.confirm('Delete this video?')) return;
+    try {
+      await deleteDoc(doc(db, 'videos', id));
+      toast.success('Video deleted');
+      fetchData();
+    } catch (err) {
+      toast.error('Error deleting video');
+    }
+  };
+
   const currentFolders = allFolders.filter(f => f.parentId === currentFolderId);
   const currentVideos = allVideos.filter(v => v.folderId === currentFolderId);
   const currentFolder = allFolders.find(f => f.id === currentFolderId);
