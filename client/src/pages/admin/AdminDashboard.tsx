@@ -5,7 +5,7 @@ import {
   Plus, Search, Loader2, 
   BarChart3, HelpCircle, Users, Settings, 
   Database, FileText, Zap, ChevronRight, ChevronLeft, 
-  Download, Activity, Terminal, Edit2, Trash2, X, Shield, Brain, Trophy, ClipboardList, Sparkles, Layout
+  Download, Activity, Terminal, Edit2, Trash2, X, Shield, Brain, Trophy, ClipboardList, Sparkles, Layout, Video
 } from 'lucide-react';
 import ExamResultsDashboard from '../ExamResultsDashboard';
 import { db } from '../../lib/firebase';
@@ -27,6 +27,7 @@ import ExamManager from '../../components/admin/ExamManager';
 import FlashcardManager from '../../components/admin/FlashcardManager';
 import FlashSpaceManager from '../../components/admin/FlashSpaceManager';
 import DataThemeManager from '../../components/admin/DataThemeManager';
+import VideoManager from '../../components/admin/VideoManager';
 
 
 import { runSystemAudit } from '../../lib/systemHealer';
@@ -37,7 +38,7 @@ import type { Question } from '../../types/quiz';
 export default function AdminDashboard() {
   const { user, userRole } = useAuth();
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState<'analytics' | 'questions' | 'users' | 'courses' | 'settings' | 'notes' | 'audit' | 'health' | 'formal_results' | 'exams' | 'flashcards' | 'flashspace' | 'data_themes'>('analytics');
+  const [activeTab, setActiveTab] = useState<'analytics' | 'questions' | 'users' | 'courses' | 'settings' | 'notes' | 'audit' | 'health' | 'formal_results' | 'exams' | 'flashcards' | 'flashspace' | 'data_themes' | 'videos'>('analytics');
   const [questions, setQuestions] = useState<Question[]>([]);
   const [notes, setNotes] = useState<any[]>([]);
   const [users, setUsers] = useState<any[]>([]);
@@ -331,6 +332,7 @@ export default function AdminDashboard() {
           { id: 'flashcards', label: 'Flashcards', icon: Brain },
           { id: 'data_themes', label: 'Data Themes', icon: Database },
           { id: 'flashspace', label: 'Flash Space', icon: Layout },
+          { id: 'videos', label: 'Video Library', icon: Video },
           { id: 'formal_results', label: 'Formal Results', icon: Trophy },
         ].map(tab => (
           <button
@@ -430,6 +432,7 @@ export default function AdminDashboard() {
             {activeTab === 'flashspace' && <FlashSpaceManager />}
             {activeTab === 'settings' && <AppConfig />}
             { activeTab === 'data_themes' && <DataThemeManager /> }
+            { activeTab === 'videos' && <VideoManager /> }
             {activeTab === 'notes' && (
               <div className="p-12 space-y-12 animate-in slide-in-from-bottom-8 duration-500">
                 <div className="flex justify-between items-center bg-emerald-500/10 p-10 rounded-[4rem] border-2 border-emerald-500/20">

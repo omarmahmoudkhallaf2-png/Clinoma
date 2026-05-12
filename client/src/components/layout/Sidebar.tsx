@@ -162,47 +162,7 @@ export default function Sidebar({ isOpen = false, setIsOpen = (_: boolean) => { 
                   )}
                 </button>
 
-                {/* بنوك الأسئلة - يظهر فقط بعد لوحة التحكم (index 0) */}
-                {index === 0 && (
-                  <div className="mt-1 mb-1">
-                    <button
-                      onClick={() => setIsQBOpen(!isQBOpen)}
-                      className={cn(
-                        "w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all group",
-                        isQBOpen ? "bg-accent/50 text-foreground" : "text-muted-foreground hover:bg-accent hover:text-foreground"
-                      )}
-                    >
-                      <Library className="w-5 h-5 transition-transform group-hover:scale-110" />
-                      <span className="font-semibold text-sm flex-1 text-right" dir="rtl">بنوك الأسئلة</span>
-                      <ChevronDown className={cn(
-                        "w-4 h-4 transition-transform duration-200",
-                        isQBOpen && "rotate-180"
-                      )} />
-                    </button>
-
-                    <AnimatePresence>
-                      {isQBOpen && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: 'auto', opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          className="overflow-hidden mr-4 border-r border-border/50 mt-1 space-y-1"
-                        >
-                          <button
-                            onClick={() => window.open(`https://pediatrics-qbank-clinoma-support.pages.dev/?v=${new Date().getTime()}`, '_blank')}
-                            className="w-full flex flex-col items-end px-4 py-2 rounded-lg hover:bg-primary/5 transition-all group text-right"
-                          >
-                            <div className="flex items-center gap-2 text-foreground group-hover:text-primary">
-                              <span className="font-bold text-xs" dir="rtl">بنك أسئلة الأطفال (Pediatrics)</span>
-                              <div className="w-1.5 h-1.5 rounded-full bg-primary/40 group-hover:bg-primary animate-pulse" />
-                            </div>
-                            <span className="text-[10px] text-muted-foreground mt-0.5" dir="rtl">بالتعاون مع سبورت</span>
-                          </button>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                )}
+                 {/* بنوك الأسئلة - Hidden for now */}
               </div>
             ))}
 

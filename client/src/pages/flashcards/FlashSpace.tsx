@@ -24,7 +24,10 @@ import {
   Trophy,
   Search,
   BookOpen,
-  ArrowRight
+  ArrowRight,
+  Hand,
+  Trash2,
+  Menu
 } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { useNavigate } from 'react-router-dom';
@@ -33,7 +36,7 @@ import { db } from '../../lib/firebase';
 import { collection, query, getDocs, orderBy } from 'firebase/firestore';
 
 // --- Vector Types ---
-type Tool = 'pen' | 'highlighter' | 'eraser' | 'laser' | 'text';
+type Tool = 'pen' | 'highlighter' | 'eraser' | 'laser' | 'text' | 'pan';
 
 interface Point {
   x: number;
@@ -72,11 +75,15 @@ const FlashSpace = () => {
   const [selectedSystem, setSelectedSystem] = useState<string | null>(null);
   const [selectedBoard, setSelectedBoard] = useState<Board | null>(null);
   
-  const [isSidebarHovered, setIsSidebarHovered] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false); // For mobile drawer
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false); // For desktop toggle
   const [activeTool, setActiveTool] = useState<Tool>('pen');
   const [showSettingsFor, setShowSettingsFor] = useState<Tool | null>(null);
   
   const [zoom, setZoom] = useState(1);
+  const [offset, setOffset] = useState({ x: 0, y: 0 });
+  const [isPanning, setIsPanning] = useState(false);
+  const panStartRef = useRef({ x: 0, y: 0 });
   const [showExplanation, setShowExplanation] = useState(false);
   const [showSummary, setShowSummary] = useState(false);
 
@@ -99,7 +106,8 @@ const FlashSpace = () => {
     highlighter: { size: 35, opacity: 0.3, color: '#eab308' },
     eraser: { size: 40, opacity: 1, color: '#ffffff' },
     laser: { size: 10, opacity: 1, color: '#ef4444' },
-    text: { size: 24, opacity: 1, color: '#1e293b' }
+    text: { size: 24, opacity: 1, color: '#1e293b' },
+    pan: { size: 0, opacity: 0, color: '' }
   });
 
   // --- Professional Zero-Lag Cursor ---
@@ -268,9 +276,16 @@ const FlashSpace = () => {
   };
 
   const handleStart = (e: React.MouseEvent | React.TouchEvent) => {
-    if (!selectedBoard) return;
+    if (activeTool === 'pan') {
+      setIsPanning(true);
+      panStartRef.current = { 
+        x: ('touches' in e ? e.touches[0].clientX : e.clientX) - offset.x,
+        y: ('touches' in e ? e.touches[0].clientY : e.clientY) - offset.y
+      };
+      return;
+    }
+
     const pos = getPos(e);
-    
     if (activeTool === 'eraser') {
       handleEraser(pos);
       setCurrentPath({ id: 'eraser-mark', points: [pos], tool: 'eraser', color: '#fff', size: 1, opacity: 0 });
@@ -289,6 +304,16 @@ const FlashSpace = () => {
   };
 
   const handleMove = (e: React.MouseEvent | React.TouchEvent) => {
+    if (activeTool === 'pan' && isPanning) {
+      const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+      const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
+      setOffset({
+        x: clientX - panStartRef.current.x,
+        y: clientY - panStartRef.current.y
+      });
+      return;
+    }
+
     if (!currentPath) return;
     const pos = getPos(e);
     if (activeTool === 'eraser') {
@@ -299,6 +324,11 @@ const FlashSpace = () => {
   };
 
   const handleEnd = () => {
+    if (activeTool === 'pan') {
+      setIsPanning(false);
+      return;
+    }
+
     if (!currentPath) return;
     if (activeTool === 'laser') {
       fadingLasersRef.current.push({ ...currentPath, fadeStart: Date.now(), isFading: true });
@@ -401,47 +431,148 @@ const FlashSpace = () => {
     <div className="h-screen w-full bg-[#f8fafc] flex overflow-hidden font-sans no-select">
       <CursorUI />
       
-      <div onMouseEnter={() => setIsSidebarHovered(true)} onMouseLeave={() => setIsSidebarHovered(false)} className={cn("h-full bg-white border-r border-slate-200 transition-all duration-500 z-[100] flex flex-col shadow-2xl", isSidebarHovered ? "w-80" : "w-16")}>
-        <div className="h-16 flex items-center px-4 border-b border-slate-100"><div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white shrink-0"><Brain className="w-5 h-5" /></div></div>
-        <div className="flex-1 overflow-y-auto custom-scrollbar p-2 space-y-4">
+      {/* Sidebar Overlay for Mobile */}
+      {isSidebarOpen && (
+        <div 
+          className="fixed inset-0 bg-slate-900/60 backdrop-blur-md z-[102] md:hidden animate-in fade-in duration-300"
+          onClick={() => setIsSidebarOpen(false)}
+        />
+      )}
+
+      <div 
+        className={cn(
+          "fixed md:relative h-full bg-white border-r border-slate-200 transition-all duration-500 z-[103] flex flex-col shadow-2xl overflow-hidden", 
+          isSidebarOpen || !isSidebarCollapsed ? "w-80" : "w-0 md:w-0"
+        )}
+      >
+        <div className="h-16 md:h-20 flex items-center justify-between px-6 border-b border-slate-100 bg-slate-50/50">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-primary rounded-2xl flex items-center justify-center text-white shadow-lg shadow-primary/20 shrink-0">
+              <Brain className="w-6 h-6" />
+            </div>
+            <span className="font-black text-sm uppercase tracking-widest text-slate-800">Library</span>
+          </div>
+          <button 
+            onClick={() => {
+              if (window.innerWidth < 768) setIsSidebarOpen(false);
+              else setIsSidebarCollapsed(true);
+            }} 
+            className="p-2.5 hover:bg-slate-200 bg-slate-100 rounded-xl transition-all"
+          >
+            <ChevronLeft className="w-5 h-5 text-slate-600" />
+          </button>
+        </div>
+        
+        <div className="flex-1 overflow-y-auto custom-scrollbar p-4 space-y-3">
           {modules.map(mod => (
-            <div key={mod} className="space-y-1">
-              <button onClick={() => { setSelectedModule(selectedModule === mod ? null : mod); setSelectedSystem(null); }} className={cn("w-full flex items-center gap-3 p-3 rounded-xl transition-all", selectedModule === mod ? "bg-primary/10 text-primary" : "hover:bg-slate-50 text-slate-600")}><BookOpen className="w-5 h-5 shrink-0" /><span className={cn("font-bold text-sm", isSidebarHovered ? "opacity-100" : "opacity-0")}>{mod}</span></button>
-              {selectedModule === mod && isSidebarHovered && systems[mod]?.map(sys => (
-                <div key={sys} className="ml-6 space-y-1">
-                  <button onClick={() => setSelectedSystem(selectedSystem === sys ? null : sys)} className={cn("w-full flex items-center gap-3 p-2 rounded-lg text-left transition-all", selectedSystem === sys ? "text-primary font-black" : "text-slate-500 hover:text-slate-800")}><ChevronRight className={cn("w-3 h-3 transition-transform", selectedSystem === sys ? "rotate-90" : "")} /><span className="text-xs font-bold">{sys}</span></button>
-                  {selectedSystem === sys && (
-                    <div className="ml-4 space-y-1 border-l-2 border-slate-100 pl-4">
-                      {boards.filter(b => b.module === mod && b.system === sys).map(board => (
-                        <button key={board.id} onClick={() => setSelectedBoard(board)} className={cn("w-full text-left p-2 rounded-lg text-[11px] font-bold transition-all", selectedBoard?.id === board.id ? "bg-emerald-500 text-white shadow-md" : "text-slate-400 hover:text-slate-600")}>{board.disease}</button>
-                      ))}
-                    </div>
-                  )}
+            <div key={mod} className="space-y-2">
+              <button 
+                onClick={() => { setSelectedModule(selectedModule === mod ? null : mod); setSelectedSystem(null); }} 
+                className={cn(
+                  "w-full flex items-center justify-between p-4 rounded-2xl transition-all border-2",
+                  selectedModule === mod 
+                    ? "bg-primary/5 border-primary/20 text-primary" 
+                    : "bg-white border-slate-50 hover:border-slate-200 text-slate-600"
+                )}
+              >
+                <div className="flex items-center gap-3">
+                  <BookOpen className={cn("w-5 h-5", selectedModule === mod ? "text-primary" : "text-slate-400")} />
+                  <span className="font-black text-[11px] uppercase tracking-wider">{mod}</span>
                 </div>
-              ))}
+                <ChevronRight className={cn("w-4 h-4 transition-transform duration-300", selectedModule === mod ? "rotate-90" : "opacity-40")} />
+              </button>
+              
+              {selectedModule === mod && (
+                <div className="space-y-2 py-2 animate-in slide-in-from-top-2 duration-300">
+                  {systems[mod]?.map(sys => (
+                    <div key={sys} className="ml-4 space-y-1">
+                      <button 
+                        onClick={() => setSelectedSystem(selectedSystem === sys ? null : sys)} 
+                        className={cn(
+                          "w-full flex items-center justify-between p-3 rounded-xl transition-all",
+                          selectedSystem === sys ? "bg-slate-100 text-primary font-black" : "text-slate-500 hover:bg-slate-50"
+                        )}
+                      >
+                        <span className="text-xs font-bold">{sys}</span>
+                        <ChevronRight className={cn("w-3 h-3 transition-transform", selectedSystem === sys ? "rotate-90" : "opacity-30")} />
+                      </button>
+                      
+                      {selectedSystem === sys && (
+                        <div className="ml-4 space-y-1 border-l-2 border-slate-100 pl-4 py-1 animate-in slide-in-from-left-2">
+                          {boards.filter(b => b.module === mod && b.system === sys).map(board => (
+                            <button 
+                              key={board.id} 
+                              onClick={() => { setSelectedBoard(board); if(window.innerWidth < 768) setIsSidebarOpen(false); }} 
+                              className={cn(
+                                "w-full text-left p-2.5 rounded-xl text-[10px] font-black uppercase tracking-tight transition-all", 
+                                selectedBoard?.id === board.id 
+                                  ? "bg-emerald-500 text-white shadow-lg shadow-emerald-500/20" 
+                                  : "text-slate-400 hover:text-primary hover:bg-primary/5"
+                              )}
+                            >
+                              {board.disease}
+                            </button>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           ))}
         </div>
       </div>
 
       <div className="flex-1 flex flex-col relative overflow-hidden">
-        <div className="h-16 bg-white border-b border-slate-200 px-6 flex items-center justify-between z-50">
-          <div className="flex items-center gap-4">
-            <button onClick={() => setShowSummary(true)} className="p-2.5 bg-rose-50 text-rose-600 rounded-xl hover:bg-rose-600 hover:text-white transition-all flex items-center gap-2 font-black text-[10px] uppercase tracking-widest"><LogOut className="w-4 h-4" /> End Session</button>
-            <div className="h-6 w-px bg-slate-200" />
-            <div className="flex items-center gap-2 text-[10px] font-black text-slate-400 uppercase tracking-widest"><span>{selectedBoard.module}</span><ChevronRight className="w-3 h-3" /><span className="text-slate-800">{selectedBoard.disease}</span></div>
+        <div className="h-16 md:h-20 bg-white border-b border-slate-200 px-4 md:px-6 flex items-center justify-between z-50">
+          <div className="flex items-center gap-2 md:gap-4">
+            {(isSidebarCollapsed || window.innerWidth < 768) && (
+              <button 
+                onClick={() => {
+                  if (window.innerWidth < 768) setIsSidebarOpen(true);
+                  else setIsSidebarCollapsed(false);
+                }}
+                className="p-2.5 bg-white border-2 border-slate-100 rounded-xl md:rounded-2xl shadow-sm text-slate-600 hover:bg-slate-50 transition-all"
+              >
+                <Menu className="w-5 h-5" />
+              </button>
+            )}
+            <button 
+              onClick={() => setShowSummary(true)} 
+              className="px-4 py-2.5 md:px-6 md:py-3 bg-rose-50 text-rose-600 rounded-xl md:rounded-2xl hover:bg-rose-600 hover:text-white transition-all flex items-center gap-2 font-black text-[9px] md:text-[10px] uppercase tracking-widest shadow-sm"
+            >
+              <LogOut className="w-4 h-4" /> 
+              <span>End Session</span>
+            </button>
           </div>
 
-          <div className="flex items-center gap-3">
-            <div className="flex items-center gap-1 bg-slate-50 p-1 rounded-2xl border border-slate-100 relative">
+          <div className="flex items-center gap-1.5 md:gap-3">
+            <div className="flex items-center gap-0.5 md:gap-1 bg-slate-50 p-1 rounded-xl md:rounded-2xl border border-slate-100 relative">
               {[
                 { id: 'pen', icon: Pencil },
                 { id: 'highlighter', icon: Highlighter },
                 { id: 'eraser', icon: Eraser },
-                { id: 'laser', icon: Zap }
+                { id: 'laser', icon: Zap },
+                { id: 'pan', icon: Hand }
               ].map(tool => (
                 <div key={tool.id} className="relative">
-                  <button onClick={() => { setActiveTool(tool.id as Tool); setShowSettingsFor(showSettingsFor === tool.id ? null : tool.id as Tool); }} className={cn("p-2.5 rounded-xl transition-all relative", activeTool === tool.id ? "bg-white text-primary shadow-sm border border-slate-200" : "text-slate-400 hover:text-slate-600")}><tool.icon className="w-4 h-4" /></button>
+                  <button 
+                    onClick={() => { 
+                      setActiveTool(tool.id as Tool); 
+                      if (tool.id !== 'pan') {
+                        setShowSettingsFor(showSettingsFor === tool.id ? null : tool.id as Tool); 
+                      } else {
+                        setShowSettingsFor(null);
+                      }
+                    }} 
+                    className={cn(
+                      "p-2.5 rounded-xl transition-all relative", 
+                      activeTool === tool.id ? "bg-white text-primary shadow-sm border border-slate-200" : "text-slate-400 hover:text-slate-600"
+                    )}
+                  >
+                    <tool.icon className="w-4 h-4" />
+                  </button>
                   {showSettingsFor === tool.id && (
                     <div className="absolute top-full mt-4 left-1/2 -translate-x-1/2 bg-white border-2 border-slate-100 rounded-3xl shadow-2xl p-6 w-64 z-[2000] animate-in slide-in-from-top-2">
                       <div className="space-y-6">
@@ -455,34 +586,85 @@ const FlashSpace = () => {
                             <input type="range" min="0.1" max="1" step="0.1" value={toolSettings.highlighter.opacity} onChange={(e) => updateSetting('highlighter', 'opacity', parseFloat(e.target.value))} className="w-full accent-emerald-500 h-1 bg-slate-100 rounded-lg appearance-none cursor-pointer" />
                           </div>
                         )}
-                        <div className="grid grid-cols-5 gap-2">
-                          {['#3b82f6', '#ef4444', '#10b981', '#f59e0b', '#1e293b'].map(c => (
-                            <button key={c} onClick={() => updateSetting(tool.id as Tool, 'color', c)} className={cn("w-6 h-6 rounded-full border-2 transition-transform", toolSettings[tool.id as Tool].color === c ? "border-slate-800 scale-110" : "border-transparent")} style={{ backgroundColor: c }} />
-                          ))}
-                        </div>
+                        {tool.id !== 'eraser' ? (
+                          <div className="grid grid-cols-5 gap-2">
+                            {['#3b82f6', '#ef4444', '#10b981', '#f59e0b', '#1e293b'].map(c => (
+                              <button key={c} onClick={() => updateSetting(tool.id as Tool, 'color', c)} className={cn("w-6 h-6 rounded-full border-2 transition-transform", toolSettings[tool.id as Tool].color === c ? "border-slate-800 scale-110" : "border-transparent")} style={{ backgroundColor: c }} />
+                            ))}
+                          </div>
+                        ) : (
+                          <button 
+                            onClick={() => {
+                              if (window.confirm('Clear all drawings on this board?')) {
+                                setPaths([]);
+                                setRedoPaths([]);
+                                fadingLasersRef.current = [];
+                                setShowSettingsFor(null);
+                                toast.success('Canvas cleared');
+                              }
+                            }}
+                            className="w-full py-4 bg-rose-50 text-rose-600 rounded-2xl font-black text-[10px] uppercase tracking-widest hover:bg-rose-600 hover:text-white transition-all flex items-center justify-center gap-2"
+                          >
+                            <Trash2 className="w-4 h-4" /> Erase All
+                          </button>
+                        )}
                       </div>
                     </div>
                   )}
                 </div>
               ))}
             </div>
-            <div className="flex items-center gap-1 bg-slate-50 p-1 rounded-2xl border border-slate-100">
-              <button onClick={() => { if(paths.length > 0) { setRedoPaths(prev => [...prev, paths[paths.length-1]]); setPaths(prev => prev.slice(0,-1)); } }} className="p-2 text-slate-400 hover:text-primary transition-all"><Undo2 className="w-4 h-4" /></button>
-              <button onClick={() => { if(redoPaths.length > 0) { setPaths(prev => [...prev, redoPaths[redoPaths.length-1]]); setRedoPaths(prev => prev.slice(0,-1)); } }} className="p-2 text-slate-400 hover:text-primary transition-all"><Redo2 className="w-4 h-4" /></button>
+            <div className="flex items-center gap-0.5 md:gap-1 bg-slate-50 p-1 rounded-xl md:rounded-2xl border border-slate-100">
+              <button onClick={() => { if(paths.length > 0) { setRedoPaths(prev => [...prev, paths[paths.length-1]]); setPaths(prev => prev.slice(0,-1)); } }} className="p-2 text-slate-400 hover:text-primary transition-all"><Undo2 className="w-3.5 h-3.5 md:w-4 h-4" /></button>
+              <button onClick={() => { if(redoPaths.length > 0) { setPaths(prev => [...prev, redoPaths[redoPaths.length-1]]); setRedoPaths(prev => prev.slice(0,-1)); } }} className="p-2 text-slate-400 hover:text-primary transition-all"><Redo2 className="w-3.5 h-3.5 md:w-4 h-4" /></button>
             </div>
-            <div className="flex items-center gap-3 px-4 py-2 bg-emerald-50 rounded-2xl border border-emerald-100"><Clock className="w-4 h-4 text-emerald-600" /><span className="text-xs font-black text-emerald-700 w-12 text-center tabular-nums">{Math.floor(sessionSeconds/60)}:{(sessionSeconds%60).toString().padStart(2,'0')}</span><button onClick={() => setIsTimerActive(!isTimerActive)} className="p-1.5 bg-white rounded-lg text-emerald-600 shadow-sm">{isTimerActive ? <Pause className="w-3 h-3" /> : <Play className="w-3 h-3" />}</button></div>
+            <div className="flex items-center gap-2 md:gap-3 px-2 md:px-4 py-2 bg-emerald-50 rounded-xl md:rounded-2xl border border-emerald-100">
+              <Clock className="w-3.5 h-3.5 md:w-4 h-4 text-emerald-600 hidden sm:block" />
+              <span className="text-[10px] md:text-xs font-black text-emerald-700 w-10 md:w-12 text-center tabular-nums">
+                {Math.floor(sessionSeconds/60)}:{(sessionSeconds%60).toString().padStart(2,'0')}
+              </span>
+              <button onClick={() => setIsTimerActive(!isTimerActive)} className="p-1.5 bg-white rounded-lg text-emerald-600 shadow-sm">
+                {isTimerActive ? <Pause className="w-3 h-3" /> : <Play className="w-3 h-3" />}
+              </button>
+            </div>
           </div>
         </div>
 
-        <div className="flex-1 relative bg-slate-50 flex items-center justify-center p-6 overflow-hidden">
-          <div className="relative w-full h-full bg-white rounded-[4rem] shadow-2xl border border-slate-200 overflow-hidden flex items-center justify-center">
-            <div className="relative transition-transform duration-300" style={{ transform: `scale(${zoom})` }}>
+        <div className="flex-1 relative bg-slate-50 flex items-center justify-center p-2 md:p-6 overflow-hidden">
+          <div className="relative w-full h-full bg-white rounded-3xl md:rounded-[4rem] shadow-2xl border border-slate-200 overflow-hidden flex items-center justify-center">
+            <div 
+              className={cn(
+                "relative", 
+                activeTool !== 'pan' && "transition-transform duration-300"
+              )} 
+              style={{ transform: `translate(${offset.x}px, ${offset.y}px) scale(${zoom})` }}
+            >
               <img src={selectedBoard.medicalImage} alt="" className="max-w-full max-h-[85vh] rounded-3xl pointer-events-none" draggable={false} />
-              <canvas ref={canvasRef} width={2500} height={1800} onMouseDown={handleStart} onMouseMove={handleMove} onMouseUp={handleEnd} onMouseLeave={handleEnd} onTouchStart={handleStart} onTouchMove={handleMove} onTouchEnd={handleEnd} className="absolute inset-0 z-10 w-full h-full touch-none cursor-crosshair" />
+              <canvas 
+                ref={canvasRef} 
+                width={2500} height={1800} 
+                onMouseDown={handleStart} onMouseMove={handleMove} onMouseUp={handleEnd} onMouseLeave={handleEnd} 
+                onTouchStart={handleStart} onTouchMove={handleMove} onTouchEnd={handleEnd} 
+                className={cn(
+                  "absolute inset-0 z-10 w-full h-full touch-none",
+                  activeTool === 'pan' ? "cursor-grab active:cursor-grabbing" : "cursor-crosshair"
+                )} 
+              />
             </div>
-            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-4 z-50">
-              <button onClick={() => setShowExplanation(!showExplanation)} className="px-10 py-5 bg-slate-900 text-white rounded-[2.5rem] font-black text-[10px] uppercase tracking-widest shadow-2xl hover:bg-primary transition-all flex items-center gap-3"><FileText className="w-5 h-5" /> View Notes</button>
-              <div className="px-8 py-5 bg-white/90 backdrop-blur-xl border border-slate-200 rounded-[2.5rem] flex items-center gap-8 shadow-2xl"><button onClick={() => setZoom(z => Math.max(0.5, z-0.2))} className="text-slate-400 hover:text-primary"><Minus className="w-5 h-5" /></button><span className="text-[10px] font-black text-slate-800 w-10 text-center">{Math.round(zoom*100)}%</span><button onClick={() => setZoom(z => Math.min(3, z+0.2))} className="text-slate-400 hover:text-primary"><Plus className="w-5 h-5" /></button></div>
+            <div className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-3 md:gap-4 z-50 w-full px-6 justify-center">
+              <button 
+                onClick={() => setShowExplanation(!showExplanation)} 
+                className="px-6 md:px-10 py-4 md:py-5 bg-slate-900 text-white rounded-2xl md:rounded-[2.5rem] font-black text-[9px] md:text-[10px] uppercase tracking-widest shadow-2xl hover:bg-primary transition-all flex items-center gap-2 md:gap-3"
+              >
+                <FileText className="w-4 h-4 md:w-5 h-5" /> 
+                <span className="hidden sm:inline">View Notes</span>
+                <span className="sm:hidden">Notes</span>
+              </button>
+              <div className="px-4 md:px-8 py-4 md:py-5 bg-white/90 backdrop-blur-xl border border-slate-200 rounded-2xl md:rounded-[2.5rem] flex items-center gap-4 md:gap-8 shadow-2xl">
+                <button onClick={() => setZoom(z => Math.max(0.5, z-0.2))} className="text-slate-400 hover:text-primary"><Minus className="w-4 h-4 md:w-5 h-5" /></button>
+                <span className="text-[9px] md:text-[10px] font-black text-slate-800 w-8 md:w-10 text-center">{Math.round(zoom*100)}%</span>
+                <button onClick={() => setZoom(z => Math.min(3, z+0.2))} className="text-slate-400 hover:text-primary"><Plus className="w-4 h-4 md:w-5 h-5" /></button>
+              </div>
             </div>
             {showExplanation && (
               <div className="absolute inset-0 bg-white/98 backdrop-blur-3xl p-16 z-[100] animate-in slide-in-from-bottom-full duration-700">

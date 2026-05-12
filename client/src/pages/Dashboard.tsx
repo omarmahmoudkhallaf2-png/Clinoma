@@ -3,14 +3,16 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { db } from '../lib/firebase';
 import { collection, query, getDocs, limit, doc, getDoc, orderBy } from 'firebase/firestore';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Play, BookOpen, Brain, TrendingUp, 
   ChevronRight, Clock, Zap, CheckCircle, 
   XCircle, Bookmark, ArrowRight, Activity,
-  Crown, Search, Settings as SettingsIcon, RotateCcw, Database
+  Crown, Search, Settings as SettingsIcon, RotateCcw, Database,
+  Video, Folder, ChevronLeft, Home
 } from 'lucide-react';
 import toast from 'react-hot-toast';
+import { cn } from '../lib/utils';
 import { getWeakAreas, resetBookmarks, resetIncorrect } from '../lib/quizEngine';
 import WeakAreas from '../components/dashboard/WeakAreas';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/Card';
@@ -25,6 +27,9 @@ export default function Dashboard() {
   const [userStats, setUserStats] = useState({ accuracy: 0, streak: 1, points: 0, totalSolved: 0 });
   const [weakAreas, setWeakAreas] = useState<any[]>([]);
   const [recentActions, setRecentActions] = useState<any[]>([]);
+  const [videoFolders, setVideoFolders] = useState<any[]>([]);
+  const [allVideos, setAllVideos] = useState<any[]>([]);
+  const [currentFolderId, setCurrentFolderId] = useState<string | null>(null);
 
   const handleReset = async (type: 'flagged' | 'incorrect') => {
     if (!user) return;
@@ -75,6 +80,14 @@ export default function Dashboard() {
           { action: 'Welcome to CLINOMA!', timestamp: { toDate: () => new Date() }, meta: 'Explore our courses' }
         ]);
 
+        const [fSnap, vSnap] = await Promise.all([
+          getDocs(query(collection(db, 'video_folders'), orderBy('order', 'asc'))),
+          getDocs(query(collection(db, 'videos'), orderBy('order', 'asc')))
+        ]);
+        setVideoFolders(fSnap.docs.map(d => ({ id: d.id, ...d.data() })));
+        setAllVideos(vSnap.docs.map(d => ({ id: d.id, ...d.data() })));
+        setCurrentFolderId(null);
+
       } catch (err) {
         console.error('Error fetching dashboard data:', err);
       } finally {
@@ -88,22 +101,14 @@ export default function Dashboard() {
   const myCourses = courses.filter(c => isSubscribed(c.id));
   const otherCourses = courses.filter(c => !isSubscribed(c.id));
 
+  const [activeTab, setActiveTab] = useState<'home' | 'videos'>('home');
+
   if (loading) {
     return (
       <div className="max-w-7xl mx-auto p-6 lg:p-8 space-y-10">
         <Skeleton className="h-64 rounded-2xl w-full" />
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           {[1, 2, 3, 4].map(i => <Skeleton key={i} className="h-32 rounded-xl" />)}
-        </div>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-2 space-y-6">
-            <Skeleton className="h-48 rounded-xl" />
-            <Skeleton className="h-48 rounded-xl" />
-          </div>
-          <div className="space-y-6">
-            <Skeleton className="h-64 rounded-xl" />
-            <Skeleton className="h-48 rounded-xl" />
-          </div>
         </div>
       </div>
     );
@@ -115,6 +120,38 @@ export default function Dashboard() {
       animate={{ opacity: 1, y: 0 }}
       className="max-w-7xl mx-auto p-6 lg:p-8 space-y-10 pb-24"
     >
+      {/* Premium Tab Switcher */}
+      <div className="flex items-center justify-center p-1.5 bg-slate-100/50 backdrop-blur-md rounded-[2rem] w-fit mx-auto border border-slate-200">
+        <button 
+          onClick={() => setActiveTab('home')}
+          className={cn(
+            "px-8 py-3 rounded-[1.5rem] text-sm font-black transition-all",
+            activeTab === 'home' ? "bg-white text-primary shadow-xl" : "text-slate-400 hover:text-slate-600"
+          )}
+        >
+          الرئيسية
+        </button>
+        <button 
+          onClick={() => setActiveTab('videos')}
+          className={cn(
+            "px-8 py-3 rounded-[1.5rem] text-sm font-black transition-all flex items-center gap-2",
+            activeTab === 'videos' ? "bg-white text-rose-500 shadow-xl" : "text-slate-400 hover:text-slate-600"
+          )}
+        >
+          <Video className={cn("w-4 h-4", activeTab === 'videos' ? "fill-rose-500" : "")} />
+          المكتبة المرئية
+        </button>
+      </div>
+
+      <AnimatePresence mode="wait">
+        {activeTab === 'home' ? (
+          <motion.div 
+            key="home"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 20 }}
+            className="space-y-10"
+          >
       {/* Premium Welcome Banner */}
       <section className="relative overflow-hidden rounded-2xl bg-primary px-8 py-12 text-white shadow-2xl shadow-primary/20">
         <div className="absolute top-0 right-0 -mr-20 -mt-20 h-64 w-64 rounded-full bg-white/10 blur-3xl" />
@@ -386,6 +423,118 @@ export default function Dashboard() {
       </div>
 
 
+          </motion.div>
+        ) : (
+          <motion.div 
+            key="videos"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            className="space-y-12"
+          >
+            {/* Library Header & Breadcrumbs */}
+            <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+              <div className="space-y-2 text-center md:text-right" dir="rtl">
+                <h2 className="text-4xl font-black tracking-tight">المكتبة التعليمية المرئية</h2>
+                <div className="flex items-center gap-2 text-muted-foreground font-black text-xs uppercase tracking-widest">
+                  <button onClick={() => setCurrentFolderId(null)} className="hover:text-primary transition-colors flex items-center gap-1">
+                    <Home className="w-3.5 h-3.5" /> الرئيسية
+                  </button>
+                  {videoFolders.find(f => f.id === currentFolderId) && (
+                    <>
+                      <ChevronLeft className="w-3.5 h-3.5" />
+                      <span className="text-primary">{videoFolders.find(f => f.id === currentFolderId)?.name}</span>
+                    </>
+                  )}
+                </div>
+              </div>
+              
+              {currentFolderId && (
+                <Button 
+                  onClick={() => {
+                    const parentId = videoFolders.find(f => f.id === currentFolderId)?.parentId;
+                    setCurrentFolderId(parentId || null);
+                  }}
+                  variant="outline"
+                  className="rounded-2xl font-black text-xs px-8 border-2"
+                >
+                  <ChevronRight className="w-4 h-4 mr-2" /> العودة للخلف
+                </Button>
+              )}
+            </div>
+
+            {/* Content Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" dir="rtl">
+              {/* Show Subfolders */}
+              {videoFolders.filter(f => f.parentId === currentFolderId).map(folder => (
+                <Card 
+                  key={folder.id} 
+                  className="group cursor-pointer rounded-[2.5rem] border-2 border-slate-100 hover:border-primary/20 hover:shadow-2xl transition-all overflow-hidden"
+                  onClick={() => setCurrentFolderId(folder.id)}
+                >
+                  <CardContent className="p-8 flex flex-col items-center text-center">
+                    <div className="w-20 h-20 bg-amber-500/10 text-amber-500 rounded-[2rem] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                      <Folder className="w-10 h-10 fill-current" />
+                    </div>
+                    <h4 className="text-xl font-black tracking-tight mb-2 group-hover:text-primary transition-colors">{folder.name}</h4>
+                    <p className="text-xs text-muted-foreground font-bold line-clamp-1">{folder.description || 'تصفح الفيديوهات'}</p>
+                    
+                    <div className="mt-6 flex gap-3">
+                      <span className="text-[10px] font-black px-3 py-1 bg-slate-100 rounded-lg">
+                        {videoFolders.filter(f => f.parentId === folder.id).length} أقسام
+                      </span>
+                      <span className="text-[10px] font-black px-3 py-1 bg-slate-100 rounded-lg">
+                        {allVideos.filter(v => v.folderId === folder.id).length} فيديو
+                      </span>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+
+            {/* Show Videos */}
+            <div className="grid grid-cols-1 gap-12" dir="rtl">
+              {allVideos.filter(v => v.folderId === currentFolderId).map(video => (
+                <div key={video.id} className="space-y-8 animate-in slide-in-from-bottom-8 duration-700">
+                  <div className="relative group max-w-5xl mx-auto w-full">
+                    <div className="absolute -inset-1 bg-gradient-to-r from-rose-600 via-primary to-indigo-600 rounded-[3rem] blur-2xl opacity-10 group-hover:opacity-30 transition duration-1000" />
+                    <div className="relative bg-white p-4 rounded-[3.5rem] shadow-3xl border border-slate-100 overflow-hidden">
+                      <div className="aspect-video w-full rounded-[2.5rem] overflow-hidden bg-slate-900 relative shadow-inner">
+                        <iframe 
+                          width="100%" 
+                          height="100%" 
+                          src={`https://www.youtube.com/embed/${video.youtubeUrl.split('v=')[1]?.split('&')[0] || video.youtubeUrl.split('/').pop()?.split('?')[0]}?rel=0&modestbranding=1`} 
+                          title={video.title}
+                          frameBorder="0" 
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                          allowFullScreen
+                          className="absolute inset-0"
+                        ></iframe>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="max-w-4xl mx-auto space-y-4 text-center md:text-right">
+                    <h3 className="text-3xl font-black tracking-tight text-slate-900">{video.title}</h3>
+                    <div className="p-8 bg-slate-50/50 rounded-[2.5rem] border border-slate-100 shadow-sm">
+                      <p className="text-lg text-slate-600 leading-relaxed font-medium whitespace-pre-wrap italic">
+                        {video.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+
+              {allVideos.filter(v => v.folderId === currentFolderId).length === 0 && videoFolders.filter(f => f.parentId === currentFolderId).length === 0 && (
+                <div className="h-[400px] flex flex-col items-center justify-center space-y-4 text-slate-300">
+                  <Video className="w-20 h-20 opacity-20" />
+                  <p className="font-black uppercase tracking-[0.3em] text-sm">هذا القسم فارغ حالياً</p>
+                </div>
+              )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 }

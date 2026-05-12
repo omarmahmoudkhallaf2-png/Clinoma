@@ -42,9 +42,24 @@ export default function FloatingTimer() {
                 {mode === 'work' ? <Brain className="w-4 h-4" /> : <Coffee className="w-4 h-4" />}
                 {mode}
               </div>
-              <button onClick={() => setIsExpanded(false)} className="text-muted-foreground hover:text-foreground">
-                <Minimize2 className="w-4 h-4" />
-              </button>
+              <div className="flex items-center gap-2">
+                <button 
+                  onClick={() => setIsExpanded(false)} 
+                  className="p-1.5 hover:bg-primary/10 rounded-lg text-muted-foreground hover:text-primary transition-all"
+                >
+                  <Minimize2 className="w-4 h-4" />
+                </button>
+                <button 
+                  onClick={() => {
+                    if (window.confirm('Hide timer? It will continue to count in the background.')) {
+                      setIsVisible(false);
+                    }
+                  }} 
+                  className="p-1.5 hover:bg-rose-500/10 rounded-lg text-muted-foreground hover:text-rose-500 transition-all"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
             </div>
 
             <div className="text-center">
@@ -83,30 +98,43 @@ export default function FloatingTimer() {
             </div>
           </motion.div>
         ) : (
-          <motion.button
-            key="collapsed"
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.8, opacity: 0 }}
-            onClick={() => setIsExpanded(true)}
-            className={cn(
-              "group relative h-16 w-48 rounded-full flex items-center gap-3 px-6 shadow-2xl border-2 transition-all hover:scale-105 active:scale-95",
-              mode === 'work' 
-                ? "bg-primary/90 text-white border-white/20" 
-                : "bg-emerald-500/90 text-white border-white/20"
-            )}
-          >
-            <div className="flex items-center justify-center h-8 w-8 bg-white/20 rounded-full">
-              {isActive ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 fill-current" />}
-            </div>
-            <div className="flex flex-col items-start leading-none">
-              <span className="text-[10px] font-black uppercase tracking-widest opacity-70">{mode}</span>
-              <span className="text-xl font-black tabular-nums">{formatTime(timeLeft)}</span>
-            </div>
-            <div className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity">
-              <Maximize2 className="w-4 h-4" />
-            </div>
-          </motion.button>
+          <div className="relative group">
+            <motion.button
+              key="collapsed"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              onClick={() => setIsExpanded(true)}
+              className={cn(
+                "h-16 w-48 rounded-full flex items-center gap-3 px-6 shadow-2xl border-2 transition-all hover:scale-105 active:scale-95",
+                mode === 'work' 
+                  ? "bg-primary/90 text-white border-white/20" 
+                  : "bg-emerald-500/90 text-white border-white/20"
+              )}
+            >
+              <div className="flex items-center justify-center h-8 w-8 bg-white/20 rounded-full">
+                {isActive ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 fill-current" />}
+              </div>
+              <div className="flex flex-col items-start leading-none">
+                <span className="text-[10px] font-black uppercase tracking-widest opacity-70">{mode}</span>
+                <span className="text-xl font-black tabular-nums">{formatTime(timeLeft)}</span>
+              </div>
+              <div className="ml-auto">
+                <Maximize2 className="w-4 h-4" />
+              </div>
+            </motion.button>
+            
+            {/* Dismiss Button for Collapsed View */}
+            <button 
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsVisible(false);
+              }}
+              className="absolute -top-2 -left-2 h-6 w-6 bg-rose-500 text-white rounded-full flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transition-all hover:scale-110 z-50"
+            >
+              <X className="w-3.5 h-3.5" />
+            </button>
+          </div>
         )}
       </AnimatePresence>
     </motion.div>
