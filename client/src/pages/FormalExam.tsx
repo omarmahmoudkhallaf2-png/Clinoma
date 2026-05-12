@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { db } from '../lib/firebase';
+import { dbExam as db } from '../lib/firebase';
 import {
   collection, query, where, getDocs, doc, getDoc, addDoc, serverTimestamp, Timestamp
 } from 'firebase/firestore';
@@ -44,52 +44,9 @@ export default function FormalExam() {
     window.addEventListener('contextmenu', preventAction);
     window.addEventListener('keydown', preventKeyboard);
 
-    // Screenshot/Focus detection (Aggressive)
-    const handleProtection = () => {
-      if (!document.hasFocus() || document.hidden) {
-        setIsBlurred(true);
-      } else {
-        // Only remove blur if we are not in a "Snapshot" cooldown
-        setIsBlurred(prev => {
-          // If it was a snapshot key, we might want to stay blurred for a bit
-          // but for now let's just sync with focus
-          return false;
-        });
-      }
-    };
-
-    const handleBlur = () => setIsBlurred(true);
-    const handleFocus = () => setIsBlurred(false);
-
-    const interval = setInterval(handleProtection, 100);
-
-    const handleKeyDown = (e: KeyboardEvent) => {
-      // Common screenshot keys including legacy keyCode 44 for PrintScreen
-      if (
-        e.key === 'PrintScreen' || 
-        e.key === 'Snapshot' || 
-        e.keyCode === 44 || 
-        (e.ctrlKey && e.shiftKey && (e.key === 'S' || e.key === 's')) ||
-        (e.metaKey && e.shiftKey && (e.key === '4' || e.key === '3')) // Mac
-      ) {
-        setIsBlurred(true);
-        setTimeout(() => setIsBlurred(false), 3000);
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    window.addEventListener('keyup', handleKeyDown);
-    window.addEventListener('mouseleave', handleBlur);
-    window.addEventListener('mouseenter', handleFocus);
-    
     return () => {
       window.removeEventListener('contextmenu', preventAction);
       window.removeEventListener('keydown', preventKeyboard);
-      clearInterval(interval);
-      window.removeEventListener('keydown', handleKeyDown);
-      window.removeEventListener('keyup', handleKeyDown);
-      window.removeEventListener('mouseleave', handleBlur);
-      window.removeEventListener('mouseenter', handleFocus);
     };
   }, []);
 
@@ -121,7 +78,14 @@ export default function FormalExam() {
         }
 
         const qSnap = await getDocs(query(collection(db, 'questions'), where('formalExamId', '==', examId)));
-        setQuestions(qSnap.docs.map(d => ({ id: d.id, ...d.data() })));
+        const fetchedQuestions = qSnap.docs.map(d => ({ id: d.id, ...d.data() }));
+        setQuestions(fetchedQuestions);
+
+        // Load local progress if exists
+        const savedAnswers = localStorage.getItem(`exam_${examId}_answers`);
+        const savedFlags = localStorage.getItem(`exam_${examId}_flags`);
+        if (savedAnswers) setAnswers(JSON.parse(savedAnswers));
+        if (savedFlags) setFlagged(JSON.parse(savedFlags));
 
         // Immediate one-attempt check (unless admin)
         if (user) {
@@ -142,7 +106,15 @@ export default function FormalExam() {
       finally { setLoading(false); }
     };
     init();
-  }, [examId]);
+  }, [examId, user, userRole]);
+
+  // Sync answers/flags to localStorage
+  useEffect(() => {
+    if (step === 'quiz') {
+      localStorage.setItem(`exam_${examId}_answers`, JSON.stringify(answers));
+      localStorage.setItem(`exam_${examId}_flags`, JSON.stringify(flagged));
+    }
+  }, [answers, flagged, step, examId]);
 
   // ── Countdown ────────────────────────────────────────────────────────────────
   useEffect(() => {
@@ -216,14 +188,22 @@ export default function FormalExam() {
         score, totalQuestions: questions.length,
         startTime: new Date(startTime!), endTime: new Date(endTime),
         timeSpentSeconds: Math.floor((endTime - (startTime ?? endTime)) / 1000),
-        createdAt: serverTimestamp()
+        createdAt: serverTimestamp(),
+        // Batching answers and flags into the submission object
+        userAnswers: answers,
+        userFlags: flagged
       });
+      
+      // Clear local progress
+      localStorage.removeItem(`exam_${examId}_answers`);
+      localStorage.removeItem(`exam_${examId}_flags`);
+      
       setFinalScore(score);
       setShowConfirm(false);
       setStep('result');
     } catch { alert('حدث خطأ، حاول مرة أخرى'); }
     finally { setSubmitting(false); }
-  }, [submitting, startTime, answers, questions, examId, examData, studentName]);
+  }, [submitting, startTime, answers, questions, examId, examData, studentName, flagged]);
 
   // ── Helpers ──────────────────────────────────────────────────────────────────
   const formatTime = (s: number) =>
@@ -499,26 +479,11 @@ export default function FormalExam() {
   const currentQ = questions[currentIndex];
 
   return (
-    <div className={`min-h-screen bg-background flex flex-col no-select relative ${isBlurred ? 'screenshot-blur' : ''}`}>
+    <div className="min-h-screen bg-background flex flex-col no-select relative">
       {/* Watermark */}
       <div className="watermark whitespace-pre">
         {Array(20).fill(`${studentName || user?.displayName || 'CLINOMA STUDENT'} - ${user?.email || ''}\n`).join(' ')}
       </div>
-
-      {isBlurred && (
-        <div className="fixed inset-0 z-[9999] bg-background/50 backdrop-blur-3xl flex flex-col items-center justify-center text-center p-10 animate-in fade-in duration-300">
-          <div className="w-24 h-24 bg-rose-500/20 text-rose-500 rounded-full flex items-center justify-center mb-6">
-            <Lock className="w-12 h-12" />
-          </div>
-          <h2 className="text-4xl font-black text-foreground mb-4">حماية المحتوى نشطة</h2>
-          <p className="text-xl font-bold text-muted-foreground max-w-md">
-            يُمنع تصوير الشاشة أو الخروج من نافذة الامتحان للحفاظ على سرية الأسئلة.
-          </p>
-          <div className="mt-10 px-8 py-4 bg-primary text-white rounded-2xl font-black animate-pulse">
-            اضغط هنا للعودة للامتحان
-          </div>
-        </div>
-      )}
       {/* Header */}
       <div className={`bg-card border-b-2 p-4 md:p-5 flex justify-between items-center sticky top-0 z-50 shadow-sm transition-colors ${isCurrentFlagged ? 'border-amber-400/60 bg-amber-500/5' : 'border-border'}`}>
         <div className="flex items-center gap-3">

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { db } from '../lib/firebase';
+import { dbExam as db } from '../lib/firebase';
 import { collection, getDocs, query, orderBy, Timestamp, onSnapshot, where } from 'firebase/firestore';
 import { Loader2, Clock, BookOpen, ChevronRight, ClipboardList, Lock, Calendar, Sparkles, CheckCircle2 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';

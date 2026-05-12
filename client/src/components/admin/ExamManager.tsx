@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { db, storage } from '../../lib/firebase';
+import { dbExam as db, storageExam as storage } from '../../lib/firebase';
 import {
   collection, addDoc, getDocs, deleteDoc, doc, serverTimestamp,
   query, orderBy, getDoc, where, Timestamp, updateDoc
