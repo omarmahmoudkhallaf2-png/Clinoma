@@ -33,6 +33,7 @@ const StudyMode = () => {
   const [results, setResults] = useState({ again: 0, hard: 0, good: 0, easy: 0 });
   const [finished, setFinished] = useState(false);
   const [zoom, setZoom] = useState(1);
+  const [pendingUpdates, setPendingUpdates] = useState<Record<string, any>>({});
 
   useEffect(() => {
     setZoom(1); // Reset zoom when card changes
@@ -57,13 +58,19 @@ const StudyMode = () => {
           where('deckId', '==', deckId)
         );
         
+        // Fetch all cards and merge with cache
         const querySnapshot = await getDocs(q);
-        const allCards = querySnapshot.docs.map(doc => ({
-          id: doc.id,
-          ...doc.data()
-        })) as Flashcard[];
+        const allCards = querySnapshot.docs.map(doc => {
+          const data = doc.data();
+          const cacheKey = `fc_progress_${doc.id}`;
+          const cached = localStorage.getItem(cacheKey);
+          if (cached) {
+            return { id: doc.id, ...data, ...JSON.parse(cached) };
+          }
+          return { id: doc.id, ...data };
+        }) as Flashcard[];
 
-        // Filter for due cards in memory to avoid Index requirement
+        // Filter for due cards in memory
         const fetchedCards = allCards.filter(card => (card.nextReview || 0) <= now);
 
         // Shuffle cards
@@ -93,22 +100,43 @@ const StudyMode = () => {
     setResults(prev => ({ ...prev, [ratingKey]: prev[ratingKey] + 1 }));
 
     try {
-      await updateDoc(doc(db, 'flashcards', card.id), {
-        ...srsUpdate,
-        lastReviewed: Date.now()
-      });
-    } catch (error) {
-      console.error('Error updating card:', error);
-    }
+      // 1. Update Cache (Immediate)
+      const cacheKey = `fc_progress_${card.id}`;
+      const update = { ...srsUpdate, lastReviewed: Date.now() };
+      localStorage.setItem(cacheKey, JSON.stringify(update));
 
-    if (currentIndex < cards.length - 1) {
-      setIsFlipped(false);
-      setTimeout(() => {
-        setCurrentIndex(prev => prev + 1);
-      }, 150);
-    } else {
-      setFinished(true);
-      updateUserStreak();
+      // 2. Add to Pending Updates (To be synced later)
+      const allUpdates = { ...pendingUpdates, [card.id]: update };
+      setPendingUpdates(allUpdates);
+
+      if (currentIndex < cards.length - 1) {
+        setIsFlipped(false);
+        setTimeout(() => {
+          setCurrentIndex(prev => prev + 1);
+        }, 150);
+      } else {
+        setFinished(true);
+        updateUserStreak();
+        syncUpdatesToFirebase(allUpdates);
+      }
+    } catch (error) {
+      console.error('Error updating cache:', error);
+    }
+  };
+
+  const syncUpdatesToFirebase = async (updatesToSync = pendingUpdates) => {
+    if (Object.keys(updatesToSync).length === 0) return;
+    
+    try {
+      const batch = writeBatch(db);
+      Object.entries(updatesToSync).forEach(([cardId, update]) => {
+        batch.update(doc(db, 'flashcards', cardId), update);
+      });
+      await batch.commit();
+      setPendingUpdates({});
+      toast.success('تم مزامنة التقدم مع السحابة ☁️');
+    } catch (error) {
+      console.error('Error syncing updates:', error);
     }
   };
 

@@ -32,7 +32,7 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
             className="absolute w-[800px] h-[800px] bg-primary/20 rounded-full blur-[150px]"
           />
           
-          <div className="relative flex flex-col items-center scale-125 md:scale-150">
+          <div className="relative flex flex-col items-center scale-90 sm:scale-125 md:scale-150">
             {/* Site Name Animation */}
             <motion.div
               initial={{ opacity: 0, y: 10 }}

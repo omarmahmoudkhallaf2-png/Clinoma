@@ -2,7 +2,7 @@ import { lazy, Suspense, useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { useAuth } from "./context/AuthContext";
 import type { ReactElement } from "react";
-import { Toaster } from "react-hot-toast";
+import { Toaster, toast } from "react-hot-toast";
 import { AnimatePresence } from "framer-motion";
 import { DataProvider } from "./context/DataContext";
 import { PomodoroProvider } from "./context/PomodoroContext";
@@ -69,7 +69,7 @@ const AnimatedRoutes = () => {
   return (
     <AnimatePresence mode="wait">
       <Suspense fallback={
-        <div className="min-h-[60vh] flex items-center justify-center">
+        <div className="relative flex flex-col items-center scale-90 sm:scale-125 md:scale-150">
           <div className="w-10 h-10 border-4 border-primary border-t-transparent rounded-full animate-spin" />
         </div>
       }>
@@ -121,8 +121,16 @@ const AnimatedRoutes = () => {
 };
 
 export default function App() {
-  const { userRole } = useAuth();
+  const { user } = useAuth();
   const [showSplash, setShowSplash] = useState(true);
+  const [showTimer, setShowTimer] = useState(false);
+
+  useEffect(() => {
+    if (!showSplash) {
+      const timer = setTimeout(() => setShowTimer(true), 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [showSplash]);
 
   useEffect(() => {
     // Force update contact info in Firestore to ensure it works for everyone
@@ -140,6 +148,17 @@ export default function App() {
     syncContactInfo();
   }, []);
 
+  useEffect(() => {
+    const handlePomodoroComplete = (e: any) => {
+      toast(e.detail.message, {
+        icon: '🔔',
+        duration: 5000,
+      });
+    };
+    window.addEventListener('pomodoro-complete', handlePomodoroComplete);
+    return () => window.removeEventListener('pomodoro-complete', handlePomodoroComplete);
+  }, []);
+
   return (
     <ThemeProvider>
       <DataProvider>
@@ -155,7 +174,7 @@ export default function App() {
             }
           }} />
           <AnimatedRoutes />
-          <FloatingTimer />
+          {showTimer && user && <FloatingTimer />}
           <CommandPalette />
         </PomodoroProvider>
       </Router>

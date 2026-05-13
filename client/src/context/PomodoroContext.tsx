@@ -167,7 +167,14 @@ export function PomodoroProvider({ children }: { children: React.ReactNode }) {
     try {
       const bell = new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3');
       bell.volume = settings.soundVolume;
-      bell.play();
+      bell.play().catch(e => console.error("Audio play failed:", e));
+      
+      // Visual notification
+      const message = mode === 'work' ? "Time for a break! ☕" : "Break's over! Let's get back to work 🚀";
+      // We can't import toast here easily without adding it to the context or using a global event
+      // But we can use a custom event or just rely on the audio if it works.
+      // Actually, since this is a context, we can't easily use toast here unless we pass it or use window dispatch.
+      window.dispatchEvent(new CustomEvent('pomodoro-complete', { detail: { message } }));
     } catch (e) {}
   }, [userId, mode, settings]);
 

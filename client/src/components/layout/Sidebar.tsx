@@ -135,7 +135,69 @@ export default function Sidebar({ isOpen = false, setIsOpen = (_: boolean) => { 
 
           {/* Main Navigation */}
           <nav className="space-y-1">
-            {menuItems.map((item, index) => (
+            {/* Dashboard Link (Separated for reordering) */}
+            <button
+              onClick={() => navTo('/dashboard')}
+              className={cn(
+                "w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all relative group",
+                location.pathname === '/dashboard'
+                  ? "bg-primary/10 text-primary"
+                  : "text-muted-foreground hover:bg-accent hover:text-foreground"
+              )}
+            >
+              <LayoutDashboard className={cn(
+                "w-5 h-5 transition-transform group-hover:scale-110",
+                location.pathname === '/dashboard' && "text-primary"
+              )} />
+              <span className="font-semibold text-sm flex-1 text-right" dir="rtl">لوحة التحكم</span>
+              {location.pathname === '/dashboard' && (
+                <motion.div
+                  layoutId="active-indicator"
+                  className="absolute left-0 w-1 h-6 bg-primary rounded-r-full"
+                />
+              )}
+            </button>
+
+            {/* بنوك الأسئلة - Dropdown (Now under Dashboard) */}
+            <div className="space-y-1">
+              <button
+                onClick={() => setIsQBOpen(!isQBOpen)}
+                className={cn(
+                  "w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all relative group",
+                  isQBOpen ? "bg-accent text-foreground" : "text-muted-foreground hover:bg-accent hover:text-foreground"
+                )}
+              >
+                <Database className="w-5 h-5 transition-transform group-hover:scale-110" />
+                <span className="font-semibold text-sm flex-1 text-right" dir="rtl">بنوك الأسئلة</span>
+                <ChevronDown className={cn("w-4 h-4 transition-transform duration-300", isQBOpen ? "rotate-180" : "")} />
+              </button>
+              
+              <AnimatePresence>
+                {isQBOpen && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    className="overflow-hidden pr-4"
+                  >
+                    <button
+                      onClick={() => window.open('https://pediatrics-qbank-clinoma-support.pages.dev/', '_blank')}
+                      className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-muted-foreground hover:bg-emerald-500/5 hover:text-emerald-600 transition-all group"
+                    >
+                      <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
+                      <span className="font-semibold text-[10px] flex-1 text-right leading-tight" dir="rtl">
+                        بنك أسئلة الأطفال<br/>
+                        <span className="text-[8px] opacity-60">بالتعاون مع سبورت</span>
+                      </span>
+                      <div className="px-2 py-0.5 bg-emerald-500/10 text-emerald-600 text-[7px] font-black rounded-full border border-emerald-500/20 uppercase">FREE</div>
+                    </button>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            {/* Other Menu Items */}
+            {menuItems.slice(1).map((item) => (
               <div key={item.path}>
                 <button
                   onClick={() => navTo(item.path)}
@@ -158,8 +220,6 @@ export default function Sidebar({ isOpen = false, setIsOpen = (_: boolean) => { 
                     />
                   )}
                 </button>
-
-                 {/* بنوك الأسئلة - Hidden for now */}
               </div>
             ))}
 

@@ -41,7 +41,11 @@ export function calculateSRS(
 
   if (easeFactor < 1.3) easeFactor = 1.3;
 
-  const nextReview = Date.now() + interval * 24 * 60 * 60 * 1000;
+  // If rating is 0 (Again), set next review to 30 seconds from now
+  // Otherwise, use the calculated interval in days
+  const nextReview = rating === 0 
+    ? Date.now() + 30 * 1000 
+    : Date.now() + interval * 24 * 60 * 60 * 1000;
 
   return {
     nextReview,
