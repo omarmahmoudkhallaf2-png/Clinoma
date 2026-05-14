@@ -156,11 +156,24 @@ const FlashSpace = () => {
       try {
         const snap = await getDocs(query(collection(db, 'flashspace_boards'), orderBy('createdAt', 'desc')));
         const fetched = snap.docs.map(doc => ({ id: doc.id, ...doc.data() } as Board));
-        setBoards(fetched);
         
-        const mods = Array.from(new Set(fetched.map(b => b.module))).filter(Boolean);
+        // Add the new Pediatrics board provided by the user
+        const newPediatricsBoard: Board = {
+          id: 'pediatrics_arrest_2024',
+          module: 'Pediatrics',
+          system: 'Emergency Medicine',
+          disease: 'Cardiopulmonary Arrest',
+          medicalImage: '/assets/pediatrics_arrest.png',
+          explanation: 'A comprehensive guide to pediatric cardiopulmonary arrest. Key aspects include definition (sudden cessation of circulation), etiology (respiratory failure, shock, or primary cardiac problems), diagnosis via respiration/heartbeat/pupils, and management through CPR and advanced life support.',
+          createdAt: Date.now()
+        };
+
+        const finalBoards = [newPediatricsBoard, ...fetched];
+        setBoards(finalBoards);
+        
+        const mods = Array.from(new Set(finalBoards.map(b => b.module))).filter(Boolean);
         const sysMap: Record<string, string[]> = {};
-        fetched.forEach(b => {
+        finalBoards.forEach(b => {
           if (b.module && b.system) {
             if (!sysMap[b.module]) sysMap[b.module] = [];
             if (!sysMap[b.module].includes(b.system)) sysMap[b.module].push(b.system);

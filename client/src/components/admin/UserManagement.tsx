@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { db } from '../../lib/firebase';
 import { collection, getDocs, deleteDoc, doc } from 'firebase/firestore';
 import { useAuth } from '../../context/AuthContext';
-import { Shield, User as UserIcon, CheckCircle2, XCircle, Search, Loader2, Mail, Trash2 } from 'lucide-react';
+import { Shield, User as UserIcon, CheckCircle2, XCircle, Search, Loader2, Mail, Trash2, Clock } from 'lucide-react';
 import { sendNotification } from '../../lib/notificationService';
 
 interface UserData {
@@ -13,6 +13,7 @@ interface UserData {
   role: 'admin' | 'user';
   plan: 'free' | 'premium';
   subscriptions?: Record<string, boolean>; // e.g., { "f1": true, "f2": false }
+  createdAt?: any;
 }
 
 export default function UserManagement() {
@@ -92,10 +93,22 @@ export default function UserManagement() {
     }
   };
 
-  const filteredUsers = users.filter(u => 
-    u.email?.toLowerCase().includes(search.toLowerCase()) || 
-    u.displayName?.toLowerCase().includes(search.toLowerCase())
-  );
+  const filteredUsers = users
+    .filter(u => 
+      u.email?.toLowerCase().includes(search.toLowerCase()) || 
+      u.displayName?.toLowerCase().includes(search.toLowerCase())
+    )
+    .sort((a, b) => {
+      // Admins always on top
+      if (a.role === 'admin' && b.role !== 'admin') return -1;
+      if (a.role !== 'admin' && b.role === 'admin') return 1;
+
+      // For users (or between admins), sort by join date (newest first)
+      const timeA = a.createdAt?.seconds || (a.createdAt instanceof Date ? a.createdAt.getTime() / 1000 : 0);
+      const timeB = b.createdAt?.seconds || (b.createdAt instanceof Date ? b.createdAt.getTime() / 1000 : 0);
+      
+      return timeB - timeA;
+    });
 
   if (loading) return <div className="p-20 text-center"><Loader2 className="animate-spin mx-auto w-10 h-10 text-primary" /></div>;
 
@@ -148,6 +161,12 @@ export default function UserManagement() {
                           <Mail className="w-3 h-3" />
                           {user.email}
                         </div>
+                        {user.createdAt && (
+                          <div className="text-[10px] text-muted-foreground/60 font-bold flex items-center gap-1 mt-0.5">
+                            <Clock className="w-2.5 h-2.5" />
+                            انضم في {new Date((user.createdAt?.seconds * 1000) || user.createdAt).toLocaleDateString('ar-EG', { day: 'numeric', month: 'short', year: 'numeric' })}
+                          </div>
+                        )}
                       </div>
                     </div>
                   </td>
