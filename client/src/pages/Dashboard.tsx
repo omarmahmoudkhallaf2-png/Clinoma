@@ -149,18 +149,19 @@ export default function Dashboard() {
         <div className="absolute bottom-0 left-0 -ml-20 -mb-20 h-64 w-64 rounded-full bg-indigo-500/20 blur-3xl" />
         
         <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
-          <div className="space-y-4 text-center md:text-right">
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
+          <div className="space-y-3 text-center md:text-right">
+            <h1 className="text-2xl md:text-4xl font-black tracking-tight">
               أهلاً بك، {user?.displayName?.split(' ')[0]}! 👋
             </h1>
-            <p className="text-lg text-primary-foreground/80 font-medium max-w-xl">
+            <p className="text-sm md:text-base text-primary-foreground/70 font-medium max-w-xl">
               تتبع تقدمك، راجع أخطائك، واستعد للامتحانات بأفضل الأدوات التعليمية.
             </p>
-            <div className="flex flex-wrap items-center gap-4 mt-6 justify-center md:justify-start">
+            <div className="flex flex-wrap items-center gap-3 mt-4 justify-center md:justify-start">
               <Button 
                 variant="ghost" 
+                size="sm"
                 onClick={() => navigate('/review')}
-                className="text-white hover:bg-white/10"
+                className="text-white hover:bg-white/10 text-xs font-bold px-6"
               >
                 المراجعة الذكية
               </Button>
@@ -188,24 +189,23 @@ export default function Dashboard() {
         className="relative group cursor-pointer"
       >
         <div className="absolute -inset-1 bg-gradient-to-r from-rose-600 to-rose-400 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200" />
-        <Card className="relative bg-gradient-to-r from-rose-600 via-rose-500 to-rose-400 border-none overflow-hidden h-24 flex items-center px-8 shadow-2xl shadow-rose-500/20">
-          <div className="absolute top-0 right-0 -mr-10 -mt-10 h-40 w-40 rounded-full bg-white/10 blur-3xl group-hover:scale-150 transition-transform duration-700" />
-          <div className="absolute bottom-0 left-0 -ml-10 -mb-10 h-40 w-40 rounded-full bg-black/10 blur-3xl group-hover:scale-150 transition-transform duration-700" />
+        <Card className="relative bg-gradient-to-r from-rose-600 via-rose-500 to-rose-400 border-none overflow-hidden h-20 md:h-24 flex items-center px-6 md:px-8 shadow-xl">
+          <div className="absolute top-0 right-0 -mr-10 -mt-10 h-32 w-32 rounded-full bg-white/10 blur-3xl group-hover:scale-150 transition-transform duration-700" />
           
           <div className="relative z-10 flex items-center justify-between w-full">
-            <div className="flex items-center gap-6">
-              <div className="p-3 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 group-hover:rotate-12 transition-transform duration-500">
-                <Clock className="w-8 h-8 text-white" />
+            <div className="flex items-center gap-4 md:gap-6">
+              <div className="p-2 md:p-3 bg-white/10 backdrop-blur-md rounded-xl md:rounded-2xl border border-white/20">
+                <Clock className="w-5 h-5 md:w-8 md:h-8 text-white" />
               </div>
               <div className="flex flex-col">
-                <span className="text-3xl font-black text-white tracking-tighter leading-none">POMODORO</span>
-                <span className="text-xs font-bold text-white/60 uppercase tracking-[0.3em] mt-1">Focus Studio</span>
+                <span className="text-xl md:text-3xl font-black text-white tracking-tighter leading-none">POMODORO</span>
+                <span className="text-[8px] md:text-xs font-bold text-white/60 uppercase tracking-[0.2em] mt-1">Focus Studio</span>
               </div>
             </div>
-            <div className="flex items-center gap-4 text-white font-bold text-lg" dir="rtl">
-              <span className="hidden md:block">نظام التركيز العالمي - متاح الآن مجاناً</span>
-              <div className="p-2 bg-white/20 rounded-full">
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-[-4px] transition-transform" />
+            <div className="flex items-center gap-3 text-white font-bold text-xs md:text-base" dir="rtl">
+              <span className="hidden sm:block">نظام التركيز العالمي</span>
+              <div className="p-1.5 md:p-2 bg-white/20 rounded-full">
+                <ArrowRight className="w-4 h-4" />
               </div>
             </div>
           </div>
@@ -218,35 +218,30 @@ export default function Dashboard() {
         className="relative group cursor-pointer"
       >
         <div className="absolute -inset-1 bg-gradient-to-r from-emerald-600 via-teal-500 to-cyan-400 rounded-3xl blur opacity-25 group-hover:opacity-60 transition duration-1000 group-hover:duration-200" />
-        <Card className="relative bg-white dark:bg-slate-900 border-none overflow-hidden h-32 flex items-center px-8 shadow-2xl transition-all duration-500 group-hover:scale-[1.01]">
-          {/* Decorative background elements */}
-          <div className="absolute top-0 right-0 -mr-20 -mt-20 h-64 w-64 rounded-full bg-emerald-500/5 blur-3xl group-hover:bg-emerald-500/10 transition-colors duration-700" />
-          <div className="absolute bottom-0 left-0 -ml-20 -mb-20 h-64 w-64 rounded-full bg-cyan-500/5 blur-3xl group-hover:bg-cyan-500/10 transition-colors duration-700" />
-          
+        <Card className="relative bg-white dark:bg-slate-900 border-none overflow-hidden h-24 md:h-32 flex items-center px-6 md:px-8 shadow-lg transition-all duration-500">
           <div className="relative z-10 flex items-center justify-between w-full">
-            <div className="flex items-center gap-8">
+            <div className="flex items-center gap-4 md:gap-8">
               <div className="relative">
-                <div className="absolute inset-0 bg-emerald-500/20 blur-xl rounded-full scale-150 animate-pulse" />
-                <div className="relative p-5 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-[2rem] shadow-xl shadow-emerald-500/20 group-hover:rotate-[15deg] transition-transform duration-500">
-                  <Database className="w-10 h-10 text-white" />
+                <div className="relative p-3 md:p-5 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl md:rounded-[2rem] shadow-lg shadow-emerald-500/20">
+                  <Database className="w-6 h-6 md:w-10 md:h-10 text-white" />
                 </div>
               </div>
               
-              <div className="flex flex-col space-y-1">
-                <div className="flex items-center gap-3">
-                  <span className="text-3xl font-black text-slate-900 dark:text-white tracking-tighter leading-none">بنك أسئلة الأطفال و الرمد</span>
-                  <div className="px-3 py-1 bg-emerald-500 text-white text-[10px] font-black rounded-full shadow-lg shadow-emerald-500/20 animate-bounce">FREE</div>
+              <div className="flex flex-col space-y-0.5 md:space-y-1">
+                <div className="flex items-center gap-2 md:gap-3">
+                  <span className="text-lg md:text-3xl font-black text-slate-900 dark:text-white tracking-tighter leading-none">بنك أسئلة الأطفال و الرمد</span>
+                  <div className="px-2 py-0.5 bg-emerald-500 text-white text-[8px] font-black rounded-full">FREE</div>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Sparkles className="w-4 h-4 text-emerald-500" />
-                  <span className="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">بالتعاون مع سبورت</span>
+                <div className="flex items-center gap-1.5">
+                  <Sparkles className="w-3 h-3 text-emerald-500" />
+                  <span className="text-[10px] md:text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">Clinoma + Support</span>
                 </div>
               </div>
             </div>
             
-            <div className="flex items-center gap-6">
-              <div className="p-4 bg-slate-50 dark:bg-slate-800 rounded-2xl group-hover:bg-emerald-500 group-hover:text-white transition-all duration-500 shadow-inner">
-                <ArrowRight className="w-6 h-6 group-hover:translate-x-[-4px] transition-transform" />
+            <div className="hidden sm:flex items-center gap-6">
+              <div className="p-3 bg-slate-50 dark:bg-slate-800 rounded-xl group-hover:bg-emerald-500 group-hover:text-white transition-all duration-500">
+                <ArrowRight className="w-5 h-5" />
               </div>
             </div>
           </div>
@@ -255,86 +250,68 @@ export default function Dashboard() {
 
 
       {/* Core Stats & Quick Revision Row */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
         {/* Accuracy */}
         <Card className="overflow-hidden group">
-          <CardContent className="p-6 relative">
-            <div className="absolute top-0 right-0 w-24 h-24 rounded-full -mr-12 -mt-12 blur-3xl opacity-20 bg-emerald-500/10" />
-            <div className="flex justify-between items-center mb-4">
-              <div className="p-2 rounded-lg transition-transform group-hover:scale-110 bg-emerald-500/10 text-emerald-500">
-                <TrendingUp className="w-5 h-5" />
+          <CardContent className="p-4 md:p-6 relative">
+            <div className="flex justify-between items-center mb-2 md:mb-4">
+              <div className="p-1.5 rounded-lg bg-emerald-500/10 text-emerald-500">
+                <TrendingUp className="w-4 h-4" />
               </div>
             </div>
-            <div className="space-y-1">
-              <div className="text-2xl font-bold tracking-tight">%{userStats.accuracy}</div>
-              <div className="text-[10px] font-bold uppercase text-muted-foreground tracking-widest">نسبة الدقة</div>
+            <div className="space-y-0.5">
+              <div className="text-xl md:text-2xl font-black">%{userStats.accuracy}</div>
+              <div className="text-[8px] md:text-[10px] font-bold uppercase text-muted-foreground tracking-widest">نسبة الدقة</div>
             </div>
           </CardContent>
         </Card>
 
         {/* Streak */}
         <Card className="overflow-hidden group">
-          <CardContent className="p-6 relative">
-            <div className="absolute top-0 right-0 w-24 h-24 rounded-full -mr-12 -mt-12 blur-3xl opacity-20 bg-orange-500/10" />
-            <div className="flex justify-between items-center mb-4">
-              <div className="p-2 rounded-lg transition-transform group-hover:scale-110 bg-orange-500/10 text-orange-500">
-                <Zap className="w-5 h-5" />
+          <CardContent className="p-4 md:p-6 relative">
+            <div className="flex justify-between items-center mb-2 md:mb-4">
+              <div className="p-1.5 rounded-lg bg-orange-500/10 text-orange-500">
+                <Zap className="w-4 h-4" />
               </div>
             </div>
-            <div className="space-y-1">
-              <div className="text-2xl font-bold tracking-tight">{userStats.streak}</div>
-              <div className="text-[10px] font-bold uppercase text-muted-foreground tracking-widest">التفاعل اليومي</div>
+            <div className="space-y-0.5">
+              <div className="text-xl md:text-2xl font-black">{userStats.streak}</div>
+              <div className="text-[8px] md:text-[10px] font-bold uppercase text-muted-foreground tracking-widest">التفاعل اليومي</div>
             </div>
           </CardContent>
         </Card>
 
         {/* Incorrect Questions */}
         <Card className="overflow-hidden group relative hover:border-destructive/30 transition-all">
-          <CardContent className="p-6 relative">
+          <CardContent className="p-4 md:p-6 relative">
             <div onClick={() => navigate('/incorrect')} className="cursor-pointer">
-              <div className="absolute top-0 right-0 w-24 h-24 rounded-full -mr-12 -mt-12 blur-3xl opacity-20 bg-destructive/10" />
-              <div className="flex justify-between items-center mb-4">
-                <div className="p-2 rounded-lg transition-transform group-hover:scale-110 bg-destructive/10 text-destructive">
-                  <XCircle className="w-5 h-5" />
+              <div className="flex justify-between items-center mb-2 md:mb-4">
+                <div className="p-1.5 rounded-lg bg-destructive/10 text-destructive">
+                  <XCircle className="w-4 h-4" />
                 </div>
               </div>
-              <div className="space-y-1">
-                <div className="text-xl font-bold tracking-tight">الأسئلة الخاطئة</div>
-                <div className="text-[10px] font-bold uppercase text-muted-foreground tracking-widest">مراجعة الأخطاء</div>
+              <div className="space-y-0.5">
+                <div className="text-sm md:text-xl font-black">الأخطاء</div>
+                <div className="text-[8px] md:text-[10px] font-bold uppercase text-muted-foreground tracking-widest">مراجعة</div>
               </div>
             </div>
-            <button 
-              onClick={(e) => { e.stopPropagation(); handleReset('incorrect'); }}
-              className="absolute top-4 left-4 p-2 bg-secondary/50 rounded-lg hover:bg-destructive hover:text-white transition-all opacity-0 group-hover:opacity-100"
-              title="Reset List"
-            >
-              <RotateCcw className="w-3.5 h-3.5" />
-            </button>
           </CardContent>
         </Card>
 
         {/* Flagged Questions */}
         <Card className="overflow-hidden group relative hover:border-amber-500/30 transition-all">
-          <CardContent className="p-6 relative">
+          <CardContent className="p-4 md:p-6 relative">
             <div onClick={() => navigate('/flagged')} className="cursor-pointer">
-              <div className="absolute top-0 right-0 w-24 h-24 rounded-full -mr-12 -mt-12 blur-3xl opacity-20 bg-amber-500/10" />
-              <div className="flex justify-between items-center mb-4">
-                <div className="p-2 rounded-lg transition-transform group-hover:scale-110 bg-amber-500/10 text-amber-600">
-                  <Bookmark className="w-5 h-5" />
+              <div className="flex justify-between items-center mb-2 md:mb-4">
+                <div className="p-1.5 rounded-lg bg-amber-500/10 text-amber-600">
+                  <Bookmark className="w-4 h-4" />
                 </div>
               </div>
-              <div className="space-y-1">
-                <div className="text-xl font-bold tracking-tight">الأسئلة المعلمة</div>
-                <div className="text-[10px] font-bold uppercase text-muted-foreground tracking-widest">الوصول السريع</div>
+              <div className="space-y-0.5">
+                <div className="text-sm md:text-xl font-black">المعلمة</div>
+                <div className="text-[8px] md:text-[10px] font-bold uppercase text-muted-foreground tracking-widest">المفضلة</div>
               </div>
             </div>
-            <button 
-              onClick={(e) => { e.stopPropagation(); handleReset('flagged'); }}
-              className="absolute top-4 left-4 p-2 bg-secondary/50 rounded-lg hover:bg-amber-500 hover:text-white transition-all opacity-0 group-hover:opacity-100"
-              title="Reset List"
-            >
-              <RotateCcw className="w-3.5 h-3.5" />
-            </button>
           </CardContent>
         </Card>
       </div>
