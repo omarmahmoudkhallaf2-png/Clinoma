@@ -1,0 +1,738 @@
+{
+  "deck": {
+    "title": "Eyelid Study Material",
+    "description": "Generated from eyelid.pdf",
+    "subject": "Ophthalmology",
+    "module": "Eyelid",
+    "year": "Third Year",
+    "isPublic": false
+  },
+  "cards": [
+    {
+      "id": "eyelid_1_0",
+      "front": "",
+      "back": "Visual acuity chart",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_1_0.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_1_1",
+      "front": "",
+      "back": "Ishihara Chart for color testing",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_1_1.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_1_2",
+      "front": "",
+      "back": "Goldmann applanation tonometery used for IOP measurement",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_1_2.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_1_3",
+      "front": "",
+      "back": "Confrontation method for Visual field Ex.",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_1_3.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_2_0",
+      "front": "",
+      "back": "fundus examination by direct ophthalmoscope",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_2_0.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_2_1",
+      "front": "",
+      "back": "fundus examination by indirect ophthalmoscope",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_2_1.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_2_2",
+      "front": "",
+      "back": "Goldman 3 mirror contact lens used for fundus examination and gonioscopy",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_2_2.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_2_3",
+      "front": "",
+      "back": "Schoitz indentation Tonometry for IOP measurement",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_2_3.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_2_4",
+      "front": "",
+      "back": "Schoitz disadvantage - False low readings when scleral rigidity is low as in: high myopia and previous ocular surgery.",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_2_4.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_3_0",
+      "front": "",
+      "back": "Preseptal cellulitis: Interpret the attached CT findings? opacification at anterior orbital septum, Thickening of eye lid soft tissues, Inflammation confined anterior to the orbital septum (the orbit is normal), Intact ocular motility, No proptosis, No orbital fat stranding + No subperiosteal abscess. Sources of infection? Endogenous: extension from neighboring structures as the paranasal sinuses. Exogenous: as in penetrating trauma or septic orbital surgery. Blood born: metastatic infection as in pyemia. Treatment? (same as orbital cellulitis) Hospitalization: is necessary in orbital cellulitis only for close follow-up: 1) Topical and systemic parenteral broad spectrum antibiotics. 2) Hot foments. N.B: If abscess is formed, it should be drained",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_3_0.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_3_1",
+      "front": "",
+      "back": "Acute orbital cellulitis",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_3_1.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_4_0",
+      "front": "",
+      "back": "Herpes simplex - C.O: Herpes simplex type 1",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_4_0.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_4_1",
+      "front": "",
+      "back": "Herpes zoster ophthalmicus - C.O: herpes zoster virus. Hutchinson sign: Vesicular lesions on the tip of the nose, indicating nasociliary nerve involvement. Treatment: acyclovir (Zovirax)",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_4_1.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_4_2",
+      "front": "",
+      "back": "Ulcerative blepharitis - C.O: Staph. aureus",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_4_2.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_4_3",
+      "front": "",
+      "back": "Parasitic blepharitis - C.O: Infestation by Pubic crab louse and its ova",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_4_3.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_4_4",
+      "front": "",
+      "back": "Scaly blepharitis - Treatment: Lid hygiene (warm compresses, massage, removal of scales using baby shampoo), local antibiotic ointment.",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_4_4.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_5_0",
+      "front": "",
+      "back": "Stye: Zeiss glands",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_5_0.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_5_1",
+      "front": "",
+      "back": "Infected chalazion",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_5_1.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_5_2",
+      "front": "",
+      "back": "Chalazion: meibomian gland",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_5_2.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_5_3",
+      "front": "",
+      "back": "Treatment of Stye: 1) Frequent hot foments. 2) Epilation of the lash. 3) Local & systemic antibiotic. 4) Treatment of predisposing factor. Treatment of Chalazion: 1) Conservative (hot foments, antibiotic steroid). 2) Surgical (incision and curettage through conjunctival surface).",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_5_3.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_6_0",
+      "front": "",
+      "back": "Trichiasis - Def: Acquired condition with >4 lashes directed posteriorly rubbing against cornea or bulbar conjunctiva",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_6_0.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_6_1",
+      "front": "",
+      "back": "Distichiasis - Def: Abnormality (usually congenital) with extra row of lashes from lid margin behind grey line",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_6_1.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_6_2",
+      "front": "",
+      "back": "Trichiasis complication: Chronic conjunctivitis, corneal recurrent ulceration, opacification, superficial vascularization.",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_6_2.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_6_3",
+      "front": "",
+      "back": "Madarosis",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_6_3.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_6_4",
+      "front": "",
+      "back": "Poliosis",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_6_4.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_7_0",
+      "front": "",
+      "back": "Involutional entropion and Corneal ulcer stained with Fluorescein",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_7_0.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_7_1",
+      "front": "",
+      "back": "Cicatracial entropion - Causes: 1) Trachoma. 2) Ulcerative blepharitis. 3) Trauma/Chemical burns. 4) Cicatrizing diseases (pemphigoid, Stevens Johnson).",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_7_1.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_8_0",
+      "front": "",
+      "back": "Involutional ectropion - Mechanism: Age-related degeneration of elastic tissue leading to horizontal laxity.",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_8_0.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_8_1",
+      "front": "",
+      "back": "Cicatracial ectropion - Treatment: Protect cornea (V-Y operation for small scar, grafting for large scar).",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_8_1.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_8_2",
+      "front": "",
+      "back": "Mechanical ectropion - Treatment: Remove cause",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_8_2.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_8_3",
+      "front": "",
+      "back": "Grades of Ectropion: Mild (punctum visible), Moderate (tarsal conjunctiva exposed), Severe (completely everted lid).",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_8_3.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_9_0",
+      "front": "",
+      "back": "Paralytic ectropion & lagophthalmos & epiphora - Nerve: Facial, Muscle: Orbicularis oculi",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_9_0.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_9_1",
+      "front": "",
+      "back": "Paralytic ectropion & lagophthalmos",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_9_1.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_9_2",
+      "front": "",
+      "back": "Paralytic ectropion & lagophthalmos",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_9_2.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_9_3",
+      "front": "",
+      "back": "Complication of lagophthalmos: Exposure keratitis, corneal ulceration, perforation, xerosis.",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_9_3.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_10_0",
+      "front": "",
+      "back": "Assessment of facial nerve signs: Loss of forehead wrinkles, inability to close eyes, wide palpebral fissure, epiphora, loss of naso-labial fold, drooping angle of mouth.",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_10_0.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_10_1",
+      "front": "",
+      "back": "Xanthelasma",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_10_1.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_10_2",
+      "front": "",
+      "back": "Capillary hemangioma",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_10_2.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_10_3",
+      "front": "",
+      "back": "Sturge Weber syndrome (Naevus flammeus) - Ocular associations: Congenital Glaucoma, Choroidal hemangioma.",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_10_3.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_10_4",
+      "front": "",
+      "back": "Periocular hemangioma",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_10_4.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_10_5",
+      "front": "",
+      "back": "Naevus",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_10_5.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_10_6",
+      "front": "",
+      "back": "Melanoma",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_10_6.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_11_0",
+      "front": "",
+      "back": "Basal cell carcinoma (Rodent ulcer)",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_11_0.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_11_1",
+      "front": "",
+      "back": "SCC",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_11_1.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_11_2",
+      "front": "",
+      "back": "Basal cell carcinoma + Pterygium",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_11_2.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_11_3",
+      "front": "",
+      "back": "Lt. Ptosis",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_11_3.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_11_4",
+      "front": "",
+      "back": "Lid retraction",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_11_4.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_11_5",
+      "front": "",
+      "back": "Lt. Ptosis Management: Resection (if fair/good levator action) or Frontalis suspension (if poor).",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_11_5.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_11_6",
+      "front": "",
+      "back": "Unilateral severe ptosis - Manage as early as possible to avoid amblyopia.",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_11_6.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_12_0",
+      "front": "",
+      "back": "pseudoptosis due to:",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_12_0.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_12_1",
+      "front": "",
+      "back": "Lack of lid support",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_12_1.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_12_2",
+      "front": "",
+      "back": "Contralateral lid retraction",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_12_2.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_12_3",
+      "front": "",
+      "back": "Ipsilateral hypotropia",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_12_3.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_12_4",
+      "front": "",
+      "back": "Brow ptosis excessive eyebrow skin",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_12_4.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_12_5",
+      "front": "",
+      "back": "Dermatochalasis excessive eyelid skin",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_12_5.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_12_6",
+      "front": "",
+      "back": "Marcus Gunn jaw-winking syndrome: Misinnervation between CN V and CN III; eyelid elevation with jaw movement.",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_12_6.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_13_0",
+      "front": "",
+      "back": "Bilateral congenital upper & lower lid ectropion (blepharophimosis syndrome): Ptosis, short aperture, telecanthus, epicanthus inversus.",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_13_0.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_13_1",
+      "front": "",
+      "back": "Left third nerve palsy",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_13_1.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_13_2",
+      "front": "",
+      "back": "Procedure: Frontalis suspension for poor levator function.",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_13_2.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_13_3",
+      "front": "",
+      "back": "Horner syndrome (Rt. eye): Mild ptosis, miosis, anhidrosis, enophthalmos.",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_13_3.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_14_0",
+      "front": "",
+      "back": "Bilateral involutional Ptosis: Dehiscence in levator aponeurosis. High crease due to skin attachments remains while aponeurosis stretches.",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_14_0.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_14_1",
+      "front": "",
+      "back": "Epicanthus",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_14_1.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_14_2",
+      "front": "",
+      "back": "Rt. Upper lid coloboma: Complications: Exposure keratopathy, corneal ulcer.",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_14_2.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_14_3",
+      "front": "",
+      "back": "MARGIN CREASE DISTANCE - Normal: 7-10 mm. High in aponeurotic ptosis, absent in congenital ptosis.",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_14_3.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_15_0",
+      "front": "",
+      "back": "EYE LID TESTS - MRD TEST: Normal MRD1 (4-5 mm), MRD2 (>5 mm). Interpretation: Mild (1mm drop), Moderate (2-3mm), Severe (>4mm).",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_15_0.png",
+        "masks": [],
+        "scale": 1
+      }
+    },
+    {
+      "id": "eyelid_15_1",
+      "front": "",
+      "back": "LEVATOR FUNCTION TEST: Normal fissure (9-10 mm). Interpretation: Excellent (≥12mm), Good (8-11mm), Fair (5-7mm), Poor (0-4mm).",
+      "tags": [],
+      "frontImage": {
+        "url": "/flashcards/eyelid/eyelid_15_1.png",
+        "masks": [],
+        "scale": 1
+      }
+    }
+  ]
+}

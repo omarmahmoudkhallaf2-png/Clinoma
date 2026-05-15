@@ -531,7 +531,7 @@ const ImportCards = () => {
                         <p className="text-sm font-medium">{card.back}</p>
                       </div>
                     </div>
-                    {card.tags.length > 0 && (
+                    {card.tags?.length > 0 && (
                       <div className="flex gap-2 mt-1">
                         {card.tags.map(t => (
                           <span key={t} className="text-[10px] bg-card px-2 py-0.5 rounded-full border border-border">#{t}</span>
