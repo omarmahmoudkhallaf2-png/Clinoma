@@ -178,7 +178,7 @@ export default function Sidebar({ isOpen = false, setIsOpen = (_: boolean) => { 
                     className="overflow-hidden pr-4"
                   >
                     <button
-                      onClick={() => window.open('https://pediatrics-qbank-clinoma-support.pages.dev/', '_blank')}
+                      onClick={() => window.open(`https://pediatrics-qbank-clinoma-support.pages.dev/?v=${Date.now()}`, '_blank')}
                       className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-muted-foreground hover:bg-emerald-500/5 hover:text-emerald-600 transition-all group"
                     >
                       <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
