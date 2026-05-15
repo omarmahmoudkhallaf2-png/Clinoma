@@ -234,7 +234,7 @@ export default function Dashboard() {
               
               <div className="flex flex-col space-y-1">
                 <div className="flex items-center gap-3">
-                  <span className="text-3xl font-black text-slate-900 dark:text-white tracking-tighter leading-none">بنك أسئلة الأطفال</span>
+                  <span className="text-3xl font-black text-slate-900 dark:text-white tracking-tighter leading-none">بنك أسئلة الأطفال و الرمد</span>
                   <div className="px-3 py-1 bg-emerald-500 text-white text-[10px] font-black rounded-full shadow-lg shadow-emerald-500/20 animate-bounce">FREE</div>
                 </div>
                 <div className="flex items-center gap-2">

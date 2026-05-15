@@ -43,6 +43,7 @@ const Pomodoro = lazy(() => import("./pages/Pomodoro"));
 const DataThemes = lazy(() => import("./pages/DataThemes"));
 
 import { CommandPalette } from "./components/ui/CommandPalette";
+import { AmbientAudioProvider } from "./context/AmbientAudioContext";
 
 const ProtectedRoute = ({ children, requireAdmin = false, useLayout = true }: { children: ReactElement, requireAdmin?: boolean, useLayout?: boolean }) => {
   const { user, userRole, loading, needsProfileCompletion } = useAuth();
@@ -164,19 +165,21 @@ export default function App() {
       <DataProvider>
         {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
       <Router>
-        <PomodoroProvider>
-          <Toaster position="top-right" toastOptions={{
-            style: {
-              background: 'hsl(var(--card))',
-              color: 'hsl(var(--card-foreground))',
-              border: '1px border border-border',
-              borderRadius: 'var(--radius)',
-            }
-          }} />
-          <AnimatedRoutes />
-          {showTimer && user && <FloatingTimer />}
-          <CommandPalette />
-        </PomodoroProvider>
+        <AmbientAudioProvider>
+          <PomodoroProvider>
+            <Toaster position="top-right" toastOptions={{
+              style: {
+                background: 'hsl(var(--card))',
+                color: 'hsl(var(--card-foreground))',
+                border: '1px border border-border',
+                borderRadius: 'var(--radius)',
+              }
+            }} />
+            <AnimatedRoutes />
+            {showTimer && user && <FloatingTimer />}
+            <CommandPalette />
+          </PomodoroProvider>
+        </AmbientAudioProvider>
       </Router>
       </DataProvider>
     </ThemeProvider>

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useStudyRoom } from '../../../hooks/useStudyRoom';
 import { useAuth } from '../../../context/AuthContext';
-import { useAmbientAudio } from '../../../hooks/useAmbientAudio';
+import { useAmbientAudio } from '../../../context/AmbientAudioContext';
 import SyncedTimer from './components/SyncedTimer';
 import MemberGrid from './components/MemberGrid';
 import ReactionPad from './components/ReactionPad';
@@ -26,7 +26,7 @@ export default function ActiveRoom({ roomId, onLeave, isFocusMode }: ActiveRoomP
   const { user } = useAuth();
   const { 
     room, timeLeft, loading, error, 
-    toggleTimer, resetTimer, sendReaction, updateStatus, leaveRoom, kickMember, deleteRoom, setReady 
+    toggleTimer, resetTimer, skipSession, sendReaction, updateStatus, leaveRoom, kickMember, deleteRoom, setReady 
   } = useStudyRoom(roomId);
   
   const ambientAudio = useAmbientAudio();
@@ -117,7 +117,7 @@ export default function ActiveRoom({ roomId, onLeave, isFocusMode }: ActiveRoomP
       )}>
         
         <div className="flex flex-col items-center justify-center space-y-8 md:space-y-12">
-          <SyncedTimer timeLeft={timeLeft} room={room} isHost={isHost} onToggle={toggleTimer} onReset={resetTimer} />
+          <SyncedTimer timeLeft={timeLeft} room={room} isHost={isHost} onToggle={toggleTimer} onReset={resetTimer} onSkip={skipSession} />
 
           {!isFocusMode && (
             <div className="w-full max-w-2xl space-y-4 md:space-y-6">

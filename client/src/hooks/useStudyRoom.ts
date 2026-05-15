@@ -301,6 +301,11 @@ export function useStudyRoom(roomId: string | null) {
     await updateDoc(doc(db, ROOMS_COLLECTION, roomId), updates);
   };
 
+  const skipSession = async () => {
+    if (!room || !roomId || room.hostId !== userId) return;
+    await completeSession(room);
+  };
+
   const leaveRoom = async () => {
     if (!room || !roomId || !userId) return;
     await updateDoc(doc(db, ROOMS_COLLECTION, roomId), {
@@ -310,7 +315,7 @@ export function useStudyRoom(roomId: string | null) {
 
   return {
     room, timeLeft, loading, error,
-    createRoom, joinRoomByCode, toggleTimer, resetTimer,
+    createRoom, joinRoomByCode, toggleTimer, resetTimer, skipSession,
     updateStatus, setReady, sendReaction, kickMember, deleteRoom, leaveRoom,
     updateRoomSettings
   };

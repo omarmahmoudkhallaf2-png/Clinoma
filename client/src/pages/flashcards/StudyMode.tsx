@@ -502,10 +502,10 @@ const StudyMode = () => {
                   className="grid grid-cols-4 gap-2 md:gap-4"
                 >
                   {[
-                    { r: 0, l: 'Again', t: '< 1m', c: 'bg-red-500/10 text-red-500 border-red-500/20 hover:bg-red-500' },
-                    { r: 1, l: 'Hard', t: '2d', c: 'bg-orange-500/10 text-orange-500 border-orange-500/20 hover:bg-orange-500' },
-                    { r: 2, l: 'Good', t: '4d', c: 'bg-blue-500/10 text-blue-500 border-blue-500/20 hover:bg-blue-500' },
-                    { r: 3, l: 'Easy', t: '7d', c: 'bg-green-500/10 text-green-500 border-green-500/20 hover:bg-green-500' },
+                    { r: 0, l: 'Again', t: '1m', c: 'bg-red-500/10 text-red-500 border-red-500/20 hover:bg-red-500' },
+                    { r: 1, l: 'Hard', t: '10m', c: 'bg-orange-500/10 text-orange-500 border-orange-500/20 hover:bg-orange-500' },
+                    { r: 2, l: 'Good', t: '30m', c: 'bg-blue-500/10 text-blue-500 border-blue-500/20 hover:bg-blue-500' },
+                    { r: 3, l: 'Easy', t: '2h', c: 'bg-green-500/10 text-green-500 border-green-500/20 hover:bg-green-500' },
                   ].map(btn => (
                     <button 
                       key={btn.l}

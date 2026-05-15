@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Play, Pause, RotateCcw, SkipForward, Hourglass, ShieldCheck } from 'lucide-react';
 import type { StudyRoom } from '../../../../types/studyRoom';
@@ -10,12 +11,22 @@ interface SyncedTimerProps {
   isHost: boolean;
   onToggle: () => void;
   onReset: () => void;
+  onSkip: () => void;
 }
 
-export default function SyncedTimer({ timeLeft, room, isHost, onToggle, onReset }: SyncedTimerProps) {
+export default function SyncedTimer({ timeLeft, room, isHost, onToggle, onReset, onSkip }: SyncedTimerProps) {
   const { timerState } = room;
   const isActive = timerState.isActive;
   const isWork = timerState.mode === 'work';
+
+  // Play sound when timer finishes
+  useEffect(() => {
+    if (timeLeft === 0 && isActive) {
+      const audio = new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3');
+      audio.volume = 0.5;
+      audio.play().catch(e => console.log("Audio play blocked", e));
+    }
+  }, [timeLeft, isActive]);
 
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
@@ -84,9 +95,14 @@ export default function SyncedTimer({ timeLeft, room, isHost, onToggle, onReset 
                 >
                   {isActive ? <Pause className="w-6 h-6 md:w-10 md:h-10" /> : <Play className="w-6 h-6 md:w-10 md:h-10 fill-current ml-1" />}
                 </Button>
-                <Button variant="outline" size="icon" onClick={onReset} className="h-10 w-10 md:h-12 md:w-12 rounded-xl md:rounded-2xl bg-card/50">
-                  <RotateCcw className="w-4 h-4 md:w-5 md:h-5" />
-                </Button>
+                <div className="flex flex-col gap-2">
+                  <Button variant="outline" size="icon" onClick={onReset} className="h-10 w-10 md:h-12 md:w-12 rounded-xl md:rounded-2xl bg-card/50">
+                    <RotateCcw className="w-4 h-4 md:w-5 md:h-5" />
+                  </Button>
+                  <Button variant="outline" size="icon" onClick={onSkip} className="h-10 w-10 md:h-12 md:w-12 rounded-xl md:rounded-2xl bg-card/50">
+                    <SkipForward className="w-4 h-4 md:w-5 md:h-5" />
+                  </Button>
+                </div>
               </>
             ) : (
               <div className="px-6 py-3 md:px-8 md:py-4 bg-secondary/50 backdrop-blur-xl border border-border/50 rounded-2xl md:rounded-3xl flex items-center gap-2 md:gap-3">

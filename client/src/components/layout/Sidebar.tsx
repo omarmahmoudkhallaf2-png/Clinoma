@@ -186,7 +186,7 @@ export default function Sidebar({ isOpen = false, setIsOpen = (_: boolean) => { 
                     >
                       <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
                       <span className="font-semibold text-[10px] flex-1 text-right leading-tight" dir="rtl">
-                        بنك أسئلة الأطفال<br/>
+                        بنك أسئلة الأطفال و الرمد<br/>
                         <span className="text-[8px] opacity-60">بالتعاون مع سبورت</span>
                       </span>
                       <div className="px-2 py-0.5 bg-emerald-500/10 text-emerald-600 text-[7px] font-black rounded-full border border-emerald-500/20 uppercase">FREE</div>

@@ -17,35 +17,32 @@ export function calculateSRS(
   if (rating >= 1) {
     // Correct response
     if (repetitions === 0) {
-      interval = 1;
+      interval = 10; // 10 minutes for first correct
     } else if (repetitions === 1) {
-      interval = 6;
+      interval = 30; // 30 minutes for second correct
     } else {
       interval = Math.round(interval * easeFactor);
     }
     repetitions++;
     
     // Adjust ease factor
-    // EF' := EF + (0.1 - (5 - q) * (0.08 + (5 - q) * 0.02))
-    // We map 1, 2, 3 to higher values for the formula
     const q = rating + 2; // Map 1-3 to 3-5
     easeFactor = easeFactor + (0.1 - (5 - q) * (0.08 + (5 - q) * 0.02));
   } else {
     // Incorrect response
     repetitions = 0;
-    interval = 1;
+    interval = 1; // 1 minute for Again
     status = 'relearning';
-    // easeFactor stays same or slightly decreases
     easeFactor = Math.max(1.3, easeFactor - 0.2);
   }
 
   if (easeFactor < 1.3) easeFactor = 1.3;
+  
+  // Cap interval at 120 minutes (2 hours) as requested
+  if (interval > 120) interval = 120;
 
-  // If rating is 0 (Again), set next review to 30 seconds from now
-  // Otherwise, use the calculated interval in days
-  const nextReview = rating === 0 
-    ? Date.now() + 30 * 1000 
-    : Date.now() + interval * 24 * 60 * 60 * 1000;
+  // Set next review using the calculated interval in minutes
+  const nextReview = Date.now() + interval * 60 * 1000;
 
   return {
     nextReview,
