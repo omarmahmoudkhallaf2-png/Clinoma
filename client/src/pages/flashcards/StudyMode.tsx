@@ -19,7 +19,7 @@ import {
   CheckCircle2
 } from 'lucide-react';
 import toast from 'react-hot-toast';
-
+import { useTheme } from '../../context/ThemeContext';
 import officialDecksMeta from '../../data/official_decks_meta.json';
 
 const StudyMode = () => {
