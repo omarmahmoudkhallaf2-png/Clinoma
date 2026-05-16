@@ -35,7 +35,7 @@ const STATIC_OFFICIAL_DECKS: any[] = [
   {
     id: 'official_eyelid_001',
     title: 'Eyelid - Official Clinoma Material',
-    description: 'Expert-curated flashcards for Ophthalmology Eyelid module. (System Integrated)',
+    description: 'بالتعاون مع سبورت',
     subject: 'Ophthalmology',
     module: 'Ophthalmology Practical',
     year: 'Third Year',
