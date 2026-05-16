@@ -312,6 +312,8 @@ const FlashcardsDashboard = () => {
                           return;
                         }
 
+                        const loadingToast = toast.loading('Adding to library...');
+                        try {
                           const newDeckRef = doc(collection(db, 'decks'));
                           const { isStatic, ...deckToSave } = deck as any;
                           await setDoc(newDeckRef, {
