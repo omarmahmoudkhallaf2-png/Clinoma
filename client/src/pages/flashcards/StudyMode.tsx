@@ -352,22 +352,22 @@ const StudyMode = () => {
         {/* 1. Workspace Area (Scrollable/Flexible) */}
         <div className="relative w-full h-full flex items-center justify-center p-2 md:p-6 overflow-hidden">
           <AnimatePresence mode="wait">
-            <motion.div
-              key={currentIndex}
-              initial={{ opacity: 0, scale: 0.98 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="w-full h-full max-w-[98vw] lg:max-w-[96vw] mx-auto"
-            >
+              <motion.div
+                key={currentIndex}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.1 }}
+                className="w-full h-full max-w-3xl mx-auto"
+              >
               <motion.div
                 animate={{ rotateY: isFlipped ? 180 : 0 }}
-                transition={{ duration: 0.6, type: "spring", stiffness: 260, damping: 20 }}
+                transition={{ duration: 0 }} // Instant flip
                 className="w-full h-full relative preserve-3d cursor-pointer"
                 onClick={() => setIsFlipped(!isFlipped)}
               >
                 {/* Front Side */}
-                <div className="absolute inset-0 backface-hidden bg-card border-2 border-border p-4 md:p-8 rounded-[2rem] md:rounded-[3rem] shadow-2xl flex flex-col items-center justify-start text-center overflow-hidden flashcard-text">
+                <div className="absolute inset-0 backface-hidden bg-card border border-border p-3 md:p-6 rounded-2xl md:rounded-3xl shadow-xl flex flex-col items-center justify-start text-center overflow-hidden">
                   <div className="absolute top-4 left-1/2 -translate-x-1/2 flex items-center gap-2 z-20">
                     <div className="px-4 py-1.5 rounded-full bg-muted/90 backdrop-blur-sm text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground shadow-sm border border-border/50">
                       Question
@@ -405,7 +405,7 @@ const StudyMode = () => {
                       </div>
                     )}
                     <div 
-                      className="prose prose-lg md:prose-2xl font-bold dark:prose-invert max-w-4xl text-center pb-24 w-full flashcard-text"
+                      className="prose prose-sm md:prose-xl font-bold text-black dark:text-white max-w-4xl text-center pb-12 w-full"
                       dangerouslySetInnerHTML={{ __html: currentCard.front }}
                     />
                   </div>
@@ -417,7 +417,7 @@ const StudyMode = () => {
                 </div>
 
                 {/* Back Side */}
-                <div className="absolute inset-0 backface-hidden bg-card border-4 border-primary/20 p-4 md:p-8 rounded-[2rem] md:rounded-[3rem] shadow-2xl flex flex-col items-center justify-start text-center rotate-y-180 overflow-hidden flashcard-text">
+                <div className="absolute inset-0 backface-hidden bg-card border-2 border-primary/30 p-3 md:p-6 rounded-2xl md:rounded-3xl shadow-xl flex flex-col items-center justify-start text-center rotate-y-180 overflow-hidden">
                   <div className="absolute top-4 left-1/2 -translate-x-1/2 flex items-center gap-2 z-20">
                     <div className="px-4 py-1.5 rounded-full bg-primary/10 text-[10px] font-black uppercase tracking-[0.2em] text-primary shadow-sm border border-primary/20">
                       Answer
@@ -476,7 +476,7 @@ const StudyMode = () => {
                       </div>
                     )}
                     <div 
-                      className="prose prose-lg md:prose-2xl font-bold dark:prose-invert max-w-4xl text-center pb-24 w-full flashcard-text"
+                      className="prose prose-sm md:prose-xl font-bold text-black dark:text-white max-w-4xl text-center pb-12 w-full"
                       dangerouslySetInnerHTML={{ __html: currentCard.back }}
                     />
                   </div>
