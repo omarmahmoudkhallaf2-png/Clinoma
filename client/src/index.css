@@ -16,6 +16,19 @@
     line-height: 1.6;
     letter-spacing: -0.01em;
   }
+
+  /* Forced color overrides for all internal elements */
+  .flashcard-text, .flashcard-text * {
+    color: inherit !important;
+  }
+
+  .dark .flashcard-text {
+    color: #ffffff !important;
+  }
+
+  .light .flashcard-text {
+    color: #000000 !important;
+  }
 }
 
 @layer base {
