@@ -20,6 +20,7 @@ import {
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 
+import officialDecksMeta from '../../data/official_decks_meta.json';
 
 const StudyMode = () => {
   const { deckId } = useParams();
@@ -45,13 +46,21 @@ const StudyMode = () => {
 
     const fetchData = async () => {
       try {
-        // Fetch deck details
-        const deckDoc = await getDoc(doc(db, 'decks', deckId));
-        if (!deckDoc.exists()) throw new Error('Deck not found');
-        
-        const deckData = { id: deckDoc.id, ...deckDoc.data() } as any;
-        setDeck(deckData);
+        let deckData: any = null;
 
+        if (deckId.startsWith('official_')) {
+          // LOAD OFFICIAL DECK META FROM JSON
+          deckData = officialDecksMeta.find(d => d.id === deckId);
+          if (!deckData) throw new Error('Official deck not found');
+          deckData = { ...deckData, isOfficial: true, officialId: deckId };
+        } else {
+          // Fetch personal deck from Firestore
+          const deckDoc = await getDoc(doc(db, 'decks', deckId));
+          if (!deckDoc.exists()) throw new Error('Deck not found');
+          deckData = { id: deckDoc.id, ...deckDoc.data() };
+        }
+
+        setDeck(deckData);
         let allCards: Flashcard[] = [];
 
         if (deckData.isOfficial) {

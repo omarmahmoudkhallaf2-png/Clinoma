@@ -286,53 +286,12 @@ const FlashcardsDashboard = () => {
                       <h3 className="text-xl font-bold line-clamp-1">{deck.title}</h3>
                       <p className="text-sm text-muted-foreground line-clamp-2 leading-relaxed">{deck.description}</p>
                     </div>
-                    <button 
-                      onClick={async (e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        if (!user) return;
-                        
-                        const isAlreadyAdded = decks.some(d => d.originalDeckId === deck.id && d.userId === user.uid);
-                        if (isAlreadyAdded) {
-                          toast.error('هذه المجموعة موجودة بالفعل في مكتبتك!');
-                          return;
-                        }
-
-                        const loadingToast = toast.loading('Adding to library...');
-                        try {
-                          const newDeckRef = doc(collection(db, 'decks'));
-                          const { isStatic, ...deckToSave } = deck as any;
-                          await setDoc(newDeckRef, {
-                            ...deckToSave,
-                            id: newDeckRef.id,
-                            userId: user.uid,
-                            isPublic: false,
-                            isOfficial: true, // Flag to load from code
-                            officialId: deck.id, // Reference to static data
-                            createdAt: Date.now(),
-                            originalDeckId: deck.id
-                          });
-
-                          toast.success('Deck added to library!', { id: loadingToast });
-                          window.location.reload();
-                        } catch (err) {
-                          toast.error('Failed to add deck', { id: loadingToast });
-                        }
-                      }}
-                      disabled={!!user && decks.some(d => d.originalDeckId === deck.id && d.userId === user.uid)}
-                      className={cn(
-                        "w-full py-3 rounded-2xl font-black text-sm transition-all flex items-center justify-center gap-2 shadow-xl",
-                        user && decks.some(d => d.originalDeckId === deck.id && d.userId === user.uid)
-                          ? "bg-emerald-500/10 text-emerald-600 cursor-default"
-                          : "bg-indigo-600 text-white shadow-indigo-600/20 hover:scale-[1.02]"
-                      )}
+                    <Link 
+                      to={`/flashcards/study/${deck.id}`}
+                      className="w-full py-3 rounded-2xl font-black text-sm transition-all flex items-center justify-center gap-2 shadow-xl bg-indigo-600 text-white shadow-indigo-600/20 hover:scale-[1.02]"
                     >
-                      {user && decks.some(d => d.originalDeckId === deck.id && d.userId === user.uid) ? (
-                        <><CheckCircle2 size={16} /> In Your Library</>
-                      ) : (
-                        <><Plus size={16} /> Add to My Library</>
-                      )}
-                    </button>
+                      <ArrowRight size={16} /> Study Now
+                    </Link>
                   </div>
                 </motion.div>
               ))}
