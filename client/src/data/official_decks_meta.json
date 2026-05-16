@@ -5,6 +5,8 @@
     "description": "بالتعاون مع سبورت",
     "subject": "Ophthalmology",
     "module": "Ophthalmology Practical",
-    "cardCount": 64
+    "cardCount": 64,
+    "isPublic": true,
+    "isStatic": true
   }
 ]
