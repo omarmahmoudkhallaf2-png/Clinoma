@@ -428,7 +428,7 @@ const StudyMode = () => {
                       </div>
                     )}
                     <div 
-                      className="prose prose-sm md:prose-xl font-bold text-black dark:text-white max-w-4xl text-center pb-12 w-full"
+                      className="prose prose-sm md:prose-xl prose-slate dark:prose-invert font-bold text-black dark:text-white max-w-4xl text-center pb-12 w-full"
                       dangerouslySetInnerHTML={{ __html: currentCard.front }}
                     />
                   </div>
@@ -499,7 +499,7 @@ const StudyMode = () => {
                       </div>
                     )}
                     <div 
-                      className="prose prose-sm md:prose-xl font-bold text-black dark:text-white max-w-4xl text-center pb-12 w-full"
+                      className="prose prose-sm md:prose-xl prose-slate dark:prose-invert font-bold text-black dark:text-white max-w-4xl text-center pb-12 w-full"
                       dangerouslySetInnerHTML={{ __html: currentCard.back }}
                     />
                   </div>
