@@ -32,7 +32,7 @@ import { Link } from 'react-router-dom';
 import STATIC_OFFICIAL_DECKS from '../../data/official_decks_meta.json';
 
 const FlashcardsDashboard = () => {
-  const { user } = useAuth();
+  const { user, userRole } = useAuth();
   const [decks, setDecks] = useState<Deck[]>([]);
   const [loading, setLoading] = useState(true);
   const [dueCount, setDueCount] = useState(0);
@@ -299,7 +299,7 @@ const FlashcardsDashboard = () => {
                           className="px-4 py-3 rounded-2xl font-black text-sm transition-all flex items-center justify-center gap-2 bg-amber-500/10 text-amber-600 border-2 border-amber-500/20 hover:bg-amber-500/20"
                           title="Edit Official Deck"
                         >
-                          <Edit size={16} />
+                          <Edit2 size={16} />
                         </Link>
                       )}
                     </div>
