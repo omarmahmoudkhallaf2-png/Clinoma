@@ -26,6 +26,7 @@ const StudyMode = () => {
   const { deckId } = useParams();
   const { user } = useAuth();
   const navigate = useNavigate();
+  const { setTheme } = useTheme();
   
   const [deck, setDeck] = useState<any | null>(null);
   const [cards, setCards] = useState<Flashcard[]>([]);
@@ -36,6 +37,11 @@ const StudyMode = () => {
   const [finished, setFinished] = useState(false);
   const [zoom, setZoom] = useState(1);
   const [pendingUpdates, setPendingUpdates] = useState<Record<string, any>>({});
+
+  useEffect(() => {
+    // Force Light Mode for study sessions
+    setTheme('light');
+  }, []);
 
   useEffect(() => {
     setZoom(1); // Reset zoom when card changes
