@@ -29,21 +29,7 @@ import { cn } from '../../lib/utils';
 
 import { Link } from 'react-router-dom';
 
-import officialEyelidCards from '../../data/eyelid_data.json';
-
-const STATIC_OFFICIAL_DECKS: any[] = [
-  {
-    id: 'official_eyelid_001',
-    title: 'Eyelid - Official Clinoma Material',
-    description: 'بالتعاون مع سبورت',
-    subject: 'Ophthalmology',
-    module: 'Ophthalmology Practical',
-    year: 'Third Year',
-    cardCount: officialEyelidCards.length,
-    isPublic: true,
-    isStatic: true
-  }
-];
+import STATIC_OFFICIAL_DECKS from '../../data/official_decks_meta.json';
 
 const FlashcardsDashboard = () => {
   const { user } = useAuth();

@@ -20,7 +20,6 @@ import {
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 
-import officialEyelidCards from '../../data/eyelid_data.json';
 
 const StudyMode = () => {
   const { deckId } = useParams();
@@ -56,8 +55,11 @@ const StudyMode = () => {
         let allCards: Flashcard[] = [];
 
         if (deckData.isOfficial) {
-          // LOAD FROM CODE (FAST)
-          allCards = officialEyelidCards.map((card, idx) => {
+          // DYNAMIC LOAD FROM JSON (ONLY WHEN NEEDED)
+          const data = await import('../../data/eyelid_data.json');
+          const officialEyelidCards = data.default;
+          
+          allCards = officialEyelidCards.map((card: any, idx: number) => {
             const cardId = `official_${deckData.officialId}_${idx}`;
             const cacheKey = `fc_progress_${cardId}`;
             const cached = localStorage.getItem(cacheKey);
