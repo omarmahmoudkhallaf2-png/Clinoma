@@ -20,7 +20,7 @@ import {
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 
-import { officialEyelidCards } from '../../data/official_eyelid_data';
+import officialEyelidCards from '../../data/eyelid_data.json';
 
 const StudyMode = () => {
   const { deckId } = useParams();

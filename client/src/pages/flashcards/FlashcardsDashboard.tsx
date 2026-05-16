@@ -29,7 +29,7 @@ import { cn } from '../../lib/utils';
 
 import { Link } from 'react-router-dom';
 
-import { officialEyelidCards } from '../../data/official_eyelid_data';
+import officialEyelidCards from '../../data/eyelid_data.json';
 
 const STATIC_OFFICIAL_DECKS: any[] = [
   {
