@@ -70,9 +70,10 @@ const StudyMode = () => {
         let allCards: Flashcard[] = [];
 
         if (deckData.isOfficial) {
-          // DYNAMIC LOAD FROM JSON (ONLY WHEN NEEDED)
-          const data = await import('../../data/eyelid_data.json');
-          const officialEyelidCards = data.default;
+          // LOAD FROM PUBLIC JSON (FETCH IS BETTER FOR LARGE FILES)
+          const response = await fetch('/data/eyelid_data.json');
+          if (!response.ok) throw new Error('Failed to load card data');
+          const officialEyelidCards = await response.json();
           
           allCards = officialEyelidCards.map((card: any, idx: number) => {
             const cardId = `official_${deckData.officialId}_${idx}`;
