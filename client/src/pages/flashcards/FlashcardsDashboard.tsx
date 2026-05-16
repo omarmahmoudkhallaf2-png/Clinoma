@@ -29,6 +29,22 @@ import { cn } from '../../lib/utils';
 
 import { Link } from 'react-router-dom';
 
+import { officialEyelidCards } from '../../data/official_eyelid_data';
+
+const STATIC_OFFICIAL_DECKS: any[] = [
+  {
+    id: 'official_eyelid_001',
+    title: 'Eyelid - Official Clinoma Material',
+    description: 'Expert-curated flashcards for Ophthalmology Eyelid module. (System Integrated)',
+    subject: 'Ophthalmology',
+    module: 'Eyelid',
+    year: 'Third Year',
+    cardCount: officialEyelidCards.length,
+    isPublic: true,
+    isStatic: true
+  }
+];
+
 const FlashcardsDashboard = () => {
   const { user } = useAuth();
   const [decks, setDecks] = useState<Deck[]>([]);
@@ -91,9 +107,9 @@ const FlashcardsDashboard = () => {
         const personalDecks = personalSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
         const publicDecks = publicSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
 
-        // Merge and remove duplicates if any
+        // Merge and remove duplicates if any, AND ADD STATIC DECKS
         const allDecksMap = new Map();
-        [...publicDecks, ...personalDecks].forEach(d => allDecksMap.set(d.id, d));
+        [...STATIC_OFFICIAL_DECKS, ...publicDecks, ...personalDecks].forEach(d => allDecksMap.set(d.id, d));
         const fetchedDecks = (Array.from(allDecksMap.values()) as Deck[])
           .sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
 
@@ -105,13 +121,16 @@ const FlashcardsDashboard = () => {
         let totalDue = 0;
 
         const decksWithCounts = await Promise.all(fetchedDecks.map(async (deck) => {
-          // Changed to simple query to avoid Index requirements
+          // If it's a static deck, it doesn't have Firestore counts unless added to library
+          if ((deck as any).isStatic && deck.userId !== user.uid) {
+            return { ...deck, dueCount: 0 };
+          }
+
           const cardsQuery = query(
             cardsRef,
             where('deckId', '==', deck.id)
           );
           const cardsSnap = await getDocs(cardsQuery);
-          // Filter in memory to avoid "Composite Index" requirement
           const count = cardsSnap.docs.filter(doc => (doc.data().nextReview || 0) <= now).length;
           totalDue += count;
           return { ...deck, dueCount: count };
@@ -311,8 +330,9 @@ const FlashcardsDashboard = () => {
                         try {
                           const batch = writeBatch(db);
                           const newDeckRef = doc(collection(db, 'decks'));
+                          const { isStatic, ...deckToSave } = deck as any;
                           batch.set(newDeckRef, {
-                            ...deck,
+                            ...deckToSave,
                             id: newDeckRef.id,
                             userId: user.uid,
                             isPublic: false,
@@ -320,21 +340,40 @@ const FlashcardsDashboard = () => {
                             originalDeckId: deck.id
                           });
 
-                          const cardsSnap = await getDocs(query(collection(db, 'flashcards'), where('deckId', '==', deck.id)));
-                          cardsSnap.docs.forEach(cardDoc => {
-                            const newCardRef = doc(collection(db, 'flashcards'));
-                            batch.set(newCardRef, {
-                              ...cardDoc.data(),
-                              id: newCardRef.id,
-                              deckId: newDeckRef.id,
-                              userId: user.uid,
-                              createdAt: Date.now(),
-                              nextReview: Date.now(),
-                              interval: 0,
-                              repetitions: 0,
-                              status: 'new'
+                          if ((deck as any).isStatic) {
+                            // Use hardcoded cards for static decks
+                            officialEyelidCards.forEach(cardData => {
+                              const newCardRef = doc(collection(db, 'flashcards'));
+                              batch.set(newCardRef, {
+                                ...cardData,
+                                id: newCardRef.id,
+                                deckId: newDeckRef.id,
+                                userId: user.uid,
+                                createdAt: Date.now(),
+                                nextReview: Date.now(),
+                                interval: 0,
+                                repetitions: 0,
+                                status: 'new'
+                              });
                             });
-                          });
+                          } else {
+                            // Standard Firestore clone
+                            const cardsSnap = await getDocs(query(collection(db, 'flashcards'), where('deckId', '==', deck.id)));
+                            cardsSnap.docs.forEach(cardDoc => {
+                              const newCardRef = doc(collection(db, 'flashcards'));
+                              batch.set(newCardRef, {
+                                ...cardDoc.data(),
+                                id: newCardRef.id,
+                                deckId: newDeckRef.id,
+                                userId: user.uid,
+                                createdAt: Date.now(),
+                                nextReview: Date.now(),
+                                interval: 0,
+                                repetitions: 0,
+                                status: 'new'
+                              });
+                            });
+                          }
 
                           await batch.commit();
                           toast.success('Deck added to library!', { id: loadingToast });

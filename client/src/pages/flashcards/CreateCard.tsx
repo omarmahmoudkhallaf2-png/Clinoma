@@ -92,14 +92,19 @@ const CreateCard = () => {
     fetchUsage();
   }, [user, userRole]);
 
-  // Auto-Save Effect
+  // Auto-Save Effect with Error Handling
   useEffect(() => {
     if (cards.length > 1 || (cards[0].front !== '' || cards[0].back !== '')) {
-      localStorage.setItem('medprep_flashcards_draft', JSON.stringify({
-        cards,
-        deckInfo,
-        lastSaved: Date.now()
-      }));
+      try {
+        localStorage.setItem('medprep_flashcards_draft', JSON.stringify({
+          cards,
+          deckInfo,
+          lastSaved: Date.now()
+        }));
+      } catch (e) {
+        console.warn('Auto-save failed: Deck is too large for localStorage quota.');
+        // If quota exceeded, we just don't save the draft, but don't crash the app
+      }
     }
   }, [cards, deckInfo]);
 
@@ -272,9 +277,9 @@ const CreateCard = () => {
           updatedAt: serverTimestamp()
         });
         const oldCards = await getDocs(query(collection(db, 'flashcards'), where('deckId', '==', deckId)));
-        const batch = writeBatch(db);
-        oldCards.forEach(d => batch.delete(d.ref));
-        await batch.commit();
+        const deleteBatch = writeBatch(db);
+        oldCards.forEach(d => deleteBatch.delete(d.ref));
+        await deleteBatch.commit();
       } else {
         const deckRef = await addDoc(collection(db, 'decks'), {
           userId: user.uid,
@@ -285,30 +290,41 @@ const CreateCard = () => {
         dId = deckRef.id;
       }
 
-      const batch = writeBatch(db);
-      cards.forEach(card => {
-        const cardRef = doc(collection(db, 'flashcards'));
-        batch.set(cardRef, {
-          deckId: dId,
-          userId: deckInfo.isPublic ? 'PUBLIC' : user.uid,
-          front: card.front,
-          back: card.back,
-          frontImage: card.frontImage || null,
-          backImage: card.backImage || null,
-          tags: card.tags,
-          subject: deckInfo.subject,
-          createdAt: Date.now(),
-          nextReview: Date.now(),
-          interval: 0,
-          easeFactor: 2.5,
-          repetitions: 0,
-          status: 'new'
+      // Chunk cards into batches of 20 to avoid size limits
+      const CHUNK_SIZE = 20;
+      for (let i = 0; i < cards.length; i += CHUNK_SIZE) {
+        const chunk = cards.slice(i, i + CHUNK_SIZE);
+        const batch = writeBatch(db);
+        
+        chunk.forEach(card => {
+          const cardRef = doc(collection(db, 'flashcards'));
+          batch.set(cardRef, {
+            deckId: dId,
+            userId: deckInfo.isPublic ? 'PUBLIC' : user.uid,
+            front: card.front,
+            back: card.back,
+            frontImage: card.frontImage || null,
+            backImage: card.backImage || null,
+            tags: card.tags,
+            subject: deckInfo.subject,
+            createdAt: Date.now(),
+            nextReview: Date.now(),
+            interval: 0,
+            easeFactor: 2.5,
+            repetitions: 0,
+            status: 'new'
+          });
         });
-      });
-      await batch.commit();
+        
+        await batch.commit();
+        console.log(`Saved batch ${Math.floor(i/CHUNK_SIZE) + 1}`);
+      }
+
       toast.success('تم الحفظ بنجاح!');
+      localStorage.removeItem('medprep_flashcards_draft');
       navigate('/flashcards/decks');
     } catch (error) {
+      console.error('Final Save Error:', error);
       toast.error('فشل في الحفظ');
     } finally {
       setSaving(false);
