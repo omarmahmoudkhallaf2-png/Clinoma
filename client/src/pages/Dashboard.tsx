@@ -214,7 +214,7 @@ export default function Dashboard() {
 
       {/* Pediatrics Question Bank Card - Enhanced Premium Design */}
       <div 
-        onClick={() => window.open(`https://pediatrics-qbank-clinoma-support.pages.dev/?v=${Date.now()}`, '_blank')}
+        onClick={() => window.open('https://pediatrics-qbank-clinoma-support.pages.dev/', '_blank')}
         className="relative group cursor-pointer"
       >
         <div className="absolute -inset-1 bg-gradient-to-r from-emerald-600 via-teal-500 to-cyan-400 rounded-3xl blur opacity-25 group-hover:opacity-60 transition duration-1000 group-hover:duration-200" />
