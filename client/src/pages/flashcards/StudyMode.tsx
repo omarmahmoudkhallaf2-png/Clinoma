@@ -230,12 +230,20 @@ const StudyMode = () => {
             <h2 className="text-3xl font-bold">All caught up!</h2>
             <p className="text-muted-foreground">You've reviewed all cards due for today in this deck. Great job!</p>
           </div>
-          <button 
-            onClick={() => navigate('/flashcards/decks')}
-            className="w-full py-3 rounded-xl bg-primary text-primary-foreground font-semibold shadow-lg shadow-primary/20"
-          >
-            Back to Dashboard
-          </button>
+          <div className="flex flex-col gap-3">
+            <button 
+              onClick={() => navigate('/flashcards/decks')}
+              className="w-full py-3 rounded-xl bg-primary text-primary-foreground font-semibold shadow-lg shadow-primary/20"
+            >
+              Back to Dashboard
+            </button>
+            <button 
+              onClick={resetProgress}
+              className="w-full py-3 rounded-xl bg-secondary text-secondary-foreground font-semibold border border-border hover:bg-secondary/80 transition-all"
+            >
+              Force Study All Cards Now
+            </button>
+          </div>
         </div>
       </div>
     );
