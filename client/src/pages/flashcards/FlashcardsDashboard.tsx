@@ -37,7 +37,7 @@ const STATIC_OFFICIAL_DECKS: any[] = [
     title: 'Eyelid - Official Clinoma Material',
     description: 'Expert-curated flashcards for Ophthalmology Eyelid module. (System Integrated)',
     subject: 'Ophthalmology',
-    module: 'Eyelid',
+    module: 'Ophthalmology Practical',
     year: 'Third Year',
     cardCount: officialEyelidCards.length,
     isPublic: true,
@@ -52,7 +52,7 @@ const FlashcardsDashboard = () => {
   const [dueCount, setDueCount] = useState(0);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedYear, setSelectedYear] = useState<string>('Third Year');
-  const [selectedModule, setSelectedModule] = useState<string>('All');
+  const [selectedModule, setSelectedModule] = useState<string>('Ophthalmology Practical');
 
   const handleResetProgress = async (deckId: string) => {
     if (!window.confirm('هل أنت متأكد من مسح كل التقدم في هذه المجموعة والبدء من جديد؟')) return;
@@ -243,53 +243,39 @@ const FlashcardsDashboard = () => {
               </div>
             </div>
 
-            {/* Year Selection Tabs */}
+            {/* Ophthalmology Category Selection Tabs */}
             <div className="flex bg-muted p-1 rounded-2xl overflow-x-auto no-scrollbar">
-              {['First Year', 'Second Year', 'Third Year', 'Fourth Year', 'Fifth Year', 'Sixth Year'].map(year => (
+              {['Ophthalmology Practical', 'Ophthalmology End'].map(cat => (
                 <button
-                  key={year}
+                  key={cat}
                   onClick={() => {
-                    setSelectedYear(year);
-                    setSelectedModule('All');
+                    setSelectedModule(cat);
                   }}
                   className={cn(
-                    "px-4 py-2 rounded-xl text-xs font-black transition-all whitespace-nowrap",
-                    selectedYear === year ? "bg-white text-primary shadow-sm" : "text-muted-foreground hover:text-foreground"
+                    "px-6 py-2 rounded-xl text-xs font-black transition-all whitespace-nowrap",
+                    selectedModule === cat ? "bg-white text-primary shadow-sm" : "text-muted-foreground hover:text-foreground"
                   )}
                 >
-                  {year}
+                  {cat === 'Ophthalmology Practical' ? 'رمد عملي' : 'رمد اند'}
                 </button>
               ))}
             </div>
           </div>
 
-          {/* Module Selection Chips */}
-          <div className="flex items-center gap-3 overflow-x-auto pb-2 no-scrollbar">
-            <div className="flex items-center gap-2 text-muted-foreground px-2">
-              <Filter size={14} />
-              <span className="text-[10px] font-black uppercase tracking-widest">Modules</span>
+          {/* Module Filtering (Only shows if there are multiple modules in the selected category) */}
+          {new Set(decks.filter(d => d.isPublic && d.module === selectedModule).map(d => d.subject)).size > 1 && (
+            <div className="flex items-center gap-3 overflow-x-auto pb-2 no-scrollbar">
+              <div className="flex items-center gap-2 text-muted-foreground px-2">
+                <Filter size={14} />
+                <span className="text-[10px] font-black uppercase tracking-widest">Filters</span>
+              </div>
             </div>
-            {['All', ...new Set(decks.filter(d => d.isPublic && d.year === selectedYear).map(d => d.module).filter(Boolean))].map(mod => (
-              <button
-                key={mod as string}
-                onClick={() => setSelectedModule(mod as string)}
-                className={cn(
-                  "px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest border-2 transition-all whitespace-nowrap",
-                  selectedModule === mod 
-                    ? "bg-indigo-600 border-indigo-600 text-white" 
-                    : "border-border text-muted-foreground hover:border-indigo-500/30"
-                )}
-              >
-                {mod as string}
-              </button>
-            ))}
-          </div>
+          )}
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {decks
               .filter(d => d.isPublic && 
-                d.year === selectedYear && 
-                (selectedModule === 'All' || d.module === selectedModule)
+                d.module === selectedModule
               )
               .map((deck, idx) => (
                 <motion.div
