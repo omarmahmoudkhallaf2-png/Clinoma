@@ -143,6 +143,29 @@ const CreateCard = () => {
     if (deckId) {
       const loadDeck = async () => {
         try {
+          if (deckId.startsWith('official_')) {
+            // LOAD OFFICIAL DATA FOR EDITING
+            const metaResp = await fetch('/data/official_decks_meta.json');
+            const meta = await metaResp.json();
+            const deckData = meta.find((d: any) => d.id === deckId);
+            
+            if (deckData) {
+              setDeckInfo({
+                title: deckData.title,
+                description: deckData.description,
+                subject: deckData.subject,
+                module: deckData.module,
+                isPublic: true,
+                year: deckData.year || 'Third Year'
+              });
+
+              const cardsResp = await fetch('/data/eyelid_data.json');
+              const cardsData = await cardsResp.json();
+              setCards(cardsData);
+            }
+            return;
+          }
+
           const dRef = doc(db, 'decks', deckId);
           const dSnap = await getDoc(dRef);
           if (dSnap.exists()) {

@@ -286,12 +286,23 @@ const FlashcardsDashboard = () => {
                       <h3 className="text-xl font-bold line-clamp-1">{deck.title}</h3>
                       <p className="text-sm text-muted-foreground line-clamp-2 leading-relaxed">{deck.description}</p>
                     </div>
-                    <Link 
-                      to={`/flashcards/study/${deck.id}`}
-                      className="w-full py-3 rounded-2xl font-black text-sm transition-all flex items-center justify-center gap-2 shadow-xl bg-indigo-600 text-white shadow-indigo-600/20 hover:scale-[1.02]"
-                    >
-                      <ArrowRight size={16} /> Study Now
-                    </Link>
+                    <div className="flex gap-2">
+                      <Link 
+                        to={`/flashcards/study/${deck.id}`}
+                        className="flex-1 py-3 rounded-2xl font-black text-sm transition-all flex items-center justify-center gap-2 shadow-xl bg-indigo-600 text-white shadow-indigo-600/20 hover:scale-[1.02]"
+                      >
+                        <ArrowRight size={16} /> Study Now
+                      </Link>
+                      {userRole === 'admin' && (
+                        <Link 
+                          to={`/flashcards/edit/${deck.id}`}
+                          className="px-4 py-3 rounded-2xl font-black text-sm transition-all flex items-center justify-center gap-2 bg-amber-500/10 text-amber-600 border-2 border-amber-500/20 hover:bg-amber-500/20"
+                          title="Edit Official Deck"
+                        >
+                          <Edit size={16} />
+                        </Link>
+                      )}
+                    </div>
                   </div>
                 </motion.div>
               ))}
