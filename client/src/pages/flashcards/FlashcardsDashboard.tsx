@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { collection, query, where, getDocs, orderBy, doc, writeBatch, deleteDoc } from 'firebase/firestore';
+import { collection, query, where, getDocs, orderBy, doc, writeBatch, deleteDoc, setDoc } from 'firebase/firestore';
 import { db } from '../../lib/firebase';
 import { useAuth } from '../../context/AuthContext';
 import type { Deck, Flashcard } from '../../types/flashcard';
@@ -312,56 +312,19 @@ const FlashcardsDashboard = () => {
                           return;
                         }
 
-                        const loadingToast = toast.loading('Adding to library...');
-                        try {
-                          const batch = writeBatch(db);
                           const newDeckRef = doc(collection(db, 'decks'));
                           const { isStatic, ...deckToSave } = deck as any;
-                          batch.set(newDeckRef, {
+                          await setDoc(newDeckRef, {
                             ...deckToSave,
                             id: newDeckRef.id,
                             userId: user.uid,
                             isPublic: false,
+                            isOfficial: true, // Flag to load from code
+                            officialId: deck.id, // Reference to static data
                             createdAt: Date.now(),
                             originalDeckId: deck.id
                           });
 
-                          if ((deck as any).isStatic) {
-                            // Use hardcoded cards for static decks
-                            officialEyelidCards.forEach(cardData => {
-                              const newCardRef = doc(collection(db, 'flashcards'));
-                              batch.set(newCardRef, {
-                                ...cardData,
-                                id: newCardRef.id,
-                                deckId: newDeckRef.id,
-                                userId: user.uid,
-                                createdAt: Date.now(),
-                                nextReview: Date.now(),
-                                interval: 0,
-                                repetitions: 0,
-                                status: 'new'
-                              });
-                            });
-                          } else {
-                            // Standard Firestore clone
-                            const cardsSnap = await getDocs(query(collection(db, 'flashcards'), where('deckId', '==', deck.id)));
-                            cardsSnap.docs.forEach(cardDoc => {
-                              const newCardRef = doc(collection(db, 'flashcards'));
-                              batch.set(newCardRef, {
-                                ...cardDoc.data(),
-                                id: newCardRef.id,
-                                deckId: newDeckRef.id,
-                                userId: user.uid,
-                                createdAt: Date.now(),
-                                nextReview: Date.now(),
-                                interval: 0,
-                                repetitions: 0,
-                                status: 'new'
-                              });
-                            });
-                          }
-
-                          await batch.commit();
                           toast.success('Deck added to library!', { id: loadingToast });
                           window.location.reload();
                         } catch (err) {

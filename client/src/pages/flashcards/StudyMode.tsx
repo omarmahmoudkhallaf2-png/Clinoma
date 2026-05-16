@@ -20,12 +20,14 @@ import {
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 
+import { officialEyelidCards } from '../../data/official_eyelid_data';
+
 const StudyMode = () => {
   const { deckId } = useParams();
   const { user } = useAuth();
   const navigate = useNavigate();
   
-  const [deck, setDeck] = useState<Deck | null>(null);
+  const [deck, setDeck] = useState<any | null>(null);
   const [cards, setCards] = useState<Flashcard[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
@@ -46,31 +48,41 @@ const StudyMode = () => {
       try {
         // Fetch deck details
         const deckDoc = await getDoc(doc(db, 'decks', deckId));
-        if (deckDoc.exists()) {
-          setDeck({ id: deckDoc.id, ...deckDoc.data() } as Deck);
+        if (!deckDoc.exists()) throw new Error('Deck not found');
+        
+        const deckData = { id: deckDoc.id, ...deckDoc.data() } as any;
+        setDeck(deckData);
+
+        let allCards: Flashcard[] = [];
+
+        if (deckData.isOfficial) {
+          // LOAD FROM CODE (FAST)
+          allCards = officialEyelidCards.map((card, idx) => {
+            const cardId = `official_${deckData.officialId}_${idx}`;
+            const cacheKey = `fc_progress_${cardId}`;
+            const cached = localStorage.getItem(cacheKey);
+            if (cached) {
+              return { ...card, id: cardId, ...JSON.parse(cached) };
+            }
+            return { ...card, id: cardId };
+          }) as any;
+        } else {
+          // Fetch from Firestore
+          const q = query(collection(db, 'flashcards'), where('deckId', '==', deckId));
+          const querySnapshot = await getDocs(q);
+          allCards = querySnapshot.docs.map(doc => {
+            const data = doc.data();
+            const cacheKey = `fc_progress_${doc.id}`;
+            const cached = localStorage.getItem(cacheKey);
+            if (cached) {
+              return { id: doc.id, ...data, ...JSON.parse(cached) };
+            }
+            return { id: doc.id, ...data };
+          }) as Flashcard[];
         }
 
-        // Fetch due cards
-        const now = Date.now();
-        const cardsRef = collection(db, 'flashcards');
-        const q = query(
-          cardsRef,
-          where('deckId', '==', deckId)
-        );
-        
-        // Fetch all cards and merge with cache
-        const querySnapshot = await getDocs(q);
-        const allCards = querySnapshot.docs.map(doc => {
-          const data = doc.data();
-          const cacheKey = `fc_progress_${doc.id}`;
-          const cached = localStorage.getItem(cacheKey);
-          if (cached) {
-            return { id: doc.id, ...data, ...JSON.parse(cached) };
-          }
-          return { id: doc.id, ...data };
-        }) as Flashcard[];
-
         // Filter for due cards in memory
+        const now = Date.now();
         const fetchedCards = allCards.filter(card => (card.nextReview || 0) <= now);
 
         // Shuffle cards
