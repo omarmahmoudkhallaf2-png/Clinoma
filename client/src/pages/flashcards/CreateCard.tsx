@@ -66,12 +66,12 @@ const CreateCard = () => {
   const [selectedFiles, setSelectedFiles] = useState<{ name: string, data: string, type: string }[]>([]);
   const [aiUsage, setAiUsage] = useState({ count: 0, lastReset: Date.now() });
   const [saving, setSaving] = useState(false);
-  const [rescueMode, setRescueMode] = useState(false);
   const [imageEditor, setImageEditor] = useState<{ idx: number, side: 'front' | 'back' } | null>(null);
   const [focusedEditor, setFocusedEditor] = useState<{ idx: number, side: 'front' | 'back' } | null>(null);
   
   const fileInputRef = useRef<HTMLInputElement>(null);
   const cardImageInputRef = useRef<HTMLInputElement>(null);
+  const importFileInputRef = useRef<HTMLInputElement>(null);
   const [activeUploadCard, setActiveUploadCard] = useState<{ idx: number, side: 'front' | 'back' } | null>(null);
 
   const [currentCardIdx, setCurrentCardIdx] = useState(0);
