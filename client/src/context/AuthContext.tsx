@@ -79,7 +79,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         const userRef = doc(db, 'users', currentUser.uid);
         const userSnap = await getDoc(userRef);
         
-        const isAdmin = currentUser.email === 'omarmahmoudkhallaf2@gmail.com';
+        const isAdmin = currentUser.email === 'clinomaofficial@gmail.com';
         
         if (!userSnap.exists()) {
           const initialData = {
