@@ -124,14 +124,6 @@ const AnimatedRoutes = () => {
 export default function App() {
   const { user } = useAuth();
   const [showSplash, setShowSplash] = useState(true);
-  const [showTimer, setShowTimer] = useState(false);
-
-  useEffect(() => {
-    if (!showSplash) {
-      const timer = setTimeout(() => setShowTimer(true), 1000);
-      return () => clearTimeout(timer);
-    }
-  }, [showSplash]);
 
   useEffect(() => {
     // Force update contact info in Firestore to ensure it works for everyone
@@ -176,7 +168,7 @@ export default function App() {
               }
             }} />
             <AnimatedRoutes />
-            {showTimer && user && <FloatingTimer />}
+            {user && <FloatingTimer />}
             <CommandPalette />
           </PomodoroProvider>
         </AmbientAudioProvider>

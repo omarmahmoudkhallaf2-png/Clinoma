@@ -13,8 +13,8 @@ export default function FloatingTimer() {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
 
-  // Don't show on the main Pomodoro page or during formal exams to avoid duplication/distraction
-  if (location.pathname === '/pomodoro' || location.pathname.startsWith('/exam/') || !isVisible) return null;
+  // Don't show on the main Pomodoro page, during exams, or if the timer is not running
+  if (location.pathname === '/pomodoro' || location.pathname.startsWith('/exam/') || !isVisible || !isActive) return null;
 
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
