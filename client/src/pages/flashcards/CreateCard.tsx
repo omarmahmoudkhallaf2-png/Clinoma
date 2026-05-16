@@ -66,6 +66,7 @@ const CreateCard = () => {
   const [selectedFiles, setSelectedFiles] = useState<{ name: string, data: string, type: string }[]>([]);
   const [aiUsage, setAiUsage] = useState({ count: 0, lastReset: Date.now() });
   const [saving, setSaving] = useState(false);
+  const [rescueMode, setRescueMode] = useState(false);
   const [imageEditor, setImageEditor] = useState<{ idx: number, side: 'front' | 'back' } | null>(null);
   const [focusedEditor, setFocusedEditor] = useState<{ idx: number, side: 'front' | 'back' } | null>(null);
   
@@ -90,6 +91,47 @@ const CreateCard = () => {
     };
     fetchUsage();
   }, [user, userRole]);
+
+  // Auto-Save Effect
+  useEffect(() => {
+    if (cards.length > 1 || (cards[0].front !== '' || cards[0].back !== '')) {
+      localStorage.setItem('medprep_flashcards_draft', JSON.stringify({
+        cards,
+        deckInfo,
+        lastSaved: Date.now()
+      }));
+    }
+  }, [cards, deckInfo]);
+
+  const handleImportBackup = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (re) => {
+      try {
+        const importedCards = JSON.parse(re.target?.result as string);
+        if (Array.isArray(importedCards)) {
+          setCards(importedCards);
+          setStep('manual');
+          toast.success(`تم استرجاع ${importedCards.length} كارت بنجاح!`);
+        }
+      } catch (err) {
+        toast.error('ملف غير صالح');
+      }
+    };
+    reader.readAsText(file);
+  };
+
+  const recoverFromCache = () => {
+    const saved = localStorage.getItem('medprep_flashcards_draft');
+    if (saved) {
+      const { cards: savedCards, deckInfo: savedDeck } = JSON.parse(saved);
+      setCards(savedCards);
+      setDeckInfo(savedDeck);
+      setStep('manual');
+      toast.success('تم استرجاع المسودة التلقائية');
+    }
+  };
 
   // Load deck if editing
   React.useEffect(() => {
@@ -350,6 +392,26 @@ const CreateCard = () => {
             <ArrowRight className="mt-4 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
           </motion.button>
         </div>
+        
+        {/* Recovery Options */}
+        <div className="mt-12 flex flex-col items-center gap-4">
+          {localStorage.getItem('medprep_flashcards_draft') && (
+            <button
+              onClick={recoverFromCache}
+              className="px-6 py-3 rounded-2xl bg-emerald-100 text-emerald-700 font-bold hover:bg-emerald-200 transition-all flex items-center gap-2"
+            >
+              <Sparkles size={18} />
+              استرجاع المسودة التلقائية
+            </button>
+          )}
+          <input type="file" ref={importFileInputRef} onChange={handleImportBackup} className="hidden" accept=".json" />
+          <button
+            onClick={() => importFileInputRef.current?.click()}
+            className="text-muted-foreground hover:text-primary font-medium text-sm transition-all"
+          >
+            أو استيراد من ملف Backup (.json)
+          </button>
+        </div>
       </div>
     );
   }
@@ -534,6 +596,14 @@ const CreateCard = () => {
         </div>
         
         <div className="flex items-center gap-2">
+          <button
+            onClick={() => importFileInputRef.current?.click()}
+            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-50 text-emerald-700 font-bold text-xs hover:bg-emerald-100 transition-all border border-emerald-200"
+          >
+            <Upload size={14} />
+            <span>Import</span>
+          </button>
+          <input type="file" ref={importFileInputRef} onChange={handleImportBackup} className="hidden" accept=".json" />
           <button
             onClick={() => setStep('settings')}
             className="flex items-center gap-2 px-4 py-2 rounded-xl bg-muted font-bold text-xs hover:bg-muted/80 transition-all border border-border"

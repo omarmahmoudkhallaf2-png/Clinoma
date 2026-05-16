@@ -73,7 +73,7 @@ export default function FlashcardManager() {
         ) : decks.length > 0 ? (
           decks.map(deck => (
             <div key={deck.id} className="p-8 bg-card border-2 border-border rounded-[3rem] hover:border-indigo-500/50 transition-all relative group flex flex-col h-full shadow-sm hover:shadow-xl hover:shadow-indigo-500/5">
-              <div className="absolute top-6 right-6 flex gap-2 opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0">
+              <div className="absolute top-6 right-6 flex gap-2 md:opacity-0 md:group-hover:opacity-100 opacity-100 transition-all transform translate-y-0 md:translate-y-2 md:group-hover:translate-y-0 z-20">
                 <Link 
                   to={`/flashcards/edit/${deck.id}`}
                   className="p-3 bg-indigo-500/10 text-indigo-600 rounded-xl hover:bg-indigo-600 hover:text-white transition-all shadow-lg"

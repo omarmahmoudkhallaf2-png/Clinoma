@@ -408,7 +408,7 @@ const FlashcardsDashboard = () => {
                 transition={{ delay: idx * 0.05 }}
                 className="group p-7 rounded-[2rem] bg-card border-2 border-border/50 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/10 transition-all cursor-pointer relative overflow-hidden"
               >
-                <div className="absolute top-0 right-0 p-2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="absolute top-4 right-4 flex gap-2 md:opacity-0 md:group-hover:opacity-100 opacity-100 transition-opacity z-20">
                   <button 
                     onClick={async (e) => {
                       e.preventDefault();
