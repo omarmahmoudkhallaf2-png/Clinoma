@@ -70,12 +70,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
       if (currentUser) {
-        // Silent Login to Exam Project to enable Security Rules
-        try {
-          await signInAnonymously(authExam);
-        } catch (e) {
+        // Silent Login to Exam Project in the background to enable Security Rules (no await to prevent blocking iOS)
+        signInAnonymously(authExam).catch((e) => {
           console.error("Exam Project Auth Error:", e);
-        }
+        });
 
         const userRef = doc(db, 'users', currentUser.uid);
         const userSnap = await getDoc(userRef);

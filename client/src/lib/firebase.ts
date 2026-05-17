@@ -30,14 +30,14 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const googleProvider = new GoogleAuthProvider();
 export const db = initializeFirestore(app, {
-  localCache: persistentLocalCache({ tabManager: persistentMultipleTabManager() })
+  localCache: persistentLocalCache({})
 });
 export const storage = getStorage(app);
 
 // Initialize Secondary Firebase (Exams)
 const examApp = initializeApp(examFirebaseConfig, "examApp");
 export const dbExam = initializeFirestore(examApp, {
-  localCache: persistentLocalCache({ tabManager: persistentMultipleTabManager() })
+  localCache: persistentLocalCache({})
 });
 export const authExam = getAuth(examApp);
 export const storageExam = getStorage(examApp);
