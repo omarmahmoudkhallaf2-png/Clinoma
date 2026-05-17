@@ -12,7 +12,7 @@
   },
   {
     "id": "official_written_eyelid",
-    "title": "رمد نظري - الجفون والجهاز الدمعي",
+    "title": "Eyelid and Lacrimal",
     "description": "شرح كامل ومبسط لنظري الجفون والجهاز الدمعي مع الميمونيكس وتلميحات الامتحانات.",
     "subject": "Ophthalmology",
     "module": "Ophthalmology Written",
@@ -23,7 +23,7 @@
   },
   {
     "id": "official_written_cornea",
-    "title": "رمد نظري - القرنية والصلبة",
+    "title": "Cornea and Sclera",
     "description": "مراجعة شاملة لنظري القرنية والصلبة، تشمل القرح والعتامات وتصنيفات القرنية المخروطية.",
     "subject": "Ophthalmology",
     "module": "Ophthalmology Written",
@@ -34,7 +34,7 @@
   },
   {
     "id": "official_written_lens",
-    "title": "رمد نظري - عدسة العين",
+    "title": "The Lens",
     "description": "مذاكرة نظري عدسة العين والكتاركت (المياه البيضاء) بأنواعها الخلقية والمكتسبة وعلاجاتها.",
     "subject": "Ophthalmology",
     "module": "Ophthalmology Written",
@@ -45,7 +45,7 @@
   },
   {
     "id": "official_written_glaucoma",
-    "title": "رمد نظري - الجلوكوما",
+    "title": "Glaucoma",
     "description": "فهم ميكانيكية المياه الزرقاء، تصريف سائل العين، الجلوكوما الخلقية والحادة وعلاجاتها.",
     "subject": "Ophthalmology",
     "module": "Ophthalmology Written",
@@ -56,7 +56,7 @@
   },
   {
     "id": "official_written_retina",
-    "title": "رمد نظري - الشبكية",
+    "title": "Retina",
     "description": "شرح نظري الشبكية وتأثير السكري والانسدادات الشريانية والوريدية واعتلال الشبكية التصبغي.",
     "subject": "Ophthalmology",
     "module": "Ophthalmology Written",
