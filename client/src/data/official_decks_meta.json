@@ -44,6 +44,17 @@
     "dataPath": "/data/cornea_practical.json"
   },
   {
+    "id": "official_glaucoma_practical_005",
+    "title": "Glaucoma",
+    "description": "كروت عملي الرمد للمياه الزرقاء (Glaucoma)",
+    "subject": "Ophthalmology",
+    "module": "Ophthalmology Practical",
+    "cardCount": 19,
+    "isPublic": true,
+    "isStatic": true,
+    "dataPath": "/data/glaucoma_practical.json"
+  },
+  {
     "id": "official_written_eyelid",
     "title": "Eyelid and Lacrimal",
     "description": "شرح كامل ومبسط لنظري الجفون والجهاز الدمعي مع الميمونيكس وتلميحات الامتحانات.",
