@@ -100,7 +100,7 @@ const FlashcardsDashboard = () => {
         const fetchedDecks = (Array.from(allDecksMap.values()) as Deck[])
           .map(d => {
             if (d.id === 'official_eyelid_001') {
-              return { ...d, title: 'eyelid' };
+              return { ...d, title: 'eyelid', description: 'كروت عملي الرمد للجفون (Eyelid)' };
             }
             return d;
           })
