@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { Brain, Loader2, AlertCircle } from 'lucide-react';
+import { Loader2, AlertCircle } from 'lucide-react';
 
 export default function Login() {
-  const { user, loading, signInWithGoogle } = useAuth();
+  const { user, loading, signInWithGoogle, signInWithGoogleCredential } = useAuth();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -15,6 +15,68 @@ export default function Login() {
       navigate('/dashboard');
     }
   }, [user, loading, navigate]);
+
+  // Initialize Google One Tap for instant premium login (iOS/Android/Web friendly)
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    
+    const initGoogleOneTap = () => {
+      const google = (window as any).google;
+      if (!google) return;
+      
+      const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
+      if (!clientId || clientId === "YOUR_GOOGLE_CLIENT_ID") {
+        console.warn("VITE_GOOGLE_CLIENT_ID is not configured. Google One Tap is disabled.");
+        return;
+      }
+      
+      try {
+        google.accounts.id.initialize({
+          client_id: clientId,
+          callback: async (response: any) => {
+            setIsLoading(true);
+            setError(null);
+            try {
+              await signInWithGoogleCredential(response.credential);
+            } catch (err) {
+              console.error("One Tap login error:", err);
+              setError("Failed to sign in with Google One Tap. Please try the button below.");
+            } finally {
+              setIsLoading(false);
+            }
+          },
+          auto_select: false,
+          cancel_on_tap_outside: true
+        });
+
+        // Trigger Google One Tap UI
+        google.accounts.id.prompt((notification: any) => {
+          if (notification.isNotDisplayed()) {
+            console.log("One Tap not displayed:", notification.getNotDisplayedReason());
+          } else if (notification.isSkippedMoment()) {
+            console.log("One Tap skipped:", notification.getSkippedReason());
+          }
+        });
+      } catch (e) {
+        console.error("Error initializing Google One Tap:", e);
+      }
+    };
+
+    if ((window as any).google) {
+      initGoogleOneTap();
+    } else {
+      interval = setInterval(() => {
+        if ((window as any).google) {
+          clearInterval(interval);
+          initGoogleOneTap();
+        }
+      }, 100);
+    }
+
+    return () => {
+      if (interval) clearInterval(interval);
+    };
+  }, [signInWithGoogleCredential]);
 
   const handleGoogleLogin = async () => {
     setError(null);

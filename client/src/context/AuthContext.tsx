@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import type { ReactNode } from 'react';
 import type { User } from 'firebase/auth';
-import { signInWithPopup, signInWithRedirect, signOut, onAuthStateChanged, signInAnonymously } from 'firebase/auth';
+import { signInWithPopup, signInWithRedirect, signInWithCredential, GoogleAuthProvider, signOut, onAuthStateChanged, signInAnonymously } from 'firebase/auth';
 import { auth, authExam, googleProvider, db } from '../lib/firebase';
 import { doc, getDoc, setDoc, updateDoc, arrayUnion, serverTimestamp } from 'firebase/firestore';
 
@@ -10,6 +10,7 @@ interface AuthContextType {
   userData: any | null;
   loading: boolean;
   signInWithGoogle: () => Promise<void>;
+  signInWithGoogleCredential: (idToken: string) => Promise<void>;
   logout: () => Promise<void>;
   userRole: 'admin' | 'user' | null;
   userPlan: 'free' | 'premium' | null;
@@ -126,6 +127,16 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  const signInWithGoogleCredential = async (idToken: string) => {
+    try {
+      const credential = GoogleAuthProvider.credential(idToken);
+      await signInWithCredential(auth, credential);
+    } catch (error) {
+      console.error('Error signing in with Google credential', error);
+      throw error;
+    }
+  };
+
   const logout = async () => {
     try {
       await signOut(auth);
@@ -173,7 +184,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <AuthContext.Provider value={{ 
-      user, userData, loading, signInWithGoogle, logout, userRole, userPlan, 
+      user, userData, loading, signInWithGoogle, signInWithGoogleCredential, logout, userRole, userPlan, 
       needsProfileCompletion, updateUserStatus, isSubscribed, enrollInCourse
     }}>
       {loading ? (
