@@ -4,10 +4,10 @@ import { useAuth } from '../context/AuthContext';
 import { db } from '../lib/firebase';
 import { cn } from '../lib/utils';
 import { collection, query, getDocs, addDoc, where } from 'firebase/firestore';
-import { updateUserProgress, logUserActivity, toggleBookmark } from '../lib/quizEngine';
+import { updateUserProgress, toggleBookmark } from '../lib/quizEngine';
 import type { Question } from '../types/quiz';
 import QuestionCard from '../components/quiz/QuestionCard';
-import { Loader2, AlertCircle, Clock, Flag, ArrowRight, ArrowLeft, ZoomIn, ZoomOut, CheckCircle2 } from 'lucide-react';
+import { Loader2, AlertCircle, Clock, Flag, ArrowRight, ArrowLeft, ZoomIn, ZoomOut } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '../components/ui/Button';
 import { Card, CardContent } from '../components/ui/Card';
@@ -17,6 +17,7 @@ export default function Quiz() {
   const navigate = useNavigate();
   const location = useLocation();
   
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const setupParams = location.state as any;
   const searchParams = new URLSearchParams(location.search);
   
@@ -117,10 +118,23 @@ export default function Quiz() {
     fetchQuestions();
   }, [user, courseId, subscribed, themeId, moduleId, categoryId, chapterId, divisionId]);
 
+  const handleFinishQuiz = async () => {
+    setIsFinished(true);
+    if (user) {
+      addDoc(collection(db, 'results'), {
+        userId: user.uid,
+        score,
+        total: questions.length,
+        category: setupParams?.subjectId || 'General',
+        createdAt: new Date()
+      });
+    }
+  };
+
   useEffect(() => {
     if (!isTimed || isFinished || questions.length === 0) return;
     if (timeLeft <= 0) {
-      handleFinishQuiz();
+      setTimeout(() => handleFinishQuiz(), 0);
       return;
     }
     const timer = setInterval(() => setTimeLeft(prev => prev - 1), 1000);
@@ -170,18 +184,6 @@ export default function Quiz() {
     }
   };
 
-  const handleFinishQuiz = async () => {
-    setIsFinished(true);
-    if (user) {
-      addDoc(collection(db, 'results'), {
-        userId: user.uid,
-        score,
-        total: questions.length,
-        category: setupParams?.subjectId || 'General',
-        createdAt: new Date()
-      });
-    }
-  };
 
   if (loading) return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-background gap-6">
