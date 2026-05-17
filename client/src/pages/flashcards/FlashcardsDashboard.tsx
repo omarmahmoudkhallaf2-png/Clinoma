@@ -98,6 +98,12 @@ const FlashcardsDashboard = () => {
         const allDecksMap = new Map();
         [...publicDecks, ...personalDecks, ...STATIC_OFFICIAL_DECKS].forEach(d => allDecksMap.set(d.id, d));
         const fetchedDecks = (Array.from(allDecksMap.values()) as Deck[])
+          .map(d => {
+            if (d.id === 'official_eyelid_001') {
+              return { ...d, title: 'eyelid' };
+            }
+            return d;
+          })
           .sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
 
 
