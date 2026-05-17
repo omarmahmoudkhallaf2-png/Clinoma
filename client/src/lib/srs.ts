@@ -17,11 +17,17 @@ export function calculateSRS(
   if (rating >= 1) {
     // Correct response
     if (repetitions === 0) {
-      interval = 10; // 10 minutes for first correct
+      if (rating === 1) interval = 5;       // Hard new card: 5 min
+      else if (rating === 2) interval = 10;  // Good new card: 10 min
+      else interval = 30;                    // Easy new card: 30 min
     } else if (repetitions === 1) {
-      interval = 30; // 30 minutes for second correct
+      if (rating === 1) interval = 15;      // Hard: 15 min
+      else if (rating === 2) interval = 30;      // Good: 30 min
+      else interval = 120;                   // Easy: 120 min (2h)
     } else {
-      interval = Math.round(interval * easeFactor);
+      // Subsequent repetitions: scale by ease factor and rating multiplier
+      const multiplier = rating === 1 ? 1.2 : rating === 2 ? easeFactor : easeFactor * 1.5;
+      interval = Math.round(interval * multiplier);
     }
     repetitions++;
     
@@ -29,7 +35,7 @@ export function calculateSRS(
     const q = rating + 2; // Map 1-3 to 3-5
     easeFactor = easeFactor + (0.1 - (5 - q) * (0.08 + (5 - q) * 0.02));
   } else {
-    // Incorrect response
+    // Incorrect response (Again)
     repetitions = 0;
     interval = 1; // 1 minute for Again
     status = 'relearning';
@@ -52,3 +58,4 @@ export function calculateSRS(
     status
   };
 }
+

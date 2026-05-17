@@ -365,6 +365,20 @@ const StudyMode = () => {
   const currentCard = cards[currentIndex];
   const progress = ((currentIndex + 1) / cards.length) * 100;
 
+  const getNextIntervalLabel = (rating: 0 | 1 | 2 | 3) => {
+    if (!currentCard) return '';
+    const tempSRS = calculateSRS(
+      rating,
+      currentCard.repetitions || 0,
+      currentCard.interval || 0,
+      currentCard.easeFactor || 2.5
+    );
+    const mins = tempSRS.interval;
+    if (mins < 60) return `${mins}m`;
+    const hours = Math.round(mins / 60);
+    return `${hours}h`;
+  };
+
   return (
     <div className="min-h-screen bg-background flex flex-col">
       {/* Header */}
@@ -566,10 +580,10 @@ const StudyMode = () => {
                   className="grid grid-cols-4 gap-2 md:gap-4"
                 >
                   {[
-                    { r: 0, l: 'Again', t: '1m', c: 'bg-red-500/10 text-red-500 border-red-500/20 hover:bg-red-500' },
-                    { r: 1, l: 'Hard', t: '10m', c: 'bg-orange-500/10 text-orange-500 border-orange-500/20 hover:bg-orange-500' },
-                    { r: 2, l: 'Good', t: '30m', c: 'bg-blue-500/10 text-blue-500 border-blue-500/20 hover:bg-blue-500' },
-                    { r: 3, l: 'Easy', t: '2h', c: 'bg-green-500/10 text-green-500 border-green-500/20 hover:bg-green-500' },
+                    { r: 0, l: 'Again', c: 'bg-red-500/10 text-red-500 border-red-500/20 hover:bg-red-500' },
+                    { r: 1, l: 'Hard', c: 'bg-orange-500/10 text-orange-500 border-orange-500/20 hover:bg-orange-500' },
+                    { r: 2, l: 'Good', c: 'bg-blue-500/10 text-blue-500 border-blue-500/20 hover:bg-blue-500' },
+                    { r: 3, l: 'Easy', c: 'bg-green-500/10 text-green-500 border-green-500/20 hover:bg-green-500' },
                   ].map(btn => (
                     <button 
                       key={btn.l}
@@ -581,7 +595,9 @@ const StudyMode = () => {
                       )}
                     >
                       <span className="text-xs md:text-xl font-black">{btn.l}</span>
-                      <span className="text-[9px] md:text-xs font-bold opacity-60 group-hover:opacity-100">{btn.t}</span>
+                      <span className="text-[9px] md:text-xs font-bold opacity-60 group-hover:opacity-100">
+                        {getNextIntervalLabel(btn.r as 0|1|2|3)}
+                      </span>
                     </button>
                   ))}
                 </motion.div>
