@@ -11,6 +11,17 @@
     "dataPath": "/data/eyelid_data.json"
   },
   {
+    "id": "official_lacrimal_002",
+    "title": "lacrimal system & eye ball",
+    "description": "كروت عملي الرمد للجهاز الدمعي ومقلة العين (Lacrimal System & Eyeball)",
+    "subject": "Ophthalmology",
+    "module": "Ophthalmology Practical",
+    "cardCount": 11,
+    "isPublic": true,
+    "isStatic": true,
+    "dataPath": "/data/lacrimal_system_eye_ball.json"
+  },
+  {
     "id": "official_written_eyelid",
     "title": "Eyelid and Lacrimal",
     "description": "شرح كامل ومبسط لنظري الجفون والجهاز الدمعي مع الميمونيكس وتلميحات الامتحانات.",
