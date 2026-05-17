@@ -66,6 +66,14 @@ const CreateCard = () => {
   const [selectedFiles, setSelectedFiles] = useState<{ name: string, data: string, type: string }[]>([]);
   const [aiUsage, setAiUsage] = useState({ count: 0, lastReset: Date.now() });
   const [saving, setSaving] = useState(false);
+  const [showCustomModule, setShowCustomModule] = useState(false);
+
+  // Auto-detect custom module on load
+  useEffect(() => {
+    if (deckInfo.module && deckInfo.module !== 'Ophthalmology Practical' && deckInfo.module !== 'Ophthalmology Written') {
+      setShowCustomModule(true);
+    }
+  }, [deckInfo.module]);
   const [imageEditor, setImageEditor] = useState<{ idx: number, side: 'front' | 'back' } | null>(null);
   const [focusedEditor, setFocusedEditor] = useState<{ idx: number, side: 'front' | 'back' } | null>(null);
   
@@ -555,33 +563,52 @@ const CreateCard = () => {
                 />
               </div>
 
-              {userRole === 'admin' && (
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Year</label>
-                    <select
-                      value={deckInfo.year}
-                      onChange={e => setDeckInfo({ ...deckInfo, year: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-muted border-none font-bold"
-                    >
-                      <option value="">Select Year</option>
-                      {['First', 'Second', 'Third', 'Fourth', 'Fifth', 'Sixth'].map(y => (
-                        <option key={y} value={`${y} Year`}>{y} Year</option>
-                      ))}
-                    </select>
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Module</label>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Year (السنة الدراسية)</label>
+                  <select
+                    value={deckInfo.year}
+                    onChange={e => setDeckInfo({ ...deckInfo, year: e.target.value })}
+                    className="w-full px-4 py-3 rounded-xl bg-muted border-none font-bold"
+                  >
+                    <option value="">Select Year</option>
+                    {['First', 'Second', 'Third', 'Fourth', 'Fifth', 'Sixth'].map(y => (
+                      <option key={y} value={`${y} Year`}>{y} Year</option>
+                    ))}
+                  </select>
+                </div>
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Module (القسم / التقسيمة)</label>
+                  <select
+                    value={showCustomModule ? "Other" : deckInfo.module}
+                    onChange={e => {
+                      const val = e.target.value;
+                      if (val === "Other") {
+                        setShowCustomModule(true);
+                        setDeckInfo({ ...deckInfo, module: "" });
+                      } else {
+                        setShowCustomModule(false);
+                        setDeckInfo({ ...deckInfo, module: val });
+                      }
+                    }}
+                    className="w-full px-4 py-3 rounded-xl bg-muted border-none font-bold"
+                  >
+                    <option value="">Select Module</option>
+                    <option value="Ophthalmology Practical">رمد عملي (Ophthalmology Practical)</option>
+                    <option value="Ophthalmology Written">رمد نظري (Ophthalmology Written)</option>
+                    <option value="Other">أخرى / Custom Specialty</option>
+                  </select>
+                  {showCustomModule && (
                     <input
                       type="text"
-                      placeholder="Specialty"
+                      placeholder="Type specialty name..."
                       value={deckInfo.module}
                       onChange={e => setDeckInfo({ ...deckInfo, module: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-muted border-none font-bold"
+                      className="w-full px-4 py-3 rounded-xl bg-muted border-none font-bold mt-2 animate-in fade-in slide-in-from-top-1 duration-200"
                     />
-                  </div>
+                  )}
                 </div>
-              )}
+              </div>
 
               <div className="space-y-2">
                 <label className="text-sm font-black uppercase tracking-widest text-muted-foreground">Description</label>

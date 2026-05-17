@@ -85,17 +85,32 @@ const StudyMode = () => {
             return { ...card, id: cardId };
           }) as any;
         } else {
-          // Fetch from Firestore
+          // Fetch from Firestore (with local cache fallback)
           const q = query(collection(db, 'flashcards'), where('deckId', '==', deckId));
-          const querySnapshot = await getDocs(q);
-          allCards = querySnapshot.docs.map(doc => {
-            const data = doc.data();
-            const cacheKey = `fc_progress_${doc.id}`;
+          const cacheCardsKey = `deck_cards_${deckId}`;
+          const cachedCardsJSON = localStorage.getItem(cacheCardsKey);
+          
+          if (cachedCardsJSON) {
+            allCards = JSON.parse(cachedCardsJSON);
+            // Background update to keep cache fresh
+            getDocs(q).then(querySnapshot => {
+              const freshCards = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+              localStorage.setItem(cacheCardsKey, JSON.stringify(freshCards));
+            }).catch(err => console.warn('Background sync failed:', err));
+          } else {
+            const querySnapshot = await getDocs(q);
+            allCards = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })) as any[];
+            localStorage.setItem(cacheCardsKey, JSON.stringify(allCards));
+          }
+
+          // Apply individual progress overlays
+          allCards = allCards.map(card => {
+            const cacheKey = `fc_progress_${card.id}`;
             const cached = localStorage.getItem(cacheKey);
             if (cached) {
-              return { id: doc.id, ...data, ...JSON.parse(cached) };
+              return { ...card, ...JSON.parse(cached) };
             }
-            return { id: doc.id, ...data };
+            return card;
           }) as Flashcard[];
         }
 
@@ -139,11 +154,21 @@ const StudyMode = () => {
       const allUpdates = { ...pendingUpdates, [card.id]: update };
       setPendingUpdates(allUpdates);
 
-      if (currentIndex < cards.length - 1) {
+      // Again behavior: if rating is 0, put it back in the queue (4 cards later, or at the end)
+      if (rating === 0) {
+        setCards(prevCards => {
+          const updatedCards = [...prevCards];
+          const insertIndex = Math.min(currentIndex + 4, updatedCards.length);
+          updatedCards.splice(insertIndex, 0, card);
+          return updatedCards;
+        });
+      }
+
+      if (currentIndex < cards.length - 1 || rating === 0) {
         setIsFlipped(false);
         setTimeout(() => {
           setCurrentIndex(prev => prev + 1);
-        }, 150);
+        }, 100); // Snappy, instant transition
       } else {
         setFinished(true);
         updateUserStreak();
@@ -392,7 +417,7 @@ const StudyMode = () => {
               >
               <motion.div
                 animate={{ rotateY: isFlipped ? 180 : 0 }}
-                transition={{ duration: 0 }} // Instant flip
+                transition={{ type: "spring", stiffness: 450, damping: 28 }} // Snappy, organic premium flip
                 className="w-full h-full relative preserve-3d cursor-pointer"
                 onClick={() => setIsFlipped(!isFlipped)}
               >

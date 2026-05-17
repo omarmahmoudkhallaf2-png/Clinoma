@@ -44,6 +44,9 @@ const ImportCards = () => {
   const [step, setStep] = useState(1);
   const [deckTitle, setDeckTitle] = useState('');
   const [subject, setSubject] = useState('');
+  const [year, setYear] = useState('Third Year');
+  const [module, setModule] = useState('');
+  const [showCustomModule, setShowCustomModule] = useState(false);
   const [aiCustomInstructions, setAiCustomInstructions] = useState('');
   const [selectedAIFile, setSelectedAIFile] = useState<File | null>(null);
   const [isAIProcessing, setIsAIProcessing] = useState(false);
@@ -219,6 +222,8 @@ const ImportCards = () => {
         userId: user.uid,
         title: deckTitle,
         subject,
+        year,
+        module,
         isPublic: false,
         createdAt: Date.now(),
         cardCount: previewData.length
@@ -498,18 +503,64 @@ const ImportCards = () => {
                   value={deckTitle}
                   onChange={e => setDeckTitle(e.target.value)}
                   placeholder="e.g. Imported Cardiology Deck"
-                  className="w-full px-4 py-3 rounded-xl bg-muted border-none"
+                  className="w-full px-4 py-3 rounded-xl bg-muted border-none font-bold"
                 />
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-medium">Subject / Module</label>
+                <label className="text-sm font-medium">Subject (المادة)</label>
                 <input 
                   type="text"
                   value={subject}
                   onChange={e => setSubject(e.target.value)}
-                  placeholder="e.g. Cardiology, Anatomy, Week 1..."
-                  className="w-full px-4 py-3 rounded-xl bg-muted border-none focus:ring-2 focus:ring-primary/20 transition-all"
+                  placeholder="e.g. Ophthalmology, Pediatrics, Anatomy..."
+                  className="w-full px-4 py-3 rounded-xl bg-muted border-none focus:ring-2 focus:ring-primary/20 transition-all font-bold"
                 />
+              </div>
+              
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Year (السنة الدراسية)</label>
+                <select
+                  value={year}
+                  onChange={e => setYear(e.target.value)}
+                  className="w-full px-4 py-3 rounded-xl bg-muted border-none font-bold"
+                >
+                  <option value="">Select Year</option>
+                  {['First', 'Second', 'Third', 'Fourth', 'Fifth', 'Sixth'].map(y => (
+                    <option key={y} value={`${y} Year`}>{y} Year</option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Module (القسم)</label>
+                <select
+                  value={showCustomModule ? "Other" : module}
+                  onChange={e => {
+                    const val = e.target.value;
+                    if (val === "Other") {
+                      setShowCustomModule(true);
+                      setModule("");
+                    } else {
+                      setShowCustomModule(false);
+                      setModule(val);
+                    }
+                  }}
+                  className="w-full px-4 py-3 rounded-xl bg-muted border-none font-bold"
+                >
+                  <option value="">Select Module</option>
+                  <option value="Ophthalmology Practical">رمد عملي (Ophthalmology Practical)</option>
+                  <option value="Ophthalmology Written">رمد نظري (Ophthalmology Written)</option>
+                  <option value="Other">أخرى / Custom</option>
+                </select>
+                {showCustomModule && (
+                  <input
+                    type="text"
+                    placeholder="Type specialty name..."
+                    value={module}
+                    onChange={e => setModule(e.target.value)}
+                    className="w-full px-4 py-3 rounded-xl bg-muted border-none font-bold mt-2 animate-in fade-in slide-in-from-top-1 duration-200"
+                  />
+                )}
               </div>
             </div>
 

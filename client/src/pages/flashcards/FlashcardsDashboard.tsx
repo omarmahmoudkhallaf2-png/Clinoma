@@ -231,7 +231,7 @@ const FlashcardsDashboard = () => {
 
             {/* Ophthalmology Category Selection Tabs */}
             <div className="flex bg-muted p-1 rounded-2xl overflow-x-auto no-scrollbar">
-              {['Ophthalmology Practical', 'Ophthalmology End'].map(cat => (
+              {['Ophthalmology Practical', 'Ophthalmology Written'].map(cat => (
                 <button
                   key={cat}
                   onClick={() => {
@@ -242,7 +242,7 @@ const FlashcardsDashboard = () => {
                     selectedModule === cat ? "bg-white text-primary shadow-sm" : "text-muted-foreground hover:text-foreground"
                   )}
                 >
-                  {cat === 'Ophthalmology Practical' ? 'رمد عملي' : 'رمد اند'}
+                  {cat === 'Ophthalmology Practical' ? 'رمد عملي' : 'رمد نظري'}
                 </button>
               ))}
             </div>
