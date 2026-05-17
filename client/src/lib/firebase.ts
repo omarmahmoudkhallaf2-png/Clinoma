@@ -6,7 +6,7 @@ import { getStorage } from "firebase/storage";
 // Primary Project Config (Main Site)
 const firebaseConfig = {
   apiKey: "AIzaSyA-tNrKNVdX6p1K0dS8g8yxJizw22bUymg",
-  authDomain: "clinoma.pages.dev",
+  authDomain: "med-prep-9d808.firebaseapp.com",
   projectId: "med-prep-9d808",
   storageBucket: "med-prep-9d808.firebasestorage.app",
   messagingSenderId: "624351719181",
