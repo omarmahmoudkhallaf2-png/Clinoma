@@ -94,9 +94,9 @@ const FlashcardsDashboard = () => {
         const personalDecks = personalSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
         const publicDecks = publicSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
 
-        // Merge and remove duplicates if any, AND ADD STATIC DECKS
+        // Merge and remove duplicates if any, AND ADD STATIC DECKS (local static decks take priority over Firestore copies)
         const allDecksMap = new Map();
-        [...STATIC_OFFICIAL_DECKS, ...publicDecks, ...personalDecks].forEach(d => allDecksMap.set(d.id, d));
+        [...publicDecks, ...personalDecks, ...STATIC_OFFICIAL_DECKS].forEach(d => allDecksMap.set(d.id, d));
         const fetchedDecks = (Array.from(allDecksMap.values()) as Deck[])
           .sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
 
