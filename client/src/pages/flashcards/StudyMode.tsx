@@ -119,8 +119,12 @@ const StudyMode = () => {
         const now = Date.now();
         const fetchedCards = allCards.filter(card => (card.nextReview || 0) <= now);
 
-        // Shuffle cards
-        setCards(fetchedCards.sort(() => Math.random() - 0.5));
+        // Sort/Shuffle cards: Preserve original import order for official decks to study logically, shuffle for personal decks
+        if (deckData.isOfficial) {
+          setCards(fetchedCards);
+        } else {
+          setCards(fetchedCards.sort(() => Math.random() - 0.5));
+        }
       } catch (error) {
         console.error('Error fetching study data:', error);
         toast.error('Failed to load cards');
