@@ -1,0 +1,410 @@
+[
+  {
+    "id": "official_written_glaucoma_106",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Describe the anatomy of the Angle of the anterior chamber and how it is examined.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Anatomy of the Angle</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Definition: The angle between the periphery of the cornea and the root of the iris.</li><li class=\"font-bold text-slate-800\">• Examination: Cannot be seen by direct illumination; requires Gonioscopy (e.g., Goldman 3-mirror + slit lamp).</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Structures seen: Schwalbe's line -> Trabecular meshwork -> Scleral spur -> Ciliary body -> Root of iris.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Anatomy of the Angle</strong><br />هي الزاوية اللي بين القرنية (Cornea) وجدر العين (Iris root). دي أهم حتة في العين لأنها \"البلاعة\" اللي بتصرف مياه العين.<br />* <strong>إزاي بنشوفها؟</strong>: مش بتتشاف بالكشاف العادي بسبب \"الانعكاس الكلي للضوء\" (Internal reflection). لازم نستخدم عدسة خاصة اسمها <strong>Gonioscopy</strong> (زي عدسة Goldman 3-mirror).<br />* <strong>بنشوف إيه؟</strong>: 5 حاجات بالترتيب (من قدام لورا):<br />1. Schwalbe's line.<br />2. Trabecular meshwork (المصفاة).<br />3. Scleral spur.<br />4. Ciliary body.<br />5. Iris root.<br /><br /><div class=\"border-r-4 border-amber-500 bg-amber-500/5 p-3 rounded-lg my-2 text-sm italic\"><strong>Mnemonic</strong>: ترتيبهم من قدام لورا: <strong>S</strong>ome <strong>T</strong>asty <strong>S</strong>tuff <strong>C</strong>omes <strong>I</strong>n.</div>\n    </div>\n    \n  \n    <!-- Mnemonic Box -->\n    <div class=\"bg-blue-50/40 border border-blue-200/40 rounded-2xl p-5 text-right space-y-2 font-semibold text-slate-700 leading-relaxed mt-4\" style=\"direction: rtl; text-align: right;\">\n      <h5 class=\"text-xs font-black uppercase tracking-widest text-blue-600 mb-1\">💡 طريقة للحفظ (Mnemonic)</h5>\n      <strong>Angle Exam Mnemonic</strong><br />   من قدام لورا: <strong>S</strong>ome <strong>T</strong>asty <strong>S</strong>tuff <strong>C</strong>omes <strong>I</strong>n<br />   S: Schwalbe's line<br />   T: Trabecular meshwork<br />   S: Scleral spur<br />   C: Ciliary body<br />   I: Iris root\n    </div>\n    \n</div>",
+    "tags": [
+      "glaucoma",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_glaucoma_107",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Define Aqueous Humor and its two main drainage routes.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Physiology of the Aqueous</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Definition: Transparent colorless fluid (1.25 ml) filling AC and PC, secreted by the ciliary process.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• 1. Trabecular (70-80%): TM -> Schlemm's canal -> Aqueous veins.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• 2. Uveoscleral (20-30%): Across C.B. to suprachoroidal space and choroid.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Aqueous Humor (سائل العين)</strong><br />سائل شفاف بيغذي العين وبيحافظ على ضغطها. بيفرزه الـ <strong>Ciliary process</strong>.<br />* <strong>طرق التصريف</strong>:<br />1. <strong>Trabecular (70-80%)</strong>: دي الطريق الرئيسي (الرسمي)، بتمشي في المصفاة (TM) ومنها لقناة <strong>Schlemm</strong>.<br />2. <strong>Uveoscleral (20-30%)</strong>: طريق جانبي، بيمشي بين عضلات العين والصلبة.<br /><br /><div class=\"border-r-4 border-amber-500 bg-amber-500/5 p-3 rounded-lg my-2 text-sm italic\"><strong>Key</strong>: معظم الأدوية بتشتغل بإنها تفتح الطريق ده أو تقلل الإفراز.</div>\n    </div>\n    \n  \n    <!-- Mnemonic Box -->\n    <div class=\"bg-blue-50/40 border border-blue-200/40 rounded-2xl p-5 text-right space-y-2 font-semibold text-slate-700 leading-relaxed mt-4\" style=\"direction: rtl; text-align: right;\">\n      <h5 class=\"text-xs font-black uppercase tracking-widest text-blue-600 mb-1\">💡 طريقة للحفظ (Mnemonic)</h5>\n      <strong>Drainage Routes</strong><br />   سائل العين بيطلع من طريقين:<br />   1. الطريق المعتاد (70-80%): المصفاة (TM) -> القناة.<br />   2. الطريق الجانبي (20-30%): بيمشي بين العضلات (Uveoscleral).\n    </div>\n    \n</div>",
+    "tags": [
+      "glaucoma",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_glaucoma_108",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What is the normal IOP range and its diurnal variation?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Intraocular Pressure (IOP)</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Normal Range: 10 - 21 mmHg.</li><li class=\"font-bold text-slate-800\">• Diurnal Variation: Highest in the morning, minimum in evening (Diff: 2-3 mmHg).</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Measurement: Tonometry (Indentation, Applanation, Air puff, I-care).</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Intraocular Pressure (IOP)</strong><br />ضغط العين الطبيعي بين <strong>10 و 21 مم زئبق</strong>.<br />* <strong>التغير اليومي (Diurnal variation)</strong>: الضغط مش ثابت طول اليوم. ديماً بيكون <strong>أعلى حاجة الصبح</strong> (Morning) وأقل حاجة بليل.<br />* التغير الطبيعي بيكون في حدود 2-3 مم. لو زاد عن 5-8 مم، ده بيخلينا نشك في وجود جلوكوما حتى لو الضغط في الرينج الطبيعي.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "glaucoma",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_glaucoma_109",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Describe the features of a normal optic disc.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">The Optic Disc (Normal)</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Shape: Rounded with a central physiological cup (C/D ratio: 0.3).</li><li class=\"font-bold text-slate-800\">• Size & Color: 1.5mm diameter, pale pink, well-defined edge.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Neuro-retinal rim: Area between cup and outer edge containing nerve fibers.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>The Normal Optic Disc</strong><br />هو \"رأس العصب البصري\".<br />* الشكل: دايرة لونها وردي فاتح (Pale pink).<br />* <strong>The Cup</strong>: في نص العصب فيه حتة غويطة شوية اسمها Cup.<br />* <strong>C/D Ratio</strong>: بنقارن حجم الـ Cup بحجم العصب كله. الطبيعي بكون حوالي 0.3 (يعني الكب واخد تلت العصب).<br />* في الجلوكوما، الـ Cup ده بيكبر جداً (Cupping) لأن الألياف العصبية بتموت.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "glaucoma",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_glaucoma_110",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Define Glaucoma and its primary classification.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Glaucoma Overview</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Definition: Progressive optic neuropathy with IOP elevation as a major risk factor, causing optic nerve damage and field defects.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Classification:</li><li class=\"pl-4 text-xs italic text-slate-500 font-semibold\">• - Congenital (Buphthalmos).</li><li class=\"pl-4 text-xs italic text-slate-500 font-semibold\">• - Primary (Open angle or Closed angle).</li><li class=\"pl-4 text-xs italic text-slate-500 font-semibold\">• - Secondary (Secondary to ocular disease).</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Glaucoma (المياه الزرقاء)</strong><br />هي مرض بيصيب العصب البصري (Optic neuropathy) وبيعمل فيه تآكل تدريجي، وغالباً بيكون معاه ارتفاع في ضغط العين.<br />* <strong>الأنواع</strong>:<br />1. <strong>Congenital</strong>: مولود بيها (Buphthalmos).<br />2. <strong>Primary</strong>: بتيجي لوحدها (Open angle أو Closed angle).<br />3. <strong>Secondary</strong>: بسبب مرض تاني (خبطة، التهاب، سكر).<br /><br /><div class=\"border-r-4 border-amber-500 bg-amber-500/5 p-3 rounded-lg my-2 text-sm italic\"><strong>Why call it Blue?</strong>: زمان كانت الحالات اللي بتوصل لمراحل متأخرة القرنية بتورم فيها وبتبان بلون أزرق أو رمادي باهت.</div>\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "glaucoma",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_glaucoma_111",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What are the characteristic clinical symptoms (triad) of Congenital Glaucoma?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Congenital Glaucoma Triad</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• 1. Lacrimation.</li><li class=\"font-bold text-slate-800\">• 2. Photophobia.</li><li class=\"font-bold text-slate-800\">• 3. Blepharospasm.</li><li class=\"bg-amber-100/30 p-2.5 rounded-xl text-xs text-amber-800 border border-amber-200/30 mt-1 font-semibold\">Caused by stretching of ciliary nerves due to high IOP and corneal edema.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Congenital Glaucoma Triad (الثلاثية الشهيرة)</strong><br />لو أم شافت ابنها الصغير عنده الـ 3 حاجات دول، لازم تروح لدكتور فوراً:<br />1. <strong>Lacrimation</strong>: دموع زيادة.<br />2. <strong>Photophobia</strong>: مش طايق الضوء وبيهرب منه.<br />3. <strong>Blepharospasm</strong>: بيقفل عينه جامد.<br />* السبب: ضغط العين العالي بيشد على أعصاب القرنية وبيعمل فيها تورم (Edema).<br /><br /><strong>جت في اند المجموعة التانية</strong>\n    </div>\n    \n  \n    <!-- Mnemonic Box -->\n    <div class=\"bg-blue-50/40 border border-blue-200/40 rounded-2xl p-5 text-right space-y-2 font-semibold text-slate-700 leading-relaxed mt-4\" style=\"direction: rtl; text-align: right;\">\n      <h5 class=\"text-xs font-black uppercase tracking-widest text-blue-600 mb-1\">💡 طريقة للحفظ (Mnemonic)</h5>\n      <strong>Congenital Glaucoma Triad</strong><br />   الطفل ده \"بيعيط وبيهرب من الضوء وبيغمض بزيادة\":<br />   1. Lacrimation (دموع)<br />   2. Photophobia (هرب من الضوء)<br />   3. Blepharospasm (قفل جفن شديد)\n    </div>\n    \n</div>",
+    "tags": [
+      "glaucoma",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_glaucoma_112",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">List the ocular signs of Congenital Glaucoma.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Signs of Buphthalmos</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Cornea: Edema, Enlargement (>12mm), and Haab's striae (tears in Descemet membrane).</li><li class=\"font-bold text-slate-800\">• Eyeball: Enlarged (Buphthalmos).</li><li class=\"font-bold text-slate-800\">• Sclera: Bluish color (thinning).</li><li class=\"font-bold text-slate-800\">• Anterior Chamber: Very deep.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Gonioscopy: Flat iris insertion into TM.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Signs of Buphthalmos (عين الثور)</strong><br />العين بتبان كبيرة جداً وجميلة في الأول، بس دي كارثة:<br />* <strong>Megalocornea</strong>: قطر القرنية بيكبر (أكتر من 12 مم).<br />* <strong>Haab's striae</strong>: شروخ في غشاء ديسمت (Descemet) بسبب شد العين.<br />* <strong>Bluish sclera</strong>: بياض العين بيبقى لونه أزرق لأن الطبقة بقت رقيقة ومبينة اللي تحتها.<br />* <strong>Deep AC</strong>: الخزانة الأمامية بتبقى غويطة جداً.<br /><br /><div class=\"border-r-4 border-amber-500 bg-amber-500/5 p-3 rounded-lg my-2 text-sm italic\"><strong>Mnemonic</strong>: العين بتوسع في كل الاتجاهات لأن أنسجة الطفل لسة مرنة (Distensible).</div><br /><br /><strong>جت في اند المجموعة التانية</strong>\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "glaucoma",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_glaucoma_113",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">How is Congenital Glaucoma managed surgically?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Management of Congenital Glaucoma</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Treatment is always SURGICAL.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• < 13mm diameter + Clear cornea: Goniotomy.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• < 13mm diameter + Opaque cornea: Trabeculotomy.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• > 13mm or failed previous: Trabeculectomy or Valve implantation.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Surgical Management</strong><br />الجلوكوما الخلقية <strong>علاجها جراحي فقط</strong>، الأدوية بس بنستخدمها مؤقتاً لحد العملية.<br />1. <strong>Goniotomy</strong>: لو القرنية شفافة بنفتح الزاوية من جوا.<br />2. <strong>Trabeculotomy</strong>: لو القرنية معتمة بنفتح الزاوية من برا.<br />3. <strong>Trabeculectomy & Valves</strong>: لو الحالات متأخرة أو العمليات اللي فات فشلت.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "glaucoma",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_glaucoma_114",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What are the risk factors for Primary Open Angle Glaucoma (POAG)?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">POAG Risk Factors</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Age: Usually > 50 years.</li><li class=\"font-bold text-slate-800\">• Family history (hereditary).</li><li class=\"font-bold text-slate-800\">• Race: Darker races (4x more common).</li><li class=\"font-bold text-slate-800\">• Systemic diseases: Diabetes Mellitus, Migraine.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Ocular conditions: Topical steroids, High myopia.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>POAG Risk Factors</strong><br />دي المياه الزرقاء اللي بتسرق النظر ببطء ومن غير وجع:<br />* السن: غالباً فوق الـ 50.<br />* الوراثة: بتجري في العائلات.<br />* العرق: أكتر في أصحاب البشرة السمراء وبسورة أعنف.<br />* أمراض عامة: السكر والضغط والصداع النصفي.<br />* قصر النظر الشديد (<strong>High Myopia</strong>).\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "glaucoma",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_glaucoma_115",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Describe the symptoms and signs of POAG.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">POAG Clinical Picture</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Symptoms: Often asymptomatic (Silent Thief), late headache, early presbyopia, night blindness.</li><li class=\"font-bold text-slate-800\">• Sign (IOP): > 21 mmHg with open angle on gonioscopy.</li><li class=\"font-bold text-slate-800\">• Sign (Disc): Pathological glaucomatous cupping.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Sign (Field): Specific visual field defects (Arcuate scotoma, etc.).</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>POAG (The Silent Thief)</strong><br />ليها اسم شهرة \"سارق النظر الصامت\".<br />* <strong>الأعراض</strong>: المريض غالباً مش حاسس بحاجة لحد ما بيفقد جزء كبير من مجال نظره. ممكن يشتكي من صداع خفيف أو إن النظارة بتاعته مابقتش مريحة.<br />* <strong>العلامات</strong>:<br />1. ضغط العين أعلى من 21.<br />2. الزاوية مفتوحة بوضوح (Open angle).<br />3. <strong>Glaucomatous Cupping</strong>: العصب البصري متآكل.<br />4. <strong>Field defects</strong>: نقط سوداء في مجال النظر بتبدأ من الأطراف.<br /><br /><strong>جت في اند المجموعة التانية</strong>\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "glaucoma",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_glaucoma_116",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What are the first-line medical treatments for POAG?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Medical Treatment of POAG</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• 1st Line (Beta Blockers): E.g., Timolol. Action: Decrease aqueous formation.</li><li class=\"font-bold text-slate-800\">• 1st Line (Prostaglandin Analogues): E.g., Latanoprost. Action: Increase uveoscleral outflow.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• 2nd Line/Adjuvants: Carbonic Anhydrase Inhibitors (CAI), Alpha-2 agonists.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>POAG Medical Treatment</strong><br />بنبدأ ديماً بقطرة واحدة ونشوف النتيجة:<br />1. <strong>Beta Blockers</strong> (Timolol): بتقلل \"المحابس\" (بتقلل إنتاج السائل).<br />2. <strong>Prostaglandins</strong> (Latanoprost): بتفتح \"البلاعات\" (بتزود التصريف Uveoscleral). ودي الأقوى والأشهر حالياً.<br />3. <strong>CAI</strong> (Azopt/Trusopt): بتقلل الإفراز.<br /><br /><div class=\"border-r-4 border-amber-500 bg-amber-500/5 p-3 rounded-lg my-2 text-sm italic\"><strong>Mnemonic</strong>: يا إما بنقلل الحنفية (Production) يا إما بنفتح البلاعة (Drainage).</div>\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "glaucoma",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_glaucoma_117",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Enumerate the four phases of Primary Closed Angle Glaucoma (PCAG).</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Phases of PCAG</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• 1. Intermittent (Prodromal): Rapid, partial reversible closure.</li><li class=\"font-bold text-slate-800\">• 2. Acute: Sudden, total angle closure.</li><li class=\"font-bold text-slate-800\">• 3. Chronic: Similar to POAG but with closed angle.</li><li class=\"font-bold text-slate-800\">• 4. Absolute: End stage, blind painful eye.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Phases of PCAG</strong><br />المياه الزرقاء ذات الزاوية المغلقة بتمشي في 4 مراحل:<br />1. <strong>Intermittent (Prodromal)</strong>: هجمات بسيطة وبتروح لوحدها.<br />2. <strong>Acute attack</strong>: كارثة، هجمة حادة ومؤلمة جداً.<br />3. <strong>Chronic</strong>: الزاوية قفلت بجد ومبقتش تفتح، والحالة قلبت لمزمنة.<br />4. <strong>Absolute</strong>: العين فقدت النظر وبقت مؤلمة (Blind painful eye).\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "glaucoma",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_glaucoma_118",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Describe the clinical symptoms and signs of an Acute PCAG attack.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Acute PCAG Attack</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Symptoms: Severe headache, periocular pain, nausea/vomiting, severe vision drop.</li><li class=\"font-bold text-slate-800\">• Signs: Hand movement vision, Corneal edema, Circum-corneal ciliary injection (CCCI).</li><li class=\"font-bold text-slate-800\">• Pupil: Oval, semi-dilated, fixed (temporal paralysis of sphincter).</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• IOP: Extremely high (often up to 50 mmHg), \"Stony hard\" sensation.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Acute PCAG Attack (حالة طوارئ)</strong><br />* <strong>الأعراض</strong>: وجع رهيب في العين لدرجة إن المريض ممكن يرجع (Vomiting) ويفتكر إن عنده مشكلة في معدته. النظر بيقل فجأة.<br />* <strong>العلامات</strong>:<br />1. العين \"حجر\" (<strong>Stony hard</strong>) من كتر الضغط (ممكن يوصل لـ 60).<br />2. القرنية معتمة (Edema).<br />3. الحدقة (Pupil) بتكون <strong>بيضاوية وثابتة</strong> في النص (Oval semi-dilated).<br />4. احمرار شديد في العين (Ciliary injection).<br /><br /><strong>جت في اند المجموعة التانية</strong>\n    </div>\n    \n  \n    <!-- Mnemonic Box -->\n    <div class=\"bg-blue-50/40 border border-blue-200/40 rounded-2xl p-5 text-right space-y-2 font-semibold text-slate-700 leading-relaxed mt-4\" style=\"direction: rtl; text-align: right;\">\n      <h5 class=\"text-xs font-black uppercase tracking-widest text-blue-600 mb-1\">💡 طريقة للحفظ (Mnemonic)</h5>\n      <strong>Acute PCAG Attack - 2nd View</strong><br />   العين \"حجر\" (Pressure 60)، المريض بيرجع (Vomiting) ومفتكرها نزلة معوية، العين حمراء ومؤلمة جداً، القرحة (Edema) سادة الرؤية. كارثة!\n    </div>\n    \n</div>",
+    "tags": [
+      "glaucoma",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_glaucoma_119",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">How is an Acute PCAG attack managed?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Management of Acute PCAG</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Emergency Hospitalization Medical: Hyperosmotics (Mannitol), Acetazolamide, Timolol, Pilocarpine.</li><li class=\"font-bold text-slate-800\">• Operative: Laser iridotomy or Peripheral Iridectomy.</li><li class=\"pl-4 text-xs italic text-slate-500 font-semibold\">• IMPORTANT: Prophylactic PI/Iridotomy for the OTHER eye is mandatory.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Acute Attack Management</strong><br />لازم ننزل الضغط بسرعة قبل ما العصب يموت:<br />1. <strong>Medical</strong>: مدرات بول قوية (Mannitol) وحقن (Acetazolamide) وقطرات.<br />2. <strong>Surgery</strong>: لما الضغط ينزل شوية والقرنية تنشف، لازم نعمل خرم في القزحية بالليزر (<strong>Laser Iridotomy</strong>).<br />* <strong>ملحوظة ذهبية</strong>: لازم نعمل خرم وقائي في العين التانية (<strong>The other eye</strong>) لأنها بنسبة 50% هيحصلها نفس الهجمة!\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "glaucoma",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_glaucoma_120",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">List common causes of Secondary Glaucoma.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Causes of Secondary Glaucoma</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Iris/Ciliary Body: Iridocyclitis.</li><li class=\"font-bold text-slate-800\">• Lens: Phacomorphic (Lens swell), Phacolytic (Lens protein leak).</li><li class=\"font-bold text-slate-800\">• Retina: Central retinal vein occlusion (Neovascular Glaucoma / 100 days glaucoma).</li><li class=\"font-bold text-slate-800\">• Steroid induced.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Intraocular tumors (Direct invasion or pushing pupil-lens diaphragm).</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Secondary Glaucoma Causes</strong><br />الجلوكوما هنا \"تابعة\" لمشكلة تانية:<br />* <strong>القزحية</strong>: التهاب مزمن (Iridocyclitis) بيسد الزاوية.<br />* <strong>العدسة</strong>: مياه بيضاء منفوخة (Phacomorphic) أو مياه بيضاء \"دايبة\" (Phacolytic).<br />* <strong>الشبكية</strong>: جلطة في الوريد (CRVO) بطلع أوعية دموية جديدة تسد الزاوية (<strong>100 days glaucoma</strong>).<br />* <strong>الأدوية</strong>: استخدام الكورتيزون (Steroids) لفترة طويلة.<br /><br /><strong>جت في اند المجموعة التانية</strong>\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "glaucoma",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_glaucoma_138",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What is the etiology of Congenital Glaucoma (Trabeculo-dysgenesis)?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Congenital Glaucoma Etiology</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Failure of complete separation of iris from cornea (failure of mesodermal atrophy).</li><li class=\"font-bold text-slate-800\">• Abnormal anterior insertion of iris/ciliary muscle into TM.</li><li class=\"font-bold text-slate-800\">• Absence of Canal of Schlemm.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Etiology (ليه بتحصل؟)</strong><br />المشكلة بتكون عيب خلقي في تكوين زاوية العين (Angle):<br />1. <strong>Mesodermal atrophy failure</strong>: المفروض الأنسجة الزيادة في الزاوية تختفي قبل الولادة، هنا بتفضل موجودة وتقفل المخرج.<br />2. <strong>Barkan's membrane</strong>: غشاء رقيق بيغطي المصفاة (TM) ويمنع مرور السائل.<br />3. عدم وجود قناة <strong>Schlemm</strong> بكل بساطة.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "glaucoma",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536641,
+    "nextReview": 1779027536641,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_glaucoma_139",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Enumerate the differential diagnosis of Congenital Glaucoma.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">D.D. of Buphthalmos</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Large Cornea: Megalocornea, High myopia, Keratoglobus.</li><li class=\"font-bold text-slate-800\">• Cloudy Cornea: Birth trauma, Metabolic (MPS), Rubella.</li><li class=\"font-bold text-slate-800\">• 2ry Infantile Glaucoma: Retinoblastoma, ROP, Inflammation.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>D.D. (ممكن تتلخبط مع إيه؟)</strong><br />مش كل طفل عينه كبيرة أو معتمة يبقى عنده جلوكوما:<br />1. <strong>عينه كبيرة بس سليمة</strong>: زي حالات قصر النظر الشديد (<strong>High Myopia</strong>) أو مرض الـ <strong>Megalocornea</strong> (قرنية كبيرة بس الضغط طبيعي).<br />2. <strong>قرنية معتمة لسبب تاني</strong>: خبطة أثناء الولادة (Birth trauma) أو نقص مواد معينة (Metabolic factors).<br />3. <strong>مياه زرقاء ثانوية</strong>: بسبب ورم في العين (لي قدر الله) زي الـ <strong>Retinoblastoma</strong>.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "glaucoma",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536641,
+    "nextReview": 1779027536641,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_glaucoma_140",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Describe the diagnostic steps for Congenital Glaucoma under GA.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Diagnosis under GA</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• 1. Measure corneal diameter: > 11mm is suspicious.</li><li class=\"font-bold text-slate-800\">• 2. Gonioscopy: Koeppe lens shows flat iris insertion.</li><li class=\"font-bold text-slate-800\">• 3. IOP Measurement.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Diagnosis under GA (الفحص تحت البنج)</strong><br />الطفل الصغير مش هيخلينا نفحصه في العيادة، فلازم \"نخدره\" ونقيس 3 حاجات:<br />1. <strong>القطر</strong>: لو قطر القرنية أكبر من 11-12 مم بنشك.<br />2. <strong>ضغط العين</strong>: بنقيسه بجهاز خاص وهو نايم (مع مراعاة إن البنج نفسه بينزل الضغط شوية).<br />3. <strong>الزاوية</strong>: بنبص عليها بعدسة الـ Gonioscopy.<br />4. <strong>العصب</strong>: بنشوف لو فيه Cupping.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "glaucoma",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536641,
+    "nextReview": 1779027536641,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_glaucoma_141",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What is the etiology of Primary Open Angle Glaucoma (POAG)?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">POAG Etiology</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Age-related sclerosis of trabecular meshwork.</li><li class=\"font-bold text-slate-800\">• Narrowing of Fontana spaces leads to decreased aqueous outflow.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>POAG Etiology (إزاي بتحصل؟)</strong><br />الزاوية شكلياً مفتوحة، بس \"المصفاة\" (TM) نفسها مسدودة.<br />* مع السن، بيحصل تصلب (Sclerosis) في أنسجة الزاوية، والفتحات (Fontana spaces) بتضيق.<br />* ده بيخلي السائل يخرج بصعوبة، فيرتفع الضغط بالتدريج ويضغط على العصب البصري.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "glaucoma",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536641,
+    "nextReview": 1779027536641,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_glaucoma_142",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What are the characteristic predisposing factors for PCAG?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">PCAG Predisposing Factors</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Demographics: 40-45 year old female.</li><li class=\"font-bold text-slate-800\">• Configuration: Hypermetropic small eye with shallow anterior chamber.</li><li class=\"bg-amber-100/30 p-2.5 rounded-xl text-xs text-amber-800 border border-amber-200/30 mt-1 font-semibold\">Usually bilateral.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>PCAG Predisposing Factors</strong><br />مين الشخص اللي ديماً بنخاف يجيله انسداد مفاجئ في الزاوية؟<br />* <strong>السن والجنس</strong>: غالباً سيدة فوق الـ 40.<br />* <strong>شكل العين</strong>: العين \"الصغيرة\" (Hypermetropic). عشان العين صغيرة، كل المحتويات محشورة جوه فبتكون الزاوية ضيقة جداً (Shallow AC).<br />* دايماً بتيجي في العينين الاتنين.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "glaucoma",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536641,
+    "nextReview": 1779027536641,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_glaucoma_143",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Describe the clinical symptoms and diagnosis of the PCAG Intermittent (Prodromal) phase.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">PCAG Intermittent Phase</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Symptoms: Frontal headache, foggy vision, rainbow haloes around lights.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Diagnosis Tests: Darkroom test, Prone test, Darkroom prone test.</li><li class=\"bg-amber-100/30 p-2.5 rounded-xl text-xs text-amber-800 border border-amber-200/30 mt-1 font-semibold\">Spontaneously resolves within 1-2 hours.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Prodromal Phase (الإنذارات)</strong><br />هجمات \"بسيطة\" وبتروح لوحدها، المريض بيقولك:<br />* \"بيجيلي صداع لما أزعل أو أقعد في الضلمة كتير\".<br />* \"بشوف قوس قزح (Rainbow haloes) حوالين اللمبات بليل\".<br />* \"بشوف غيامة (Foggy vision) وبتروح لما أنام أو أطلع في النور\".<br />* بنفحصهم باختبارات زي الـ <strong>Darkroom test</strong> (نقعده في الضلمة ونشوف الضغط هيعلى ولا لأ).\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "glaucoma",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536641,
+    "nextReview": 1779027536641,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_glaucoma_144",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">How is a PCAG Prodromal attack managed (During vs After)?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Management of Prodromal PCAG</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• During attack: Miotic (2% Pilocarpine) to diseased eye + 1% prophylactic to other eye.</li><li class=\"font-bold text-slate-800\">• After attack: Bilateral peripheral iridectomy or Laser iridotomy.</li><li class=\"pl-4 text-xs italic text-slate-500 font-semibold\">• CONTRAINDICATION: Atropine.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Prodromal Management</strong><br />* <strong>فترة الهجمة</strong>: قطرة <strong>Pilocarpine</strong> بتضيق الحدقة فتشد القزحية بعيد عن الزاوية وتفتحها.<br />* <strong>بعد الهجمة</strong>: لازم \"حل جذري\" عشان الهجمة متتكررش بشكل أعنف (Acute)، فبنعمل خرم في القزحية بالليزر (<strong>LPI</strong>).<br />* <strong>ممنوع تماماً</strong>: استخدام الـ <strong>Atropine</strong> لأنه بيوسع العين ويقفل الزاوية تماماً ويسبب كارثة.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "glaucoma",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536641,
+    "nextReview": 1779027536641,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_glaucoma_145",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Briefly describe Chronic and Absolute phases of PCAG.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Chronic & Absolute PCAG</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Chronic: Different degrees of angle closure; similar picture to POAG.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Management (Chronic): Filtering surgery and prophylactic iridectomy of other eye.</li><li class=\"font-bold text-slate-800\">• Absolute: Blind painful eye, total optic atrophy, C.B. atrophy leads to hypotony.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Chronic & Absolute PCAG</strong><br />1. <strong>Chronic</strong>: القزحية خلاص \"لزقت\" في الزاوية ومبقتش تفتح تاني. الصورة فيها بتبقى شبه الـ POAG (فقدان نظر ببطء).<br />2. <strong>Absolute</strong>: دي المرحلة الأخيرة، العين بقت عمياء (No PL) ومؤلمة جداً. العين ممكن تنشف وتصغر في الآخر (Atrophy).\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "glaucoma",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536641,
+    "nextReview": 1779027536641,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_glaucoma_146",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">List specific local causes of Secondary Glaucoma.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Local Causes of 2ry Glaucoma</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Cornea: Perforation, fistula, ulcers.</li><li class=\"font-bold text-slate-800\">• Lens: Cataract, subluxation, dislocation.</li><li class=\"font-bold text-slate-800\">• AC: Exudates, blood (Hyphema), pus (Hypopyon).</li><li class=\"font-bold text-slate-800\">• Retina: CRVO (100 days glaucoma), PDR, intraocular tumors.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Local Causes of 2ry Glaucoma</strong><br />مشاكل العين اللي ممكن تعلي الضغط:<br />* <strong>خرم في القرنية</strong>: القزحية بتطلع وتسد الزاوية.<br />* <strong>العدسة</strong>: مياه بيضاء \"منفوخة\" (Intumescent) أو \"متحركة\" (Dislocated).<br />* <strong>دم أو صديد</strong>: الـ <strong>Hyphema</strong> (دم في الخزانة الأمامية) بيسد المصفاة.<br />* <strong>أوعية دموية جديدة</strong>: بتنمو في حالات السكر المتأخر أو جلطة الوريد وتسد الزاوية.<br /><br /><strong>جت في اند المجموعة التانية</strong>\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "glaucoma",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536641,
+    "nextReview": 1779027536641,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  }
+]

@@ -1,0 +1,342 @@
+[
+  {
+    "id": "official_written_retina_121",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Describe the gross anatomy and blood supply of the retina.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Retinal Anatomy & Blood Supply</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Gross Anatomy: Inner neurosensory layer, between choroid and vitreous; starts at ora serrata and ends at optic disc.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Inner 5 layers: Supplied by central retinal artery (from ophthalmic artery).</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Outer 5 layers: Avascular, supplied by diffusion from the choroid.</li><li class=\"bg-amber-100/30 p-2.5 rounded-xl text-xs text-amber-800 border border-amber-200/30 mt-1 font-semibold\">Cilioretinal artery: Present in 10-20%, branch of posterior ciliary arteries, supplies the macula.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Retina Anatomy (الشبكية)</strong><br />هي الطبقة الحساسة للضوء اللي بتبطّن العين من جوا.<br />* <strong>البناء</strong>: بتتكون من 10 طبقات (منها الخلايا اللي بنشوف بيها: الـ Rods والـ Cones).<br />* <strong>التغذية</strong>: الشبكية \"طماعة\" وبتاخد غذاها من مصدرين:<br />1. <strong>Inner 5 layers</strong>: بتتغذى من الشريان المركزي للشبكية (CRA).<br />2. <strong>Outer 5 layers</strong>: دي الأهم (فيها الخلايا الحساسة) وبتتغذى بالانتشار من المشيمة اللي وراها (Choroid).<br /><br /><div class=\"border-r-4 border-amber-500 bg-amber-500/5 p-3 rounded-lg my-2 text-sm italic\"><strong>Note</strong>: الـ Macula هي أكتير حتة حساسة في الشبكية ومسؤولة عن حدة النظر.</div><br /><br /><strong>جت في اند المجموعة التانية</strong>\n    </div>\n    \n  \n    <!-- Mnemonic Box -->\n    <div class=\"bg-blue-50/40 border border-blue-200/40 rounded-2xl p-5 text-right space-y-2 font-semibold text-slate-700 leading-relaxed mt-4\" style=\"direction: rtl; text-align: right;\">\n      <h5 class=\"text-xs font-black uppercase tracking-widest text-blue-600 mb-1\">💡 طريقة للحفظ (Mnemonic)</h5>\n      <strong>Retinal Supply - 2nd View</strong><br />   - الـ 5 طبقات اللي جوه (Inner): غذاهم من الشريان المركزي.<br />   - الـ 5 طبقات اللي بره (Outer): غذائهم بالانتشار بس من ورا (المشيمة).\n    </div>\n    \n</div>",
+    "tags": [
+      "retina",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_retina_122",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What are the main functions of the vitreous humor?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Vitreous Humor</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• 1. Stabilizes globe volume and acts as a cushion for the retina.</li><li class=\"font-bold text-slate-800\">• 2. Acts as one of the optical media of the eye.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• It is firmly attached at the vitreous base (peripheral retina/pars plana) and around the optic disc.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Vitreous Humor (الجسم الزجاجي)</strong><br />جيل شفاف مالي معظم فراغ العين من جوا.<br />* <strong>الوظيفة</strong>:<br />1. بيحافظ على شكل العين وحجمها.<br />2. بيمتص الصدمات (Cushion).<br />3. شفاف فبيسمح بمرور الضوء للشبكية.<br />* ماسك بقوة في الشبكية عند الأطراف (Vitreous base) وعند العصب البصري. مع السن، الجيل ده بيتحلل وممكن يشد الشبكية ويخرمها.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "retina",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_retina_123",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What are the characteristic vascular changes (hemorrhage and exudates) in retinopathies?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Retinopathy Pathology</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Superficial Hemorrhage: Flame-shaped (in nerve fiber layer).</li><li class=\"font-bold text-slate-800\">• Deep Hemorrhage: Dot or Blot (in nuclear layer).</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Hard Exudates: Yellow-white spots (lipoprotein).</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Soft Exudates (Cotton Wool): White, represent ischemia/micro-infarction.</li><li class=\"pl-4 text-xs italic text-slate-500 font-semibold\">• Macular Star: Edema arranged according to fiber direction at macula.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Retinopathy signs (لغة الشبكية)</strong><br />لما دكتور الرمد يبص في قاع العين بيشوف:<br />1. <strong>Superficial hemorrhage</strong>: نزيف سطحي شكله شبه \"لهب الشمعة\" (<strong>Flame-shaped</strong>).<br />2. <strong>Deep hemorrhage</strong>: نزيف عميق وشكله نقط (Dot/Blot).<br />3. <strong>Hard exudates</strong>: دهون مترسبة لونها أصفر.<br />4. <strong>Soft exudates (Cotton wool)</strong>: بقع بيضاء شبه القطن، دي بتبين إن فيه جلطات صغيرة في الشبكية.<br /><br /><strong>جت في اند المجموعة التانية</strong>\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "retina",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536641,
+    "nextReview": 1779027536641,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_retina_124",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Describe the four grades of Hypertensive Retinopathy.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Hypertensive Retinopathy Grades</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Grade I: Generalized mild attenuation of arteries.</li><li class=\"font-bold text-slate-800\">• Grade II: Focal attenuation of arteries + irregular vein caliber.</li><li class=\"font-bold text-slate-800\">• Grade III: Angiopathic retinopathy (exudates, hemorrhage, and edema).</li><li class=\"font-bold text-slate-800\">• Grade IV: All above + Papilledema and Macular star.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Hypertensive Retinopathy (تأثير الضغط)</strong><br />الضغط العالي بيقفل الشرايين بالتدريج:<br />* <strong>Grade 1 & 2</strong>: الشرايين بتضيق (Attenuation) وبتبقى رفيعة.<br />* <strong>Grade 3</strong>: الشبكية تبدأ تطلع نزيف ودهون (Exudates).<br />* <strong>Grade 4</strong>: العصب البصري نفسه بيورم (<strong>Papilledema</strong>) ودي حالة خطيرة جداً بنسميها Malignant hypertension.<br /><br /><div class=\"border-r-4 border-amber-500 bg-amber-500/5 p-3 rounded-lg my-2 text-sm italic\"><strong>Mnemonic</strong>: 1&2 (Vessels), 3 (Retina), 4 (Disc).</div>\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "retina",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536641,
+    "nextReview": 1779027536641,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_retina_125",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Differentiate between the three stages of Diabetic Retinopathy (DR).</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Stages of Diabetic Retinopathy</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• 1. Background DR: Micro-aneurysms, hard exudates, retinal hemorrhages (dot/blot).</li><li class=\"font-bold text-slate-800\">• 2. Pre-proliferative DR: Cotton-wool spots, IRMA (microvascular abnormality), venous beading.</li><li class=\"font-bold text-slate-800\">• 3. Proliferative DR: Neovascularization (NVD, NVE, NVI) and fibrovascular proliferation.</li><li class=\"pl-4 text-xs italic text-slate-500 font-semibold\">• Complications: Tractional RD and vitreous hemorrhage.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Stages of Diabetic Retinopathy</strong><br />تأثير السكر على العين بيمشي في كذا مرحلة:<br />1. <strong>Background (BDR)</strong>: البداية (نزيف بسيط ودهون).<br />2. <strong>Pre-proliferative</strong>: الشبكية مخنوقة ومحتاجة أكسجين (Cotton wool spots).<br />3. <strong>Proliferative (PDR)</strong>: دي \"مرحلة الانفجار\"، الشبكية بطلع أوعية دموية جديدة وضعيفة (Neovascularization) ممكن تنزف في أي لحظة.<br /><br /><strong>جت في اند المجموعة التانية</strong>\n    </div>\n    \n  \n    <!-- Mnemonic Box -->\n    <div class=\"bg-blue-50/40 border border-blue-200/40 rounded-2xl p-5 text-right space-y-2 font-semibold text-slate-700 leading-relaxed mt-4\" style=\"direction: rtl; text-align: right;\">\n      <h5 class=\"text-xs font-black uppercase tracking-widest text-blue-600 mb-1\">💡 طريقة للحفظ (Mnemonic)</h5>\n      <strong>DR Stages</strong><br />   1. <strong>BDR</strong>: فيه نزف ودهون.<br />   2. <strong>Pre-proliferative</strong>: فيه عتامات قطنية (Cotton wool spots) (نقص أكسجين).<br />   3. <strong>Proliferative</strong>: الجسم طلع أوعية جديدة (Neovascularization) ودي خطر جداً.\n    </div>\n    \n</div>",
+    "tags": [
+      "retina",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536641,
+    "nextReview": 1779027536641,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_retina_126",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What are the management options for Diabetic Retinopathy?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Management of DR</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• 1. Tight control of system blood sugar.</li><li class=\"font-bold text-slate-800\">• 2. Anti-VEGF Intravitreal injection: Mainstay for diabetic macular edema (DME).</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• 3. Laser Photocoagulation: For Proliferative DR or Maculopathy.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• 4. Vitrectomy: For non-clearing vitreous hemorrhage or tractional RD.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>DR Management</strong><br />إزاي بنحمي مريض السكر من العمى؟<br />1. <strong>المتابعة وسكر مظبوط</strong>: ده رقم 1.<br />2. <strong>حقن Anti-VEGF</strong>: حقن جوه العين عشان تموت الأوعية الدموية الزيادة وتقلل تورم مركز الإبصار.<br />3. <strong>الليزر (Argon laser)</strong>: بنكوي أطراف الشبكية عشان نوفر الأكسجين للجزء المهم اللي في النص.<br />4. <strong>العملية (Vitrectomy)</strong>: لو حصل نزيف كبير مش راضي يروح أو انفصال شديد في الشبكية.<br /><br /><strong>جت في اند المجموعة التانية</strong>\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "retina",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536641,
+    "nextReview": 1779027536641,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_retina_127",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Describe the clinical picture and complications of Central Retinal Vein Occlusion (CRVO).</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">CRVO clinical features</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Symptoms: Rapid painless drop of vision.</li><li class=\"font-bold text-slate-800\">• Signs: Dilated/tortuous veins, extensive hemorrhages, edema, cotton wool spots.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Complications: Vitreous hemorrhage, Tractional RD, and Neovascular Glaucoma (100 days glaucoma).</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>CRVO (جلطة الوريد)</strong><br />الوريد اتسد، فالدم اتحبس جوه الشبكية وانفجر:<br />* <strong>الشكل</strong>: بنسميها <strong>Blood and thunder fundus</strong> (نزيف في كل حتة كأن فيه عاصفة دم).<br />* <strong>الأعراض</strong>: ضعف نظر مفاجئ بس من غير وجع.<br />* <strong>المضاعفات</strong>: أخطرها هي مياه زرقاء عنيفة (<strong>100 days glaucoma</strong>) بسبب نقص الأكسجين الشديد.<br /><br /><strong>جت في اند المجموعة التانية</strong>\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "retina",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536641,
+    "nextReview": 1779027536641,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_retina_128",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What are the classic symptoms and signs of Central Retinal Artery Occlusion (CRAO)?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">CRAO features</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Symptoms: Sudden painless loss of vision.</li><li class=\"font-bold text-slate-800\">• Signs (Early): Thread-like arteries, milky white retina (ischemic edema).</li><li class=\"pl-4 text-xs italic text-slate-500 font-semibold\">• Hallmark Sign: Cherry red spot at the fovea.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Late Sign: Consecutive optic atrophy (waxy yellow disc).</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>CRAO (جلطة الشريان - سكتة العين)</strong><br />الحنفية اتقفلت فجأة، الشبكية مبقاش واصلها دم:<br />* <strong>الأعراض</strong>: فقدان نظر كلي ومفاجئ في ثواني.<br />* <strong>العلامة الذهبية</strong>: <strong>Cherry red spot</strong> (نقطة حمراء شبه الكريزة في النص، والشبكية حواليها بيضاء ميتة من نقص الدم).<br />* دي حالة طوارئ قصوى، لو الدم مرجعش في خلال ساعات الشبكية بتموت للأبد.<br /><br /><strong>جت في اند المجموعة التانية</strong>\n    </div>\n    \n  \n    <!-- Mnemonic Box -->\n    <div class=\"bg-blue-50/40 border border-blue-200/40 rounded-2xl p-5 text-right space-y-2 font-semibold text-slate-700 leading-relaxed mt-4\" style=\"direction: rtl; text-align: right;\">\n      <h5 class=\"text-xs font-black uppercase tracking-widest text-blue-600 mb-1\">💡 طريقة للحفظ (Mnemonic)</h5>\n      <strong>CRAO - 2nd View</strong><br />   الشريان \"اتسد\" (سكتة في العين).<br />   لازم \"الكريزة\" (Cherry red spot) تظهر في النص (باقي الشبكية بيبيض من نقص الدم). المريض فقد نظره في ثواني بدون ألم.\n    </div>\n    \n</div>",
+    "tags": [
+      "retina",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536641,
+    "nextReview": 1779027536641,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_retina_129",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Define Rhegmatogenous Retinal Detachment (RD) and its clinical symptoms.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Rhegmatogenous RD</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Definition: RD caused by a full thickness retinal hole or tear.</li><li class=\"font-bold text-slate-800\">• Symptoms Sequence: Flashes (photopsia) -> Floaters -> Field defect -> Visual loss.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Signs: Grayish red reflex, soft IOP, whitish detached retina with dark tortuous vessels.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Rhegmatogenous RD (انفصال الشبكية بسبب خرم)</strong><br />ده النوع الأشهر، بيحصل خرم في الشبكية (Tear) والماية بتدخل من تحته وتفصلها عن مكانها.<br />* <strong>الأعراض بالترتيب</strong>:<br />1. <strong>Flashes</strong>: فلاشات نور (نور بيطفي وينور فجأة).<br />2. <strong>Floaters</strong>: ذبابة طايرة كتير فجأة.<br />3. <strong>Curtain sensation</strong>: المريض يحس إن فيه \"ستارة سودة\" نازلة على عينه.<br /><br /><strong>جت في اند المجموعة التانية</strong>\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "retina",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536641,
+    "nextReview": 1779027536641,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_retina_130",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">How is Rhegmatogenous Retinal Detachment treated?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Treatment of Rhegmatogenous RD</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Break without detachment: Argon Laser photocoagulation.</li><li class=\"font-bold text-slate-800\">• RD with Break: Scleral buckling (with drainage) + sealing by cryopexy/photocoagulation.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Neglected Cases/PVR: Vitrectomy with silicon oil injection.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>RD Treatment (تثبيت الشبكية)</strong><br />الشبكية لازم ترجع مكانها وتتلزق:<br />1. <strong>الليزر</strong>: لو فيه خرم بس لسه مصلش انفصال، بنلحمه بالليزر.<br />2. <strong>Scleral buckling</strong>: بنحط حزام حوالين العين عشان نضغط على الصلبة ونقفل الخرم.<br />3. <strong>Vitrectomy</strong>: بنشيل الجسم الزجاجي ونحقن زيت سيليكون أو غاز عشان يزق الشبكية مكانها.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "retina",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536641,
+    "nextReview": 1779027536641,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_retina_131",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">List causes of Secondary Retinal Detachment (Non-Rhegmatogenous).</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Secondary RD Causes</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• 1. Tractional RD: PDR, organized vitreous hemorrhage, cyclitic membrane.</li><li class=\"font-bold text-slate-800\">• 2. Exudative RD: Exudative choroiditis, malignant melanoma.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Secondary RD (الأنواع التانية)</strong><br />هنا الشبكية انفصلت بس مفيش خرم:<br />1. <strong>Tractional</strong>: بسبب تليف بيشد الشبكية لقدام (زي حالات السكر المتقدمة).<br />2. <strong>Exudative</strong>: بسبب سائل بيتجمع تحت الشبكية (زي الالتهابات العنيفة أو الأورام).\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "retina",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536641,
+    "nextReview": 1779027536641,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_retina_132",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Describe Retinitis Pigmentosa (Clinical Picture and Triad).</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Retinitis Pigmentosa</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Definition: Bilateral progressive hereditary degeneration affecting rods first (night blindness).</li><li class=\"font-bold text-slate-800\">• Classic Triad (Signs): Bone corpuscles (black pigments), Attenuated blood vessels, Waxy yellow optic disc.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Visual Field: Ring scotoma progressing to tubular vision.</li><li class=\"bg-amber-100/30 p-2.5 rounded-xl text-xs text-amber-800 border border-amber-200/30 mt-1 font-semibold\">Can be part of Laurence-Moon-Biedl Syndrome.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Retinitis Pigmentosa (مرض العشى الليلي)</strong><br />مرض وراثي بيدمر خلايا الشبكية (الـ Rods) المسؤولة عن الرؤية في الضلمة.<br />* <strong>الأعراض</strong>: المريض مش بيشوف خالص بليل ومجال نظره بيصغر.<br />* <strong>الثلاثية الشهيرة (The Triad)</strong>:<br />1. <strong>Bone corpuscles</strong>: رواسب سوداء شكلها شبه الخلايا العصبية.<br />2. <strong>Waxy yellow disc</strong>: العصب البصري لونه أصفر باهت.<br />3. <strong>Attenuated vessels</strong>: شرايين الشبكية ضيقة جداً.<br /><br /><div class=\"border-r-4 border-amber-500 bg-amber-500/5 p-3 rounded-lg my-2 text-sm italic\"><strong>Result</strong>: المريض بيشوف كأنه بيبص من \"ماسورة\" (<strong>Tubular vision</strong>).</div>\n    </div>\n    \n  \n    <!-- Mnemonic Box -->\n    <div class=\"bg-blue-50/40 border border-blue-200/40 rounded-2xl p-5 text-right space-y-2 font-semibold text-slate-700 leading-relaxed mt-4\" style=\"direction: rtl; text-align: right;\">\n      <h5 class=\"text-xs font-black uppercase tracking-widest text-blue-600 mb-1\">💡 طريقة للحفظ (Mnemonic)</h5>\n      <strong>Retinitis Pigmentosa - Simplified</strong><br />   العشى الليلي: مش بيشوف بليل، الـ Rods ماتت.<br />   العلامات: رواسب سوداء (Bone corpuscles)، العصب أصفر (Waxy disc)، الشرايين رفيعة.<br />   النتيجة: رؤية \"الماسورة\" (Tubular vision).\n    </div>\n    \n</div>",
+    "tags": [
+      "retina",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536641,
+    "nextReview": 1779027536641,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_retina_133",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Describe the pathology of Diabetic Retinopathy (Occlusion vs Leakage).</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Diabetic Retinopathy Pathology</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• 1. Micro-vascular occlusion: Basement membrane thickening, Endothelial proliferation, Platelet aggregation.</li><li class=\"font-bold text-slate-800\">• 2. Micro-vascular leakage: Loss of tight junctions and loss of pericytes.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>DR Pathology (إزاي السكر بيبوظ الشبكية؟)</strong><br />بيشتغل بطريقتين:<br />1. <strong>Leakage (تسريب)</strong>: جدران الأوعية بتضعف، فتسرب مياه ودهون (Exudates) وتعمل تورم في الماكولا.<br />2. <strong>Occlusion (انسداد)</strong>: الشعيرات الدموية بتتقفل، فالشبكية متعرفش تتنفس، فتطلع مواد (VEGF) تحفز نمو أوعية دموية جديدة مضرة.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "retina",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536641,
+    "nextReview": 1779027536641,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_retina_134",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What are the investigations required before treating Diabetic Retinopathy?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">DR Investigations</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Fundus examination and colored fundus photography.</li><li class=\"font-bold text-slate-800\">• Fluorescein angiography (FA).</li><li class=\"font-bold text-slate-800\">• Optical Coherence Tomography (OCT).</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Retina Investigations</strong><br />قبل ما نعالج لازم نصور ونحلل:<br />1. <strong>Fundus Camera</strong>: تصوير قاع العين العادي للتوثيق.<br />2. <strong>FA (الصبغة)</strong>: بنحقن صبغة Fluorescein عشان نشوف أماكن التسريب والمناطق اللي مش واصلها دم.<br />3. <strong>OCT (الأشعة المقطعية)</strong>: دي أهم حاجة، بتبين سمك الشبكية بالتفصيل (زي السونار بس بالليزر).\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "retina",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536641,
+    "nextReview": 1779027536641,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_retina_135",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What is the etiology of Central Retinal Vein Occlusion (CRVO)?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">CRVO Etiology</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Lumen: Increased blood viscosity (e.g., polycythemia).</li><li class=\"font-bold text-slate-800\">• Wall: Vasculitis (e.g., in Diabetes Mellitus).</li><li class=\"font-bold text-slate-800\">• Outside: Atherosclerosis at lamina cribrosa or increased IOP.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>CRVO Etiology (مين اللي بيجيلة جلطة؟)</strong><br />بيحصل انسداد في مخرج الدم من العين:<br />* زيادة لزوجة الدم (زي الـ Polycythemia).<br />* التهاب في جدار الوريد (Vasculitis) بسبب السكر أو الضغط.<br />* تصلب الشريان اللي ماشي جنب الوريد (Atherosclerosis) فبيضغط عليه ويقله.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "retina",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536641,
+    "nextReview": 1779027536641,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_retina_136",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What is the etiology of Central Retinal Artery Occlusion (CRAO)?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">CRAO Etiology</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Lumen: Emboli (e.g., atheromatous patches).</li><li class=\"font-bold text-slate-800\">• Wall: Arteritis (e.g., SLE) or Arterial spasm (Raynaud's disease).</li><li class=\"font-bold text-slate-800\">• Outside: Tight scleral buckle in RD surgery.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>CRAO Etiology (ليه الشريان بيتحبس؟)</strong><br />السبب غالباً \"سدادة\" (Emboli):<br />* حتة دهون أو جلطة جاية من القلب أو من شريان الرقبة (Carotid) وسدت شريان العين.<br />* تشنج في الشريان (Arterial spasm).<br />* التهاب شديد في الأوعية الدموية (Giant cell arteritis).\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "retina",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536641,
+    "nextReview": 1779027536641,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_retina_137",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What are the main functions of the vitreous gel?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Vitreous Functions</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• 1. Stabilizes globe volume and acts as a cushion for the retina.</li><li class=\"font-bold text-slate-800\">• 2. Acts as one of the optical media.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Firmly attached to peripheral retina, pars plana, and optic disc.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Vitreous Functions</strong><br />1. ممر للضوء (Optical media).<br />2. بيحافظ على \"كروية\" العين.<br />3. بيثبت الشبكية في مكانها ويحافظ على تماسكها مع المشيمة.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "retina",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536641,
+    "nextReview": 1779027536641,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_retina_147",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What are the complications of Rhegmatogenous Retinal Detachment?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">RD Complications</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Total Retinal Detachment.</li><li class=\"font-bold text-slate-800\">• Atrophic Bulbi (Eye shrinkage).</li><li class=\"font-bold text-slate-800\">• Iridocyclitis.</li><li class=\"font-bold text-slate-800\">• Complicated Cataract.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>RD Complications</strong><br />لو الشبكية مابرجعش مكانها بسرعة:<br />1. <strong>Total detachment</strong>: الشبكية كلها بتنفصل وتكرمش.<br />2. <strong>Atrophy bulbi</strong>: العين بتصغر وتفقد وظيفتها وتنشف.<br />3. <strong>Cataract</strong>: مياه بيضاء ثانوية بسبب الالتهاب المزمن.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "retina",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536641,
+    "nextReview": 1779027536641,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_retina_148",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What are the complications of Retinitis Pigmentosa?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Retinitis Pigmentosa Complications</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• 1. Complicated Cataract.</li><li class=\"font-bold text-slate-800\">• 2. Secondary Glaucoma.</li><li class=\"font-bold text-slate-800\">• 3. Consecutive Optic Atrophy.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>RP Complications</strong><br />مريض العشى الليلي ممكن يحصلة مشاكل تانية:<br />1. مياه بيضاء مبكرة (Complicated cataract).<br />2. مياه زرقاء (Glaucoma).<br />3. ضمور كلي في العصب البصري في المراحل الأخيرة.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "retina",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536641,
+    "nextReview": 1779027536641,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_retina_149",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">How is CRVO treated and monitored?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">CRVO Treatment & Monitoring</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Identify cause: Measure BP, IOP, Blood sugar, CBC.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Blood thinning: Aspirin or anticoagulants.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Monitoring: Fluorescein angiography (FA) after 3 months to detect neovascularization.</li><li class=\"pl-4 text-xs italic text-slate-500 font-semibold\">• Surgery: Laser for DME/NV; Vitrectomy for hemorrhage/RD.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>CRVO Treatment</strong><br />1. <strong>علاجي</strong>: بنعالج السبب (ضغط أو سكر) وندّي مميعات للدم (Aspirin).<br />2. <strong>المتابعة</strong>: لازم نعمل أشعة صبغة (FA) كل فترة عشان لو بدأ يطلع أوعية دموية جديدة نلحقها بالليزر قبل ما تعمل جلوكوما.<br />3. <strong>الحقن</strong>: لو فيه تورم في الماكولا بنحقن Anti-VEGF.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "retina",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536641,
+    "nextReview": 1779027536641,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  }
+]

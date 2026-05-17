@@ -7,6 +7,62 @@
     "module": "Ophthalmology Practical",
     "cardCount": 64,
     "isPublic": true,
-    "isStatic": true
+    "isStatic": true,
+    "dataPath": "/data/eyelid_data.json"
+  },
+  {
+    "id": "official_written_eyelid",
+    "title": "رمد نظري - الجفون والجهاز الدمعي",
+    "description": "شرح كامل ومبسط لنظري الجفون والجهاز الدمعي مع الميمونيكس وتلميحات الامتحانات.",
+    "subject": "Ophthalmology",
+    "module": "Ophthalmology Written",
+    "cardCount": 49,
+    "isPublic": true,
+    "isStatic": true,
+    "dataPath": "/data/ophthalmology_written_eyelid.json"
+  },
+  {
+    "id": "official_written_cornea",
+    "title": "رمد نظري - القرنية والصلبة",
+    "description": "مراجعة شاملة لنظري القرنية والصلبة، تشمل القرح والعتامات وتصنيفات القرنية المخروطية.",
+    "subject": "Ophthalmology",
+    "module": "Ophthalmology Written",
+    "cardCount": 25,
+    "isPublic": true,
+    "isStatic": true,
+    "dataPath": "/data/ophthalmology_written_cornea.json"
+  },
+  {
+    "id": "official_written_lens",
+    "title": "رمد نظري - عدسة العين",
+    "description": "مذاكرة نظري عدسة العين والكتاركت (المياه البيضاء) بأنواعها الخلقية والمكتسبة وعلاجاتها.",
+    "subject": "Ophthalmology",
+    "module": "Ophthalmology Written",
+    "cardCount": 31,
+    "isPublic": true,
+    "isStatic": true,
+    "dataPath": "/data/ophthalmology_written_lens.json"
+  },
+  {
+    "id": "official_written_glaucoma",
+    "title": "رمد نظري - الجلوكوما",
+    "description": "فهم ميكانيكية المياه الزرقاء، تصريف سائل العين، الجلوكوما الخلقية والحادة وعلاجاتها.",
+    "subject": "Ophthalmology",
+    "module": "Ophthalmology Written",
+    "cardCount": 24,
+    "isPublic": true,
+    "isStatic": true,
+    "dataPath": "/data/ophthalmology_written_glaucoma.json"
+  },
+  {
+    "id": "official_written_retina",
+    "title": "رمد نظري - الشبكية",
+    "description": "شرح نظري الشبكية وتأثير السكري والانسدادات الشريانية والوريدية واعتلال الشبكية التصبغي.",
+    "subject": "Ophthalmology",
+    "module": "Ophthalmology Written",
+    "cardCount": 20,
+    "isPublic": true,
+    "isStatic": true,
+    "dataPath": "/data/ophthalmology_written_retina.json"
   }
 ]

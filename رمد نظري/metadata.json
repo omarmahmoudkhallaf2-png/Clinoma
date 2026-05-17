@@ -1,0 +1,6 @@
+{
+  "name": "Ophthalmology Flashcards",
+  "description": "An interactive flashcard application for Clinical Ophthalmology (Eyelid and Lacrimal System) with spaced repetition and progress tracking.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}

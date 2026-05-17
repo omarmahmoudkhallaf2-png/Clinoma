@@ -1,0 +1,529 @@
+[
+  {
+    "id": "official_written_lens_75",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Describe the surfaces and pertemuan (equator) of the lens.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Applied Anatomy of the Lens</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• The lens has two surfaces: the anterior surface is less convex than the posterior.</li><li class=\"font-bold text-slate-800\">• These two surfaces meet at the equator.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Lens Surfaces</strong><br />العدسة ليها سطحين:<br />* <strong>Anterior surface</strong>: السطح اللي قدام بكون \"مفلطح\" شوية (less convex).<br />* <strong>Posterior surface</strong>: السطح اللي ورا بكون \"محدب\" أكتر (more convex).<br />* <strong>Equator</strong>: هو الخط الوهمي اللي بيتقابل عنده السطحين.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "lens",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_lens_76",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What factors maintain lens clarity and transparency?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Lens Transparency</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Avascularity.</li><li class=\"font-bold text-slate-800\">• Tightly packed nature of lens cells.</li><li class=\"font-bold text-slate-800\">• The arrangement of lens proteins.</li><li class=\"font-bold text-slate-800\">• Semipermeable character of lens capsule.</li><li class=\"font-bold text-slate-800\">• Pump mechanism of lens fibers’ membranes that regulate electrolyte and water balance (maintaining relative dehydration).</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Lens Transparency</strong><br />إزاي العدسة بتفضل شفافة؟<br />1. معندهاش أوعية دموية (<strong>Avascular</strong>).<br />2. الخلايا والبروتينات مترتبة بنظام كيميائي دقيق.<br />3. الغلاف بتاعها (Capsule) بيسمح بمرور حاجات معينة بس.<br />4. ليها \"مضخة\" بتطرد المياه الزيادة عشان تفضل ناشفة شوية (<strong>Dehydrated</strong>).\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "lens",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_lens_77",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">How does the lens power change during accommodation?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Accommodation</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• The power of the lens increases due to increased curvature of its surfaces.</li><li class=\"font-bold text-slate-800\">• The curvature of the posterior surface remains almost the same, but the anterior surface becomes more convex.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Accommodation (التكيف)</strong><br />دي العملية اللي بتخلينا نشوف الحاجات القريبة بوضوح.<br />* اللي بيحصل: عضلة العين (Ciliary muscle) بتنقبض، فتقوم العدسة \"تكوّر\" أكتر وتزود قوتها.<br />* التغير الكبير بيحصل في السطح الأمامي (<strong>Anterior surface</strong>)، بيبقى محدب أكتر.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "lens",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_lens_78",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Define Congenital Cataract and its main causes.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Congenital & Developmental Cataract</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Definition: Opacity of the lens or its capsule dating since birth or soon after.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Hereditary (genetically determined).</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Maternal malnutrition (vit. D, Ca, proteins) or infection (especially 1st trimester).</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Metabolic: Galactosemia, hypoglycemia.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Systemic syndromes: e.g., Lowe syndrome.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Fetal hypoxia: e.g., placental hemorrhage.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Congenital Cataract</strong><br />هو عتامة في عدسة العين أو الكابسول بتاعها موجودة منذ الولادة أو تظهر بعد الولادة بفترة قصيرة.<br />يعني الطفل يتولد والـ lens مش شفافة بالكامل، وده ممكن يأثر على الإبصار وتطور النظر الطبيعي.<br /><br />### Main Causes of Congenital Cataract<br /><br />1. <strong>Hereditary causes (genetic)</strong><br />   * أسباب وراثية وجينية، ودي من أشهر الأسباب.<br /><br />2. <strong>Maternal causes during pregnancy</strong><br />   * سوء تغذية الأم أثناء الحمل:<br />     * نقص Vitamin D<br />     * نقص Calcium<br />     * نقص البروتينات<br />   * إصابات وعدوى أثناء الحمل خصوصًا في <strong>first trimester</strong>.<br /><br />3. <strong>Metabolic disorders</strong><br />   * زي:<br />     * <strong>Galactosemia</strong><br />     * <strong>Hypoglycemia</strong><br /><br />4. <strong>Systemic syndromes</strong><br />   * ضمن متلازمات عامة في الجسم مثل:<br />     * <strong>Lowe syndrome</strong><br /><br />5. <strong>Fetal hypoxia</strong><br />   * نقص الأكسجين للجنين، مثل حالات:<br />     * placental hemorrhage (نزيف بالمشيمة)<br /><br />في الامتحانات ساعات يحبوا يسألوا:<br /><div class=\"border-r-4 border-amber-500 bg-amber-500/5 p-3 rounded-lg my-2 text-sm italic\">“Congenital cataract may be hereditary, metabolic, infective, or associated with systemic syndromes.”</div><br />فرتبهم في دماغك بالشكل ده عشان الحفظ يبقى أسهل.\n    </div>\n    \n  \n    <!-- Mnemonic Box -->\n    <div class=\"bg-blue-50/40 border border-blue-200/40 rounded-2xl p-5 text-right space-y-2 font-semibold text-slate-700 leading-relaxed mt-4\" style=\"direction: rtl; text-align: right;\">\n      <h5 class=\"text-xs font-black uppercase tracking-widest text-blue-600 mb-1\">💡 طريقة للحفظ (Mnemonic)</h5>\n      <strong>Congenital Cataract - 2nd View</strong><br />   يا إما وراثي، يا إما الأم جالها \"حاجة\" في الحمل (عدوى، نقص فيتامينات، دواء)، يا إما مرض استقلابي (مثل الجلاكتوزيميا).<br />   الخلاصة: الطفل اتولد والعدسة مش صافية (عتامة).\n    </div>\n    \n</div>",
+    "tags": [
+      "lens",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_lens_79",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What are the general features of congenital cataract?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">General Features</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Usually bilateral.</li><li class=\"font-bold text-slate-800\">• Usually partial.</li><li class=\"font-bold text-slate-800\">• Stationary (rarely progresses to total, e.g., rubella).</li><li class=\"font-bold text-slate-800\">• Soft cataract.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Congenital Cataract Features</strong><br />صفات المياه البيضاء الخلقية:<br />1. ديماً بتيجي في <strong>العينين الاتنين</strong> (Bilateral).<br />2. وغالباً مش بتزيد مع الوقت (<strong>Stationary</strong>).<br />3. العدسة بتبقى \"طريّة\" (<strong>Soft cataract</strong>) لأن لسة مفيهاش نواة ناشفة.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "lens",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_lens_80",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What is \"Leukocoria\" in the context of congenital cataract?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Clinical Picture: Symptoms</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Leukocoria is the white color of the pupil seen if the cataract is extensive or superficial.</li><li class=\"font-bold text-slate-800\">• Other symptoms include defective vision or being asymptomatic if small.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Leukocoria</strong><br />يعني \"الحدقة البيضاء\".<br />* لما الأم تلاحظ إن نني العين بتاع ابنها لونه \"أبيض\" بدل \"أسود\".<br />* ده معناه إن فيه عتامة كبيرة سادة النظر أو قريبة من السطح.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "lens",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_lens_81",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What are the complications of a large congenital cataract interfering with vision?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Complications</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Interference with mental development.</li><li class=\"font-bold text-slate-800\">• Sensory deprivation amblyopia due to lack of macular development.</li><li class=\"font-bold text-slate-800\">• Squint (in unilateral cases).</li><li class=\"font-bold text-slate-800\">• Nystagmus (in bilateral and extensive cases).</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Cataract Complications in Children</strong><br />المياه البيضاء في الأطفال أخطر من الكبار لسببين:<br />1. <strong>Amblyopia</strong>: كسل العين، لأن المخ مش بيوصله صورة فبيتعود مبيشوفش.<br />2. <strong>Mental development</strong>: الطفل مش بيتفاعل مع البيئة كويس.<br />3. <strong>Squint & Nystagmus</strong>: الحول ورعشة العين بسبب ضعف النظر.<br /><br /><strong>جت في اند المجموعة التانية</strong>\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "lens",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_lens_82",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Describe symptoms of Zonular (lamellar) cataract?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Zonular or Lamellar Cataract</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• White color of the pupil (Leukocoria).</li><li class=\"font-bold text-slate-800\">• Poor fixation (child does not see well).</li><li class=\"font-bold text-slate-800\">• Markedly dropped visual acuity.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Zonular (Lamellar) Cataract</strong><br />أشهر نوع مياه بيضاء خلقية.<br />* الأعراض: المريض بيشوف الحدقة بيضاء (leukocoria) والنظر بيكون ضعيف جداً.<br />* ديماً بتيجي بسبب نقص الكالسيوم أو فيتامين D عند الأم.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "lens",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_lens_83",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What are the characteristic signs of Zonular cataract on oblique illumination?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Zonular Cataract Signs</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Grayish white, disc-shaped opacity at the central part; periphery is clear.</li><li class=\"font-bold text-slate-800\">• Radial riders or spokes project from the main opacity (steering wheel shape).</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Zonular Cataract Signs</strong><br />شكلها مميز جداً تحت الكشاف:<br />* عتامة دائرية في النص، والأطراف بتاعة العدسة شفافة.<br />* طالع منها خطوط شبه \"أسلاك العجلة\" بنسميها <strong>Riders</strong>.<br /><br /><div class=\"border-r-4 border-amber-500 bg-amber-500/5 p-3 rounded-lg my-2 text-sm italic\"><strong>Mnemonic</strong>: شبه <strong>الدركسيون</strong> أو عجلة العربية (Steering wheel shape).</div>\n    </div>\n    \n  \n    <!-- Mnemonic Box -->\n    <div class=\"bg-blue-50/40 border border-blue-200/40 rounded-2xl p-5 text-right space-y-2 font-semibold text-slate-700 leading-relaxed mt-4\" style=\"direction: rtl; text-align: right;\">\n      <h5 class=\"text-xs font-black uppercase tracking-widest text-blue-600 mb-1\">💡 طريقة للحفظ (Mnemonic)</h5>\n      <strong>Steering Wheel Cataract</strong><br />   شكلها زي عجلة القيادة (أو عجلة العربية).<br />   نص معتم، وطالع منها خطوط radial تشبه الـ spokes بتاع العجلة.\n    </div>\n    \n</div>",
+    "tags": [
+      "lens",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_lens_84",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What does the red reflex show in Zonular cataract?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Zonular Cataract Red Reflex</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Peripheral bright red reflex through clear periphery.</li><li class=\"font-bold text-slate-800\">• Central dim red reflex due to the central opacity.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Zonular Cataract Red Reflex</strong><br />لما نبص بالمنظار (Ophthalmoscope):<br />* بنشوف أحمر قوي في الأطراف (عشان شفافة).<br />* وبنشوف أحمر باهت أو معتم في النص (مكان العتامة).\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "lens",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_lens_85",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Why does Posterior Polar Cataract cause marked drop in vision?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Posterior Polar Cataract</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Due to the proximity of the lens opacity to the nodal point.</li><li class=\"font-bold text-slate-800\">• The mother notices poor fixation; Leukocoria is rare as it rarely becomes total.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Posterior Polar Cataract</strong><br />العتامة موجودة عند القطب الخلفي للعدسة.<br />* دي أخطر أنواع العتامة في التأثير على النظر لأنها \"قريبة جداً\" من مركز تجمع الضوء (Nodal point).<br />* الطفل مش بيعرف يركز نظره على الحاجات خالص.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "lens",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_lens_86",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Describe Coronary Cataract.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Coronary Cataract</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Symptoms: Usually asymptomatic.</li><li class=\"font-bold text-slate-800\">• Appearance: Corona of peripheral club-shaped opacities seen at puberty.</li><li class=\"font-bold text-slate-800\">• Red reflex: Peripheral black oval spots matching opacities.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Coronary Cataract</strong><br />دي مياه بيضاء بتظهر عند البلوغ.<br />* الشكل: شبه \"التاج\" (Corona).<br />* العتامة بتبقى على شكل \"هراوات\" (club-shaped) في أطراف العدسة.<br />* غالباً المريض مش بيحس بحاجة خالص ومش بتأثر على النظر.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "lens",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_lens_87",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What are the features of Rubella Total Cataract?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Rubella Total Cataract</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Cause: Maternal rubella in 1st trimester.</li><li class=\"font-bold text-slate-800\">• Symptoms: Total opacificaton at birth (Leukocoria), poor fixation.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Systemic signs: Microcephaly, mental retardation, deafness, heart defects (PDA, VSD).</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Ocular signs: Micro-ophthalmos, totally blackened red reflex, no iris shadow.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Rubella Cataract</strong><br />بسبب إصابة الأم بالفيروس الألماني (Rubella).<br />* الطفل بيتولد عنده مياه بيضاء \"كاملة\" (Total).<br />* وبكون معاه مشاكل تانية زي: صغر حجم الدماغ، مشاكل في القلب، وصمم.<br /><br /><div class=\"border-r-4 border-amber-500 bg-amber-500/5 p-3 rounded-lg my-2 text-sm italic\"><strong>Mnemonic</strong>: عتامة كاملة + قلب + ودن = <strong>Rubella</strong> syndrome.</div>\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "lens",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_lens_88",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What is the management approach for congenital cataract based on visual significance?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Management Guidelines</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Visually significant (dense/posterior polar): Cataract extraction as early as possible.</li><li class=\"font-bold text-slate-800\">• Not visually significant (peripheral/anterior polar): Follow-up until age 5 to assess VA.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Management of Congenital Cataract</strong><br />نعمل عملية ولا نستنى؟<br />1. لو العتامة سادة النظر تماماً: <strong>عملية فوراً</strong> (عشان نمنع كسل العين).<br />2. لو العتامة صغيرة أو في الأطراف: بنتابع لحد سن 5 سنوات ونشوف تأثيرها على النظر باللوحة.<br /><br /><strong>جت في اند المجموعة التانية</strong>\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "lens",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_lens_89",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What surgical technique is used for soft congenital cataract?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Lensectomy</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Lensectomy and anterior vitrectomy.</li><li class=\"font-bold text-slate-800\">• Approached via pars plana or a small corneal incision.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Lensectomy</strong><br />هي العملية اللي بنعملها للأطفال.<br />* لأن العدسة طرية، بنشفطها بجهاز خاص وبنشيل معاها جزء من الجسم الزجاجي (<strong>Anterior vitrectomy</strong>) عشان نمنع تكون سحابة تانية وراها.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "lens",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_lens_90",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Define Senile Cataract and its main types.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Senile Cataract</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Definition: Acquired progressive opacity in patients > 50 years without systemic/local disease.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• 1. Senile Cortical (75% cases).</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• 2. Senile Nuclear (25% cases).</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• 3. Cortico-nuclear: both occurring together.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Senile Cataract (المياه البيضاء للكبار)</strong><br />دي المياه البيضاء الطبيعية اللي بتيجي مع السن (فوق الـ 50).<br />* الأنواع:<br />  1. <strong>Cortical</strong>: بتبدأ من القشرة (الأطراف).<br />  2. <strong>Nuclear</strong>: بتبدأ من النواة (المركز).\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "lens",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_lens_91",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What are the two pathological changes in senile cortical cataract?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Cortical Cataract Pathogenesis</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• 1. Hydration: water droplets appear between lens fibers.</li><li class=\"font-bold text-slate-800\">• 2. Denaturation/Coagulation of lens proteins leading to opacity.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Pathogenesis of Cortical Cataract</strong><br />إزاي القشرة بتعتم؟<br />1. <strong>Hydration</strong>: الجلوكوز بيقل، فالأملاح تزيد، فتقوم العدسة تشرب مياه كتير.<br />2. <strong>Denaturation</strong>: بروتينات العدسة بتتجمد وتتحول للون الأبيض (زي بياض البيض لما يستوي).\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "lens",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_lens_92",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Describe symptoms of the Incipient stage of senile cortical cataract.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Incipient Stage</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Gradual progressive diminution of vision.</li><li class=\"font-bold text-slate-800\">• Uniocular diplopia: Due to irregular refraction.</li><li class=\"font-bold text-slate-800\">• Haloes around light: Prismatic effect of water droplets between fibers.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Incipient Stage (البداية)</strong><br />أول مراحل المياه البيضاء:<br />* المريض يشتكي من: \"زغللة بالتدريج\"، \"بيشوف الحاجة اتنين\" (Polyopia)، أو \"هالات حوالين النور\" بسبب قطرات المياه اللي جوه العدسة.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "lens",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_lens_93",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What do the opacities look like in the Incipient stage?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Incipient Stage Signs</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Peripheral Grayish-white opacities.</li><li class=\"font-bold text-slate-800\">• Shape: Triangular or wedge-shaped (apex towards pupil).</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Incipient Stage Signs</strong><br />لما نفحصها:<br />* بنلاقي عتامات في الأطراف شكلها \"مثلثات\" (Wedge-shaped) وقاعدتها لبره.<br />* بتظهر في الـ Red reflex كأنها \"أسلاك سودة\" في خلفية حمراء.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "lens",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_lens_94",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What are the symptoms and signs of Immature senile cortical cataract?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Immature Stage</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Symptoms: Night blindness (diminution of vision by night).</li><li class=\"font-bold text-slate-800\">• Sign: Iris shadow is PRESENT (due to transparent zone between iris and opacity).</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Immature Stage</strong><br />المرحلة \"غير الناضجة\":<br />* المريض بيشتكي من \"عشى ليلي\" (بيشوف أوحش بليل).<br />* العلامة المهمة: <strong>Iris shadow is present</strong> (فيه خيال للقزحية). ده معناه إن فيه لسة جزء شفاف في العدسة.<br /><br /><strong>جت في اند المجموعة التانية</strong>\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "lens",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_lens_95",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What is Intumescent cataract and its potential complication?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Intumescent Cataract</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Rapid hydration causes the lens to swell.</li><li class=\"pl-4 text-xs italic text-slate-500 font-semibold\">• Complication: Secondary pupillary block glaucoma (Phacomorphic glaucoma).</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Intumescent Cataract</strong><br />العدسة \"بتنفش\" (تتورم) بسبب المياه الكتيرة اللي شربتها.<br />* الخطر: العدسة لما تنفش بتقفل زاوية العين وتعمل جلوكوما حادة (<strong>Phacomorphic Glaucoma</strong>).<br />* دي حالة طوارئ بتحتاج عملية.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "lens",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_lens_96",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Describe the Mature stage of senile cortical cataract.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Mature Stage</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Symptom: Marked painless drop of vision (Hand Movement).</li><li class=\"font-bold text-slate-800\">• Sign: Iris shadow is ABSENT (no clear zone left).</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Appearance: Total grayish-white opacification of cortex.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Mature Stage (المستوية)</strong><br />العدسة بقت معتمة بالكامل.<br />* المريض مش بيشوف غير \"حركة إيد\" بس (Hand movement).<br />* <strong>Iris shadow is absent</strong>: مفيش خيال للقزحية لأن العدسة كلها بقت بيضاء لحد السطح.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "lens",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_lens_97",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">List the signs of Hypermaturity in cortical cataract.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Hypermature Stage Signs</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Calcium & cholesterol deposits on capsule.</li><li class=\"font-bold text-slate-800\">• Reappearance of iris shadow (due to shrinkage from escape of liquefied cortex).</li><li class=\"font-bold text-slate-800\">• Deep anterior chamber.</li><li class=\"font-bold text-slate-800\">• Tremulous iris (Iridodonesis) due to lack of lens support.</li><li class=\"pl-4 text-xs italic text-slate-500 font-semibold\">• Morgagnian form: Nucleus settles at bottom of liquefied cortex.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Hypermature Stage (المهجورة)</strong><br />المرحلة اللي بعد النضوج، العدسة بتبدأ \"تكرمش\" وتتحلل:<br />1. <strong>Morgagnian</strong>: القشرة بتسيح وتبقى مياه، والنواة بتسقط لتحت.<br />2. <strong>Sclerotic</strong>: العدسة بتفقد مياهها وتنشف وتصغر.<br />* خطرها: بتعمل التهابات شديدة جوا العين (<strong>Phacolytic uveitis</strong>).\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "lens",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_lens_98",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Describe Pathology and clinical symptoms of Senile Nuclear Cataract.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Senile Nuclear Cataract</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Pathology: Exaggerated dehydration and denaturation of nucleus proteins.</li><li class=\"pl-4 text-xs italic text-slate-500 font-semibold\">• Second Sight: Increase in Refractive Index of nucleus corrects presbyopia.</li><li class=\"pl-4 text-xs italic text-slate-500 font-semibold\">• Day Blindness: Vision is worst by day due to central location of opacity.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Senile Nuclear Cataract</strong><br />بتبدأ في مركز العدسة.<br />* <strong>Second Sight</strong>: المريض بيفرح إنه بقى \"بيشوف القريب من غير نظارة\" (لأن قوة العدسة زادت)، بس النظر البعيد بيسوء جداً.<br />* <strong>Day Blindness</strong>: بيشوف أوحش في الشمس لأن الحدقة بتضيق فتتقفل بالظبط قدام العتامة اللي في النص.<br /><br /><strong>جت في اند المجموعة التانية</strong>\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "lens",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_lens_99",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What are the key points in preoperative ocular examination for cataract?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Preoperative Examination</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Visual Acuity: \"No PL = No Surgery\".</li><li class=\"font-bold text-slate-800\">• Intraocular Pressure (IOP): Check for associated glaucoma.</li><li class=\"font-bold text-slate-800\">• Pupillary Reaction: Vital to assess optic nerve health.</li><li class=\"font-bold text-slate-800\">• Fundus examination: To predict post-op prognosis (macula, optic disc).</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Pre-op Exam (الفحص قبل العملية)</strong><br />لازم نتأكد من 4 حاجات:<br />1. فيه إدراك للضوء؟ (مش هنعمل عملية لعين ميتة).<br />2. ضغط العين مظبوط؟<br />3. استجابة الحدقة للنور؟ (بيدل على صحة العصب البصري).<br />4. أشعة تلفزيونية (B-scan) لو مش شايفين قاع العين.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "lens",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_lens_100",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Compare Phacoemulsification, ECCE, and ICCE.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Surgical Techniques</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Phacoemulsification: Ultrasonic fragmentation and aspiration (small incision).</li><li class=\"font-bold text-slate-800\">• ECCE: Removal of nucleus, cortex aspirated, posterior capsule remains intact.</li><li class=\"font-bold text-slate-800\">• ICCE: Removal of lens within its capsule (rare now; risk of vitreous loss, RD).</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Surgical Techniques</strong><br />طرق شيل المياه البيضاء:<br />1. <strong>Phaco (الفاكو)</strong>: تفتيت العدسة بالموجات الصوتية وشفطها من خرم صغير جداً (مش بيحتاج غرز).<br />2. <strong>ECCE</strong>: جراحة بنشيل فيها النواة حتة واحدة وبنسيب الكبسولة اللي ورا.<br />3. <strong>ICCE</strong>: بنشيل العدسة بالكبسولة بتاعتها (طريقة قديمة ومبقتش تتعمل).\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "lens",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_lens_101",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What is the difference between Primary and Secondary IOL implantation?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Intraocular Lens (IOL)</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Primary: IOL implanted during the same cataract surgery.</li><li class=\"font-bold text-slate-800\">• Secondary: IOL implanted in a separate, later operation.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Primary vs Secondary IOL</strong><br />* <strong>Primary IOL</strong>: بنركب العدسة الصناعية في \"نفس العملية\" اللي بنشيل فيها المياه البيضاء. ده الطبيعي والأنسب للمريض.<br />* <strong>Secondary IOL</strong>: بنركب العدسة في \"عملية تانية\" منفصلة بعد فترة. بنعمل كدة لو حصلت مشكلة أثناء العملية الأولى منعتنا من تركيب العدسة (زي فقدان كبير في الكبسولة).<br /><br /><div class=\"border-r-4 border-amber-500 bg-amber-500/5 p-3 rounded-lg my-2 text-sm italic\"><strong>Mnemonic</strong>: Primary = Same session. Secondary = Second session.</div>\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "lens",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_lens_102",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">List common complications of cataract surgery.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Surgical Complications</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Vitreous loss or hemorrhage.</li><li class=\"font-bold text-slate-800\">• Uveitis.</li><li class=\"font-bold text-slate-800\">• Increased eye pressure (Glaucoma).</li><li class=\"font-bold text-slate-800\">• Retinal detachment.</li><li class=\"font-bold text-slate-800\">• Endophthalmitis (severe internal infection).</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Cataract Surgery Complications</strong><br />ممكن نقسمهم حسب الوقت:<br />1. <strong>Intraoperative</strong> (أثناء العملية): نزيف، أو فقدان جزء من الجسم الزجاجي (<strong>Vitreous loss</strong>).<br />2. <strong>Early Post-op</strong> (بعد العملية مباشرة):<br />   * التهاب القزحية.<br />   * ارتفاع ضغط العين.<br />   * <strong>Endophthalmitis</strong>: عدوى بكتيرية جوه العين، ودي أخطر حاجة وممكن تضيع العين تماماً.<br />3. <strong>Late Post-op</strong> (بعد فترة):<br />   * انفصال الشبكية.<br />   * عتامة ورا العدسة (<strong>PCO</strong>).\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "lens",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_lens_103",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Define Complicated Cataract and list common causes.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Complicated Cataract</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Definition: Acquired lens opacity secondary to local or systemic disease.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Local causes: Iridocyclitis, Glaucoma, High myopia, Retinal detachment.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Systemic causes (Presenile): Diabetes mellitus, Hypoparathyroidism, Galactosemia.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Complicated Cataract</strong><br />دي مياه بيضاء \"ثانوية\"، مش بسبب السن، لكن بسبب مرض تاني.<br />* <strong>أسباب موضعية (Local)</strong>:<br />  * التهاب القزحية المزمن (Iridocyclitis).<br />  * قصر النظر الشديد (High myopia).<br />  * انفصال الشبكية القديم.<br />* <strong>أسباب عامة (Systemic)</strong>:<br />  * مرض السكر (<strong>Diabetes</strong>).<br />  * نقص الكالسيوم.<br /><br /><div class=\"border-r-4 border-amber-500 bg-amber-500/5 p-3 rounded-lg my-2 text-sm italic\"><strong>Key</strong>: دايماً بتتميز بوجود ألوان \"قزحية\" (Polychromatic luster) في البداية.</div>\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "lens",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_lens_104",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Describe characteristic features of Traumatic Cataract.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Traumatic Cataract</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Concussion: Rosette-shaped posterior cortical opacity (feathery appearance).</li><li class=\"font-bold text-slate-800\">• Vossius ring: Pigment on anterior capsule from pupillary iris border.</li><li class=\"font-bold text-slate-800\">• Perforating: Direct lens capsule rupture.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Traumatic Cataract (خبطات العين)</strong><br />العدسة بتتأثر جداً بالخبطات:<br />1. <strong>Concussion</strong> (خبطة مقفولة): بتعمل عتامة شكلها شبه \"الوردة\" (<strong>Rosette-shaped</strong>) في القشرة الخلفية.<br />2. <strong>Vossius ring</strong>: حلقة من صبغة القزحية بتطبع على وش العدسة من قوة الخبطة.<br />3. <strong>Perforating</strong> (خبطة نافذة): لو آلة حادة قطعت غلاف العدسة، المياه بتدخل جواها وتخليها بيضاء فجأة.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "lens",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_lens_105",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What is \"After Cataract\" (PCO) and how is it treated?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Posterior Capsule Opacification (PCO)</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Definition: Opacity forming after surgery or absorbed traumatic cataract.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Signs: Elschnig’s pearls (bubble-like cells) or Capsular fibrosis.</li><li class=\"font-bold text-slate-800\">• Treatment: YAG laser capsulotomy or surgical capsulotomy.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>After Cataract (PCO)</strong><br />بيسموها \"المياه البيضاء اللي رجعت\"، بس ده اسم غلط.<br />* اللي بيحصل: الغشاء الخلفي (<strong>Posterior capsule</strong>) اللي بنسيبوا عشان نسند عليه العدسة هو اللي بيعتم بسبب نمو خلايا باقية.<br />* بنشوف فيها \"حبيبات\" شبه اللؤلؤ (<strong>Elschnig's pearls</strong>).<br />* <strong>العلاج</strong>: مش محتاج عملية جراحية، بنستخدم ليزر اسمه <strong>YAG laser</strong> بيعمل فتحة في الغشاء ويدخل النور تاني. المريض بيتحسن في دقيقتين.<br /><br /><strong>جت في اند المجموعة التانية</strong>\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "lens",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  }
+]

@@ -1,0 +1,427 @@
+[
+  {
+    "id": "official_written_cornea_sclera_50",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What is the macro-anatomy of the cornea?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Macro-anatomy of the Cornea</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• It is the outer coat of the globe.</li><li class=\"font-bold text-slate-800\">• It is a transparent, avascular structure.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Dimensions: Horizontal diameter is 11-12 mm.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Cornea Macro-anatomy</strong><br />القرنية هي الطبقة الخارجية الشفافة للعين.<br />بتمثل أكتر من 70% من قوة تركيز الضوء في العين.<br />* القطر العرضي (Horizontal): 11-12 مم.<br />* القطر الطولي (Vertical): 10-11 مم.<br />يعني هي مش دايرة كاملة، هي بيضاوية شوية (Oval).\n    </div>\n    \n  \n    <!-- Mnemonic Box -->\n    <div class=\"bg-blue-50/40 border border-blue-200/40 rounded-2xl p-5 text-right space-y-2 font-semibold text-slate-700 leading-relaxed mt-4\" style=\"direction: rtl; text-align: right;\">\n      <h5 class=\"text-xs font-black uppercase tracking-widest text-blue-600 mb-1\">💡 طريقة للحفظ (Mnemonic)</h5>\n      <strong>Cornea Shape</strong><br />   القرنية مش كرة كاملة (ليست spherical)، هي \"بيضاوية\" (Oval).<br />   - العرض: 11-12 مم<br />   - الطول: 10-11 مم<br />   عشان كدة هي كأنها \"أوبال\" صغير فوق بياض العين.\n    </div>\n    \n</div>",
+    "tags": [
+      "cornea_sclera",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_cornea_sclera_51",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">List the 5 layers of the cornea in order from outside inwards.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Micro-anatomy (Layers)</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• 1. Epithelium</li><li class=\"font-bold text-slate-800\">• 2. Bowman membrane</li><li class=\"font-bold text-slate-800\">• 3. Substantia propria (Stroma)</li><li class=\"font-bold text-slate-800\">• 4. Descemet's membrane</li><li class=\"font-bold text-slate-800\">• 5. Endothelium</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Corneal Layers</strong><br />القرنية بتتكون من 5 طبقات مرتبين من برا لجوا:<br />1. <strong>Epithelium</strong>: الطبقة المتجددة.<br />2. <strong>Bowman's membrane</strong>: الغشاء اللي مش بيتجدد.<br />3. <strong>Stroma</strong>: الطبقة الأسمك (90%).<br />4. <strong>Descemet's membrane</strong>: الغشاء القوي والمقاوم.<br />5. <strong>Endothelium</strong>: مضخة المياه.<br /><br /><div class=\"border-r-4 border-amber-500 bg-amber-500/5 p-3 rounded-lg my-2 text-sm italic\"><strong>Mnemonic</strong>:</div><br /><div class=\"border-r-4 border-amber-500 bg-amber-500/5 p-3 rounded-lg my-2 text-sm italic\"><strong>E</strong>very <strong>B</strong>ody <strong>S</strong>ays <strong>D</strong>o <strong>E</strong>xams.</div><br /><div class=\"border-r-4 border-amber-500 bg-amber-500/5 p-3 rounded-lg my-2 text-sm italic\">(Epithelium, Bowman, Stroma, Descemet, Endothelium).</div>\n    </div>\n    \n  \n    <!-- Mnemonic Box -->\n    <div class=\"bg-blue-50/40 border border-blue-200/40 rounded-2xl p-5 text-right space-y-2 font-semibold text-slate-700 leading-relaxed mt-4\" style=\"direction: rtl; text-align: right;\">\n      <h5 class=\"text-xs font-black uppercase tracking-widest text-blue-600 mb-1\">💡 طريقة للحفظ (Mnemonic)</h5>\n      <strong>Layers - Alternate View</strong><br />   <strong>E</strong>very <strong>B</strong>ody <strong>S</strong>ays <strong>D</strong>o <strong>E</strong>xams!<br />   E: Epithelium<br />   B: Bowman<br />   S: Stroma<br />   D: Descemet<br />   E: Endothelium\n    </div>\n    \n</div>",
+    "tags": [
+      "cornea_sclera",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_cornea_sclera_52",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Describe the corneal epithelium.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Corneal Epithelium</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• It is non-keratinized stratified squamous epithelium.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Optical function: Contributes to 42 diopters of refractive power.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Refractive index: 1.37.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Corneal Epithelium</strong><br />دي الطبقة السطحية اللي بنلمسها.<br />* نوعها: Non-keratinized stratified squamous.<br />* ميزتها: بتجدد نفسها بسرعة جداً (في ظرف 24-48 ساعة لو فيه خدش بسيط).<br />* قوتها: بتديك حوالي 42 ديوبتر من قوة العين الانكسارية.<br /><br /><div class=\"border-r-4 border-amber-500 bg-amber-500/5 p-3 rounded-lg my-2 text-sm italic\"><strong>Refractive index</strong>: 1.37. رقم مهم في الحسابات.</div>\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "cornea_sclera",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_cornea_sclera_53",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What are the characteristics of the Bowman membrane?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Bowman Membrane</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• It is an elastic layer with low resistance.</li><li class=\"font-bold text-slate-800\">• Regeneration: When injured, it doesn't regenerate (heals by opacity).</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Bowman Membrane</strong><br />طبقة رقيقة تحت الـ Epithelium.<br />* أهم معلومة: <strong>It does not regenerate</strong>. لو باظت أو اتجرحت بتسيب عتامة (Opacity) أو ندبة.<br />* وظيفتها: بتعمل حاجز حماية (barrier) للطبقات اللي تحتها.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "cornea_sclera",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_cornea_sclera_54",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Describe the corneal stroma (Substantia propria).</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Corneal Stroma</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Represents 90% of the corneal thickness.</li><li class=\"font-bold text-slate-800\">• Structure: Formed of collagen fibers embedded in mucopolysaccharides.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Corneal Stroma</strong><br />دي \"قلب\" القرنية.<br />* سمكها: بتمثل <strong>90%</strong> من سمك القرنية كله.<br />* تركيبها: collagen fibers مترتبة بنظام دقيق جداً (Lattice arrangement) وده سر شفافيتها.<br />* لو حصل فيها أي التهاب أو خبطة، الترتيب ده بيبوظ وبتحصل عتامة.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "cornea_sclera",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_cornea_sclera_55",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What are the characteristics of Descemet's membrane?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Descemet's Membrane</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• It is a strong layer with high resistance.</li><li class=\"font-bold text-slate-800\">• Regeneration: When injured, it can regenerate.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Descemet's Membrane</strong><br />غشاء رقيق بس \"جبار\".<br />* ميزته: <strong>Very resistant</strong> (قوي جداً ومقاوم للميكروبات والسموم).<br />* التجديد: <strong>Regenerates</strong> (بيطّلع من الـ Endothelium).<br />* في حالات القرح العميقة، ممكن هو الوحيد اللي يفضل صامد ويعمل بلونة لبره بنسميها <strong>Descemetocele</strong>.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "cornea_sclera",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_cornea_sclera_56",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What is the function of the corneal endothelium?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Corneal Endothelium</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• A single layer of cells responsible for keeping the cornea dehydrated.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• It is continuous with the trabecular meshwork at the angle.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Corneal Endothelium</strong><br />دي الطبقة الداخلية الأهم للحفاظ على الشفافية.<br />* وظيفتها: بتعمل كـ <strong>Pump</strong> (مضخة) بتشد المياه الزيادة من القرنية وتخرجها برا.<br />* لو الخلايا دي ماتت أو عددها قل، القرنية بتشرب مياه وتورم (<strong>Edema</strong>) وتبقى بيضاء ومش شفافة.<br />* الخلايا دي مش بتنقسم (Not regenerate)، يعني اللي بيموت مبيصلحش.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "cornea_sclera",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_cornea_sclera_57",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Describe the blood and nerve supply of the cornea.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Blood & Nerve Supply</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Blood: Avascular except for the peripheral 1 mm (limbal plexus).</li><li class=\"font-bold text-slate-800\">• Nerve: Supplied by the 2 long ciliary nerves (Ophthalmic branch of Trigeminal).</li><li class=\"pl-4 text-xs italic text-slate-500 font-semibold\">• It is the most sensitive tissue in the body.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Nerve & Blood Supply</strong><br />القرنية \"يتيمة\" بس \"حساسة\":<br />* <strong>Blood</strong>: مش بيوصلها دم خالص (<strong>Avascular</strong>)، وعشان كدة القرنية شفافة. بتاخد غذاها من الدموع والخزانة الأمامية.<br />* <strong>Nerves</strong>: هي <strong>أكتر حتة حساسة في جسم الإنسان</strong>! بتتغذى بالعصب الخامس (<strong>Trigeminal nerve</strong>).<br />* عشان كدة أي رملة صغيرة في العين بتخلي الواحد مش طايق نفسه من الوجع.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "cornea_sclera",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_cornea_sclera_58",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What histological changes occur at the limbus?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">The Limbus</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• 1. Corneal epithelium becomes conjunctival epithelium.</li><li class=\"font-bold text-slate-800\">• 2. Bowman's membrane ends.</li><li class=\"font-bold text-slate-800\">• 3. Stroma becomes continuous with sclera.</li><li class=\"font-bold text-slate-800\">• 4. Descemet's membrane becomes trabecular meshwork.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>The Limbus</strong><br />هو منطقة الانتقال (Transition zone) بين القرنية الشفافة والصلبة (Sclera) البيضاء.<br />بيحصل فيه 4 تغيرات أساسية:<br />1. الـ Epithelium بتاع القرنية بيكمل كـ Conjunctiva.<br />2. الـ Bowman's membrane بيخلص.<br />3. الـ Stroma بتتحول لـ Sclera.<br />4. الـ Descemet's membrane بيتحول لـ Trabecular meshwork (مصفاة تصريف العين).\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "cornea_sclera",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_cornea_sclera_59",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">How does the cornea receive its nutrition?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Nutrition of the Cornea</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• 1. Limbal capillaries.</li><li class=\"font-bold text-slate-800\">• 2. Aqueous humor (main supply of glucose).</li><li class=\"font-bold text-slate-800\">• 3. Tears (main supply of O2 and NaCl).</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Corneal Nutrition</strong><br />بما إنها avascular، بتاخد أكلها منين؟<br />1. <strong>Aqueous humor</strong>: المصدر الأساسي للجلوكوز (الأكل).<br />2. <strong>Tear film</strong>: المصدر الأساسي للأكسجين (التنفس).<br />3. <strong>Limbal capillaries</strong>: بتغذي الأطراف بس.<br />* عشان كدة لما بنلبس عدسات لاصقة فترة طويلة بنقلل الأكسجين اللي واصل للقرنية وممكن تتعب.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "cornea_sclera",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_cornea_sclera_60",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What anatomical factors contribute to corneal transparency?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Causes of Transparency</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• 1. Non-keratinized, uniform epithelium.</li><li class=\"font-bold text-slate-800\">• 2. Uniform refractive index of all layers.</li><li class=\"font-bold text-slate-800\">• 3. Non-myelinated nerve fibers.</li><li class=\"font-bold text-slate-800\">• 4. Dehydrated state (maintained by endothelium).</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Why is the Cornea Transparent?</strong><br />ليها أسباب تشريحية وفيزيائية:<br />1. <strong>Anatomical</strong>: معندهاش أوعية دموية ولا أعصاب مغلّفة (no myelin). والخلايا مترتبة بدقة.<br />2. <strong>Physiological</strong>: حالة الجفاف النسبي (<strong>Dehydration</strong>) اللي بيحافظ عليها الـ Endothelium.<br />3. التساوي في معامل الانكسار بين كل الطبقات.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "cornea_sclera",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_cornea_sclera_61",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Define Hypopyon ulcer (Acute serpiginous ulcer).</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Hypopyon Ulcer</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Definition: Primary infective corneal ulcer with severe toxic iridocyclitis and sterile pus (hypopyon).</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Causative organism: Pneumococcus is the commonest (80%).</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Hypopyon Ulcer</strong><br />هي قرحة قرنية حادة وخطيرة، بتتميز بوجود \"Hypopyon\" وهو صديد معقم (sterile pus) في الخزانة الأمامية للعين (Anterior Chamber).<br />كلمة \"serpiginous\" جاية من شكلها لأنها بتمشي وتزحف في القرنية زي التعبان.<br /><br />### Key Points<br />1. <strong>Primary Infective</strong>: القرحة نفسها هي المصدر.<br />2. <strong>Pneumococcus</strong>: هو الميكروب الأشهر اللي بيسببها (80% من الحالات).<br />3. <strong>Sterile Pus</strong>: الصديد اللي في الخزانة الأمامية مش فيه ميكروبات، هو مجرد رد فعل (toxic reaction) من القزحية والجسم الهدبي.<br /><br />مهم تعرف إن العيان بيشتكي من وجع جامد وزغللة، وبنشوف الـ hypopyon واضح جداً بالعين المجردة في الحالات المتقدمة.\n    </div>\n    \n  \n    <!-- Mnemonic Box -->\n    <div class=\"bg-blue-50/40 border border-blue-200/40 rounded-2xl p-5 text-right space-y-2 font-semibold text-slate-700 leading-relaxed mt-4\" style=\"direction: rtl; text-align: right;\">\n      <h5 class=\"text-xs font-black uppercase tracking-widest text-blue-600 mb-1\">💡 طريقة للحفظ (Mnemonic)</h5>\n      <strong>Hypopyon Ulcer - Mnemonic</strong><br />   <strong>Hypopyon</strong>: يعني صديد \"معقم\" في الخزانة الأمامية (AC).<br />   <strong>Serpiginous</strong>: يعني القرحة \"بتزحف\" (زي التعبان).<br />   <strong>Pneumococcus</strong>: الميكروب الرئيسي 80%.<br />   ببساطة: قرحة بتتغذى وبتزحف ومعاها \"مياه ملوثة\" (hypopyon) تحتها.\n    </div>\n    \n</div>",
+    "tags": [
+      "cornea_sclera",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_cornea_sclera_62",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What are the characteristic clinical signs of a typical hypopyon ulcer?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Hypopyon Ulcer Signs</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• 1. Disc-shaped paracentral ulcer with an advancing crescentic edge.</li><li class=\"font-bold text-slate-800\">• 2. Positive fluorescein test (green stain).</li><li class=\"font-bold text-slate-800\">• 3. Hypopyon: Yellowish fluid settling at the bottom of the AC.</li><li class=\"bg-amber-100/30 p-2.5 rounded-xl text-xs text-amber-800 border border-amber-200/30 mt-1 font-semibold\">Hypopyon is sterile pus formed from PMNL and fibrin.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Hypopyon Ulcer Signs</strong><br />شكل القرحة دي مميز جداً:<br />* القرحة بتكون شبه القرص (Disc-shaped).<br />* بتزحف في اتجاه واحد فبتعمل حرف شبه الهلال (Crescentic edge).<br />* الخزانة الأمامية فيها <strong>Hypopyon</strong> (خط أبيض تحت) ده صديد ميت.<br />* المريض بيعاني من وجع شديد واحمرار وضيق في الحدقة.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "cornea_sclera",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_cornea_sclera_63",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">List the common complications of a corneal ulcer.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Complications of Keratitis</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• 1. Secondary iridocyclitis & Secondary glaucoma.</li><li class=\"font-bold text-slate-800\">• 2. Descemetocele (bulging of Descemet's membrane).</li><li class=\"font-bold text-slate-800\">• 3. Corneal opacities (Nebula, Macula, Leucoma).</li><li class=\"font-bold text-slate-800\">• 4. Perforation of the ulcer.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Keratitis Complications</strong><br />لو مالحقناش القرحة، الدنيا بتبوظ:<br />1. <strong>Desmetocele</strong>: لما القرنية تتآكل وميفضلش غير غشاء ديسمت هو اللي سادد العين.<br />2. <strong>Glaucoma</strong>: جلوكوما ثانوية بسبب الالتهاب.<br />3. <strong>Perforation</strong>: القرنية تتخرم والسوايل تخرج.<br />4. <strong>Opacities</strong>: حتى لو خفت بتسيب عتامة (سحابة).\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "cornea_sclera",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_cornea_sclera_64",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What are the possible sequelae of corneal perforation?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Sequelae of Perforation</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Iris prolapse and Anterior synechia.</li><li class=\"font-bold text-slate-800\">• Leucoma adherent (dense scar with iris adhesion).</li><li class=\"font-bold text-slate-800\">• Corneal fistula (failure of healing due to epithelium growth).</li><li class=\"font-bold text-slate-800\">• Endophthalmitis (severe internal infection).</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Corneal Perforation</strong><br />لما العين \"تتخرم\" دي حالة طوارئ:<br />* القزحية (Iris) ممكن تطلع بره الخرم ده (<strong>Iris prolapse</strong>).<br />* العدسة ممكن تتحرك من مكانها.<br />* ممكن يحصل نزيف أو تلوث شديد يؤدي لفقدان العين بالكامل (<strong>Endophthalmitis</strong>).<br /><br /><strong>جت في اند المجموعة التانية</strong>\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "cornea_sclera",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_cornea_sclera_65",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Differentiate between Nebula, Macula, and Leucoma.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Types of Corneal Scars</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Nebula (cloud): Faint scar following superficial ulcers.</li><li class=\"font-bold text-slate-800\">• Macula (spot): Localized scar with intermediate density.</li><li class=\"font-bold text-slate-800\">• Leucoma (white): Dense white scar following deep ulcers.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Types of Scars</strong><br /> العتامة درجات حسب قوتها:<br />1. <strong>Nebula</strong>: \"سحابة\" خفيفة جداً، المريض بس بيحس بزغللة.<br />2. <strong>Macula</strong>: \"بقعة\" متوسطة الوضوح.<br />3. <strong>Leucoma</strong>: \"عتامة بيضاء\" تقيلة جداً وسادة النظر تماماً.<br /><br /><div class=\"border-r-4 border-amber-500 bg-amber-500/5 p-3 rounded-lg my-2 text-sm italic\"><strong>Mnemonic</strong>: مرتبين حسب الترتيب الأبجدي من الأخف للأتقل: <strong>N</strong>ebula -> <strong>M</strong>acula -> <strong>L</strong>eucoma.</div>\n    </div>\n    \n  \n    <!-- Mnemonic Box -->\n    <div class=\"bg-blue-50/40 border border-blue-200/40 rounded-2xl p-5 text-right space-y-2 font-semibold text-slate-700 leading-relaxed mt-4\" style=\"direction: rtl; text-align: right;\">\n      <h5 class=\"text-xs font-black uppercase tracking-widest text-blue-600 mb-1\">💡 طريقة للحفظ (Mnemonic)</h5>\n      <strong>Scar Mnemonic</strong><br />   العتامة حسب \"درجة الظلمة\":<br />   <strong>N</strong>ebula = سحاب (خفيف).<br />   <strong>M</strong>acula = بقعة (متوسط).<br />   <strong>L</strong>eucoma = أبيض (تأمين/سادة).<br />   (N-M-L بالتدرج من الخفيف للثقيل).\n    </div>\n    \n</div>",
+    "tags": [
+      "cornea_sclera",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_cornea_sclera_66",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What is the general treatment strategy for an uncomplicated corneal ulcer?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Treatment of Keratitis</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• 1. Topical Antibiotics (Dual therapy or Monotherapy).</li><li class=\"font-bold text-slate-800\">• 2. Atropine 1%: Relieves pain and prevents synechia.</li><li class=\"font-bold text-slate-800\">• 3. Bandage: Stops eyelid movement and mechanical irritation.</li><li class=\"font-bold text-slate-800\">• 4. Hot fomentation: Improves circulation and reduces toxins.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Keratitis Treatment</strong><br />خطتنا العلاجية للهجوم على القرحة:<br />1. <strong>Antibiotics</strong>: قطرات مكثفة كل ساعة.<br />2. <strong>Atropine</strong>: \"راحة\" للعين، بيوسع الحدقة عشان يمنع الالتصاقات ويريح الوجع.<br />3. <strong>Bandage</strong>: بنغطي العين عشان الجفن ميفضلش يحك في القرحة.<br />4. <strong>Hot compresses</strong>: كمادات مياه دافئة عشان تزود الدم الواصل للأطراف وتساعد في الدفاع والتعافي.<br /><br /><strong>جت في اند المجموعة التانية</strong>\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "cornea_sclera",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_cornea_sclera_67",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Describe the Dendritic ulcer associated with Herpes Simplex.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Dendritic Ulcer</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Shape: Linear, superficial, with side branches ending in knobs.</li><li class=\"font-bold text-slate-800\">• Key signs: Corneal hypothesia (reduced sensation) and positive fluorescein.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Treatment: Acyclovir (Zovirax) ointment/drops.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Dendritic Ulcer (Herpes)</strong><br />أشهر قرحة فيروسية وشببه \"فروع الشجر\":<br />* الشكل: قرحة متفرعة (linear and branched) في أخر كل فرع فيه \"عقدة\" (knobs).<br />* العلامة الذهبية: <strong>Loss of corneal sensation</strong>. العين بتبقى \"مبنجة\" طبيعياً فالمريض مش حاسس بوجع يتناسب مع حجم القرحة.<br />* <strong>ممنوع</strong> استخدام الكورتيزون هنا لأنه بيزود الفيروس ويخرم العين.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "cornea_sclera",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_cornea_sclera_68",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What are the ocular manifestations of Herpes Zoster Ophthalmicus (HZO)?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Herpes Zoster Ophthalmicus</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Affection of the ophthalmic division of the Trigeminal nerve.</li><li class=\"font-bold text-slate-800\">• Signs: Grouped unilateral vesicles following the nerve distribution.</li><li class=\"pl-4 text-xs italic text-slate-500 font-semibold\">• Hutchinson sign: Vesicles on the tip of the nose (nasociliary involvement).</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Can cause corneal ulcers, iridocyclitis, and nerve palsies.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Herpes Zoster Ophthalmicus</strong><br />ده فيروس بيجي في مسار عصب معين (Trigeminal).<br />* العلامة المميزة: طفح جلدي (vesicles) واخد نص الوش بالظبط (Unilateral).<br />* <strong>Hutchinson sign</strong>: لو شفت حبوب على حرف المناخير، ده معناه إن العين بنسبة 100% مصابة وفيه التهاب جواها.<br />* بيعمل وجع عصبي شديد وممكن يسبب شلل في عضلات العين.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "cornea_sclera",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_cornea_sclera_69",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">How do fungal ulcers present and what is a common risk factor?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Fungal Keratitis</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Types: Yeast (Candida) or Filamentous (Fusarium, Aspergillus).</li><li class=\"font-bold text-slate-800\">• Risk factor: Trauma with vegetable matter/plants.</li><li class=\"font-bold text-slate-800\">• Signs: Greyish white infiltrate with feathery margins and satellite lesions.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Fungal Keratitis</strong><br />قرحة الفطريات بتيجي ديماً بعد \"خبطة بحاجة نباتية\" (غصن شجرة، قشة، الخ).<br />* شكلها: بقعة بيضاء \"ناشفة\" وليها أطراف شبه الريش (Feathery margins).<br />* ممكن تلاقي حواليها \"جزر صغيرة\" (Satellite lesions).<br />* علاجها بيحتاج قطرات مضادة للفطريات فترة طويلة.<br /><br /><strong>جت في اند المجموعة التانية</strong>\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "cornea_sclera",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_cornea_sclera_70",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Define Neurotrophic keratitis.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Neurotrophic Keratitis</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Definition: Inflammation due to absence of corneal sensation (5th nerve palsy).</li><li class=\"font-bold text-slate-800\">• Hallmark: Central disc-shaped ulcer with NO pain.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Treatment: Intensive lubrication, bandage, or tarsorrhaphy.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Neurotrophic Keratitis</strong><br />دي قرحة \"اللامبالاة\":<br />* سببها: العصب الخامس بايظ، فالقرنية مش حاسة بأي وجع.<br />* طالما القرنية مش حاسة، الـ Epithelium مش بيعرف يجدد نفسه فبتقع وتعمل قرحة.<br />* المريض بيبقى عينه مدمرة بس بيقولك \"أنا مش حاسس بوجع خالص يا دكتور\".<br /><br /><strong>جت في اند المجموعة التانية</strong>\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "cornea_sclera",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_cornea_sclera_71",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Describe the clinical picture of a lagophthalmos ulcer.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Ulcer with Lagophthalmos</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Definition: Exposure keratitis due to incomplete lid closure.</li><li class=\"font-bold text-slate-800\">• Location: Usually involves the lower 1/3 of the cornea.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Treatment: Lubricants, bandage, and treating the cause of lagophthalmos.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Exposure Keratitis</strong><br />بتحصل لما العين متقفلش كويس (<strong>Lagophthalmos</strong>).<br />* القرنية بتنشف من الهواء وتتشقق وتلتهب.<br />* ديماً القرحة دي بتكون في الجزء السفلي من القرنية لأنه هو اللي بيفضل مكشوف.<br />* الحل: ترطيب مكثف أو نقفل الجفون بـ \"غرزة\" (Tarsorrhaphy) مؤقتاً.<br /><br /><strong>جت في اند المجموعة التانية</strong>\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "cornea_sclera",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_cornea_sclera_72",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What is Keratoconus and its common clinical signs?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Keratoconus (Conical Cornea)</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Definition: Developmental weakness causing the cornea to bulge as a cone.</li><li class=\"pl-4 text-xs italic text-slate-500 font-semibold\">• Munson's sign: Bulging of the lower lid on down gaze.</li><li class=\"pl-4 text-xs italic text-slate-500 font-semibold\">• Fleischer's ring: Iron deposition at the base of the cone.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Treatment: Rigid contact lenses, CXL (cross-linking), or keratoplasty.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Keratoconus (القرنية المخروطية)</strong><br />ضعف في أنسجة القرنية بيخليها تبرز لقدام وتعمل شكل \"مخروط\" (Cone).<br />* بيعمل استجماتيزم وضعف نظر شديد مش بيتصلح بالنظارة.<br />* <strong>Munson sign</strong>: لما المريض يبص لتحت، الجفن السفلي بـ \"يتحشر\" على القرنية المخلوطية ويبان شكل الـ V.<br />* العلاج: تثبيت قرنية (Cross-linking) أو عدسات صلبة.<br /><br /><strong>جت في اند المجموعة التانية</strong>\n    </div>\n    \n  \n    <!-- Mnemonic Box -->\n    <div class=\"bg-blue-50/40 border border-blue-200/40 rounded-2xl p-5 text-right space-y-2 font-semibold text-slate-700 leading-relaxed mt-4\" style=\"direction: rtl; text-align: right;\">\n      <h5 class=\"text-xs font-black uppercase tracking-widest text-blue-600 mb-1\">💡 طريقة للحفظ (Mnemonic)</h5>\n      <strong>Keratoconus - 2nd View</strong><br />   القرنية بقت \"مخروط\" (Cone).<br />   العين بقت استجماتيزم رهيب (Regular Astigmatism).<br />   مفيش نظارة بتظبط (Visual acuity drops significantly).\n    </div>\n    \n</div>",
+    "tags": [
+      "cornea_sclera",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_cornea_sclera_73",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What are the main types and indications for Keratoplasty (Corneal Graft)?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Keratoplasty</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Types: 1. Lamellar (partial thickness), 2. Penetrating (full thickness).</li><li class=\"font-bold text-slate-800\">• Optical indication: To improve vision (e.g. Keratoconus, scars).</li><li class=\"font-bold text-slate-800\">• Therapeutic: Resistant ulcers or fistula.</li><li class=\"font-bold text-slate-800\">• Structural (Tectonic): Restore continuity.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Keratoplasty (ترقيع القرنية)</strong><br />عملية استبدال القرنية البايظة بقرنية من متبرع.<br />* <strong>Penetrating (PKP)</strong>: بنغير كل الطبقات (كل السمك).<br />* <strong>Lamellar</strong>: بنغير طبقات معينة بس (وده أأمن بكتير).<br />* بنعملها عشان نحسن النظر (Vision) أو عشان نعالج قرحة مش راضية تخف (Therapeutic).\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "cornea_sclera",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_cornea_sclera_74",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Differentiate between PRK and LASIK refractive surgeries.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Keratorefractive Surgery</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• PRK: Laser removal of tissue from the anterior stroma (surface ablation).</li><li class=\"font-bold text-slate-800\">• LASIK: Laser removal of deep stroma after creating a superficial flap.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>PRK vs LASIK</strong><br /> عمليات تصحيح النظر بالليزر:<br />1. <strong>PRK</strong>: بنشيل الـ Epithelium خالص ونضرب الليزر على السطح. المريض بيتعب شوية أول يومين لحد ما الطبقة تنمو تاني.<br />2. <strong>LASIK</strong>: بنعمل \"رف\" (Flap) من القرنية، نرفعها ونضرب الليزر تحتها وبعدين نرجعها. النظر بيتحسن في نفس اللحظة والوجع أقل بكتير.<br />* كقاعدة: الـ PRK أأمن للقرنيات الضعيفة، والليزك أريح وأسرع للعيان.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "cornea_sclera",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  }
+]

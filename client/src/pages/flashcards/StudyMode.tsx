@@ -71,7 +71,8 @@ const StudyMode = () => {
 
         if (deckData.isOfficial) {
           // LOAD FROM PUBLIC JSON (FETCH IS BETTER FOR LARGE FILES)
-          const response = await fetch('/data/eyelid_data.json');
+          const dataPath = deckData.dataPath || '/data/eyelid_data.json';
+          const response = await fetch(dataPath);
           if (!response.ok) throw new Error('Failed to load card data');
           const officialEyelidCards = await response.json();
           

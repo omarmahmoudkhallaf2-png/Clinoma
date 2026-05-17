@@ -1,0 +1,835 @@
+[
+  {
+    "id": "official_written_eyelid_lacrimal_1",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">How much of the cornea does the upper eyelid cover, and where is the position of the lower eyelid?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Gross anatomy of the eyelids</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• The upper eyelid covers 1-3 mm from the upper part of the cornea.</li><li class=\"font-bold text-slate-800\">• The lower eyelid is just below the cornea or touching the lower limbus.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Eyelid Position</strong><br />الوضع الطبيعي للجفون بالنسبة للقرنية:<br />1. <strong>Upper Eyelid</strong>: بيغطي حوالي 1-3 مم من الجزء العلوي للـ Cornea.<br />2. <strong>Lower Eyelid</strong>: بيكون يا إما تحت الـ Cornea مباشرة أو لامس الـ limbus السفلي.<br /><br />لو الجفن العلوي غطى أكتر من كده بنسميها <strong>Ptosis</strong> (سقوط الجفن)، ولو غطى أقل بنسميها <strong>Lid Retraction</strong>.\n    </div>\n    \n  \n    <!-- Mnemonic Box -->\n    <div class=\"bg-blue-50/40 border border-blue-200/40 rounded-2xl p-5 text-right space-y-2 font-semibold text-slate-700 leading-relaxed mt-4\" style=\"direction: rtl; text-align: right;\">\n      <h5 class=\"text-xs font-black uppercase tracking-widest text-blue-600 mb-1\">💡 طريقة للحفظ (Mnemonic)</h5>\n      <strong>Eyelid Position - 2nd View</strong><br />   للتسهيل:<br />   * <strong>اللي فوق</strong>: بيغطي طرف القرنية (كأنك مغمض حتة صغيرة).<br />   * <strong>اللي تحت</strong>: يا دوب ملمس القرنية من تحت.<br />   التوازن ده هو اللي بيخلي العين شكلها طبيعي. لو الجفن خبي القرنية زيادة = <strong>Ptosis</strong>، لو كشف الـ Sclera = <strong>Lid Retraction</strong>.\n    </div>\n    \n</div>",
+    "tags": [
+      "eyelid_lacrimal",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536639,
+    "nextReview": 1779027536639,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_eyelid_lacrimal_2",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What is the palpebral fissure and its angles (canthi)?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Palpebral Fissure</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• The elliptical space when the eyelids are opened is called palpebral fissure which has 2 angles called canthi.</li><li class=\"font-bold text-slate-800\">• The medial canthus is rounded while the lateral forms acute angle.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Palpebral Fissure</strong><br />هي الفتحة العرضية اللي بتبان لما نفتح عينينا (elliptical space).<br />ليها زاويتين اسمهم <strong>Canthi</strong> (مفردها Canthus):<br />1. <strong>Medial Canthus</strong>: الناحية الداخلية (ناحية الأنف) وتكون مدورة (rounded).<br />2. <strong>Lateral Canthus</strong>: الناحية الخارجية وتكون زاوية حادة (acute angle).\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "eyelid_lacrimal",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536639,
+    "nextReview": 1779027536639,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_eyelid_lacrimal_3",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Where is the transverse crease located in the upper eyelid and what does it represent?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Upper Eyelid Crease</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• In the upper eyelid, there is a transverse crease usually lies 5 to 10 mm above the upper lid margin.</li><li class=\"font-bold text-slate-800\">• It represents the insertion of the levator aponeurosis.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Upper Eyelid Crease</strong><br />الثنية اللي بنشوفها في الجفن العلوي (الكسرة):<br />* مكانها: حوالي 5-10 مم فوق حافة الجفن (Lid margin).<br />* أهميتها: بتمثل مكان مسك عضلة الرفع (<strong>Levator aponeurosis</strong>) في الجلد.<br /><br />غياب الكسرة دي (Absent crease) ممكن يدل على ضعف في عضلة الـ Levator أو يكون طبيعي في بعض الأعراق (زي الآسيويين).\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "eyelid_lacrimal",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536639,
+    "nextReview": 1779027536639,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_eyelid_lacrimal_4",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Describe the gross anatomy of the eyelid margin.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Eyelid Margin</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• It is the free margin of the lid 2-3 mm in width.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• The punctum divides the eyelid margin into two parts:</li><li class=\"pl-4 text-xs italic text-slate-500 font-semibold\">• - Lacrimal part: (medial 1/6th) from the punctum to the medial canthus where no cilia, no tarsal glands and contain lacrimal canaliculus.</li><li class=\"pl-4 text-xs italic text-slate-500 font-semibold\">• - Ciliary part: (lateral 5/6th) from the punctum to the lateral canthus.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Eyelid Margin</strong><br />حافة الجفن سمكها حوالي 2-3 مم، وفي خرم صغير اسمه الـ <strong>Punctum</strong> بيقسمها لجزئين:<br />1. <strong>Lacrimal part (1/6)</strong>: الجزء الصغير اللي ناحية الأنف (Medial). ده مفيهوش رموش ولا غدد Tarsal، لكن فيه الـ <strong>lacrimal canaliculus</strong>.<br />2. <strong>Ciliary part (5/6)</strong>: بقية حافة الجفن (Lateral) ودي اللي فيها الرموش (Cilia).<br /><br /><div class=\"border-r-4 border-amber-500 bg-amber-500/5 p-3 rounded-lg my-2 text-sm italic\"><strong>Mnemonic</strong>: 1/6 medially, 5/6 laterally. الـ Punctum هي النقطة الفاصلة.</div>\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "eyelid_lacrimal",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536639,
+    "nextReview": 1779027536639,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_eyelid_lacrimal_5",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What glands are found in the anterior border of the ciliary part of the lid margin?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Glands of Eyelid Margin</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• The lashes have modified sebaceous glands known as Zeiss' glands.</li><li class=\"font-bold text-slate-800\">• Modified sweat glands are called Moll's glands.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Lid Margin Glands</strong><br />عند جذور الرموش بنلاقي نوعين من الغدد:<br />1. <strong>Zeiss' glands</strong>: دي غدد دهنية (sebaceous) ملحقة بالرموش.<br />2. <strong>Moll's glands</strong>: دي غدد عرقية (sweat) متحورة.<br /><br />التهاب الغدد دي بيعمل الـ <strong>Stye</strong> (دمل الجفن الخارجي).<br /><br /><strong>جت في اند المجموعة التانية</strong>\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "eyelid_lacrimal",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536639,
+    "nextReview": 1779027536639,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_eyelid_lacrimal_6",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What are the grey line, white line, and posterior border of the eyelid margin?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Lid Margin Structures</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Grey line: The lid can be surgically split in the grey line into anterior and posterior lamellae.</li><li class=\"font-bold text-slate-800\">• White line: behind the grey line representing the orifices of the meibomian glands.</li><li class=\"font-bold text-slate-800\">• Posterior border: sharp to help conduction of tears against the globe.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Important Lines on Lid Margin</strong><br />1. <strong>Grey line</strong>: الخط الرمادي ده مهم جداً للجراحين، لأنه مكان تقسيم الجفن لطبقتين (Anterior & Posterior lamellae).<br />2. <strong>White line</strong>: تحتها فتحات غدد الـ <strong>Meibomian</strong>.<br />3. <strong>Posterior border</strong>: بتكون حادة (sharp) عشان تضمن إن الدموع تمشي صح على سطح العين وتمنع تسريبها لبرا.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "eyelid_lacrimal",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536639,
+    "nextReview": 1779027536639,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_eyelid_lacrimal_7",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Enumerate the layers of the eyelid from outside inwards.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Layers of the Eyelid</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• 1- The skin.</li><li class=\"font-bold text-slate-800\">• 2- The muscle layer.</li><li class=\"font-bold text-slate-800\">• 3- The Submuscular areolar tissue.</li><li class=\"font-bold text-slate-800\">• 4- The fibrous layer (Tarsus).</li><li class=\"font-bold text-slate-800\">• 5- The Conjunctiva</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Eyelid Layers</strong><br />الجفن بيتكون من 5 طبقات من برا لجوا:<br />1. <strong>Skin</strong> (الجلد).<br />2. <strong>Muscle layer</strong> (العضلات).<br />3. <strong>Submuscular areolar tissue</strong> (نسيج رخو تحت العضلات).<br />4. <strong>Fibrous layer/Tarsus</strong> (الهيكل العظمي للجفن - طبقة ليفية).<br />5. <strong>Conjunctiva</strong> (الملتحمة - من جوا).<br /><br /><div class=\"border-r-4 border-amber-500 bg-amber-500/5 p-3 rounded-lg my-2 text-sm italic\"><strong>Mnemonic</strong>: S-M-S-F-C (Skin, Muscle, Space, Fibrous, Conjunctiva).</div>\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "eyelid_lacrimal",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536639,
+    "nextReview": 1779027536639,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_eyelid_lacrimal_8",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Describe the skin and subcutaneous areolar tissue of the eyelids.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Skin Anatomy</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• The skin: thin, elastic and loosely adherent to underlying tissues.</li><li class=\"font-bold text-slate-800\">• The subcutaneous areolar tissue: containing no fat.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Skin & Tissue</strong><br />* <strong>Skin</strong>: جلد الجفن رقيق جداً ومرن (thin & elastic) ومش ماسك بقوة في اللي تحته.<br />* <strong>Subcutaneous tissue</strong>: النسيج اللي تحت الجلد ده <strong>مفيهوش دهون</strong> (No fat)، وده السبب إن أي التهاب أو حساسية بتخلي الجفن يورم بسرعة جداً وياخد سوايل (Edema).\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "eyelid_lacrimal",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536639,
+    "nextReview": 1779027536639,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_eyelid_lacrimal_9",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What muscles are in the muscles layer of the eyelid?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Muscles Layer</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Striated (voluntary) muscles: orbicularis oculi and levator palpebrae superioris.</li><li class=\"font-bold text-slate-800\">• Non-striated muscles: Muller's muscle in the upper eyelid and lower eyelid retractors in lower eyelid.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Eyelid Muscles</strong><br />العضلات نوعين:<br />1. <strong>Voluntary (Striated)</strong>:<br />   * <strong>Orbicularis oculi</strong>: بتقفل العين (عصب 7).<br />   * <strong>Levator palpebrae</strong>: بترفع العين (عصب 3).<br />2. <strong>Involuntary (Non-striated)</strong>:<br />   * <strong>Muller's muscle</strong>: عضلة مساعدة في الرفع (جهاز سمبساوي).<br />   * <strong>Lower lid retractors</strong>: مسؤولة عن شد الجفن السفلي.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "eyelid_lacrimal",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536639,
+    "nextReview": 1779027536639,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_eyelid_lacrimal_10",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What is the significance of the submuscular areolar tissue during anesthesia?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Submuscular Areolar Tissue</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• It lies between the orbicularis muscle and the tarsal plate.</li><li class=\"font-bold text-slate-800\">• It contains arteries & nerves of the eyelid.</li><li class=\"pl-4 text-xs italic text-slate-500 font-semibold\">• - So, it is necessary to inject local anesthetic to the eyelid deep to the orbicularis.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Submuscular Tissue (The Space)</strong><br />الطبقة دي موجودة بين عضلة الـ Orbicularis وبين الـ Tarsal plate.<br />* أهميتها في التخدير: الطبقة دي هي اللي بيمشي فيها الأعصاب والشرايين المغذية للجفن.<br />* عشان كدة لما نيجي ندي حقنة بنج موضعي (Local anesthesia) لازم نحقن \"Deep to orbicularis\" عشان توصل للأعصاب دي بفعالية.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "eyelid_lacrimal",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536639,
+    "nextReview": 1779027536639,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_eyelid_lacrimal_11",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What are the tarsal plates and the meibomian glands?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">The Tarsus and Meibomian Glands</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• The tarsal plates: Forming the skeleton of the lids.</li><li class=\"font-bold text-slate-800\">• The meibomian (tarsal) glands are sebaceous glands embedded within the tarsal plate.</li><li class=\"pl-4 text-xs italic text-slate-500 font-semibold\">• They form an oily film over the moistened cornea to retard evaporation of tears and prevents overflow of tears over the cheek.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Tarsus & Meibomian Glands</strong><br />* <strong>Tarsal plates</strong>: ده الهيكل اللي بيدي الجفن شكله وقوامه (Skeleton of the lids).<br />* <strong>Meibomian glands</strong>: غدد دهنية مدفونة جوه الـ Tarsal plate.<br />* وظيفتها: بتفرز طبقة زيتية بتغطي الدموع عشان تمنع تبخرها (retard evaporation) وتمنع الدموع إنها تسيح على الخد.<br /><br /><div class=\"border-r-4 border-amber-500 bg-amber-500/5 p-3 rounded-lg my-2 text-sm italic\"><strong>Note</strong>: انسداد الغدد دي بيعمل الـ <strong>Chalazion</strong> (كيس دهني).</div><br /><br /><strong>جت في اند المجموعة التانية</strong>\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "eyelid_lacrimal",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536639,
+    "nextReview": 1779027536639,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_eyelid_lacrimal_12",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Describe the palpebral conjunctiva and the sulcus subtarsalis.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Palpebral Conjunctiva</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• The palpebral conjunctiva is thin and vascular and firmly adherent to the tarsus.</li><li class=\"font-bold text-slate-800\">• 2 mm above the lid margin it shows a horizontal groove known as sulcus subtarsalis.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Conjunctiva & Sulcus</strong><br />الـ <strong>Palpebral conjunctiva</strong> هي الغشاء اللي بيبطن الجفن من جوا.<br />* هي رقيقة جداً وحمراء (vascular) وماسكة بقوة في الـ tarsus.<br />* فيه خط بالعرض فوق حافة الجفن بـ 2 مم اسمه <strong>Sulcus subtarsalis</strong>، وده مكان مشهور جداً إنه يمسك فيه الأجسام الغريبة (Foreign bodies).\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "eyelid_lacrimal",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536639,
+    "nextReview": 1779027536639,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_eyelid_lacrimal_13",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Anatomy and function of orbicularis oculi muscle components.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Orbicularis Oculi Muscle</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Orbital part: Responsible for tight closure of the eyelids.</li><li class=\"font-bold text-slate-800\">• Palpebral part: Responsible for gentle eyelid closure.</li><li class=\"pl-4 text-xs italic text-slate-500 font-semibold\">• Muscle of Riolan: close to the lid margin and keeps the eyelid in apposition with the globe.</li><li class=\"pl-4 text-xs italic text-slate-500 font-semibold\">• Lacrimal part (Horner's muscle): Responsible for lacrimal pump mechanism of tear drainage.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Orbicularis Oculi Parts</strong><br />العضلة دي ليها 4 أجزاء مهمة:<br />1. <strong>Orbital part</strong>: المسؤولة عن قفل العين \"بجامد\" (Tight closure).<br />2. <strong>Palpebral part</strong>: المسؤولة عن قفل العين \"براحة\" أو الرمش (Gentle closure).<br />3. <strong>Muscle of Riolan</strong>: الألياف اللي عند حافة الجفن وبتحافظ عليه لامس العين.<br />4. <strong>Horner's muscle</strong>: دي المسؤولة عن مضخة الدموع (<strong>Lacrimal pump</strong>) اللي بتصرف الدموع.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "eyelid_lacrimal",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536639,
+    "nextReview": 1779027536639,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_eyelid_lacrimal_14",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What happens when the facial nerve (7th nerve) is paralyzed?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">7th Nerve Paralysis</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Paralysis of orbicularis oculi leads to lagophthalmos, epiphora and paralytic ectropion.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>7th Nerve Palsy</strong><br />لما العصب السابع (الفيسيال) يتشل، عضلة الـ Orbicularis بتقف، وده بيعمل 3 حاجات:<br />1. <strong>Lagophthalmos</strong>: العين مش بتعرف تقفل بالكامل.<br />2. <strong>Epiphora</strong>: دموع بتسيح لبرا لأن مضخة الدموع وقفت.<br />3. <strong>Paralytic Ectropion</strong>: الجفن السفلي بيقلب لبرا لأنه فقد القوة اللي شداه للعين.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "eyelid_lacrimal",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536639,
+    "nextReview": 1779027536639,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_eyelid_lacrimal_15",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Where does the Levator palpebrae superioris muscle arise and insert?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Levator palpebrae superioris</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Arises at the apex of the orbit.</li><li class=\"font-bold text-slate-800\">• Inserts in: Superior tarsus (main), Skin forming the crease, Upper fornix.</li><li class=\"pl-4 text-xs italic text-slate-500 font-semibold\">• Supplied by the oculomotor nerve (3rd nerve); its paralysis leads to ptosis.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Levator Muscle (LPS)</strong><br />دي العضلة الأساسية اللي بترفع الجفن العلوي.<br />* المنشا: من قمّة الأوربت (Apex of the orbit).<br />* الاندغام (Insertion): بتدخل في كذا حتة أهمهم التارسس (<strong>Superior tarsus</strong>) والجلد (اللي بيعمل الـ crease).<br />* العصب: بتتغذى بالعصب التالت (<strong>3rd nerve</strong>).<br /><br /><div class=\"border-r-4 border-amber-500 bg-amber-500/5 p-3 rounded-lg my-2 text-sm italic\"><strong>Important</strong>: لو العصب التالت اتشل أو العضلة نفسها ملتحمة غلط، بيحصل <strong>Ptosis</strong>.</div><br /><br /><strong>جت في اند المجموعة التانية</strong>\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "eyelid_lacrimal",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536639,
+    "nextReview": 1779027536639,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_eyelid_lacrimal_16",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What is Muller's muscle and its clinical significance?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Muller's Muscle</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• It is a non-striated (involuntary) muscle in the upper eyelid.</li><li class=\"font-bold text-slate-800\">• Has sympathetic supply, & its paralysis will lead to Horner's syndrome.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Muller's Muscle</strong><br />عضلة تانية مساعدة في رفع العين بس هي <strong>Involuntary</strong> (لاإرادية).<br />* تغذيتها: بتاخد من الجهاز السمبساوي (<strong>Sympathetic supply</strong>).<br />* أهميتها السريرية: لو اتقطعت التغذية دي بيحصل <strong>Horner's syndrome</strong>، ومن علاماتها الـ <strong>Slight ptosis</strong> (سقوط جفن بسيط).<br /><br /><strong>جت في اند المجموعة التانية</strong>\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "eyelid_lacrimal",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536639,
+    "nextReview": 1779027536639,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_eyelid_lacrimal_17",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What are the functions of the eyelid?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Functions of the Eyelid</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• 1- Protection of the globe from external injury.</li><li class=\"font-bold text-slate-800\">• 2- Help tear distribution by blinking so help in wetting of the cornea.</li><li class=\"font-bold text-slate-800\">• 3- Help tear drainage (through the lacrimal pump).</li><li class=\"font-bold text-slate-800\">• 4- Help aqueous drainage (through ocular massage).</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Eyelid Functions</strong><br />الجفون مش بس منظر، دي ليها فوائد كتيير:<br />1. <strong>Protection</strong>: حماية العين من أي خبطات أو أجسام غريبة.<br />2. <strong>Distribution</strong>: توزيع الدموع على القرنية عشان تفضل مبلولة ونظيفة.<br />3. <strong>Drainage</strong>: بتساعد في تصريف الدموع عن طريق مضخة الجفون.<br />4. <strong>Massage</strong>: بتعمل مساج للعين بيساعد في تصريف السوايل الداخلية للجسم (Aqueous).\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "eyelid_lacrimal",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536639,
+    "nextReview": 1779027536639,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_eyelid_lacrimal_18",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Define Blepharitis and its three main types.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Blepharitis</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Definition: It is chronic inflammation of the eyelid margin.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• 1) Anterior blepharitis: affects the skin around the base of eyelashes.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• 2) Posterior blepharitis: affects Meibomian glands, causing Meibomian gland dysfunction.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• 3) Mixed blepharitis: combination of both.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Blepharitis</strong><br />التهاب مزمن في حافة الجفون.<br />1. <strong>Anterior</strong>: بيأثر على الجلد اللي حوالين جذور الرموش.<br />2. <strong>Posterior</strong>: بيأثر على غدد الـ Meibomian (بيسموه MGD).<br />3. <strong>Mixed</strong>: الاتنين مع بعض.<br /><br /><div class=\"border-r-4 border-amber-500 bg-amber-500/5 p-3 rounded-lg my-2 text-sm italic\"><strong>Clinical Hint</strong>: المرض ده بيزهق العيانين جداً لأنه مزمن وبيرجع تاني.</div>\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "eyelid_lacrimal",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536639,
+    "nextReview": 1779027536639,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_eyelid_lacrimal_19",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What is the etiology and clinical picture of anterior blepharitis (squamous vs ulcerative)?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Anterior Blepharitis Etiology & Signs</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Squamous: part of generalized seborrhea with scalp dandruff. Signs: Greasy grayish white scales between lashes.</li><li class=\"font-bold text-slate-800\">• Ulcerative: caused by staph. aureus infection. Signs: lashes glued by yellow crusts, leaving minute bleeding ulcers when removed.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Squamous vs Ulcerative Blepharitis</strong><br />1. <strong>Squamous (قشرية)</strong>: دي بتكون جزء من قشرة الشعر العادية (Seborrhea).<br />   * العلامات: قشور زيتية لونها رمادي مبيض بين الرموش.<br />2. <strong>Ulcerative (قرحية)</strong>: دي سببها ميكروب الـ <strong>Staph aureus</strong>.<br />   * العلامات: الرموش بتكون لازقة في بعض بقشور صفراء، ولو شلناها بتبين تحتها <strong>قرح صغيرة بتنزف</strong> (minute bleeding ulcers).<br /><br /><div class=\"border-r-4 border-amber-500 bg-amber-500/5 p-3 rounded-lg my-2 text-sm italic\"><strong>Note</strong>: الـ Ulcerative أخطر وبتبوظ الرموش.</div><br /><br /><strong>جت في اند المجموعة التانية</strong>\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "eyelid_lacrimal",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536639,
+    "nextReview": 1779027536639,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_eyelid_lacrimal_20",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Enumerate the complications of anterior blepharitis.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Complications of Anterior Blepharitis</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Lacrimal: Punctal occlusion. Conjunctiva: Chronic conjunctivitis.</li><li class=\"font-bold text-slate-800\">• Cornea: Marginal corneal ulcers, Superficial punctate keratitis.</li><li class=\"font-bold text-slate-800\">• Eyelid: Trichiasis, Madarosis, Epiphora-eczema-ectropion cycle, Multiple styes.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Complications of Blepharitis</strong><br />الالتهاب ده مش بس في الجفن، ممكن يطور لمشاكل تانية:<br />* <strong>Eyelid</strong>: الرموش تقع (<strong>Madarosis</strong>) أو تطلع غلط (<strong>Trichiasis</strong>).<br />* <strong>Lacrimal</strong>: فتحة الصرف تقفل (Punctal occlusion).<br />* <strong>Conjunctiva</strong>: التهاب مزمن في الملتحمة.<br />* <strong>Cornea</strong>: قرح في القرنية بسبب السموم أو الرموش اللي بتحك.<br />* <strong>Vicious Circle</strong>: الجفن يقلب لبرا (Ectropion) والأكزيما تزيد.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "eyelid_lacrimal",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536639,
+    "nextReview": 1779027536639,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_eyelid_lacrimal_21",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Define Hordeolum externum (Stye) and its clinical picture.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Hordeolum Externum (Stye)</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Definition: Acute suppurative inflammation of the Zeiss gland.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Etiology: Staphylococcus aureus.</li><li class=\"font-bold text-slate-800\">• Symptoms: Painful red swelling at the eyelid margin.</li><li class=\"font-bold text-slate-800\">• Signs: Red tender swelling at the root of a lash. A yellow point may form.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Stye (Hordeolum Externum)</strong><br />دمل صغير ومؤلم بيطلع في جفن العين.<br />* التعريف: التهاب صديدي حاد في غدد <strong>Zeiss</strong> (الغدد الدهنية الملحقة بالرموش).<br />* السبب: ميكروب الـ <strong>Staph aureus</strong>.<br />* الشكل: ورم أحمر ومؤلم جداً عند حافة الجفن، وممكن تظهر \"نقطة صفراء\" فيها صديد عند جدر الرمش.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "eyelid_lacrimal",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536639,
+    "nextReview": 1779027536639,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_eyelid_lacrimal_22",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What is the treatment for a stye and a precaution to avoid?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Stye Treatment</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Warm compresses and topical antibiotics.</li><li class=\"font-bold text-slate-800\">• Drain pus by epilation with a horizontal incision if pointing.</li><li class=\"pl-4 text-xs italic text-slate-500 font-semibold\">• Do not press to evacuate a stye (dangerous area); may cause orbital cellulites or cavernous sinus thrombosis.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Stye Treatment</strong><br />* العلاج الأساسي: كمادات مياه دافئة (عشان تفتح المسام) ومضادات حيوية موضعية.<br />* التدخل: لو فيه صديد متجمع، بنشيل الرمش (Epilation) عشان الصديد يخرج.<br />* <strong>تحذير هام جداً</strong>: إياك تحاول تفرقع الدمل أو تضغط عليه بقوة لنقل الصديد (Don't press)! ده ممكن يخلي الميكروب يمشي لورا ويعمل <strong>Orbital cellulitis</strong> أو جلطة في جيوب المخ (<strong>Cavernous sinus thrombosis</strong>) لأن المنطقة دي \"Dangerous area\".\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "eyelid_lacrimal",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536639,
+    "nextReview": 1779027536639,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_eyelid_lacrimal_23",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What is Hordeolum internum and its differences from a stye?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Hordeolum Internum</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Definition: Acute, suppurative inflammation of the Meibomian gland.</li><li class=\"font-bold text-slate-800\">• Difference: Pain is more severe (pus under tension in tarsus). Swelling is away from lid margin and not related to lashes.</li><li class=\"pl-4 text-xs italic text-slate-500 font-semibold\">• Yellow spot appears on the conjunctival side.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Hordeolum Internum</strong><br />زي الـ Stye بس \"داخلي\".<br />* التعريف: التهاب صديدي حاد في غدد الـ <strong>Meibomian</strong>.<br />* الفرق عن الـ Stye:<br />  1. الوجع بكون <strong>أشد جداً</strong> (لأن الصديد مزنوق جوه الـ Tarsus الناشف).<br />  2. الورم بيكون بعيد شوية عن حافة الجفن.<br />  3. النقطة الصفراء بتبان من ناحية <strong>الملتحمة</strong> (الكونج) مش من ناحية الجلد.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "eyelid_lacrimal",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536639,
+    "nextReview": 1779027536639,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_eyelid_lacrimal_24",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Define Chalazion and its clinical picture.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Chalazion</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Definition: A localized chronic inflammatory lipo-granuloma of a Meibomian gland.</li><li class=\"font-bold text-slate-800\">• Symptoms: Painless swelling under the skin of the eyelid.</li><li class=\"font-bold text-slate-800\">• Signs: Firm, painless swelling, skin freely mobile over it. Palpebral conjunctiva is red or bluish-grey.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Chalazion (كيس دهني)</strong><br />ده تورم \"غير مؤلم\" ومزمن.<br />* التعريف: تجمّع دهني مزمن (lipo-granuloma) بسبب انسداد فتحة غدة الـ <strong>Meibomian</strong>.<br />* العلامات: ورم ناشف، غير مؤلم، الجلد اللي فوقيه بيتحرك بحرية.<br />* من ناحية الملتحمة: بنلاقي مكان الورم لونه محمر أو مزرق شوية.<br /><br /><div class=\"border-r-4 border-amber-500 bg-amber-500/5 p-3 rounded-lg my-2 text-sm italic\"><strong>Key Word</strong>: <strong>Painless</strong> (غير مؤلم). لو وجعك يبقى اتقلب لـ Hordeolum.</div>\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "eyelid_lacrimal",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536639,
+    "nextReview": 1779027536639,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_eyelid_lacrimal_25",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">How is a large chalazion treated?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Chalazion Treatment</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Incision (cruciate or vertical) and curettage or scraping of its contents from the conjunctival side.</li><li class=\"pl-4 text-xs italic text-slate-500 font-semibold\">• Recurrent swelling in same gland: Excision biopsy to exclude malignancy.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Chalazion Treatment</strong><br />لو الكيس الدهني كبير ومش راضي يروح بالعلاجات البسيطة أو الحقن:<br />* العلاج الجراحي: بنعمل فتحة (<strong>Incision</strong>) وننضف المحتويات (<strong>Curettage</strong>) من ناحية الملتحمة (جوا الجفن) عشان ميسيبش أثر في الجلد.<br />* <strong>ملحوظة هامة</strong>: لو الكيس الدهني بيرجع كتير في \"نفس المكان\" عند حد كبير، لازم ناخد عينة عشان نتأكد إنها مش ورم سرطاني (<strong>Malignancy</strong>).<br /><br /><strong>جت في اند المجموعة التانية</strong>\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "eyelid_lacrimal",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536639,
+    "nextReview": 1779027536639,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_eyelid_lacrimal_26",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Define Distichiasis and its treatment.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Distichiasis</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Definition: Abnormality where extra row of lashes arise behind the grey line in place of Meibomian gland orifices.</li><li class=\"font-bold text-slate-800\">• Treatment: Selective destruction (rubbing lashes) or cryotherapy on the anterior surface of tarsus.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Distichiasis (منبت رموش إضافي)</strong><br />حالة بيطلع فيها \"صف رموش زيادة\" ورا الخط الرمادي (grey line)، يعني في مكان فتحات غدد الـ Meibomian.<br />* المشكلة: الرموش دي بتحك في العين وبتعمل تهيج.<br />* العلاج: لازم ندمر منبت الرموش دي، إما بجراحة معينة أو بالتجميد (<strong>Cryotherapy</strong>).<br /><br /><div class=\"border-r-4 border-amber-500 bg-amber-500/5 p-3 rounded-lg my-2 text-sm italic\"><strong>Mnemonic</strong>: \"Di-\" يعني اتنين، يعني صفين رموش.</div>\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "eyelid_lacrimal",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536639,
+    "nextReview": 1779027536639,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_eyelid_lacrimal_27",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Differentiate between \"rubbing lashes\" and \"trichiasis\".</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Rubbing Lashes vs Trichiasis</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Rubbing lashes: Four or less inward misdirected lashes.</li><li class=\"font-bold text-slate-800\">• Trichiasis: Acquired condition in which more than four lashes are directed posteriorly.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Rubbing Lashes vs Trichiasis</strong><br />الفرق في \"العدد\":<br />1. <strong>Rubbing lashes</strong>: رمش أو اتنين أو تلاتة (لحد 4) طالعين غلط وبيحكوا في العين.<br />2. <strong>Trichiasis</strong>: لما يكون أكتر من 4 رموش داخلين لجوا وبيحكوا في القرنية، ودي حالة مكتسبة بتبوظ العين.\n    </div>\n    \n  \n    <!-- Mnemonic Box -->\n    <div class=\"bg-blue-50/40 border border-blue-200/40 rounded-2xl p-5 text-right space-y-2 font-semibold text-slate-700 leading-relaxed mt-4\" style=\"direction: rtl; text-align: right;\">\n      <h5 class=\"text-xs font-black uppercase tracking-widest text-blue-600 mb-1\">💡 طريقة للحفظ (Mnemonic)</h5>\n      <strong>Trichiasis Mnemonic</strong><br />   الفرق في \"العدد\":<br />   * <strong>Rubbing lashes</strong>: (1-4 رموش) - حاجة بسيطة.<br />   * <strong>Trichiasis</strong>: أكثر من 4 رموش - دي حالة \"مكتسبة\" (Acquired) وبتبوظ القرنية وتعمل تليف.\n    </div>\n    \n</div>",
+    "tags": [
+      "eyelid_lacrimal",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536639,
+    "nextReview": 1779027536639,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_eyelid_lacrimal_28",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What are the causes and clinical picture of trichiasis?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Trichiasis Causes & Signs</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Causes: Cicatrizing diseases: Trachoma (commonest in Egypt), Ulcerative blepharitis, Trauma, Chemical burns.</li><li class=\"font-bold text-slate-800\">• Clinical Picture: Foreign body sensation, pain, lacrimation, photophobia, conjunctival hyperemia.</li><li class=\"pl-4 text-xs italic text-slate-500 font-semibold\">• Signs: Misdirected lashes, corneal vascularization.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Trichiasis (انقلاب الرموش)</strong><br />الرموش طالعة من مكانها الصح بس رايحة \"لورا\" ناحية القرنية.<br />* الأسباب: أي حاجة بتعمل \"تليف\" في الجفن، وأشهر سبب في مصر هو الـ <strong>Trachoma</strong> (الرمد الحبيبي).<br />* المريض بيشتكي من: إحساس جسم غريب (Foreign body sensation)، وجع، دموع، والقرنية بتبدأ تتأثر.<br /><br /><div class=\"border-r-4 border-amber-500 bg-amber-500/5 p-3 rounded-lg my-2 text-sm italic\"><strong>Mnemonic</strong>: <strong>T</strong>richiasis = <strong>T</strong>rachoma is the main cause.</div>\n    </div>\n    \n  \n    <!-- Mnemonic Box -->\n    <div class=\"bg-blue-50/40 border border-blue-200/40 rounded-2xl p-5 text-right space-y-2 font-semibold text-slate-700 leading-relaxed mt-4\" style=\"direction: rtl; text-align: right;\">\n      <h5 class=\"text-xs font-black uppercase tracking-widest text-blue-600 mb-1\">💡 طريقة للحفظ (Mnemonic)</h5>\n      <strong>Trichiasis - The \"T\" rule</strong><br />   الرموش طالعة من مكانها بس داخلة لورا.<br />   السبب المشهور: <strong>T</strong>rachoma -> بيعمل <strong>T</strong>riciasis.<br />   الأعراض: \"إحساس جسم غريب\" لأن الرمش زي \"الابرة\" اللي بتحك جوه.\n    </div>\n    \n</div>",
+    "tags": [
+      "eyelid_lacrimal",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_eyelid_lacrimal_29",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Define Entropion and its etiological types.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Entropion</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Definition: Rolling in of the lid margin with eyelashes rubbing against the eyeball.</li><li class=\"font-bold text-slate-800\">• Types: 1- Congenital, 2- Cicatricial, 3- Spastic, 4- Senile (Involutional).</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Entropion (انقلاب الجفن للداخل)</strong><br />هنا \"الجفن كله\" بيقلب لجوه، وبالتبعية الرموش كلها بتدخل تحك في العين.<br />* الأنواع:<br />  1. <strong>Cicatricial</strong>: بسبب تليف (زي التراكوما).<br />  2. <strong>Senile</strong>: بسبب كبر السن وضعف العضلات.<br />  3. <strong>Spastic</strong>: بسبب تشنج في العضلات.<br />  4. <strong>Congenital</strong>: مولود بيه.<br /><br /><div class=\"border-r-4 border-amber-500 bg-amber-500/5 p-3 rounded-lg my-2 text-sm italic\"><strong>Hint</strong>: الـ \"En-\" يعني لجوه (Inward rolling).</div>\n    </div>\n    \n  \n    <!-- Mnemonic Box -->\n    <div class=\"bg-blue-50/40 border border-blue-200/40 rounded-2xl p-5 text-right space-y-2 font-semibold text-slate-700 leading-relaxed mt-4\" style=\"direction: rtl; text-align: right;\">\n      <h5 class=\"text-xs font-black uppercase tracking-widest text-blue-600 mb-1\">💡 طريقة للحفظ (Mnemonic)</h5>\n      <strong>Entropion vs Ectropion</strong><br />   سهلها على نفسك:<br />   * <strong>En</strong>tropion -> <strong>En</strong> = Inward (لجوه).<br />   * <strong>Ec</strong>tropion -> <strong>Ec</strong> = Outward (لبره).<br />   الـ Entropion أخطر على القرنية لأن الرموش بتحك فيها مباشرة.\n    </div>\n    \n</div>",
+    "tags": [
+      "eyelid_lacrimal",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_eyelid_lacrimal_30",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Define Ectropion and its degrees.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Ectropion</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Definition: Rolling out (outward rotation) of the lid margin.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Mild: Lacrimal punctum visible without pulling lid.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Moderate: Tarsal conjunctiva exposed.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Severe: Completely everted lid with exposure of conjunctival fornix.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Ectropion (انقلاب الجفن للخارج)</strong><br />الجفن بيقلب لبرة، فالعين بتنكشف والدموع بتسيح.<br />* الدرجات:<br />  * <strong>Mild</strong>: فتحة الدموع (punctum) بتبان من غير ما نشد الجفن.<br />  * <strong>Moderate</strong>: الملتحمة اللي تحت الـ tarsus بتبان.<br />  * <strong>Severe</strong>: الجفن كله مقلوب وبطانة العين كلها باينة.<br /><br /><div class=\"border-r-4 border-amber-500 bg-amber-500/5 p-3 rounded-lg my-2 text-sm italic\"><strong>Hint</strong>: الـ \"Ec-\" يعني لبرة (Outward rotation).</div>\n    </div>\n    \n  \n    <!-- Mnemonic Box -->\n    <div class=\"bg-blue-50/40 border border-blue-200/40 rounded-2xl p-5 text-right space-y-2 font-semibold text-slate-700 leading-relaxed mt-4\" style=\"direction: rtl; text-align: right;\">\n      <h5 class=\"text-xs font-black uppercase tracking-widest text-blue-600 mb-1\">💡 طريقة للحفظ (Mnemonic)</h5>\n      <strong>Ectropion degrees</strong><br />   ببساطة:<br />   * <strong>Mild</strong>: الفتحة بانت.<br />   * <strong>Moderate</strong>: اللحمية البينك (Conjunctiva) بانت.<br />   * <strong>Severe</strong>: الجفن كله قلب وبقت العين كلها مكشوفة (Exposure خطر).\n    </div>\n    \n</div>",
+    "tags": [
+      "eyelid_lacrimal",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_eyelid_lacrimal_31",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What is the \"vicious circle\" of ectropion?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Ectropion Vicious Circle</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Epiphora lead to eczematous reaction of skin which leads to scaring, causing more ectropion, then more epiphora.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>The Vicious Circle of Ectropion</strong><br />دي حلقة مفرغة مريض الـ <strong>Ectropion</strong> بيتحبس فيها:<br />1. الجفن مقلوب لبرا -> الدموع مش بتصرف -> تحصل دموع غزيرة (<strong>Epiphora</strong>).<br />2. الدموع دي بتنزل على الجلد وتعمل التهاب وأكزيما (<strong>Eczema</strong>).<br />3. الأكزيما بتعمل تليف وشد في الجلد (<strong>Scarring</strong>).<br />4. الشد ده بيسحب الجفن لبرا أكتر -> فيزيد الـ <strong>Ectropion</strong>.<br />5. ونرجع نعيد الدائرة من الأول.<br /><br /><div class=\"border-r-4 border-amber-500 bg-amber-500/5 p-3 rounded-lg my-2 text-sm italic\"><strong>Key</strong>: لازم نقطع الدائرة دي بالعلاج أو الجراحة عشان الحالة متسؤش.</div>\n    </div>\n    \n  \n    <!-- Mnemonic Box -->\n    <div class=\"bg-blue-50/40 border border-blue-200/40 rounded-2xl p-5 text-right space-y-2 font-semibold text-slate-700 leading-relaxed mt-4\" style=\"direction: rtl; text-align: right;\">\n      <h5 class=\"text-xs font-black uppercase tracking-widest text-blue-600 mb-1\">💡 طريقة للحفظ (Mnemonic)</h5>\n      <strong>The Vicious Circle - Simplified</strong><br />   تخيلها مسلسل:<br />   الجفن قلب -> دموع نزلت (Epiphora) -> حرقت الجلد عملت حساسية (Eczema) -> الحساسية قلبت شد وتليف (Scarring) -> الجلد انشد أكتر -> الجفن قلب أكتر -> الدموع زادت!\n    </div>\n    \n</div>",
+    "tags": [
+      "eyelid_lacrimal",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_eyelid_lacrimal_32",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Define Lagophthalmos and its causes.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Lagophthalmos</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Definition: Incomplete closure of the palpebral fissure on closure of the eyelids.</li><li class=\"font-bold text-slate-800\">• Causes: Severe ectropion, Coloboma, Overcorrection of ptosis, Thyroid ophthalmopathy, 7th nerve palsy, Proptosis.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Lagophthalmos (العين الأرنبية)</strong><br />المريض مش بيقدر يقفل عينه بالكامل.<br />* أهم الأسباب:<br />  1. شلل العصب السابع (7th nerve palsy).<br />  2. جحوظ العين (Proptosis).<br />  3. مشاكل في الغدة الدرقية (Thyroid eye disease).<br />  4. ندرة أو ضيق في جلد الجفن (Cicatricial).<br /><br /><div class=\"border-r-4 border-amber-500 bg-amber-500/5 p-3 rounded-lg my-2 text-sm italic\"><strong>Danger</strong>: العين اللي مش بتقفل بتتعرض للهواء دايماً، وده بيعمل <strong>Exposure keratitis</strong> (قرحة جفاف القرنية).</div>\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "eyelid_lacrimal",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_eyelid_lacrimal_33",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What is Bell's phenomenon?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Bell's Phenomenon</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• A protective mechanism in which rolling up of the eye during sleep diminishes the effect of incomplete closure of the palpebral fissure.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Bell's Phenomenon</strong><br />دي وسيلة حماية طبيعية في جسمنا.<br />* اللي بيحصل: لما المريض يحاول يقفل عينه (أو وهو نايم)، العين بتلف \"لفوق\" تلقائياً.<br />* الفائدة: الحركة دي بتحمي القرنية وتغطيها بالجفن العلوي حتى لو العين مش بتقفل بالكامل.<br /><br /><div class=\"border-r-4 border-amber-500 bg-amber-500/5 p-3 rounded-lg my-2 text-sm italic\"><strong>Clinical Tip</strong>: لو المريض عنده <strong>Lagophthalmos</strong> وكمان <strong>Bell's Phenomenon</strong> بتاعته ضعيفة (عينه مش بتطلع لفوق)، القرنية هتتدمر بسرعة جداً.</div>\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "eyelid_lacrimal",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_eyelid_lacrimal_34",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Define Ptosis and its congenital causes.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Ptosis</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Definition: Drooping of the upper eyelid.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Congenital Cause: Faulty development of the levator muscle or its nerve supply.</li><li class=\"pl-4 text-xs italic text-slate-500 font-semibold\">• Associated anomalies: Weak superior rectus muscle, Marcus Grunn phenomenon (Jaw-Winking).</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Ptosis (سقوط الجفن)</strong><br />الجفن نازل عن مستواه الطبيعي ومغطي القرنية أكتر من اللازم.<br />* السبب الخلقي (Congenital): غالباً بيكون عيب في تكوين عضلة الـ <strong>Levator</strong> (Dystrophy) أو مشكلة في العصب المغذي ليها.<br />* علامات مرتبطة: ممكن تلاقي عضلة العين العلوي (<strong>Superior rectus</strong>) هي كمان ضعيفة.<br /><br /><div class=\"border-r-4 border-amber-500 bg-amber-500/5 p-3 rounded-lg my-2 text-sm italic\"><strong>Important</strong>: لو الـ Ptosis شديد ومغطي العين تماماً في طفل صغير، لازم يتدخل جراحياً فوراً عشان ميحصلش <strong>Amblyopia</strong> (كسل في العين).</div><br /><br /><strong>جت في اند المجموعة التانية</strong>\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "eyelid_lacrimal",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_eyelid_lacrimal_35",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">List the types of acquired ptosis.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Acquired Ptosis Types</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• 1- Neurogenic: 3rd nerve paralysis or Horner syndrome.</li><li class=\"font-bold text-slate-800\">• 2- Myogenic: Myasthenia gravis (ptosis is periodic, worst in evening).</li><li class=\"font-bold text-slate-800\">• 3- Aponeurotic: Degenerative changes in levator aponeurosis.</li><li class=\"font-bold text-slate-800\">• 4- Traumatic: Direct trauma.</li><li class=\"font-bold text-slate-800\">• 5- Mechanical: Increased weight of lid (tumor, multiple chalazia).</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Types of Acquired Ptosis</strong><br />الواحد ممكن يجيله ترهل في الجفن في مراحل حياته المختلفة لأسباب متنوعة:<br />1. <strong>Neurogenic</strong>: شلل في العصب التالت أو متلازمة هورنر.<br />2. <strong>Myogenic</strong>: وهن العضلات (<strong>Myasthenia gravis</strong>) - مميز جداً إنه بيزيد بليل لما المريض يتعب.<br />3. <strong>Aponeurotic</strong>: وده أشهر نوع في كبار السن، العضلة بتفك من مكانها.<br />4. <strong>Traumatic</strong>: خبطة مباشرة في الجفن.<br />5. <strong>Mechanical</strong>: الجفن تقيل (ورم أو كيس دهني كبير) فبيقع لتحت.<br /><br /><div class=\"border-r-4 border-amber-500 bg-amber-500/5 p-3 rounded-lg my-2 text-sm italic\"><strong>Mnemonic</strong>: N-A-M-T-M (Neuro, Aponeurotic, Myo, Traumatic, Mechanical).</div>\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "eyelid_lacrimal",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_eyelid_lacrimal_36",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">How is ptosis severity graded?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Grading of Ptosis</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Mild: drooping 1-2 mm.</li><li class=\"font-bold text-slate-800\">• Moderate: dropping 3 mm.</li><li class=\"font-bold text-slate-800\">• Severe: dropping > 4 mm.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Ptosis Grading</strong><br />بنشوف الجفن نازل قد إيه عن مستواه الطبيعي:<br />1. <strong>Mild</strong>: نازل 1-2 مم.<br />2. <strong>Moderate</strong>: نازل 3 مم.<br />3. <strong>Severe</strong>: نازل 4 مم أو أكتر.<br /><br /><div class=\"border-r-4 border-amber-500 bg-amber-500/5 p-3 rounded-lg my-2 text-sm italic\"><strong>Key</strong>: في العادة الجفن بيغطي 1-2 مم من القرنية، فلو غطى 4 مم، يبقى هو كدة \"نازل\" 2 مم إضافي (Mild).</div>\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "eyelid_lacrimal",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_eyelid_lacrimal_37",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What is the \"Frontalis suspension\" operations for ptosis?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Frontalis Suspension</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Also known as Hiss operation/sling operation.</li><li class=\"font-bold text-slate-800\">• Indicated when levator function is poor and ptosis is severe.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Frontalis Suspension (الحبال)</strong><br />دي عملية بنعملها لما تكون عضلة الرفع (levator) ضعيفة جداً وميتة.<br />* الفكرة: بنربط الجفن بعضلة الجبهة (<strong>Frontalis muscle</strong>) بخيوط أو شرائح خاصة.<br />* النتيجة: المريض لما يحب يفتح عينه بيرفع حواجبه، فالجفن يترفع معاه.<br /><br /><div class=\"border-r-4 border-amber-500 bg-amber-500/5 p-3 rounded-lg my-2 text-sm italic\"><strong>Also known as</strong>: <strong>Hess operation</strong> or <strong>Sling operation</strong>.</div><br /><br /><strong>جت في اند المجموعة التانية</strong>\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "eyelid_lacrimal",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_eyelid_lacrimal_38",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What does the lacrimal secretory system consist of?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Lacrimal Secretory System</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• 1- The main lacrimal gland.</li><li class=\"font-bold text-slate-800\">• 2- The accessory lacrimal glands (Krause, Wolfring, Meibomian, Zeis, Goblet cells).</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Where do tears come from?</strong><br />جهاز إفراز الدموع بيتكون من مصدرين:<br />1. <strong>Main lacrimal gland</strong>: دي اللي بتفرز الدموع الغزيرة لما نعيط (Reflex tearing).<br />2. <strong>Accessory glands</strong>: دي غدد صغيرة كتيير (Krause, Wolfring, etc.) مسؤولة عن الترطيب الدائم للعين والدموع الأساسية (Basal tearing).<br /><br /><div class=\"border-r-4 border-amber-500 bg-amber-500/5 p-3 rounded-lg my-2 text-sm italic\"><strong>Note</strong>: الـ Goblet cells في الملتحمة بتفرز المخاط (mucin) اللي بيخلي الدموع تمسك في العين.</div>\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "eyelid_lacrimal",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_eyelid_lacrimal_39",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Explain the three layers of the precorneal tear film.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Tear Film Layers</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• 1. Outer lipid layer: secreted by Meibomian glands. Prevents evaporation.</li><li class=\"font-bold text-slate-800\">• 2. Middle aqueous layer: secreted by lacrimal glands. Bulk of tears, supplies oxygen.</li><li class=\"font-bold text-slate-800\">• 3. Inner mucin layer: secreted by goblet cells. Makes cornea hydrophilic.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Tear Film Layers</strong><br />الدموع مش مياه بس، دي 3 طبقات فوق بعض:<br />1. <strong>Outer lipid layer</strong>: (من غدد ميبوميان) زيت عشان يمنع التبخر.<br />2. <strong>Middle aqueous layer</strong>: (من الغدد الدمعية) مياه ودي كمية الدموع الأكبر وفيها الأكسجين.<br />3. <strong>Inner mucin layer</strong>: (من خلايا Goblet) مخاط بيثبّت الدموع على القرنية.<br /><br /><div class=\"border-r-4 border-amber-500 bg-amber-500/5 p-3 rounded-lg my-2 text-sm italic\"><strong>Mnemonic</strong>: L-A-M (Lipid - Aqueous - Mucin). بالترتيب من برا لجوا.</div>\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "eyelid_lacrimal",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_eyelid_lacrimal_40",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Describe components of the lacrimal drainage system.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Lacrimal Drainage System</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• 2 puncta, 2 canaliculi, lacrimal sac, and nasolacrimal duct.</li><li class=\"pl-4 text-xs italic text-slate-500 font-semibold\">• Nasolacrimal duct ends in inferior meatus, guarded by Hasner's valve.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Lacrimal Drainage (The Plumbing)</strong><br />صرف الدموع بيمشي كدة بالترتيب:<br />1. <strong>Puncta</strong>: الفتحتين اللي في طرف الجفون.<br />2. <strong>Canaliculi</strong>: القنوات الصغيرة اللي ماشية في الجفن.<br />3. <strong>Lacrimal sac</strong>: الكيس الدمعي (مخزن مؤقت).<br />4. <strong>Nasolacrimal duct (NLD)</strong>: القناة اللي بتنزل الدموع في الأنف (هي دي سبب رشح الأنف لما نعيط).<br /><br />في آخر قناة الـ NLD فيه صمام اسمه <strong>Hasner's valve</strong> بيمنع رجوع الهوا من المناخير للعين.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "eyelid_lacrimal",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_eyelid_lacrimal_41",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What is the purpose of Hasner's valve?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Hasner's Valve</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• A one-way valve at the end of the nasolacrimal duct allowing tears down but not air up.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Hasner's Valve</strong><br />عبارة عن وسيلة حماية في نهاية القناة الدمعية (NLD).<br />* الوظيفة: هو صمام \"في اتجاه واحد\" (One-way valve). بيسمح للدموع إنها تنزل من العين للمناخير، لكن بيمنع الهوا أو السوائل إنها تطلع من المناخير للعين لما تيجي تنف (blow your nose).<br /><br /><div class=\"border-r-4 border-amber-500 bg-amber-500/5 p-3 rounded-lg my-2 text-sm italic\"><strong>Hint</strong>: لو الصمام ده مسدود في الأطفال حديثي الولادة، بيعمل <strong>Congenital dacryocystitis</strong>.</div>\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "eyelid_lacrimal",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_eyelid_lacrimal_42",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Differentiate between Lacrimation and Epiphora.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Watering of the Eye</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Lacrimation: Excessive secretion of tears; lacrimal passages are normal.</li><li class=\"font-bold text-slate-800\">• Epiphora: Obstruction of lacrimal passage; normal tear secretion.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Lacrimation vs Epiphora</strong><br />الاتنين معناهم \"دموع زيادة\"، بس السبب مختلف تماماً:<br />1. <strong>Lacrimation</strong>: المشكلة في \"الإنتاج\" (Hypersecretion). الصرف شغال كويس بس الحنفية مفتوحة ع الآخر (زي العياط أو حاجة دخلت في العين).<br />2. <strong>Epiphora</strong>: المشكلة في \"الصرف\" (Obstructed drainage). الإنتاج طبيعي بس البلاعة مسدودة (زي انسداد القناة الدمعية).<br /><br /><div class=\"border-r-4 border-amber-500 bg-amber-500/5 p-3 rounded-lg my-2 text-sm italic\"><strong>Mnemonic</strong>:</div><br /><div class=\"border-r-4 border-amber-500 bg-amber-500/5 p-3 rounded-lg my-2 text-sm italic\"><strong>L</strong>acrimation = <strong>L</strong>ots of tears produced.</div><br /><div class=\"border-r-4 border-amber-500 bg-amber-500/5 p-3 rounded-lg my-2 text-sm italic\"><strong>E</strong>piphora = <strong>E</strong>xit is blocked.</div>\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "eyelid_lacrimal",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_eyelid_lacrimal_43",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What is the regurgitation test?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Regurgitation Test</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Press on the lacrimal sac against lacrimal bone.</li><li class=\"font-bold text-slate-800\">• +Ve regurge: reflux of pus or tears (proof of obstruction).</li><li class=\"font-bold text-slate-800\">• -Ve regurge: no reflux (passages likely patent).</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Regurgitation Test (اختبار الارتجاع)</strong><br />اختبار بسيط عشان نشوف فيه انسداد في مجرى الدموع ولا لأ.<br />* الطريقة: بنضغط بالأصبع على الكيس الدمعي (على عظمة الأنف بجانب العين).<br />* <strong>Positive regurge (+)</strong>: لو طلع صديد أو دموع من فتحة الـ punctum، ده معناه إن فيه انسداد ورا الكيس الدمعي.<br />* <strong>Negative regurge (-)</strong>: لو مطلعش حاجة، ده معناه إن الممر بنسبة كبيرة سالك أو الانسداد في مكان تاني.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "eyelid_lacrimal",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_eyelid_lacrimal_44",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Define Acute Dacryocystitis and its complications.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Acute Dacryocystitis</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Definition: Acute suppurative inflammation of the lacrimal sac.</li><li class=\"font-bold text-slate-800\">• Complications: Lacrimal fistula, Pyocele, Orbital cellulitis, Cavernous sinus thrombosis.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Acute Dacryocystitis (التهاب الكيس الدمعي الحاد)</strong><br />التهاب صديدي مفاجئ وشديد في الكيس الدمعي.<br />* الأعراض: وجع شديد جداً، احمرار، وتورم عند زاوية العين الداخلية.<br />* المضاعفات:<br />  1. <strong>Lacrimal fistula</strong>: ناصور دمعي (فتحة بتخرج دمع لبرا على الجلد).<br />  2. <strong>Pyocele</strong>: تجمع صديدي كبير.<br />  3. <strong>Orbital cellulitis</strong>: التهاب خلوي في الأوربت (خطير).<br />  4. جلطة في جيوب المخ (Cavernous sinus thrombosis).\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "eyelid_lacrimal",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_eyelid_lacrimal_45",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What is Dry Eye and some of its common symptoms?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Dry Eye</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Definition: Partial or absolute deficiency in aqueous tear production.</li><li class=\"font-bold text-slate-800\">• Symptoms: Irritation, FB sensation, and burning sensation (on waking up).</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Dry Eye (جفاف العين)</strong><br />نقص في كمية أو جودة الدموع اللي بترطب العين.<br />* الأعراض: إحساس بحرقان (burning)، شكشكة، إحساس بوجود رمل في العين.<br />* ديماً المريض بيشتكي إن الأعراض دي بتزيد أول ما يصحى من النوم (on waking up) أو وهو بيقرأ أو بيستخدم الموبايل كتير.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "eyelid_lacrimal",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_eyelid_lacrimal_46",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">List common clinical diagnostic tests for Dry Eye.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Dry Eye Diagnosis</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• 1. Schirmer's test.</li><li class=\"font-bold text-slate-800\">• 2. Tear film break-up time (BUT).</li><li class=\"font-bold text-slate-800\">• 3. Rose Bengal staining.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Dry Eye Tests</strong><br />إزاي نشخص جفاف العين في العيادة؟<br />1. <strong>Schirmer's test</strong>: بنحط شريط ورق صغير في العين ونشوف تبلل قد إيه (بيحسب الكمية).<br />2. <strong>BUT (Break-up time)</strong>: بنشوف الدموع بتاخد وقت قد إيه عشان \"تتقطع\" على القرنية (بيحسب الجودة والثبات).<br />3. <strong>Rose Bengal staining</strong>: صبغة بتبين الخلايا الميتة أو اللي حصلها جفاف في الملتحمة والقرنية.\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "eyelid_lacrimal",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_eyelid_lacrimal_47",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What are the main causes of Lacrimation?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Causes of Lacrimation</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• Psychic and emotional conditions as weeping.</li><li class=\"font-bold text-slate-800\">• Synkiness with the 9th and 10th cranial nerves as: yawning, vomiting.</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Reflexes:</li><li class=\"pl-4 text-xs italic text-slate-500 font-semibold\">• - Bright light (afferent optic nerve).</li><li class=\"pl-4 text-xs italic text-slate-500 font-semibold\">• - Irritation of trigeminal nerve endings e.g. FB in the conjunctiva or cornea.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Why do we have excessive tears (Lacrimation)?</strong><br />السبب هو إفراز زيادة، وده بيحصل لعدة أسباب:<br />1. <strong>نفسية</strong>: العياط العادي.<br />2. <strong>ردود فعل (Reflexes)</strong>:<br />   * ضوء جامد.<br />   * حاجة دخلت في العين (جسم غريب في القرنية أو الملتحمة).<br />   * التهاب في العين.<br />3. <strong>أسباب تانية</strong>: زي التثاؤب (yawning) أو الترجيع (vomiting).\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "eyelid_lacrimal",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_eyelid_lacrimal_48",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">Describe investigation steps for a case of epiphora.</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Epiphora Investigation</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• History: Exclude lacrimation (Bilateral vs Unilateral).</li><li class=\"font-bold text-slate-800\">• Examination: Eyelids (ectropion/trichiasis), Lacrimal sac (swelling), Nose (polypi).</li><li class=\"pl-4 text-sm text-slate-600 font-semibold\">• Tests:</li><li class=\"pl-4 text-xs italic text-slate-500 font-semibold\">• - Regurgitation test.</li><li class=\"pl-4 text-xs italic text-slate-500 font-semibold\">• - Dacryocystography / CT scan.</li><li class=\"pl-4 text-xs italic text-slate-500 font-semibold\">• - E.N.T. examination.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Epiphora Investigation</strong><br />لو جالك مريض عينه بتدمع، بتمشي بالخطوات دي:<br />1. <strong>التاريخ المرضي</strong>: تفرّق هل هو lacrimation ولا epiphora؟ (عين واحدة ولا اتنين؟).<br />2. <strong>الفحص</strong>:<br />   * الجفون: فيه شعرة بتحك أو الجفن مقلوب؟<br />   * الكيس الدمعي: فيه ورم؟<br />   * الأنف: فيه أي لحميات أو مشاكل قافلة المجرى؟<br />3. <strong>الاختبارات</strong>:<br />   * Regurgitation test.<br />   * غسيل للقناة الدمعية (Syringing).<br />   * أشعة (Dacryocystography).\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "eyelid_lacrimal",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  },
+  {
+    "id": "official_written_eyelid_lacrimal_49",
+    "front": "<div class=\"space-y-4\">\n  <p class=\"text-xl md:text-2xl font-black leading-relaxed text-slate-800\">What is the treatment for congenital dacryocystitis (stepwise approach)?</p>\n</div>",
+    "back": "<div class=\"w-full space-y-4\">\n  \n<div class=\"w-full text-left space-y-4 mb-4\" style=\"direction: ltr; text-align: left;\">\n  <div class=\"bg-primary/5 border border-primary/10 rounded-2xl p-5 space-y-3\">\n    <h4 class=\"text-xs font-black uppercase tracking-widest text-primary mb-1\">Congenital Dacryocystitis Treatment</h4>\n    <ul class=\"space-y-2 text-sm md:text-base list-none pl-0\">\n      <li class=\"font-bold text-slate-800\">• 1- Medical treatment (first 9-12 months): topical antibiotics and digital massage.</li><li class=\"font-bold text-slate-800\">• 2- Probing: indicated if no improvement after age of one year.</li><li class=\"font-bold text-slate-800\">• 3- Silastic intubation: if probing fails.</li><li class=\"font-bold text-slate-800\">• 4- Dacryosyctorhinostomy: if intubation fails.</li>\n    </ul>\n  </div>\n</div>\n  \n  \n    <!-- Explanation Divider -->\n    <div class=\"relative flex py-2 items-center\">\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n      <span class=\"flex-shrink mx-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground bg-background px-2\">الشرح والتوضيح</span>\n      <div class=\"flex-grow border-t border-dashed border-border/80\"></div>\n    </div>\n\n    <!-- Explanation Box -->\n    <div class=\"bg-amber-50/40 border border-amber-200/40 rounded-2xl p-5 text-right space-y-3 font-semibold text-slate-700 leading-relaxed\" style=\"direction: rtl; text-align: right;\">\n      <strong>Congenital Dacryocystitis Treatment</strong><br />لو طفل مولود وقناته الدمعية مسدودة، بنمشي معاه بالترتيب:<br />1. <strong>في أول سنة</strong>: بنكتفي بقطرات مضاد حيوي ومساج بطريقة معينة (Digital massage) عشان المجرى يفتح لوحده.<br />2. <strong>بعد سنة</strong>: لو لسة مسدودة، بنعمل عملية \"تسليك\" (Probing).<br />3. <strong>لو فشلت</strong>: بنركب أنبوبة (Silastic intubation).<br />4. <strong>كحل أخير</strong>: عملية توصيل الكيس الدمعي بالأنف (DCR).<br /><br /><div class=\"border-r-4 border-amber-500 bg-amber-500/5 p-3 rounded-lg my-2 text-sm italic\"><strong>Note</strong>: المساج في أول سنة بيجيب نتيجة في أغلب الحالات، متستعجلش ع العملية.</div>\n    </div>\n    \n  \n</div>",
+    "tags": [
+      "eyelid_lacrimal",
+      "Written",
+      "Theory"
+    ],
+    "subject": "Ophthalmology",
+    "createdAt": 1779027536640,
+    "nextReview": 1779027536640,
+    "interval": 0,
+    "easeFactor": 2.5,
+    "repetitions": 0,
+    "status": "new"
+  }
+]
