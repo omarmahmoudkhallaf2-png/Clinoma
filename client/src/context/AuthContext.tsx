@@ -69,42 +69,61 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
-      if (currentUser) {
-        // Silent Login to Exam Project in the background to enable Security Rules (no await to prevent blocking iOS)
-        signInAnonymously(authExam).catch((e) => {
-          console.error("Exam Project Auth Error:", e);
-        });
+      
+      try {
+        if (currentUser) {
+          // Silent Login to Exam Project in the background to enable Security Rules (no await to prevent blocking iOS)
+          signInAnonymously(authExam).catch((e) => {
+            console.error("Exam Project Auth Error:", e);
+          });
 
-        const userRef = doc(db, 'users', currentUser.uid);
-        const userSnap = await getDoc(userRef);
-        
-        const isAdmin = currentUser.email === 'clinomaofficial@gmail.com';
-        
-        if (!userSnap.exists()) {
-          const initialData = {
+          const userRef = doc(db, 'users', currentUser.uid);
+          const userSnap = await getDoc(userRef);
+          
+          const isAdmin = currentUser.email === 'clinomaofficial@gmail.com';
+          
+          if (!userSnap.exists()) {
+            const initialData = {
+              email: currentUser.email,
+              displayName: currentUser.displayName,
+              photoURL: currentUser.photoURL,
+              role: isAdmin ? 'admin' : 'user',
+              plan: isAdmin ? 'premium' : 'free',
+              profileCompleted: false,
+              enrolledCourses: [],
+              createdAt: new Date(),
+            };
+            await setDoc(userRef, initialData);
+            setUserData(initialData);
+          } else {
+            let data = userSnap.data();
+            if (isAdmin && data.role !== 'admin') {
+              await updateDoc(userRef, { role: 'admin', plan: 'premium' });
+              data = { ...data, role: 'admin', plan: 'premium' };
+            }
+            setUserData(data);
+          }
+        } else {
+          setUserData(null);
+        }
+      } catch (error) {
+        console.error("Auth initialization error:", error);
+        // Robust fallback: set basic user data if Firestore call fails so they aren't blocked from the app!
+        if (currentUser) {
+          const isAdmin = currentUser.email === 'clinomaofficial@gmail.com';
+          setUserData({
             email: currentUser.email,
             displayName: currentUser.displayName,
             photoURL: currentUser.photoURL,
             role: isAdmin ? 'admin' : 'user',
             plan: isAdmin ? 'premium' : 'free',
-            profileCompleted: false,
+            profileCompleted: true, // Bypass completion to prevent getting stuck
             enrolledCourses: [],
-            createdAt: new Date(),
-          };
-          await setDoc(userRef, initialData);
-          setUserData(initialData);
-        } else {
-          let data = userSnap.data();
-          if (isAdmin && data.role !== 'admin') {
-            await updateDoc(userRef, { role: 'admin', plan: 'premium' });
-            data = { ...data, role: 'admin', plan: 'premium' };
-          }
-          setUserData(data);
+          });
         }
-      } else {
-        setUserData(null);
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
     });
 
     return () => unsubscribe();
