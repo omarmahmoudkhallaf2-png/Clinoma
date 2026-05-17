@@ -22,6 +22,28 @@
     "dataPath": "/data/lacrimal_system_eye_ball.json"
   },
   {
+    "id": "official_uvea_lens_003",
+    "title": "Uvea & Lens",
+    "description": "كروت عملي الرمد للمشيمية والقزحية وعدسة العين (Uvea & Lens)",
+    "subject": "Ophthalmology",
+    "module": "Ophthalmology Practical",
+    "cardCount": 17,
+    "isPublic": true,
+    "isStatic": true,
+    "dataPath": "/data/uvea_lens.json"
+  },
+  {
+    "id": "official_cornea_practical_004",
+    "title": "cornea",
+    "description": "كروت عملي الرمد للقرنية والصلبة (Cornea)",
+    "subject": "Ophthalmology",
+    "module": "Ophthalmology Practical",
+    "cardCount": 10,
+    "isPublic": true,
+    "isStatic": true,
+    "dataPath": "/data/cornea_practical.json"
+  },
+  {
     "id": "official_written_eyelid",
     "title": "Eyelid and Lacrimal",
     "description": "شرح كامل ومبسط لنظري الجفون والجهاز الدمعي مع الميمونيكس وتلميحات الامتحانات.",
