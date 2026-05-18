@@ -115,9 +115,13 @@ const StudyMode = () => {
           }) as Flashcard[];
         }
 
-        // Filter for due cards in memory
+        // Filter for due cards in memory (with a 5-minute learn-ahead limit for short-term reviews to avoid dead-time)
         const now = Date.now();
-        const fetchedCards = allCards.filter(card => (card.nextReview || 0) <= now);
+        const learnAheadLimit = now + 5 * 60 * 1000; // 5 minutes buffer
+        const fetchedCards = allCards.filter(card => {
+          const dueTime = card.nextReview || 0;
+          return dueTime <= now || (card.interval <= 5 && dueTime <= learnAheadLimit);
+        });
 
         // Sort/Shuffle cards: Preserve original import order for official decks to study logically, shuffle for personal decks
         if (deckData.isOfficial) {
@@ -386,8 +390,8 @@ const StudyMode = () => {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       {/* Header */}
-      <div className="px-6 py-4 flex items-center justify-between border-b border-border bg-card/50 backdrop-blur-md sticky top-0 z-10">
-        <div className="flex items-center gap-4">
+      <div className="px-6 py-4 flex flex-col md:flex-row items-center justify-between border-b border-border bg-card/50 backdrop-blur-md sticky top-0 z-10 gap-4 md:gap-0">
+        <div className="flex items-center gap-4 w-full md:w-auto">
           <button onClick={() => navigate('/flashcards/decks')} className="p-2 hover:bg-muted rounded-full transition-colors">
             <ChevronLeft size={24} />
           </button>
@@ -397,10 +401,39 @@ const StudyMode = () => {
           </div>
         </div>
         
-        <div className="flex items-center gap-6">
-          <div className="hidden md:flex items-center gap-2 text-sm font-medium">
+        {/* Dynamic Premium Counters (5 Boxes) - Arabic Translations */}
+        <div className="flex items-center gap-1.5 md:gap-2 text-xs font-semibold overflow-x-auto no-scrollbar py-1">
+          {/* Box 1: Total Cards in Session */}
+          <div className="bg-slate-100 dark:bg-slate-800/80 px-2.5 md:px-3 py-1 rounded-xl text-center border border-slate-200 dark:border-slate-700/50 flex flex-col items-center min-w-[42px] md:min-w-[50px] shadow-sm">
+            <span className="text-[8px] md:text-[9px] text-slate-500 dark:text-slate-400 font-black uppercase tracking-wider">الكروت</span>
+            <span className="text-xs md:text-sm font-black text-slate-700 dark:text-slate-200">{cards.length}</span>
+          </div>
+          {/* Box 2: Again (rating 0) */}
+          <div className="bg-red-500/10 px-2.5 md:px-3 py-1 rounded-xl text-center border border-red-500/20 flex flex-col items-center min-w-[42px] md:min-w-[50px] shadow-sm">
+            <span className="text-[8px] md:text-[9px] text-red-500 font-black uppercase tracking-wider">إعادة</span>
+            <span className="text-xs md:text-sm font-black text-red-600 dark:text-red-400">{results.again}</span>
+          </div>
+          {/* Box 3: Hard (rating 1) */}
+          <div className="bg-orange-500/10 px-2.5 md:px-3 py-1 rounded-xl text-center border border-orange-500/20 flex flex-col items-center min-w-[42px] md:min-w-[50px] shadow-sm">
+            <span className="text-[8px] md:text-[9px] text-orange-500 font-black uppercase tracking-wider">صعب</span>
+            <span className="text-xs md:text-sm font-black text-orange-600 dark:text-orange-400">{results.hard}</span>
+          </div>
+          {/* Box 4: Good (rating 2) */}
+          <div className="bg-blue-500/10 px-2.5 md:px-3 py-1 rounded-xl text-center border border-blue-500/20 flex flex-col items-center min-w-[42px] md:min-w-[50px] shadow-sm">
+            <span className="text-[8px] md:text-[9px] text-blue-500 font-black uppercase tracking-wider">جيد</span>
+            <span className="text-xs md:text-sm font-black text-blue-600 dark:text-blue-400">{results.good}</span>
+          </div>
+          {/* Box 5: Easy (rating 3) */}
+          <div className="bg-green-500/10 px-2.5 md:px-3 py-1 rounded-xl text-center border border-green-500/20 flex flex-col items-center min-w-[42px] md:min-w-[50px] shadow-sm">
+            <span className="text-[8px] md:text-[9px] text-green-500 font-black uppercase tracking-wider">سهل</span>
+            <span className="text-xs md:text-sm font-black text-green-600 dark:text-green-400">{results.easy}</span>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-4 w-full md:w-auto justify-between md:justify-end">
+          <div className="flex items-center gap-2 text-sm font-medium">
             <Brain size={16} className="text-primary" />
-            <span>{currentIndex + 1} / {cards.length}</span>
+            <span className="font-bold">{currentIndex + 1} / {cards.length}</span>
           </div>
           <button className="p-2 hover:bg-muted rounded-full transition-colors">
             <X size={24} onClick={() => navigate('/flashcards/decks')} />

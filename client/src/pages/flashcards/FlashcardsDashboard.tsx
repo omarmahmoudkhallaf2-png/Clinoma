@@ -108,23 +108,64 @@ const FlashcardsDashboard = () => {
 
 
 
-        // Fetch due counts for each deck
+        // Fetch due counts for each deck (Cache-first offline/local-first calculation)
         const cardsRef = collection(db, 'flashcards');
         const now = Date.now();
         let totalDue = 0;
 
         const decksWithCounts = await Promise.all(fetchedDecks.map(async (deck) => {
-          // If it's a static deck, it doesn't have Firestore counts unless added to library
-          if ((deck as any).isStatic && deck.userId !== user.uid) {
-            return { ...deck, dueCount: 0 };
+          let count = 0;
+
+          if (deck.id.startsWith('official_') || (deck as any).isStatic) {
+            // Static/official deck: Calculate due count completely from localStorage cache
+            const cardCount = deck.cardCount || 0;
+            for (let idx = 0; idx < cardCount; idx++) {
+              const cardId = `official_${deck.id}_${idx}`;
+              const cached = localStorage.getItem(`fc_progress_${cardId}`);
+              if (cached) {
+                const { nextReview } = JSON.parse(cached);
+                if ((nextReview || 0) <= now) {
+                  count++;
+                }
+              } else {
+                // Never studied, so it is "new" (due for study)
+                count++;
+              }
+            }
+          } else {
+            // Personal deck: load from local cache `deck_cards_${deck.id}` first to bypass Firebase
+            const cacheCardsKey = `deck_cards_${deck.id}`;
+            const cachedCardsJSON = localStorage.getItem(cacheCardsKey);
+            let cardsList: any[] = [];
+
+            if (cachedCardsJSON) {
+              cardsList = JSON.parse(cachedCardsJSON);
+            } else {
+              try {
+                const cardsQuery = query(
+                  cardsRef,
+                  where('deckId', '==', deck.id)
+                );
+                const cardsSnap = await getDocs(cardsQuery);
+                cardsList = cardsSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                localStorage.setItem(cacheCardsKey, JSON.stringify(cardsList));
+              } catch (err) {
+                console.warn('Error fetching cards for due count:', err);
+              }
+            }
+
+            // Apply individual progress overlays from localStorage
+            count = cardsList.filter(card => {
+              const cacheKey = `fc_progress_${card.id}`;
+              const cached = localStorage.getItem(cacheKey);
+              if (cached) {
+                const { nextReview } = JSON.parse(cached);
+                return (nextReview || 0) <= now;
+              }
+              return (card.nextReview || 0) <= now;
+            }).length;
           }
 
-          const cardsQuery = query(
-            cardsRef,
-            where('deckId', '==', deck.id)
-          );
-          const cardsSnap = await getDocs(cardsQuery);
-          const count = cardsSnap.docs.filter(doc => (doc.data().nextReview || 0) <= now).length;
           totalDue += count;
           return { ...deck, dueCount: count };
         }));
