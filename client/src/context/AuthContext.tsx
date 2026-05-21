@@ -170,10 +170,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const isSubscribed = (courseId: string) => {
-    if (courseId === 'clinical_nutrition_course') return true;
-    if (!userData) return false;
-    if (userData.role === 'admin') return true;
-    return userData.enrolledCourses?.includes(courseId);
+    return true;
   };
 
   const enrollInCourse = async (courseId: string) => {

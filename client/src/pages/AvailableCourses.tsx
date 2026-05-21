@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { Crown, CheckCircle, Infinity as InfinityIcon } from 'lucide-react';
 import SupportModal from '../components/ui/SupportModal';
@@ -8,6 +9,7 @@ import { doc, getDoc } from 'firebase/firestore';
 import { useData } from '../context/DataContext';
 
 export default function AvailableCourses() {
+  const navigate = useNavigate();
   const { isSubscribed } = useAuth();
   const { courses, loading: dataLoading } = useData();
   const [config, setConfig] = useState({ telegramUser: 'Clinoma_Admins', whatsappNumber: '01039322938', preferredContact: 'telegram' });
@@ -62,12 +64,10 @@ export default function AvailableCourses() {
                 key={plan.id}
                 className={`group bg-card border-2 ${color.border} p-10 rounded-[3.5rem] relative flex flex-col shadow-2xl transition-all hover:-translate-y-4 hover:shadow-primary/5`}
               >
-                {isSubscribed(plan.id) && (
-                  <div className="absolute -top-4 right-10 bg-emerald-500 text-white text-[10px] font-black px-6 py-2 rounded-full shadow-xl flex items-center gap-2 z-10">
-                    <CheckCircle className="w-4 h-4" />
-                    أنت مشترك الآن
-                  </div>
-                )}
+                <div className="absolute -top-4 right-10 bg-emerald-500 text-white text-[10px] font-black px-6 py-2 rounded-full shadow-xl flex items-center gap-2 z-10">
+                  <CheckCircle className="w-4 h-4" />
+                  مفتوح بالكامل مجاناً
+                </div>
                 
                 <div className="flex justify-between items-start mb-8">
                   <div className="space-y-1">
@@ -82,10 +82,10 @@ export default function AvailableCourses() {
                 </div>
                 
                 <div className="mb-10 flex items-baseline gap-2">
-                  <span className={`text-7xl font-black tracking-tighter ${color.text}`}>{plan.price}</span>
+                  <span className={`text-6xl font-black tracking-tighter ${color.text}`}>مـجـانـاً</span>
                   <div className="flex flex-col">
-                    <span className="text-sm font-black text-muted-foreground tracking-widest">EGP</span>
-                    <span className="text-xs font-bold text-muted-foreground italic">LIFE ACCESS</span>
+                    <span className="text-sm font-black text-muted-foreground tracking-widest">كامل</span>
+                    <span className="text-xs font-bold text-muted-foreground italic">مدى الحياة</span>
                   </div>
                 </div>
 
@@ -109,16 +109,11 @@ export default function AvailableCourses() {
                 </ul>
 
                 <button 
-                disabled={isSubscribed(plan.id)}
-                onClick={() => setIsTelegramOpen(true)}
-                className={`w-full py-6 rounded-3xl font-black text-2xl shadow-2xl transition-all active:scale-95 ${
-                  isSubscribed(plan.id) 
-                  ? 'bg-secondary text-muted-foreground cursor-not-allowed' 
-                  : `${color.primary} text-white ${color.shadow} hover:shadow-2xl hover:scale-[1.02]`
-                }`}
-              >
-                {isSubscribed(plan.id) ? 'تم تفعيل الاشتراك' : 'اشترك في الكورس'}
-              </button>
+                  onClick={() => navigate(`/course/${plan.id}`)}
+                  className={`w-full py-6 rounded-3xl font-black text-2xl shadow-2xl transition-all active:scale-95 ${color.primary} text-white ${color.shadow} hover:shadow-2xl hover:scale-[1.02]`}
+                >
+                  ابدأ الدراسة الآن
+                </button>
               </div>
             );
           })}
