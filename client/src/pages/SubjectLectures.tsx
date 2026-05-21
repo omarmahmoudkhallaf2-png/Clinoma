@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { db } from '../lib/firebase';
 import { doc, getDoc } from 'firebase/firestore';
-import { ArrowLeft, ChevronRight, GraduationCap, Loader2, Highlighter, Sparkles, Bookmark, XCircle } from 'lucide-react';
+import { ArrowLeft, ChevronRight, GraduationCap, Loader2, Highlighter, Sparkles, Bookmark, XCircle, Download } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { getBookmarks, getIncorrectQuestions } from '../lib/quizEngine';
 import { cn } from '../lib/utils';
@@ -224,6 +224,25 @@ export default function SubjectLectures() {
                 </div>
                 <ChevronRight className="w-8 h-8 text-amber-600 group-hover:text-amber-800 transition-all flex-shrink-0 relative z-10" />
               </button>
+
+              {/* Solved PDF Download Card - Emerald styling */}
+              <a
+                href="/clinical_nutrition_solved.pdf"
+                download="Clinical_Nutrition_Solved_MCQ_Bank_2026.pdf"
+                className="group p-8 bg-emerald-500/10 border-2 border-emerald-500/30 hover:border-emerald-500 rounded-[3rem] shadow-xl hover:scale-[1.02] hover:bg-emerald-500/15 transition-all text-left flex items-center justify-between overflow-hidden relative"
+              >
+                <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-500/10 rounded-full -mr-12 -mt-12 group-hover:scale-150 transition-transform duration-500" />
+                <div className="flex items-center gap-6 relative z-10">
+                  <div className="w-16 h-16 bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 rounded-2xl flex items-center justify-center group-hover:bg-emerald-500 group-hover:text-white transition-all flex-shrink-0 shadow-lg shadow-emerald-500/10">
+                    <Download className="w-8 h-8" />
+                  </div>
+                  <div className="text-right" dir="rtl">
+                    <h3 className="text-xl font-black text-emerald-700 dark:text-emerald-400">تحميل بنك الأسئلة</h3>
+                    <p className="text-emerald-800/60 dark:text-emerald-300/60 font-bold text-sm">الملف محلول ومظلل (PDF)</p>
+                  </div>
+                </div>
+                <ChevronRight className="w-8 h-8 text-emerald-600 group-hover:text-emerald-800 transition-all flex-shrink-0 relative z-10" />
+              </a>
 
               {/* Chapters */}
               {CLINICAL_NUTRITION_CHAPTERS.map((ch) => (

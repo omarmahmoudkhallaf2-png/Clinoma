@@ -188,7 +188,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const userRole = userData?.role || null;
-  const userPlan = userData?.plan || 'free';
+  const userPlan = 'premium';
   const needsProfileCompletion = userData ? !userData.profileCompleted : false;
 
   return (
