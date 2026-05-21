@@ -64,6 +64,52 @@ interface Board {
   createdAt: number;
 }
 
+const PEDIATRICS_SLIDES: Record<string, string[]> = {
+  'Endocrinology': [
+    'ADRENAL GLAND DISORDERS & CUSHING SYNDROME.jpeg',
+    'CHILDHOOD OBESITY.jpeg',
+    'DIABETES MELLITUS (DM) DIABETIC KETOACIDOSIS (DKA).jpeg',
+    'INTRODUCTION TO ENDOCRINE SYSTEM.jpeg',
+    'PARATHYROID GLAND DISORDERS.jpeg',
+    'PUBERTY and DISORDERS.jpeg',
+    'SHORT STATURE & TALL STATURE.jpeg',
+    'THYROID GLAND DISORDERS.jpeg'
+  ],
+  'Gastroenterology & hepatology': [
+    'Acute & Recurrent Abdominal Pain (RAP).jpeg',
+    'Acute Diarrhea & Dehydration Assessment.jpeg',
+    'Acute Viral & Autoimmune Hepatitis.jpeg',
+    'COW MILK ALLERGY & LACTOSE INTOLERANCE.jpeg',
+    'Diarrhea Management & Rehydration Protocols.jpeg',
+    'Gastrointestinal Bleeding (UGIB & LGIB).jpeg',
+    'GERD & Hypertrophic Pyloric Stenosis (CHIPS).jpeg',
+    'Hepatomegaly & Hepatosplenomegaly (HSM).jpeg',
+    'Hirschsprung Disease vs. Functional Constipation.jpeg',
+    'Inborn Errors of Metabolism & Phenylketonuria (PKU).jpeg',
+    'Pediatric Inflammatory Bowel Disease (IBD).jpeg'
+  ],
+  'Genetic diseases': [
+    'CHROMOSOMAL ABERRATIONS & DISORDERS.jpeg',
+    'CHROMOSOMAL ANALYSIS & FAMILY PEDIGREE.jpeg',
+    'INTRODUCTION TO GENETICS & BASIC CONCEPTS.jpeg',
+    'PATTERNS OF SINGLE GENE INHERITANCE.jpeg',
+    'PREVENTIVE GENETICS.jpeg'
+  ],
+  'Growth & development': [
+    'BIOLOGICAL AGE & MATURATION (BONE & TEETH).jpeg',
+    'DEVELOPMENTAL MILESTONES & NEURODEVELOPMENT.jpeg',
+    'PEDIATRIC GROWTH.jpeg'
+  ],
+  'Nutrition': [
+    'ARTIFICIAL & COMPLEMENTARY FEEDING (WEANING).jpeg',
+    'BREASTFEEDING MANAGEMENT & CHALLENGES.jpeg',
+    'HUMAN MILK STAGES, COMPOSITION & ADVANTAGES.jpeg',
+    'PROTEIN ENERGY MALNUTRITION (PEM).jpeg',
+    'RICKETS & TETANY.jpeg',
+    'THE FOUNDATIONS OF INFANT FEEDING.jpeg'
+  ]
+};
+
 const FlashSpace = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
@@ -84,6 +130,11 @@ const FlashSpace = () => {
   const [offset, setOffset] = useState({ x: 0, y: 0 });
   const [isPanning, setIsPanning] = useState(false);
   const panStartRef = useRef({ x: 0, y: 0 });
+  const initialPinchDistRef = useRef<number | null>(null);
+  const initialZoomRef = useRef<number>(1);
+  const initialPinchCenterRef = useRef<Point | null>(null);
+  const initialOffsetRef = useRef<Point | null>(null);
+  const [isTwoFingerDragging, setIsTwoFingerDragging] = useState(false);
   const [showExplanation, setShowExplanation] = useState(false);
   const [showSummary, setShowSummary] = useState(false);
 
@@ -157,8 +208,24 @@ const FlashSpace = () => {
         const snap = await getDocs(query(collection(db, 'flashspace_boards'), orderBy('createdAt', 'desc')));
         const fetched = snap.docs.map(doc => ({ id: doc.id, ...doc.data() } as Board));
         
-        // Add the new Pediatrics board provided by the user
-        const newPediatricsBoard: Board = {
+        // Add the Pediatrics boards dynamically
+        const generatedPediatricsBoards: Board[] = [];
+        Object.entries(PEDIATRICS_SLIDES).forEach(([chapter, files]) => {
+          files.forEach(file => {
+            const title = file.replace(/\.[^/.]+$/, "");
+            generatedPediatricsBoards.push({
+              id: `pediatrics_${chapter.toLowerCase().replace(/[^a-z0-9]/g, '_')}_${title.toLowerCase().replace(/[^a-z0-9]/g, '_')}`,
+              module: 'Pediatrics',
+              system: chapter,
+              disease: title,
+              medicalImage: `/assets/TIP-Peditrics/${chapter}/${file}`,
+              explanation: `A comprehensive visual study guide for ${title} under the Pediatrics ${chapter} system. Use this interactive flash space to annotate, highlight, and review key clinical presentation, diagnostic criteria, and management protocols.`,
+              createdAt: Date.now()
+            });
+          });
+        });
+
+        const arrestBoard: Board = {
           id: 'pediatrics_arrest_2024',
           module: 'Pediatrics',
           system: 'Emergency Medicine',
@@ -168,7 +235,7 @@ const FlashSpace = () => {
           createdAt: Date.now()
         };
 
-        const finalBoards = [newPediatricsBoard, ...fetched];
+        const finalBoards = [arrestBoard, ...generatedPediatricsBoards, ...fetched];
         setBoards(finalBoards);
         
         const mods = Array.from(new Set(finalBoards.map(b => b.module))).filter(Boolean);
@@ -289,6 +356,24 @@ const FlashSpace = () => {
   };
 
   const handleStart = (e: React.MouseEvent | React.TouchEvent) => {
+    if ('touches' in e && e.touches.length === 2) {
+      setIsTwoFingerDragging(true);
+      setCurrentPath(null);
+      
+      const t1 = e.touches[0];
+      const t2 = e.touches[1];
+      const dx = t1.clientX - t2.clientX;
+      const dy = t1.clientY - t2.clientY;
+      initialPinchDistRef.current = Math.sqrt(dx * dx + dy * dy);
+      initialZoomRef.current = zoom;
+      initialPinchCenterRef.current = {
+        x: (t1.clientX + t2.clientX) / 2,
+        y: (t1.clientY + t2.clientY) / 2
+      };
+      initialOffsetRef.current = { ...offset };
+      return;
+    }
+
     if (activeTool === 'pan') {
       setIsPanning(true);
       panStartRef.current = { 
@@ -317,6 +402,31 @@ const FlashSpace = () => {
   };
 
   const handleMove = (e: React.MouseEvent | React.TouchEvent) => {
+    if ('touches' in e && e.touches.length === 2 && isTwoFingerDragging) {
+      const t1 = e.touches[0];
+      const t2 = e.touches[1];
+      const dx = t1.clientX - t2.clientX;
+      const dy = t1.clientY - t2.clientY;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+
+      if (initialPinchDistRef.current && initialPinchCenterRef.current && initialOffsetRef.current) {
+        const scale = dist / initialPinchDistRef.current;
+        const newZoom = Math.min(3, Math.max(0.5, initialZoomRef.current * scale));
+
+        const midX = (t1.clientX + t2.clientX) / 2;
+        const midY = (t1.clientY + t2.clientY) / 2;
+        const deltaX = midX - initialPinchCenterRef.current.x;
+        const deltaY = midY - initialPinchCenterRef.current.y;
+
+        setZoom(newZoom);
+        setOffset({
+          x: initialOffsetRef.current.x + deltaX,
+          y: initialOffsetRef.current.y + deltaY
+        });
+      }
+      return;
+    }
+
     if (activeTool === 'pan' && isPanning) {
       const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
       const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
@@ -337,6 +447,14 @@ const FlashSpace = () => {
   };
 
   const handleEnd = () => {
+    if (isTwoFingerDragging) {
+      setIsTwoFingerDragging(false);
+      initialPinchDistRef.current = null;
+      initialPinchCenterRef.current = null;
+      initialOffsetRef.current = null;
+      return;
+    }
+
     if (activeTool === 'pan') {
       setIsPanning(false);
       return;
@@ -454,8 +572,9 @@ const FlashSpace = () => {
 
       <div 
         className={cn(
-          "fixed md:relative h-full bg-white border-r border-slate-200 transition-all duration-500 z-[103] flex flex-col shadow-2xl overflow-hidden", 
-          isSidebarOpen || !isSidebarCollapsed ? "w-80" : "w-0 md:w-0"
+          "fixed md:relative top-0 bottom-0 left-0 h-full bg-white border-r border-slate-200 transition-all duration-500 z-[103] flex flex-col shadow-2xl overflow-hidden", 
+          isSidebarOpen ? "translate-x-0 w-80" : "-translate-x-full md:translate-x-0 w-80",
+          isSidebarCollapsed ? "md:w-0" : "md:w-80"
         )}
       >
         <div className="h-16 md:h-20 flex items-center justify-between px-6 border-b border-slate-100 bg-slate-50/50">
@@ -467,8 +586,8 @@ const FlashSpace = () => {
           </div>
           <button 
             onClick={() => {
-              if (window.innerWidth < 768) setIsSidebarOpen(false);
-              else setIsSidebarCollapsed(true);
+              setIsSidebarOpen(false);
+              setIsSidebarCollapsed(true);
             }} 
             className="p-2.5 hover:bg-slate-200 bg-slate-100 rounded-xl transition-all"
           >
@@ -515,7 +634,7 @@ const FlashSpace = () => {
                           {boards.filter(b => b.module === mod && b.system === sys).map(board => (
                             <button 
                               key={board.id} 
-                              onClick={() => { setSelectedBoard(board); if(window.innerWidth < 768) setIsSidebarOpen(false); }} 
+                              onClick={() => { setSelectedBoard(board); setIsSidebarOpen(false); }} 
                               className={cn(
                                 "w-full text-left p-2.5 rounded-xl text-[10px] font-black uppercase tracking-tight transition-all", 
                                 selectedBoard?.id === board.id 
@@ -538,30 +657,32 @@ const FlashSpace = () => {
       </div>
 
       <div className="flex-1 flex flex-col relative overflow-hidden">
-        <div className="h-16 md:h-20 bg-white border-b border-slate-200 px-4 md:px-6 flex items-center justify-between z-50">
-          <div className="flex items-center gap-2 md:gap-4">
-            {(isSidebarCollapsed || window.innerWidth < 768) && (
-              <button 
-                onClick={() => {
-                  if (window.innerWidth < 768) setIsSidebarOpen(true);
-                  else setIsSidebarCollapsed(false);
-                }}
-                className="p-2.5 bg-white border-2 border-slate-100 rounded-xl md:rounded-2xl shadow-sm text-slate-600 hover:bg-slate-50 transition-all"
-              >
-                <Menu className="w-5 h-5" />
-              </button>
-            )}
+        <div className="h-16 md:h-20 bg-white border-b border-slate-200 px-3 md:px-6 flex items-center justify-between z-50">
+          <div className="flex items-center gap-1.5 md:gap-4">
+            <button 
+              onClick={() => {
+                setIsSidebarOpen(true);
+                setIsSidebarCollapsed(false);
+              }}
+              className={cn(
+                "p-2.5 bg-white border-2 border-slate-100 rounded-xl md:rounded-2xl shadow-sm text-slate-600 hover:bg-slate-50 transition-all",
+                isSidebarCollapsed ? "md:block" : "md:hidden",
+                isSidebarOpen ? "hidden" : "block"
+              )}
+            >
+              <Menu className="w-5 h-5" />
+            </button>
             <button 
               onClick={() => setShowSummary(true)} 
-              className="px-4 py-2.5 md:px-6 md:py-3 bg-rose-50 text-rose-600 rounded-xl md:rounded-2xl hover:bg-rose-600 hover:text-white transition-all flex items-center gap-2 font-black text-[9px] md:text-[10px] uppercase tracking-widest shadow-sm"
+              className="px-3 py-2 md:px-6 md:py-3 bg-rose-50 text-rose-600 rounded-xl md:rounded-2xl hover:bg-rose-600 hover:text-white transition-all flex items-center gap-2 font-black text-[9px] md:text-[10px] uppercase tracking-widest shadow-sm"
             >
               <LogOut className="w-4 h-4" /> 
-              <span>End Session</span>
+              <span className="hidden md:inline">End Session</span>
             </button>
           </div>
 
-          <div className="flex items-center gap-1.5 md:gap-3">
-            <div className="flex items-center gap-0.5 md:gap-1 bg-slate-50 p-1 rounded-xl md:rounded-2xl border border-slate-100 relative">
+          <div className="flex items-center gap-1 md:gap-3">
+            <div className="flex items-center gap-0.5 md:gap-1 bg-slate-50 p-0.5 md:p-1 rounded-xl md:rounded-2xl border border-slate-100 relative">
               {[
                 { id: 'pen', icon: Pencil },
                 { id: 'highlighter', icon: Highlighter },
@@ -580,14 +701,14 @@ const FlashSpace = () => {
                       }
                     }} 
                     className={cn(
-                      "p-2.5 rounded-xl transition-all relative", 
+                      "p-1.5 md:p-2.5 rounded-lg md:rounded-xl transition-all relative", 
                       activeTool === tool.id ? "bg-white text-primary shadow-sm border border-slate-200" : "text-slate-400 hover:text-slate-600"
                     )}
                   >
-                    <tool.icon className="w-4 h-4" />
+                    <tool.icon className="w-3.5 h-3.5 md:w-4 h-4" />
                   </button>
                   {showSettingsFor === tool.id && (
-                    <div className="absolute top-full mt-4 left-1/2 -translate-x-1/2 bg-white border-2 border-slate-100 rounded-3xl shadow-2xl p-6 w-64 z-[2000] animate-in slide-in-from-top-2">
+                    <div className="absolute top-full mt-4 right-0 md:left-1/2 md:-translate-x-1/2 bg-white border-2 border-slate-100 rounded-3xl shadow-2xl p-4 md:p-6 w-56 md:w-64 z-[2000] animate-in slide-in-from-top-2">
                       <div className="space-y-6">
                         <div className="space-y-2">
                           <div className="flex justify-between items-center text-[10px] font-black uppercase text-slate-400"><span>Size</span><span className="text-primary">{toolSettings[tool.id as Tool].size}px</span></div>
@@ -627,17 +748,17 @@ const FlashSpace = () => {
                 </div>
               ))}
             </div>
-            <div className="flex items-center gap-0.5 md:gap-1 bg-slate-50 p-1 rounded-xl md:rounded-2xl border border-slate-100">
-              <button onClick={() => { if(paths.length > 0) { setRedoPaths(prev => [...prev, paths[paths.length-1]]); setPaths(prev => prev.slice(0,-1)); } }} className="p-2 text-slate-400 hover:text-primary transition-all"><Undo2 className="w-3.5 h-3.5 md:w-4 h-4" /></button>
-              <button onClick={() => { if(redoPaths.length > 0) { setPaths(prev => [...prev, redoPaths[redoPaths.length-1]]); setRedoPaths(prev => prev.slice(0,-1)); } }} className="p-2 text-slate-400 hover:text-primary transition-all"><Redo2 className="w-3.5 h-3.5 md:w-4 h-4" /></button>
+            <div className="flex items-center gap-0.5 bg-slate-50 p-0.5 rounded-lg md:rounded-2xl border border-slate-100">
+              <button onClick={() => { if(paths.length > 0) { setRedoPaths(prev => [...prev, paths[paths.length-1]]); setPaths(prev => prev.slice(0,-1)); } }} className="p-1.5 md:p-2 text-slate-400 hover:text-primary transition-all"><Undo2 className="w-3.5 h-3.5 md:w-4 h-4" /></button>
+              <button onClick={() => { if(redoPaths.length > 0) { setPaths(prev => [...prev, redoPaths[redoPaths.length-1]]); setRedoPaths(prev => prev.slice(0,-1)); } }} className="p-1.5 md:p-2 text-slate-400 hover:text-primary transition-all"><Redo2 className="w-3.5 h-3.5 md:w-4 h-4" /></button>
             </div>
-            <div className="flex items-center gap-2 md:gap-3 px-2 md:px-4 py-2 bg-emerald-50 rounded-xl md:rounded-2xl border border-emerald-100">
+            <div className="flex items-center gap-1.5 md:gap-3 px-1.5 py-1.5 md:px-4 md:py-2 bg-emerald-50 rounded-lg md:rounded-2xl border border-emerald-100">
               <Clock className="w-3.5 h-3.5 md:w-4 h-4 text-emerald-600 hidden sm:block" />
-              <span className="text-[10px] md:text-xs font-black text-emerald-700 w-10 md:w-12 text-center tabular-nums">
+              <span className="text-[9px] md:text-xs font-black text-emerald-700 w-8 md:w-12 text-center tabular-nums">
                 {Math.floor(sessionSeconds/60)}:{(sessionSeconds%60).toString().padStart(2,'0')}
               </span>
-              <button onClick={() => setIsTimerActive(!isTimerActive)} className="p-1.5 bg-white rounded-lg text-emerald-600 shadow-sm">
-                {isTimerActive ? <Pause className="w-3 h-3" /> : <Play className="w-3 h-3" />}
+              <button onClick={() => setIsTimerActive(!isTimerActive)} className="p-1 bg-white rounded text-emerald-600 shadow-sm">
+                {isTimerActive ? <Pause className="w-2.5 h-2.5" /> : <Play className="w-2.5 h-2.5" />}
               </button>
             </div>
           </div>

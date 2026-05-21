@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { db } from '../lib/firebase';
+import { db, auth } from '../lib/firebase';
 import { collection, getDocs, query, orderBy } from 'firebase/firestore';
+import { onAuthStateChanged } from 'firebase/auth';
 
 interface DataContextType {
   courses: any[];
@@ -19,14 +20,32 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   const fetchData = async () => {
+    setLoading(true);
     try {
-      const [cSnap, fSnap, vSnap] = await Promise.all([
-        getDocs(query(collection(db, 'courses'), orderBy('level', 'asc'))),
-        getDocs(query(collection(db, 'video_folders'), orderBy('order', 'asc'))),
-        getDocs(query(collection(db, 'videos'), orderBy('order', 'asc')))
-      ]);
+      let fetchedCourses: any[] = [];
+      try {
+        const cSnap = await getDocs(query(collection(db, 'courses'), orderBy('level', 'asc')));
+        fetchedCourses = cSnap.docs.map(d => ({ id: d.id, ...d.data() }));
+      } catch (coursesErr) {
+        console.error('Failed to fetch courses from Firestore, using fallback:', coursesErr);
+      }
 
-      const fetchedCourses = cSnap.docs.map(d => ({ id: d.id, ...d.data() }));
+      let fetchedFolders: any[] = [];
+      try {
+        const fSnap = await getDocs(query(collection(db, 'video_folders'), orderBy('order', 'asc')));
+        fetchedFolders = fSnap.docs.map(d => ({ id: d.id, ...d.data() }));
+      } catch (foldersErr) {
+        console.error('Failed to fetch video folders:', foldersErr);
+      }
+
+      let fetchedVideos: any[] = [];
+      try {
+        const vSnap = await getDocs(query(collection(db, 'videos'), orderBy('order', 'asc')));
+        fetchedVideos = vSnap.docs.map(d => ({ id: d.id, ...d.data() }));
+      } catch (videosErr) {
+        console.error('Failed to fetch videos:', videosErr);
+      }
+
       const staticCourses = [
         {
           id: 'clinical_nutrition_course',
@@ -44,8 +63,8 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
       }
 
       setCourses(allCourses);
-      setVideoFolders(fSnap.docs.map(d => ({ id: d.id, ...d.data() })));
-      setVideos(vSnap.docs.map(d => ({ id: d.id, ...d.data() })));
+      setVideoFolders(fetchedFolders);
+      setVideos(fetchedVideos);
     } catch (err) {
       console.error('Error fetching global data:', err);
     } finally {
@@ -54,7 +73,18 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
   };
 
   useEffect(() => {
+    // Initial fetch
     fetchData();
+
+    // Listen for auth state changes to re-fetch when user logs in/out
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        console.log('User logged in, refreshing global data...');
+        fetchData();
+      }
+    });
+
+    return () => unsubscribe();
   }, []);
 
   return (
@@ -71,3 +101,4 @@ export function useData() {
   }
   return context;
 }
+
