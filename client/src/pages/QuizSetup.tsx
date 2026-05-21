@@ -31,9 +31,19 @@ export default function QuizSetup() {
       try {
         if (!user) return;
 
-        // Fetch Subjects for this course
-        const subjectSnap = await getDocs(query(collection(db, 'subjects'), where('courseId', '==', courseId)));
-        setSubjects(subjectSnap.docs.map(d => ({ id: d.id, ...d.data() })));
+        if (courseId === 'clinical_nutrition_course') {
+          setSubjects([
+            {
+              id: 'clinical_nutrition_subject',
+              name: 'Clinical Nutrition MCQ Bank',
+              courseId: 'clinical_nutrition_course'
+            }
+          ]);
+        } else {
+          // Fetch Subjects for this course
+          const subjectSnap = await getDocs(query(collection(db, 'subjects'), where('courseId', '==', courseId)));
+          setSubjects(subjectSnap.docs.map(d => ({ id: d.id, ...d.data() })));
+        }
 
         // Fetch User Settings
         const userSnap = await getDoc(doc(db, 'users', user.uid));
@@ -147,21 +157,39 @@ export default function QuizSetup() {
           {/* Lecture Selection (Only if NOT coming from a specific lecture node) */}
           {!dashboardState?.lectureNumber && (
             <div className="space-y-4 animate-in slide-in-from-top-4 duration-300">
-              <label className="text-sm font-bold text-muted-foreground uppercase tracking-widest">Select Lecture</label>
+              <label className="text-sm font-bold text-muted-foreground uppercase tracking-widest">
+                {courseId === 'clinical_nutrition_course' ? 'Select Chapter' : 'Select Lecture'}
+              </label>
               <div className="grid grid-cols-4 md:grid-cols-6 gap-3">
-                {[1,2,3,4,5,6,7,8,9,10,11,12].map(num => (
-                  <button
-                    key={num}
-                    onClick={() => setSelectedLecture(num)}
-                    className={`p-4 rounded-2xl border-2 font-black transition-all ${
-                      selectedLecture === num 
-                        ? 'border-primary bg-primary text-white' 
-                        : 'border-border bg-card hover:border-primary/30'
-                    }`}
-                  >
-                    {num}
-                  </button>
-                ))}
+                {courseId === 'clinical_nutrition_course' ? (
+                  [1, 2, 3, 4, 5, 6, 7, 9].map(num => (
+                    <button
+                      key={num}
+                      onClick={() => setSelectedLecture(num)}
+                      className={`p-4 rounded-2xl border-2 font-black transition-all ${
+                        selectedLecture === num 
+                          ? 'border-primary bg-primary text-white' 
+                          : 'border-border bg-card hover:border-primary/30'
+                      }`}
+                    >
+                      {num === 7 ? '7&8' : num}
+                    </button>
+                  ))
+                ) : (
+                  Array.from({ length: 12 }, (_, i) => i + 1).map(num => (
+                    <button
+                      key={num}
+                      onClick={() => setSelectedLecture(num)}
+                      className={`p-4 rounded-2xl border-2 font-black transition-all ${
+                        selectedLecture === num 
+                          ? 'border-primary bg-primary text-white' 
+                          : 'border-border bg-card hover:border-primary/30'
+                      }`}
+                    >
+                      {num}
+                    </button>
+                  ))
+                )}
               </div>
             </div>
           )}
@@ -169,7 +197,13 @@ export default function QuizSetup() {
           {/* Question Type Selection */}
           <div className="space-y-4">
             <label className="text-sm font-bold text-muted-foreground uppercase tracking-widest">
-              {dashboardState?.lectureNumber ? `نمط التدريب للمحاضرة ${selectedLecture}` : 'Question Source'}
+              {dashboardState?.lectureNumber ? (
+                courseId === 'clinical_nutrition_course' ? (
+                  `نمط التدريب للشبتر ${selectedLecture === 7 ? '7 و 8' : selectedLecture}`
+                ) : (
+                  `نمط التدريب للمحاضرة ${selectedLecture}`
+                )
+              ) : 'Question Source'}
             </label>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {[

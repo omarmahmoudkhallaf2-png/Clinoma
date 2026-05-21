@@ -32,13 +32,19 @@ import VideoManager from '../../components/admin/VideoManager';
 
 import { runSystemAudit } from '../../lib/systemHealer';
 import { seedProductionData } from '../../lib/productionSeed';
+import { seedClinicalNutritionData } from '../../lib/seedNutrition';
 import { logAudit } from '../../lib/auditService';
 import type { Question } from '../../types/quiz';
 
 export default function AdminDashboard() {
   const { user, userRole } = useAuth();
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState<'analytics' | 'questions' | 'users' | 'courses' | 'settings' | 'notes' | 'audit' | 'health' | 'formal_results' | 'exams' | 'flashcards' | 'flashspace' | 'data_themes' | 'videos'>('analytics');
+  const [activeTab, setActiveTab] = useState<'analytics' | 'questions' | 'users' | 'courses' | 'settings' | 'notes' | 'audit' | 'health' | 'formal_results' | 'exams' | 'flashcards' | 'flashspace' | 'data_themes' | 'videos'>(() => {
+    const params = new URLSearchParams(window.location.search);
+    const tab = params.get('tab');
+    const validTabs = ['analytics', 'questions', 'users', 'courses', 'settings', 'notes', 'audit', 'health', 'formal_results', 'exams', 'flashcards', 'flashspace', 'data_themes', 'videos'];
+    return (tab && validTabs.includes(tab)) ? (tab as any) : 'analytics';
+  });
   const [questions, setQuestions] = useState<Question[]>([]);
   const [notes, setNotes] = useState<any[]>([]);
   const [users, setUsers] = useState<any[]>([]);
@@ -49,6 +55,10 @@ export default function AdminDashboard() {
   // Autonomous States
   const [auditReports, setAuditReports] = useState<string[]>([]);
   const [isRepairing, setIsRepairing] = useState(false);
+
+  // Clinical Nutrition Seeding States
+  const [isSeedingNutrition, setIsSeedingNutrition] = useState(false);
+  const [nutritionReports, setNutritionReports] = useState<string[]>([]);
 
   // Modals
   const [isBulkModalOpen, setIsBulkModalOpen] = useState(false);
@@ -126,6 +136,22 @@ export default function AdminDashboard() {
       sendAdminNotification('Repair Sequence Failed', 'error');
     } finally {
       setIsRepairing(false);
+    }
+  };
+
+  const handleImportNutrition = async () => {
+    setIsSeedingNutrition(true);
+    setNutritionReports(['Starting Clinical Nutrition Import Sequence...']);
+    try {
+      const result = await seedClinicalNutritionData((log) => {
+        setNutritionReports(prev => [...prev, log]);
+      });
+      sendAdminNotification('Clinical Nutrition Seeded Successfully', 'zap');
+      await fetchData();
+    } catch (err: any) {
+      sendAdminNotification(`Import Failed: ${err.message}`, 'error');
+    } finally {
+      setIsSeedingNutrition(false);
     }
   };
 
@@ -533,6 +559,42 @@ export default function AdminDashboard() {
                         </div>
                       ))}
                     </div>
+                  </div>
+
+                  {/* Clinical Nutrition MCQ Importer Card */}
+                  <div className="max-w-2xl mx-auto p-10 bg-card border-2 border-border rounded-[3.5rem] shadow-xl text-center space-y-6 relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/5 rounded-full -mr-32 -mt-32 blur-[60px]" />
+                    <div className="relative space-y-4">
+                      <div className="w-16 h-16 bg-indigo-500/10 text-indigo-600 rounded-3xl flex items-center justify-center mx-auto shadow-md">
+                        <Database className="w-8 h-8" />
+                      </div>
+                      <div>
+                        <h3 className="text-3xl font-black">Clinical Nutrition Importer</h3>
+                        <p className="text-muted-foreground font-bold text-sm mt-1">
+                          Parses the 172 high-yield questions, structures them into 9 chapters, and seeds the Clinical Nutrition Course and Subject in Firestore.
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <button
+                      onClick={handleImportNutrition}
+                      disabled={isSeedingNutrition}
+                      className="w-full py-6 bg-indigo-600 text-white rounded-3xl font-black text-xl shadow-xl shadow-indigo-600/20 hover:bg-indigo-700 hover:scale-[1.02] active:scale-95 disabled:opacity-50 transition-all flex items-center justify-center gap-3"
+                    >
+                      {isSeedingNutrition ? <Loader2 className="animate-spin w-6 h-6" /> : <Zap className="w-6 h-6 animate-pulse" />}
+                      {isSeedingNutrition ? 'Importing Question Bank...' : 'Import Clinical Nutrition'}
+                    </button>
+                    
+                    {nutritionReports.length > 0 && (
+                      <div className="bg-black text-indigo-400 p-6 rounded-2xl font-mono text-left space-y-2 text-xs border border-indigo-500/20 max-h-48 overflow-y-auto scrollbar-hide">
+                        {nutritionReports.map((report, i) => (
+                          <div key={i} className="flex gap-2">
+                            <span className="opacity-40 text-[10px] mt-0.5">[{new Date().toLocaleTimeString()}]</span>
+                            <span>{report}</span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
 
                   <div className="max-w-2xl mx-auto">

@@ -21,6 +21,7 @@ export interface Question {
   divisionId?: string;
   format?: 'mcq' | 'essay';
   essayAnswer?: string;
+  isHighlighted?: boolean;
   createdAt?: any;
   version?: number;
   status?: 'draft' | 'published' | 'review';

@@ -17,6 +17,14 @@ export default function SubjectOptions() {
   useEffect(() => {
     const fetchSubject = async () => {
       if (!subjectId) return;
+      if (subjectId === 'clinical_nutrition_subject') {
+        setSubject({
+          name: 'Clinical Nutrition MCQ Bank',
+          lectureCount: 9
+        });
+        setLoading(false);
+        return;
+      }
       const snap = await getDoc(doc(db, 'subjects', subjectId));
       if (snap.exists()) setSubject(snap.data());
       setLoading(false);
@@ -30,6 +38,20 @@ export default function SubjectOptions() {
     </div>
   );
 
+  const getClinicalNutritionChapterName = (num: number) => {
+    const chapters: Record<number, string> = {
+      1: 'Chapter 1: Therapeutic diets and modified diets',
+      2: 'Chapter 2: Dietary management of liver diseases',
+      3: 'Chapter 3: Dietary management of CVD diseases',
+      4: 'Chapter 4: Dietary management of GIT diseases',
+      5: 'Chapter 5: Dietary management for diabetes patients',
+      6: 'Chapter 6: Dietary management of renal diseases',
+      7: 'Chapter 7 & 8: Dietary management of Comatosed',
+      9: 'Chapter 9: Nutrition therapy for post-operative patients'
+    };
+    return chapters[num] || `Chapter ${num}`;
+  };
+
   return (
     <div className="min-h-screen bg-background p-6 md:p-12 space-y-12">
       <div className="max-w-4xl mx-auto space-y-12">
@@ -39,7 +61,12 @@ export default function SubjectOptions() {
 
         <div className="text-center space-y-4">
           <div className="inline-flex items-center gap-3 px-6 py-2 bg-primary/10 text-primary rounded-full font-black text-sm uppercase tracking-widest">
-            <GraduationCap className="w-5 h-5" /> Lecture {lectureNumber}
+            <GraduationCap className="w-5 h-5" />{' '}
+            {subjectId === 'clinical_nutrition_subject' ? (
+              getClinicalNutritionChapterName(Number(lectureNumber))
+            ) : (
+              `Lecture ${lectureNumber}`
+            )}
           </div>
           <h1 className="text-5xl md:text-7xl font-black tracking-tighter">{subject?.name}</h1>
           <p className="text-muted-foreground font-bold text-xl uppercase tracking-[0.2em] opacity-40">Choose Study Mode</p>
@@ -57,7 +84,13 @@ export default function SubjectOptions() {
             </div>
             <div>
               <h3 className="text-4xl font-black mb-2">Lecture Notes</h3>
-              <p className="text-muted-foreground font-bold leading-relaxed">Access theoretical lectures, summarized clinical points and visual mnemonics for Lecture {lectureNumber}.</p>
+              <p className="text-muted-foreground font-bold leading-relaxed">
+                {subjectId === 'clinical_nutrition_subject' ? (
+                  `Access theoretical chapters, summarized clinical points and visual mnemonics for ${getClinicalNutritionChapterName(Number(lectureNumber))}.`
+                ) : (
+                  `Access theoretical lectures, summarized clinical points and visual mnemonics for Lecture ${lectureNumber}.`
+                )}
+              </p>
             </div>
           </button>
 

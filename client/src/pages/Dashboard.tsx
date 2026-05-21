@@ -13,8 +13,6 @@ import {
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { cn } from '../lib/utils';
-import { getWeakAreas, resetBookmarks, resetIncorrect } from '../lib/quizEngine';
-import WeakAreas from '../components/dashboard/WeakAreas';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
 import { Skeleton } from '../components/ui/Skeleton';
@@ -26,34 +24,15 @@ export default function Dashboard() {
   const { courses, videoFolders, videos: allVideos, loading: dataLoading } = useData();
   const [loading, setLoading] = useState(true);
   const [userStats, setUserStats] = useState({ accuracy: 0, streak: 1, points: 0, totalSolved: 0 });
-  const [weakAreas, setWeakAreas] = useState<any[]>([]);
   const [recentActions, setRecentActions] = useState<any[]>([]);
   const [currentFolderId, setCurrentFolderId] = useState<string | null>(null);
-
-  const handleReset = async (type: 'flagged' | 'incorrect') => {
-    if (!user) return;
-    const confirm = window.confirm(type === 'flagged' ? 'هل أنت متأكد من مسح جميع الأسئلة المعلمة؟' : 'هل أنت متأكد من مسح قائمة الأسئلة الخاطئة؟');
-    if (!confirm) return;
-
-    try {
-      if (type === 'flagged') await resetBookmarks(user.uid);
-      else await resetIncorrect(user.uid);
-      toast.success('تم المسح بنجاح');
-      window.location.reload(); 
-    } catch (err) {
-      toast.error('حدث خطأ أثناء المسح');
-    }
-  };
 
   useEffect(() => {
     if (!user) return;
 
     const fetchDashboardData = async () => {
       try {
-        const [uSnap, weak] = await Promise.all([
-          getDoc(doc(db, 'users', user.uid)),
-          getWeakAreas(user.uid)
-        ]);
+        const uSnap = await getDoc(doc(db, 'users', user.uid));
         
         if (uSnap.exists()) {
           const data = uSnap.data();
@@ -64,8 +43,6 @@ export default function Dashboard() {
             totalSolved: data.totalSolved || 0
           });
         }
-
-        setWeakAreas(weak);
 
         const activitySnap = await getDocs(query(
           collection(db, `users/${user.uid}/activity`), 
@@ -168,16 +145,16 @@ export default function Dashboard() {
             </div>
           </div>
           
-          <div className="hidden lg:flex items-center gap-6">
-            <Card isGlass className="border-white/20 p-6 text-center shadow-none hover:scale-105 transition-transform duration-500">
-              <TrendingUp className="w-8 h-8 mx-auto mb-2 text-emerald-300" />
-              <div className="text-3xl font-bold">%{userStats.accuracy}</div>
-              <div className="text-[10px] uppercase tracking-widest font-bold opacity-60">نسبة الدقة</div>
+          <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
+            <Card isGlass className="border-white/20 p-4 md:p-6 text-center shadow-none hover:scale-105 transition-transform duration-500">
+              <TrendingUp className="w-6 h-6 md:w-8 md:h-8 mx-auto mb-2 text-emerald-300" />
+              <div className="text-2xl md:text-3xl font-bold">%{userStats.accuracy}</div>
+              <div className="text-[8px] md:text-[10px] uppercase tracking-widest font-bold opacity-60">نسبة الدقة</div>
             </Card>
-            <Card isGlass className="border-white/20 p-6 text-center shadow-none hover:scale-105 transition-transform duration-500 delay-75">
-              <Zap className="w-8 h-8 mx-auto mb-2 text-amber-300" />
-              <div className="text-3xl font-bold">{userStats.streak}</div>
-              <div className="text-[10px] uppercase tracking-widest font-bold opacity-60">التفاعل اليومي</div>
+            <Card isGlass className="border-white/20 p-4 md:p-6 text-center shadow-none hover:scale-105 transition-transform duration-500 delay-75">
+              <Zap className="w-6 h-6 md:w-8 md:h-8 mx-auto mb-2 text-amber-300" />
+              <div className="text-2xl md:text-3xl font-bold">{userStats.streak}</div>
+              <div className="text-[8px] md:text-[10px] uppercase tracking-widest font-bold opacity-60">التفاعل اليومي</div>
             </Card>
           </div>
         </div>
@@ -249,75 +226,7 @@ export default function Dashboard() {
       </div>
 
 
-      {/* Core Stats & Quick Revision Row */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
-        {/* Accuracy */}
-        <Card className="overflow-hidden group">
-          <CardContent className="p-4 md:p-6 relative">
-            <div className="flex justify-between items-center mb-2 md:mb-4">
-              <div className="p-1.5 rounded-lg bg-emerald-500/10 text-emerald-500">
-                <TrendingUp className="w-4 h-4" />
-              </div>
-            </div>
-            <div className="space-y-0.5">
-              <div className="text-xl md:text-2xl font-black">%{userStats.accuracy}</div>
-              <div className="text-[8px] md:text-[10px] font-bold uppercase text-muted-foreground tracking-widest">نسبة الدقة</div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Streak */}
-        <Card className="overflow-hidden group">
-          <CardContent className="p-4 md:p-6 relative">
-            <div className="flex justify-between items-center mb-2 md:mb-4">
-              <div className="p-1.5 rounded-lg bg-orange-500/10 text-orange-500">
-                <Zap className="w-4 h-4" />
-              </div>
-            </div>
-            <div className="space-y-0.5">
-              <div className="text-xl md:text-2xl font-black">{userStats.streak}</div>
-              <div className="text-[8px] md:text-[10px] font-bold uppercase text-muted-foreground tracking-widest">التفاعل اليومي</div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Incorrect Questions */}
-        <Card className="overflow-hidden group relative hover:border-destructive/30 transition-all">
-          <CardContent className="p-4 md:p-6 relative">
-            <div onClick={() => navigate('/incorrect')} className="cursor-pointer">
-              <div className="flex justify-between items-center mb-2 md:mb-4">
-                <div className="p-1.5 rounded-lg bg-destructive/10 text-destructive">
-                  <XCircle className="w-4 h-4" />
-                </div>
-              </div>
-              <div className="space-y-0.5">
-                <div className="text-sm md:text-xl font-black">الأخطاء</div>
-                <div className="text-[8px] md:text-[10px] font-bold uppercase text-muted-foreground tracking-widest">مراجعة</div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Flagged Questions */}
-        <Card className="overflow-hidden group relative hover:border-amber-500/30 transition-all">
-          <CardContent className="p-4 md:p-6 relative">
-            <div onClick={() => navigate('/flagged')} className="cursor-pointer">
-              <div className="flex justify-between items-center mb-2 md:mb-4">
-                <div className="p-1.5 rounded-lg bg-amber-500/10 text-amber-600">
-                  <Bookmark className="w-4 h-4" />
-                </div>
-              </div>
-              <div className="space-y-0.5">
-                <div className="text-sm md:text-xl font-black">المعلمة</div>
-                <div className="text-[8px] md:text-[10px] font-bold uppercase text-muted-foreground tracking-widest">المفضلة</div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div className="lg:col-span-2 space-y-10">
+      <div className="space-y-10">
           
           {/* My Courses Section */}
           {myCourses.length > 0 && (
@@ -330,30 +239,27 @@ export default function Dashboard() {
                   عرض الكل <ChevronRight className="w-4 h-4" />
                 </Button>
               </div>
-              <div className="grid grid-cols-1 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {myCourses.map(course => (
-                  <Card key={course.id} className="group overflow-hidden">
-                    <CardContent className="p-0">
-                      <div className="flex flex-col md:flex-row">
-                        <div className="w-full md:w-48 bg-muted flex items-center justify-center p-8 group-hover:bg-primary/5 transition-colors">
-                          <BookOpen className="w-12 h-12 text-primary/40 group-hover:text-primary transition-colors" />
+                  <Card key={course.id} className="group overflow-hidden border border-slate-100 dark:border-slate-800/50 hover:border-primary/20 rounded-[2.5rem] shadow-xl hover:scale-[1.02] transition-all duration-500 relative bg-gradient-to-br from-white via-slate-50/50 to-slate-100/30 dark:from-slate-900 dark:to-slate-800/30">
+                    <CardContent className="p-8 flex flex-col justify-between h-full gap-8">
+                      <div className="flex flex-col items-end gap-6 text-right w-full" dir="rtl">
+                        <div className="w-16 h-16 bg-primary/5 text-primary rounded-[1.5rem] flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-500 shadow-md shadow-primary/5 flex-shrink-0">
+                          <BookOpen className="w-7 h-7" />
                         </div>
-                        <div className="flex-1 p-6 space-y-4">
-                          <div className="space-y-1 text-right" dir="rtl">
-                            <h3 className="text-xl font-bold tracking-tight">{course.name}</h3>
-                            <p className="text-sm text-muted-foreground line-clamp-1">{course.description}</p>
-                          </div>
-                          <div className="flex items-center justify-between flex-row-reverse">
-                            <div className="flex items-center gap-2 text-xs font-bold text-muted-foreground">
-                              <Activity className="w-3 h-3" />
-                              <span>Last active: Today</span>
-                            </div>
-                            <Button size="sm" onClick={() => navigate(`/course/${course.id}`)} className="gap-2">
-                              استكمال المذاكرة
-                              <ArrowRight className="w-4 h-4" />
-                            </Button>
-                          </div>
+                        <div className="space-y-3 w-full">
+                          <h3 className="text-2xl font-black text-slate-800 dark:text-white tracking-tight leading-tight">{course.name}</h3>
+                          <p className="text-sm text-slate-400 dark:text-slate-400 font-semibold leading-relaxed min-h-[48px] line-clamp-2">{course.description}</p>
                         </div>
+                      </div>
+                      <div className="flex items-center justify-end w-full">
+                        <Button 
+                          onClick={() => navigate(`/course/${course.id}`)} 
+                          className="w-full md:w-auto px-8 py-4 rounded-2xl font-black text-xs uppercase shadow-lg shadow-primary/10 hover:shadow-xl hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3"
+                        >
+                          <span>استكمال المذاكرة</span>
+                          <ArrowRight className="w-4 h-4" />
+                        </Button>
                       </div>
                     </CardContent>
                   </Card>
@@ -388,15 +294,6 @@ export default function Dashboard() {
               </div>
             </section>
           )}
-        </div>
-
-        {/* Sidebar Context */}
-        <aside className="space-y-8">
-          <WeakAreas areas={weakAreas} />
-
-          
-
-        </aside>
       </div>
 
 

@@ -1,0 +1,3251 @@
+[
+  {
+    "id": "CN_L1_Q1",
+    "text": "What is the primary goal of a therapeutic diet?",
+    "options": [
+      "Weight gain",
+      "Nutritional therapy",
+      "Food sensitivity",
+      "Taste enhancement"
+    ],
+    "correctAnswer": "Nutritional therapy",
+    "explanation": "Chapter 1 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 1,
+    "questionType": "practice",
+    "accessType": "free",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L1_Q2",
+    "text": "Which diet is commonly used for individuals with celiac disease?",
+    "options": [
+      "Low-carb diet",
+      "Gluten-free diet",
+      "Mediterranean diet",
+      "Intermittent fasting"
+    ],
+    "correctAnswer": "Gluten-free diet",
+    "explanation": "Chapter 1 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 1,
+    "questionType": "practice",
+    "accessType": "free",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L1_Q3",
+    "text": "A key component of a diabetic diet is to manage:",
+    "options": [
+      "Protein intake",
+      "Carbohydrate intake",
+      "Fat intake",
+      "Fiber intake"
+    ],
+    "correctAnswer": "Carbohydrate intake",
+    "explanation": "Chapter 1 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 1,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L1_Q4",
+    "text": "Which nutrient is restricted in a low-sodium diet?",
+    "options": [
+      "Carbohydrates",
+      "Proteins",
+      "Fats",
+      "Sodium"
+    ],
+    "correctAnswer": "Sodium",
+    "explanation": "Chapter 1 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 1,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L1_Q5",
+    "text": "Which of the following diets is beneficial for lowering cholesterol?",
+    "options": [
+      "High-protein diet",
+      "High-sugar diet",
+      "Mediterranean diet",
+      "Ketogenic diet"
+    ],
+    "correctAnswer": "Mediterranean diet",
+    "explanation": "Chapter 1 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 1,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L1_Q6",
+    "text": "What is the purpose of a renal diet?",
+    "options": [
+      "To promote weight loss",
+      "To support kidney function",
+      "To increase energy",
+      "To enhance muscle gain"
+    ],
+    "correctAnswer": "To support kidney function",
+    "explanation": "Chapter 1 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 1,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L1_Q7",
+    "text": "Which of these foods is typically limited in a gluten-free diet?",
+    "options": [
+      "Rice",
+      "Quinoa",
+      "Wheat",
+      "Corn"
+    ],
+    "correctAnswer": "Wheat",
+    "explanation": "Chapter 1 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 1,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L1_Q8",
+    "text": "What is the primary focus of a vegetarian diet?",
+    "options": [
+      "Elimination of all animal products",
+      "Inclusion of dairy products",
+      "Plant-based foods",
+      "Increased protein consumption"
+    ],
+    "correctAnswer": "Plant-based foods",
+    "explanation": "Chapter 1 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 1,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L1_Q9",
+    "text": "The DASH diet is primarily designed to help with:",
+    "options": [
+      "Diabetes management",
+      "Hypertension",
+      "Weight loss",
+      "Digestive issues"
+    ],
+    "correctAnswer": "Hypertension",
+    "explanation": "Chapter 1 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 1,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": true
+  },
+  {
+    "id": "CN_L1_Q10",
+    "text": "Which type of diet restricts carbohydrates significantly?",
+    "options": [
+      "Paleo",
+      "Mediterranean",
+      "Ketogenic",
+      "Flexitarian"
+    ],
+    "correctAnswer": "Ketogenic",
+    "explanation": "Chapter 1 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 1,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L1_Q11",
+    "text": "A lactose-free diet is necessary for individuals with:",
+    "options": [
+      "Celiac disease",
+      "Lactose intolerance",
+      "Diabetes",
+      "Heart disease"
+    ],
+    "correctAnswer": "Lactose intolerance",
+    "explanation": "Chapter 1 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 1,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L1_Q12",
+    "text": "Which nutrient is crucial in a heart-healthy diet?",
+    "options": [
+      "Saturated fats",
+      "Fiber",
+      "Trans fats",
+      ""
+    ],
+    "correctAnswer": "",
+    "explanation": "Chapter 1 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 1,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L1_Q13",
+    "text": "When modifying a diet for GERD, individuals are advised to avoid:",
+    "options": [
+      "Lean meats",
+      "Spicy foods",
+      "Whole grains",
+      "Non-citrus fruits"
+    ],
+    "correctAnswer": "Spicy foods",
+    "explanation": "Chapter 1 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 1,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": true
+  },
+  {
+    "id": "CN_L1_Q14",
+    "text": "Which of the following is a common feature of a high-fiber diet?",
+    "options": [
+      "Increased animal proteins",
+      "Increased fruits and vegetables",
+      "Increased sugar intake",
+      "Increased refined grains"
+    ],
+    "correctAnswer": "Increased fruits and vegetables",
+    "explanation": "Chapter 1 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 1,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L1_Q15",
+    "text": "What is the primary component of a low-FODMAP diet?",
+    "options": [
+      "High protein",
+      "Low fermentable carbs",
+      "High sugar",
+      "Low fiber"
+    ],
+    "correctAnswer": "Low fermentable carbs",
+    "explanation": "Chapter 1 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 1,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": true
+  },
+  {
+    "id": "CN_L1_Q16",
+    "text": "Individuals on a renal diet often need to limit:",
+    "options": [
+      "Potassium",
+      "Calcium",
+      "Iron",
+      "Water"
+    ],
+    "correctAnswer": "Potassium",
+    "explanation": "Chapter 1 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 1,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L2_Q1",
+    "text": "What is the primary goal of dietary management in liver disease?",
+    "options": [
+      "Weight gain",
+      "Liver function support",
+      "Increased sugar intake",
+      "High protein consumption"
+    ],
+    "correctAnswer": "Liver function support",
+    "explanation": "Chapter 2 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 2,
+    "questionType": "practice",
+    "accessType": "free",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L2_Q2",
+    "text": "Which type of diet is commonly recommended for patients with fatty liver disease?",
+    "options": [
+      "High-fat diet",
+      "Low-carbohydrate diet",
+      "",
+      ""
+    ],
+    "correctAnswer": "",
+    "explanation": "Chapter 2 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 2,
+    "questionType": "practice",
+    "accessType": "free",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L2_Q3",
+    "text": "Which nutrient is essential for liver health but should be consumed in moderation in liver disease?",
+    "options": [
+      "Carbohydrates",
+      "Protein",
+      "Fats",
+      "Fiber"
+    ],
+    "correctAnswer": "Protein",
+    "explanation": "Chapter 2 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 2,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": true
+  },
+  {
+    "id": "CN_L2_Q4",
+    "text": "What is the recommended daily limit for sodium intake for individuals with liver disease?",
+    "options": [
+      "1,500 mg",
+      "2,000 mg",
+      "2,300 mg",
+      "3,500 mg"
+    ],
+    "correctAnswer": "1,500 mg",
+    "explanation": "Chapter 2 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 2,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L2_Q5",
+    "text": "Which of the following foods is best for a liver-friendly diet?",
+    "options": [
+      "Red meat",
+      "Fatty fish",
+      "Processed snacks",
+      "Sugary desserts"
+    ],
+    "correctAnswer": "Fatty fish",
+    "explanation": "Chapter 2 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 2,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L2_Q6",
+    "text": "What role does fiber play in liver health?",
+    "options": [
+      "It increases liver fat",
+      "It helps regulate blood sugar and cholesterol levels",
+      "It has no effect on liver health",
+      "It is harmful to the liver"
+    ],
+    "correctAnswer": "It helps regulate blood sugar and cholesterol levels",
+    "explanation": "Chapter 2 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 2,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L2_Q7",
+    "text": "Which vitamin is particularly important for individuals with liver disease?",
+    "options": [
+      "Vitamin A",
+      "Vitamin C",
+      "Vitamin D",
+      "Vitamin E"
+    ],
+    "correctAnswer": "Vitamin E",
+    "explanation": "Chapter 2 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 2,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L2_Q8",
+    "text": "What is a common dietary recommendation for patients with cirrhosis?",
+    "options": [
+      "Increase total calorie intake",
+      "Decrease fluid intake",
+      "Limit protein intake",
+      "Increase sodium intake"
+    ],
+    "correctAnswer": "Increase total calorie intake",
+    "explanation": "Chapter 2 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 2,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L2_Q9",
+    "text": "Which of the following beverages should be limited in a liver-healthy diet?",
+    "options": [
+      "Water",
+      "Herbal tea",
+      "Alcohol",
+      "Fresh juice"
+    ],
+    "correctAnswer": "Alcohol",
+    "explanation": "Chapter 2 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 2,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L2_Q10",
+    "text": "Which condition is characterized by the accumulation of fat in liver cells?",
+    "options": [
+      "Cirrhosis",
+      "Hepatitis",
+      "Fatty liver disease",
+      "Liver cancer"
+    ],
+    "correctAnswer": "Fatty liver disease",
+    "explanation": "Chapter 2 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 2,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L2_Q11",
+    "text": "How can antioxidants benefit liver health?",
+    "options": [
+      "They increase liver inflammation",
+      "They neutralize free radicals and reduce oxidative stress",
+      "They are harmful to liver cells",
+      "They have no effect on liver health"
+    ],
+    "correctAnswer": "They neutralize free radicals and reduce oxidative stress",
+    "explanation": "Chapter 2 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 2,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L2_Q12",
+    "text": "What is the effect of high sugar intake on liver health?",
+    "options": [
+      "It improves liver function",
+      "It can lead to fatty liver disease",
+      "It has no effect",
+      "It increases liver detoxification"
+    ],
+    "correctAnswer": "It can lead to fatty liver disease",
+    "explanation": "Chapter 2 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 2,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L2_Q13",
+    "text": "Which of the following foods is high in omega-3 fatty acids and beneficial for liver health?",
+    "options": [
+      "Salmon",
+      "Chicken",
+      "White rice",
+      "Potatoes"
+    ],
+    "correctAnswer": "Salmon",
+    "explanation": "Chapter 2 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 2,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L2_Q14",
+    "text": "What is the recommended approach to eating for individuals with liver disease?",
+    "options": [
+      "Skipping meals",
+      "Small, frequent meals",
+      "Large meals once a day",
+      "High-calorie snacks only"
+    ],
+    "correctAnswer": "Small, frequent meals",
+    "explanation": "Chapter 2 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 2,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L2_Q15",
+    "text": "Which mineral is important for liver health and should be monitored in patients with liver disease?",
+    "options": [
+      "Calcium",
+      "Iron",
+      "Magnesium",
+      "Potassium"
+    ],
+    "correctAnswer": "Iron",
+    "explanation": "Chapter 2 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 2,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L2_Q16",
+    "text": "What is the primary concern regarding protein intake for patients with severe liver disease?",
+    "options": [
+      "Protein is always harmful",
+      "It can lead to the buildup of ammonia",
+      "It has no impact on liver function",
+      "It increases energy levels"
+    ],
+    "correctAnswer": "It can lead to the buildup of ammonia",
+    "explanation": "Chapter 2 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 2,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L2_Q17",
+    "text": "Which fruit is particularly beneficial for liver health due to its high antioxidant content?",
+    "options": [
+      "Banana",
+      "Blueberries",
+      "Watermelon",
+      "Grapes"
+    ],
+    "correctAnswer": "Blueberries",
+    "explanation": "Chapter 2 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 2,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L2_Q18",
+    "text": "What type of carbohydrates should be prioritized for liver disease management?",
+    "options": [
+      "Simple carbohydrates",
+      "Complex carbohydrates",
+      "Refined carbohydrates",
+      "Sugary snacks"
+    ],
+    "correctAnswer": "Complex carbohydrates",
+    "explanation": "Chapter 2 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 2,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": true
+  },
+  {
+    "id": "CN_L2_Q19",
+    "text": "Which of the following is a common symptom of liver disease that may affect dietary choices?",
+    "options": [
+      "Increased appetite",
+      "Fatigue",
+      "Weight gain",
+      "Clear skin"
+    ],
+    "correctAnswer": "Fatigue",
+    "explanation": "Chapter 2 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 2,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L2_Q20",
+    "text": "Which dietary pattern is often recommended for liver health?",
+    "options": [
+      "High-protein, low-carb",
+      "Mediterranean diet",
+      "High-fat, low-fiber",
+      "Low-calorie, high-sugar"
+    ],
+    "correctAnswer": "Mediterranean diet",
+    "explanation": "Chapter 2 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 2,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L3_Q1",
+    "text": "What is the primary dietary fat to limit for cardiovascular health?",
+    "options": [
+      "Saturated fat",
+      "Polyunsaturated fat",
+      "Monounsaturated fat",
+      "Trans fat"
+    ],
+    "correctAnswer": "Trans fat",
+    "explanation": "Chapter 3 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 3,
+    "questionType": "practice",
+    "accessType": "free",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L3_Q2",
+    "text": "Which of the following is considered a heart-healthy oil?",
+    "options": [
+      "Coconut oil",
+      "Palm oil",
+      "Olive oil",
+      "Hydrogenated oil"
+    ],
+    "correctAnswer": "Olive oil",
+    "explanation": "Chapter 3 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 3,
+    "questionType": "practice",
+    "accessType": "free",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L3_Q3",
+    "text": "Which of the following is a key benefit of a Mediterranean diet?",
+    "options": [
+      "High in processed foods",
+      "Promotes high sugar intake",
+      "Rich in fruits and vegetables",
+      "Low in fish"
+    ],
+    "correctAnswer": "Rich in fruits and vegetables",
+    "explanation": "Chapter 3 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 3,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L3_Q4",
+    "text": "What is the relationship between dietary cholesterol and heart disease risk?",
+    "options": [
+      "High cholesterol foods always raise blood cholesterol",
+      "Dietary cholesterol has little effect on blood cholesterol for most people",
+      "All cholesterol is bad for the heart",
+      "Only saturated fats affect cholesterol levels"
+    ],
+    "correctAnswer": "Dietary cholesterol has little effect on blood cholesterol for most people",
+    "explanation": "Chapter 3 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 3,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L3_Q5",
+    "text": "What role do antioxidants play in heart health?",
+    "options": [
+      "They increase blood pressure",
+      "They prevent oxidative stress",
+      "They raise LDL cholesterol",
+      "They have no effect on heart health"
+    ],
+    "correctAnswer": "They prevent oxidative stress",
+    "explanation": "Chapter 3 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 3,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L3_Q6",
+    "text": "What is the effect of high sugar intake on cardiovascular health?",
+    "options": [
+      "It decreases triglycerides",
+      "It increases blood pressure",
+      "It has no effect",
+      "It improves heart function"
+    ],
+    "correctAnswer": "It increases blood pressure",
+    "explanation": "Chapter 3 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 3,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L3_Q7",
+    "text": "Which nutrient is important for maintaining healthy blood vessels?",
+    "options": [
+      "Vitamin C",
+      "Vitamin D",
+      "Vitamin B12",
+      "Vitamin A"
+    ],
+    "correctAnswer": "Vitamin C",
+    "explanation": "Chapter 3 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 3,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L3_Q8",
+    "text": "Which dairy product is typically recommended for heart health?",
+    "options": [
+      "Whole milk",
+      "Low-fat yogurt",
+      "Cream cheese",
+      "Ice cream"
+    ],
+    "correctAnswer": "Low-fat yogurt",
+    "explanation": "Chapter 3 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 3,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L3_Q9",
+    "text": "What is the primary benefit of a plant-based diet for cardiovascular health?",
+    "options": [
+      "Higher meat consumption",
+      "Increased fiber intake",
+      "Increased saturated fat",
+      "Reduced fruit intake"
+    ],
+    "correctAnswer": "Increased fiber intake",
+    "explanation": "Chapter 3 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 3,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L3_Q10",
+    "text": "Which cooking method is best for heart health?",
+    "options": [
+      "Frying",
+      "Grilling",
+      "Boiling",
+      "Steaming"
+    ],
+    "correctAnswer": "Steaming",
+    "explanation": "Chapter 3 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 3,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L3_Q11",
+    "text": "What is a common effect of excessive alcohol consumption on the heart?",
+    "options": [
+      "Decreases blood pressure",
+      "Increases heart rate",
+      "Improves cholesterol levels",
+      "None"
+    ],
+    "correctAnswer": "Increases heart rate",
+    "explanation": "Chapter 3 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 3,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L3_Q12",
+    "text": "Which nutrient is often referred to as \"good\" fat and can help improve cholesterol levels?",
+    "options": [
+      "Saturated fat",
+      "Trans fat",
+      "Monounsaturated fat",
+      "Polyunsaturated fat"
+    ],
+    "correctAnswer": "Monounsaturated fat",
+    "explanation": "Chapter 3 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 3,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L3_Q13",
+    "text": "Which dietary pattern is associated with a lower risk of heart disease?",
+    "options": [
+      "High-carb, low-fat",
+      "High-protein, low-carb",
+      "",
+      ""
+    ],
+    "correctAnswer": "",
+    "explanation": "Chapter 3 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 3,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": true
+  },
+  {
+    "id": "CN_L3_Q14",
+    "text": "Which of the following is a sign of healthy dietary management for cardiovascular diseases?",
+    "options": [
+      "Frequent fast food consumption",
+      "Regular consumption of processed snacks",
+      "Balanced intake of macronutrients",
+      "High intake of sugary desserts"
+    ],
+    "correctAnswer": "Balanced intake of macronutrients",
+    "explanation": "Chapter 3 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 3,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L4_Q1",
+    "text": "What type of diet could benefit a patient with Crohn's disease during a flare-up?",
+    "options": [
+      "High-fiber",
+      "Low-residue",
+      "Low-fat",
+      "High-protein"
+    ],
+    "correctAnswer": "Low-residue",
+    "explanation": "Chapter 4 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 4,
+    "questionType": "practice",
+    "accessType": "free",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": true
+  },
+  {
+    "id": "CN_L4_Q2",
+    "text": "Which of the following foods should be avoided in a low-FODMAP diet?",
+    "options": [
+      "Oats",
+      "Garlic",
+      "Spinach",
+      "Chicken"
+    ],
+    "correctAnswer": "Garlic",
+    "explanation": "Chapter 4 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 4,
+    "questionType": "practice",
+    "accessType": "free",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L4_Q3",
+    "text": "For a patient with lactose intolerance, which dairy product is often better tolerated? 4 A dietitian recommends a gluten-free diet for a patient with which condition?",
+    "options": [
+      "IBS",
+      "Constipation",
+      "Celiac disease",
+      "Diverticulitis"
+    ],
+    "correctAnswer": "Celiac disease",
+    "explanation": "Chapter 4 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 4,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": true
+  },
+  {
+    "id": "CN_L4_Q5",
+    "text": "Which of the following is a common symptom of irritable bowel syndrome (IBS?)",
+    "options": [
+      "Constant diarrhea",
+      "Abdominal bloating",
+      "Blood in stool",
+      "Weight loss"
+    ],
+    "correctAnswer": "Abdominal bloating",
+    "explanation": "Chapter 4 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 4,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L4_Q6",
+    "text": "Which vitamin is often supplemented in patients with fat malabsorption due to pancreatic insufficiency?",
+    "options": [
+      "Vitamin A",
+      "Vitamin K",
+      "Vitamin D",
+      "Vitamin B12"
+    ],
+    "correctAnswer": "Vitamin D",
+    "explanation": "Chapter 4 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 4,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L4_Q7",
+    "text": "For patients with hepatic encephalopathy, it is important to limit:",
+    "options": [
+      "Carbohydrates",
+      "Proteins",
+      "Sugars",
+      "Fats"
+    ],
+    "correctAnswer": "Proteins",
+    "explanation": "Chapter 4 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 4,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L4_Q8",
+    "text": "Patients with chronic pancreatitis are often advised to reduce:",
+    "options": [
+      "Fiber",
+      "Protein",
+      "Carbohydrates",
+      "Fat"
+    ],
+    "correctAnswer": "Fat",
+    "explanation": "Chapter 4 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 4,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L4_Q9",
+    "text": "A high-fiber diet is beneficial for:",
+    "options": [
+      "COPD",
+      "Constipation",
+      "Anorexia",
+      "Kidney disease"
+    ],
+    "correctAnswer": "Constipation",
+    "explanation": "Chapter 4 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 4,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L4_Q10",
+    "text": "Patients with GERD are often advised to:",
+    "options": [
+      "Eat large meals",
+      "Avoid lying down after eating",
+      "Consume citrus fruits in abundance",
+      "Drink carbonated beverages"
+    ],
+    "correctAnswer": "Avoid lying down after eating",
+    "explanation": "Chapter 4 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 4,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L4_Q11",
+    "text": "Which of the following is a common dietary recommendation for individuals with heartburn?",
+    "options": [
+      "Large meals",
+      "High caffeine intake",
+      "Avoiding chocolate",
+      "Increased dairy intake"
+    ],
+    "correctAnswer": "Avoiding chocolate",
+    "explanation": "Chapter 4 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 4,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L4_Q12",
+    "text": "For patients with IBS, a dietitian might recommend:",
+    "options": [
+      "High salt intake",
+      "Fasting",
+      "Low FODMAP diet",
+      "High sugar diet"
+    ],
+    "correctAnswer": "Low FODMAP diet",
+    "explanation": "Chapter 4 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 4,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": true
+  },
+  {
+    "id": "CN_L4_Q13",
+    "text": "A food high in probiotics beneficial for gut health is:",
+    "options": [
+      "Bread",
+      "Yogurt",
+      "Rice",
+      "Eggs"
+    ],
+    "correctAnswer": "Yogurt",
+    "explanation": "Chapter 4 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 4,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L4_Q14",
+    "text": "Which type of fiber is particularly beneficial for lowering cholesterol levels?",
+    "options": [
+      "Insoluble fiber",
+      "Soluble fiber",
+      "Synthetic fiber",
+      "Resistant starch"
+    ],
+    "correctAnswer": "Soluble fiber",
+    "explanation": "Chapter 4 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 4,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L4_Q15",
+    "text": "A common symptom of gluten sensitivity is:",
+    "options": [
+      "Rapid weight gain",
+      "Nausea",
+      "Abdominal pain",
+      "Blurred vision"
+    ],
+    "correctAnswer": "Abdominal pain",
+    "explanation": "Chapter 4 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 4,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L4_Q16",
+    "text": "For a patient with liver disease, which nutrient should be closely monitored?",
+    "options": [
+      "Carbohydrates",
+      "Proteins",
+      "Fats",
+      "Vitamins"
+    ],
+    "correctAnswer": "Proteins",
+    "explanation": "Chapter 4 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 4,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L5_Q1",
+    "text": "What is the primary aim of dietary management in diabetes?",
+    "options": [
+      "Weight loss",
+      "Blood sugar control",
+      "Increased insulin production",
+      "Reduced cholesterol levels"
+    ],
+    "correctAnswer": "Blood sugar control",
+    "explanation": "Chapter 5 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 5,
+    "questionType": "practice",
+    "accessType": "free",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L5_Q2",
+    "text": "Which type of carbohydrate is recommended for diabetes patients?",
+    "options": [
+      "Simple carbohydrates",
+      "Refined carbohydrates",
+      "Complex carbohydrates",
+      "Sugary snacks"
+    ],
+    "correctAnswer": "Complex carbohydrates",
+    "explanation": "Chapter 5 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 5,
+    "questionType": "practice",
+    "accessType": "free",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L5_Q3",
+    "text": "What is the glycemic index?",
+    "options": [
+      "A measure of fiber content",
+      "A measure of blood sugar effect of foods",
+      "A measure of food weight",
+      "A weight-loss plan"
+    ],
+    "correctAnswer": "A measure of blood sugar effect of foods",
+    "explanation": "Chapter 5 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 5,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L5_Q4",
+    "text": "Which macronutrient should be limited to manage diabetes?",
+    "options": [
+      "Fat",
+      "Carbohydrates",
+      "Protein",
+      "Fiber"
+    ],
+    "correctAnswer": "Carbohydrates",
+    "explanation": "Chapter 5 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 5,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L5_Q5",
+    "text": "Which food is considered low glycemic?",
+    "options": [
+      "White bread",
+      "Lentils",
+      "Candy",
+      "White rice"
+    ],
+    "correctAnswer": "Lentils",
+    "explanation": "Chapter 5 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 5,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L5_Q6",
+    "text": "What type of fat should diabetes patients choose?",
+    "options": [
+      "Saturated fats",
+      "Trans fats",
+      "Monounsaturated fats",
+      "Hydrogenated oils"
+    ],
+    "correctAnswer": "Monounsaturated fats",
+    "explanation": "Chapter 5 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 5,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L5_Q7",
+    "text": "Which beverage should be limited for diabetes patients?",
+    "options": [
+      "Water",
+      "Herbal tea",
+      "Fruit juice",
+      "Black coffee"
+    ],
+    "correctAnswer": "Fruit juice",
+    "explanation": "Chapter 5 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 5,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L5_Q8",
+    "text": "Which type of fiber is beneficial for glycemic control? 9 What is the role of omega-3 fatty acids in diabetes?",
+    "options": [
+      "Increase blood sugar",
+      "Reduce inflammation",
+      "Enhance hunger",
+      "Increase insulin resistance"
+    ],
+    "correctAnswer": "Reduce inflammation",
+    "explanation": "Chapter 5 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 5,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L5_Q10",
+    "text": "How should diabetes patients approach meal planning? 11 What are the potential risks of low-carb diets for diabetes patients?",
+    "options": [
+      "Increased energy levels",
+      "Nutrient deficiencies",
+      "Improved blood sugar control",
+      "Weight gain"
+    ],
+    "correctAnswer": "Nutrient deficiencies",
+    "explanation": "Chapter 5 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 5,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L5_Q12",
+    "text": "Which vitamin is known to help with insulin sensitivity?",
+    "options": [
+      "Vitamin A",
+      "Vitamin C",
+      "Vitamin D",
+      "Vitamin K"
+    ],
+    "correctAnswer": "Vitamin D",
+    "explanation": "Chapter 5 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 5,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L5_Q13",
+    "text": "Which condition can result from improperly managing blood sugar through diet?",
+    "options": [
+      "Hypertension",
+      "Hypoglycemia",
+      "Osteoporosis",
+      "Gout"
+    ],
+    "correctAnswer": "Hypoglycemia",
+    "explanation": "Chapter 5 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 5,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L5_Q14",
+    "text": "What should be prioritized in a diabetes meal plan?",
+    "options": [
+      "High protein",
+      "Food variety",
+      "Low taste",
+      "Low calorie"
+    ],
+    "correctAnswer": "Food variety",
+    "explanation": "Chapter 5 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 5,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L5_Q15",
+    "text": "What is 'carb counting'?",
+    "options": [
+      "Calculating total calories consumed",
+      "Estimating the grams of carbohydrates in foods",
+      "Counting the number of meals in a day",
+      "Measuring portion sizes"
+    ],
+    "correctAnswer": "Estimating the grams of carbohydrates in foods",
+    "explanation": "Chapter 5 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 5,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L5_Q16",
+    "text": "Which dairy product is preferable for diabetes? 17 Which cooking method is healthiest for diabetes patients?",
+    "options": [
+      "Frying",
+      "Boiling",
+      "Grilling",
+      "Baking"
+    ],
+    "correctAnswer": "Grilling",
+    "explanation": "Chapter 5 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 5,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L6_Q1",
+    "text": "What is the primary goal of dietary management in patients with chronic kidney disease (CKD?)",
+    "options": [
+      "Increase protein intake",
+      "Minimize fluid intake",
+      "Control blood pressure and reduce cardiovascular risk",
+      "Increase potassium levels"
+    ],
+    "correctAnswer": "Control blood pressure and reduce cardiovascular risk",
+    "explanation": "Chapter 6 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 6,
+    "questionType": "practice",
+    "accessType": "free",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L6_Q2",
+    "text": "Which of the following nutrients is typically restricted in patients on a renal diet?",
+    "options": [
+      "Fiber",
+      "Calcium",
+      "Phosphorus",
+      "Vitamin C"
+    ],
+    "correctAnswer": "Phosphorus",
+    "explanation": "Chapter 6 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 6,
+    "questionType": "practice",
+    "accessType": "free",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L6_Q3",
+    "text": "What is the recommended daily protein intake for patients with stage 3 CKD?",
+    "options": [
+      "0.8 g/kg of body weight",
+      "1.2 g/kg of body weight",
+      "0.6 g/kg of body weight",
+      "2.0 g/kg of body weight"
+    ],
+    "correctAnswer": "0.8 g/kg of body weight",
+    "explanation": "Chapter 6 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 6,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L6_Q4",
+    "text": "Which food should patients with CKD avoid due to its high potassium content?",
+    "options": [
+      "Apples",
+      "Bananas",
+      "Carrots",
+      "Bread"
+    ],
+    "correctAnswer": "Bananas",
+    "explanation": "Chapter 6 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 6,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L6_Q5",
+    "text": "What is an important consideration for managing sodium intake in renal patients?",
+    "options": [
+      "Sodium is essential for kidney function",
+      "High sodium can lead to fluid retention",
+      "Sodium does not affect blood pressure",
+      "Sodium intake has no dietary restrictions"
+    ],
+    "correctAnswer": "High sodium can lead to fluid retention",
+    "explanation": "Chapter 6 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 6,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L6_Q6",
+    "text": "For patients in renal failure, what type of fat is recommended to replace saturated fat?",
+    "options": [
+      "Trans fat",
+      "Monounsaturated and polyunsaturated fats",
+      "Hydrogenated fats",
+      "None"
+    ],
+    "correctAnswer": "Monounsaturated and polyunsaturated fats",
+    "explanation": "Chapter 6 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 6,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L6_Q8",
+    "text": "Which of the following is not a recommended beverage for patients with CKD?",
+    "options": [
+      "Water",
+      "Herbal tea",
+      "Soft drinks with high phosphoric acid",
+      "Fresh juices with low potassium"
+    ],
+    "correctAnswer": "Soft drinks with high phosphoric acid",
+    "explanation": "Chapter 6 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 6,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": true
+  },
+  {
+    "id": "CN_L6_Q9",
+    "text": "What is a potential consequence of excessive protein intake in kidney disease?",
+    "options": [
+      "Improved kidney function",
+      "Increased nitrogen waste in the blood",
+      "Decreased energy levels",
+      "Enhanced immune function"
+    ],
+    "correctAnswer": "Increased nitrogen waste in the blood",
+    "explanation": "Chapter 6 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 6,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L6_Q10",
+    "text": "Which vitamin is often supplemented in renal patients to support bone health?",
+    "options": [
+      "Vitamin A",
+      "Vitamin D",
+      "Vitamin K",
+      "Vitamin B12"
+    ],
+    "correctAnswer": "Vitamin D",
+    "explanation": "Chapter 6 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 6,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L6_Q11",
+    "text": "In renal diet management, what is the role of fluid restriction?",
+    "options": [
+      "To prevent dehydration",
+      "To minimize blood pressure",
+      "To prevent fluid overload and swelling",
+      "To enhance kidney filtration"
+    ],
+    "correctAnswer": "To prevent fluid overload and swelling",
+    "explanation": "Chapter 6 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 6,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L6_Q12",
+    "text": "Which milk alternative is typically low in potassium and phosphorus?",
+    "options": [
+      "Soy milk",
+      "Almond milk",
+      "Rice milk",
+      "Coconut milk"
+    ],
+    "correctAnswer": "Rice milk",
+    "explanation": "Chapter 6 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 6,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L6_Q13",
+    "text": "What is the ideal serving size for a protein source in a renal diet?",
+    "options": [
+      "10 ounces",
+      "6 ounces",
+      "3-4 ounces",
+      "1 ounce"
+    ],
+    "correctAnswer": "3-4 ounces",
+    "explanation": "Chapter 6 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 6,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L6_Q14",
+    "text": "Which of the following is an essential mineral that may need supplementation in patients with CKD?",
+    "options": [
+      "Iron",
+      "Zinc",
+      "Phosphorus",
+      "Potassium"
+    ],
+    "correctAnswer": "Iron",
+    "explanation": "Chapter 6 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 6,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": true
+  },
+  {
+    "id": "CN_L6_Q15",
+    "text": "What is the recommended daily fluid intake for a patient on hemodialysis?",
+    "options": [
+      "1-2 liters per day, depending on urine output",
+      "3-4 liters per day",
+      "Unlimited fluids",
+      "500 ml only"
+    ],
+    "correctAnswer": "1-2 liters per day, depending on urine output",
+    "explanation": "Chapter 6 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 6,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L6_Q16",
+    "text": "Which type of beans provides a high protein source but may need to be limited in CKD?",
+    "options": [
+      "Black beans",
+      "Green beans",
+      "Lima beans",
+      "Soy beans"
+    ],
+    "correctAnswer": "Black beans",
+    "explanation": "Chapter 6 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 6,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L6_Q17",
+    "text": "What kind of foods should be avoided by renal patients to reduce phosphorus intake?",
+    "options": [
+      "Whole fruits",
+      "Dairy products and processed foods",
+      "Fresh vegetables",
+      "Lean meats"
+    ],
+    "correctAnswer": "Dairy products and processed foods",
+    "explanation": "Chapter 6 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 6,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": true
+  },
+  {
+    "id": "CN_L6_Q18",
+    "text": "What is the role of potassium binders in renal disease management?",
+    "options": [
+      "To increase potassium levels",
+      "To decrease potassium absorption",
+      "To supplement potassium",
+      "To enhance kidney function"
+    ],
+    "correctAnswer": "To decrease potassium absorption",
+    "explanation": "Chapter 6 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 6,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L6_Q19",
+    "text": "Which food is a poor choice for someone with CKD due to high sodium and phosphorus?",
+    "options": [
+      "Fresh vegetables",
+      "Regular cheese",
+      "Whole grains",
+      "Fresh fruits"
+    ],
+    "correctAnswer": "Regular cheese",
+    "explanation": "Chapter 6 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 6,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L6_Q20",
+    "text": "Which cooking method is recommended for maintaining nutrient content in renal diets?",
+    "options": [
+      "Boiling",
+      "Baking",
+      "Frying",
+      "Steaming"
+    ],
+    "correctAnswer": "Steaming",
+    "explanation": "Chapter 6 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 6,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L6_Q21",
+    "text": "For renal patients, which of the following is an appropriate source of healthy carbohydrates?",
+    "options": [
+      "White bread",
+      "Whole grain bread",
+      "Sugary beverages",
+      "Candy"
+    ],
+    "correctAnswer": "Whole grain bread",
+    "explanation": "Chapter 6 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 6,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L6_Q22",
+    "text": "What is a common challenge for caregivers of patients with renal disease regarding diet?",
+    "options": [
+      "Understanding meal preparation",
+      "Enjoying foods together",
+      "Developing specific recipes",
+      "Balancing the salt intake"
+    ],
+    "correctAnswer": "Balancing the salt intake",
+    "explanation": "Chapter 6 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 6,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L6_Q23",
+    "text": "For patients with diabetes and CKD, carbohydrate counting is a necessary strategy to manage:",
+    "options": [
+      "Blood pressure",
+      "Fluid intake",
+      "Blood glucose levels",
+      "Creatinine levels"
+    ],
+    "correctAnswer": "Blood glucose levels",
+    "explanation": "Chapter 6 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 6,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L6_Q24",
+    "text": "What is one key point about the dairy intake for renal patients?",
+    "options": [
+      "They should consume full-fat dairy  .",
+      "They should limit high-phosphorus dairy products  .",
+      "They can consume unlimited dairy  .",
+      "Dairy is beneficial for kidney function  ."
+    ],
+    "correctAnswer": "They should limit high-phosphorus dairy products  .",
+    "explanation": "Chapter 6 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 6,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L7_Q1",
+    "text": "What is the primary consideration when developing a diet for a Comatosed patient?",
+    "options": [
+      "Oral feeding",
+      "Nutritional adequacy through enteral or parenteral feeding",
+      "Preference for solid foods",
+      "High-calorie snacks"
+    ],
+    "correctAnswer": "Nutritional adequacy through enteral or parenteral feeding",
+    "explanation": "Chapter 7 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 7,
+    "questionType": "practice",
+    "accessType": "free",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L7_Q2",
+    "text": "Which method is commonly used for feeding patients who are unable to eat orally due to coma?",
+    "options": [
+      "Oral hydration",
+      "Nasogastric tube feeding",
+      "Intravenous hydration",
+      "Chewing their food"
+    ],
+    "correctAnswer": "Nasogastric tube feeding",
+    "explanation": "Chapter 7 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 7,
+    "questionType": "practice",
+    "accessType": "free",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L7_Q3",
+    "text": "What type of diet is typically recommended for patients in acute renal failure?",
+    "options": [
+      "High-protein diet",
+      "Carbohydrate-rich diet",
+      "Low-protein, low-potassium diet",
+      "High-sodium diet"
+    ],
+    "correctAnswer": "Low-protein, low-potassium diet",
+    "explanation": "Chapter 7 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 7,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L7_Q4",
+    "text": "For patients with liver failure, which nutrient should be closely monitored and potentially restricted?",
+    "options": [
+      "Carbohydrates",
+      "Fats",
+      "Protein",
+      "Fiber"
+    ],
+    "correctAnswer": "Protein",
+    "explanation": "Chapter 7 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 7,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L7_Q5",
+    "text": "When managing the diet of a comatosed patient, which of the following is most important? & patients with system failure",
+    "options": [
+      "Palatability",
+      "Nutritional balance and caloric needs",
+      "Food variety",
+      "Serving temperature"
+    ],
+    "correctAnswer": "Nutritional balance and caloric needs",
+    "explanation": "Chapter 7 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 7,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L7_Q6",
+    "text": "In patients with multiple organ failure, what is a critical nutritional concern?",
+    "options": [
+      "Excessive fiber intake",
+      "Hyperglycemia",
+      "Deficiencies in electrolytes",
+      "Increased consumption of dairy"
+    ],
+    "correctAnswer": "Deficiencies in electrolytes",
+    "explanation": "Chapter 7 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 7,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": true
+  },
+  {
+    "id": "CN_L7_Q7",
+    "text": "Which nutrient is essential for immune support in critically ill patients?",
+    "options": [
+      "Carbohydrates",
+      "Vitamin C",
+      "Omega-3 fatty acids",
+      "Saturated fats"
+    ],
+    "correctAnswer": "Vitamin C",
+    "explanation": "Chapter 7 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 7,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L7_Q8",
+    "text": "What is the goal of nutrition support in patients recovering from comatose states?",
+    "options": [
+      "To reduce body weight",
+      "To improve cognitive function through dietary changes",
+      "To provide sufficient energy and protein for healing",
+      "To eliminate carbohydrates entirely"
+    ],
+    "correctAnswer": "To provide sufficient energy and protein for healing",
+    "explanation": "Chapter 7 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 7,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": true
+  },
+  {
+    "id": "CN_L7_Q9",
+    "text": "For patients with heart failure, which dietary modification is typically advised?",
+    "options": [
+      "High-sugar diet",
+      "Low-sodium diet",
+      "High-fat diet",
+      "Increased fluid intake"
+    ],
+    "correctAnswer": "Low-sodium diet",
+    "explanation": "Chapter 7 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 7,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": true
+  },
+  {
+    "id": "CN_L7_Q10",
+    "text": "What should be prioritized in a feeding plan for a patient in a persistent vegetative state?",
+    "options": [
+      "Flavoring food",
+      "Hydration and basic nutritional needs",
+      "High animal protein",
+      "Regular meal times"
+    ],
+    "correctAnswer": "Hydration and basic nutritional needs",
+    "explanation": "Chapter 7 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 7,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L7_Q11",
+    "text": "What is a critical consideration when managing the diet of a comatosed patient?",
+    "options": [
+      "Encouraging solid food intake",
+      "Ensuring proper hydration and nutrition via enteral feeding",
+      "Allowing unrestricted calorie intake",
+      "Ignoring electrolyte balance"
+    ],
+    "correctAnswer": "Ensuring proper hydration and nutrition via enteral feeding",
+    "explanation": "Chapter 7 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 7,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L7_Q12",
+    "text": "Which method of feeding is most common for patients who cannot swallow due to coma?",
+    "options": [
+      "Oral feeding",
+      "",
+      "",
+      ""
+    ],
+    "correctAnswer": "",
+    "explanation": "Chapter 7 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 7,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": true
+  },
+  {
+    "id": "CN_L7_Q13",
+    "text": "What is an essential nutrient to monitor in patients with systemic failure?",
+    "options": [
+      "Fiber",
+      "Protein",
+      "Simple carbohydrates",
+      "Fats"
+    ],
+    "correctAnswer": "Protein",
+    "explanation": "Chapter 7 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 7,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L7_Q14",
+    "text": "In caring for a patient with renal failure, which dietary modification is necessary?",
+    "options": [
+      "High potassium intake",
+      "Low protein and sodium intake",
+      "Increased fluid consumption",
+      "High carbohydrate intake"
+    ],
+    "correctAnswer": "Low protein and sodium intake",
+    "explanation": "Chapter 7 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 7,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": true
+  },
+  {
+    "id": "CN_L7_Q15",
+    "text": "Which feeding route is preferable for patients with impaired gastrointestinal function?",
+    "options": [
+      "Oral feeding",
+      "TPN (Total Parenteral Nutrition)",
+      "Nasogastric feeding",
+      "Enteral feeding through a percutaneous endoscopic gastrostomy (PEG) tube"
+    ],
+    "correctAnswer": "TPN (Total Parenteral Nutrition)",
+    "explanation": "Chapter 7 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 7,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L7_Q16",
+    "text": "For a patient in septic shock, which dietary component is crucial for recovery?",
+    "options": [
+      "High-sugar foods",
+      "Adequate protein for immune support",
+      "Excess fat",
+      "Increased fiber"
+    ],
+    "correctAnswer": "Adequate protein for immune support",
+    "explanation": "Chapter 7 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 7,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": true
+  },
+  {
+    "id": "CN_L7_Q17",
+    "text": "What is the primary goal of dietary management in comatosed patients?",
+    "options": [
+      "Promoting weight gain",
+      "Preventing malnutrition and providing essential nutrients",
+      "Encouraging patient comfort",
+      "Reducing calorie intake"
+    ],
+    "correctAnswer": "Preventing malnutrition and providing essential nutrients",
+    "explanation": "Chapter 7 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 7,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": true
+  },
+  {
+    "id": "CN_L7_Q18",
+    "text": "Which dietary approach is commonly utilized for patients with hepatic failure?",
+    "options": [
+      "High protein diet",
+      "Low protein diet with increased carbohydrates",
+      "Low sodium and high-fat diet",
+      "Gluten-free diet"
+    ],
+    "correctAnswer": "Low protein diet with increased carbohydrates",
+    "explanation": "Chapter 7 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 7,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": true
+  },
+  {
+    "id": "CN_L7_Q19",
+    "text": "What vital aspect should be monitored when providing enteral nutrition?",
+    "options": [
+      "The patient’s food preferences",
+      "Gastrointestinal tolerance and absorption",
+      "Caloric intake only",
+      "Fiber quantity"
+    ],
+    "correctAnswer": "Gastrointestinal tolerance and absorption",
+    "explanation": "Chapter 7 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 7,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L7_Q20",
+    "text": "When managing a comatosed patient, how often should nutrition status be assessed?",
+    "options": [
+      "Every week",
+      "Daily",
+      "Monthly",
+      "Only at discharge"
+    ],
+    "correctAnswer": "Daily",
+    "explanation": "Chapter 7 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 7,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L7_Q21",
+    "text": "What is the primary dietary concern for patients with kidney failure?",
+    "options": [
+      "Increased fiber intake",
+      "High protein consumption",
+      "Sodium and potassium restriction",
+      "Increased carbohydrates"
+    ],
+    "correctAnswer": "Sodium and potassium restriction",
+    "explanation": "Chapter 7 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 7,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L7_Q22",
+    "text": "Which of the following is a common recommendation for patients with liver cirrhosis?",
+    "options": [
+      "High protein diet",
+      "Low carbohydrate diet",
+      "Sodium restriction",
+      "High fiber intake"
+    ],
+    "correctAnswer": "Sodium restriction",
+    "explanation": "Chapter 7 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 7,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L7_Q23",
+    "text": "For patients with heart failure, which nutrient should be limited to help manage fluid retention?",
+    "options": [
+      "Potassium",
+      "Fiber",
+      "Sodium",
+      "Protein"
+    ],
+    "correctAnswer": "Sodium",
+    "explanation": "Chapter 7 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 7,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L7_Q24",
+    "text": "What dietary component is often increased for patients recovering from acute respiratory distress syndrome (ARDS)?",
+    "options": [
+      "Carbohydrates",
+      "Proteins",
+      "Lipids",
+      "Fiber"
+    ],
+    "correctAnswer": "Proteins",
+    "explanation": "Chapter 7 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 7,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L7_Q25",
+    "text": "Which of the following is the best source of carbohydrates for diabetic patients with kidney issues?",
+    "options": [
+      "White bread",
+      "Brown rice",
+      "Vegetables and whole grains",
+      "Sugary snacks"
+    ],
+    "correctAnswer": "Vegetables and whole grains",
+    "explanation": "Chapter 7 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 7,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L7_Q26",
+    "text": "Patients with chronic kidney disease (CKD) are advised to limit which vitamin due to risk of toxicity?",
+    "options": [
+      "Vitamin C",
+      "Vitamin D",
+      "Vitamin A",
+      "Vitamin B12"
+    ],
+    "correctAnswer": "Vitamin A",
+    "explanation": "Chapter 7 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 7,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L7_Q27",
+    "text": "In patients with heart failure, which dietary modification can help improve fluid management?",
+    "options": [
+      "Increase caffeine intake",
+      "Limit water and fluid intake",
+      "Reduce protein intake",
+      "No dietary changes necessary"
+    ],
+    "correctAnswer": "Limit water and fluid intake",
+    "explanation": "Chapter 7 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 7,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L7_Q28",
+    "text": "Which nutrient may need to be restricted in patients with liver failure?",
+    "options": [
+      "Fats",
+      "Carbohydrates",
+      "Proteins",
+      "Vitamins"
+    ],
+    "correctAnswer": "Proteins",
+    "explanation": "Chapter 7 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 7,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L7_Q29",
+    "text": "Patients with pancreatitis should avoid which type of foods?",
+    "options": [
+      "Low-fat foods",
+      "High-fiber foods",
+      "Fatty and fried foods",
+      "Whole grains"
+    ],
+    "correctAnswer": "Fatty and fried foods",
+    "explanation": "Chapter 7 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 7,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L9_Q1",
+    "text": "What is the primary goal of nutrition therapy for post-operative patients?",
+    "options": [
+      "Weight loss",
+      "Weight gain",
+      "Promote healing and recovery",
+      "Increase physical activity"
+    ],
+    "correctAnswer": "Promote healing and recovery",
+    "explanation": "Chapter 9 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 9,
+    "questionType": "practice",
+    "accessType": "free",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L9_Q2",
+    "text": "Which nutrient is most critical for wound healing?",
+    "options": [
+      "Carbohydrates",
+      "Fats",
+      "Proteins",
+      "Vitamins"
+    ],
+    "correctAnswer": "Proteins",
+    "explanation": "Chapter 9 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 9,
+    "questionType": "practice",
+    "accessType": "free",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L9_Q3",
+    "text": "What should be the main focus of a post-operative diet in the first 24-48 hours?",
+    "options": [
+      "Solid foods",
+      "Clear liquids",
+      "High-protein foods",
+      "High-fiber foods"
+    ],
+    "correctAnswer": "Clear liquids",
+    "explanation": "Chapter 9 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 9,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": true
+  },
+  {
+    "id": "CN_L9_Q4",
+    "text": "Which vitamin is essential for collagen synthesis?",
+    "options": [
+      "Vitamin A",
+      "Vitamin C",
+      "Vitamin D",
+      "Vitamin E"
+    ],
+    "correctAnswer": "Vitamin C",
+    "explanation": "Chapter 9 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 9,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L9_Q5",
+    "text": "What type of diet is most appropriate for a patient recovering from abdominal surgery?",
+    "options": [
+      "High-fiber diet",
+      "Low-residue diet",
+      "Ketogenic diet",
+      "Mediterranean diet"
+    ],
+    "correctAnswer": "Low-residue diet",
+    "explanation": "Chapter 9 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 9,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": true
+  },
+  {
+    "id": "CN_L9_Q6",
+    "text": "What is the recommended protein intake for post-operative patients to promote healing?",
+    "options": [
+      "0.5 g/kg of body weight",
+      "1.0-1.5 g/kg of body weight",
+      "2.0 g/kg of body weight",
+      "0.8 g/kg of body weight"
+    ],
+    "correctAnswer": "1.0-1.5 g/kg of body weight",
+    "explanation": "Chapter 9 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 9,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L9_Q7",
+    "text": "Which mineral is vital for wound healing and immune function?",
+    "options": [
+      "Calcium",
+      "Iron",
+      "Zinc",
+      "Magnesium"
+    ],
+    "correctAnswer": "Zinc",
+    "explanation": "Chapter 9 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 9,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L9_Q8",
+    "text": "Post-operative patients are often at risk for what type of complications due to stasis?",
+    "options": [
+      "Hypertension",
+      "Pneumonia",
+      "Deep vein thrombosis",
+      "Diabetes"
+    ],
+    "correctAnswer": "Deep vein thrombosis",
+    "explanation": "Chapter 9 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 9,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L9_Q9",
+    "text": "What should be avoided in the diet of a patient with delayed gastric emptying post- surgery?",
+    "options": [
+      "Lean protein",
+      "Simple carbohydrates",
+      "High-fiber fruits",
+      "Healthy fats"
+    ],
+    "correctAnswer": "Simple carbohydrates",
+    "explanation": "Chapter 9 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 9,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L9_Q10",
+    "text": "Which of the following is a better source of protein for a recovering surgical patient?",
+    "options": [
+      "White bread",
+      "Chicken breast",
+      "Ice cream",
+      "Potato chips"
+    ],
+    "correctAnswer": "Chicken breast",
+    "explanation": "Chapter 9 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 9,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L9_Q11",
+    "text": "An adequate intake of which type of dietary fat is important for healing?",
+    "options": [
+      "Trans fats",
+      "Saturated fats",
+      "Monounsaturated and polyunsaturated fats",
+      "Hydrogenated fats"
+    ],
+    "correctAnswer": "Monounsaturated and polyunsaturated fats",
+    "explanation": "Chapter 9 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 9,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L9_Q12",
+    "text": "Why is hydration important for post-operative patients?",
+    "options": [
+      "It helps reduce pain.",
+      "It maintains electrolyte balance and aids in digestion.",
+      "It prevents swelling.",
+      "It boosts energy levels."
+    ],
+    "correctAnswer": "It maintains electrolyte balance and aids in digestion.",
+    "explanation": "Chapter 9 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 9,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L9_Q13",
+    "text": "Which diet is often prescribed for patients recovering from bariatric surgery?",
+    "options": [
+      "High-carb diet",
+      "Low-carb diet",
+      "",
+      ""
+    ],
+    "correctAnswer": "",
+    "explanation": "Chapter 9 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 9,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L9_Q14",
+    "text": "How soon after surgery can most patients start with oral nutrition?",
+    "options": [
+      "12 hours",
+      "24-48 hours",
+      "3-5 days",
+      "1 week"
+    ],
+    "correctAnswer": "24-48 hours",
+    "explanation": "Chapter 9 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 9,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L9_Q15",
+    "text": "What type of meal may be particularly beneficial immediately after surgery?",
+    "options": [
+      "Large, heavy meal",
+      "Small, frequent meals",
+      "High-sugar snack",
+      "High-protein shake"
+    ],
+    "correctAnswer": "Small, frequent meals",
+    "explanation": "Chapter 9 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 9,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": true
+  },
+  {
+    "id": "CN_L9_Q16",
+    "text": "What is the role of fiber in the diet of post-operative patients?",
+    "options": [
+      "It helps to control blood sugar levels.",
+      "It aids in bowel regularity.",
+      "It promotes weight loss.",
+      "It increases muscle mass."
+    ],
+    "correctAnswer": "It aids in bowel regularity.",
+    "explanation": "Chapter 9 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 9,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": true
+  },
+  {
+    "id": "CN_L9_Q17",
+    "text": "After surgery, which of the following should be minimized to prevent gastrointestinal discomfort?",
+    "options": [
+      "High-protein foods",
+      "Sugary foods",
+      "Sodas and carbonated beverages",
+      "Whole grains"
+    ],
+    "correctAnswer": "Sodas and carbonated beverages",
+    "explanation": "Chapter 9 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 9,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L9_Q18",
+    "text": "What is a potential consequence of inadequate protein intake after surgery?",
+    "options": [
+      "Improved healing",
+      "Increased risk of infection",
+      "Better energy levels",
+      "Lower blood pressure"
+    ],
+    "correctAnswer": "Increased risk of infection",
+    "explanation": "Chapter 9 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 9,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L9_Q19",
+    "text": "Which of these beverages is best for post-operative hydration?",
+    "options": [
+      "Soda",
+      "Coffee",
+      "Water or electrolyte solutions",
+      "Fruit juice"
+    ],
+    "correctAnswer": "Water or electrolyte solutions",
+    "explanation": "Chapter 9 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 9,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L9_Q20",
+    "text": "When should a patient experiencing nausea be reassessed for their nutritional plan?",
+    "options": [
+      "1 week post-op",
+      "48 hours post-op",
+      "24 hours post-op",
+      "If it persists beyond 2 hours"
+    ],
+    "correctAnswer": "24 hours post-op",
+    "explanation": "Chapter 9 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 9,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L9_Q21",
+    "text": "Which food is best avoided in early post-operative nutrition?",
+    "options": [
+      "Broth",
+      "Yogurt",
+      "High-fat fried foods",
+      "Applesauce"
+    ],
+    "correctAnswer": "High-fat fried foods",
+    "explanation": "Chapter 9 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 9,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L9_Q22",
+    "text": "For patients undergoing orthopedic surgery, what is a key nutrient to focus on?",
+    "options": [
+      "Fiber",
+      "Carbohydrates",
+      "Calcium",
+      "Sugars"
+    ],
+    "correctAnswer": "Calcium",
+    "explanation": "Chapter 9 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 9,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L9_Q23",
+    "text": "What is the appropriate carbohydrate source for a post-operative patient?",
+    "options": [
+      "Sugary cereals",
+      "Whole grains",
+      "White bread",
+      "Pastries"
+    ],
+    "correctAnswer": "Whole grains",
+    "explanation": "Chapter 9 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 9,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L9_Q24",
+    "text": "Which type of post-operative surgery patients are often put on a low sodium diet?",
+    "options": [
+      "Cardiothoracic surgery",
+      "Orthopedic surgery",
+      "Gastrointestinal surgery",
+      "All surgery types"
+    ],
+    "correctAnswer": "Cardiothoracic surgery",
+    "explanation": "Chapter 9 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 9,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": true
+  },
+  {
+    "id": "CN_L9_Q25",
+    "text": "A post-operative patient should ideally consume a high intake of which fluid type to promote recovery?",
+    "options": [
+      "Full-fat milk",
+      "Alcoholic beverages",
+      "Low-sugar electrolyte drinks",
+      "Energy drinks"
+    ],
+    "correctAnswer": "Low-sugar electrolyte drinks",
+    "explanation": "Chapter 9 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 9,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L9_Q26",
+    "text": "What symptom indicates a need for immediate nutritional reassessment?",
+    "options": [
+      "Increased appetite",
+      "Vomiting",
+      "Mild discomfort",
+      "Fatigue"
+    ],
+    "correctAnswer": "Vomiting",
+    "explanation": "Chapter 9 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 9,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L9_Q27",
+    "text": "In post-operative nutrition, which dietary modification may help improve wound healing?",
+    "options": [
+      "Reducing fat intake",
+      "Increasing protein and micronutrient intake",
+      "Reducing carbohydrate intake",
+      "Increasing sugar intake"
+    ],
+    "correctAnswer": "Increasing protein and micronutrient intake",
+    "explanation": "Chapter 9 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 9,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L9_Q28",
+    "text": "How can nutritional needs be assessed for post-operative patients?",
+    "options": [
+      "By guessing",
+      "Through a formal dietary assessment or consultation",
+      "By asking the patient’s family",
+      "By reviewing previous weight history"
+    ],
+    "correctAnswer": "Through a formal dietary assessment or consultation",
+    "explanation": "Chapter 9 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 9,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L9_Q29",
+    "text": "Completing a multidisciplinary care plan is important for which of the following reasons?",
+    "options": [
+      "To increase hospital charges",
+      "To ensure all aspects of care are coordinated",
+      "To provide entertainment",
+      "To speed up discharge"
+    ],
+    "correctAnswer": "To ensure all aspects of care are coordinated",
+    "explanation": "Chapter 9 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 9,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L9_Q30",
+    "text": "Which of the following is an appropriate source of Omega-3 fatty acids beneficial for post-operative patients?",
+    "options": [
+      "Beef steaks",
+      "Salmon",
+      "White bread",
+      "Potato chips"
+    ],
+    "correctAnswer": "Salmon",
+    "explanation": "Chapter 9 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 9,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L2_Q31",
+    "text": "In hepatitis patients, all needs to be increased except",
+    "options": [
+      "Protein",
+      "Energy",
+      "Carbohydrates",
+      "Fat"
+    ],
+    "correctAnswer": "Fat",
+    "explanation": "Chapter 2 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 2,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L9_Q32",
+    "text": "Used after surgery or a heart attack",
+    "options": [
+      "Low protein diet",
+      "High protein diet",
+      "Liquid diet",
+      "None of the above"
+    ],
+    "correctAnswer": "Liquid diet",
+    "explanation": "Chapter 9 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 9,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L9_Q33",
+    "text": "Patients suffering from burns needs",
+    "options": [
+      "Low calorie diet",
+      "Sodium restricted diet",
+      "High protein diet",
+      "None of the above"
+    ],
+    "correctAnswer": "High protein diet",
+    "explanation": "Chapter 9 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 9,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L1_Q34",
+    "text": "Salt restricted diet used for patients with",
+    "options": [
+      "Cardiovascular disease",
+      "Kidney disease",
+      "Edema",
+      "All of the above"
+    ],
+    "correctAnswer": "All of the above",
+    "explanation": "Chapter 1 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 1,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L2_Q35",
+    "text": "If signs of hepatic coma appears, the protein intake should be decreased to",
+    "options": [
+      "1gm /kg body weight",
+      "1mg/ kg body weight",
+      "0.3 gm / kg body weight",
+      "1.5 mg/ kg body weight"
+    ],
+    "correctAnswer": "0.3 gm / kg body weight",
+    "explanation": "Chapter 2 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 2,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L2_Q36",
+    "text": "The availability of fat soluble vitamins like vit A is affected due to decreased intake and impaired absorption of fat in patient with",
+    "options": [
+      "Liver disease",
+      "Kidney disease",
+      "Hypertension",
+      "All of the above"
+    ],
+    "correctAnswer": "Liver disease",
+    "explanation": "Chapter 2 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 2,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L2_Q37",
+    "text": "In advanced cases of liver cirrhosis, presence of ascites and oedema necessitate the restriction of --------in diet",
+    "options": [
+      "Protein",
+      "Sodium",
+      "Calcium",
+      "Fluids"
+    ],
+    "correctAnswer": "Sodium",
+    "explanation": "Chapter 2 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 2,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L3_Q38",
+    "text": "------------ tends to lower the serum cholesterol level in patients with atherosclerosis",
+    "options": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "correctAnswer": "b",
+    "explanation": "Chapter 3 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 3,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L1_Q39",
+    "text": "Avoiding fats in meats, milk, cream ,butter ,the diets tend to be low in vitamin",
+    "options": [
+      "A",
+      "B complex",
+      "K",
+      "None of the above"
+    ],
+    "correctAnswer": "A",
+    "explanation": "Chapter 1 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 1,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L3_Q40",
+    "text": "Calorie restriction is a major therapeutic tool in the treatment of hypertension especially in",
+    "options": [
+      "Obese patients",
+      "Renal patients",
+      "Diabetic patient",
+      "Both a and c"
+    ],
+    "correctAnswer": "Obese patients",
+    "explanation": "Chapter 3 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 3,
+    "questionType": "practice",
+    "accessType": "paid",
+    "createdAt": "2026-05-21T08:00:00Z",
+    "isHighlighted": false
+  }
+]

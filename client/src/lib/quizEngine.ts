@@ -27,9 +27,21 @@ export const calculateSRS = (quality: number, previousSRS: any) => {
   return { interval, repetition, efactor, nextReview };
 };
 
-export const updateUserProgress = async (userId: string, questionId: string, isCorrect: boolean, quality: number = 3, isExam: boolean = false) => {
-  const qSnap = await getDoc(doc(db, 'questions', questionId));
-  const qData = qSnap.exists() ? qSnap.data() : null;
+export const updateUserProgress = async (
+  userId: string, 
+  questionId: string, 
+  isCorrect: boolean, 
+  quality: number = 3, 
+  isExam: boolean = false,
+  questionData?: any
+) => {
+  let qData = questionData;
+  if (!qData) {
+    if (!questionId.startsWith('CN_')) {
+      const qSnap = await getDoc(doc(db, 'questions', questionId));
+      qData = qSnap.exists() ? qSnap.data() : null;
+    }
+  }
   
   const progressRef = doc(db, `users/${userId}/progress/${questionId}`);
   const progressSnap = await getDoc(progressRef);
@@ -46,14 +58,16 @@ export const updateUserProgress = async (userId: string, questionId: string, isC
     srsData: srs
   }, { merge: true });
 
-  // Update global question analytics
-  const qRef = doc(db, 'questions', questionId);
-  await setDoc(qRef, {
-    analytics: {
-      totalAttempts: increment(1),
-      correctAttempts: increment(isCorrect ? 1 : 0)
-    }
-  }, { merge: true });
+  // Update global question analytics - only for Firestore questions!
+  if (!questionId.startsWith('CN_')) {
+    const qRef = doc(db, 'questions', questionId);
+    await setDoc(qRef, {
+      analytics: {
+        totalAttempts: increment(1),
+        correctAttempts: increment(isCorrect ? 1 : 0)
+      }
+    }, { merge: true });
+  }
 
   // Update User Cumulative Stats
   await updateUserStats(userId, isCorrect, isExam);
@@ -170,7 +184,7 @@ export const generateSmartExam = async (config: {
   return questions.sort(() => Math.random() - 0.5);
 };
 
-export const toggleBookmark = async (userId: string, questionId: string, isExam: boolean = false) => {
+export const toggleBookmark = async (userId: string, questionId: string, isExam: boolean = false, questionData?: any) => {
   if (isExam) return false;
   const bookmarkRef = doc(db, `users/${userId}/bookmarks/${questionId}`);
   const snap = await getDoc(bookmarkRef);
@@ -179,9 +193,13 @@ export const toggleBookmark = async (userId: string, questionId: string, isExam:
     await deleteDoc(bookmarkRef);
     return false;
   } else {
-    const qSnap = await getDoc(doc(db, 'questions', questionId));
+    let qData = questionData;
+    if (!qData && !questionId.startsWith('CN_')) {
+      const qSnap = await getDoc(doc(db, 'questions', questionId));
+      qData = qSnap.exists() ? qSnap.data() : {};
+    }
     await setDoc(bookmarkRef, {
-      ...(qSnap.exists() ? qSnap.data() : {}),
+      ...(qData || {}),
       bookmarkedAt: serverTimestamp()
     });
     return true;
@@ -200,15 +218,33 @@ export const getIncorrectQuestions = async (userId: string) => {
 
   if (ids.length === 0) return [];
 
-  // Fetch actual question data
-  const qRef = collection(db, 'questions');
-  const chunks = [];
-  for (let i = 0; i < ids.length; i += 10) {
-    const chunk = ids.slice(i, i + 10);
-    const qSnap = await getDocs(query(qRef, where('__name__', 'in', chunk)));
-    chunks.push(...qSnap.docs.map(d => ({ id: d.id, ...d.data() })));
+  const staticIds = ids.filter(id => id.startsWith('CN_'));
+  const dbIds = ids.filter(id => !id.startsWith('CN_'));
+
+  const results: any[] = [];
+
+  if (staticIds.length > 0) {
+    try {
+      const response = await fetch('/data/clinical_nutrition_questions.json');
+      if (response.ok) {
+        const cnQuestions = await response.json();
+        const matching = cnQuestions.filter((q: any) => staticIds.includes(q.id));
+        results.push(...matching);
+      }
+    } catch (e) {
+      console.error("Failed to load static clinical nutrition questions:", e);
+    }
   }
-  return chunks;
+
+  if (dbIds.length > 0) {
+    const qRef = collection(db, 'questions');
+    for (let i = 0; i < dbIds.length; i += 10) {
+      const chunk = dbIds.slice(i, i + 10);
+      const qSnap = await getDocs(query(qRef, where('__name__', 'in', chunk)));
+      results.push(...qSnap.docs.map(d => ({ id: d.id, ...d.data() })));
+    }
+  }
+  return results;
 };
 
 export const getSolvedToday = async (userId: string) => {
@@ -220,14 +256,33 @@ export const getSolvedToday = async (userId: string) => {
   const ids = snap.docs.map(d => d.id);
   if (ids.length === 0) return [];
 
-  const qRef = collection(db, 'questions');
-  const chunks = [];
-  for (let i = 0; i < ids.length; i += 10) {
-    const chunk = ids.slice(i, i + 10);
-    const qSnap = await getDocs(query(qRef, where('__name__', 'in', chunk)));
-    chunks.push(...qSnap.docs.map(d => ({ id: d.id, ...d.data() })));
+  const staticIds = ids.filter(id => id.startsWith('CN_'));
+  const dbIds = ids.filter(id => !id.startsWith('CN_'));
+
+  const results: any[] = [];
+
+  if (staticIds.length > 0) {
+    try {
+      const response = await fetch('/data/clinical_nutrition_questions.json');
+      if (response.ok) {
+        const cnQuestions = await response.json();
+        const matching = cnQuestions.filter((q: any) => staticIds.includes(q.id));
+        results.push(...matching);
+      }
+    } catch (e) {
+      console.error("Failed to load static clinical nutrition questions:", e);
+    }
   }
-  return chunks;
+
+  if (dbIds.length > 0) {
+    const qRef = collection(db, 'questions');
+    for (let i = 0; i < dbIds.length; i += 10) {
+      const chunk = dbIds.slice(i, i + 10);
+      const qSnap = await getDocs(query(qRef, where('__name__', 'in', chunk)));
+      results.push(...qSnap.docs.map(d => ({ id: d.id, ...d.data() })));
+    }
+  }
+  return results;
 };
 
 export const resetBookmarks = async (userId: string) => {

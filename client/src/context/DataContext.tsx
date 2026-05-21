@@ -26,7 +26,24 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
         getDocs(query(collection(db, 'videos'), orderBy('order', 'asc')))
       ]);
 
-      setCourses(cSnap.docs.map(d => ({ id: d.id, ...d.data() })));
+      const fetchedCourses = cSnap.docs.map(d => ({ id: d.id, ...d.data() }));
+      const staticCourses = [
+        {
+          id: 'clinical_nutrition_course',
+          name: 'التغذية الإكلينيكية (Clinical Nutrition)',
+          description: 'بنك أسئلة مادة التغذية الإكلينيكية الشامل مقسم إلى شباتر الكتاب الأصلية.',
+          level: 'fifth',
+          price: '0',
+          details: 'أكثر من 170 سؤال MCQ\nمقسمة حسب شباتر الكتاب الأصلية (8 شباتر)\nشرح تفصيلي لكل سؤال\nمتابعة مستوى ونظام تكرار متباعد SRS'
+        }
+      ];
+
+      const allCourses = [...fetchedCourses];
+      if (!allCourses.some(c => c.id === 'clinical_nutrition_course')) {
+        allCourses.push(...staticCourses);
+      }
+
+      setCourses(allCourses);
       setVideoFolders(fSnap.docs.map(d => ({ id: d.id, ...d.data() })));
       setVideos(vSnap.docs.map(d => ({ id: d.id, ...d.data() })));
     } catch (err) {

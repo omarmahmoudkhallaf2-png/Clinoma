@@ -14,6 +14,21 @@ export default function CourseSubjects() {
   useEffect(() => {
     const fetchData = async () => {
       if (!courseId) return;
+      if (courseId === 'clinical_nutrition_course') {
+        setCourse({
+          name: 'التغذية الإكلينيكية (Clinical Nutrition)',
+          description: 'بنك أسئلة مادة التغذية الإكلينيكية الشامل مقسم إلى شباتر الكتاب الأصلية.'
+        });
+        setSubjects([
+          {
+            id: 'clinical_nutrition_subject',
+            name: 'Clinical Nutrition MCQ Bank',
+            courseId: 'clinical_nutrition_course'
+          }
+        ]);
+        setLoading(false);
+        return;
+      }
       try {
         const cSnap = await getDoc(doc(db, 'courses', courseId));
         if (cSnap.exists()) setCourse(cSnap.data());

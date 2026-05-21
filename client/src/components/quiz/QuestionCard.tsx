@@ -152,17 +152,6 @@ export default function QuestionCard({
             </div>
           )}
 
-          <AnimatePresence>
-            {(showExplanation || (isStudyMode && isAnswered)) && question.explanation && (
-              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="p-6 bg-primary/5 border border-primary/10 rounded-xl">
-                <div className="flex items-center gap-2 mb-3 flex-row-reverse" dir="rtl">
-                  <div className="w-6 h-6 bg-primary rounded-md flex items-center justify-center text-white"><Info className="w-4 h-4" /></div>
-                  <h4 className="font-bold text-primary text-sm uppercase tracking-wide">التفسير العلمي</h4>
-                </div>
-                <p className="text-muted-foreground leading-relaxed font-medium text-sm text-right" dir="rtl">{question.explanation}</p>
-              </motion.div>
-            )}
-          </AnimatePresence>
         </CardContent>
       </Card>
 

@@ -445,16 +445,7 @@ export default function FormalExam() {
                   })}
                 </div>
 
-                {q.explanation && (
-                  <div className="mt-8 p-6 bg-primary/5 rounded-3xl border-2 border-primary/10 space-y-3 animate-in fade-in slide-in-from-top-4">
-                    <div className="flex items-center gap-2 text-primary font-black text-sm">
-                      <Sparkles size={16} /> شرح الإجابة:
-                    </div>
-                    <p className="text-muted-foreground font-bold leading-relaxed text-right text-sm" dir="rtl">
-                      {q.explanation}
-                    </p>
-                  </div>
-                )}
+
               </div>
             );
           })}

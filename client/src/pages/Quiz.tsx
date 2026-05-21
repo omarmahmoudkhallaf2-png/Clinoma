@@ -60,34 +60,44 @@ export default function Quiz() {
           return;
         }
 
-        let q;
-        if (themeId && categoryId && chapterId) {
-          // Data Themes Mode
-          if (divisionId) {
-            q = query(
-              collection(db, 'questions'), 
-              where('themeId', '==', themeId),
-              where('moduleId', '==', moduleId),
-              where('categoryId', '==', categoryId),
-              where('chapterId', '==', chapterId),
-              where('divisionId', '==', divisionId)
-            );
-          } else {
-            q = query(
-              collection(db, 'questions'), 
-              where('themeId', '==', themeId),
-              where('moduleId', '==', moduleId),
-              where('categoryId', '==', categoryId),
-              where('chapterId', '==', chapterId)
-            );
-          }
-        } else {
-          // Standard Course Mode
-          q = query(collection(db, 'questions'), where('courseId', '==', courseId));
-        }
+        let data: Question[] = [];
 
-        const snap = await getDocs(q);
-        let data = snap.docs.map(doc => ({ id: doc.id, ...doc.data() } as Question));
+        if (courseId === 'clinical_nutrition_course') {
+          const response = await fetch('/data/clinical_nutrition_questions.json');
+          if (!response.ok) {
+            throw new Error('Failed to fetch clinical nutrition questions');
+          }
+          data = await response.json();
+        } else {
+          let q;
+          if (themeId && categoryId && chapterId) {
+            // Data Themes Mode
+            if (divisionId) {
+              q = query(
+                collection(db, 'questions'), 
+                where('themeId', '==', themeId),
+                where('moduleId', '==', moduleId),
+                where('categoryId', '==', categoryId),
+                where('chapterId', '==', chapterId),
+                where('divisionId', '==', divisionId)
+              );
+            } else {
+              q = query(
+                collection(db, 'questions'), 
+                where('themeId', '==', themeId),
+                where('moduleId', '==', moduleId),
+                where('categoryId', '==', categoryId),
+                where('chapterId', '==', chapterId)
+              );
+            }
+          } else {
+            // Standard Course Mode
+            q = query(collection(db, 'questions'), where('courseId', '==', courseId));
+          }
+
+          const snap = await getDocs(q);
+          data = snap.docs.map(doc => ({ id: doc.id, ...doc.data() } as Question));
+        }
         
         if (!subscribed && !themeId) data = data.filter(item => item.accessType === 'free');
         
@@ -96,7 +106,11 @@ export default function Quiz() {
           if (setupParams?.subjectId && setupParams.subjectId !== 'all') {
             data = data.filter(item => item.subjectId === setupParams.subjectId);
           }
-          if (setupParams?.questionType && setupParams.questionType !== 'all') data = data.filter(item => item.questionType === setupParams.questionType);
+          if (setupParams?.questionType === 'highlighted') {
+            data = data.filter(item => item.isHighlighted === true);
+          } else if (setupParams?.questionType && setupParams.questionType !== 'all' && setupParams.questionType !== 'lectures') {
+            data = data.filter(item => item.questionType === setupParams.questionType);
+          }
           if (setupParams?.lectureNumber) data = data.filter(item => item.lectureNumber === setupParams.lectureNumber);
         }
 
@@ -148,7 +162,7 @@ export default function Quiz() {
     const isCorrect = option === currentQuestion.correctAnswer;
     setAnswers(prev => ({ ...prev, [currentIndex]: option }));
 
-    if (user) updateUserProgress(user.uid, currentQuestion.id, isCorrect, isCorrect ? 3 : 0, isExam);
+    if (user) updateUserProgress(user.uid, currentQuestion.id, isCorrect, isCorrect ? 3 : 0, isExam, currentQuestion);
 
     if (isStudyMode) {
       setIsAnswered(true);
@@ -163,7 +177,7 @@ export default function Quiz() {
 
   const handleFlag = async () => {
     if (!user || isExam) return;
-    const isBookmarked = await toggleBookmark(user.uid, questions[currentIndex].id, isExam);
+    const isBookmarked = await toggleBookmark(user.uid, questions[currentIndex].id, isExam, questions[currentIndex]);
     setFlagged(prev => ({ ...prev, [currentIndex]: isBookmarked }));
   };
 
@@ -233,12 +247,14 @@ export default function Quiz() {
       <div className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b">
         <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-6">
-            <div className="flex items-center gap-2 text-primary">
-              <Clock className="w-4 h-4" />
-              <span className="font-mono font-bold text-lg">
-                {Math.floor(timeLeft / 60)}:{(timeLeft % 60).toString().padStart(2, '0')}
-              </span>
-            </div>
+            {isTimed && (
+              <div className="flex items-center gap-2 text-primary">
+                <Clock className="w-4 h-4" />
+                <span className="font-mono font-bold text-lg">
+                  {Math.floor(timeLeft / 60)}:{(timeLeft % 60).toString().padStart(2, '0')}
+                </span>
+              </div>
+            )}
             <div className="hidden md:flex items-center gap-1 bg-muted p-1 rounded-lg">
               <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => setZoomLevel(p => Math.max(0.7, p-0.1))}><ZoomOut className="w-3.5 h-3.5" /></Button>
               <span className="text-[10px] font-bold min-w-[40px] text-center">{Math.round(zoomLevel*100)}%</span>
