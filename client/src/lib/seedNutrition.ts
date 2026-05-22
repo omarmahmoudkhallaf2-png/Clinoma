@@ -54,6 +54,7 @@ export const seedClinicalNutritionData = async (onProgress: (log: string) => voi
         lectureNumber: q.lectureNumber,
         questionType: q.questionType,
         accessType: q.accessType,
+        isHighlighted: q.isHighlighted ?? false,
         createdAt: new Date()
       });
     });

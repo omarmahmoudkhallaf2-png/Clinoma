@@ -15,7 +15,6 @@
     "lectureNumber": 1,
     "questionType": "practice",
     "accessType": "free",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -34,7 +33,6 @@
     "lectureNumber": 1,
     "questionType": "practice",
     "accessType": "free",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -53,7 +51,6 @@
     "lectureNumber": 1,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -72,7 +69,6 @@
     "lectureNumber": 1,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -91,7 +87,6 @@
     "lectureNumber": 1,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -110,7 +105,6 @@
     "lectureNumber": 1,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -129,7 +123,6 @@
     "lectureNumber": 1,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -148,7 +141,6 @@
     "lectureNumber": 1,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -167,7 +159,6 @@
     "lectureNumber": 1,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": true
   },
   {
@@ -186,7 +177,6 @@
     "lectureNumber": 1,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -205,7 +195,6 @@
     "lectureNumber": 1,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -215,16 +204,15 @@
       "Saturated fats",
       "Fiber",
       "Trans fats",
-      ""
+      "Sugars"
     ],
-    "correctAnswer": "",
+    "correctAnswer": "Fiber",
     "explanation": "Chapter 1 Study Card - Clinical Nutrition & Dietary Management",
     "courseId": "clinical_nutrition_course",
     "subjectId": "clinical_nutrition_subject",
     "lectureNumber": 1,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -243,7 +231,6 @@
     "lectureNumber": 1,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": true
   },
   {
@@ -262,7 +249,6 @@
     "lectureNumber": 1,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -281,7 +267,6 @@
     "lectureNumber": 1,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": true
   },
   {
@@ -300,7 +285,6 @@
     "lectureNumber": 1,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -319,7 +303,6 @@
     "lectureNumber": 2,
     "questionType": "practice",
     "accessType": "free",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -328,17 +311,16 @@
     "options": [
       "High-fat diet",
       "Low-carbohydrate diet",
-      "",
-      ""
+      "Balanced diet with low saturated fats",
+      "Ketogenic diet"
     ],
-    "correctAnswer": "",
+    "correctAnswer": "Balanced diet with low saturated fats",
     "explanation": "Chapter 2 Study Card - Clinical Nutrition & Dietary Management",
     "courseId": "clinical_nutrition_course",
     "subjectId": "clinical_nutrition_subject",
     "lectureNumber": 2,
     "questionType": "practice",
     "accessType": "free",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -357,7 +339,6 @@
     "lectureNumber": 2,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": true
   },
   {
@@ -376,7 +357,6 @@
     "lectureNumber": 2,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -395,7 +375,6 @@
     "lectureNumber": 2,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -414,7 +393,6 @@
     "lectureNumber": 2,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -433,7 +411,6 @@
     "lectureNumber": 2,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -452,7 +429,6 @@
     "lectureNumber": 2,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -471,7 +447,6 @@
     "lectureNumber": 2,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -490,7 +465,6 @@
     "lectureNumber": 2,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -509,7 +483,6 @@
     "lectureNumber": 2,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -528,7 +501,6 @@
     "lectureNumber": 2,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -547,7 +519,6 @@
     "lectureNumber": 2,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -566,7 +537,6 @@
     "lectureNumber": 2,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -585,7 +555,6 @@
     "lectureNumber": 2,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -604,7 +573,6 @@
     "lectureNumber": 2,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -623,7 +591,6 @@
     "lectureNumber": 2,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -642,7 +609,6 @@
     "lectureNumber": 2,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": true
   },
   {
@@ -661,7 +627,6 @@
     "lectureNumber": 2,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -680,7 +645,6 @@
     "lectureNumber": 2,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -699,7 +663,6 @@
     "lectureNumber": 3,
     "questionType": "practice",
     "accessType": "free",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -718,7 +681,6 @@
     "lectureNumber": 3,
     "questionType": "practice",
     "accessType": "free",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -737,7 +699,6 @@
     "lectureNumber": 3,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -756,7 +717,6 @@
     "lectureNumber": 3,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -775,7 +735,6 @@
     "lectureNumber": 3,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -794,7 +753,6 @@
     "lectureNumber": 3,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -813,7 +771,6 @@
     "lectureNumber": 3,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -832,7 +789,6 @@
     "lectureNumber": 3,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -851,7 +807,6 @@
     "lectureNumber": 3,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -870,7 +825,6 @@
     "lectureNumber": 3,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -889,7 +843,6 @@
     "lectureNumber": 3,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -908,7 +861,6 @@
     "lectureNumber": 3,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -917,17 +869,16 @@
     "options": [
       "High-carb, low-fat",
       "High-protein, low-carb",
-      "",
-      ""
+      "Mediterranean diet",
+      "Ketogenic diet"
     ],
-    "correctAnswer": "",
+    "correctAnswer": "Mediterranean diet",
     "explanation": "Chapter 3 Study Card - Clinical Nutrition & Dietary Management",
     "courseId": "clinical_nutrition_course",
     "subjectId": "clinical_nutrition_subject",
     "lectureNumber": 3,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": true
   },
   {
@@ -946,7 +897,6 @@
     "lectureNumber": 3,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -965,7 +915,6 @@
     "lectureNumber": 4,
     "questionType": "practice",
     "accessType": "free",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": true
   },
   {
@@ -984,12 +933,29 @@
     "lectureNumber": 4,
     "questionType": "practice",
     "accessType": "free",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
     "id": "CN_L4_Q3",
-    "text": "For a patient with lactose intolerance, which dairy product is often better tolerated? 4 A dietitian recommends a gluten-free diet for a patient with which condition?",
+    "text": "For a patient with lactose intolerance, which dairy product is often better tolerated?",
+    "options": [
+      "Whole milk",
+      "Cheese",
+      "Ice cream",
+      "Yogurt"
+    ],
+    "correctAnswer": "Yogurt",
+    "explanation": "Chapter 4 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 4,
+    "questionType": "practice",
+    "accessType": "paid",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L4_Q4",
+    "text": "A dietitian recommends a gluten-free diet for a patient with which condition?",
     "options": [
       "IBS",
       "Constipation",
@@ -1003,7 +969,6 @@
     "lectureNumber": 4,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": true
   },
   {
@@ -1022,7 +987,6 @@
     "lectureNumber": 4,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -1041,7 +1005,6 @@
     "lectureNumber": 4,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -1060,7 +1023,6 @@
     "lectureNumber": 4,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -1079,7 +1041,6 @@
     "lectureNumber": 4,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -1098,7 +1059,6 @@
     "lectureNumber": 4,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -1117,7 +1077,6 @@
     "lectureNumber": 4,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -1136,7 +1095,6 @@
     "lectureNumber": 4,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -1155,7 +1113,6 @@
     "lectureNumber": 4,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": true
   },
   {
@@ -1174,7 +1131,6 @@
     "lectureNumber": 4,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -1193,7 +1149,6 @@
     "lectureNumber": 4,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -1212,7 +1167,6 @@
     "lectureNumber": 4,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -1231,7 +1185,6 @@
     "lectureNumber": 4,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -1250,7 +1203,6 @@
     "lectureNumber": 5,
     "questionType": "practice",
     "accessType": "free",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -1269,7 +1221,6 @@
     "lectureNumber": 5,
     "questionType": "practice",
     "accessType": "free",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -1288,7 +1239,6 @@
     "lectureNumber": 5,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -1307,7 +1257,6 @@
     "lectureNumber": 5,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -1326,7 +1275,6 @@
     "lectureNumber": 5,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -1345,7 +1293,6 @@
     "lectureNumber": 5,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -1364,12 +1311,29 @@
     "lectureNumber": 5,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
     "id": "CN_L5_Q8",
-    "text": "Which type of fiber is beneficial for glycemic control? 9 What is the role of omega-3 fatty acids in diabetes?",
+    "text": "Which type of fiber is beneficial for glycemic control?",
+    "options": [
+      "Soluble fiber",
+      "Insoluble fiber",
+      "Total fiber",
+      "None of the above"
+    ],
+    "correctAnswer": "Soluble fiber",
+    "explanation": "Chapter 5 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 5,
+    "questionType": "practice",
+    "accessType": "paid",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L5_Q9",
+    "text": "What is the role of omega-3 fatty acids in diabetes?",
     "options": [
       "Increase blood sugar",
       "Reduce inflammation",
@@ -1383,12 +1347,29 @@
     "lectureNumber": 5,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
     "id": "CN_L5_Q10",
-    "text": "How should diabetes patients approach meal planning? 11 What are the potential risks of low-carb diets for diabetes patients?",
+    "text": "How should diabetes patients approach meal planning?",
+    "options": [
+      "Eat whatever they feel like",
+      "Plan balanced meals with controlled portions",
+      "Skip meals to save calories",
+      "Follow a high-carb diet"
+    ],
+    "correctAnswer": "Plan balanced meals with controlled portions",
+    "explanation": "Chapter 5 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 5,
+    "questionType": "practice",
+    "accessType": "paid",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L5_Q11",
+    "text": "What are the potential risks of low-carb diets for diabetes patients?",
     "options": [
       "Increased energy levels",
       "Nutrient deficiencies",
@@ -1402,7 +1383,6 @@
     "lectureNumber": 5,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -1421,7 +1401,6 @@
     "lectureNumber": 5,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -1440,7 +1419,6 @@
     "lectureNumber": 5,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -1459,7 +1437,6 @@
     "lectureNumber": 5,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -1478,12 +1455,29 @@
     "lectureNumber": 5,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
     "id": "CN_L5_Q16",
-    "text": "Which dairy product is preferable for diabetes? 17 Which cooking method is healthiest for diabetes patients?",
+    "text": "Which dairy product is preferable for diabetes?",
+    "options": [
+      "Full-fat yogurt",
+      "Sweetened almond milk",
+      "Unsweetened Greek yogurt",
+      "Chocolate milk"
+    ],
+    "correctAnswer": "Unsweetened Greek yogurt",
+    "explanation": "Chapter 5 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 5,
+    "questionType": "practice",
+    "accessType": "paid",
+    "isHighlighted": false
+  },
+  {
+    "id": "CN_L5_Q17",
+    "text": "Which cooking method is healthiest for diabetes patients?",
     "options": [
       "Frying",
       "Boiling",
@@ -1497,7 +1491,6 @@
     "lectureNumber": 5,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -1516,7 +1509,6 @@
     "lectureNumber": 6,
     "questionType": "practice",
     "accessType": "free",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -1535,7 +1527,6 @@
     "lectureNumber": 6,
     "questionType": "practice",
     "accessType": "free",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -1554,7 +1545,6 @@
     "lectureNumber": 6,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -1573,7 +1563,6 @@
     "lectureNumber": 6,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -1592,7 +1581,6 @@
     "lectureNumber": 6,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -1611,8 +1599,25 @@
     "lectureNumber": 6,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
+  },
+  {
+    "id": "CN_L6_Q7",
+    "text": "Which type of diet is recommended for a patient on dialysis?",
+    "options": [
+      "Low protein diet",
+      "High protein diet",
+      "Fatty diet",
+      "Low carbohydrate diet"
+    ],
+    "correctAnswer": "High protein diet",
+    "explanation": "Chapter 6 Study Card - Clinical Nutrition & Dietary Management",
+    "courseId": "clinical_nutrition_course",
+    "subjectId": "clinical_nutrition_subject",
+    "lectureNumber": 6,
+    "questionType": "practice",
+    "accessType": "paid",
+    "isHighlighted": true
   },
   {
     "id": "CN_L6_Q8",
@@ -1630,7 +1635,6 @@
     "lectureNumber": 6,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": true
   },
   {
@@ -1649,7 +1653,6 @@
     "lectureNumber": 6,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -1668,7 +1671,6 @@
     "lectureNumber": 6,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -1687,7 +1689,6 @@
     "lectureNumber": 6,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -1706,7 +1707,6 @@
     "lectureNumber": 6,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -1725,7 +1725,6 @@
     "lectureNumber": 6,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -1744,7 +1743,6 @@
     "lectureNumber": 6,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": true
   },
   {
@@ -1763,7 +1761,6 @@
     "lectureNumber": 6,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -1782,7 +1779,6 @@
     "lectureNumber": 6,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -1801,7 +1797,6 @@
     "lectureNumber": 6,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": true
   },
   {
@@ -1820,7 +1815,6 @@
     "lectureNumber": 6,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -1839,7 +1833,6 @@
     "lectureNumber": 6,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -1858,7 +1851,6 @@
     "lectureNumber": 6,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -1877,7 +1869,6 @@
     "lectureNumber": 6,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -1896,7 +1887,6 @@
     "lectureNumber": 6,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -1915,7 +1905,6 @@
     "lectureNumber": 6,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -1934,7 +1923,6 @@
     "lectureNumber": 6,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -1953,7 +1941,6 @@
     "lectureNumber": 7,
     "questionType": "practice",
     "accessType": "free",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -1972,7 +1959,6 @@
     "lectureNumber": 7,
     "questionType": "practice",
     "accessType": "free",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -1991,7 +1977,6 @@
     "lectureNumber": 7,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -2010,17 +1995,16 @@
     "lectureNumber": 7,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
     "id": "CN_L7_Q5",
-    "text": "When managing the diet of a comatosed patient, which of the following is most important? & patients with system failure",
+    "text": "When managing the diet of a comatosed patient, which of the following is most important?",
     "options": [
       "Palatability",
       "Nutritional balance and caloric needs",
       "Food variety",
-      "Serving temperature"
+      "Serving temperature & patients with system failure"
     ],
     "correctAnswer": "Nutritional balance and caloric needs",
     "explanation": "Chapter 7 Study Card - Clinical Nutrition & Dietary Management",
@@ -2029,7 +2013,6 @@
     "lectureNumber": 7,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -2048,7 +2031,6 @@
     "lectureNumber": 7,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": true
   },
   {
@@ -2067,7 +2049,6 @@
     "lectureNumber": 7,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -2086,7 +2067,6 @@
     "lectureNumber": 7,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": true
   },
   {
@@ -2105,7 +2085,6 @@
     "lectureNumber": 7,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": true
   },
   {
@@ -2124,7 +2103,6 @@
     "lectureNumber": 7,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -2143,7 +2121,6 @@
     "lectureNumber": 7,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -2151,18 +2128,17 @@
     "text": "Which method of feeding is most common for patients who cannot swallow due to coma?",
     "options": [
       "Oral feeding",
-      "",
-      "",
-      ""
+      "Total parenteral nutrition (TPN)",
+      "Enteral feeding via a tube",
+      "Soft diet"
     ],
-    "correctAnswer": "",
+    "correctAnswer": "Enteral feeding via a tube",
     "explanation": "Chapter 7 Study Card - Clinical Nutrition & Dietary Management",
     "courseId": "clinical_nutrition_course",
     "subjectId": "clinical_nutrition_subject",
     "lectureNumber": 7,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": true
   },
   {
@@ -2181,7 +2157,6 @@
     "lectureNumber": 7,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -2200,7 +2175,6 @@
     "lectureNumber": 7,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": true
   },
   {
@@ -2219,7 +2193,6 @@
     "lectureNumber": 7,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -2238,7 +2211,6 @@
     "lectureNumber": 7,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": true
   },
   {
@@ -2257,7 +2229,6 @@
     "lectureNumber": 7,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": true
   },
   {
@@ -2276,7 +2247,6 @@
     "lectureNumber": 7,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": true
   },
   {
@@ -2295,7 +2265,6 @@
     "lectureNumber": 7,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -2314,7 +2283,6 @@
     "lectureNumber": 7,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -2333,7 +2301,6 @@
     "lectureNumber": 7,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -2352,7 +2319,6 @@
     "lectureNumber": 7,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -2371,7 +2337,6 @@
     "lectureNumber": 7,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -2390,7 +2355,6 @@
     "lectureNumber": 7,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -2409,7 +2373,6 @@
     "lectureNumber": 7,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -2428,7 +2391,6 @@
     "lectureNumber": 7,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -2447,7 +2409,6 @@
     "lectureNumber": 7,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -2466,7 +2427,6 @@
     "lectureNumber": 7,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -2485,7 +2445,6 @@
     "lectureNumber": 7,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -2504,7 +2463,6 @@
     "lectureNumber": 9,
     "questionType": "practice",
     "accessType": "free",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -2523,7 +2481,6 @@
     "lectureNumber": 9,
     "questionType": "practice",
     "accessType": "free",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -2542,7 +2499,6 @@
     "lectureNumber": 9,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": true
   },
   {
@@ -2561,7 +2517,6 @@
     "lectureNumber": 9,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -2580,7 +2535,6 @@
     "lectureNumber": 9,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": true
   },
   {
@@ -2599,7 +2553,6 @@
     "lectureNumber": 9,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -2618,7 +2571,6 @@
     "lectureNumber": 9,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -2637,7 +2589,6 @@
     "lectureNumber": 9,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -2656,7 +2607,6 @@
     "lectureNumber": 9,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -2675,7 +2625,6 @@
     "lectureNumber": 9,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -2694,7 +2643,6 @@
     "lectureNumber": 9,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -2713,7 +2661,6 @@
     "lectureNumber": 9,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -2722,17 +2669,16 @@
     "options": [
       "High-carb diet",
       "Low-carb diet",
-      "",
-      ""
+      "Soft diet",
+      "High-fiber diet"
     ],
-    "correctAnswer": "",
+    "correctAnswer": "Soft diet",
     "explanation": "Chapter 9 Study Card - Clinical Nutrition & Dietary Management",
     "courseId": "clinical_nutrition_course",
     "subjectId": "clinical_nutrition_subject",
     "lectureNumber": 9,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -2751,7 +2697,6 @@
     "lectureNumber": 9,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -2770,7 +2715,6 @@
     "lectureNumber": 9,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": true
   },
   {
@@ -2789,7 +2733,6 @@
     "lectureNumber": 9,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": true
   },
   {
@@ -2808,7 +2751,6 @@
     "lectureNumber": 9,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -2827,7 +2769,6 @@
     "lectureNumber": 9,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -2846,7 +2787,6 @@
     "lectureNumber": 9,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -2865,7 +2805,6 @@
     "lectureNumber": 9,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -2884,7 +2823,6 @@
     "lectureNumber": 9,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -2903,7 +2841,6 @@
     "lectureNumber": 9,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -2922,7 +2859,6 @@
     "lectureNumber": 9,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -2941,7 +2877,6 @@
     "lectureNumber": 9,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": true
   },
   {
@@ -2960,7 +2895,6 @@
     "lectureNumber": 9,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -2979,7 +2913,6 @@
     "lectureNumber": 9,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -2998,7 +2931,6 @@
     "lectureNumber": 9,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -3017,7 +2949,6 @@
     "lectureNumber": 9,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -3036,7 +2967,6 @@
     "lectureNumber": 9,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -3055,11 +2985,10 @@
     "lectureNumber": 9,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
-    "id": "CN_L2_Q31",
+    "id": "CN_L9_Q31",
     "text": "In hepatitis patients, all needs to be increased except",
     "options": [
       "Protein",
@@ -3068,13 +2997,12 @@
       "Fat"
     ],
     "correctAnswer": "Fat",
-    "explanation": "Chapter 2 Study Card - Clinical Nutrition & Dietary Management",
+    "explanation": "Chapter 9 Study Card - Clinical Nutrition & Dietary Management",
     "courseId": "clinical_nutrition_course",
     "subjectId": "clinical_nutrition_subject",
-    "lectureNumber": 2,
+    "lectureNumber": 9,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -3093,7 +3021,6 @@
     "lectureNumber": 9,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
@@ -3112,11 +3039,10 @@
     "lectureNumber": 9,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
-    "id": "CN_L1_Q34",
+    "id": "CN_L9_Q34",
     "text": "Salt restricted diet used for patients with",
     "options": [
       "Cardiovascular disease",
@@ -3125,17 +3051,16 @@
       "All of the above"
     ],
     "correctAnswer": "All of the above",
-    "explanation": "Chapter 1 Study Card - Clinical Nutrition & Dietary Management",
+    "explanation": "Chapter 9 Study Card - Clinical Nutrition & Dietary Management",
     "courseId": "clinical_nutrition_course",
     "subjectId": "clinical_nutrition_subject",
-    "lectureNumber": 1,
+    "lectureNumber": 9,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
-    "id": "CN_L2_Q35",
+    "id": "CN_L9_Q35",
     "text": "If signs of hepatic coma appears, the protein intake should be decreased to",
     "options": [
       "1gm /kg body weight",
@@ -3144,17 +3069,16 @@
       "1.5 mg/ kg body weight"
     ],
     "correctAnswer": "0.3 gm / kg body weight",
-    "explanation": "Chapter 2 Study Card - Clinical Nutrition & Dietary Management",
+    "explanation": "Chapter 9 Study Card - Clinical Nutrition & Dietary Management",
     "courseId": "clinical_nutrition_course",
     "subjectId": "clinical_nutrition_subject",
-    "lectureNumber": 2,
+    "lectureNumber": 9,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
-    "id": "CN_L2_Q36",
+    "id": "CN_L9_Q36",
     "text": "The availability of fat soluble vitamins like vit A is affected due to decreased intake and impaired absorption of fat in patient with",
     "options": [
       "Liver disease",
@@ -3162,18 +3086,17 @@
       "Hypertension",
       "All of the above"
     ],
-    "correctAnswer": "Liver disease",
-    "explanation": "Chapter 2 Study Card - Clinical Nutrition & Dietary Management",
+    "correctAnswer": "All of the above",
+    "explanation": "Chapter 9 Study Card - Clinical Nutrition & Dietary Management",
     "courseId": "clinical_nutrition_course",
     "subjectId": "clinical_nutrition_subject",
-    "lectureNumber": 2,
+    "lectureNumber": 9,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
-    "id": "CN_L2_Q37",
+    "id": "CN_L9_Q37",
     "text": "In advanced cases of liver cirrhosis, presence of ascites and oedema necessitate the restriction of --------in diet",
     "options": [
       "Protein",
@@ -3182,36 +3105,34 @@
       "Fluids"
     ],
     "correctAnswer": "Sodium",
-    "explanation": "Chapter 2 Study Card - Clinical Nutrition & Dietary Management",
+    "explanation": "Chapter 9 Study Card - Clinical Nutrition & Dietary Management",
     "courseId": "clinical_nutrition_course",
     "subjectId": "clinical_nutrition_subject",
-    "lectureNumber": 2,
+    "lectureNumber": 9,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
-    "id": "CN_L3_Q38",
+    "id": "CN_L9_Q38",
     "text": "------------ tends to lower the serum cholesterol level in patients with atherosclerosis",
     "options": [
-      "",
-      "",
-      "",
-      ""
+      "Animal fats",
+      "PUFA",
+      "Hydrogenated oil",
+      "None of the above"
     ],
-    "correctAnswer": "b",
-    "explanation": "Chapter 3 Study Card - Clinical Nutrition & Dietary Management",
+    "correctAnswer": "PUFA",
+    "explanation": "Chapter 9 Study Card - Clinical Nutrition & Dietary Management",
     "courseId": "clinical_nutrition_course",
     "subjectId": "clinical_nutrition_subject",
-    "lectureNumber": 3,
+    "lectureNumber": 9,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
-    "id": "CN_L1_Q39",
+    "id": "CN_L9_Q39",
     "text": "Avoiding fats in meats, milk, cream ,butter ,the diets tend to be low in vitamin",
     "options": [
       "A",
@@ -3220,17 +3141,16 @@
       "None of the above"
     ],
     "correctAnswer": "A",
-    "explanation": "Chapter 1 Study Card - Clinical Nutrition & Dietary Management",
+    "explanation": "Chapter 9 Study Card - Clinical Nutrition & Dietary Management",
     "courseId": "clinical_nutrition_course",
     "subjectId": "clinical_nutrition_subject",
-    "lectureNumber": 1,
+    "lectureNumber": 9,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   },
   {
-    "id": "CN_L3_Q40",
+    "id": "CN_L9_Q40",
     "text": "Calorie restriction is a major therapeutic tool in the treatment of hypertension especially in",
     "options": [
       "Obese patients",
@@ -3238,14 +3158,13 @@
       "Diabetic patient",
       "Both a and c"
     ],
-    "correctAnswer": "Obese patients",
-    "explanation": "Chapter 3 Study Card - Clinical Nutrition & Dietary Management",
+    "correctAnswer": "Both a and c",
+    "explanation": "Chapter 9 Study Card - Clinical Nutrition & Dietary Management",
     "courseId": "clinical_nutrition_course",
     "subjectId": "clinical_nutrition_subject",
-    "lectureNumber": 3,
+    "lectureNumber": 9,
     "questionType": "practice",
     "accessType": "paid",
-    "createdAt": "2026-05-21T08:00:00Z",
     "isHighlighted": false
   }
 ]
