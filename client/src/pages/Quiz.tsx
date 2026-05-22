@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import { db } from '../lib/firebase';
 import { cn } from '../lib/utils';
 import { collection, query, getDocs, addDoc, where } from 'firebase/firestore';
-import { batchUpdateUserProgress, toggleBookmark, ProgressResult } from '../lib/quizEngine';
+import { batchUpdateUserProgress, toggleBookmark, type ProgressResult } from '../lib/quizEngine';
 import type { Question } from '../types/quiz';
 import QuestionCard from '../components/quiz/QuestionCard';
 import { Loader2, AlertCircle, Clock, Flag, ArrowRight, ArrowLeft, ZoomIn, ZoomOut } from 'lucide-react';
