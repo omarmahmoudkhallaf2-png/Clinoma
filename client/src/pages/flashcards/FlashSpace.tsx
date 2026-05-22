@@ -249,115 +249,1204 @@ interface Question {
 
 const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
 
-  'BIOLOGICAL AGE & MATURATION (BONE & TEETH)': [
+  "Renal Anatomy, Functions & Urine Color Changes": [],
+  "Pediatric Hematuria Approach & Evaluation": [
     {
-      id: 'ba1',
-      front: '17) Mention causes of hypocalcemia and tetany in rickets.',
-      back: '1. Parathyroid gland failure to respond to systemic hypocalcemia due to gland exhaustion.\n2. Complete exhaustion of total skeletal bone stores of calcium.\n3. Administration of high-dose vitamin D shock therapy without concurrent oral calcium supplementation.\n4. Severe concurrent chest infections causing hyperventilation → CO2 wash → respiratory alkalosis tetany.',
+      "id": "phae1",
+      "front": "List 4 indications of renal biopsy in acute post-streptococcal glomerulonephritis.",
+      "back": "Acute kidney injury (AKI) and rapidly progressive glomerulonephritis (RPGN).\n\nNephrotic range proteinuria.\n\nAbsence of evidence for previous streptococcal infection.\n\nNormal complement (C3) levels.\n\nPersistent hematuria, proteinuria, diminished renal function, and/or a low C3 level persisting for more than 2 months after onset."
+    }
+  ],
+  "Acute Nephritic Syndrome & APSGN (1)": [
+    {
+      "id": "ans1",
+      "front": "Regarding acute poststreptococcal glomerulonephritis: Name 2 diagnostic criteria of APSGN.",
+      "back": "Acute nephritic syndrome presentation (Sudden onset of gross hematuria, edema, hypertension, oliguria).\n\nEvidence of recent streptococcal infection (e.g., positive throat culture, or rising ASO/Anti-DNase B titer).\n\n(Low C3 level which returns to normal after 6-8 weeks)."
     },
     {
-      id: 'ba2',
-      front: '49) Describe the clinical picture of latent tetany.',
-      back: 'Occurs when total serum calcium = 7–9 mg%. No spontaneous symptoms, confirmed by 3 signs:\n\n1. Chvostek sign: Tapping over the facial nerve anterior to the tragus → contraction of ipsilateral facial muscles.\n2. Trousseau sign: Sphygmomanometer cuff inflated above systolic for 3 minutes → carpal spasm.\n3. Peroneal sign: Tapping the peroneal nerve over the neck of the fibula → dorsiflexion and eversion of the foot.',
+      "id": "ans2",
+      "front": "Regarding acute poststreptococcal glomerulonephritis: Enumerate 2 possible related complications.",
+      "back": "Hypertensive encephalopathy.\n\nCongestive heart failure (due to hypervolemia/fluid overload).\n\n(Hyperkalemia, Acute kidney injury, or Rapidly Progressive Glomerulonephritis)."
+    }
+  ],
+  "Acute Nephritic Syndrome & APSGN (2)": [],
+  "Proteinuria Detection & Etiological Sorting": [],
+  "Nephrotic Syndrome (NS)": [
+    {
+      "id": "ns1",
+      "front": "Enumerate 4 of the differential diagnoses of a child presented with generalized edema.",
+      "back": "Renal causes (e.g., Nephrotic syndrome, Acute nephritic syndrome).\n\nCardiac causes (e.g., Congestive heart failure).\n\nHepatic causes (e.g., Liver cirrhosis / failure causing hypoalbuminemia).\n\nNutritional causes (e.g., Kwashiorkor / Protein-energy malnutrition).\n\n(Angioneurotic edema)."
     },
     {
-      id: 'ba3',
-      front: 'Case: 5-year-old with abnormal long bone ends, short stature, and hypertension.\n1) What is the most likely diagnosis?',
-      back: 'Renal Osteodystrophy (Uremic Rickets). Skeletal mineralization defects secondary to chronic renal failure, presenting with rickets-like epiphyseal broadening, severe short stature, metabolic acidosis, and renal-induced systemic hypertension.',
+      "id": "ns2",
+      "front": "List 4 complications of nephrotic syndrome.",
+      "back": "Infections (e.g., Spontaneous bacterial peritonitis, pneumonia, sepsis).\n\nThromboembolic events (arterial and venous thrombosis, like renal vein thrombosis).\n\nHypovolemic shock (with aggressive diuretic therapy).\n\nAcute renal failure.\n\nComplications of therapy (e.g., Steroid toxicity, cyclophosphamide toxicity)."
     },
     {
-      id: 'ba4',
-      front: 'Case: 5-year-old with abnormal long bone ends, short stature, and hypertension.\n2) What are the investigations that should be done?',
-      back: '1. Serum Kidney Function Tests (BUN & Creatinine) → elevated\n2. Serum Phosphorus → hyperphosphatemia\n3. Serum Calcium → hypocalcemia\n4. Serum Alkaline Phosphatase → elevated\n5. Blood Gas Analysis (pH) → metabolic acidosis\n6. X-ray of Wrists/Long Bones → epiphyseal cupping, fraying, broadening',
+      "id": "ns3",
+      "front": "Enumerate 5 causes of secondary Nephrotic Syndrome.",
+      "back": "Systemic Lupus Erythematosus (SLE).\n\nHenoch-Schönlein purpura (HSP).\n\nCongenital infections (TORCH).\n\nDenys-Drash syndrome (Wilms tumor, genitourinary anomalies).\n\nDrug-induced."
     },
     {
-      id: 'ba5',
-      front: 'Case: 5-year-old with abnormal long bone ends, short stature, and hypertension.\n3) What is the treatment?',
-      back: '1. Radical management of renal pathology: chronic hemodialysis or renal transplantation.\n2. Active Calcitriol (1,25-dihydroxyvitamin D) → bypass compromised renal 1-alpha-hydroxylase.\n3. High oral calcium intake.\n4. Low phosphate diet.\n5. Oral phosphate binders → restrict GI absorption of dietary phosphorus.',
+      "id": "ns4",
+      "front": "Case Study: Mona is 7 years-old, presented to pediatric clinic by generalized edema. There is past history similar condition 5 times during the last year. Investigations: Plasma proteins: 3 gm/dl (N=6-8 gm/dl), Serum albumin: 1.4 gm/dl, Serum cholesterol: 290 mg/dl (N=120-180 mg/dl), Blood urea: 25 mg/dl (N=20-40 mg/dl), Serum creatinine: 0.7 mg/dl (N=0.5-1.0 mg/dl), Urine examination: granular cast, protein in urine: 60 mg/m2/hour (N<4 mg/m2/hour). What is the most likely diagnosis?",
+      "back": "Idiopathic Nephrotic Syndrome (Specifically: Frequent Relapsing Nephrotic Syndrome)."
     },
+    {
+      "id": "ns5",
+      "front": "Case Study (Mona, 7 yrs old with generalized edema...): Explain your answer.",
+      "back": "The diagnosis is confirmed by the classic tetrad of Nephrotic Syndrome:\n\nHeavy (Nephrotic range) Proteinuria: Exceeding 40 mg/m2/hr (Patient has 60 mg/m2/hour).\n\nHypoalbuminemia/Hypoproteinemia: Serum albumin is 1.4 gm/dl (Normal >2.5).\n\nHypercholesterolemia (Hyperlipidemia): Serum cholesterol is 290 mg/dl.\n\nGeneralized Edema.\n\nThe normal blood urea and serum creatinine indicate intact kidney function (ruling out nephritic syndrome/renal failure). The history of recurring 5 times in the last year defines her as a \"Frequent Relapser\"."
+    }
+  ],
+  "Acute Kidney Injury (AKI) & pRIFLE Criteria": [],
+  "Chronic Kidney Disease (CKD) & Growth Retardation": [
+    {
+      "id": "ckd1",
+      "front": "Write short account about Stages of CKD.",
+      "back": "Staging is based on the Glomerular Filtration Rate (GFR in ml/min/1.73m2):\n\nStage 1: GFR More than 90 (Kidney damage with normal or increased GFR).\n\nStage 2: GFR 60 - 89 (Mild decrease in GFR).\n\nStage 3: GFR 30 - 59 (Moderate decrease in GFR).\n\nStage 4: GFR 15 - 29 (Severe decrease in GFR).\n\nStage 5: GFR < 15 (End Stage Renal Disease / ESRD, requiring dialysis or transplant)."
+    },
+    {
+      "id": "ckd2",
+      "front": "List 4 causes contributing to the pathogenesis of renal osteodystrophy in cases with chronic kidney disease.",
+      "back": "Impaired renal production of active vitamin D (1,25-dihydroxycholecalciferol).\n\nHyperphosphatemia (due to decreased glomerular filtration).\n\nHypocalcemia (resulting from low active Vitamin D and high phosphate).\n\nSecondary hyperparathyroidism (excessive PTH secretion in response to hypocalcemia and hyperphosphatemia)."
+    }
+  ],
+  "URINARY TRACT INFECTIONS (UTIs) & RENAL IMAGING PROTOCOL": [
+    {
+      "id": "uti1",
+      "front": "Case Study 1: A 5-year-old female child presented with fever, chills and flank pain. Investigations: Blood urea: 20 mg/dl, Serum creatinine: 0.7 mg/dl, Urine exam: WBCs casts, 100 pus cells/HPF. What is the most likely diagnosis?",
+      "back": "Acute Pyelonephritis (Upper Urinary Tract Infection)."
+    },
+    {
+      "id": "uti2",
+      "front": "Case Study 1 (5-year-old female with fever, chills, flank pain...): Describe the possible treatment plan.",
+      "back": "Medical Therapy: Parenteral broad-spectrum antibiotics for 14 days. Ceftriaxone (50-75 mg/kg/24 hr) OR Ampicillin with an Aminoglycoside (Gentamicin).\n\nSupportive: Adequate hydration and antipyretics.\n\nImaging / Follow-up: Renal ultrasound (to rule out hydronephrosis/abscess) and a Voiding Cystourethrogram (VCUG) since she is ≤5 years old with a febrile UTI, to check for Vesicoureteral Reflux (VUR) or anatomical abnormalities."
+    },
+    {
+      "id": "uti3",
+      "front": "Case Study 2: Mona is 5 years old child, presented by fever, chills and flank pain. Investigations: Blood urea: 20 mg/dl, Serum creatinine: 0.6 mg/dl, Urine analysis: WBCs casts, 100 pus cells/HPF. What is the most likely diagnosis?",
+      "back": "Acute Pyelonephritis."
+    },
+    {
+      "id": "uti4",
+      "front": "Case Study 2 (Mona, 5 years old with fever, chills, flank pain...): What is the possible TTT (Treatment)?",
+      "back": "Parenteral antibiotic therapy (Ceftriaxone or Ampicillin + Gentamicin) for 14 days, combined with imaging studies (US & VCUG) to detect any predisposing anomalies like VUR."
+    }
   ],
 
-  'PEDIATRIC GROWTH': [
+  "RBC Physiology, Indices & Morphology": [],
+  "Classification & Evaluation of Anemia": [
     {
-      id: 'pg1',
-      front: '50) Define growth.',
-      back: 'Growth is the natural increase in the size of the body either by hyperplasia through the multiplication of different cells of different organs or by hypertrophy through an increase in cell size.',
+      "id": "cea1",
+      "front": "1) Hematological causes of splenomegaly?",
+      "back": "Chronic hemolytic anemia (e.g., Thalassemia, Hereditary spherocytosis).\n\nLeukemias (ALL, AML, CML).\n\nLymphomas (Hodgkin's and Non-Hodgkin's).\n\nExtramedullary hematopoiesis."
     },
     {
-      id: 'pg2',
-      front: '56) Mention types of Growth charts.',
-      back: '1. Percentile curves.\n2. Standard deviation curves.\n3. Velocity curves.\n4. Conditional centiles.',
+      "id": "cea2",
+      "front": "2) List 4 indications for splenectomy in hematological diseases?",
+      "back": "Hereditary spherocytosis (after age of 5 years).\n\nThalassemia major (if hypersplenism occurs causing increased blood transfusion needs).\n\nImmune Thrombocytopenic Purpura (ITP) (chronic refractory cases).\n\nAutoimmune hemolytic anemia (unresponsive to steroids)."
     },
     {
-      id: 'pg3',
-      front: '13) Describe five benefits of breastfeeding for mothers.',
-      back: '1. It helps in the involution of the birth canal.\n2. It serves as a natural method of contraception.\n3. It decreases the clinical incidence of breast cancer.',
+      "id": "cea3",
+      "front": "3) List the different types of chronic hemolytic anemia that could be diagnosed through blood film examination, and name the diagnostic cells for each.",
+      "back": "Hereditary Spherocytosis: Spherocytes (small, dense RBCs with no central pallor).\n\nSickle Cell Disease: Sickle cells (crescent-shaped RBCs).\n\nThalassemia: Target cells, hypochromic microcytic RBCs, and nucleated RBCs.\n\nG6PD Deficiency (during attack): Bite cells and Heinz bodies (requires special stain)."
     },
     {
-      id: 'pg4',
-      front: '14) Mention foods avoided in weaning diet.',
-      back: '1. Foods that cause choking: nuts, fruits with seeds, potato chips.\n2. Foods containing artificial colors and artificial flavors.\n3. Salted food → may cause hypertension.\n4. Junk food such as sweets and candies.\n5. Highly spiced and fatty food.',
+      "id": "cea4",
+      "front": "5) List 4 early post splenectomy complications?",
+      "back": "Bleeding (hemorrhage).\n\nInfection (Overwhelming Post-Splenectomy Infection - OPSI, mainly by encapsulated organisms like Pneumococcus).\n\nThrombocytosis.\n\nPancreatitis or injury to surrounding organs during surgery."
     },
     {
-      id: 'pg5',
-      front: '15) Describe skin changes in Kwashiorkor and explain its cause.',
-      back: 'Description: Erythema → hyperpigmentation → desquamation → ulceration, fissuring, and crackling. Secondary skin infections and gangrene are common. Sites: pressure sites (buttocks & back) and flexural sites (groin & axilla).\n\nCause: Deficiencies in essential fatty acids, essential amino acids, sulfur-containing amino acids, vitamin A, and zinc.',
+      "id": "cea5",
+      "front": "Case 1: A 20-month-old boy presents to you with pallor. His diet contains a good amount of fortified cereal and red meat. HB 9.0, MCV 58, MCHC 28, normal platelets, and a reticulocyte count of 4%. What is the most likely diagnosis?",
+      "back": "Thalassemia Trait (Beta-thalassemia minor) - suggested by the microcytic hypochromic anemia with a slightly elevated reticulocyte count in a child with a good iron intake."
     },
     {
-      id: 'pg6',
-      front: '16) List 5 causes of death in PEM.',
-      back: '1. Recurrent systemic infections.\n2. Electrolytes imbalance (refeeding syndrome or acute gastroenteritis).\n3. Hypothermia.\n4. Hypoglycemia: low liver glycogen + defects in catecholamine and glucagon formation.\n5. Heart failure: anemic heart failure or degenerative changes in cardiac muscles.',
+      "id": "cea6",
+      "front": "Case 1 (20-month-old boy with pallor, HB 9.0, MCV 58...): What is the D.D.?",
+      "back": "Iron Deficiency Anemia (IDA), Sideroblastic anemia, Lead poisoning."
     },
     {
-      id: 'pg7',
-      front: '48) Explain the causes of infection in protein-energy malnutrition.',
-      back: '1. Edema-Related Susceptibility: Pitting edema creates an ideal environment for micro-organisms → skin infections and gangrene.\n2. Gastrointestinal Barrier Defect: Defective epithelization of intestinal mucosa → vulnerability to bacterial, viral, and protozoal gastroenteritis.',
+      "id": "cea7",
+      "front": "Case 1 (20-month-old boy with pallor, HB 9.0, MCV 58...): What are the further investigations to help diagnosis?",
+      "back": "Hemoglobin electrophoresis (High HbA2 and HbF indicates Thalassemia trait) and Iron profile to exclude IDA (will be normal in Thalassemia)."
+    }
+  ],
+  "Iron Deficiency Anemia (IDA)": [
+    {
+      "id": "ida1",
+      "front": "2 & 4) Causes of IDA, clinical picture, investigation: Causes",
+      "back": "Decreased intake: prolonged exclusive breastfeeding without supplementation, early cow's milk introduction, poor diet.\nIncreased demand: prematurity, rapid growth (infancy and puberty).\nBlood loss: parasitic infestations, cow's milk allergy (occult bleeding), peptic ulcer, menstruation.\nMalabsorption: Celiac disease."
     },
     {
-      id: 'pg8',
-      front: '51) Explain why weaning should start after the age of 4 months.',
-      back: 'Maternal breast milk becomes insufficient to fulfill nutritional requirements:\n\n• Calories: intake 356 kcal/day vs requirement 536.8 kcal/day\n• Proteins: intake 6.6 g/day vs requirement 9.1 g/day\n• Vitamin D: intake 528 ng/day vs requirement 5000 ng/day\n• Zinc: intake 0.98 mg/day vs requirement 2 mg/day\n• Iron: intake 0.29 mg/day vs requirement 11 mg/day (after 6 months)\n\nComplementary feeding at 4 months avoids caloric, vitamin, and mineral deficiencies.',
+      "id": "ida2",
+      "front": "2 & 4) Causes of IDA, clinical picture, investigation: Clinical picture",
+      "back": "General: pallor, fatigue, anorexia, tachycardia, heart murmur.\nSpecific signs: Pica (eating non-nutritive substances), spooning of nails (koilonychia), angular stomatitis, smooth red tongue."
     },
     {
-      id: 'pg9',
-      front: '53) Discuss Welcome classification for protein energy malnutrition.',
-      back: 'Weight-for-age 60–80% of standard:\n• Without edema → Underweight (mild PEM)\n• With edema → Kwashiorkor (severe PEM)\n\nWeight-for-age < 60% of standard:\n• Without edema → Marasmus (severe PEM)\n• With edema → Marasmic Kwashiorkor (severe PEM)',
+      "id": "ida3",
+      "front": "2 & 4) Causes of IDA, clinical picture, investigation: Investigations",
+      "back": "CBC: Microcytic hypochromic anemia (low MCV, low MCH, low Hb).\n\nIron profile: Low serum Iron, Low Ferritin, High TIBC."
     },
     {
-      id: 'pg10',
-      front: '54) Mention Breastfeeding reflexes.',
-      back: 'Maternal Reflexes:\n1. Milk secretion reflex (Prolactin reflex): Suckling → anterior pituitary → prolactin → milk production.\n2. Milk ejection / let-down reflex (Oxytocin reflex): Suckling → posterior pituitary → oxytocin → myoepithelial contraction → milk ejection.\n\nInfant Reflexes:\n1. Rooting reflex: Touch to lip/cheek → turns toward stimulus, opens mouth.\n2. Suckling reflex: Tactile stimulation of palate → suckling.\n3. Swallowing reflex: Milk filling oral cavity → automatic swallowing.',
+      "id": "ida4",
+      "front": "30) Case Scenario: A 3-year-old girl is brought for routine well-childcare. The family says she is a \"picky\" eater, preferring whole milk over meats. CBC shows microcytosis with hypochromia and hemoglobin of 8 g/dl. What is the most likely etiology for this child's microcytic anemia?",
+      "back": "Iron Deficiency Anemia."
     },
     {
-      id: 'pg11',
-      front: 'Case: 9-month-old infant with lower limb edema on a low-protein diet.\n1) What is the most likely diagnosis?',
-      back: 'Kwashiorkor. A form of severe protein-energy malnutrition caused by selective protein deficiency in the setting of nearly normal caloric intake, characterized clinically by pitting edema and growth failure.',
+      "id": "ida5",
+      "front": "Case Scenario (3-year-old picky eater...): What is the most appropriate test to confirm this etiology?",
+      "back": "Serum Ferritin level (will be low)."
     },
     {
-      id: 'pg12',
-      front: 'Case: 9-month-old infant with lower limb edema on a low-protein diet.\n2) What other features should be present?',
-      back: 'Constant Features: Severe growth failure (weight-for-age < 80%), psychological changes (apathy, marked irritability, lack of interest, absence of smile), muscle wasting with preserved subcutaneous fat.\n\nVariable Features: Skin changes (flaky paint dermatosis), hair changes (flag sign), nutritional anemia, hepatomegaly (fatty infiltration), diarrhea, abdominal distension.',
+      "id": "ida6",
+      "front": "Case Scenario (3-year-old picky eater...): What is the treatment?",
+      "back": "Oral Iron therapy (Ferrous sulfate) for 3-6 months + Dietary modification (decrease cow's milk, increase iron-rich foods)."
+    }
+  ],
+  "Megaloblastic Anemias (B12 & Folate Deficiency)": [],
+  "Aplastic Anemia & BM Failure Syndromes": [
+    {
+      "id": "aa1",
+      "front": "4) Enumerate 4 complications of bone marrow transplantation?",
+      "back": "Graft-versus-host disease (GVHD).\n\nInfections (due to severe immunosuppression).\n\nGraft rejection / failure.\n\nVeno-occlusive disease of the liver (Hepatic sinusoidal obstruction syndrome)."
     },
     {
-      id: 'pg13',
-      front: 'Case: 9-month-old infant with lower limb edema on a low-protein diet.\n3) What investigations should be done?',
-      back: '1. Serum Albumin → degree of hypoproteinemia (low)\n2. Urinary Urea per Gram Creatinine → reduced protein intake (low)\n3. Blood Glucose Level → fasting hypoglycemia\n4. Serum Electrolytes → potassium and magnesium deficiencies\n5. CBC → type of anemia\n6. Radiological Bone Age → delayed skeletal maturation',
+      "id": "aa2",
+      "front": "6) Outline the management of patient with aplastic anemia?",
+      "back": "Supportive: Red blood cell & Platelet transfusions, broad-spectrum antibiotics (for febrile neutropenia).\n\nDefinitive: Hematopoietic Stem Cell Transplantation (HSCT) if an HLA-matched sibling donor is available.\n\nMedical: Immunosuppressive therapy (Antithymocyte globulin \"ATG\" + Cyclosporine) if no matched donor."
+    }
+  ],
+  "Chronic Hemolytic Anemia & Hereditary Spherocytosis": [
+    {
+      "id": "hs1",
+      "front": "3 & 7) About Hereditary spherocytosis (Definition, Pathogenesis):",
+      "back": "Definition: Inherited (autosomal dominant) chronic hemolytic anemia characterized by abnormally shaped red blood cells (spherocytes) that are easily destroyed in the spleen.\n\nPathogenesis: Genetic defect in the RBC membrane cytoskeleton proteins (Spectrin or Ankyrin). RBCs become spherical (spherocytes) and rigid, trapping them in the spleen where they are prematurely destroyed by macrophages."
     },
+    {
+      "id": "hs2",
+      "front": "3 & 7) About Hereditary spherocytosis (C/P, Complications, Treatment):",
+      "back": "C/P (Clinical Picture): Triad of Anemia, Jaundice (fluctuating), and Splenomegaly. Often positive family history.\n\nComplications: Aplastic crisis (Parvovirus B19), Hemolytic crisis, Pigment gallstones.\n\nTreatment: Folic acid supplementation. Splenectomy (curative) after the age of 5 years."
+    },
+    {
+      "id": "hs3",
+      "front": "2) Explain how splenectomy can be curative in hereditary spherocytosis.",
+      "back": "The premature destruction (hemolysis) occurs exclusively in the spleen because the rigid spherocytes cannot pass through its microcirculation. Removing the spleen eliminates the primary site of destruction, allowing the spherocytes to survive normally in the circulation, thus curing the anemia."
+    },
+    {
+      "id": "hs4",
+      "front": "33) Case Scenario: A previously normal 10-year-old experiences pallor, fatigue, and a fall in hemoglobin level from 13 to 8 g/dl. His spleen is slightly enlarged. The reticulocyte count is 10%. Many spherocytes are observed on the blood smear. What is the most likely diagnosis?",
+      "back": "Hereditary Spherocytosis (experiencing a hemolytic crisis)."
+    },
+    {
+      "id": "hs5",
+      "front": "Case Scenario (10-year-old with spherocytes...): What is the best treatment?",
+      "back": "Splenectomy (since he is > 5 years old) preceded by vaccines."
+    },
+    {
+      "id": "hs6",
+      "front": "Case Scenario (10-year-old with spherocytes...): What is the next diagnostic step?",
+      "back": "Osmotic fragility test (will be increased)."
+    }
+  ],
+  "The Thalassemia Syndromes (Alpha & Beta)": [],
+  "Sickle Cell Disease (SCD)": [
+    {
+      "id": "scd1",
+      "front": "5) List four crises occurring in children with sickle cell disease",
+      "back": "Four Crises: 1) Vaso-occlusive (painful) crisis. 2) Splenic sequestration crisis. 3) Aplastic crisis. 4) Hemolytic crisis."
+    },
+    {
+      "id": "scd2",
+      "front": "describe the clinical picture, and the treatment for one of them (Vaso-occlusive crisis)",
+      "back": "Clinical Picture: Severe pain in bones (arms, legs, back), Dactylitis in infants, acute chest syndrome, or stroke.\n\nTreatment: Intravenous hydration, potent Analgesia (NSAIDs or Opiates like Morphine), Oxygen therapy if hypoxic."
+    }
+  ],
+  "G6PD Deficiency & Immune Hemolytic Anemias": [
+    {
+      "id": "g6pd1",
+      "front": "31) Case Scenario: A previously normal African American army recruit was assigned to Southeast Asia and given malarial prophylaxis. He experienced pallor, fatigue, and dark urine. His hemoglobin level decreased from 14.8 to 9 g/dL. What is the most likely diagnosis?",
+      "back": "G6PD Deficiency (Acute hemolytic episode precipitated by antimalarial drugs)."
+    },
+    {
+      "id": "g6pd2",
+      "front": "Case Scenario (Army recruit given malarial prophylaxis...): What is the best treatment?",
+      "back": "Immediate discontinuation of the offending drug. Blood transfusion if anemia is severe."
+    },
+    {
+      "id": "g6pd3",
+      "front": "Case Scenario (Army recruit given malarial prophylaxis...): What is the next diagnostic step?",
+      "back": "Quantitative G6PD enzyme assay (done weeks after the acute episode resolves). During the attack, a blood film showing \"Heinz bodies\" and \"bite cells\" is suggestive."
+    }
+  ],
+  "Hemostasis & Bleeding Disorders": [
+    {
+      "id": "hbd1",
+      "front": "2) Enumerate Causes of bleeding tendency.",
+      "back": "Platelet disorders (Quantitative like ITP, or Qualitative).\n\nCoagulation factor deficiencies (Hemophilia A/B, VWD).\n\nVascular disorders (Henoch-Schönlein Purpura - HSP).\n\nMixed/Acquired conditions (DIC, Liver failure)."
+    },
+    {
+      "id": "hbd2",
+      "front": "39) Mention 3 differentiating clinical points between platelet disorders & clotting factor disorders.",
+      "back": "Site of bleeding: Platelet (mucocutaneous); Factor (deep tissues - joints, muscles).\n\nLesions: Platelet (Petechiae and superficial ecchymoses); Factor (Large hematomas, no petechiae).\n\nBleeding after trauma: Platelet (Immediate but stops with local pressure); Factor (Delayed bleeding, not easily controlled by pressure)."
+    },
+    {
+      "id": "hbd3",
+      "front": "40 & 41) When to suspect bleeding or hemorrhage disorder? / The most important point in a history is:",
+      "back": "Suspect it in: Spontaneous heavy bleeding, prolonged bleeding post-trauma/circumcision, bleeding from multiple orifices, or recurrent hemarthrosis.\n\nMost important point in history: Family history."
+    }
+  ],
+  "Inherited Coagulation Hemophilia & VWD": [
+    {
+      "id": "ich1",
+      "front": "1) Mention C/P and management of hemophilia.",
+      "back": "C/P: Exclusively in males. Deep tissue bleeding (Hemarthrosis, Muscle hematomas), prolonged bleeding after trauma/circumcision. No petechiae.\n\nManagement: Avoid trauma/IM injections/Aspirin. Specific therapy: Factor VIII concentrate replacement (for Hemophilia A) or Factor IX (for Hemophilia B)."
+    },
+    {
+      "id": "ich2",
+      "front": "5) List 4 differences between VWD and hemophilia A and mention the treatment of one of them?",
+      "back": "Differences: 1) Inheritance: VWD (Autosomal dominant); Hemophilia (X-linked recessive).\n2) Bleeding Type: VWD (Mucocutaneous); Hemophilia (Deep tissue).\n3) Defect: VWD (vWF affecting primary hemostasis); Hemophilia (Factor VIII).\n4) Labs: VWD (Prolonged Bleeding Time and APTT); Hemophilia (Normal Bleeding Time, Prolonged APTT).\n\nTreatment of VWD: Desmopressin (DDAVP) or vWF/Factor VIII concentrates."
+    },
+    {
+      "id": "ich3",
+      "front": "43) Describe a management plan for a child with severe hemophilia.",
+      "back": "Prophylactic regular replacement therapy with Factor VIII concentrates (e.g., 3 times a week).\n\nPrompt \"on-demand\" factor replacement during acute bleeding.\n\nMultidisciplinary care (physiotherapy for joints), avoid NSAIDs."
+    },
+    {
+      "id": "ich4",
+      "front": "44) Young girl presented with menorrhagia & severe pallor: Important point in history?",
+      "back": "Family history of mucosal bleeding or heavy menses."
+    },
+    {
+      "id": "ich5",
+      "front": "44) Young girl presented with menorrhagia & severe pallor: Investigations?",
+      "back": "CBC, Bleeding Time (Prolonged), APTT, vWF antigen level."
+    },
+    {
+      "id": "ich6",
+      "front": "44) Young girl presented with menorrhagia & severe pallor: Diagnosis?",
+      "back": "Von Willebrand Disease (VWD)."
+    },
+    {
+      "id": "ich7",
+      "front": "44) Young girl presented with menorrhagia & severe pallor: Treatment?",
+      "back": "Desmopressin (DDAVP), Antifibrinolytics (Tranexamic acid), or OCPs."
+    }
+  ],
+  "Platelet Disorders ITP & Thrombocytopenias": [
+    {
+      "id": "pd1",
+      "front": "3 & 6) Enumerate 4 causes of thrombocytopenia? / causes of platelets disorders:",
+      "back": "Increased destruction (Immune: ITP / Non-immune: HUS, DIC, Hypersplenism).\n\nDecreased production (Aplastic anemia, Leukemia).\n\nSequestration (Splenomegaly).\n\nInherited (Wiskott-Aldrich syndrome)."
+    },
+    {
+      "id": "pd2",
+      "front": "1) Outline the management of patient with thrombocytopenia? (Specifically acute ITP)",
+      "back": "Observation: If bleeding is mild and platelets >20,000-30,000.\n\nMedical Treatment: Oral Corticosteroids, IVIG, or Anti-D (if active bleeding or very low platelets).\n\nEmergency: Platelet transfusion + IVIG + high-dose IV steroids."
+    },
+    {
+      "id": "pd3",
+      "front": "2) Case Study: A 10-year-old male child presented with increased paleness... HSM with no lymphadenopathy. Platelet count was 26 x 10³/µL. What is your provisional diagnosis?",
+      "back": "Hypersplenism secondary to Portal Hypertension OR a storage disease like Gaucher disease."
+    },
+    {
+      "id": "pd4",
+      "front": "Case Study (10-year-old with HSM, Platelets 26k...): Is there any further needed investigation?",
+      "back": "LFTs, Abdominal Ultrasound (with Doppler), and Bone marrow aspiration."
+    },
+    {
+      "id": "pd5",
+      "front": "Case Study (10-year-old with HSM, Platelets 26k...): Treatment plan?",
+      "back": "Treatment of the underlying cause. Avoid trauma. Splenectomy may be considered in severe cases."
+    },
+    {
+      "id": "pd6",
+      "front": "42) Case Scenario: A 4-year-old child... new onset of severe bruising on her legs. Mucosal bleeding in the oral cavity. Flu-like symptoms several weeks earlier. No family history of bleeding disorders. a. Grades of severity & management of patient with ITP?",
+      "back": "Mild (Observation), Moderate/Severe as in this case (Medical treatment: IVIG or Steroids), Life-threatening (Platelets + high dose meds)."
+    },
+    {
+      "id": "pd7",
+      "front": "42) Case Scenario (4-year-old child with severe bruising...): b. Important findings in clinical examination?",
+      "back": "Presence of petechiae/mucosal bleeding. Crucial negative findings: NO hepatosplenomegaly and NO lymphadenopathy."
+    },
+    {
+      "id": "pd8",
+      "front": "42) Case Scenario (4-year-old child with severe bruising...): d. Most useful initial investigation?",
+      "back": "CBC with Peripheral Blood Smear."
+    },
+    {
+      "id": "pd9",
+      "front": "42) Case Scenario (4-year-old child with severe bruising...): e. Treatment plan?",
+      "back": "Restrict physical activity, avoid NSAIDs, and start IVIG or oral Corticosteroids (due to mucosal bleeding)."
+    },
+    {
+      "id": "pd10",
+      "front": "Case 1: A 22-year-old female patient... multiple petechiae and mild epistaxis. Plt 30,000. Bone marrow biopsy showed numerous megakaryocytes. Spleen diameter 10 cm. Most probable diagnosis?",
+      "back": "Immune Thrombocytopenic Purpura (ITP)."
+    },
+    {
+      "id": "pd11",
+      "front": "Case 1 (22-year-old female with petechiae...): Justify your Diagnosis?",
+      "back": "Isolated thrombocytopenia, clinically normal spleen size, and a bone marrow biopsy showing increased megakaryocytes (indicating peripheral destruction)."
+    },
+    {
+      "id": "pd12",
+      "front": "Case 1 (22-year-old female with petechiae...): Outline the treatment?",
+      "back": "First-line: Corticosteroids. If severe: IVIG or Anti-D."
+    },
+    {
+      "id": "pd13",
+      "front": "32) Case Scenario: A 3-year-old boy presents with sudden onset of rash (small red spots and large purple area). Three weeks previously, he had a mild illness. Spleen is not palpable. Platelet count is 20,000/mm³. Most likely diagnosis?",
+      "back": "Acute Immune Thrombocytopenic Purpura (Acute ITP)."
+    },
+    {
+      "id": "pd14",
+      "front": "32) Case Scenario (3-year-old boy with rash...): Next step in management?",
+      "back": "Reassurance, restrict physical activities, avoid IM injections/NSAIDs. A short course of oral Corticosteroids or observation depending on guidelines."
+    }
+  ],
+  "Non-Thrombocytopenic Purpura (Vascular & HSP)": [
+    {
+      "id": "ntp1",
+      "front": "Case 2: A 5-year-old boy... low-grade fever, colicky abdominal pain, and a rash mainly on the back of his legs and buttocks. Stool positive for blood and a normal platelet count. What is the most likely diagnosis?",
+      "back": "Henoch-Schönlein Purpura (HSP) / IgA Vasculitis."
+    },
+    {
+      "id": "ntp2",
+      "front": "Case 2 (5-year-old boy with HSP...): What are the renal manifestations?",
+      "back": "Microscopic or macroscopic hematuria, proteinuria, and sometimes glomerulonephritis."
+    },
+    {
+      "id": "ntp3",
+      "front": "Case 2 (5-year-old boy with HSP...): What is the treatment?",
+      "back": "Supportive (Hydration, rest, NSAIDs for joint pain). Systemic Corticosteroids are indicated for severe colicky abdominal pain or severe GI bleeding."
+    }
+  ],
+  "Pediatric Oncology The Leukemias (ALL & AML)": [
+    {
+      "id": "pol1",
+      "front": "1) Define leukemia and its classification in children, then mention clinical picture and treatment of the most common type in children.",
+      "back": "Definition: Malignant proliferation of white blood cell precursors (blasts) in the bone marrow, which suppress normal hematopoiesis.\n\nClassification: Acute Lymphoblastic Leukemia (ALL) - most common (80%). Acute Myeloid Leukemia (AML) (15-20%).\n\nMost common type (ALL) C/P: Bone marrow failure signs (Pallor, bleeding/petechiae, fever/infections) + Infiltration signs (Bone pain, hepatosplenomegaly, lymphadenopathy).\n\nTreatment of ALL: Multi-agent chemotherapy (Induction, Consolidation, Maintenance) + CNS prophylaxis (intrathecal methotrexate)."
+    },
+    {
+      "id": "pol2",
+      "front": "4) Describe the clinical picture of acute lymphoblastic leukemia in children, list the investigations required for diagnosis.",
+      "back": "Clinical picture: Bone marrow failure signs (Pallor, bleeding/petechiae, fever/infections) + Infiltration signs (Bone pain, hepatosplenomegaly, lymphadenopathy).\n\nInvestigations: CBC (abnormal blasts), Bone Marrow Aspiration (>20% blasts), Flow cytometry (Immunophenotyping), and Lumbar puncture."
+    },
+    {
+      "id": "pol3",
+      "front": "4) About AML: a. What is the Diagnosis?",
+      "back": "Diagnosis: CBC and Bone Marrow Aspiration showing >20% myeloblasts (often contain \"Auer rods\" and are MPO positive)."
+    },
+    {
+      "id": "pol4",
+      "front": "4) About AML: b. What is the Treatment?",
+      "back": "Treatment: Intensive combination chemotherapy (Cytarabine + Anthracycline) +/- HSCT."
+    },
+    {
+      "id": "pol5",
+      "front": "From Blood Film Test: 1) Name of this test: 2) Enumerate abnormalities in this test:",
+      "back": "1) Name of this test: Peripheral blood smear.\n\n2) Abnormalities: Presence of abnormal nucleated cells (blasts), decreased RBCs, decreased platelets."
+    },
+    {
+      "id": "pol6",
+      "front": "From Blood Film Test: 3) Name the abnormal cells: 4) Diagnosis:",
+      "back": "3) Name the abnormal cells: Blast cells (Lymphoblasts or Myeloblasts).\n\n4) Diagnosis: Acute Leukemia."
+    },
+    {
+      "id": "pol7",
+      "front": "45) Case scenario of acute leukemia in a child: a. Classifications of acute leukemia? b. Cutoff points of blast cells for diagnosis?",
+      "back": "a. Classifications: ALL (B-cell or T-cell) and AML.\n\nb. Cutoff points: > 20% blast cells in the bone marrow."
+    },
+    {
+      "id": "pol8",
+      "front": "45) Case scenario of acute leukemia in a child: c. Is there any staging system for leukemia? d. Principle of ttt of acute leukemia:",
+      "back": "c. Staging: No traditional TNM staging. \"Risk Stratification\" is used (Standard Risk vs. High Risk).\n\nd. Principle of ttt: Systemic combination chemotherapy divided into phases (Induction, Consolidation, Maintenance) + CNS-directed therapy."
+    }
+  ],
+  "Lymphomas & Solid Tumors": [
+    {
+      "id": "lst1",
+      "front": "4) Define neuroblastoma, describe its clinical presentation and outline its diagnostic workup.",
+      "back": "Definition: Embryonal extracranial solid tumor arising from neural crest cells, commonly in the adrenal medulla or sympathetic ganglia.\n\nClinical presentation: Abdominal mass (firm, irregular, often crossing the midline), signs of metastasis (proptosis/\"raccoon eyes\", bone pain), and Paraneoplastic syndromes (Opsoclonus-myoclonus syndrome).\n\nDiagnostic workup: Urine catecholamine metabolites (VMA and HVA), Abdominal CT/MRI, MIBG scan, and Tissue Biopsy."
+    },
+    {
+      "id": "lst2",
+      "front": "8) Describe the clinical picture of Wilms tumor in children, list the investigations required for the diagnosis and treatment.",
+      "back": "Clinical picture: Asymptomatic, smooth, firm abdominal mass that rarely crosses the midline. May present with microscopic hematuria or hypertension.\n\nInvestigations: Abdominal Ultrasound, CT/MRI of abdomen, CT chest (to check for lung metastasis), Urinalysis.\n\nTreatment: Surgical excision (radical nephrectomy) + Chemotherapy +/- Radiotherapy."
+    },
+    {
+      "id": "lst3",
+      "front": "46) Regarding Lymphoma Management Protocols: Supportive care of a case of NHL:",
+      "back": "Vigorous IV hydration, Allopurinol/Rasburicase (prevent Tumor Lysis Syndrome), Alkalinization of urine, and infection treatment."
+    },
+    {
+      "id": "lst4",
+      "front": "46) Regarding Lymphoma Management Protocols: Role of surgery in lymphoma? Diagnosis?",
+      "back": "Role of surgery: Strictly diagnostic (Excisional biopsy of lymph node). Not for debulking.\n\nDiagnosis: Excisional tissue biopsy is the gold standard."
+    },
+    {
+      "id": "lst5",
+      "front": "46) Regarding Lymphoma Management Protocols: Compression manifestation (obstruction)?",
+      "back": "Superior Vena Cava (SVC) syndrome, mediastinal mass airway obstruction, or intussusception."
+    },
+    {
+      "id": "lst6",
+      "front": "46) Regarding Lymphoma Management Protocols: Role of radiotherapy in lymphoma HL, before splenectomy?",
+      "back": "Involved-field radiotherapy is often used in Hodgkin Lymphoma as consolidation therapy for bulky disease."
+    },
+    {
+      "id": "lst7",
+      "front": "47) Case Scenario: A 3-year-old male... rapidly growing mass in left side of abdomen. Pink tinge to urine (hematuria). Mass with smooth, regular margins that did not cross the midline. What are needed in general and abdominal examination?",
+      "back": "General examination: Check Blood Pressure (hypertension), look for congenital anomalies (Aniridia, Hemihypertrophy).\n\nAbdominal examination: Very gentle palpation to confirm the mass (Do NOT palpate vigorously to avoid tumor spillage)."
+    },
+    {
+      "id": "lst8",
+      "front": "47) Case Scenario (3-year-old with abdominal mass): DD (Differential Diagnosis)? Investigations?",
+      "back": "DD: Wilms tumor, Neuroblastoma, Hydronephrosis.\n\nInvestigations: Abdominal Ultrasound, CT of abdomen & pelvis, CT chest, Urinalysis."
+    }
+  ],
+  "Acquired Bleeding & DIC": [],
+  "Safe Blood Transfusion & Complications": [],
+
+  "Acute Rheumatic Fever (ARF)": [
+    {
+      "id": "arf1",
+      "front": "25) What are the diagnostic criteria of rheumatic fever?",
+      "back": "Jones Criteria: Diagnosis requires evidence of a preceding Group A Streptococcal infection (e.g., positive throat culture, positive rapid strep test, or elevated ASO titer) PLUS either:\n\nTwo Major criteria, OR\n\nOne Major criterion and Two Minor criteria."
+    },
+    {
+      "id": "arf2",
+      "front": "46) Enumerate 2 major and 2 minor criteria of acute rheumatic fever:",
+      "back": "2 Major criteria: 1. Carditis. 2. Polyarthritis. (أو Chorea, Erythema marginatum, Subcutaneous nodules).\n\n2 Minor criteria: 1. Fever. 2. Elevated acute phase reactants (High ESR or High CRP). (أو Polyarthralgia, Prolonged PR interval on ECG)."
+    }
+  ],
+  "Acyanotic Obstructive Lesions (Aortic Stenosis)": [
+    {
+      "id": "as1",
+      "front": "47) Describe murmur of sever aortic stenosis?",
+      "back": "Harsh Ejection Systolic Murmur, best heard at the aortic area (right upper sternal border) and radiates to the neck (carotids) and apex. It is usually accompanied by a systolic thrill and an early systolic ejection click."
+    }
+  ],
+  "Acyanotic Obstructive Lesions (Pulmonary Stenosis)": [],
+  "Atrial Septal Defect (ASD)": [
+    {
+      "id": "asd1",
+      "front": "From Comparison Table: Compare between ASD and VSD regarding: Chambers that will dilate",
+      "back": "ASD: Right Atrium (RA) and Right Ventricle (RV).\n\nVSD: Left Atrium (LA) and Left Ventricle (LV)."
+    },
+    {
+      "id": "asd2",
+      "front": "From Comparison Table: Compare between ASD and VSD regarding: Murmur",
+      "back": "ASD: Ejection systolic murmur at the pulmonary area + Wide fixed splitting of the 2nd heart sound (S2).\n\nVSD: Harsh holosystolic (pansystolic) murmur at the left lower sternal border."
+    },
+    {
+      "id": "asd3",
+      "front": "From Comparison Table: Compare between ASD and VSD regarding: Indications of surgical closure",
+      "back": "ASD: Significant left-to-right shunt (Qp:Qs > 1.5:1) causing RV volume overload (usually done electively at 3-5 years of age).\n\nVSD: Uncontrolled heart failure, elevated pulmonary vascular resistance (pulmonary hypertension), or significant shunt."
+    }
+  ],
+  "CHD Introduction & Etiological Classifications": [],
+  "Coarctation of the Aorta (CoA)": [
+    {
+      "id": "coa1",
+      "front": "26) From case study (2-week-old neonate with weak femoral pulses and severe narrowing of the aorta): 1. Explain why symptoms appeared after the first week of life rather than immediately after birth.",
+      "back": "Because the presence of the Patent Ductus Arteriosus (PDA) during the first few days of life provides a bypass for blood to reach the descending aorta, masking the severe obstruction. When the ductus arteriosus naturally closes after the first week, the severe narrowing (coarctation) is unmasked, leading to sudden hypoperfusion of the lower body and severe symptoms (ductal-dependent systemic circulation)."
+    },
+    {
+      "id": "coa2",
+      "front": "Case study (2-week-old neonate with weak femoral pulses...): 2. Identify the ECG findings most likely to be present in this neonate.",
+      "back": "Right Ventricular Hypertrophy (RVH) is commonly seen in neonates with severe CoA (because the RV was pumping against systemic resistance in utero via the PDA)."
+    },
+    {
+      "id": "coa3",
+      "front": "Case study (2-week-old neonate with weak femoral pulses...): 3. Describe the immediate management required.",
+      "back": "Continuous IV infusion of Prostaglandin E1 (PGE1) to keep the ductus arteriosus open (to maintain systemic perfusion).\n\nInotropic support and Diuretics (to manage heart failure).\n\nCorrection of metabolic acidosis.\n\nUrgent surgical repair or balloon angioplasty once stabilized."
+    }
+  ],
+  "Complete Transposition of the Great Arteries (TGA)": [
+    {
+      "id": "tga1",
+      "front": "25) From Comparison Tables: Compare between Tetralogy of Fallot and Transposition of Great Arteries (TGA) regarding: 1- Time of Clinical Presentation (Onset of cyanosis)",
+      "back": "TOF: Gradual onset, usually appears after the neonatal period (around 3 to 6 months of age), unless severe (pulmonary atresia).\n\nTGA: Immediate, early neonatal period (first hours/days of life)."
+    },
+    {
+      "id": "tga2",
+      "front": "25) From Comparison Tables: Compare between TOF and TGA regarding: 2- Cardiac X-Ray Findings",
+      "back": "TOF: Boot-shaped heart (Coeur en sabot) with oligemic (dark) lung fields due to decreased pulmonary blood flow.\n\nTGA: Egg-shaped heart (Egg on a string appearance) with plethoric (congested) lung fields due to increased pulmonary blood flow."
+    },
+    {
+      "id": "tga3",
+      "front": "25) From Comparison Tables: Compare between TOF and TGA regarding: 3- Lines of treatment / Best Time for Complete Surgical repair",
+      "back": "TOF: Medical: Management of hypoxic spells. Surgical: Palliative (Blalock-Taussig shunt) if needed early. Complete repair (VSD closure + RVOT enlargement) is best done electively at 6 - 12 months of age.\n\nTGA: Medical: Prostaglandin E1 (to keep PDA open) +/- Balloon atrial septostomy (Rashkind procedure) to improve mixing. Surgical: Complete repair (Arterial Switch Operation / Jatene procedure) is best done within the first 1 to 2 weeks of life."
+    }
+  ],
+  "Patent Ductus Arteriosus (PDA)": [],
+  "Pediatric Heart Failure (HF)": [
+    {
+      "id": "phf1",
+      "front": "20) 3 clinical signs of left sided heart failure.",
+      "back": "Tachypnea (Respiratory distress/orthopnea).\n\nTachycardia (with gallop rhythm).\n\nPulmonary congestion findings (Crackles/crepitations on chest auscultation)."
+    },
+    {
+      "id": "phf2",
+      "front": "10) Define Heart failure",
+      "back": "Definition: It is the inability of the heart to pump an adequate amount of blood to meet the metabolic and oxygen demands of the body."
+    },
+    {
+      "id": "phf3",
+      "front": "10) Enumerate 3 mechanisms of HF in Pediatric.",
+      "back": "Volume overload (e.g., left-to-right shunts like VSD, PDA).\n\nPressure overload (e.g., obstructive lesions like Aortic stenosis, Coarctation of the aorta).\n\nMyocardial dysfunction / Pump failure (e.g., Myocarditis, Cardiomyopathies)."
+    },
+    {
+      "id": "phf4",
+      "front": "19) Enumerate types of heart failure.",
+      "back": "Left-sided vs. Right-sided vs. Biventricular heart failure.\n\nSystolic vs. Diastolic heart failure.\n\nHigh output vs. Low output heart failure."
+    },
+    {
+      "id": "phf5",
+      "front": "Q4) Enumerate 3 cardiac lesions that cause this condition (heart failure).",
+      "back": "Ventricular Septal Defect (VSD).\n\nPatent Ductus Arteriosus (PDA).\n\nCoarctation of the Aorta (CoA).\n(ويمكن ذكر Myocarditis أو Rheumatic carditis)."
+    },
+    {
+      "id": "phf6",
+      "front": "Q2) Explain 3 lines of treatment (for heart failure case).",
+      "back": "Diuretics: (e.g., Furosemide/Lasix) to decrease preload and relieve pulmonary/systemic congestion.\n\nInotropes: (e.g., Digoxin) to increase myocardial contractility.\n\nAfterload Reducing Agents: (e.g., ACE inhibitors like Captopril/Enalapril) to decrease peripheral resistance and improve cardiac output.\n(ويمكن إضافة: General measures like semi-sitting position, oxygen therapy, and treating the underlying cause)."
+    }
+  ],
+  "Tetralogy of Fallot (TOF) & Hypercyanotic Spells": [
+    {
+      "id": "tof1",
+      "front": "25) From Comparison Tables: Compare between Tetralogy of Fallot and Transposition of Great Arteries (TGA) regarding: 1- Time of Clinical Presentation (Onset of cyanosis)",
+      "back": "TOF: Gradual onset, usually appears after the neonatal period (around 3 to 6 months of age), unless severe (pulmonary atresia).\n\nTGA: Immediate, early neonatal period (first hours/days of life)."
+    },
+    {
+      "id": "tof2",
+      "front": "25) From Comparison Tables: Compare between TOF and TGA regarding: 2- Cardiac X-Ray Findings",
+      "back": "TOF: Boot-shaped heart (Coeur en sabot) with oligemic (dark) lung fields due to decreased pulmonary blood flow.\n\nTGA: Egg-shaped heart (Egg on a string appearance) with plethoric (congested) lung fields due to increased pulmonary blood flow."
+    },
+    {
+      "id": "tof3",
+      "front": "25) From Comparison Tables: Compare between TOF and TGA regarding: 3- Lines of treatment / Best Time for Complete Surgical repair",
+      "back": "TOF: Medical: Management of hypoxic spells. Surgical: Palliative (Blalock-Taussig shunt) if needed early. Complete repair (VSD closure + RVOT enlargement) is best done electively at 6 - 12 months of age.\n\nTGA: Medical: Prostaglandin E1 (to keep PDA open) +/- Balloon atrial septostomy (Rashkind procedure) to improve mixing. Surgical: Complete repair (Arterial Switch Operation / Jatene procedure) is best done within the first 1 to 2 weeks of life."
+    },
+    {
+      "id": "tof4",
+      "front": "23) Regarding cyanotic (Tet) spell that may occur in patient with tetralogy of Fallot: 1. Explain the cause of its occurrence.",
+      "back": "It is caused by a sudden spasm/increase in the Right Ventricular Outflow Tract (RVOT) obstruction, OR a sudden drop in systemic vascular resistance (SVR). This forces more deoxygenated blood from the right ventricle to shunt across the VSD into the left ventricle and aorta (increased right-to-left shunt), leading to severe hypoxia and cyanosis."
+    },
+    {
+      "id": "tof5",
+      "front": "23) Regarding cyanotic (Tet) spell that may occur in patient with tetralogy of Fallot: 2. Enumerate 6 lines of treatment.",
+      "back": "Place the child in the Knee-chest position (to increase systemic vascular resistance).\n\nAdminister Oxygen (100%) via face mask.\n\nMorphine (IV or Subcutaneous) to calm the child and relieve infundibular spasm.\n\nIV fluids to expand intravascular volume.\n\nBeta-blockers (IV Propranolol/Esmolol) to relax the right ventricular outflow tract muscle.\n\nSodium bicarbonate (IV) to correct metabolic acidosis."
+    }
+  ],
+  "Ventricular Septal Defect (VSD) -1": [
+    {
+      "id": "vsd1",
+      "front": "24) From case study (3-month-old boy with tachypnea, retractions, and a 4/6 harsh holosystolic murmur): 1. What is the most appropriate diagnosis?",
+      "back": "Ventricular Septal Defect (VSD) - Moderate to Large."
+    },
+    {
+      "id": "vsd2",
+      "front": "Case study (3-month-old boy with tachypnea...): 2. Enumerate 2 complications that may occur in this case?",
+      "back": "Congestive Heart Failure (CHF).\n\nRecurrent chest infections (Bronchopneumonia).\n(ويمكن إضافة: Pulmonary hypertension, Infective endocarditis)."
+    },
+    {
+      "id": "vsd3",
+      "front": "Case study (3-month-old boy with tachypnea...): 3. Describe lines of treatment of this case?",
+      "back": "Medical Treatment (Anti-failure measures): Diuretics (e.g., Furosemide) to reduce preload, ACE inhibitors (e.g., Captopril) to reduce afterload, and Digoxin. Nutritional support (high caloric formula).\n\nSurgical Treatment: Surgical patch closure (indicated if severe heart failure not controlled by medical treatment or development of pulmonary hypertension)."
+    },
+    {
+      "id": "vsd4",
+      "front": "From Comparison Table: Compare between ASD and VSD regarding: Chambers that will dilate",
+      "back": "ASD: Right Atrium (RA) and Right Ventricle (RV).\n\nVSD: Left Atrium (LA) and Left Ventricle (LV)."
+    },
+    {
+      "id": "vsd5",
+      "front": "From Comparison Table: Compare between ASD and VSD regarding: Murmur",
+      "back": "ASD: Ejection systolic murmur at the pulmonary area + Wide fixed splitting of the 2nd heart sound (S2).\n\nVSD: Harsh holosystolic (pansystolic) murmur at the left lower sternal border."
+    },
+    {
+      "id": "vsd6",
+      "front": "From Comparison Table: Compare between ASD and VSD regarding: Indications of surgical closure",
+      "back": "ASD: Significant left-to-right shunt (Qp:Qs > 1.5:1) causing RV volume overload (usually done electively at 3-5 years of age).\n\nVSD: Uncontrolled heart failure, elevated pulmonary vascular resistance (pulmonary hypertension), or significant shunt."
+    }
+  ],
+  "Ventricular Septal Defect (VSD) - 2": [],
+
+  "Acute Diarrhea & Dehydration Assessment": [
+    {
+      "id": "adda1",
+      "front": "2) Mention 3 causes of persistent diarrhea.",
+      "back": "Post-gastroenteritis syndrome (e.g., secondary lactose intolerance).\n\nCow's milk protein allergy.\n\nCeliac disease (or Immunodeficiency / Malnutrition)."
+    },
+    {
+      "id": "adda2",
+      "front": "5) Enumerate 4 signs of severe dehydration.\n(حسب بروتوكول IMCI المعتمد)",
+      "back": "Lethargic or unconscious.\n\nSunken eyes.\n\nNot able to drink or drinking poorly.\n\nSkin pinch goes back very slowly (≥ 2 seconds)."
+    },
+    {
+      "id": "adda3",
+      "front": "Case Study: Ahmed is a 2-year-old boy complaining of diarrhea for 5 days. He seems irritable, drinks eagerly, and his skin pinch goes back slowly. According to IMCI: 1. Assess the case.",
+      "back": "The child has two signs from the yellow row (Irritable, drinks eagerly, skin pinch goes back slowly)."
+    },
+    {
+      "id": "adda4",
+      "front": "Case Study: Ahmed is a 2-year-old boy... 2. Classify the degree of dehydration.",
+      "back": "Some Dehydration."
+    },
+    {
+      "id": "adda5",
+      "front": "Case Study: Ahmed is a 2-year-old boy... 3. Name the plan of management.",
+      "back": "Plan B (Oral Rehydration Therapy - ORS)."
+    },
+    {
+      "id": "adda6",
+      "front": "Case Study: A 6-month-old with 5 days of watery diarrhea (8 stools/day), vomiting, and poor feeding. The mother notices sunken eyes. 1. Is this acute or persistent diarrhea?",
+      "back": "Acute diarrhea (because it is less than 14 days)."
+    },
+    {
+      "id": "adda7",
+      "front": "Case Study: A 6-month-old with 5 days of watery diarrhea... 2. What signs of dehydration are present?",
+      "back": "Poor feeding (not able to drink/drinking poorly) and sunken eyes."
+    },
+    {
+      "id": "adda8",
+      "front": "Case Study: A 6-month-old with 5 days of watery diarrhea... 3. Which WHO plan is appropriate?",
+      "back": "Plan C (Intravenous fluids), as these signs indicate Severe Dehydration."
+    }
+  ],
+  "Diarrhea Management & Rehydration Protocols": [
+    {
+      "id": "dmrp1",
+      "front": "3) Mention three Complications of gastroenteritis? / 1) Enumerate metabolic complications of diarrhea.",
+      "back": "Dehydration.\n\nElectrolyte imbalance (Hypernatremia, Hyponatremia, Hypokalemia).\n\nMetabolic acidosis.\n\nPrerenal acute renal failure."
+    },
+    {
+      "id": "dmrp2",
+      "front": "2) TTT (Treatment) of diarrhea.",
+      "back": "Rehydration (Plan A, B, or C according to the degree of dehydration).\n\nZinc supplementation (reduces severity and duration).\n\nContinued feeding (do not stop breast milk or food).\n\nAntibiotics ONLY for specific indications (e.g., dysentery, cholera)."
+    },
+    {
+      "id": "dmrp3",
+      "front": "3) Which element to give in diarrhea.",
+      "back": "Zinc."
+    },
+    {
+      "id": "dmrp4",
+      "front": "5) Enumerate complications of diarrhea.",
+      "back": "Dehydration, electrolyte disturbances, metabolic acidosis, acute kidney injury."
+    }
+  ],
+  "Pediatric Inflammatory Bowel Disease (IBD)": [
+    {
+      "id": "pibd1",
+      "front": "2) TTT (Treatment) of UC (Ulcerative Colitis):",
+      "back": "Medical: Aminosalicylates (e.g., Mesalamine), Corticosteroids (for acute flares), Immunomodulators (Azathioprine), Biologics (Infliximab).\n\nSurgical: Colectomy (which is curative in UC)."
+    },
+    {
+      "id": "pibd2",
+      "front": "4) Which is characteristic in Crohn's disease: / 5) Crohn's disease is characterized by:",
+      "back": "Transmural inflammation.\n\nSkip lesions (discontinuous).\n\nCan affect any part of the GIT from mouth to anus (mostly terminal ileum).\n\nNon-caseating granulomas on biopsy.\n\nCobblestone appearance of the mucosa.\n\nPerianal diseases (fistulas, fissures)."
+    },
+    {
+      "id": "pibd3",
+      "front": "2) Compare between ulcerative colitis and Crohn's disease regarding the site of GIT affected in each and the layer of GIT wall affected.",
+      "back": "Site:\nUC: Confined to the colon and rectum (continuous inflammation).\nCrohn's: Any part of the GIT from mouth to anus (commonly terminal ileum/cecum) with skip lesions.\n\nLayer:\nUC: Affects mucosa and submucosa only.\nCrohn's: Transmural (affects all layers of the wall)."
+    },
+    {
+      "id": "pibd4",
+      "front": "3) Regarding Ulcerative Colitis: Enumerate three diagnostic criteria.",
+      "back": "1) Bloody diarrhea with tenesmus. 2) Continuous mucosal inflammation starting from the rectum on colonoscopy. 3) Crypt abscesses on biopsy."
+    },
+    {
+      "id": "pibd5",
+      "front": "3) Regarding Ulcerative Colitis: Mention two treatment lines and their indications.",
+      "back": "1) Medical (Corticosteroids for inducing remission during flare-ups / Aminosalicylates for maintenance).\n2) Surgical (Colectomy indicated in toxic megacolon, severe refractory cases, or dysplasia)."
+    },
+    {
+      "id": "pibd6",
+      "front": "2) Case Study: Male patient, 24 years old presented with diarrhea for 3 months with weight loss of 7 kg... Colonoscopy revealed linear ulcerations with cobblestone appearance in colon and terminal ileum. What is the diagnosis?",
+      "back": "Crohn's Disease."
+    },
+    {
+      "id": "pibd7",
+      "front": "Case Study (Crohn's Disease): How to confirm your diagnosis?",
+      "back": "Intestinal Biopsy (to detect transmural inflammation and non-caseating granulomas)."
+    },
+    {
+      "id": "pibd8",
+      "front": "Case Study (Crohn's Disease): Outline the management of this patient.",
+      "back": "Nutritional support, Medical therapy (Corticosteroids for remission, Immunosuppressants like Azathioprine, Biologics like Infliximab), and Surgery only if complications occur (like strictures or fistulas)."
+    }
+  ],
+  "GERD & Hypertrophic Pyloric Stenosis (CHIPS)": [
+    {
+      "id": "ghps1",
+      "front": "1) Gold standard investigation for HPS (Hypertrophic Pyloric Stenosis)?",
+      "back": "Abdominal Ultrasound (showing thickened and elongated pyloric muscle / target sign)."
+    }
+  ],
+  "Hirschsprung Disease vs. Functional Constipation": [
+    {
+      "id": "hdfc1",
+      "front": "5) Which is characteristic in Hirschsprung's disease:",
+      "back": "Delayed passage of meconium (>48 hours after birth).\n\nAbdominal distension and bilious vomiting.\n\nEmpty ampulla of rectum on digital rectal examination (DRE), followed by an explosive discharge of stool and gas upon withdrawal of the finger."
+    },
+    {
+      "id": "hdfc2",
+      "front": "6) Compare between functional constipation and Hirschsprung disease.",
+      "back": "Onset: Functional (Toddler/preschool age); Hirschsprung (Since birth/neonatal period).\n\nMeconium passage: Functional (Normal); Hirschsprung (Delayed >48 hours).\n\nFecal soiling (Encopresis): Functional (Common); Hirschsprung (Rare).\n\nRectal exam: Functional (Ampulla full of stool); Hirschsprung (Empty tight ampulla)."
+    },
+    {
+      "id": "hdfc3",
+      "front": "2) Regarding Encopresis: Define the condition.",
+      "back": "It is fecal incontinence or repetitive voluntary/involuntary passage of stool in inappropriate places in a child ≥ 4 years old (after toilet training age)."
+    },
+    {
+      "id": "hdfc4",
+      "front": "2) Regarding Encopresis: Enumerate causes of encopresis.",
+      "back": "Chronic functional constipation (overflow incontinence), psychological/emotional distress, lack of proper toilet training."
+    },
+    {
+      "id": "hdfc5",
+      "front": "2) Regarding Encopresis: Outline the treatment.",
+      "back": "1) Disimpaction (using enemas or high-dose PEG).\n2) Maintenance therapy (Laxatives like PEG/Lactulose for months).\n3) Behavioral modification (scheduled toilet sitting after meals)."
+    },
+    {
+      "id": "hdfc6",
+      "front": "2) Regarding Encopresis: How to diagnose?",
+      "back": "Detailed history & physical examination (palpable fecal mass in abdomen, stool in rectum on DRE), occasionally Abdominal X-ray to confirm fecal loading."
+    }
+  ],
+  "Acute & Recurrent Abdominal Pain (RAP)": [
+    {
+      "id": "arap1",
+      "front": "4) Enumerate 4 items of red flags of abdominal pain.",
+      "back": "Unexplained weight loss or growth failure.\n\nGastrointestinal bleeding (hematemesis, melena, or hematochezia).\n\nPain that awakens the child from sleep.\n\nChronic severe diarrhea or unexplained fever."
+    }
+  ],
+  "Acute Viral & Autoimmune Hepatitis": [
+    {
+      "id": "avah1",
+      "front": "3) Which indicates long immunity in HAV:",
+      "back": "Positive Anti-HAV IgG."
+    },
+    {
+      "id": "avah2",
+      "front": "1) Mention 3 hepatotropic viruses that have a vaccine.",
+      "back": "Hepatitis A Virus (HAV).\n\nHepatitis B Virus (HBV).\n(الفيروس الثالث هو Hepatitis E (HEV) حيث يوجد له لقاح معتمد في بعض الدول، ويمكن ذكر الفيروسات الأخرى بشكل عام ولكن HAV و HBV هما الأساس)."
+    },
+    {
+      "id": "avah3",
+      "front": "7) Case Study: A 10-year-old female patient presents to pediatric clinic with malaise... swelling in both knees... jaundice... AST and ALT of 250 and 180... positive LKM antibodies. What is the most likely diagnosis?",
+      "back": "Autoimmune Hepatitis (Type 2, indicated by positive anti-LKM-1 antibodies)."
+    },
+    {
+      "id": "avah4",
+      "front": "Case Study (Autoimmune Hepatitis): What is the best approach to the treatment of the patient?",
+      "back": "Immunosuppressive therapy using Corticosteroids (Prednisone) alone or in combination with Azathioprine."
+    },
+    {
+      "id": "avah5",
+      "front": "7) List 2 serum autoantibodies positive in autoimmune hepatitis.",
+      "back": "ANA (Anti-nuclear antibody) - Type 1.\n\nASMA (Anti-smooth muscle antibody) - Type 1.\n\nAnti-LKM-1 (Anti-liver kidney microsomal antibody) - Type 2."
+    }
+  ],
+  "Hepatomegaly & Hepatosplenomegaly (HSM)": [
+    {
+      "id": "hsm1",
+      "front": "Enumerate five causes of pediatric hepatomegaly.",
+      "back": "Infections (e.g., Viral hepatitis, TORCH infections, Malaria).\n\nStorage diseases (e.g., Gaucher disease, Glycogen storage disease).\n\nMalignancy (e.g., Leukemia, Lymphoma, Neuroblastoma).\n\nCongestion (e.g., Congestive heart failure).\n\nBiliary tract diseases (e.g., Biliary atresia)."
+    }
+  ],
+  "Gastrointestinal Bleeding (UGIB & LGIB)": [
+    {
+      "id": "gib1",
+      "front": "6) Heartburn, bloody diarrhea, no other complaints; next step of investigations?",
+      "back": "Stool analysis & culture (to rule out infectious colitis), followed by Colonoscopy with biopsy (to confirm Inflammatory Bowel Disease like Ulcerative Colitis)."
+    },
+    {
+      "id": "gib2",
+      "front": "1) Case of upper GI bleeding due to duodenal ulcer treatment by:",
+      "back": "Proton Pump Inhibitors (PPIs).\n\nEndoscopic therapy (if active bleeding is present).\n\nEradication of H. pylori if tests are positive (using a combination of PPI + 2 Antibiotics like Amoxicillin and Clarithromycin)."
+    }
+  ],
+  "Inborn Errors of Metabolism & Phenylketonuria (PKU)": [],
+  "COW MILK ALLERGY & LACTOSE INTOLERANCE": [],
+
+  "INTRODUCTION TO ENDOCRINE SYSTEM": [
+    {
+      "id": "ies1",
+      "front": "54) Mention three releasing hormones secreted from hypothalamus.",
+      "back": "Growth hormone-releasing hormone (GHRH).\n\nThyrotropin-releasing hormone (TRH).\n\nCorticotropin-releasing hormone (CRH).\n(ويمكن أيضاً إضافة Gonadotropin-releasing hormone (GnRH))."
+    }
+  ],
+  "SHORT STATURE & TALL STATURE": [
+    {
+      "id": "ssts1",
+      "front": "2) What are the red flags that suggest a pathological cause of short stature?",
+      "back": "Severe short stature (Height is far below the 3rd percentile / < -3 SD).\n\nAbnormal or decreased growth velocity (Crossing centile lines downwards).\n\nDisproportionate short stature (abnormal upper/lower segment ratio).\n\nPresence of dysmorphic features or congenital anomalies.\n\nSigns of chronic systemic diseases (e.g., chronic diarrhea, heart murmur, pallor).\n\nMarkedly delayed bone age."
+    },
+    {
+      "id": "ssts2",
+      "front": "53) Mention three causes of primary pathological short stature.",
+      "back": "Genetic / Chromosomal abnormalities: e.g., Turner syndrome, Down syndrome.\n\nSkeletal dysplasias: e.g., Achondroplasia.\n\nIntrauterine growth restriction (IUGR): Failure of catch-up growth."
+    }
+  ],
+  "THYROID GLAND DISORDERS": [
+    {
+      "id": "tgd1",
+      "front": "56) Mention three radiological findings in hypothyroidism.",
+      "back": "Markedly delayed bone age.\n\nEpiphyseal dysgenesis (fragmentation or stippling of the epiphyses).\n\nEnlarged cardiac shadow (Cardiomegaly) which may be due to pericardial effusion.\n(يمكن أيضاً ذكر Anterior beaking of the vertebrae)."
+    },
+    {
+      "id": "tgd2",
+      "front": "57) A 5-month-old girl presented with a history of constipation, delayed developmental Milestones. She had a history of neonatal prolonged jaundice, On examination she Pale, hypoactive has an opened mouth with large tongue:\na. What is the most likely diagnosis?",
+      "back": "Congenital Hypothyroidism."
+    },
+    {
+      "id": "tgd3",
+      "front": "57) b. What is the diagnostic investigation in this case?",
+      "back": "Thyroid profile: Serum TSH (which will be markedly elevated) and Free T4 (which will be decreased)."
+    },
+    {
+      "id": "tgd4",
+      "front": "57) c. What is the treatment?",
+      "back": "Life-long replacement therapy with oral L-thyroxine (Levothyroxine)."
+    },
+    {
+      "id": "tgd5",
+      "front": "From Case Study (5 month old girl with constipation, delayed developmental milestones, prolonged jaundice, pale, hypoactive, opened mouth with large tongue): 1. What is the most likely diagnosis?",
+      "back": "Congenital Hypothyroidism."
+    },
+    {
+      "id": "tgd6",
+      "front": "From Case Study: 2. What is the diagnostic investigation in this case?",
+      "back": "Serum TSH and Free T4 levels."
+    },
+    {
+      "id": "tgd7",
+      "front": "From Case Study: 3. What is the treatment?",
+      "back": "L-thyroxine (Levothyroxine) replacement therapy."
+    }
+  ],
+  "PARATHYROID GLAND DISORDERS": [],
+  "PUBERTY and DISORDERS": [],
+  "ADRENAL GLAND DISORDERS & CUSHING SYNDROME": [],
+  "DIABETES MELLITUS (DM) DIABETIC KETOACIDOSIS (DKA)": [
+    {
+      "id": "dm1",
+      "front": "55) Enumerate 3 Diagnostic criteria of Type 1 Diabetes Mellitus:",
+      "back": "Fasting plasma glucose ≥ 126 mg/dL (7.0 mmol/L).\n\nRandom plasma glucose ≥ 200 mg/dL (11.1 mmol/L) with classic symptoms of hyperglycemia (polyuria, polydipsia, weight loss).\n\n2-hour plasma glucose ≥ 200 mg/dL during an Oral Glucose Tolerance Test (OGTT).\n(يمكن إضافة HbA1c ≥ 6.5%)."
+    },
+    {
+      "id": "dm2",
+      "front": "Case Study 1: 5-year-old son with confusion, tachycardia, hypotension, slow deep respirations, weight loss, thirst, frequent urination, and new onset of nocturnal enuresis. 1. What is the most likely diagnosis?",
+      "back": "Diabetic Ketoacidosis (DKA) as the first presentation of Type 1 Diabetes Mellitus."
+    },
+    {
+      "id": "dm3",
+      "front": "Case Study 1: 2. What is the best therapy?",
+      "back": "IV fluid resuscitation (rehydration with normal saline).\n\nContinuous intravenous infusion of regular insulin.\n\nCorrection of electrolytes disturbances (specifically Potassium replacement)."
+    },
+    {
+      "id": "dm4",
+      "front": "Case Study 2: 9-year-old boy presenting with vomiting and abdominal pain, polyuria starting 2 months ago, weight loss, deep rapid breathing with respiratory rate 50/m. 1. What is the most likely diagnosis?",
+      "back": "Diabetic Ketoacidosis (DKA). (Note: The deep rapid breathing is Kussmaul breathing, a sign of metabolic acidosis)."
+    },
+    {
+      "id": "dm5",
+      "front": "Case Study 2: 2. What are the investigations?",
+      "back": "Blood glucose level (Hyperglycemia).\n\nArterial blood gases (Metabolic acidosis: Low pH and low HCO3).\n\nUrine analysis (Glycosuria and Ketonuria).\n\nSerum electrolytes (Na, K) and Serum Ketones."
+    },
+    {
+      "id": "dm6",
+      "front": "Case Study 2: 3. What is the treatment?",
+      "back": "Admission to ICU/hospital.\n\nGradual IV fluid replacement (to correct dehydration and prevent cerebral edema).\n\nIntravenous regular insulin therapy.\n\nPotassium replacement (as total body potassium is depleted)."
+    }
+  ],
+  "CHILDHOOD OBESITY": [
+    {
+      "id": "co1",
+      "front": "1) Enumerate indication for Bariatric surgery in pediatrics?",
+      "back": "BMI ≥ 35 kg/m² associated with severe comorbidities (e.g., Type 2 Diabetes Mellitus, severe obstructive sleep apnea, pseudotumor cerebri).\n\nBMI ≥ 40 kg/m² with milder comorbidities.\n\nPhysical maturity (usually reached Tanner stage IV or V, and near final adult height).\n\nFailure of a multidisciplinary weight loss program (diet, exercise, behavioral modifications) for at least 6 months.\n\nPsychological capability of the patient and family to adhere to strict post-operative dietary rules."
+    }
   ],
 
-  'DEVELOPMENTAL MILESTONES & NEURODEVELOPMENT': [
+  "INTRODUCTION TO GENETICS & BASIC CONCEPTS": [
     {
-      id: 'dm1',
-      front: '55) Mention Developmental milestones at age of 9 months.',
-      back: 'Gross Motor: Creeps and pulls themselves up into a standing position.\nFine Motor: Pincer grip using thumb and index finger.\nLanguage: Says "dada" and "mama" non-specifically.\nSocial: Actively explores their immediate surroundings.',
+      "id": "ig1",
+      "front": "1) Define Crossing over and when it occurs.",
+      "back": "Definition: Chromatids change parts between homologous chromatids during the meiosis, and this causes redistribution of the heredity material.\n\nWhen it occurs: During meiosis."
     },
     {
-      id: 'dm2',
-      front: '52) Mention 6 warning signs of infant development.',
-      back: '1. Discrepant head size or crossing centile lines (too large or too small).\n2. Persistence of primitive reflexes beyond 6 months of age.\n3. Complete absence of response to the environment or parent by 12 months.\n4. Failure to walk independently by 18 months.\n5. Complete absence of clear spoken words by 18 months.\n6. Failure to produce two-word sentences by 2 years of age.\n7. Pronounced problems with social interaction at 3 years of age.',
+      "id": "ig2",
+      "front": "2) Enumerate 4 differences between meiosis and mitosis.",
+      "back": "Mitosis:\n1. Division of somatic cells.\n2. Produces two daughter cells from one parent cell.\n3. The number of chromosomes does not change (Diploid).\n4. Takes 1-2 hours.\n\nMeiosis:\n1. Occurs only in gamete formation.\n2. One diploid parent cell produces four haploid gametocytes.\n3. Mature gametocytes have 23 chromosomes (Haploid/n).\n4. Crossing over occurs during this division."
+    }
+  ],
+  "CHROMOSOMAL ABERRATIONS & DISORDERS": [
+    {
+      "id": "cad1",
+      "front": "1) Enumerate Complications of Turner Syndrome.",
+      "back": "Renal anomalies.\n\nCoarctation of the aorta & bicuspid aortic valve.\n\nGonadal dysgenesis leading to infertility & primary amenorrhea.\n\nIncreased risk of hypertension.\n\nLung hypoplasia (intrauterine)."
     },
+    {
+      "id": "cad2",
+      "front": "2) Enumerate Types of structural aberrations of chromosomes.",
+      "back": "Translocation (reciprocal or Robertsonian, balanced or unbalanced).\n\nDeletions.\n\nDuplications.\n\nInversion (pericentric or paracentric).\n\nIsochromosome.\n\nDicentric chromosome.\n\nRing chromosomes."
+    },
+    {
+      "id": "cad3",
+      "front": "3) Define major anomaly and give an example.",
+      "back": "Definition: Abnormality that has medical, surgical, or cosmetic significance so it increases the risk of disability, morbidity or mortality.\n\nExample: Congenital heart defects (like VSD in Down syndrome) or Cleft lip +/- palate (in Patau syndrome)."
+    },
+    {
+      "id": "cad4",
+      "front": "4) Define aneuploidy and give an example.",
+      "back": "Definition: A change in the chromosome number that does not involve the entire set and involves trisomy (2n+1), monosomy (2n-1) or nullisomy (2n-2).\n\nExample: Down syndrome (Trisomy 21) or Turner Syndrome (Monosomy 45,X)."
+    },
+    {
+      "id": "cad5",
+      "front": "5) Mention 3 karyotyping styles for Down syndrome.",
+      "back": "Nondisjunction Type (94%).\n\nTranslocation type (3-4%).\n\nMosaic type (1-2%)."
+    },
+    {
+      "id": "cad6",
+      "front": "6) Explain the presence of delayed puberty in 45 X syndrome.",
+      "back": "Due to Gonadal dysgenesis, which leads to infertility, primary amenorrhea, and a lack of development of secondary sexual characteristics (absence of breast development and failure to menstruate)."
+    },
+    {
+      "id": "cad7",
+      "front": "7) Enumerate 6 dysmorphic features that may affect the head in Down syndrome.",
+      "back": "Upward slanting palpebral fissures.\n\nEpicanthus.\n\nBurchfield spots of iris.\n\nSmall dysplastic pinnae & low set ears.\n\nMid face hypoplasia.\n\nMicrognathia & protruded tongue."
+    },
+    {
+      "id": "cad8",
+      "front": "8) Define Translocation.",
+      "back": "It occurs when a piece of one chromosome breaks off and attaches to another chromosome. It may be reciprocal or Robertsonian, balanced or unbalanced."
+    },
+    {
+      "id": "cad9",
+      "front": "9) Mention 4 different management options for Turner syndrome.",
+      "back": "Early screening for cardiac disease.\n\nGrowth hormone therapy for short stature.\n\nEstrogen replacement at the time of puberty.\n\n(Regular follow-up and monitoring)."
+    },
+    {
+      "id": "cad10",
+      "front": "10) Case Study: A baby presents with upward slanting palpebral fissure, single palmar crease, and hypotonia. The baby is the fourth sibling, and maternal age is 39 years old.\n\nWhat is the most likely diagnosis and its cytogenetic type?",
+      "back": "Diagnosis: Down Syndrome.\n\nCytogenetic type: Nondisjunction Type (The risk increases with advanced maternal age)."
+    },
+    {
+      "id": "cad11",
+      "front": "10) Case Study (Continued): Mention two other congenital anomalies that may be present in this child.",
+      "back": "Congenital heart defects (particularly VSD).\n\nGastrointestinal anomalies (Duodenal/esophageal/anal atresia or Hirschsprung disease)."
+    },
+    {
+      "id": "cad12",
+      "front": "1) Enumerate 5 somatic features that may occur with Down syndrome.",
+      "back": "Short fingers & curved 5th finger.\n\nTransverse palmar crease (Single palmar crease).\n\nWide gap between 1st and 2nd toes.\n\nLax joints including dysplastic hips.\n\nVertebral anomalies including atlantoaxial instability."
+    },
+    {
+      "id": "cad13",
+      "front": "Case Study: A 36-year-old woman with little prenatal care delivers a 3900-g girl. The infant has decreased tone, up-slanting palpebral fissures, epicanthal folds, redundant nuchal skin, fifth finger clinodactyly and brachydactyly, and a single transverse palmar crease.\n\nWhat is the most likely diagnosis? What is the next step in the evaluation? What are the complications?",
+      "back": "Diagnosis: Down Syndrome (Trisomy 21).\n\nNext step: Karyotyping (Chromosomal analysis) to detect numerical or gross structural chromosomal abnormalities.\n\nComplications:\nCardiac: Congenital heart defects (septal defects/VSD).\nCNS: Microcephaly, mental retardation, and premature Alzheimer.\nEndocrine: Hypothyroidism, obesity, insulin resistance.\nGIT: Duodenal atresia, Hirschsprung disease.\nBlood: Leukemia."
+    }
+  ],
+  "CHROMOSOMAL ANALYSIS & FAMILY PEDIGREE": [
+    {
+      "id": "cafp1",
+      "front": "Pedigree Chart Case 1: Draw the family pedigree: 'Ali is 3 years old, He is the 2nd spill of consanguinity marriage, one month ago, he suffers from bleeding after eating beans, His sister died from accident from 6 months'",
+      "back": "طريقة الرسم:\n\nيتم رسم مربع (يمثل الأب) ودائرة (تمثل الأم) ويوصل بينهما بخطين مزدوجين (للدلالة على زواج الأقارب Consanguinity).\n\nيتدلى من هذا الزواج فرعان (الأبناء):\n\nالفرع الأول (الأخت الكبرى التي ماتت): دائرة مشطوب عليها بخط مائل (للدلالة على الوفاة).\n\nالفرع الثاني (علي، المريض بـ G6PD، وهو مرض X-Linked Recessive): يتم رسم مربع مظلل بالكامل (Affected Male) ويوضع بجانبه سهم (للدلالة على أنه الـ Proband/المريض الأساسي). الأم في هذه الحالة يجب أن توضع بداخل دائرتها نقطة لتوضيح أنها (Carrier) حاملة للمرض."
+    },
+    {
+      "id": "cafp2",
+      "front": "Pedigree Chart Case 2: Draw the pedigree of Ahmed who was diagnosed as a neurofibromatosis case with his father complained of the same disease, his mother died in accident, (his parents were consanguineous), he has two sisters.",
+      "back": "طريقة الرسم:\n\nNeurofibromatosis هو مرض (Autosomal Dominant).\n\nيتم رسم مربع مظلل بالكامل يمثل (الأب المصاب)، ودائرة مشطوب عليها مائلاً تمثل (الأم المتوفاة في حادث). يوصل بينهما خطين مزدوجين (زواج أقارب).\n\nيتدلى من هذا الزواج ثلاثة أبناء:\n\nمربع مظلل بالكامل ويمثل (أحمد)، ويوضع بجانبه سهم (Proband).\n\nدائرتان غير مظللتين تمثلان (أختي أحمد)."
+    }
+  ],
+  "PATTERNS OF SINGLE GENE INHERITANCE": [
+    {
+      "id": "psgi1",
+      "front": "1) Explain why a father cannot inherit G6PD to his boys.",
+      "back": "G6PD is an X-Linked Recessive disorder. The defective allele is located on the X-chromosome. Since males pass the Y chromosome to their sons (to make them male) and the X chromosome only to their daughters, affected males will never have affected sons (No male-to-male transmission), but all of their daughters will be carriers of the abnormal gene."
+    }
+  ],
+  "PREVENTIVE GENETICS": [
+    {
+      "id": "pg1",
+      "front": "1) Define Genetic counseling.",
+      "back": "A health service that provides information and support to people who have or may be at risk for genetic disorders. During a consultation, a professional meets with an individual or family to discuss genetic risks or to diagnose, confirm, or rule out a genetic condition."
+    },
+    {
+      "id": "pg2",
+      "front": "2) Enumerate 3 prenatal screening methods for Down syndrome.",
+      "back": "Biochemical markers in maternal serum (Non-invasive): Triple tests (AFP, uE3, HCG).\n\nUltrasound (Non-invasive): to assess nuchal fold thickness and fetal measurements.\n\nInvasive screening tests: Chorionic villus sampling or Amniocentesis."
+    },
+    {
+      "id": "pg3",
+      "front": "3) Why is the Neonatal screening test done through the first 3 to 7 days? And enumerate 2 screening tests.",
+      "back": "Why: Because the baby should be fed at least once. Early detection and treatment results in prevention of irreversible complications before the baby has signs and symptoms.\n\n2 screening tests: Phenylketonuria (PKU) and Congenital Hypothyroidism (CHT)."
+    },
+    {
+      "id": "pg4",
+      "front": "4) Explain the need for genetic counseling for a 40 years old female planning for pregnancy.",
+      "back": "A woman who is pregnant or plans to become pregnant at or after age 35 is considered at high risk. Advanced maternal age (especially over 35-40 years) increases the occurrence of numerical chromosomal aberrations (nondisjunction) such as Down syndrome (Trisomy 21), where the risk reaches 1/20 by age 45. It also increases the risk of spontaneous abortions."
+    },
+    {
+      "id": "pg5",
+      "front": "5) Mention the technique of the heel pricking test.",
+      "back": "Whole blood samples are collected using either the lateral or medial plantar surface of the infant's heel for the puncture site on a filter paper (which is simple to collect, transport, and store)."
+    },
+    {
+      "id": "pg6",
+      "front": "6) Regarding the neonatal screening program in Egypt: Describe the technique of sample withdrawal and its timing. Give 1 example of a screened disease and its measured substance.",
+      "back": "Technique: Whole blood sample from a heel prick on a filter paper.\n\nTiming: Between 24 hours and 7 days after birth (usually 3rd to 7th day).\n\nExample: Congenital hypothyroidism (Measured substance: Thyroid Stimulating Hormone 'TSH')."
+    },
+    {
+      "id": "pg7",
+      "front": "7) Define Neonatal screening.",
+      "back": "It is a public health program designed to screen infants shortly after birth to detect babies at risk for congenital and heritable disorders before they have signs and symptoms, allowing early detection and treatment to prevent irreversible complications."
+    },
+    {
+      "id": "pg8",
+      "front": "8) List 4 methods of invasive prenatal screening tests.",
+      "back": "Chorionic villus sampling.\n\nAmniocentesis.\n\nFetal blood sampling (cordocentesis).\n\nFetoscopy.\n(ويمكن إضافة Fetal tissue sampling خامساً)."
+    },
+    {
+      "id": "pg9",
+      "front": "1) Name 3 examples of diseases screened in newly-born infants.",
+      "back": "Congenital hypothyroidism.\n\nPhenylketonuria.\n\nBlood cell disorders (like Sickle cell anemia or Beta-Thalassemia)."
+    },
+    {
+      "id": "pg10",
+      "front": "2) Name the example of the screened newborn disorder in Egypt.",
+      "back": "Congenital hypothyroidism (and Phenylketonuria)."
+    }
   ],
 
+  "THE FOUNDATIONS OF INFANT FEEDING": [
+    {
+      "id": "fif1",
+      "front": "54) Mention Breast feeding reflexes.",
+      "back": "Milk secretion reflex (prolactin reflex): Suckling stimulates the nerve endings in the nipple leading to stimulation of the anterior pituitary producing prolactin, which stimulates milk production.\n\nMilk ejection or let down reflex (oxytocin reflex): Suckling simulates oxytocin release from the posterior pituitary → contraction of the myoepithelial cells around the lactiferous ducts causing milk ejection.\n\nIn addition, visual, auditory and emotional stimuli affect the cerebral cortex → releasing impulses to the hypothalamus and the pituitary → oxytocin release and milk ejection."
+    }
+  ],
+  "HUMAN MILK (STAGES, COMPOSITION & ADVANTAGES)": [
+    {
+      "id": "hm1",
+      "front": "13) Describe five benefits of breastfeeding (for mothers)?",
+      "back": "Help involution of the birth canal.\n\nNatural method of contraception.\n\nDecrease the incidence of breast cancer.\n\nPsychological advantages and establishing the maternal - infant bond.\n\nConvenience (available anytime, anywhere) and Cheaper."
+    }
+  ],
+  "BREASTFEEDING MANAGEMENT & CHALLENGES": [],
+  "ARTIFICIAL & COMPLEMENTARY FEEDING (WEANING)": [
+    {
+      "id": "acf1",
+      "front": "14) Mention foods avoided in weaning diet.",
+      "back": "Food that causes chocking as nuts, fruits with seeds, potato chips, etc.\n\nArtificial colors and flavored foods.\n\nSalted food might cause hypertension.\n\nJunk food as sweets, candies that deprive the child from taking food that is more nutritious and encourages the desire for sweets.\n\nHighly spiced and fatty food."
+    },
+    {
+      "id": "acf2",
+      "front": "51) Explain why weaning should start after the age of 4 months.",
+      "back": "Breast milk becomes insufficient in Calories, as there is a gap between the intake and the requirement at the age of 4 months.\n\nIt is insufficient in Proteins.\n\nIt is insufficient in Vitamin D.\n\nIt is insufficient in Zinc and Iron after the age of 4-6 months.\n\nWeaning is recommended to avoid caloric, vitamins and mineral deficiency."
+    }
+  ],
+  "PROTEIN ENERGY MALNUTRITION (PEM)": [
+    {
+      "id": "pem1",
+      "front": "15) Describe skin changes in Kwashiorkor and explain its cause.",
+      "back": "Description: Start as erythema hyperpigmentation and desquamation → ulceration, fissuring and crackling. Skin infections & even gangrene are common. The commonest sites: pressure sites (buttocks & back), flexural sites (groin an axilla).\n\nCause: Skin changes may be due to deficiency of essential fatty acids, essential amino acids, sulfur containing amino acids, vitamin A and zinc."
+    },
+    {
+      "id": "pem2",
+      "front": "16) List 5 causes of death in PEM.",
+      "back": "Recurrent infections.\n\nElectrolytes imbalance as a result of refeeding syndrome or acute gastroenteritis.\n\nHypothermia.\n\nHypoglycemia (due to low glycogen content in the liver and defect in catecolamines and glucagons hormone formation).\n\nHeart failure (due to anemic heart failure or degenerative changes in the cardiac muscles)."
+    },
+    {
+      "id": "pem3",
+      "front": "48) Explain the causes of infection in protein-energy malnutrition.",
+      "back": "The pitting oedema constitutes a suitable media for entry of the organisms, leading to skin infections and even gangrene.\n\nAssociated vitamins and mineral deficiency, such as Vitamin A deficiency.\n\nRepeated infections can also lead to bone marrow depression (normocytic anemia)."
+    },
+    {
+      "id": "pem4",
+      "front": "53) Discuss welcome classification for protein energy malnutrition.",
+      "back": "Nutritional disorders are classified according to the body weight and the presence or absence of oedema (The standard reference weight is the 50 percentile).\n\nWeight for age 60-80% of standard:\nWithout oedema: underweight (mild PEM).\nWith oedema: kwashiorkor (sever PEM).\n\nWeight for age <60% of standard:\nWithout oedema: marasmus (sever PEM).\nWith oedema: marasmic kwashiokor (sever PEM)."
+    },
+    {
+      "id": "pem5",
+      "front": "Case 3: 9-month-old infant presenting with lower edema, on a diet of Carbohydrates 55%, fat 40%, and protein 5% for the last 5 months. 1- What is most likely diagnosis?",
+      "back": "Kwashiorkor (Severe PEM)."
+    },
+    {
+      "id": "pem6",
+      "front": "Case 3: 2- What are the other features should be present?",
+      "back": "Constant features: Growth failure (Weight for age < 80% of the reference), Pitting oedema (starts in feet, puffy face with prominent cheeks/moon face), Mental changes (apathy, with no interest in surroundings and no smile), Muscle wasting with preserved subcutaneous fat.\n\nVariable features: Skin changes (erythema, desquamation, ulceration), Hair changes (loses luster, easily pickable, flag sign), Anemia, and GIT changes (Hepatomegaly, diarrhea, abdominal distension)."
+    },
+    {
+      "id": "pem7",
+      "front": "Case 3: 3- What are the investigations should be done?",
+      "back": "Assess weight for age using Growth charts.\n\nBiochemical tests including Serum albumin (Low) and Urinary urea per g creatinine (Low).\n\nElectrolytes assessment (to detect hypokalemia).\n\nComplete blood count to determine the type of Anemia."
+    }
+  ],
+  "RICKETS & TETANY": [
+    {
+      "id": "rt1",
+      "front": "17) Mention causes of hypocalcemia and tetany in rickets.",
+      "back": "The parathyroid glands fail to respond to the state of hypocalcaemia (gland exhaustion).\n\nBone stores of calcium are exhausted.\n\nVitamin D shock therapy is given without calcium supplementation.\n\nSevere chest infection → hyperventilation → CO2 wash → alkalosis tetany."
+    },
+    {
+      "id": "rt2",
+      "front": "49) Describe the clinical picture of latent tetany.",
+      "back": "Latent tetany (level of calcium 7-9 mg%) becomes evident by the following tests:\n\nChevostick sign: tapping of facial nerve anterior to the tragus → contraction of the facial muscles.\n\nTrousseau sign: occlusion the arterial flow to the arm by inflation the cuff of sphygmomanometer above the systolic pressure for 3 minutes ← ischemia → carpal spasm.\n\nPeroneal sign: tapping the peroneal nerve over the neck of the fibula → dorsiflexion and eversion of the foot."
+    },
+    {
+      "id": "rt3",
+      "front": "Case 2: 5-year-old child with short stature, blood pressure 140/100, tachypnea, pallor, and abnormal long bone ends. 1- What is most likely diagnosis?",
+      "back": "Renal osteodystrophy (Uremic rickets), indicating skeletal changes occurring with chronic renal failure."
+    },
+    {
+      "id": "rt4",
+      "front": "Case 2: 2- What are the investigations should be done?",
+      "back": "Serum phosphorus (hypersphatemia).\n\nSerum calcium (hypocalcemia).\n\nRaised alkaline phosphatase.\n\nBlood pH to detect metabolic acidosis.\n\nElevated urea and creatinine.\n\nRadiological findings (X-ray of wrist)."
+    },
+    {
+      "id": "rt5",
+      "front": "Case 2: 3- What is the treatment?",
+      "back": "Treatment of renal dysfunction → transplantation or hemodialysis.\n\nCalcitriol (1,25-dihydroxy vit D) administration.\n\nHigh calcium intake & Low phosphate intake.\n\nPhosphate binders to bind excess phosphate in diet."
+    }
+  ],
+  "PEDIATRIC GROWTH": [
+    {
+      "id": "g1",
+      "front": "50) Define growth.",
+      "back": "Growth: Natural increase in the size of the body either by (hyperplasia) through multiplication of different cells of different organs or (hypertrophy) through increase in the cell size."
+    },
+    {
+      "id": "g2",
+      "front": "56) Mention types of Growth charts.",
+      "back": "Percentile curves.\n\nStandard deviation curves.\n\nVelocity curves.\n\nConditional centiles."
+    }
+  ],  "BIOLOGICAL AGE & MATURATION (BONE & TEETH)": [
+    {
+      "id": "bone1",
+      "front": "Enumerate the causes of Delayed Dentition.",
+      "back": "1. Rickets (أشهر وأهم سبب)\n2. Hypothyroidism\n3. Hypopituitarism\n4. Down syndrome\n5. Malnutrition\n6. Familial / Idiopathic\n\n💡 Mnemonic لتسهيل التذكر:\n(عيلة داون عندها نقص تغذية وكساح في الغدة)"
+    }
+  ],
+  "DEVELOPMENTAL MILESTONES & NEURODEVELOPMENT": [
+    {
+      "id": "dm1",
+      "front": "52) Mention 6 warning signs of infant development.",
+      "back": "Discrepant head size or crossing centile lines (too large or too small).\n\nPersistence of primitive reflexes > 6 months of age.\n\nNo response to environment or parent by 12 months.\n\nNot walking by 18 months.\n\nNo clear spoken words by 18 months.\n\nNo two word sentences by 2 years."
+    },
+    {
+      "id": "dm2",
+      "front": "55) Mention Developmental milestones at age of 9 month.",
+      "back": "Gross motor: Creeps, Pulls to standing position.\n\nFine motor: Grasp by thumb and finger (pincer grip).\n\nLanguage: Say dada & mama nonspecific.\n\nSocial: Explores."
+    }
+  ]
 };
 
 const ARABIC_SYSTEM_NAMES: Record<string, string> = {
@@ -487,6 +1576,12 @@ const FlashSpace = () => {
   }, [isTimerActive]);
 
   // --- Data Fetching (Restored) ---
+  useEffect(() => {
+    setQQueue([]);
+    setQDone([]);
+    setQSessionDone(false);
+  }, [selectedBoard?.id]);
+
   useEffect(() => {
     const fetchData = async () => {
       const timeoutId = setTimeout(() => setLoading(false), 5000);
@@ -1224,7 +2319,7 @@ const FlashSpace = () => {
                   Notes
                 </button>
                 <button
-                  onClick={() => { setShowExplanation(true); setShowQuestions(true); setActiveNoteTab('questions'); if (qQueue.length === 0 && !qSessionDone) { const qs = PEDIATRICS_QUESTIONS[selectedBoard?.disease || ''] || []; if (qs.length > 0) startQuestionSession(qs); } }}
+                  onClick={() => { setShowExplanation(true); setShowQuestions(true); setActiveNoteTab('questions'); if (qQueue.length === 0 && !qSessionDone) { const diseaseKey = (selectedBoard?.disease || '').replace(/\.(jpeg|jpg|png)\s*$/i, '').trim(); const qs = PEDIATRICS_QUESTIONS[diseaseKey] || []; if (qs.length > 0) startQuestionSession(qs); } }}
                   className="px-5 py-3 text-white hover:bg-emerald-600 transition-all flex items-center gap-2 font-black text-xs uppercase tracking-widest"
                 >
                   <Brain className="w-4 h-4" />
@@ -1305,7 +2400,8 @@ const FlashSpace = () => {
                   ) : (
                     // --- QUESTIONS TAB - Flashcard Session ---
                     (() => {
-                      const questions = PEDIATRICS_QUESTIONS[selectedBoard.disease] || [];
+                      const diseaseKey = (selectedBoard.disease || '').replace(/\.(jpeg|jpg|png)\s*$/i, '').trim();
+                      const questions = PEDIATRICS_QUESTIONS[diseaseKey] || [];
                       const totalQ = qDone.length + qQueue.length;
                       const currentCard = qQueue[0];
 

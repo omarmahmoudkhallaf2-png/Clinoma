@@ -1,7 +1,7 @@
 import { db } from '../lib/firebase';
 import { 
   collection, query, where, getDocs, doc, setDoc, 
-  serverTimestamp, increment, getDoc, limit, addDoc, deleteDoc 
+  serverTimestamp, increment, getDoc, limit, addDoc, deleteDoc, writeBatch 
 } from 'firebase/firestore';
 
 // SRS SM-2 Algorithm Simplified
@@ -99,6 +99,95 @@ export const updateUserStats = async (userId: string, lastAttemptCorrect: boolea
     points: increment(lastAttemptCorrect ? 10 : 2),
     lastActiveAt: serverTimestamp()
   }, { merge: true });
+};
+
+export interface ProgressResult {
+  questionId: string;
+  isCorrect: boolean;
+  quality?: number;
+  isExam?: boolean;
+  questionData?: any;
+}
+
+export const batchUpdateUserProgress = async (
+  userId: string,
+  results: ProgressResult[]
+) => {
+  if (!results || results.length === 0) return;
+
+  const chunkSize = 50; // process 50 questions at a time to stay well under the 500 op limit
+  const userRef = doc(db, 'users', userId);
+  
+  for (let i = 0; i < results.length; i += chunkSize) {
+    const chunk = results.slice(i, i + chunkSize);
+    const batch = writeBatch(db);
+    
+    let chunkSolvedDelta = 0;
+    let chunkCorrectDelta = 0;
+    let chunkPointsDelta = 0;
+    let hasNonExamQuestions = false;
+
+    // Fetch progress docs in parallel to calculate SRS
+    const progressPromises = chunk.map(res => getDoc(doc(db, `users/${userId}/progress/${res.questionId}`)));
+    const progressSnaps = await Promise.all(progressPromises);
+
+    chunk.forEach((res, index) => {
+      const { questionId, isCorrect, quality = 3, isExam = false, questionData } = res;
+      
+      const progressRef = doc(db, `users/${userId}/progress/${questionId}`);
+      const currentData = progressSnaps[index].exists() ? progressSnaps[index].data() : null;
+      const srs = calculateSRS(isCorrect ? quality : 0, currentData?.srsData);
+
+      batch.set(progressRef, {
+        status: isCorrect ? 'solved' : 'wrong',
+        subjectId: questionData?.subjectId || 'general',
+        courseId: questionData?.courseId || 'F1',
+        lastAttemptAt: serverTimestamp(),
+        attemptCount: increment(1),
+        srsData: srs
+      }, { merge: true });
+
+      if (!questionId.startsWith('CN_')) {
+        const qRef = doc(db, 'questions', questionId);
+        batch.set(qRef, {
+          analytics: {
+            totalAttempts: increment(1),
+            correctAttempts: increment(isCorrect ? 1 : 0)
+          }
+        }, { merge: true });
+      }
+
+      if (!isExam) {
+        chunkSolvedDelta += 1;
+        if (isCorrect) chunkCorrectDelta += 1;
+        chunkPointsDelta += isCorrect ? 10 : 2;
+        hasNonExamQuestions = true;
+      }
+    });
+
+    // Update global user stats
+    const userSnap = await getDoc(userRef);
+    if (hasNonExamQuestions && userSnap.exists()) {
+      const data = userSnap.data();
+      const newTotalSolved = (data.totalSolved || 0) + chunkSolvedDelta;
+      const newTotalCorrect = (data.totalCorrect || 0) + chunkCorrectDelta;
+      const accuracy = newTotalSolved > 0 ? Math.round((newTotalCorrect / newTotalSolved) * 100) : 0;
+
+      batch.set(userRef, {
+        totalSolved: newTotalSolved,
+        totalCorrect: newTotalCorrect,
+        accuracy,
+        points: increment(chunkPointsDelta),
+        lastActiveAt: serverTimestamp()
+      }, { merge: true });
+    } else {
+      batch.set(userRef, {
+        lastActiveAt: serverTimestamp()
+      }, { merge: true });
+    }
+
+    await batch.commit();
+  }
 };
 
 export const getWeakAreas = async (userId: string) => {

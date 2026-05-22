@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { db } from '../lib/firebase';
 import { cn } from '../lib/utils';
 import { collection, query, getDocs, addDoc, where } from 'firebase/firestore';
-import { updateUserProgress, toggleBookmark } from '../lib/quizEngine';
+import { batchUpdateUserProgress, toggleBookmark, ProgressResult } from '../lib/quizEngine';
 import type { Question } from '../types/quiz';
 import QuestionCard from '../components/quiz/QuestionCard';
 import { Loader2, AlertCircle, Clock, Flag, ArrowRight, ArrowLeft, ZoomIn, ZoomOut } from 'lucide-react';
@@ -46,6 +46,29 @@ export default function Quiz() {
   const [zoomLevel, setZoomLevel] = useState(1);
   
   const [answers, setAnswers] = useState<Record<number, string>>({});
+  const [sessionProgress, setSessionProgress] = useState<ProgressResult[]>([]);
+  const sessionProgressRef = useRef<ProgressResult[]>([]);
+  const isFinishedRef = useRef(false);
+
+  useEffect(() => {
+    sessionProgressRef.current = sessionProgress;
+    isFinishedRef.current = isFinished;
+  }, [sessionProgress, isFinished]);
+
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      if (sessionProgressRef.current.length > 0 && !isFinishedRef.current && user) {
+        batchUpdateUserProgress(user.uid, sessionProgressRef.current);
+      }
+    };
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+      if (sessionProgressRef.current.length > 0 && !isFinishedRef.current && user) {
+        batchUpdateUserProgress(user.uid, sessionProgressRef.current);
+      }
+    };
+  }, [user]);
   const [flagged, setFlagged] = useState<Record<number, boolean>>({});
   const [struckOut, setStruckOut] = useState<Record<number, string[]>>({});
   const [timeLeft, setTimeLeft] = useState(0);
@@ -134,6 +157,10 @@ export default function Quiz() {
 
   const handleFinishQuiz = async () => {
     setIsFinished(true);
+    if (user && sessionProgress.length > 0) {
+      await batchUpdateUserProgress(user.uid, sessionProgress);
+      setSessionProgress([]); // clear after sending
+    }
     if (user) {
       addDoc(collection(db, 'results'), {
         userId: user.uid,
@@ -162,7 +189,24 @@ export default function Quiz() {
     const isCorrect = option === currentQuestion.correctAnswer;
     setAnswers(prev => ({ ...prev, [currentIndex]: option }));
 
-    if (user) updateUserProgress(user.uid, currentQuestion.id, isCorrect, isCorrect ? 3 : 0, isExam, currentQuestion);
+    if (user) {
+      setSessionProgress(prev => {
+        const existingIndex = prev.findIndex(p => p.questionId === currentQuestion.id);
+        const newProgress = {
+          questionId: currentQuestion.id,
+          isCorrect,
+          quality: isCorrect ? 3 : 0,
+          isExam,
+          questionData: currentQuestion
+        };
+        if (existingIndex >= 0) {
+          const next = [...prev];
+          next[existingIndex] = newProgress;
+          return next;
+        }
+        return [...prev, newProgress];
+      });
+    }
 
     if (isStudyMode) {
       setIsAnswered(true);
