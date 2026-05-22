@@ -29,6 +29,38 @@ export default function CourseSubjects() {
         setLoading(false);
         return;
       }
+      if (courseId === 'pediatrics_course') {
+        setCourse({
+          name: 'طب الأطفال البصري (TIP Pediatrics)',
+          description: 'تصفح تخصصات طب الأطفال الفرعية بمجلدات اللوحات البصرية والشروحات والأسئلة.'
+        });
+        setSubjects([
+          { id: 'cardiovascular_diseases', name: 'أمراض القلب للأطفال (Cardiovascular)', courseId: 'pediatrics_course' },
+          { id: 'endocrinology', name: 'الغدد الصماء (Endocrinology)', courseId: 'pediatrics_course' },
+          { id: 'gastroenterology_hepatology', name: 'الجهاز الهضمي والكبد (Gastroenterology & Hepatology)', courseId: 'pediatrics_course' },
+          { id: 'genetic_diseases', name: 'الأمراض الوراثية (Genetic Diseases)', courseId: 'pediatrics_course' },
+          { id: 'growth_development', name: 'النمو والتطور (Growth & Development)', courseId: 'pediatrics_course' },
+          { id: 'hematology_oncology', name: 'أمراض الدم والأورام (Hematology & Oncology)', courseId: 'pediatrics_course' },
+          { id: 'infections', name: 'الأمراض المعدية (Infections)', courseId: 'pediatrics_course' },
+          { id: 'neurology', name: 'أمراض الأعصاب (Neurology)', courseId: 'pediatrics_course' },
+          { id: 'nutrition', name: 'التغذية (Nutrition)', courseId: 'pediatrics_course' },
+          { id: 'renal_diseases', name: 'أمراض الكلى للأطفال (Renal Diseases)', courseId: 'pediatrics_course' }
+        ]);
+        setLoading(false);
+        return;
+      }
+      if (courseId === 'ophthalmology_course') {
+        setCourse({
+          name: 'طب وجراحة العيون (Ophthalmology)',
+          description: 'تصفح منهج طب وجراحة العيون (الرمد) الموزع بين النظري والعملي بكروت الاستذكار التفاعلية.'
+        });
+        setSubjects([
+          { id: 'ophthalmology_practical', name: 'عملي الرمد (Ophthalmology Practical)', courseId: 'ophthalmology_course' },
+          { id: 'ophthalmology_written', name: 'نظري الرمد (Ophthalmology Written)', courseId: 'ophthalmology_course' }
+        ]);
+        setLoading(false);
+        return;
+      }
       try {
         const cSnap = await getDoc(doc(db, 'courses', courseId));
         if (cSnap.exists()) setCourse(cSnap.data());

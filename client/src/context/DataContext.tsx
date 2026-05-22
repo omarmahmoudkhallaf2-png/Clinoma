@@ -58,9 +58,11 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
       ];
 
       const allCourses = [...fetchedCourses];
-      if (!allCourses.some(c => c.id === 'clinical_nutrition_course')) {
-        allCourses.push(...staticCourses);
-      }
+      staticCourses.forEach(sc => {
+        if (!allCourses.some(c => c.id === sc.id)) {
+          allCourses.push(sc);
+        }
+      });
 
       setCourses(allCourses);
       setVideoFolders(fetchedFolders);

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { db } from '../lib/firebase';
 import { doc, getDoc } from 'firebase/firestore';
-import { ArrowLeft, ChevronRight, GraduationCap, Loader2, Highlighter, Sparkles, Bookmark, XCircle, Download } from 'lucide-react';
+import { ArrowLeft, ChevronRight, GraduationCap, Loader2, Highlighter, Sparkles, Bookmark, XCircle, Download, BookOpen } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { getBookmarks, getIncorrectQuestions } from '../lib/quizEngine';
 import { cn } from '../lib/utils';
@@ -26,6 +26,18 @@ export default function SubjectLectures() {
           return {
             name: 'Clinical Nutrition MCQ Bank',
             lectureCount: 9
+          };
+        }
+        if (subjectId === 'ophthalmology_practical') {
+          return {
+            name: 'عملي الرمد (Ophthalmology Practical)',
+            lectureCount: 5
+          };
+        }
+        if (subjectId === 'ophthalmology_written') {
+          return {
+            name: 'نظري الرمد (Ophthalmology Written)',
+            lectureCount: 5
           };
         }
         const snap = await getDoc(doc(db, 'subjects', subjectId));
@@ -85,6 +97,22 @@ export default function SubjectLectures() {
     { number: 6, title: 'Chapter 6' },
     { number: 7, title: 'Chapter 7 & 8' },
     { number: 9, title: 'Chapter 9' }
+  ];
+
+  const OPHTHALMOLOGY_PRACTICAL_DECKS = [
+    { id: 'official_eyelid_001', title: 'عملي الجفون (Eyelid)', count: 64 },
+    { id: 'official_lacrimal_002', title: 'عملي الجهاز الدمعي ومقلة العين (Lacrimal & Eyeball)', count: 11 },
+    { id: 'official_uvea_lens_003', title: 'عملي المشيمية والقزحية والعدسة (Uvea & Lens)', count: 17 },
+    { id: 'official_cornea_practical_004', title: 'عملي القرنية والصلبة (Cornea)', count: 10 },
+    { id: 'official_glaucoma_practical_005', title: 'عملي المياه الزرقاء (Glaucoma)', count: 19 }
+  ];
+
+  const OPHTHALMOLOGY_WRITTEN_DECKS = [
+    { id: 'official_written_eyelid', title: 'نظري الجفون والجهاز الدمعي (Eyelid & Lacrimal)', count: 49 },
+    { id: 'official_written_cornea', title: 'نظري القرنية والصلبة (Cornea & Sclera)', count: 25 },
+    { id: 'official_written_lens', title: 'نظري عدسة العين والكتاركت (The Lens)', count: 31 },
+    { id: 'official_written_glaucoma', title: 'نظري المياه الزرقاء (Glaucoma)', count: 24 },
+    { id: 'official_written_retina', title: 'نظري الشبكية واعتلالاتها (Retina)', count: 20 }
   ];
 
   return (
@@ -276,6 +304,46 @@ export default function SubjectLectures() {
                 </button>
               ))}
             </>
+          ) : subjectId === 'ophthalmology_practical' ? (
+            OPHTHALMOLOGY_PRACTICAL_DECKS.map((deck) => (
+              <button
+                key={deck.id}
+                onClick={() => navigate(`/flashcards/study/${deck.id}`)}
+                className="group p-8 bg-card border-2 border-border rounded-[3rem] shadow-xl hover:scale-[1.02] hover:border-primary transition-all text-left flex items-center justify-between overflow-hidden relative"
+              >
+                <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-full -mr-12 -mt-12 group-hover:scale-150 transition-transform duration-500" />
+                <div className="flex items-center gap-6 relative z-10">
+                  <div className="w-16 h-16 bg-primary/10 text-primary rounded-2xl flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all font-black text-2xl flex-shrink-0">
+                    <GraduationCap className="w-8 h-8" />
+                  </div>
+                  <div className="text-right flex-1" dir="rtl">
+                    <h3 className="text-xl font-black">{deck.title}</h3>
+                    <p className="text-muted-foreground font-bold text-sm">{deck.count} كارت استذكار ذكي</p>
+                  </div>
+                </div>
+                <ChevronRight className="w-8 h-8 text-muted-foreground group-hover:text-primary transition-all flex-shrink-0 relative z-10" />
+              </button>
+            ))
+          ) : subjectId === 'ophthalmology_written' ? (
+            OPHTHALMOLOGY_WRITTEN_DECKS.map((deck) => (
+              <button
+                key={deck.id}
+                onClick={() => navigate(`/flashcards/study/${deck.id}`)}
+                className="group p-8 bg-card border-2 border-border rounded-[3rem] shadow-xl hover:scale-[1.02] hover:border-primary transition-all text-left flex items-center justify-between overflow-hidden relative"
+              >
+                <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-full -mr-12 -mt-12 group-hover:scale-150 transition-transform duration-500" />
+                <div className="flex items-center gap-6 relative z-10">
+                  <div className="w-16 h-16 bg-primary/10 text-primary rounded-2xl flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all font-black text-2xl flex-shrink-0">
+                    <BookOpen className="w-8 h-8" />
+                  </div>
+                  <div className="text-right flex-1" dir="rtl">
+                    <h3 className="text-xl font-black">{deck.title}</h3>
+                    <p className="text-muted-foreground font-bold text-sm">{deck.count} كارت استذكار ذكي</p>
+                  </div>
+                </div>
+                <ChevronRight className="w-8 h-8 text-muted-foreground group-hover:text-primary transition-all flex-shrink-0 relative z-10" />
+              </button>
+            ))
           ) : (
             Array.from({ length: subject?.lectureCount || 12 }, (_, i) => i + 1).map((num) => (
               <button

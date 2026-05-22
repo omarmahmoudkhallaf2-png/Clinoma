@@ -41,6 +41,8 @@ const FlashSpace = lazy(() => import("./pages/flashcards/FlashSpace"));
 const AIExamGenerator = lazy(() => import("./pages/AIExamGenerator"));
 const Pomodoro = lazy(() => import("./pages/Pomodoro"));
 const DataThemes = lazy(() => import("./pages/DataThemes"));
+const PediatricsHub = lazy(() => import("./pages/PediatricsHub"));
+const PediatricsFolder = lazy(() => import("./pages/PediatricsFolder"));
 
 import { CommandPalette } from "./components/ui/CommandPalette";
 import { AmbientAudioProvider } from "./context/AmbientAudioContext";
@@ -83,6 +85,8 @@ const AnimatedRoutes = () => {
           {/* Protected User Routes */}
           <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
           <Route path="/available" element={<ProtectedRoute><AvailableCourses /></ProtectedRoute>} />
+          <Route path="/course/pediatrics_course/subject/:subjectId/lectures" element={<ProtectedRoute><PediatricsHub /></ProtectedRoute>} />
+          <Route path="/course/pediatrics_course/subject/:subjectId/folder/:folderId" element={<ProtectedRoute><PediatricsFolder /></ProtectedRoute>} />
           <Route path="/course/:courseId" element={<ProtectedRoute><CourseSubjects /></ProtectedRoute>} />
           <Route path="/course/:courseId/subject/:subjectId/lectures" element={<ProtectedRoute><SubjectLectures /></ProtectedRoute>} />
           <Route path="/course/:courseId/subject/:subjectId/lecture/:lectureNumber" element={<ProtectedRoute><SubjectOptions /></ProtectedRoute>} />
