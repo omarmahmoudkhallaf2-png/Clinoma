@@ -1043,6 +1043,119 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "back": "A low-protein diet (\"metabolic diet\") that excludes high-protein foods, strictly avoids aspartame, and utilizes a phenylalanine-free medical formula."
     }
   ],
+  "_CHAPTER_Endocrinology": [
+    {
+      "id": "endo_saq_1",
+      "front": "Define the following terms:\nShort stature:",
+      "back": "A term applied to a child whose height is 2 standard deviations (SD) or more below the mean for children of that sex and chronologic age."
+    },
+    {
+      "id": "endo_saq_2",
+      "front": "Define the following terms:\nDelayed puberty:",
+      "back": "No thelarche (breast development) by age 13 in girls, or no testicular enlargement (≥ 4 mL) by age 14 in boys."
+    },
+    {
+      "id": "endo_saq_3",
+      "front": "Define the following terms:\nCongenital Adrenal Hyperplasia (CAH):",
+      "back": "A group of inherited enzyme defects in cortisol synthesis with overproduction of adrenal androgens."
+    },
+    {
+      "id": "endo_saq_4",
+      "front": "Define the following terms:\nDiabetic Ketoacidosis (DKA):",
+      "back": "A metabolic abnormality characterized by hyperglycemia (blood glucose above 14 mmol/L) and metabolic acidosis (arterial PH below 7.35 and/or plasma bicarbonate less than 16 mEq/L) due to hyperketonemia with depression of conscious level."
+    },
+    {
+      "id": "endo_saq_5",
+      "front": "Enumerate four secondary causes of pathological short stature.",
+      "back": "1. Under nutrition (e.g., Protein energy malnutrition).\n2. Gastrointestinal causes (e.g., Malabsorption syndromes like celiac or cystic fibrosis).\n3. Endocrine causes (e.g., Hypothyroidism, Hypopituitarism, or Diabetes Mellitus).\n4. Renal diseases (e.g., polycystic kidney, chronic uremia, or Pyelonephritis)."
+    },
+    {
+      "id": "endo_saq_6",
+      "front": "Enumerate four early clinical signs of Congenital Hypothyroidism in infants.",
+      "back": "1. Prolonged physiological jaundice.\n2. Lethargy, sluggishness & poor feeding.\n3. Hypotonia and abdominal distension.\n4. Umbilical hernia (or Opened, large posterior fontanel)."
+    },
+    {
+      "id": "endo_saq_7",
+      "front": "Enumerate four clinical manifestations of Hypoparathyroidism.",
+      "back": "1. Tetany.\n2. Carpopedal spasm.\n3. Positive Chvostek and Trousseau signs.\n4. Seizures."
+    },
+    {
+      "id": "endo_saq_8",
+      "front": "Enumerate four causes of delayed puberty.",
+      "back": "1. Constitutional Delay of Growth and Puberty (CDGP).\n2. Hypergonadotropic Hypogonadism (Primary Failure, e.g., Turner or Klinefelter Syndrome).\n3. Hypogonadotropic Hypogonadism (Central Failure, e.g., Kallmann Syndrome).\n4. Functional Hypogonadism (Secondary to Stress/Chronic illness)."
+    },
+    {
+      "id": "endo_saq_9",
+      "front": "Enumerate four physical clinical features of Cushing Syndrome.",
+      "back": "1. Moon face.\n2. Central obesity.\n3. Buffalo hump.\n4. Muscle weakness (or Hypertension)."
+    },
+    {
+      "id": "endo_saq_10",
+      "front": "Enumerate the four laboratory criteria for the diagnosis of Diabetes Mellitus.",
+      "back": "1. Glycosylated hemoglobin (HbA1C) > 6.5%.\n2. Fasting Plasma Glucose (FPG) > 126 mg/dL (7.0 mmol/L).\n3. Oral Glucose Tolerance Test (OGTT) > 200 mg/dL (11.1 mmol/L).\n4. Random plasma glucose > 200 mg/dL (11.1 mmol/L) accompanied by symptoms."
+    },
+    {
+      "id": "endo_saq_11",
+      "front": "Enumerate four physical complications of childhood obesity.",
+      "back": "1. Type 2 diabetes.\n2. High cholesterol and high blood pressure.\n3. Joint pain (in the hips, knees, and back).\n4. Breathing problems (Asthma and obstructive sleep apnea) or Non-alcoholic fatty liver disease (NAFLD)."
+    },
+    {
+      "id": "endo_match_1",
+      "type": "matching",
+      "front": "Match the clinical term or syndrome in Group (A) with its exact diagnostic/physiological description in Group (B):",
+      "matchingPairs": [
+        { "left": "Kallmann Syndrome", "right": "A form of congenital permanent hypogonadotropic hypogonadism that is characteristically associated with anosmia." },
+        { "left": "21-hydroxylase deficiency", "right": "The most common type of inherited enzyme defect responsible for Congenital Adrenal Hyperplasia (CAH)." },
+        { "left": "Thelarche", "right": "The onset of female breast development, which represents the first sign of puberty in girls." },
+        { "left": "Kussmaul respiration", "right": "Deep rapid respiration due to metabolic acidosis in an attempt to excrete excess CO2, characteristic of DKA." }
+      ]
+    },
+    {
+      "id": "endo_case1_q1",
+      "front": "Case 1: A 3-week-old infant is brought to the outpatient clinic due to prolonged physiological jaundice, poor feeding, and extreme sluggishness. On physical examination, the clinician notes generalized hypotonia, a wide anterior fontanel, an open and large posterior fontanel, a protruding thick tongue, and a prominent umbilical hernia.\n\nWhat is the most likely diagnosis?",
+      "back": "Congenital Hypothyroidism (CHT)."
+    },
+    {
+      "id": "endo_case1_q2",
+      "front": "Case 1: A 3-week-old infant is brought to the outpatient clinic due to prolonged physiological jaundice, poor feeding, and extreme sluggishness. On physical examination, the clinician notes generalized hypotonia, a wide anterior fontanel, an open and large posterior fontanel, a protruding thick tongue, and a prominent umbilical hernia.\n\nHow are newborns screened for this condition, and what specific parameter is measured?",
+      "back": "Screened using a heel-prick blood test performed from the third to seventh day of age to measure Thyroid Stimulating Hormone (TSH) levels."
+    },
+    {
+      "id": "endo_case1_q3",
+      "front": "Case 1: A 3-week-old infant is brought to the outpatient clinic due to prolonged physiological jaundice, poor feeding, and extreme sluggishness. On physical examination, the clinician notes generalized hypotonia, a wide anterior fontanel, an open and large posterior fontanel, a protruding thick tongue, and a prominent umbilical hernia.\n\nWhat is the immediate drug of choice for treating this infant?",
+      "back": "Levothyroxine (synthetic thyroid hormone, T4) started without delay."
+    },
+    {
+      "id": "endo_case2_q1",
+      "front": "Case 2: An 8-year-old child known to have Type 1 Diabetes Mellitus is rushed to the emergency department with severe dehydration, deep and rapid breathing (Kussmaul respiration), and a distinct fruity odor of acetone on his breath. The parents mention he has had a high fever and a urinary tract infection for the past 2 days. Emergency laboratory findings show: Blood glucose 350 mg%, venous pH 7.10, and serum bicarbonate 8 mEq/L.\n\nWhat is the clinical diagnosis and what is its severity classification?",
+      "back": "Severe Diabetic Ketoacidosis (DKA) (since pH is < 7.15 and HCO3 is < 10 mEq/L)."
+    },
+    {
+      "id": "endo_case2_q2",
+      "front": "Case 2: An 8-year-old child known to have Type 1 Diabetes Mellitus is rushed to the emergency department with severe dehydration, deep and rapid breathing (Kussmaul respiration), and a distinct fruity odor of acetone on his breath. The parents mention he has had a high fever and a urinary tract infection for the past 2 days. Emergency laboratory findings show: Blood glucose 350 mg%, venous pH 7.10, and serum bicarbonate 8 mEq/L.\n\nIdentify the specific precipitating factor in this child's history.",
+      "back": "Infection (specifically a urinary tract infection)."
+    },
+    {
+      "id": "endo_case2_q3",
+      "front": "Case 2: An 8-year-old child known to have Type 1 Diabetes Mellitus is rushed to the emergency department with severe dehydration, deep and rapid breathing (Kussmaul respiration), and a distinct fruity odor of acetone on his breath. The parents mention he has had a high fever and a urinary tract infection for the past 2 days. Emergency laboratory findings show: Blood glucose 350 mg%, venous pH 7.10, and serum bicarbonate 8 mEq/L.\n\nEnumerate three major lines of management that must be initiated immediately.",
+      "back": "1. Correction of fluids.\n2. Insulin therapy.\n3. Correction of electrolytes (and acid-base balance)."
+    },
+    {
+      "id": "endo_case3_q1",
+      "front": "Case 3: A newborn infant is examined in the delivery room and found to have ambiguous genitalia that cannot be clearly classified as male or female. Within the first week of life, the infant develops severe vomiting, dehydration, and circulatory shock (acute adrenal crisis). Laboratory evaluation reveals severe hyponatremia, hyperkalemia, and hypoglycemia.\n\nWhat is the most likely diagnosis?",
+      "back": "Congenital Adrenal Hyperplasia (CAH) (Salt-wasting type)."
+    },
+    {
+      "id": "endo_case3_q2",
+      "front": "Case 3: A newborn infant is examined in the delivery room and found to have ambiguous genitalia that cannot be clearly classified as male or female. Within the first week of life, the infant develops severe vomiting, dehydration, and circulatory shock (acute adrenal crisis). Laboratory evaluation reveals severe hyponatremia, hyperkalemia, and hypoglycemia.\n\nWhat is the \"Golden Rule\" mentioned in your textbook regarding the management of ambiguous genitalia in the delivery room?",
+      "back": "Never guess the sex in the delivery room. Tell the parents: \"The genitals are not fully developed; we need tests to be sure.\""
+    },
+    {
+      "id": "endo_case3_q3",
+      "front": "Case 3: A newborn infant is examined in the delivery room and found to have ambiguous genitalia that cannot be clearly classified as male or female. Within the first week of life, the infant develops severe vomiting, dehydration, and circulatory shock (acute adrenal crisis). Laboratory evaluation reveals severe hyponatremia, hyperkalemia, and hypoglycemia.\n\nWhat does the long-term replacement medical therapy for this condition consist of?",
+      "back": "Long term replacement therapy with hydrocortisone and a salt-retaining steroid like fludrocortisone."
+    }
+  ],
   "Renal Anatomy, Functions & Urine Color Changes": [],
   "Pediatric Hematuria Approach & Evaluation": [
     {
