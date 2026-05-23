@@ -930,6 +930,119 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "back": "47,XXY ; the diagnosis is rarely made before puberty."
     }
   ],
+  "_CHAPTER_Gastroenterology & hepatology": [
+    {
+      "id": "git_saq_1",
+      "front": "Define the following terms:\nDysentery:",
+      "back": "It is diarrhea with visible blood in stool."
+    },
+    {
+      "id": "git_saq_2",
+      "front": "Define the following terms:\nUpper Gastrointestinal (UGI) Bleeding:",
+      "back": "It is defined as bleed occurring in the GI tract above the ligament of Trietz."
+    },
+    {
+      "id": "git_saq_3",
+      "front": "Define the following terms:\nHypertrophic Pyloric Stenosis:",
+      "back": "Progressive hypertrophy of circular muscles fibers of the pylorus with subsequent pyloric narrowing and gastric outflow obstruction."
+    },
+    {
+      "id": "git_saq_4",
+      "front": "Define the following terms:\nPhenylketonuria (PKU):",
+      "back": "A rare, inherited metabolic disorder that prevents the body from breaking down an amino acid called phenylalanine (Phe)."
+    },
+    {
+      "id": "git_saq_5",
+      "front": "Enumerate four causes of persistent diarrhea.",
+      "back": "1. Lactose intolerance.\n2. Cow milk protein allergy.\n3. Bacterial overgrowth.\n4. Persistent infection (Giardiasis)."
+    },
+    {
+      "id": "git_saq_6",
+      "front": "Enumerate four red flags for mothers to seek medical care regarding a child with diarrhea.",
+      "back": "1. Many watery stools.\n2. Repeated vomiting.\n3. Eating or drinking poorly.\n4. Becomes very thirsty."
+    },
+    {
+      "id": "git_saq_7",
+      "front": "Enumerate four methods for the prevention of diarrhea.",
+      "back": "1. Exclusive breastfeeding.\n2. Safe water and sanitation.\n3. Hand washing.\n4. Vaccination (Rotavirus)."
+    },
+    {
+      "id": "git_saq_8",
+      "front": "Enumerate four clinical diagnostic criteria (Rome IV) for functional constipation.",
+      "back": "1. Infrequent Stool: Fewer than 3 bowel movements per week.\n2. Hard Stools: Large, dry, or painful-to-pass stools.\n3. Withholding Behavior: Posturing (stiffening legs, hiding) to avoid pooping.\n4. Fecal Incontinence: Leakage of liquid stool in underwear."
+    },
+    {
+      "id": "git_saq_9",
+      "front": "Enumerate four mechanisms of hepatomegaly.",
+      "back": "1. Congestion (e.g., CCF).\n2. Inflammation (e.g., various forms of hepatitis).\n3. Infiltration (e.g., malignancy).\n4. Storage/fat accumulation (e.g., glycogen storage disease, fatty liver)."
+    },
+    {
+      "id": "git_saq_10",
+      "front": "Enumerate four clinical \"red flags\" that point to organic rather than dysfunctional recurrent abdominal pain (RAP).",
+      "back": "1. Clearly localized pain (burning, stabbing, etc.) mostly away from umbilicus.\n2. Pain awakening the child at night.\n3. Pain with weight loss.\n4. Blood in stools (occult/obvious)."
+    },
+    {
+      "id": "git_saq_11",
+      "front": "Enumerate four clinical situations/red flags when an inborn error of metabolism should be highly suspected.",
+      "back": "1. The \"Crash\" After Birth: A baby who is born healthy but suddenly gets very sick after their first few feedings.\n2. Looking Like Sepsis: A child who looks like they have a severe infection, but tests for bacteria are negative and antibiotics aren't working.\n3. Losing Skills: A child who was hitting their milestones but suddenly starts losing those abilities.\n4. Strange Smells: Unusual odors from the baby's breath, urine, or skin."
+    },
+    {
+      "id": "git_match_1",
+      "type": "matching",
+      "front": "Match the clinical screening test/investigation in Group (A) with its exact diagnostic significance in Group (B):",
+      "matchingPairs": [
+        { "left": "Fecal Calprotectin (FC)", "right": "The most sensitive fecal marker for pediatric inflammatory bowel disease (IBD) screening." },
+        { "left": "ASCA (Anti-Saccharomyces cerevisiae)", "right": "A serological marker primarily associated with Crohn's Disease (60-70% of cases)." },
+        { "left": "pANCA (Perinuclear Anti-Neutrophil Cytoplasmic Antibodies)", "right": "A serological marker primarily associated with Ulcerative Colitis (60-80% of cases)." },
+        { "left": "Suction rectal biopsy", "right": "The gold standard diagnostic investigation for confirming Hirschsprung Disease." }
+      ]
+    },
+    {
+      "id": "git_case1_q1",
+      "front": "Case 1: A 4-week-old male infant presents with progressive, nonbilious projectile vomiting immediately following each feed. The mother notes that the infant is always extremely hungry and wants to feed again right after vomiting. On deep physical examination, a firm, hard, movable, olive-shaped mass is palpated above and to the right of the umbilicus.\n\nWhat is the most likely diagnosis?",
+      "back": "Hypertrophic Pyloric Stenosis."
+    },
+    {
+      "id": "git_case1_q2",
+      "front": "Case 1: A 4-week-old male infant presents with progressive, nonbilious projectile vomiting immediately following each feed. The mother notes that the infant is always extremely hungry and wants to feed again right after vomiting. On deep physical examination, a firm, hard, movable, olive-shaped mass is palpated above and to the right of the umbilicus.\n\nWhat specific metabolic and electrolyte disturbance is characteristic of this condition?",
+      "back": "Hypochloremic metabolic alkalosis."
+    },
+    {
+      "id": "git_case1_q3",
+      "front": "Case 1: A 4-week-old male infant presents with progressive, nonbilious projectile vomiting immediately following each feed. The mother notes that the infant is always extremely hungry and wants to feed again right after vomiting. On deep physical examination, a firm, hard, movable, olive-shaped mass is palpated above and to the right of the umbilicus.\n\nWhat is the definitive surgical procedure of choice for this infant?",
+      "back": "Ramstedt pyloromyotomy."
+    },
+    {
+      "id": "git_case2_q1",
+      "front": "Case 2: A newborn male infant fails to pass meconium within the first 48 hours of life and develops clinical features of intestinal obstruction including abdominal distension and vomiting. A contrast barium enema is performed and demonstrates a clear transition zone with a narrow distal rectal segment.\n\nWhat is the clinical diagnosis?",
+      "back": "Hirschsprung Disease (Congenital Aganglionic Megacolon)."
+    },
+    {
+      "id": "git_case2_q2",
+      "front": "Case 2: A newborn male infant fails to pass meconium within the first 48 hours of life and develops clinical features of intestinal obstruction including abdominal distension and vomiting. A contrast barium enema is performed and demonstrates a clear transition zone with a narrow distal rectal segment.\n\nWhat is the underlying pathology of this condition?",
+      "back": "Absence of ganglionic cells in the myenteric & submucosal plexuses of the rectum and a variable distance of the colon."
+    },
+    {
+      "id": "git_case2_q3",
+      "front": "Case 2: A newborn male infant fails to pass meconium within the first 48 hours of life and develops clinical features of intestinal obstruction including abdominal distension and vomiting. A contrast barium enema is performed and demonstrates a clear transition zone with a narrow distal rectal segment.\n\nWhat occurs during physical examination when a digital rectal examination (PR) is performed on this child?",
+      "back": "The ampulla is found empty, and its examination causes a gush of liquid stools & flatus."
+    },
+    {
+      "id": "git_case3_q1",
+      "front": "Case 3: A 5-month-old infant who appeared normal at birth is brought to the hospital with developmental delay and loss of social skills. The parents report a distinct musty or mousy odor from the child's breath and urine. On examination, the infant has microcephaly, lighter skin and hair pigmentation than the rest of his family members, and severe eczema.\n\nWhat is the most likely diagnosis?",
+      "back": "Phenylketonuria (PKU)."
+    },
+    {
+      "id": "git_case3_q2",
+      "front": "Case 3: A 5-month-old infant who appeared normal at birth is brought to the hospital with developmental delay and loss of social skills. The parents report a distinct musty or mousy odor from the child's breath and urine. On examination, the infant has microcephaly, lighter skin and hair pigmentation than the rest of his family members, and severe eczema.\n\nWhat is the genetic mode of inheritance for this disorder, and what gene is defective?",
+      "back": "It is an autosomal recessive disorder caused by mutations in the PAH gene."
+    },
+    {
+      "id": "git_case3_q3",
+      "front": "Case 3: A 5-month-old infant who appeared normal at birth is brought to the hospital with developmental delay and loss of social skills. The parents report a distinct musty or mousy odor from the child's breath and urine. On examination, the infant has microcephaly, lighter skin and hair pigmentation than the rest of his family members, and severe eczema.\n\nWhat is the cornerstone of lifelong treatment for this patient?",
+      "back": "A low-protein diet (\"metabolic diet\") that excludes high-protein foods, strictly avoids aspartame, and utilizes a phenylalanine-free medical formula."
+    }
+  ],
   "Renal Anatomy, Functions & Urine Color Changes": [],
   "Pediatric Hematuria Approach & Evaluation": [
     {
