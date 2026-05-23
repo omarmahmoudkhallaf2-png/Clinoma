@@ -1156,6 +1156,149 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "back": "Long term replacement therapy with hydrocortisone and a salt-retaining steroid like fludrocortisone."
     }
   ],
+  "_CHAPTER_Hematology & Oncology": [
+    {
+      "id": "hema_saq_1",
+      "front": "Define the following terms:\nHematopoiesis:",
+      "back": "The process by which blood cells are produced."
+    },
+    {
+      "id": "hema_saq_2",
+      "front": "Define the following terms:\nErythropoiesis:",
+      "back": "A specific subset of hematopoiesis responsible for the production of red blood cells."
+    },
+    {
+      "id": "hema_saq_3",
+      "front": "Define the following terms:\nAnemia:",
+      "back": "Reduced blood hemoglobin (Hb) concentration or red blood cell (RBC) mass below normal range according to age and sex."
+    },
+    {
+      "id": "hema_saq_4",
+      "front": "Define the following terms:\nImmune Thrombocytopenia (ITP):",
+      "back": "An acquired autoimmune disorder characterized by a low platelet count resulting from platelet destruction and impaired platelet production."
+    },
+    {
+      "id": "hema_saq_5",
+      "front": "Enumerate four etiological mechanisms/causes of Iron Deficiency Anemia (IDA).",
+      "back": "1. Inadequate iron intake (e.g., poor diet, poverty, ignorance).\n2. Poor absorption (e.g., less vitamin C, inhibitors like phytates/tannin, or small intestine disorders).\n3. Increased iron demand (periods of rapid growth like infancy, childhood, and adolescence).\n4. Excessive iron loss (e.g., menstruation, intestinal worms, hookworm infestation)."
+    },
+    {
+      "id": "hema_saq_6",
+      "front": "Enumerate four congenital physical anomalies associated with Fanconi Anemia.",
+      "back": "1. Hypo or hyperpigmented skin patches with café-au-lait spots.\n2. Short stature (or Microcephaly).\n3. Upper or lower limb abnormalities (e.g., absent radius, absent or hypoplastic thumb).\n4. Congenital heart disease (or Renal anomalies like horseshoe kidney)."
+    },
+    {
+      "id": "hema_saq_7",
+      "front": "Enumerate four clinical manifestations of chronic hemolytic anemia.",
+      "back": "1. Anemia (pallor) and unconjugated hyperbilirubinemia (jaundice).\n2. Hepatosplenomegaly.\n3. Pigmentary bilirubinate gallstones.\n4. Skeletal manifestations due to marrow expansion (large head, prominent maxillae, protruding central incisors) or Leg ulcers."
+    },
+    {
+      "id": "hema_saq_8",
+      "front": "Enumerate four clinical indications for starting blood transfusion in a patient with Thalassemia.",
+      "back": "1. Hemoglobin level < 7 gm/dL (on at least 2 measurements).\n2. Poor growth.\n3. Facial bone changes.\n4. Pathological fractures or extramedullary hematopoiesis."
+    },
+    {
+      "id": "hema_saq_9",
+      "front": "Enumerate the four classic clinical manifestations (tetrad) of Henoch-Schönlein Purpura (HSP).",
+      "back": "1. Palpable purpura without thrombocytopenia and coagulopathy.\n2. Arthralgia and/or arthritis.\n3. Abdominal pain.\n4. Kidney disease (such as initial hematuria)."
+    },
+    {
+      "id": "hema_saq_10",
+      "front": "Enumerate four favorable prognostic factors for pediatric Acute Lymphoblastic Leukemia (ALL).",
+      "back": "1. Age: between 1 and 9 years old.\n2. White blood cell count (WBCs): less than 50 × 10^9/L.\n3. Immunophenotype: B-precursor cellular lineage.\n4. Sex: Girls have a more favorable prognosis than boys."
+    },
+    {
+      "id": "hema_saq_11",
+      "front": "Enumerate four clinical \"red flags\" for malignancy in pediatric patients.",
+      "back": "1. Pathological lymphadenopathy (non-tender, rubbery/hard, increasing or persisting size).\n2. Joint or bone pain.\n3. Persistent headache.\n4. Hepatosplenomegaly or a palpable abdominal mass."
+    },
+    {
+      "id": "hema_match_1",
+      "type": "matching",
+      "front": "Match the pathognomonic diagnostic finding or cell type in Group (A) with its corresponding hematological/oncological condition in Group (B):",
+      "matchingPairs": [
+        { "left": "Target cells", "right": "Thalassemia Syndromes" },
+        { "left": "Heinz bodies", "right": "Glucose-6-phosphate dehydrogenase (G6PD) deficiency" },
+        { "left": "Schistocytes (fragmented RBCs)", "right": "Disseminated Intravascular Coagulopathy (DIC)" },
+        { "left": "Reed-Sternberg (RS) cells", "right": "Hodgkin Lymphoma" }
+      ]
+    },
+    {
+      "id": "hema_case1_q1",
+      "front": "Case 1: A 9-month-old male infant is brought to the clinic because of progressive pallor and poor feeding. The dietary history reveals that he has been fed unmodified cow's milk since the age of 4 months with no introduction of solid foods. A complete blood count (CBC) reveals a hemoglobin level of 6.5 g/dL with a mean corpuscular volume (MCV) of 62 fL (Normal: 75-90 fL).\n\nWhat is the morphological classification of this child's anemia?",
+      "back": "Microcytic hypochromic anemia."
+    },
+    {
+      "id": "hema_case1_q2",
+      "front": "Case 1: A 9-month-old male infant is brought to the clinic because of progressive pallor and poor feeding. The dietary history reveals that he has been fed unmodified cow's milk since the age of 4 months with no introduction of solid foods. A complete blood count (CBC) reveals a hemoglobin level of 6.5 g/dL with a mean corpuscular volume (MCV) of 62 fL (Normal: 75-90 fL).\n\nWhat is the most likely diagnosis?",
+      "back": "Iron Deficiency Anemia (IDA)."
+    },
+    {
+      "id": "hema_case1_q3",
+      "front": "Case 1: A 9-month-old male infant is brought to the clinic because of progressive pallor and poor feeding. The dietary history reveals that he has been fed unmodified cow's milk since the age of 4 months with no introduction of solid foods. A complete blood count (CBC) reveals a hemoglobin level of 6.5 g/dL with a mean corpuscular volume (MCV) of 62 fL (Normal: 75-90 fL).\n\nWhat dietary measure should have been taken to prevent this condition, according to your textbook guidelines?",
+      "back": "Introduce iron-rich complementary foods at 4 to 6 months of age and completely avoid unmodified cow's milk until age 1 year."
+    },
+    {
+      "id": "hema_case2_q1",
+      "front": "Case 2: A 4-year-old boy is rushed to the emergency room with a sudden onset of dark, tea-colored urine, yellowish discoloration of the eyes (jaundice), and an abrupt drop in his hemoglobin concentration by 3.5 g/dL following the consumption of fava beans 48 hours ago. A peripheral blood smear shows characteristic bite cells and blister cells.\n\nWhat is the clinical diagnosis?",
+      "back": "Acute hemolytic anemia secondary to G6PD deficiency (Favism)."
+    },
+    {
+      "id": "hema_case2_q2",
+      "front": "Case 2: A 4-year-old boy is rushed to the emergency room with a sudden onset of dark, tea-colored urine, yellowish discoloration of the eyes (jaundice), and an abrupt drop in his hemoglobin concentration by 3.5 g/dL following the consumption of fava beans 48 hours ago. A peripheral blood smear shows characteristic bite cells and blister cells.\n\nWhat is the genetic mode of inheritance for this enzyme disorder?",
+      "back": "Sex-linked (X-linked) recessive mode of inheritance."
+    },
+    {
+      "id": "hema_case2_q3",
+      "front": "Case 2: A 4-year-old boy is rushed to the emergency room with a sudden onset of dark, tea-colored urine, yellowish discoloration of the eyes (jaundice), and an abrupt drop in his hemoglobin concentration by 3.5 g/dL following the consumption of fava beans 48 hours ago. A peripheral blood smear shows characteristic bite cells and blister cells.\n\nWhy should a diagnostic G6PD enzyme activity assay not be relied upon during this acute hemolytic episode?",
+      "back": "Because during an acute hemolytic episode, enzyme activity may appear falsely normal (false-negative), and testing must be repeated approximately 3 months after the episode resolves."
+    },
+    {
+      "id": "hema_case3_q1",
+      "front": "Case 3: A 10-month-old boy presents with a large, painful swelling of his right knee (hemarthrosis) that developed after he started crawling around the house. His parents mention he also had excessive, prolonged bleeding following his circumcision at 7 months of age. Laboratory screening reveals a prolonged activated partial thromboplastin time (aPTT) but a completely normal prothrombin time (PT) and normal platelet count.\n\nWhat is the most likely clinical diagnosis?",
+      "back": "Inherited Hemophilia (A or B)."
+    },
+    {
+      "id": "hema_case3_q2",
+      "front": "Case 3: A 10-month-old boy presents with a large, painful swelling of his right knee (hemarthrosis) that developed after he started crawling around the house. His parents mention he also had excessive, prolonged bleeding following his circumcision at 7 months of age. Laboratory screening reveals a prolonged activated partial thromboplastin time (aPTT) but a completely normal prothrombin time (PT) and normal platelet count.\n\nWhat is the genetic inheritance pattern of this disease, and why are males predominantly affected?",
+      "back": "It is an X-linked recessive disorder; males are predominantly affected because they possess a single X chromosome."
+    },
+    {
+      "id": "hema_case3_q3",
+      "front": "Case 3: A 10-month-old boy presents with a large, painful swelling of his right knee (hemarthrosis) that developed after he started crawling around the house. His parents mention he also had excessive, prolonged bleeding following his circumcision at 7 months of age. Laboratory screening reveals a prolonged activated partial thromboplastin time (aPTT) but a completely normal prothrombin time (PT) and normal platelet count.\n\nEnumerate two standard safe alternatives for analgesia/pain control in this patient.",
+      "back": "Paracetamol, COX-2 inhibitors, or opioids."
+    },
+    {
+      "id": "hema_case4_q1",
+      "front": "Case 4: An otherwise completely healthy and active 3-year-old girl develops a sudden generalized skin rash consisting of pinpoint petechiae, purpura, and scattered bruises (ecchymoses). The mother reports that the child had a mild viral upper respiratory tract infection 2 weeks ago. Physical examination reveals an absence of fever, no lymphadenopathy, and no hepatosplenomegaly. A CBC shows an isolated platelet count of 15,000/μL with completely normal hemoglobin and normal WBC count.\n\nWhat is the most likely clinical diagnosis?",
+      "back": "Primary Immune Thrombocytopenia (ITP) of childhood."
+    },
+    {
+      "id": "hema_case4_q2",
+      "front": "Case 4: An otherwise completely healthy and active 3-year-old girl develops a sudden generalized skin rash consisting of pinpoint petechiae, purpura, and scattered bruises (ecchymoses). The mother reports that the child had a mild viral upper respiratory tract infection 2 weeks ago. Physical examination reveals an absence of fever, no lymphadenopathy, and no hepatosplenomegaly. A CBC shows an isolated platelet count of 15,000/μL with completely normal hemoglobin and normal WBC count.\n\nWhat would a bone marrow aspiration (BMA) characteristically demonstrate if performed?",
+      "back": "Normal granulocytic and erythrocytic series with characteristically normal or increased numbers of megakaryocytes."
+    },
+    {
+      "id": "hema_case4_q3",
+      "front": "Case 4: An otherwise completely healthy and active 3-year-old girl develops a sudden generalized skin rash consisting of pinpoint petechiae, purpura, and scattered bruises (ecchymoses). The mother reports that the child had a mild viral upper respiratory tract infection 2 weeks ago. Physical examination reveals an absence of fever, no lymphadenopathy, and no hepatosplenomegaly. A CBC shows an isolated platelet count of 15,000/μL with completely normal hemoglobin and normal WBC count.\n\nIf this patient develops an acute, life-threatening intracranial hemorrhage, what is the only clinical indication for a platelet transfusion in ITP management?",
+      "back": "Life-threatening bleeding is the only indication for a platelet transfusion in the treatment of ITP."
+    },
+    {
+      "id": "hema_case5_q1",
+      "front": "Case 5: A 3-year-old child presents with an asymptomatic, firm, smooth abdominal mass that was discovered incidentally by his mother while bathing him. On physical examination, the clinician notes that the mass does not cross the midline. The child's blood pressure is elevated for his age (135/90 mmHg). Urinalysis reveals microscopic hematuria, but urinary catecholamine metabolites (VMA and HVA) are entirely within normal limits.\n\nWhat is the most likely primary malignant renal diagnosis?",
+      "back": "Wilms tumor (Nephroblastoma)."
+    },
+    {
+      "id": "hema_case5_q2",
+      "front": "Case 5: A 3-year-old child presents with an asymptomatic, firm, smooth abdominal mass that was discovered incidentally by his mother while bathing him. On physical examination, the clinician notes that the mass does not cross the midline. The child's blood pressure is elevated for his age (135/90 mmHg). Urinalysis reveals microscopic hematuria, but urinary catecholamine metabolites (VMA and HVA) are entirely within normal limits.\n\nWhy should the clinician avoid vigorous or deep abdominal palpation during the physical examination of this child?",
+      "back": "Care should be taken to avoid vigorous palpation to prevent the risk of renal capsule rupture."
+    },
+    {
+      "id": "hema_case5_q3",
+      "front": "Case 5: A 3-year-old child presents with an asymptomatic, firm, smooth abdominal mass that was discovered incidentally by his mother while bathing him. On physical examination, the clinician notes that the mass does not cross the midline. The child's blood pressure is elevated for his age (135/90 mmHg). Urinalysis reveals microscopic hematuria, but urinary catecholamine metabolites (VMA and HVA) are entirely within normal limits.\n\nWhy is a diagnostic percutaneous needle biopsy discouraged in this condition?",
+      "back": "Because it results in disease upstaging."
+    }
+  ],
   "Renal Anatomy, Functions & Urine Color Changes": [],
   "Pediatric Hematuria Approach & Evaluation": [
     {
