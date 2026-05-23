@@ -808,8 +808,18 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
     },
     {
       "id": "nut_case2_q1",
-      "front": "Case 2: A 14-month-old infant presents with delayed walking, frontal bossing, a box-shaped skull, and bowing of the legs (Genu varum). Laboratory investigations reveal: Normal serum calcium (10 mg%), low serum phosphorus (2.5 mg%), and highly elevated serum alkaline phosphatase.\n\nWhat is the most likely diagnosis?",
-      "back": "Vitamin D deficient rickets."
+      "front": "Case 2: A 10-month-old male infant presents with broad wrists, bow-legs, and delayed teething. Blood chemistry: normal Ca, low Ph and very high alkaline phosphatase. X-ray of wrist shows cupping & fraying.\n\nWhat is your provisional diagnosis?",
+      "back": "Active Infantile (Nutritional) Rickets."
+    },
+    {
+      "id": "nut_case2_q2",
+      "front": "Case 2: A 10-month-old male infant presents with broad wrists, bow-legs, and delayed teething. Blood chemistry: normal Ca, low Ph and very high alkaline phosphatase. X-ray of wrist shows cupping & fraying.\n\nExplain the mechanism behind the increased level of serum alkaline phosphatase in this disease.",
+      "back": "It is due to increased osteoblastic activity."
+    },
+    {
+      "id": "nut_case2_q3",
+      "front": "Case 2: A 10-month-old male infant presents with broad wrists, bow-legs, and delayed teething. Blood chemistry: normal Ca, low Ph and very high alkaline phosphatase. X-ray of wrist shows cupping & fraying.\n\nEnumerate the two therapeutic methods/options for treating this infantile disease.",
+      "back": "Oral daily dose of 1500-5000 IU vitamin D till complete recovery, or Shock therapy (a single oral dose of 600,000 IU vitamin D)."
     }
   ],
 
