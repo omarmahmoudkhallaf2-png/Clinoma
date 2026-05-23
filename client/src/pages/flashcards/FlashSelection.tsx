@@ -21,7 +21,7 @@ const FlashSelection = () => {
     },
     {
       title: 'Flash Space',
-      description: 'High-end interactive study boards for anatomy, ophthalmology, and visual diagnostics.',
+      description: 'High-end interactive study boards for pediatrics, ophthalmology, and visual diagnostics.',
       icon: Layers,
       path: '/flashcards/space',
       color: 'from-emerald-600 to-teal-600',

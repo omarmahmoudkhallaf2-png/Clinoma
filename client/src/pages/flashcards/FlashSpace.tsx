@@ -369,14 +369,449 @@ const PEDIATRICS_EXPLANATIONS: Record<string, string> = {
 * **ميه:** Hydrocephalus
 * **دم:** Subdural hematoma`
 };
+type Connection = {
+  leftId: string;
+  rightId: string;
+  isCorrect?: boolean;
+};
+
+const MatchingGameUI = ({ question, onComplete }: { question: any, onComplete: () => void }) => {
+  const [shuffledRight, setShuffledRight] = useState<{ id: string, text: string }[]>([]);
+  const [leftItems, setLeftItems] = useState<{ id: string, text: string }[]>([]);
+  
+  const [connections, setConnections] = useState<Connection[]>([]);
+  const [activeSelection, setActiveSelection] = useState<{ id: string, side: 'left'|'right' } | null>(null);
+  
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const itemRefs = useRef<Record<string, HTMLDivElement | null>>({});
+
+  // Force re-render lines to sync coordinates
+  const [renderTick, setRenderTick] = useState(0);
+
+  useEffect(() => {
+    const handleResize = () => setRenderTick(t => t + 1);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    const scrollEl = scrollContainerRef.current;
+    if (!scrollEl) return;
+    const handleScroll = () => setRenderTick(t => t + 1);
+    scrollEl.addEventListener('scroll', handleScroll);
+    return () => scrollEl.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    if (!question.matchingPairs) return;
+    const pairs = question.matchingPairs.map((p: any, i: number) => ({ id: `pair_${i}`, ...p }));
+    setLeftItems(pairs.map((p: any) => ({ id: p.id, text: p.left })));
+    
+    const rightList = pairs.map((p: any) => ({ id: p.id, text: p.right }));
+    setShuffledRight([...rightList].sort(() => Math.random() - 0.5));
+    
+    setConnections([]);
+    setActiveSelection(null);
+    setIsSubmitted(false);
+    
+    // Initial sync for line coordinates after render
+    setTimeout(() => setRenderTick(t => t + 1), 50);
+  }, [question]);
+
+  const getDotCoordinates = (id: string, side: 'left' | 'right') => {
+    const element = itemRefs.current[`${side}_${id}`];
+    if (!element || !containerRef.current) return null;
+    
+    const containerRect = containerRef.current.getBoundingClientRect();
+    const rect = element.getBoundingClientRect();
+    
+    const isRightEdge = side === 'left'; 
+    
+    return {
+      x: rect.left - containerRect.left + (isRightEdge ? rect.width + 12 : -12), // Added 12px offset for the dot perfectly
+      y: rect.top - containerRect.top + (rect.height / 2)
+    };
+  };
+
+  const handleItemClick = (e: React.MouseEvent, id: string, side: 'left' | 'right') => {
+    e.stopPropagation();
+    if (isSubmitted) return; 
+
+    if (!activeSelection) {
+      setActiveSelection({ id, side });
+    } else {
+      if (activeSelection.side === side) {
+        if (activeSelection.id === id) {
+          setActiveSelection(null); 
+        } else {
+          setActiveSelection({ id, side }); 
+        }
+      } else {
+        const leftId = side === 'left' ? id : activeSelection.id;
+        const rightId = side === 'right' ? id : activeSelection.id;
+        
+        setConnections(prev => {
+          const filtered = prev.filter(c => c.leftId !== leftId && c.rightId !== rightId);
+          return [...filtered, { leftId, rightId }];
+        });
+        
+        setActiveSelection(null);
+      }
+    }
+    setRenderTick(t => t + 1);
+  };
+
+  const handleDisconnect = (e: React.MouseEvent, connToRemove: Connection) => {
+    e.stopPropagation();
+    if (isSubmitted) return;
+    setConnections(prev => prev.filter(c => c.leftId !== connToRemove.leftId));
+    setRenderTick(t => t + 1);
+  };
+
+  const handleSubmit = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    
+    const evaluated = connections.map(conn => ({
+      ...conn,
+      isCorrect: conn.leftId === conn.rightId
+    }));
+    
+    setConnections(evaluated);
+    setIsSubmitted(true);
+    setRenderTick(t => t + 1);
+    
+    const allCorrect = evaluated.length === question.matchingPairs.length && evaluated.every(c => c.isCorrect);
+    if (allCorrect) {
+      setTimeout(() => {
+        onComplete();
+      }, 1500);
+    }
+  };
+
+  const handleReset = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setConnections(prev => prev.filter(c => c.isCorrect));
+    setIsSubmitted(false);
+    setRenderTick(t => t + 1);
+  };
+
+  const renderLines = () => {
+    const lines = [];
+
+    // Draw confirmed connections
+    connections.forEach((conn, idx) => {
+      const p1 = getDotCoordinates(conn.leftId, 'left');
+      const p2 = getDotCoordinates(conn.rightId, 'right');
+      if (!p1 || !p2) return;
+
+      let stroke = '#94a3b8';
+      let strokeWidth = 3;
+      let dashArray = 'none';
+      
+      if (isSubmitted) {
+        strokeWidth = 4;
+        if (conn.isCorrect) {
+          stroke = '#10b981';
+        } else {
+          stroke = '#f43f5e';
+          dashArray = '5,5';
+        }
+      }
+
+      lines.push(
+        <line 
+          key={`conn_${idx}`}
+          x1={p1.x} y1={p1.y} 
+          x2={p2.x} y2={p2.y} 
+          stroke={stroke} 
+          strokeWidth={strokeWidth}
+          strokeLinecap="round"
+          strokeDasharray={dashArray}
+          className="transition-all duration-300"
+        />
+      );
+    });
+
+    // Draw active selection line (follows the currently selected point to the cursor/center)
+    // Wait, we don't have cursor tracking here. Just highlighting the selected dot is enough!
+    
+    return lines;
+  };
+
+  return (
+    <div className="absolute inset-0 flex flex-col bg-slate-50 dark:bg-slate-900 rounded-3xl border-2 border-slate-100 dark:border-slate-800 shadow-xl overflow-hidden select-none" style={{backfaceVisibility: 'hidden', touchAction: 'none'}} onClick={(e) => e.stopPropagation()}>
+      <div className="w-full h-full flex flex-col p-4 md:p-6 relative" ref={containerRef}>
+        
+        {/* SVG Overlay */}
+        <svg className="absolute inset-0 w-full h-full pointer-events-none z-10" style={{ overflow: 'visible' }}>
+          {renderTick > -1 && renderLines()}
+        </svg>
+
+        <div className="mb-4 shrink-0 flex items-center justify-center gap-3 z-20">
+          <div className="w-8 h-8 md:w-10 md:h-10 bg-indigo-50 dark:bg-indigo-900/30 rounded-xl flex items-center justify-center shrink-0">
+            <span className="text-indigo-500 dark:text-indigo-400 font-black text-xs md:text-sm">Q</span>
+          </div>
+          <h3 className="font-black text-slate-800 dark:text-slate-100 text-sm md:text-lg leading-snug">{question.front}</h3>
+        </div>
+        
+        <div className="flex-1 flex flex-col md:flex-row gap-8 md:gap-16 overflow-y-auto custom-scrollbar px-2 md:px-4 pb-24 z-20" ref={scrollContainerRef}>
+          <div className="flex-1 flex flex-col gap-3 md:gap-4 relative">
+            <h4 className="font-bold text-slate-400 dark:text-slate-500 text-[10px] md:text-xs uppercase tracking-widest mb-1 text-center">Terms</h4>
+            {leftItems.map(item => {
+              const conn = connections.find(c => c.leftId === item.id);
+              const isActive = activeSelection?.id === item.id && activeSelection?.side === 'left';
+              
+              let borderClass = 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-slate-300 dark:hover:border-slate-600';
+              if (isActive) borderClass = 'border-indigo-400 bg-indigo-50 dark:bg-indigo-900/40 shadow-md scale-[1.02] ring-2 ring-indigo-400/50';
+              else if (conn) {
+                if (isSubmitted) {
+                  borderClass = conn.isCorrect ? 'border-emerald-400 bg-emerald-50 dark:bg-emerald-900/30' : 'border-rose-400 bg-rose-50 dark:bg-rose-900/30';
+                } else {
+                  borderClass = 'border-indigo-200 dark:border-indigo-800 bg-indigo-50/50 dark:bg-indigo-900/20';
+                }
+              }
+
+              return (
+                <div
+                  key={`left_${item.id}`}
+                  ref={el => itemRefs.current[`left_${item.id}`] = el}
+                  onClick={(e) => {
+                    if (conn && !isSubmitted) handleDisconnect(e, conn);
+                    else handleItemClick(e, item.id, 'left');
+                  }}
+                  className={`
+                    relative text-left p-3 md:p-4 rounded-xl border-2 transition-all font-bold text-sm md:text-base leading-snug cursor-pointer z-20 text-slate-700 dark:text-slate-200
+                    ${borderClass}
+                  `}
+                  dir="auto"
+                >
+                  {item.text}
+                  <div className={`absolute top-1/2 -right-3 -translate-y-1/2 w-4 h-4 rounded-full border-2 bg-white dark:bg-slate-800 transition-colors ${isActive || conn ? 'border-indigo-500 dark:border-indigo-400 scale-125' : 'border-slate-300 dark:border-slate-600'}`} />
+                </div>
+              )
+            })}
+          </div>
+          
+          <div className="flex-1 flex flex-col gap-3 md:gap-4 relative">
+            <h4 className="font-bold text-slate-400 dark:text-slate-500 text-[10px] md:text-xs uppercase tracking-widest mb-1 text-center">Definitions</h4>
+            {shuffledRight.map(item => {
+              const conn = connections.find(c => c.rightId === item.id);
+              const isActive = activeSelection?.id === item.id && activeSelection?.side === 'right';
+              
+              let borderClass = 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-slate-300 dark:hover:border-slate-600';
+              if (isActive) borderClass = 'border-indigo-400 bg-indigo-50 dark:bg-indigo-900/40 shadow-md scale-[1.02] ring-2 ring-indigo-400/50';
+              else if (conn) {
+                if (isSubmitted) {
+                  borderClass = conn.isCorrect ? 'border-emerald-400 bg-emerald-50 dark:bg-emerald-900/30' : 'border-rose-400 bg-rose-50 dark:bg-rose-900/30';
+                } else {
+                  borderClass = 'border-indigo-200 dark:border-indigo-800 bg-indigo-50/50 dark:bg-indigo-900/20';
+                }
+              }
+
+              return (
+                <div
+                  key={`right_${item.id}`}
+                  ref={el => itemRefs.current[`right_${item.id}`] = el}
+                  onClick={(e) => {
+                    if (conn && !isSubmitted) handleDisconnect(e, conn);
+                    else handleItemClick(e, item.id, 'right');
+                  }}
+                  className={`
+                    relative text-left p-3 md:p-4 rounded-xl border-2 transition-all font-bold text-sm md:text-base leading-snug cursor-pointer z-20 text-slate-700 dark:text-slate-200
+                    ${borderClass}
+                  `}
+                  dir="auto"
+                >
+                  <div className={`absolute top-1/2 -left-3 -translate-y-1/2 w-4 h-4 rounded-full border-2 bg-white dark:bg-slate-800 transition-colors ${isActive || conn ? 'border-indigo-500 dark:border-indigo-400 scale-125' : 'border-slate-300 dark:border-slate-600'}`} />
+                  {item.text}
+                </div>
+              )
+            })}
+          </div>
+        </div>
+
+        {/* Submit Actions */}
+        <div className="absolute bottom-6 left-0 w-full flex justify-center gap-4 px-4 z-30">
+          {!isSubmitted ? (
+            <button
+              onClick={handleSubmit}
+              disabled={connections.length < question.matchingPairs.length}
+              className={`
+                px-8 py-3 rounded-2xl font-black text-white shadow-lg transition-all
+                ${connections.length < question.matchingPairs.length ? 'bg-slate-300 dark:bg-slate-700 opacity-50 cursor-not-allowed' : 'bg-slate-900 dark:bg-slate-100 dark:text-slate-900 hover:bg-indigo-600 dark:hover:bg-indigo-400 dark:hover:text-white hover:scale-105 active:scale-95'}
+              `}
+            >
+              Submit Answers
+            </button>
+          ) : (
+            connections.every(c => c.isCorrect) ? (
+              <div className="px-8 py-3 bg-emerald-500 text-white rounded-2xl font-black shadow-lg shadow-emerald-500/30 flex items-center gap-2">
+                <CheckCircle2 className="w-5 h-5" /> Perfect!
+              </div>
+            ) : (
+              <button
+                onClick={handleReset}
+                className="px-8 py-3 bg-rose-500 hover:bg-rose-600 text-white rounded-2xl font-black shadow-lg transition-all flex items-center gap-2 hover:scale-105 active:scale-95"
+              >
+                <Undo2 className="w-5 h-5" /> Fix Errors
+              </button>
+            )
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
 // --- Question Types ---
 interface Question {
   id: string;
+  type?: 'flashcard' | 'matching';
   front: string;
-  back: string;
+  back?: string;
+  matchingPairs?: Array<{ left: string, right: string }>;
 }
 
 const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
+
+  "_CHAPTER_Growth & development": [
+    {
+      "id": "gd_saq1",
+      "front": "Define the following terms: Growth and Development.",
+      "back": "Growth: Natural increase in the size of the body either by (hyperplasia) through multiplication of different cells of different organs or (hypertrophy) through increase in the cell size.\n\nDevelopment: Functional maturation of the central nervous system that leading to gaining skills and social adaptation."
+    },
+    {
+      "id": "gd_saq2",
+      "front": "Enumerate four types of childhood growth patterns.",
+      "back": "General (somatic) growth pattern.\n\nLymphatic growth pattern.\n\nGenital growth pattern.\n\nNeural growth pattern."
+    },
+    {
+      "id": "gd_saq3",
+      "front": "Enumerate four clinical uses of standard deviation (SD) curves in growth charts.",
+      "back": "Diagnosis of short stature if the height is -2SD below the mean.\n\nDiagnosis of tall stature if the height is +2SD above the mean.\n\nDiagnosis of microcephaly if head circumference is -2SD below the mean.\n\nDiagnosis of macrocephaly if head circumference is +2SD above the mean."
+    },
+    {
+      "id": "gd_saq4",
+      "front": "Enumerate four causes of delayed bone age.",
+      "back": "Malnutrition.\n\nHypopituitarism.\n\nHypothyroidism.\n\nHypoparathyroidism."
+    },
+    {
+      "id": "gd_saq5",
+      "front": "Enumerate four key development warning signs in children.",
+      "back": "Discrepant head size or crossing centile lines (too large or too small).\n\nPersistence of primitive reflexes > 6 months of age.\n\nNot walking by 18 months.\n\nNo clear spoken words by 18 months."
+    },
+    {
+      "id": "gd_saq6",
+      "front": "Enumerate four causes of delayed walking.",
+      "back": "Cerebral palsy.\n\nMental retardation.\n\nPeripheral nerves disorders.\n\nMuscles disorders."
+    },
+    {
+      "id": "gd_match1",
+      "front": "Match the developmental milestone with the correct normal median age of achievement:\n\n1. Social smile\n2. Sitting without support (with straight back)\n3. Pincer grip (grasp by thumb and finger)\n4. Walking well",
+      "back": "1. Social smile -> 2 months\n\n2. Sitting without support -> 8 months\n\n3. Pincer grip -> 9 months\n\n4. Walking well -> 15 months"
+    },
+    {
+      "id": "gd_case1_q1",
+      "front": "Case 1: A mother brings her 10-month-old infant to your clinic for a routine check-up. On physical examination, you note that the infant can sit steadily without support with a straight back and can creep on the floor. However, the infant cannot stand or walk alone yet.\n\nIs this infant's gross motor development normal or delayed based on his current age?",
+      "back": "Normal development, as sitting without support with a straight back is expected by 8 months, and creeping is achieved at 9 months."
+    },
+    {
+      "id": "gd_case1_q2",
+      "front": "Case 1: A mother brings her 10-month-old infant to your clinic for a routine check-up. On physical examination, you note that the infant can sit steadily without support with a straight back and can creep on the floor. However, the infant cannot stand or walk alone yet.\n\nAt what age is walking well typically achieved?",
+      "back": "Walking well is typically achieved at 15 months."
+    },
+    {
+      "id": "gd_case2_q1",
+      "front": "Case 2: An 18-month-old child is brought to the pediatric clinic because he is still unable to walk independently and has no clear spoken words.\n\nIdentify the two key development warning signs present in this child.",
+      "back": "Key warning signs: Not walking by 18 months and no clear spoken words by 18 months."
+    },
+    {
+      "id": "gd_case2_q2",
+      "front": "Case 2: An 18-month-old child is brought to the pediatric clinic because he is still unable to walk independently and has no clear spoken words.\n\nEnumerate two muscular or neurological causes that could lead to delayed walking in this child.",
+      "back": "Causes of delayed walking: Cerebral palsy and muscles disorders."
+    }
+  ],
+
+  "_CHAPTER_Nutrition": [
+    {
+      "id": "nut_saq_1",
+      "front": "Define the following terms:\nComplementary feeding (Weaning):",
+      "back": "It is the provision of any nutrient containing foods or liquids other than breast milk and includes both solid food and infant formula."
+    },
+    {
+      "id": "nut_saq_2",
+      "front": "Define the following terms:\nTetany:",
+      "back": "A state of hyper-excitability of central and peripheral nervous systems resulting from decreased ionic concentration of Ca or Mg or alkalosis."
+    },
+    {
+      "id": "nut_saq_3",
+      "front": "Enumerate four anti-infective properties or components present in human breast milk.",
+      "back": "1. Immunoglobulins especially secretory IgA against different pathogens.\n2. Phagocytes & lymphocytes.\n3. Lactoperoxidase, which protects against different bacterial pathogens.\n4. Lysozymes that destroy bacterial cell wall."
+    },
+    {
+      "id": "nut_saq_4",
+      "front": "Enumerate four absolute contraindications to breastfeeding (Maternal or Infant).",
+      "back": "1. Cancer breast.\n2. Insanity of the mother.\n3. HIV infection.\n4. Inborn errors of metabolism in the infant (e.g., galactosemia)."
+    },
+    {
+      "id": "nut_saq_5",
+      "front": "Enumerate the four constant features of Kwashiorkor.",
+      "back": "1. Growth failure.\n2. Pitting oedema.\n3. Mental changes.\n4. Muscle wasting with preserved subcutaneous fat."
+    },
+    {
+      "id": "nut_saq_6",
+      "front": "Enumerate four variable (non-constant) ectodermal or systemic features of Kwashiorkor.",
+      "back": "1. Skin changes (erythema, hyperpigmentation, desquamation).\n2. Hair changes (dry, sparse, easily pickable, alternating color bands).\n3. Anemia.\n4. GIT changes (hepatomegaly, diarrhea, abdominal distension)."
+    },
+    {
+      "id": "nut_saq_7",
+      "front": "Enumerate four causes of death in a child with severe Protein Energy Malnutrition (PEM).",
+      "back": "1. Recurrent infections.\n2. Electrolytes imbalance as a result of refeeding syndrome or acute gastroenteritis.\n3. Hypothermia.\n4. Hypoglycemia."
+    },
+    {
+      "id": "nut_saq_8",
+      "front": "Enumerate four skeletal manifestations found in the head or thorax of a child with advanced rickets.",
+      "back": "1. Frontal and parietal bossing leading to box shaped skull (caput quadratum).\n2. Wide anterior fontanelles.\n3. Rachitic rosaries (visible or palpable enlargement of the costochondral junction).\n4. Harrison sulcus (horizontal groove along lower border of the chest cage)."
+    },
+    {
+      "id": "nut_saq_9",
+      "front": "Enumerate the three steps in the diagnostic approach to refractory rickets.",
+      "back": "1st step: Measure serum phosphorus.\n2nd step: Measure blood pH.\n3rd step: Measure serum calcium."
+    },
+    {
+      "id": "nut_saq_10",
+      "front": "Enumerate four indications for hospitalization in a child with severe malnutrition.",
+      "back": "1. Hypothermia.\n2. Severe anemia and congestive cardiac failure.\n3. Persistent vomiting.\n4. Age less than 1 year."
+    },
+    {
+      "id": "nut_match_1",
+      "type": "matching",
+      "front": "Match the clinical sign/term in Group (A) with its exact diagnostic description in Group (B):",
+      "matchingPairs": [
+        { "left": "Flag sign", "right": "Alternating bands of normal color and hypopigmentations due to alternating periods of normal state and protein malnutrition." },
+        { "left": "Marfan's sign", "right": "Transverse groove on both malleoli due to abnormal proliferation of osteoid tissue at two different centers, pathognomonic for rickets." },
+        { "left": "Trousseau sign", "right": "Carpal spasm induced by occlusion of arterial flow to the arm by inflating the cuff of a sphygmomanometer above systolic pressure for 3 minutes." },
+        { "left": "Craniotabes", "right": "Abnormal softness due to thinning of the outer skull plate where a squash ball sensation is felt by pressing firmly over the occipital bones." }
+      ]
+    },
+    {
+      "id": "nut_case1_q1",
+      "front": "Case 1: A 2-year-old child is brought to the hospital presentation with generalized pitting edema starting in the feet, a puffy \"moon face\", severe muscle wasting, but with preserved subcutaneous fat. The child is extremely apathetic and shows no interest in his surroundings.\n\nWhat is the diagnosis of this clinical condition according to the Welcome classification?",
+      "back": "Kwashiorkor (severe PEM with edema)."
+    },
+    {
+      "id": "nut_case1_q2",
+      "front": "Case 1: A 2-year-old child is brought to the hospital presentation with generalized pitting edema starting in the feet, a puffy \"moon face\", severe muscle wasting, but with preserved subcutaneous fat. The child is extremely apathetic and shows no interest in his surroundings.\n\nEnumerate two possible causes for the mental changes (apathy) observed in this child.",
+      "back": "Deficient aromatic amino acids and deficient trace elements (Cu, Mg, Zn)."
+    },
+    {
+      "id": "nut_case2_q1",
+      "front": "Case 2: A 14-month-old infant presents with delayed walking, frontal bossing, a box-shaped skull, and bowing of the legs (Genu varum). Laboratory investigations reveal: Normal serum calcium (10 mg%), low serum phosphorus (2.5 mg%), and highly elevated serum alkaline phosphatase.\n\nWhat is the most likely diagnosis?",
+      "back": "Vitamin D deficient rickets."
+    }
+  ],
 
   "Renal Anatomy, Functions & Urine Color Changes": [],
   "Pediatric Hematuria Approach & Evaluation": [
@@ -1641,6 +2076,7 @@ const FlashSpace = () => {
   const [qRepeatCount, setQRepeatCount] = useState(0);
   const [isCardFlipped, setIsCardFlipped] = useState(false);
   const [qSessionDone, setQSessionDone] = useState(false);
+  const [isChapterQuestionMode, setIsChapterQuestionMode] = useState(false);
 
   // Vector Engine
   const [paths, setPaths] = useState<Path[]>([]);
@@ -2172,18 +2608,214 @@ const FlashSpace = () => {
           ) : (
             // BOARD/SLIDE SELECTION - premium glassmorphism layout
             <div className="h-full flex flex-col p-4 md:p-8 gap-6 md:gap-8 max-w-7xl mx-auto w-full">
-              <div className="flex items-center gap-4 shrink-0 mt-2">
-                <button onClick={() => setSelectedSystem(null)} className="p-2.5 bg-white/5 active:bg-white/15 hover:bg-white/10 rounded-2xl text-slate-400 transition-all border border-white/5 hover:border-white/10 hover:shadow-lg hover:shadow-black/20">
-                  <ChevronLeft className="w-5 h-5" />
-                </button>
-                <div>
-                  <h2 className="text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-white/60">{selectedSystem}</h2>
-                  <p className="text-slate-500 text-sm mt-0.5 tracking-wide uppercase font-bold">{boards.filter(b => b.module === selectedModule && b.system === selectedSystem).length} Slides Available</p>
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 shrink-0 mt-2">
+                <div className="flex items-center gap-4">
+                  <button onClick={() => setSelectedSystem(null)} className="p-2.5 bg-white/5 active:bg-white/15 hover:bg-white/10 rounded-2xl text-slate-400 transition-all border border-white/5 hover:border-white/10 hover:shadow-lg hover:shadow-black/20">
+                    <ChevronLeft className="w-5 h-5" />
+                  </button>
+                  <div>
+                    <h2 className="text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-white/60">{selectedSystem}</h2>
+                    <p className="text-slate-500 text-sm mt-0.5 tracking-wide uppercase font-bold">{boards.filter(b => b.module === selectedModule && b.system === selectedSystem).length} Slides Available</p>
+                  </div>
                 </div>
               </div>
               <div className="flex-1 overflow-y-auto pb-8">
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-                  {boards.filter(b => b.module === selectedModule && b.system === selectedSystem).map(board => (
+                {isChapterQuestionMode ? (
+                  // --- CHAPTER QUESTIONS TAB - Flashcard Session ---
+                  (() => {
+                    const questions = qQueue.concat(qDone); // Total questions in this session
+                    const totalQ = qDone.length + qQueue.length;
+                    const currentCard = qQueue[0];
+
+                    if (questions.length === 0) {
+                      return (
+                        <div className="flex flex-col items-center justify-center py-24 text-center">
+                          <div className="w-16 h-16 bg-emerald-50 rounded-2xl flex items-center justify-center mb-4">
+                            <Brain className="w-8 h-8 text-emerald-300" />
+                          </div>
+                          <p className="font-black text-slate-400 text-lg">Questions Coming Soon</p>
+                          <p className="text-slate-300 text-sm mt-2">Questions for this chapter are being prepared</p>
+                        </div>
+                      );
+                    }
+
+                    if (qSessionDone) {
+                      // Session complete
+                      return (
+                        <div className="flex flex-col items-center justify-center py-16 text-center px-8">
+                          <div className="text-6xl mb-6">🎉</div>
+                          <h3 className="text-3xl font-black text-slate-800 mb-2">Session Complete!</h3>
+                          <p className="text-slate-400 mb-8">You've mastered all {questions.length} questions</p>
+                          <div className="grid grid-cols-3 gap-4 mb-10 w-full max-w-sm">
+                            <div className="bg-emerald-50 rounded-2xl p-4 text-center">
+                              <p className="text-2xl font-black text-emerald-600">{qDone.length}</p>
+                              <p className="text-xs font-bold text-emerald-500 mt-1">Easy</p>
+                            </div>
+                            <div className="bg-amber-50 rounded-2xl p-4 text-center">
+                              <p className="text-2xl font-black text-amber-600">{qRepeatCount}</p>
+                              <p className="text-xs font-bold text-amber-500 mt-1">Repeated</p>
+                            </div>
+                            <div className="bg-rose-50 rounded-2xl p-4 text-center">
+                              <p className="text-2xl font-black text-rose-600">{qHardCount}</p>
+                              <p className="text-xs font-bold text-rose-500 mt-1">Hard</p>
+                            </div>
+                          </div>
+                          <div className="flex items-center gap-4">
+                            <button
+                              onClick={() => startQuestionSession(questions)}
+                              className="px-8 py-3 bg-slate-900 text-white rounded-2xl font-black hover:bg-indigo-600 transition-all"
+                            >
+                              Restart Session
+                            </button>
+                            <button
+                              onClick={() => setIsChapterQuestionMode(false)}
+                              className="px-8 py-3 bg-white border-2 border-slate-200 text-slate-700 rounded-2xl font-black hover:border-slate-300 hover:bg-slate-50 transition-all"
+                            >
+                              Back to Chapter
+                            </button>
+                          </div>
+                        </div>
+                      );
+                    }
+
+                    // Active flashcard
+                    return (
+                      <div className="flex flex-col items-center justify-between h-full py-4 px-2 md:px-6 max-w-5xl mx-auto">
+                        {/* Header Controls */}
+                        <div className="w-full flex items-center justify-between mb-4">
+                          <button
+                            onClick={() => setIsChapterQuestionMode(false)}
+                            className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-xl font-bold text-sm transition-all flex items-center gap-2"
+                          >
+                            <ChevronLeft className="w-4 h-4" /> Exit
+                          </button>
+                          <h3 className="font-black text-indigo-600">Chapter Questions</h3>
+                        </div>
+
+                        {/* Progress */}
+                        <div className="w-full space-y-2">
+                          <div className="flex justify-between text-xs font-bold text-slate-400">
+                            <span>{qDone.length} done</span>
+                            <span>{qQueue.length} remaining</span>
+                          </div>
+                          <div className="w-full bg-slate-100 rounded-full h-1.5">
+                            <div
+                              className="bg-emerald-500 h-1.5 rounded-full transition-all duration-500"
+                              style={{width: `${totalQ > 0 ? (qDone.length / totalQ) * 100 : 0}%`}}
+                            />
+                          </div>
+                        </div>
+
+                        {/* Flashcard */}
+                        <div className="w-full flex-1 flex items-center justify-center py-4 md:py-8">
+                          <div
+                            className="flashcard-container w-full max-w-3xl lg:max-w-4xl"
+                            style={{perspective: '1200px'}}
+                          >
+                            <div
+                              className="flashcard relative w-full min-h-[400px] md:min-h-[500px] lg:min-h-[550px]"
+                              style={{
+                                transformStyle: 'preserve-3d',
+                                transition: 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
+                                transform: isCardFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
+                              }}
+                            >
+                              {/* Front */}
+                              {currentCard?.type === 'matching' ? (
+                                <MatchingGameUI question={currentCard} onComplete={() => setIsCardFlipped(true)} />
+                              ) : (
+                                <div
+                                  className="absolute inset-0 flex flex-col items-center justify-center p-5 sm:p-8 md:p-12 bg-white rounded-3xl border-2 border-slate-100 shadow-xl cursor-pointer"
+                                  style={{backfaceVisibility: 'hidden'}}
+                                  onClick={() => !isCardFlipped && setIsCardFlipped(true)}
+                                >
+                                  <div className="w-10 h-10 md:w-12 md:h-12 bg-indigo-50 rounded-2xl flex items-center justify-center mb-4 md:mb-6 shrink-0">
+                                    <span className="text-indigo-500 font-black text-sm md:text-base">Q</span>
+                                  </div>
+                                  <div className="flex-1 w-full flex items-center justify-center overflow-y-auto custom-scrollbar pr-2">
+                                    <p className={`text-slate-800 font-black leading-relaxed whitespace-pre-line w-full ${(currentCard?.front?.length || 0) > 100 ? 'text-sm sm:text-base lg:text-lg text-left' : 'text-lg sm:text-xl md:text-2xl lg:text-3xl text-center'}`} dir="auto">{currentCard?.front}</p>
+                                  </div>
+                                  {!isCardFlipped && (
+                                    <p className="text-slate-300 text-xs md:text-sm mt-4 font-bold uppercase tracking-widest shrink-0">Tap to reveal answer</p>
+                                  )}
+                                </div>
+                              )}
+                              {/* Back */}
+                              <div
+                                className="absolute inset-0 flex flex-col items-center justify-center p-5 sm:p-8 md:p-12 bg-indigo-50 rounded-3xl border-2 border-indigo-100 shadow-xl"
+                                style={{backfaceVisibility: 'hidden', transform: 'rotateY(180deg)'}}
+                              >
+                                {currentCard?.type === 'matching' ? (
+                                  <div className="flex flex-col items-center text-center">
+                                    <div className="w-16 h-16 bg-emerald-500 rounded-full flex items-center justify-center mb-6 shadow-lg shadow-emerald-500/30">
+                                      <span className="text-3xl">🎉</span>
+                                    </div>
+                                    <h3 className="text-2xl md:text-3xl font-black text-slate-800 mb-2">Perfect Match!</h3>
+                                    <p className="text-slate-500 font-bold text-sm md:text-base">You successfully connected all terms.</p>
+                                  </div>
+                                ) : (
+                                  <>
+                                    <div className="w-10 h-10 md:w-12 md:h-12 bg-indigo-500 rounded-2xl flex items-center justify-center mb-4 md:mb-6 shrink-0">
+                                      <span className="text-white font-black text-sm md:text-base">A</span>
+                                    </div>
+                                    <div className="flex-1 w-full flex items-center justify-center overflow-y-auto custom-scrollbar pr-2">
+                                      <p className={`text-slate-800 font-black leading-relaxed whitespace-pre-line w-full ${(currentCard?.back?.length || 0) > 100 ? 'text-sm sm:text-base lg:text-lg text-left' : 'text-base sm:text-lg md:text-xl lg:text-2xl text-center'}`} dir="auto">{currentCard?.back}</p>
+                                    </div>
+                                  </>
+                                )}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Rating Buttons */}
+                        {isCardFlipped ? (
+                          <div className="w-full space-y-3">
+                            <p className="text-center text-xs font-black text-slate-400 uppercase tracking-widest mb-3">How well did you know this?</p>
+                            <div className="grid grid-cols-3 gap-2 md:gap-3">
+                              <button
+                                onClick={() => rateCard('hard')}
+                                className="py-3 md:py-4 bg-rose-50 hover:bg-rose-500 text-rose-600 hover:text-white rounded-2xl font-black text-xs md:text-sm transition-all hover:scale-105 active:scale-95 border-2 border-rose-100 hover:border-rose-500"
+                              >
+                                🔴 Hard
+                              </button>
+                              <button
+                                onClick={() => rateCard('repeat')}
+                                className="py-3 md:py-4 bg-amber-50 hover:bg-amber-500 text-amber-600 hover:text-white rounded-2xl font-black text-xs md:text-sm transition-all hover:scale-105 active:scale-95 border-2 border-amber-100 hover:border-amber-500"
+                              >
+                                🟡 Repeat
+                              </button>
+                              <button
+                                onClick={() => rateCard('easy')}
+                                className="py-3 md:py-4 bg-emerald-50 hover:bg-emerald-500 text-emerald-600 hover:text-white rounded-2xl font-black text-xs md:text-sm transition-all hover:scale-105 active:scale-95 border-2 border-emerald-100 hover:border-emerald-500"
+                              >
+                                🟢 Easy
+                              </button>
+                            </div>
+                          </div>
+                        ) : (
+                          currentCard?.type === 'matching' ? (
+                            <div className="py-4 opacity-50 select-none pointer-events-none">
+                              <p className="text-center font-bold text-slate-400 text-xs uppercase tracking-widest flex items-center justify-center gap-2">
+                                <span className="w-2 h-2 rounded-full bg-slate-300 animate-pulse"></span>
+                                Match all pairs to continue
+                              </p>
+                            </div>
+                          ) : (
+                            <button
+                              onClick={() => setIsCardFlipped(true)}
+                              className="px-10 py-4 bg-slate-900 text-white rounded-2xl font-black hover:bg-indigo-600 transition-all shadow-lg"
+                            >
+                              Reveal Answer
+                            </button>
+                          )
+                        )}
+                      </div>
+                    );
+                  })()
+                ) : (
+                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+                    {boards.filter(b => b.module === selectedModule && b.system === selectedSystem).map(board => (
                     <button
                       key={board.id}
                       onClick={() => { setSelectedBoard(board); setIsTimerActive(true); setPaths([]); setRedoPaths([]); }}
@@ -2209,7 +2841,44 @@ const FlashSpace = () => {
                       </div>
                     </button>
                   ))}
+                    <button
+                      onClick={() => {
+                        const chapterSlides = boards.filter(b => b.module === selectedModule && b.system === selectedSystem);
+                        const chapterQuestions = chapterSlides.flatMap(board => {
+                          const diseaseKey = (board.disease || '').replace(/\.(jpeg|jpg|png)\s*$/i, '').trim();
+                          return PEDIATRICS_QUESTIONS[diseaseKey] || [];
+                        });
+                        const generalQuestions = PEDIATRICS_QUESTIONS[`_CHAPTER_${selectedSystem}`] || [];
+                        const allQuestions = [...chapterQuestions, ...generalQuestions];
+                        if (allQuestions.length > 0) {
+                          startQuestionSession(allQuestions);
+                          setIsChapterQuestionMode(true);
+                        } else {
+                          toast.error('No questions available for this chapter yet');
+                        }
+                      }}
+                      className="group relative bg-slate-900/50 backdrop-blur-xl border border-white/5 active:border-emerald-500/50 hover:border-emerald-500/40 rounded-3xl overflow-hidden transition-all duration-300 active:scale-[0.97] hover:scale-[1.02] text-left flex flex-col hover:shadow-2xl hover:shadow-emerald-500/20"
+                    >
+                      <div className="flex-1 overflow-hidden bg-gradient-to-br from-emerald-500 to-teal-600 relative aspect-video flex flex-col items-center justify-center">
+                        <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 mix-blend-overlay" />
+                        <Brain className="w-16 h-16 text-white/90 drop-shadow-lg transition-transform duration-700 group-hover:scale-110" />
+                        
+                        <div className="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 scale-90 group-hover:scale-100">
+                          <div className="w-12 h-12 rounded-full bg-white text-emerald-600 flex items-center justify-center backdrop-blur-sm shadow-xl">
+                            <Brain className="w-5 h-5" />
+                          </div>
+                        </div>
+                      </div>
+                      <div className="p-4 md:p-5 shrink-0 bg-gradient-to-t from-slate-900/80 to-transparent">
+                        <h5 className="font-black text-white text-sm md:text-base leading-snug drop-shadow-md">Practice All Questions</h5>
+                        <div className="mt-2 flex items-center gap-2">
+                          <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]" />
+                          <p className="text-emerald-400 font-bold text-[10px] md:text-xs tracking-wider uppercase">Quiz Mode</p>
+                        </div>
+                      </div>
+                    </button>
                 </div>
+                )}
               </div>
             </div>
           )}
@@ -2277,6 +2946,40 @@ const FlashSpace = () => {
               </button>
             ))
           }
+          <button
+            onClick={() => {
+              const chapterSlides = boards.filter(b => b.module === selectedBoard?.module && b.system === selectedBoard?.system);
+              const chapterQuestions = chapterSlides.flatMap(board => {
+                const diseaseKey = (board.disease || '').replace(/\.(jpeg|jpg|png)\s*$/i, '').trim();
+                return PEDIATRICS_QUESTIONS[diseaseKey] || [];
+              });
+              const generalQuestions = PEDIATRICS_QUESTIONS[`_CHAPTER_${selectedBoard?.system}`] || [];
+              const allQuestions = [...chapterQuestions, ...generalQuestions];
+              if (allQuestions.length > 0) {
+                // Exit study mode and enter chapter question mode
+                setSelectedBoard(null);
+                setPaths([]); 
+                setRedoPaths([]);
+                setShowQuestions(false);
+                setIsSidebarOpen(false);
+                // We need to set selectedModule and selectedSystem so the chapter question view can render
+                if (selectedBoard) {
+                  setSelectedModule(selectedBoard.module);
+                  setSelectedSystem(selectedBoard.system);
+                }
+                startQuestionSession(allQuestions);
+                setIsChapterQuestionMode(true);
+              } else {
+                toast.error('No questions available for this chapter yet');
+              }
+            }}
+            className="w-full text-left px-4 py-3 flex items-center gap-3 transition-all hover:bg-emerald-50 mt-2 border-t border-slate-100"
+          >
+            <div className="w-5 shrink-0 flex items-center justify-center">
+              <Brain className="w-3.5 h-3.5 text-emerald-500" />
+            </div>
+            <span className="text-[11px] font-black text-emerald-600 uppercase tracking-widest">Practice Chapter</span>
+          </button>
         </div>
       </div>
 
@@ -2621,7 +3324,7 @@ const FlashSpace = () => {
                               style={{perspective: '1200px'}}
                             >
                               <div
-                                className="flashcard relative w-full min-h-[300px] md:min-h-[400px] lg:min-h-[450px]"
+                                className="flashcard relative w-full min-h-[400px] md:min-h-[500px] lg:min-h-[550px]"
                                 style={{
                                   transformStyle: 'preserve-3d',
                                   transition: 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
@@ -2634,23 +3337,27 @@ const FlashSpace = () => {
                                   style={{backfaceVisibility: 'hidden'}}
                                   onClick={() => !isCardFlipped && setIsCardFlipped(true)}
                                 >
-                                  <div className="w-10 h-10 md:w-12 md:h-12 bg-indigo-50 rounded-2xl flex items-center justify-center mb-4 md:mb-6">
+                                  <div className="w-10 h-10 md:w-12 md:h-12 bg-indigo-50 rounded-2xl flex items-center justify-center mb-4 md:mb-6 shrink-0">
                                     <span className="text-indigo-500 font-black text-sm md:text-base">Q</span>
                                   </div>
-                                  <p className="text-slate-800 font-black text-xl md:text-2xl lg:text-3xl text-center leading-relaxed" dir="rtl">{currentCard?.front}</p>
+                                  <div className="flex-1 w-full flex items-center justify-center overflow-y-auto custom-scrollbar pr-2">
+                                    <p className={`text-slate-800 font-black leading-relaxed whitespace-pre-line w-full ${(currentCard?.front?.length || 0) > 100 ? 'text-sm sm:text-base lg:text-lg text-left' : 'text-lg sm:text-xl md:text-2xl lg:text-3xl text-center'}`} dir="auto">{currentCard?.front}</p>
+                                  </div>
                                   {!isCardFlipped && (
-                                    <p className="text-slate-300 text-xs md:text-sm mt-8 font-bold uppercase tracking-widest">Tap to reveal answer</p>
+                                    <p className="text-slate-300 text-xs md:text-sm mt-4 font-bold uppercase tracking-widest shrink-0">Tap to reveal answer</p>
                                   )}
                                 </div>
                                 {/* Back */}
                                 <div
-                                  className="absolute inset-0 flex flex-col items-center justify-center p-8 md:p-12 bg-indigo-50 rounded-3xl border-2 border-indigo-100 shadow-xl"
+                                  className="absolute inset-0 flex flex-col items-center justify-center p-5 sm:p-8 md:p-12 bg-indigo-50 rounded-3xl border-2 border-indigo-100 shadow-xl"
                                   style={{backfaceVisibility: 'hidden', transform: 'rotateY(180deg)'}}
                                 >
-                                  <div className="w-10 h-10 md:w-12 md:h-12 bg-indigo-500 rounded-2xl flex items-center justify-center mb-4 md:mb-6">
+                                  <div className="w-10 h-10 md:w-12 md:h-12 bg-indigo-500 rounded-2xl flex items-center justify-center mb-4 md:mb-6 shrink-0">
                                     <span className="text-white font-black text-sm md:text-base">A</span>
                                   </div>
-                                  <p className="text-slate-800 font-black text-lg md:text-xl lg:text-2xl text-center leading-relaxed whitespace-pre-line" dir="rtl">{currentCard?.back}</p>
+                                  <div className="flex-1 w-full flex items-center justify-center overflow-y-auto custom-scrollbar pr-2">
+                                    <p className={`text-slate-800 font-black leading-relaxed whitespace-pre-line w-full ${(currentCard?.back?.length || 0) > 100 ? 'text-sm sm:text-base lg:text-lg text-left' : 'text-base sm:text-lg md:text-xl lg:text-2xl text-center'}`} dir="auto">{currentCard?.back}</p>
+                                  </div>
                                 </div>
                               </div>
                             </div>
