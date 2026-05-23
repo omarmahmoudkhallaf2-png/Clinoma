@@ -498,7 +498,7 @@ const MatchingGameUI = ({ question, onComplete }: { question: any, onComplete: (
   };
 
   const renderLines = () => {
-    const lines = [];
+    const lines: React.ReactNode[] = [];
 
     // Draw confirmed connections
     connections.forEach((conn, idx) => {
@@ -576,7 +576,7 @@ const MatchingGameUI = ({ question, onComplete }: { question: any, onComplete: (
               return (
                 <div
                   key={`left_${item.id}`}
-                  ref={el => itemRefs.current[`left_${item.id}`] = el}
+                  ref={el => { itemRefs.current[`left_${item.id}`] = el; }}
                   onClick={(e) => {
                     if (conn && !isSubmitted) handleDisconnect(e, conn);
                     else handleItemClick(e, item.id, 'left');
@@ -613,7 +613,7 @@ const MatchingGameUI = ({ question, onComplete }: { question: any, onComplete: (
               return (
                 <div
                   key={`right_${item.id}`}
-                  ref={el => itemRefs.current[`right_${item.id}`] = el}
+                  ref={el => { itemRefs.current[`right_${item.id}`] = el; }}
                   onClick={(e) => {
                     if (conn && !isSubmitted) handleDisconnect(e, conn);
                     else handleItemClick(e, item.id, 'right');
