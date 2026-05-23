@@ -192,7 +192,10 @@ export default function NoteViewer() {
               </div>
             )}
 
-            <div className="prose prose-lg max-w-none text-foreground leading-relaxed whitespace-pre-wrap">
+            <div 
+              className="prose prose-lg max-w-none !text-black leading-relaxed whitespace-pre-wrap text-right"
+              dir="auto"
+            >
               {selectedNote.content}
             </div>
 

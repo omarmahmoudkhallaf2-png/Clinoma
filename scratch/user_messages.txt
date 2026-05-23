@@ -1,0 +1,100 @@
+=== STEP 0 ===
+<USER_REQUEST>
+في فايل الصور انا حطيت حاجات كتير كمان في فايل ال assest عايزك تقولي شوفتهم ولا لا 
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-05-22T17:45:05+03:00.
+</ADDITIONAL_METADATA>
+<USER_SETTINGS_CHANGE>
+The user changed setting `Model Selection` from None to Gemini 3.5 Flash (High). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string.
+</USER_SETTINGS_CHANGE>
+----------------------------------------
+=== STEP 30 ===
+<USER_REQUEST>
+مليش دعوة بدول انا بكلمك على اللي حطيتهم بتوع الاطفال 
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-05-22T17:46:39+03:00.
+</ADDITIONAL_METADATA>
+----------------------------------------
+=== STEP 48 ===
+<USER_REQUEST>
+انا هجمع شرح و اسئلة لكل صورة و لما اديهملك هقولك دول تبع صورة كذا و عايزك كل صورة تبقى مجلد بحيث لما يضغط على المجلد يبقى في الصورة و فيه الشرح لكل صورة و الاسئلة لكل صورة 
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-05-22T17:59:24+03:00.
+</ADDITIONAL_METADATA>
+----------------------------------------
+=== STEP 66 ===
+<USER_REQUEST>
+[BIOLOGICAL AGE & MATURATION (BONE & TEETH)]
+
+**أولاً: النضج العظمي (Bone Age / Radiological Age)**
+
+* يُعتبر الـ **Bone age** من أهم المؤشرات لتقييم النضج البيولوجي للطفل، ويتم تحديده عن طريق تقييم ظهور مراكز التعظم (**Centers of ossification**).
+* **أهم النقاط الإكلينيكية:**
+* عند الولادة (**At birth**): يجب أن تكون مراكز التعظم موجودة في الـ **Lower end of femur** والـ **Upper end of tibia**.
+* الـ **Investigation** الأساسي لتقييم الـ **Bone age** في الأطفال هو طلب أشعة سينية (**X-ray**) على اليد اليسرى والمعصم (**Left hand and wrist**).
+
+
+
+**ثانياً: التسنين (Dentition)**
+ينقسم التسنين إلى مرحلتين أساسيتين:
+
+1. **الأسنان اللبنية (Deciduous / Milky teeth):**
+* إجمالي عددهم 20 سِنة.
+* يبدأ الـ **Eruption** عند عمر 6 أشهر تقريباً، وأول أسنان تظهر هي القواطع السفلية المركزية (**Lower central incisors**).
+* يكتمل خروج جميع الأسنان اللبنية عند عمر 2 إلى 2.5 سنة.
+
+
+2. **الأسنان الدائمة (Permanent teeth):**
+* إجمالي عددهم 32 سِنة.
+* يبدأ الـ **Eruption** عند عمر 6 سنوات، وأول سِنة تظهر هي الضرس الأول (**First molar**).
+
+
+
+**ثالثاً: تأخر التسنين (Delayed Dentition)**
+
+* يتم تشخيص الحالة كـ **Delayed dentition** إذا لم يظهر للطفل أي سِنة بحلول عمر 13 شهراً.
+
+**Enumerate the causes of Delayed Dentition:**
+
+1. **Rickets** (أشهر وأهم سبب)
+2. **Hypothyroidism**
+3. **Hypopituitarism**
+4. **Down syndrome**
+5. **Malnutrition**
+6. **Familial / Idiopathic**
+
+---
+
+💡 **Mnemonic لتسهيل التذكر في أسئلة الـ Enumerate:**
+لربط أسباب الـ **Delayed dentition** وتذكرها بسهولة في الامتحانات، تذكر هذه الجملة:
+**(عيلة داون عندها نقص تغذية وكساح في الغدة)**
+
+* **عيلة:** **Familial / Idiopathic**
+* **داون:** **Down syndrome**
+* **نقص تغذية:** **Malnutrition**
+* **كساح:** **Rickets**
+* **الغدة:** **Hypothyroidism** & **Hypopituitarism**     ضيف كدا الشرح ده للصورة اللي انا كاتب عنوانها و شغل لوكال هوست عشان لو عايز تعديلات 
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-05-22T18:17:58+03:00.
+</ADDITIONAL_METADATA>
+----------------------------------------
+=== STEP 126 ===
+<USER_REQUEST>
+لا طبعا ايه طريقة العرض دي انا عايز طريقة مريحة للعين و الالوان تكون مريحة و تنسيق كويس و قولتلك تضيف الشباتر الجديدة و كل صور عنوانها يبقى مجلد و كل مجلد يبقى جواه زرار شرح و زرار اسئلة و الصورة و تخلي نظام التنقل منظم بحيث مثلا لما يدخل شابتر يظهرله حاجات الشابتر و لو عايز يرجع يدوس زرار رجوع و انت واخد كل التصريحات متاخدش اذن مني 
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-05-22T18:23:22+03:00.
+</ADDITIONAL_METADATA>
+----------------------------------------
+=== STEP 206 ===
+<USER_REQUEST>
+فين بقيت الشباتر 
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-05-22T18:27:25+03:00.
+</ADDITIONAL_METADATA>
+----------------------------------------

@@ -238,7 +238,136 @@ const PEDIATRICS_EXPLANATIONS: Record<string, string> = {
 * **داون:** **Down syndrome**
 * **نقص تغذية:** **Malnutrition**
 * **كساح:** **Rickets**
-* **الغدة:** **Hypothyroidism** & **Hypopituitarism**`
+* **الغدة:** **Hypothyroidism** & **Hypopituitarism**`,
+  'DEVELOPMENTAL MILESTONES & NEURODEVELOPMENT': `**أولاً: محاور التطور العصبي (Domains of Development)**
+يتم تقييم التطور العصبي الحركي للطفل (Neurodevelopment) من خلال 4 محاور أساسية لا غنى عنها في التقييم الإكلينيكي:
+
+* **Gross motor** (التطور الحركي الكلي / الكبير).
+* **Fine motor and Vision** (التطور الحركي الدقيق والبصر).
+* **Hearing, Speech, and Language** (السمع والنطق واللغة).
+* **Social, Emotional, and Behavioral** (التطور الاجتماعي والسلوكي).
+
+<br/>
+
+**ثانياً: أهم المحطات التطورية (Key Milestones)**
+هذه النقاط هي الأشهر في الأسئلة الإكلينيكية والـ MCQs لمعرفة هل الطفل ينمو بمعدل طبيعي أم لا:
+
+* **عند عمر 3 أشهر (3 Months):**
+  * **Gross motor:** الطفل يستطيع صلب رأسه جيداً (Good head control / Head support).
+  * **Social:** يبدأ في الابتسام للأشخاص (Social smile).
+
+* **عند عمر 6 أشهر (6 Months):**
+  * **Gross motor:** يجلس بمساعدة أو مسند (Sits with support).
+  * **Fine motor:** يمسك الأشياء بكف يده بالكامل (Palmar grasp) وينقل الأشياء من يد لأخرى.
+  * **Language:** يبدأ في المناغاة (Babbling).
+
+* **عند عمر 9 أشهر (9 Months):**
+  * **Gross motor:** يجلس بمفرده بدون مساعدة (Sits without support) ويبدأ في الزحف (Crawling).
+  * **Fine motor:** يمسك الأشياء الصغيرة بإصبعين (Pincer grasp).
+  * **Social:** يلوح بيده مودعاً (Waves Bye-bye).
+
+* **عند عمر 12 شهراً / سنة (12 Months):**
+  * **Gross motor:** يقف ويمشي مستنداً على الأثاث (Cruising / Walks with support).
+  * **Language:** ينطق أول كلمات واضحة لها معنى (مثل بابا، ماما).
+
+* **عند عمر 18 شهراً (18 Months):**
+  * **Gross motor:** يمشي بمفرده بثبات (Walks alone / well).
+
+* **عند عمر 24 شهراً / سنتين (24 Months):**
+  * **Gross motor:** يصعد وينزل السلم (Goes up and down stairs).
+  * **Language:** يكوّن جملة من كلمتين (2-word sentence).
+
+<br/>
+
+**ثالثاً: تأخر التطور الشامل (Global Developmental Delay)**
+يُشخص الطفل بهذه الحالة إذا كان يعاني من تأخر ملحوظ في محورين أو أكثر من محاور التطور المذكورة.
+
+**Enumerate the causes of Global Developmental Delay:**
+
+1. **Cerebral Palsy (CP)**
+2. **Genetic syndromes** (e.g., Down syndrome)
+3. **Endocrinal disorders** (e.g., Hypothyroidism)
+4. **Metabolic disorders** (e.g., Phenylketonuria - PKU)
+5. **Malnutrition & Severe chronic illnesses**.
+6. **Psychosocial deprivation** (الحرمان البيئي والاجتماعي).
+
+---
+
+💡 **Mnemonic لتسهيل التذكر في أسئلة الـ Enumerate:**
+لربط أسباب الـ **Global Developmental Delay** بشكل مبسط، تذكر هذه الجملة:
+**(داون جاله شلل ونقص تغذية بسبب الغدة والوراثة)**
+
+* **داون:** **Down syndrome**
+* **شلل:** **Cerebral Palsy (CP)**
+* **نقص تغذية:** **Malnutrition** (ويمكن ربطها أيضاً بالـ Psychosocial deprivation)
+* **الغدة:** **Hypothyroidism** (Endocrinal causes)
+* **الوراثة:** **Genetic / Metabolic disorders** (مثل الـ PKU)`,
+  'PEDIATRIC GROWTH': `**أولاً: محاور النمو الجسدي (Parameters of Physical Growth)**
+تقييم الـ Physical Growth في الأطفال يعتمد بشكل أساسي على ثلاثة قياسات مهمة، وكل قياس له معدل زيادة طبيعي يجب متابعته:
+
+**1. الوزن (Weight):**
+* وزن الولادة الطبيعي (Birth weight) يتراوح بين 3 إلى 3.5 kg.
+* فسيولوجياً، يفقد الطفل حوالي 5% إلى 10% من وزنه في الأيام الأولى، ثم يستعيد وزن الولادة عند عمر 10 إلى 14 يوماً.
+* يتضاعف الوزن (Doubles) عند عمر 4 إلى 5 أشهر.
+* يصبح 3 أضعاف (Triples) عند عمر سنة (1 year).
+* يصبح 4 أضعاف (Quadruples) عند عمر سنتين (2 years).
+* **معادلات حساب الوزن التقريبي (Formulas for expected weight):**
+  * للأطفال من 1 إلى 6 سنوات: Age (years) × 2 + 8
+  * للأطفال من 7 إلى 12 سنة: (Age (years) × 7 - 5) / 2
+
+<br/>
+
+**2. الطول (Length / Height):**
+* يُقاس كـ Length (والطفل مستلقٍ) للأطفال أقل من سنتين، وكـ Height (والطفل واقف) للأطفال الأكبر سناً.
+* متوسط الطول عند الولادة هو 50 cm.
+* عند عمر سنة يصل إلى 75 cm.
+* يتضاعف الطول عند الولادة (Doubles) ليصبح حوالي 100 cm عند عمر 4 سنوات.
+* **معادلة حساب الطول التقريبي للأطفال من 2 إلى 12 سنة:** Age (years) × 5 + 80
+
+<br/>
+
+**3. محيط الرأس (Head Circumference - HC):**
+* يعتبر من أهم القياسات لأنه يعكس نمو المخ (Brain growth).
+* متوسط الـ HC عند الولادة هو 35 cm.
+* عند عمر 6 أشهر يصل إلى 43 cm.
+* عند عمر سنة يصل إلى 47 cm.
+
+<br/>
+
+**ثانياً: التطبيق الإكلينيكي على محيط الرأس (Abnormalities of Head Circumference)**
+
+**A. Enumerate the causes of Microcephaly (صغر حجم الرأس):**
+1. **Congenital infections (TORCH)**
+2. **Chromosomal abnormalities** (e.g., Down syndrome)
+3. **Familial / Genetic**
+4. **Fetal alcohol syndrome**
+5. **Craniosynostosis** (الالتحام المبكر لعظام الجمجمة)
+
+**B. Enumerate the causes of Macrocephaly (كبر حجم الرأس):**
+1. **Hydrocephalus**
+2. **Rickets**
+3. **Achondroplasia**
+4. **Familial**
+5. **Subdural hematoma**
+
+---
+
+💡 **Mnemonics لتسهيل التذكر في أسئلة الـ Enumerate:**
+
+**1. لربط أسباب الـ Microcephaly، تذكر هذه الجملة:**
+**(عيلة داون شربت كحول، وجالها تورش قفل الجمجمة بدري)**
+* **عيلة:** Familial / Genetic
+* **داون:** Chromosomal (Down syndrome)
+* **كحول:** Fetal alcohol syndrome
+* **تورش:** TORCH infections
+* **قفل الجمجمة بدري:** Craniosynostosis
+
+**2. لربط أسباب الـ Macrocephaly، تذكر هذه الجملة:**
+**(عيلة جالها كساح، فجمعت ميه ودم في المخ)**
+* **عيلة:** Familial (وتشمل أيضاً الـ Achondroplasia كمرض وراثي عائلي)
+* **كساح:** Rickets
+* **ميه:** Hydrocephalus
+* **دم:** Subdural hematoma`
 };
 // --- Question Types ---
 interface Question {
@@ -2374,15 +2503,15 @@ const FlashSpace = () => {
                       {PEDIATRICS_EXPLANATIONS[selectedBoard.disease] ? (
                         <ReactMarkdown
                           components={{
-                            h1: ({node, ...props}) => <h1 className="text-2xl font-black text-slate-800 mt-8 mb-4 border-b pb-3 border-slate-100" {...props} />,
-                            h2: ({node, ...props}) => <h2 className="text-xl font-black text-slate-800 mt-6 mb-3 border-r-4 border-indigo-500 pr-3" {...props} />,
-                            h3: ({node, ...props}) => <h3 className="text-lg font-extrabold text-slate-800 mt-5 mb-2" {...props} />,
-                            p: ({node, ...props}) => <p className="mb-4 text-slate-600 leading-loose text-base" {...props} />,
-                            ul: ({node, ...props}) => <ul className="list-disc list-inside mr-4 mb-4 space-y-2 text-slate-600" {...props} />,
-                            ol: ({node, ...props}) => <ol className="list-decimal list-inside mr-4 mb-4 space-y-2 text-slate-600" {...props} />,
-                            li: ({node, ...props}) => <li className="marker:text-indigo-500" {...props} />,
-                            strong: ({node, ...props}) => <strong className="text-indigo-600 font-black bg-indigo-50 px-2 py-0.5 rounded-lg mx-0.5" {...props} />,
-                            hr: ({node, ...props}) => <hr className="my-8 border-slate-100" {...props} />,
+                            h1: ({node, ...props}) => <h1 className="text-2xl font-black text-black mt-8 mb-4 border-b pb-3 border-slate-200 text-right" {...props} />,
+                            h2: ({node, ...props}) => <h2 className="text-xl font-black text-black mt-6 mb-3 border-r-4 border-black pr-3 text-right" {...props} />,
+                            h3: ({node, ...props}) => <h3 className="text-lg font-extrabold text-black mt-5 mb-2 text-right" {...props} />,
+                            p: ({node, ...props}) => <p className="mb-4 text-black leading-loose text-base text-right" {...props} />,
+                            ul: ({node, ...props}) => <ul className="list-disc list-inside mr-4 mb-4 space-y-2 text-black text-right" {...props} />,
+                            ol: ({node, ...props}) => <ol className="list-decimal list-inside mr-4 mb-4 space-y-2 text-black text-right" {...props} />,
+                            li: ({node, ...props}) => <li className="marker:text-black" {...props} />,
+                            strong: ({node, ...props}) => <strong className="text-black font-black bg-slate-100 px-2 py-0.5 rounded-lg mx-0.5" {...props} />,
+                            hr: ({node, ...props}) => <hr className="my-8 border-slate-200" {...props} />,
                           }}
                         >
                           {PEDIATRICS_EXPLANATIONS[selectedBoard.disease]}
@@ -2470,7 +2599,7 @@ const FlashSpace = () => {
 
                       // Active flashcard
                       return (
-                        <div className="flex flex-col items-center justify-between h-full py-8 px-6 max-w-2xl mx-auto">
+                        <div className="flex flex-col items-center justify-between h-full py-8 px-6 max-w-5xl mx-auto">
                           {/* Progress */}
                           <div className="w-full space-y-2">
                             <div className="flex justify-between text-xs font-bold text-slate-400">
@@ -2486,43 +2615,42 @@ const FlashSpace = () => {
                           </div>
 
                           {/* Flashcard */}
-                          <div className="w-full flex-1 flex items-center justify-center py-6">
+                          <div className="w-full flex-1 flex items-center justify-center py-6 md:py-10">
                             <div
-                              className="flashcard-container w-full max-w-lg"
+                              className="flashcard-container w-full max-w-3xl lg:max-w-4xl"
                               style={{perspective: '1200px'}}
                             >
                               <div
-                                className="flashcard relative w-full"
+                                className="flashcard relative w-full min-h-[300px] md:min-h-[400px] lg:min-h-[450px]"
                                 style={{
                                   transformStyle: 'preserve-3d',
                                   transition: 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
                                   transform: isCardFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
-                                  minHeight: '280px',
                                 }}
                               >
                                 {/* Front */}
                                 <div
-                                  className="absolute inset-0 flex flex-col items-center justify-center p-8 bg-white rounded-3xl border-2 border-slate-100 shadow-xl cursor-pointer"
+                                  className="absolute inset-0 flex flex-col items-center justify-center p-8 md:p-12 bg-white rounded-3xl border-2 border-slate-100 shadow-xl cursor-pointer"
                                   style={{backfaceVisibility: 'hidden'}}
                                   onClick={() => !isCardFlipped && setIsCardFlipped(true)}
                                 >
-                                  <div className="w-10 h-10 bg-indigo-50 rounded-2xl flex items-center justify-center mb-4">
-                                    <span className="text-indigo-500 font-black text-sm">Q</span>
+                                  <div className="w-10 h-10 md:w-12 md:h-12 bg-indigo-50 rounded-2xl flex items-center justify-center mb-4 md:mb-6">
+                                    <span className="text-indigo-500 font-black text-sm md:text-base">Q</span>
                                   </div>
-                                  <p className="text-slate-800 font-black text-xl text-center leading-relaxed" dir="rtl">{currentCard?.front}</p>
+                                  <p className="text-slate-800 font-black text-xl md:text-2xl lg:text-3xl text-center leading-relaxed" dir="rtl">{currentCard?.front}</p>
                                   {!isCardFlipped && (
-                                    <p className="text-slate-300 text-xs mt-6 font-bold uppercase tracking-widest">Tap to reveal answer</p>
+                                    <p className="text-slate-300 text-xs md:text-sm mt-8 font-bold uppercase tracking-widest">Tap to reveal answer</p>
                                   )}
                                 </div>
                                 {/* Back */}
                                 <div
-                                  className="absolute inset-0 flex flex-col items-center justify-center p-8 bg-indigo-50 rounded-3xl border-2 border-indigo-100 shadow-xl"
+                                  className="absolute inset-0 flex flex-col items-center justify-center p-8 md:p-12 bg-indigo-50 rounded-3xl border-2 border-indigo-100 shadow-xl"
                                   style={{backfaceVisibility: 'hidden', transform: 'rotateY(180deg)'}}
                                 >
-                                  <div className="w-10 h-10 bg-indigo-500 rounded-2xl flex items-center justify-center mb-4">
-                                    <span className="text-white font-black text-sm">A</span>
+                                  <div className="w-10 h-10 md:w-12 md:h-12 bg-indigo-500 rounded-2xl flex items-center justify-center mb-4 md:mb-6">
+                                    <span className="text-white font-black text-sm md:text-base">A</span>
                                   </div>
-                                  <p className="text-slate-800 font-black text-lg text-center leading-relaxed whitespace-pre-line" dir="rtl">{currentCard?.back}</p>
+                                  <p className="text-slate-800 font-black text-lg md:text-xl lg:text-2xl text-center leading-relaxed whitespace-pre-line" dir="rtl">{currentCard?.back}</p>
                                 </div>
                               </div>
                             </div>

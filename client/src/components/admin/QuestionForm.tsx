@@ -40,7 +40,7 @@ export default function QuestionForm({ initialData, onSave, onCancel }: Question
         const canvas = document.createElement('canvas');
         let { width, height } = img;
         
-        const MAX_DIM = 1000;
+        const MAX_DIM = 800;
         if (width > height && width > MAX_DIM) {
           height *= MAX_DIM / width;
           width = MAX_DIM;
@@ -51,23 +51,35 @@ export default function QuestionForm({ initialData, onSave, onCancel }: Question
         
         canvas.width = width;
         canvas.height = height;
-        const ctx = canvas.getContext('2d');
+        const ctx = canvas.getContext('2d', { alpha: false });
         if (ctx) {
           ctx.fillStyle = '#FFFFFF';
           ctx.fillRect(0, 0, width, height);
+          ctx.imageSmoothingEnabled = true;
+          ctx.imageSmoothingQuality = 'medium';
           ctx.drawImage(img, 0, 0, width, height);
         }
         
-        const compressedBase64 = canvas.toDataURL('image/jpeg', 0.7);
-        
-        if (compressedBase64.length > 950000) {
-          alert('الصورة معقدة وكبيرة جداً حتى بعد الضغط. يرجى استخدام صورة أبسط.');
-          setUploadingImage(false);
-          return;
-        }
-        
-        setFormData(prev => ({ ...prev, imageUrl: compressedBase64 }));
-        setUploadingImage(false);
+        canvas.toBlob((blob) => {
+          if (!blob) {
+            alert('حدث خطأ أثناء معالجة الصورة');
+            setUploadingImage(false);
+            return;
+          }
+          
+          if (blob.size > 800000) {
+            alert('الصورة معقدة وكبيرة جداً حتى بعد الضغط. يرجى استخدام صورة أبسط.');
+            setUploadingImage(false);
+            return;
+          }
+          
+          const reader = new FileReader();
+          reader.onloadend = () => {
+            setFormData(prev => ({ ...prev, imageUrl: reader.result as string }));
+            setUploadingImage(false);
+          };
+          reader.readAsDataURL(blob);
+        }, 'image/jpeg', 0.6);
       };
       img.onerror = () => {
         alert('حدث خطأ أثناء معالجة الصورة');
