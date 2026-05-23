@@ -822,7 +822,114 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "back": "Oral daily dose of 1500-5000 IU vitamin D till complete recovery, or Shock therapy (a single oral dose of 600,000 IU vitamin D)."
     }
   ],
-
+  "_CHAPTER_Genetic diseases": [
+    {
+      "id": "gen_saq_1",
+      "front": "Define the following terms:\nGenetics:",
+      "back": "The study of heredity or genes."
+    },
+    {
+      "id": "gen_saq_2",
+      "front": "Define the following terms:\nGene:",
+      "back": "The basic unit of inheritance; a section of DNA that takes a specific location on a chromosome and codes for a protein product."
+    },
+    {
+      "id": "gen_saq_3",
+      "front": "Define the following terms:\nKaryotype:",
+      "back": "A standardized format or photograph where individual chromosomes are arranged in pairs to detect numerical or gross structural abnormalities."
+    },
+    {
+      "id": "gen_saq_4",
+      "front": "Define the following terms:\nSyndrome:",
+      "back": "Multiple anomalies in one or more tissues thought to be pathologically related due to a specific etiologic mechanism."
+    },
+    {
+      "id": "gen_saq_5",
+      "front": "Enumerate four clinical indications for chromosomal analysis.",
+      "back": "1. Mental retardation, growth retardation, and developmental delay.\n2. Dysmorphic features and multiple congenital anomalies.\n3. Female with short stature.\n4. Recurrent abortions and fertility problems."
+    },
+    {
+      "id": "gen_saq_6",
+      "front": "Enumerate four structural chromosomal aberrations.",
+      "back": "1. Deletions.\n2. Duplications.\n3. Inversion.\n4. Translocation."
+    },
+    {
+      "id": "gen_saq_7",
+      "front": "Enumerate the three cytogenetic types of Down Syndrome.",
+      "back": "1. Nondisjunction Type.\n2. Translocation type.\n3. Mosaic type."
+    },
+    {
+      "id": "gen_saq_8",
+      "front": "Enumerate four characteristics of Autosomal Dominant inheritance.",
+      "back": "1. Affected mothers and fathers transmit the phenotype to both sons and daughters equally.\n2. Each child of an affected parent has a 50% chance of inheriting the disease.\n3. The phenotype appears in every generation presenting a \"vertical pattern\".\n4. Examples include Achondroplasia and Huntington disease."
+    },
+    {
+      "id": "gen_saq_9",
+      "front": "Enumerate four indications for Genetic Counseling.",
+      "back": "1. A personal or family history of a genetic condition, birth defect, or chromosomal disorder.\n2. A woman who is pregnant or plans to become pregnant at or after age 35.\n3. History of recurrent miscarriages or a stillbirth.\n4. Abnormal test results that suggest a genetic or chromosomal condition."
+    },
+    {
+      "id": "gen_saq_10",
+      "front": "Enumerate four criteria for an ideal newborn screening program.",
+      "back": "1. Screened condition should be an important, frequent, well-known health problem.\n2. Screening test should be inexpensive, simple, safe, reliable, precise and validated.\n3. Effective treatment or intervention must exist.\n4. Adequate staffing and facilities for testing, diagnosis, treatment, and program management."
+    },
+    {
+      "id": "gen_saq_11",
+      "front": "Enumerate four advantages of filter paper usage in newborn screening.",
+      "back": "1. Simple collection.\n2. More analytes stable.\n3. Simple transportation.\n4. Storage easy and compact."
+    },
+    {
+      "id": "gen_match_1",
+      "type": "matching",
+      "front": "Match the chromosomal disorder or prenatal finding in Group (A) with its exact genetic description or diagnostic marker in Group (B):",
+      "matchingPairs": [
+        { "left": "Turner syndrome", "right": "A condition characterized by a 45,X genotype, short stature, webbed neck, and primary amenorrhea." },
+        { "left": "Klinefelter syndrome", "right": "A condition characterized by a 47,XXY genotype, tall stature, eunuchoid build, small testes, and gynecomastia." },
+        { "left": "Edward syndrome", "right": "Trisomy 18 presenting with low-set malformed auricles, a clenched hand with overlapping fingers, and rocker bottom feet." },
+        { "left": "Down syndrome prenatal triple test", "right": "Decreased maternal serum alpha-fetoprotein (AFP), decreased unconjugated estriol (uE3), and increased human chorionic gonadotrophin (hCG)." }
+      ]
+    },
+    {
+      "id": "gen_case1_q1",
+      "front": "Case 1: A 37-year-old pregnant woman has a routine prenatal triple test done at 16 weeks of gestation. The laboratory report reveals: Decreased alpha-fetoprotein (AFP), decreased unconjugated estriol (uE3), and significantly increased human chorionic gonadotrophin (hCG).\n\nWhat is the most likely chromosomal disorder affecting the fetus?",
+      "back": "Down Syndrome (Trisomy 21)."
+    },
+    {
+      "id": "gen_case1_q2",
+      "front": "Case 1: A 37-year-old pregnant woman has a routine prenatal triple test done at 16 weeks of gestation. The laboratory report reveals: Decreased alpha-fetoprotein (AFP), decreased unconjugated estriol (uE3), and significantly increased human chorionic gonadotrophin (hCG).\n\nEnumerate two invasive screening methods that can be offered to this patient to obtain fetal cells for a definitive diagnosis.",
+      "back": "Amniocentesis and Chorionic villus sampling."
+    },
+    {
+      "id": "gen_case2_q1",
+      "front": "Case 2: A newborn male infant is examined in the neonatal unit. The clinician observes upward slanting palpebral fissures, an epicanthic fold, a single transverse palmar crease (simian crease), a wide gap between the first and second toes, and marked generalized hypotonia.\n\nWhat is the clinical diagnosis for this infant?",
+      "back": "Down Syndrome."
+    },
+    {
+      "id": "gen_case2_q2",
+      "front": "Case 2: A newborn male infant is examined in the neonatal unit. The clinician observes upward slanting palpebral fissures, an epicanthic fold, a single transverse palmar crease (simian crease), a wide gap between the first and second toes, and marked generalized hypotonia.\n\nWhat is the most common cytogenetic mechanism responsible for this syndrome, and what is its relation to maternal age?",
+      "back": "Nondisjunction Type (accounts for 94% of cases) ; its risk increases significantly with advanced maternal age."
+    },
+    {
+      "id": "gen_case3_q1",
+      "front": "Case 3: A 16-year-old female presents to the endocrine clinic with complaints of failure to start her periods (primary amenorrhea) and short stature. On physical examination, she has a low posterior hairline, a short webbed neck, a broad chest with widely spaced nipples, and a wide carrying angle at her elbows.\n\nWhat is the most likely diagnosis?",
+      "back": "Turner syndrome."
+    },
+    {
+      "id": "gen_case3_q2",
+      "front": "Case 3: A 16-year-old female presents to the endocrine clinic with complaints of failure to start her periods (primary amenorrhea) and short stature. On physical examination, she has a low posterior hairline, a short webbed neck, a broad chest with widely spaced nipples, and a wide carrying angle at her elbows.\n\nWhat is the most common genotype associated with this condition?",
+      "back": "45,X (or 45,XO)."
+    },
+    {
+      "id": "gen_case4_q1",
+      "front": "Case 4: A 17-year-old boy is brought for evaluation because of delayed puberty and learning difficulties. He is noted to be tall with long limbs and a eunuchoid build. Physical examination reveals minimal facial hair, bilateral breast enlargement (gynecomastia), and small, firm testes.\n\nWhat is the most likely clinical diagnosis?",
+      "back": "Klinefelter syndrome."
+    },
+    {
+      "id": "gen_case4_q2",
+      "front": "Case 4: A 17-year-old boy is brought for evaluation because of delayed puberty and learning difficulties. He is noted to be tall with long limbs and a eunuchoid build. Physical examination reveals minimal facial hair, bilateral breast enlargement (gynecomastia), and small, firm testes.\n\nWhat is the typical genotype for this syndrome, and when is it usually diagnosed?",
+      "back": "47,XXY ; the diagnosis is rarely made before puberty."
+    }
+  ],
   "Renal Anatomy, Functions & Urine Color Changes": [],
   "Pediatric Hematuria Approach & Evaluation": [
     {
