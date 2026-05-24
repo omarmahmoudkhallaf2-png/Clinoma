@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react';
+﻿import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react';
 import { 
   ChevronLeft, 
   Pencil, 
@@ -35,16 +35,13 @@ import {
   Droplets,
   ShieldAlert,
   Stethoscope,
-  Target,
-  Lock,
-  Eye
+  Target
 } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
-import { useAuth } from '../../context/AuthContext';
-import { db, auth } from '../../lib/firebase';
-import { collection, query, getDocs, orderBy, doc, updateDoc, increment, arrayUnion, deleteField } from 'firebase/firestore';
+import { db } from '../../lib/firebase';
+import { collection, query, getDocs, orderBy } from 'firebase/firestore';
 import ReactMarkdown from 'react-markdown';
 
 // --- Vector Types ---
@@ -195,36 +192,36 @@ const PEDIATRICS_SLIDES: Record<string, string[]> = {
 };
 
 const PEDIATRICS_EXPLANATIONS: Record<string, string> = {
-  'BIOLOGICAL AGE & MATURATION (BONE & TEETH)': `**أولاً: النضج العظمي (Bone Age / Radiological Age)**
+  'BIOLOGICAL AGE & MATURATION (BONE & TEETH)': `**╪ú┘ê┘ä╪º┘ï: ╪º┘ä┘å╪╢╪¼ ╪º┘ä╪╣╪╕┘à┘è (Bone Age / Radiological Age)**
 
-* يُعتبر الـ **Bone age** من أهم المؤشرات لتقييم النضج البيولوجي للطفل، ويتم تحديده عن طريق تقييم ظهور مراكز التعظم (**Centers of ossification**).
-* **أهم النقاط الإكلينيكية:**
-  * عند الولادة (**At birth**): يجب أن تكون مراكز التعظم موجودة في الـ **Lower end of femur** والـ **Upper end of tibia**.
-  * الـ **Investigation** الأساسي لتقييم الـ **Bone age** في الأطفال هو طلب أشعة سينية (**X-ray**) على اليد اليسرى والمعصم (**Left hand and wrist**).
-
-<br/>
-
-**ثانياً: التسنين (Dentition)**
-ينقسم التسنين إلى مرحلتين أساسيتين:
-
-1. **الأسنان اللبنية (Deciduous / Milky teeth):**
-   * إجمالي عددهم 20 سِنة.
-   * يبدأ الـ **Eruption** عند عمر 6 أشهر تقريباً، وأول أسنان تظهر هي القواطع السفلية المركزية (**Lower central incisors**).
-   * يكتمل خروج جميع الأسنان اللبنية عند عمر 2 إلى 2.5 سنة.
-
-2. **الأسنان الدائمة (Permanent teeth):**
-   * إجمالي عددهم 32 سِنة.
-   * يبدأ الـ **Eruption** عند عمر 6 سنوات، وأول سِنة تظهر هي الضرس الأول (**First molar**).
+* ┘è┘Å╪╣╪¬╪¿╪▒ ╪º┘ä┘Ç **Bone age** ┘à┘å ╪ú┘ç┘à ╪º┘ä┘à╪ñ╪┤╪▒╪º╪¬ ┘ä╪¬┘é┘è┘è┘à ╪º┘ä┘å╪╢╪¼ ╪º┘ä╪¿┘è┘ê┘ä┘ê╪¼┘è ┘ä┘ä╪╖┘ü┘ä╪î ┘ê┘è╪¬┘à ╪¬╪¡╪»┘è╪»┘ç ╪╣┘å ╪╖╪▒┘è┘é ╪¬┘é┘è┘è┘à ╪╕┘ç┘ê╪▒ ┘à╪▒╪º┘â╪▓ ╪º┘ä╪¬╪╣╪╕┘à (**Centers of ossification**).
+* **╪ú┘ç┘à ╪º┘ä┘å┘é╪º╪╖ ╪º┘ä╪Ñ┘â┘ä┘è┘å┘è┘â┘è╪⌐:**
+  * ╪╣┘å╪» ╪º┘ä┘ê┘ä╪º╪»╪⌐ (**At birth**): ┘è╪¼╪¿ ╪ú┘å ╪¬┘â┘ê┘å ┘à╪▒╪º┘â╪▓ ╪º┘ä╪¬╪╣╪╕┘à ┘à┘ê╪¼┘ê╪»╪⌐ ┘ü┘è ╪º┘ä┘Ç **Lower end of femur** ┘ê╪º┘ä┘Ç **Upper end of tibia**.
+  * ╪º┘ä┘Ç **Investigation** ╪º┘ä╪ú╪│╪º╪│┘è ┘ä╪¬┘é┘è┘è┘à ╪º┘ä┘Ç **Bone age** ┘ü┘è ╪º┘ä╪ú╪╖┘ü╪º┘ä ┘ç┘ê ╪╖┘ä╪¿ ╪ú╪┤╪╣╪⌐ ╪│┘è┘å┘è╪⌐ (**X-ray**) ╪╣┘ä┘ë ╪º┘ä┘è╪» ╪º┘ä┘è╪│╪▒┘ë ┘ê╪º┘ä┘à╪╣╪╡┘à (**Left hand and wrist**).
 
 <br/>
 
-**ثالثاً: تأخر التسنين (Delayed Dentition)**
+**╪½╪º┘å┘è╪º┘ï: ╪º┘ä╪¬╪│┘å┘è┘å (Dentition)**
+┘è┘å┘é╪│┘à ╪º┘ä╪¬╪│┘å┘è┘å ╪Ñ┘ä┘ë ┘à╪▒╪¡┘ä╪¬┘è┘å ╪ú╪│╪º╪│┘è╪¬┘è┘å:
 
-* يتم تشخيص الحالة كـ **Delayed dentition** إذا لم يظهر للطفل أي سِنة بحلول عمر 13 شهراً.
+1. **╪º┘ä╪ú╪│┘å╪º┘å ╪º┘ä┘ä╪¿┘å┘è╪⌐ (Deciduous / Milky teeth):**
+   * ╪Ñ╪¼┘à╪º┘ä┘è ╪╣╪»╪»┘ç┘à 20 ╪│┘É┘å╪⌐.
+   * ┘è╪¿╪»╪ú ╪º┘ä┘Ç **Eruption** ╪╣┘å╪» ╪╣┘à╪▒ 6 ╪ú╪┤┘ç╪▒ ╪¬┘é╪▒┘è╪¿╪º┘ï╪î ┘ê╪ú┘ê┘ä ╪ú╪│┘å╪º┘å ╪¬╪╕┘ç╪▒ ┘ç┘è ╪º┘ä┘é┘ê╪º╪╖╪╣ ╪º┘ä╪│┘ü┘ä┘è╪⌐ ╪º┘ä┘à╪▒┘â╪▓┘è╪⌐ (**Lower central incisors**).
+   * ┘è┘â╪¬┘à┘ä ╪«╪▒┘ê╪¼ ╪¼┘à┘è╪╣ ╪º┘ä╪ú╪│┘å╪º┘å ╪º┘ä┘ä╪¿┘å┘è╪⌐ ╪╣┘å╪» ╪╣┘à╪▒ 2 ╪Ñ┘ä┘ë 2.5 ╪│┘å╪⌐.
+
+2. **╪º┘ä╪ú╪│┘å╪º┘å ╪º┘ä╪»╪º╪ª┘à╪⌐ (Permanent teeth):**
+   * ╪Ñ╪¼┘à╪º┘ä┘è ╪╣╪»╪»┘ç┘à 32 ╪│┘É┘å╪⌐.
+   * ┘è╪¿╪»╪ú ╪º┘ä┘Ç **Eruption** ╪╣┘å╪» ╪╣┘à╪▒ 6 ╪│┘å┘ê╪º╪¬╪î ┘ê╪ú┘ê┘ä ╪│┘É┘å╪⌐ ╪¬╪╕┘ç╪▒ ┘ç┘è ╪º┘ä╪╢╪▒╪│ ╪º┘ä╪ú┘ê┘ä (**First molar**).
+
+<br/>
+
+**╪½╪º┘ä╪½╪º┘ï: ╪¬╪ú╪«╪▒ ╪º┘ä╪¬╪│┘å┘è┘å (Delayed Dentition)**
+
+* ┘è╪¬┘à ╪¬╪┤╪«┘è╪╡ ╪º┘ä╪¡╪º┘ä╪⌐ ┘â┘Ç **Delayed dentition** ╪Ñ╪░╪º ┘ä┘à ┘è╪╕┘ç╪▒ ┘ä┘ä╪╖┘ü┘ä ╪ú┘è ╪│┘É┘å╪⌐ ╪¿╪¡┘ä┘ê┘ä ╪╣┘à╪▒ 13 ╪┤┘ç╪▒╪º┘ï.
 
 **Causes of Delayed Dentition (Enumerate):**
 
-1. **Rickets** (أشهر وأهم سبب)
+1. **Rickets** (╪ú╪┤┘ç╪▒ ┘ê╪ú┘ç┘à ╪│╪¿╪¿)
 2. **Hypothyroidism**
 3. **Hypopituitarism**
 4. **Down syndrome**
@@ -233,57 +230,57 @@ const PEDIATRICS_EXPLANATIONS: Record<string, string> = {
 
 ---
 
-💡 **Mnemonic لتسهيل التذكر في أسئلة الـ Enumerate:**
-لربط أسباب الـ **Delayed dentition** وتذكرها بسهولة في الامتحانات، تذكر هذه الجملة:
-**(عيلة داون عندها نقص تغذية وكساح في الغدة)**
+≡ƒÆí **Mnemonic ┘ä╪¬╪│┘ç┘è┘ä ╪º┘ä╪¬╪░┘â╪▒ ┘ü┘è ╪ú╪│╪ª┘ä╪⌐ ╪º┘ä┘Ç Enumerate:**
+┘ä╪▒╪¿╪╖ ╪ú╪│╪¿╪º╪¿ ╪º┘ä┘Ç **Delayed dentition** ┘ê╪¬╪░┘â╪▒┘ç╪º ╪¿╪│┘ç┘ê┘ä╪⌐ ┘ü┘è ╪º┘ä╪º┘à╪¬╪¡╪º┘å╪º╪¬╪î ╪¬╪░┘â╪▒ ┘ç╪░┘ç ╪º┘ä╪¼┘à┘ä╪⌐:
+**(╪╣┘è┘ä╪⌐ ╪»╪º┘ê┘å ╪╣┘å╪»┘ç╪º ┘å┘é╪╡ ╪¬╪║╪░┘è╪⌐ ┘ê┘â╪│╪º╪¡ ┘ü┘è ╪º┘ä╪║╪»╪⌐)**
 
-* **عيلة:** **Familial / Idiopathic**
-* **داون:** **Down syndrome**
-* **نقص تغذية:** **Malnutrition**
-* **كساح:** **Rickets**
-* **الغدة:** **Hypothyroidism** & **Hypopituitarism**`,
-  'DEVELOPMENTAL MILESTONES & NEURODEVELOPMENT': `**أولاً: محاور التطور العصبي (Domains of Development)**
-يتم تقييم التطور العصبي الحركي للطفل (Neurodevelopment) من خلال 4 محاور أساسية لا غنى عنها في التقييم الإكلينيكي:
+* **╪╣┘è┘ä╪⌐:** **Familial / Idiopathic**
+* **╪»╪º┘ê┘å:** **Down syndrome**
+* **┘å┘é╪╡ ╪¬╪║╪░┘è╪⌐:** **Malnutrition**
+* **┘â╪│╪º╪¡:** **Rickets**
+* **╪º┘ä╪║╪»╪⌐:** **Hypothyroidism** & **Hypopituitarism**`,
+  'DEVELOPMENTAL MILESTONES & NEURODEVELOPMENT': `**╪ú┘ê┘ä╪º┘ï: ┘à╪¡╪º┘ê╪▒ ╪º┘ä╪¬╪╖┘ê╪▒ ╪º┘ä╪╣╪╡╪¿┘è (Domains of Development)**
+┘è╪¬┘à ╪¬┘é┘è┘è┘à ╪º┘ä╪¬╪╖┘ê╪▒ ╪º┘ä╪╣╪╡╪¿┘è ╪º┘ä╪¡╪▒┘â┘è ┘ä┘ä╪╖┘ü┘ä (Neurodevelopment) ┘à┘å ╪«┘ä╪º┘ä 4 ┘à╪¡╪º┘ê╪▒ ╪ú╪│╪º╪│┘è╪⌐ ┘ä╪º ╪║┘å┘ë ╪╣┘å┘ç╪º ┘ü┘è ╪º┘ä╪¬┘é┘è┘è┘à ╪º┘ä╪Ñ┘â┘ä┘è┘å┘è┘â┘è:
 
-* **Gross motor** (التطور الحركي الكلي / الكبير).
-* **Fine motor and Vision** (التطور الحركي الدقيق والبصر).
-* **Hearing, Speech, and Language** (السمع والنطق واللغة).
-* **Social, Emotional, and Behavioral** (التطور الاجتماعي والسلوكي).
-
-<br/>
-
-**ثانياً: أهم المحطات التطورية (Key Milestones)**
-هذه النقاط هي الأشهر في الأسئلة الإكلينيكية والـ MCQs لمعرفة هل الطفل ينمو بمعدل طبيعي أم لا:
-
-* **عند عمر 3 أشهر (3 Months):**
-  * **Gross motor:** الطفل يستطيع صلب رأسه جيداً (Good head control / Head support).
-  * **Social:** يبدأ في الابتسام للأشخاص (Social smile).
-
-* **عند عمر 6 أشهر (6 Months):**
-  * **Gross motor:** يجلس بمساعدة أو مسند (Sits with support).
-  * **Fine motor:** يمسك الأشياء بكف يده بالكامل (Palmar grasp) وينقل الأشياء من يد لأخرى.
-  * **Language:** يبدأ في المناغاة (Babbling).
-
-* **عند عمر 9 أشهر (9 Months):**
-  * **Gross motor:** يجلس بمفرده بدون مساعدة (Sits without support) ويبدأ في الزحف (Crawling).
-  * **Fine motor:** يمسك الأشياء الصغيرة بإصبعين (Pincer grasp).
-  * **Social:** يلوح بيده مودعاً (Waves Bye-bye).
-
-* **عند عمر 12 شهراً / سنة (12 Months):**
-  * **Gross motor:** يقف ويمشي مستنداً على الأثاث (Cruising / Walks with support).
-  * **Language:** ينطق أول كلمات واضحة لها معنى (مثل بابا، ماما).
-
-* **عند عمر 18 شهراً (18 Months):**
-  * **Gross motor:** يمشي بمفرده بثبات (Walks alone / well).
-
-* **عند عمر 24 شهراً / سنتين (24 Months):**
-  * **Gross motor:** يصعد وينزل السلم (Goes up and down stairs).
-  * **Language:** يكوّن جملة من كلمتين (2-word sentence).
+* **Gross motor** (╪º┘ä╪¬╪╖┘ê╪▒ ╪º┘ä╪¡╪▒┘â┘è ╪º┘ä┘â┘ä┘è / ╪º┘ä┘â╪¿┘è╪▒).
+* **Fine motor and Vision** (╪º┘ä╪¬╪╖┘ê╪▒ ╪º┘ä╪¡╪▒┘â┘è ╪º┘ä╪»┘é┘è┘é ┘ê╪º┘ä╪¿╪╡╪▒).
+* **Hearing, Speech, and Language** (╪º┘ä╪│┘à╪╣ ┘ê╪º┘ä┘å╪╖┘é ┘ê╪º┘ä┘ä╪║╪⌐).
+* **Social, Emotional, and Behavioral** (╪º┘ä╪¬╪╖┘ê╪▒ ╪º┘ä╪º╪¼╪¬┘à╪º╪╣┘è ┘ê╪º┘ä╪│┘ä┘ê┘â┘è).
 
 <br/>
 
-**ثالثاً: تأخر التطور الشامل (Global Developmental Delay)**
-يُشخص الطفل بهذه الحالة إذا كان يعاني من تأخر ملحوظ في محورين أو أكثر من محاور التطور المذكورة.
+**╪½╪º┘å┘è╪º┘ï: ╪ú┘ç┘à ╪º┘ä┘à╪¡╪╖╪º╪¬ ╪º┘ä╪¬╪╖┘ê╪▒┘è╪⌐ (Key Milestones)**
+┘ç╪░┘ç ╪º┘ä┘å┘é╪º╪╖ ┘ç┘è ╪º┘ä╪ú╪┤┘ç╪▒ ┘ü┘è ╪º┘ä╪ú╪│╪ª┘ä╪⌐ ╪º┘ä╪Ñ┘â┘ä┘è┘å┘è┘â┘è╪⌐ ┘ê╪º┘ä┘Ç MCQs ┘ä┘à╪╣╪▒┘ü╪⌐ ┘ç┘ä ╪º┘ä╪╖┘ü┘ä ┘è┘å┘à┘ê ╪¿┘à╪╣╪»┘ä ╪╖╪¿┘è╪╣┘è ╪ú┘à ┘ä╪º:
+
+* **╪╣┘å╪» ╪╣┘à╪▒ 3 ╪ú╪┤┘ç╪▒ (3 Months):**
+  * **Gross motor:** ╪º┘ä╪╖┘ü┘ä ┘è╪│╪¬╪╖┘è╪╣ ╪╡┘ä╪¿ ╪▒╪ú╪│┘ç ╪¼┘è╪»╪º┘ï (Good head control / Head support).
+  * **Social:** ┘è╪¿╪»╪ú ┘ü┘è ╪º┘ä╪º╪¿╪¬╪│╪º┘à ┘ä┘ä╪ú╪┤╪«╪º╪╡ (Social smile).
+
+* **╪╣┘å╪» ╪╣┘à╪▒ 6 ╪ú╪┤┘ç╪▒ (6 Months):**
+  * **Gross motor:** ┘è╪¼┘ä╪│ ╪¿┘à╪│╪º╪╣╪»╪⌐ ╪ú┘ê ┘à╪│┘å╪» (Sits with support).
+  * **Fine motor:** ┘è┘à╪│┘â ╪º┘ä╪ú╪┤┘è╪º╪í ╪¿┘â┘ü ┘è╪»┘ç ╪¿╪º┘ä┘â╪º┘à┘ä (Palmar grasp) ┘ê┘è┘å┘é┘ä ╪º┘ä╪ú╪┤┘è╪º╪í ┘à┘å ┘è╪» ┘ä╪ú╪«╪▒┘ë.
+  * **Language:** ┘è╪¿╪»╪ú ┘ü┘è ╪º┘ä┘à┘å╪º╪║╪º╪⌐ (Babbling).
+
+* **╪╣┘å╪» ╪╣┘à╪▒ 9 ╪ú╪┤┘ç╪▒ (9 Months):**
+  * **Gross motor:** ┘è╪¼┘ä╪│ ╪¿┘à┘ü╪▒╪»┘ç ╪¿╪»┘ê┘å ┘à╪│╪º╪╣╪»╪⌐ (Sits without support) ┘ê┘è╪¿╪»╪ú ┘ü┘è ╪º┘ä╪▓╪¡┘ü (Crawling).
+  * **Fine motor:** ┘è┘à╪│┘â ╪º┘ä╪ú╪┤┘è╪º╪í ╪º┘ä╪╡╪║┘è╪▒╪⌐ ╪¿╪Ñ╪╡╪¿╪╣┘è┘å (Pincer grasp).
+  * **Social:** ┘è┘ä┘ê╪¡ ╪¿┘è╪»┘ç ┘à┘ê╪»╪╣╪º┘ï (Waves Bye-bye).
+
+* **╪╣┘å╪» ╪╣┘à╪▒ 12 ╪┤┘ç╪▒╪º┘ï / ╪│┘å╪⌐ (12 Months):**
+  * **Gross motor:** ┘è┘é┘ü ┘ê┘è┘à╪┤┘è ┘à╪│╪¬┘å╪»╪º┘ï ╪╣┘ä┘ë ╪º┘ä╪ú╪½╪º╪½ (Cruising / Walks with support).
+  * **Language:** ┘è┘å╪╖┘é ╪ú┘ê┘ä ┘â┘ä┘à╪º╪¬ ┘ê╪º╪╢╪¡╪⌐ ┘ä┘ç╪º ┘à╪╣┘å┘ë (┘à╪½┘ä ╪¿╪º╪¿╪º╪î ┘à╪º┘à╪º).
+
+* **╪╣┘å╪» ╪╣┘à╪▒ 18 ╪┤┘ç╪▒╪º┘ï (18 Months):**
+  * **Gross motor:** ┘è┘à╪┤┘è ╪¿┘à┘ü╪▒╪»┘ç ╪¿╪½╪¿╪º╪¬ (Walks alone / well).
+
+* **╪╣┘å╪» ╪╣┘à╪▒ 24 ╪┤┘ç╪▒╪º┘ï / ╪│┘å╪¬┘è┘å (24 Months):**
+  * **Gross motor:** ┘è╪╡╪╣╪» ┘ê┘è┘å╪▓┘ä ╪º┘ä╪│┘ä┘à (Goes up and down stairs).
+  * **Language:** ┘è┘â┘ê┘æ┘å ╪¼┘à┘ä╪⌐ ┘à┘å ┘â┘ä┘à╪¬┘è┘å (2-word sentence).
+
+<br/>
+
+**╪½╪º┘ä╪½╪º┘ï: ╪¬╪ú╪«╪▒ ╪º┘ä╪¬╪╖┘ê╪▒ ╪º┘ä╪┤╪º┘à┘ä (Global Developmental Delay)**
+┘è┘Å╪┤╪«╪╡ ╪º┘ä╪╖┘ü┘ä ╪¿┘ç╪░┘ç ╪º┘ä╪¡╪º┘ä╪⌐ ╪Ñ╪░╪º ┘â╪º┘å ┘è╪╣╪º┘å┘è ┘à┘å ╪¬╪ú╪«╪▒ ┘à┘ä╪¡┘ê╪╕ ┘ü┘è ┘à╪¡┘ê╪▒┘è┘å ╪ú┘ê ╪ú┘â╪½╪▒ ┘à┘å ┘à╪¡╪º┘ê╪▒ ╪º┘ä╪¬╪╖┘ê╪▒ ╪º┘ä┘à╪░┘â┘ê╪▒╪⌐.
 
 **Enumerate the causes of Global Developmental Delay:**
 
@@ -292,61 +289,61 @@ const PEDIATRICS_EXPLANATIONS: Record<string, string> = {
 3. **Endocrinal disorders** (e.g., Hypothyroidism)
 4. **Metabolic disorders** (e.g., Phenylketonuria - PKU)
 5. **Malnutrition & Severe chronic illnesses**.
-6. **Psychosocial deprivation** (الحرمان البيئي والاجتماعي).
+6. **Psychosocial deprivation** (╪º┘ä╪¡╪▒┘à╪º┘å ╪º┘ä╪¿┘è╪ª┘è ┘ê╪º┘ä╪º╪¼╪¬┘à╪º╪╣┘è).
 
 ---
 
-💡 **Mnemonic لتسهيل التذكر في أسئلة الـ Enumerate:**
-لربط أسباب الـ **Global Developmental Delay** بشكل مبسط، تذكر هذه الجملة:
-**(داون جاله شلل ونقص تغذية بسبب الغدة والوراثة)**
+≡ƒÆí **Mnemonic ┘ä╪¬╪│┘ç┘è┘ä ╪º┘ä╪¬╪░┘â╪▒ ┘ü┘è ╪ú╪│╪ª┘ä╪⌐ ╪º┘ä┘Ç Enumerate:**
+┘ä╪▒╪¿╪╖ ╪ú╪│╪¿╪º╪¿ ╪º┘ä┘Ç **Global Developmental Delay** ╪¿╪┤┘â┘ä ┘à╪¿╪│╪╖╪î ╪¬╪░┘â╪▒ ┘ç╪░┘ç ╪º┘ä╪¼┘à┘ä╪⌐:
+**(╪»╪º┘ê┘å ╪¼╪º┘ä┘ç ╪┤┘ä┘ä ┘ê┘å┘é╪╡ ╪¬╪║╪░┘è╪⌐ ╪¿╪│╪¿╪¿ ╪º┘ä╪║╪»╪⌐ ┘ê╪º┘ä┘ê╪▒╪º╪½╪⌐)**
 
-* **داون:** **Down syndrome**
-* **شلل:** **Cerebral Palsy (CP)**
-* **نقص تغذية:** **Malnutrition** (ويمكن ربطها أيضاً بالـ Psychosocial deprivation)
-* **الغدة:** **Hypothyroidism** (Endocrinal causes)
-* **الوراثة:** **Genetic / Metabolic disorders** (مثل الـ PKU)`,
-  'PEDIATRIC GROWTH': `**أولاً: محاور النمو الجسدي (Parameters of Physical Growth)**
-تقييم الـ Physical Growth في الأطفال يعتمد بشكل أساسي على ثلاثة قياسات مهمة، وكل قياس له معدل زيادة طبيعي يجب متابعته:
+* **╪»╪º┘ê┘å:** **Down syndrome**
+* **╪┤┘ä┘ä:** **Cerebral Palsy (CP)**
+* **┘å┘é╪╡ ╪¬╪║╪░┘è╪⌐:** **Malnutrition** (┘ê┘è┘à┘â┘å ╪▒╪¿╪╖┘ç╪º ╪ú┘è╪╢╪º┘ï ╪¿╪º┘ä┘Ç Psychosocial deprivation)
+* **╪º┘ä╪║╪»╪⌐:** **Hypothyroidism** (Endocrinal causes)
+* **╪º┘ä┘ê╪▒╪º╪½╪⌐:** **Genetic / Metabolic disorders** (┘à╪½┘ä ╪º┘ä┘Ç PKU)`,
+  'PEDIATRIC GROWTH': `**╪ú┘ê┘ä╪º┘ï: ┘à╪¡╪º┘ê╪▒ ╪º┘ä┘å┘à┘ê ╪º┘ä╪¼╪│╪»┘è (Parameters of Physical Growth)**
+╪¬┘é┘è┘è┘à ╪º┘ä┘Ç Physical Growth ┘ü┘è ╪º┘ä╪ú╪╖┘ü╪º┘ä ┘è╪╣╪¬┘à╪» ╪¿╪┤┘â┘ä ╪ú╪│╪º╪│┘è ╪╣┘ä┘ë ╪½┘ä╪º╪½╪⌐ ┘é┘è╪º╪│╪º╪¬ ┘à┘ç┘à╪⌐╪î ┘ê┘â┘ä ┘é┘è╪º╪│ ┘ä┘ç ┘à╪╣╪»┘ä ╪▓┘è╪º╪»╪⌐ ╪╖╪¿┘è╪╣┘è ┘è╪¼╪¿ ┘à╪¬╪º╪¿╪╣╪¬┘ç:
 
-**1. الوزن (Weight):**
-* وزن الولادة الطبيعي (Birth weight) يتراوح بين 3 إلى 3.5 kg.
-* فسيولوجياً، يفقد الطفل حوالي 5% إلى 10% من وزنه في الأيام الأولى، ثم يستعيد وزن الولادة عند عمر 10 إلى 14 يوماً.
-* يتضاعف الوزن (Doubles) عند عمر 4 إلى 5 أشهر.
-* يصبح 3 أضعاف (Triples) عند عمر سنة (1 year).
-* يصبح 4 أضعاف (Quadruples) عند عمر سنتين (2 years).
-* **معادلات حساب الوزن التقريبي (Formulas for expected weight):**
-  * للأطفال من 1 إلى 6 سنوات: Age (years) × 2 + 8
-  * للأطفال من 7 إلى 12 سنة: (Age (years) × 7 - 5) / 2
-
-<br/>
-
-**2. الطول (Length / Height):**
-* يُقاس كـ Length (والطفل مستلقٍ) للأطفال أقل من سنتين، وكـ Height (والطفل واقف) للأطفال الأكبر سناً.
-* متوسط الطول عند الولادة هو 50 cm.
-* عند عمر سنة يصل إلى 75 cm.
-* يتضاعف الطول عند الولادة (Doubles) ليصبح حوالي 100 cm عند عمر 4 سنوات.
-* **معادلة حساب الطول التقريبي للأطفال من 2 إلى 12 سنة:** Age (years) × 5 + 80
+**1. ╪º┘ä┘ê╪▓┘å (Weight):**
+* ┘ê╪▓┘å ╪º┘ä┘ê┘ä╪º╪»╪⌐ ╪º┘ä╪╖╪¿┘è╪╣┘è (Birth weight) ┘è╪¬╪▒╪º┘ê╪¡ ╪¿┘è┘å 3 ╪Ñ┘ä┘ë 3.5 kg.
+* ┘ü╪│┘è┘ê┘ä┘ê╪¼┘è╪º┘ï╪î ┘è┘ü┘é╪» ╪º┘ä╪╖┘ü┘ä ╪¡┘ê╪º┘ä┘è 5% ╪Ñ┘ä┘ë 10% ┘à┘å ┘ê╪▓┘å┘ç ┘ü┘è ╪º┘ä╪ú┘è╪º┘à ╪º┘ä╪ú┘ê┘ä┘ë╪î ╪½┘à ┘è╪│╪¬╪╣┘è╪» ┘ê╪▓┘å ╪º┘ä┘ê┘ä╪º╪»╪⌐ ╪╣┘å╪» ╪╣┘à╪▒ 10 ╪Ñ┘ä┘ë 14 ┘è┘ê┘à╪º┘ï.
+* ┘è╪¬╪╢╪º╪╣┘ü ╪º┘ä┘ê╪▓┘å (Doubles) ╪╣┘å╪» ╪╣┘à╪▒ 4 ╪Ñ┘ä┘ë 5 ╪ú╪┤┘ç╪▒.
+* ┘è╪╡╪¿╪¡ 3 ╪ú╪╢╪╣╪º┘ü (Triples) ╪╣┘å╪» ╪╣┘à╪▒ ╪│┘å╪⌐ (1 year).
+* ┘è╪╡╪¿╪¡ 4 ╪ú╪╢╪╣╪º┘ü (Quadruples) ╪╣┘å╪» ╪╣┘à╪▒ ╪│┘å╪¬┘è┘å (2 years).
+* **┘à╪╣╪º╪»┘ä╪º╪¬ ╪¡╪│╪º╪¿ ╪º┘ä┘ê╪▓┘å ╪º┘ä╪¬┘é╪▒┘è╪¿┘è (Formulas for expected weight):**
+  * ┘ä┘ä╪ú╪╖┘ü╪º┘ä ┘à┘å 1 ╪Ñ┘ä┘ë 6 ╪│┘å┘ê╪º╪¬: Age (years) ├ù 2 + 8
+  * ┘ä┘ä╪ú╪╖┘ü╪º┘ä ┘à┘å 7 ╪Ñ┘ä┘ë 12 ╪│┘å╪⌐: (Age (years) ├ù 7 - 5) / 2
 
 <br/>
 
-**3. محيط الرأس (Head Circumference - HC):**
-* يعتبر من أهم القياسات لأنه يعكس نمو المخ (Brain growth).
-* متوسط الـ HC عند الولادة هو 35 cm.
-* عند عمر 6 أشهر يصل إلى 43 cm.
-* عند عمر سنة يصل إلى 47 cm.
+**2. ╪º┘ä╪╖┘ê┘ä (Length / Height):**
+* ┘è┘Å┘é╪º╪│ ┘â┘Ç Length (┘ê╪º┘ä╪╖┘ü┘ä ┘à╪│╪¬┘ä┘é┘ì) ┘ä┘ä╪ú╪╖┘ü╪º┘ä ╪ú┘é┘ä ┘à┘å ╪│┘å╪¬┘è┘å╪î ┘ê┘â┘Ç Height (┘ê╪º┘ä╪╖┘ü┘ä ┘ê╪º┘é┘ü) ┘ä┘ä╪ú╪╖┘ü╪º┘ä ╪º┘ä╪ú┘â╪¿╪▒ ╪│┘å╪º┘ï.
+* ┘à╪¬┘ê╪│╪╖ ╪º┘ä╪╖┘ê┘ä ╪╣┘å╪» ╪º┘ä┘ê┘ä╪º╪»╪⌐ ┘ç┘ê 50 cm.
+* ╪╣┘å╪» ╪╣┘à╪▒ ╪│┘å╪⌐ ┘è╪╡┘ä ╪Ñ┘ä┘ë 75 cm.
+* ┘è╪¬╪╢╪º╪╣┘ü ╪º┘ä╪╖┘ê┘ä ╪╣┘å╪» ╪º┘ä┘ê┘ä╪º╪»╪⌐ (Doubles) ┘ä┘è╪╡╪¿╪¡ ╪¡┘ê╪º┘ä┘è 100 cm ╪╣┘å╪» ╪╣┘à╪▒ 4 ╪│┘å┘ê╪º╪¬.
+* **┘à╪╣╪º╪»┘ä╪⌐ ╪¡╪│╪º╪¿ ╪º┘ä╪╖┘ê┘ä ╪º┘ä╪¬┘é╪▒┘è╪¿┘è ┘ä┘ä╪ú╪╖┘ü╪º┘ä ┘à┘å 2 ╪Ñ┘ä┘ë 12 ╪│┘å╪⌐:** Age (years) ├ù 5 + 80
 
 <br/>
 
-**ثانياً: التطبيق الإكلينيكي على محيط الرأس (Abnormalities of Head Circumference)**
+**3. ┘à╪¡┘è╪╖ ╪º┘ä╪▒╪ú╪│ (Head Circumference - HC):**
+* ┘è╪╣╪¬╪¿╪▒ ┘à┘å ╪ú┘ç┘à ╪º┘ä┘é┘è╪º╪│╪º╪¬ ┘ä╪ú┘å┘ç ┘è╪╣┘â╪│ ┘å┘à┘ê ╪º┘ä┘à╪« (Brain growth).
+* ┘à╪¬┘ê╪│╪╖ ╪º┘ä┘Ç HC ╪╣┘å╪» ╪º┘ä┘ê┘ä╪º╪»╪⌐ ┘ç┘ê 35 cm.
+* ╪╣┘å╪» ╪╣┘à╪▒ 6 ╪ú╪┤┘ç╪▒ ┘è╪╡┘ä ╪Ñ┘ä┘ë 43 cm.
+* ╪╣┘å╪» ╪╣┘à╪▒ ╪│┘å╪⌐ ┘è╪╡┘ä ╪Ñ┘ä┘ë 47 cm.
 
-**A. Enumerate the causes of Microcephaly (صغر حجم الرأس):**
+<br/>
+
+**╪½╪º┘å┘è╪º┘ï: ╪º┘ä╪¬╪╖╪¿┘è┘é ╪º┘ä╪Ñ┘â┘ä┘è┘å┘è┘â┘è ╪╣┘ä┘ë ┘à╪¡┘è╪╖ ╪º┘ä╪▒╪ú╪│ (Abnormalities of Head Circumference)**
+
+**A. Enumerate the causes of Microcephaly (╪╡╪║╪▒ ╪¡╪¼┘à ╪º┘ä╪▒╪ú╪│):**
 1. **Congenital infections (TORCH)**
 2. **Chromosomal abnormalities** (e.g., Down syndrome)
 3. **Familial / Genetic**
 4. **Fetal alcohol syndrome**
-5. **Craniosynostosis** (الالتحام المبكر لعظام الجمجمة)
+5. **Craniosynostosis** (╪º┘ä╪º┘ä╪¬╪¡╪º┘à ╪º┘ä┘à╪¿┘â╪▒ ┘ä╪╣╪╕╪º┘à ╪º┘ä╪¼┘à╪¼┘à╪⌐)
 
-**B. Enumerate the causes of Macrocephaly (كبر حجم الرأس):**
+**B. Enumerate the causes of Macrocephaly (┘â╪¿╪▒ ╪¡╪¼┘à ╪º┘ä╪▒╪ú╪│):**
 1. **Hydrocephalus**
 2. **Rickets**
 3. **Achondroplasia**
@@ -355,22 +352,22 @@ const PEDIATRICS_EXPLANATIONS: Record<string, string> = {
 
 ---
 
-💡 **Mnemonics لتسهيل التذكر في أسئلة الـ Enumerate:**
+≡ƒÆí **Mnemonics ┘ä╪¬╪│┘ç┘è┘ä ╪º┘ä╪¬╪░┘â╪▒ ┘ü┘è ╪ú╪│╪ª┘ä╪⌐ ╪º┘ä┘Ç Enumerate:**
 
-**1. لربط أسباب الـ Microcephaly، تذكر هذه الجملة:**
-**(عيلة داون شربت كحول، وجالها تورش قفل الجمجمة بدري)**
-* **عيلة:** Familial / Genetic
-* **داون:** Chromosomal (Down syndrome)
-* **كحول:** Fetal alcohol syndrome
-* **تورش:** TORCH infections
-* **قفل الجمجمة بدري:** Craniosynostosis
+**1. ┘ä╪▒╪¿╪╖ ╪ú╪│╪¿╪º╪¿ ╪º┘ä┘Ç Microcephaly╪î ╪¬╪░┘â╪▒ ┘ç╪░┘ç ╪º┘ä╪¼┘à┘ä╪⌐:**
+**(╪╣┘è┘ä╪⌐ ╪»╪º┘ê┘å ╪┤╪▒╪¿╪¬ ┘â╪¡┘ê┘ä╪î ┘ê╪¼╪º┘ä┘ç╪º ╪¬┘ê╪▒╪┤ ┘é┘ü┘ä ╪º┘ä╪¼┘à╪¼┘à╪⌐ ╪¿╪»╪▒┘è)**
+* **╪╣┘è┘ä╪⌐:** Familial / Genetic
+* **╪»╪º┘ê┘å:** Chromosomal (Down syndrome)
+* **┘â╪¡┘ê┘ä:** Fetal alcohol syndrome
+* **╪¬┘ê╪▒╪┤:** TORCH infections
+* **┘é┘ü┘ä ╪º┘ä╪¼┘à╪¼┘à╪⌐ ╪¿╪»╪▒┘è:** Craniosynostosis
 
-**2. لربط أسباب الـ Macrocephaly، تذكر هذه الجملة:**
-**(عيلة جالها كساح، فجمعت ميه ودم في المخ)**
-* **عيلة:** Familial (وتشمل أيضاً الـ Achondroplasia كمرض وراثي عائلي)
-* **كساح:** Rickets
-* **ميه:** Hydrocephalus
-* **دم:** Subdural hematoma`
+**2. ┘ä╪▒╪¿╪╖ ╪ú╪│╪¿╪º╪¿ ╪º┘ä┘Ç Macrocephaly╪î ╪¬╪░┘â╪▒ ┘ç╪░┘ç ╪º┘ä╪¼┘à┘ä╪⌐:**
+**(╪╣┘è┘ä╪⌐ ╪¼╪º┘ä┘ç╪º ┘â╪│╪º╪¡╪î ┘ü╪¼┘à╪╣╪¬ ┘à┘è┘ç ┘ê╪»┘à ┘ü┘è ╪º┘ä┘à╪«)**
+* **╪╣┘è┘ä╪⌐:** Familial (┘ê╪¬╪┤┘à┘ä ╪ú┘è╪╢╪º┘ï ╪º┘ä┘Ç Achondroplasia ┘â┘à╪▒╪╢ ┘ê╪▒╪º╪½┘è ╪╣╪º╪ª┘ä┘è)
+* **┘â╪│╪º╪¡:** Rickets
+* **┘à┘è┘ç:** Hydrocephalus
+* **╪»┘à:** Subdural hematoma`
 };
 type Connection = {
   leftId: string;
@@ -569,7 +566,7 @@ const MatchingGameUI = ({ question, onComplete }: { question: any, onComplete: (
               let borderClass = 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-slate-300 dark:hover:border-slate-600';
               if (isActive) borderClass = 'border-indigo-400 bg-indigo-50 dark:bg-indigo-900/40 shadow-md scale-[1.02] ring-2 ring-indigo-400/50';
               else if (conn) {
-                if (isSubmitted || conn.isCorrect !== undefined) {
+                if (isSubmitted) {
                   borderClass = conn.isCorrect ? 'border-emerald-400 bg-emerald-50 dark:bg-emerald-900/30' : 'border-rose-400 bg-rose-50 dark:bg-rose-900/30';
                 } else {
                   borderClass = 'border-indigo-200 dark:border-indigo-800 bg-indigo-50/50 dark:bg-indigo-900/20';
@@ -606,7 +603,7 @@ const MatchingGameUI = ({ question, onComplete }: { question: any, onComplete: (
               let borderClass = 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-slate-300 dark:hover:border-slate-600';
               if (isActive) borderClass = 'border-indigo-400 bg-indigo-50 dark:bg-indigo-900/40 shadow-md scale-[1.02] ring-2 ring-indigo-400/50';
               else if (conn) {
-                if (isSubmitted || conn.isCorrect !== undefined) {
+                if (isSubmitted) {
                   borderClass = conn.isCorrect ? 'border-emerald-400 bg-emerald-50 dark:bg-emerald-900/30' : 'border-rose-400 bg-rose-50 dark:bg-rose-900/30';
                 } else {
                   borderClass = 'border-indigo-200 dark:border-indigo-800 bg-indigo-50/50 dark:bg-indigo-900/20';
@@ -671,15 +668,14 @@ const MatchingGameUI = ({ question, onComplete }: { question: any, onComplete: (
 // --- Question Types ---
 interface Question {
   id: string;
-  type?: 'flashcard' | 'matching' | 'case';
+  type?: 'flashcard' | 'matching';
   front: string;
   back?: string;
   matchingPairs?: Array<{ left: string, right: string }>;
-  caseBody?: string;
-  subQuestions?: Array<{ id: string, questionText: string, back: string }>;
 }
 
 const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
+
   "_CHAPTER_Growth & development": [
     {
       "id": "gd_saq1",
@@ -713,26 +709,8 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
     },
     {
       "id": "gd_match1",
-      "front": "Match the developmental milestone with the correct normal median age of achievement:",
-      "type": "matching",
-      "matchingPairs": [
-        {
-          "left": "Social smile",
-          "right": "2 months"
-        },
-        {
-          "left": "Sitting without support",
-          "right": "8 months"
-        },
-        {
-          "left": "Pincer grip",
-          "right": "9 months"
-        },
-        {
-          "left": "Walking well",
-          "right": "15 months"
-        }
-      ]
+      "front": "Match the developmental milestone with the correct normal median age of achievement:\n\nSocial smile\nSitting without support (with straight back)\nPincer grip (grasp by thumb and finger)\nWalking well",
+      "back": "Social smile -> 2 months\n\nSitting without support -> 8 months\n\nPincer grip -> 9 months\n\nWalking well -> 15 months"
     },
     {
       "id": "gd_case1_q1",
@@ -755,97 +733,8 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "back": "Causes of delayed walking: Cerebral palsy and muscles disorders."
     }
   ],
+
   "_CHAPTER_Nutrition": [
-    {
-      "id": "nut_hm_colostrum",
-      "front": "What is Colostrum, when is it secreted, and what are its main characteristics?",
-      "back": "- Secreted in the first days (days 1-5).\n- Yellowish, small amount, but very rich in Proteins and Immunoglobulins (especially Secretory IgA).\n- Acts as a mild laxative to help clear Meconium.",
-      "type": "flashcard"
-    },
-    {
-      "id": "nut_hm_mature",
-      "front": "Compare Transitional milk and Mature milk (including Foremilk vs. Hindmilk).",
-      "back": "- Transitional (days 5-14): Increased volume, fats, and carbs. Proteins decrease.\n- Mature (after 14 days):\n  * Foremilk (start of feed): rich in water, lactose, proteins (quenches thirst).\n  * Hindmilk (end of feed): rich in fats (gives energy and satiety).",
-      "type": "flashcard"
-    },
-    {
-      "id": "nut_hm_comp",
-      "front": "Describe the Proteins and Carbohydrates composition in Human Milk.",
-      "back": "- Proteins: Ideal Whey to Casein ratio (approx 60:40), making it very easy to digest compared to cow's milk.\n- Carbs: High Lactose, provides energy, aids Calcium absorption, and stimulates Lactobacillus bifidus (beneficial bacteria).",
-      "type": "flashcard"
-    },
-    {
-      "id": "nut_hm_fats",
-      "front": "Why are the Fats in Human Milk essential for the infant?",
-      "back": "Contains Essential fatty acids (like DHA & ARA) which are absolutely critical for Brain and Retinal development.",
-      "type": "flashcard"
-    },
-    {
-      "id": "nut_hm_advantages",
-      "front": "Enumerate the advantages of Breastfeeding.",
-      "back": "Mnemonic: (أكل مجاني بيحمي من العدوى.. وحضن بيحمي الأم من النزيف والكانسر)\n1. Nutritional: Ideal, complete, easy to digest.\n2. Economic & Convenient: Free, always ready, sterile, perfect temp.\n3. Immunological: Protects from infections (IgA, Macrophages, Lactoferrin).\n4. Psychological: Mother-infant bonding.\n5. Maternal benefits: Uterine involution, Lactational amenorrhea, decreases Breast & Ovarian cancer risk.",
-      "type": "flashcard"
-    },
-    {
-      "id": "nut_wean_artificial_ind",
-      "front": "When is Artificial Feeding (Formulas) indicated?",
-      "back": "Only in cases of Breastfeeding Contraindications or insufficient breast milk production.",
-      "type": "flashcard"
-    },
-    {
-      "id": "nut_wean_artificial_comp",
-      "front": "Enumerate the main complications and risks of Artificial Feeding.",
-      "back": "- Gastroenteritis & Infections (due to contaminated bottles)\n- Malnutrition (if formula is over-diluted)\n- Cow's milk protein allergy\n- Obesity (due to overfeeding)",
-      "type": "flashcard"
-    },
-    {
-      "id": "nut_wean_timing",
-      "front": "Define Complementary Feeding (Weaning) and state its recommended timing.",
-      "back": "- Definition: Gradual introduction of semi-solid & solid foods to meet increasing nutritional needs (especially Iron & Energy).\n- Timing: Recommended at 6 months. NEVER before 4 months (GI/kidneys are immature, increased allergy risk).",
-      "type": "flashcard"
-    },
-    {
-      "id": "nut_wean_rules",
-      "front": "Enumerate the rules of successful weaning.",
-      "back": "Mnemonic: (بالتدريج صنف واحد بالمعلقة.. ونضيف من غير غصب)\n1. Gradual introduction: increase amount and thickness gradually.\n2. One single food item at a time: wait 3-5 days to check for Food allergy/intolerance.\n3. Use spoon and cup: avoid bottles.\n4. Proper hygiene: prevent Gastroenteritis.\n5. Never force the baby.",
-      "type": "flashcard"
-    },
-    {
-      "id": "nut_bf_management",
-      "front": "Enumerate the basic rules for successful Management of Breastfeeding.",
-      "back": "1. Early initiation: Within 30-60 mins to get Colostrum.\n2. Exclusive breastfeeding: First 6 months.\n3. On-demand feeding: Feed when hungry/crying, no strict schedule.\n4. Proper latching & attachment: Avoid swallowing air and maternal nipple issues.",
-      "type": "flashcard"
-    },
-    {
-      "id": "nut_bf_engorgement",
-      "front": "What is Breast engorgement, and how is it treated?",
-      "back": "- Occurs in first days due to increased milk.\n- Treatment: Warm compresses BEFORE feeding (increase flow), Cold compresses AFTER feeding (reduce swelling). Frequent emptying of the breast. Do NOT stop breastfeeding.",
-      "type": "flashcard"
-    },
-    {
-      "id": "nut_bf_cracked",
-      "front": "What is the primary cause of Cracked nipples during breastfeeding, and what is the treatment?",
-      "back": "- Cause: Poor attachment / Improper latching.\n- Treatment: Correct feeding position, apply drops of breast milk on nipple and let dry, or use baby-safe soothing creams.",
-      "type": "flashcard"
-    },
-    {
-      "id": "nut_bf_mastitis",
-      "front": "What is Mastitis, and what is its treatment plan?",
-      "back": "- Bacterial infection causing pain, redness, swelling, and Fever.\n- Treatment: Safe Antibiotics, Analgesics. CRITICAL: Continue breastfeeding from affected breast to empty it and prevent Breast abscess.",
-      "type": "flashcard"
-    },
-    {
-      "id": "nut_bf_contra_maternal",
-      "front": "Enumerate the Absolute Contraindications of Breastfeeding (Maternal causes).",
-      "back": "Mnemonic: (أم مريضة إيدز وسل وهربس وبتاخد كيماوي.. وابنها عنده جالاكتوزيميا)\n1. HIV infection\n2. Active untreated TB\n3. Maternal chemotherapy or radiotherapy\n4. Active Herpes simplex lesions on the breast\n5. Illicit drug abuse",
-      "type": "flashcard"
-    },
-    {
-      "id": "nut_bf_contra_infant",
-      "front": "What is the primary Infant absolute contraindication for Breastfeeding?",
-      "back": "Galactosemia (Infant lacks the enzyme to break down galactose in milk).\n\nMnemonic: (أم مريضة إيدز وسل وهربس وبتاخد كيماوي.. وابنها عنده جالاكتوزيميا)",
-      "type": "flashcard"
-    },
     {
       "id": "nut_saq_1",
       "front": "Define the following terms:\nComplementary feeding (Weaning):",
@@ -901,22 +790,10 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "type": "matching",
       "front": "Match the clinical sign/term in Group (A) with its exact diagnostic description in Group (B):",
       "matchingPairs": [
-        {
-          "left": "Flag sign",
-          "right": "Alternating bands of normal color and hypopigmentations due to alternating periods of normal state and protein malnutrition."
-        },
-        {
-          "left": "Marfan's sign",
-          "right": "Transverse groove on both malleoli due to abnormal proliferation of osteoid tissue at two different centers, pathognomonic for rickets."
-        },
-        {
-          "left": "Trousseau sign",
-          "right": "Carpal spasm induced by occlusion of arterial flow to the arm by inflating the cuff of a sphygmomanometer above systolic pressure for 3 minutes."
-        },
-        {
-          "left": "Craniotabes",
-          "right": "Abnormal softness due to thinning of the outer skull plate where a squash ball sensation is felt by pressing firmly over the occipital bones."
-        }
+        { "left": "Flag sign", "right": "Alternating bands of normal color and hypopigmentations due to alternating periods of normal state and protein malnutrition." },
+        { "left": "Marfan's sign", "right": "Transverse groove on both malleoli due to abnormal proliferation of osteoid tissue at two different centers, pathognomonic for rickets." },
+        { "left": "Trousseau sign", "right": "Carpal spasm induced by occlusion of arterial flow to the arm by inflating the cuff of a sphygmomanometer above systolic pressure for 3 minutes." },
+        { "left": "Craniotabes", "right": "Abnormal softness due to thinning of the outer skull plate where a squash ball sensation is felt by pressing firmly over the occipital bones." }
       ]
     },
     {
@@ -1006,22 +883,10 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "type": "matching",
       "front": "Match the chromosomal disorder or prenatal finding in Group (A) with its exact genetic description or diagnostic marker in Group (B):",
       "matchingPairs": [
-        {
-          "left": "Turner syndrome",
-          "right": "A condition characterized by a 45,X genotype, short stature, webbed neck, and primary amenorrhea."
-        },
-        {
-          "left": "Klinefelter syndrome",
-          "right": "A condition characterized by a 47,XXY genotype, tall stature, eunuchoid build, small testes, and gynecomastia."
-        },
-        {
-          "left": "Edward syndrome",
-          "right": "Trisomy 18 presenting with low-set malformed auricles, a clenched hand with overlapping fingers, and rocker bottom feet."
-        },
-        {
-          "left": "Down syndrome prenatal triple test",
-          "right": "Decreased maternal serum alpha-fetoprotein (AFP), decreased unconjugated estriol (uE3), and increased human chorionic gonadotrophin (hCG)."
-        }
+        { "left": "Turner syndrome", "right": "A condition characterized by a 45,X genotype, short stature, webbed neck, and primary amenorrhea." },
+        { "left": "Klinefelter syndrome", "right": "A condition characterized by a 47,XXY genotype, tall stature, eunuchoid build, small testes, and gynecomastia." },
+        { "left": "Edward syndrome", "right": "Trisomy 18 presenting with low-set malformed auricles, a clenched hand with overlapping fingers, and rocker bottom feet." },
+        { "left": "Down syndrome prenatal triple test", "right": "Decreased maternal serum alpha-fetoprotein (AFP), decreased unconjugated estriol (uE3), and increased human chorionic gonadotrophin (hCG)." }
       ]
     },
     {
@@ -1126,22 +991,10 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "type": "matching",
       "front": "Match the clinical screening test/investigation in Group (A) with its exact diagnostic significance in Group (B):",
       "matchingPairs": [
-        {
-          "left": "Fecal Calprotectin (FC)",
-          "right": "The most sensitive fecal marker for pediatric inflammatory bowel disease (IBD) screening."
-        },
-        {
-          "left": "ASCA (Anti-Saccharomyces cerevisiae)",
-          "right": "A serological marker primarily associated with Crohn's Disease (60-70% of cases)."
-        },
-        {
-          "left": "pANCA (Perinuclear Anti-Neutrophil Cytoplasmic Antibodies)",
-          "right": "A serological marker primarily associated with Ulcerative Colitis (60-80% of cases)."
-        },
-        {
-          "left": "Suction rectal biopsy",
-          "right": "The gold standard diagnostic investigation for confirming Hirschsprung Disease."
-        }
+        { "left": "Fecal Calprotectin (FC)", "right": "The most sensitive fecal marker for pediatric inflammatory bowel disease (IBD) screening." },
+        { "left": "ASCA (Anti-Saccharomyces cerevisiae)", "right": "A serological marker primarily associated with Crohn's Disease (60-70% of cases)." },
+        { "left": "pANCA (Perinuclear Anti-Neutrophil Cytoplasmic Antibodies)", "right": "A serological marker primarily associated with Ulcerative Colitis (60-80% of cases)." },
+        { "left": "Suction rectal biopsy", "right": "The gold standard diagnostic investigation for confirming Hirschsprung Disease." }
       ]
     },
     {
@@ -1199,7 +1052,7 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
     {
       "id": "endo_saq_2",
       "front": "Define the following terms:\nDelayed puberty:",
-      "back": "No thelarche (breast development) by age 13 in girls, or no testicular enlargement (≥ 4 mL) by age 14 in boys."
+      "back": "No thelarche (breast development) by age 13 in girls, or no testicular enlargement (ΓëÑ 4 mL) by age 14 in boys."
     },
     {
       "id": "endo_saq_3",
@@ -1251,22 +1104,10 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "type": "matching",
       "front": "Match the clinical term or syndrome in Group (A) with its exact diagnostic/physiological description in Group (B):",
       "matchingPairs": [
-        {
-          "left": "Kallmann Syndrome",
-          "right": "A form of congenital permanent hypogonadotropic hypogonadism that is characteristically associated with anosmia."
-        },
-        {
-          "left": "21-hydroxylase deficiency",
-          "right": "The most common type of inherited enzyme defect responsible for Congenital Adrenal Hyperplasia (CAH)."
-        },
-        {
-          "left": "Thelarche",
-          "right": "The onset of female breast development, which represents the first sign of puberty in girls."
-        },
-        {
-          "left": "Kussmaul respiration",
-          "right": "Deep rapid respiration due to metabolic acidosis in an attempt to excrete excess CO2, characteristic of DKA."
-        }
+        { "left": "Kallmann Syndrome", "right": "A form of congenital permanent hypogonadotropic hypogonadism that is characteristically associated with anosmia." },
+        { "left": "21-hydroxylase deficiency", "right": "The most common type of inherited enzyme defect responsible for Congenital Adrenal Hyperplasia (CAH)." },
+        { "left": "Thelarche", "right": "The onset of female breast development, which represents the first sign of puberty in girls." },
+        { "left": "Kussmaul respiration", "right": "Deep rapid respiration due to metabolic acidosis in an attempt to excrete excess CO2, characteristic of DKA." }
       ]
     },
     {
@@ -1344,7 +1185,7 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
     {
       "id": "hema_saq_6",
       "front": "Enumerate four congenital physical anomalies associated with Fanconi Anemia.",
-      "back": "Hypo or hyperpigmented skin patches with café-au-lait spots.\nShort stature (or Microcephaly).\nUpper or lower limb abnormalities (e.g., absent radius, absent or hypoplastic thumb).\nCongenital heart disease (or Renal anomalies like horseshoe kidney)."
+      "back": "Hypo or hyperpigmented skin patches with caf├⌐-au-lait spots.\nShort stature (or Microcephaly).\nUpper or lower limb abnormalities (e.g., absent radius, absent or hypoplastic thumb).\nCongenital heart disease (or Renal anomalies like horseshoe kidney)."
     },
     {
       "id": "hema_saq_7",
@@ -1358,13 +1199,13 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
     },
     {
       "id": "hema_saq_9",
-      "front": "Enumerate the four classic clinical manifestations (tetrad) of Henoch-Schönlein Purpura (HSP).",
+      "front": "Enumerate the four classic clinical manifestations (tetrad) of Henoch-Sch├╢nlein Purpura (HSP).",
       "back": "Palpable purpura without thrombocytopenia and coagulopathy.\nArthralgia and/or arthritis.\nAbdominal pain.\nKidney disease (such as initial hematuria)."
     },
     {
       "id": "hema_saq_10",
       "front": "Enumerate four favorable prognostic factors for pediatric Acute Lymphoblastic Leukemia (ALL).",
-      "back": "Age: between 1 and 9 years old.\nWhite blood cell count (WBCs): less than 50 × 10^9/L.\nImmunophenotype: B-precursor cellular lineage.\nSex: Girls have a more favorable prognosis than boys."
+      "back": "Age: between 1 and 9 years old.\nWhite blood cell count (WBCs): less than 50 ├ù 10^9/L.\nImmunophenotype: B-precursor cellular lineage.\nSex: Girls have a more favorable prognosis than boys."
     },
     {
       "id": "hema_saq_11",
@@ -1376,22 +1217,10 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "type": "matching",
       "front": "Match the pathognomonic diagnostic finding or cell type in Group (A) with its corresponding hematological/oncological condition in Group (B):",
       "matchingPairs": [
-        {
-          "left": "Target cells",
-          "right": "Thalassemia Syndromes"
-        },
-        {
-          "left": "Heinz bodies",
-          "right": "Glucose-6-phosphate dehydrogenase (G6PD) deficiency"
-        },
-        {
-          "left": "Schistocytes (fragmented RBCs)",
-          "right": "Disseminated Intravascular Coagulopathy (DIC)"
-        },
-        {
-          "left": "Reed-Sternberg (RS) cells",
-          "right": "Hodgkin Lymphoma"
-        }
+        { "left": "Target cells", "right": "Thalassemia Syndromes" },
+        { "left": "Heinz bodies", "right": "Glucose-6-phosphate dehydrogenase (G6PD) deficiency" },
+        { "left": "Schistocytes (fragmented RBCs)", "right": "Disseminated Intravascular Coagulopathy (DIC)" },
+        { "left": "Reed-Sternberg (RS) cells", "right": "Hodgkin Lymphoma" }
       ]
     },
     {
@@ -1441,17 +1270,17 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
     },
     {
       "id": "hema_case4_q1",
-      "front": "Case 4: An otherwise completely healthy and active 3-year-old girl develops a sudden generalized skin rash consisting of pinpoint petechiae, purpura, and scattered bruises (ecchymoses). The mother reports that the child had a mild viral upper respiratory tract infection 2 weeks ago. Physical examination reveals an absence of fever, no lymphadenopathy, and no hepatosplenomegaly. A CBC shows an isolated platelet count of 15,000/μL with completely normal hemoglobin and normal WBC count.\n\nWhat is the most likely clinical diagnosis?",
+      "front": "Case 4: An otherwise completely healthy and active 3-year-old girl develops a sudden generalized skin rash consisting of pinpoint petechiae, purpura, and scattered bruises (ecchymoses). The mother reports that the child had a mild viral upper respiratory tract infection 2 weeks ago. Physical examination reveals an absence of fever, no lymphadenopathy, and no hepatosplenomegaly. A CBC shows an isolated platelet count of 15,000/╬╝L with completely normal hemoglobin and normal WBC count.\n\nWhat is the most likely clinical diagnosis?",
       "back": "Primary Immune Thrombocytopenia (ITP) of childhood."
     },
     {
       "id": "hema_case4_q2",
-      "front": "Case 4: An otherwise completely healthy and active 3-year-old girl develops a sudden generalized skin rash consisting of pinpoint petechiae, purpura, and scattered bruises (ecchymoses). The mother reports that the child had a mild viral upper respiratory tract infection 2 weeks ago. Physical examination reveals an absence of fever, no lymphadenopathy, and no hepatosplenomegaly. A CBC shows an isolated platelet count of 15,000/μL with completely normal hemoglobin and normal WBC count.\n\nWhat would a bone marrow aspiration (BMA) characteristically demonstrate if performed?",
+      "front": "Case 4: An otherwise completely healthy and active 3-year-old girl develops a sudden generalized skin rash consisting of pinpoint petechiae, purpura, and scattered bruises (ecchymoses). The mother reports that the child had a mild viral upper respiratory tract infection 2 weeks ago. Physical examination reveals an absence of fever, no lymphadenopathy, and no hepatosplenomegaly. A CBC shows an isolated platelet count of 15,000/╬╝L with completely normal hemoglobin and normal WBC count.\n\nWhat would a bone marrow aspiration (BMA) characteristically demonstrate if performed?",
       "back": "Normal granulocytic and erythrocytic series with characteristically normal or increased numbers of megakaryocytes."
     },
     {
       "id": "hema_case4_q3",
-      "front": "Case 4: An otherwise completely healthy and active 3-year-old girl develops a sudden generalized skin rash consisting of pinpoint petechiae, purpura, and scattered bruises (ecchymoses). The mother reports that the child had a mild viral upper respiratory tract infection 2 weeks ago. Physical examination reveals an absence of fever, no lymphadenopathy, and no hepatosplenomegaly. A CBC shows an isolated platelet count of 15,000/μL with completely normal hemoglobin and normal WBC count.\n\nIf this patient develops an acute, life-threatening intracranial hemorrhage, what is the only clinical indication for a platelet transfusion in ITP management?",
+      "front": "Case 4: An otherwise completely healthy and active 3-year-old girl develops a sudden generalized skin rash consisting of pinpoint petechiae, purpura, and scattered bruises (ecchymoses). The mother reports that the child had a mild viral upper respiratory tract infection 2 weeks ago. Physical examination reveals an absence of fever, no lymphadenopathy, and no hepatosplenomegaly. A CBC shows an isolated platelet count of 15,000/╬╝L with completely normal hemoglobin and normal WBC count.\n\nIf this patient develops an acute, life-threatening intracranial hemorrhage, what is the only clinical indication for a platelet transfusion in ITP management?",
       "back": "Life-threatening bleeding is the only indication for a platelet transfusion in the treatment of ITP."
     },
     {
@@ -1506,7 +1335,7 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
     {
       "id": "ns3",
       "front": "Enumerate 5 causes of secondary Nephrotic Syndrome.",
-      "back": "Systemic Lupus Erythematosus (SLE).\n\nHenoch-Schönlein purpura (HSP).\n\nCongenital infections (TORCH).\n\nDenys-Drash syndrome (Wilms tumor, genitourinary anomalies).\n\nDrug-induced."
+      "back": "Systemic Lupus Erythematosus (SLE).\n\nHenoch-Sch├╢nlein purpura (HSP).\n\nCongenital infections (TORCH).\n\nDenys-Drash syndrome (Wilms tumor, genitourinary anomalies).\n\nDrug-induced."
     },
     {
       "id": "ns4",
@@ -1541,7 +1370,7 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
     {
       "id": "uti2",
       "front": "Case Study 1 (5-year-old female with fever, chills, flank pain...): Describe the possible treatment plan.",
-      "back": "Medical Therapy: Parenteral broad-spectrum antibiotics for 14 days. Ceftriaxone (50-75 mg/kg/24 hr) OR Ampicillin with an Aminoglycoside (Gentamicin).\n\nSupportive: Adequate hydration and antipyretics.\n\nImaging / Follow-up: Renal ultrasound (to rule out hydronephrosis/abscess) and a Voiding Cystourethrogram (VCUG) since she is ≤5 years old with a febrile UTI, to check for Vesicoureteral Reflux (VUR) or anatomical abnormalities."
+      "back": "Medical Therapy: Parenteral broad-spectrum antibiotics for 14 days. Ceftriaxone (50-75 mg/kg/24 hr) OR Ampicillin with an Aminoglycoside (Gentamicin).\n\nSupportive: Adequate hydration and antipyretics.\n\nImaging / Follow-up: Renal ultrasound (to rule out hydronephrosis/abscess) and a Voiding Cystourethrogram (VCUG) since she is Γëñ5 years old with a febrile UTI, to check for Vesicoureteral Reflux (VUR) or anatomical abnormalities."
     },
     {
       "id": "uti3",
@@ -1554,6 +1383,7 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "back": "Parenteral antibiotic therapy (Ceftriaxone or Ampicillin + Gentamicin) for 14 days, combined with imaging studies (US & VCUG) to detect any predisposing anomalies like VUR."
     }
   ],
+
   "RBC Physiology, Indices & Morphology": [],
   "Classification & Evaluation of Anemia": [
     {
@@ -1703,7 +1533,7 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
     {
       "id": "hbd1",
       "front": "Enumerate Causes of bleeding tendency.",
-      "back": "Platelet disorders (Quantitative like ITP, or Qualitative).\n\nCoagulation factor deficiencies (Hemophilia A/B, VWD).\n\nVascular disorders (Henoch-Schönlein Purpura - HSP).\n\nMixed/Acquired conditions (DIC, Liver failure)."
+      "back": "Platelet disorders (Quantitative like ITP, or Qualitative).\n\nCoagulation factor deficiencies (Hemophilia A/B, VWD).\n\nVascular disorders (Henoch-Sch├╢nlein Purpura - HSP).\n\nMixed/Acquired conditions (DIC, Liver failure)."
     },
     {
       "id": "hbd2",
@@ -1766,7 +1596,7 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
     },
     {
       "id": "pd3",
-      "front": "Case Study: A 10-year-old male child presented with increased paleness... HSM with no lymphadenopathy. Platelet count was 26 x 10³/µL. What is your provisional diagnosis?",
+      "front": "Case Study: A 10-year-old male child presented with increased paleness... HSM with no lymphadenopathy. Platelet count was 26 x 10┬│/┬╡L. What is your provisional diagnosis?",
       "back": "Hypersplenism secondary to Portal Hypertension OR a storage disease like Gaucher disease."
     },
     {
@@ -1816,7 +1646,7 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
     },
     {
       "id": "pd13",
-      "front": "Case Scenario: A 3-year-old boy presents with sudden onset of rash (small red spots and large purple area). Three weeks previously, he had a mild illness. Spleen is not palpable. Platelet count is 20,000/mm³. Most likely diagnosis?",
+      "front": "Case Scenario: A 3-year-old boy presents with sudden onset of rash (small red spots and large purple area). Three weeks previously, he had a mild illness. Spleen is not palpable. Platelet count is 20,000/mm┬│. Most likely diagnosis?",
       "back": "Acute Immune Thrombocytopenic Purpura (Acute ITP)."
     },
     {
@@ -1829,7 +1659,7 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
     {
       "id": "ntp1",
       "front": "Case 2: A 5-year-old boy... low-grade fever, colicky abdominal pain, and a rash mainly on the back of his legs and buttocks. Stool positive for blood and a normal platelet count. What is the most likely diagnosis?",
-      "back": "Henoch-Schönlein Purpura (HSP) / IgA Vasculitis."
+      "back": "Henoch-Sch├╢nlein Purpura (HSP) / IgA Vasculitis."
     },
     {
       "id": "ntp2",
@@ -1928,6 +1758,7 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
   ],
   "Acquired Bleeding & DIC": [],
   "Safe Blood Transfusion & Complications": [],
+
   "Acute Rheumatic Fever (ARF)": [
     {
       "id": "arf1",
@@ -1937,7 +1768,7 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
     {
       "id": "arf2",
       "front": "Enumerate 2 major and 2 minor criteria of acute rheumatic fever:",
-      "back": "2 Major criteria: 1. Carditis. 2. Polyarthritis. (أو Chorea, Erythema marginatum, Subcutaneous nodules).\n\n2 Minor criteria: 1. Fever. 2. Elevated acute phase reactants (High ESR or High CRP). (أو Polyarthralgia, Prolonged PR interval on ECG)."
+      "back": "2 Major criteria: 1. Carditis. 2. Polyarthritis. (╪ú┘ê Chorea, Erythema marginatum, Subcutaneous nodules).\n\n2 Minor criteria: 1. Fever. 2. Elevated acute phase reactants (High ESR or High CRP). (╪ú┘ê Polyarthralgia, Prolonged PR interval on ECG)."
     }
   ],
   "Acyanotic Obstructive Lesions (Aortic Stenosis)": [
@@ -2025,12 +1856,12 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
     {
       "id": "phf5",
       "front": "Q4) Enumerate 3 cardiac lesions that cause this condition (heart failure).",
-      "back": "Ventricular Septal Defect (VSD).\n\nPatent Ductus Arteriosus (PDA).\n\nCoarctation of the Aorta (CoA).\n(ويمكن ذكر Myocarditis أو Rheumatic carditis)."
+      "back": "Ventricular Septal Defect (VSD).\n\nPatent Ductus Arteriosus (PDA).\n\nCoarctation of the Aorta (CoA).\n(┘ê┘è┘à┘â┘å ╪░┘â╪▒ Myocarditis ╪ú┘ê Rheumatic carditis)."
     },
     {
       "id": "phf6",
       "front": "Q2) Explain 3 lines of treatment (for heart failure case).",
-      "back": "Diuretics: (e.g., Furosemide/Lasix) to decrease preload and relieve pulmonary/systemic congestion.\n\nInotropes: (e.g., Digoxin) to increase myocardial contractility.\n\nAfterload Reducing Agents: (e.g., ACE inhibitors like Captopril/Enalapril) to decrease peripheral resistance and improve cardiac output.\n(ويمكن إضافة: General measures like semi-sitting position, oxygen therapy, and treating the underlying cause)."
+      "back": "Diuretics: (e.g., Furosemide/Lasix) to decrease preload and relieve pulmonary/systemic congestion.\n\nInotropes: (e.g., Digoxin) to increase myocardial contractility.\n\nAfterload Reducing Agents: (e.g., ACE inhibitors like Captopril/Enalapril) to decrease peripheral resistance and improve cardiac output.\n(┘ê┘è┘à┘â┘å ╪Ñ╪╢╪º┘ü╪⌐: General measures like semi-sitting position, oxygen therapy, and treating the underlying cause)."
     }
   ],
   "Tetralogy of Fallot (TOF) & Hypercyanotic Spells": [
@@ -2069,7 +1900,7 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
     {
       "id": "vsd2",
       "front": "Case study (3-month-old boy with tachypnea...): 2. Enumerate 2 complications that may occur in this case?",
-      "back": "Congestive Heart Failure (CHF).\n\nRecurrent chest infections (Bronchopneumonia).\n(ويمكن إضافة: Pulmonary hypertension, Infective endocarditis)."
+      "back": "Congestive Heart Failure (CHF).\n\nRecurrent chest infections (Bronchopneumonia).\n(┘ê┘è┘à┘â┘å ╪Ñ╪╢╪º┘ü╪⌐: Pulmonary hypertension, Infective endocarditis)."
     },
     {
       "id": "vsd3",
@@ -2093,6 +1924,7 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
     }
   ],
   "Ventricular Septal Defect (VSD) - 2": [],
+
   "Acute Diarrhea & Dehydration Assessment": [
     {
       "id": "adda1",
@@ -2101,8 +1933,8 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
     },
     {
       "id": "adda2",
-      "front": "Enumerate 4 signs of severe dehydration.\n(حسب بروتوكول IMCI المعتمد)",
-      "back": "Lethargic or unconscious.\n\nSunken eyes.\n\nNot able to drink or drinking poorly.\n\nSkin pinch goes back very slowly (≥ 2 seconds)."
+      "front": "Enumerate 4 signs of severe dehydration.\n(╪¡╪│╪¿ ╪¿╪▒┘ê╪¬┘ê┘â┘ê┘ä IMCI ╪º┘ä┘à╪╣╪¬┘à╪»)",
+      "back": "Lethargic or unconscious.\n\nSunken eyes.\n\nNot able to drink or drinking poorly.\n\nSkin pinch goes back very slowly (ΓëÑ 2 seconds)."
     },
     {
       "id": "adda3",
@@ -2220,7 +2052,7 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
     {
       "id": "hdfc3",
       "front": "Regarding Encopresis: Define the condition.",
-      "back": "It is fecal incontinence or repetitive voluntary/involuntary passage of stool in inappropriate places in a child ≥ 4 years old (after toilet training age)."
+      "back": "It is fecal incontinence or repetitive voluntary/involuntary passage of stool in inappropriate places in a child ΓëÑ 4 years old (after toilet training age)."
     },
     {
       "id": "hdfc4",
@@ -2254,7 +2086,7 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
     {
       "id": "avah2",
       "front": "Mention 3 hepatotropic viruses that have a vaccine.",
-      "back": "Hepatitis A Virus (HAV).\n\nHepatitis B Virus (HBV).\n(الفيروس الثالث هو Hepatitis E (HEV) حيث يوجد له لقاح معتمد في بعض الدول، ويمكن ذكر الفيروسات الأخرى بشكل عام ولكن HAV و HBV هما الأساس)."
+      "back": "Hepatitis A Virus (HAV).\n\nHepatitis B Virus (HBV).\n(╪º┘ä┘ü┘è╪▒┘ê╪│ ╪º┘ä╪½╪º┘ä╪½ ┘ç┘ê Hepatitis E (HEV) ╪¡┘è╪½ ┘è┘ê╪¼╪» ┘ä┘ç ┘ä┘é╪º╪¡ ┘à╪╣╪¬┘à╪» ┘ü┘è ╪¿╪╣╪╢ ╪º┘ä╪»┘ê┘ä╪î ┘ê┘è┘à┘â┘å ╪░┘â╪▒ ╪º┘ä┘ü┘è╪▒┘ê╪│╪º╪¬ ╪º┘ä╪ú╪«╪▒┘ë ╪¿╪┤┘â┘ä ╪╣╪º┘à ┘ê┘ä┘â┘å HAV ┘ê HBV ┘ç┘à╪º ╪º┘ä╪ú╪│╪º╪│)."
     },
     {
       "id": "avah3",
@@ -2293,11 +2125,12 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
   ],
   "Inborn Errors of Metabolism & Phenylketonuria (PKU)": [],
   "COW MILK ALLERGY & LACTOSE INTOLERANCE": [],
+
   "INTRODUCTION TO ENDOCRINE SYSTEM": [
     {
       "id": "ies1",
       "front": "Mention three releasing hormones secreted from hypothalamus.",
-      "back": "Growth hormone-releasing hormone (GHRH).\n\nThyrotropin-releasing hormone (TRH).\n\nCorticotropin-releasing hormone (CRH).\n(ويمكن أيضاً إضافة Gonadotropin-releasing hormone (GnRH))."
+      "back": "Growth hormone-releasing hormone (GHRH).\n\nThyrotropin-releasing hormone (TRH).\n\nCorticotropin-releasing hormone (CRH).\n(┘ê┘è┘à┘â┘å ╪ú┘è╪╢╪º┘ï ╪Ñ╪╢╪º┘ü╪⌐ Gonadotropin-releasing hormone (GnRH))."
     }
   ],
   "SHORT STATURE & TALL STATURE": [
@@ -2316,7 +2149,7 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
     {
       "id": "tgd1",
       "front": "Mention three radiological findings in hypothyroidism.",
-      "back": "Markedly delayed bone age.\n\nEpiphyseal dysgenesis (fragmentation or stippling of the epiphyses).\n\nEnlarged cardiac shadow (Cardiomegaly) which may be due to pericardial effusion.\n(يمكن أيضاً ذكر Anterior beaking of the vertebrae)."
+      "back": "Markedly delayed bone age.\n\nEpiphyseal dysgenesis (fragmentation or stippling of the epiphyses).\n\nEnlarged cardiac shadow (Cardiomegaly) which may be due to pericardial effusion.\n(┘è┘à┘â┘å ╪ú┘è╪╢╪º┘ï ╪░┘â╪▒ Anterior beaking of the vertebrae)."
     },
     {
       "id": "tgd2",
@@ -2356,7 +2189,7 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
     {
       "id": "dm1",
       "front": "Enumerate 3 Diagnostic criteria of Type 1 Diabetes Mellitus:",
-      "back": "Fasting plasma glucose ≥ 126 mg/dL (7.0 mmol/L).\n\nRandom plasma glucose ≥ 200 mg/dL (11.1 mmol/L) with classic symptoms of hyperglycemia (polyuria, polydipsia, weight loss).\n\n2-hour plasma glucose ≥ 200 mg/dL during an Oral Glucose Tolerance Test (OGTT).\n(يمكن إضافة HbA1c ≥ 6.5%)."
+      "back": "Fasting plasma glucose ΓëÑ 126 mg/dL (7.0 mmol/L).\n\nRandom plasma glucose ΓëÑ 200 mg/dL (11.1 mmol/L) with classic symptoms of hyperglycemia (polyuria, polydipsia, weight loss).\n\n2-hour plasma glucose ΓëÑ 200 mg/dL during an Oral Glucose Tolerance Test (OGTT).\n(┘è┘à┘â┘å ╪Ñ╪╢╪º┘ü╪⌐ HbA1c ΓëÑ 6.5%)."
     },
     {
       "id": "dm2",
@@ -2388,9 +2221,10 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
     {
       "id": "co1",
       "front": "Enumerate indication for Bariatric surgery in pediatrics?",
-      "back": "BMI ≥ 35 kg/m² associated with severe comorbidities (e.g., Type 2 Diabetes Mellitus, severe obstructive sleep apnea, pseudotumor cerebri).\n\nBMI ≥ 40 kg/m² with milder comorbidities.\n\nPhysical maturity (usually reached Tanner stage IV or V, and near final adult height).\n\nFailure of a multidisciplinary weight loss program (diet, exercise, behavioral modifications) for at least 6 months.\n\nPsychological capability of the patient and family to adhere to strict post-operative dietary rules."
+      "back": "BMI ΓëÑ 35 kg/m┬▓ associated with severe comorbidities (e.g., Type 2 Diabetes Mellitus, severe obstructive sleep apnea, pseudotumor cerebri).\n\nBMI ΓëÑ 40 kg/m┬▓ with milder comorbidities.\n\nPhysical maturity (usually reached Tanner stage IV or V, and near final adult height).\n\nFailure of a multidisciplinary weight loss program (diet, exercise, behavioral modifications) for at least 6 months.\n\nPsychological capability of the patient and family to adhere to strict post-operative dietary rules."
     }
   ],
+
   "INTRODUCTION TO GENETICS & BASIC CONCEPTS": [
     {
       "id": "ig1",
@@ -2474,12 +2308,12 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
     {
       "id": "cafp1",
       "front": "Pedigree Chart Case 1: Draw the family pedigree: 'Ali is 3 years old, He is the 2nd spill of consanguinity marriage, one month ago, he suffers from bleeding after eating beans, His sister died from accident from 6 months'",
-      "back": "طريقة الرسم:\n\nيتم رسم مربع (يمثل الأب) ودائرة (تمثل الأم) ويوصل بينهما بخطين مزدوجين (للدلالة على زواج الأقارب Consanguinity).\n\nيتدلى من هذا الزواج فرعان (الأبناء):\n\nالفرع الأول (الأخت الكبرى التي ماتت): دائرة مشطوب عليها بخط مائل (للدلالة على الوفاة).\n\nالفرع الثاني (علي، المريض بـ G6PD، وهو مرض X-Linked Recessive): يتم رسم مربع مظلل بالكامل (Affected Male) ويوضع بجانبه سهم (للدلالة على أنه الـ Proband/المريض الأساسي). الأم في هذه الحالة يجب أن توضع بداخل دائرتها نقطة لتوضيح أنها (Carrier) حاملة للمرض."
+      "back": "╪╖╪▒┘è┘é╪⌐ ╪º┘ä╪▒╪│┘à:\n\n┘è╪¬┘à ╪▒╪│┘à ┘à╪▒╪¿╪╣ (┘è┘à╪½┘ä ╪º┘ä╪ú╪¿) ┘ê╪»╪º╪ª╪▒╪⌐ (╪¬┘à╪½┘ä ╪º┘ä╪ú┘à) ┘ê┘è┘ê╪╡┘ä ╪¿┘è┘å┘ç┘à╪º ╪¿╪«╪╖┘è┘å ┘à╪▓╪»┘ê╪¼┘è┘å (┘ä┘ä╪»┘ä╪º┘ä╪⌐ ╪╣┘ä┘ë ╪▓┘ê╪º╪¼ ╪º┘ä╪ú┘é╪º╪▒╪¿ Consanguinity).\n\n┘è╪¬╪»┘ä┘ë ┘à┘å ┘ç╪░╪º ╪º┘ä╪▓┘ê╪º╪¼ ┘ü╪▒╪╣╪º┘å (╪º┘ä╪ú╪¿┘å╪º╪í):\n\n╪º┘ä┘ü╪▒╪╣ ╪º┘ä╪ú┘ê┘ä (╪º┘ä╪ú╪«╪¬ ╪º┘ä┘â╪¿╪▒┘ë ╪º┘ä╪¬┘è ┘à╪º╪¬╪¬): ╪»╪º╪ª╪▒╪⌐ ┘à╪┤╪╖┘ê╪¿ ╪╣┘ä┘è┘ç╪º ╪¿╪«╪╖ ┘à╪º╪ª┘ä (┘ä┘ä╪»┘ä╪º┘ä╪⌐ ╪╣┘ä┘ë ╪º┘ä┘ê┘ü╪º╪⌐).\n\n╪º┘ä┘ü╪▒╪╣ ╪º┘ä╪½╪º┘å┘è (╪╣┘ä┘è╪î ╪º┘ä┘à╪▒┘è╪╢ ╪¿┘Ç G6PD╪î ┘ê┘ç┘ê ┘à╪▒╪╢ X-Linked Recessive): ┘è╪¬┘à ╪▒╪│┘à ┘à╪▒╪¿╪╣ ┘à╪╕┘ä┘ä ╪¿╪º┘ä┘â╪º┘à┘ä (Affected Male) ┘ê┘è┘ê╪╢╪╣ ╪¿╪¼╪º┘å╪¿┘ç ╪│┘ç┘à (┘ä┘ä╪»┘ä╪º┘ä╪⌐ ╪╣┘ä┘ë ╪ú┘å┘ç ╪º┘ä┘Ç Proband/╪º┘ä┘à╪▒┘è╪╢ ╪º┘ä╪ú╪│╪º╪│┘è). ╪º┘ä╪ú┘à ┘ü┘è ┘ç╪░┘ç ╪º┘ä╪¡╪º┘ä╪⌐ ┘è╪¼╪¿ ╪ú┘å ╪¬┘ê╪╢╪╣ ╪¿╪»╪º╪«┘ä ╪»╪º╪ª╪▒╪¬┘ç╪º ┘å┘é╪╖╪⌐ ┘ä╪¬┘ê╪╢┘è╪¡ ╪ú┘å┘ç╪º (Carrier) ╪¡╪º┘à┘ä╪⌐ ┘ä┘ä┘à╪▒╪╢."
     },
     {
       "id": "cafp2",
       "front": "Pedigree Chart Case 2: Draw the pedigree of Ahmed who was diagnosed as a neurofibromatosis case with his father complained of the same disease, his mother died in accident, (his parents were consanguineous), he has two sisters.",
-      "back": "طريقة الرسم:\n\nNeurofibromatosis هو مرض (Autosomal Dominant).\n\nيتم رسم مربع مظلل بالكامل يمثل (الأب المصاب)، ودائرة مشطوب عليها مائلاً تمثل (الأم المتوفاة في حادث). يوصل بينهما خطين مزدوجين (زواج أقارب).\n\nيتدلى من هذا الزواج ثلاثة أبناء:\n\nمربع مظلل بالكامل ويمثل (أحمد)، ويوضع بجانبه سهم (Proband).\n\nدائرتان غير مظللتين تمثلان (أختي أحمد)."
+      "back": "╪╖╪▒┘è┘é╪⌐ ╪º┘ä╪▒╪│┘à:\n\nNeurofibromatosis ┘ç┘ê ┘à╪▒╪╢ (Autosomal Dominant).\n\n┘è╪¬┘à ╪▒╪│┘à ┘à╪▒╪¿╪╣ ┘à╪╕┘ä┘ä ╪¿╪º┘ä┘â╪º┘à┘ä ┘è┘à╪½┘ä (╪º┘ä╪ú╪¿ ╪º┘ä┘à╪╡╪º╪¿)╪î ┘ê╪»╪º╪ª╪▒╪⌐ ┘à╪┤╪╖┘ê╪¿ ╪╣┘ä┘è┘ç╪º ┘à╪º╪ª┘ä╪º┘ï ╪¬┘à╪½┘ä (╪º┘ä╪ú┘à ╪º┘ä┘à╪¬┘ê┘ü╪º╪⌐ ┘ü┘è ╪¡╪º╪»╪½). ┘è┘ê╪╡┘ä ╪¿┘è┘å┘ç┘à╪º ╪«╪╖┘è┘å ┘à╪▓╪»┘ê╪¼┘è┘å (╪▓┘ê╪º╪¼ ╪ú┘é╪º╪▒╪¿).\n\n┘è╪¬╪»┘ä┘ë ┘à┘å ┘ç╪░╪º ╪º┘ä╪▓┘ê╪º╪¼ ╪½┘ä╪º╪½╪⌐ ╪ú╪¿┘å╪º╪í:\n\n┘à╪▒╪¿╪╣ ┘à╪╕┘ä┘ä ╪¿╪º┘ä┘â╪º┘à┘ä ┘ê┘è┘à╪½┘ä (╪ú╪¡┘à╪»)╪î ┘ê┘è┘ê╪╢╪╣ ╪¿╪¼╪º┘å╪¿┘ç ╪│┘ç┘à (Proband).\n\n╪»╪º╪ª╪▒╪¬╪º┘å ╪║┘è╪▒ ┘à╪╕┘ä┘ä╪¬┘è┘å ╪¬┘à╪½┘ä╪º┘å (╪ú╪«╪¬┘è ╪ú╪¡┘à╪»)."
     }
   ],
   "PATTERNS OF SINGLE GENE INHERITANCE": [
@@ -2528,7 +2362,7 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
     {
       "id": "pg8",
       "front": "List 4 methods of invasive prenatal screening tests.",
-      "back": "Chorionic villus sampling.\n\nAmniocentesis.\n\nFetal blood sampling (cordocentesis).\n\nFetoscopy.\n(ويمكن إضافة Fetal tissue sampling خامساً)."
+      "back": "Chorionic villus sampling.\n\nAmniocentesis.\n\nFetal blood sampling (cordocentesis).\n\nFetoscopy.\n(┘ê┘è┘à┘â┘å ╪Ñ╪╢╪º┘ü╪⌐ Fetal tissue sampling ╪«╪º┘à╪│╪º┘ï)."
     },
     {
       "id": "pg9",
@@ -2541,11 +2375,12 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "back": "Congenital hypothyroidism (and Phenylketonuria)."
     }
   ],
+
   "THE FOUNDATIONS OF INFANT FEEDING": [
     {
       "id": "fif1",
       "front": "Mention Breast feeding reflexes.",
-      "back": "Milk secretion reflex (prolactin reflex): Suckling stimulates the nerve endings in the nipple leading to stimulation of the anterior pituitary producing prolactin, which stimulates milk production.\n\nMilk ejection or let down reflex (oxytocin reflex): Suckling simulates oxytocin release from the posterior pituitary → contraction of the myoepithelial cells around the lactiferous ducts causing milk ejection.\n\nIn addition, visual, auditory and emotional stimuli affect the cerebral cortex → releasing impulses to the hypothalamus and the pituitary → oxytocin release and milk ejection."
+      "back": "Milk secretion reflex (prolactin reflex): Suckling stimulates the nerve endings in the nipple leading to stimulation of the anterior pituitary producing prolactin, which stimulates milk production.\n\nMilk ejection or let down reflex (oxytocin reflex): Suckling simulates oxytocin release from the posterior pituitary ΓåÆ contraction of the myoepithelial cells around the lactiferous ducts causing milk ejection.\n\nIn addition, visual, auditory and emotional stimuli affect the cerebral cortex ΓåÆ releasing impulses to the hypothalamus and the pituitary ΓåÆ oxytocin release and milk ejection."
     }
   ],
   "HUMAN MILK (STAGES, COMPOSITION & ADVANTAGES)": [
@@ -2572,7 +2407,7 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
     {
       "id": "pem1",
       "front": "Describe skin changes in Kwashiorkor and explain its cause.",
-      "back": "Description: Start as erythema hyperpigmentation and desquamation → ulceration, fissuring and crackling. Skin infections & even gangrene are common. The commonest sites: pressure sites (buttocks & back), flexural sites (groin an axilla).\n\nCause: Skin changes may be due to deficiency of essential fatty acids, essential amino acids, sulfur containing amino acids, vitamin A and zinc."
+      "back": "Description: Start as erythema hyperpigmentation and desquamation ΓåÆ ulceration, fissuring and crackling. Skin infections & even gangrene are common. The commonest sites: pressure sites (buttocks & back), flexural sites (groin an axilla).\n\nCause: Skin changes may be due to deficiency of essential fatty acids, essential amino acids, sulfur containing amino acids, vitamin A and zinc."
     },
     {
       "id": "pem2",
@@ -2609,12 +2444,12 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
     {
       "id": "rt1",
       "front": "Mention causes of hypocalcemia and tetany in rickets.",
-      "back": "The parathyroid glands fail to respond to the state of hypocalcaemia (gland exhaustion).\n\nBone stores of calcium are exhausted.\n\nVitamin D shock therapy is given without calcium supplementation.\n\nSevere chest infection → hyperventilation → CO2 wash → alkalosis tetany."
+      "back": "The parathyroid glands fail to respond to the state of hypocalcaemia (gland exhaustion).\n\nBone stores of calcium are exhausted.\n\nVitamin D shock therapy is given without calcium supplementation.\n\nSevere chest infection ΓåÆ hyperventilation ΓåÆ CO2 wash ΓåÆ alkalosis tetany."
     },
     {
       "id": "rt2",
       "front": "Describe the clinical picture of latent tetany.",
-      "back": "Latent tetany (level of calcium 7-9 mg%) becomes evident by the following tests:\n\nChevostick sign: tapping of facial nerve anterior to the tragus → contraction of the facial muscles.\n\nTrousseau sign: occlusion the arterial flow to the arm by inflation the cuff of sphygmomanometer above the systolic pressure for 3 minutes ← ischemia → carpal spasm.\n\nPeroneal sign: tapping the peroneal nerve over the neck of the fibula → dorsiflexion and eversion of the foot."
+      "back": "Latent tetany (level of calcium 7-9 mg%) becomes evident by the following tests:\n\nChevostick sign: tapping of facial nerve anterior to the tragus ΓåÆ contraction of the facial muscles.\n\nTrousseau sign: occlusion the arterial flow to the arm by inflation the cuff of sphygmomanometer above the systolic pressure for 3 minutes ΓåÉ ischemia ΓåÆ carpal spasm.\n\nPeroneal sign: tapping the peroneal nerve over the neck of the fibula ΓåÆ dorsiflexion and eversion of the foot."
     },
     {
       "id": "rt3",
@@ -2629,7 +2464,7 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
     {
       "id": "rt5",
       "front": "Case 2: 3- What is the treatment?",
-      "back": "Treatment of renal dysfunction → transplantation or hemodialysis.\n\nCalcitriol (1,25-dihydroxy vit D) administration.\n\nHigh calcium intake & Low phosphate intake.\n\nPhosphate binders to bind excess phosphate in diet."
+      "back": "Treatment of renal dysfunction ΓåÆ transplantation or hemodialysis.\n\nCalcitriol (1,25-dihydroxy vit D) administration.\n\nHigh calcium intake & Low phosphate intake.\n\nPhosphate binders to bind excess phosphate in diet."
     }
   ],
   "PEDIATRIC GROWTH": [
@@ -2643,12 +2478,11 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "front": "Mention types of Growth charts.",
       "back": "Percentile curves.\n\nStandard deviation curves.\n\nVelocity curves.\n\nConditional centiles."
     }
-  ],
-  "BIOLOGICAL AGE & MATURATION (BONE & TEETH)": [
+  ],  "BIOLOGICAL AGE & MATURATION (BONE & TEETH)": [
     {
       "id": "bone1",
       "front": "Enumerate the causes of Delayed Dentition.",
-      "back": "Rickets (أشهر وأهم سبب)\nHypothyroidism\nHypopituitarism\nDown syndrome\nMalnutrition\nFamilial / Idiopathic\n\n💡 Mnemonic لتسهيل التذكر:\n(عيلة داون عندها نقص تغذية وكساح في الغدة)"
+      "back": "Rickets (╪ú╪┤┘ç╪▒ ┘ê╪ú┘ç┘à ╪│╪¿╪¿)\nHypothyroidism\nHypopituitarism\nDown syndrome\nMalnutrition\nFamilial / Idiopathic\n\n≡ƒÆí Mnemonic ┘ä╪¬╪│┘ç┘è┘ä ╪º┘ä╪¬╪░┘â╪▒:\n(╪╣┘è┘ä╪⌐ ╪»╪º┘ê┘å ╪╣┘å╪»┘ç╪º ┘å┘é╪╡ ╪¬╪║╪░┘è╪⌐ ┘ê┘â╪│╪º╪¡ ┘ü┘è ╪º┘ä╪║╪»╪⌐)"
     }
   ],
   "DEVELOPMENTAL MILESTONES & NEURODEVELOPMENT": [
@@ -2666,16 +2500,16 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
 };
 
 const ARABIC_SYSTEM_NAMES: Record<string, string> = {
-  'Cardiovascular diseases': 'أمراض القلب للأطفال',
-  'Endocrinology': 'الغدد الصماء',
-  'Gastroenterology & hepatology': 'الجهاز الهضمي والكبد',
-  'Genetic diseases': 'الأمراض الوراثية',
-  'Growth & development': 'النمو والتطور',
-  'Hematology & Oncology': 'أمراض الدم والأورام',
-  'Infections': 'الأمراض المعدية',
-  'Neurology': 'أمراض الأعصاب',
-  'Nutrition': 'التغذية',
-  'Renal diseases': 'أمراض الكلى',
+  'Cardiovascular diseases': '╪ú┘à╪▒╪º╪╢ ╪º┘ä┘é┘ä╪¿ ┘ä┘ä╪ú╪╖┘ü╪º┘ä',
+  'Endocrinology': '╪º┘ä╪║╪»╪» ╪º┘ä╪╡┘à╪º╪í',
+  'Gastroenterology & hepatology': '╪º┘ä╪¼┘ç╪º╪▓ ╪º┘ä┘ç╪╢┘à┘è ┘ê╪º┘ä┘â╪¿╪»',
+  'Genetic diseases': '╪º┘ä╪ú┘à╪▒╪º╪╢ ╪º┘ä┘ê╪▒╪º╪½┘è╪⌐',
+  'Growth & development': '╪º┘ä┘å┘à┘ê ┘ê╪º┘ä╪¬╪╖┘ê╪▒',
+  'Hematology & Oncology': '╪ú┘à╪▒╪º╪╢ ╪º┘ä╪»┘à ┘ê╪º┘ä╪ú┘ê╪▒╪º┘à',
+  'Infections': '╪º┘ä╪ú┘à╪▒╪º╪╢ ╪º┘ä┘à╪╣╪»┘è╪⌐',
+  'Neurology': '╪ú┘à╪▒╪º╪╢ ╪º┘ä╪ú╪╣╪╡╪º╪¿',
+  'Nutrition': '╪º┘ä╪¬╪║╪░┘è╪⌐',
+  'Renal diseases': '╪ú┘à╪▒╪º╪╢ ╪º┘ä┘â┘ä┘ë',
 };
 
 const SYSTEM_COLORS: Record<string, string> = {
@@ -2691,128 +2525,8 @@ const SYSTEM_COLORS: Record<string, string> = {
   'Renal diseases': '#0ea5e9',
 };
 
-// --- Case Questions Logic ---
-const groupCases = (questions: any[]) => {
-  const result: any[] = [];
-  const caseMap = new Map<string, any>();
-  
-  questions.forEach(q => {
-    if (q.front && q.front.toLowerCase().startsWith('case ')) {
-      const parts = q.front.split('\n\n');
-      if (parts.length >= 2) {
-        const caseBody = parts[0].trim();
-        const questionText = parts.slice(1).join('\n\n').trim();
-        
-        if (!caseMap.has(caseBody)) {
-          const caseObj = {
-            id: `case_group_${q.id}`,
-            type: 'case',
-            front: caseBody,
-            caseBody: caseBody,
-            subQuestions: []
-          };
-          caseMap.set(caseBody, caseObj);
-          result.push(caseObj);
-        }
-        
-        caseMap.get(caseBody).subQuestions.push({
-          id: q.id,
-          questionText: questionText,
-          back: q.back
-        });
-        
-        return;
-      }
-    }
-    // Not a case or poorly formatted, push as is
-    result.push(q);
-  });
-  
-  return result;
-};
-
-// --- Case Study UI Component ---
-const CaseStudyUI = ({ question, onComplete, currentPriority, onSetPriority }: { question: any, onComplete: () => void, currentPriority?: 'A'|'B'|'C'|null, onSetPriority?: (p: 'A'|'B'|'C'|null) => void }) => {
-  const [revealed, setRevealed] = useState<Record<string, boolean>>({});
-
-  useEffect(() => {
-    setRevealed({});
-  }, [question]);
-
-  const allRevealed = question.subQuestions && Object.keys(revealed).length === question.subQuestions.length;
-
-  return (
-    <div className="flex flex-col w-full h-full max-w-4xl mx-auto overflow-hidden bg-slate-50 dark:bg-slate-900 rounded-3xl border-2 border-slate-100 dark:border-slate-800 shadow-xl" onClick={e => e.stopPropagation()}>
-      {/* Top Header - Case Body */}
-      <div className="w-full bg-indigo-50 dark:bg-indigo-900/30 p-6 md:p-8 shrink-0 relative">
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-purple-500" />
-
-          {onSetPriority && (
-            <div className="absolute top-6 right-6 flex items-center gap-2 bg-white/50 dark:bg-slate-800/50 p-2 rounded-2xl border border-slate-200 dark:border-slate-700/50 shadow-sm">
-              <span className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mx-2">Priority:</span>
-              {(['A', 'B', 'C'] as const).map(p => (
-                <button
-                  key={p}
-                  onClick={(e) => { e.stopPropagation(); onSetPriority(currentPriority === p ? null : p); }}
-                  className={`w-8 h-8 rounded-lg flex items-center justify-center font-black transition-all ${currentPriority === p ? (p === 'A' ? 'bg-rose-500 text-white shadow-lg shadow-rose-500/20 scale-110' : p === 'B' ? 'bg-amber-500 text-white shadow-lg shadow-amber-500/20 scale-110' : 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/20 scale-110') : 'bg-white dark:bg-slate-700 text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-600'}`}
-                >
-                  {p}
-                </button>
-              ))}
-            </div>
-          )}
-
-        <div className="flex items-start gap-4">
-          <div className="w-10 h-10 bg-indigo-100 dark:bg-indigo-800 rounded-xl flex items-center justify-center shrink-0">
-            <span className="text-indigo-600 dark:text-indigo-300 font-black">C</span>
-          </div>
-          <div>
-            <h3 className="font-black text-slate-800 dark:text-slate-100 text-base md:text-lg whitespace-pre-wrap leading-relaxed" dir="auto">{question.caseBody}</h3>
-          </div>
-        </div>
-      </div>
-      
-      {/* Sub Questions List */}
-      <div className="flex-1 overflow-y-auto p-4 md:p-6 custom-scrollbar flex flex-col gap-4">
-        <h4 className="font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest text-xs mb-2">Questions ({question.subQuestions?.length || 0})</h4>
-        
-        {question.subQuestions?.map((sub: any, index: number) => (
-          <div key={sub.id} className="bg-white dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-700 rounded-2xl p-4 md:p-5 flex flex-col gap-4 transition-all hover:border-indigo-200 dark:hover:border-indigo-800/50">
-            <p className="font-bold text-slate-700 dark:text-slate-200" dir="auto">{sub.questionText}</p>
-            
-            {!revealed[sub.id] ? (
-              <button 
-                onClick={() => setRevealed(prev => ({...prev, [sub.id]: true}))}
-                className="self-start px-5 py-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-600 dark:text-slate-300 font-bold rounded-xl text-sm transition-all flex items-center gap-2"
-              >
-                Reveal Answer
-              </button>
-            ) : (
-              <div className="bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-100 dark:border-emerald-800/50 p-4 rounded-xl mt-2 animate-in fade-in slide-in-from-top-2 duration-300">
-                <p className="font-bold text-emerald-700 dark:text-emerald-400 whitespace-pre-wrap" dir="auto">{sub.back}</p>
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
-
-      {/* Completion */}
-      <div className="shrink-0 p-4 bg-white dark:bg-slate-800 border-t-2 border-slate-100 dark:border-slate-700 flex justify-center">
-        <button
-          onClick={onComplete}
-          disabled={!allRevealed}
-          className={`px-8 py-3 rounded-2xl font-black transition-all ${allRevealed ? 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-lg shadow-indigo-500/30 hover:scale-105 active:scale-95' : 'bg-slate-200 dark:bg-slate-700 text-slate-400 dark:text-slate-500 cursor-not-allowed'}`}
-        >
-          {allRevealed ? 'Complete Case' : 'Reveal All Answers First'}
-        </button>
-      </div>
-    </div>
-  );
-};
-
 const FlashSpace = () => {
   const navigate = useNavigate();
-  const { isSpaceSubscribed, userData, user } = useAuth();
   const [loading, setLoading] = useState(true);
   const [boards, setBoards] = useState<Board[]>([]);
   const [modules, setModules] = useState<string[]>([]);
@@ -2849,56 +2563,17 @@ const FlashSpace = () => {
   const [isCardFlipped, setIsCardFlipped] = useState(false);
   const [qSessionDone, setQSessionDone] = useState(false);
   const [isChapterQuestionMode, setIsChapterQuestionMode] = useState(false);
-  // --- Priority Review System State ---
-  const [spacePriorities, setSpacePriorities] = useState<Record<string, 'A'|'B'|'C'>>({});
-  const [isReviewCenterOpen, setIsReviewCenterOpen] = useState(false);
-  const [reviewTab, setReviewTab] = useState<'images'|'questions'>('images');
-  const [reviewFilter, setReviewFilter] = useState<'A'|'B'|'C'>('A');
-
-  useEffect(() => {
-    if (userData?.spacePriorities) {
-      setSpacePriorities(userData.spacePriorities);
-    }
-  }, [userData?.spacePriorities]);
-
-  const handleSetPriority = async (itemId: string, priority: 'A'|'B'|'C'|null) => {
-    if (!user) return;
-    try {
-      const newPriorities = { ...spacePriorities };
-      if (priority) {
-        newPriorities[itemId] = priority;
-      } else {
-        delete newPriorities[itemId];
-      }
-      setSpacePriorities(newPriorities);
-      
-      const userRef = doc(db, 'users', user.uid);
-      // We use dot notation to update specific field in map
-      await updateDoc(userRef, {
-        [`spacePriorities.${itemId}`]: priority ? priority : deleteField()
-      });
-      toast.success('Priority Updated');
-    } catch (error) {
-      console.error("Failed to set priority", error);
-      toast.error('Failed to update priority');
-    }
-  };
-
-  const [activeCategory, setActiveCategory] = useState<string>('All');
-  const [historyStack, setHistoryStack] = useState<{qQueue: Question[], qDone: Question[], qHardCount: number, qRepeatCount: number}[]>([]);
 
   // Vector Engine
   const [paths, setPaths] = useState<Path[]>([]);
   const [redoPaths, setRedoPaths] = useState<Path[]>([]);
-  const currentPathRef = useRef<Path | null>(null);
+  const [currentPath, setCurrentPath] = useState<Path | null>(null);
   const fadingLasersRef = useRef<Path[]>([]);
-  const [laserPaths, setLaserPaths] = useState<Path[]>([]);
 
   // Timer
   const [sessionSeconds, setSessionSeconds] = useState(0);
   const [isTimerActive, setIsTimerActive] = useState(false);
 
-  const bgCanvasRef = useRef<HTMLCanvasElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const requestRef = useRef<number | null>(null);
   const cursorRef = useRef<HTMLDivElement>(null);
@@ -3051,9 +2726,31 @@ const FlashSpace = () => {
     ctx.globalCompositeOperation = 'source-over';
   }, []);
 
-      // RADICAL PERFORMANCE FIX: renderFrame and requestAnimationFrame removed to prevent CPU/GPU thermal throttling.
-  // We now use direct incremental drawing to the active canvas and CSS-faded SVG for lasers.
+  const renderFrame = useCallback(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+    paths.forEach(p => drawPath(ctx, p));
+    if (currentPath) drawPath(ctx, currentPath);
+
+    const now = Date.now();
+    fadingLasersRef.current = fadingLasersRef.current.filter(l => {
+      const elapsed = now - (l.fadeStart || 0);
+      if (elapsed > 1500) return false;
+      drawPath(ctx, l, 1 - (elapsed / 1500));
+      return true;
+    });
+
+    requestRef.current = requestAnimationFrame(renderFrame);
+  }, [paths, currentPath, drawPath]);
+
+  useEffect(() => {
+    requestRef.current = requestAnimationFrame(renderFrame);
+    return () => { if (requestRef.current) cancelAnimationFrame(requestRef.current); };
+  }, [renderFrame]);
 
   // --- Object-Based Pro Eraser ---
   const handleEraser = (pos: Point) => {
@@ -3084,14 +2781,18 @@ const FlashSpace = () => {
   const handleStart = (e: React.MouseEvent | React.TouchEvent) => {
     if ('touches' in e && e.touches.length === 2) {
       setIsTwoFingerDragging(true);
-      currentPathRef.current = null;
+      setCurrentPath(null);
+      
       const t1 = e.touches[0];
       const t2 = e.touches[1];
       const dx = t1.clientX - t2.clientX;
       const dy = t1.clientY - t2.clientY;
       initialPinchDistRef.current = Math.sqrt(dx * dx + dy * dy);
       initialZoomRef.current = zoom;
-      initialPinchCenterRef.current = { x: (t1.clientX + t2.clientX) / 2, y: (t1.clientY + t2.clientY) / 2 };
+      initialPinchCenterRef.current = {
+        x: (t1.clientX + t2.clientX) / 2,
+        y: (t1.clientY + t2.clientY) / 2
+      };
       initialOffsetRef.current = { ...offset };
       return;
     }
@@ -3108,32 +2809,19 @@ const FlashSpace = () => {
     const pos = getPos(e);
     if (activeTool === 'eraser') {
       handleEraser(pos);
-      currentPathRef.current = { id: 'eraser-mark', points: [pos], tool: 'eraser', color: '#fff', size: 1, opacity: 0 };
+      setCurrentPath({ id: 'eraser-mark', points: [pos], tool: 'eraser', color: '#fff', size: 1, opacity: 0 });
       return;
     }
 
     const settings = toolSettings[activeTool];
-    currentPathRef.current = {
+    setCurrentPath({
       id: Math.random().toString(),
       points: [pos],
       tool: activeTool,
       color: settings.color,
       size: settings.size,
       opacity: settings.opacity
-    };
-
-    // Incremental Drawing: Draw the initial dot
-    const canvas = canvasRef.current;
-    if (canvas) {
-      const ctx = canvas.getContext('2d');
-      if (ctx) {
-        ctx.beginPath();
-        ctx.fillStyle = currentPathRef.current.color;
-        ctx.globalAlpha = currentPathRef.current.opacity;
-        ctx.arc(pos.x, pos.y, currentPathRef.current.size / 2, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    }
+    });
   };
 
   const handleMove = (e: React.MouseEvent | React.TouchEvent) => {
@@ -3147,12 +2835,17 @@ const FlashSpace = () => {
       if (initialPinchDistRef.current && initialPinchCenterRef.current && initialOffsetRef.current) {
         const scale = dist / initialPinchDistRef.current;
         const newZoom = Math.min(3, Math.max(0.5, initialZoomRef.current * scale));
+
         const midX = (t1.clientX + t2.clientX) / 2;
         const midY = (t1.clientY + t2.clientY) / 2;
         const deltaX = midX - initialPinchCenterRef.current.x;
         const deltaY = midY - initialPinchCenterRef.current.y;
+
         setZoom(newZoom);
-        setOffset({ x: initialOffsetRef.current.x + deltaX, y: initialOffsetRef.current.y + deltaY });
+        setOffset({
+          x: initialOffsetRef.current.x + deltaX,
+          y: initialOffsetRef.current.y + deltaY
+        });
       }
       return;
     }
@@ -3160,41 +2853,20 @@ const FlashSpace = () => {
     if (activeTool === 'pan' && isPanning) {
       const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
       const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
-      setOffset({ x: clientX - panStartRef.current.x, y: clientY - panStartRef.current.y });
+      setOffset({
+        x: clientX - panStartRef.current.x,
+        y: clientY - panStartRef.current.y
+      });
       return;
     }
 
-    if (!currentPathRef.current) return;
+    if (!currentPath) return;
     const pos = getPos(e);
     if (activeTool === 'eraser') {
       handleEraser(pos);
       return;
     }
-
-    // POINT DECIMATION to save memory and arrays length
-    const lastPoint = currentPathRef.current.points[currentPathRef.current.points.length - 1];
-    const dx = pos.x - lastPoint.x;
-    const dy = pos.y - lastPoint.y;
-    if (dx * dx + dy * dy < 9) return; // 3px distance threshold
-
-    currentPathRef.current.points.push(pos);
-
-    // INCREMENTAL DRAWING (Radical Solution)
-    const canvas = canvasRef.current;
-    if (canvas) {
-      const ctx = canvas.getContext('2d');
-      if (ctx) {
-        ctx.beginPath();
-        ctx.moveTo(lastPoint.x, lastPoint.y);
-        ctx.lineTo(pos.x, pos.y);
-        ctx.strokeStyle = currentPathRef.current.color;
-        ctx.lineWidth = currentPathRef.current.size;
-        ctx.lineCap = 'round';
-        ctx.lineJoin = 'round';
-        ctx.globalAlpha = currentPathRef.current.opacity;
-        ctx.stroke();
-      }
-    }
+    setCurrentPath(prev => prev ? ({ ...prev, points: [...prev.points, pos] }) : null);
   };
 
   const handleEnd = () => {
@@ -3211,27 +2883,14 @@ const FlashSpace = () => {
       return;
     }
 
-    if (!currentPathRef.current) return;
-    
-    // Clear Active Canvas (because it will be moved to bgCanvas or SVG)
-    const canvas = canvasRef.current;
-    if (canvas) {
-      const ctx = canvas.getContext('2d');
-      if (ctx) ctx.clearRect(0, 0, canvas.width, canvas.height);
-    }
-
+    if (!currentPath) return;
     if (activeTool === 'laser') {
-      const laser = { ...currentPathRef.current, id: Math.random().toString() };
-      setLaserPaths(prev => [...prev, laser]);
-      setTimeout(() => {
-        setLaserPaths(prev => prev.filter(p => p.id !== laser.id));
-      }, 1500);
+      fadingLasersRef.current.push({ ...currentPath, fadeStart: Date.now(), isFading: true });
     } else if (activeTool !== 'eraser') {
-      setPaths(prev => [...prev, currentPathRef.current!]);
+      setPaths(prev => [...prev, currentPath]);
       setRedoPaths([]);
     }
-    
-    currentPathRef.current = null;
+    setCurrentPath(null);
   };
 
   const updateSetting = (tool: Tool, key: string, val: any) => {
@@ -3245,29 +2904,13 @@ const FlashSpace = () => {
     setQDone([]);
     setQHardCount(0);
     setQRepeatCount(0);
-    setHistoryStack([]);
     setIsCardFlipped(false);
     setQSessionDone(false);
-  };
-
-  const previousCard = () => {
-    if (historyStack.length === 0) return;
-    const lastState = historyStack[historyStack.length - 1];
-    setQQueue(lastState.qQueue);
-    setQDone(lastState.qDone);
-    setQHardCount(lastState.qHardCount);
-    setQRepeatCount(lastState.qRepeatCount);
-    setHistoryStack(prev => prev.slice(0, -1));
-    setIsCardFlipped(false);
   };
 
   const rateCard = (rating: 'easy' | 'repeat' | 'hard') => {
     const current = qQueue[0];
     const rest = qQueue.slice(1);
-    
-    // Save state before changing
-    setHistoryStack(prev => [...prev, { qQueue, qDone, qHardCount, qRepeatCount }]);
-    
     setIsCardFlipped(false);
     setTimeout(() => {
       if (rating === 'easy') {
@@ -3276,36 +2919,6 @@ const FlashSpace = () => {
         if (rest.length === 0) {
           setQSessionDone(true);
           setQQueue([]);
-          
-          // Submit Points to Firebase
-          const user = auth.currentUser;
-          if (user) {
-            const minutes = Math.floor(sessionSeconds / 60);
-            const timePoints = minutes * 2;
-            let earnedPoints = newDone.length * 10 + timePoints;
-            const updates: any = { 
-              points: increment(earnedPoints),
-              spacePoints: increment(earnedPoints)
-            };
-            let successMessage = `You earned ${earnedPoints} points! 🏆`;
-            
-            // Topic Completion Check
-            if (selectedModule && selectedSystem) {
-              const totalSlides = boards.filter(b => b.module === selectedModule && b.system === selectedSystem).length;
-              if (newDone.length >= totalSlides && totalSlides > 0) {
-                earnedPoints += 100;
-                updates.points = increment(earnedPoints);
-                updates.spacePoints = increment(earnedPoints);
-                updates.completedSpaceTopics = arrayUnion(`${selectedModule}_${selectedSystem}`);
-                successMessage = `Module Completed! +100 Bonus! Total: ${earnedPoints} Pts 🏅`;
-              }
-            }
-
-            const userRef = doc(db, 'users', user.uid);
-            updateDoc(userRef, updates)
-              .then(() => toast.success(successMessage))
-              .catch(err => console.error("Failed to add points", err));
-          }
         } else {
           setQQueue(rest);
         }
@@ -3329,7 +2942,7 @@ const FlashSpace = () => {
         </div>
         <div>
           <p className="text-white font-black text-3xl tracking-tight">CLINOMA Flash Space</p>
-          <p className="text-slate-400 mt-3 text-lg">جاري تحميل اللوحات الطبية...</p>
+          <p className="text-slate-400 mt-3 text-lg">╪¼╪º╪▒┘è ╪¬╪¡┘à┘è┘ä ╪º┘ä┘ä┘ê╪¡╪º╪¬ ╪º┘ä╪╖╪¿┘è╪⌐...</p>
         </div>
         <div className="flex gap-3 justify-center">
           {[0,1,2].map(i => (
@@ -3345,10 +2958,10 @@ const FlashSpace = () => {
       <div className="w-32 h-32 bg-white/5 rounded-[3rem] flex items-center justify-center text-white/20 mb-8">
         <Layout className="w-16 h-16" />
       </div>
-      <h2 className="text-3xl font-black text-white mb-4">لا توجد لوحات</h2>
-      <p className="text-slate-400 max-w-md mb-10">لم يتم العثور على أي لوحات طبية.</p>
+      <h2 className="text-3xl font-black text-white mb-4">┘ä╪º ╪¬┘ê╪¼╪» ┘ä┘ê╪¡╪º╪¬</h2>
+      <p className="text-slate-400 max-w-md mb-10">┘ä┘à ┘è╪¬┘à ╪º┘ä╪╣╪½┘ê╪▒ ╪╣┘ä┘ë ╪ú┘è ┘ä┘ê╪¡╪º╪¬ ╪╖╪¿┘è╪⌐.</p>
       <button onClick={() => navigate('/flashcards')} className="px-10 py-5 bg-indigo-500 text-white rounded-[2rem] font-black text-sm uppercase tracking-widest hover:bg-indigo-600 transition-all shadow-xl">
-        العودة للمكتبة
+        ╪º┘ä╪╣┘ê╪»╪⌐ ┘ä┘ä┘à┘â╪¬╪¿╪⌐
       </button>
     </div>
   );
@@ -3394,34 +3007,29 @@ const FlashSpace = () => {
               </div>
               <div className="flex-1 overflow-y-auto pb-8">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-                  {modules.map(mod => {
-                    const hasAccess = isSpaceSubscribed(mod);
-                    return (
-                    <button key={mod} onClick={() => {
-                        if (hasAccess) setSelectedModule(mod);
-                        else toast.error('This module is locked. Please subscribe to access it.');
-                      }}
-                      className={cn("group relative backdrop-blur-xl border border-white/5 active:border-indigo-500/50 hover:border-indigo-500/50 rounded-3xl text-left transition-all duration-300 active:scale-[0.98] hover:scale-[1.02] overflow-hidden p-6 hover:shadow-2xl hover:shadow-indigo-500/10",
-                        hasAccess ? "bg-slate-900/50" : "bg-slate-900/20 grayscale opacity-70"
-                      )}
+                  {modules.map(mod => (
+                    <button key={mod} onClick={() => setSelectedModule(mod)}
+                      className="group relative bg-slate-900/50 backdrop-blur-xl border border-white/5 active:border-indigo-500/50 hover:border-indigo-500/50 rounded-3xl text-left transition-all duration-300 active:scale-[0.98] hover:scale-[1.02] overflow-hidden p-6 hover:shadow-2xl hover:shadow-indigo-500/10"
                     >
                       {/* Gradient Glow */}
-                      {hasAccess && <div className="absolute top-0 right-0 w-40 h-40 opacity-10 group-hover:opacity-30 transition-opacity duration-500 blur-3xl rounded-full" style={{background: '#6366f1', transform: 'translate(40%, -40%)'}} />}
+                      <div className="absolute top-0 right-0 w-40 h-40 opacity-10 group-hover:opacity-30 transition-opacity duration-500 blur-3xl rounded-full" style={{background: '#6366f1', transform: 'translate(40%, -40%)'}} />
                       
                       <div className="relative z-10 flex flex-col h-full gap-4">
                         <div className="w-14 h-14 bg-gradient-to-br from-indigo-500/20 to-violet-500/10 border border-indigo-500/20 rounded-2xl flex items-center justify-center text-indigo-400 shadow-inner group-hover:-translate-y-1 transition-transform duration-300">
-                          {hasAccess ? <BookOpen className="w-7 h-7 drop-shadow-md" /> : <Lock className="w-7 h-7 drop-shadow-md" />}
+                          <BookOpen className="w-7 h-7 drop-shadow-md" />
                         </div>
                         <div className="flex items-end justify-between mt-auto">
                           <div>
                             <h3 className="text-xl font-black text-white leading-tight">{mod}</h3>
                             <p className="text-slate-400 text-xs font-semibold mt-1">{systems[mod]?.length || 0} chapters available</p>
                           </div>
-                          {!hasAccess && <span className="text-[10px] uppercase font-black tracking-widest px-2 py-1 bg-rose-500/10 text-rose-500 rounded-md">Locked</span>}
+                          <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-slate-400 group-hover:bg-indigo-500/20 group-hover:text-indigo-400 transition-all duration-300">
+                            <ArrowRight className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" />
+                          </div>
                         </div>
                       </div>
                     </button>
-                  )})}
+                  ))}
                 </div>
               </div>
             </div>
@@ -3495,79 +3103,15 @@ const FlashSpace = () => {
                     <h2 className="text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-white/60">{selectedSystem}</h2>
                     <p className="text-slate-500 text-sm mt-0.5 tracking-wide uppercase font-bold">{boards.filter(b => b.module === selectedModule && b.system === selectedSystem).length} Slides Available</p>
                   </div>
-                <button
-                  onClick={() => setIsReviewCenterOpen(true)}
-                  className="px-6 py-2.5 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white rounded-2xl font-black shadow-lg shadow-emerald-500/20 transition-all flex items-center justify-center gap-2"
-                >
-                  <Target className="w-5 h-5" />
-                  مركز المراجعة
-                </button>
                 </div>
               </div>
               <div className="flex-1 overflow-y-auto pb-8">
                 {isChapterQuestionMode ? (
                   // --- CHAPTER QUESTIONS TAB - Flashcard Session ---
                   (() => {
-                    const chapterSlides = boards.filter(b => b.module === selectedModule && b.system === selectedSystem);
-                    const chapterQuestions = chapterSlides.flatMap(board => {
-                      const diseaseKey = (board.disease || '').replace(/\.(jpeg|jpg|png)\s*$/i, '').trim();
-                      return PEDIATRICS_QUESTIONS[diseaseKey] || [];
-                    });
-                    const generalQuestions = PEDIATRICS_QUESTIONS[`_CHAPTER_${selectedSystem}`] || [];
-                    const allQuestions = [...chapterQuestions, ...generalQuestions];
-
-                    const getFilteredQuestions = (cat: string) => {
-                      let filtered = allQuestions;
-                      if (cat !== 'All') {
-                        filtered = allQuestions.filter(q => {
-                          if (cat === 'Definitions') return q.front.toLowerCase().startsWith('define');
-                          if (cat === 'Enumerate') return q.front.toLowerCase().startsWith('enumerate');
-                          if (cat === 'Cases') return q.front.toLowerCase().startsWith('case');
-                          if (cat === 'Matching') return q.front.toLowerCase().startsWith('match') || q.type === 'matching';
-                          return true;
-                        });
-                      }
-                      return groupCases(filtered);
-                    };
-
-                    const CategoryTabs = () => (
-                      <div className="flex flex-wrap items-center justify-center gap-2 mb-4 w-full max-w-2xl mx-auto border-b border-slate-100 pb-2">
-                        {['All', 'Definitions', 'Enumerate', 'Matching', 'Cases'].map(cat => {
-                          const count = getFilteredQuestions(cat).length;
-                          return (
-                            <button
-                              key={cat}
-                              onClick={() => {
-                                setActiveCategory(cat);
-                                const newQs = getFilteredQuestions(cat);
-                                if (newQs.length > 0) startQuestionSession(newQs);
-                                else { setQQueue([]); setQDone([]); setQSessionDone(false); }
-                              }}
-                              className={`px-4 py-2 flex items-center gap-1.5 rounded-full text-xs md:text-sm font-bold transition-all ${activeCategory === cat ? 'bg-indigo-500 text-white shadow-md' : 'bg-slate-100 text-slate-500 hover:bg-slate-200'}`}
-                            >
-                              {cat} <span className={`text-[10px] px-1.5 py-0.5 rounded-full ${activeCategory === cat ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-500'}`}>{count}</span>
-                            </button>
-                          );
-                        })}
-                      </div>
-                    );
-
                     const questions = qQueue.concat(qDone); // Total questions in this session
                     const totalQ = qDone.length + qQueue.length;
                     const currentCard = qQueue[0];
-
-                    if (questions.length === 0 && allQuestions.length > 0) {
-                      return (
-                        <div className="flex flex-col items-center justify-center py-20 text-center px-8">
-                          <CategoryTabs />
-                          <div className="w-20 h-20 bg-slate-50 rounded-[2rem] flex items-center justify-center mb-6">
-                            <Brain className="w-10 h-10 text-slate-400" />
-                          </div>
-                          <h3 className="text-2xl font-black text-slate-800 mb-2">No Questions in this Category</h3>
-                          <p className="text-slate-400">Please select another category.</p>
-                        </div>
-                      );
-                    }
 
                     if (questions.length === 0) {
                       return (
@@ -3585,7 +3129,7 @@ const FlashSpace = () => {
                       // Session complete
                       return (
                         <div className="flex flex-col items-center justify-center py-16 text-center px-8">
-                          <div className="text-6xl mb-6">🎉</div>
+                          <div className="text-6xl mb-6">≡ƒÄë</div>
                           <h3 className="text-3xl font-black text-slate-800 mb-2">Session Complete!</h3>
                           <p className="text-slate-400 mb-8">You've mastered all {questions.length} questions</p>
                           <div className="grid grid-cols-3 gap-4 mb-10 w-full max-w-sm">
@@ -3604,7 +3148,7 @@ const FlashSpace = () => {
                           </div>
                           <div className="flex items-center gap-4">
                             <button
-                              onClick={() => startQuestionSession(getFilteredQuestions(activeCategory))}
+                              onClick={() => startQuestionSession(questions)}
                               className="px-8 py-3 bg-slate-900 text-white rounded-2xl font-black hover:bg-indigo-600 transition-all"
                             >
                               Restart Session
@@ -3623,7 +3167,6 @@ const FlashSpace = () => {
                     // Active flashcard
                     return (
                       <div className="flex flex-col items-center justify-between h-full py-4 px-2 md:px-6 max-w-5xl mx-auto">
-                        <CategoryTabs />
                         {/* Header Controls */}
                         <div className="w-full flex items-center justify-between mb-4">
                           <button
@@ -3664,9 +3207,7 @@ const FlashSpace = () => {
                               }}
                             >
                               {/* Front */}
-                              {currentCard?.type === 'case' ? (
-                                <CaseStudyUI question={currentCard} onComplete={() => rateCard('easy')} currentPriority={spacePriorities[currentCard.id]} onSetPriority={(p) => handleSetPriority(currentCard.id, p)} />
-                              ) : currentCard?.type === 'matching' ? (
+                              {currentCard?.type === 'matching' ? (
                                 <MatchingGameUI question={currentCard} onComplete={() => setIsCardFlipped(true)} />
                               ) : (
                                 <div
@@ -3690,10 +3231,10 @@ const FlashSpace = () => {
                                 className="absolute inset-0 flex flex-col items-center justify-center p-5 sm:p-8 md:p-12 bg-indigo-50 rounded-3xl border-2 border-indigo-100 shadow-xl"
                                 style={{backfaceVisibility: 'hidden', transform: 'rotateY(180deg)'}}
                               >
-                                {currentCard?.type === 'case' ? null : currentCard?.type === 'matching' ? (
+                                {currentCard?.type === 'matching' ? (
                                   <div className="flex flex-col items-center text-center">
                                     <div className="w-16 h-16 bg-emerald-500 rounded-full flex items-center justify-center mb-6 shadow-lg shadow-emerald-500/30">
-                                      <span className="text-3xl">🎉</span>
+                                      <span className="text-3xl">≡ƒÄë</span>
                                     </div>
                                     <h3 className="text-2xl md:text-3xl font-black text-slate-800 mb-2">Perfect Match!</h3>
                                     <p className="text-slate-500 font-bold text-sm md:text-base">You successfully connected all terms.</p>
@@ -3722,24 +3263,24 @@ const FlashSpace = () => {
                                 onClick={() => rateCard('hard')}
                                 className="py-3 md:py-4 bg-rose-50 hover:bg-rose-500 text-rose-600 hover:text-white rounded-2xl font-black text-xs md:text-sm transition-all hover:scale-105 active:scale-95 border-2 border-rose-100 hover:border-rose-500"
                               >
-                                🔴 Hard
+                                ≡ƒö┤ Hard
                               </button>
                               <button
-                                onClick={() => setIsCardFlipped(false)}
+                                onClick={() => rateCard('repeat')}
                                 className="py-3 md:py-4 bg-amber-50 hover:bg-amber-500 text-amber-600 hover:text-white rounded-2xl font-black text-xs md:text-sm transition-all hover:scale-105 active:scale-95 border-2 border-amber-100 hover:border-amber-500"
                               >
-                                ↩️ Return Question
+                                ≡ƒƒí Repeat
                               </button>
                               <button
                                 onClick={() => rateCard('easy')}
                                 className="py-3 md:py-4 bg-emerald-50 hover:bg-emerald-500 text-emerald-600 hover:text-white rounded-2xl font-black text-xs md:text-sm transition-all hover:scale-105 active:scale-95 border-2 border-emerald-100 hover:border-emerald-500"
                               >
-                                🟢 Easy
+                                ≡ƒƒó Easy
                               </button>
                             </div>
                           </div>
                         ) : (
-                          currentCard?.type === 'case' ? null : currentCard?.type === 'matching' ? (
+                          currentCard?.type === 'matching' ? (
                             <div className="py-4 opacity-50 select-none pointer-events-none">
                               <p className="text-center font-bold text-slate-400 text-xs uppercase tracking-widest flex items-center justify-center gap-2">
                                 <span className="w-2 h-2 rounded-full bg-slate-300 animate-pulse"></span>
@@ -3959,11 +3500,11 @@ const FlashSpace = () => {
             {/* Tools Palette */}
             <div className="flex items-center gap-0.5 bg-slate-50 p-0.5 rounded-xl border border-slate-200">
               {[
-                { id: 'pen', icon: Pencil, label: 'قلم' },
-                { id: 'highlighter', icon: Highlighter, label: 'تظليل' },
-                { id: 'eraser', icon: Eraser, label: 'ممحاة' },
-                { id: 'laser', icon: Zap, label: 'ليزر' },
-                { id: 'pan', icon: Hand, label: 'تحريك' },
+                { id: 'pen', icon: Pencil, label: '┘é┘ä┘à' },
+                { id: 'highlighter', icon: Highlighter, label: '╪¬╪╕┘ä┘è┘ä' },
+                { id: 'eraser', icon: Eraser, label: '┘à┘à╪¡╪º╪⌐' },
+                { id: 'laser', icon: Zap, label: '┘ä┘è╪▓╪▒' },
+                { id: 'pan', icon: Hand, label: '╪¬╪¡╪▒┘è┘â' },
               ].map(tool => (
                 <div key={tool.id} className="relative">
                   <button
@@ -3990,7 +3531,7 @@ const FlashSpace = () => {
                       <div className="space-y-4">
                         <div className="space-y-2">
                           <div className="flex justify-between text-[10px] font-black uppercase text-slate-400">
-                            <span>الحجم</span>
+                            <span>╪º┘ä╪¡╪¼┘à</span>
                             <span className="text-indigo-500">{toolSettings[tool.id as Tool].size}px</span>
                           </div>
                           <input type="range" min="1" max="100" value={toolSettings[tool.id as Tool].size}
@@ -4001,7 +3542,7 @@ const FlashSpace = () => {
                         {tool.id === 'highlighter' && (
                           <div className="space-y-2">
                             <div className="flex justify-between text-[10px] font-black uppercase text-slate-400">
-                              <span>الشفافية</span>
+                              <span>╪º┘ä╪┤┘ü╪º┘ü┘è╪⌐</span>
                               <span className="text-indigo-500">{Math.round(toolSettings.highlighter.opacity * 100)}%</span>
                             </div>
                             <input type="range" min="0.1" max="1" step="0.1" value={toolSettings.highlighter.opacity}
@@ -4024,14 +3565,14 @@ const FlashSpace = () => {
                         ) : (
                           <button
                             onClick={() => {
-                              if (window.confirm('مسح كل الرسومات؟')) {
+                              if (window.confirm('┘à╪│╪¡ ┘â┘ä ╪º┘ä╪▒╪│┘ê┘à╪º╪¬╪ƒ')) {
                                 setPaths([]); setRedoPaths([]); fadingLasersRef.current = [];
-                                setShowSettingsFor(null); toast.success('تم مسح اللوحة');
+                                setShowSettingsFor(null); toast.success('╪¬┘à ┘à╪│╪¡ ╪º┘ä┘ä┘ê╪¡╪⌐');
                               }
                             }}
                             className="w-full py-3 bg-rose-50 text-rose-600 hover:bg-rose-100 rounded-xl font-black text-xs flex items-center justify-center gap-2 transition-all"
                           >
-                            <Trash2 className="w-4 h-4" /> مسح الكل
+                            <Trash2 className="w-4 h-4" /> ┘à╪│╪¡ ╪º┘ä┘â┘ä
                           </button>
                         )}
                       </div>
@@ -4061,20 +3602,6 @@ const FlashSpace = () => {
                 {isTimerActive ? <Pause className="w-2.5 h-2.5" /> : <Play className="w-2.5 h-2.5" />}
               </button>
             </div>
-
-            {/* Priority Selector (Compact) */}
-            <div className="flex items-center gap-1 px-2 py-1.5 bg-slate-50 rounded-xl border border-slate-200">
-              <span className="text-[10px] font-bold text-slate-400 mr-1 hidden sm:block">Priority</span>
-              {(['A', 'B', 'C'] as const).map(p => (
-                <button
-                  key={p}
-                  onClick={() => handleSetPriority(selectedBoard.id, spacePriorities[selectedBoard.id] === p ? null : p)}
-                  className={`w-6 h-6 rounded flex items-center justify-center text-xs font-black transition-all ${spacePriorities[selectedBoard.id] === p ? (p === 'A' ? 'bg-rose-500 text-white shadow-md' : p === 'B' ? 'bg-amber-500 text-white shadow-md' : 'bg-emerald-500 text-white shadow-md') : 'bg-white text-slate-400 hover:bg-slate-100'}`}
-                >
-                  {p}
-                </button>
-              ))}
-            </div>
           </div>
         </div>
 
@@ -4085,12 +3612,7 @@ const FlashSpace = () => {
               className={cn("relative", activeTool !== 'pan' && "transition-transform duration-100")}
               style={{transform: `translate(${offset.x}px, ${offset.y}px) scale(${zoom})`}}
             >
-                  <img src={selectedBoard.medicalImage} alt="" className="max-w-full max-h-[85vh] pointer-events-none select-none" draggable={false} />
-                            <canvas
-                ref={bgCanvasRef}
-                width={2500} height={1800}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full object-contain pointer-events-none"
-              />
+              <img src={selectedBoard.medicalImage} alt="" className="max-w-full max-h-[85vh] pointer-events-none select-none" draggable={false} />
               <canvas
                 ref={canvasRef}
                 width={2500} height={1800}
@@ -4197,49 +3719,11 @@ const FlashSpace = () => {
                     // --- QUESTIONS TAB - Flashcard Session ---
                     (() => {
                       const diseaseKey = (selectedBoard.disease || '').replace(/\.(jpeg|jpg|png)\s*$/i, '').trim();
-                      const allQuestions = PEDIATRICS_QUESTIONS[diseaseKey] || [];
-                      
-                      const getFilteredQuestions = (cat: string) => {
-                        let filtered = allQuestions;
-                        if (cat !== 'All') {
-                          filtered = allQuestions.filter(q => {
-                            if (cat === 'Definitions') return q.front.toLowerCase().startsWith('define');
-                            if (cat === 'Enumerate') return q.front.toLowerCase().startsWith('enumerate');
-                            if (cat === 'Cases') return q.front.toLowerCase().startsWith('case');
-                            if (cat === 'Matching') return q.front.toLowerCase().startsWith('match') || q.type === 'matching';
-                            return true;
-                          });
-                        }
-                        return groupCases(filtered);
-                      };
-                      
-                      const questions = getFilteredQuestions(activeCategory);
+                      const questions = PEDIATRICS_QUESTIONS[diseaseKey] || [];
                       const totalQ = qDone.length + qQueue.length;
                       const currentCard = qQueue[0];
 
-                      const CategoryTabs = () => (
-                        <div className="flex flex-wrap items-center justify-center gap-2 mb-6 w-full max-w-2xl mx-auto border-b border-slate-100 pb-4">
-                          {['All', 'Definitions', 'Enumerate', 'Matching', 'Cases'].map(cat => {
-                            const count = getFilteredQuestions(cat).length;
-                            return (
-                              <button
-                                key={cat}
-                                onClick={() => {
-                                  setActiveCategory(cat);
-                                  const newQs = getFilteredQuestions(cat);
-                                  if (newQs.length > 0) startQuestionSession(newQs);
-                                  else { setQQueue([]); setQDone([]); setQSessionDone(false); }
-                                }}
-                                className={`px-4 py-2 flex items-center gap-1.5 rounded-full text-xs md:text-sm font-bold transition-all ${activeCategory === cat ? 'bg-indigo-500 text-white shadow-md' : 'bg-slate-100 text-slate-500 hover:bg-slate-200'}`}
-                              >
-                                {cat} <span className={`text-[10px] px-1.5 py-0.5 rounded-full ${activeCategory === cat ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-500'}`}>{count}</span>
-                              </button>
-                            );
-                          })}
-                        </div>
-                      );
-
-                      if (allQuestions.length === 0) {
+                      if (questions.length === 0) {
                         return (
                           <div className="flex flex-col items-center justify-center py-24 text-center">
                             <div className="w-16 h-16 bg-emerald-50 rounded-2xl flex items-center justify-center mb-4">
@@ -4251,24 +3735,10 @@ const FlashSpace = () => {
                         );
                       }
 
-                      if (questions.length === 0 && allQuestions.length > 0) {
-                        return (
-                          <div className="flex flex-col items-center justify-center py-20 text-center px-8">
-                            <CategoryTabs />
-                            <div className="w-20 h-20 bg-slate-50 rounded-[2rem] flex items-center justify-center mb-6">
-                              <Brain className="w-10 h-10 text-slate-400" />
-                            </div>
-                            <h3 className="text-2xl font-black text-slate-800 mb-2">No Questions in this Category</h3>
-                            <p className="text-slate-400">Please select another category.</p>
-                          </div>
-                        );
-                      }
-
                       if (qQueue.length === 0 && qDone.length === 0) {
                         // Not started yet
                         return (
                           <div className="flex flex-col items-center justify-center py-20 text-center px-8">
-                            <CategoryTabs />
                             <div className="w-20 h-20 bg-emerald-50 rounded-[2rem] flex items-center justify-center mb-6">
                               <Brain className="w-10 h-10 text-emerald-500" />
                             </div>
@@ -4279,7 +3749,7 @@ const FlashSpace = () => {
                               onClick={() => startQuestionSession(questions)}
                               className="px-10 py-4 bg-emerald-500 text-white rounded-2xl font-black text-base hover:bg-emerald-600 transition-all shadow-lg hover:scale-105 active:scale-95"
                             >
-                              Start Session →
+                              Start Session ΓåÆ
                             </button>
                           </div>
                         );
@@ -4289,7 +3759,7 @@ const FlashSpace = () => {
                         // Session complete
                         return (
                           <div className="flex flex-col items-center justify-center py-16 text-center px-8">
-                            <div className="text-6xl mb-6">🎉</div>
+                            <div className="text-6xl mb-6">≡ƒÄë</div>
                             <h3 className="text-3xl font-black text-slate-800 mb-2">Session Complete!</h3>
                             <p className="text-slate-400 mb-8">You've mastered all {questions.length} questions</p>
                             <div className="grid grid-cols-3 gap-4 mb-10 w-full max-w-sm">
@@ -4319,7 +3789,6 @@ const FlashSpace = () => {
                       // Active flashcard
                       return (
                         <div className="flex flex-col items-center justify-between h-full py-8 px-6 max-w-5xl mx-auto">
-                          <CategoryTabs />
                           {/* Progress */}
                           <div className="w-full space-y-2">
                             <div className="flex justify-between text-xs font-bold text-slate-400">
@@ -4349,16 +3818,11 @@ const FlashSpace = () => {
                                 }}
                               >
                                 {/* Front */}
-                                {currentCard?.type === 'case' ? (
-                                  <CaseStudyUI question={currentCard} onComplete={() => rateCard('easy')} currentPriority={spacePriorities[currentCard.id]} onSetPriority={(p) => handleSetPriority(currentCard.id, p)} />
-                                ) : currentCard?.type === 'matching' ? (
-                                  <MatchingGameUI question={currentCard} onComplete={() => setIsCardFlipped(true)} />
-                                ) : (
-                                  <div
-                                    className="absolute inset-0 flex flex-col items-center justify-center p-8 md:p-12 bg-white rounded-3xl border-2 border-slate-100 shadow-xl cursor-pointer"
-                                    style={{backfaceVisibility: 'hidden'}}
-                                    onClick={() => !isCardFlipped && setIsCardFlipped(true)}
-                                  >
+                                <div
+                                  className="absolute inset-0 flex flex-col items-center justify-center p-8 md:p-12 bg-white rounded-3xl border-2 border-slate-100 shadow-xl cursor-pointer"
+                                  style={{backfaceVisibility: 'hidden'}}
+                                  onClick={() => !isCardFlipped && setIsCardFlipped(true)}
+                                >
                                   <div className="w-10 h-10 md:w-12 md:h-12 bg-indigo-50 rounded-2xl flex items-center justify-center mb-4 md:mb-6 shrink-0">
                                     <span className="text-indigo-500 font-black text-sm md:text-base">Q</span>
                                   </div>
@@ -4369,30 +3833,17 @@ const FlashSpace = () => {
                                     <p className="text-slate-300 text-xs md:text-sm mt-4 font-bold uppercase tracking-widest shrink-0">Tap to reveal answer</p>
                                   )}
                                 </div>
-                                )}
                                 {/* Back */}
                                 <div
                                   className="absolute inset-0 flex flex-col items-center justify-center p-5 sm:p-8 md:p-12 bg-indigo-50 rounded-3xl border-2 border-indigo-100 shadow-xl"
                                   style={{backfaceVisibility: 'hidden', transform: 'rotateY(180deg)'}}
                                 >
-                                  {currentCard?.type === 'case' ? null : currentCard?.type === 'matching' ? (
-                                    <div className="flex flex-col items-center text-center">
-                                      <div className="w-16 h-16 bg-emerald-500 rounded-full flex items-center justify-center mb-6 shadow-lg shadow-emerald-500/30">
-                                        <span className="text-3xl">🎉</span>
-                                      </div>
-                                      <h3 className="text-2xl md:text-3xl font-black text-slate-800 mb-2">Perfect Match!</h3>
-                                      <p className="text-slate-500 font-bold text-sm md:text-base">You successfully connected all terms.</p>
-                                    </div>
-                                  ) : (
-                                    <>
-                                      <div className="w-10 h-10 md:w-12 md:h-12 bg-indigo-500 rounded-2xl flex items-center justify-center mb-4 md:mb-6 shrink-0">
-                                        <span className="text-white font-black text-sm md:text-base">A</span>
-                                      </div>
-                                      <div className="flex-1 w-full flex items-center justify-center overflow-y-auto custom-scrollbar pr-2">
-                                        <p className={`text-slate-800 font-black leading-relaxed whitespace-pre-line w-full ${(currentCard?.back?.length || 0) > 100 ? 'text-sm sm:text-base lg:text-lg text-left' : 'text-base sm:text-lg md:text-xl lg:text-2xl text-center'}`} dir="auto">{currentCard?.back}</p>
-                                      </div>
-                                    </>
-                                  )}
+                                  <div className="w-10 h-10 md:w-12 md:h-12 bg-indigo-500 rounded-2xl flex items-center justify-center mb-4 md:mb-6 shrink-0">
+                                    <span className="text-white font-black text-sm md:text-base">A</span>
+                                  </div>
+                                  <div className="flex-1 w-full flex items-center justify-center overflow-y-auto custom-scrollbar pr-2">
+                                    <p className={`text-slate-800 font-black leading-relaxed whitespace-pre-line w-full ${(currentCard?.back?.length || 0) > 100 ? 'text-sm sm:text-base lg:text-lg text-left' : 'text-base sm:text-lg md:text-xl lg:text-2xl text-center'}`} dir="auto">{currentCard?.back}</p>
+                                  </div>
                                 </div>
                               </div>
                             </div>
@@ -4407,38 +3858,29 @@ const FlashSpace = () => {
                                   onClick={() => rateCard('hard')}
                                   className="py-4 bg-rose-50 hover:bg-rose-500 text-rose-600 hover:text-white rounded-2xl font-black text-sm transition-all hover:scale-105 active:scale-95 border-2 border-rose-100 hover:border-rose-500"
                                 >
-                                  🔴 Hard
+                                  ≡ƒö┤ Hard
                                 </button>
                                 <button
-                                  onClick={() => setIsCardFlipped(false)}
+                                  onClick={() => rateCard('repeat')}
                                   className="py-4 bg-amber-50 hover:bg-amber-500 text-amber-600 hover:text-white rounded-2xl font-black text-sm transition-all hover:scale-105 active:scale-95 border-2 border-amber-100 hover:border-amber-500"
                                 >
-                                  ↩️ Return Question
+                                  ≡ƒƒí Repeat
                                 </button>
                                 <button
                                   onClick={() => rateCard('easy')}
                                   className="py-4 bg-emerald-50 hover:bg-emerald-500 text-emerald-600 hover:text-white rounded-2xl font-black text-sm transition-all hover:scale-105 active:scale-95 border-2 border-emerald-100 hover:border-emerald-500"
                                 >
-                                  🟢 Easy
+                                  ≡ƒƒó Easy
                                 </button>
                               </div>
                             </div>
                           ) : (
-                            currentCard?.type === 'case' ? null : currentCard?.type === 'matching' ? (
-                              <div className="py-4 opacity-50 select-none pointer-events-none">
-                                <p className="text-center font-bold text-slate-400 text-xs uppercase tracking-widest flex items-center justify-center gap-2">
-                                  <span className="w-2 h-2 rounded-full bg-slate-300 animate-pulse"></span>
-                                  Match all pairs to continue
-                                </p>
-                              </div>
-                            ) : (
-                              <button
-                                onClick={() => setIsCardFlipped(true)}
-                                className="px-10 py-4 bg-slate-900 text-white rounded-2xl font-black hover:bg-indigo-600 transition-all shadow-lg mx-auto block"
-                              >
-                                Reveal Answer
-                              </button>
-                            )
+                            <button
+                              onClick={() => setIsCardFlipped(true)}
+                              className="px-10 py-4 bg-slate-900 text-white rounded-2xl font-black hover:bg-indigo-600 transition-all"
+                            >
+                              Reveal Answer
+                            </button>
                           )}
                         </div>
                       );
@@ -4459,11 +3901,11 @@ const FlashSpace = () => {
               <Trophy className="w-12 h-12" />
             </div>
             <div>
-              <h2 className="text-3xl font-black text-slate-800">أحسنت! 🎉</h2>
-              <p className="text-slate-400 mt-2">انتهت جلسة الدراسة</p>
+              <h2 className="text-3xl font-black text-slate-800">╪ú╪¡╪│┘å╪¬! ≡ƒÄë</h2>
+              <p className="text-slate-400 mt-2">╪º┘å╪¬┘ç╪¬ ╪¼┘ä╪│╪⌐ ╪º┘ä╪»╪▒╪º╪│╪⌐</p>
             </div>
             <div className="p-6 bg-emerald-50 rounded-[2rem] border border-emerald-100">
-              <span className="text-xs font-black text-emerald-600 uppercase tracking-widest block mb-1">وقت الجلسة</span>
+              <span className="text-xs font-black text-emerald-600 uppercase tracking-widest block mb-1">┘ê┘é╪¬ ╪º┘ä╪¼┘ä╪│╪⌐</span>
               <span className="text-4xl font-black text-emerald-700">{Math.floor(sessionSeconds/60)}m {sessionSeconds%60}s</span>
             </div>
             <div className="space-y-3">
@@ -4471,135 +3913,22 @@ const FlashSpace = () => {
                 onClick={() => { setShowSummary(false); setSelectedBoard(null); setIsTimerActive(false); setSessionSeconds(0); setPaths([]); setRedoPaths([]); }}
                 className="w-full py-5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-2xl font-black transition-all"
               >
-                لوحة أخرى
+                ┘ä┘ê╪¡╪⌐ ╪ú╪«╪▒┘ë
               </button>
               <button onClick={() => navigate('/dashboard')} className="w-full py-5 bg-slate-900 text-white rounded-2xl font-black hover:bg-indigo-600 transition-all">
-                العودة للداشبورد
+                ╪º┘ä╪╣┘ê╪»╪⌐ ┘ä┘ä╪»╪º╪┤╪¿┘ê╪▒╪»
               </button>
             </div>
           </div>
         </div>
       )}
 
-      
-      {/* --- REVIEW CENTER MODAL --- */}
-      {isReviewCenterOpen && (
-        <div className="fixed inset-0 z-[3000] bg-slate-950/95 backdrop-blur-2xl p-4 md:p-8 flex flex-col animate-in fade-in duration-300">
-          {/* Header */}
-          <div className="flex flex-col md:flex-row items-center justify-between bg-slate-900/50 p-4 md:p-6 rounded-[2rem] border border-white/5 mb-6 gap-4">
-            <div className="flex items-center gap-4 w-full md:w-auto">
-              <button onClick={() => setIsReviewCenterOpen(false)} className="w-12 h-12 bg-white/5 hover:bg-white/10 rounded-2xl flex items-center justify-center text-slate-300 hover:text-white transition-all">
-                <ChevronLeft className="w-6 h-6" />
-              </button>
-              <div>
-                <h2 className="text-2xl md:text-3xl font-black text-white">مركز المراجعة</h2>
-                <p className="text-slate-400 text-sm mt-1">{selectedSystem}</p>
-              </div>
-            </div>
-            
-            {/* Tabs */}
-            <div className="flex bg-slate-950/50 rounded-2xl p-1.5 border border-white/5 w-full md:w-auto">
-              <button onClick={() => setReviewTab('images')} className={`flex-1 md:flex-none px-8 py-3 rounded-xl font-black text-sm transition-all ${reviewTab === 'images' ? 'bg-indigo-500 text-white shadow-lg shadow-indigo-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}`}>الصور</button>
-              <button onClick={() => setReviewTab('questions')} className={`flex-1 md:flex-none px-8 py-3 rounded-xl font-black text-sm transition-all ${reviewTab === 'questions' ? 'bg-indigo-500 text-white shadow-lg shadow-indigo-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}`}>الأسئلة</button>
-            </div>
-          </div>
-
-          {/* Priority Filter */}
-          <div className="flex justify-center gap-4 md:gap-6 mb-8 shrink-0">
-            {(['A', 'B', 'C'] as const).map(p => (
-              <button 
-                key={p} onClick={() => setReviewFilter(p)}
-                className={`w-16 h-16 md:w-20 md:h-20 rounded-[2rem] flex flex-col items-center justify-center transition-all ${reviewFilter === p ? (p === 'A' ? 'bg-rose-500 text-white shadow-xl shadow-rose-500/30 scale-110' : p === 'B' ? 'bg-amber-500 text-white shadow-xl shadow-amber-500/30 scale-110' : 'bg-emerald-500 text-white shadow-xl shadow-emerald-500/30 scale-110') : 'bg-slate-900 border border-white/5 text-slate-500 hover:bg-slate-800 hover:text-white hover:scale-105'}`}
-              >
-                <span className="text-2xl md:text-3xl font-black">{p}</span>
-              </button>
-            ))}
-          </div>
-
-          {/* Content Grid */}
-          <div className="flex-1 overflow-y-auto custom-scrollbar pb-10">
-            {reviewTab === 'images' ? (
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 md:gap-6 max-w-[1600px] mx-auto">
-                {boards
-                  .filter(b => b.module === selectedModule && b.system === selectedSystem && spacePriorities[b.id] === reviewFilter)
-                  .map(board => (
-                    <div key={board.id} className="bg-slate-900 rounded-3xl overflow-hidden group cursor-pointer border border-white/5 hover:border-indigo-500/50 transition-all hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-1" onClick={() => { setSelectedBoard(board); setIsReviewCenterOpen(false); }}>
-                      <div className="aspect-[4/3] bg-black/50 relative overflow-hidden">
-                        <img src={board.medicalImage} className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-80" />
-                        <div className={`absolute top-3 right-3 w-8 h-8 rounded-xl flex items-center justify-center text-sm font-black text-white shadow-lg ${reviewFilter === 'A' ? 'bg-rose-500' : reviewFilter === 'B' ? 'bg-amber-500' : 'bg-emerald-500'}`}>{spacePriorities[board.id]}</div>
-                        <div className="absolute bottom-3 right-3 w-10 h-10 bg-white/10 backdrop-blur-md rounded-xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all translate-y-4 group-hover:translate-y-0 text-white">
-                          <Eye className="w-5 h-5" />
-                        </div>
-                      </div>
-                      <div className="p-4 md:p-5">
-                        <h3 className="text-white font-bold text-sm leading-snug line-clamp-2 group-hover:text-indigo-400 transition-colors">{board.disease}</h3>
-                      </div>
-                    </div>
-                  ))
-                }
-                {boards.filter(b => b.module === selectedModule && b.system === selectedSystem && spacePriorities[b.id] === reviewFilter).length === 0 && (
-                  <div className="col-span-full py-20 flex flex-col items-center justify-center text-slate-500">
-                    <Target className="w-16 h-16 mb-4 opacity-20" />
-                    <p className="font-bold text-lg">لا توجد صور في هذه الأولوية</p>
-                  </div>
-                )}
-              </div>
-            ) : (
-              <div className="max-w-4xl mx-auto space-y-4">
-                {(() => {
-                  const chapterSlides = boards.filter(b => b.module === selectedModule && b.system === selectedSystem);
-                  const chapterQuestions = chapterSlides.flatMap(board => {
-                    const diseaseKey = (board.disease || '').replace(/\.(jpeg|jpg|png)\s*$/i, '').trim();
-                    return PEDIATRICS_QUESTIONS[diseaseKey] || [];
-                  });
-                  const generalQuestions = PEDIATRICS_QUESTIONS[`_CHAPTER_${selectedSystem}`] || [];
-                  const allChapterQuestions = [...chapterQuestions, ...generalQuestions];
-                  
-                  const filteredQs = allChapterQuestions.filter(q => spacePriorities[q.id] === reviewFilter);
-                  
-                  if (filteredQs.length === 0) {
-                    return (
-                      <div className="py-20 flex flex-col items-center justify-center text-slate-500 bg-slate-900/50 rounded-[3rem] border border-white/5">
-                        <Brain className="w-16 h-16 mb-4 opacity-20" />
-                        <p className="font-bold text-lg">لا توجد أسئلة في هذه الأولوية</p>
-                      </div>
-                    );
-                  }
-
-                  return filteredQs.map(q => (
-                    <div key={q.id} className="bg-slate-900/80 p-5 md:p-6 rounded-[2rem] border border-white/5 hover:border-indigo-500/30 transition-all">
-                      <div className="flex items-start justify-between gap-4">
-                        <div className="flex-1">
-                          <span className="text-[10px] font-black text-indigo-400 mb-2 inline-block uppercase tracking-widest px-2 py-1 bg-indigo-500/10 rounded-md">{q.type}</span>
-                          <h3 className="text-white font-bold text-base md:text-lg leading-relaxed mb-3">{q.front}</h3>
-                          <div className="p-4 bg-slate-950/50 rounded-xl border border-white/5">
-                            <p className="text-slate-300 text-sm leading-relaxed whitespace-pre-wrap">{typeof q.back === 'string' ? q.back : 'Multiple choices...'}</p>
-                          </div>
-                        </div>
-                        <div className={`w-10 h-10 shrink-0 rounded-xl flex items-center justify-center text-lg font-black text-white shadow-lg ${reviewFilter === 'A' ? 'bg-rose-500' : reviewFilter === 'B' ? 'bg-amber-500' : 'bg-emerald-500'}`}>{spacePriorities[q.id]}</div>
-                      </div>
-                    </div>
-                  ));
-                })()}
-              </div>
-            )}
-          </div>
-        </div>
-      )}
-<style>{`
+      <style>{`
         .custom-scrollbar::-webkit-scrollbar { width: 4px; }
         .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
         canvas { touch-action: none; }
         .no-select { user-select: none; }
-        @keyframes fadeOut {
-          0% { opacity: 1; }
-          100% { opacity: 0; }
-        }
-        .animate-fade-out {
-          animation-name: fadeOut;
-        }
       `}</style>
     </div>
   );
