@@ -371,9 +371,1174 @@ const PEDIATRICS_EXPLANATIONS: Record<string, string> = {
 * **عيلة:** Familial (وتشمل أيضاً الـ Achondroplasia كمرض وراثي عائلي)
 * **كساح:** Rickets
 * **ميه:** Hydrocephalus
-* **دم:** Subdural hematoma`
+* **دم:** Subdural hematoma`,
+  'Acquired Bleeding & DIC': `**أولاً: التخثر المنتشر داخل الأوعية (Disseminated Intravascular Coagulation - DIC)**
+
+**التعريف والباثوفسيولوجي:**
+هي حالة مرضية خطيرة يحدث فيها تنشيط مفرط وعشوائي لعملية التجلط في الأوعية الدموية الصغيرة في الجسم كله. هذا التنشيط يؤدي إلى استهلاك كبير وسريع لعوامل التجلط والصفائح الدموية (Consumptive coagulopathy)، مما يجعل المريض عرضة لحدوث نزيف حاد وجلطات في نفس الوقت.
+
+**ثانياً: الأسباب (Causes of DIC)**
+**Enumerate the Causes of DIC:**
+1. **Sepsis / Severe infections:** تسمم الدم أو العدوى الشديدة (وهو أشهر وأهم سبب على الإطلاق في الأطفال).
+2. **Severe trauma / Burns:** الإصابات الشديدة، الحوادث، والحروق العميقة.
+3. **Malignancy:** الأورام السرطانية (خاصة بعض أنواع سرطان الدم مثل Acute Promyelocytic Leukemia - APML).
+4. **Shock & Hypoxia:** الصدمة ونقص الأكسجين الشديد.
+5. **Severe liver disease:** الفشل الكبدي الحاد.
+
+**ثالثاً: الصورة الإكلينيكية (Clinical Picture)**
+تتميز صورة الـ DIC بوجود تناقض ظاهري، حيث يجمع المريض بين النزيف والتجلط:
+* **Bleeding manifestations (أعراض النزيف):** نزيف من أماكن سحب العينات والحقن (Oozing from venipuncture sites)، نزيف جلدي (Petechiae, Purpura, Ecchymosis)، أو نزيف من الأغشية المخاطية والجهاز الهضمي.
+* **Thrombotic manifestations (أعراض الجلطات):** جلطات في الأوعية الدموية الدقيقة تؤدي إلى نقص الدم الواصل للأعضاء (Microvascular ischemia / Infarction)، مما قد يسبب فشل كلوي (Renal failure)، أو غرغرينا في الأطراف الأصابع (Digital gangrene).
+
+**رابعاً: الفحوصات والعلاج (Investigations & Treatment)**
+
+**Enumerate the Investigations of DIC:**
+1. **Platelet count:** نقص شديد في الصفائح الدموية (Thrombocytopenia).
+2. **Coagulation profile:** استطالة في كل أوقات التجلط (Prolonged PT, PTT, and Thrombin Time).
+3. **Fibrinogen level:** نقص ملحوظ في مستوى الفايبرينوجين (Hypofibrinogenemia) نتيجة استهلاكه.
+4. **Fibrin Degradation Products (FDPs) & D-dimer:** ارتفاع ملحوظ جداً في نواتج تكسير الفايبرين والـ D-dimer (وهو أهم وأدق مؤشر لتأكيد الـ DIC).
+
+**Enumerate the lines of Treatment in DIC:**
+1. **Treatment of the underlying cause:** علاج السبب الأساسي (مثل إعطاء مضادات حيوية قوية في حالات الـ Sepsis أو علاج الصدمة)، وهو حجر الزاوية في العلاج.
+2. **Replacement therapy:** نقل مشتقات الدم لتعويض النزيف، مثل البلازما الطازجة المجمدة (FFP) لتعويض عوامل التجلط، ونقل صفائح دموية (Platelet transfusion)، ونقل Cryoprecipitate لتعويض الفايبرينوجين.
+3. **Heparin:** يُستخدم بحذر شديد جداً وفقط في الحالات التي يغلب عليها تكون الجلطات وتوقف الدم عن الأعضاء (Predominant thrombosis).
+
+**خامساً: أسباب أخرى للنزيف المكتسب (Other Acquired Bleeding Disorders)**
+* **Liver Disease:** الكبد هو المصنع الأساسي لمعظم عوامل التجلط، لذلك الفشل الكبدي يؤدي إلى سيولة ونزيف.
+* **Vitamin K Deficiency:** يؤدي إلى نزيف بسبب نقص عوامل التجلط المعتمدة على فيتامين ك (Factors II, VII, IX, X).
+
+---
+
+💡 **Mnemonics لتسهيل التذكر في أسئلة الـ Enumerate:**
+
+**1. Mnemonic لأسباب الـ DIC:**
+لربط أشهر مسببات الـ DIC، تذكر هذه الجملة:
+**(عدوى وحرق وورم.. وصدمة دمرت الكبد)**
+* **عدوى:** Sepsis (أهم سبب)
+* **حرق:** Severe burns & trauma
+* **ورم:** Malignancy (Leukemia)
+* **صدمة:** Shock & Hypoxia
+* **دمرت الكبد:** Severe liver disease
+
+**2. Mnemonic لفحوصات الـ DIC (Investigations):**
+لربط شكل التحاليل المميزة للـ DIC، تذكر هذه الجملة:
+**(صفائح وفايبرينوجين واقعين.. والوقت والدايمر عاليين)**
+* **صفائح وفايبرينوجين واقعين:** Low Platelets (Thrombocytopenia) & Low Fibrinogen
+* **الوقت عالي:** Prolonged PT & PTT
+* **الدايمر عالي:** Elevated D-dimer & FDPs`,
+  'Aplastic Anemia & BM Failure Syndromes': `**أولاً: التعريف والباثوفسيولوجي (Definition & Pathophysiology)**
+
+**التعريف:**
+هي حالة فشل في النخاع العظمي (Bone Marrow Failure) تؤدي إلى توقفه عن إنتاج خلايا الدم، مما ينتج عنه نقص شامل في جميع أنواع الخلايا في الدم المحيطي (Pancytopenia).
+
+**ثانياً: الأسباب (Causes of Aplastic Anemia)**
+تنقسم الأسباب إلى مكتسبة ووراثية:
+
+**Enumerate the causes of Aplastic Anemia:**
+
+* **Acquired (المكتسبة):**
+  * **Idiopathic:** غير معروفة السبب أو ناتجة عن خلل مناعي (وهي الأشهر).
+  * **Drugs:** أدوية مثل بعض المضادات الحيوية (Chloramphenicol) وأدوية العلاج الكيماوي (Chemotherapy).
+  * **Toxins & Chemicals:** التعرض للسموم مثل البنزين (Benzene).
+  * **Infections:** العدوى الفيروسية، وأشهرها الالتهاب الكبدي الفيروسي (Viral Hepatitis) وفيروس إبشتاين بار (EBV).
+  * **Radiation:** التعرض للإشعاع.
+
+* **Inherited (الوراثية / Congenital):**
+  * أشهرها **متلازمة فانكوني (Fanconi Anemia)**، والتي تنتج عن خلل جيني يؤثر على إصلاح الـ DNA.
+
+**ثالثاً: الصورة الإكلينيكية (Clinical Picture)**
+
+**A. Clinical Picture of Acquired Aplastic Anemia:**
+الأعراض تنتج مباشرة عن نقص الخلايا:
+* **نقص كرات الدم الحمراء (Anemia):** شحوب في اللون (Pallor)، إرهاق، وضعف عام.
+* **نقص الصفائح الدموية (Thrombocytopenia):** نزيف من الأنف أو اللثة، وظهور بقع دموية تحت الجلد (Petechiae & Purpura).
+* **نقص كرات الدم البيضاء (Neutropenia / Leukopenia):** التعرض لعدوى متكررة وشديدة مصحوبة بارتفاع في درجة الحرارة (Recurrent infections & Fever).
+
+⚠️ **ملاحظة إكلينيكية هامة جداً (Negative finding):** المريض لا يعاني من تضخم في الكبد أو الطحال أو الغدد الليمفاوية (No Hepatomegaly, No Splenomegaly, No Lymphadenopathy). إذا وجدت هذه العلامات، يجب التفكير في تشخيص آخر مثل سرطان الدم (Leukemia).
+
+**B. Clinical Picture of Fanconi Anemia:**
+يصاحب الـ Pancytopenia عيوب خلقية مميزة تشمل:
+* قصر القامة (Short stature).
+* تشوهات في الهيكل العظمي، أشهرها غياب إصبع الإبهام أو عظمة الكعبرة (Absent thumb / Radial anomalies).
+* صغر حجم الرأس (Microcephaly).
+* تصبغات بنية على الجلد (Café-au-lait spots).
+
+**رابعاً: الفحوصات والعلاج (Investigations & Treatment)**
+
+**Investigations:**
+* **CBC & Reticulocytic count:** يُظهر نقص شامل في الخلايا (Pancytopenia) مع نقص ملحوظ في الخلايا الشبكية (Low Reticulocytes).
+* **Bone Marrow Aspiration & Biopsy:** هو الفحص التشخيصي الأساسي والمؤكد. يُظهر نخاعاً فارغاً من الخلايا ومستبدلاً بالدهون (Hypocellular / Aplastic marrow with fatty replacement).
+
+**Enumerate the lines of Treatment in Aplastic Anemia:**
+1. **Supportive care:** نقل دم وصفائح دموية عند اللزوم (Blood & Platelet transfusions)، وعلاج العدوى فوراً بمضادات حيوية قوية (Broad-spectrum antibiotics).
+2. **Definitive treatment:** زراعة نخاع العظم / الخلايا الجذعية (Bone Marrow Transplantation - BMT / HSCT) من متبرع متطابق، وهو العلاج الشافي والمفضل.
+3. **Immunosuppressive Therapy (IST):** يُستخدم في حال عدم وجود متبرع متطابق للنخاع، ويشمل استخدام أدوية لتثبيط المناعة التي تهاجم النخاع مثل الـ Antithymocyte globulin (ATG) مع الـ Cyclosporine.
+
+---
+
+💡 **Mnemonics لتسهيل التذكر في أسئلة الـ Enumerate:**
+
+**1. Mnemonic للـ Clinical Picture of Aplastic Anemia:**
+لربط أعراض المرض وعدم وجود تضخم في الأعضاء، تذكر هذه الجملة:
+**(شاحب وبينزف وبيسخن.. بس من غير كبد ولا طحال)**
+* **شاحب:** Anemia (Pallor)
+* **بينزف:** Thrombocytopenia (Bleeding & Petechiae)
+* **بيسخن:** Neutropenia (Infections & Fever)
+* **من غير كبد ولا طحال:** No Hepatomegaly / No Splenomegaly
+
+**2. Mnemonic لعلامات متلازمة فانكوني (Fanconi Anemia):**
+لتذكر العيوب الخلقية المصاحبة، تذكر هذه الجملة:
+**(فانكوني قصير وراسه صغيرة.. مبقّع ومن غير صباع)**
+* **قصير وراسه صغيرة:** Short stature & Microcephaly
+* **مبقّع:** Café-au-lait spots
+* **من غير صباع:** Absent thumb / Radial anomalies
+
+**3. Mnemonic لخطوات العلاج (Treatment):**
+**(انقل دم وعالج العدوى.. وادي مناعة أو ازرع نخاع)**
+* **انقل دم وعالج العدوى:** Supportive (Transfusions & Antibiotics)
+* **ادي مناعة:** Immunosuppressive Therapy (ATG & Cyclosporine)
+* **ازرع نخاع:** Bone Marrow Transplantation (BMT)`,
+  'Chronic Hemolytic Anemia & Hereditary Spherocytosis': `**أولاً: التعريف والباثوفسيولوجي (Definition & Pathophysiology)**
+
+**تكور الدم الوراثي (Hereditary Spherocytosis - HS):** هو أشهر أسباب الأنيميا التكسيرية المزمنة (Chronic Hemolytic Anemia) الوراثية.
+ينتج عن خلل جيني (غالباً Autosomal Dominant) في بروتينات جدار خلية الدم الحمراء (مثل الـ Spectrin و Ankyrin).
+هذا الخلل يفقد الخلية شكلها المقعر وتصبح كروية (Spherocytes)، مما يجعلها صلبة وسهلة التكسر وتُحجز داخل الطحال ليتم تدميرها (Extravascular hemolysis).
+
+**ثانياً: الصورة الإكلينيكية (Clinical Picture)**
+**Enumerate the Clinical Picture of Hereditary Spherocytosis:**
+
+**The Classic Triad (الثالوث الكلاسيكي):**
+1. **Anemia:** أنيميا تسبب شحوباً في اللون (Pallor) وإرهاقاً.
+2. **Jaundice:** يرقان (صفراء) نتيجة تكسير الدم وزيادة نسبة البيليروبين غير المباشر (Indirect Hyperbilirubinemia).
+3. **Splenomegaly:** تضخم ملحوظ في الطحال (لأنه مكان تكسير الخلايا الكروية).
+
+**Complications (المضاعفات):**
+* **Pigment gallstones:** تكوّن حصوات مرارية صبغية (تحدث في سن مبكر).
+* **Crises (النوبات الحادة):** المريض عرضة لنوبات تكسير حادة (Hemolytic crisis) أو توقف مفاجئ في النخاع (Aplastic crisis)، وتحدث غالباً بعد الإصابة بعدوى فيروسية مثل (Parvovirus B19).
+
+**ثالثاً: الفحوصات والعلاج (Investigations & Treatment)**
+
+**Enumerate the Investigations of Hereditary Spherocytosis:**
+1. **CBC:** يُظهر أنيميا مع ارتفاع مميز جداً في تركيز الهيموجلوبين داخل الخلية (High MCHC) لأن الخلية كروية ومكدسة.
+2. **Reticulocytic count:** ارتفاع ملحوظ في الخلايا الشبكية (Reticulocytosis) كمحاولة من النخاع لتعويض التكسير.
+3. **Peripheral blood smear:** مسحة الدم تُظهر الخلايا الكروية المميزة (Spherocytes) التي تفتقد للمركز الباهت.
+4. **Osmotic Fragility Test:** اختبار هشاشة الخلايا يُظهر زيادة في تكسر الخلايا في المحاليل الملحية المخففة (Increased osmotic fragility)، وهو الفحص التأكيدي للتشخيص.
+
+**Enumerate the lines of Treatment in Hereditary Spherocytosis:**
+1. **Medical Treatment:** إعطاء حمض الفوليك (Folic acid supplementation) مدى الحياة لدعم النخاع في إنتاج خلايا جديدة، مع نقل دم (Blood transfusion) في حالات النوبات الحادة والأنيميا الشديدة.
+2. **Surgical Treatment:** استئصال الطحال (Splenectomy) هو العلاج الشافي الذي يوقف التكسير، ولكن:
+   * يجب تأجيله حتى يبلغ الطفل 5 إلى 6 سنوات لتقليل خطر الإصابة بعدوى بكتيرية قاتلة.
+   * يجب إعطاء الطفل تطعيمات وقائية قبل العملية بأسابيع (Pneumococcal, Meningococcal, and Hib vaccines).
+   * استئصال المرارة (Cholecystectomy) إذا كانت تحتوي على حصوات.
+
+---
+
+💡 **Mnemonics لتسهيل التذكر في أسئلة الـ Enumerate:**
+
+**1. Mnemonic لعلامات المرض (Clinical Picture):**
+لربط الثالوث الكلاسيكي لتكسير الدم المزمن، تذكر هذه الجملة:
+**(شاحب ومصفر.. وطحاله كبير بيعمل حصوات)**
+* **شاحب:** Anemia (Pallor)
+* **مصفر:** Jaundice
+* **طحاله كبير:** Splenomegaly
+* **بيعمل حصوات:** Pigment gallstones
+
+**2. Mnemonic للتحاليل (Investigations):**
+لتذكر شكل التحاليل في ورقة الإجابة، تذكر هذه الجملة:
+**(خلية مدورة ومركزة.. وشبكية عالية وهشة في المحلول)**
+* **خلية مدورة ومركزة:** Spherocytes & High MCHC
+* **شبكية عالية:** High Reticulocytic count
+* **هشة في المحلول:** Increased Osmotic Fragility
+
+**3. Mnemonic لخطوات العلاج (Treatment):**
+**(فوليك يبني ودم يعوض.. وشيل الطحال بعد التطعيم)**
+* **فوليك يبني:** Folic acid supplementation
+* **دم يعوض:** Blood transfusion (in crises)
+* **شيل الطحال بعد التطعيم:** Splenectomy (after Vaccines at age 5-6)`,
+
+  'G6PD Deficiency & Immune Hemolytic Anemias': `**أولاً: نقص إنزيم (G6PD Deficiency / Favism - أنيميا الفول)**
+
+**التعريف والوراثة:** هو مرض وراثي مرتبط بالكروموسوم الجنسي X (X-linked recessive)، لذا يصيب الذكور في الأغلب. نقص هذا الإنزيم يجعل جدار خلية الدم الحمراء ضعيفاً جداً وعرضة للتكسير عند التعرض لأي إجهاد تأكسدي.
+
+**Enumerate the Triggers of Hemolysis (محفزات نوبة التكسير):**
+- **Fava beans / Legumes:** تناول الفول أو بعض البقوليات.
+- **Drugs:** Antimalarials, Sulfa drugs, Aspirin.
+- **Infections:** الإصابة بعدوى فيروسية أو بكتيرية.
+
+**Enumerate the Clinical Picture of G6PD Crisis:**
+- **Sudden severe pallor**
+- **Jaundice**
+- **Dark / Tea-colored urine**
+
+**Investigations:**
+- **CBC & Reticulocytosis**
+- **Blood film:** Bite cells / Blister cells, Heinz bodies.
+- **G6PD Enzyme Assay:** بعد 3‑4 أسابيع من النوبة.
+
+**Treatment:**
+- **Avoid triggers**
+- **Blood transfusion** عند الحاجة
+- **Good hydration** لحماية الكلى.
+
+**ثانياً: الأنيميا التكسيرية المناعية (Autoimmune Hemolytic Anemia - AIHA)**
+
+**التعريف:** أجسام مضادة تهاجم كرات الدم الحمراء.
+
+**Clinical picture:** Pallor, Jaundice, Splenomegaly.
+
+**Investigations:** Positive Direct Coombs Test (DAT).
+
+**Enumerate the lines of Treatment in AIHA:**
+- **Corticosteroids**
+- **IVIG**
+- **Immunosuppressants (Rituximab)**
+- **Blood transfusion** بحذر
+- **Splenectomy** في الحالات المزمنة.
+
+**Mnemonics:**
+1. **(أكل فول وخد دوا.. فجأة شحب واصفر وبوله بقى زي الشاي)**
+2. **(كورتيزون ومناعة في الأول.. ونقل دم بحذر شديد.. ولو فشلوا شيل الطحال)**
+` ,
+  'HEMOSTASIS & BLEEDING DISORDERS': `**أولاً: خطوات وقف النزيف (Core Components of Hemostasis)**
+
+**Vascular Response:** انقباض فوري للأوعية الدموية لتقليل تدفق الدم (Vasoconstriction).
+
+**Primary Hemostasis:** تكوين السدادة المبدئية عن طريق تنشيط وتجمع الصفائح الدموية في مكان الجرح (Platelet plug).
+
+**Secondary Hemostasis:** تنشيط عوامل التجلط (Coagulation cascade) لتكوين شبكة الفايبرين القوية التي تثبت الجلطة (Insoluble Fibrin mesh).
+
+**Fibrinolysis:** تذويب الجلطة بعد التئام الجرح عن طريق إنزيم البلازمين (Plasmin).
+
+**ثانياً: التفرقة الإكلينيكية لأنماط النزيف (Clinical Bleeding Patterns)**
+
+**Primary Hemostatic Pattern (Platelet / Vascular defects):**
+- Site: نزيف سطحي في الجلد والأغشية المخاطية (Mucocutaneous bleeding).
+- Skin signs: بقع دموية صغيرة تحت الجلد وكدمات سطحية (Petechiae & Superficial ecchymoses).
+- Trauma response: النزيف يحدث فوراً وبشكل مستمر بعد الإصابة أو الجروح الطفيفة (Immediate bleeding).
+
+**Secondary Hemostatic Pattern (Coagulation factor defects):**
+- Site: نزيف عميق في الأنسجة والمفاصل والعضلات (Deep tissue & Hemarthrosis).
+- Skin signs: كدمات كبيرة وعميقة، ولا توجد بقع دموية صغيرة (Petechiae UNCOMMON).
+- Trauma response: النزيف يكون متأخراً بعد الإصابة أو العمليات الجراحية (Delayed bleeding).
+
+**ثالثاً: مسارات التجلط وتفسير التحاليل (Coagulation Cascade & Interpretation)**
+
+**Intrinsic Pathway (المسار الداخلي):** يُقاس بـ aPTT، يشمل عوامل XII, XI, IX, VIII.
+**Extrinsic Pathway (المسار الخارجي):** يُقاس بـ PT، يشمل العامل VII.
+**Common Pathway (المسار المشترك):** يُقاس بـ TT، يبدأ بتنشيط العامل X الذي يحول البروثرومبين إلى ثرومبين، والذي يكوّن الفايبرين.
+
+**Enumerate the interpretation of Coagulation Profile:**
+- Prolonged aPTT + Normal PT → مشكلة داخلية (Hemophilia أو VWD).
+- Normal aPTT + Prolonged PT → مشكلة خارجية (Factor VII deficiency).
+- Prolonged aPTT + Prolonged PT → مشكلة مشتركة أو جهازية (DIC, Liver disease, anticoagulant toxicity).
+- Normal aPTT + Normal PT مع نزيف → مشكلة صفائح أو Factor XIII deficiency.
+
+**Mnemonics:**
+1. **Primary vs Secondary Bleeding:**
+   - Primary: (سطحي وفوري ومبقع).
+   - Secondary: (عميق ومتأخر ومفيش بقع).
+2. **Factors mnemonics:**
+   - PT (extrinsic) → Factor 7.
+   - aPTT (intrinsic) → 12,11,9,8.
+   - Common → 10,5,2,1.
+` ,
+  'IRON DEFICIENCY ANEMIA (IDA)': `**أولاً: نظرة عامة والأسباب (Overview & Causes)**
+
+**المقدمة:** أنيميا نقص الحديد هي أشهر أمراض الدم الناتجة عن سوء التغذية لدى الأطفال.
+
+**الأسباب (Primary Causes):**
+- نقص تناول الحديد في الطعام (Inadequate intake).
+- مشاكل في الامتصاص (Impaired absorption).
+- فقدان الدم المزمن (Chronic blood loss).
+
+**ثانياً: الصورة الإكلينيكية (Clinical Manifestations)**
+**Enumerate the Clinical Features of IDA:**
+- **Systemic Features:** شحوب تدريجي (Progressive pallor)، إرهاق مستمر (Fatigue)، تسارع نبضات القلب (Tachycardia).
+- **Koilonychia (Spoon nails):** تقعر الأظافر لتصبح كالمعلقة.
+- **Atrophic Glossitis:** التهاب اللسان مع فقدان الحلمات اللسانية.
+- **Pica Behavior (الوحم):** اشتهاء بطين أو تراب أو ثلج.
+
+**ثالثاً: الفحوصات المعملية (Laboratory Diagnostic Panel)**
+**CBC & Indices:** أنيميا ميكرو سيتية هيبوكروماتية (Low Hb, MCV < 80 fL, MCH < 27 pg).
+**RDW:** مرتفع (Anisocytosis) قد يسبق فقر الدم.
+**Iron Profile:**
+- Serum Ferritin: منخفض جداً.
+- TIBC: مرتفع.
+- Serum Iron & Transferrin Saturation: منخفضان.
+
+**رابعاً: التشخيص التفريقي (TAILS Differential Diagnosis)**
+**T - Thalassemia Trait:** RDW طبيعي، RBCs طبيعي أو مرتفع، وجود Target cells.
+**A - Anemia of Chronic Disease:** TIBC منخفض، Ferritin طبيعي أو مرتفع.
+**I - Iron Deficiency Anemia:** RDW مرتفع، Ferritin منخفض، TIBC مرتفع.
+**L - Lead Poisoning:** وجود Basophilic stippling.
+**S - Sideroblastic Anemia:** وجود Ringed sideroblasts.
+
+**خامساً: خطة العلاج (Therapeutic Management Protocol)**
+**قواعد العلاج الفموية للحديد:**
+- الجرعة: 3‑6 mg/kg/day مقسمة على 2‑3 جرعات.
+- الامتصاص: يُفضل على الريق أو مع فيتامين C.
+- الممنوعات: تجنّب الحليب، الشاي، أو الأدوية القلوية.
+- المدة: 2‑3 أشهر بعد استقرار Hb لملء المخازن.
+- المتابعة: ارتفاع Reticulocyte خلال 5‑10 أيام يدل على استجابة.
+
+**Mnemonics:**
+1. **Clinical Picture:** (شاحب وبياكل طين.. ولسانه بيوجعه وضوافره مقوسة).
+2. **Iron Profile:** (الحديد ومخزونه واقعين.. والوعاء فاضي فمساحته بتزيد).
+3. **Treatment Rules:** (اديه على الريق مع برتقال.. وابعد عن اللبن والشاي.. وكمل 3 شهور عشان تملى المخازن).
+`,
+
+  'INHERITED COAGULATION: HEMOPHILIA & VWD': `**أولاً: مرض الهيموفيليا (The Hemophilias)**
+
+**التعريف:** مجموعة من الأمراض الوراثية التي تسبب نقصاً في عوامل التجلط (المسار الداخلي)، وتتميز بنمط النزيف العميق في الأنسجة.
+
+**الأنواع والوراثة:**
+- **Hemophilia A:** نقص العامل الثامن (Factor VIII). ينتقل كصفة متنحية مرتبطة بالكروموسوم X (X‑linked recessive).
+- **Hemophilia B (Christmas Disease):** نقص العامل التاسع (Factor IX). ينتقل بنفس النمط الوراثي.
+- **Hemophilia C:** نقص العامل الحادي عشر (Factor XI). وراثة أتو‑سومية (autosomal recessive).
+
+**الصورة الإكلينيكية:** نزيف داخل المفاصل الكبيرة (Hemarthrosis) بعد إصابة بسيطة أو تلقائي، ونزيف عميق في العضلات.
+
+**ثانياً: مرض فون ويلبراند (Von Willebrand Disease – VWD)**
+
+**التعريف:** أكثر اضطراب نزيف وراثي شائع. ينتقل غالباً كصفة سائدة (autosomal dominant).
+
+**الآلية المزدوجة:**
+- فشل الالتصاق الصفائحي بالجرح (Defective platelet adhesion).
+- فقدان حماية العامل الثامن مما يؤدي لتكسيره بسرعة (Factor VIII degradation).
+
+**الصورة الإكلينيكية:** نزيف سطحي/مخاطي مثل نزيف الأنف المتكرر، نزيف اللثة، وغزارة الطمث (Menorrhagia).
+
+**ثالثاً: الفحوصات والتحاليل**
+
+**Hemophilia Panel:**
+- aPTT: طويل جداً (المسار الداخلي).
+- PT & Bleeding Time: طبيعيان.
+- قياس مستوى العامل VIII أو IX لتحديد النوع.
+
+**VWD Panel:**
+- Bleeding Time: طويل (فشل الالتصاق الصفائحي).
+- aPTT: قد يكون طبيعي أو طويل (اعتماداً على نقص العامل VIII).
+- PT: طبيعي.
+- اختبار نشاط رستوستيتين (Ristocetin Cofactor Activity) لتأكيد التشخيص.
+
+**رابعاً: العلاج والإسعافات**
+
+- **استبدال العوامل:** تركيزات العامل VIII أو IX للهموفيليا؛ تركيزات VWF مع Factor VIII للـ VWD.
+- **العناية بالنزيف المفصلي الحاد (PRICE):** Protection, Rest, Ice, Compression, Elevation.
+- **قواعد صارمة:** يمنع منعاً باتاً إعطاء الأسبرين أو NSAIDs لأنها تعيق عمل الصفائح وتزيد خطر النزيف.
+
+**Mnemonics:**
+1. **أنواع الهيموفيليا وأرقامها:** (A مع 8، B مع 9… والاتنين بيحبوا الصبيان).
+2. **تمييز النزيف:** (الهيموفيليا نزيف جوه… والفون ويلبراند نزيف برّه).
+3. **تحاليل الـ VWD (الخلل المزدوج):** (وقت النزيف طويل عشان الصفائح مش بتلزق… والـ aPTT طويل عشان العامل الثامن بيقع).
+` ,
+'LYMPHOMAS & SOLID TUMORS': `**أولاً: الأورام الليمفاوية (Lymphomas)**
+
+**التصنيف:**  
+- Hodgkin Lymphoma (HL)  
+- Non‑Hodgkin Lymphoma (NHL)
+
+**Hodgkin Lymphoma (HL) - هودجكين**  
+*Pathognomonic Hallmark:* وجود خلايا Reed‑Sternberg (عين البومة).  
+*Clinical Presentation:* تضخم غير مؤلم، صلب، ومطاطي في الغدد الليمفاوية (Cervical/ Supraclavicular).  
+*Mass Infiltration:* قد يحدث انضغاط للهواء في mediastinum → كحة جافة وصعوبة تنفس.  
+*Diagnostic Protocol:* excisional lymph node biopsy هو الإجراء المفضل. لا يُستعمل الإبرة البسيطة.  
+
+**B‑Symptoms (Prognostic):**  
+- حمى مستمرة (> 38 °C)  
+- تعرق ليلي غزير  
+- فقدان وزن غير مبرّر (> 10 % خلال 6 شهور)
+
+**Non‑Hodgkin Lymphoma (NHL) - لاهودجكين**  
+*Epidemiology:* أكثر شيوعاً في الأطفال (≈ 60 %). يرتبط بنقص المناعة والعدوى الفيروسية (EBV, HIV).  
+*Therapeutic Risks:* مضاعفات حادة عند بدء العلاج مثل متلازمة تحلل الورم (TLS) ونقص خلايا الدم.
+
+**ثانياً: الأورام الصلبة (Solid Tumors)**  
+
+**Neuroblastoma (ورم الأرومة العصبية)**  
+*Origin & Site:* خلايا النورال كريست من الغدة الكظرية أو العقد القريبة للعمود الفقري.  
+*Clinical Presentation:* كتلة بطنية، ألم عظمي، جحوظ العينين مع Raccoon eyes.  
+*Paraneoplastic:* إفراز catecholamines → ضغط دم مرتفع وتعرّق مستمر.  
+*Diagnosis:* قياس VMA & HVA في البول، مسح MIBG.
+
+**Wilms Tumor / Nephroblastoma (ورم ويلمز)**  
+*Origin & Site:* ورم كلوية أولي، ذروة الإصابة 2‑3 سنوات.  
+*Clinical Presentation:* كتلة صلبة بطنية لا تعبر الخط الأوسط.  
+*⚠️ تحذير سريري:* يُمنع الضغط القوي على البطن لتجنّب تمزق كبسولة الكلى.  
+*Associated Findings:* ارتفاع ضغط الدم، دم بولي غير مؤلم.  
+*Genetic association:* Beckwith‑Wiedemann.  
+*Treatment:* استئصال جذري للكلية + كيمياء.
+
+**Mnemonics**  
+1. **B‑Symptoms:** (سخن وبيعرق وبيخس من غير سبب).  
+2. **Neuroblastoma:** (ورم في الكظرية طلّع أدرينالين… عمل ضغط وعرق وهالات سودة زي الراكون).  
+3. **Wilms Tumor:** (كتلة في الكلية مابتعديش النص وممنوع تلمسها.. بتجيب دم في البول ويرفع الضغط).
+` ,
+
+  'MEGALOBLASTIC ANEMIAS (B12 & FOLATE DEFICIENCY)': `**أولاً: التعريف والباثوفسيولوجي (Definition & Pathophysiology)**
+
+**التعريف:** هي نوع من الأنيميا ذات الخلايا الكبيرة (Macrocytic anemias).
+
+**الباثوفسيولوجي:** تحدث بسبب خلل أساسي في تصنيع الـ DNA بينما يستمر تصنيع الـ RNA والبروتين. ينتج ماكروسيتي مع خلايا متعادلة متقسمة النواة (Hypersegmented neutrophils).
+
+**الأسباب الأساسية:** نقص فيتامين ب12 أو نقص حمض الفوليك.
+
+**ثانياً: نقص حمض الفوليك (Folate Deficiency)**
+
+**Causes (الأسباب):**
+- الرضاعة الحصرية بلبن الماعز (Exclusive goat's milk feeding) – فقير بالفوليك.
+- نقص تناول الخضروات الورقية.
+- أمراض سوء الامتصاص مثل حساسية القمح (Celiac disease).
+- زيادة الحرق والطلب (Chronic hemolytic anemias).
+
+**Clinical Picture (الصورة الإكلينيكية):**
+- شحوب الجلد والأغشية المخاطية.
+- التهاب وضمور اللسان.
+- إسهال مزمن وضعف نمو.
+
+⚠️ **Key Diagnostic Exclusion:** لا يسبب نقص الفوليك أعراضاً عصبية.
+
+**ثالثاً: نقص فيتامين ب12 (Vitamin B12 Deficiency)**
+
+**Causes & Absorption (الأسباب والامتصاص):**
+- نظام غذائي نباتي صارم (Strict vegan diet).
+- نقص العامل الداخلي (Intrinsic Factor) مثل الأنيميا الخبيثة.
+
+**Clinical Signature (العلامة الإكلينيكية المميزة):**
+- تلف عصبي غير قابل للعودة (Progressive irreversible neurological damage) مع فقدان الإحساس، ضعف العضلات، ارتباك التوازن.
+
+**رابعاً: الفحوصات والعلاج (Laboratory Panel & Treatment Protocol)**
+
+**Investigations:**
+- CBC مع ارتفاع MCV >100 fL، قد يصاحبها Pancytopenia.
+- مسحة دم تُظهر Macro-ovalocytes وHypersegmented neutrophils.
+
+**Treatment:**
+- Folate Deficiency: حمض الفوليك فمياً أو بالوريد.
+- B12 Deficiency: حقن عضلية بانتظام.
+
+🚨 **Golden Clinical Rule:** لا تعطي الفوليك قبل استبعاد نقص ب12.
+
+💡 **Mnemonics:**
+1. **Folate Causes:** (لبن ماعز ومفيش خضار.. أو بطنه مريضة ودمه بيتكسر)
+2. **B12 vs Folate:** (الفوليك آخره لسان بيوجعه وبطن بتسهل.. لكن ب12 بيضرب الأعصاب ويشل)
+3. **Peripheral Smear:** (خلية كبيرة وبيضاوية.. ونيوتروفيل متفصصة لستة)
+`,
+
+
+  'NON-THROMBOCYTOPENIC PURPURA (VASCULAR & HSP)': `**أولاً: فرفرية الأوعية الدموية (Vascular Purpura Framework)**
+
+**التعريف:** أمراض نزفية ناتجة عن تلف هيكلي أو التهاب في جدار الأوعية الدموية، مما يرفع نفاذيتها ويسبب نزيفًا تحت الجلد أو الأغشية المخاطية.
+
+🚨 **القاعدة الذهبية للتفرقة:** عدد الصفائح الدموية وتحاليل التخثر طبيعية (Normal Platelets & Normal Coagulation profile) – يميزها عن الفرفرية الناقلة للصفائح.
+
+**ثانياً: فرفرية هينوك-شونلاين (Henoch‑Schönlein Purpura - HSP)**
+
+*نظرة عامة:* أكثر التهاب وعائي شائع لدى الأطفال (3‑10 سنوات).
+*الميكانيزم:* بعد URTI يتحفز IgA لتكوين معقدات مناعة تُرسّخ في جدران الأوعية الصغيرة (IgA immune complex deposition).
+
+**ثالثاً: الصورة الإكلينيكية (Classical Tetrad)**
+
+- **Skin Rash (Palpable Purpura):** بقع حمراء غير قابلة للانضمار في الساقين والأرداف (gravity‑dependent).
+- **Arthritis/Arthralgia:** ألم وتورم مؤقت في المفاصل الكبيرة (الركبة، الكاحل) يزول دون تشوه دائم.
+- **Gastrointestinal Involvement:** مغص بطني شديد، قيء، إمّا دم في البراز (Melena) مع خطر الانغلاف المعوي.
+- **Renal Involvement:** دم وزلال في البول، قد يرافقه ارتفاع ضغط الدم؛ شدة الإصابة تحدد التنبؤ طويل الأمد.
+
+**رابعاً: الفحوصات والعلاج (Laboratory Findings & Management)**
+
+*Investigations:* 
+- CBC & Coagulation: عدد الصفائح طبيعي، PT/aPTT طبيعي.
+- ESR & CRP مرتفعة.
+- **Serial Urinalysis** لمراقبة التهاب الكلى (أهم خطوة).
+
+*Therapeutic Management:* 
+- رعاية داعمة (ترطيب، راحة).
+- NSAIDs لتخفيف الألم المفصلي.
+- كورتيكوستيرويدات (Prednisone) في حالات مغص شديد أو التهاب كلوي ملحوظ.
+
+**💡 Mnemonics**
+1. **Classical Tetrad:** (بقع بارزة في الرجل والأرداف.. مفاصل بتوجعه من غير تشوه.. مغص شديد في بطنه.. وزلال ودم في كليته).
+2. **Laboratory Rule:** (صفايحه وسوائلته تمام.. لكن تحليل البول هو الأهم).
+`,
+
+
+  'PEDIATRIC ONCOLOGY: THE LEUKEMIAS (ALL & AML)': `**أولاً: التعريف والعلامات التحذيرية (Definition & Red Flags)**
+
+**التعريف:** اللوكيميا (سرطان الدم) هي أشهر الأورام الخبيثة في الأطفال، ناتجة عن تكاثر غير مسيطر عليه لخلايا الدم غير الناضجة (Blasts) داخل النخاع العظمي.
+
+**الأنواع الرئيسية:**
+- Acute Lymphoblastic Leukemia (ALL) – ~80٪، غالباً بين 2‑5 سنوات.
+- Acute Myeloid Leukemia (AML) – ~20٪.
+
+**علامات التحذير (Red Flags):**
+- حمى مستمرة غير مبررة.
+- ألم عظمي يوقظ الطفل ليلاً.
+- شحوب تدريجي، إرهاق وخمول.
+- بقع دمّية، كدمات، نزيف.
+- تضخم كبدي/طحالي أو عقد ليمفاوية ملحوظة.
+
+**ثانياً: المقارنة الإكلينيكية (ALL vs AML)**
+
+**ALL:**
+- تضخم عام للغدد الليمفاوية.
+- كتلة صدرية (Mediastinal Mass) قد تسبب متلازمة SVC.
+- انتشار مبكر للجهاز العصبي المركزي.
+
+**AML:**
+- Chloromas (ورم أخضر صلب).
+- تضخم لثوي شديد.
+- Blueberry Muffin lesions على الجلد.
+- DIC (خاصة في APML M3).
+
+**ثالثاً: متلازمة تحلل الورم (TLS)**
+
+**التعريف:** تحلل سريع للخلايا السرطانية يؤدي إلى اضطرابات أيضية حادة.
+**السلسلة الأيضية:**
+- Hyperuricemia
+- Hyperkalemia (أخطر اضطراب قلبي)
+- Hyperphosphatemia
+- Hypocalcemia (ثانوي)
+**الإدارة:** الترطيب الوريدي المكثف، تعديل حموضة البول، Allopurinol أو Rasburicase.
+
+**رابعاً: الفحوصات التشخيصية النهائية**
+- خزعة ونخاع عظم (Gold Standard) ≥20% خلايا شراعية.
+- فحص السيتومتري لتحديد النوع.
+- بزل قطني (LP) لتقييم الغزو CNS.
+
+**💡 Mnemonics:**
+1. **Red Flags:** (سخن وشاحب وبينزف.. وعضمه بيوجعه بالليل وطحاله كبير).
+2. **AML:** (لثة وارمة وورم أخضر.. وتوت أزرق على الجلد مع نزيف).
+3. **TLS:** (يوريك وبوتاسيوم وفوسفور عاليين.. والكالسيوم بس هو اللي واطئ).
+`,
+
+
+  'PLATELET DISORDERS: ITP & THROMBOCYTOPENIAS': `**أولاً: فرفرية نقص الصفائح المناعية (Immune Thrombocytopenic Purpura - ITP)**
+
+**التعريف والسبب:** هي أشهر سبب لنقص الصفائح الدموية الحاد في الأطفال الأصحاء. يحدث غالباً بعد عدوى فيروسية أو تطعيم. ينتج أجسام مضادة (Anti‑Platelet IgG) تهاجم الصفائح وتُدمرها الخلايا البلعمية في الطحال.
+
+**Clinical Features of ITP:**
+- **Dry Bleeding:** بقع دموية دقيقة، كدمات، لا توجد نزيف موضعي (Petechiae, Purpura, Ecchymosis).
+- **Wet Bleeding:** نزيف من الأغشية المخاطية (أنف، لثة، جهاز هضمي/بولي). علامة خطر لحدوث نزيف داخل الجمجمة.
+
+**Diagnostic Profile:**
+- **Isolated Thrombocytopenia:** صفيحات < 20,000 مع Hb وWBC طبيعيين.
+- **Bone Marrow:** فرط تكاثر الخلايا الأم للصفائح (Megakaryocytic Hyperplasia) كاستجابة تعويضية.
+
+**ثانياً: متلازمات نقص الصفائح الخلقية (Congenital Thrombocytopenia Syndromes)**
+
+**Enumerate:**
+- **TAR Syndrome:** نقص صفيحات مع غياب عظمة الكعبرة (Absent Radius) مع إبقاء الإبهام موجوداً.
+- **Wiskott‑Aldrich Syndrome (WAS):** X‑linked؛ صفيحات صغيرة جداً (Tiny platelets) + إكزيما + نقص مناعة متكرر.
+- **Bernard‑Soulier Syndrome:** صفيحات عملاقة (Giant Platelets) بسبب خلل في الالتصاق الصفائحي.
+
+**ثالثاً: متلازمة انحلال الدم اليوريمية (HUS)**
+
+**التعريف:** طوارئ طبية شائعة السبب للأكِيد الكلوي الحاد في الأطفال.
+**السبب:** عدوى بكتيرية (E. coli O157:H7) تُفرز شِجَّة الشيجا (Shiga‑toxin) مع إسهال دموي.
+**Classic Triad:**
+- **MAHA:** فقر دم انحلالي ميكروانيجيوستيك.
+- **Consumption Thrombocytopenia:** نقص صفيحات نتيجة استهلاكها.
+- **Acute Kidney Injury (AKI):** قُلة بول، دم في البول، ارتفاع ضغط الدم.
+
+**💡 Mnemonics**
+1. **ITP Severity:** (الناشف في الجلد ومقلق.. والمبلول في المناخير وبيخوّف من المخ).
+2. **Wiskott‑Aldrich:** (ولد اسمه ويسكوت.. بيهرش في الإكزيما، ومناعته ضعيفة وصفايحه صغيرة).
+3. **HUS Triad:** (إسهال بدم جابله أنيميا تكسيرية.. واستهلك صفيحاته.. وقفل كليته).
+`,
+
+
+  'RBC PHYSIOLOGY, INDICES & MORPHOLOGY': `**أولاً: فسيولوجيا تكوين الدم وتطور الهيموجلوبين (Erythropoiescence & Hemoglobin Ontogeny)**
+
+**Erythropoiesis (تكوين كرات الدم):** يُنتَج تحت تأثير الهرمون الإريثروبين (EPO) الذي تفرزه الكلى عند نقص الأكسجة، محفزًا نخاع العظم لإنتاج كرات دم حمراء جديدة.
+
+**أنواع الهيموجلوبين حسب مراحل التطور:**
+- **Embryonic Hemoglobin:** موجود في مرحلة الكيس (Hb Gower‑1، Hb Gower‑2، Hb Portland).
+- **Fetal Hemoglobin (HbF):** α₂γ₂، عالي الارتباط بالأكسجين، يُستبدل خلال أول 6 أشهر.
+- **Adult Hemoglobin (HbA):** α₂β₂، السائد بعد 6 أشهر.
+- **Minor Adult Hemoglobin (HbA2):** α₂δ₂، ≤3.5٪ من الكلية.
+
+**ثانياً: مؤشرات كرات الدم الحمراء (RBC Indices)**
+- **MCV (Mean Corpuscular Volume):** حجم متوسط للخلية (80‑100 fL). يحدد ما إذا كانت الأنيميا ميكرو سيتية، نورمو سيتية أو ماكرو سيتية.
+- **MCH (Mean Corpuscular Hemoglobin):** وزن متوسط للهموغلوبين داخل الخلية (27‑32 pg).
+- **MCHC (Mean Corpuscular Hemoglobin Concentration):** تركيز متوسط للهموغلوبين داخل الخلية (32‑36 g/dL). ينخفض في الأنيميا ناقصة الصبغة ويرتفع في تكور الدم.
+- **RDW (Red Cell Distribution Width):** تباين أحجام الخلايا (11.5‑15%). يرفع في نقص الحديد، يظل طبيعيًا في ثلاسيميا ترايت.
+
+**ثالثاً: الأشكال غير الطبيعية للخلايا (Abnormal RBC Morphology) وربطها بالأمراض**
+- **Spherocytes (الخلايا الكروية):** خلايا صلبة، صغيرة، مكثفة، تُفقد مركزها الفاتح. تظهر في تكور الدم الوراثي وAIHA.
+- **Sickle Cells / Drepanocytes (الخلايا المنجلية):** شكل هلالي أو منجلي، ناتج عن هيموجلوبين S. تتواجد في مرض الخلايا المنجلية.
+- **Schistocytes (الخلايا المكسرة):** أجزاء مقطعة تشبه الخوذة، تنشأ من تمزق ميكانيكي للخلية في الأوعية المسدودة (DIC, HUS, TTP).
+- **Target Cells / Codocytes (الخلايا الهدفية):** شكل “bullseye” نتيجة زيادة مساحة الغشاء مقارنة بمحتوى الهيموغلوبين. توجد في الثلاسيميا، HbC، أمراض الكبد المتقدمة.
+- **Bite & Blister Cells / Degmacytes (الخلايا المقضومة):** نصف دائرة مقطوعة يُنتج عن قطع البروتينات المتضررة (Heinz bodies) في الطحال. تظهر في نقص الفوليك (G6PD Deficiency).
+
+**💡 Mnemonics لتسهيل التذكر:**
+1. **تركيب الهيموجلوبين:** (الجنين ياخذ "جاما".. البالغ ياخذ "بيتا".. النسبة الضئيلة "دلتا").
+2. **Morphology‑Disease关联:** (مُكورة في المناعة.. منجلية هلالية.. مكسرة في التجلط.. هدفية في الثلاسيميا.. ومقضومة في الفول).
+`,
+
+
+  'SAFE BLOOD TRANSFUSION & COMPLICATIONS': `**أولاً: دواعي استخدام مكونات الدم (Clinical Indications for Blood Components)**
+
+**Packed RBCs (كرات الدم الحمراء المكدسة):** تعويض قدرة الدم على حمل الأكسجين في الأنيميا المزمنة (مثل الثلاسيميا والأنيميا المنجلية)، فشل النخاع، أو النزيف الحاد بعد الحوادث والعمليات.
+
+**Platelet Concentrates (الصفائح الدموية):** إعطاء في النزيف النشط أو كإجراء وقائي قبل الجراحات إذا كان العدد < 10,000 /µL.
+
+**Fresh Frozen Plasma – FFP:** علاج النزيف الناتج عن نقص متعدد في عوامل التجلط (كما في DIC والفشل الكبدي الشديد).
+
+**Cryoprecipitate (الراسب القري):** غني بـ Factor VIII, XIII, vWF, Fibrinogen؛ يستخدم في نقص الفايبرينوجين، الهيموفيليا، ومرض فون ويلبراند.
+
+**ثانياً: متطلبات نقل الدم الآمن (Proactive Requirements)**
+- **Rigorous Patient Identification:** أهم خطوة لمنع نقل فصيلة خاطئة.
+- **Washed RBCs:** غسل لإزالة بروتينات البلازما وتقليل خطر تفاعلات الحساسية الشديدة (Anaphylaxis).
+- **Leucoreduction & Irradiation:** إزالة كريات الدم البيضاء وتدمير الخلايا T‑leukocytes لمنع TA‑GVHD.
+
+**ثالثاً: المضاعفات الحادة لنقل الدم (Acute Complications – أول 6 ساعات)**
+- **Acute Hemolytic Reaction:** رد مناعي سريع بسبب عدم توافق ABO؛ صدمة، حمى، رعشة، بول أحمر داكن.
+- **Febrile Non‑Hemolytic Reaction:** حرارة بسبب سيتوكينات من كريات الدم البيضاء.
+- **Allergic & Anaphylactic Reactions:** طفح، حكة، ضيق تنفس؛ يُعالج بمضادات الهيستامين.
+- **TRALI:** إصابة رئوية حادة غير قلبية؛ نزيف رئوي، انخفاض ضغط الدم، يحتاج إيقاف النقل وأكسجين.
+- **TACO:** زيادة حجم الدم؛ فشل قلبي احتقاني مؤقت، ارتفاع ضغط الدم، يُعالج بالمدرات.
+
+**رابعاً: المضاعفات المتأخرة والأيضية (Delayed & Metabolic Complications)**
+- **Delayed Hemolytic Transfusion Reaction:** بعد 2‑10 أيام بسبب أجسام مضادة خفية؛ يسبب يرقان وانخفاض Hb.
+- **Metabolic Toxicities:**
+  - **Hypocalcemia:** بسبب ارتباط الكالسيوم بالسترات في كيس الدم.
+  - **Hyperkalemia:** تسرب بوتاسيوم من كرات الدم الحمراء المخزنة.
+  - **Systemic Iron Overload / Hemosiderosis:** تراكم الحديد مع نقل متكرر (ثلاسيميا)، يُعالج بـ Iron chelation therapy.
+
+**💡 Mnemonics لتسهيل التذكر**
+1. **TRALI vs TACO:** (TRALI يهبط الضغط، TACO يرفع الضغط).
+2. **Metabolic:** (كيس الدم القديم بياكل الكالسيوم ويرمي بوتاسيوم).
+3. **Proactive Prep:** (اغسل الدم للـ Allergic، واشععه للـ TA‑GVHD).
+`,
+
+
+  'SICKLE CELL DISEASE (SCD)': `**أولاً: الخلل الجيني والباثوفسيولوجي (Genetics & Pathophysiology)**
+
+**الخلل الجيني:** أنيميا وراثية متنحية (Autosomal recessive) بسبب نقطة طفرة (Point mutation) في موقع β‑Globin رقم 6 حيث يتحول الجلوتاميك إلى فالين (Valine replaces Glutamic acid). النتيجة هي تكون هيموجلوبين غير طبيعي (HbS).
+
+**آلية التمنجل (The Sickling Mechanism):** عند نقص الأكسجين (Hypoxia)، الجفاف (Dehydration)، أو الحمضية (Acidosis) يتجمع HbS في ألياف صلبة، فيتحول شكل الكرة من قرص مرن إلى خلية منجلية صلبة (Rigid, crescent‑shaped sickle cells).
+
+**العواقب المرضية:** تمزق الخلايا السلكلية يسبب أنيميا تكسيرية مزمنة (Chronic hemolysis) وتلتصق الخلايا بالجدران الوعائية مسببة انسداداً (Vascular occlusion) يؤدي إلى نقص التروية وألم شديد.
+
+**ثانياً: الأزمات الحادة (Acute Crises & Manifestations)**
+- **Vaso‑Occlusive Crises (VOC):** ألم شدّاد في العظام والعضلات.
+  - **Dactylitis (Hand‑Foot Syndrome):** تورم وألم متساوي في اليدين/القدمين عند الأطفال < 2 سنة، أول علامة سريرية.
+  - **Acute Chest Syndrome (ACS):** حمى، ألم صدري، صعوبة تنفس، انخفاض O₂، وإظهار شفافيات جديدة على أشعة الصدر.
+  - **Stroke / CNS Infarction:** انسداد مفاجئ لشرايين المخ، طوارئ عصبية.
+  - **Priapism:** انتصاب مؤلم ومطول للذكور.
+  - **Splenic Sequestration:** احتباس دم كبير داخل الطحال يسبب هبوط حاد في Hb وتضخم طحال، قد يؤدي إلى صدمة نقص حجم الدم.
+
+**ثالثاً: المضاعفات المزمنة والتشخيص (Chronic Complications & Diagnosis)**
+- **Functional Asplenia:** فقدان وظيفة الطحال نتيجة الانسدادات المتكررة، ما يزيد خطر عدوى بكتيرية مغلفة (Encapsulated organisms).
+- **تشخيص مختبري:**
+  - **CBC & PBS:** أنيميا نورموسيتية مع ارتفاع خلايا شبكية (>2%) ومظهر خلايا منجلية في مسحة الدم، مع وجود أجسام Howell‑Jolly.
+  - **Hemoglobin Electrophoresis:** لتحديد نسب HbS (>80‑90% في SS) وإظهار HbA في الحامل للصفة (Trait AS).
+
+**رابعاً: الوقاية والعلاج (Prophylaxis & Management)**
+- **الوقاية من العدوى:** بنسلين فموي (Penicillin V) من 2 شهر حتى 5 سنوات، وتطعيمات مكثفة ضد Pneumococcal & Hib.
+- **العلاج المزمن:** Hydroxyurea يحفز إنتاج HbF (الهبوجلوبين الجنيني) لتقليل التمنجل وتقليل عدد الأزمات.
+- **العناية بالأزمات الحادة (Acute Crisis Care):**
+  - **Hydration (سوائل)**
+  - **Oxygen (أكسجين)**
+  - **Pain relief (مسكنات ألم متعددة الشكل)**
+
+**💡 Mnemonics لتسهيل التذكر**
+1. **Genetic Mutation:** "الـ Valine قعد مكان الـ Glutamic على الكرسي رقم 6".
+2. **Triggers of Sickling:** "عطشان ومكتوم ودمه حامضي" (Dehydration, Hypoxia, Acidosis).
+3. **Acute Care (HOP):** Hydration, Oxygen, Pain relief.
+4. **Hydroxyurea:** ي‑F‑رح الطفل لأنه يزيد HbF.
+`,
+
+
+  'THE THALASSEMIA SYNDROMES (ALPHA & BETA)': `**أولاً: التعريف والباثوفسيولوجي (Definition & Pathophysiology)**
+
+**التعريف:** الثلاسيميا (أنيميا البحر المتوسط) هي مجموعة أمراض وراثية تسبب أنيميا تكسيرية صغرى (Inherited Microcytic Hemolytic Anemias) نتيجة نقص أو غياب سلاسل الجلوبين α أو β.
+
+**Beta‑Thalassemia (أنيميا كولي):** متنحية، نقص سلاسل β ينتج سلاسل α غير مرتبطة تتراكم وتدمر كرات الدم داخل النخاع (Ineffective erythropoiesis) وفي الدورة الدموية.
+
+**Alpha‑Thalassemia:** حذف جيني (Deletion) لأحد أو أكثر من جينات α. يتراوح من حامل صامت إلى استسقاء جنيني مميت (Hydrops Fetalis).
+
+**ثانياً: الصورة الإكلينيكية للثلاسيميا الكبرى (Beta‑Thalassemia Major)**
+- **Onset:** بعد 6 شهور من الولادة، عندما يتحول HbF إلى HbA المريض.
+- **Severe anemia + Profound Hepatosplenomegaly** نتيجة تكسير الدم وزيادة نشاط الطحال.
+- **Thalassemic facies & Crew‑cut skull:** تضخم نخاع العظم مع تشوهات عظمية.
+- **Growth failure:** تأخر ملحوظ في النمو.
+
+**ثالثاً: الفحوصات التشخيصية (Diagnostic Evaluation Panel)**
+- **CBC:** ميكروسيتية شديدة مع انخفاض MCV و MCH.
+- **Peripheral Blood Smear:** خلايا هدفية, anisocytosis, nucleated RBCs.
+- **Hemoglobin Electrophoresis:**
+  - **Beta‑Thal Major:** غياب HbA، ارتفاع HbF حتى 90%.
+  - **Beta‑Thal Trait:** ارتفاع HbA2 > 3.5%.
+
+**رابعاً: خطة العلاج (Therapeutic Management Protocol)**
+- **Chronic Blood Transfusion:** الحفاظ على Hb > 9.5 g/dL للحد من نشاط النخاع ومنع تشوهات العظام.
+- **Iron Chelation Therapy:** Deferasirox أو Deferoxamine بعد 10‑20 نقل أو عند Ferritin > 1000 ng/mL.
+- **Definitive Cure:** زرع الخلايا الجذعية (HSCT) في سن مبكرة من متبرع متطابق.
+
+**💡 Mnemonics**
+1. **Clinical Picture:** "بعد 6 شهور.. شحب وطحاله كبر، وعضمه كبر وشكله اتغير".
+2. **Diagnostic Panel:** "خلايا صغيرة وهدفية.. والكهربا مليانة جنيني".
+3. **Treatment Protocol:** "انقل دم واطرد الحديد.. وزرع نخاع عشان يخف أكيد".
+` ,
+
+  'Abnormal Cranial Volume (Macrocephaly & Microcephaly)': `**أولاً: القياس الإكلينيكي لحجم الرأس (Clinical Measurement)**
+
+يتم قياس محيط الرأس باستخدام أكبر محيط قذالي جبهي (Greatest Occipitofrontal Circumference).
+
+يتم أخذ القياس 3 مرات، ويُسجل الرقم الأكبر لضمان الدقة.
+
+**ثانياً: كبر حجم الرأس (Macrocephaly)**
+
+**التعريف:** محيط الرأس يقع أعلى من الانحراف المعياري الثاني (> +2 SD) بالنسبة للعمر والجنس.
+
+**أسباب Macrocephaly:**
+- **Cranial Causes (أسباب في الجمجمة / سمك العظام):**
+  - الكساح (Rickets).
+  - الأنيميا التكسيرية المزمنة (Chronic hemolytic anemia) لأن النخاع يتمدد داخل العظام.
+  - أمراض العظام الجينية مثل (Osteopetrosis, Osteogenesis imperfecta, Bone dysplasia).
+- **Intracranial Causes (أسباب داخل الجمجمة):**
+  - الاستسقاء الدماغي (Hydrocephalus).
+  - انعدام تلافيف المخ المائي (Hydranencephaly) — يُشخص باختبار تسليط الضوء (Transillumination).
+  - الأورام والآفات التي تشغل حيزاً (Space occupying lesions / tumors).
+  - النزيف أو الارتشاح تحت الجافية المزمن (Chronic subdural effusion/hematoma).
+  - كبر حجم المخ الفعلي (Megalencephaly).
+
+**ثالثاً: صغر حجم الرأس (Microcephaly)**
+
+**التعريف:** محيط الرأس يقع أقل من الانحراف المعياري الثاني (< -2 SD).
+
+**أسباب Microcephaly:**
+- **A. Primary (Genetic) Microcephaly:**
+  - Microcephaly Vera (Autosomal Recessive) – مخ صغير، جبهة مائلة، أذن وأنف بارزين، تخلف عقلي، تشنجات، شلل تشنجي مزدوج (Spastic diplegia). MRI طبيعي.
+  - اضطرابات صبغية (Chromosomal Disorders): متلازمة داون (Down Syndrome)، متلازمة إدوارد (Edward Syndrome).
+- **B. Structural Brain & Developmental Defects:**
+  - Defective Neurulation: انعدام الدماغ (Anencephaly)، القيلة الدماغية (Encephalocele) – يتطلب تدخل جراحي فوري.
+  - Defective Prosencephalization: غياب الجسم الثفني (Agenesis of Corpus Callosum)، اندماج الدماغ الأمامي (Holoprosencephaly).
+  - Defective Cellular Migration: انعدام تلافيف المخ (Lissencephaly / Smooth brain) – غياب التلافيف، تشنجات وتأخر.
+- **C. Secondary Microcephaly:**
+  - Intrauterine Disorders: عدوى TORCH (CMV, الحصبة الألمانية, التوكسوبلازما) أو تعرض الأم للأدوية والكحول.
+  - Perinatal Injuries: نقص الأكسجين المسبب للاعتلال الدماغي (Hypoxic‑ischemic encephalopathy)، النزيف داخل الجمجمة، التهاب السحايا.
+  - Postnatal Systemic Disease: فشل كلوي مزمن أو سوء تغذية حاد.
+
+💡 **Mnemonic لتذكر أسباب Macrocephaly:** (عضمه تخين من الكساح وتكسير الدم.. أو مخه مليان مية وورم ونزيف)
+
+💡 **Mnemonic لتذكر أسباب الـ Secondary Microcephaly:** (عدوى في الرحم.. نقص أكسجين وقت الولادة.. سوء تغذية بعدها)
+
+`,
+'Anterior Horn Cell Diseases & Neuropathies': `**أولاً: مرض ويردنيج‑هوفمان (Werdnig‑Hoffman Disease / SMA)**
+
+**الباثوفسيولوجي والوراثة:** مرض وراثي متنحي (Autosomal Recessive) يحدث بسبب تحلل وضمور في خلايا القَرَن الأمامي للحبل الشوكي (Anterior Horn Cells - AHC) والأنوية الحركية في جذع المخ، مما يؤدي إلى ضعف في الأعصاب الحركية السفلية (LMN weakness).
+
+**الصورة الإكلينيكية (Clinical Features):**
+- ارتخاء عضلي شديد (Marked hypotonia).
+- حركات الجنين بطيئة وضعيفة (Sluggish fetal movements).
+- العلامة المميزة: ارتعاش في اللسان (Fasciculation of the tongue).
+- الطفل واعٍ تماماً (Completely alert) ولكن بكاءه ورضاعته ضعيفة.
+- غياب تام لردود الفعل العصبية العميقة (Deep tendon reflexes are completely absent).
+- عينة العضلات تُظهر ضموراً من النوع العصبي (Neurogenic type of atrophy).
+
+**المآل (Prognosis):** الوفاة غالباً بين عمر سنتين إلى 4 سنوات، والعلاج فقط تحفظي.
+
+**ثانياً: شلل الأطفال (Poliomyelitis)**
+**السبب (Etiology):** فيروس شلل الأطفال يهاجم ويدمر مباشرة خلايا الـ AHC في الحبل الشوكي.
+**خصائص الشلل (Criteria of Weakness):**
+- بداية حادة ومفاجئة (Acute onset).
+- شلل غير متماثل ومتباعد (Asymmetrical and spotty distribution) يصيب غالباً العضلات الكبيرة.
+- 🚨 لا يوجد أي فقدان للإحساس على الإطلاق (Absolutely NO sensory loss).
+- المسار: يصل الشلل لأقصى درجاته خلال الأيام الأولى ثم قد يحدث تراجع طفيف.
+
+**ثالثاً: متلازمة جيان‑باريه (Guillain‑Barré Syndrome - GBS)**
+**التعريف:** اعتلال عصبي متعدد يحدث بعد عدوى (Post‑infectious polyneuropathy) يسبب إزالة واسعة النطاق لغلاف المايلين (demyelination) في الأعصاب الحركية وقد يمتد للأعصاب الحسية واللاإرادية.
+
+**رابعاً: الوهن العضلي الوبيل في حديثي الولادة (Neonatal Myasthenia Gravis)**
+**المقدمة:** يصيب ~12% من الأطفال المولودين لأمهات مصابات بالمرض نفسه (نقل الأجسام المضادة عبر المشيمة).
+**الصورة الإكلينيكية:** تظهر الأعراض خلال 2‑3 أيام من الولادة؛ ارتخاء شديد، تجمع إفرازات في الفم (Pooling), ضعف عام. الطفل واعٍ، لكن الوجه ضعيف يفتح فمه باستمرار بنظرة محدقة.
+**الفحص:** ردود الفعل العصبية العميقة طبيعية تماماً (DTRs normal)؛ نادراً ما يحدث سقوط في الجفن (Ptosis).
+**التشخيص:** ضعف متذبذب يزداد مع المجهود ويُحسن بالراحة؛ تحسين فوري بعد حقن Edrophonium أو Neostigmine.
+**العلاج:** حقن Neostigmine قبل الرضاعة ثم جرعات فموية.
+
+💡 **Mnemonics (مفاتيح للتفرقة السريعة):**
+1. مرض SMA: (مدرك وواعي.. بس مرتخي ولسانه بيرعش، ومفيش ريفلكسات)
+2. شلل الأطفال: (شلل حاد مش متماثل.. ومفيش أي فقد للإحساس)
+3. الوهن العضلي: (بيتعب مع الرضاعة ويتحسن بالراحة والحقنة.. وريفلكساته سليمة)
+` ,
+'Anti-Epileptic Drugs (AEDs)': `**أولاً: أشهر الأدوية المضادة للصرع واستخداماتها (Pharmacological Dosing & Side Effects)**
+
+**Valproic Acid (Depakine):** الاستخدام: واسع المجال (Broad‑spectrum) يُستخدم في الصرع الكبرى (Grand mal)، الصغرى (Petit mal) والرمعي العضلي (Myoclonic).
+الأعراض الجانبية: تسمم كبدي (Hepatotoxicity) وتساقط الشعر (Alopecia).
+⚠️ ملاحظة إكلينيكية: يجب إجراء تحاليل وظائف الكبد (LFTs) كل 3 أشهر.
+
+**Carbamazepine (Tegretol):** الاستخدام: الصرع الكبرى (Grand mal) والصرع الجزئي (Partial epilepsy).
+
+**Ethosuximide (Zarotin & Ethoxa):** الاستخدام: مخصص للصرع الصغرى / نوبات الغياب (Petit mal / Absence epilepsy).
+الأعراض الجانبية: غثيان وصداع.
+
+**Clonazepam (Rivotril):** الاستخدام: فعال جداً في الصرع الرمعي العضلي (Myoclonic epilepsy).
+
+**Phenytoin (Epanutin):** الأعراض الجانبية: تضخم اللثة (Gum hypertrophy) وزيادة نمو الشعر (Hirsutism).
+
+**Phenobarbital (Sominaletta):** الأعراض الجانبية: تراجع في الوظائف الإدراكية والمعرفية (Decreased cognitive functions).
+
+**Diazepam (Valium):** الاستخدام: يُستخدم في كل أنواع التشنجات كعلاج طوارئ، خاصة في حالة الـ Status epilepticus. (يُعطى وريدياً أو كحقن شرجية).
+
+**ثانياً: القواعد العامة لاستخدام أدوية الصرع (General Rules of AED Use)**
+*Monotherapy Initiation (البدء بدواء واحد):* يجب دائماً البدء بدواء واحد فقط.
+*Dose Escalation (رفع الجرعة):* إذا لم يتم التحكم في التشنجات، ارفع الجرعة تدريجياً حتى تصل للتحكم التام، أو تصل للجرعة القصوى، أو تظهر أعراض جانبية.
+*Compliance Check (التأكد من الالتزام):* إذا وصلت للجرعة القصوى بدون تحسن، تأكد أولاً أن المريض يتناول الدواء بانتظام.
+  - إذا غير ملتزم: طمئن العائلة وقم بتثقيفهم بأهمية الدواء.
+  - إذا ملتزم: قس مستوى الدواء في الدم (Measure serum drug levels).
+    - إذا كان أقل من المستوى العلاجي ⬅️ اسمح بزيادة الجرعة.
+    - إذا وصل للمستوى العلاجي وتحسن تحسناً ملحوظاً (ولكن ليس تاماً) ⬅️ أضف دواءً ثانياً للخطة.
+    - إذا وصل للمستوى العلاجي بتحسن طفيف جداً ⬅️ اسحب الدواء الحالي تدريجياً واستبدله كلياً بدواء آخر.
+*Side Effects Management:* إذا ظهرت أعراض جانبية مزعجة، اسحب الدواء تدريجياً واستبدله بآخر.
+
+**ثالثاً: قواعد إيقاف العلاج (Weaning & Prolonged Therapy Rules)**
+*Weaning Protocol (بروتوكول السحب):* يجب الاستمرار على العلاج لمدة سنتين إلى 3 سنوات بعد آخر نوبة تشنج مسجلة، ثم يتم سحب الدواء تدريجياً على مدار 3 إلى 6 أشهر.
+🚨 *Abrupt Cessation Warning (تحذير الإيقاف المفاجئ):* إياك أن توقف أي دواء صرع فجأة؛ لأن ذلك قد يدخل المريض في حالة صرع مستمرة وقاتلة (Fatal Status Epilepticus).
+*Lifelong Antiepileptics (علاج مدى الحياة):* يُستعمل في حالات الصرع العضوي (مثل الشلل الدماغي Cerebral Palsy) والحالات التي يصعب التحكم فيها.
+⚠️ *First Attack Rule (قاعدة النوبة الأولى):* الطفل السليم الذي يأتي بأول نوبة تشنج في حياته، لا يجب أن يُعطى أدوية صرع (خاصة لو كان الفحص العصبي ورسم المخ EEG طبيعياً)، لأن 50% من هؤلاء الأطفال لن تتكرر لديهم النوبة أبداً.
+
+💡 **Mnemonics لتسهيل التذكر:**
+1. Mnemonic لأعراض الأدوية الجانبية (Side Effects):
+(ديباكين بيوقع الشعر ويتعب الكبد.. إيبانوتين بيكبر اللثة ويطلّع شعر.. وباربيتال بينيّم المخ)
+2. Mnemonic لترتيب الأدوية حسب نوع الصرع:
+(جراند مال خدله ديباكين وتيجريتول.. وبيتي مال خدله زاروتين.. والمايوكلونيك ريفوتريل)
+3. Mnemonic لقواعد إيقاف الدواء (Weaning Protocol):
+(عدّ 3 سنين من غير تشنج.. واسحب بالتدريج على 6 شهور.. وإياك توقف فجأة)
+`,
+'Cerebral Palsy (CP)': `**أولاً: التعريف والخصائص الأساسية (Definition & Core Characteristics)**
+
+**التعريف:** الشلل الدماغي (Cerebral Palsy - CP) هو اعتلال دماغي ناتج عن خلل في الوحدة الحركية للمخ النامي، ويحدث بسبب إصابة الدماغ في فترات ما قبل، أو أثناء، أو بعد الولادة.
+
+🚨 **Core Deficit (الخصائص الثلاثة الذهبية للتشخيص):**
+Non‑progressive: غير تقدمي (المرض لا يزداد سوءاً بمرور الوقت، الإصابة ثابتة).
+Non‑familial: غير عائلي.
+Non‑hereditary: غير وراثي.
+
+**Associated Deficits (المشاكل المصاحبة):** قد يصاحبه تخلف عقلي (Mental retardation)، صرع (Epilepsy)، ومشاكل في الرؤية، السمع، أو النطق.
+
+**ثانياً: الأسباب وتوقيت الإصابة (Etiology & Timing of Insult)**
+Prenatal Factors (80%): عدوى TORCH، التعرض للمواد المضرّة (Teratogens)، نقص الأكسجين داخل الرحم.
+Perinatal Factors (10%): الاختناق ونقص الأكسجين أثناء الولادة (Birth asphyxia)، إصابات الولادة (Birth trauma)، النزيف داخل الجمجمة.
+Postnatal Factors (10%): الصفراء الشديدة (Kernicterus)، التهاب السحايا أو المخ (Meningitis / Encephalitis).
+
+**ثالثاً: التصنيف الإكلينيكي (Clinical Classifications)**
+
+**A. Topographic Classification:**
+- **Hemiplegia:** شلل نصفي طولي (ذراع وساق على نفس الجانب).
+- **Diplegia:** إصابة الأطراف الأربعة، مع تأثر الساقين أكثر من الذراعين.
+- **Quadriplegia / Tetraplegia:** إصابة الأطراف الأربعة بالتساوي أو إبرام الذراعين أكثر من الساقين.
+- **Paraplegia:** إصابة الساقين فقط.
+- **Monoplegia / Triplegia:** إصابة طرف واحد أو ثلاثة أطراف.
+
+**B. Physiological Classification:**
+- **Spastic CP (70‑80%):** Hypertonia، Hyperreflexia، Persistent primitive reflexes، علامة بابينسكي إيجابية.
+- **Dyskinetic CP (10‑20%):** حركات غير طبيعية تشمل Chorea، Athetosis، Dystonia.
+- **Ataxic CP (5‑10%):** خلل في التوازن، غياب التناسق، نستاجم.
+- **Atonic / Hypotonic CP:** طفح عضلي شديد (Floppy infant) مع Hyperreflexia وتخلف عقلي شديد.
+
+**C. Functional Classification:** تتدرج من Class 1 (بلا قيود) إلى Class 4 (لا نشاط مفيد).
+
+**رابعاً: خطة العلاج (Multidisciplinary Management)**
+فريق شامل: طبيب أطفال، أخصائي علاج طبيعي، أخصائي تخاطب، أخصائي اجتماعي.
+دور طبيب الأطفال: إدارة الصرع وسوء التغذية، وصف مرخيات العضلات، الإحالة للجراحة العظمية، دعم الأسرة وتثقيفها.
+
+💡 **Mnemonics:**
+1. **Core Deficit:** (لا بيزيد، ولا بيورّث، ولا بيجري في العيلة).
+2. **Diplegia vs Quadriplegia:** (الداي رجليه بايظة أكتر… والكوادري إيديه بايظة أكتر أو كلهم زي بعض).
+3. **Physiological Types:** (سباستيك متخشب… ديسكينيتيك بيتحرك غصب عنه… وأتاكسيك بيطوّح ويقع).
+` ,
+'Early Detection of CP & Motor Development': `**أولاً: التاريخ المرضي وعوامل الخطر (Suspected History & Risk Factors)**
+
+**Maternal Infections:** إصابة الأم بعدوى في الثلث الأول من الحمل (1st Trimester)، أشهرها الحصبة الألمانية (Rubella) والتوكسوبلازما (Toxoplasmosis).
+
+**Neonatal Complications:** مضاعفات ما بعد الولادة مباشرة، مثل الصفراء الشديدة (Neonatal Jaundice) أو حدوث تشنجات لحديثي الولادة (Convulsions).
+
+**ثانياً: العلامات المبكرة والملاحظة الإكلينيكية (Early Signs & Observations)**
+- **تأخر عام في التطور الحركي:** (Delayed Motor Milestones).
+- **مشاكل الرضاعة والنوم:** صعوبة في البلع، سيلان اللعاب المستمر (Drooling)، واضطراب النوم.
+- **عدم التماثل (Asymmetrical Activity):** الطفل يحرك طرفاً أقل من الآخر (يستخدم جانباً واحداً فقط من جسمه).
+- **Ventral Suspension Sign:** عند حمل الطفل ووجهه لأسفل، يرتخي تماماً ويأخذ جسمه شكل حرف U (Floppy Infant).
+- **Persistent Clenched Hand:** بقاء قبضة اليد مغلقة بإحكام حتى بعد مرور 3 أشهر من العمر.
+- **علامات التشنج المبكر (Early Spasticity):** صعوبة في إبعاد الفخذين عن بعضهما (Difficulty with thigh abduction)، أو تصلب غير طبيعي في الرقبة يظهر كأنه تحكم مبكر في الرأس ولكنه في الحقيقة تيبس.
+
+**ثالثاً: استمرار ردود الفعل البدائية (Persistence of Neonatal Reflexes)**
+- **ATNR (Asymmetric Tonic Neck Reflex):** استمراره بعد 3 شهور يمنع الطفل من التدحرج والتقلب (Prevents rolling).
+- **Grasp Reflex:** استمراره بعد 4 شهور يمنع الطفل من الإمساك الإرادي بالأشياء.
+- **Moro Reflex:** استمراره بعد 6 شهور يعيق توازن الطفل عند الجلوس.
+
+**رابعاً: التطور الحركي غير الطبيعي (Abnormal Motor Milestones)**
+- **من 1.5 إلى 3 شهور:** الطفل لا يستطيع رفع رأسه، وتكون أطرافه متيبسة ومفرودة، ويده مقبوضة.
+- **من 3 إلى 6 شهور:** جذع الطفل مرتخي جداً (Floppy trunk)، وظهره مقوس بشكل غير طبيعي.
+- **من 6 إلى 9 شهور:** الذراعان منثنيان للخلف، والساقان متصلبتان ومتقاطعتان مثل المقص (Stiff crossed legs)، مع ضعف التحكم في الرأس.
+- **من 9 إلى 18 شهراً:** صعوبة في الوقوف، المشي على أطراف الأصابع (Tiptoe gait)، تقوس الظهر للخلف، أو استخدام جانب واحد من الجسم لجر الجانب الآخر.
+
+**خامساً: الملخص الإكلينيكي والتشخيص (Clinical Summary & Diagnosis)**
+**Cerebral Palsy** هو السبب الأشهر لمشاكل التطور الحركي في الأطفال. التشخيص المتكامل يتضمن 5 عناصر: السبب، التوزيع التشريحي، النوع الفسيولوجي، درجة القدرة الوظيفية، والمشكلات المصاحبة مثل الصرع أو التخلف العقلي.
+
+💡 **Mnemonics لتسهيل التذكر:**
+1. **Mnemonic لمواعيد اختفاء الردود العصبية (Reflexes):** رقبته تلاتة → ATNR بعد 3 شهور، إيده أربعة → Grasp بعد 4 شهور، خضته ستة → Moro بعد 6 شهور.
+2. **Mnemonic للعلامات المبكرة الخطيرة للشلل الدماغي:** مرتخي ومريّل → Floppy & Drooling, إيده مقفولة → Persistent clenched hand, مبيتقلبش عشان رقبته → ATNR prevents rolling, رجله مقص → Stiff crossed legs.
+`,
+'Febrile Convulsions & Epilepsy Mimickers': `**أولاً: التشنجات الحرارية (Febrile Convulsions)**
+
+**التعريف:** هي تشنجات عامة (Generalized tonic-clonic) تصاحب الارتفاع السريع في درجة الحرارة في الرضع والأطفال، بشرط عدم وجود التهاب في الجهاز العصبي المركزي (مثل الالتهاب السحائي) أو خلل أيضي أو عصبي.
+
+**A. المقارنة بين التشنج الحراري النمطي وغير النمطي (Typical vs. Atypical):**
+
+**Typical Febrile Convulsion (النمطي):**
+- **العمر:** من 9 شهور إلى 5 سنوات.
+- **الشكل:** تشنج عام يشمل الجسم كله (Strictly generalized).
+- **المدة:** قصيرة، أقل من 15 دقيقة (Brief < 15 min).
+- **التكرار:** تحدث مرة واحدة فقط خلال 24 ساعة (Exactly ONE fit in 24h).
+- **المآل:** نسبة تحولها لصرع حقيقي ضعيفة جداً (1% إلى 2%).
+
+**Atypical Febrile Convulsion (غير النمطي):**
+- يكفي وجود شرط واحد من الثلاثة لتشخيصها: تشنج بؤري/جزئي (Focal)، أو مدتها أطول من 15 دقيقة (Prolonged)، أو تكررت أكثر من مرة في نفس دور التعب (Repeated).
+- **المآل:** نسبة تحولها لصرع حقيقي ترتفع إلى 10%.
+
+**B. عوامل الخطر للتحول إلى صرع حقيقي (Risk Factors for Epilepsy):**
+- إذا كانت التشنجات من النوع غير النمطي (Atypical features).
+- وجود تاريخ عائلي إيجابي للصرع (Positive family history).
+- حدوث أول تشنج حراري في عمر مبكر جداً (أقل من 9 شهور).
+- تأخر في التطور الحركي والعقلي للطفل أو وجود مرض عصبي مسبق.
+
+**C. خطة العلاج والوقاية (Treatment Protocol):**
+- **أثناء النوبة (First Aid):** تأمين مجرى التنفس وإعطاء أكسجين، مع إعطاء حقنة ديازيبام شرجية (Rectal Diazepam).
+- **علاج السبب:** كمادات، خافض حرارة، ومضاد حيوي إذا كان هناك التهاب (مثل التهاب اللوزتين).
+- 🚨 **الوقاية (Prophylaxis Rule):** الوقاية تكون بإعطاء شراب الديازيبام بشكل متقطع (Intermittent) فقط أثناء أيام السخونة (2-3 أيام). ويُمنع منعاً باتاً إعطاء أدوية الصرع بشكل مستمر لفترات طويلة كوقاية (Prolonged continuous prophylaxis strictly NOT recommended).
+
+**ثانياً: الحالات التي تشبه الصرع (Conditions Mimicking Epilepsy)**
+- **نوبات حبس الأنفاس (Breath-Holding Spells):**
+  - *Cyanotic Spells*: يحدث عندما يغضب الطفل أو يبكي بشدة ⬅️ يكتم نفسه ⬅️ يزرق ويفقد الوعي. العلاج الأساسي طمأنة الأهل، وإعطاء حديد (Oral Iron) يقلل من حدوثها.
+  - *Pallid Spells*: يحدث بعد خبطة بسيطة في الرأس ⬅️ تباطؤ في ضربات القلب ⬅️ شحوب وفقدان للوعي. تُعالج بأدوية مثل الأتروبين (Atropine sulphate) في الحالات المتكررة.
+- **العادة السرية في الرضع (Masturbation):** من 2 إلى 3 سنوات، الطفل يتخشب ولكن العلامة الفاصلة أنه في كامل وعيه ورسم المخ طبيعي تماماً (Consciousness completely unimpaired & Normal EEG).
+- **Pseudoseizures (التشنجات الهيستيرية):** تشنجات نفسية، رسم المخ يكون طبيعياً.
+- **Cough Syncope (إغماء السعال):** إغماء مؤقت بعد نوبة كحة شديدة (مثل حساسية الصدر أو السعال الديكي).
+- **Simple Syncope (الإغماء البسيط):** نادراً ما يحدث قبل 10 سنوات، ويكون بسبب نشاط العصب الحائر (Vasovagal) نتيجة ألم أو خوف.
+
+**💡 Mnemonics لتسهيل التذكر:**
+1. **Mnemonic لخصائص التشنج النمطي (Typical Febrile):**
+   (قصيرة، يتيمة، وعامة) – قصيرة <15 دقيقة، يتيمة مرة واحدة في 24h، عامة Generalized.
+2. **Mnemonic لعوامل خطر الصرع (Risk for true epilepsy):**
+   (طوّلت أو اتكررت.. الطفل متأخر أو أصغر من 9 شهور.. وعيلته فيها صرع).
+3. **Mnemonic لنوبات حبس الأنفاس (Breath-holding spells):**
+   (عيط وازرق نديله حديد.. اتخبط وشحب نديله أتروبين).
+`,
+'Muscular Dystrophies (DMD & BMD)': `**أولاً: الشروط الأساسية لتشخيص الحثل العضلي (Obligatory Criteria for Diagnosis)**
+
+- **Primary Myopathy:** مرض عضلي أولي (الخلل ينشأ من داخل نسيج العضلة نفسها وليس من الأعصاب).
+- **Progressive Course:** مسار تقدمي (ضعف العضلات يزداد سوءاً بشكل مستمر).
+- **Genetic Basis:** أساس جيني وراثي (ناتج عن طفرة جينية واضحة).
+- **Histological Hallmarks:** تحلل وموت مستمر للألياف العضلية تحت الميكروسكوب (Muscle fiber degeneration).
+
+**ثانياً: حثل دوشين العضلي (Duchenne Muscular Dystrophy - DMD)**
+
+_الباثوفسيولوجي والوراثة:_ مرض وراثي متنحي مرتبط بالكروموسوم إكس (X‑linked recessive)، يصيب الذكور تقريباً بشكل حصري. يظهر بين عمر 3 إلى 5 سنوات. يحدث بسبب غياب كامل لبروتين الديستروفين (Complete defect in dystrophin).
+
+**العرض السريري (Clinical Presentation):**
+- **Muscle Weakness:** ضعف ثنائي ومتماثل، يتركز في العضلات القريبة (الكتف والحوض) قبل العضلات البعيدة (Proximal > distal). لا يوجد أي خلل حسّي.
+- **Pelvic Girdle Signs:** مشية تشبه مشية البطة مع تقوس في الظهر (Waddling lordotic gait) وصعوبة شديدة في صعود السلالم. علامة جاور (Positive Gower sign) مميزة.
+- **Shoulder Girdle Signs:** عدم القدرة على رفع الذراعين، بروز لوح الكتف للخلف (Winging of scapula).
+- **Pseudohypertrophy:** تضخم ملحوظ في عضلات السمانة والكتف نتيجة ترسب الدهون والألياف بدل العضلة.
+- **Preserved Muscles:** عضلات اليد، العين، صمامات الإخراج (الشرج والبول)، والحجاب الحاجز تبقى سليمة.
+
+**المشكلات المصاحبة والمآل:**
+- اعتلال عضلة القلب (Cardiomyopathy) شائع.
+- تأخر عقلي صريح في ~25 % من الحالات.
+- فقدان القدرة على المشي بحلول عمر 12 سنة.
+- الوفاة عادةً في أواخر العقد الثاني (قبل العشرين) نتيجة فشل تنفسي أو قلبي.
+
+**التشخيص (Diagnostic Workup):**
+- **CK/CPK:** مستويات مرتفعة جداً في الدم.
+- **EMG:** نمط ميوپاثي واضح.
+- **Muscle Biopsy:** استبدال الألياف بالدهون والأنسجة الضامة.
+
+**ثالثاً: حثل بيكر العضلي (Becker Muscular Dystrophy - BMD)**
+
+_الفرق الأساسي_: بروتين الديستروفين موجود ولكنه غير كافٍ أو ضعيف الأداء (Malfunctioning/insufficient) وليس غائباً كلياً.
+
+**العرض السريري:**
+- ظهور لاحق (Late onset) في أواخر الطفولة.
+- تقدم بطيء ومسار أطول بقاء على قيد الحياة.
+- علامة جاور موجودة لكن أقل شدة.
+
+**💡 Mnemonics لتسهيل التذكر:**
+1. **DMD Clinical Picture:** سمانته كبيرة كدب → Pseudohypertrophy of calves؛ بيمشي زي البطة → Waddling gait؛ يبند على ركبته → Positive Gower.
+2. **DMD vs BMD:** Duchenne is Deadly & Deficient (غائب تماماً)، Becker is Better & Belated (أخف وأLater).
+3. **Investigations:** إنزيمات في السما → Markedly elevated CK/CPK؛ عينة مليانة دهون → Biopsy confirms fat/fibrosis replacement.
+`,
+'Pediatric Seizures & Epilepsy Classification': `**أولاً: المصطلحات الأساسية للتشخيص (Core Terminology & Definitions)**
+
+- **Seizure (النوبة / الصرعة):** نوبة مفاجئة من اضطراب النشاط الكهربائي في المخ (Paroxysmal bouts of electrical activities). قد تظهر في صورة خلل في الوعي، أو حركات غير طبيعية، أو تغيرات حسية، أو لا إرادية.
+- **Convulsion (التشنج):** نوبة صرعية تظهر تحديداً في صورة أعراض حركية (Specifically a motor seizure).
+- **Epilepsy (الصرع):** مرض مزمن يتميز بحدوث نوبات متكررة غير مبررة (Recurrent chronic unprovoked seizures).
+
+🚨 **شرط التشخيص:** حدوث نوبتين أو أكثر، يفصل بينهما 24 ساعة على الأقل (> 24 hours apart)، وتكون النوبات غير مرتبطة بحرارة أو إصابة حادة في المخ.
+
+**ثانياً: التصنيف حسب الأسباب الإكلينيكية (Clinical Etiology Classification)**
+
+**A. Acute Convulsions (تشنجات حادة غير متكررة):**
+- **Febrile Convulsions (تشنجات حرارية):** محفزة بارتفاع الحرارة بدون وجود عدوى في المخ.
+- **CNS Infections (عدوى الجهاز العصبي):** مثل الالتهاب السحائي، التهاب المخ، أو خراج المخ.
+- **Metabolic Disorders (اضطرابات الأيض):** نقص الكالسيوم (Hypocalcemia)، نقص السكر (Hypoglycemia)، أو اضطراب الصوديوم.
+- **Encephalopathies (الاعتلال الدماغي):** مثل ارتفاع ضغط الدم الخبيث أو الفشل الكلوي (Uremic).
+- **Trauma & Vascular:** خبطات الرأس أو النزيف الحاد داخل الجمجمة.
+- **Space Occupying Lesions:** أورام المخ.
+- **Epilepsy Onset:** أن تكون هذه النوبة هي النوبة الأولى لمرض الصرع.
+
+**B. Recurrent Convulsions (تشنجات متكررة / الصرع):**
+- **Primary / Idiopathic (أولي / غير معروف السبب):** يمثل الأغلبية العظمى (80%) من الحالات.
+- **Secondary / Organic (ثانوي / عضوي):** يمثل 20% من الحالات، وله سبب ملموس مثل:
+  - أمراض التمثيل الغذائي الوراثية (Inborn errors of metabolism مثل الجالاكتوزيميا).
+  - أورام المخ.
+  - تندب أنسجة المخ بعد الحوادث أو بعد التهاب سحائي سابق (Post‑traumatic or post‑meningitic cerebral scarring).
+
+**ثالثاً: التصنيف الدولي للصرع (International Classification of Epilepsy)**
+يُقسم الصرع حسب مصدر النشاط الكهربائي إلى بؤري (جزئي) وعام:
+
+**A. Partial / Focal Seizures (النوبات البؤرية / الجزئية):**
+- **Without Impairment of Consciousness:** بدون فقدان الوعي / المريض منتبه؛ تظهر كأعراض حركية أو حسية أو لاإرادية معزولة.
+- **With Impairment of Consciousness:** مع فقدان الوعي أثناء النوبة البؤرية.
+- **Focal to Bilateral Tonic‑Clonic:** تبدأ كنوبة بؤرية موضعية، ثم تنتشر لتشمل نصف المخ وتتحول إلى نوبة عامة.
+
+**B. Generalized Seizures (النوبات العامة):**
+- **Absence Seizures (نوبات الغياب):** سرحان مفاجئ (نمطي أو غير نمطي).
+- **Myoclonic Seizures (النوبات الرمعية العضلية):** انقباضات مفاجئة تشبه الصدمة الكهربائية.
+- **Clonic Seizures (الرمعية):** نفضات إيقاعية متكررة للطرف.
+- **Tonic Seizures (التوترية):** تخشب وانقباض عضلي مستمر وعام.
+- **Tonic‑Clonic Seizures (التوترية الرمعية / الصرع الأكبر):** التشنج الكلاسيكي (Grand mal) الذي يجمع بين مرحلة التخشب تليها مرحلة النفضات.
+- **Atonic Seizures (فقدان التوتر العضلي):** فقدان مفاجئ وكامل لقوة العضلات مما يؤدي لسقوط الطفل.
+- **Infant Spasm (التشنج الطفلي):** نوبات تشنجية قصيرة في الرضع.
+
+**💡 Mnemonics لتسهيل التذكر في أسئلة الـ MCQs والكلينيكال:**
+
+1. **Mnemonic لتعريف الصرع (Epilepsy Rule):** لتشخيص الصرع تذكر قاعدة الـ (2 - 24): (نوبتين على الأقل، بينهم 24 ساعة، ومن غير سبب حرارة أو خبطة).
+2. **Mnemonic للتفرقة بين أنواع الـ Generalized Seizures:**
+   - **Tonic = تخشب:** (T for Tough/Tense → Sustained contraction).
+   - **Clonic = نفضات:** (C for Clicking/Jerking → Rhythmic jerking).
+   - **Myoclonic = كهربا:** (Shock‑like).
+   - **Atonic = بيقع من طوله:** (A negates tone → Complete loss of muscle tone).
+3. **Mnemonic لأسباب التشنجات الحادة (Acute Convulsions):** (حرارة وعدوى.. أملاح وسكر.. خبطة وورم في المخ)
+
+`,
+'The Floppy Infant Syndrome': `**أولاً: التعريف وعلامات الفحص الإكلينيكي (Definition & Clinical Signs)**
+
+- **التعريف:** متلازمة الطفل المرتخي (Floppy Infant Syndrome) تعبر عن حالة من الارتخاء العضلي الشديد والمستمر (Severe persistent hypotonia) تظهر عند الولادة أو في مرحلة الرضاعة المبكرة.
+
+- **كيفية تقييم الارتخاء إكلينيكياً:**
+  - **Frog Leg Position (وضع الضفدع):** النوم مع فرد الساقين للخارج، يدل على ارتخاء شديد في الأطراف السفلية.
+  - **Head Lag (سقوط الرأس للخلف):** عند سحب الطفل من يديه وهو مستلقٍ على ظهره لتوجيهه، تسقط رأسه للخلف بسبب ضعف عضلات الرقبة.
+  - **Curved Trunk / Ventral Suspension (التعليق البطني):** عند حمل الطفل بوجهه لأسفل بحيث يستند بطنه على يد الفاحص، يرتخي جذعه وأطرافه ليأخذ الشكل حرف U.
+  - **Slippage / Vertical Suspension (التعليق العمودي):** عند حمل الطفل من تحت إبطيه، ينزلق من بين يدي الفاحص بسبب ضعف حزام الكتف.
+
+**ثانياً: الأسباب التشريحية (Anatomical & Etiological Causes)**
+
+- **Cerebral Causes (أسباب دماغية/مركزية):** نقص الأكسجين حول الولادة (Perinatal Asphyxia)، اعتلال الدماغ بسبب الصفراء (Kernicterus)، الشلل الدماغي المرتخي (Atonic CP)، ومتلازمات كروموسومية مثل متلازمة داون.
+- **Spinal Cord Lesions (إصابات الحبل الشوكي):** أمراض الخلايا الأمامية مثل مرض ويردنيج‑هوفمان (Werdnig‑Hoffman SMA) وشلل الأطفال (Poliomyelitis).
+- **Peripheral Nerves (الأعصاب الطرفية):** متلازمة جيان‑باريه (GBS) والاعتلال العصبي الحسي الخلقي.
+- **Neuromuscular Junction (الوصلة العصبية العضلية):** الوهن العضلي لحديثي الولادة (Neonatal Myasthenia Gravis)، والتسمم المُمباري للرضع (Infantile Botulism).
+- **Myopathies (أمراض العضلات):** الحثل العضلي (Muscular Dystrophies) والتهابات أو أمراض العضلات الخلقية.
+
+**ثالثاً: التفرقة التشخيصية (Central vs. Peripheral)**
+
+- **A. Cerebral Hypotonia (الارتخاء المركزي):**
+  - **المخ والوعي:** اضطراب في وظائف الدماغ، قد يصاحبها تشنجات (Seizures) أو اضطراب الوعي.
+  - **الإدراك:** قد يصاحبه تخلف عقلي (Mental retardation).
+  - **الشكل:** ملامح وجه غير طبيعية أو متلازمات جينية (مثل ملامح داون).
+  - **🚨 العلامة العصبية الأهم:** ردود الفعل العصبية العميقة تكون موجودة وزائدة (Hyperreflexia).
+
+- **B. Lower Motor Unit Disorders (الارتخاء الطرفي):**
+  - **العضلات:** ضمور واضح في حجم العضلات مع ارتعاشات (Muscle atrophy & fasciculations).
+  - **🚨 العلامة العصبية الأهم:** ردود الفعل العصبية العميقة تكون ضعيفة أو غائبة تماماً (Hyporeflexia or Areflexia).
+
+- **التأكيد التشخيصي:** اختبار سرعة توصيل العصب (NCV) ورسم العضلات (EMG) لتحديد موقع الإصابة.
+
+**💡 Mnemonics لتسهيل التذكر**
+
+1. **علامات الفحص الإكلينيكي:**
+   - (رأسه بتقع لورا .. جسمه بيتني زي حرف U .. رجله ضفدعة .. بيزحلق من إيدك)
+2. **التفرقة بين المركزي والطرفي:**
+   - (المركزي مخه تعبان بس ريفلكساته عالية .. الطرفي مخه سليم بس عضلاته ضامرة وريفلكساته واقعة)
+`,
+'Status Epilepticus Emergency': `**أولاً: التعريف وخطورة الحالة (Core Definition & Crisis Risk)**
+
+**التعريف:** نوبة تشنج تستمر أكثر من 5 دقائق متواصلة، أو حدوث أكثر من نوبة خلال 5 دقائق بدون استعادة الوعي بين النوبات.
+
+🚨 **الخطورة:** طوارئ طبية قصوى مهددة للحياة. يؤدي الإطلاق المستمر للنواقل العصبية المحفزة (Excitatory neurotransmitters) إلى دمار دائم في خلايا المخ، مما قد ينتهي بتخلف عقلي أو صرع ثانوي أو الوفاة.
+
+**ثانياً: الأسباب والأنواع (Etiology & Clinical Types)**
+
+- **Prolonged Febrile Convulsion:** تشنج حراري ممتد بسبب السخونة.
+- **Idiopathic Status Epilepticus:** غالباً يُحفز بالإيقاف المفاجئ لأدوية الصرع (Sudden withdrawal of anticonvulsants) أو بعدوى جهازية شديدة.
+- **Symptomatic Status Epilepticus:** ناتج عن سبب عضوي مثل:
+  - التهابات الجهاز العصبي المركزي (CNS Infections).
+  - اضطرابات الأيض (Metabolic / IEM): Hypoglycemia، Hypocalcemia، Phenylketonuria.
+
+**ثالثاً: المضاعفات الباثولوجية (Pathological Complications)**
+
+- **Acute Changes:** نزيف حبري، ارتشاح في المخ، ارتفاع شديد في ضغط الدماغ (Petechial hemorrhage, cerebral edema & increased ICP).
+- **Permanent Damage:** موت وتيبس الخلايا العصبية (Neuronal necrosis) → تخلف عقلي، صرع ثانوي، وأعراض خارج هرمية (Extrapyramidal manifestations).
+
+**رابعاً: بروتوكول العلاج خطوة بخطوة (Step-by-Step Management Protocol)**
+
+- **Step 1 – First Aid:** تأمين مجرى التنفس، شفط الإفرازات، وتوفير الأكسجين فوراً.
+- **Step 2 – Immediate Anticonvulsant:**
+  - بدون خط وريدي: **Rectal Diazepam** 0.3–0.5 mg/kg (max 10mg).
+  - بخط وريدي: **IV Diazepam** 0.3 mg/kg بمعدل 1mg/دقيقة (max 10mg).
+- **Step 3 – Non-Response:** تكرار جرعة الديازيبام بعد 10 دقائق إذا استمرت التشنجات → Continuous IV Infusion.
+- **Step 4 – Sequential AED Protocol:**
+  - **IV Phenytoin:** 15 mg/kg على 30 دقيقة.
+  - **IV Phenobarbital:** 20 mg/kg على 30 دقيقة.
+  - ⚠️ **تحذير تنفسي:** خطر تثبيط تنفسي شديد (Severe respiratory depression) إذا أُعطي الفينوباربيتال مباشرة بعد الديازيبام.
+- **Step 5 – Refractory Cases:** نقل للرعاية المركزة → General Anesthesia بـ Thiopental IV مع جهاز تنفس صناعي + مراقبة بـ Continuous EEG + علاج السبب الأساسي.
+
+**💡 Mnemonics:**
+
+1. **ترتيب الأدوية:** (أكسجين وديازيبام.. ما نفعش فينيتوين.. ما نفعش باربيتال.. ما نفعش خدره ونيّمه).
+2. **الأسباب:** (سخونة طوّلت.. دواء وقّفه فجأة.. سكر وكالسيوم وقعوا).
+`,
+'Craniostenosis (Craniosynostosis)': `**أولاً: التعريف والتصنيف (Definition & Classification)**
+
+**التعريف:** هو الانغلاق المبكر لدرز أو أكثر من دروز الجمجمة (Premature closure of cranial sutures) أثناء فترة النمو المبكرة للطفل.
+
+**التصنيف للأسباب (Etiology):**
+- **Primary (أولي):** غير معروف السبب (Idiopathic)، يحدث بسبب خلل مباشر في الخلايا البانية أو الهادمة للعظام.
+- **Secondary (ثانوي):** يحدث نتيجة فشل نمو المخ الطبيعي (Failure of normal brain growth)، فتنغلق الدروز لعدم وجود ضغط يوسعها من الداخل.
+
+**ثانياً: تشوهات الجمجمة الإكلينيكية (Skull Deformities)**
+
+شكل الرأس يتحدد بناءً على الدرز المغلق — الرأس ينمو في الاتجاه المقابل للدرز المغلق:
+
+- **Sagittal Suture (الدرز السهمي):** أشيع الأنواع → رأس طويل وضيق (Scaphocephaly / Dolichocephaly).
+- **Coronal Suture (الدرز الإكليلي الثنائي):** رأس مسطح من الأمام ومرتفع من الأعلى (Brachycephaly).
+- **Lambdoid Suture (الدرز اللامي):** رأس مسطح من الخلف (Plagiocephaly).
+- **All Sutures (كل الدروز):** جمجمة برج مرتفعة (Oxycephaly / Turricephaly) → خطر ارتفاع الضغط داخل الجمجمة.
+
+**ثالثاً: المضاعفات والعلاج (Complications & Management)**
+
+- **الضغط داخل الجمجمة (ICP):** ارتفاع شديد يؤدي إلى ضمور بصري وتأخر عقلي.
+- **الوجه:** تشوهات في الحجاج (Orbital deformities) وصعوبة في إغلاق العيون.
+- **العلاج:** جراحي في السنة الأولى من العمر لفتح الدروز وإتاحة نمو طبيعي للمخ.
+
+**💡 Mnemonics:**
+
+1. **أنواع الجمجمة:** (السهمي → سيف طويل وضيق = Scaphocephaly.. الإكليلي → مسطح من الأمام = Brachycephaly.. كل الدروز → برج = Oxycephaly).
+2. **قاعدة النمو:** (الجمجمة بتكبر في الاتجاه العكسي للدرز المغلق).
+`,
+'Functional classification of cerebral palsy': `**Q1. Functional classification of cerebral palsy**\nClass 1: No limitation of activity.\nClass 2: Slight to moderate limitation.\nClass 3: Moderate to great limitation.\nClass 4: No useful physical activity.`,
+'Investigations for Duchenne Muscular Dystrophy': `**Q2. Four investigations for Duchenne Muscle Dystrophy**\n- Creatine kinase (CK) / CPK: markedly elevated.\n- Electromyography (EMG): myopathic pattern.\n- Muscle biopsy: diagnostic, showing muscle fiber degeneration with replacement with fat and fibrosis.\n- Prenatal diagnosis: amniocentesis or chorionic villous sampling (genetic). (Female carrier detection via high serum CPK can also be included).`,
+'Causes of inability to walk in children': `**Q3. Two main causes for inability to walk in children**\n- Primary inability to walk (no walk till age 18 months): paralytic factors like Cerebral palsy or non‑paralytic factors like Rickets.\n- Secondary inability to walk: paralytic factors like Muscle dystrophies or non‑paralytic factors like severe debilitating diseases.`,
+'Spastic Cerebral Palsy clinical types': `**Q4. Clinical types/topographical distribution of Spastic Cerebral Palsy**\n- Hemiplegia: arm & leg on same side.\n- Diplegia: arms and legs but legs more involved.\n- Quadriplegia / Tetraplegia: arms and legs equally involved OR arms more involved than legs.\n- Monoplegia: one limb.\n- Triplegia: three limbs.\n- Paraplegia: only legs involved.`,
+'Duchenne Muscular Dystrophy clinical features': `**Q5. Clinical features and physical findings of DMD**\n- Sex & Age: usually male, presenting at 3‑5 years.\n- Muscle Weakness: bilateral symmetrical, proximal > distal, no sensory manifestation.\n- Shoulder Girdle Weakness: unable to raise arm above the head, winging of scapula.\n- Pelvic Girdle Weakness: waddling lordotic gait, difficulty climbing stairs, positive Gower sign.\n- Pseudohypertrophy: calves, deltoid, forearm.\n- Preserved Muscles: hand, extra‑ocular, sphincters, diaphragm.\n- Associated Features: cardiomyopathy, mental subnormality (~25 %), frequent respiratory infections and UTI.\n- Progression: most patients unable to walk by 12 y; death by end of second decade (respiratory/heart failure).`,
+'Causes of microcephaly in children': `**Q6. Causes of microcephaly in children**\n*Primary (genetic)*:\n- Embryonic exposure to toxic agents early.\n- Microcephaly vera (AR).\n- Chromosomal disorders (Down, Edward).\n- Defective neurulation (anencephaly, encephalocele).\n- Defective prosencephalization (agenesis corpus callosum, holoprosencephaly).\n- Defective cellular migration (lissencephaly).\n*Secondary*:\n- Intrauterine: congenital infections (CMV, rubella, toxoplasmosis), drugs, fetal alcohol.\n- Perinatal brain injury (HIE, intracranial hemorrhage, meningitis/encephalitis).\n- Postnatal systemic disease (chronic renal disease, malnutrition).`,
+'Clinical signs of increased intracranial pressure in infant': `**Q7. Clinical signs of increased intracranial pressure (ICP) in an infant**\n- Seizures & altered consciousness.\n- Hyperreflexia.\n- Abnormal cranial expansion or frontal bowing due to ventricular enlargement.\n- Slippage on vertical suspension (severe central hypotonia).`,
+'Autism Spectrum Disorder diagnostic criteria': `**Q8. Clinical diagnostic criteria for Autism Spectrum Disorder (ASD)**\n- Persistent deficits in social communication and interaction across contexts.\n- Restricted, repetitive patterns of behavior, interests, or activities.\n- Symptoms present in early developmental period.\n- Clinically significant impairment in social, occupational, or other functional areas.`,
+'West Syndrome clinical features': `**Q9. Clinical features/diagnostic hallmarks of West Syndrome (Infantile Spasms)**\n- Onset 4‑8 months.\n- Spasms in clusters (flexor, extensor, mixed).\n- EEG hallmark: hypsarrhythmia (chaotic high‑voltage slow waves).\n- Mental retardation / developmental delay, especially in secondary/organic forms (~80 %).`,
 };
-type Connection = {
+
+  type Connection = {
   leftId: string;
   rightId: string;
   isCorrect?: boolean;
@@ -673,6 +1838,7 @@ const MatchingGameUI = ({ question, onComplete }: { question: any, onComplete: (
 interface Question {
   id: string;
   type?: 'flashcard' | 'matching' | 'case';
+  category?: 'previous_years' | 'clinoma';
   front: string;
   back?: string;
   matchingPairs?: Array<{ left: string, right: string }>;
@@ -2614,7 +3780,7 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "back": "Congenital hypothyroidism (and Phenylketonuria)."
     }
   ],
-  "The Master Map of Pediatric Growth": [
+  "PEDIATRIC GROWTH": [
     {
       "id": "pg1",
       "front": "Define growth.",
@@ -2713,16 +3879,60 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "back": "Radical management of the underlying renal pathology via chronic hemodialysis or renal transplantation.\nActive Calcitriol (1,25-dihydroxyvitamin D) administration to bypass compromised renal 1-alpha-hydroxylase activity.\nEnsuring high oral calcium intake.\nImplementation of a low phosphate diet.\nAdministration of oral phosphate binders to restrict GI absorption of dietary phosphorus."
     }
   ],
-  "Developmental Milestones & Neurodevelopment": [
+  "_CHAPTER_Neurology": [
     {
-      "id": "dmnd1",
-      "front": "Mention Developmental milestones at age of 9 month",
-      "back": "Gross Motor: The infant creeps and successfully pulls themselves up into a standing position.\nFine Motor: The infant demonstrates a pincer grip, grasping objects utilizing the thumb and index finger.\nLanguage: The infant says \"dada\" and \"mama\" non-specifically.\nSocial: The infant actively explores their immediate surroundings."
+      "id": "neuro_q1",
+      "category": "previous_years",
+      "front": "Functional classification of cerebral palsy.",
+      "back": "Class 1: No limitation of activity.\nClass 2: Slight to moderate limitation of activity.\nClass 3: Moderate to great limitation of activity.\nClass 4: No useful physical activity."
     },
     {
-      "id": "dmnd2",
-      "front": "Mention 6 warning signs of infant development.",
-      "back": "Any six of the following clinical warning signs indicate developmental delay:\nDiscrepant head size or crossing centile lines (manifesting as too large or too small).\nPersistence of primitive reflexes beyond 6 months of age.\nComplete absence of response to the environment or parent by 12 months.\nFailure to walk independently by 18 months.\nComplete absence of clear spoken words by 18 months.\nFailure to produce two-word sentences by 2 years of age.\nPronounced problems with social interaction at 3 years of age."
+      "id": "neuro_q2",
+      "category": "previous_years",
+      "front": "Enumerate four investigations for Duchenne Muscular Dystrophy (DMD).",
+      "back": "1. Creatine kinase (CK) / CPK: Markedly elevated.\n2. Electromyography (EMG): Myopathic pattern.\n3. Muscle biopsy: Diagnostic — shows muscle fiber degeneration with replacement by fat and fibrosis.\n4. Prenatal diagnosis: Amniocentesis or chorionic villous sampling (genetic diagnosis). Detection of female carrier via high serum CPK can also be included."
+    },
+    {
+      "id": "neuro_q3",
+      "category": "previous_years",
+      "front": "Mention two main causes for inability to walk in children.",
+      "back": "1. Primary inability to walk (no walking till age 18 months):\n   - Paralytic: e.g. Cerebral palsy.\n   - Non-paralytic: e.g. Rickets.\n2. Secondary inability to walk (loss of previously acquired walking ability):\n   - Paralytic: e.g. Muscular dystrophies.\n   - Non-paralytic: e.g. Severe debilitating diseases."
+    },
+    {
+      "id": "neuro_q4",
+      "category": "previous_years",
+      "front": "Enumerate the clinical types (topographical distribution) of Spastic Cerebral Palsy.",
+      "back": "1. Hemiplegia: Arm & leg on the same side of the body.\n2. Diplegia: Arms and legs involved, but legs more than arms.\n3. Quadriplegia / Tetraplegia: Arms and legs equally involved OR arms more than legs.\n4. Monoplegia: One limb only.\n5. Triplegia: Three limbs.\n6. Paraplegia: Only legs involved."
+    },
+    {
+      "id": "neuro_q5",
+      "category": "previous_years",
+      "front": "Enumerate the clinical features and physical findings of a child presenting with Duchenne Muscular Dystrophy (DMD).",
+      "back": "Sex & Age: Usually male, presenting at 3–5 years of age.\nMuscle Weakness: Bilateral symmetrical, proximal > distal, with no sensory manifestation.\nShoulder Girdle Weakness: Unable to raise arm above the head; winging of scapula (weak serratus anterior).\nPelvic Girdle Weakness: Waddling lordotic gait, difficulty climbing stairs, positive Gower sign.\nPseudohypertrophy: Affects calf muscles, deltoid and forearm.\nPreserved Muscles: Hand muscles, extraocular muscles, urethral and anal sphincters, diaphragm.\nAssociated Features: Cardiomyopathy (constant feature), mental subnormality (frank MR in 25%), frequent respiratory infections and UTI.\nProgression: Most patients unable to walk by 12 years; death by end of second decade due to respiratory or heart failure."
+    },
+    {
+      "id": "neuro_q6",
+      "category": "previous_years",
+      "front": "Enumerate the causes of microcephaly in children.",
+      "back": "Primary (Genetic) Microcephaly:\n- Exposure of the embryo to a noxious agent during the first weeks after conception.\n- Microcephaly vera (AR inheritance).\n- Chromosomal disorders (Down syndrome, Edward syndrome).\n- Defective neurulation (Anencephaly, Encephalocele).\n- Defective prosencephalization (Agenesis of corpus callosum, Holoprosencephaly).\n- Defective cellular migration (Lissencephaly).\n\nSecondary Microcephaly:\n- Intrauterine disorders: Congenital infections (CMV, Rubella, Toxoplasmosis), drugs, fetal alcohol.\n- Perinatal brain injuries: HIE, Intracranial hemorrhage, Meningitis & Encephalitis.\n- Postnatal systemic disease: Chronic renal disease & Malnutrition."
+    },
+    {
+      "id": "neuro_q7",
+      "category": "previous_years",
+      "front": "Enumerate the clinical signs of increased intracranial pressure (ICP) in an infant.",
+      "back": "1. Seizures and disturbed level of consciousness.\n2. Hyperreflexia.\n3. Abnormal cranial expansion or bowing of the forehead (due to ventricular enlargement).\n4. Slippage on vertical suspension (associated with profound central hypotonia secondary to severe cerebral insults)."
+    },
+    {
+      "id": "neuro_q8",
+      "category": "previous_years",
+      "front": "Mention the clinical diagnostic criteria for Autism Spectrum Disorder (ASD).",
+      "back": "1. Persistent deficits in social communication and social interaction across multiple contexts.\n2. Restricted, repetitive patterns of behavior, interests, or activities (e.g. stereotyped motor movements, insistence on sameness, fixated interests).\n3. Symptoms must be present in the early developmental period.\n4. Symptoms cause clinically significant impairment in social, occupational, or other important areas of current functioning."
+    },
+    {
+      "id": "neuro_q9",
+      "category": "both",
+      "front": "Enumerate four main clinical features or diagnostic hallmarks of West Syndrome (Infantile Spasms).",
+      "back": "1. Onset: Characteristically between 4–8 months of age.\n2. Spasms in clusters: Sudden movements — Flexor (sudden flexion of neck, arms and legs), Extensor (extension of arms and extremities), or Mixed.\n3. EEG Hallmark: Hypsarrhythmia (chaotic high-voltage slow waves).\n4. Mental retardation / Developmental delay: Highly associated with secondary/organic forms (~80% of cases)."
     }
   ]
 };
@@ -3765,9 +4975,16 @@ const FlashSpace = () => {
                     const generalQuestions = getQuestionsForKey(`_CHAPTER_${selectedSystem}`);
                     const allQuestions = [...chapterQuestions, ...generalQuestions];
 
+                    const isNeuroChapter = selectedSystem === 'Neurology';
+                    const hasNeuroCategories = isNeuroChapter && allQuestions.some(q => (q as any).category);
+
                     const getFilteredQuestions = (cat: string) => {
                       let filtered = allQuestions;
-                      if (cat !== 'All') {
+                      if (cat === 'previous_years') {
+                        filtered = allQuestions.filter(q => (q as any).category === 'previous_years');
+                      } else if (cat === 'clinoma') {
+                        filtered = allQuestions.filter(q => (q as any).category === 'clinoma');
+                      } else if (cat !== 'All') {
                         filtered = allQuestions.filter(q => {
                           if (cat === 'Definitions') return q.front.toLowerCase().startsWith('define');
                           if (cat === 'Enumerate') return q.front.toLowerCase().startsWith('enumerate');
@@ -3780,9 +4997,14 @@ const FlashSpace = () => {
                     };
 
                     const CategoryTabs = () => (
-                      <div className="flex flex-wrap items-center justify-center gap-2 mb-4 w-full max-w-2xl mx-auto border-b border-slate-100 pb-2">
-                        {['All', 'Definitions', 'Enumerate', 'Matching', 'Cases'].map(cat => {
+                      <div className="flex flex-wrap items-center justify-center gap-2 mb-6 w-full max-w-2xl mx-auto border-b border-slate-100 pb-3">
+                        {(hasNeuroCategories
+                          ? ['previous_years', 'clinoma']
+                          : ['All', 'Definitions', 'Enumerate', 'Matching', 'Cases']
+                        ).map(cat => {
                           const count = getFilteredQuestions(cat).length;
+                          const label = cat === 'previous_years' ? '📅 السنين السابقة' : cat === 'clinoma' ? '⭐ أسئلة Clinoma' : cat;
+                          const activeColor = cat === 'previous_years' ? 'bg-amber-500 text-white shadow-md shadow-amber-200' : cat === 'clinoma' ? 'bg-indigo-500 text-white shadow-md shadow-indigo-200' : 'bg-indigo-500 text-white shadow-md';
                           return (
                             <button
                               key={cat}
@@ -3792,9 +5014,12 @@ const FlashSpace = () => {
                                 if (newQs.length > 0) startQuestionSession(newQs);
                                 else { setQQueue([]); setQDone([]); setQSessionDone(false); }
                               }}
-                              className={`px-4 py-2 flex items-center gap-1.5 rounded-full text-xs md:text-sm font-bold transition-all ${activeCategory === cat ? 'bg-indigo-500 text-white shadow-md' : 'bg-slate-100 text-slate-500 hover:bg-slate-200'}`}
+                              className={`px-5 py-2.5 flex items-center gap-2 rounded-full text-sm font-bold transition-all ${
+                                activeCategory === cat ? activeColor : 'bg-slate-100 text-slate-500 hover:bg-slate-200'
+                              }`}
                             >
-                              {cat} <span className={`text-[10px] px-1.5 py-0.5 rounded-full ${activeCategory === cat ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-500'}`}>{count}</span>
+                              {label}
+                              <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-black ${activeCategory === cat ? 'bg-white/25 text-white' : 'bg-slate-200 text-slate-500'}`}>{count}</span>
                             </button>
                           );
                         })}
