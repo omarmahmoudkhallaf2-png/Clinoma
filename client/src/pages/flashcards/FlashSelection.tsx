@@ -27,41 +27,13 @@ const FlashSelection = () => {
       color: 'from-emerald-600 to-teal-600',
       shadow: 'shadow-emerald-500/20',
       badge: 'Interactive Workspace',
-      comingSoon: true
+      isNew: true
     }
   ];
 
   const { userRole } = useAuth();
 
-  const handleNavigation = (option: typeof options[0]) => {
-    if (option.comingSoon && userRole !== 'admin') {
-      toast.custom((t) => (
-        <div className={`${t.visible ? 'animate-enter' : 'animate-leave'} max-w-md w-full bg-card shadow-2xl rounded-[2rem] pointer-events-auto flex ring-1 ring-black ring-opacity-5 border-2 border-primary/20`}>
-          <div className="flex-1 w-0 p-6">
-            <div className="flex items-start">
-              <div className="flex-shrink-0 pt-0.5 text-primary">
-                <Sparkles size={24} />
-              </div>
-              <div className="ml-4 flex-1">
-                <p className="text-sm font-black text-foreground">Coming Soon! 🚀</p>
-                <p className="mt-1 text-xs font-medium text-muted-foreground">
-                  We're still perfecting the Flash Space experience. Stay tuned for a revolution in medical study!
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="flex border-l border-border">
-            <button
-              onClick={() => toast.dismiss(t.id)}
-              className="w-full border border-transparent rounded-none rounded-r-lg p-4 flex items-center justify-center text-sm font-bold text-primary hover:text-primary/80 focus:outline-none"
-            >
-              Okay
-            </button>
-          </div>
-        </div>
-      ));
-      return;
-    }
+  const handleNavigation = (option: any) => {
     navigate(option.path);
   };
 
@@ -106,8 +78,7 @@ const FlashSelection = () => {
               className={cn(
                 "group relative p-8 rounded-[2.5rem] bg-card border-2 border-border/50 hover:border-primary/50 transition-all duration-500 cursor-pointer overflow-hidden shadow-xl",
                 option.shadow,
-                "hover:shadow-2xl hover:-translate-y-2",
-                option.comingSoon && userRole !== 'admin' && "opacity-80 grayscale-[0.5]"
+                "hover:shadow-2xl hover:-translate-y-2"
               )}
             >
               {/* Background Glow */}
@@ -128,9 +99,9 @@ const FlashSelection = () => {
                     <span className="text-[10px] font-black uppercase tracking-tighter text-muted-foreground bg-muted px-3 py-1 rounded-full border">
                       {option.badge}
                     </span>
-                    {option.comingSoon ? (
-                      <span className="text-[10px] font-black uppercase tracking-tighter text-blue-600 bg-blue-500/10 px-3 py-1 rounded-full border border-blue-500/20">
-                        Coming Soon
+                    {option.isNew ? (
+                      <span className="text-[10px] font-black uppercase tracking-tighter text-amber-600 bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20 animate-pulse">
+                        إضافة جديدة 🚀
                       </span>
                     ) : (
                       <span className="text-[10px] font-black uppercase tracking-tighter text-emerald-600 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20 animate-pulse">
@@ -150,7 +121,7 @@ const FlashSelection = () => {
                 </div>
 
                 <div className="pt-4 flex items-center gap-2 text-primary font-bold group-hover:gap-4 transition-all">
-                  <span>{option.comingSoon && userRole !== 'admin' ? 'Locked' : 'Enter Workspace'}</span>
+                  <span>Enter Workspace</span>
                   <ArrowRight className="w-5 h-5" />
                 </div>
               </div>

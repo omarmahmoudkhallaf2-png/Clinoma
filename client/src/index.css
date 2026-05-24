@@ -214,3 +214,12 @@
 .animate-shake {
   animation: shake 0.3s ease-in-out;
 }
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.animate-fade-out {
+  animation: fadeOut 1.5s ease-out forwards;
+}

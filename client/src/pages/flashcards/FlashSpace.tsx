@@ -37,7 +37,8 @@ import {
   Stethoscope,
   Target,
   Lock,
-  Eye
+  Eye,
+  Check
 } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { useNavigate } from 'react-router-dom';
@@ -2613,126 +2614,110 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "back": "Congenital hypothyroidism (and Phenylketonuria)."
     }
   ],
-  "THE FOUNDATIONS OF INFANT FEEDING": [
-    {
-      "id": "fif1",
-      "front": "Mention Breast feeding reflexes.",
-      "back": "Milk secretion reflex (prolactin reflex): Suckling stimulates the nerve endings in the nipple leading to stimulation of the anterior pituitary producing prolactin, which stimulates milk production.\n\nMilk ejection or let down reflex (oxytocin reflex): Suckling simulates oxytocin release from the posterior pituitary → contraction of the myoepithelial cells around the lactiferous ducts causing milk ejection.\n\nIn addition, visual, auditory and emotional stimuli affect the cerebral cortex → releasing impulses to the hypothalamus and the pituitary → oxytocin release and milk ejection."
-    }
-  ],
-  "HUMAN MILK (STAGES, COMPOSITION & ADVANTAGES)": [
-    {
-      "id": "hm1",
-      "front": "Describe five benefits of breastfeeding (for mothers)?",
-      "back": "Help involution of the birth canal.\n\nNatural method of contraception.\n\nDecrease the incidence of breast cancer.\n\nPsychological advantages and establishing the maternal - infant bond.\n\nConvenience (available anytime, anywhere) and Cheaper."
-    }
-  ],
-  "BREASTFEEDING MANAGEMENT & CHALLENGES": [],
-  "ARTIFICIAL & COMPLEMENTARY FEEDING (WEANING)": [
-    {
-      "id": "acf1",
-      "front": "Mention foods avoided in weaning diet.",
-      "back": "Food that causes chocking as nuts, fruits with seeds, potato chips, etc.\n\nArtificial colors and flavored foods.\n\nSalted food might cause hypertension.\n\nJunk food as sweets, candies that deprive the child from taking food that is more nutritious and encourages the desire for sweets.\n\nHighly spiced and fatty food."
-    },
-    {
-      "id": "acf2",
-      "front": "Explain why weaning should start after the age of 4 months.",
-      "back": "Breast milk becomes insufficient in Calories, as there is a gap between the intake and the requirement at the age of 4 months.\n\nIt is insufficient in Proteins.\n\nIt is insufficient in Vitamin D.\n\nIt is insufficient in Zinc and Iron after the age of 4-6 months.\n\nWeaning is recommended to avoid caloric, vitamins and mineral deficiency."
-    }
-  ],
-  "PROTEIN ENERGY MALNUTRITION (PEM)": [
-    {
-      "id": "pem1",
-      "front": "Describe skin changes in Kwashiorkor and explain its cause.",
-      "back": "Description: Start as erythema hyperpigmentation and desquamation → ulceration, fissuring and crackling. Skin infections & even gangrene are common. The commonest sites: pressure sites (buttocks & back), flexural sites (groin an axilla).\n\nCause: Skin changes may be due to deficiency of essential fatty acids, essential amino acids, sulfur containing amino acids, vitamin A and zinc."
-    },
-    {
-      "id": "pem2",
-      "front": "List 5 causes of death in PEM.",
-      "back": "Recurrent infections.\n\nElectrolytes imbalance as a result of refeeding syndrome or acute gastroenteritis.\n\nHypothermia.\n\nHypoglycemia (due to low glycogen content in the liver and defect in catecolamines and glucagons hormone formation).\n\nHeart failure (due to anemic heart failure or degenerative changes in the cardiac muscles)."
-    },
-    {
-      "id": "pem3",
-      "front": "Explain the causes of infection in protein-energy malnutrition.",
-      "back": "The pitting oedema constitutes a suitable media for entry of the organisms, leading to skin infections and even gangrene.\n\nAssociated vitamins and mineral deficiency, such as Vitamin A deficiency.\n\nRepeated infections can also lead to bone marrow depression (normocytic anemia)."
-    },
-    {
-      "id": "pem4",
-      "front": "Discuss welcome classification for protein energy malnutrition.",
-      "back": "Nutritional disorders are classified according to the body weight and the presence or absence of oedema (The standard reference weight is the 50 percentile).\n\nWeight for age 60-80% of standard:\nWithout oedema: underweight (mild PEM).\nWith oedema: kwashiorkor (sever PEM).\n\nWeight for age <60% of standard:\nWithout oedema: marasmus (sever PEM).\nWith oedema: marasmic kwashiokor (sever PEM)."
-    },
-    {
-      "id": "pem5",
-      "front": "Case 3: 9-month-old infant presenting with lower edema, on a diet of Carbohydrates 55%, fat 40%, and protein 5% for the last 5 months. 1- What is most likely diagnosis?",
-      "back": "Kwashiorkor (Severe PEM)."
-    },
-    {
-      "id": "pem6",
-      "front": "Case 3: 2- What are the other features should be present?",
-      "back": "Constant features: Growth failure (Weight for age < 80% of the reference), Pitting oedema (starts in feet, puffy face with prominent cheeks/moon face), Mental changes (apathy, with no interest in surroundings and no smile), Muscle wasting with preserved subcutaneous fat.\n\nVariable features: Skin changes (erythema, desquamation, ulceration), Hair changes (loses luster, easily pickable, flag sign), Anemia, and GIT changes (Hepatomegaly, diarrhea, abdominal distension)."
-    },
-    {
-      "id": "pem7",
-      "front": "Case 3: 3- What are the investigations should be done?",
-      "back": "Assess weight for age using Growth charts.\n\nBiochemical tests including Serum albumin (Low) and Urinary urea per g creatinine (Low).\n\nElectrolytes assessment (to detect hypokalemia).\n\nComplete blood count to determine the type of Anemia."
-    }
-  ],
-  "RICKETS & TETANY": [
-    {
-      "id": "rt1",
-      "front": "Mention causes of hypocalcemia and tetany in rickets.",
-      "back": "The parathyroid glands fail to respond to the state of hypocalcaemia (gland exhaustion).\n\nBone stores of calcium are exhausted.\n\nVitamin D shock therapy is given without calcium supplementation.\n\nSevere chest infection → hyperventilation → CO2 wash → alkalosis tetany."
-    },
-    {
-      "id": "rt2",
-      "front": "Describe the clinical picture of latent tetany.",
-      "back": "Latent tetany (level of calcium 7-9 mg%) becomes evident by the following tests:\n\nChevostick sign: tapping of facial nerve anterior to the tragus → contraction of the facial muscles.\n\nTrousseau sign: occlusion the arterial flow to the arm by inflation the cuff of sphygmomanometer above the systolic pressure for 3 minutes ← ischemia → carpal spasm.\n\nPeroneal sign: tapping the peroneal nerve over the neck of the fibula → dorsiflexion and eversion of the foot."
-    },
-    {
-      "id": "rt3",
-      "front": "Case 2: 5-year-old child with short stature, blood pressure 140/100, tachypnea, pallor, and abnormal long bone ends. 1- What is most likely diagnosis?",
-      "back": "Renal osteodystrophy (Uremic rickets), indicating skeletal changes occurring with chronic renal failure."
-    },
-    {
-      "id": "rt4",
-      "front": "Case 2: 2- What are the investigations should be done?",
-      "back": "Serum phosphorus (hypersphatemia).\n\nSerum calcium (hypocalcemia).\n\nRaised alkaline phosphatase.\n\nBlood pH to detect metabolic acidosis.\n\nElevated urea and creatinine.\n\nRadiological findings (X-ray of wrist)."
-    },
-    {
-      "id": "rt5",
-      "front": "Case 2: 3- What is the treatment?",
-      "back": "Treatment of renal dysfunction → transplantation or hemodialysis.\n\nCalcitriol (1,25-dihydroxy vit D) administration.\n\nHigh calcium intake & Low phosphate intake.\n\nPhosphate binders to bind excess phosphate in diet."
-    }
-  ],
   "PEDIATRIC GROWTH": [
     {
-      "id": "g1",
+      "id": "pg1",
       "front": "Define growth.",
-      "back": "Growth: Natural increase in the size of the body either by (hyperplasia) through multiplication of different cells of different organs or (hypertrophy) through increase in the cell size."
+      "back": "Growth is the natural increase in the size of the body either by hyperplasia through the multiplication of different cells of different organs or by hypertrophy through an increase in cell size."
     },
     {
-      "id": "g2",
-      "front": "Mention types of Growth charts.",
-      "back": "Percentile curves.\n\nStandard deviation curves.\n\nVelocity curves.\n\nConditional centiles."
+      "id": "pg2",
+      "front": "Mention types of Growth charts",
+      "back": "Percentile curves.\nStandard deviation curves.\nVelocity curves.\nConditional centiles."
+    },
+    {
+      "id": "pg3",
+      "front": "Describe five benefits of breastfeeding (for mothers)?",
+      "back": "It helps in the involution of the birth canal.\nIt serves as a natural method of contraception.\nIt decreases the clinical incidence of breast cancer."
+    },
+    {
+      "id": "pg4",
+      "front": "Mention foods avoided in weaning diet.",
+      "back": "Foods that cause choking, such as nuts, fruits with seeds, and potato chips.\nFoods containing artificial colors and artificial flavors.\nSalted food, as it might cause hypertension.\nJunk food such as sweets and candies, which deprive the child from taking food that is more nutritious and encourages a desire for sweets.\nHighly spiced and fatty food."
+    },
+    {
+      "id": "pg5",
+      "front": "Describe skin changes in Kwashiorkor and explain its cause.",
+      "back": "Description: Skin changes start as erythema followed by hyperpigmentation and desquamation, leading directly to ulceration, fissuring, and crackling. Secondary skin infections and even gangrene are highly common because the pitting edema constitutes a suitable media for the entry of pathogenic organisms. The commonest anatomical sites involved are pressure sites (buttocks and back) and flexural sites (groin and axilla).\nCause: These pathognomonic skin changes are primarily caused by deficiencies in essential fatty acids, essential amino acids, sulfur-containing amino acids, vitamin A, and zinc."
+    },
+    {
+      "id": "pg6",
+      "front": "List 5 causes of death in PEM",
+      "back": "Recurrent systemic infections.\nElectrolytes imbalance occurring as a result of refeeding syndrome or acute gastroenteritis.\nHypothermia.\nHypoglycemia, due to low glycogen content in the liver and defects in catecholamine and glucagon hormone formation.\nHeart failure, due to either anemic heart failure or degenerative changes in the cardiac muscles."
+    },
+    {
+      "id": "pg7",
+      "front": "Explain the causes of infection in protein-energy malnutrition.",
+      "back": "Edema-Related Susceptibility: Pitting edema creates an ideal, compromised environment and suitable media for the entry of micro-organisms, leading to high rates of skin infections and gangrene.\nGastrointestinal Barrier Defect: Defective epithelization of the intestinal mucosa impairs natural defenses, making the patient highly vulnerable to bacterial, viral, and protozoal gastroenteritis."
+    },
+    {
+      "id": "pg8",
+      "front": "Explain why weaning should start after the age of 4 months.",
+      "back": "Weaning must begin at the age of 4 months because maternal breast milk becomes insufficient to fulfill the baseline nutritional requirements of the infant, creating a critical deficit across multiple components:\nCalories: A clear energy gap forms between breast milk intake (356 kcal/day) and total daily requirement (536.8 kcal/day) at 4 months.\nProteins: A protein intake deficit emerges between baseline intake (6.6 g/day) and requirement (9.1 g/day) at 4 months.\nVitamin D: A substantial micronutrient gap exists between intake (528 ng/day) and requirement (5000 ng/day) at 4 months.\nZinc: Intake drops below required levels, with intake at 0.98 mg/day against a requirement of 2 mg/day after 4 months.\nIron: A severe developmental gap opens between intake (0.29 mg/day) and requirement (11 mg/day) after 6 months of age. Introducing complementary feeding at 4 months is therefore mandated to explicitly avoid caloric, vitamin, and mineral deficiencies."
+    },
+    {
+      "id": "pg9",
+      "front": "Discuss welcome classification for protein energy malnutrition",
+      "back": "The Welcome classification categorizes protein-energy malnutrition by assessing the patient's body weight-for-age percentage relative to the standard (50th percentile reference) and evaluating for the clinical presence or absence of pitting edema:\nWeight-for-age between 60% and 80% of standard:\nWithout edema: Underweight (mild PEM).\nWith edema: Kwashiorkor (severe PEM).\nWeight-for-age < 60% of standard:\nWithout edema: Marasmus (severe PEM).\nWith edema: Marasmic Kwashiorkor (severe PEM)."
+    },
+    {
+      "id": "pg10",
+      "front": "Mention Breast feeding reflexes",
+      "back": "Maternal Secretory & Ejection Reflexes:\nMilk secretion reflex (prolactin reflex): Suckling directly stimulates nerve endings in the nipple, inducing anterior pituitary production of prolactin, which drives milk production.\nMilk ejection or let-down reflex (oxytocin reflex): Suckling stimulates oxytocin release from the posterior pituitary, causing acute contraction of myoepithelial cells around the lactiferous ducts to cause milk ejection.\nInfant Feeding Reflexes:\nRooting reflex: Mechanical touch to the lip or cheek causes the infant to turn toward the stimulus and open the mouth.\nSuckling reflex: Tactile stimulation of the palate directly initiates suckling.\nSwallowing reflex: The presence of milk filling the oral cavity triggers automatic swallowing."
+    },
+    {
+      "id": "pg11",
+      "front": "Case 3: 9-month-old infant with lower edema on a low-protein diet.\n\n1- What is most likely diagnosis?",
+      "back": "The most likely diagnosis is Kwashiorkor. It is a form of severe protein-energy malnutrition caused by selective protein deficiency in the setting of nearly normal caloric intake, characterized clinically by pitting edema and growth failure."
+    },
+    {
+      "id": "pg12",
+      "front": "Case 3: 2- What are the other features should be present?",
+      "back": "Constant Features: Severe growth failure (weight-for-age < 80% of reference), psychological/mental changes (apathy, marked irritability, lack of interest in surroundings, absence of smile), and muscle wasting with preserved subcutaneous fat.\nVariable (Non-constant) Features: Skin changes (erythema, hyperpigmentation, desquamation, flaky paint dermatosis), hair changes (loss of luster, dry/sparse hair, color lightening, or alternating bands known as the flag sign), nutritional anemia, and gastrointestinal changes (hepatomegaly from fatty infiltration, diarrhea, and abdominal distension)."
+    },
+    {
+      "id": "pg13",
+      "front": "Case 3: 3- What are the investigations should be done?",
+      "back": "Serum Albumin: To evaluate the degree of hypoproteinemia (characteristically low).\nUrinary Urea per Gram Creatinine: To demonstrate reduced protein intake and metabolism (low).\nBlood Glucose Level: To evaluate for concurrent fasting hypoglycemia.\nSerum Electrolytes: To check for underlying potassium and magnesium deficiencies.\nComplete Blood Count (CBC): To identify microcytic, macrocytic, or normocytic anemia.\nRadiological Bone Age: To confirm delayed skeletal maturation."
     }
   ],
   "BIOLOGICAL AGE & MATURATION (BONE & TEETH)": [
     {
-      "id": "bone1",
-      "front": "Enumerate the causes of Delayed Dentition.",
-      "back": "Rickets (أشهر وأهم سبب)\nHypothyroidism\nHypopituitarism\nDown syndrome\nMalnutrition\nFamilial / Idiopathic\n\n💡 Mnemonic لتسهيل التذكر:\n(عيلة داون عندها نقص تغذية وكساح في الغدة)"
+      "id": "bamt1",
+      "front": "Mention causes of hypocalcemia and tetany in rickets.",
+      "back": "Hypocalcemia and manifest tetany present in rickets under specific metabolic circumstances:\nParathyroid gland failure to respond to systemic hypocalcemia due to gland exhaustion.\nComplete exhaustion of total skeletal bone stores of calcium.\nAdministration of high-dose vitamin D shock therapy without concurrent oral calcium supplementation.\nSevere concurrent chest infections causing hyperventilation, inducing a CO2 wash, resulting in systemic respiratory alkalosis tetany."
+    },
+    {
+      "id": "bamt2",
+      "front": "Describe the clinical picture of latent tetany.",
+      "back": "Latent tetany occurs when total serum calcium levels range between 7 and 9 mg%. It lacks spontaneous clinical symptoms but is explicitly confirmed via three diagnostic neurological signs:\nChvostek sign: Mechanical tapping over the facial nerve anterior to the tragus produces immediate contraction of the ipsilateral facial muscles.\nTrousseau sign: Occlusion of arterial flow to the upper extremity using a sphygmomanometer cuff inflated above systolic pressure for 3 minutes induces ischemia, resulting in a classic carpal spasm.\nPeroneal sign: Tapping the peroneal nerve over the neck of the fibula produces immediate dorsiflexion and eversion of the foot."
+    },
+    {
+      "id": "bamt3",
+      "front": "Case 2: 5-year-old child with abnormal long bone ends, short stature, and hypertension.\n\n1- What is most likely diagnosis?",
+      "back": "The most likely diagnosis is Renal Osteodystrophy (Uremic Rickets). This clinical entity comprises skeletal mineralization defects secondary to chronic renal failure, presenting with rickets-like epiphyseal broadening, severe short stature, metabolic acidosis, and renal-induced systemic hypertension."
+    },
+    {
+      "id": "bamt4",
+      "front": "Case 2: 2- What are the investigations should be done?",
+      "back": "Serum Kidney Function Tests: Evaluating blood urea and creatinine levels, which will be pathologically elevated.\nSerum Phosphorus: To confirm hyperphosphatemia caused by decreased glomerular filtration.\nSerum Calcium: To identify hypocalcemia secondary to failure of renal vitamin D hydroxylation.\nSerum Alkaline Phosphatase: Characteristically elevated due to high osteoblastic remodeling.\nBlood Gas Analysis (pH): To diagnose underlying metabolic acidosis.\nRadiological X-ray of Wrists/Long Bones: To visualize structural epiphyseal cupping, fraying, and broadening."
+    },
+    {
+      "id": "bamt5",
+      "front": "Case 2: 3- What is the treatment?",
+      "back": "Radical management of the underlying renal pathology via chronic hemodialysis or renal transplantation.\nActive Calcitriol (1,25-dihydroxyvitamin D) administration to bypass compromised renal 1-alpha-hydroxylase activity.\nEnsuring high oral calcium intake.\nImplementation of a low phosphate diet.\nAdministration of oral phosphate binders to restrict GI absorption of dietary phosphorus."
     }
   ],
   "DEVELOPMENTAL MILESTONES & NEURODEVELOPMENT": [
     {
-      "id": "dm1",
-      "front": "Mention 6 warning signs of infant development.",
-      "back": "Discrepant head size or crossing centile lines (too large or too small).\n\nPersistence of primitive reflexes > 6 months of age.\n\nNo response to environment or parent by 12 months.\n\nNot walking by 18 months.\n\nNo clear spoken words by 18 months.\n\nNo two word sentences by 2 years."
+      "id": "dmnd1",
+      "front": "Mention Developmental milestones at age of 9 month",
+      "back": "Gross Motor: The infant creeps and successfully pulls themselves up into a standing position.\nFine Motor: The infant demonstrates a pincer grip, grasping objects utilizing the thumb and index finger.\nLanguage: The infant says \"dada\" and \"mama\" non-specifically.\nSocial: The infant actively explores their immediate surroundings."
     },
     {
-      "id": "dm2",
-      "front": "Mention Developmental milestones at age of 9 month.",
-      "back": "Gross motor: Creeps, Pulls to standing position.\n\nFine motor: Grasp by thumb and finger (pincer grip).\n\nLanguage: Say dada & mama nonspecific.\n\nSocial: Explores."
+      "id": "dmnd2",
+      "front": "Mention 6 warning signs of infant development.",
+      "back": "Any six of the following clinical warning signs indicate developmental delay:\nDiscrepant head size or crossing centile lines (manifesting as too large or too small).\nPersistence of primitive reflexes beyond 6 months of age.\nComplete absence of response to the environment or parent by 12 months.\nFailure to walk independently by 18 months.\nComplete absence of clear spoken words by 18 months.\nFailure to produce two-word sentences by 2 years of age.\nPronounced problems with social interaction at 3 years of age."
     }
   ]
 };
@@ -2765,29 +2750,60 @@ const SYSTEM_COLORS: Record<string, string> = {
 
 // --- Case Questions Logic ---
 const groupCases = (questions: any[]) => {
-  const result: any[] = [];
-  const caseMap = new Map<string, any>();
-  
-  questions.forEach(q => {
-    if (q.front && q.front.toLowerCase().startsWith('case ')) {
-      const parts = q.front.split('\n\n');
-      if (parts.length >= 2) {
-        const caseBody = parts[0].trim();
-        const questionText = parts.slice(1).join('\n\n').trim();
+  try {
+    const result: any[] = [];
+    const caseMap = new Map<string, any>();
+    
+    questions.forEach(q => {
+      if (!q) return;
+      if (q.front && typeof q.front === 'string' && q.front.toLowerCase().startsWith('case ')) {
+        const match = q.front.match(/^(Case\s+Study(?:\s+\(Continued\))?|Case\s+\d+)\s*:/i);
+        let caseIdentifier = match ? match[1].replace(/\s*\(Continued\)/i, '').trim() : "Unknown Case";
+        const bodyWithoutId = match ? q.front.substring(match[0].length).trim() : q.front.trim();
         
-        if (!caseMap.has(caseBody)) {
+        let caseBody = "";
+        let questionText = "";
+
+        if (q.front.includes('\n\n')) {
+          const parts = bodyWithoutId.split('\n\n');
+          caseBody = parts[0].trim();
+          questionText = parts.slice(1).join('\n\n').trim();
+        } else {
+          if (caseMap.has(caseIdentifier)) {
+            // If the case group already exists, this is a follow-up question
+            questionText = bodyWithoutId;
+          } else {
+            // First time seeing this case group, but it's on a single line
+            const qMatch = bodyWithoutId.match(/(?:\.|\?)\s+(\d+\s*-.*)$/);
+            if (qMatch) {
+              caseBody = bodyWithoutId.substring(0, qMatch.index! + 1).trim();
+              questionText = qMatch[1].trim();
+            } else {
+              caseBody = bodyWithoutId;
+              questionText = "What is your diagnosis/next step?";
+            }
+          }
+        }
+        
+        if (!caseMap.has(caseIdentifier)) {
           const caseObj = {
-            id: `case_group_${q.id}`,
+            id: `case_group_${q.id || Math.random()}`,
             type: 'case',
             front: caseBody,
             caseBody: caseBody,
             subQuestions: []
           };
-          caseMap.set(caseBody, caseObj);
+          caseMap.set(caseIdentifier, caseObj);
           result.push(caseObj);
         }
         
-        caseMap.get(caseBody).subQuestions.push({
+        const existingGroup = caseMap.get(caseIdentifier);
+        if (caseBody && (!existingGroup.caseBody || existingGroup.caseBody.length < caseBody.length)) {
+          existingGroup.caseBody = caseBody;
+          existingGroup.front = caseBody;
+        }
+        
+        existingGroup.subQuestions.push({
           id: q.id,
           questionText: questionText,
           back: q.back
@@ -2795,12 +2811,15 @@ const groupCases = (questions: any[]) => {
         
         return;
       }
-    }
-    // Not a case or poorly formatted, push as is
-    result.push(q);
-  });
-  
-  return result;
+      
+      result.push(q);
+    });
+    
+    return result;
+  } catch (error) {
+    console.error("groupCases error:", error);
+    return questions || [];
+  }
 };
 
 // --- Case Study UI Component ---
@@ -2893,10 +2912,11 @@ const FlashSpace = () => {
   const [selectedModule, setSelectedModule] = useState<string | null>(null);
   const [selectedSystem, setSelectedSystem] = useState<string | null>(null);
   const [selectedBoard, setSelectedBoard] = useState<Board | null>(null);
+  const [showSubscriptionModal, setShowSubscriptionModal] = useState(false);
   
   const [isSidebarOpen, setIsSidebarOpen] = useState(false); // For mobile drawer
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false); // For desktop toggle
-  const [activeTool, setActiveTool] = useState<Tool>('pen');
+  const [activeTool, setActiveTool] = useState<Tool>('pan');
   const [showSettingsFor, setShowSettingsFor] = useState<Tool | null>(null);
   
   const [zoom, setZoom] = useState(1);
@@ -2924,7 +2944,7 @@ const FlashSpace = () => {
   // --- Priority Review System State ---
   const [spacePriorities, setSpacePriorities] = useState<Record<string, 'A'|'B'|'C'>>({});
   const [isReviewCenterOpen, setIsReviewCenterOpen] = useState(false);
-  const [reviewTab, setReviewTab] = useState<'images'|'questions'>('images');
+  const [reviewTab, setReviewTab] = useState<'images'|'questions'>('questions');
   const [reviewFilter, setReviewFilter] = useState<'A'|'B'|'C'>('A');
 
   useEffect(() => {
@@ -3207,15 +3227,31 @@ const FlashSpace = () => {
     };
 
     // Incremental Drawing: Draw the initial dot
-    const canvas = canvasRef.current;
-    if (canvas) {
-      const ctx = canvas.getContext('2d');
-      if (ctx) {
-        ctx.beginPath();
-        ctx.fillStyle = currentPathRef.current.color;
-        ctx.globalAlpha = currentPathRef.current.opacity;
-        ctx.arc(pos.x, pos.y, currentPathRef.current.size / 2, 0, Math.PI * 2);
-        ctx.fill();
+    if (activeTool === 'laser') {
+      const d = `M ${pos.x},${pos.y} L ${pos.x},${pos.y}`;
+      const outer = document.getElementById('live-laser-outer');
+      const inner = document.getElementById('live-laser-inner');
+      if (outer) {
+        outer.setAttribute('stroke', currentPathRef.current.color);
+        outer.setAttribute('stroke-width', (currentPathRef.current.size * 1.5).toString());
+        outer.style.filter = `drop-shadow(0 0 12px ${currentPathRef.current.color}) drop-shadow(0 0 6px ${currentPathRef.current.color})`;
+        outer.setAttribute('d', d);
+      }
+      if (inner) {
+        inner.setAttribute('stroke-width', (currentPathRef.current.size / 2.5).toString());
+        inner.setAttribute('d', d);
+      }
+    } else {
+      const canvas = canvasRef.current;
+      if (canvas) {
+        const ctx = canvas.getContext('2d');
+        if (ctx) {
+          ctx.beginPath();
+          ctx.fillStyle = currentPathRef.current.color;
+          ctx.globalAlpha = currentPathRef.current.opacity;
+          ctx.arc(pos.x, pos.y, currentPathRef.current.size / 2, 0, Math.PI * 2);
+          ctx.fill();
+        }
       }
     }
   };
@@ -3263,7 +3299,16 @@ const FlashSpace = () => {
 
     currentPathRef.current.points.push(pos);
 
-    // INCREMENTAL DRAWING (Radical Solution)
+    // INCREMENTAL DRAWING
+    if (activeTool === 'laser') {
+      const d = `M ${currentPathRef.current.points.map(pt => `${pt.x},${pt.y}`).join(' L ')}`;
+      const outer = document.getElementById('live-laser-outer');
+      const inner = document.getElementById('live-laser-inner');
+      if (outer) outer.setAttribute('d', d);
+      if (inner) inner.setAttribute('d', d);
+      return;
+    }
+
     const canvas = canvasRef.current;
     if (canvas) {
       const ctx = canvas.getContext('2d');
@@ -3274,11 +3319,12 @@ const FlashSpace = () => {
         if (activeTool === 'highlighter') ctx.globalCompositeOperation = 'multiply';
         else ctx.globalCompositeOperation = 'source-over';
         
-        ctx.strokeStyle = currentPathRef.current.color;
-        ctx.lineWidth = currentPathRef.current.size;
         ctx.lineCap = 'round';
         ctx.lineJoin = 'round';
         ctx.globalAlpha = currentPathRef.current.opacity;
+
+        ctx.strokeStyle = currentPathRef.current.color;
+        ctx.lineWidth = currentPathRef.current.size;
         ctx.stroke();
       }
     }
@@ -3300,6 +3346,13 @@ const FlashSpace = () => {
 
     if (!currentPathRef.current) return;
     
+    if (activeTool === 'laser') {
+      const outer = document.getElementById('live-laser-outer');
+      const inner = document.getElementById('live-laser-inner');
+      if (outer) outer.setAttribute('d', '');
+      if (inner) inner.setAttribute('d', '');
+    }
+
     // Clear Active Canvas (because it will be moved to bgCanvas or SVG)
     const canvas = canvasRef.current;
     if (canvas) {
@@ -3462,9 +3515,14 @@ const FlashSpace = () => {
               </>}
             </div>
           </div>
-          <button onClick={() => navigate('/flashcards')} className="px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl text-slate-400 font-bold text-xs flex items-center gap-2 transition-all">
-            <ChevronLeft className="w-4 h-4" /> Back
-          </button>
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-amber-500/10 text-amber-400 border border-amber-500/20 rounded-xl text-xs font-black">
+              ⭐ {userData?.points ?? 0}
+            </div>
+            <button onClick={() => navigate('/flashcards')} className="px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl text-slate-400 font-bold text-xs flex items-center gap-2 transition-all">
+              <ChevronLeft className="w-4 h-4" /> Back
+            </button>
+          </div>
         </div>
 
         {/* Content */}
@@ -3482,29 +3540,22 @@ const FlashSpace = () => {
               <div className="flex-1 overflow-y-auto pb-8">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                   {modules.map(mod => {
-                    const hasAccess = isSpaceSubscribed(mod);
                     return (
-                    <button key={mod} onClick={() => {
-                        if (hasAccess) setSelectedModule(mod);
-                        else toast.error('This module is locked. Please subscribe to access it.');
-                      }}
-                      className={cn("group relative backdrop-blur-xl border border-white/5 active:border-indigo-500/50 hover:border-indigo-500/50 rounded-3xl text-left transition-all duration-300 active:scale-[0.98] hover:scale-[1.02] overflow-hidden p-6 hover:shadow-2xl hover:shadow-indigo-500/10",
-                        hasAccess ? "bg-slate-900/50" : "bg-slate-900/20 grayscale opacity-70"
-                      )}
+                    <button key={mod} onClick={() => setSelectedModule(mod)}
+                      className="group relative backdrop-blur-xl border border-white/5 active:border-indigo-500/50 hover:border-indigo-500/50 rounded-3xl text-left transition-all duration-300 active:scale-[0.98] hover:scale-[1.02] overflow-hidden p-6 hover:shadow-2xl hover:shadow-indigo-500/10 bg-slate-900/50"
                     >
                       {/* Gradient Glow */}
-                      {hasAccess && <div className="absolute top-0 right-0 w-40 h-40 opacity-10 group-hover:opacity-30 transition-opacity duration-500 blur-3xl rounded-full" style={{background: '#6366f1', transform: 'translate(40%, -40%)'}} />}
+                      <div className="absolute top-0 right-0 w-40 h-40 opacity-10 group-hover:opacity-30 transition-opacity duration-500 blur-3xl rounded-full" style={{background: '#6366f1', transform: 'translate(40%, -40%)'}} />
                       
                       <div className="relative z-10 flex flex-col h-full gap-4">
                         <div className="w-14 h-14 bg-gradient-to-br from-indigo-500/20 to-violet-500/10 border border-indigo-500/20 rounded-2xl flex items-center justify-center text-indigo-400 shadow-inner group-hover:-translate-y-1 transition-transform duration-300">
-                          {hasAccess ? <BookOpen className="w-7 h-7 drop-shadow-md" /> : <Lock className="w-7 h-7 drop-shadow-md" />}
+                          <BookOpen className="w-7 h-7 drop-shadow-md" />
                         </div>
                         <div className="flex items-end justify-between mt-auto">
                           <div>
                             <h3 className="text-xl font-black text-white leading-tight">{mod}</h3>
                             <p className="text-slate-400 text-xs font-semibold mt-1">{systems[mod]?.length || 0} chapters available</p>
                           </div>
-                          {!hasAccess && <span className="text-[10px] uppercase font-black tracking-widest px-2 py-1 bg-rose-500/10 text-rose-500 rounded-md">Locked</span>}
                         </div>
                       </div>
                     </button>
@@ -3516,7 +3567,14 @@ const FlashSpace = () => {
             // SYSTEM SELECTION - premium glassmorphism layout
             <div className="h-full flex flex-col p-4 md:p-8 gap-6 md:gap-8 max-w-7xl mx-auto w-full">
               <div className="flex items-center gap-4 shrink-0 mt-2">
-                <button onClick={() => setSelectedModule(null)} className="p-2.5 bg-white/5 active:bg-white/15 hover:bg-white/10 rounded-2xl text-slate-400 transition-all border border-white/5 hover:border-white/10 hover:shadow-lg hover:shadow-black/20">
+                <button onClick={() => {
+                  setSelectedModule(null);
+                  setSelectedSystem(null);
+                  setSelectedBoard(null);
+                  setIsChapterQuestionMode(false);
+                  setShowQuestions(false);
+                  setShowExplanation(false);
+                }} className="p-2.5 bg-white/5 active:bg-white/15 hover:bg-white/10 rounded-2xl text-slate-400 transition-all border border-white/5 hover:border-white/10 hover:shadow-lg hover:shadow-black/20">
                   <ChevronLeft className="w-5 h-5" />
                 </button>
                 <div>
@@ -3526,10 +3584,27 @@ const FlashSpace = () => {
               </div>
               <div className="flex-1 overflow-y-auto pb-8">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
-                  {systems[selectedModule]?.map(sys => {
+                  {[...(systems[selectedModule] || [])].sort((a, b) => {
+                    if (a === 'Growth & development') return -1;
+                    if (b === 'Growth & development') return 1;
+                    return a.localeCompare(b);
+                  }).map(sys => {
                     const color = SYSTEM_COLORS[sys] || '#6366f1';
                     const count = boards.filter(b => b.module === selectedModule && b.system === sys).length;
                     
+                    const SYSTEM_BGS: Record<string, string> = {
+                      'Cardiovascular diseases': '/assets/chapters/cardio_bg_1779636563389.png',
+                      'Endocrinology': '/assets/chapters/endo_bg_1779636576095.png',
+                      'Gastroenterology & hepatology': '/assets/chapters/gastro_bg_1779636588519.png',
+                      'Genetic diseases': '/assets/chapters/genetic_bg_1779636605335.png',
+                      'Growth & development': '/assets/chapters/growth_bg_1779636618747.png',
+                      'Hematology & Oncology': '/assets/chapters/hemato_bg_1779636647999.png',
+                      'Infections': '/assets/chapters/infect_bg_1779636662158.png',
+                      'Neurology': '/assets/chapters/neuro_bg_1779636673967.png',
+                      'Nutrition': '/assets/chapters/nutrition_bg_1779636686441.png',
+                      'Renal diseases': '/assets/chapters/renal_bg_1779636699582.png',
+                    };
+
                     const lwSys = sys.toLowerCase();
                     let SysIcon = Stethoscope;
                     if (lwSys.includes('cardio')) SysIcon = Heart;
@@ -3542,11 +3617,37 @@ const FlashSpace = () => {
                     else if (lwSys.includes('renal')) SysIcon = Activity;
 
                     return (
-                      <button key={sys} onClick={() => setSelectedSystem(sys)}
+                      <button key={sys} onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          if (sys === 'Growth & development' || (selectedModule && isSpaceSubscribed(selectedModule))) {
+                            setSelectedSystem(sys);
+                            setIsChapterQuestionMode(false);
+                            setShowQuestions(false);
+                            setShowExplanation(false);
+                            setSelectedBoard(null);
+                          } else {
+                            setShowSubscriptionModal(true);
+                          }
+                        }}
                         className="group relative bg-slate-900/50 backdrop-blur-xl border border-white/5 active:border-white/20 hover:border-white/20 rounded-3xl text-left transition-all duration-300 active:scale-[0.97] hover:scale-[1.02] overflow-hidden p-6 flex flex-col justify-between min-h-[160px] hover:shadow-2xl"
                       >
+                        {(!selectedModule || !isSpaceSubscribed(selectedModule)) && sys !== 'Growth & development' && (
+                          <div className="absolute top-4 right-4 z-10 bg-amber-500/20 text-amber-500 border border-amber-500/30 px-3 py-1.5 rounded-full flex items-center gap-1.5 backdrop-blur-sm shadow-lg">
+                            <Lock className="w-3.5 h-3.5" />
+                            <span className="text-xs font-bold uppercase tracking-wider">Premium</span>
+                          </div>
+                        )}
+                        {/* AI Background Image */}
+                        {SYSTEM_BGS[sys] && (
+                          <div className="absolute inset-0 z-0">
+                            <img src={SYSTEM_BGS[sys]} alt={sys} className="w-full h-full object-cover opacity-40 group-hover:opacity-70 transition-all duration-500 mix-blend-overlay" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-transparent" />
+                          </div>
+                        )}
+
                         {/* Gradient Glow */}
-                        <div className="absolute top-0 right-0 w-32 h-32 opacity-10 group-hover:opacity-20 transition-opacity duration-500 blur-3xl rounded-full" style={{background: color, transform: 'translate(30%, -30%)'}} />
+                        <div className="absolute top-0 right-0 w-32 h-32 opacity-10 group-hover:opacity-20 transition-opacity duration-500 blur-3xl rounded-full z-0" style={{background: color, transform: 'translate(30%, -30%)'}} />
                         
                         <div className="relative z-10 flex justify-between items-start w-full">
                           <div className="w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:-translate-y-1" style={{background: `linear-gradient(135deg, ${color}20, ${color}10)`, border: `1px solid ${color}40`, color: color}}>
@@ -3582,13 +3683,18 @@ const FlashSpace = () => {
                     <h2 className="text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-white/60">{selectedSystem}</h2>
                     <p className="text-slate-500 text-sm mt-0.5 tracking-wide uppercase font-bold">{boards.filter(b => b.module === selectedModule && b.system === selectedSystem).length} Slides Available</p>
                   </div>
-                <button
-                  onClick={() => setIsReviewCenterOpen(true)}
-                  className="px-6 py-2.5 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white rounded-2xl font-black shadow-lg shadow-emerald-500/20 transition-all flex items-center justify-center gap-2"
-                >
-                  <Target className="w-5 h-5" />
-                  مركز المراجعة
-                </button>
+                <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-1.5 px-3 py-1.5 bg-amber-500/10 text-amber-400 border border-amber-500/20 rounded-xl text-xs font-black">
+                    ⭐ {userData?.points ?? 0}
+                  </div>
+                  <button
+                    onClick={() => setIsReviewCenterOpen(true)}
+                    className="px-6 py-2.5 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white rounded-2xl font-black shadow-lg shadow-emerald-500/20 transition-all flex items-center justify-center gap-2"
+                  >
+                    <Target className="w-5 h-5" />
+                    مركز المراجعة
+                  </button>
+                </div>
                 </div>
               </div>
               <div className="flex-1 overflow-y-auto pb-8">
@@ -3697,7 +3803,12 @@ const FlashSpace = () => {
                               Restart Session
                             </button>
                             <button
-                              onClick={() => setIsChapterQuestionMode(false)}
+                              onClick={() => {
+                                setIsChapterQuestionMode(false);
+                                setShowQuestions(false);
+                                setShowExplanation(false);
+                                setSelectedBoard(null);
+                              }}
                               className="px-8 py-3 bg-white border-2 border-slate-200 text-slate-700 rounded-2xl font-black hover:border-slate-300 hover:bg-slate-50 transition-all"
                             >
                               Back to Chapter
@@ -3915,6 +4026,219 @@ const FlashSpace = () => {
             </div>
           )}
         </div>
+        
+        {/* Session Summary Modal */}
+        {showSummary && (
+          <div className="fixed inset-0 z-[2000] flex items-center justify-center bg-slate-950/80 backdrop-blur-2xl p-4">
+            <div className="w-full max-w-sm bg-white rounded-[3.5rem] p-12 text-center space-y-8 shadow-3xl animate-in zoom-in-95 duration-300">
+              <div className="w-24 h-24 bg-emerald-500/10 text-emerald-500 rounded-[3rem] flex items-center justify-center mx-auto">
+                <Trophy className="w-12 h-12" />
+              </div>
+              <div>
+                <h2 className="text-3xl font-black text-slate-800">أحسنت! 🎉</h2>
+                <p className="text-slate-400 mt-2">انتهت جلسة الدراسة</p>
+              </div>
+              <div className="p-6 bg-emerald-50 rounded-[2rem] border border-emerald-100">
+                <span className="text-xs font-black text-emerald-600 uppercase tracking-widest block mb-1">وقت الجلسة</span>
+                <span className="text-4xl font-black text-emerald-700">{Math.floor(sessionSeconds/60)}m {sessionSeconds%60}s</span>
+              </div>
+              <div className="space-y-3">
+                <button
+                  onClick={() => { setShowSummary(false); setSelectedBoard(null); setIsTimerActive(false); setSessionSeconds(0); setPaths([]); setRedoPaths([]); }}
+                  className="w-full py-5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-2xl font-black transition-all"
+                >
+                  لوحة أخرى
+                </button>
+                <button onClick={() => navigate('/dashboard')} className="w-full py-5 bg-slate-900 text-white rounded-2xl font-black hover:bg-indigo-600 transition-all">
+                  العودة للداشبورد
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* --- REVIEW CENTER MODAL --- */}
+        {isReviewCenterOpen && (
+          <div className="fixed inset-0 z-[3000] bg-slate-950/95 backdrop-blur-2xl p-4 md:p-8 flex flex-col animate-in fade-in duration-300">
+            {/* Header */}
+            <div className="flex flex-col md:flex-row items-center justify-between bg-slate-900/50 p-4 md:p-6 rounded-[2rem] border border-white/5 mb-6 gap-4">
+              <div className="flex items-center gap-4 w-full md:w-auto">
+                <button onClick={() => setIsReviewCenterOpen(false)} className="w-12 h-12 bg-white/5 hover:bg-white/10 rounded-2xl flex items-center justify-center text-slate-300 hover:text-white transition-all">
+                  <ChevronLeft className="w-6 h-6" />
+                </button>
+                <div>
+                  <h2 className="text-2xl md:text-3xl font-black text-white">مركز المراجعة</h2>
+                  <p className="text-slate-400 text-sm mt-1">{selectedSystem}</p>
+                </div>
+              </div>
+              
+              {/* Tabs */}
+              <div className="flex bg-slate-950/50 rounded-2xl p-1.5 border border-white/5 w-full md:w-auto">
+                <button onClick={() => setReviewTab('images')} className={`flex-1 md:flex-none px-8 py-3 rounded-xl font-black text-sm transition-all ${reviewTab === 'images' ? 'bg-indigo-500 text-white shadow-lg shadow-indigo-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}`}>الصور</button>
+                <button onClick={() => setReviewTab('questions')} className={`flex-1 md:flex-none px-8 py-3 rounded-xl font-black text-sm transition-all ${reviewTab === 'questions' ? 'bg-indigo-500 text-white shadow-lg shadow-indigo-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}`}>الأسئلة</button>
+              </div>
+            </div>
+
+            {/* Priority Filter */}
+            <div className="flex justify-center gap-4 md:gap-6 mb-8 shrink-0">
+              {(['A', 'B', 'C'] as const).map(p => (
+                <button 
+                  key={p} onClick={() => setReviewFilter(p)}
+                  className={`w-16 h-16 md:w-20 md:h-20 rounded-[2rem] flex flex-col items-center justify-center transition-all ${reviewFilter === p ? (p === 'A' ? 'bg-rose-500 text-white shadow-xl shadow-rose-500/30 scale-110' : p === 'B' ? 'bg-amber-500 text-white shadow-xl shadow-amber-500/30 scale-110' : 'bg-emerald-500 text-white shadow-xl shadow-emerald-500/30 scale-110') : 'bg-slate-900 border border-white/5 text-slate-500 hover:bg-slate-800 hover:text-white hover:scale-105'}`}
+                >
+                  <span className="text-2xl md:text-3xl font-black">{p}</span>
+                </button>
+              ))}
+            </div>
+
+            {/* Content Grid */}
+            <div className="flex-1 overflow-y-auto custom-scrollbar pb-10">
+              {reviewTab === 'images' ? (
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 md:gap-6 max-w-[1600px] mx-auto">
+                  {boards
+                    .filter(b => b.module === selectedModule && b.system === selectedSystem && spacePriorities[b.id] === reviewFilter)
+                    .map(board => (
+                      <div key={board.id} className="bg-slate-900 rounded-3xl overflow-hidden group cursor-pointer border border-white/5 hover:border-indigo-500/50 transition-all hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-1" onClick={() => { setSelectedBoard(board); setIsReviewCenterOpen(false); }}>
+                        <div className="aspect-[4/3] bg-black/50 relative overflow-hidden">
+                          <img src={board.medicalImage} className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-80" />
+                          <div className={`absolute top-3 right-3 w-8 h-8 rounded-xl flex items-center justify-center text-sm font-black text-white shadow-lg ${reviewFilter === 'A' ? 'bg-rose-500' : reviewFilter === 'B' ? 'bg-amber-500' : 'bg-emerald-500'}`}>{spacePriorities[board.id]}</div>
+                          <div className="absolute bottom-3 right-3 w-10 h-10 bg-white/10 backdrop-blur-md rounded-xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all translate-y-4 group-hover:translate-y-0 text-white">
+                            <Eye className="w-5 h-5" />
+                          </div>
+                        </div>
+                        <div className="p-4 md:p-5">
+                          <h3 className="text-white font-bold text-sm leading-snug line-clamp-2 group-hover:text-indigo-400 transition-colors">{board.disease}</h3>
+                        </div>
+                      </div>
+                    ))
+                  }
+                  {boards.filter(b => b.module === selectedModule && b.system === selectedSystem && spacePriorities[b.id] === reviewFilter).length === 0 && (
+                    <div className="col-span-full py-20 flex flex-col items-center justify-center text-slate-500">
+                      <Target className="w-16 h-16 mb-4 opacity-20" />
+                      <p className="font-bold text-lg">لا توجد صور في هذه الأولوية</p>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div className="max-w-4xl mx-auto space-y-4">
+                  {(() => {
+                    try {
+                      const chapterSlides = boards.filter(b => b.module === selectedModule && b.system === selectedSystem);
+                      const chapterQuestions = chapterSlides.flatMap(board => {
+                        if (!board) return [];
+                        const diseaseKey = (board.disease || '').replace(/\.(jpeg|jpg|png)\s*$/i, '').trim();
+                        return PEDIATRICS_QUESTIONS[diseaseKey] || [];
+                      });
+                      const generalQuestions = PEDIATRICS_QUESTIONS[`_CHAPTER_${selectedSystem}`] || [];
+                      const allChapterQuestions = groupCases([...chapterQuestions, ...generalQuestions]);
+                      
+                      const filteredQs = allChapterQuestions.filter(q => q && spacePriorities[q.id] === reviewFilter);
+                      
+                      if (filteredQs.length === 0) {
+                        return (
+                          <div className="py-20 flex flex-col items-center justify-center text-slate-500 bg-slate-900/50 rounded-[3rem] border border-white/5">
+                            <Brain className="w-16 h-16 mb-4 opacity-20" />
+                            <p className="font-bold text-lg">لا توجد أسئلة في هذه الأولوية</p>
+                          </div>
+                        );
+                      }
+
+                      return filteredQs.map(q => (
+                        <div key={q.id} className="bg-slate-900/80 p-5 md:p-6 rounded-[2rem] border border-white/5 hover:border-indigo-500/30 transition-all">
+                          <div className="flex items-start justify-between gap-4">
+                            <div className="flex-1">
+                              <span className="text-[10px] font-black text-indigo-400 mb-2 inline-block uppercase tracking-widest px-2 py-1 bg-indigo-500/10 rounded-md">{q.type || 'Flashcard'}</span>
+                              <h3 className="text-white font-bold text-base md:text-lg leading-relaxed mb-3 whitespace-pre-wrap">{q.front}</h3>
+                              {q.type === 'case' ? (
+                                <div className="flex flex-col gap-2">
+                                  {q.subQuestions?.map((sq: any, i: number) => (
+                                    <div key={i} className="p-4 bg-slate-950/50 rounded-xl border border-white/5">
+                                      <p className="text-slate-300 text-sm leading-relaxed font-bold mb-2">Q: {sq.questionText}</p>
+                                      <p className="text-indigo-300 text-sm leading-relaxed whitespace-pre-wrap">A: {typeof sq.back === 'string' ? sq.back : 'Multiple choices...'}</p>
+                                    </div>
+                                  ))}
+                                </div>
+                              ) : (
+                                <div className="p-4 bg-slate-950/50 rounded-xl border border-white/5">
+                                  <p className="text-slate-300 text-sm leading-relaxed whitespace-pre-wrap">{typeof q.back === 'string' ? q.back : 'Multiple choices...'}</p>
+                                </div>
+                              )}
+                            </div>
+                            <div className={`w-10 h-10 shrink-0 rounded-xl flex items-center justify-center text-lg font-black text-white shadow-lg ${reviewFilter === 'A' ? 'bg-rose-500' : reviewFilter === 'B' ? 'bg-amber-500' : 'bg-emerald-500'}`}>{spacePriorities[q.id]}</div>
+                          </div>
+                        </div>
+                      ));
+                    } catch (err) {
+                      console.error(err);
+                      return <div className="text-rose-500 p-8 font-bold">حدث خطأ أثناء تحميل الأسئلة.</div>;
+                    }
+                  })()}
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* Subscription Modal for Browse Screen */}
+        {showSubscriptionModal && (
+          <div className="fixed inset-0 z-[99999] flex items-center justify-center p-4">
+            <div className="absolute inset-0 bg-slate-950/80 backdrop-blur-md" onClick={() => setShowSubscriptionModal(false)} />
+            <div className="relative bg-slate-900 border border-white/10 rounded-[2rem] p-8 max-w-md w-full shadow-2xl flex flex-col items-center text-center animate-in fade-in zoom-in duration-300">
+              <div className="w-16 h-16 bg-amber-500/20 text-amber-400 rounded-2xl flex items-center justify-center mb-6 border border-amber-500/30 shadow-inner">
+                <Lock className="w-8 h-8" />
+              </div>
+              
+              <h2 className="text-2xl font-black text-white mb-2">Premium Content</h2>
+              <p className="text-slate-400 mb-6">Unlock all chapters and interactive boards for a complete learning experience.</p>
+              
+              <div className="bg-slate-950/50 rounded-2xl p-6 w-full mb-6 border border-white/5">
+                <div className="text-4xl font-black text-white mb-2">50 EGP</div>
+                <div className="text-sm font-bold text-amber-400 uppercase tracking-widest">Special prices for groups</div>
+                
+                <ul className="mt-6 space-y-3 text-left">
+                  <li className="flex items-center gap-3 text-slate-300 text-sm">
+                    <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+                    <span>Comprehensive chapter boards</span>
+                  </li>
+                  <li className="flex items-center gap-3 text-slate-300 text-sm">
+                    <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+                    <span>Interactive learning tools</span>
+                  </li>
+                  <li className="flex items-center gap-3 text-slate-300 text-sm">
+                    <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+                    <span>Unlimited priority review access</span>
+                  </li>
+                </ul>
+              </div>
+              
+              <div className="w-full space-y-3">
+                <a 
+                  href="https://wa.me/201039322938?text=أريد الاستفسار أكثر عن كورس pediatrics على flash space"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-full py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-white transition-all shadow-lg shadow-[#25D366]/20"
+                >
+                  Subscribe via WhatsApp
+                </a>
+                <a 
+                  href="https://t.me/Clinoma_Admins?text=أريد الاستفسار أكثر عن كورس pediatrics على flash space"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-full py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 bg-[#0088cc] hover:bg-[#0077b5] text-white transition-all shadow-lg shadow-[#0088cc]/20"
+                >
+                  Subscribe via Telegram
+                </a>
+                <button 
+                  onClick={() => setShowSubscriptionModal(false)}
+                  className="w-full py-3 rounded-xl font-bold text-slate-400 hover:text-white transition-colors"
+                >
+                  Maybe Later
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     );
   }
@@ -4046,9 +4370,6 @@ const FlashSpace = () => {
             {/* Tools Palette */}
             <div className="flex items-center gap-0.5 bg-slate-50 p-0.5 rounded-xl border border-slate-200">
               {[
-                { id: 'pen', icon: Pencil, label: 'قلم' },
-                { id: 'highlighter', icon: Highlighter, label: 'تظليل' },
-                { id: 'eraser', icon: Eraser, label: 'ممحاة' },
                 { id: 'laser', icon: Zap, label: 'ليزر' },
                 { id: 'pan', icon: Hand, label: 'تحريك' },
               ].map(tool => (
@@ -4173,25 +4494,40 @@ const FlashSpace = () => {
               style={{transform: `translate(${offset.x}px, ${offset.y}px) scale(${zoom})`}}
             >
                   <img src={selectedBoard.medicalImage} alt="" className="max-w-full max-h-[85vh] pointer-events-none select-none" draggable={false} />
-                            <canvas
+              <canvas
                 ref={bgCanvasRef}
                 width={2500} height={1800}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full object-contain pointer-events-none"
+                className="absolute inset-0 w-full h-full pointer-events-none"
               />
-              <svg className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none z-20" style={{ overflow: 'visible', maxWidth: '100%', maxHeight: '85vh' }}>
+              <svg viewBox="0 0 2500 1800" preserveAspectRatio="none" className="absolute inset-0 w-full h-full pointer-events-none z-20" style={{ overflow: 'visible' }}>
                 {laserPaths.map(p => (
-                  <path
-                    key={p.id}
-                    d={`M ${p.points.map(pt => `${pt.x},${pt.y}`).join(' L ')}`}
-                    fill="none"
-                    stroke="rgba(255, 255, 255, 0.9)"
-                    strokeWidth={p.size / 2.5}
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    style={{ filter: `drop-shadow(0 0 8px ${p.color})` }}
-                    className="animate-fade-out"
-                  />
+                  <g key={p.id} className="animate-fade-out">
+                    <path
+                      d={`M ${p.points.map(pt => `${pt.x},${pt.y}`).join(' L ')}`}
+                      fill="none"
+                      stroke={p.color}
+                      strokeWidth={p.size * 1.5}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      style={{ filter: `drop-shadow(0 0 12px ${p.color}) drop-shadow(0 0 6px ${p.color})` }}
+                    />
+                    <path
+                      d={`M ${p.points.map(pt => `${pt.x},${pt.y}`).join(' L ')}`}
+                      fill="none"
+                      stroke="#ffffff"
+                      strokeWidth={p.size / 2.5}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      style={{ filter: `drop-shadow(0 0 2px #ffffff)` }}
+                    />
+                  </g>
                 ))}
+                
+                {/* Live Laser Layer */}
+                <g>
+                  <path id="live-laser-outer" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                  <path id="live-laser-inner" fill="none" stroke="#ffffff" strokeLinecap="round" strokeLinejoin="round" style={{ filter: `drop-shadow(0 0 2px #ffffff)` }} />
+                </g>
               </svg>
               <canvas
                 ref={canvasRef}
@@ -4199,9 +4535,10 @@ const FlashSpace = () => {
                 onMouseDown={handleStart} onMouseMove={handleMove} onMouseUp={handleEnd} onMouseLeave={handleEnd}
                 onTouchStart={handleStart} onTouchMove={handleMove} onTouchEnd={handleEnd}
                 className={cn(
-                  "absolute inset-0 z-10 w-full h-full touch-none",
+                  "absolute inset-0 w-full h-full touch-none z-[100]",
                   activeTool === 'pan' ? "cursor-grab active:cursor-grabbing" : "cursor-crosshair"
                 )}
+                style={{ touchAction: 'none' }}
               />
             </div>
 
@@ -4217,7 +4554,7 @@ const FlashSpace = () => {
                   Notes
                 </button>
                 <button
-                  onClick={() => { setShowExplanation(true); setShowQuestions(true); setActiveNoteTab('questions'); if (qQueue.length === 0 && !qSessionDone) { const diseaseKey = (selectedBoard?.disease || '').replace(/\.(jpeg|jpg|png)\s*$/i, '').trim(); const qs = PEDIATRICS_QUESTIONS[diseaseKey] || []; if (qs.length > 0) startQuestionSession(qs); } }}
+                  onClick={() => { setShowExplanation(true); setShowQuestions(true); setActiveNoteTab('questions'); if (qQueue.length === 0 && !qSessionDone) { const diseaseKey = (selectedBoard?.disease || '').replace(/\.(jpeg|jpg|png)\s*$/i, '').trim(); const imgQs = PEDIATRICS_QUESTIONS[diseaseKey] || []; const qs = groupCases([...imgQs]); if (qs.length > 0) startQuestionSession(qs); } }}
                   className="px-5 py-3 text-white hover:bg-emerald-600 transition-all flex items-center gap-2 font-black text-xs uppercase tracking-widest"
                 >
                   <Brain className="w-4 h-4" />
@@ -4650,45 +4987,123 @@ const FlashSpace = () => {
             ) : (
               <div className="max-w-4xl mx-auto space-y-4">
                 {(() => {
-                  const chapterSlides = boards.filter(b => b.module === selectedModule && b.system === selectedSystem);
-                  const chapterQuestions = chapterSlides.flatMap(board => {
-                    const diseaseKey = (board.disease || '').replace(/\.(jpeg|jpg|png)\s*$/i, '').trim();
-                    return PEDIATRICS_QUESTIONS[diseaseKey] || [];
-                  });
-                  const generalQuestions = PEDIATRICS_QUESTIONS[`_CHAPTER_${selectedSystem}`] || [];
-                  const allChapterQuestions = [...chapterQuestions, ...generalQuestions];
-                  
-                  const filteredQs = allChapterQuestions.filter(q => spacePriorities[q.id] === reviewFilter);
-                  
-                  if (filteredQs.length === 0) {
-                    return (
-                      <div className="py-20 flex flex-col items-center justify-center text-slate-500 bg-slate-900/50 rounded-[3rem] border border-white/5">
-                        <Brain className="w-16 h-16 mb-4 opacity-20" />
-                        <p className="font-bold text-lg">لا توجد أسئلة في هذه الأولوية</p>
-                      </div>
-                    );
-                  }
-
-                  return filteredQs.map(q => (
-                    <div key={q.id} className="bg-slate-900/80 p-5 md:p-6 rounded-[2rem] border border-white/5 hover:border-indigo-500/30 transition-all">
-                      <div className="flex items-start justify-between gap-4">
-                        <div className="flex-1">
-                          <span className="text-[10px] font-black text-indigo-400 mb-2 inline-block uppercase tracking-widest px-2 py-1 bg-indigo-500/10 rounded-md">{q.type}</span>
-                          <h3 className="text-white font-bold text-base md:text-lg leading-relaxed mb-3">{q.front}</h3>
-                          <div className="p-4 bg-slate-950/50 rounded-xl border border-white/5">
-                            <p className="text-slate-300 text-sm leading-relaxed whitespace-pre-wrap">{typeof q.back === 'string' ? q.back : 'Multiple choices...'}</p>
-                          </div>
+                  try {
+                    const chapterSlides = boards.filter(b => b.module === selectedModule && b.system === selectedSystem);
+                    const chapterQuestions = chapterSlides.flatMap(board => {
+                      if (!board) return [];
+                      const diseaseKey = (board.disease || '').replace(/\.(jpeg|jpg|png)\s*$/i, '').trim();
+                      return PEDIATRICS_QUESTIONS[diseaseKey] || [];
+                    });
+                    const generalQuestions = PEDIATRICS_QUESTIONS[`_CHAPTER_${selectedSystem}`] || [];
+                    const allChapterQuestions = groupCases([...chapterQuestions, ...generalQuestions]);
+                    
+                    const filteredQs = allChapterQuestions.filter(q => q && spacePriorities[q.id] === reviewFilter);
+                    
+                    if (filteredQs.length === 0) {
+                      return (
+                        <div className="py-20 flex flex-col items-center justify-center text-slate-500 bg-slate-900/50 rounded-[3rem] border border-white/5">
+                          <Brain className="w-16 h-16 mb-4 opacity-20" />
+                          <p className="font-bold text-lg">لا توجد أسئلة في هذه الأولوية</p>
                         </div>
-                        <div className={`w-10 h-10 shrink-0 rounded-xl flex items-center justify-center text-lg font-black text-white shadow-lg ${reviewFilter === 'A' ? 'bg-rose-500' : reviewFilter === 'B' ? 'bg-amber-500' : 'bg-emerald-500'}`}>{spacePriorities[q.id]}</div>
+                      );
+                    }
+
+                    return filteredQs.map(q => (
+                      <div key={q.id} className="bg-slate-900/80 p-5 md:p-6 rounded-[2rem] border border-white/5 hover:border-indigo-500/30 transition-all">
+                        <div className="flex items-start justify-between gap-4">
+                          <div className="flex-1">
+                            <span className="text-[10px] font-black text-indigo-400 mb-2 inline-block uppercase tracking-widest px-2 py-1 bg-indigo-500/10 rounded-md">{q.type || 'Flashcard'}</span>
+                            <h3 className="text-white font-bold text-base md:text-lg leading-relaxed mb-3 whitespace-pre-wrap">{q.front}</h3>
+                            {q.type === 'case' ? (
+                              <div className="flex flex-col gap-2">
+                                {q.subQuestions?.map((sq: any, i: number) => (
+                                  <div key={i} className="p-4 bg-slate-950/50 rounded-xl border border-white/5">
+                                    <p className="text-slate-300 text-sm leading-relaxed font-bold mb-2">Q: {sq.questionText}</p>
+                                    <p className="text-indigo-300 text-sm leading-relaxed whitespace-pre-wrap">A: {typeof sq.back === 'string' ? sq.back : 'Multiple choices...'}</p>
+                                  </div>
+                                ))}
+                              </div>
+                            ) : (
+                              <div className="p-4 bg-slate-950/50 rounded-xl border border-white/5">
+                                <p className="text-slate-300 text-sm leading-relaxed whitespace-pre-wrap">{typeof q.back === 'string' ? q.back : 'Multiple choices...'}</p>
+                              </div>
+                            )}
+                          </div>
+                          <div className={`w-10 h-10 shrink-0 rounded-xl flex items-center justify-center text-lg font-black text-white shadow-lg ${reviewFilter === 'A' ? 'bg-rose-500' : reviewFilter === 'B' ? 'bg-amber-500' : 'bg-emerald-500'}`}>{spacePriorities[q.id]}</div>
+                        </div>
                       </div>
-                    </div>
-                  ));
+                    ));
+                  } catch (err) {
+                    console.error(err);
+                    return <div className="text-rose-500 p-8 font-bold">حدث خطأ أثناء تحميل الأسئلة.</div>;
+                  }
                 })()}
               </div>
             )}
           </div>
         </div>
       )}
+
+      {/* Subscription Modal */}
+      {showSubscriptionModal && (
+        <div className="fixed inset-0 z-[99999] flex items-center justify-center p-4">
+          <div className="absolute inset-0 bg-slate-950/80 backdrop-blur-md" onClick={() => setShowSubscriptionModal(false)} />
+          <div className="relative bg-slate-900 border border-white/10 rounded-[2rem] p-8 max-w-md w-full shadow-2xl flex flex-col items-center text-center animate-in fade-in zoom-in duration-300">
+            <div className="w-16 h-16 bg-amber-500/20 text-amber-400 rounded-2xl flex items-center justify-center mb-6 border border-amber-500/30 shadow-inner">
+              <Lock className="w-8 h-8" />
+            </div>
+            
+            <h2 className="text-2xl font-black text-white mb-2">Premium Content</h2>
+            <p className="text-slate-400 mb-6">Unlock all chapters and interactive boards for a complete learning experience.</p>
+            
+            <div className="bg-slate-950/50 rounded-2xl p-6 w-full mb-6 border border-white/5">
+              <div className="text-4xl font-black text-white mb-2">50 EGP</div>
+              <div className="text-sm font-bold text-amber-400 uppercase tracking-widest">Special prices for groups</div>
+              
+              <ul className="mt-6 space-y-3 text-left">
+                <li className="flex items-center gap-3 text-slate-300 text-sm">
+                  <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>Comprehensive chapter boards</span>
+                </li>
+                <li className="flex items-center gap-3 text-slate-300 text-sm">
+                  <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>Interactive learning tools</span>
+                </li>
+                <li className="flex items-center gap-3 text-slate-300 text-sm">
+                  <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>Unlimited priority review access</span>
+                </li>
+              </ul>
+            </div>
+            
+            <div className="w-full space-y-3">
+              <a 
+                href="https://wa.me/201039322938?text=أريد الاستفسار أكثر عن كورس pediatrics على flash space"
+                target="_blank"
+                rel="noreferrer"
+                className="w-full py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-white transition-all shadow-lg shadow-[#25D366]/20"
+              >
+                Subscribe via WhatsApp
+              </a>
+              <a 
+                href="https://t.me/Clinoma_Admins?text=أريد الاستفسار أكثر عن كورس pediatrics على flash space"
+                target="_blank"
+                rel="noreferrer"
+                className="w-full py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 bg-[#0088cc] hover:bg-[#0077b5] text-white transition-all shadow-lg shadow-[#0088cc]/20"
+              >
+                Subscribe via Telegram
+              </a>
+              <button 
+                onClick={() => setShowSubscriptionModal(false)}
+                className="w-full py-3 rounded-xl font-bold text-slate-400 hover:text-white transition-colors"
+              >
+                Maybe Later
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
 <style>{`
         .custom-scrollbar::-webkit-scrollbar { width: 4px; }
         .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
@@ -4696,11 +5111,12 @@ const FlashSpace = () => {
         canvas { touch-action: none; }
         .no-select { user-select: none; }
         @keyframes fadeOut {
-          0% { opacity: 1; }
-          100% { opacity: 0; }
+          0% { opacity: 1; filter: brightness(1.5); }
+          50% { opacity: 0.8; filter: brightness(1); }
+          100% { opacity: 0; filter: brightness(0.5); }
         }
         .animate-fade-out {
-          animation-name: fadeOut;
+          animation: fadeOut 1.5s ease-out forwards;
         }
       `}</style>
     </div>
