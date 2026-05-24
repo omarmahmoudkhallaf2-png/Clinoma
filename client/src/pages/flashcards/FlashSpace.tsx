@@ -757,6 +757,78 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
   ],
   "_CHAPTER_Nutrition": [
     {
+      "id": "nut_infant_req_cf",
+      "front": "What are the approximate Caloric and Fluid daily requirements for a healthy infant in the first 6 months?",
+      "back": "- Caloric: ~110-120 kcal/kg/day (drops to ~100 kcal/kg/day from 6-12 months).\n- Fluids: ~150 ml/kg/day (crucial to prevent dehydration due to large surface area).",
+      "type": "flashcard"
+    },
+    {
+      "id": "nut_infant_supp",
+      "front": "State the guidelines for Vitamin D, Vitamin K, and Iron supplementation in infants.",
+      "back": "- Vitamin D: 400 IU/day from birth to 1 year to prevent Rickets.\n- Vitamin K: IM injection at birth to prevent Hemorrhagic disease of the newborn.\n- Iron: Stores last for the first 4-6 months, after which iron-rich foods must be introduced to prevent Anemia.",
+      "type": "flashcard"
+    },
+    {
+      "id": "nut_infant_nutrients",
+      "front": "Enumerate the basic nutritional requirements for a healthy infant.",
+      "back": "Mnemonic: (ميه وسكر وبروتين.. دهون ومعادن وفيتامين)\n\n1. Water (Fluids)\n2. Carbohydrates (Lactose)\n3. Proteins\n4. Fats (essential for Brain/Neurological development)\n5. Vitamins (e.g., Vit D, Vit K)\n6. Minerals (e.g., Iron, Calcium, Zinc)",
+      "type": "flashcard"
+    },
+    {
+      "id": "nut_rickets_def",
+      "front": "Define Rickets and state its primary causes.",
+      "back": "- Definition: Defective mineralization of growing bones (occurs only in children before epiphyses closure).\n- Causes: Vitamin D deficiency, Calcium deficiency, or Phosphorus deficiency.",
+      "type": "flashcard"
+    },
+    {
+      "id": "nut_rickets_cp",
+      "front": "Enumerate the Clinical Picture of Rickets (from head to toe).",
+      "back": "Mnemonic: (رأسه طرية ومربعة متأخرة في التسنين.. صدره محبب ومطبق.. وإيده ورجله عراض ومقوسين)\n\n- Head: Craniotabes, Frontal bossing (Box-like head), Delayed closure of anterior fontanelle, Delayed dentition.\n- Chest: Rachitic rosary, Harrison's sulcus.\n- Extremities: Broadening of wrists & ankles, Bow legs (Genu varum), Knock knees (Genu valgum).",
+      "type": "flashcard"
+    },
+    {
+      "id": "nut_rickets_inv_tmt",
+      "front": "Enumerate the Investigations & Treatment of Rickets.",
+      "back": "- Labs: Serum Ca (Normal/Low), Serum P (Low), ALP (Very High - best marker for activity/healing).\n- X-ray (wrist/hand): Cupping, Fraying, Widening.\n- Treatment: Vitamin D (daily or Stoss therapy) + Calcium supplementation (to prevent Hungry bone syndrome/Tetany).",
+      "type": "flashcard"
+    },
+    {
+      "id": "nut_tetany_latent",
+      "front": "Define Tetany and describe the signs of Latent Tetany.",
+      "back": "- Definition: Hyperexcitability of neuromuscular system due to Hypocalcemia.\n- Latent Tetany (requires stimulus):\n  1. Chvostek's sign: Facial muscle spasm on tapping Facial nerve.\n  2. Trousseau's sign: Carpal spasm after inflating BP cuff above systolic for 3 mins.",
+      "type": "flashcard"
+    },
+    {
+      "id": "nut_tetany_manifest",
+      "front": "Enumerate the signs of Manifest Tetany.",
+      "back": "Mnemonic: (قفشة في إيده ورجله، تشنج في مخه، وشرقة في حنجرته)\n\n1. Carpopedal spasm (painful spasm in hands/feet).\n2. Laryngospasm (causes stridor, can be fatal).\n3. Convulsions (Generalized seizures).",
+      "type": "flashcard"
+    },
+    {
+      "id": "nut_pem_def",
+      "front": "Define Protein Energy Malnutrition (PEM) and differentiate between Marasmus and Kwashiorkor.",
+      "back": "PEM is a spectrum of diseases caused by severe deficiency of proteins, calories, or both.\n\n- Marasmus: Severe energy (calorie) deficiency.\n- Kwashiorkor: Severe protein deficiency despite adequate carbohydrate calories.\n- Marasmic-Kwashiorkor: Mixed features of both.",
+      "type": "flashcard"
+    },
+    {
+      "id": "nut_pem_causes",
+      "front": "Enumerate the causes of PEM.",
+      "back": "Mnemonic: (جهل وفقر جابوا عدوى.. وأكل ناقص وقت الفطام)\n\n1. Dietary inadequacy\n2. Ignorance & Poverty\n3. Infections (e.g., Gastroenteritis, Measles)\n4. Faulty weaning (too early/late without proper supplements)",
+      "type": "flashcard"
+    },
+    {
+      "id": "nut_pem_marasmus",
+      "front": "Describe the Clinical Picture of Marasmus.",
+      "back": "Mnemonic: (عجوز جعان ومتعصب، جلد وعضم من غير ورم)\n\n1. Severe wasting of muscle & subcutaneous fat (starts in abdomen, ends in face).\n2. Senile face / Old man look (loss of buccal pad of fat).\n3. Irritable & Hungry.\n4. No Edema.\n5. Subnormal temperature & Bradycardia (to conserve energy).",
+      "type": "flashcard"
+    },
+    {
+      "id": "nut_pem_kwashiorkor",
+      "front": "Describe the Clinical Picture of Kwashiorkor.",
+      "back": "Mnemonic: (قمر مورّم، كبده كبير، شعره بيقع ومالوش نفس)\n\n1. Edema (Starts in lower limbs, becomes generalized due to Hypoalbuminemia).\n2. Moon face.\n3. Apathetic & Anorexic.\n4. Hepatomegaly (Fatty liver).\n5. Hair & Skin changes (Flaky paint dermatosis, hair falls easily).",
+      "type": "flashcard"
+    },
+    {
       "id": "nut_hm_colostrum",
       "front": "What is Colostrum, when is it secreted, and what are its main characteristics?",
       "back": "- Secreted in the first days (days 1-5).\n- Yellowish, small amount, but very rich in Proteins and Immunoglobulins (especially Secretory IgA).\n- Acts as a mild laxative to help clear Meconium.",
