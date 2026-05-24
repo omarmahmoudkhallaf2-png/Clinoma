@@ -35,13 +35,15 @@ import {
   Droplets,
   ShieldAlert,
   Stethoscope,
-  Target
+  Target,
+  Lock
 } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
-import { db } from '../../lib/firebase';
-import { collection, query, getDocs, orderBy } from 'firebase/firestore';
+import { useAuth } from '../../context/AuthContext';
+import { db, auth } from '../../lib/firebase';
+import { collection, query, getDocs, orderBy, doc, updateDoc, increment, arrayUnion, deleteField } from 'firebase/firestore';
 import ReactMarkdown from 'react-markdown';
 
 // --- Vector Types ---
@@ -566,7 +568,7 @@ const MatchingGameUI = ({ question, onComplete }: { question: any, onComplete: (
               let borderClass = 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-slate-300 dark:hover:border-slate-600';
               if (isActive) borderClass = 'border-indigo-400 bg-indigo-50 dark:bg-indigo-900/40 shadow-md scale-[1.02] ring-2 ring-indigo-400/50';
               else if (conn) {
-                if (isSubmitted) {
+                if (isSubmitted || conn.isCorrect !== undefined) {
                   borderClass = conn.isCorrect ? 'border-emerald-400 bg-emerald-50 dark:bg-emerald-900/30' : 'border-rose-400 bg-rose-50 dark:bg-rose-900/30';
                 } else {
                   borderClass = 'border-indigo-200 dark:border-indigo-800 bg-indigo-50/50 dark:bg-indigo-900/20';
@@ -603,7 +605,7 @@ const MatchingGameUI = ({ question, onComplete }: { question: any, onComplete: (
               let borderClass = 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-slate-300 dark:hover:border-slate-600';
               if (isActive) borderClass = 'border-indigo-400 bg-indigo-50 dark:bg-indigo-900/40 shadow-md scale-[1.02] ring-2 ring-indigo-400/50';
               else if (conn) {
-                if (isSubmitted) {
+                if (isSubmitted || conn.isCorrect !== undefined) {
                   borderClass = conn.isCorrect ? 'border-emerald-400 bg-emerald-50 dark:bg-emerald-900/30' : 'border-rose-400 bg-rose-50 dark:bg-rose-900/30';
                 } else {
                   borderClass = 'border-indigo-200 dark:border-indigo-800 bg-indigo-50/50 dark:bg-indigo-900/20';
@@ -668,14 +670,15 @@ const MatchingGameUI = ({ question, onComplete }: { question: any, onComplete: (
 // --- Question Types ---
 interface Question {
   id: string;
-  type?: 'flashcard' | 'matching';
+  type?: 'flashcard' | 'matching' | 'case';
   front: string;
   back?: string;
   matchingPairs?: Array<{ left: string, right: string }>;
+  caseBody?: string;
+  subQuestions?: Array<{ id: string, questionText: string, back: string }>;
 }
 
 const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
-
   "_CHAPTER_Growth & development": [
     {
       "id": "gd_saq1",
@@ -709,8 +712,26 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
     },
     {
       "id": "gd_match1",
-      "front": "Match the developmental milestone with the correct normal median age of achievement:\n\nSocial smile\nSitting without support (with straight back)\nPincer grip (grasp by thumb and finger)\nWalking well",
-      "back": "Social smile -> 2 months\n\nSitting without support -> 8 months\n\nPincer grip -> 9 months\n\nWalking well -> 15 months"
+      "front": "Match the developmental milestone with the correct normal median age of achievement:",
+      "type": "matching",
+      "matchingPairs": [
+        {
+          "left": "Social smile",
+          "right": "2 months"
+        },
+        {
+          "left": "Sitting without support",
+          "right": "8 months"
+        },
+        {
+          "left": "Pincer grip",
+          "right": "9 months"
+        },
+        {
+          "left": "Walking well",
+          "right": "15 months"
+        }
+      ]
     },
     {
       "id": "gd_case1_q1",
@@ -733,7 +754,6 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "back": "Causes of delayed walking: Cerebral palsy and muscles disorders."
     }
   ],
-
   "_CHAPTER_Nutrition": [
     {
       "id": "nut_saq_1",
@@ -790,10 +810,22 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "type": "matching",
       "front": "Match the clinical sign/term in Group (A) with its exact diagnostic description in Group (B):",
       "matchingPairs": [
-        { "left": "Flag sign", "right": "Alternating bands of normal color and hypopigmentations due to alternating periods of normal state and protein malnutrition." },
-        { "left": "Marfan's sign", "right": "Transverse groove on both malleoli due to abnormal proliferation of osteoid tissue at two different centers, pathognomonic for rickets." },
-        { "left": "Trousseau sign", "right": "Carpal spasm induced by occlusion of arterial flow to the arm by inflating the cuff of a sphygmomanometer above systolic pressure for 3 minutes." },
-        { "left": "Craniotabes", "right": "Abnormal softness due to thinning of the outer skull plate where a squash ball sensation is felt by pressing firmly over the occipital bones." }
+        {
+          "left": "Flag sign",
+          "right": "Alternating bands of normal color and hypopigmentations due to alternating periods of normal state and protein malnutrition."
+        },
+        {
+          "left": "Marfan's sign",
+          "right": "Transverse groove on both malleoli due to abnormal proliferation of osteoid tissue at two different centers, pathognomonic for rickets."
+        },
+        {
+          "left": "Trousseau sign",
+          "right": "Carpal spasm induced by occlusion of arterial flow to the arm by inflating the cuff of a sphygmomanometer above systolic pressure for 3 minutes."
+        },
+        {
+          "left": "Craniotabes",
+          "right": "Abnormal softness due to thinning of the outer skull plate where a squash ball sensation is felt by pressing firmly over the occipital bones."
+        }
       ]
     },
     {
@@ -883,10 +915,22 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "type": "matching",
       "front": "Match the chromosomal disorder or prenatal finding in Group (A) with its exact genetic description or diagnostic marker in Group (B):",
       "matchingPairs": [
-        { "left": "Turner syndrome", "right": "A condition characterized by a 45,X genotype, short stature, webbed neck, and primary amenorrhea." },
-        { "left": "Klinefelter syndrome", "right": "A condition characterized by a 47,XXY genotype, tall stature, eunuchoid build, small testes, and gynecomastia." },
-        { "left": "Edward syndrome", "right": "Trisomy 18 presenting with low-set malformed auricles, a clenched hand with overlapping fingers, and rocker bottom feet." },
-        { "left": "Down syndrome prenatal triple test", "right": "Decreased maternal serum alpha-fetoprotein (AFP), decreased unconjugated estriol (uE3), and increased human chorionic gonadotrophin (hCG)." }
+        {
+          "left": "Turner syndrome",
+          "right": "A condition characterized by a 45,X genotype, short stature, webbed neck, and primary amenorrhea."
+        },
+        {
+          "left": "Klinefelter syndrome",
+          "right": "A condition characterized by a 47,XXY genotype, tall stature, eunuchoid build, small testes, and gynecomastia."
+        },
+        {
+          "left": "Edward syndrome",
+          "right": "Trisomy 18 presenting with low-set malformed auricles, a clenched hand with overlapping fingers, and rocker bottom feet."
+        },
+        {
+          "left": "Down syndrome prenatal triple test",
+          "right": "Decreased maternal serum alpha-fetoprotein (AFP), decreased unconjugated estriol (uE3), and increased human chorionic gonadotrophin (hCG)."
+        }
       ]
     },
     {
@@ -991,10 +1035,22 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "type": "matching",
       "front": "Match the clinical screening test/investigation in Group (A) with its exact diagnostic significance in Group (B):",
       "matchingPairs": [
-        { "left": "Fecal Calprotectin (FC)", "right": "The most sensitive fecal marker for pediatric inflammatory bowel disease (IBD) screening." },
-        { "left": "ASCA (Anti-Saccharomyces cerevisiae)", "right": "A serological marker primarily associated with Crohn's Disease (60-70% of cases)." },
-        { "left": "pANCA (Perinuclear Anti-Neutrophil Cytoplasmic Antibodies)", "right": "A serological marker primarily associated with Ulcerative Colitis (60-80% of cases)." },
-        { "left": "Suction rectal biopsy", "right": "The gold standard diagnostic investigation for confirming Hirschsprung Disease." }
+        {
+          "left": "Fecal Calprotectin (FC)",
+          "right": "The most sensitive fecal marker for pediatric inflammatory bowel disease (IBD) screening."
+        },
+        {
+          "left": "ASCA (Anti-Saccharomyces cerevisiae)",
+          "right": "A serological marker primarily associated with Crohn's Disease (60-70% of cases)."
+        },
+        {
+          "left": "pANCA (Perinuclear Anti-Neutrophil Cytoplasmic Antibodies)",
+          "right": "A serological marker primarily associated with Ulcerative Colitis (60-80% of cases)."
+        },
+        {
+          "left": "Suction rectal biopsy",
+          "right": "The gold standard diagnostic investigation for confirming Hirschsprung Disease."
+        }
       ]
     },
     {
@@ -1104,10 +1160,22 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "type": "matching",
       "front": "Match the clinical term or syndrome in Group (A) with its exact diagnostic/physiological description in Group (B):",
       "matchingPairs": [
-        { "left": "Kallmann Syndrome", "right": "A form of congenital permanent hypogonadotropic hypogonadism that is characteristically associated with anosmia." },
-        { "left": "21-hydroxylase deficiency", "right": "The most common type of inherited enzyme defect responsible for Congenital Adrenal Hyperplasia (CAH)." },
-        { "left": "Thelarche", "right": "The onset of female breast development, which represents the first sign of puberty in girls." },
-        { "left": "Kussmaul respiration", "right": "Deep rapid respiration due to metabolic acidosis in an attempt to excrete excess CO2, characteristic of DKA." }
+        {
+          "left": "Kallmann Syndrome",
+          "right": "A form of congenital permanent hypogonadotropic hypogonadism that is characteristically associated with anosmia."
+        },
+        {
+          "left": "21-hydroxylase deficiency",
+          "right": "The most common type of inherited enzyme defect responsible for Congenital Adrenal Hyperplasia (CAH)."
+        },
+        {
+          "left": "Thelarche",
+          "right": "The onset of female breast development, which represents the first sign of puberty in girls."
+        },
+        {
+          "left": "Kussmaul respiration",
+          "right": "Deep rapid respiration due to metabolic acidosis in an attempt to excrete excess CO2, characteristic of DKA."
+        }
       ]
     },
     {
@@ -1217,10 +1285,22 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "type": "matching",
       "front": "Match the pathognomonic diagnostic finding or cell type in Group (A) with its corresponding hematological/oncological condition in Group (B):",
       "matchingPairs": [
-        { "left": "Target cells", "right": "Thalassemia Syndromes" },
-        { "left": "Heinz bodies", "right": "Glucose-6-phosphate dehydrogenase (G6PD) deficiency" },
-        { "left": "Schistocytes (fragmented RBCs)", "right": "Disseminated Intravascular Coagulopathy (DIC)" },
-        { "left": "Reed-Sternberg (RS) cells", "right": "Hodgkin Lymphoma" }
+        {
+          "left": "Target cells",
+          "right": "Thalassemia Syndromes"
+        },
+        {
+          "left": "Heinz bodies",
+          "right": "Glucose-6-phosphate dehydrogenase (G6PD) deficiency"
+        },
+        {
+          "left": "Schistocytes (fragmented RBCs)",
+          "right": "Disseminated Intravascular Coagulopathy (DIC)"
+        },
+        {
+          "left": "Reed-Sternberg (RS) cells",
+          "right": "Hodgkin Lymphoma"
+        }
       ]
     },
     {
@@ -1383,7 +1463,6 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "back": "Parenteral antibiotic therapy (Ceftriaxone or Ampicillin + Gentamicin) for 14 days, combined with imaging studies (US & VCUG) to detect any predisposing anomalies like VUR."
     }
   ],
-
   "RBC Physiology, Indices & Morphology": [],
   "Classification & Evaluation of Anemia": [
     {
@@ -1758,7 +1837,6 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
   ],
   "Acquired Bleeding & DIC": [],
   "Safe Blood Transfusion & Complications": [],
-
   "Acute Rheumatic Fever (ARF)": [
     {
       "id": "arf1",
@@ -1924,7 +2002,6 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
     }
   ],
   "Ventricular Septal Defect (VSD) - 2": [],
-
   "Acute Diarrhea & Dehydration Assessment": [
     {
       "id": "adda1",
@@ -2125,7 +2202,6 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
   ],
   "Inborn Errors of Metabolism & Phenylketonuria (PKU)": [],
   "COW MILK ALLERGY & LACTOSE INTOLERANCE": [],
-
   "INTRODUCTION TO ENDOCRINE SYSTEM": [
     {
       "id": "ies1",
@@ -2224,7 +2300,6 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "back": "BMI ≥ 35 kg/m² associated with severe comorbidities (e.g., Type 2 Diabetes Mellitus, severe obstructive sleep apnea, pseudotumor cerebri).\n\nBMI ≥ 40 kg/m² with milder comorbidities.\n\nPhysical maturity (usually reached Tanner stage IV or V, and near final adult height).\n\nFailure of a multidisciplinary weight loss program (diet, exercise, behavioral modifications) for at least 6 months.\n\nPsychological capability of the patient and family to adhere to strict post-operative dietary rules."
     }
   ],
-
   "INTRODUCTION TO GENETICS & BASIC CONCEPTS": [
     {
       "id": "ig1",
@@ -2375,7 +2450,6 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "back": "Congenital hypothyroidism (and Phenylketonuria)."
     }
   ],
-
   "THE FOUNDATIONS OF INFANT FEEDING": [
     {
       "id": "fif1",
@@ -2478,7 +2552,8 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "front": "Mention types of Growth charts.",
       "back": "Percentile curves.\n\nStandard deviation curves.\n\nVelocity curves.\n\nConditional centiles."
     }
-  ],  "BIOLOGICAL AGE & MATURATION (BONE & TEETH)": [
+  ],
+  "BIOLOGICAL AGE & MATURATION (BONE & TEETH)": [
     {
       "id": "bone1",
       "front": "Enumerate the causes of Delayed Dentition.",
@@ -2525,8 +2600,128 @@ const SYSTEM_COLORS: Record<string, string> = {
   'Renal diseases': '#0ea5e9',
 };
 
+// --- Case Questions Logic ---
+const groupCases = (questions: any[]) => {
+  const result: any[] = [];
+  const caseMap = new Map<string, any>();
+  
+  questions.forEach(q => {
+    if (q.front && q.front.toLowerCase().startsWith('case ')) {
+      const parts = q.front.split('\n\n');
+      if (parts.length >= 2) {
+        const caseBody = parts[0].trim();
+        const questionText = parts.slice(1).join('\n\n').trim();
+        
+        if (!caseMap.has(caseBody)) {
+          const caseObj = {
+            id: `case_group_${q.id}`,
+            type: 'case',
+            front: caseBody,
+            caseBody: caseBody,
+            subQuestions: []
+          };
+          caseMap.set(caseBody, caseObj);
+          result.push(caseObj);
+        }
+        
+        caseMap.get(caseBody).subQuestions.push({
+          id: q.id,
+          questionText: questionText,
+          back: q.back
+        });
+        
+        return;
+      }
+    }
+    // Not a case or poorly formatted, push as is
+    result.push(q);
+  });
+  
+  return result;
+};
+
+// --- Case Study UI Component ---
+const CaseStudyUI = ({ question, onComplete, currentPriority, onSetPriority }: { question: any, onComplete: () => void, currentPriority?: 'A'|'B'|'C'|null, onSetPriority?: (p: 'A'|'B'|'C'|null) => void }) => {
+  const [revealed, setRevealed] = useState<Record<string, boolean>>({});
+
+  useEffect(() => {
+    setRevealed({});
+  }, [question]);
+
+  const allRevealed = question.subQuestions && Object.keys(revealed).length === question.subQuestions.length;
+
+  return (
+    <div className="flex flex-col w-full h-full max-w-4xl mx-auto overflow-hidden bg-slate-50 dark:bg-slate-900 rounded-3xl border-2 border-slate-100 dark:border-slate-800 shadow-xl" onClick={e => e.stopPropagation()}>
+      {/* Top Header - Case Body */}
+      <div className="w-full bg-indigo-50 dark:bg-indigo-900/30 p-6 md:p-8 shrink-0 relative">
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-purple-500" />
+
+          {onSetPriority && (
+            <div className="absolute top-6 right-6 flex items-center gap-2 bg-white/50 dark:bg-slate-800/50 p-2 rounded-2xl border border-slate-200 dark:border-slate-700/50 shadow-sm">
+              <span className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mx-2">Priority:</span>
+              {(['A', 'B', 'C'] as const).map(p => (
+                <button
+                  key={p}
+                  onClick={(e) => { e.stopPropagation(); onSetPriority(currentPriority === p ? null : p); }}
+                  className={`w-8 h-8 rounded-lg flex items-center justify-center font-black transition-all ${currentPriority === p ? (p === 'A' ? 'bg-rose-500 text-white shadow-lg shadow-rose-500/20 scale-110' : p === 'B' ? 'bg-amber-500 text-white shadow-lg shadow-amber-500/20 scale-110' : 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/20 scale-110') : 'bg-white dark:bg-slate-700 text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-600'}`}
+                >
+                  {p}
+                </button>
+              ))}
+            </div>
+          )}
+
+        <div className="flex items-start gap-4">
+          <div className="w-10 h-10 bg-indigo-100 dark:bg-indigo-800 rounded-xl flex items-center justify-center shrink-0">
+            <span className="text-indigo-600 dark:text-indigo-300 font-black">C</span>
+          </div>
+          <div>
+            <h3 className="font-black text-slate-800 dark:text-slate-100 text-base md:text-lg whitespace-pre-wrap leading-relaxed" dir="auto">{question.caseBody}</h3>
+          </div>
+        </div>
+      </div>
+      
+      {/* Sub Questions List */}
+      <div className="flex-1 overflow-y-auto p-4 md:p-6 custom-scrollbar flex flex-col gap-4">
+        <h4 className="font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest text-xs mb-2">Questions ({question.subQuestions?.length || 0})</h4>
+        
+        {question.subQuestions?.map((sub: any, index: number) => (
+          <div key={sub.id} className="bg-white dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-700 rounded-2xl p-4 md:p-5 flex flex-col gap-4 transition-all hover:border-indigo-200 dark:hover:border-indigo-800/50">
+            <p className="font-bold text-slate-700 dark:text-slate-200" dir="auto">{sub.questionText}</p>
+            
+            {!revealed[sub.id] ? (
+              <button 
+                onClick={() => setRevealed(prev => ({...prev, [sub.id]: true}))}
+                className="self-start px-5 py-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-600 dark:text-slate-300 font-bold rounded-xl text-sm transition-all flex items-center gap-2"
+              >
+                Reveal Answer
+              </button>
+            ) : (
+              <div className="bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-100 dark:border-emerald-800/50 p-4 rounded-xl mt-2 animate-in fade-in slide-in-from-top-2 duration-300">
+                <p className="font-bold text-emerald-700 dark:text-emerald-400 whitespace-pre-wrap" dir="auto">{sub.back}</p>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+
+      {/* Completion */}
+      <div className="shrink-0 p-4 bg-white dark:bg-slate-800 border-t-2 border-slate-100 dark:border-slate-700 flex justify-center">
+        <button
+          onClick={onComplete}
+          disabled={!allRevealed}
+          className={`px-8 py-3 rounded-2xl font-black transition-all ${allRevealed ? 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-lg shadow-indigo-500/30 hover:scale-105 active:scale-95' : 'bg-slate-200 dark:bg-slate-700 text-slate-400 dark:text-slate-500 cursor-not-allowed'}`}
+        >
+          {allRevealed ? 'Complete Case' : 'Reveal All Answers First'}
+        </button>
+      </div>
+    </div>
+  );
+};
+
 const FlashSpace = () => {
   const navigate = useNavigate();
+  const { isSpaceSubscribed, userData, user } = useAuth();
   const [loading, setLoading] = useState(true);
   const [boards, setBoards] = useState<Board[]>([]);
   const [modules, setModules] = useState<string[]>([]);
@@ -2563,11 +2758,48 @@ const FlashSpace = () => {
   const [isCardFlipped, setIsCardFlipped] = useState(false);
   const [qSessionDone, setQSessionDone] = useState(false);
   const [isChapterQuestionMode, setIsChapterQuestionMode] = useState(false);
+  // --- Priority Review System State ---
+  const [spacePriorities, setSpacePriorities] = useState<Record<string, 'A'|'B'|'C'>>({});
+  const [isReviewCenterOpen, setIsReviewCenterOpen] = useState(false);
+  const [reviewTab, setReviewTab] = useState<'images'|'questions'>('images');
+  const [reviewFilter, setReviewFilter] = useState<'A'|'B'|'C'>('A');
+
+  useEffect(() => {
+    if (userData?.spacePriorities) {
+      setSpacePriorities(userData.spacePriorities);
+    }
+  }, [userData?.spacePriorities]);
+
+  const handleSetPriority = async (itemId: string, priority: 'A'|'B'|'C'|null) => {
+    if (!user) return;
+    try {
+      const newPriorities = { ...spacePriorities };
+      if (priority) {
+        newPriorities[itemId] = priority;
+      } else {
+        delete newPriorities[itemId];
+      }
+      setSpacePriorities(newPriorities);
+      
+      const userRef = doc(db, 'users', user.uid);
+      // We use dot notation to update specific field in map
+      await updateDoc(userRef, {
+        [`spacePriorities.${itemId}`]: priority ? priority : deleteField()
+      });
+      toast.success('Priority Updated');
+    } catch (error) {
+      console.error("Failed to set priority", error);
+      toast.error('Failed to update priority');
+    }
+  };
+
+  const [activeCategory, setActiveCategory] = useState<string>('All');
+  const [historyStack, setHistoryStack] = useState<{qQueue: Question[], qDone: Question[], qHardCount: number, qRepeatCount: number}[]>([]);
 
   // Vector Engine
   const [paths, setPaths] = useState<Path[]>([]);
   const [redoPaths, setRedoPaths] = useState<Path[]>([]);
-  const [currentPath, setCurrentPath] = useState<Path | null>(null);
+  const currentPathRef = useRef<Path | null>(null);
   const fadingLasersRef = useRef<Path[]>([]);
 
   // Timer
@@ -2734,7 +2966,7 @@ const FlashSpace = () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     paths.forEach(p => drawPath(ctx, p));
-    if (currentPath) drawPath(ctx, currentPath);
+    if (currentPathRef.current) drawPath(ctx, currentPathRef.current);
 
     const now = Date.now();
     fadingLasersRef.current = fadingLasersRef.current.filter(l => {
@@ -2745,7 +2977,7 @@ const FlashSpace = () => {
     });
 
     requestRef.current = requestAnimationFrame(renderFrame);
-  }, [paths, currentPath, drawPath]);
+  }, [paths, drawPath]);
 
   useEffect(() => {
     requestRef.current = requestAnimationFrame(renderFrame);
@@ -2781,7 +3013,7 @@ const FlashSpace = () => {
   const handleStart = (e: React.MouseEvent | React.TouchEvent) => {
     if ('touches' in e && e.touches.length === 2) {
       setIsTwoFingerDragging(true);
-      setCurrentPath(null);
+      currentPathRef.current = null;
       
       const t1 = e.touches[0];
       const t2 = e.touches[1];
@@ -2809,19 +3041,19 @@ const FlashSpace = () => {
     const pos = getPos(e);
     if (activeTool === 'eraser') {
       handleEraser(pos);
-      setCurrentPath({ id: 'eraser-mark', points: [pos], tool: 'eraser', color: '#fff', size: 1, opacity: 0 });
+      currentPathRef.current = { id: 'eraser-mark', points: [pos], tool: 'eraser', color: '#fff', size: 1, opacity: 0 };
       return;
     }
 
     const settings = toolSettings[activeTool];
-    setCurrentPath({
+    currentPathRef.current = {
       id: Math.random().toString(),
       points: [pos],
       tool: activeTool,
       color: settings.color,
       size: settings.size,
       opacity: settings.opacity
-    });
+    };
   };
 
   const handleMove = (e: React.MouseEvent | React.TouchEvent) => {
@@ -2860,13 +3092,13 @@ const FlashSpace = () => {
       return;
     }
 
-    if (!currentPath) return;
+    if (!currentPathRef.current) return;
     const pos = getPos(e);
     if (activeTool === 'eraser') {
       handleEraser(pos);
       return;
     }
-    setCurrentPath(prev => prev ? ({ ...prev, points: [...prev.points, pos] }) : null);
+    currentPathRef.current.points.push(pos);
   };
 
   const handleEnd = () => {
@@ -2883,14 +3115,14 @@ const FlashSpace = () => {
       return;
     }
 
-    if (!currentPath) return;
+    if (!currentPathRef.current) return;
     if (activeTool === 'laser') {
-      fadingLasersRef.current.push({ ...currentPath, fadeStart: Date.now(), isFading: true });
+      fadingLasersRef.current.push({ ...currentPathRef.current, fadeStart: Date.now(), isFading: true });
     } else if (activeTool !== 'eraser') {
-      setPaths(prev => [...prev, currentPath]);
+      setPaths(prev => [...prev, currentPathRef.current!]);
       setRedoPaths([]);
     }
-    setCurrentPath(null);
+    currentPathRef.current = null;
   };
 
   const updateSetting = (tool: Tool, key: string, val: any) => {
@@ -2904,13 +3136,29 @@ const FlashSpace = () => {
     setQDone([]);
     setQHardCount(0);
     setQRepeatCount(0);
+    setHistoryStack([]);
     setIsCardFlipped(false);
     setQSessionDone(false);
+  };
+
+  const previousCard = () => {
+    if (historyStack.length === 0) return;
+    const lastState = historyStack[historyStack.length - 1];
+    setQQueue(lastState.qQueue);
+    setQDone(lastState.qDone);
+    setQHardCount(lastState.qHardCount);
+    setQRepeatCount(lastState.qRepeatCount);
+    setHistoryStack(prev => prev.slice(0, -1));
+    setIsCardFlipped(false);
   };
 
   const rateCard = (rating: 'easy' | 'repeat' | 'hard') => {
     const current = qQueue[0];
     const rest = qQueue.slice(1);
+    
+    // Save state before changing
+    setHistoryStack(prev => [...prev, { qQueue, qDone, qHardCount, qRepeatCount }]);
+    
     setIsCardFlipped(false);
     setTimeout(() => {
       if (rating === 'easy') {
@@ -2919,6 +3167,36 @@ const FlashSpace = () => {
         if (rest.length === 0) {
           setQSessionDone(true);
           setQQueue([]);
+          
+          // Submit Points to Firebase
+          const user = auth.currentUser;
+          if (user) {
+            const minutes = Math.floor(sessionSeconds / 60);
+            const timePoints = minutes * 2;
+            let earnedPoints = newDone.length * 10 + timePoints;
+            const updates: any = { 
+              points: increment(earnedPoints),
+              spacePoints: increment(earnedPoints)
+            };
+            let successMessage = `You earned ${earnedPoints} points! 🏆`;
+            
+            // Topic Completion Check
+            if (selectedModule && selectedSystem) {
+              const totalSlides = boards.filter(b => b.module === selectedModule && b.system === selectedSystem).length;
+              if (newDone.length >= totalSlides && totalSlides > 0) {
+                earnedPoints += 100;
+                updates.points = increment(earnedPoints);
+                updates.spacePoints = increment(earnedPoints);
+                updates.completedSpaceTopics = arrayUnion(`${selectedModule}_${selectedSystem}`);
+                successMessage = `Module Completed! +100 Bonus! Total: ${earnedPoints} Pts 🏅`;
+              }
+            }
+
+            const userRef = doc(db, 'users', user.uid);
+            updateDoc(userRef, updates)
+              .then(() => toast.success(successMessage))
+              .catch(err => console.error("Failed to add points", err));
+          }
         } else {
           setQQueue(rest);
         }
@@ -3007,29 +3285,34 @@ const FlashSpace = () => {
               </div>
               <div className="flex-1 overflow-y-auto pb-8">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-                  {modules.map(mod => (
-                    <button key={mod} onClick={() => setSelectedModule(mod)}
-                      className="group relative bg-slate-900/50 backdrop-blur-xl border border-white/5 active:border-indigo-500/50 hover:border-indigo-500/50 rounded-3xl text-left transition-all duration-300 active:scale-[0.98] hover:scale-[1.02] overflow-hidden p-6 hover:shadow-2xl hover:shadow-indigo-500/10"
+                  {modules.map(mod => {
+                    const hasAccess = isSpaceSubscribed(mod);
+                    return (
+                    <button key={mod} onClick={() => {
+                        if (hasAccess) setSelectedModule(mod);
+                        else toast.error('This module is locked. Please subscribe to access it.');
+                      }}
+                      className={cn("group relative backdrop-blur-xl border border-white/5 active:border-indigo-500/50 hover:border-indigo-500/50 rounded-3xl text-left transition-all duration-300 active:scale-[0.98] hover:scale-[1.02] overflow-hidden p-6 hover:shadow-2xl hover:shadow-indigo-500/10",
+                        hasAccess ? "bg-slate-900/50" : "bg-slate-900/20 grayscale opacity-70"
+                      )}
                     >
                       {/* Gradient Glow */}
-                      <div className="absolute top-0 right-0 w-40 h-40 opacity-10 group-hover:opacity-30 transition-opacity duration-500 blur-3xl rounded-full" style={{background: '#6366f1', transform: 'translate(40%, -40%)'}} />
+                      {hasAccess && <div className="absolute top-0 right-0 w-40 h-40 opacity-10 group-hover:opacity-30 transition-opacity duration-500 blur-3xl rounded-full" style={{background: '#6366f1', transform: 'translate(40%, -40%)'}} />}
                       
                       <div className="relative z-10 flex flex-col h-full gap-4">
                         <div className="w-14 h-14 bg-gradient-to-br from-indigo-500/20 to-violet-500/10 border border-indigo-500/20 rounded-2xl flex items-center justify-center text-indigo-400 shadow-inner group-hover:-translate-y-1 transition-transform duration-300">
-                          <BookOpen className="w-7 h-7 drop-shadow-md" />
+                          {hasAccess ? <BookOpen className="w-7 h-7 drop-shadow-md" /> : <Lock className="w-7 h-7 drop-shadow-md" />}
                         </div>
                         <div className="flex items-end justify-between mt-auto">
                           <div>
                             <h3 className="text-xl font-black text-white leading-tight">{mod}</h3>
                             <p className="text-slate-400 text-xs font-semibold mt-1">{systems[mod]?.length || 0} chapters available</p>
                           </div>
-                          <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-slate-400 group-hover:bg-indigo-500/20 group-hover:text-indigo-400 transition-all duration-300">
-                            <ArrowRight className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" />
-                          </div>
+                          {!hasAccess && <span className="text-[10px] uppercase font-black tracking-widest px-2 py-1 bg-rose-500/10 text-rose-500 rounded-md">Locked</span>}
                         </div>
                       </div>
                     </button>
-                  ))}
+                  )})}
                 </div>
               </div>
             </div>
@@ -3109,9 +3392,66 @@ const FlashSpace = () => {
                 {isChapterQuestionMode ? (
                   // --- CHAPTER QUESTIONS TAB - Flashcard Session ---
                   (() => {
+                    const chapterSlides = boards.filter(b => b.module === selectedModule && b.system === selectedSystem);
+                    const chapterQuestions = chapterSlides.flatMap(board => {
+                      const diseaseKey = (board.disease || '').replace(/\.(jpeg|jpg|png)\s*$/i, '').trim();
+                      return PEDIATRICS_QUESTIONS[diseaseKey] || [];
+                    });
+                    const generalQuestions = PEDIATRICS_QUESTIONS[`_CHAPTER_${selectedSystem}`] || [];
+                    const allQuestions = [...chapterQuestions, ...generalQuestions];
+
+                    const getFilteredQuestions = (cat: string) => {
+                      let filtered = allQuestions;
+                      if (cat !== 'All') {
+                        filtered = allQuestions.filter(q => {
+                          if (cat === 'Definitions') return q.front.toLowerCase().startsWith('define');
+                          if (cat === 'Enumerate') return q.front.toLowerCase().startsWith('enumerate');
+                          if (cat === 'Cases') return q.front.toLowerCase().startsWith('case');
+                          if (cat === 'Matching') return q.front.toLowerCase().startsWith('match') || q.type === 'matching';
+                          return true;
+                        });
+                      }
+                      return groupCases(filtered);
+                    };
+
+                    const CategoryTabs = () => (
+                      <div className="flex flex-wrap items-center justify-center gap-2 mb-4 w-full max-w-2xl mx-auto border-b border-slate-100 pb-2">
+                        {['All', 'Definitions', 'Enumerate', 'Matching', 'Cases'].map(cat => {
+                          const count = getFilteredQuestions(cat).length;
+                          return (
+                            <button
+                              key={cat}
+                              onClick={() => {
+                                setActiveCategory(cat);
+                                const newQs = getFilteredQuestions(cat);
+                                if (newQs.length > 0) startQuestionSession(newQs);
+                                else { setQQueue([]); setQDone([]); setQSessionDone(false); }
+                              }}
+                              className={`px-4 py-2 flex items-center gap-1.5 rounded-full text-xs md:text-sm font-bold transition-all ${activeCategory === cat ? 'bg-indigo-500 text-white shadow-md' : 'bg-slate-100 text-slate-500 hover:bg-slate-200'}`}
+                            >
+                              {cat} <span className={`text-[10px] px-1.5 py-0.5 rounded-full ${activeCategory === cat ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-500'}`}>{count}</span>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    );
+
                     const questions = qQueue.concat(qDone); // Total questions in this session
                     const totalQ = qDone.length + qQueue.length;
                     const currentCard = qQueue[0];
+
+                    if (questions.length === 0 && allQuestions.length > 0) {
+                      return (
+                        <div className="flex flex-col items-center justify-center py-20 text-center px-8">
+                          <CategoryTabs />
+                          <div className="w-20 h-20 bg-slate-50 rounded-[2rem] flex items-center justify-center mb-6">
+                            <Brain className="w-10 h-10 text-slate-400" />
+                          </div>
+                          <h3 className="text-2xl font-black text-slate-800 mb-2">No Questions in this Category</h3>
+                          <p className="text-slate-400">Please select another category.</p>
+                        </div>
+                      );
+                    }
 
                     if (questions.length === 0) {
                       return (
@@ -3148,7 +3488,7 @@ const FlashSpace = () => {
                           </div>
                           <div className="flex items-center gap-4">
                             <button
-                              onClick={() => startQuestionSession(questions)}
+                              onClick={() => startQuestionSession(getFilteredQuestions(activeCategory))}
                               className="px-8 py-3 bg-slate-900 text-white rounded-2xl font-black hover:bg-indigo-600 transition-all"
                             >
                               Restart Session
@@ -3167,6 +3507,7 @@ const FlashSpace = () => {
                     // Active flashcard
                     return (
                       <div className="flex flex-col items-center justify-between h-full py-4 px-2 md:px-6 max-w-5xl mx-auto">
+                        <CategoryTabs />
                         {/* Header Controls */}
                         <div className="w-full flex items-center justify-between mb-4">
                           <button
@@ -3207,7 +3548,9 @@ const FlashSpace = () => {
                               }}
                             >
                               {/* Front */}
-                              {currentCard?.type === 'matching' ? (
+                              {currentCard?.type === 'case' ? (
+                                <CaseStudyUI question={currentCard} onComplete={() => rateCard('easy')} currentPriority={spacePriorities[currentCard.id]} onSetPriority={(p) => handleSetPriority(currentCard.id, p)} />
+                              ) : currentCard?.type === 'matching' ? (
                                 <MatchingGameUI question={currentCard} onComplete={() => setIsCardFlipped(true)} />
                               ) : (
                                 <div
@@ -3231,7 +3574,7 @@ const FlashSpace = () => {
                                 className="absolute inset-0 flex flex-col items-center justify-center p-5 sm:p-8 md:p-12 bg-indigo-50 rounded-3xl border-2 border-indigo-100 shadow-xl"
                                 style={{backfaceVisibility: 'hidden', transform: 'rotateY(180deg)'}}
                               >
-                                {currentCard?.type === 'matching' ? (
+                                {currentCard?.type === 'case' ? null : currentCard?.type === 'matching' ? (
                                   <div className="flex flex-col items-center text-center">
                                     <div className="w-16 h-16 bg-emerald-500 rounded-full flex items-center justify-center mb-6 shadow-lg shadow-emerald-500/30">
                                       <span className="text-3xl">🎉</span>
@@ -3266,10 +3609,10 @@ const FlashSpace = () => {
                                 🔴 Hard
                               </button>
                               <button
-                                onClick={() => rateCard('repeat')}
+                                onClick={() => setIsCardFlipped(false)}
                                 className="py-3 md:py-4 bg-amber-50 hover:bg-amber-500 text-amber-600 hover:text-white rounded-2xl font-black text-xs md:text-sm transition-all hover:scale-105 active:scale-95 border-2 border-amber-100 hover:border-amber-500"
                               >
-                                🟡 Repeat
+                                ↩️ Return Question
                               </button>
                               <button
                                 onClick={() => rateCard('easy')}
@@ -3280,7 +3623,7 @@ const FlashSpace = () => {
                             </div>
                           </div>
                         ) : (
-                          currentCard?.type === 'matching' ? (
+                          currentCard?.type === 'case' ? null : currentCard?.type === 'matching' ? (
                             <div className="py-4 opacity-50 select-none pointer-events-none">
                               <p className="text-center font-bold text-slate-400 text-xs uppercase tracking-widest flex items-center justify-center gap-2">
                                 <span className="w-2 h-2 rounded-full bg-slate-300 animate-pulse"></span>
@@ -3612,7 +3955,22 @@ const FlashSpace = () => {
               className={cn("relative", activeTool !== 'pan' && "transition-transform duration-100")}
               style={{transform: `translate(${offset.x}px, ${offset.y}px) scale(${zoom})`}}
             >
-              <img src={selectedBoard.medicalImage} alt="" className="max-w-full max-h-[85vh] pointer-events-none select-none" draggable={false} />
+              
+                  {/* Image Priority Selector */}
+                  <div className="absolute top-4 left-1/2 -translate-x-1/2 bg-slate-900/80 backdrop-blur-md px-4 py-2 rounded-2xl flex items-center gap-2 border border-slate-700/50 shadow-xl z-50">
+                    <span className="text-xs font-bold text-slate-400 uppercase tracking-wider mr-2">Priority:</span>
+                    {(['A', 'B', 'C'] as const).map(p => (
+                      <button
+                        key={p}
+                        onClick={(e) => { e.stopPropagation(); handleSetPriority(selectedBoard.id, spacePriorities[selectedBoard.id] === p ? null : p); }}
+                        className={`w-8 h-8 rounded-lg flex items-center justify-center font-black transition-all ${spacePriorities[selectedBoard.id] === p ? (p === 'A' ? 'bg-rose-500 text-white shadow-lg shadow-rose-500/20 scale-110' : p === 'B' ? 'bg-amber-500 text-white shadow-lg shadow-amber-500/20 scale-110' : 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/20 scale-110') : 'bg-slate-800 text-slate-400 hover:bg-slate-700'}`}
+                      >
+                        {p}
+                      </button>
+                    ))}
+                  </div>
+
+                  <img src={selectedBoard.medicalImage} alt="" className="max-w-full max-h-[85vh] pointer-events-none select-none" draggable={false} />
               <canvas
                 ref={canvasRef}
                 width={2500} height={1800}
@@ -3719,11 +4077,49 @@ const FlashSpace = () => {
                     // --- QUESTIONS TAB - Flashcard Session ---
                     (() => {
                       const diseaseKey = (selectedBoard.disease || '').replace(/\.(jpeg|jpg|png)\s*$/i, '').trim();
-                      const questions = PEDIATRICS_QUESTIONS[diseaseKey] || [];
+                      const allQuestions = PEDIATRICS_QUESTIONS[diseaseKey] || [];
+                      
+                      const getFilteredQuestions = (cat: string) => {
+                        let filtered = allQuestions;
+                        if (cat !== 'All') {
+                          filtered = allQuestions.filter(q => {
+                            if (cat === 'Definitions') return q.front.toLowerCase().startsWith('define');
+                            if (cat === 'Enumerate') return q.front.toLowerCase().startsWith('enumerate');
+                            if (cat === 'Cases') return q.front.toLowerCase().startsWith('case');
+                            if (cat === 'Matching') return q.front.toLowerCase().startsWith('match') || q.type === 'matching';
+                            return true;
+                          });
+                        }
+                        return groupCases(filtered);
+                      };
+                      
+                      const questions = getFilteredQuestions(activeCategory);
                       const totalQ = qDone.length + qQueue.length;
                       const currentCard = qQueue[0];
 
-                      if (questions.length === 0) {
+                      const CategoryTabs = () => (
+                        <div className="flex flex-wrap items-center justify-center gap-2 mb-6 w-full max-w-2xl mx-auto border-b border-slate-100 pb-4">
+                          {['All', 'Definitions', 'Enumerate', 'Matching', 'Cases'].map(cat => {
+                            const count = getFilteredQuestions(cat).length;
+                            return (
+                              <button
+                                key={cat}
+                                onClick={() => {
+                                  setActiveCategory(cat);
+                                  const newQs = getFilteredQuestions(cat);
+                                  if (newQs.length > 0) startQuestionSession(newQs);
+                                  else { setQQueue([]); setQDone([]); setQSessionDone(false); }
+                                }}
+                                className={`px-4 py-2 flex items-center gap-1.5 rounded-full text-xs md:text-sm font-bold transition-all ${activeCategory === cat ? 'bg-indigo-500 text-white shadow-md' : 'bg-slate-100 text-slate-500 hover:bg-slate-200'}`}
+                              >
+                                {cat} <span className={`text-[10px] px-1.5 py-0.5 rounded-full ${activeCategory === cat ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-500'}`}>{count}</span>
+                              </button>
+                            );
+                          })}
+                        </div>
+                      );
+
+                      if (allQuestions.length === 0) {
                         return (
                           <div className="flex flex-col items-center justify-center py-24 text-center">
                             <div className="w-16 h-16 bg-emerald-50 rounded-2xl flex items-center justify-center mb-4">
@@ -3735,10 +4131,24 @@ const FlashSpace = () => {
                         );
                       }
 
+                      if (questions.length === 0 && allQuestions.length > 0) {
+                        return (
+                          <div className="flex flex-col items-center justify-center py-20 text-center px-8">
+                            <CategoryTabs />
+                            <div className="w-20 h-20 bg-slate-50 rounded-[2rem] flex items-center justify-center mb-6">
+                              <Brain className="w-10 h-10 text-slate-400" />
+                            </div>
+                            <h3 className="text-2xl font-black text-slate-800 mb-2">No Questions in this Category</h3>
+                            <p className="text-slate-400">Please select another category.</p>
+                          </div>
+                        );
+                      }
+
                       if (qQueue.length === 0 && qDone.length === 0) {
                         // Not started yet
                         return (
                           <div className="flex flex-col items-center justify-center py-20 text-center px-8">
+                            <CategoryTabs />
                             <div className="w-20 h-20 bg-emerald-50 rounded-[2rem] flex items-center justify-center mb-6">
                               <Brain className="w-10 h-10 text-emerald-500" />
                             </div>
@@ -3789,6 +4199,7 @@ const FlashSpace = () => {
                       // Active flashcard
                       return (
                         <div className="flex flex-col items-center justify-between h-full py-8 px-6 max-w-5xl mx-auto">
+                          <CategoryTabs />
                           {/* Progress */}
                           <div className="w-full space-y-2">
                             <div className="flex justify-between text-xs font-bold text-slate-400">
@@ -3818,11 +4229,16 @@ const FlashSpace = () => {
                                 }}
                               >
                                 {/* Front */}
-                                <div
-                                  className="absolute inset-0 flex flex-col items-center justify-center p-8 md:p-12 bg-white rounded-3xl border-2 border-slate-100 shadow-xl cursor-pointer"
-                                  style={{backfaceVisibility: 'hidden'}}
-                                  onClick={() => !isCardFlipped && setIsCardFlipped(true)}
-                                >
+                                {currentCard?.type === 'case' ? (
+                                  <CaseStudyUI question={currentCard} onComplete={() => rateCard('easy')} currentPriority={spacePriorities[currentCard.id]} onSetPriority={(p) => handleSetPriority(currentCard.id, p)} />
+                                ) : currentCard?.type === 'matching' ? (
+                                  <MatchingGameUI question={currentCard} onComplete={() => setIsCardFlipped(true)} />
+                                ) : (
+                                  <div
+                                    className="absolute inset-0 flex flex-col items-center justify-center p-8 md:p-12 bg-white rounded-3xl border-2 border-slate-100 shadow-xl cursor-pointer"
+                                    style={{backfaceVisibility: 'hidden'}}
+                                    onClick={() => !isCardFlipped && setIsCardFlipped(true)}
+                                  >
                                   <div className="w-10 h-10 md:w-12 md:h-12 bg-indigo-50 rounded-2xl flex items-center justify-center mb-4 md:mb-6 shrink-0">
                                     <span className="text-indigo-500 font-black text-sm md:text-base">Q</span>
                                   </div>
@@ -3833,17 +4249,30 @@ const FlashSpace = () => {
                                     <p className="text-slate-300 text-xs md:text-sm mt-4 font-bold uppercase tracking-widest shrink-0">Tap to reveal answer</p>
                                   )}
                                 </div>
+                                )}
                                 {/* Back */}
                                 <div
                                   className="absolute inset-0 flex flex-col items-center justify-center p-5 sm:p-8 md:p-12 bg-indigo-50 rounded-3xl border-2 border-indigo-100 shadow-xl"
                                   style={{backfaceVisibility: 'hidden', transform: 'rotateY(180deg)'}}
                                 >
-                                  <div className="w-10 h-10 md:w-12 md:h-12 bg-indigo-500 rounded-2xl flex items-center justify-center mb-4 md:mb-6 shrink-0">
-                                    <span className="text-white font-black text-sm md:text-base">A</span>
-                                  </div>
-                                  <div className="flex-1 w-full flex items-center justify-center overflow-y-auto custom-scrollbar pr-2">
-                                    <p className={`text-slate-800 font-black leading-relaxed whitespace-pre-line w-full ${(currentCard?.back?.length || 0) > 100 ? 'text-sm sm:text-base lg:text-lg text-left' : 'text-base sm:text-lg md:text-xl lg:text-2xl text-center'}`} dir="auto">{currentCard?.back}</p>
-                                  </div>
+                                  {currentCard?.type === 'case' ? null : currentCard?.type === 'matching' ? (
+                                    <div className="flex flex-col items-center text-center">
+                                      <div className="w-16 h-16 bg-emerald-500 rounded-full flex items-center justify-center mb-6 shadow-lg shadow-emerald-500/30">
+                                        <span className="text-3xl">🎉</span>
+                                      </div>
+                                      <h3 className="text-2xl md:text-3xl font-black text-slate-800 mb-2">Perfect Match!</h3>
+                                      <p className="text-slate-500 font-bold text-sm md:text-base">You successfully connected all terms.</p>
+                                    </div>
+                                  ) : (
+                                    <>
+                                      <div className="w-10 h-10 md:w-12 md:h-12 bg-indigo-500 rounded-2xl flex items-center justify-center mb-4 md:mb-6 shrink-0">
+                                        <span className="text-white font-black text-sm md:text-base">A</span>
+                                      </div>
+                                      <div className="flex-1 w-full flex items-center justify-center overflow-y-auto custom-scrollbar pr-2">
+                                        <p className={`text-slate-800 font-black leading-relaxed whitespace-pre-line w-full ${(currentCard?.back?.length || 0) > 100 ? 'text-sm sm:text-base lg:text-lg text-left' : 'text-base sm:text-lg md:text-xl lg:text-2xl text-center'}`} dir="auto">{currentCard?.back}</p>
+                                      </div>
+                                    </>
+                                  )}
                                 </div>
                               </div>
                             </div>
@@ -3861,10 +4290,10 @@ const FlashSpace = () => {
                                   🔴 Hard
                                 </button>
                                 <button
-                                  onClick={() => rateCard('repeat')}
+                                  onClick={() => setIsCardFlipped(false)}
                                   className="py-4 bg-amber-50 hover:bg-amber-500 text-amber-600 hover:text-white rounded-2xl font-black text-sm transition-all hover:scale-105 active:scale-95 border-2 border-amber-100 hover:border-amber-500"
                                 >
-                                  🟡 Repeat
+                                  ↩️ Return Question
                                 </button>
                                 <button
                                   onClick={() => rateCard('easy')}
@@ -3875,12 +4304,21 @@ const FlashSpace = () => {
                               </div>
                             </div>
                           ) : (
-                            <button
-                              onClick={() => setIsCardFlipped(true)}
-                              className="px-10 py-4 bg-slate-900 text-white rounded-2xl font-black hover:bg-indigo-600 transition-all"
-                            >
-                              Reveal Answer
-                            </button>
+                            currentCard?.type === 'case' ? null : currentCard?.type === 'matching' ? (
+                              <div className="py-4 opacity-50 select-none pointer-events-none">
+                                <p className="text-center font-bold text-slate-400 text-xs uppercase tracking-widest flex items-center justify-center gap-2">
+                                  <span className="w-2 h-2 rounded-full bg-slate-300 animate-pulse"></span>
+                                  Match all pairs to continue
+                                </p>
+                              </div>
+                            ) : (
+                              <button
+                                onClick={() => setIsCardFlipped(true)}
+                                className="px-10 py-4 bg-slate-900 text-white rounded-2xl font-black hover:bg-indigo-600 transition-all shadow-lg mx-auto block"
+                              >
+                                Reveal Answer
+                              </button>
+                            )
                           )}
                         </div>
                       );

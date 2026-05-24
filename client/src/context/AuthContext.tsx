@@ -17,6 +17,7 @@ interface AuthContextType {
   needsProfileCompletion: boolean;
   updateUserStatus: (uid: string, updates: any) => Promise<void>;
   isSubscribed: (courseId: string) => boolean;
+  isSpaceSubscribed: (moduleName: string) => boolean;
   enrollInCourse: (courseId: string) => Promise<void>;
 }
 
@@ -173,6 +174,11 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     return true;
   };
 
+  const isSpaceSubscribed = (moduleName: string) => {
+    if (userData?.role === 'admin') return true;
+    return !!userData?.spaceSubscriptions?.[moduleName];
+  };
+
   const enrollInCourse = async (courseId: string) => {
     if (!user) return;
     try {
@@ -194,7 +200,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   return (
     <AuthContext.Provider value={{ 
       user, userData, loading, signInWithGoogle, signInWithGoogleCredential, logout, userRole, userPlan, 
-      needsProfileCompletion, updateUserStatus, isSubscribed, enrollInCourse
+      needsProfileCompletion, updateUserStatus, isSubscribed, isSpaceSubscribed, enrollInCourse
     }}>
       {loading ? (
         <div className="min-h-screen flex items-center justify-center bg-background">

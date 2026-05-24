@@ -28,6 +28,7 @@ import FlashcardManager from '../../components/admin/FlashcardManager';
 import FlashSpaceManager from '../../components/admin/FlashSpaceManager';
 import DataThemeManager from '../../components/admin/DataThemeManager';
 import VideoManager from '../../components/admin/VideoManager';
+import Leaderboard from '../../components/admin/Leaderboard';
 
 
 import { runSystemAudit } from '../../lib/systemHealer';
@@ -39,10 +40,10 @@ import type { Question } from '../../types/quiz';
 export default function AdminDashboard() {
   const { user, userRole } = useAuth();
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState<'analytics' | 'questions' | 'users' | 'courses' | 'settings' | 'notes' | 'audit' | 'health' | 'formal_results' | 'exams' | 'flashcards' | 'flashspace' | 'data_themes' | 'videos'>(() => {
+  const [activeTab, setActiveTab] = useState<'analytics' | 'questions' | 'users' | 'courses' | 'settings' | 'notes' | 'audit' | 'health' | 'formal_results' | 'exams' | 'flashcards' | 'flashspace' | 'data_themes' | 'videos' | 'leaderboard'>(() => {
     const params = new URLSearchParams(window.location.search);
     const tab = params.get('tab');
-    const validTabs = ['analytics', 'questions', 'users', 'courses', 'settings', 'notes', 'audit', 'health', 'formal_results', 'exams', 'flashcards', 'flashspace', 'data_themes', 'videos'];
+    const validTabs = ['analytics', 'questions', 'users', 'courses', 'settings', 'notes', 'audit', 'health', 'formal_results', 'exams', 'flashcards', 'flashspace', 'data_themes', 'videos', 'leaderboard'];
     return (tab && validTabs.includes(tab)) ? (tab as any) : 'analytics';
   });
   const [questions, setQuestions] = useState<Question[]>([]);
@@ -359,6 +360,7 @@ export default function AdminDashboard() {
           { id: 'data_themes', label: 'Data Themes', icon: Database },
           { id: 'flashspace', label: 'Flash Space', icon: Layout },
           { id: 'videos', label: 'Video Library', icon: Video },
+          { id: 'leaderboard', label: 'Leaderboard', icon: Trophy },
           { id: 'formal_results', label: 'Formal Results', icon: Trophy },
         ].map(tab => (
           <button
@@ -450,6 +452,7 @@ export default function AdminDashboard() {
               </div>
             )}
             {activeTab === 'users' && <UserManagement />}
+            {activeTab === 'leaderboard' && <Leaderboard />}
             {activeTab === 'courses' && <CourseManagement onDeleteCourse={handleDeleteCourse} isDeletingId={isDeleting} />}
             {activeTab === 'formal_results' && <ExamResultsDashboard />}
             {activeTab === 'exams' && <ExamManager />}

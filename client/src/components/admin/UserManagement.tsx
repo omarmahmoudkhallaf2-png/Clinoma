@@ -13,12 +13,14 @@ interface UserData {
   role: 'admin' | 'user';
   plan: 'free' | 'premium';
   subscriptions?: Record<string, boolean>; // e.g., { "f1": true, "f2": false }
+  spaceSubscriptions?: Record<string, boolean>; // e.g., { "Pediatrics": true }
   createdAt?: any;
 }
 
 export default function UserManagement() {
   const [users, setUsers] = useState<UserData[]>([]);
   const [courses, setCourses] = useState<any[]>([]);
+  const [spaceModules, setSpaceModules] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
   const { updateUserStatus } = useAuth();
@@ -26,9 +28,10 @@ export default function UserManagement() {
   const fetchData = async () => {
     try {
       setLoading(true);
-      const [userSnap, courseSnap] = await Promise.all([
+      const [userSnap, courseSnap, boardSnap] = await Promise.all([
         getDocs(collection(db, 'users')),
-        getDocs(collection(db, 'courses'))
+        getDocs(collection(db, 'courses')),
+        getDocs(collection(db, 'flashspace_boards'))
       ]);
       
       const fetchedUsers = userSnap.docs.map(doc => ({
@@ -41,8 +44,14 @@ export default function UserManagement() {
         ...doc.data()
       }));
 
+      const uniqueModules = Array.from(new Set([
+        'Pediatrics', // Always show Pediatrics
+        ...boardSnap.docs.map(d => d.data().module).filter(Boolean)
+      ])) as string[];
+
       setUsers(fetchedUsers);
       setCourses(fetchedCourses);
+      setSpaceModules(uniqueModules);
     } catch (error) {
       console.error('Error fetching user management data:', error);
     } finally {
@@ -73,6 +82,28 @@ export default function UserManagement() {
       }
     } catch (error) {
       alert(`Failed to update ${courseLevel} subscription`);
+    }
+  };
+
+  const handleToggleSpaceSubscription = async (user: UserData, moduleName: string) => {
+    const currentSubs = user.spaceSubscriptions || {};
+    const currentValue = currentSubs[moduleName] || false;
+    const newValue = !currentValue;
+    const newSubs = { ...currentSubs, [moduleName]: newValue };
+
+    try {
+      await updateUserStatus(user.id, { spaceSubscriptions: newSubs });
+      setUsers(users.map(u => u.id === user.id ? { ...u, spaceSubscriptions: newSubs } : u));
+      
+      if (newValue) {
+        await sendNotification(user.id, {
+          title: 'Space Access Granted! 🚀',
+          message: `لقد تم تفعيل اشتراكك في سبيس ${moduleName} بنجاح.`,
+          type: 'success'
+        });
+      }
+    } catch (error) {
+      alert(`Failed to update Space subscription for ${moduleName}`);
     }
   };
 
@@ -138,8 +169,13 @@ export default function UserManagement() {
               <tr className="bg-secondary/30 border-b border-border">
                 <th className="px-8 py-6 text-sm font-black uppercase tracking-widest text-muted-foreground">المستخدم</th>
                 {courses.map(course => (
-                  <th key={course.id} className="px-6 py-6 text-sm font-black uppercase tracking-widest text-muted-foreground text-center">
-                    {course.level}
+                  <th key={course.id} className="px-6 py-6 text-sm font-black uppercase tracking-widest text-muted-foreground text-center border-l border-border/50">
+                    كورس {course.level}
+                  </th>
+                ))}
+                {spaceModules.map(mod => (
+                  <th key={mod} className="px-6 py-6 text-sm font-black uppercase tracking-widest text-emerald-600 bg-emerald-500/5 text-center border-l border-border/50">
+                    سبيس: {mod}
                   </th>
                 ))}
                 <th className="px-6 py-6 text-sm font-black uppercase tracking-widest text-muted-foreground">الرتبة</th>
@@ -178,13 +214,33 @@ export default function UserManagement() {
                     const isSubscribed = (user as any)[key] || false;
                     
                     return (
-                      <td key={course.id} className="px-6 py-6 text-center">
+                      <td key={course.id} className="px-6 py-6 text-center border-l border-border/50">
                         <button 
                           onClick={() => handleToggleSubscription(user, level)}
                           className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl font-black text-xs transition-all ${
                             isSubscribed 
+                            ? 'bg-indigo-500 text-white shadow-lg shadow-indigo-500/20' 
+                            : 'bg-secondary text-muted-foreground hover:bg-indigo-500/10 hover:text-indigo-500 border border-border'
+                          }`}
+                        >
+                          {isSubscribed ? <CheckCircle2 className="w-4 h-4" /> : <XCircle className="w-4 h-4 opacity-50" />}
+                          {isSubscribed ? 'مشترك' : 'تفعيل'}
+                        </button>
+                      </td>
+                    );
+                  })}
+                  
+                  {/* Dynamic Space Subscriptions */}
+                  {spaceModules.map(mod => {
+                    const isSubscribed = user.spaceSubscriptions?.[mod] || false;
+                    return (
+                      <td key={mod} className="px-6 py-6 text-center bg-emerald-500/5 border-l border-border/50">
+                        <button 
+                          onClick={() => handleToggleSpaceSubscription(user, mod)}
+                          className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl font-black text-xs transition-all ${
+                            isSubscribed 
                             ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/20' 
-                            : 'bg-secondary text-muted-foreground hover:bg-red-500/10 hover:text-red-500 border border-border'
+                            : 'bg-secondary/50 text-muted-foreground hover:bg-emerald-500/10 hover:text-emerald-500 border border-border/50'
                           }`}
                         >
                           {isSubscribed ? <CheckCircle2 className="w-4 h-4" /> : <XCircle className="w-4 h-4 opacity-50" />}

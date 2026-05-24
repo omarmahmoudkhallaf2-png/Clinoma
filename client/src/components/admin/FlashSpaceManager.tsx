@@ -171,6 +171,31 @@ const FlashSpaceManager = () => {
     }
   };
 
+  const cleanLegacyPediatrics = async () => {
+    if (!window.confirm('Are you sure you want to delete ALL legacy Pediatrics slides (ones that are not in the new organized systems)?')) return;
+    const t = toast.loading('Cleaning legacy slides...');
+    try {
+      const validSystems = [
+        'Cardiovascular diseases', 'Endocrinology', 'Gastroenterology & hepatology',
+        'Genetic diseases', 'Growth & development', 'Hematology & Oncology',
+        'Infections', 'Neurology', 'Nutrition', 'Renal diseases'
+      ];
+      const q = query(collection(db, 'flashspace_boards'), where('module', '==', 'Pediatrics'));
+      const snap = await getDocs(q);
+      let deletedCount = 0;
+      for (const d of snap.docs) {
+        if (!validSystems.includes(d.data().system)) {
+          await deleteDoc(doc(db, 'flashspace_boards', d.id));
+          deletedCount++;
+        }
+      }
+      toast.success(`Deleted ${deletedCount} legacy slides!`, { id: t });
+      fetchData();
+    } catch (err) {
+      toast.error('Clean failed', { id: t });
+    }
+  };
+
   const filtered = boards.filter(b => 
     b.disease.toLowerCase().includes(searchQuery.toLowerCase()) ||
     b.system.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -189,12 +214,20 @@ const FlashSpaceManager = () => {
             <p className="text-indigo-700 font-bold opacity-60 text-lg">Manage interactive hierarchy: Module → System → Topic.</p>
           </div>
         </div>
-        <button 
-          onClick={() => { setEditingBoard(null); setIsModalOpen(true); }}
-          className="flex items-center gap-3 px-10 py-5 bg-indigo-600 text-white rounded-[2.5rem] font-black shadow-xl shadow-indigo-600/20 hover:scale-105 active:scale-95 transition-all"
-        >
-          <Plus className="w-6 h-6" /> Create New Board
-        </button>
+        <div className="flex gap-4">
+          <button 
+            onClick={cleanLegacyPediatrics}
+            className="flex items-center gap-2 px-6 py-5 bg-rose-500/10 text-rose-500 rounded-[2.5rem] font-black border border-rose-500/20 hover:bg-rose-500 hover:text-white transition-all"
+          >
+            <Trash2 className="w-5 h-5" /> Clean Legacy
+          </button>
+          <button 
+            onClick={() => { setEditingBoard(null); setIsModalOpen(true); }}
+            className="flex items-center gap-3 px-10 py-5 bg-indigo-600 text-white rounded-[2.5rem] font-black shadow-xl shadow-indigo-600/20 hover:scale-105 active:scale-95 transition-all"
+          >
+            <Plus className="w-6 h-6" /> Create New Board
+          </button>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">

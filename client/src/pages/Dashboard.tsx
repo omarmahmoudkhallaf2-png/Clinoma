@@ -152,6 +152,11 @@ export default function Dashboard() {
               <div className="text-[8px] md:text-[10px] uppercase tracking-widest font-bold opacity-60">نسبة الدقة</div>
             </Card>
             <Card isGlass className="border-white/20 p-4 md:p-6 text-center shadow-none hover:scale-105 transition-transform duration-500 delay-75">
+              <Crown className="w-6 h-6 md:w-8 md:h-8 mx-auto mb-2 text-amber-300" />
+              <div className="text-2xl md:text-3xl font-bold">{userStats.points}</div>
+              <div className="text-[8px] md:text-[10px] uppercase tracking-widest font-bold opacity-60">إجمالي النقاط</div>
+            </Card>
+            <Card isGlass className="border-white/20 p-4 md:p-6 text-center shadow-none hover:scale-105 transition-transform duration-500 delay-150">
               <Zap className="w-6 h-6 md:w-8 md:h-8 mx-auto mb-2 text-amber-300" />
               <div className="text-2xl md:text-3xl font-bold">{userStats.streak}</div>
               <div className="text-[8px] md:text-[10px] uppercase tracking-widest font-bold opacity-60">التفاعل اليومي</div>
