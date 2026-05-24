@@ -3933,6 +3933,158 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "category": "both",
       "front": "Enumerate four main clinical features or diagnostic hallmarks of West Syndrome (Infantile Spasms).",
       "back": "1. Onset: Characteristically between 4–8 months of age.\n2. Spasms in clusters: Sudden movements — Flexor (sudden flexion of neck, arms and legs), Extensor (extension of arms and extremities), or Mixed.\n3. EEG Hallmark: Hypsarrhythmia (chaotic high-voltage slow waves).\n4. Mental retardation / Developmental delay: Highly associated with secondary/organic forms (~80% of cases)."
+    },
+    {
+      "id": "neuro_clinoma_q1",
+      "category": "clinoma",
+      "type": "flashcard",
+      "front": "Define the following terms:\n1. Cerebral palsy\n2. Seizure\n3. Status Epilepticus\n4. Febrile convulsion\n5. Craniostenosis",
+      "back": "1. Cerebral palsy: An encephalopathy resulting from malfunction of motor unit of the developing brain due to brain insult during prenatal, natal and postnatal periods leading to central motor deficit which is non-progressive, non-familial, and non-hereditary.\n2. Seizure: Paroxysmal bouts of electrical activities of the brain manifested by impaired consciousness, motor, sensory, psychic or autonomic manifestations.\n3. Status Epilepticus: A seizure that lasts longer than 5 minutes, or having more than 1 seizure within a 5 minutes period, without returning to a normal level of consciousness between episodes.\n4. Febrile convulsion: Generalized, tonic-clonic seizure associated with a febrile illness, in infancy and childhood but without any CNS infection, severe metabolic disturbance, or other known neurological cause.\n5. Craniostenosis: Premature closure of one or more cranial sutures."
+    },
+    {
+      "id": "neuro_clinoma_q2",
+      "category": "clinoma",
+      "type": "flashcard",
+      "front": "Enumerate four clinical signs used for the early detection or suspicion of cerebral palsy in infants.",
+      "back": "(Any 4 of the following)\n1. Delayed motor milestones.\n2. Keeping the hand clenched after the age of 3 months.\n3. Difficulty of abduction of the thighs during a diaper change (early sign of spasticity).\n4. Early neck support.\n5. Persistence of Moro reflex after 6 months or Grasp reflex after 4 months."
+    },
+    {
+      "id": "neuro_clinoma_q3",
+      "category": "clinoma",
+      "type": "flashcard",
+      "front": "Enumerate the four clinical signs used to diagnose severe hypotonia in a floppy infant.",
+      "back": "1. Frog leg position (denotes hypotonia of lower limbs).\n2. Head lag (when pulled up from hands in supine position, the head lags backwards).\n3. Curved trunk on ventral suspension (the baby drops around the examiner's hand in prone suspension).\n4. Slippage on vertical suspension (denotes hypotonia of shoulder girdle muscles)."
+    },
+    {
+      "id": "neuro_clinoma_q4",
+      "category": "clinoma",
+      "type": "flashcard",
+      "front": "Enumerate the four obligatory criteria that characterize muscular dystrophies.",
+      "back": "1. Primary myopathy.\n2. Progressive.\n3. Genetic basis.\n4. Characteristic muscle fiber degeneration and muscle cell death at some stage."
+    },
+    {
+      "id": "neuro_clinoma_q5",
+      "category": "clinoma",
+      "type": "flashcard",
+      "front": "Enumerate four paralytic or non-paralytic causes of primary inability to walk (no walking by age 18 months).",
+      "back": "(Any 4 of the following)\n1. Cerebral palsy.\n2. Hydrocephalus.\n3. Poliomyelitis.\n4. Werding Hoffman disease.\n5. Mental retardation or Rickets."
+    },
+    {
+      "id": "neuro_clinoma_q6",
+      "category": "clinoma",
+      "type": "flashcard",
+      "front": "Enumerate four clinical criteria of a typical febrile convulsion.",
+      "back": "(Any 4 of the following)\n1. Susceptible age: 9 months up to 5 years.\n2. Seizure is generalized tonic-clonic.\n3. Brief duration (lasting from a few seconds to 15 minutes).\n4. Only one fit during the same illness in 24 hours.\n5. No signs of CNS infection."
+    },
+    {
+      "id": "neuro_clinoma_q7",
+      "category": "clinoma",
+      "type": "flashcard",
+      "front": "Enumerate four risk factors for developing epilepsy in a child with a history of febrile convulsions.",
+      "back": "1. Atypical features of the seizure (focal, repeated, or prolonged >15 min).\n2. Positive family history of epilepsy.\n3. An initial febrile seizure before 9 months of age.\n4. Delayed developmental milestones, or a pre-existing neurologic disorder."
+    },
+    {
+      "id": "neuro_clinoma_q8",
+      "category": "clinoma",
+      "type": "flashcard",
+      "front": "Enumerate four cranial causes of macrocephaly (conditions with a thickened skull).",
+      "back": "(Any 4 of the following)\n1. Rickets.\n2. Chronic hemolytic anemia.\n3. Osteopetrosis.\n4. Osteogenesis imperfecta.\n5. Bone dysplasia."
+    },
+    {
+      "id": "neuro_clinoma_matching_1",
+      "category": "clinoma",
+      "type": "matching",
+      "front": "Match the pathognomonic clinical sign, EEG pattern, or skull deformity with its exact diagnostic description or condition:",
+      "matchingPairs": [
+        {
+          "left": "Gowers sign",
+          "right": "A classic clinical sign demonstrating proximal motor weakness, characteristically seen when a patient climbs up his own body to stand up."
+        },
+        {
+          "left": "Hypsarrhythmia",
+          "right": "A chaotic, high-voltage slow-wave discharge seen on an EEG, which is characteristically diagnostic of Infantile Spasms (West syndrome)."
+        },
+        {
+          "left": "Scaphocephaly",
+          "right": "The most common form of primary craniostenosis, caused by premature closure of the sagittal suture, resulting in a long and narrow skull."
+        },
+        {
+          "left": "Milkmaid's grip",
+          "right": "A neurological sign in Sydenham's chorea characterized by an inability to maintain a hand grip, causing the child to squeeze and release the examiner's hand."
+        }
+      ]
+    },
+    {
+      "id": "neuro_clinoma_case_1",
+      "category": "clinoma",
+      "type": "case",
+      "front": "Case Scenario 1 (Neurology)",
+      "caseBody": "A 4-year-old boy is brought to the clinic because of progressive difficulty in climbing stairs and a clumsy, waddling gait. On physical examination, the clinician notes bilateral, symmetrical proximal muscle weakness affecting the pelvic girdle, marked pseudohypertrophy of the calf muscles, and a positive Gowers sign. Laboratory investigations reveal a markedly elevated serum creatine kinase (CK) level.",
+      "subQuestions": [
+        {
+          "id": "neuro_c1_sq1",
+          "questionText": "What is the most likely clinical diagnosis?",
+          "back": "Duchenne muscular dystrophy."
+        },
+        {
+          "id": "neuro_c1_sq2",
+          "questionText": "What is the genetic mode of inheritance and the specific protein defect responsible for this disease?",
+          "back": "It is an X-linked recessive (XLR) disorder caused by a defect in the dystrophin protein."
+        },
+        {
+          "id": "neuro_c1_sq3",
+          "questionText": "What would a muscle biopsy characteristically demonstrate to confirm the diagnosis?",
+          "back": "Muscle fiber degeneration with replacement by fat and fibrosis."
+        }
+      ]
+    },
+    {
+      "id": "neuro_clinoma_case_2",
+      "category": "clinoma",
+      "type": "case",
+      "front": "Case Scenario 2 (Neurology)",
+      "caseBody": "A 3-year-old child with an acute out-of-hospital history of high fever due to acute otitis media is rushed to the emergency department while actively convulsing. The parent states that the generalized tonic-clonic fit has been continuous for the past 20 minutes, and the child has not regained normal consciousness between episodes.",
+      "subQuestions": [
+        {
+          "id": "neuro_c2_sq1",
+          "questionText": "What is the exact medical emergency diagnosis for this child's current condition?",
+          "back": "Status Epilepticus (specifically a prolonged febrile convulsion)."
+        },
+        {
+          "id": "neuro_c2_sq2",
+          "questionText": "What is the immediate first-line medication protocol and route of choice if intravenous (IV) access is not yet established?",
+          "back": "Rectal diazepam at a dose of 0.3-0.5 mg/kg (maximum 10 mg)."
+        },
+        {
+          "id": "neuro_c2_sq3",
+          "questionText": "What life-threatening risk must the clinician anticipate if intravenous Phenobarbital is administered immediately after giving Diazepam?",
+          "back": "Severe incidence of respiratory depression."
+        }
+      ]
+    },
+    {
+      "id": "neuro_clinoma_case_3",
+      "category": "clinoma",
+      "type": "case",
+      "front": "Case Scenario 3 (Neurology)",
+      "caseBody": "A 2-month-old infant is evaluated for profound, persistent generalized muscle weakness and severe floppy hypotonia noticed since birth. On physical examination, the infant lies in a complete \"frog leg position,\" shows marked head lag when pulled to sit, and has completely absent deep tendon reflexes. The clinician observes distinct fine fasciculations of the tongue, but notes that the infant is completely alert and responsive.",
+      "subQuestions": [
+        {
+          "id": "neuro_c3_sq1",
+          "questionText": "What is the most likely diagnosis?",
+          "back": "Werding Hoffman Disease (Spinal Muscular Atrophy)."
+        },
+        {
+          "id": "neuro_c3_sq2",
+          "questionText": "What is the primary underlying pathological mechanism of this disease?",
+          "back": "Primary degeneration and atrophy of the anterior horn cells (AHC) and motor nuclei of the brain stem."
+        },
+        {
+          "id": "neuro_c3_sq3",
+          "questionText": "What does a confirmatory muscle biopsy characteristically reveal?",
+          "back": "Neurogenic type of atrophy, or muscle spindles atrophied in groups."
+        }
+      ]
     }
   ]
 };
