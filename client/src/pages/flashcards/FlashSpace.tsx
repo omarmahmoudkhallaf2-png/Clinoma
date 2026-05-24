@@ -45,7 +45,7 @@ import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { useAuth } from '../../context/AuthContext';
 import { db, auth } from '../../lib/firebase';
-import { collection, query, getDocs, orderBy, doc, updateDoc, increment, arrayUnion, deleteField } from 'firebase/firestore';
+import { collection, query, getDocs, orderBy, doc, updateDoc, increment, arrayUnion, deleteField, getDoc, setDoc } from 'firebase/firestore';
 import ReactMarkdown from 'react-markdown';
 
 // --- Vector Types ---
@@ -2624,88 +2624,13 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "id": "pg2",
       "front": "Mention types of Growth charts",
       "back": "Percentile curves.\nStandard deviation curves.\nVelocity curves.\nConditional centiles."
-    },
-    {
-      "id": "pg3",
-      "front": "Describe five benefits of breastfeeding (for mothers)?",
-      "back": "It helps in the involution of the birth canal.\nIt serves as a natural method of contraception.\nIt decreases the clinical incidence of breast cancer."
-    },
-    {
-      "id": "pg4",
-      "front": "Mention foods avoided in weaning diet.",
-      "back": "Foods that cause choking, such as nuts, fruits with seeds, and potato chips.\nFoods containing artificial colors and artificial flavors.\nSalted food, as it might cause hypertension.\nJunk food such as sweets and candies, which deprive the child from taking food that is more nutritious and encourages a desire for sweets.\nHighly spiced and fatty food."
-    },
-    {
-      "id": "pg5",
-      "front": "Describe skin changes in Kwashiorkor and explain its cause.",
-      "back": "Description: Skin changes start as erythema followed by hyperpigmentation and desquamation, leading directly to ulceration, fissuring, and crackling. Secondary skin infections and even gangrene are highly common because the pitting edema constitutes a suitable media for the entry of pathogenic organisms. The commonest anatomical sites involved are pressure sites (buttocks and back) and flexural sites (groin and axilla).\nCause: These pathognomonic skin changes are primarily caused by deficiencies in essential fatty acids, essential amino acids, sulfur-containing amino acids, vitamin A, and zinc."
-    },
-    {
-      "id": "pg6",
-      "front": "List 5 causes of death in PEM",
-      "back": "Recurrent systemic infections.\nElectrolytes imbalance occurring as a result of refeeding syndrome or acute gastroenteritis.\nHypothermia.\nHypoglycemia, due to low glycogen content in the liver and defects in catecholamine and glucagon hormone formation.\nHeart failure, due to either anemic heart failure or degenerative changes in the cardiac muscles."
-    },
-    {
-      "id": "pg7",
-      "front": "Explain the causes of infection in protein-energy malnutrition.",
-      "back": "Edema-Related Susceptibility: Pitting edema creates an ideal, compromised environment and suitable media for the entry of micro-organisms, leading to high rates of skin infections and gangrene.\nGastrointestinal Barrier Defect: Defective epithelization of the intestinal mucosa impairs natural defenses, making the patient highly vulnerable to bacterial, viral, and protozoal gastroenteritis."
-    },
-    {
-      "id": "pg8",
-      "front": "Explain why weaning should start after the age of 4 months.",
-      "back": "Weaning must begin at the age of 4 months because maternal breast milk becomes insufficient to fulfill the baseline nutritional requirements of the infant, creating a critical deficit across multiple components:\nCalories: A clear energy gap forms between breast milk intake (356 kcal/day) and total daily requirement (536.8 kcal/day) at 4 months.\nProteins: A protein intake deficit emerges between baseline intake (6.6 g/day) and requirement (9.1 g/day) at 4 months.\nVitamin D: A substantial micronutrient gap exists between intake (528 ng/day) and requirement (5000 ng/day) at 4 months.\nZinc: Intake drops below required levels, with intake at 0.98 mg/day against a requirement of 2 mg/day after 4 months.\nIron: A severe developmental gap opens between intake (0.29 mg/day) and requirement (11 mg/day) after 6 months of age. Introducing complementary feeding at 4 months is therefore mandated to explicitly avoid caloric, vitamin, and mineral deficiencies."
-    },
-    {
-      "id": "pg9",
-      "front": "Discuss welcome classification for protein energy malnutrition",
-      "back": "The Welcome classification categorizes protein-energy malnutrition by assessing the patient's body weight-for-age percentage relative to the standard (50th percentile reference) and evaluating for the clinical presence or absence of pitting edema:\nWeight-for-age between 60% and 80% of standard:\nWithout edema: Underweight (mild PEM).\nWith edema: Kwashiorkor (severe PEM).\nWeight-for-age < 60% of standard:\nWithout edema: Marasmus (severe PEM).\nWith edema: Marasmic Kwashiorkor (severe PEM)."
-    },
-    {
-      "id": "pg10",
-      "front": "Mention Breast feeding reflexes",
-      "back": "Maternal Secretory & Ejection Reflexes:\nMilk secretion reflex (prolactin reflex): Suckling directly stimulates nerve endings in the nipple, inducing anterior pituitary production of prolactin, which drives milk production.\nMilk ejection or let-down reflex (oxytocin reflex): Suckling stimulates oxytocin release from the posterior pituitary, causing acute contraction of myoepithelial cells around the lactiferous ducts to cause milk ejection.\nInfant Feeding Reflexes:\nRooting reflex: Mechanical touch to the lip or cheek causes the infant to turn toward the stimulus and open the mouth.\nSuckling reflex: Tactile stimulation of the palate directly initiates suckling.\nSwallowing reflex: The presence of milk filling the oral cavity triggers automatic swallowing."
-    },
-    {
-      "id": "pg11",
-      "front": "Case 3: 9-month-old infant with lower edema on a low-protein diet.\n\n1- What is most likely diagnosis?",
-      "back": "The most likely diagnosis is Kwashiorkor. It is a form of severe protein-energy malnutrition caused by selective protein deficiency in the setting of nearly normal caloric intake, characterized clinically by pitting edema and growth failure."
-    },
-    {
-      "id": "pg12",
-      "front": "Case 3: 2- What are the other features should be present?",
-      "back": "Constant Features: Severe growth failure (weight-for-age < 80% of reference), psychological/mental changes (apathy, marked irritability, lack of interest in surroundings, absence of smile), and muscle wasting with preserved subcutaneous fat.\nVariable (Non-constant) Features: Skin changes (erythema, hyperpigmentation, desquamation, flaky paint dermatosis), hair changes (loss of luster, dry/sparse hair, color lightening, or alternating bands known as the flag sign), nutritional anemia, and gastrointestinal changes (hepatomegaly from fatty infiltration, diarrhea, and abdominal distension)."
-    },
-    {
-      "id": "pg13",
-      "front": "Case 3: 3- What are the investigations should be done?",
-      "back": "Serum Albumin: To evaluate the degree of hypoproteinemia (characteristically low).\nUrinary Urea per Gram Creatinine: To demonstrate reduced protein intake and metabolism (low).\nBlood Glucose Level: To evaluate for concurrent fasting hypoglycemia.\nSerum Electrolytes: To check for underlying potassium and magnesium deficiencies.\nComplete Blood Count (CBC): To identify microcytic, macrocytic, or normocytic anemia.\nRadiological Bone Age: To confirm delayed skeletal maturation."
     }
   ],
   "BIOLOGICAL AGE & MATURATION (BONE & TEETH)": [
     {
-      "id": "bamt1",
-      "front": "Mention causes of hypocalcemia and tetany in rickets.",
-      "back": "Hypocalcemia and manifest tetany present in rickets under specific metabolic circumstances:\nParathyroid gland failure to respond to systemic hypocalcemia due to gland exhaustion.\nComplete exhaustion of total skeletal bone stores of calcium.\nAdministration of high-dose vitamin D shock therapy without concurrent oral calcium supplementation.\nSevere concurrent chest infections causing hyperventilation, inducing a CO2 wash, resulting in systemic respiratory alkalosis tetany."
-    },
-    {
-      "id": "bamt2",
-      "front": "Describe the clinical picture of latent tetany.",
-      "back": "Latent tetany occurs when total serum calcium levels range between 7 and 9 mg%. It lacks spontaneous clinical symptoms but is explicitly confirmed via three diagnostic neurological signs:\nChvostek sign: Mechanical tapping over the facial nerve anterior to the tragus produces immediate contraction of the ipsilateral facial muscles.\nTrousseau sign: Occlusion of arterial flow to the upper extremity using a sphygmomanometer cuff inflated above systolic pressure for 3 minutes induces ischemia, resulting in a classic carpal spasm.\nPeroneal sign: Tapping the peroneal nerve over the neck of the fibula produces immediate dorsiflexion and eversion of the foot."
-    },
-    {
-      "id": "bamt3",
-      "front": "Case 2: 5-year-old child with abnormal long bone ends, short stature, and hypertension.\n\n1- What is most likely diagnosis?",
-      "back": "The most likely diagnosis is Renal Osteodystrophy (Uremic Rickets). This clinical entity comprises skeletal mineralization defects secondary to chronic renal failure, presenting with rickets-like epiphyseal broadening, severe short stature, metabolic acidosis, and renal-induced systemic hypertension."
-    },
-    {
-      "id": "bamt4",
-      "front": "Case 2: 2- What are the investigations should be done?",
-      "back": "Serum Kidney Function Tests: Evaluating blood urea and creatinine levels, which will be pathologically elevated.\nSerum Phosphorus: To confirm hyperphosphatemia caused by decreased glomerular filtration.\nSerum Calcium: To identify hypocalcemia secondary to failure of renal vitamin D hydroxylation.\nSerum Alkaline Phosphatase: Characteristically elevated due to high osteoblastic remodeling.\nBlood Gas Analysis (pH): To diagnose underlying metabolic acidosis.\nRadiological X-ray of Wrists/Long Bones: To visualize structural epiphyseal cupping, fraying, and broadening."
-    },
-    {
-      "id": "bamt5",
-      "front": "Case 2: 3- What is the treatment?",
-      "back": "Radical management of the underlying renal pathology via chronic hemodialysis or renal transplantation.\nActive Calcitriol (1,25-dihydroxyvitamin D) administration to bypass compromised renal 1-alpha-hydroxylase activity.\nEnsuring high oral calcium intake.\nImplementation of a low phosphate diet.\nAdministration of oral phosphate binders to restrict GI absorption of dietary phosphorus."
+      "id": "bone1",
+      "front": "Enumerate the causes of Delayed Dentition.",
+      "back": "Rickets (أشهر وأهم سبب)\nHypothyroidism\nHypopituitarism\nDown syndrome\nMalnutrition\nFamilial / Idiopathic\n\n💡 Mnemonic لتسهيل التذكر:\n(عيلة داون عندها نقص تغذية وكساح في الغدة)"
     }
   ],
   "DEVELOPMENTAL MILESTONES & NEURODEVELOPMENT": [
@@ -2718,6 +2643,97 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "id": "dmnd2",
       "front": "Mention 6 warning signs of infant development.",
       "back": "Any six of the following clinical warning signs indicate developmental delay:\nDiscrepant head size or crossing centile lines (manifesting as too large or too small).\nPersistence of primitive reflexes beyond 6 months of age.\nComplete absence of response to the environment or parent by 12 months.\nFailure to walk independently by 18 months.\nComplete absence of clear spoken words by 18 months.\nFailure to produce two-word sentences by 2 years of age.\nPronounced problems with social interaction at 3 years of age."
+    }
+  ],
+  "THE FOUNDATIONS OF INFANT FEEDING": [
+    {
+      "id": "n1",
+      "front": "Mention Breast feeding reflexes",
+      "back": "Lactation Physiology Reflexes:\nMilk secretion reflex (prolactin reflex): Suckling stimulates nipple nerve endings, activating the anterior pituitary gland to release prolactin, driving continuous milk production.\nMilk ejection or let down reflex (oxytocin reflex): Suckling triggers posterior pituitary release of oxytocin, contracting myoepithelial cells around the lactiferous ducts to eject milk.\nInfant Feeding Reflexes:\nRooting reflex: Tactile touch to the lip/cheek causes the infant to turn toward the stimulus and open the mouth.\nSuckling reflex: Palate contact stimulates automatic suckling movements.\nSwallowing reflex: Accumulation of milk in the oral cavity prompts swallowing."
+    }
+  ],
+  "HUMAN MILK STAGES, COMPOSITION & ADVANTAGES": [
+    {
+      "id": "n2",
+      "front": "Describe five benefits of breastfeeding (for mothers)?",
+      "back": "Promotes accelerated, physiological involution of the birth canal post-delivery.\nServes as an effective, natural method of contraception.\nResults in a statistically significant decrease in the overall incidence of breast cancer."
+    }
+  ],
+  "BREASTFEEDING MANAGEMENT & CHALLENGES": [],
+  "ARTIFICIAL & COMPLEMENTARY FEEDING (WEANING)": [
+    {
+      "id": "n3",
+      "front": "Mention foods avoided in weaning diet.",
+      "back": "Choking hazards such as whole nuts, fruits containing seeds, and potato chips.\nFormulated foods with artificial colors and flavored additives.\nExcessively salted food items, which increase the long-term risk of hypertension.\nCommon junk food items, including sweets and candies, which satisfy appetite, encourage sweet desires, and deprive the child of highly nutritious options.\nHighly spiced and high-fat foods."
+    },
+    {
+      "id": "n4",
+      "front": "Explain why weaning should start after the age of 4 months.",
+      "back": "Complementary weaning must be initiated at 4 months because breast milk becomes quantitatively insufficient to support the infant's rapid growth, resulting in clear nutritional gaps:\nEnergy: A gap manifests between standard intake (356 kcal/day) and physiological requirements (536.8 kcal/day) at 4 months.\nProtein: Intake (6.6 g/day) fails to meet requirements (9.1 g/day) at 4 months.\nVitamin D: Intake is 528 ng/day against a requirement of 5000 ng/day at 4 months.\nZinc: A deficit appears between intake (0.98 mg/day) and requirement (2 mg/day) after 4 months.\nIron: Intake drops to 0.29 mg/day while requirements rise sharply to 11 mg/day after 6 months. Weaning at 4 months is required to preserve proper growth velocity and avoid caloric, vitamin, and mineral deficiency disorders."
+    }
+  ],
+  "PROTEIN ENERGY MALNUTRITION (PEM)": [
+    {
+      "id": "n5",
+      "front": "Describe skin changes in Kwashiorkor and explain its cause.",
+      "back": "Description: Lesions begin as localized erythema, evolving into hyperpigmentation and desquamation, which leads to painful ulceration, fissuring, and crackling. Severe skin infections and tissue gangrene are common, driven by interstitial edema creating a suitable media for bacterial entry. Lesions localize to high-pressure sites (back and buttocks) and flexural sites (axilla and groin).\nCause: These pathological dermatological changes are caused by severe dietary deficiencies of essential fatty acids, essential amino acids, sulfur-containing amino acids, vitamin A, and zinc."
+    },
+    {
+      "id": "n6",
+      "front": "List 5 causes of death in PEM",
+      "back": "Recurrent severe systemic infections.\nFatal electrolyte imbalances secondary to refeeding syndrome or acute gastroenteritis.\nSevere hypothermia.\nSevere hypoglycemia, due to depleted hepatic glycogen stores and defective synthesis of protein-based hormones like catecholamines and glucagon.\nAcute congestive heart failure secondary to severe anemic heart failure or degenerative changes in the myocardium."
+    },
+    {
+      "id": "n7",
+      "front": "Explain the causes of infection in protein-energy malnutrition.",
+      "back": "Anatomical Barrier Failure: Pitting edema disrupts the structural integrity of the skin, serving as an optimal media for microbial entry, causing severe skin infections and gangrene.\nMucosal Barrier Impairment: Defective epithelialization within the gastrointestinal tract secondary to malabsorption and maldigestion allows direct penetration by bacterial, viral, and protozoal pathogens."
+    },
+    {
+      "id": "n8",
+      "front": "Discuss welcome classification for protein energy malnutrition",
+      "back": "The Welcome classification stratifies cases based on weight-for-age percentages relative to the standard 50th percentile reference and the clinical presentation of edema:\nWeight-for-age 60% to 80% of standard:\nWithout edema: Underweight.\nWith edema: Kwashiorkor.\nWeight-for-age < 60% of standard:\nWithout edema: Marasmus.\nWith edema: Marasmic Kwashiorkor."
+    },
+    {
+      "id": "n9",
+      "front": "Case 3: 9-month-old infant presenting with lower edema, on a diet of Carbohydrates 55%, fat 40%, and protein 5% for the last 5 months.\n\n1- What is most likely diagnosis?",
+      "back": "The most likely diagnosis is Kwashiorkor. The case presents the classic picture: a young infant maintained on an unbalanced, low-protein, high-carbohydrate weaning diet, presenting with pathognomonic pitting lower extremity edema."
+    },
+    {
+      "id": "n10",
+      "front": "Case 3: 2- What are the other features should be present?",
+      "back": "Constant features: Growth failure (weight-for-age parameter falling below 80% of standard reference), central nervous system changes (apathy, loss of interest, lack of smiling), and muscle wasting with preserved subcutaneous fat stores.\nNon-constant features: Skin lesions (erythema, hyperpigmentation, desquamation), hair abnormalities (dry, sparse hair, flag sign), nutritional anemia, and gastrointestinal symptoms (reversible hepatomegaly from fatty infiltration, malabsorptive or infectious diarrhea, and abdominal distension)."
+    },
+    {
+      "id": "n11",
+      "front": "Case 3: 3- What are the investigations should be done?",
+      "back": "Serum Albumin Level: To document and quantify severe hypoproteinemia.\nUrinary Urea per Gram Creatinine: To measure systemic protein deficiency.\nFasting Blood Glucose: To identify underlying hypoglycemia.\nSerum Electrolyte Panel: To identify and manage hypokalemia and hypomagnesemia.\nComplete Blood Count (CBC): To assess for associated nutritional or infectious anemias.\nRadiological Bone Age: To confirm delayed skeletal maturation."
+    }
+  ],
+  "RICKETS & TETANY": [
+    {
+      "id": "n12",
+      "front": "Mention causes of hypocalcemia and tetany in rickets.",
+      "back": "Complete functional failure of the parathyroid glands to compensate for low calcium due to gland exhaustion.\nAbsolute exhaustion of total calcium bone stores.\nTherapeutic administration of high-dose vitamin D shock therapy without oral calcium supplementation.\nSevere chest infections causing hyperventilation and a CO2 wash, resulting in acute alkalosis tetany."
+    },
+    {
+      "id": "n13",
+      "front": "Describe the clinical picture of latent tetany.",
+      "back": "Latent tetany develops at serum calcium levels of 7 to 9 mg%. It is verified through three classic clinical signs:\nChvostek sign: Contraction of facial musculature upon light tapping of the facial nerve trunk anterior to the tragus.\nTrousseau sign: Carpal spasm induced by temporary upper extremity ischemia via inflation of a blood pressure cuff above systolic levels for 3 minutes.\nPeroneal sign: Foot dorsiflexion and eversion induced by mechanical tapping over the peroneal nerve at the fibular neck."
+    },
+    {
+      "id": "n14",
+      "front": "Case 2: 5-year-old child with short stature, blood pressure 140/100, tachypnea, pallor, and abnormal long bone ends.\n\n1- What is most likely diagnosis?",
+      "back": "The most likely diagnosis is Renal Osteodystrophy (Uremic Rickets). The patient exhibits systemic rachitic changes at an advanced age (5 years old) alongside short stature, combined with signs of chronic renal failure including fluid overload/acidosis (tachypnea), anemia (pallor), and secondary systemic hypertension."
+    },
+    {
+      "id": "n15",
+      "front": "Case 2: 2- What are the investigations should be done?",
+      "back": "Kidney Function Tests: Quantification of serum urea and creatinine levels, which will be pathologically elevated.\nSerum Phosphorus: To confirm hyperphosphatemia secondary to reduced glomerular filtration.\nSerum Calcium: To demonstrate hypocalcemia caused by defective renal 1-alpha-hydroxylation.\nSerum Alkaline Phosphatase: Elevated, reflecting high osteoblastic remodeling activity.\nArterial Blood Gas (ABG): To evaluate for systemic metabolic acidosis.\nRadiological Survey (Wrist X-ray): To show classic bony rachitic changes (broadening, cupping, and fraying of the metaphyses)."
+    },
+    {
+      "id": "n16",
+      "front": "Case 2: 3- What is the treatment?",
+      "back": "Renal replacement therapy consisting of regular maintenance hemodialysis or definitive renal transplantation.\nOral administration of Calcitriol (1,25-dihydroxyvitamin D) to correct the vitamin D activation defect.\nMaintaining a high dietary intake of calcium.\nImplementation of strict dietary phosphate restriction.\nRegular use of oral phosphate binders to inhibit the systemic absorption of dietary phosphorus."
     }
   ]
 };
@@ -2904,6 +2920,7 @@ const CaseStudyUI = ({ question, onComplete, currentPriority, onSetPriority }: {
 const FlashSpace = () => {
   const navigate = useNavigate();
   const { isSpaceSubscribed, userData, user } = useAuth();
+  const userRole = userData?.role;
   const [loading, setLoading] = useState(true);
   const [boards, setBoards] = useState<Board[]>([]);
   const [modules, setModules] = useState<string[]>([]);
@@ -2913,6 +2930,39 @@ const FlashSpace = () => {
   const [selectedSystem, setSelectedSystem] = useState<string | null>(null);
   const [selectedBoard, setSelectedBoard] = useState<Board | null>(null);
   const [showSubscriptionModal, setShowSubscriptionModal] = useState(false);
+  const [growthViews, setGrowthViews] = useState<number>(0);
+
+  useEffect(() => {
+    if (userRole === 'admin') {
+      const fetchViews = async () => {
+        try {
+          const statsRef = doc(db, 'analytics', 'growth_chapter');
+          const snap = await getDoc(statsRef);
+          if (snap.exists()) {
+            setGrowthViews(snap.data().views || 0);
+          }
+        } catch (e) {
+          console.error(e);
+        }
+      };
+      fetchViews();
+    }
+  }, [userRole]);
+
+  const trackGrowthView = async () => {
+    try {
+      if (userRole === 'admin') return;
+      const statsRef = doc(db, 'analytics', 'growth_chapter');
+      const snap = await getDoc(statsRef);
+      if (snap.exists()) {
+        await updateDoc(statsRef, { views: increment(1) });
+      } else {
+        await setDoc(statsRef, { views: 1 });
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  };
   
   const [isSidebarOpen, setIsSidebarOpen] = useState(false); // For mobile drawer
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false); // For desktop toggle
@@ -3621,6 +3671,9 @@ const FlashSpace = () => {
                           e.preventDefault();
                           e.stopPropagation();
                           if (sys === 'Growth & development' || (selectedModule && isSpaceSubscribed(selectedModule))) {
+                            if (sys === 'Growth & development') {
+                              trackGrowthView();
+                            }
                             setSelectedSystem(sys);
                             setIsChapterQuestionMode(false);
                             setShowQuestions(false);
@@ -3636,6 +3689,13 @@ const FlashSpace = () => {
                           <div className="absolute top-4 right-4 z-10 bg-amber-500/20 text-amber-500 border border-amber-500/30 px-3 py-1.5 rounded-full flex items-center gap-1.5 backdrop-blur-sm shadow-lg">
                             <Lock className="w-3.5 h-3.5" />
                             <span className="text-xs font-bold uppercase tracking-wider">Premium</span>
+                          </div>
+                        )}
+                        {/* Admin Views Counter */}
+                        {userRole === 'admin' && sys === 'Growth & development' && (
+                          <div className="absolute top-4 left-4 z-10 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-3 py-1.5 rounded-full flex items-center gap-1.5 backdrop-blur-sm shadow-lg">
+                            <Zap className="w-3.5 h-3.5" />
+                            <span className="text-xs font-bold tracking-wider">{growthViews} Views</span>
                           </div>
                         )}
                         {/* AI Background Image */}
@@ -5053,25 +5113,35 @@ const FlashSpace = () => {
               <Lock className="w-8 h-8" />
             </div>
             
-            <h2 className="text-2xl font-black text-white mb-2">Premium Content</h2>
-            <p className="text-slate-400 mb-6">Unlock all chapters and interactive boards for a complete learning experience.</p>
+            <h2 className="text-2xl font-black text-white mb-2">Premium Access</h2>
+            <p className="text-slate-400 mb-6 font-medium leading-relaxed">Unlock <strong className="text-white">ALL</strong> remaining chapters with a single, affordable subscription.</p>
             
-            <div className="bg-slate-950/50 rounded-2xl p-6 w-full mb-6 border border-white/5">
-              <div className="text-4xl font-black text-white mb-2">50 EGP</div>
-              <div className="text-sm font-bold text-amber-400 uppercase tracking-widest">Special prices for groups</div>
+            <div className="bg-slate-950/50 rounded-2xl p-6 w-full mb-6 border border-white/5 relative overflow-hidden">
+              <div className="absolute top-0 right-0 bg-amber-500 text-amber-950 text-[10px] font-black px-3 py-1 rounded-bl-xl uppercase tracking-widest">One-Time Payment</div>
+              <div className="text-4xl font-black text-white mb-1 flex items-baseline justify-center gap-1">
+                50 <span className="text-xl text-slate-400">EGP</span>
+              </div>
+              <div className="text-sm font-black text-amber-400 uppercase tracking-widest mb-1">For ALL Chapters</div>
+              <div className="text-xs font-bold text-slate-500">Special prices available for groups</div>
               
               <ul className="mt-6 space-y-3 text-left">
-                <li className="flex items-center gap-3 text-slate-300 text-sm">
-                  <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>Comprehensive chapter boards</span>
+                <li className="flex items-start gap-3 text-slate-300 text-sm font-medium">
+                  <div className="mt-0.5 w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0">
+                    <Check className="w-3 h-3 text-emerald-400" />
+                  </div>
+                  <span><strong className="text-emerald-400 font-bold">All Premium Chapters</strong> unlocked instantly</span>
                 </li>
-                <li className="flex items-center gap-3 text-slate-300 text-sm">
-                  <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>Interactive learning tools</span>
+                <li className="flex items-start gap-3 text-slate-300 text-sm font-medium">
+                  <div className="mt-0.5 w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0">
+                    <Check className="w-3 h-3 text-emerald-400" />
+                  </div>
+                  <span>Hundreds of interactive visual boards & diagrams</span>
                 </li>
-                <li className="flex items-center gap-3 text-slate-300 text-sm">
-                  <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>Unlimited priority review access</span>
+                <li className="flex items-start gap-3 text-slate-300 text-sm font-medium">
+                  <div className="mt-0.5 w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0">
+                    <Check className="w-3 h-3 text-emerald-400" />
+                  </div>
+                  <span>Full access to Clinical Case Studies & MCQs</span>
                 </li>
               </ul>
             </div>
