@@ -2806,6 +2806,7 @@ const FlashSpace = () => {
   const [sessionSeconds, setSessionSeconds] = useState(0);
   const [isTimerActive, setIsTimerActive] = useState(false);
 
+  const bgCanvasRef = useRef<HTMLCanvasElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const requestRef = useRef<number | null>(null);
   const cursorRef = useRef<HTMLDivElement>(null);
@@ -2958,14 +2959,14 @@ const FlashSpace = () => {
     ctx.globalCompositeOperation = 'source-over';
   }, []);
 
-  const renderFrame = useCallback(() => {
+      const renderFrame = useCallback(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
+
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    paths.forEach(p => drawPath(ctx, p));
     if (currentPathRef.current) drawPath(ctx, currentPathRef.current);
 
     const now = Date.now();
@@ -2977,6 +2978,16 @@ const FlashSpace = () => {
     });
 
     requestRef.current = requestAnimationFrame(renderFrame);
+  }, [drawPath]);
+
+  // Render static paths to background canvas whenever paths change
+  useEffect(() => {
+    const canvas = bgCanvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    paths.forEach(p => drawPath(ctx, p));
   }, [paths, drawPath]);
 
   useEffect(() => {
@@ -3971,6 +3982,11 @@ const FlashSpace = () => {
                   </div>
 
                   <img src={selectedBoard.medicalImage} alt="" className="max-w-full max-h-[85vh] pointer-events-none select-none" draggable={false} />
+                            <canvas
+                ref={bgCanvasRef}
+                width={2500} height={1800}
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full object-contain pointer-events-none"
+              />
               <canvas
                 ref={canvasRef}
                 width={2500} height={1800}
