@@ -2706,6 +2706,16 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
     {
       "id": "n11",
       "front": "Case 3: 3- What are the investigations should be done?",
+      "back": "Serum Albumin Level: To document and quantify severe hypoproteinemia.\nUrinary Urea per Gram Creatinine: To measure systemic protein deficiency.\nFasting Blood Glucose: To identify underlying hypoglycemia.\nSerum Electrolyte Panel: To identify and manage hypokalemia and hypomagnesemia.\nComplete Blood Count (CBC): To assess for associated nutritional or infectious anemias.\nRadiological Bone Age: To confirm delayed skeletal maturation."
+    }
+  ],
+  "RICKETS & TETANY": [
+    {
+      "id": "n12",
+      "front": "Mention causes of hypocalcemia and tetany in rickets.",
+      "back": "Complete functional failure of the parathyroid glands to compensate for low calcium due to gland exhaustion.\nAbsolute exhaustion of total calcium bone stores.\nTherapeutic administration of high-dose vitamin D shock therapy without oral calcium supplementation.\nSevere chest infections causing hyperventilation and a CO2 wash, resulting in acute alkalosis tetany."
+    },
+    {
       "id": "n13",
       "front": "Describe the clinical picture of latent tetany.",
       "back": "Latent tetany develops at serum calcium levels of 7 to 9 mg%. It is verified through three classic clinical signs:\nChvostek sign: Contraction of facial musculature upon light tapping of the facial nerve trunk anterior to the tragus.\nTrousseau sign: Carpal spasm induced by temporary upper extremity ischemia via inflation of a blood pressure cuff above systolic levels for 3 minutes.\nPeroneal sign: Foot dorsiflexion and eversion induced by mechanical tapping over the peroneal nerve at the fibular neck."
