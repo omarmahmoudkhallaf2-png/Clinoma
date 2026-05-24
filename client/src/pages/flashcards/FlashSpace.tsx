@@ -3123,6 +3123,18 @@ const FlashSpace = () => {
     ctx.globalCompositeOperation = 'source-over';
   }, []);
 
+  // Redraw all paths to bgCanvas when paths array changes
+  useEffect(() => {
+    const bgCanvas = bgCanvasRef.current;
+    if (!bgCanvas) return;
+    const ctx = bgCanvas.getContext('2d');
+    if (!ctx) return;
+    
+    ctx.clearRect(0, 0, bgCanvas.width, bgCanvas.height);
+    paths.forEach(p => drawPath(ctx, p));
+  }, [paths, drawPath]);
+
+
       // RADICAL PERFORMANCE FIX: renderFrame and requestAnimationFrame removed to prevent CPU/GPU thermal throttling.
   // We now use direct incremental drawing to the active canvas and CSS-faded SVG for lasers.
 
@@ -3259,6 +3271,9 @@ const FlashSpace = () => {
         ctx.beginPath();
         ctx.moveTo(lastPoint.x, lastPoint.y);
         ctx.lineTo(pos.x, pos.y);
+        if (activeTool === 'highlighter') ctx.globalCompositeOperation = 'multiply';
+        else ctx.globalCompositeOperation = 'source-over';
+        
         ctx.strokeStyle = currentPathRef.current.color;
         ctx.lineWidth = currentPathRef.current.size;
         ctx.lineCap = 'round';
@@ -4163,6 +4178,21 @@ const FlashSpace = () => {
                 width={2500} height={1800}
                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full object-contain pointer-events-none"
               />
+              <svg className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none z-20" style={{ overflow: 'visible', maxWidth: '100%', maxHeight: '85vh' }}>
+                {laserPaths.map(p => (
+                  <path
+                    key={p.id}
+                    d={`M ${p.points.map(pt => `${pt.x},${pt.y}`).join(' L ')}`}
+                    fill="none"
+                    stroke="rgba(255, 255, 255, 0.9)"
+                    strokeWidth={p.size / 2.5}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    style={{ filter: `drop-shadow(0 0 8px ${p.color})` }}
+                    className="animate-fade-out"
+                  />
+                ))}
+              </svg>
               <canvas
                 ref={canvasRef}
                 width={2500} height={1800}
