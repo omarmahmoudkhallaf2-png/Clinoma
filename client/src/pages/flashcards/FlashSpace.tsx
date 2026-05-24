@@ -2614,7 +2614,7 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "back": "Congenital hypothyroidism (and Phenylketonuria)."
     }
   ],
-  "PEDIATRIC GROWTH": [
+  "The Master Map of Pediatric Growth": [
     {
       "id": "pg1",
       "front": "Define growth.",
@@ -2645,14 +2645,14 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "back": "Any six of the following clinical warning signs indicate developmental delay:\nDiscrepant head size or crossing centile lines (manifesting as too large or too small).\nPersistence of primitive reflexes beyond 6 months of age.\nComplete absence of response to the environment or parent by 12 months.\nFailure to walk independently by 18 months.\nComplete absence of clear spoken words by 18 months.\nFailure to produce two-word sentences by 2 years of age.\nPronounced problems with social interaction at 3 years of age."
     }
   ],
-  "THE FOUNDATIONS OF INFANT FEEDING": [
+  "The Foundations of Infant Feeding": [
     {
       "id": "n1",
       "front": "Mention Breast feeding reflexes",
       "back": "Lactation Physiology Reflexes:\nMilk secretion reflex (prolactin reflex): Suckling stimulates nipple nerve endings, activating the anterior pituitary gland to release prolactin, driving continuous milk production.\nMilk ejection or let down reflex (oxytocin reflex): Suckling triggers posterior pituitary release of oxytocin, contracting myoepithelial cells around the lactiferous ducts to eject milk.\nInfant Feeding Reflexes:\nRooting reflex: Tactile touch to the lip/cheek causes the infant to turn toward the stimulus and open the mouth.\nSuckling reflex: Palate contact stimulates automatic suckling movements.\nSwallowing reflex: Accumulation of milk in the oral cavity prompts swallowing."
     }
   ],
-  "HUMAN MILK STAGES, COMPOSITION & ADVANTAGES": [
+  "Human Milk: Stages, Composition & Advantages": [
     {
       "id": "n2",
       "front": "Describe five benefits of breastfeeding (for mothers)?",
@@ -2706,16 +2706,6 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
     {
       "id": "n11",
       "front": "Case 3: 3- What are the investigations should be done?",
-      "back": "Serum Albumin Level: To document and quantify severe hypoproteinemia.\nUrinary Urea per Gram Creatinine: To measure systemic protein deficiency.\nFasting Blood Glucose: To identify underlying hypoglycemia.\nSerum Electrolyte Panel: To identify and manage hypokalemia and hypomagnesemia.\nComplete Blood Count (CBC): To assess for associated nutritional or infectious anemias.\nRadiological Bone Age: To confirm delayed skeletal maturation."
-    }
-  ],
-  "RICKETS & TETANY": [
-    {
-      "id": "n12",
-      "front": "Mention causes of hypocalcemia and tetany in rickets.",
-      "back": "Complete functional failure of the parathyroid glands to compensate for low calcium due to gland exhaustion.\nAbsolute exhaustion of total calcium bone stores.\nTherapeutic administration of high-dose vitamin D shock therapy without oral calcium supplementation.\nSevere chest infections causing hyperventilation and a CO2 wash, resulting in acute alkalosis tetany."
-    },
-    {
       "id": "n13",
       "front": "Describe the clinical picture of latent tetany.",
       "back": "Latent tetany develops at serum calcium levels of 7 to 9 mg%. It is verified through three classic clinical signs:\nChvostek sign: Contraction of facial musculature upon light tapping of the facial nerve trunk anterior to the tragus.\nTrousseau sign: Carpal spasm induced by temporary upper extremity ischemia via inflation of a blood pressure cuff above systolic levels for 3 minutes.\nPeroneal sign: Foot dorsiflexion and eversion induced by mechanical tapping over the peroneal nerve at the fibular neck."
@@ -2736,6 +2726,13 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "back": "Renal replacement therapy consisting of regular maintenance hemodialysis or definitive renal transplantation.\nOral administration of Calcitriol (1,25-dihydroxyvitamin D) to correct the vitamin D activation defect.\nMaintaining a high dietary intake of calcium.\nImplementation of strict dietary phosphate restriction.\nRegular use of oral phosphate binders to inhibit the systemic absorption of dietary phosphorus."
     }
   ]
+};
+
+const getQuestionsForKey = (key: string) => {
+  if (!key) return [];
+  const lowerKey = key.toLowerCase();
+  const matchedKey = Object.keys(PEDIATRICS_QUESTIONS).find(k => k.toLowerCase() === lowerKey);
+  return matchedKey ? PEDIATRICS_QUESTIONS[matchedKey] : [];
 };
 
 const ARABIC_SYSTEM_NAMES: Record<string, string> = {
@@ -3764,9 +3761,9 @@ const FlashSpace = () => {
                     const chapterSlides = boards.filter(b => b.module === selectedModule && b.system === selectedSystem);
                     const chapterQuestions = chapterSlides.flatMap(board => {
                       const diseaseKey = (board.disease || '').replace(/\.(jpeg|jpg|png)\s*$/i, '').trim();
-                      return PEDIATRICS_QUESTIONS[diseaseKey] || [];
+                      return getQuestionsForKey(diseaseKey);
                     });
-                    const generalQuestions = PEDIATRICS_QUESTIONS[`_CHAPTER_${selectedSystem}`] || [];
+                    const generalQuestions = getQuestionsForKey(`_CHAPTER_${selectedSystem}`);
                     const allQuestions = [...chapterQuestions, ...generalQuestions];
 
                     const getFilteredQuestions = (cat: string) => {
@@ -4049,9 +4046,9 @@ const FlashSpace = () => {
                         const chapterSlides = boards.filter(b => b.module === selectedModule && b.system === selectedSystem);
                         const chapterQuestions = chapterSlides.flatMap(board => {
                           const diseaseKey = (board.disease || '').replace(/\.(jpeg|jpg|png)\s*$/i, '').trim();
-                          return PEDIATRICS_QUESTIONS[diseaseKey] || [];
+                          return getQuestionsForKey(diseaseKey);
                         });
-                        const generalQuestions = PEDIATRICS_QUESTIONS[`_CHAPTER_${selectedSystem}`] || [];
+                        const generalQuestions = getQuestionsForKey(`_CHAPTER_${selectedSystem}`);
                         const allQuestions = [...chapterQuestions, ...generalQuestions];
                         if (allQuestions.length > 0) {
                           startQuestionSession(allQuestions);
@@ -4188,9 +4185,9 @@ const FlashSpace = () => {
                       const chapterQuestions = chapterSlides.flatMap(board => {
                         if (!board) return [];
                         const diseaseKey = (board.disease || '').replace(/\.(jpeg|jpg|png)\s*$/i, '').trim();
-                        return PEDIATRICS_QUESTIONS[diseaseKey] || [];
+                        return getQuestionsForKey(diseaseKey);
                       });
-                      const generalQuestions = PEDIATRICS_QUESTIONS[`_CHAPTER_${selectedSystem}`] || [];
+                      const generalQuestions = getQuestionsForKey(`_CHAPTER_${selectedSystem}`);
                       const allChapterQuestions = groupCases([...chapterQuestions, ...generalQuestions]);
                       
                       const filteredQs = allChapterQuestions.filter(q => q && spacePriorities[q.id] === reviewFilter);
@@ -4367,9 +4364,9 @@ const FlashSpace = () => {
               const chapterSlides = boards.filter(b => b.module === selectedBoard?.module && b.system === selectedBoard?.system);
               const chapterQuestions = chapterSlides.flatMap(board => {
                 const diseaseKey = (board.disease || '').replace(/\.(jpeg|jpg|png)\s*$/i, '').trim();
-                return PEDIATRICS_QUESTIONS[diseaseKey] || [];
+                return getQuestionsForKey(diseaseKey);
               });
-              const generalQuestions = PEDIATRICS_QUESTIONS[`_CHAPTER_${selectedBoard?.system}`] || [];
+              const generalQuestions = getQuestionsForKey(`_CHAPTER_${selectedBoard?.system}`);
               const allQuestions = [...chapterQuestions, ...generalQuestions];
               if (allQuestions.length > 0) {
                 // Exit study mode and enter chapter question mode
@@ -4614,7 +4611,7 @@ const FlashSpace = () => {
                   Notes
                 </button>
                 <button
-                  onClick={() => { setShowExplanation(true); setShowQuestions(true); setActiveNoteTab('questions'); if (qQueue.length === 0 && !qSessionDone) { const diseaseKey = (selectedBoard?.disease || '').replace(/\.(jpeg|jpg|png)\s*$/i, '').trim(); const imgQs = PEDIATRICS_QUESTIONS[diseaseKey] || []; const qs = groupCases([...imgQs]); if (qs.length > 0) startQuestionSession(qs); } }}
+                  onClick={() => { setShowExplanation(true); setShowQuestions(true); setActiveNoteTab('questions'); if (qQueue.length === 0 && !qSessionDone) { const diseaseKey = (selectedBoard?.disease || '').replace(/\.(jpeg|jpg|png)\s*$/i, '').trim(); const imgQs = getQuestionsForKey(diseaseKey); const qs = groupCases([...imgQs]); if (qs.length > 0) startQuestionSession(qs); } }}
                   className="px-5 py-3 text-white hover:bg-emerald-600 transition-all flex items-center gap-2 font-black text-xs uppercase tracking-widest"
                 >
                   <Brain className="w-4 h-4" />
@@ -4696,7 +4693,7 @@ const FlashSpace = () => {
                     // --- QUESTIONS TAB - Flashcard Session ---
                     (() => {
                       const diseaseKey = (selectedBoard.disease || '').replace(/\.(jpeg|jpg|png)\s*$/i, '').trim();
-                      const allQuestions = PEDIATRICS_QUESTIONS[diseaseKey] || [];
+                      const allQuestions = getQuestionsForKey(diseaseKey);
                       
                       const getFilteredQuestions = (cat: string) => {
                         let filtered = allQuestions;
@@ -5052,9 +5049,9 @@ const FlashSpace = () => {
                     const chapterQuestions = chapterSlides.flatMap(board => {
                       if (!board) return [];
                       const diseaseKey = (board.disease || '').replace(/\.(jpeg|jpg|png)\s*$/i, '').trim();
-                      return PEDIATRICS_QUESTIONS[diseaseKey] || [];
+                      return getQuestionsForKey(diseaseKey);
                     });
-                    const generalQuestions = PEDIATRICS_QUESTIONS[`_CHAPTER_${selectedSystem}`] || [];
+                    const generalQuestions = getQuestionsForKey(`_CHAPTER_${selectedSystem}`);
                     const allChapterQuestions = groupCases([...chapterQuestions, ...generalQuestions]);
                     
                     const filteredQs = allChapterQuestions.filter(q => q && spacePriorities[q.id] === reviewFilter);
