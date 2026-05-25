@@ -3398,22 +3398,22 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
     {
       "id": "gd_case1_q1",
       "front": "Case 1: A mother brings her 10-month-old infant to your clinic for a routine check-up. On physical examination, you note that the infant can sit steadily without support with a straight back and can creep on the floor. However, the infant cannot stand or walk alone yet.\n\nIs this infant's gross motor development normal or delayed based on his current age?",
-      "back": "Normal development, as sitting without support with a straight back is expected by 8 months, and creeping is achieved at 9 months."
+      "back": "Normal development, as sitting without support with a straight back is expected by 8 months , and creeping is achieved at 9 months."
     },
     {
       "id": "gd_case1_q2",
       "front": "Case 1: A mother brings her 10-month-old infant to your clinic for a routine check-up. On physical examination, you note that the infant can sit steadily without support with a straight back and can creep on the floor. However, the infant cannot stand or walk alone yet.\n\nAt what age is walking well typically achieved?",
-      "back": "Walking well is typically achieved at 15 months."
+      "back": "15 months."
     },
     {
       "id": "gd_case2_q1",
       "front": "Case 2: An 18-month-old child is brought to the pediatric clinic because he is still unable to walk independently and has no clear spoken words.\n\nIdentify the two key development warning signs present in this child.",
-      "back": "Key warning signs: Not walking by 18 months and no clear spoken words by 18 months."
+      "back": "Not walking by 18 months and no clear spoken words by 18 months."
     },
     {
       "id": "gd_case2_q2",
       "front": "Case 2: An 18-month-old child is brought to the pediatric clinic because he is still unable to walk independently and has no clear spoken words.\n\nEnumerate two muscular or neurological causes that could lead to delayed walking in this child.",
-      "back": "Causes of delayed walking: Cerebral palsy and muscles disorders."
+      "back": "Cerebral palsy and muscles disorders."
     }
   ],
   "_CHAPTER_Infections": [
@@ -3809,6 +3809,86 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "id": "nut_case2_q3",
       "front": "Case 2: A 10-month-old male infant presents with broad wrists, bow-legs, and delayed teething. Blood chemistry: normal Ca, low Ph and very high alkaline phosphatase. X-ray of wrist shows cupping & fraying.\n\nEnumerate the two therapeutic methods/options for treating this infantile disease.",
       "back": "Oral daily dose of 1500-5000 IU vitamin D till complete recovery, or Shock therapy (a single oral dose of 600,000 IU vitamin D)."
+    },
+    {
+      "id": "n1",
+      "front": "Describe five benefits of breastfeeding (for mothers)?",
+      "back": "It helps in the involution of the birth canal.\nIt serves as a natural method of contraception.\nIt decreases the clinical incidence of breast cancer."
+    },
+    {
+      "id": "n2",
+      "front": "Mention foods avoided in weaning diet.",
+      "back": "Foods that cause choking, such as nuts, fruits with seeds, and potato chips.\nFoods containing artificial colors and artificial flavors.\nSalted food, as it might cause hypertension.\nJunk food such as sweets and candies, which deprive the child from taking food that is more nutritious and encourages a desire for sweets.\nHighly spiced and fatty food."
+    },
+    {
+      "id": "n3",
+      "front": "Describe skin changes in Kwashiorkor and explain its cause.",
+      "back": "Description: Skin changes start as erythema followed by hyperpigmentation and desquamation, leading directly to ulceration, fissuring, and crackling. Secondary skin infections and even gangrene are highly common because the pitting edema constitutes a suitable media for the entry of pathogenic organisms. The commonest anatomical sites involved are pressure sites (buttocks and back) and flexural sites (groin and axilla).\nCause: These pathognomonic skin changes are primarily caused by deficiencies in essential fatty acids, essential amino acids, sulfur-containing amino acids, vitamin A, and zinc."
+    },
+    {
+      "id": "n4",
+      "front": "List 5 causes of death in PEM",
+      "back": "Recurrent systemic infections.\nElectrolytes imbalance occurring as a result of refeeding syndrome or acute gastroenteritis.\nHypothermia.\nHypoglycemia, due to low glycogen content in the liver and defects in catecholamine and glucagon hormone formation.\nHeart failure, due to either anemic heart failure or degenerative changes in the cardiac muscles."
+    },
+    {
+      "id": "n5",
+      "front": "Explain the causes of infection in protein-energy malnutrition.",
+      "back": "Edema-Related Susceptibility: Pitting edema creates an ideal, compromised environment and suitable media for the entry of micro-organisms, leading to high rates of skin infections and gangrene.\nGastrointestinal Barrier Defect: Defective epithelization of the intestinal mucosa impairs natural defenses, making the patient highly vulnerable to bacterial, viral, and protozoal gastroenteritis."
+    },
+    {
+      "id": "n6",
+      "front": "Explain why weaning should start after the age of 4 months.",
+      "back": "Weaning must begin at the age of 4 months because maternal breast milk becomes insufficient to fulfill the baseline nutritional requirements of the infant, creating a critical deficit across multiple components:\nCalories: A clear energy gap forms between breast milk intake (356 kcal/day) and total daily requirement (536.8 kcal/day) at 4 months.\nProteins: A protein intake deficit emerges between baseline intake (6.6 g/day) and requirement (9.1 g/day) at 4 months.\nVitamin D: A substantial micronutrient gap exists between intake (528 ng/day) and requirement (5000 ng/day) at 4 months.\nZinc: Intake drops below required levels, with intake at 0.98 mg/day against a requirement of 2 mg/day after 4 months.\nIron: A severe developmental gap opens between intake (0.29 mg/day) and requirement (11 mg/day) after 6 months of age. Introducing complementary feeding at 4 months is therefore mandated to explicitly avoid caloric, vitamin, and mineral deficiencies."
+    },
+    {
+      "id": "n7",
+      "front": "Discuss welcome classification for protein energy malnutrition",
+      "back": "The Welcome classification categorizes protein-energy malnutrition by assessing the patient's body weight-for-age percentage relative to the standard (50th percentile reference) and evaluating for the clinical presence or absence of pitting edema:\nWeight-for-age between 60% and 80% of standard:\nWithout edema: Underweight (mild PEM).\nWith edema: Kwashiorkor (severe PEM).\nWeight-for-age < 60% of standard:\nWithout edema: Marasmus (severe PEM).\nWith edema: Marasmic Kwashiorkor (severe PEM)."
+    },
+    {
+      "id": "n8",
+      "front": "Mention Breast feeding reflexes",
+      "back": "Maternal Secretory & Ejection Reflexes:\nMilk secretion reflex (prolactin reflex): Suckling directly stimulates nerve endings in the nipple, inducing anterior pituitary production of prolactin, which drives milk production.\nMilk ejection or let-down reflex (oxytocin reflex): Suckling stimulates oxytocin release from the posterior pituitary, causing acute contraction of myoepithelial cells around the lactiferous ducts to cause milk ejection.\nInfant Feeding Reflexes:\nRooting reflex: Mechanical touch to the lip or cheek causes the infant to turn toward the stimulus and open the mouth.\nSuckling reflex: Tactile stimulation of the palate directly initiates suckling.\nSwallowing reflex: The presence of milk filling the oral cavity triggers automatic swallowing."
+    },
+    {
+      "id": "n9",
+      "front": "Case 3: 1- What is most likely diagnosis?",
+      "back": "The most likely diagnosis is Kwashiorkor. It is a form of severe protein-energy malnutrition caused by selective protein deficiency in the setting of nearly normal caloric intake, characterized clinically by pitting edema and growth failure."
+    },
+    {
+      "id": "n10",
+      "front": "Case 3: 2- What are the other features should be present?",
+      "back": "Constant Features: Severe growth failure (weight-for-age < 80% of reference), psychological/mental changes (apathy, marked irritability, lack of interest in surroundings, absence of smile), and muscle wasting with preserved subcutaneous fat.\nVariable (Non-constant) Features: Skin changes (erythema, hyperpigmentation, desquamation, flaky paint dermatosis), hair changes (loss of luster, dry/sparse hair, color lightening, or alternating bands known as the flag sign), nutritional anemia, and gastrointestinal changes (hepatomegaly from fatty infiltration, diarrhea, and abdominal distension)."
+    },
+    {
+      "id": "n11",
+      "front": "Case 3: 3- What are the investigations should be done?",
+      "back": "Serum Albumin: To evaluate the degree of hypoproteinemia (characteristically low).\nUrinary Urea per Gram Creatinine: To demonstrate reduced protein intake and metabolism (low).\nBlood Glucose Level: To evaluate for concurrent fasting hypoglycemia.\nSerum Electrolytes: To check for underlying potassium and magnesium deficiencies.\nComplete Blood Count (CBC): To identify microcytic, macrocytic, or normocytic anemia.\nRadiological Bone Age: To confirm delayed skeletal maturation."
+    },
+    {
+      "id": "n12",
+      "front": "Mention causes of hypocalcemia and tetany in rickets.",
+      "back": "Hypocalcemia and manifest tetany present in rickets under specific metabolic circumstances:\nParathyroid gland failure to respond to systemic hypocalcemia due to gland exhaustion.\nComplete exhaustion of total skeletal bone stores of calcium.\nAdministration of high-dose vitamin D shock therapy without concurrent oral calcium supplementation.\nSevere concurrent chest infections causing hyperventilation, inducing a CO2 wash, resulting in systemic respiratory alkalosis tetany."
+    },
+    {
+      "id": "n13",
+      "front": "Describe the clinical picture of latent tetany.",
+      "back": "Latent tetany occurs when total serum calcium levels range between 7 and 9 mg%. It lacks spontaneous clinical symptoms but is explicitly confirmed via three diagnostic neurological signs:\nChvostek sign: Mechanical tapping over the facial nerve anterior to the tragus produces immediate contraction of the ipsilateral facial muscles.\nTrousseau sign: Occlusion of arterial flow to the upper extremity using a sphygmomanometer cuff inflated above systolic pressure for 3 minutes induces ischemia, resulting in a classic carpal spasm.\nPeroneal sign: Tapping the peroneal nerve over the neck of the fibula produces immediate dorsiflexion and eversion of the foot."
+    },
+    {
+      "id": "n14",
+      "front": "Case 4: 1- What is most likely diagnosis?",
+      "back": "The most likely diagnosis is Renal Osteodystrophy (Uremic Rickets). This clinical entity comprises skeletal mineralization defects secondary to chronic renal failure, presenting with rickets-like epiphyseal broadening, severe short stature, metabolic acidosis, and renal-induced systemic hypertension."
+    },
+    {
+      "id": "n15",
+      "front": "Case 4: 2- What are the investigations should be done?",
+      "back": "Serum Kidney Function Tests: Evaluating blood urea and creatinine levels, which will be pathologically elevated.\nSerum Phosphorus: To confirm hyperphosphatemia caused by decreased glomerular filtration.\nSerum Calcium: To identify hypocalcemia secondary to failure of renal vitamin D hydroxylation.\nSerum Alkaline Phosphatase: Characteristically elevated due to high osteoblastic remodeling.\nBlood Gas Analysis (pH): To diagnose underlying metabolic acidosis.\nRadiological X-ray of Wrists/Long Bones: To visualize structural epiphyseal cupping, fraying, and broadening."
+    },
+    {
+      "id": "n16",
+      "front": "Case 4: 3- What is the treatment?",
+      "back": "Radical management of the underlying renal pathology via chronic hemodialysis or renal transplantation.\nActive Calcitriol (1,25-dihydroxyvitamin D) administration to bypass compromised renal 1-alpha-hydroxylase activity.\nEnsuring high oral calcium intake.\nImplementation of a low phosphate diet.\nAdministration of oral phosphate binders to restrict GI absorption of dietary phosphorus."
     }
   ],
   "_CHAPTER_Genetic diseases": [
@@ -5417,95 +5497,13 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "id": "pg2",
       "front": "Mention types of Growth charts",
       "back": "Percentile curves.\nStandard deviation curves.\nVelocity curves.\nConditional centiles."
-    },
-    {
-      "id": "n1",
-      "front": "Describe five benefits of breastfeeding (for mothers)?",
-      "back": "It helps in the involution of the birth canal.\nIt serves as a natural method of contraception.\nIt decreases the clinical incidence of breast cancer."
-    },
-    {
-      "id": "n2",
-      "front": "Mention foods avoided in weaning diet.",
-      "back": "Foods that cause choking, such as nuts, fruits with seeds, and potato chips.\nFoods containing artificial colors and artificial flavors.\nSalted food, as it might cause hypertension.\nJunk food such as sweets and candies, which deprive the child from taking food that is more nutritious and encourages a desire for sweets.\nHighly spiced and fatty food."
-    },
-    {
-      "id": "n3",
-      "front": "Describe skin changes in Kwashiorkor and explain its cause.",
-      "back": "Description: Skin changes start as erythema followed by hyperpigmentation and desquamation, leading directly to ulceration, fissuring, and crackling. Secondary skin infections and even gangrene are highly common because the pitting edema constitutes a suitable media for the entry of pathogenic organisms. The commonest anatomical sites involved are pressure sites (buttocks and back) and flexural sites (groin and axilla).\nCause: These pathognomonic skin changes are primarily caused by deficiencies in essential fatty acids, essential amino acids, sulfur-containing amino acids, vitamin A, and zinc."
-    },
-    {
-      "id": "n4",
-      "front": "List 5 causes of death in PEM",
-      "back": "Recurrent systemic infections.\nElectrolytes imbalance occurring as a result of refeeding syndrome or acute gastroenteritis.\nHypothermia.\nHypoglycemia, due to low glycogen content in the liver and defects in catecholamine and glucagon hormone formation.\nHeart failure, due to either anemic heart failure or degenerative changes in the cardiac muscles."
-    },
-    {
-      "id": "n5",
-      "front": "Explain the causes of infection in protein-energy malnutrition.",
-      "back": "Edema-Related Susceptibility: Pitting edema creates an ideal, compromised environment and suitable media for the entry of micro-organisms, leading to high rates of skin infections and gangrene.\nGastrointestinal Barrier Defect: Defective epithelization of the intestinal mucosa impairs natural defenses, making the patient highly vulnerable to bacterial, viral, and protozoal gastroenteritis."
-    },
-    {
-      "id": "n6",
-      "front": "Explain why weaning should start after the age of 4 months.",
-      "back": "Weaning must begin at the age of 4 months because maternal breast milk becomes insufficient to fulfill the baseline nutritional requirements of the infant, creating a critical deficit across multiple components:\nCalories: A clear energy gap forms between breast milk intake (356 kcal/day) and total daily requirement (536.8 kcal/day) at 4 months.\nProteins: A protein intake deficit emerges between baseline intake (6.6 g/day) and requirement (9.1 g/day) at 4 months.\nVitamin D: A substantial micronutrient gap exists between intake (528 ng/day) and requirement (5000 ng/day) at 4 months.\nZinc: Intake drops below required levels, with intake at 0.98 mg/day against a requirement of 2 mg/day after 4 months.\nIron: A severe developmental gap opens between intake (0.29 mg/day) and requirement (11 mg/day) after 6 months of age. Introducing complementary feeding at 4 months is therefore mandated to explicitly avoid caloric, vitamin, and mineral deficiencies."
-    },
-    {
-      "id": "n7",
-      "front": "Discuss welcome classification for protein energy malnutrition",
-      "back": "The Welcome classification categorizes protein-energy malnutrition by assessing the patient's body weight-for-age percentage relative to the standard (50th percentile reference) and evaluating for the clinical presence or absence of pitting edema:\nWeight-for-age between 60% and 80% of standard:\nWithout edema: Underweight (mild PEM).\nWith edema: Kwashiorkor (severe PEM).\nWeight-for-age < 60% of standard:\nWithout edema: Marasmus (severe PEM).\nWith edema: Marasmic Kwashiorkor (severe PEM)."
-    },
-    {
-      "id": "n8",
-      "front": "Mention Breast feeding reflexes",
-      "back": "Maternal Secretory & Ejection Reflexes:\nMilk secretion reflex (prolactin reflex): Suckling directly stimulates nerve endings in the nipple, inducing anterior pituitary production of prolactin, which drives milk production.\nMilk ejection or let-down reflex (oxytocin reflex): Suckling stimulates oxytocin release from the posterior pituitary, causing acute contraction of myoepithelial cells around the lactiferous ducts to cause milk ejection.\nInfant Feeding Reflexes:\nRooting reflex: Mechanical touch to the lip or cheek causes the infant to turn toward the stimulus and open the mouth.\nSuckling reflex: Tactile stimulation of the palate directly initiates suckling.\nSwallowing reflex: The presence of milk filling the oral cavity triggers automatic swallowing."
-    },
-    {
-      "id": "n9",
-      "front": "Case 3: 1- What is most likely diagnosis?",
-      "back": "The most likely diagnosis is Kwashiorkor. It is a form of severe protein-energy malnutrition caused by selective protein deficiency in the setting of nearly normal caloric intake, characterized clinically by pitting edema and growth failure."
-    },
-    {
-      "id": "n10",
-      "front": "Case 3: 2- What are the other features should be present?",
-      "back": "Constant Features: Severe growth failure (weight-for-age < 80% of reference), psychological/mental changes (apathy, marked irritability, lack of interest in surroundings, absence of smile), and muscle wasting with preserved subcutaneous fat.\nVariable (Non-constant) Features: Skin changes (erythema, hyperpigmentation, desquamation, flaky paint dermatosis), hair changes (loss of luster, dry/sparse hair, color lightening, or alternating bands known as the flag sign), nutritional anemia, and gastrointestinal changes (hepatomegaly from fatty infiltration, diarrhea, and abdominal distension)."
-    },
-    {
-      "id": "n11",
-      "front": "Case 3: 3- What are the investigations should be done?",
-      "back": "Serum Albumin: To evaluate the degree of hypoproteinemia (characteristically low).\nUrinary Urea per Gram Creatinine: To demonstrate reduced protein intake and metabolism (low).\nBlood Glucose Level: To evaluate for concurrent fasting hypoglycemia.\nSerum Electrolytes: To check for underlying potassium and magnesium deficiencies.\nComplete Blood Count (CBC): To identify microcytic, macrocytic, or normocytic anemia.\nRadiological Bone Age: To confirm delayed skeletal maturation."
-    }
-  ],
+    }],
   "Biological Age & Maturation (Bone & Teeth)": [
     {
       "id": "bone1",
       "front": "Enumerate the causes of Delayed Dentition.",
       "back": "Rickets (أشهر وأهم سبب)\nHypothyroidism\nHypopituitarism\nDown syndrome\nMalnutrition\nFamilial / Idiopathic\n\n💡 Mnemonic لتسهيل التذكر:\n(عيلة داون عندها نقص تغذية وكساح في الغدة)"
-    },
-    {
-      "id": "n12",
-      "front": "Mention causes of hypocalcemia and tetany in rickets.",
-      "back": "Hypocalcemia and manifest tetany present in rickets under specific metabolic circumstances:\nParathyroid gland failure to respond to systemic hypocalcemia due to gland exhaustion.\nComplete exhaustion of total skeletal bone stores of calcium.\nAdministration of high-dose vitamin D shock therapy without concurrent oral calcium supplementation.\nSevere concurrent chest infections causing hyperventilation, inducing a CO2 wash, resulting in systemic respiratory alkalosis tetany."
-    },
-    {
-      "id": "n13",
-      "front": "Describe the clinical picture of latent tetany.",
-      "back": "Latent tetany occurs when total serum calcium levels range between 7 and 9 mg%. It lacks spontaneous clinical symptoms but is explicitly confirmed via three diagnostic neurological signs:\nChvostek sign: Mechanical tapping over the facial nerve anterior to the tragus produces immediate contraction of the ipsilateral facial muscles.\nTrousseau sign: Occlusion of arterial flow to the upper extremity using a sphygmomanometer cuff inflated above systolic pressure for 3 minutes induces ischemia, resulting in a classic carpal spasm.\nPeroneal sign: Tapping the peroneal nerve over the neck of the fibula produces immediate dorsiflexion and eversion of the foot."
-    },
-    {
-      "id": "n14",
-      "front": "Case 2: 1- What is most likely diagnosis?",
-      "back": "The most likely diagnosis is Renal Osteodystrophy (Uremic Rickets). This clinical entity comprises skeletal mineralization defects secondary to chronic renal failure, presenting with rickets-like epiphyseal broadening, severe short stature, metabolic acidosis, and renal-induced systemic hypertension."
-    },
-    {
-      "id": "n15",
-      "front": "Case 2: 2- What are the investigations should be done?",
-      "back": "Serum Kidney Function Tests: Evaluating blood urea and creatinine levels, which will be pathologically elevated.\nSerum Phosphorus: To confirm hyperphosphatemia caused by decreased glomerular filtration.\nSerum Calcium: To identify hypocalcemia secondary to failure of renal vitamin D hydroxylation.\nSerum Alkaline Phosphatase: Characteristically elevated due to high osteoblastic remodeling.\nBlood Gas Analysis (pH): To diagnose underlying metabolic acidosis.\nRadiological X-ray of Wrists/Long Bones: To visualize structural epiphyseal cupping, fraying, and broadening."
-    },
-    {
-      "id": "n16",
-      "front": "Case 2: 3- What is the treatment?",
-      "back": "Radical management of the underlying renal pathology via chronic hemodialysis or renal transplantation.\nActive Calcitriol (1,25-dihydroxyvitamin D) administration to bypass compromised renal 1-alpha-hydroxylase activity.\nEnsuring high oral calcium intake.\nImplementation of a low phosphate diet.\nAdministration of oral phosphate binders to restrict GI absorption of dietary phosphorus."
-    }
-  ],
+    }],
   "_CHAPTER_Neurology": [
     {
       "id": "neuro_q1",
