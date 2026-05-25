@@ -196,6 +196,72 @@ const PEDIATRICS_SLIDES: Record<string, string[]> = {
 };
 
 const PEDIATRICS_EXPLANATIONS: Record<string, string> = {
+  'Classification & Evaluation of Anemia': `**أولاً: التعريف وتقييم الأنيميا (Definition & Evaluation)**
+
+**التعريف:** الأنيميا هي نقص في تركيز الهيموجلوبين (Hemoglobin) أو الكتلة الكلية لكرات الدم الحمراء عن المعدل الطبيعي المسموح به بالنسبة لعمر وجنس الطفل.
+
+**التقييم:** لتشخيص سبب الأنيميا بشكل دقيق، نعتمد على محورين أساسيين:
+1. **التصنيف الشكلي لحجم الخلية** عن طريق الـ MCV (Mean Corpuscular Volume).
+2. **التصنيف الفسيولوجي لنشاط النخاع** عن طريق الـ Reticulocytic count.
+
+---
+
+**ثانياً: التصنيف الشكلي (Morphological Classification)**
+يعتمد هذا التصنيف على تحليل صورة الدم الكاملة (CBC) وينقسم إلى 3 أنواع رئيسية:
+
+**A. Enumerate the causes of Microcytic Hypochromic Anemia (Low MCV):**
+الخلايا هنا صغيرة الحجم وباهتة اللون، وتشمل:
+1. **Iron Deficiency Anemia (IDA):** أنيميا نقص الحديد (وهي الأشهر والأكثر شيوعاً).
+2. **Thalassemia:** أنيميا البحر المتوسط (خلل جيني في تخليق الهيموجلوبين).
+3. **Lead poisoning:** التسمم بالرصاص.
+4. **Sideroblastic anemia:** أنيميا أرومات الدم الحديدية (خلل في استخدام الحديد داخل النخاع).
+
+**B. Enumerate the causes of Normocytic Normochromic Anemia (Normal MCV):**
+حجم ولون الخلايا طبيعي، ولكن العدد الإجمالي قليل، وتشمل:
+1. **Acute blood loss:** النزيف الحاد.
+2. **Hemolytic anemias:** الأنيميا التكسيرية ( بمختلف أنواعها).
+3. **Aplastic anemia:** فشل النخاع العظمي.
+4. **Chronic systemic diseases:** الأمراض المزمنة (مثل الفشل الكلوي المزمن CKD).
+
+**C. Enumerate the causes of Macrocytic Anemia (High MCV):**
+الخلايا هنا حجمها أكبر من الطبيعي، وتشمل:
+1. **Megaloblastic anemia:** وتحدث بسبب نقص فيتامين ب12 (Vitamin B12 deficiency) أو نقص حمض الفوليك (Folate deficiency).
+2. **Hypothyroidism:** خمول الغدة الدرقية.
+3. **Liver diseases:** أمراض الكبد المزمنة.
+
+---
+
+**ثالثاً: التصنيف الفسيولوجي (Physiological Classification)**
+يعتمد على قياس نسبة الخلايا الشبكية (Reticulocytes) لمعرفة رد فعل نخاع العظم:
+
+*   **Low Reticulocytic count (Decreased production):** النخاع كسلان ولا ينتج خلايا جديدة (ويحدث في حالات نقص التغذية كالحديد والفيتامينات، أو فشل النخاع، أو الأمراض المزمنة).
+*   **High Reticulocytic count (Increased destruction / loss):** النخاع نشط جداً وينتج خلايا بكثرة لتعويض فاقد سريع (ويحدث في حالات التكسير Hemolysis أو النزيف الحاد).
+
+---
+
+💡 **Mnemonics لتسهيل التذكر في أسئلة الـ Enumerate:**
+
+**1. Mnemonic لأسباب الـ Microcytic Anemia:**
+لربط أسباب الخلايا الصغيرة، تذكر هذه الجملة:
+**(حديد ورصاص، وثلاسيميا سيدهم)**
+*   **حديد:** Iron Deficiency Anemia
+*   **رصاص:** Lead poisoning
+*   **ثلاسيميا:** Thalassemia
+*   **سيدهم:** Sideroblastic anemia
+
+**2. Mnemonic لأسباب الـ Macrocytic Anemia:**
+لربط أسباب الخلايا الكبيرة، تذكر هذه الجملة:
+**(كبد وغدة كسلانة.. ونقص ب12 والفوليك بيكبّر الخلية)**
+*   **كبد:** Liver diseases
+*   **غدة كسلانة:** Hypothyroidism
+*   **نقص ب12 والفوليك:** Megaloblastic anemia
+
+**3. Mnemonic لأسباب الـ Normocytic Anemia:**
+**(نخاع فاشل أو مرض مزمن.. ودم بيتكسر أو بينزف)**
+*   **نخاع فاشل:** Aplastic anemia
+*   **مرض مزمن:** Chronic systemic diseases
+*   **دم بيتكسر:** Hemolytic anemias
+*   **دم بينزف:** Acute blood loss`,
   'BIOLOGICAL AGE & MATURATION (BONE & TEETH)': `**أولاً: النضج العظمي (Bone Age / Radiological Age)**
 
 * يُعتبر الـ **Bone age** من أهم المؤشرات لتقييم النضج البيولوجي للطفل، ويتم تحديده عن طريق تقييم ظهور مراكز التعظم (**Centers of ossification**).
@@ -599,7 +665,7 @@ const PEDIATRICS_EXPLANATIONS: Record<string, string> = {
 1. **(أكل فول وخد دوا.. فجأة شحب واصفر وبوله بقى زي الشاي)**
 2. **(كورتيزون ومناعة في الأول.. ونقل دم بحذر شديد.. ولو فشلوا شيل الطحال)**
 ` ,
-  'HEMOSTASIS & BLEEDING DISORDERS': `**أولاً: خطوات وقف النزيف (Core Components of Hemostasis)**
+  'Hemostasis & Bleeding Disorders': `**أولاً: خطوات وقف النزيف (Core Components of Hemostasis)**
 
 **Vascular Response:** انقباض فوري للأوعية الدموية لتقليل تدفق الدم (Vasoconstriction).
 
@@ -642,7 +708,7 @@ const PEDIATRICS_EXPLANATIONS: Record<string, string> = {
    - aPTT (intrinsic) → 12,11,9,8.
    - Common → 10,5,2,1.
 ` ,
-  'IRON DEFICIENCY ANEMIA (IDA)': `**أولاً: نظرة عامة والأسباب (Overview & Causes)**
+  'Iron Deficiency Anemia (IDA)': `**أولاً: نظرة عامة والأسباب (Overview & Causes)**
 
 **المقدمة:** أنيميا نقص الحديد هي أشهر أمراض الدم الناتجة عن سوء التغذية لدى الأطفال.
 
@@ -687,7 +753,7 @@ const PEDIATRICS_EXPLANATIONS: Record<string, string> = {
 3. **Treatment Rules:** (اديه على الريق مع برتقال.. وابعد عن اللبن والشاي.. وكمل 3 شهور عشان تملى المخازن).
 `,
 
-  'INHERITED COAGULATION: HEMOPHILIA & VWD': `**أولاً: مرض الهيموفيليا (The Hemophilias)**
+  'Inherited Coagulation Hemophilia & VWD': `**أولاً: مرض الهيموفيليا (The Hemophilias)**
 
 **التعريف:** مجموعة من الأمراض الوراثية التي تسبب نقصاً في عوامل التجلط (المسار الداخلي)، وتتميز بنمط النزيف العميق في الأنسجة.
 
@@ -732,7 +798,7 @@ const PEDIATRICS_EXPLANATIONS: Record<string, string> = {
 2. **تمييز النزيف:** (الهيموفيليا نزيف جوه… والفون ويلبراند نزيف برّه).
 3. **تحاليل الـ VWD (الخلل المزدوج):** (وقت النزيف طويل عشان الصفائح مش بتلزق… والـ aPTT طويل عشان العامل الثامن بيقع).
 ` ,
-'LYMPHOMAS & SOLID TUMORS': `**أولاً: الأورام الليمفاوية (Lymphomas)**
+'Lymphomas & Solid Tumors': `**أولاً: الأورام الليمفاوية (Lymphomas)**
 
 **التصنيف:**  
 - Hodgkin Lymphoma (HL)  
@@ -775,7 +841,7 @@ const PEDIATRICS_EXPLANATIONS: Record<string, string> = {
 3. **Wilms Tumor:** (كتلة في الكلية مابتعديش النص وممنوع تلمسها.. بتجيب دم في البول ويرفع الضغط).
 ` ,
 
-  'MEGALOBLASTIC ANEMIAS (B12 & FOLATE DEFICIENCY)': `**أولاً: التعريف والباثوفسيولوجي (Definition & Pathophysiology)**
+  'Megaloblastic Anemias (B12 & Folate Deficiency)': `**أولاً: التعريف والباثوفسيولوجي (Definition & Pathophysiology)**
 
 **التعريف:** هي نوع من الأنيميا ذات الخلايا الكبيرة (Macrocytic anemias).
 
@@ -826,7 +892,7 @@ const PEDIATRICS_EXPLANATIONS: Record<string, string> = {
 `,
 
 
-  'NON-THROMBOCYTOPENIC PURPURA (VASCULAR & HSP)': `**أولاً: فرفرية الأوعية الدموية (Vascular Purpura Framework)**
+  'Non-Thrombocytopenic Purpura (Vascular & HSP)': `**أولاً: فرفرية الأوعية الدموية (Vascular Purpura Framework)**
 
 **التعريف:** أمراض نزفية ناتجة عن تلف هيكلي أو التهاب في جدار الأوعية الدموية، مما يرفع نفاذيتها ويسبب نزيفًا تحت الجلد أو الأغشية المخاطية.
 
@@ -862,7 +928,7 @@ const PEDIATRICS_EXPLANATIONS: Record<string, string> = {
 `,
 
 
-  'PEDIATRIC ONCOLOGY: THE LEUKEMIAS (ALL & AML)': `**أولاً: التعريف والعلامات التحذيرية (Definition & Red Flags)**
+  'Pediatric Oncology The Leukemias (ALL & AML)': `**أولاً: التعريف والعلامات التحذيرية (Definition & Red Flags)**
 
 **التعريف:** اللوكيميا (سرطان الدم) هي أشهر الأورام الخبيثة في الأطفال، ناتجة عن تكاثر غير مسيطر عليه لخلايا الدم غير الناضجة (Blasts) داخل النخاع العظمي.
 
@@ -912,7 +978,7 @@ const PEDIATRICS_EXPLANATIONS: Record<string, string> = {
 `,
 
 
-  'PLATELET DISORDERS: ITP & THROMBOCYTOPENIAS': `**أولاً: فرفرية نقص الصفائح المناعية (Immune Thrombocytopenic Purpura - ITP)**
+  'Platelet Disorders ITP & Thrombocytopenias': `**أولاً: فرفرية نقص الصفائح المناعية (Immune Thrombocytopenic Purpura - ITP)**
 
 **التعريف والسبب:** هي أشهر سبب لنقص الصفائح الدموية الحاد في الأطفال الأصحاء. يحدث غالباً بعد عدوى فيروسية أو تطعيم. ينتج أجسام مضادة (Anti‑Platelet IgG) تهاجم الصفائح وتُدمرها الخلايا البلعمية في الطحال.
 
@@ -947,7 +1013,7 @@ const PEDIATRICS_EXPLANATIONS: Record<string, string> = {
 `,
 
 
-  'RBC PHYSIOLOGY, INDICES & MORPHOLOGY': `**أولاً: فسيولوجيا تكوين الدم وتطور الهيموجلوبين (Erythropoiescence & Hemoglobin Ontogeny)**
+  'RBC Physiology, Indices & Morphology': `**أولاً: فسيولوجيا تكوين الدم وتطور الهيموجلوبين (Erythropoiescence & Hemoglobin Ontogeny)**
 
 **Erythropoiesis (تكوين كرات الدم):** يُنتَج تحت تأثير الهرمون الإريثروبين (EPO) الذي تفرزه الكلى عند نقص الأكسجة، محفزًا نخاع العظم لإنتاج كرات دم حمراء جديدة.
 
@@ -976,7 +1042,7 @@ const PEDIATRICS_EXPLANATIONS: Record<string, string> = {
 `,
 
 
-  'SAFE BLOOD TRANSFUSION & COMPLICATIONS': `**أولاً: دواعي استخدام مكونات الدم (Clinical Indications for Blood Components)**
+  'Safe Blood Transfusion & Complications': `**أولاً: دواعي استخدام مكونات الدم (Clinical Indications for Blood Components)**
 
 **Packed RBCs (كرات الدم الحمراء المكدسة):** تعويض قدرة الدم على حمل الأكسجين في الأنيميا المزمنة (مثل الثلاسيميا والأنيميا المنجلية)، فشل النخاع، أو النزيف الحاد بعد الحوادث والعمليات.
 
@@ -1012,7 +1078,7 @@ const PEDIATRICS_EXPLANATIONS: Record<string, string> = {
 `,
 
 
-  'SICKLE CELL DISEASE (SCD)': `**أولاً: الخلل الجيني والباثوفسيولوجي (Genetics & Pathophysiology)**
+  'Sickle Cell Disease (SCD)': `**أولاً: الخلل الجيني والباثوفسيولوجي (Genetics & Pathophysiology)**
 
 **الخلل الجيني:** أنيميا وراثية متنحية (Autosomal recessive) بسبب نقطة طفرة (Point mutation) في موقع β‑Globin رقم 6 حيث يتحول الجلوتاميك إلى فالين (Valine replaces Glutamic acid). النتيجة هي تكون هيموجلوبين غير طبيعي (HbS).
 
@@ -1050,7 +1116,7 @@ const PEDIATRICS_EXPLANATIONS: Record<string, string> = {
 `,
 
 
-  'THE THALASSEMIA SYNDROMES (ALPHA & BETA)': `**أولاً: التعريف والباثوفسيولوجي (Definition & Pathophysiology)**
+  'The Thalassemia Syndromes (Alpha & Beta)': `**أولاً: التعريف والباثوفسيولوجي (Definition & Pathophysiology)**
 
 **التعريف:** الثلاسيميا (أنيميا البحر المتوسط) هي مجموعة أمراض وراثية تسبب أنيميا تكسيرية صغرى (Inherited Microcytic Hemolytic Anemias) نتيجة نقص أو غياب سلاسل الجلوبين α أو β.
 
