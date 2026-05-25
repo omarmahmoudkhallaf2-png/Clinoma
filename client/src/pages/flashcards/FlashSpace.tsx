@@ -1904,7 +1904,7 @@ const MatchingGameUI = ({ question, onComplete }: { question: any, onComplete: (
 interface Question {
   id: string;
   type?: 'flashcard' | 'matching' | 'case';
-  category?: 'previous_years' | 'clinoma';
+  category?: 'previous_years' | 'clinoma' | 'both';
   front: string;
   back?: string;
   matchingPairs?: Array<{ left: string, right: string }>;
