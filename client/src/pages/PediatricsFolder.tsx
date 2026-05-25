@@ -72,6 +72,387 @@ const PEDIATRICS_EXPLANATIONS: Record<string, string> = {
 
 // 3 High-Yield Questions for Bone & Teeth maturation
 const PEDIATRICS_QUESTIONS: Record<string, any[]> = {
+  'all_infections_chapter': [
+    // ─── SAQ Q1 – Definitions ───────────────────────────────────────────────
+    {
+      question: "Which of the following is the CORRECT definition of Fever of Unknown Origin (FUO) in children?",
+      options: [
+        "Fever >37.5°C for >7 days with no identifiable source after basic blood tests",
+        "Fever >38°C for >14 days with no cause found by clinical history, physical examination, and routine laboratory tests",
+        "Fever >39°C for >3 days that does not respond to antipyretics",
+        "Any unexplained fever in a child under 5 years old lasting more than 48 hours"
+      ],
+      correctAnswer: 1,
+      explanation: "FUO is defined as fever >38°C for >14 days with no cause found by clinical history, physical examination, and routine laboratory tests. The duration of at least 14 days and the thorough workup requirement are key distinguishing criteria."
+    },
+    {
+      question: "What is the precise medical definition of Dysentery?",
+      options: [
+        "Diarrhea with more than 10 watery stools per day",
+        "Any diarrhea accompanied by fever and abdominal cramps",
+        "Diarrhea with visible blood in the stool",
+        "Diarrhea caused exclusively by bacterial pathogens"
+      ],
+      correctAnswer: 2,
+      explanation: "Dysentery is defined as diarrhea with visible blood in the stool. The presence of visible blood distinguishes dysentery from ordinary diarrhea, regardless of the causative organism."
+    },
+    {
+      question: "Pertussis (Whooping Cough) is caused by which specific organism, and how is it correctly classified?",
+      options: [
+        "Streptococcus pyogenes – a Gram-positive coccus",
+        "Bordetella pertussis – a Gram-negative bacillus",
+        "Haemophilus influenzae type-b – a Gram-negative coccobacillus",
+        "Mycoplasma pneumoniae – an atypical intracellular pathogen"
+      ],
+      correctAnswer: 1,
+      explanation: "Pertussis is an acute respiratory infection caused by Bordetella pertussis, which is correctly classified as a Gram-negative bacillus. This distinction is frequently tested in examinations."
+    },
+    {
+      question: "Acute Bacterial Meningitis ('Septic Meningitis') is best defined as:",
+      options: [
+        "A viral inflammation of the brain parenchyma causing altered consciousness and seizures",
+        "Chronic granulomatous inflammation of the meninges caused by Mycobacterium tuberculosis",
+        "Acute inflammation of the meninges covering the brain and spinal cord, with the production of a purulent exudate",
+        "Aseptic inflammation of the subarachnoid space with a lymphocytic CSF pleocytosis"
+      ],
+      correctAnswer: 2,
+      explanation: "Acute Bacterial (Septic) Meningitis is defined as acute inflammation of the meninges covering the brain and spinal cord, with production of a purulent (pus-like) exudate in the CSF. This purulent nature differentiates it from viral/aseptic meningitis."
+    },
+    // ─── SAQ Q2 – Measles Complications ─────────────────────────────────────
+    {
+      question: "Which of the following is a recognized nervous or respiratory complication associated with Measles?",
+      options: [
+        "Glomerulonephritis and nephrotic syndrome",
+        "Rheumatic fever and carditis",
+        "Subacute Sclerosing Pan-Encephalitis (SSPE)",
+        "Osteomyelitis and septic arthritis"
+      ],
+      correctAnswer: 2,
+      explanation: "Measles complications include pneumonia, otitis media, post-infectious encephalitis, Subacute Sclerosing Pan-Encephalitis (SSPE), and laryngo-tracheo-bronchitis. SSPE is a rare but devastating late neurological complication caused by persistent measles virus in the CNS."
+    },
+    {
+      question: "A child presents 7 years after a measles infection with progressive intellectual deterioration, myoclonic jerks, and seizures. Which late measles complication does this describe?",
+      options: [
+        "Post-infectious encephalitis occurring days after the rash",
+        "Subacute Sclerosing Pan-Encephalitis (SSPE)",
+        "Measles-associated pneumonia",
+        "Laryngo-tracheo-bronchitis (Croup)"
+      ],
+      correctAnswer: 1,
+      explanation: "SSPE (Subacute Sclerosing Pan-Encephalitis) is a fatal late complication of measles that presents years after the initial infection. It is caused by persistent defective measles virus in brain cells and leads to progressive neurological deterioration, myoclonus, and death."
+    },
+    // ─── SAQ Q3 – Scarlet Fever Clinical Features ────────────────────────────
+    {
+      question: "Which of the following clinical findings is MOST characteristic of the eruptive stage of Scarlet Fever?",
+      options: [
+        "A vesicular rash that begins on the face and spreads centrifugally",
+        "A diffuse, finely papular, erythematous eruption that blanches on pressure",
+        "A maculopapular rash that starts behind the ears and spreads downwards",
+        "A petechial non-blanching rash over the lower limbs"
+      ],
+      correctAnswer: 1,
+      explanation: "The hallmark rash of Scarlet Fever is a diffuse, finely papular (sandpaper-like), bright red erythematous eruption that characteristically BLANCHES on pressure. This is caused by the erythrogenic toxin produced by Group A beta-hemolytic streptococci."
+    },
+    {
+      question: "Which unique tongue finding in Scarlet Fever changes its appearance characteristically over a few days?",
+      options: [
+        "Koplik spots appearing on the tongue dorsum",
+        "A heavily coated 'white strawberry tongue' which evolves into a 'red strawberry tongue'",
+        "Geographic tongue with central depapillation",
+        "Candidal plaques on the tongue that are easily scraped off"
+      ],
+      correctAnswer: 1,
+      explanation: "In Scarlet Fever, the tongue initially appears as a 'White Strawberry Tongue' (coated with prominent red papillae). After a few days, the coating peels off to reveal the 'Red Strawberry Tongue' – a pathognomonic finding in Scarlet Fever."
+    },
+    // ─── SAQ Q4 – Pertussis Stages ───────────────────────────────────────────
+    {
+      question: "What are the three distinct clinical stages of Pertussis infection and what is the correct order and duration?",
+      options: [
+        "Incubation (1 wk) → Paroxysmal (2–4 wks) → Catarrhal (1–2 wks)",
+        "Catarrhal (1–2 wks) → Paroxysmal (2–4 wks) → Convalescent (1–2 wks)",
+        "Prodromal (3 days) → Eruptive (2 wks) → Desquamation (1 wk)",
+        "Catarrhal (2–4 wks) → Spasmodic (1–2 wks) → Recovery (3–4 wks)"
+      ],
+      correctAnswer: 1,
+      explanation: "Pertussis has 3 stages: (1) Catarrhal stage – lasts 1–2 weeks, resembles a common cold, most contagious phase; (2) Paroxysmal stage – lasts 2–4 weeks, characteristic whooping cough paroxysms; (3) Convalescent stage – lasts 1–2 weeks, gradual recovery."
+    },
+    {
+      question: "During which stage of Pertussis is the child most contagious, and which stage is the LONGEST?",
+      options: [
+        "Most contagious: Paroxysmal; Longest: Convalescent",
+        "Most contagious: Catarrhal; Longest: Paroxysmal",
+        "Most contagious: Convalescent; Longest: Catarrhal",
+        "Most contagious: Paroxysmal; Longest: Catarrhal"
+      ],
+      correctAnswer: 1,
+      explanation: "The Catarrhal stage is the most contagious phase (the child appears to have a cold and spreads droplets widely). The Paroxysmal stage is the longest, lasting 2–4 weeks, during which the characteristic repetitive cough paroxysms and 'whoop' occur."
+    },
+    // ─── SAQ Q5 – Meningitis Organisms ──────────────────────────────────────
+    {
+      question: "Which set of organisms is responsible for Acute Bacterial Meningitis specifically during the NEONATAL PERIOD?",
+      options: [
+        "Meningococci, Pneumococci, and H. influenzae type-b",
+        "E. coli, Group-B Streptococci, and Listeria monocytogenes",
+        "Staphylococcus aureus, Klebsiella, and Pseudomonas",
+        "Streptococcus pyogenes, Salmonella, and Enterococcus"
+      ],
+      correctAnswer: 1,
+      explanation: "Neonatal meningitis is caused by organisms acquired from the maternal birth canal: E. coli (most common Gram-negative), Group-B Streptococci (most common Gram-positive), and Listeria monocytogenes. These differ completely from the childhood organisms."
+    },
+    {
+      question: "A 3-year-old child develops bacterial meningitis. Which organism is MOST common in this age group and is also associated with a petechial rash?",
+      options: [
+        "E. coli – Gram-negative rod from maternal flora",
+        "Listeria monocytogenes – motile Gram-positive rod",
+        "Meningococci (Neisseria meningitidis) – associated with petechial/purpuric rash",
+        "H. influenzae type-b – common only up to 5 years, causes epiglottitis"
+      ],
+      correctAnswer: 2,
+      explanation: "In childhood meningitis (beyond the neonatal period), Meningococci (Neisseria meningitidis) is the most feared organism and is associated with a characteristic petechial/purpuric non-blanching rash due to septicemia with DIC. Pneumococci and H. influenzae type-b (up to 5 years) are also important childhood causes."
+    },
+    // ─── SAQ Q6 – Non-infectious FUO Causes ──────────────────────────────────
+    {
+      question: "A child has fever >38°C for 3 weeks. An extensive infectious workup is negative. Which of the following is a non-infectious cause that should be considered in the differential diagnosis of FUO?",
+      options: [
+        "Respiratory Syncytial Virus (RSV) bronchiolitis",
+        "Juvenile Rheumatoid Arthritis (JRA)",
+        "Acute Gastroenteritis due to Rotavirus",
+        "Whooping cough in the Catarrhal stage"
+      ],
+      correctAnswer: 1,
+      explanation: "Non-infectious causes of FUO include: Juvenile Rheumatoid Arthritis (JRA), SLE, Leukemia, Lymphoma, Neuroblastoma, and Drug fever. JRA (systemic type) is one of the most important non-infectious causes of prolonged fever in children."
+    },
+    {
+      question: "Which of the following malignancies can present as a Fever of Unknown Origin (FUO) in children?",
+      options: [
+        "Rhabdomyosarcoma and Wilms tumor only",
+        "Leukemia and Lymphoma",
+        "Retinoblastoma and Hepatoblastoma only",
+        "Osteosarcoma and Ewing's sarcoma only"
+      ],
+      correctAnswer: 1,
+      explanation: "Both Leukemia and Lymphoma are well-recognized malignant causes of FUO in children, along with Neuroblastoma. These present with prolonged fever because malignant cells release pyrogenic cytokines. SLE and JRA are autoimmune non-infectious causes."
+    },
+    // ─── SAQ Q7 – Hookworm Manifestations ────────────────────────────────────
+    {
+      question: "A child who walked barefoot on soil presents with itchy papules on the feet, a dry cough, wheezing, eosinophilia, and later develops severe pallor with fatigue. Which infestation best explains this clinical picture?",
+      options: [
+        "Ascariasis (Roundworm infestation)",
+        "Enterobiasis (Pinworm infestation)",
+        "Ancylostomiasis (Hookworm infestation)",
+        "Strongyloidiasis"
+      ],
+      correctAnswer: 2,
+      explanation: "Ancylostomiasis (Hookworm) follows a classic path: (1) 'Ground itch' from skin penetration by larvae; (2) 'Loeffler-like syndrome' during lung migration (cough, wheeze, eosinophilia); (3) GI symptoms; (4) Severe hypochromic microcytic iron deficiency anemia from blood sucking by adult worms in the intestine."
+    },
+    {
+      question: "What type of anemia is the classic systemic manifestation of chronic Ancylostomiasis (Hookworm infestation), and why?",
+      options: [
+        "Normocytic normochromic anemia due to chronic disease",
+        "Macrocytic megaloblastic anemia due to B12 malabsorption",
+        "Hypochromic microcytic iron deficiency anemia due to chronic intestinal blood loss",
+        "Hemolytic anemia due to parasite-induced RBC destruction"
+      ],
+      correctAnswer: 2,
+      explanation: "Adult hookworms attach to the intestinal wall and suck blood chronically. This leads to progressive iron loss and a Hypochromic Microcytic Iron Deficiency Anemia. Clinically, patients present with pica, fatigue, shortness of breath, and palpitations – all features of severe iron deficiency."
+    },
+    // ─── Matching – Koplik Spots ─────────────────────────────────────────────
+    {
+      question: "Koplik spots are a pathognomonic sign used to diagnose which disease, and where exactly are they found?",
+      options: [
+        "Typhoid fever – appearing as rose-colored spots on the lower chest and abdomen",
+        "Measles – small white spots erupting on the buccal mucosa opposite the second molar teeth",
+        "Scarlet Fever – white plaques on the tongue that transform into a red strawberry pattern",
+        "Chickenpox – vesicular lesions on the hard palate during the prodromal stage"
+      ],
+      correctAnswer: 1,
+      explanation: "Koplik spots are pathognomonic (exclusively diagnostic) for Measles. They appear as small bluish-white spots on a red background on the buccal mucosa (inner cheek) opposite the second molar teeth, 1–2 days BEFORE the measles rash appears. No other disease produces Koplik spots."
+    },
+    // ─── Matching – Widal Test ───────────────────────────────────────────────
+    {
+      question: "The Widal test is the classic serological test used to diagnose Typhoid fever. What does this test specifically detect?",
+      options: [
+        "IgM antibodies against the Typhoid Vi capsular antigen only",
+        "Bacteremia by directly culturing Salmonella typhi from blood",
+        "Antibodies against somatic 'O' and flagellar 'H' antigens of Salmonella typhi",
+        "Agglutination of platelets caused by endotoxin-mediated DIC in Typhoid"
+      ],
+      correctAnswer: 2,
+      explanation: "The Widal test is an agglutination test that detects antibodies (agglutinins) against two antigens of Salmonella typhi: the somatic 'O' antigen (which rises first and indicates active infection) and the flagellar 'H' antigen. It typically becomes positive in the 2nd week of illness."
+    },
+    // ─── Matching – Rose Spots ───────────────────────────────────────────────
+    {
+      question: "Rose spots are a clinical sign associated with Typhoid fever. Which of the following best describes their characteristics?",
+      options: [
+        "Bright red petechiae on the lower limbs, non-blanching, appearing in the 1st week",
+        "Vesicular lesions on the trunk appearing in crops over 3–5 days",
+        "A transient skin rash of rose-colored macules appearing on the lower chest and abdomen at the end of the 1st week of Typhoid fever",
+        "Confluent erythematous patches on the face with circumoral pallor"
+      ],
+      correctAnswer: 2,
+      explanation: "Rose spots in Typhoid fever are faint, rose-colored, blanching macular lesions that appear on the lower chest and abdomen at the end of the 1st week of illness. They result from embolization of Salmonella typhi into the skin capillaries and are visible mainly in fair-skinned patients."
+    },
+    // ─── Matching – Brudzinski's Sign ────────────────────────────────────────
+    {
+      question: "Brudzinski's sign is a clinical test for meningeal irritation. Which of the following correctly describes how it is elicited and what constitutes a positive response?",
+      options: [
+        "The patient is asked to touch their chin to their chest; a positive sign is inability to do so due to neck stiffness",
+        "Rapid passive flexion of the neck causes brisk reflex flexion of both knees and hips",
+        "Extending the knee when the thigh is flexed at the hip produces pain and resistance (Kernig's sign)",
+        "Percussion of the skull produces a cracked-pot sound (Macewen's sign)"
+      ],
+      correctAnswer: 1,
+      explanation: "Brudzinski's sign: with the patient supine, rapid passive flexion of the head/neck causes involuntary brisk flexion of both knees and hips. This occurs because meningeal irritation makes neck flexion painful, triggering a reflexive drawing-up of the legs. It is distinct from Kernig's sign which tests knee extension with hip flexed."
+    },
+    // ─── Case 1 – Scarlet Fever ──────────────────────────────────────────────
+    {
+      question: "CASE 1: A 5-year-old presents with abrupt onset high fever (40°C), severe sore throat, and a diffuse sandpaper-like red rash that blanches on pressure. He has flushed cheeks with circumoral pallor and a 'red strawberry' tongue. What is the most likely diagnosis?",
+      options: [
+        "Measles – caused by a paramyxovirus with Koplik spots",
+        "Kawasaki Disease – with coronary artery involvement",
+        "Scarlet Fever – caused by Group A beta-hemolytic streptococci producing erythrogenic toxin",
+        "Roseola Infantum (Exanthem Subitum) – caused by HHV-6"
+      ],
+      correctAnswer: 2,
+      explanation: "This is classic Scarlet Fever. The triad of: (1) acute pharyngotonsillitis with high fever, (2) diffuse blanching papular erythematous rash, and (3) strawberry tongue with circumoral pallor is pathognomonic. It is caused by Group A beta-hemolytic streptococci (Streptococcus pyogenes) that produce erythrogenic (pyrogenic) exotoxin."
+    },
+    {
+      question: "CASE 1 (continued): In Scarlet Fever, what is the drug of choice for eradication of the causative organism, and what are two important late non-suppurative complications to monitor for?",
+      options: [
+        "Erythromycin; late complications: SSPE and bronchiectasis",
+        "Penicillin (or Erythromycin if allergic); late complications: Rheumatic fever and Acute Post-streptococcal glomerulonephritis",
+        "Amoxicillin-Clavulanate; late complications: Toxic shock syndrome and endocarditis",
+        "Ceftriaxone; late complications: Hemolytic anemia and thrombocytopenia"
+      ],
+      correctAnswer: 1,
+      explanation: "Penicillin is the drug of choice for Scarlet Fever (Erythromycin is used if penicillin-allergic). The two critical non-suppurative (immune-mediated) late complications are: (1) Acute Rheumatic Fever (ARF) – affecting heart, joints, and CNS; (2) Acute Post-streptococcal Glomerulonephritis (APSGN) – presenting with hematuria and hypertension."
+    },
+    // ─── Case 2 – Pertussis ──────────────────────────────────────────────────
+    {
+      question: "CASE 2: An 11-month-old infant has severe exhausting bouts of coughing for 2 weeks. The mother describes repetitive coughs (5–10 per expiration) followed by a loud inspiratory 'whoop', with post-tussive vomiting. There is no vaccination history. What is the diagnosis and current clinical stage?",
+      options: [
+        "Bronchiolitis (RSV) – in the acute phase",
+        "Croup (Laryngo-tracheo-bronchitis) – in the obstructive phase",
+        "Pertussis (Whooping Cough) – currently in the Paroxysmal stage",
+        "Foreign body aspiration – presenting with a sudden onset stridorous cough"
+      ],
+      correctAnswer: 2,
+      explanation: "The characteristic paroxysmal cough (5–10 rapid coughs on a single expiration), followed by the massive inspiratory 'whoop', and post-tussive vomiting are the hallmarks of the PAROXYSMAL STAGE of Pertussis. The absence of vaccination confirms susceptibility to Bordetella pertussis."
+    },
+    {
+      question: "CASE 2 (continued): What would a Complete Blood Count (CBC) characteristically reveal to support the diagnosis of Pertussis?",
+      options: [
+        "Marked leukopenia with relative lymphocytosis and eosinopenia",
+        "Neutrophilia with elevated CRP and thrombocytopenia",
+        "Marked leukocytosis with absolute lymphocytosis",
+        "Normocytic normochromic anemia with a normal white cell count"
+      ],
+      correctAnswer: 2,
+      explanation: "Pertussis is uniquely associated with a marked LEUKOCYTOSIS (WBC can reach 20,000–100,000/μL) with ABSOLUTE LYMPHOCYTOSIS. This extraordinary lymphocytosis is caused by Pertussis toxin blocking lymphocyte re-entry into lymph nodes. This CBC pattern strongly supports the clinical diagnosis."
+    },
+    {
+      question: "CASE 2 (continued): What is the standard antimicrobial treatment for this infant with Pertussis, including the correct drug, dose, and duration?",
+      options: [
+        "Azithromycin 10 mg/kg/day once daily for 5 days",
+        "Amoxicillin 40 mg/kg/day in 3 divided doses for 10 days",
+        "Erythromycin 50 mg/kg/day in 4 divided doses for 14 days",
+        "Ceftriaxone 50 mg/kg/day IV as a single daily dose for 7 days"
+      ],
+      correctAnswer: 2,
+      explanation: "The standard treatment for Pertussis in infants is Erythromycin at 50 mg/kg/day divided into 4 doses (every 6 hours) for 14 days (2 weeks). Erythromycin eradicates Bordetella pertussis from the nasopharynx, shortens the infectious period, and if given in the catarrhal stage, can attenuate disease severity."
+    },
+    // ─── Case 3 – Bacterial Meningitis ──────────────────────────────────────
+    {
+      question: "CASE 3: A 3-year-old rushes to the ER with sudden high fever, severe headache, repeated vomiting, altered sensorium, a petechial rash, positive Kernig's sign, and positive Brudzinski's sign. What is the most likely diagnosis and causative organism given the petechial rash?",
+      options: [
+        "Viral encephalitis caused by HSV-1; management with IV Acyclovir",
+        "Acute Bacterial (Septic) Meningitis most likely caused by Meningococci (Neisseria meningitidis) due to the characteristic petechial rash",
+        "Tuberculous meningitis caused by Mycobacterium tuberculosis; insidious onset",
+        "Brain abscess caused by anaerobic streptococci; requires neurosurgical drainage"
+      ],
+      correctAnswer: 1,
+      explanation: "The acute onset of high fever + signs of meningeal irritation (neck stiffness, Kernig's, Brudzinski's) + altered consciousness = Acute Bacterial Meningitis. The petechial/purpuric non-blanching rash is the hallmark of Meningococcal septicemia (Neisseria meningitidis), which can cause fulminant DIC and is a medical emergency."
+    },
+    {
+      question: "CASE 3 (continued): What is the URGENT diagnostic investigation that must be performed immediately to confirm Acute Bacterial Meningitis and guide treatment?",
+      options: [
+        "CT scan of the head to exclude a space-occupying lesion",
+        "Blood cultures and empirical antibiotics without CSF examination",
+        "Lumbar puncture for Cerebrospinal Fluid (CSF) examination, culture, and antibiotic sensitivity testing",
+        "MRI of the spine with contrast enhancement"
+      ],
+      correctAnswer: 2,
+      explanation: "Lumbar puncture (LP) for CSF examination is the DEFINITIVE diagnostic procedure for bacterial meningitis. CSF analysis reveals: turbid appearance, markedly elevated WBC (neutrophilic pleocytosis), elevated protein, markedly reduced glucose. CSF culture with antibiotic sensitivity testing guides specific antibiotic therapy."
+    },
+    // ─── Case 4 – Typhoid Fever ──────────────────────────────────────────────
+    {
+      question: "CASE 4: A 7-year-old presents with 9 days of continuous high fever, headache, anorexia, myalgia, toxic appearance, coated tongue, abdominal distension, and a soft palpable spleen. CBC shows leukopenia with relative lymphocytosis and disappearance of eosinophils. What is the most likely diagnosis?",
+      options: [
+        "Brucellosis – associated with undulant fever and hepatosplenomegaly after animal contact",
+        "Malaria – with cyclical fever pattern and hemolytic anemia",
+        "Typhoid Fever (Enteric Fever) – caused by Salmonella typhi",
+        "Infectious Mononucleosis – caused by EBV with splenomegaly and lymphadenopathy"
+      ],
+      correctAnswer: 2,
+      explanation: "This is classic Typhoid Fever. Key diagnostic features: (1) Prolonged continuous fever with 'step-ladder' pattern; (2) Toxic 'pea soup' appearance; (3) Relative bradycardia; (4) Hepatosplenomegaly; (5) Leukopenia with RELATIVE LYMPHOCYTOSIS and complete EOSINOPENIA – a virtually pathognomonic CBC finding in Typhoid."
+    },
+    {
+      question: "CASE 4 (continued): In the 2nd week of Typhoid Fever illness, which investigation is MOST likely to be positive for detecting specific antibodies?",
+      options: [
+        "Blood culture – most sensitive in the 1st week when bacteremia peaks",
+        "Widal test – detects antibodies against somatic 'O' and flagellar 'H' antigens",
+        "Stool culture – most sensitive in the 3rd week",
+        "Bone marrow culture – the gold standard at any stage but rarely performed"
+      ],
+      correctAnswer: 1,
+      explanation: "The Widal test detects agglutinating antibodies against S. typhi antigens. Antibodies begin rising by day 5–7 but reach diagnostic titers (≥1:160 for 'O' and ≥1:80 for 'H') in the 2nd WEEK of illness. Blood culture (1st week) and stool/urine culture (3rd week) are positive at different time points."
+    },
+    {
+      question: "CASE 4 (continued): What is the specific preferred IV antibiotic treatment for Typhoid Fever in children, including the correct dosage?",
+      options: [
+        "Ampicillin 100 mg/kg/day IV in 4 divided doses",
+        "Chloramphenicol 50 mg/kg/day IV in 4 divided doses",
+        "Ceftriaxone 50–80 mg/kg/day IV as a single daily dose",
+        "Ciprofloxacin 20 mg/kg/day IV in 2 divided doses"
+      ],
+      correctAnswer: 2,
+      explanation: "Ceftriaxone (a 3rd-generation cephalosporin) at 50–80 mg/kg/day IV as a SINGLE daily dose is the current preferred treatment for severe or complicated Typhoid in children. It has excellent efficacy, convenient once-daily dosing, and low resistance rates compared to older agents like Chloramphenicol or Ampicillin."
+    },
+    // ─── Case 5 – Enterobiasis ───────────────────────────────────────────────
+    {
+      question: "CASE 5: A 4-year-old presents with intense nocturnal perianal itching, restless sleep, irritability, and teeth grinding (bruxism) at night. Two siblings have similar symptoms. What is the most likely parasitic infestation?",
+      options: [
+        "Ascariasis – with rectal prolapse and malnutrition",
+        "Hookworm infestation – with iron deficiency anemia and 'ground itch'",
+        "Enterobiasis (Oxyuriasis / Pinworm infestation) caused by Enterobius vermicularis",
+        "Trichuriasis (Whipworm) – with bloody diarrhea and rectal prolapse"
+      ],
+      correctAnswer: 2,
+      explanation: "Enterobiasis (Pinworm) caused by Enterobius vermicularis is the diagnosis. The classic triad is: (1) Intense NOCTURNAL perianal pruritus (female worms migrate to the perianal area at night to deposit eggs); (2) Sleep disturbance, irritability, and bruxism; (3) Family clustering (highly contagious via fecal-oral and autoinfection routes)."
+    },
+    {
+      question: "CASE 5 (continued): How is Enterobiasis definitively diagnosed in the laboratory?",
+      options: [
+        "Stool microscopy looking for adult worms in fresh stool samples",
+        "Serology (ELISA) detecting IgE antibodies against Enterobius vermicularis",
+        "Microscopic examination of material from the peri-anal skin using the Cellophane Tape (Scotch test) method to find characteristic eggs",
+        "Peripheral blood eosinophilia with elevated total IgE on CBC"
+      ],
+      correctAnswer: 2,
+      explanation: "The CELLOPHANE TAPE METHOD (Scotch test) is the standard diagnostic technique for Enterobiasis. A piece of transparent tape is applied to the perianal skin EARLY IN THE MORNING (before bathing/defecation), then examined microscopically. It detects the characteristic asymmetric, flattened-on-one-side eggs laid by the female worm nocturnally."
+    },
+    {
+      question: "CASE 5 (continued): What is the correct treatment protocol for Enterobiasis, and what crucial epidemiological rule must be followed?",
+      options: [
+        "Mebendazole 100 mg single oral dose, repeated after 2–3 weeks; treat the child ONLY",
+        "Metronidazole 250 mg three times daily for 5 days; treat the child and mother only",
+        "Mebendazole or Flubendazole 100 mg single oral dose, repeated after 2–3 weeks; ALL household members must be treated simultaneously",
+        "Albendazole 400 mg single dose, not to be repeated; no family treatment needed"
+      ],
+      correctAnswer: 2,
+      explanation: "Treatment: A single oral dose of Mebendazole or Flubendazole 100 mg, REPEATED after 2–3 weeks (to kill newly hatched worms from any residual eggs). The critical epidemiological rule: ALL infected individuals AND ALL family/household members must be treated SIMULTANEOUSLY to break the cycle of reinfection, regardless of whether they have symptoms."
+    }
+  ],
   'biological_age_maturation_bone_teeth': [
     {
       question: "ما هو الفحص الإشعاعي (Investigation) الأساسي لتقييم النضج العظمي (Bone Age) لدى الأطفال؟",

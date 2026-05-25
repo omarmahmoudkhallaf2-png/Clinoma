@@ -1988,6 +1988,139 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "back": "Causes of delayed walking: Cerebral palsy and muscles disorders."
     }
   ],
+  "_CHAPTER_Infections": [
+    {
+      "id": "inf_saq_1",
+      "front": "Define the following terms:\nFever of Unknown Origin (FUO): Fever >38°C for >14 days with no cause found by clinical history, physical examination, and routine laboratory tests.",
+      "back": "Fever of Unknown Origin (FUO): Fever >38°C for >14 days with no cause found by clinical history, physical examination, and routine laboratory tests."
+    },
+    {
+      "id": "inf_saq_2",
+      "front": "Define the following terms:\nDysentery: It is defined as diarrhea with visible blood in the stool.",
+      "back": "Dysentery is defined as diarrhea with visible blood in the stool."
+    },
+    {
+      "id": "inf_saq_3",
+      "front": "Define the following terms:\nPertussis (Whooping Cough): An acute respiratory infection which is caused by Bordetella pertussis (a Gram-negative bacillus).",
+      "back": "Pertussis (Whooping Cough) is an acute respiratory infection caused by Bordetella pertussis (a Gram-negative bacillus)."
+    },
+    {
+      "id": "inf_saq_4",
+      "front": "Define the following terms:\nAcute Bacterial Meningitis (\"Septic Meningitis\"): Acute inflammation of the meninges covering the brain and spinal cord, with the production of a purulent exudate.",
+      "back": "Acute Bacterial Meningitis (\"Septic Meningitis\") is acute inflammation of the meninges covering the brain and spinal cord, with production of a purulent exudate."
+    },
+    {
+      "id": "inf_saq_5",
+      "front": "Enumerate four nervous or respiratory complications associated with Measles. (Any 4)",
+      "back": "Possible answers include: Pneumonia, Otitis media, Post-infectious or parainfectious encephalitis, Subacute sclerosing pan-encephalitis (SSPE), Laryngitis and laryngo-tracheo-bronchitis."
+    },
+    {
+      "id": "inf_saq_6",
+      "front": "Enumerate four clinical features characteristic of the prodromal and eruptive stages of Scarlet Fever. (Any 4)",
+      "back": "Possible answers include: Acute onset of high fever (40°C) with severe sore throat and purulent tonsillar exudate, Diffuse finely papular erythematous eruption that blanches on pressure, Flushed cheeks with circum-oral pallor, White strawberry tongue progressing to red strawberry tongue, Skin desquamation of hands and feet at end of first week."
+    },
+    {
+      "id": "inf_saq_7",
+      "front": "Enumerate the three distinct clinical stages of a Pertussis infection and their durations.",
+      "back": "1. Catarrhal Stage: 1-2 weeks.\n2. Paroxysmal Stage: 2-4 weeks.\n3. Convalescent Stage: 1-2 weeks."
+    },
+    {
+      "id": "inf_saq_8",
+      "front": "Enumerate the common causative organisms of Acute Bacterial Meningitis in the neonatal period versus childhood.",
+      "back": "Neonatal: E. coli, Group-B streptococci, Listeria monocytogenes.\nChildhood: Neisseria meningitidis, Streptococcus pneumoniae, Haemophilus influenzae type-b (up to 5 years)."
+    },
+    {
+      "id": "inf_saq_9",
+      "front": "Enumerate four non-infectious causes or categories that can present as a Fever of Unknown Origin (FUO).",
+      "back": "Possible answers: Juvenile Rheumatoid Arthritis (JRA), Systemic Lupus Erythematosus (SLE), Leukemia, Lymphoma, Neuroblastoma, Drug fever."
+    },
+    {
+      "id": "inf_saq_10",
+      "front": "Enumerate four systemic or intestinal clinical manifestations of Ancylostomiasis (Hookworm infestation).",
+      "back": "Possible answers: \"Ground itch\" at skin invasion, Loeffler-like pulmonary syndrome (dry cough, wheeze, eosinophilia), Abdominal pain, distension and steatorrhea, Severe hypochromic microcytic iron-deficiency anemia (pica, fatigue, dyspnea, palpitations)."
+    },
+    {
+      "id": "inf_match_1",
+      "type": "matching",
+      "front": "Match the pathognomonic clinical sign, skin manifestation, or diagnostic test in Group (A) with its exact matching disease or description in Group (B).",
+      "matchingPairs": [
+        { "left": "Koplik spots", "right": "Small spots erupting on the buccal mucosa opposite the second molar teeth, pathognomonic for Measles." },
+        { "left": "Widal test", "right": "An agglutination test that demonstrates antibodies against somatic \"O\" and flagellar \"H\" antigens to diagnose Typhoid fever." },
+        { "left": "Rose spots", "right": "A skin rash appearing on the lower chest and abdomen at the end of the 1st week of Typhoid fever." },
+        { "left": "Brudzinski's sign", "right": "A sign of meningeal irritation where rapid passive flexion of the head is accompanied by brisk flexion of both knees." }
+      ]
+    },
+    {
+      "id": "inf_case1_q1",
+      "front": "Case 1: A 5-year-old boy presents with abrupt high fever (40°C), severe sore throat, purulent tonsillar exudate, and within 24 hours a diffuse bright red erythematous rash that blanches on pressure, flushed cheeks with circum-oral pallor, and a red strawberry tongue. What is the most likely diagnosis?",
+      "back": "Scarlet Fever."
+    },
+    {
+      "id": "inf_case1_q2",
+      "front": "What is the specific causative organism and toxin responsible for Scarlet Fever?",
+      "back": "Group A beta-hemolytic streptococci producing an erythrogenic toxin."
+    },
+    {
+      "id": "inf_case1_q3",
+      "front": "Drug of choice to eradicate Scarlet Fever and two late non-suppurative complications to screen for?",
+      "back": "Drug of choice: Penicillin (or Erythromycin if allergic). Late complications: Rheumatic fever and acute post-streptococcal glomerulonephritis."
+    },
+    {
+      "id": "inf_case2_q1",
+      "front": "Case 2: 11-month-old infant with severe coughing bouts, 5-10 forceful coughs per expiration followed by a loud \"whoop\" and post-cough vomiting. No trans-placental immunity or vaccination. What is the clinical diagnosis and current disease stage?",
+      "back": "Pertussis (Whooping Cough), Paroxysmal stage."
+    },
+    {
+      "id": "inf_case2_q2",
+      "front": "What CBC finding supports the diagnosis of Pertussis?",
+      "back": "Marked leukocytosis with absolute lymphocytosis."
+    },
+    {
+      "id": "inf_case2_q3",
+      "front": "Standard antimicrobial treatment regimen and duration for Pertussis?",
+      "back": "Erythromycin 50 mg/kg/day in 4 divided doses for 14 days."
+    },
+    {
+      "id": "inf_case3_q1",
+      "front": "Case 3: 3-year-old with high fever, severe headache, vomiting, petechial rash, rigid neck, positive Kernig and Brudzinski signs. What is the diagnosis and likely organism?",
+      "back": "Acute Bacterial Meningitis (Septic Meningitis), most likely Meningococci due to petechial rash."
+    },
+    {
+      "id": "inf_case3_q2",
+      "front": "What is the urgent diagnostic investigation required for Acute Bacterial Meningitis?",
+      "back": "Lumbar puncture for CSF analysis, culture, and antibiotic sensitivity testing."
+    },
+    {
+      "id": "inf_case4_q1",
+      "front": "Case 4: 7-year-old girl with 9-day fever, headache, anorexia, muscle pain, coated tongue, abdominal distension, splenomegaly, normocytic anemia, leukopenia with relative lymphocytosis, eosinopenia. Most suspected diagnosis?",
+      "back": "Typhoid Fever (Enterica)."
+    },
+    {
+      "id": "inf_case4_q2",
+      "front": "Which investigation is likely positive in the second week of Typhoid Fever to detect specific antibodies?",
+      "back": "Widal test detecting antibodies against O and H antigens."
+    },
+    {
+      "id": "inf_case4_q3",
+      "front": "Preferred intravenous antibiotic treatment and pediatric dose for Typhoid Fever?",
+      "back": "Ceftriaxone 50-80 mg/kg/day administered as a single daily dose."
+    },
+    {
+      "id": "inf_case5_q1",
+      "front": "Case 5: 4-year-old with restless sleep, irritability, nocturnal anal pruritus, teeth grinding, similar symptoms in siblings. Most likely parasitic infestation?",
+      "back": "Enterobiasis (Pinworm infestation)."
+    },
+    {
+      "id": "inf_case5_q2",
+      "front": "What is the definitive laboratory diagnosis for Enterobiasis?",
+      "back": "Finding characteristic eggs via cellophane tape test from peri-anal skin."
+    },
+    {
+      "id": "inf_case5_q3",
+      "front": "Treatment protocol and crucial epidemiological rule for the family in Enterobiasis?",
+      "back": "Single oral dose of 100 mg Mebendazole or Flubendazole repeated after 2-3 weeks; all infected individuals and family members must be treated simultaneously."
+    }
+  ],
   "_CHAPTER_Nutrition": [
     {
       "id": "nut_infant_req_cf",
@@ -4278,21 +4411,6 @@ const CaseStudyUI = ({ question, onComplete, currentPriority, onSetPriority }: {
       <div className="w-full bg-indigo-50 dark:bg-indigo-900/30 p-6 md:p-8 shrink-0 relative">
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-purple-500" />
 
-          {onSetPriority && (
-            <div className="absolute top-6 right-6 flex items-center gap-2 bg-white/50 dark:bg-slate-800/50 p-2 rounded-2xl border border-slate-200 dark:border-slate-700/50 shadow-sm">
-              <span className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mx-2">Priority:</span>
-              {(['A', 'B', 'C'] as const).map(p => (
-                <button
-                  key={p}
-                  onClick={(e) => { e.stopPropagation(); onSetPriority(currentPriority === p ? null : p); }}
-                  className={`w-8 h-8 rounded-lg flex items-center justify-center font-black transition-all ${currentPriority === p ? (p === 'A' ? 'bg-rose-500 text-white shadow-lg shadow-rose-500/20 scale-110' : p === 'B' ? 'bg-amber-500 text-white shadow-lg shadow-amber-500/20 scale-110' : 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/20 scale-110') : 'bg-white dark:bg-slate-700 text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-600'}`}
-                >
-                  {p}
-                </button>
-              ))}
-            </div>
-          )}
-
         <div className="flex items-start gap-4">
           <div className="w-10 h-10 bg-indigo-100 dark:bg-indigo-800 rounded-xl flex items-center justify-center shrink-0">
             <span className="text-indigo-600 dark:text-indigo-300 font-black">C</span>
@@ -4328,7 +4446,25 @@ const CaseStudyUI = ({ question, onComplete, currentPriority, onSetPriority }: {
       </div>
 
       {/* Completion */}
-      <div className="shrink-0 p-4 bg-white dark:bg-slate-800 border-t-2 border-slate-100 dark:border-slate-700 flex justify-center">
+      <div className="shrink-0 p-4 bg-white dark:bg-slate-800 border-t-2 border-slate-100 dark:border-slate-700 flex items-center justify-between gap-3">
+        {onSetPriority ? (
+          <div className="flex items-center gap-2 bg-slate-100 dark:bg-slate-700/50 p-1.5 rounded-2xl">
+            <span className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider ml-1 mr-1">Priority</span>
+            {(['A', 'B', 'C'] as const).map(p => (
+              <button
+                key={p}
+                onClick={(e) => { e.stopPropagation(); onSetPriority(currentPriority === p ? null : p); }}
+                className={`w-8 h-8 rounded-xl flex items-center justify-center font-black text-sm transition-all ${
+                  currentPriority === p
+                    ? (p === 'A' ? 'bg-rose-500 text-white shadow-lg shadow-rose-500/30 scale-110' : p === 'B' ? 'bg-amber-500 text-white shadow-lg shadow-amber-500/30 scale-110' : 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/30 scale-110')
+                    : 'bg-white dark:bg-slate-700 text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-600'
+                }`}
+              >
+                {p}
+              </button>
+            ))}
+          </div>
+        ) : <div />}
         <button
           onClick={onComplete}
           disabled={!allRevealed}
