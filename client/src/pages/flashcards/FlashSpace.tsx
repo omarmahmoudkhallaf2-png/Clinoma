@@ -462,7 +462,6 @@ Pulmonary Plethora: كمية كبيرة من الدم تمر عبر الشريا
 * **الإغلاق الجراحي (Surgical):** يُنصح به في حالات: فشل النمو، ضغط الرئة > 50% من الضغط الجهازي (قبل سن سنة)، تضخم الحجرات اليسرى، أو فشل القلب المستعصي.
 * **الإجراءات:** الإغلاق الجراحي (patch closure) هو الأساس، أو الإغلاق بالقسطرة (لحالات مختارة).
 `,
-
   'CHROMOSOMAL ABERRATIONS & DISORDERS': `
 **أولاً: الخلل الكروموسومي - الأسباب والأنواع (Etiology & Types)**
 
@@ -870,7 +869,6 @@ Pulmonary Plethora: كمية كبيرة من الدم تمر عبر الشريا
 * **ميتابوليزم:** PKU & Galactosemia.
 * **دم:** Sickle cell & Thalassemia.
 `,
-
   'Ascariasis  Roundworms': `
 **أولاً: التعريف وطرق الانتقال (Introduction & Transmission)**
 
@@ -1556,7 +1554,6 @@ Pulmonary Plethora: كمية كبيرة من الدم تمر عبر الشريا
 * **البيضاء قليلة:** **Leukopenia** (عكس معظم البكتيريا اللي بتعمل Leukocytosis).
 * **مفيش إيزينوفيل:** Complete disappearance of Eosinophils.
 `,
-
   'Classification & Evaluation of Anemia': `**أولاً: التعريف وتقييم الأنيميا (Definition & Evaluation)**
 
 **التعريف:** الأنيميا هي نقص في تركيز الهيموجلوبين (Hemoglobin) أو الكتلة الكلية لكرات الدم الحمراء عن المعدل الطبيعي المسموح به بالنسبة لعمر وجنس الطفل.
@@ -1982,7 +1979,6 @@ Pulmonary Plethora: كمية كبيرة من الدم تمر عبر الشريا
 * **فوليك يبني:** Folic acid supplementation
 * **دم يعوض:** Blood transfusion (in crises)
 * **شيل الطحال بعد التطعيم:** Splenectomy (after Vaccines at age 5-6)`,
-
   'G6PD Deficiency & Immune Hemolytic Anemias': `**أولاً: نقص إنزيم (G6PD Deficiency / Favism - أنيميا الفول)**
 
 **التعريف والوراثة:** هو مرض وراثي مرتبط بالكروموسوم الجنسي X (X-linked recessive)، لذا يصيب الذكور في الأغلب. نقص هذا الإنزيم يجعل جدار خلية الدم الحمراء ضعيفاً جداً وعرضة للتكسير عند التعرض لأي إجهاد تأكسدي.
@@ -2025,7 +2021,7 @@ Pulmonary Plethora: كمية كبيرة من الدم تمر عبر الشريا
 **Mnemonics:**
 1. **(أكل فول وخد دوا.. فجأة شحب واصفر وبوله بقى زي الشاي)**
 2. **(كورتيزون ومناعة في الأول.. ونقل دم بحذر شديد.. ولو فشلوا شيل الطحال)**
-` ,
+`,
   'Hemostasis & Bleeding Disorders': `**أولاً: خطوات وقف النزيف (Core Components of Hemostasis)**
 
 **Vascular Response:** انقباض فوري للأوعية الدموية لتقليل تدفق الدم (Vasoconstriction).
@@ -2068,7 +2064,7 @@ Pulmonary Plethora: كمية كبيرة من الدم تمر عبر الشريا
    - PT (extrinsic) → Factor 7.
    - aPTT (intrinsic) → 12,11,9,8.
    - Common → 10,5,2,1.
-` ,
+`,
   'Iron Deficiency Anemia (IDA)': `**أولاً: نظرة عامة والأسباب (Overview & Causes)**
 
 **المقدمة:** أنيميا نقص الحديد هي أشهر أمراض الدم الناتجة عن سوء التغذية لدى الأطفال.
@@ -2113,7 +2109,6 @@ Pulmonary Plethora: كمية كبيرة من الدم تمر عبر الشريا
 2. **Iron Profile:** (الحديد ومخزونه واقعين.. والوعاء فاضي فمساحته بتزيد).
 3. **Treatment Rules:** (اديه على الريق مع برتقال.. وابعد عن اللبن والشاي.. وكمل 3 شهور عشان تملى المخازن).
 `,
-
   'Inherited Coagulation Hemophilia & VWD': `**أولاً: مرض الهيموفيليا (The Hemophilias)**
 
 **التعريف:** مجموعة من الأمراض الوراثية التي تسبب نقصاً في عوامل التجلط (المسار الداخلي)، وتتميز بنمط النزيف العميق في الأنسجة.
@@ -2158,8 +2153,8 @@ Pulmonary Plethora: كمية كبيرة من الدم تمر عبر الشريا
 1. **أنواع الهيموفيليا وأرقامها:** (A مع 8، B مع 9… والاتنين بيحبوا الصبيان).
 2. **تمييز النزيف:** (الهيموفيليا نزيف جوه… والفون ويلبراند نزيف برّه).
 3. **تحاليل الـ VWD (الخلل المزدوج):** (وقت النزيف طويل عشان الصفائح مش بتلزق… والـ aPTT طويل عشان العامل الثامن بيقع).
-` ,
-'Lymphomas & Solid Tumors': `**أولاً: الأورام الليمفاوية (Lymphomas)**
+`,
+  'Lymphomas & Solid Tumors': `**أولاً: الأورام الليمفاوية (Lymphomas)**
 
 **التصنيف:**  
 - Hodgkin Lymphoma (HL)  
@@ -2200,8 +2195,7 @@ Pulmonary Plethora: كمية كبيرة من الدم تمر عبر الشريا
 1. **B‑Symptoms:** (سخن وبيعرق وبيخس من غير سبب).  
 2. **Neuroblastoma:** (ورم في الكظرية طلّع أدرينالين… عمل ضغط وعرق وهالات سودة زي الراكون).  
 3. **Wilms Tumor:** (كتلة في الكلية مابتعديش النص وممنوع تلمسها.. بتجيب دم في البول ويرفع الضغط).
-` ,
-
+`,
   'Megaloblastic Anemias (B12 & Folate Deficiency)': `**أولاً: التعريف والباثوفسيولوجي (Definition & Pathophysiology)**
 
 **التعريف:** هي نوع من الأنيميا ذات الخلايا الكبيرة (Macrocytic anemias).
@@ -2251,8 +2245,6 @@ Pulmonary Plethora: كمية كبيرة من الدم تمر عبر الشريا
 2. **B12 vs Folate:** (الفوليك آخره لسان بيوجعه وبطن بتسهل.. لكن ب12 بيضرب الأعصاب ويشل)
 3. **Peripheral Smear:** (خلية كبيرة وبيضاوية.. ونيوتروفيل متفصصة لستة)
 `,
-
-
   'Non-Thrombocytopenic Purpura (Vascular & HSP)': `**أولاً: فرفرية الأوعية الدموية (Vascular Purpura Framework)**
 
 **التعريف:** أمراض نزفية ناتجة عن تلف هيكلي أو التهاب في جدار الأوعية الدموية، مما يرفع نفاذيتها ويسبب نزيفًا تحت الجلد أو الأغشية المخاطية.
@@ -2287,8 +2279,6 @@ Pulmonary Plethora: كمية كبيرة من الدم تمر عبر الشريا
 1. **Classical Tetrad:** (بقع بارزة في الرجل والأرداف.. مفاصل بتوجعه من غير تشوه.. مغص شديد في بطنه.. وزلال ودم في كليته).
 2. **Laboratory Rule:** (صفايحه وسوائلته تمام.. لكن تحليل البول هو الأهم).
 `,
-
-
   'Pediatric Oncology The Leukemias (ALL & AML)': `**أولاً: التعريف والعلامات التحذيرية (Definition & Red Flags)**
 
 **التعريف:** اللوكيميا (سرطان الدم) هي أشهر الأورام الخبيثة في الأطفال، ناتجة عن تكاثر غير مسيطر عليه لخلايا الدم غير الناضجة (Blasts) داخل النخاع العظمي.
@@ -2337,8 +2327,6 @@ Pulmonary Plethora: كمية كبيرة من الدم تمر عبر الشريا
 2. **AML:** (لثة وارمة وورم أخضر.. وتوت أزرق على الجلد مع نزيف).
 3. **TLS:** (يوريك وبوتاسيوم وفوسفور عاليين.. والكالسيوم بس هو اللي واطئ).
 `,
-
-
   'Platelet Disorders ITP & Thrombocytopenias': `**أولاً: فرفرية نقص الصفائح المناعية (Immune Thrombocytopenic Purpura - ITP)**
 
 **التعريف والسبب:** هي أشهر سبب لنقص الصفائح الدموية الحاد في الأطفال الأصحاء. يحدث غالباً بعد عدوى فيروسية أو تطعيم. ينتج أجسام مضادة (Anti‑Platelet IgG) تهاجم الصفائح وتُدمرها الخلايا البلعمية في الطحال.
@@ -2372,8 +2360,6 @@ Pulmonary Plethora: كمية كبيرة من الدم تمر عبر الشريا
 2. **Wiskott‑Aldrich:** (ولد اسمه ويسكوت.. بيهرش في الإكزيما، ومناعته ضعيفة وصفايحه صغيرة).
 3. **HUS Triad:** (إسهال بدم جابله أنيميا تكسيرية.. واستهلك صفيحاته.. وقفل كليته).
 `,
-
-
   'RBC Physiology, Indices & Morphology': `**أولاً: فسيولوجيا تكوين الدم وتطور الهيموجلوبين (Erythropoiescence & Hemoglobin Ontogeny)**
 
 **Erythropoiesis (تكوين كرات الدم):** يُنتَج تحت تأثير الهرمون الإريثروبين (EPO) الذي تفرزه الكلى عند نقص الأكسجة، محفزًا نخاع العظم لإنتاج كرات دم حمراء جديدة.
@@ -2401,8 +2387,6 @@ Pulmonary Plethora: كمية كبيرة من الدم تمر عبر الشريا
 1. **تركيب الهيموجلوبين:** (الجنين ياخذ "جاما".. البالغ ياخذ "بيتا".. النسبة الضئيلة "دلتا").
 2. **Morphology‑Disease关联:** (مُكورة في المناعة.. منجلية هلالية.. مكسرة في التجلط.. هدفية في الثلاسيميا.. ومقضومة في الفول).
 `,
-
-
   'Safe Blood Transfusion & Complications': `**أولاً: دواعي استخدام مكونات الدم (Clinical Indications for Blood Components)**
 
 **Packed RBCs (كرات الدم الحمراء المكدسة):** تعويض قدرة الدم على حمل الأكسجين في الأنيميا المزمنة (مثل الثلاسيميا والأنيميا المنجلية)، فشل النخاع، أو النزيف الحاد بعد الحوادث والعمليات.
@@ -2437,8 +2421,6 @@ Pulmonary Plethora: كمية كبيرة من الدم تمر عبر الشريا
 2. **Metabolic:** (كيس الدم القديم بياكل الكالسيوم ويرمي بوتاسيوم).
 3. **Proactive Prep:** (اغسل الدم للـ Allergic، واشععه للـ TA‑GVHD).
 `,
-
-
   'Sickle Cell Disease (SCD)': `**أولاً: الخلل الجيني والباثوفسيولوجي (Genetics & Pathophysiology)**
 
 **الخلل الجيني:** أنيميا وراثية متنحية (Autosomal recessive) بسبب نقطة طفرة (Point mutation) في موقع β‑Globin رقم 6 حيث يتحول الجلوتاميك إلى فالين (Valine replaces Glutamic acid). النتيجة هي تكون هيموجلوبين غير طبيعي (HbS).
@@ -2475,8 +2457,6 @@ Pulmonary Plethora: كمية كبيرة من الدم تمر عبر الشريا
 3. **Acute Care (HOP):** Hydration, Oxygen, Pain relief.
 4. **Hydroxyurea:** ي‑F‑رح الطفل لأنه يزيد HbF.
 `,
-
-
   'The Thalassemia Syndromes (Alpha & Beta)': `**أولاً: التعريف والباثوفسيولوجي (Definition & Pathophysiology)**
 
 **التعريف:** الثلاسيميا (أنيميا البحر المتوسط) هي مجموعة أمراض وراثية تسبب أنيميا تكسيرية صغرى (Inherited Microcytic Hemolytic Anemias) نتيجة نقص أو غياب سلاسل الجلوبين α أو β.
@@ -2507,8 +2487,7 @@ Pulmonary Plethora: كمية كبيرة من الدم تمر عبر الشريا
 1. **Clinical Picture:** "بعد 6 شهور.. شحب وطحاله كبر، وعضمه كبر وشكله اتغير".
 2. **Diagnostic Panel:** "خلايا صغيرة وهدفية.. والكهربا مليانة جنيني".
 3. **Treatment Protocol:** "انقل دم واطرد الحديد.. وزرع نخاع عشان يخف أكيد".
-` ,
-
+`,
   'Abnormal Cranial Volume (Macrocephaly & Microcephaly)': `**أولاً: القياس الإكلينيكي لحجم الرأس (Clinical Measurement)**
 
 يتم قياس محيط الرأس باستخدام أكبر محيط قذالي جبهي (Greatest Occipitofrontal Circumference).
@@ -2553,7 +2532,7 @@ Pulmonary Plethora: كمية كبيرة من الدم تمر عبر الشريا
 💡 **Mnemonic لتذكر أسباب الـ Secondary Microcephaly:** (عدوى في الرحم.. نقص أكسجين وقت الولادة.. سوء تغذية بعدها)
 
 `,
-'Anterior Horn Cell Diseases & Neuropathies': `**أولاً: مرض ويردنيج‑هوفمان (Werdnig‑Hoffman Disease / SMA)**
+  'Anterior Horn Cell Diseases & Neuropathies': `**أولاً: مرض ويردنيج‑هوفمان (Werdnig‑Hoffman Disease / SMA)**
 
 **الباثوفسيولوجي والوراثة:** مرض وراثي متنحي (Autosomal Recessive) يحدث بسبب تحلل وضمور في خلايا القَرَن الأمامي للحبل الشوكي (Anterior Horn Cells - AHC) والأنوية الحركية في جذع المخ، مما يؤدي إلى ضعف في الأعصاب الحركية السفلية (LMN weakness).
 
@@ -2589,8 +2568,8 @@ Pulmonary Plethora: كمية كبيرة من الدم تمر عبر الشريا
 1. مرض SMA: (مدرك وواعي.. بس مرتخي ولسانه بيرعش، ومفيش ريفلكسات)
 2. شلل الأطفال: (شلل حاد مش متماثل.. ومفيش أي فقد للإحساس)
 3. الوهن العضلي: (بيتعب مع الرضاعة ويتحسن بالراحة والحقنة.. وريفلكساته سليمة)
-` ,
-'Anti-Epileptic Drugs (AEDs)': `**أولاً: أشهر الأدوية المضادة للصرع واستخداماتها (Pharmacological Dosing & Side Effects)**
+`,
+  'Anti-Epileptic Drugs (AEDs)': `**أولاً: أشهر الأدوية المضادة للصرع واستخداماتها (Pharmacological Dosing & Side Effects)**
 
 **Valproic Acid (Depakine):** الاستخدام: واسع المجال (Broad‑spectrum) يُستخدم في الصرع الكبرى (Grand mal)، الصغرى (Petit mal) والرمعي العضلي (Myoclonic).
 الأعراض الجانبية: تسمم كبدي (Hepatotoxicity) وتساقط الشعر (Alopecia).
@@ -2634,7 +2613,7 @@ Pulmonary Plethora: كمية كبيرة من الدم تمر عبر الشريا
 3. Mnemonic لقواعد إيقاف الدواء (Weaning Protocol):
 (عدّ 3 سنين من غير تشنج.. واسحب بالتدريج على 6 شهور.. وإياك توقف فجأة)
 `,
-'Cerebral Palsy (CP)': `**أولاً: التعريف والخصائص الأساسية (Definition & Core Characteristics)**
+  'Cerebral Palsy (CP)': `**أولاً: التعريف والخصائص الأساسية (Definition & Core Characteristics)**
 
 **التعريف:** الشلل الدماغي (Cerebral Palsy - CP) هو اعتلال دماغي ناتج عن خلل في الوحدة الحركية للمخ النامي، ويحدث بسبب إصابة الدماغ في فترات ما قبل، أو أثناء، أو بعد الولادة.
 
@@ -2675,8 +2654,8 @@ Postnatal Factors (10%): الصفراء الشديدة (Kernicterus)، الته�
 1. **Core Deficit:** (لا بيزيد، ولا بيورّث، ولا بيجري في العيلة).
 2. **Diplegia vs Quadriplegia:** (الداي رجليه بايظة أكتر… والكوادري إيديه بايظة أكتر أو كلهم زي بعض).
 3. **Physiological Types:** (سباستيك متخشب… ديسكينيتيك بيتحرك غصب عنه… وأتاكسيك بيطوّح ويقع).
-` ,
-'Early Detection of CP & Motor Development': `**أولاً: التاريخ المرضي وعوامل الخطر (Suspected History & Risk Factors)**
+`,
+  'Early Detection of CP & Motor Development': `**أولاً: التاريخ المرضي وعوامل الخطر (Suspected History & Risk Factors)**
 
 **Maternal Infections:** إصابة الأم بعدوى في الثلث الأول من الحمل (1st Trimester)، أشهرها الحصبة الألمانية (Rubella) والتوكسوبلازما (Toxoplasmosis).
 
@@ -2708,7 +2687,7 @@ Postnatal Factors (10%): الصفراء الشديدة (Kernicterus)، الته�
 1. **Mnemonic لمواعيد اختفاء الردود العصبية (Reflexes):** رقبته تلاتة → ATNR بعد 3 شهور، إيده أربعة → Grasp بعد 4 شهور، خضته ستة → Moro بعد 6 شهور.
 2. **Mnemonic للعلامات المبكرة الخطيرة للشلل الدماغي:** مرتخي ومريّل → Floppy & Drooling, إيده مقفولة → Persistent clenched hand, مبيتقلبش عشان رقبته → ATNR prevents rolling, رجله مقص → Stiff crossed legs.
 `,
-'Febrile Convulsions & Epilepsy Mimickers': `**أولاً: التشنجات الحرارية (Febrile Convulsions)**
+  'Febrile Convulsions & Epilepsy Mimickers': `**أولاً: التشنجات الحرارية (Febrile Convulsions)**
 
 **التعريف:** هي تشنجات عامة (Generalized tonic-clonic) تصاحب الارتفاع السريع في درجة الحرارة في الرضع والأطفال، بشرط عدم وجود التهاب في الجهاز العصبي المركزي (مثل الالتهاب السحائي) أو خلل أيضي أو عصبي.
 
@@ -2753,7 +2732,7 @@ Postnatal Factors (10%): الصفراء الشديدة (Kernicterus)، الته�
 3. **Mnemonic لنوبات حبس الأنفاس (Breath-holding spells):**
    (عيط وازرق نديله حديد.. اتخبط وشحب نديله أتروبين).
 `,
-'Muscular Dystrophies (DMD & BMD)': `**أولاً: الشروط الأساسية لتشخيص الحثل العضلي (Obligatory Criteria for Diagnosis)**
+  'Muscular Dystrophies (DMD & BMD)': `**أولاً: الشروط الأساسية لتشخيص الحثل العضلي (Obligatory Criteria for Diagnosis)**
 
 - **Primary Myopathy:** مرض عضلي أولي (الخلل ينشأ من داخل نسيج العضلة نفسها وليس من الأعصاب).
 - **Progressive Course:** مسار تقدمي (ضعف العضلات يزداد سوءاً بشكل مستمر).
@@ -2796,7 +2775,7 @@ _الفرق الأساسي_: بروتين الديستروفين موجود ول
 2. **DMD vs BMD:** Duchenne is Deadly & Deficient (غائب تماماً)، Becker is Better & Belated (أخف وأLater).
 3. **Investigations:** إنزيمات في السما → Markedly elevated CK/CPK؛ عينة مليانة دهون → Biopsy confirms fat/fibrosis replacement.
 `,
-'Pediatric Seizures & Epilepsy Classification': `**أولاً: المصطلحات الأساسية للتشخيص (Core Terminology & Definitions)**
+  'Pediatric Seizures & Epilepsy Classification': `**أولاً: المصطلحات الأساسية للتشخيص (Core Terminology & Definitions)**
 
 - **Seizure (النوبة / الصرعة):** نوبة مفاجئة من اضطراب النشاط الكهربائي في المخ (Paroxysmal bouts of electrical activities). قد تظهر في صورة خلل في الوعي، أو حركات غير طبيعية، أو تغيرات حسية، أو لا إرادية.
 - **Convulsion (التشنج):** نوبة صرعية تظهر تحديداً في صورة أعراض حركية (Specifically a motor seizure).
@@ -2850,7 +2829,7 @@ _الفرق الأساسي_: بروتين الديستروفين موجود ول
 3. **Mnemonic لأسباب التشنجات الحادة (Acute Convulsions):** (حرارة وعدوى.. أملاح وسكر.. خبطة وورم في المخ)
 
 `,
-'The Floppy Infant Syndrome': `**أولاً: التعريف وعلامات الفحص الإكلينيكي (Definition & Clinical Signs)**
+  'The Floppy Infant Syndrome': `**أولاً: التعريف وعلامات الفحص الإكلينيكي (Definition & Clinical Signs)**
 
 - **التعريف:** متلازمة الطفل المرتخي (Floppy Infant Syndrome) تعبر عن حالة من الارتخاء العضلي الشديد والمستمر (Severe persistent hypotonia) تظهر عند الولادة أو في مرحلة الرضاعة المبكرة.
 
@@ -2889,7 +2868,7 @@ _الفرق الأساسي_: بروتين الديستروفين موجود ول
 2. **التفرقة بين المركزي والطرفي:**
    - (المركزي مخه تعبان بس ريفلكساته عالية .. الطرفي مخه سليم بس عضلاته ضامرة وريفلكساته واقعة)
 `,
-'Status Epilepticus Emergency': `**أولاً: التعريف وخطورة الحالة (Core Definition & Crisis Risk)**
+  'Status Epilepticus Emergency': `**أولاً: التعريف وخطورة الحالة (Core Definition & Crisis Risk)**
 
 **التعريف:** نوبة تشنج تستمر أكثر من 5 دقائق متواصلة، أو حدوث أكثر من نوبة خلال 5 دقائق بدون استعادة الوعي بين النوبات.
 
@@ -2926,7 +2905,7 @@ _الفرق الأساسي_: بروتين الديستروفين موجود ول
 1. **ترتيب الأدوية:** (أكسجين وديازيبام.. ما نفعش فينيتوين.. ما نفعش باربيتال.. ما نفعش خدره ونيّمه).
 2. **الأسباب:** (سخونة طوّلت.. دواء وقّفه فجأة.. سكر وكالسيوم وقعوا).
 `,
-'Craniostenosis (Craniosynostosis)': `**أولاً: التعريف والتصنيف (Definition & Classification)**
+  'Craniostenosis (Craniosynostosis)': `**أولاً: التعريف والتصنيف (Definition & Classification)**
 
 **التعريف:** هو الانغلاق المبكر لدرز أو أكثر من دروز الجمجمة (Premature closure of cranial sutures) أثناء فترة النمو المبكرة للطفل.
 
@@ -2954,15 +2933,15 @@ _الفرق الأساسي_: بروتين الديستروفين موجود ول
 1. **أنواع الجمجمة:** (السهمي → سيف طويل وضيق = Scaphocephaly.. الإكليلي → مسطح من الأمام = Brachycephaly.. كل الدروز → برج = Oxycephaly).
 2. **قاعدة النمو:** (الجمجمة بتكبر في الاتجاه العكسي للدرز المغلق).
 `,
-'Functional classification of cerebral palsy': `**Q1. Functional classification of cerebral palsy**\nClass 1: No limitation of activity.\nClass 2: Slight to moderate limitation.\nClass 3: Moderate to great limitation.\nClass 4: No useful physical activity.`,
-'Investigations for Duchenne Muscular Dystrophy': `**Q2. Four investigations for Duchenne Muscle Dystrophy**\n- Creatine kinase (CK) / CPK: markedly elevated.\n- Electromyography (EMG): myopathic pattern.\n- Muscle biopsy: diagnostic, showing muscle fiber degeneration with replacement with fat and fibrosis.\n- Prenatal diagnosis: amniocentesis or chorionic villous sampling (genetic). (Female carrier detection via high serum CPK can also be included).`,
-'Causes of inability to walk in children': `**Q3. Two main causes for inability to walk in children**\n- Primary inability to walk (no walk till age 18 months): paralytic factors like Cerebral palsy or non‑paralytic factors like Rickets.\n- Secondary inability to walk: paralytic factors like Muscle dystrophies or non‑paralytic factors like severe debilitating diseases.`,
-'Spastic Cerebral Palsy clinical types': `**Q4. Clinical types/topographical distribution of Spastic Cerebral Palsy**\n- Hemiplegia: arm & leg on same side.\n- Diplegia: arms and legs but legs more involved.\n- Quadriplegia / Tetraplegia: arms and legs equally involved OR arms more involved than legs.\n- Monoplegia: one limb.\n- Triplegia: three limbs.\n- Paraplegia: only legs involved.`,
-'Duchenne Muscular Dystrophy clinical features': `**Q5. Clinical features and physical findings of DMD**\n- Sex & Age: usually male, presenting at 3‑5 years.\n- Muscle Weakness: bilateral symmetrical, proximal > distal, no sensory manifestation.\n- Shoulder Girdle Weakness: unable to raise arm above the head, winging of scapula.\n- Pelvic Girdle Weakness: waddling lordotic gait, difficulty climbing stairs, positive Gower sign.\n- Pseudohypertrophy: calves, deltoid, forearm.\n- Preserved Muscles: hand, extra‑ocular, sphincters, diaphragm.\n- Associated Features: cardiomyopathy, mental subnormality (~25 %), frequent respiratory infections and UTI.\n- Progression: most patients unable to walk by 12 y; death by end of second decade (respiratory/heart failure).`,
-'Causes of microcephaly in children': `**Q6. Causes of microcephaly in children**\n*Primary (genetic)*:\n- Embryonic exposure to toxic agents early.\n- Microcephaly vera (AR).\n- Chromosomal disorders (Down, Edward).\n- Defective neurulation (anencephaly, encephalocele).\n- Defective prosencephalization (agenesis corpus callosum, holoprosencephaly).\n- Defective cellular migration (lissencephaly).\n*Secondary*:\n- Intrauterine: congenital infections (CMV, rubella, toxoplasmosis), drugs, fetal alcohol.\n- Perinatal brain injury (HIE, intracranial hemorrhage, meningitis/encephalitis).\n- Postnatal systemic disease (chronic renal disease, malnutrition).`,
-'Clinical signs of increased intracranial pressure in infant': `**Q7. Clinical signs of increased intracranial pressure (ICP) in an infant**\n- Seizures & altered consciousness.\n- Hyperreflexia.\n- Abnormal cranial expansion or frontal bowing due to ventricular enlargement.\n- Slippage on vertical suspension (severe central hypotonia).`,
-'Autism Spectrum Disorder diagnostic criteria': `**Q8. Clinical diagnostic criteria for Autism Spectrum Disorder (ASD)**\n- Persistent deficits in social communication and interaction across contexts.\n- Restricted, repetitive patterns of behavior, interests, or activities.\n- Symptoms present in early developmental period.\n- Clinically significant impairment in social, occupational, or other functional areas.`,
-'West Syndrome clinical features': `**Q9. Clinical features/diagnostic hallmarks of West Syndrome (Infantile Spasms)**\n- Onset 4‑8 months.\n- Spasms in clusters (flexor, extensor, mixed).\n- EEG hallmark: hypsarrhythmia (chaotic high‑voltage slow waves).\n- Mental retardation / developmental delay, especially in secondary/organic forms (~80 %).`,
+  'Functional classification of cerebral palsy': `**Q1. Functional classification of cerebral palsy**\nClass 1: No limitation of activity.\nClass 2: Slight to moderate limitation.\nClass 3: Moderate to great limitation.\nClass 4: No useful physical activity.`,
+  'Investigations for Duchenne Muscular Dystrophy': `**Q2. Four investigations for Duchenne Muscle Dystrophy**\n- Creatine kinase (CK) / CPK: markedly elevated.\n- Electromyography (EMG): myopathic pattern.\n- Muscle biopsy: diagnostic, showing muscle fiber degeneration with replacement with fat and fibrosis.\n- Prenatal diagnosis: amniocentesis or chorionic villous sampling (genetic). (Female carrier detection via high serum CPK can also be included).`,
+  'Causes of inability to walk in children': `**Q3. Two main causes for inability to walk in children**\n- Primary inability to walk (no walk till age 18 months): paralytic factors like Cerebral palsy or non‑paralytic factors like Rickets.\n- Secondary inability to walk: paralytic factors like Muscle dystrophies or non‑paralytic factors like severe debilitating diseases.`,
+  'Spastic Cerebral Palsy clinical types': `**Q4. Clinical types/topographical distribution of Spastic Cerebral Palsy**\n- Hemiplegia: arm & leg on same side.\n- Diplegia: arms and legs but legs more involved.\n- Quadriplegia / Tetraplegia: arms and legs equally involved OR arms more involved than legs.\n- Monoplegia: one limb.\n- Triplegia: three limbs.\n- Paraplegia: only legs involved.`,
+  'Duchenne Muscular Dystrophy clinical features': `**Q5. Clinical features and physical findings of DMD**\n- Sex & Age: usually male, presenting at 3‑5 years.\n- Muscle Weakness: bilateral symmetrical, proximal > distal, no sensory manifestation.\n- Shoulder Girdle Weakness: unable to raise arm above the head, winging of scapula.\n- Pelvic Girdle Weakness: waddling lordotic gait, difficulty climbing stairs, positive Gower sign.\n- Pseudohypertrophy: calves, deltoid, forearm.\n- Preserved Muscles: hand, extra‑ocular, sphincters, diaphragm.\n- Associated Features: cardiomyopathy, mental subnormality (~25 %), frequent respiratory infections and UTI.\n- Progression: most patients unable to walk by 12 y; death by end of second decade (respiratory/heart failure).`,
+  'Causes of microcephaly in children': `**Q6. Causes of microcephaly in children**\n*Primary (genetic)*:\n- Embryonic exposure to toxic agents early.\n- Microcephaly vera (AR).\n- Chromosomal disorders (Down, Edward).\n- Defective neurulation (anencephaly, encephalocele).\n- Defective prosencephalization (agenesis corpus callosum, holoprosencephaly).\n- Defective cellular migration (lissencephaly).\n*Secondary*:\n- Intrauterine: congenital infections (CMV, rubella, toxoplasmosis), drugs, fetal alcohol.\n- Perinatal brain injury (HIE, intracranial hemorrhage, meningitis/encephalitis).\n- Postnatal systemic disease (chronic renal disease, malnutrition).`,
+  'Clinical signs of increased intracranial pressure in infant': `**Q7. Clinical signs of increased intracranial pressure (ICP) in an infant**\n- Seizures & altered consciousness.\n- Hyperreflexia.\n- Abnormal cranial expansion or frontal bowing due to ventricular enlargement.\n- Slippage on vertical suspension (severe central hypotonia).`,
+  'Autism Spectrum Disorder diagnostic criteria': `**Q8. Clinical diagnostic criteria for Autism Spectrum Disorder (ASD)**\n- Persistent deficits in social communication and interaction across contexts.\n- Restricted, repetitive patterns of behavior, interests, or activities.\n- Symptoms present in early developmental period.\n- Clinically significant impairment in social, occupational, or other functional areas.`,
+  'West Syndrome clinical features': `**Q9. Clinical features/diagnostic hallmarks of West Syndrome (Infantile Spasms)**\n- Onset 4‑8 months.\n- Spasms in clusters (flexor, extensor, mixed).\n- EEG hallmark: hypsarrhythmia (chaotic high‑voltage slow waves).\n- Mental retardation / developmental delay, especially in secondary/organic forms (~80 %).`,
   'Acute Bacterial Meningitis  Septic Meningitis': `**أولاً: التعريف والمسببات**
 
 * **التعريف:** التهاب حاد في الأغشية السحائية (Meninges) مع تكوين إفرازات صديدية (Purulent exudate).
@@ -3015,59 +2994,6 @@ Mnemonics:
 * (EGL) للنيونيتال: E.coli - Group-B Strep - Listeria
 * لعلامات السحايا: رقبته وظهره متخشبين، كيرنيج مابيفردش الركبة، برودزينسكي بيتنيها مع الرأس
 * للمضاد الحيوي: تحت 6 شهور أمبي وجينتا.. وفوق 6 شهور أمبي وكلورو`,
-  'Bacterial Infections(table)': `**أولاً: العدوى الفيروسية (Viral Infections)**
-
-1. **Measles (الحصبة):**
-   * عزل المريض حتى مرور 3 أيام من ظهور الطفح
-   * Oral Vitamin A لتقليل المضاعفات والوفيات
-   * مضادات حيوية فقط في حال العدوى البكتيرية الثانوية
-
-2. **Chicken Pox / Varicella:**
-   * علاج تحفظي (حكة وحمى)
-   * في الحالات عالية الخطورة: ZIG (Zoster Immune-Globulin) عضل خلال 72 ساعة
-
-3. **Mumps:**
-   * يُمنع الأطعمة الحارة والسوائل الحمضية (تحفز إفراز اللعاب وتزيد الألم)
-   * Orchitis: راحة تامة + دعم موضعي + مسكنات + كورتيزون إذا لزم
-
----
-
-**ثانياً: العدوى البكتيرية - Management:**
-
-1. **Typhoid Fever:** Ceftriaxone (50-80 mg/kg/day) - البدائل: Ampicillin أو Amoxicillin
-2. **Brucellosis:**
-   * أقل من 9 سنوات: Streptomycin + Co-Trimoxazole
-   * أكبر من 9 سنوات: Streptomycin + Tetracycline
-3. **Pertussis:** Erythromycin 14 يوماً - وقاية المخالطين: 7 أيام
-4. **Acute Bacterial Meningitis:**
-   * أقل من 6 شهور: Ampicillin + Gentamicin
-   * أكبر: Ampicillin + Chloramphenicol
-
----
-
-**ثالثاً: العدوى الطفيلية (Parasitic)**
-
-**Protozoa:**
-* Amebiasis: Metronidazole 10 أيام - حاملي الحويصلات: Diloxanide furoate
-* Giardiasis: Metronidazole أو Tinidazole جرعة واحدة
-
-**Helminthes (الدواء المشترك: Mebendazole):**
-1. **Enterobiasis:** جرعة واحدة تُكرر بعد 2-3 أسابيع + علاج كل أفراد الأسرة + قص الأظافر
-2. **Ascariasis:** كورس 3 أيام
-3. **Ancylostomiasis:** كورس 3 أيام + علاج أنيميا نقص الحديد حتمي
-
----
-
-**رابعاً: FUO (Fever of Unknown Origin)**
-* حرارة >38 درجة مئوية لأكثر من 14 يوماً بدون سبب واضح
-* ممنوع إعطاء مضادات حيوية تجريبية
-
----
-
-Mnemonics:
-* (فيتامين أ للحصبة.. وامنع الليمون في النكاف)
-* (الدبوسية عالج العيلة وقص الضوافر.. والخطافية إدي حديد معاها)
-* (تحت 9 سنين سبترين.. وفوق 9 سنين تتراسيكلين)`,
   'Ancylostomiasis  Hookworms': `**أولاً: التعريف ودورة الحياة (Pathogenesis)**
 
 * **التعريف:** عدوى طفيلية تصيب الأمعاء الدقيقة من فصيلة الديدان الأسطوانية (Nematodes)

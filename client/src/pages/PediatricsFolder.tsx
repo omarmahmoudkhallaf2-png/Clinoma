@@ -287,7 +287,6 @@ Pulmonary Plethora: كمية كبيرة من الدم تمر عبر الشريا
 * **الإغلاق الجراحي (Surgical):** يُنصح به في حالات: فشل النمو، ضغط الرئة > 50% من الضغط الجهازي (قبل سن سنة)، تضخم الحجرات اليسرى، أو فشل القلب المستعصي.
 * **الإجراءات:** الإغلاق الجراحي (patch closure) هو الأساس، أو الإغلاق بالقسطرة (لحالات مختارة).
 `,
-
   'CHROMOSOMAL ABERRATIONS & DISORDERS': `
 **أولاً: الخلل الكروموسومي - الأسباب والأنواع (Etiology & Types)**
 
@@ -695,7 +694,6 @@ Pulmonary Plethora: كمية كبيرة من الدم تمر عبر الشريا
 * **ميتابوليزم:** PKU & Galactosemia.
 * **دم:** Sickle cell & Thalassemia.
 `,
-
   'ascariasis__roundworms': `
 **أولاً: التعريف وطرق الانتقال (Introduction & Transmission)**
 
@@ -1381,7 +1379,6 @@ Pulmonary Plethora: كمية كبيرة من الدم تمر عبر الشريا
 * **البيضاء قليلة:** **Leukopenia** (عكس معظم البكتيريا اللي بتعمل Leukocytosis).
 * **مفيش إيزينوفيل:** Complete disappearance of Eosinophils.
 `,
-
   'biological_age_maturation_bone_teeth': `**أولاً: النضج العظمي (Bone Age / Radiological Age)**
 
 * يُعتبر الـ **Bone age** من أهم المؤشرات لتقييم النضج البيولوجي للطفل، ويتم تحديده عن طريق تقييم ظهور مراكز التعظم (**Centers of ossification**).
@@ -1428,7 +1425,7 @@ Pulmonary Plethora: كمية كبيرة من الدم تمر عبر الشريا
 * **داون:** **Down syndrome**
 * **نقص تغذية:** **Malnutrition**
 * **كساح:** **Rickets**
-* **الغدة:** **Hypothyroidism** & **Hypopituitarism**`
+* **الغدة:** **Hypothyroidism** & **Hypopituitarism**`,
 };
 
 // 3 High-Yield Questions for Bone & Teeth maturation
