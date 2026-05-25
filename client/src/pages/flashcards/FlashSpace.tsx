@@ -1602,6 +1602,147 @@ _الفرق الأساسي_: بروتين الديستروفين موجود ول
 'Clinical signs of increased intracranial pressure in infant': `**Q7. Clinical signs of increased intracranial pressure (ICP) in an infant**\n- Seizures & altered consciousness.\n- Hyperreflexia.\n- Abnormal cranial expansion or frontal bowing due to ventricular enlargement.\n- Slippage on vertical suspension (severe central hypotonia).`,
 'Autism Spectrum Disorder diagnostic criteria': `**Q8. Clinical diagnostic criteria for Autism Spectrum Disorder (ASD)**\n- Persistent deficits in social communication and interaction across contexts.\n- Restricted, repetitive patterns of behavior, interests, or activities.\n- Symptoms present in early developmental period.\n- Clinically significant impairment in social, occupational, or other functional areas.`,
 'West Syndrome clinical features': `**Q9. Clinical features/diagnostic hallmarks of West Syndrome (Infantile Spasms)**\n- Onset 4‑8 months.\n- Spasms in clusters (flexor, extensor, mixed).\n- EEG hallmark: hypsarrhythmia (chaotic high‑voltage slow waves).\n- Mental retardation / developmental delay, especially in secondary/organic forms (~80 %).`,
+  'Acute Bacterial Meningitis  Septic Meningitis': `**أولاً: التعريف والمسببات**
+
+* **التعريف:** التهاب حاد في الأغشية السحائية (Meninges) مع تكوين إفرازات صديدية (Purulent exudate).
+* **الانتقال:** عن طريق الرذاذ (Droplet Infection) - فترة الحضانة 3-4 أيام.
+
+**Causative organisms according to age:**
+
+1. **Neonatal Period:** E. coli - Group-B streptococci - Listeria monocytogenes
+2. **Childhood:** Meningococci - Pneumococci - H. influenzae type-b (حتى عمر 5 سنوات)
+
+---
+
+**ثانياً: الصورة الإكلينيكية**
+
+**A. علامات ارتفاع ضغط الدماغ (Signs of Increased ICP):**
+1. صداع شديد (Severe headaches)
+2. قيء مندفع (Projectile vomiting)
+3. بروز اليافوخ في الرضع أقل من سنة (Bulging anterior fontanel)
+4. تغيرات في مستوى الوعي (Changes in sensorium)
+5. تشنجات عامة (Generalized convulsions)
+6. علامات عصبية بؤرية (Focal neurological signs)
+
+**B. علامات تهيج السحايا (Signs of Meningeal Irritation):**
+1. **Stiffness:** تصلب في الرقبة والظهر
+2. **Positive Kernig's Sign:** مقاومة عند فرد الركبة مع ثني الفخذ
+3. **Positive Brudzinski's Sign:** ثني تلقائي للركبتين عند ثني الرأس للأمام
+4. **Skin Rash:** طفح جلدي حبري نزفي (Generalized petechial rash)
+
+---
+
+**ثالثاً: الفحوصات (Investigations)**
+1. **CSF Examination** عبر البزل القطني (Lumbar Puncture) - الفحص الحتمي الأساسي
+2. **Blood Culture** للكشف عن الميكروبات في الدم
+3. **WBC Count:** ارتفاع في الـ Neutrophils
+
+---
+
+**رابعاً: العلاج**
+طوارئ طبية قصوى
+
+**Antibiotic Therapy based on age:**
+* **الرضع أقل من 6 شهور:** Ampicillin + Gentamicin IV
+* **الرضع الأكبر والأطفال:** Ampicillin + Chloramphenicol IV
+
+**الوقاية:** Chemoprophylaxis للمخالطين + Active Vaccination
+
+---
+
+Mnemonics:
+* (EGL) للنيونيتال: E.coli - Group-B Strep - Listeria
+* لعلامات السحايا: رقبته وظهره متخشبين، كيرنيج مابيفردش الركبة، برودزينسكي بيتنيها مع الرأس
+* للمضاد الحيوي: تحت 6 شهور أمبي وجينتا.. وفوق 6 شهور أمبي وكلورو`,
+  'Bacterial Infections(table)': `**أولاً: العدوى الفيروسية (Viral Infections)**
+
+1. **Measles (الحصبة):**
+   * عزل المريض حتى مرور 3 أيام من ظهور الطفح
+   * Oral Vitamin A لتقليل المضاعفات والوفيات
+   * مضادات حيوية فقط في حال العدوى البكتيرية الثانوية
+
+2. **Chicken Pox / Varicella:**
+   * علاج تحفظي (حكة وحمى)
+   * في الحالات عالية الخطورة: ZIG (Zoster Immune-Globulin) عضل خلال 72 ساعة
+
+3. **Mumps:**
+   * يُمنع الأطعمة الحارة والسوائل الحمضية (تحفز إفراز اللعاب وتزيد الألم)
+   * Orchitis: راحة تامة + دعم موضعي + مسكنات + كورتيزون إذا لزم
+
+---
+
+**ثانياً: العدوى البكتيرية - Management:**
+
+1. **Typhoid Fever:** Ceftriaxone (50-80 mg/kg/day) - البدائل: Ampicillin أو Amoxicillin
+2. **Brucellosis:**
+   * أقل من 9 سنوات: Streptomycin + Co-Trimoxazole
+   * أكبر من 9 سنوات: Streptomycin + Tetracycline
+3. **Pertussis:** Erythromycin 14 يوماً - وقاية المخالطين: 7 أيام
+4. **Acute Bacterial Meningitis:**
+   * أقل من 6 شهور: Ampicillin + Gentamicin
+   * أكبر: Ampicillin + Chloramphenicol
+
+---
+
+**ثالثاً: العدوى الطفيلية (Parasitic)**
+
+**Protozoa:**
+* Amebiasis: Metronidazole 10 أيام - حاملي الحويصلات: Diloxanide furoate
+* Giardiasis: Metronidazole أو Tinidazole جرعة واحدة
+
+**Helminthes (الدواء المشترك: Mebendazole):**
+1. **Enterobiasis:** جرعة واحدة تُكرر بعد 2-3 أسابيع + علاج كل أفراد الأسرة + قص الأظافر
+2. **Ascariasis:** كورس 3 أيام
+3. **Ancylostomiasis:** كورس 3 أيام + علاج أنيميا نقص الحديد حتمي
+
+---
+
+**رابعاً: FUO (Fever of Unknown Origin)**
+* حرارة >38 درجة مئوية لأكثر من 14 يوماً بدون سبب واضح
+* ممنوع إعطاء مضادات حيوية تجريبية
+
+---
+
+Mnemonics:
+* (فيتامين أ للحصبة.. وامنع الليمون في النكاف)
+* (الدبوسية عالج العيلة وقص الضوافر.. والخطافية إدي حديد معاها)
+* (تحت 9 سنين سبترين.. وفوق 9 سنين تتراسيكلين)`,
+  'Ancylostomiasis  Hookworms': `**أولاً: التعريف ودورة الحياة (Pathogenesis)**
+
+* **التعريف:** عدوى طفيلية تصيب الأمعاء الدقيقة من فصيلة الديدان الأسطوانية (Nematodes)
+
+**مسار الدودة في الجسم:**
+1. **Ground Itch:** اختراق اليرقات للجلد مباشرة مسبباً حكة جلدية موضعية
+2. **Loeffler-like Syndrome:** هجرة اليرقات عبر الدم للرئتين: كحة جافة، أزيز، ارتشاحات رئوية، Eosinophilia
+
+---
+
+**ثانياً: المضاعفات (Complications)**
+
+1. **Malabsorption:** إسهال دهني (Steatorrhea) وتأخر في النمو
+2. **Severe Iron Deficiency Anemia (الأخطر):** الديدان تتغذى على دم المريض مسببة نزيفاً مستمراً وأنيميا حادة: Fatigue - Dyspnea - Palpitations - Pica (اشتهاء الطين)
+
+---
+
+**ثالثاً: التشخيص (Investigations)**
+
+1. **Stool Analysis:** Hookworm Ova + Occult blood
+2. **CBC:** Hypochromic Microcytic Anemia + Eosinophilia
+
+---
+
+**رابعاً: العلاج (Management)**
+
+1. **Anti-helminthic:** Mebendazole أو Flubendazole 100mg/day لمدة **3 أيام متصلة**
+2. **Iron Replacement:** علاج تعويضي للحديد حتمي
+
+---
+
+Mnemonics:
+* لدورة الحياة: (بتهرش في رجله.. وتكح في صدره.. وتشفط دمه من بطنه)
+  Ground Itch --> Loeffler-like Syndrome --> Severe Iron Deficiency Anemia
+* للتحاليل: (بويضات في البراز.. ودمه ناقص حديد ومليان إيزينوفيل)
+* للعلاج: (موت الدودة في 3 أيام.. وعوض الدم بحديد)`,
 };
 
   type Connection = {
