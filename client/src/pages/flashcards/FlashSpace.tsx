@@ -6675,7 +6675,7 @@ const FlashSpace = () => {
                     const count = boards.filter(b => b.module === selectedModule && b.system === sys).length;
                     
                     const SYSTEM_BGS: Record<string, string> = {
-                      'تحديدات الاطفال': '/assets/chapters/418309698_0f732299-96c6-4f6d-8f13-82ad46c35262.jpg',
+                      'تحديدات الاطفال': '/assets/chapters/tahdedat_bg.jpg',
                       'Cardiovascular diseases': '/assets/chapters/cardio_bg_1779636563389.png',
                       'Endocrinology': '/assets/chapters/endo_bg_1779636576095.png',
                       'Gastroenterology & hepatology': '/assets/chapters/gastro_bg_1779636588519.png',
