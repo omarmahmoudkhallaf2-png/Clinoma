@@ -6147,7 +6147,7 @@ const FlashSpace = () => {
               system: chapter,
               subSystem: chapter === 'تحديدات الاطفال' && file.includes('/') ? file.split('/')[1] : undefined,
               disease: title,
-              medicalImage: file.includes('/') ? `/assets/TIP-Peditrics/${file}` : `/assets/TIP-Peditrics/${chapter}/${file}`,
+              medicalImage: file.includes('/') ? `/assets/TIP-Peditrics/${file.split('/').map(p => encodeURIComponent(p)).join('/')}` : `/assets/TIP-Peditrics/${encodeURIComponent(chapter)}/${encodeURIComponent(file)}`,
               explanation: customExp || `A comprehensive visual study guide for ${title} under the Pediatrics ${chapter} system. Use this interactive flash space to annotate, highlight, and review key clinical presentation, diagnostic criteria, and management protocols.`,
               createdAt: Date.now()
             });
