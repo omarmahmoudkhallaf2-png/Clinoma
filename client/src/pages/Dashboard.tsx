@@ -247,20 +247,29 @@ export default function Dashboard() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {myCourses.map(course => (
                   <Card key={course.id} className="group overflow-hidden border border-slate-100 dark:border-slate-800/50 hover:border-primary/20 rounded-[2.5rem] shadow-xl hover:scale-[1.02] transition-all duration-500 relative bg-gradient-to-br from-white via-slate-50/50 to-slate-100/30 dark:from-slate-900 dark:to-slate-800/30">
+                    {course.trending && (
+                      <div className="absolute top-0 right-10 bg-gradient-to-r from-rose-500 to-orange-500 text-white text-[10px] font-black px-4 py-1.5 rounded-b-xl shadow-lg flex items-center gap-1.5 z-10 animate-pulse">
+                        <Zap className="w-3.5 h-3.5 fill-current" />
+                        رائج الآن
+                      </div>
+                    )}
                     <CardContent className="p-8 flex flex-col justify-between h-full gap-8">
                       <div className="flex flex-col items-end gap-6 text-right w-full" dir="rtl">
-                        <div className="w-16 h-16 bg-primary/5 text-primary rounded-[1.5rem] flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-500 shadow-md shadow-primary/5 flex-shrink-0">
-                          <BookOpen className="w-7 h-7" />
+                        <div className={`w-16 h-16 ${course.isFlashSpace ? 'bg-indigo-50 text-indigo-600 group-hover:bg-indigo-600 shadow-indigo-500/10' : 'bg-primary/5 text-primary group-hover:bg-primary shadow-primary/5'} rounded-[1.5rem] flex items-center justify-center group-hover:text-white transition-all duration-500 shadow-md flex-shrink-0`}>
+                          {course.isFlashSpace ? <Sparkles className="w-7 h-7" /> : <BookOpen className="w-7 h-7" />}
                         </div>
                         <div className="space-y-3 w-full">
                           <h3 className="text-2xl font-black text-slate-800 dark:text-white tracking-tight leading-tight">{course.name}</h3>
+                          {course.isFlashSpace && (
+                            <span className="bg-indigo-100 text-indigo-700 px-2 py-0.5 rounded-md flex items-center gap-1 text-[10px] w-fit font-black"><Sparkles className="w-3 h-3" /> FLASH SPACE</span>
+                          )}
                           <p className="text-sm text-slate-400 dark:text-slate-400 font-semibold leading-relaxed min-h-[48px] line-clamp-2">{course.description}</p>
                         </div>
                       </div>
                       <div className="flex items-center justify-end w-full">
                         <Button 
-                          onClick={() => navigate(`/course/${course.id}`)} 
-                          className="w-full md:w-auto px-8 py-4 rounded-2xl font-black text-xs uppercase shadow-lg shadow-primary/10 hover:shadow-xl hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3"
+                          onClick={() => course.isFlashSpace ? navigate('/flashcards/space') : navigate(`/course/${course.id}`)} 
+                          className={`w-full md:w-auto px-8 py-4 rounded-2xl font-black text-xs uppercase shadow-lg ${course.isFlashSpace ? 'bg-indigo-600 hover:bg-indigo-700 shadow-indigo-600/20' : 'shadow-primary/10 hover:shadow-xl'} hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3`}
                         >
                           <span>استكمال المذاكرة</span>
                           <ArrowRight className="w-4 h-4" />

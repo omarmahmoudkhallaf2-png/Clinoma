@@ -54,6 +54,16 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
           level: 'fifth',
           price: '0',
           details: 'أكثر من 170 سؤال MCQ\nمقسمة حسب شباتر الكتاب الأصلية (8 شباتر)\nشرح تفصيلي لكل سؤال\nمتابعة مستوى ونظام تكرار متباعد SRS'
+        },
+        {
+          id: 'pediatrics_flash_space',
+          name: 'طب الأطفال (Pediatrics)',
+          description: 'Flash Space - مساحة دراسة تفاعلية وحصرية لكورس الأطفال. مدعومة بتقنيات متقدمة.',
+          level: 'fifth',
+          price: '0',
+          details: 'مساحة دراسة بصرية تفاعلية (Flash Space)\nشرح وحفظ الصور الطبية بطريقة سهلة\nمئات البطاقات وأسئلة بنظام SRS\nحفظ وتدوين ملاحظات مخصصة',
+          isFlashSpace: true,
+          trending: true,
         }
       ];
 

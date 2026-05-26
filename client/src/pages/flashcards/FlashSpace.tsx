@@ -38,7 +38,8 @@ import {
   Target,
   Lock,
   Eye,
-  Check
+  Check,
+  Edit
 } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { useNavigate } from 'react-router-dom';
@@ -71,6 +72,7 @@ interface Board {
   id: string;
   module: string;
   system: string;
+  subSystem?: string;
   disease: string;
   medicalImage: string;
   explanation: string;
@@ -128,20 +130,15 @@ const PEDIATRICS_SLIDES: Record<string, string[]> = {
     'PEDIATRIC GROWTH.jpeg'
   ],
   'Hematology & Oncology': [
-    'Acquired Bleeding & DIC.jpeg',
-    'Aplastic Anemia & BM Failure Syndromes.jpeg',
-    'Chronic Hemolytic Anemia & Hereditary Spherocytosis.jpeg',
-    'Classification & Evaluation of Anemia.jpeg',
-    'G6PD Deficiency & Immune Hemolytic Anemias.jpeg',
-    'Hemostasis & Bleeding Disorders.jpeg',
-    'Inherited Coagulation Hemophilia & VWD.jpeg',
-    'Iron Deficiency Anemia (IDA).jpeg',
-    'Lymphomas & Solid Tumors.jpeg',
-    'Megaloblastic Anemias (B12 & Folate Deficiency).jpeg',
-    'Non-Thrombocytopenic Purpura (Vascular & HSP).jpeg',
-    'Pediatric Oncology The Leukemias (ALL & AML).jpeg',
-    'Platelet Disorders ITP & Thrombocytopenias.jpeg',
-    'RBC Physiology, Indices & Morphology.jpeg',
+    'تحديدات الاطفال/Hematology & Oncology/Acute lymphoplastic leukemia.jpeg',
+    'تحديدات الاطفال/Hematology & Oncology/Aplastic anemia.jpeg',
+    'تحديدات الاطفال/Hematology & Oncology/GP6D.jpeg',
+    'تحديدات الاطفال/Hematology & Oncology/HODGKIN lymphoma.jpeg',
+    'تحديدات الاطفال/Hematology & Oncology/Hemophilia.jpeg',
+    'تحديدات الاطفال/Hematology & Oncology/Hereditary spherocytosis.jpeg',
+    'تحديدات الاطفال/Hematology & Oncology/Immune thrombocytopenia (ITP).jpeg',
+    'تحديدات الاطفال/Hematology & Oncology/Iron defeciency anemia.jpeg',
+    'تحديدات الاطفال/Hematology & Oncology/Thalassemia.jpeg',
     'Safe Blood Transfusion & Complications.jpeg',
     'Sickle Cell Disease (SCD).jpeg',
     'The Thalassemia Syndromes (Alpha & Beta).jpeg'
@@ -192,6 +189,43 @@ const PEDIATRICS_SLIDES: Record<string, string[]> = {
     'Proteinuria Detection & Etiological Sorting.jpeg',
     'Renal Anatomy, Functions & Urine Color Changes.jpeg',
     'URINARY TRACT INFECTIONS (UTIs) & RENAL IMAGING PROTOCOL.jpeg'
+  ],
+  'تحديدات الاطفال': [
+    'تحديدات الاطفال/CVS/Complete Transposition of the Great Arteries (TGA).jpeg',
+    'تحديدات الاطفال/CVS/Patent Ductus Arteriosus (PDA).jpeg',
+    'تحديدات الاطفال/CVS/Pediatric Heart Failure (HF).jpeg',
+    'تحديدات الاطفال/CVS/Tetralogy of Fallot (TOF) & Hypercyanotic Spells.jpeg',
+    'تحديدات الاطفال/CVS/Ventricular Septal Defect (VSD) - 2.jpeg',
+    'تحديدات الاطفال/CVS/Ventricular Septal Defect (VSD) -1.jpeg',
+    'تحديدات الاطفال/Endocrinology/CHILDHOOD OBESITY.jpeg',
+    'تحديدات الاطفال/Endocrinology/Congenital hypothyrodism.jpeg',
+    'تحديدات الاطفال/Endocrinology/DIABETES MELLITUS (DM) DIABETIC KETOACIDOSIS (DKA).jpeg',
+    'تحديدات الاطفال/Endocrinology/Short stature.jpeg',
+    'تحديدات الاطفال/Genetics/Down syndrome.jpeg',
+    'تحديدات الاطفال/Genetics/Prenatal diagnosis.jpeg',
+    'تحديدات الاطفال/Genetics/Turner syndrome.jpeg',
+    'تحديدات الاطفال/GIT/Cow milk allergy.jpeg',
+    'تحديدات الاطفال/GIT/Pediatrics abdominal pain.jpeg',
+    'تحديدات الاطفال/GIT/Vomiting.jpeg',
+    'تحديدات الاطفال/Growth & Development/Developmental milestones.jpeg',
+    'تحديدات الاطفال/Growth & Development/Growth charts.jpeg',
+    'تحديدات الاطفال/Growth & Development/Key development warning signs & Delayed milestone causes.jpeg',
+    'تحديدات الاطفال/Hematology & Oncology/Acute lymphoplastic leukemia.jpeg',
+    'تحديدات الاطفال/Hematology & Oncology/Aplastic anemia.jpeg',
+    'تحديدات الاطفال/Hematology & Oncology/GP6D.jpeg',
+    'تحديدات الاطفال/Hematology & Oncology/HODGKIN lymphoma.jpeg',
+    'تحديدات الاطفال/Hematology & Oncology/Hemophilia.jpeg',
+    'تحديدات الاطفال/Hematology & Oncology/Hereditary spherocytosis.jpeg',
+    'تحديدات الاطفال/Hematology & Oncology/Immune thrombocytopenia (ITP).jpeg',
+    'تحديدات الاطفال/Hematology & Oncology/Iron defeciency anemia.jpeg',
+    'تحديدات الاطفال/Hematology & Oncology/Thalassemia.jpeg',
+    'تحديدات الاطفال/Infection/Infections.jpeg',
+    'تحديدات الاطفال/Neurology/Cerebral Palsy (CP).jpeg',
+    'تحديدات الاطفال/Neurology/Duchenne muscle dystrophy.jpeg',
+    'تحديدات الاطفال/Neurology/The Floppy Infant Syndrome.jpeg',
+    'تحديدات الاطفال/Nutrition/advantages of breastfeeding & contraindication.jpeg',
+    'تحديدات الاطفال/Nutrition/PEM.jpeg',
+    'تحديدات الاطفال/Nutrition/Rickets.jpeg'
   ]
 };
 
@@ -5911,6 +5945,7 @@ const FlashSpace = () => {
   
   const [selectedModule, setSelectedModule] = useState<string | null>(null);
   const [selectedSystem, setSelectedSystem] = useState<string | null>(null);
+  const [selectedSubSystem, setSelectedSubSystem] = useState<string | null>(null);
   const [selectedBoard, setSelectedBoard] = useState<Board | null>(null);
   const [showSubscriptionModal, setShowSubscriptionModal] = useState(false);
   const [growthViews, setGrowthViews] = useState<number>(0);
@@ -5979,6 +6014,10 @@ const FlashSpace = () => {
   const [isReviewCenterOpen, setIsReviewCenterOpen] = useState(false);
   const [reviewTab, setReviewTab] = useState<'images'|'questions'>('questions');
   const [reviewFilter, setReviewFilter] = useState<'A'|'B'|'C'>('A');
+  const [isEditingNotes, setIsEditingNotes] = useState(false);
+  const [editedNoteText, setEditedNoteText] = useState("");
+  const [firebaseNotes, setFirebaseNotes] = useState<Record<string, string>>({});
+  const [isSavingNote, setIsSavingNote] = useState(false);
 
   useEffect(() => {
     if (userData?.spacePriorities) {
@@ -6087,6 +6126,12 @@ const FlashSpace = () => {
     const fetchData = async () => {
       const timeoutId = setTimeout(() => setLoading(false), 5000);
       try {
+        getDocs(collection(db, 'notes')).then(notesSnap => {
+          const notesData: Record<string, string> = {};
+          notesSnap.docs.forEach(doc => { notesData[doc.id] = doc.data().content; });
+          setFirebaseNotes(notesData);
+        }).catch(err => console.error("Error fetching notes:", err));
+
         const snap = await getDocs(query(collection(db, 'flashspace_boards'), orderBy('createdAt', 'desc')));
         const fetched = snap.docs.map(doc => ({ id: doc.id, ...doc.data() } as Board));
         
@@ -6094,14 +6139,15 @@ const FlashSpace = () => {
         const generatedPediatricsBoards: Board[] = [];
         Object.entries(PEDIATRICS_SLIDES).forEach(([chapter, files]) => {
           files.forEach(file => {
-            const title = file.replace(/\.[^/.]+$/, "");
+            const title = (file.split('/').pop() || file).replace(/\.[^/.]+$/, "");
             const customExp = PEDIATRICS_EXPLANATIONS[title];
             generatedPediatricsBoards.push({
               id: `pediatrics_${chapter.toLowerCase().replace(/[^a-z0-9]/g, '_')}_${title.toLowerCase().replace(/[^a-z0-9]/g, '_')}`,
               module: 'Pediatrics',
               system: chapter,
+              subSystem: chapter === 'تحديدات الاطفال' && file.includes('/') ? file.split('/')[1] : undefined,
               disease: title,
-              medicalImage: `/assets/TIP-Peditrics/${chapter}/${file}`,
+              medicalImage: file.includes('/') ? `/assets/TIP-Peditrics/${file}` : `/assets/TIP-Peditrics/${chapter}/${file}`,
               explanation: customExp || `A comprehensive visual study guide for ${title} under the Pediatrics ${chapter} system. Use this interactive flash space to annotate, highlight, and review key clinical presentation, diagnostic criteria, and management protocols.`,
               createdAt: Date.now()
             });
@@ -6603,6 +6649,7 @@ const FlashSpace = () => {
                 <button onClick={() => {
                   setSelectedModule(null);
                   setSelectedSystem(null);
+                  setSelectedSubSystem(null);
                   setSelectedBoard(null);
                   setIsChapterQuestionMode(false);
                   setShowQuestions(false);
@@ -6620,12 +6667,15 @@ const FlashSpace = () => {
                   {[...(systems[selectedModule] || [])].sort((a, b) => {
                     if (a === 'Growth & development') return -1;
                     if (b === 'Growth & development') return 1;
+                    if (a === 'تحديدات الاطفال') return -1;
+                    if (b === 'تحديدات الاطفال') return 1;
                     return a.localeCompare(b);
                   }).map(sys => {
                     const color = SYSTEM_COLORS[sys] || '#6366f1';
                     const count = boards.filter(b => b.module === selectedModule && b.system === sys).length;
                     
                     const SYSTEM_BGS: Record<string, string> = {
+                      'تحديدات الاطفال': '/assets/chapters/418309698_0f732299-96c6-4f6d-8f13-82ad46c35262.jpg',
                       'Cardiovascular diseases': '/assets/chapters/cardio_bg_1779636563389.png',
                       'Endocrinology': '/assets/chapters/endo_bg_1779636576095.png',
                       'Gastroenterology & hepatology': '/assets/chapters/gastro_bg_1779636588519.png',
@@ -6640,7 +6690,8 @@ const FlashSpace = () => {
 
                     const lwSys = sys.toLowerCase();
                     let SysIcon = Stethoscope;
-                    if (lwSys.includes('cardio')) SysIcon = Heart;
+                    if (sys === 'تحديدات الاطفال') SysIcon = Zap;
+                    else if (lwSys.includes('cardio')) SysIcon = Heart;
                     else if (lwSys.includes('neuro')) SysIcon = Brain;
                     else if (lwSys.includes('gastro')) SysIcon = Apple;
                     else if (lwSys.includes('endo')) SysIcon = Target;
@@ -6674,6 +6725,12 @@ const FlashSpace = () => {
                             <span className="text-xs font-bold uppercase tracking-wider">Premium</span>
                           </div>
                         )}
+                        {sys === 'تحديدات الاطفال' && (
+                          <div className="absolute top-4 left-4 z-10 bg-gradient-to-r from-rose-500 to-orange-500 text-white border border-rose-400/50 px-3 py-1.5 rounded-full flex items-center gap-1.5 backdrop-blur-md shadow-lg shadow-rose-500/20">
+                            <span className="text-[14px]">🔥</span>
+                            <span className="text-xs font-black tracking-wider">رائج الآن</span>
+                          </div>
+                        )}
                         {/* Admin Views Counter */}
                         {userRole === 'admin' && sys === 'Growth & development' && (
                           <div className="absolute top-4 left-4 z-10 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-3 py-1.5 rounded-full flex items-center gap-1.5 backdrop-blur-sm shadow-lg">
@@ -6693,9 +6750,13 @@ const FlashSpace = () => {
                         <div className="absolute top-0 right-0 w-32 h-32 opacity-10 group-hover:opacity-20 transition-opacity duration-500 blur-3xl rounded-full z-0" style={{background: color, transform: 'translate(30%, -30%)'}} />
                         
                         <div className="relative z-10 flex justify-between items-start w-full">
-                          <div className="w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:-translate-y-1" style={{background: `linear-gradient(135deg, ${color}20, ${color}10)`, border: `1px solid ${color}40`, color: color}}>
-                            <SysIcon className="w-6 h-6" />
-                          </div>
+                          {sys === 'تحديدات الاطفال' ? (
+                            <div className="w-12 h-12"></div>
+                          ) : (
+                            <div className="w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:-translate-y-1" style={{background: `linear-gradient(135deg, ${color}20, ${color}10)`, border: `1px solid ${color}40`, color: color}}>
+                              <SysIcon className="w-6 h-6" />
+                            </div>
+                          )}
                           <div className="flex items-center justify-center w-8 h-8 rounded-full bg-white/5 text-slate-400 opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-x-2 group-hover:translate-x-0">
                             <ArrowRight className="w-4 h-4" />
                           </div>
@@ -6714,12 +6775,95 @@ const FlashSpace = () => {
                 </div>
               </div>
             </div>
+          ) : selectedSystem === 'تحديدات الاطفال' && !selectedSubSystem ? (
+            // --- SUB-SYSTEM SELECTION FOR TAHDEDAT ---
+            <div className="h-full flex flex-col p-4 md:p-8 gap-6 md:gap-8 max-w-7xl mx-auto w-full">
+              <div className="flex items-center gap-4 shrink-0 mt-2">
+                <button onClick={() => {
+                  setSelectedSystem(null);
+                }} className="p-2.5 bg-white/5 active:bg-white/15 hover:bg-white/10 rounded-2xl text-slate-400 transition-all border border-white/5 hover:border-white/10 hover:shadow-lg hover:shadow-black/20">
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
+                <div>
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/5 rounded-full text-slate-400 text-xs font-bold uppercase tracking-widest mb-2 border border-white/5">
+                    {selectedModule} <ChevronRight className="w-3 h-3 mx-1" /> تحديدات الاطفال
+                  </div>
+                  <h2 className="text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-white/60">Choose a Chapter</h2>
+                  <p className="text-slate-500 text-sm mt-0.5 tracking-wide uppercase font-bold">Select a Chapter</p>
+                </div>
+              </div>
+              <div className="flex-1 overflow-y-auto pb-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
+                  {Array.from(new Set(boards.filter(b => b.system === 'تحديدات الاطفال').map(b => b.subSystem))).filter(Boolean).sort().map(subSys => {
+                    if (!subSys) return null;
+                    const color = '#6366f1';
+                    
+                    const SYSTEM_BGS: Record<string, string> = {
+                      'CVS': '/assets/chapters/cardio_bg_1779636563389.png',
+                      'Endocrinology': '/assets/chapters/endo_bg_1779636576095.png',
+                      'GIT': '/assets/chapters/gastro_bg_1779636588519.png',
+                      'Genetics': '/assets/chapters/genetic_bg_1779636605335.png',
+                      'Growth & Development': '/assets/chapters/growth_bg_1779636618747.png',
+                      'Hematology & Oncology': '/assets/chapters/hemato_bg_1779636647999.png',
+                      'Infection': '/assets/chapters/infect_bg_1779636662158.png',
+                      'Neurology': '/assets/chapters/neuro_bg_1779636673967.png',
+                      'Nutrition': '/assets/chapters/nutrition_bg_1779636686441.png',
+                    };
+
+                    const lwSys = subSys.toLowerCase();
+                    let SysIcon = Stethoscope;
+                    if (lwSys.includes('cvs')) SysIcon = Heart;
+                    else if (lwSys.includes('neuro')) SysIcon = Brain;
+                    else if (lwSys.includes('git')) SysIcon = Apple;
+                    
+                    return (
+                      <button
+                        key={subSys}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setSelectedSubSystem(subSys);
+                        }}
+                        className="group relative bg-slate-900/50 backdrop-blur-xl border border-white/5 active:border-white/20 hover:border-white/20 rounded-3xl text-left transition-all duration-300 active:scale-[0.97] hover:scale-[1.02] overflow-hidden p-6 flex flex-col justify-between min-h-[160px] hover:shadow-2xl"
+                      >
+                        {SYSTEM_BGS[subSys] && (
+                          <div className="absolute inset-0 z-0">
+                            <img src={SYSTEM_BGS[subSys]} alt={subSys} className="w-full h-full object-cover opacity-40 group-hover:opacity-70 transition-all duration-500 mix-blend-overlay" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-transparent" />
+                          </div>
+                        )}
+
+                        <div className="absolute top-0 right-0 w-32 h-32 opacity-10 group-hover:opacity-20 transition-opacity duration-500 blur-3xl rounded-full z-0" style={{background: color, transform: 'translate(30%, -30%)'}} />
+                        
+                        <div className="relative z-10 flex justify-between items-start w-full">
+                          <div className="w-12 h-12 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center text-white/90 border border-white/20 shadow-inner group-hover:-translate-y-1 transition-transform duration-300">
+                            <SysIcon className="w-6 h-6 drop-shadow-md" />
+                          </div>
+                          <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center border border-white/5 group-hover:bg-indigo-500 group-hover:border-indigo-400 group-hover:text-white transition-all duration-300">
+                            <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-white" />
+                          </div>
+                        </div>
+
+                        <div className="relative z-10 mt-6">
+                          <h3 className="text-xl font-black text-white/90 leading-tight group-hover:text-white transition-colors">{subSys}</h3>
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
           ) : (
             // BOARD/SLIDE SELECTION - premium glassmorphism layout
             <div className="h-full flex flex-col p-4 md:p-8 gap-6 md:gap-8 max-w-7xl mx-auto w-full">
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 shrink-0 mt-2">
                 <div className="flex items-center gap-4">
-                  <button onClick={() => setSelectedSystem(null)} className="p-2.5 bg-white/5 active:bg-white/15 hover:bg-white/10 rounded-2xl text-slate-400 transition-all border border-white/5 hover:border-white/10 hover:shadow-lg hover:shadow-black/20">
+                  <button onClick={() => {
+                    if (selectedSystem === 'تحديدات الاطفال' && selectedSubSystem) {
+                      setSelectedSubSystem(null);
+                    } else {
+                      setSelectedSystem(null);
+                    }
+                  }} className="p-2.5 bg-white/5 active:bg-white/15 hover:bg-white/10 rounded-2xl text-slate-400 transition-all border border-white/5 hover:border-white/10 hover:shadow-lg hover:shadow-black/20">
                     <ChevronLeft className="w-5 h-5" />
                   </button>
                   <div>
@@ -6744,7 +6888,7 @@ const FlashSpace = () => {
                 {isChapterQuestionMode ? (
                   // --- CHAPTER QUESTIONS TAB - Flashcard Session ---
                   (() => {
-                    const chapterSlides = boards.filter(b => b.module === selectedModule && b.system === selectedSystem);
+                    const chapterSlides = boards.filter(b => b.module === selectedModule && b.system === selectedSystem && (selectedSubSystem ? b.subSystem === selectedSubSystem : true));
                     const chapterQuestions = chapterSlides.flatMap(board => {
                       const diseaseKey = (board.disease || '').replace(/\.(jpeg|jpg|png)\s*$/i, '').trim();
                       return getQuestionsForKey(diseaseKey);
@@ -7016,7 +7160,7 @@ const FlashSpace = () => {
                   })()
                 ) : (
                   <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-                    {boards.filter(b => b.module === selectedModule && b.system === selectedSystem).map(board => (
+                    {boards.filter(b => b.module === selectedModule && b.system === selectedSystem && (selectedSubSystem ? b.subSystem === selectedSubSystem : true)).map(board => (
                     <button
                       key={board.id}
                       onClick={() => { setSelectedBoard(board); setIsTimerActive(true); setPaths([]); setRedoPaths([]); }}
@@ -7042,6 +7186,7 @@ const FlashSpace = () => {
                       </div>
                     </button>
                   ))}
+                    {selectedSystem !== 'تحديدات الاطفال' && (
                     <button
                       onClick={() => {
                         const chapterSlides = boards.filter(b => b.module === selectedModule && b.system === selectedSystem);
@@ -7078,6 +7223,7 @@ const FlashSpace = () => {
                         </div>
                       </div>
                     </button>
+                  )}
                 </div>
                 )}
               </div>
@@ -7171,7 +7317,7 @@ const FlashSpace = () => {
                       </div>
                     ))
                   }
-                  {boards.filter(b => b.module === selectedModule && b.system === selectedSystem && spacePriorities[b.id] === reviewFilter).length === 0 && (
+                  {boards.filter(b => b.module === selectedModule && b.system === selectedSystem && (selectedSubSystem ? b.subSystem === selectedSubSystem : true) && spacePriorities[b.id] === reviewFilter).length === 0 && (
                     <div className="col-span-full py-20 flex flex-col items-center justify-center text-slate-500">
                       <Target className="w-16 h-16 mb-4 opacity-20" />
                       <p className="font-bold text-lg">لا توجد صور في هذه الأولوية</p>
@@ -7342,9 +7488,47 @@ const FlashSpace = () => {
 
         {/* Slides list */}
         <div className="flex-1 overflow-y-auto py-2 custom-scrollbar">
-          {boards
-            .filter(b => b.module === selectedBoard?.module && b.system === selectedBoard?.system)
-            .map((board, idx) => (
+          {(() => {
+            const filteredBoards = boards.filter(b => b.module === selectedBoard?.module && b.system === selectedBoard?.system);
+            
+            if (selectedBoard?.system === 'تحديدات الاطفال') {
+              const grouped = filteredBoards.reduce((acc, b) => {
+                const sub = b.subSystem || 'Other';
+                if (!acc[sub]) acc[sub] = [];
+                acc[sub].push(b);
+                return acc;
+              }, {} as Record<string, typeof boards>);
+              
+              let globalIdx = 0;
+              return Object.entries(grouped).map(([subSys, sysBoards]) => (
+                <div key={subSys}>
+                  <div className="bg-slate-100/80 px-4 py-2 sticky top-0 backdrop-blur-md border-y border-slate-200 z-10 flex items-center gap-2 shadow-sm">
+                    <div className="w-1.5 h-1.5 rounded-full bg-indigo-400" />
+                    <span className="text-[10px] font-black text-slate-600 uppercase tracking-widest">{subSys}</span>
+                  </div>
+                  {sysBoards.map((board) => {
+                    globalIdx++;
+                    return (
+                      <button
+                        key={board.id}
+                        onClick={() => { setSelectedBoard(board); setIsSidebarOpen(false); setPaths([]); setRedoPaths([]); setShowExplanation(false); setShowQuestions(false); }}
+                        className={cn(
+                          "w-full text-left px-4 py-2.5 flex items-center gap-3 transition-all border-b border-slate-50",
+                          selectedBoard?.id === board.id
+                            ? "bg-indigo-50 border-l-2 border-l-indigo-500"
+                            : "hover:bg-slate-50"
+                        )}
+                      >
+                        <span className={cn("text-[10px] font-black w-5 shrink-0", selectedBoard?.id === board.id ? "text-indigo-500" : "text-slate-300")}>{globalIdx}</span>
+                        <span className={cn("text-[11px] font-bold leading-snug line-clamp-2", selectedBoard?.id === board.id ? "text-indigo-700" : "text-slate-500")}>{board.disease}</span>
+                      </button>
+                    )
+                  })}
+                </div>
+              ));
+            }
+
+            return filteredBoards.map((board, idx) => (
               <button
                 key={board.id}
                 onClick={() => { setSelectedBoard(board); setIsSidebarOpen(false); setPaths([]); setRedoPaths([]); setShowExplanation(false); setShowQuestions(false); }}
@@ -7358,8 +7542,9 @@ const FlashSpace = () => {
                 <span className={cn("text-[10px] font-black w-5 shrink-0", selectedBoard?.id === board.id ? "text-indigo-500" : "text-slate-300")}>{idx + 1}</span>
                 <span className={cn("text-[11px] font-bold leading-snug line-clamp-2", selectedBoard?.id === board.id ? "text-indigo-700" : "text-slate-500")}>{board.disease}</span>
               </button>
-            ))
-          }
+            ));
+          })()}
+          {selectedBoard?.system !== 'تحديدات الاطفال' && (
           <button
             onClick={() => {
               const chapterSlides = boards.filter(b => b.module === selectedBoard?.module && b.system === selectedBoard?.system);
@@ -7394,6 +7579,7 @@ const FlashSpace = () => {
             </div>
             <span className="text-[11px] font-black text-emerald-600 uppercase tracking-widest">Practice Chapter</span>
           </button>
+          )}
         </div>
       </div>
 
@@ -7635,9 +7821,17 @@ const FlashSpace = () => {
                     <h4 className="text-lg md:text-xl font-black text-slate-900">{selectedBoard.disease}</h4>
                     <p className="text-slate-400 text-xs mt-0.5">{selectedBoard.system}</p>
                   </div>
-                  <button onClick={() => setShowExplanation(false)} className="p-2.5 bg-slate-100 hover:bg-rose-50 hover:text-rose-600 rounded-xl transition-all">
-                    <X className="w-5 h-5" />
-                  </button>
+                  <div className="flex items-center gap-2">
+                    {userRole === 'admin' && activeNoteTab === 'notes' && (
+                      <button onClick={() => { setIsEditingNotes(true); setEditedNoteText(firebaseNotes[selectedBoard.disease] || PEDIATRICS_EXPLANATIONS[selectedBoard.disease] || ''); }} className="p-2.5 bg-indigo-50 hover:bg-indigo-100 text-indigo-600 rounded-xl transition-all font-bold text-xs flex items-center gap-2 shadow-sm">
+                        <Edit className="w-4 h-4" />
+                        تعديل النوتس
+                      </button>
+                    )}
+                    <button onClick={() => setShowExplanation(false)} className="p-2.5 bg-slate-100 hover:bg-rose-50 hover:text-rose-600 rounded-xl transition-all">
+                      <X className="w-5 h-5" />
+                    </button>
+                  </div>
                 </div>
                 {/* Tabs */}
                 <div className="flex border-b border-slate-100 shrink-0">
@@ -7664,7 +7858,7 @@ const FlashSpace = () => {
                 <div className="flex-1 overflow-y-auto">
                   {activeNoteTab === 'notes' ? (
                     <div className="max-w-3xl mx-auto px-6 md:px-10 py-8 pb-20" dir="rtl">
-                      {PEDIATRICS_EXPLANATIONS[selectedBoard.disease] ? (
+                      {(firebaseNotes[selectedBoard.disease] || PEDIATRICS_EXPLANATIONS[selectedBoard.disease]) ? (
                         <ReactMarkdown
                           components={{
                             h1: ({node, ...props}) => <h1 className="text-2xl font-black text-black mt-8 mb-4 border-b pb-3 border-slate-200 text-right" {...props} />,
@@ -7678,7 +7872,7 @@ const FlashSpace = () => {
                             hr: ({node, ...props}) => <hr className="my-8 border-slate-200" {...props} />,
                           }}
                         >
-                          {PEDIATRICS_EXPLANATIONS[selectedBoard.disease]}
+                          {firebaseNotes[selectedBoard.disease] || PEDIATRICS_EXPLANATIONS[selectedBoard.disease]}
                         </ReactMarkdown>
                       ) : (
                         <div className="flex flex-col items-center justify-center py-24 text-center" dir="ltr">
@@ -8166,6 +8360,121 @@ const FlashSpace = () => {
                 className="w-full py-3 rounded-xl font-bold text-slate-400 hover:text-white transition-colors"
               >
                 Maybe Later
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Edit Notes Modal for Admins */}
+      {isEditingNotes && (
+        <div className="fixed inset-0 z-[999999] flex items-center justify-center p-4" dir="rtl">
+          <div className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm" onClick={() => setIsEditingNotes(false)} />
+          <div className="relative bg-white border border-slate-200 rounded-[2rem] p-6 max-w-4xl w-full h-[80vh] flex flex-col shadow-2xl animate-in zoom-in-95 duration-200">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-xl font-black text-slate-800 flex items-center gap-2">
+                <Edit className="w-6 h-6 text-indigo-500" />
+                تعديل النوتس لـ: <span className="text-indigo-600 font-bold ml-1">{selectedBoard?.disease}</span>
+              </h3>
+              <button onClick={() => setIsEditingNotes(false)} className="p-2 bg-slate-100 hover:bg-rose-50 text-slate-500 hover:text-rose-500 rounded-xl transition-all">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            <p className="text-slate-500 text-sm mb-4">قم بنسخ نص الـ Markdown من جيمني (Gemini) والصقه هنا. ستظهر المعاينة في الجهة اليسرى.</p>
+            
+            <div className="w-full bg-slate-100 p-2 rounded-t-2xl border border-b-0 border-slate-200 flex gap-2">
+              <button onClick={() => setEditedNoteText(prev => prev + '\\n# عنوان رئيسي\\n')} className="px-3 py-1 bg-white border border-slate-200 rounded text-sm font-bold text-slate-700 hover:bg-slate-50">H1</button>
+              <button onClick={() => setEditedNoteText(prev => prev + '\\n## عنوان فرعي 1\\n')} className="px-3 py-1 bg-white border border-slate-200 rounded text-sm font-bold text-slate-700 hover:bg-slate-50">H2</button>
+              <button onClick={() => setEditedNoteText(prev => prev + '\\n### عنوان فرعي 2\\n')} className="px-3 py-1 bg-white border border-slate-200 rounded text-sm font-bold text-slate-700 hover:bg-slate-50">H3</button>
+              <button onClick={() => setEditedNoteText(prev => prev + '\\n**نص عريض**')} className="px-3 py-1 bg-white border border-slate-200 rounded text-sm font-bold text-slate-700 hover:bg-slate-50">Bold</button>
+              <button onClick={() => setEditedNoteText(prev => prev + '\\n* نقطة جديدة')} className="px-3 py-1 bg-white border border-slate-200 rounded text-sm font-bold text-slate-700 hover:bg-slate-50">List</button>
+              <button onClick={() => setEditedNoteText(prev => prev + '\\n\\n---\\n')} className="px-3 py-1 bg-white border border-slate-200 rounded text-sm font-bold text-slate-700 hover:bg-slate-50">Line</button>
+            </div>
+            
+            <div className="flex-1 min-h-0 bg-white rounded-b-2xl border border-slate-200 overflow-hidden mb-4 relative flex gap-4 p-4">
+              {/* Textarea for Editing */}
+              <textarea
+                value={editedNoteText}
+                onChange={e => setEditedNoteText(e.target.value)}
+                onPaste={(e) => {
+                  const html = e.clipboardData.getData('text/html');
+                  if (html) {
+                    e.preventDefault();
+                    import('turndown').then((TurndownModule) => {
+                      const TurndownService = TurndownModule.default || TurndownModule;
+                      const turndownService = new TurndownService({ headingStyle: 'atx' });
+                      const markdown = turndownService.turndown(html);
+                      const target = e.target as HTMLTextAreaElement;
+                      const start = target.selectionStart;
+                      const end = target.selectionEnd;
+                      const currentVal = target.value;
+                      const newVal = currentVal.substring(0, start) + markdown + currentVal.substring(end);
+                      setEditedNoteText(newVal);
+                      
+                      // setTimeout used to focus and set cursor pos after React state update
+                      setTimeout(() => {
+                        target.focus();
+                        target.setSelectionRange(start + markdown.length, start + markdown.length);
+                      }, 0);
+                    }).catch(err => {
+                      console.error('Failed to load turndown', err);
+                    });
+                  }
+                }}
+                className="flex-1 h-full bg-slate-50 rounded-xl p-4 outline-none resize-none font-mono text-sm leading-relaxed text-slate-900 border border-slate-200 custom-scrollbar shadow-inner"
+                dir="auto"
+                placeholder="الصق النص هنا..."
+              />
+              
+              {/* Live Preview */}
+              <div className="flex-1 h-full overflow-y-auto bg-slate-50 rounded-xl border border-slate-200 p-6 custom-scrollbar" dir="rtl">
+                <p className="text-xs font-black text-slate-400 uppercase tracking-widest mb-4 pb-2 border-b border-slate-200">Live Preview</p>
+                <ReactMarkdown
+                  components={{
+                    h1: ({node, ...props}) => <h1 className="text-2xl font-black text-black mt-8 mb-4 border-b pb-3 border-slate-200 text-right" {...props} />,
+                    h2: ({node, ...props}) => <h2 className="text-xl font-black text-black mt-6 mb-3 border-r-4 border-black pr-3 text-right" {...props} />,
+                    h3: ({node, ...props}) => <h3 className="text-lg font-extrabold text-black mt-5 mb-2 text-right" {...props} />,
+                    p: ({node, ...props}) => <p className="mb-4 text-black leading-loose text-base text-right" {...props} />,
+                    ul: ({node, ...props}) => <ul className="list-disc list-inside mr-4 mb-4 space-y-2 text-black text-right" {...props} />,
+                    ol: ({node, ...props}) => <ol className="list-decimal list-inside mr-4 mb-4 space-y-2 text-black text-right" {...props} />,
+                    li: ({node, ...props}) => <li className="marker:text-black" {...props} />,
+                    strong: ({node, ...props}) => <strong className="text-black font-black bg-slate-200 px-2 py-0.5 rounded-lg mx-0.5" {...props} />,
+                    hr: ({node, ...props}) => <hr className="my-8 border-slate-200" {...props} />,
+                  }}
+                >
+                  {editedNoteText || 'سيظهر العرض هنا...'}
+                </ReactMarkdown>
+              </div>
+            </div>
+            
+            <div className="flex justify-end gap-3 shrink-0">
+              <button onClick={() => setIsEditingNotes(false)} className="px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl transition-all" disabled={isSavingNote}>
+                إلغاء
+              </button>
+              <button 
+                disabled={isSavingNote}
+                onClick={async () => {
+                  setIsSavingNote(true);
+                  try {
+                    const noteId = selectedBoard?.disease || '';
+                    if (!noteId) return;
+                    await setDoc(doc(db, 'notes', noteId), {
+                      content: editedNoteText,
+                      updatedAt: Date.now()
+                    });
+                    setFirebaseNotes(prev => ({ ...prev, [noteId]: editedNoteText }));
+                    toast.success('تم حفظ النوتس بنجاح!');
+                    setIsEditingNotes(false);
+                  } catch (e: any) {
+                    toast.error(e.message || 'حدث خطأ أثناء الحفظ');
+                  } finally {
+                    setIsSavingNote(false);
+                  }
+                }} 
+                className="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl transition-all flex items-center gap-2 shadow-lg shadow-indigo-600/20 disabled:opacity-50"
+              >
+                {isSavingNote ? <span className="animate-spin text-xl block w-5 h-5">↻</span> : <Check className="w-5 h-5" />}
+                حفظ النوتس (Save)
               </button>
             </div>
           </div>

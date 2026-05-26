@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { Crown, CheckCircle, Infinity as InfinityIcon } from 'lucide-react';
+import { Crown, CheckCircle, Infinity as InfinityIcon, Zap, Sparkles } from 'lucide-react';
 import SupportModal from '../components/ui/SupportModal';
 import { Button } from '../components/ui/Button';
 import { db } from '../lib/firebase';
@@ -62,30 +62,27 @@ export default function AvailableCourses() {
             return (
               <div 
                 key={plan.id}
-                className={`group bg-card border-2 ${color.border} p-10 rounded-[3.5rem] relative flex flex-col shadow-2xl transition-all hover:-translate-y-4 hover:shadow-primary/5`}
+                className={`group bg-card border-2 ${plan.isFlashSpace ? 'border-indigo-500/50 shadow-indigo-500/20' : color.border} p-10 rounded-[3.5rem] relative flex flex-col shadow-2xl transition-all hover:-translate-y-4 hover:shadow-primary/5`}
               >
-                <div className="absolute -top-4 right-10 bg-emerald-500 text-white text-[10px] font-black px-6 py-2 rounded-full shadow-xl flex items-center gap-2 z-10">
-                  <CheckCircle className="w-4 h-4" />
-                  مفتوح بالكامل مجاناً
-                </div>
+                {plan.trending && (
+                  <div className="absolute -top-4 left-10 bg-gradient-to-r from-rose-500 to-orange-500 text-white text-[10px] font-black px-6 py-2 rounded-full shadow-xl flex items-center gap-2 z-10 animate-pulse">
+                    <Zap className="w-4 h-4 fill-current" />
+                    رائج الآن
+                  </div>
+                )}
                 
                 <div className="flex justify-between items-start mb-8">
                   <div className="space-y-1">
-                    <div className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground opacity-50">
+                    <div className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground opacity-50 flex items-center gap-2">
                       LEVEL {plan.level?.toUpperCase()}
+                      {plan.isFlashSpace && (
+                        <span className="bg-indigo-100 text-indigo-700 px-2 py-0.5 rounded-md flex items-center gap-1"><Sparkles className="w-3 h-3" /> FLASH SPACE</span>
+                      )}
                     </div>
                     <h3 className="text-4xl font-black">{plan.name}</h3>
                   </div>
                   <div className={`p-4 ${color.primary} text-white rounded-3xl shadow-lg`}>
                     <Crown className="w-8 h-8" />
-                  </div>
-                </div>
-                
-                <div className="mb-10 flex items-baseline gap-2">
-                  <span className={`text-6xl font-black tracking-tighter ${color.text}`}>مـجـانـاً</span>
-                  <div className="flex flex-col">
-                    <span className="text-sm font-black text-muted-foreground tracking-widest">كامل</span>
-                    <span className="text-xs font-bold text-muted-foreground italic">مدى الحياة</span>
                   </div>
                 </div>
 
@@ -109,8 +106,8 @@ export default function AvailableCourses() {
                 </ul>
 
                 <button 
-                  onClick={() => navigate(`/course/${plan.id}`)}
-                  className={`w-full py-6 rounded-3xl font-black text-2xl shadow-2xl transition-all active:scale-95 ${color.primary} text-white ${color.shadow} hover:shadow-2xl hover:scale-[1.02]`}
+                  onClick={() => plan.isFlashSpace ? navigate('/flashcards/space') : navigate(`/course/${plan.id}`)}
+                  className={`w-full py-6 rounded-3xl font-black text-2xl shadow-2xl transition-all active:scale-95 ${plan.isFlashSpace ? 'bg-indigo-600 shadow-indigo-600/20' : color.primary} text-white ${plan.isFlashSpace ? '' : color.shadow} hover:shadow-2xl hover:scale-[1.02]`}
                 >
                   ابدأ الدراسة الآن
                 </button>
