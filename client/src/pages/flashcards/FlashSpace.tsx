@@ -3676,6 +3676,7 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
     },
     {
       "id": "sub_git_case_3",
+      "front": "Case 3",
       "type": "case",
       "caseBody": "An infant presents with delayed symptoms after formula feeding, including chronic diarrhea, blood and mucus in stool, abdominal distension, constipation, and failure to thrive. Skin examination reveals chronic, refractory atopic dermatitis.",
       "subQuestions": [
@@ -3693,6 +3694,7 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
     },
     {
       "id": "sub_git_case_4",
+      "front": "Case 4",
       "type": "case",
       "caseBody": "An infant develops immediate symptoms within minutes of ingesting cow's milk protein. The manifestations include urticaria, flushing, vomiting, wheeze, stridor, and eventually signs of a life-threatening systemic reaction.",
       "subQuestions": [
@@ -3822,6 +3824,7 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
     },
     {
       "id": "sub_endo_case_3",
+      "front": "Case 3",
       "type": "case",
       "caseBody": "A diabetic child presents to the hospital with deep rapid respiration (Kussmaul respiration), an odor of acetone on the breath, severe dehydration, and abdominal pain. Laboratory tests reveal blood glucose > 300 mg%, and venous pH is 7.20.",
       "subQuestions": [
@@ -3839,6 +3842,7 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
     },
     {
       "id": "sub_endo_case_4",
+      "front": "Case 4",
       "type": "case",
       "caseBody": "A thin child presents with sudden onset of polyuria, polydipsia, and polyphagia. Laboratory tests show low endogenous insulin and the presence of autoantibodies.",
       "subQuestions": [
@@ -4053,6 +4057,7 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
     },
     {
       "id": "sub_cvs_case_3",
+      "front": "Case 3",
       "type": "case",
       "caseBody": "An infant presents with delayed growth and development, decreased exercise tolerance (tachypnea and excessive sweating with feeding), and symptoms of CHF. On examination, a harsh pansystolic murmur is heard on the lower left sternal border.",
       "subQuestions": [
@@ -4092,6 +4097,7 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
     },
     {
       "id": "sub_cvs_case_4",
+      "front": "Case 4",
       "type": "case",
       "caseBody": "A child experiences sudden episodes of becoming dyspneic and intensely cyanotic (hypercyanotic or \"tetrad\" spells). The mother notices that the child often assumes a \"squatting\" position after physical activity. On examination, a systolic ejection murmur is located along the middle and upper left sternal border. Chest X-ray shows a boot-shaped heart (coeur en sabot).",
       "subQuestions": [
@@ -4109,6 +4115,7 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
     },
     {
       "id": "sub_cvs_case_5",
+      "front": "Case 5",
       "type": "case",
       "caseBody": "A premature infant presents with poor weight gain, decreased exercise tolerance, and repeated lower respiratory tract infections. Examination reveals bounding peripheral pulses with a water hammer pulse. Auscultation reveals a continuous \"machinery\" murmur at the left infraclavicular area.",
       "subQuestions": [
