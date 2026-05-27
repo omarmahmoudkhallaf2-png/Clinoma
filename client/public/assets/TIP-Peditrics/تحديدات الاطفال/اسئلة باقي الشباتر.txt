@@ -150,6 +150,133 @@ Immediate emergency treatment required for severe acute anaphylaxis due to milk 
 الإجابة: Dysfunctional / Functional Abdominal Pain (according to Rome IV criteria).
 س2: Mention two autonomic symptoms that can be associated with this condition.
 الإجابة (يُكتفى باثنين): Pallor, nausea, generalized fatigue, or anxiety.
+Question 1: Define
+Define Cow's Milk Allergy (CMA).
+Answer:
+Cow's Milk Allergy (CMA) is an immunologically mediated adverse reaction to one or more proteins in cow's milk, occurring mainly in infants and young children.
+
+Question 2: Enumerate
+Enumerate the major allergenic proteins in cow's milk.
+Answer:
+
+Casein (80%)
+
+Whey proteins (20%):
+
+β-lactoglobulin
+
+α-lactalbumin
+
+Question 3: Enumerate
+Enumerate the risk factors for developing Cow's Milk Allergy.
+Answer:
+• Family history of atopy (asthma, eczema, allergic rhinitis).
+• Early exposure to cow's milk protein.
+• Atopic dermatitis.
+• Other food allergies.
+
+Question 4: Mention
+Mention the diagnostic tests used for CMA, and state which one is considered the gold standard.
+Answer:
+
+Skin Prick Test (SPT).
+
+Serum Specific IgE.
+
+Elimination Diet.
+
+Oral Food Challenge (Gold Standard).
+
+Question 5: Mention
+Mention the management recommendations for a breastfed infant diagnosed with CMA.
+Answer:
+• Continue breastfeeding.
+• Mother avoids: Milk, Cheese, Yogurt, and Butter.
+• Calcium and vitamin D supplementation for the mother.
+
+Second: Clinical Cases
+Question 6: Clinical Case (Non-IgE-Mediated CMA)
+An infant presents with delayed symptoms after formula feeding, including chronic diarrhea, blood and mucus in stool, abdominal distension, constipation, and failure to thrive. Skin examination reveals chronic, refractory atopic dermatitis.
+
+What is the immunological classification of this allergy?
+
+Mention the first-line and alternative formula-feeding management for this infant.
+Answer:
+
+Classification: Non-IgE-Mediated CMA (Delayed).
+
+Formula Management: - First line: Extensively Hydrolyzed Formula (eHF).
+
+If severe or unresponsive: Amino Acid Formula (AAF).
+(Note: Avoid standard formula, partially hydrolyzed formula, and goat milk).
+
+Question 7: Clinical Case (IgE-Mediated CMA - Anaphylaxis)
+An infant develops immediate symptoms within minutes of ingesting cow's milk protein. The manifestations include urticaria, flushing, vomiting, wheeze, stridor, and eventually signs of a life-threatening systemic reaction.
+
+What is the diagnosis and its underlying mechanism?
+
+How should the severe/anaphylactic reaction be managed?
+Answer:
+
+Diagnosis & Mechanism: IgE-Mediated CMA (Acute). It is an immediate reaction mediated by IgE antibodies.
+
+Management of severe/anaphylaxis: - Intramuscular epinephrine.
+
+Emergency referral.
+
+Parent education on adrenaline auto-injector (if indicated).
+
+Third: Matching Questions
+Question 8: Matching (CMA vs Lactose Intolerance)
+Match the feature in Column A with the correct condition in Column B.
+
+Column A:
+
+The mechanism is immune-mediated, and it occurs mostly in infancy.
+
+The mechanism is enzyme deficiency, and it occurs mostly in older children.
+
+Symptoms involve GI, skin, and respiratory systems, and blood in stool is common.
+
+Symptoms are strictly GI, blood in stool is never present, and growth failure is rare.
+
+Column B:
+A. Lactose Intolerance
+B. Cow's Milk Allergy (CMA)
+
+Answer:
+
+1 ➔ B
+
+2 ➔ A
+
+3 ➔ B
+
+4 ➔ A
+
+Question 9: Matching (Classification of CMA)
+Match the classification of CMA in Column A with its correct characteristics in Column B.
+
+Column A:
+
+IgE-mediated CMA.
+
+Non-IgE-mediated CMA.
+
+Mixed CMA.
+
+Column B:
+A. Delayed reactions (hours to days), cell-mediated immune response.
+B. Features of both IgE and non-IgE.
+C. Immediate reactions (minutes to 2 hours), mediated by IgE antibodies.
+
+Answer:
+
+1 ➔ C
+
+2 ➔ A
+
+3 ➔ B
 
 
 
@@ -205,6 +332,176 @@ Hospitalization (admission to PICU).
 Correction of fluids (IV fluid resuscitation for dehydration).
 Insulin therapy (continuous low-dose IV insulin infusion).
 Correction of electrolytes (especially monitoring and replacement of Potassium).
+بناءً على طلبك، قمت باستخراج أسئلة شاملة عن موضوع Diabetes Mellitus (DM) و Diabetic Ketoacidosis (DKA) مع الالتزام التام بالنص الحرفي للكتاب.
+
+إليك الأسئلة مقسمة إلى الأنواع التي طلبتها (Written, Cases, Matching) ومُرتبة بشكل منظم (السؤال وتحته الإجابة):
+
+First: Written Questions (Short Answers)
+Question 1: Define
+Define Type 1 Diabetes Mellitus.
+Answer:
+The most common metabolic disorder of childhood and adolescence. It is a syndrome of disturbed energy homeostasis caused by deficiency of insulin, resulting in an abnormal metabolism of carbohydrates, fats and proteins. Both genetic susceptibility and environmental factors are involved in the etiology of type 1 diabetes.
+
+Question 2: Enumerate
+Enumerate the criteria for the diagnosis of diabetes.
+Answer:
+
+Glycosylated hemoglobin (HbA1C) > 6.5%
+
+Fasting Plasma Glucose (FPG) > 126 mg/dL (7.0 mmol/L).
+
+Oral Glucose Tolerance Test (OGTT) > 200 mg/dL (11.1 mmol/L).
+
+Random plasma glucose > 200 mg/dL (11.1 mmol/L) with symptoms.
+
+Question 3: Enumerate
+Enumerate the acute and long-term micro-vascular complications of Type 1 Diabetes Mellitus.
+Answer:
+Acute complications:
+
+Diabetic ketoacidosis.
+
+Hypoglycaemia.
+Long-term Micro-vascular diseases:
+
+Diabetic cardiomyopathy
+
+Diabetic nephropathy
+
+Diabetic neuropathy
+
+Diabetic retinopathy
+
+Question 4: Mention
+Mention the pathophysiological mechanisms of Diabetes Mellitus.
+Answer:
+
+Insulin deficiency.
+
+Insulin resistance at the peripheral tissues.
+
+Others:
+a. Incretin deficiency.
+b. Increased glucagon secretion.
+c. Increased hepatic glucose production.
+d. Increased renal threshold for glucose.
+e. Neurotransmitter dysfunction in the brain.
+f. Increased lipolysis.
+
+Question 5: Mention
+Mention the 4 autoantibodies that are markers of beta cell autoimmunity in type 1 diabetes.
+Answer:
+
+Islet cell antibodies (ICA).
+
+Antibodies to glutamic acid decarboxylase (GAD-65).
+
+Insulin autoantibodies (IAA).
+
+IA-2A, to protein tyrosine phosphatase.
+
+Second: Clinical Cases
+Question 6: Clinical Case (DKA Presentation)
+A diabetic child presents to the hospital with deep rapid respiration (Kussmaul respiration), an odor of acetone on the breath, severe dehydration, and abdominal pain. Laboratory tests reveal blood glucose > 300 mg%, and venous pH is 7.20.
+
+What is the diagnosis and its clinical classification based on the pH level?
+
+Enumerate the lines of management for this condition.
+Answer:
+
+Diagnosis: Diabetic Ketoacidosis (DKA).
+Classification: Moderate DKA (because pH is between 7.15 - 7.25).
+
+Lines of management:
+
+Hospitalization.
+
+Correction of fluids.
+
+Correction of electrolytes.
+
+Correction of acid base balance.
+
+Insulin therapy.
+
+Manage Precipitating causes.
+
+Question 7: Clinical Case (Type 1 DM)
+A thin child presents with sudden onset of polyuria, polydipsia, and polyphagia. Laboratory tests show low endogenous insulin and the presence of autoantibodies.
+
+What is the most likely type of diabetes in this patient?
+
+Mention the other classic clinical manifestations of this disease.
+Answer:
+
+Type: Type 1 diabetes.
+
+Clinical manifestations:
+
+Classic presentation: polyuria, polydipsia and polyphagia.
+
+Lethargy, weakness and abdominal pain.
+
+Repeated infections as repeated urinary tract infections.
+
+Diabetic Ketoacidosis.
+
+Third: Matching Questions
+Question 8: Matching (Types of Insulin)
+Match the type of insulin in Column A with its correct characteristics in Column B.
+
+Column A:
+
+Rapid-acting insulin.
+
+Regular or Short-acting insulin.
+
+Intermediate-acting insulin.
+
+Long-acting insulin.
+
+Column B:
+A. Lasts for 20-24 hours, so you usually take it once a day.
+B. Takes effect within 15 minutes, and you take it before a meal.
+C. Lasts for 10-16 hours, generally taken twice a day, and it’s used to imitate basal secretion.
+D. Takes effect within 30 minutes to an hour before a meal, imitates the bolus secretion.
+
+Answer:
+
+1 ➔ B
+
+2 ➔ D
+
+3 ➔ C
+
+4 ➔ A
+
+Question 9: Matching (Comparison between Type 1 and Type 2 DM)
+Match the clinical feature in Column A with the correct type of diabetes in Column B.
+
+Column A:
+
+Sudden onset, mostly in children, thin or normal body size.
+
+Gradual onset, mostly in adults, often obese.
+
+Ketoacidosis is rare, and autoantibodies are usually absent.
+
+Ketoacidosis is common, and endogenous insulin is low or absent.
+
+Column B:
+A. Type 1 diabetes.
+B. Type 2 diabetes.
+
+Answer:
+
+1 ➔ A
+
+2 ➔ B
+
+3 ➔ B
+
+4 ➔ A
 
 
 
@@ -328,7 +625,137 @@ The typical chest X-ray contour finding in a patient with d-transposition of the
 س1: What is the medical term for this acute life-threatening event?
 الإجابة: Hypercyanotic spell / Tetrad spell.
 س2: Mention the diagnostic cardiac anomaly layout of this disease and explain how squatting or the knee-chest position works to relieve this spell. الإجابة: * Layout (Tetralogy of Fallot): VSD, overriding aorta, pulmonary stenosis, and right ventricular hypertrophy.
-Mechanism of relief: Squatting increases systemic vascular resistance (SVR), which reduces the right-to-left shunt and improves pulmonary blood flow. 
+Mechanism of relief: Squatting increases systemic vascular resistance (SVR), which reduces the right-to-left shunt and improves pulmonary blood flow.
+Question 1: Enumerate
+Enumerate the measures for the medical management of Congestive Heart Failure (CHF) in a patient with Acute Rheumatic Fever.
+Answer:
+a. Complete bed rest with orthopneic position and moist, cool oxygen.
+b. Prednisone for severe carditis of recent onset.
+c. Digoxin is used with caution, beginning with half the usual recommended dose.
+d. Furosemide, 1 mg/kg every 6 to 12 hours, if indicated.
+
+Question 2: Mention
+Mention the medical treatment of CHF in infants with Ventricular Septal Defect (VSD).
+Answer:
+Treatment of CHF, if it develops, is indicated with diuretics & Angiotensin converting enzyme (ACE) inhibitors for 2 to 4 months. Frequent feedings of high-calorie formulas, either by nasogastric tube or oral feeding, may help.
+
+Question 3: Mention
+Mention the clinical signs of Congestive Heart Failure (CHF) in symptomatic newborns with Coarctation of the Aorta (COA).
+Answer:
+Signs of CHF include poor feeding and dyspnea. A loud gallop and weak and thready pulses, without heart murmur, are common findings in sick infants.
+
+Question 4: Clinical Case (HF due to VSD)
+An infant presents with delayed growth and development, decreased exercise tolerance (tachypnea & excessive sweating with feeding), and symptoms of CHF. On examination, a harsh pansystolic murmur is heard on the lower left sternal border.
+
+What is the most likely diagnosis?
+
+Enumerate the indications for surgical or device closure of this defect.
+Answer:
+
+Diagnosis: Moderate to large Ventricular Septal Defect (VSD).
+
+Indications for closure:
+
+Failure to thrive (if growth failure cannot be improved by medical therapy).
+
+If the PA pressure is more than 50% of systemic pressure (surgical closure should be done by the end of the first year).
+
+Dilated left sided chambers.
+
+Intractable congestive heart failure.
+
+Subaortic VSD causing AR.
+
+Second: Acyanotic and Cyanotic Heart Diseases - Matching & Cases
+Question 5: Matching (Classification of CHD)
+Match the classification in Column A with the correct diseases in Column B.
+
+Column A:
+
+Acyanotic congenital heart disease with left to right shunt.
+
+Acyanotic congenital heart disease without shunt (Obstructive lesions).
+
+Acyanotic congenital heart disease without shunt (Non-obstructive lesions).
+
+Cyanotic congenital heart diseases.
+
+Column B:
+A. Dextrocardia.
+B. Complete transposition of the great arteries (TGA) & Tetralogy of Fallot (TOF).
+C. Ventricular septal defect (VSD), Patent ductus arteriosus (PDA), Atrial septal defect (ASD), Endocardial cushion defect (ECD).
+D. Aortic coarctation, Aortic stenosis, Pulmonary stenosis.
+
+Answer:
+
+1 ➔ C
+
+2 ➔ D
+
+3 ➔ A
+
+4 ➔ B
+
+Question 6: Matching (Clinical Signs and Murmurs)
+Match the congenital heart disease in Column A with its characteristic auscultatory finding in Column B.
+
+Column A:
+
+Atrial Septal Defect (ASD).
+
+Patent Ductus Arteriosus (PDA).
+
+Ventricular Septal Defect (VSD).
+
+Pulmonary Stenosis.
+
+Column B:
+A. A grade 1 to 4 of 6 continuous “machinery” murmur is best audible at the left infraclavicular area.
+B. A systolic ejection murmur (grade 2 to 5/6) best audible at the upper left sternal border and transmits to the back and axillae.
+C. Second heart sound is widely split and fixed with a soft systolic ejection murmur over the pulmonary area.
+D. Harsh (grade 3 to 5 of 6) pansystolic murmur on lower Lt sternal border propagated all over the precordium.
+
+Answer:
+
+1 ➔ C
+
+2 ➔ A
+
+3 ➔ D
+
+4 ➔ B
+
+Question 7: Clinical Case (Cyanotic CHD)
+A child experiences sudden episodes of becoming dyspneic and intensely cyanotic (hypercyanotic or "tetrad" spells). The mother notices that the child often assumes a "squatting" position after physical activity. On examination, a systolic ejection murmur is located along the middle and upper left sternal border. Chest X-ray shows a boot-shaped heart (coeur en sabot).
+
+What is the diagnosis?
+
+Enumerate the four classic components of this disease.
+Answer:
+
+Diagnosis: Tetralogy of Fallot (TOF).
+
+Components:
+
+Ventricular septal defect.
+
+Aorta overriding the ventricular septal defect.
+
+Pulmonary stenosis (generally infundibular in location).
+
+Right ventricular hypertrophy.
+
+Question 8: Clinical Case (Acyanotic CHD - PDA)
+A premature infant presents with poor weight gain, decreased exercise tolerance, and repeated lower respiratory tract infections. Examination reveals bounding peripheral pulses with a water hammer pulse. Auscultation reveals a continuous "machinery" murmur at the left infraclavicular area.
+
+What is the diagnosis?
+
+Mention the medical management indicated for this condition in premature infants.
+Answer:
+
+Diagnosis: Large Patent Ductus Arteriosus (PDA).
+
+Medical Management: In premature infants with PDAs, indomethacin, ibuprofen and recently paracetamol are effective and are widely used to close the PDA. 
 
 
 
@@ -378,6 +805,121 @@ Antibiotic combination (< 6 months): Ampicillin + Gentamicin (IV).
 س2: What is the medical term for the pathognomonic spots found on the buccal mucosa, and what therapeutic agent reduces morbidity and mortality in these children?
 الإجابة: * Spots term: Koplik spots.
 Therapeutic Agent: Oral Vitamin A. 
+Question 1: Matching (Causative Organisms)
+Match the disease in Column A with its correct causative organism in Column B.
+
+Column A:
+
+Erythema infectiosum (5th disease)
+
+Roseola infantum (6th disease)
+
+Chicken pox (Varicella)
+
+Measles (Rubeola)
+
+Column B:
+A. HHV-6
+B. VZV
+C. RNA virus
+D. Parvovirus B19
+
+Answer:
+
+1 ➔ D
+
+2 ➔ A
+
+3 ➔ B
+
+4 ➔ C
+
+Question 2: Matching (Prodrome and Specific Clinical Signs)
+Match the infectious disease in Column A with its characteristic prodrome or initial presentation in Column B.
+
+Column A:
+
+Measles (Rubeola)
+
+Rubella (German measles)
+
+Roseola infantum (6th disease)
+
+Erythema infectiosum
+
+Column B:
+A. Mild or absent prodrome, followed by a "Slapped cheek" appearance.
+B. High fever for 3-5 days, with abrupt defervescence before the rash appears.
+C. High fever, 3 Cs (Cough, Coryza, Conjunctivitis), and Koplik spots.
+D. Low-grade fever with Lymphadenopathy (postauricular, suboccipital).
+
+Answer:
+
+1 ➔ C
+
+2 ➔ D
+
+3 ➔ B
+
+4 ➔ A
+
+Question 3: Matching (Rash Characteristics)
+Match the disease in Column A with the correct description of its rash in Column B.
+
+Column A:
+
+Chicken pox (Varicella)
+
+Measles (Rubeola)
+
+Erythema infectiosum (5th disease)
+
+Rubella (German measles)
+
+Column B:
+A. Reticular or lacy rash on the trunk and extremities.
+B. Pruritic rash that evolves from macules to papules to vesicles to crusts ("dewdrop on a rose petal"), with different stages present simultaneously.
+C. Maculopapular rash starting on the face with rapid downward spread, fading in 3 days.
+D. Maculopapular rash starting behind the ears/hairline, spreading downward, and followed by desquamation.
+
+Answer:
+
+1 ➔ B
+
+2 ➔ D
+
+3 ➔ A
+
+4 ➔ C
+
+Question 4: Matching (Complications)
+Match the disease in Column A with its potential complications in Column B.
+
+Column A:
+
+Measles (Rubeola)
+
+Rubella (German measles)
+
+Erythema infectiosum (5th disease)
+
+Roseola infantum (6th disease)
+
+Column B:
+A. Aplastic crisis (in sickle cell) and Hydrops fetalis (in pregnancy).
+B. Febrile seizures.
+C. Congenital rubella syndrome (CRS).
+D. Otitis media, pneumonia, encephalitis, and SSPE.
+
+Answer:
+
+1 ➔ D
+
+2 ➔ C
+
+3 ➔ A
+
+4 ➔ B
 
 
 

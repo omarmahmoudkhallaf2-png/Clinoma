@@ -3648,6 +3648,84 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
           "back": "Pallor, nausea, generalized fatigue, or anxiety."
         }
       ]
+    },
+    {
+      "id": "sub_git_def_3",
+      "front": "Define Cow's Milk Allergy (CMA).",
+      "back": "Cow's Milk Allergy (CMA) is an immunologically mediated adverse reaction to one or more proteins in cow's milk, occurring mainly in infants and young children."
+    },
+    {
+      "id": "sub_git_enum_3",
+      "front": "Enumerate the major allergenic proteins in cow's milk.",
+      "back": "* Casein (80%)\n* Whey proteins (20%):\n  - β-lactoglobulin\n  - α-lactalbumin"
+    },
+    {
+      "id": "sub_git_enum_4",
+      "front": "Enumerate the risk factors for developing Cow's Milk Allergy.",
+      "back": "* Family history of atopy (asthma, eczema, allergic rhinitis).\n* Early exposure to cow's milk protein.\n* Atopic dermatitis.\n* Other food allergies."
+    },
+    {
+      "id": "sub_git_saq_1",
+      "front": "Mention the diagnostic tests used for Cow's Milk Allergy (CMA), and state which one is considered the gold standard.",
+      "back": "* Skin Prick Test (SPT).\n* Serum Specific IgE.\n* Elimination Diet.\n* Oral Food Challenge (Gold Standard)."
+    },
+    {
+      "id": "sub_git_saq_2",
+      "front": "Mention the management recommendations for a breastfed infant diagnosed with Cow's Milk Allergy (CMA).",
+      "back": "* Continue breastfeeding.\n* Maternal dietary elimination: Mother avoids milk, cheese, yogurt, and butter.\n* Calcium and vitamin D supplementation for the breastfeeding mother."
+    },
+    {
+      "id": "sub_git_case_3",
+      "type": "case",
+      "caseBody": "An infant presents with delayed symptoms after formula feeding, including chronic diarrhea, blood and mucus in stool, abdominal distension, constipation, and failure to thrive. Skin examination reveals chronic, refractory atopic dermatitis.",
+      "subQuestions": [
+        {
+          "id": "sub_git_case_3_q1",
+          "questionText": "What is the immunological classification of this allergy?",
+          "back": "Classification: Non-IgE-Mediated Cow's Milk Allergy (Delayed reaction)."
+        },
+        {
+          "id": "sub_git_case_3_q2",
+          "questionText": "Mention the first-line and alternative formula-feeding management for this infant.",
+          "back": "* First-line: Extensively Hydrolyzed Formula (eHF).\n* Alternative (if severe or unresponsive to eHF): Amino Acid Formula (AAF).\n* Note: Avoid standard formula, partially hydrolyzed formula, and goat milk."
+        }
+      ]
+    },
+    {
+      "id": "sub_git_case_4",
+      "type": "case",
+      "caseBody": "An infant develops immediate symptoms within minutes of ingesting cow's milk protein. The manifestations include urticaria, flushing, vomiting, wheeze, stridor, and eventually signs of a life-threatening systemic reaction.",
+      "subQuestions": [
+        {
+          "id": "sub_git_case_4_q1",
+          "questionText": "What is the diagnosis and its underlying mechanism?",
+          "back": "Diagnosis: IgE-Mediated Cow's Milk Allergy (Acute reaction).\nMechanism: Immediate hypersensitivity reaction mediated by allergen-specific IgE antibodies bound to mast cells."
+        },
+        {
+          "id": "sub_git_case_4_q2",
+          "questionText": "How should the severe/anaphylactic reaction be managed?",
+          "back": "* Immediate intramuscular epinephrine injection.\n* Emergency referral to the PICU/ER.\n* Parent education on the use of an adrenaline auto-injector (if indicated)."
+        }
+      ]
+    },
+    {
+      "id": "sub_git_match_2",
+      "type": "matching",
+      "front": "Match the clinical/pathological description to the correct milk-related condition.",
+      "matchingPairs": [
+        { "left": "Immune-mediated mechanism in infancy with GI, skin, and respiratory symptoms (blood in stool common)", "right": "Cow's Milk Allergy (CMA)" },
+        { "left": "Enzyme deficiency mechanism in older children with strictly GI symptoms (blood in stool never present)", "right": "Lactose Intolerance" }
+      ]
+    },
+    {
+      "id": "sub_git_match_3",
+      "type": "matching",
+      "front": "Match the clinical classification of CMA to its correct characteristics.",
+      "matchingPairs": [
+        { "left": "IgE-mediated CMA", "right": "Immediate reactions (minutes to 2 hours), mediated by IgE antibodies" },
+        { "left": "Non-IgE-mediated CMA", "right": "Delayed reactions (hours to days), cell-mediated immune response" },
+        { "left": "Mixed CMA", "right": "Features of both IgE and non-IgE reactions" }
+      ]
     }
   ],
   "_SUBCHAPTER_Endocrinology": [
@@ -3715,6 +3793,85 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
           "questionText": "List four essential lines of medical management required immediately for this patient.",
           "back": "1. Hospitalization (admission to PICU).\n2. Correction of fluids (IV fluid resuscitation for dehydration).\n3. Insulin therapy (continuous low-dose IV insulin infusion).\n4. Correction of electrolytes (especially monitoring and replacement of Potassium)."
         }
+      ]
+    },
+    {
+      "id": "sub_endo_def_3",
+      "front": "Define Type 1 Diabetes Mellitus.",
+      "back": "Type 1 Diabetes Mellitus is the most common metabolic disorder of childhood and adolescence. It is a syndrome of disturbed energy homeostasis caused by deficiency of insulin, resulting in abnormal metabolism of carbohydrates, fats, and proteins. Both genetic susceptibility and environmental factors are involved in its etiology."
+    },
+    {
+      "id": "sub_endo_enum_3",
+      "front": "Enumerate the diagnostic criteria for Diabetes Mellitus according to standard guidelines.",
+      "back": "* Glycosylated hemoglobin (HbA1C) >= 6.5%.\n* Fasting Plasma Glucose (FPG) >= 126 mg/dL (7.0 mmol/L).\n* 2-hour post-load glucose during OGTT >= 200 mg/dL (11.1 mmol/L).\n* Random plasma glucose >= 200 mg/dL (11.1 mmol/L) associated with classic symptoms of diabetes."
+    },
+    {
+      "id": "sub_endo_enum_4",
+      "front": "Enumerate the acute and long-term microvascular complications of Type 1 Diabetes Mellitus.",
+      "back": "* Acute complications:\n  - Diabetic Ketoacidosis (DKA).\n  - Hypoglycemia.\n* Long-term microvascular diseases:\n  - Diabetic retinopathy.\n  - Diabetic nephropathy.\n  - Diabetic neuropathy.\n  - Diabetic cardiomyopathy."
+    },
+    {
+      "id": "sub_endo_saq_1",
+      "front": "Mention the pathophysiological mechanisms of Diabetes Mellitus.",
+      "back": "* Core defects:\n  1. Insulin deficiency (destruction of beta cells).\n  2. Insulin resistance at peripheral tissues.\n* Other mechanisms (The Ominous Octet):\n  - Incretin deficiency / resistance.\n  - Increased glucagon secretion.\n  - Increased hepatic glucose production.\n  - Increased renal threshold for glucose.\n  - Neurotransmitter dysfunction in the brain.\n  - Increased lipolysis."
+    },
+    {
+      "id": "sub_endo_saq_2",
+      "front": "Mention the 4 autoantibodies that serve as markers of beta cell autoimmunity in Type 1 Diabetes Mellitus.",
+      "back": "* Islet cell antibodies (ICA).\n* Glutamic acid decarboxylase antibodies (GAD-65).\n* Insulin autoantibodies (IAA).\n* IA-2A (antibodies to protein tyrosine phosphatase)."
+    },
+    {
+      "id": "sub_endo_case_3",
+      "type": "case",
+      "caseBody": "A diabetic child presents to the hospital with deep rapid respiration (Kussmaul respiration), an odor of acetone on the breath, severe dehydration, and abdominal pain. Laboratory tests reveal blood glucose > 300 mg%, and venous pH is 7.20.",
+      "subQuestions": [
+        {
+          "id": "sub_endo_case_3_q1",
+          "questionText": "What is the diagnosis and its clinical classification based on the pH level?",
+          "back": "Diagnosis: Diabetic Ketoacidosis (DKA).\nClassification: Moderate DKA (as venous pH is between 7.15 and 7.25)."
+        },
+        {
+          "id": "sub_endo_case_3_q2",
+          "questionText": "Enumerate the lines of management for this condition.",
+          "back": "1. Hospitalization (admission to PICU).\n2. Correction of fluids (IV fluid resuscitation).\n3. Correction of electrolytes (especially Potassium).\n4. Correction of acid-base balance.\n5. Insulin therapy (continuous low-dose IV infusion).\n6. Management of precipitating causes (e.g., infections)."
+        }
+      ]
+    },
+    {
+      "id": "sub_endo_case_4",
+      "type": "case",
+      "caseBody": "A thin child presents with sudden onset of polyuria, polydipsia, and polyphagia. Laboratory tests show low endogenous insulin and the presence of autoantibodies.",
+      "subQuestions": [
+        {
+          "id": "sub_endo_case_4_q1",
+          "questionText": "What is the most likely type of diabetes in this patient?",
+          "back": "Type 1 Diabetes Mellitus."
+        },
+        {
+          "id": "sub_endo_case_4_q2",
+          "questionText": "Mention the other classic clinical manifestations of this disease.",
+          "back": "* Classic presentation: Polyuria, polydipsia, and polyphagia.\n* Systemic: Weight loss, lethargy, weakness, and abdominal pain.\n* Infections: Repeated infections (e.g., urinary tract infections, candidiasis).\n* Acute Emergency: Diabetic Ketoacidosis (DKA)."
+        }
+      ]
+    },
+    {
+      "id": "sub_endo_match_2",
+      "type": "matching",
+      "front": "Match the type of insulin to its correct pharmacokinetic characteristics.",
+      "matchingPairs": [
+        { "left": "Rapid-acting insulin", "right": "Takes effect within 15 minutes, taken before a meal" },
+        { "left": "Regular/Short-acting insulin", "right": "Takes effect within 30-60 minutes, imitates bolus secretion" },
+        { "left": "Intermediate-acting insulin", "right": "Lasts 10-16 hours, generally taken twice a day, imitates basal secretion" },
+        { "left": "Long-acting insulin", "right": "Lasts 20-24 hours, usually taken once a day" }
+      ]
+    },
+    {
+      "id": "sub_endo_match_3",
+      "type": "matching",
+      "front": "Match the clinical profiles to the correct type of Diabetes Mellitus.",
+      "matchingPairs": [
+        { "left": "Sudden onset in children, thin/normal body size, common DKA, low/absent endogenous insulin", "right": "Type 1 Diabetes Mellitus" },
+        { "left": "Gradual onset in older/obese patients, rare DKA, absent autoantibodies, insulin resistance", "right": "Type 2 Diabetes Mellitus" }
       ]
     }
   ],
@@ -3878,6 +4035,94 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
           "back": "* Layout (Tetralogy of Fallot): VSD, overriding aorta, pulmonary stenosis, and right ventricular hypertrophy.\n* Mechanism of relief: Squatting increases systemic vascular resistance (SVR), which reduces the right-to-left shunt and improves pulmonary blood flow."
         }
       ]
+    },
+    {
+      "id": "sub_cvs_enum_4",
+      "front": "Enumerate the measures for the medical management of Congestive Heart Failure (CHF) in a patient with Acute Rheumatic Fever.",
+      "back": "* Complete bed rest with orthopneic position and moist, cool oxygen.\n* Prednisone for severe carditis of recent onset.\n* Digoxin used with caution, starting with half the usual recommended loading dose.\n* Furosemide (1 mg/kg every 6 to 12 hours) if diuretics are indicated."
+    },
+    {
+      "id": "sub_cvs_saq_1",
+      "front": "Mention the medical treatment of Congestive Heart Failure (CHF) in infants with Ventricular Septal Defect (VSD).",
+      "back": "* Medical treatment is indicated with diuretics and Angiotensin-Converting Enzyme (ACE) inhibitors for 2 to 4 months.\n* Nutritional support: Frequent feedings of high-calorie formulas, either by nasogastric tube or oral feeding, to support growth."
+    },
+    {
+      "id": "sub_cvs_saq_2",
+      "front": "Mention the clinical signs of Congestive Heart Failure (CHF) in symptomatic newborns with Coarctation of the Aorta (COA).",
+      "back": "* General: Poor feeding and dyspnea.\n* Physical findings: A loud gallop rhythm and weak, thready peripheral pulses (with no significant heart murmur in sick infants)."
+    },
+    {
+      "id": "sub_cvs_case_3",
+      "type": "case",
+      "caseBody": "An infant presents with delayed growth and development, decreased exercise tolerance (tachypnea and excessive sweating with feeding), and symptoms of CHF. On examination, a harsh pansystolic murmur is heard on the lower left sternal border.",
+      "subQuestions": [
+        {
+          "id": "sub_cvs_case_3_q1",
+          "questionText": "What is the most likely diagnosis?",
+          "back": "Moderate to large Ventricular Septal Defect (VSD) complicated by Congestive Heart Failure."
+        },
+        {
+          "id": "sub_cvs_case_3_q2",
+          "questionText": "Enumerate the indications for surgical or device closure of this defect.",
+          "back": "* Failure to thrive (if growth failure cannot be improved by medical therapy).\n* Pulmonary artery (PA) pressure > 50% of systemic pressure (closure should be done by the end of the 1st year).\n* Dilated left-sided cardiac chambers.\n* Intractable congestive heart failure.\n* Subaortic VSD causing aortic regurgitation (AR)."
+        }
+      ]
+    },
+    {
+      "id": "sub_cvs_match_2",
+      "type": "matching",
+      "front": "Match the Congenital Heart Disease (CHD) classification to its correct list of conditions.",
+      "matchingPairs": [
+        { "left": "Acyanotic CHD with left to right shunt", "right": "VSD, PDA, ASD, Endocardial cushion defect (ECD)" },
+        { "left": "Acyanotic CHD without shunt (Obstructive lesions)", "right": "Coarctation of the Aorta, Aortic Stenosis, Pulmonary Stenosis" },
+        { "left": "Acyanotic CHD without shunt (Non-obstructive lesions)", "right": "Dextrocardia" },
+        { "left": "Cyanotic congenital heart diseases", "right": "Complete Transposition of the Great Arteries (TGA) & Tetralogy of Fallot (TOF)" }
+      ]
+    },
+    {
+      "id": "sub_cvs_match_3",
+      "type": "matching",
+      "front": "Match the Congenital Heart Disease (CHD) to its characteristic auscultatory finding.",
+      "matchingPairs": [
+        { "left": "Atrial Septal Defect (ASD)", "right": "Second heart sound widely split and fixed, with soft systolic ejection murmur over pulmonary area" },
+        { "left": "Patent Ductus Arteriosus (PDA)", "right": "Grade 1 to 4 of 6 continuous 'machinery' murmur, best audible at the left infraclavicular area" },
+        { "left": "Ventricular Septal Defect (VSD)", "right": "Harsh (grade 3 to 5 of 6) pansystolic murmur on lower left sternal border propagated all over the precordium" },
+        { "left": "Pulmonary Stenosis", "right": "Systolic ejection murmur (grade 2 to 5/6), best audible at the upper left sternal border and transmitting to the back" }
+      ]
+    },
+    {
+      "id": "sub_cvs_case_4",
+      "type": "case",
+      "caseBody": "A child experiences sudden episodes of becoming dyspneic and intensely cyanotic (hypercyanotic or \"tetrad\" spells). The mother notices that the child often assumes a \"squatting\" position after physical activity. On examination, a systolic ejection murmur is located along the middle and upper left sternal border. Chest X-ray shows a boot-shaped heart (coeur en sabot).",
+      "subQuestions": [
+        {
+          "id": "sub_cvs_case_4_q1",
+          "questionText": "What is the diagnosis?",
+          "back": "Tetralogy of Fallot (TOF) associated with hypercyanotic spells."
+        },
+        {
+          "id": "sub_cvs_case_4_q2",
+          "questionText": "Enumerate the four classic components of this disease.",
+          "back": "1. Ventricular Septal Defect (VSD).\n2. Overriding Aorta (aorta overrides the VSD).\n3. Pulmonary Stenosis (generally infundibular in location).\n4. Right Ventricular Hypertrophy."
+        }
+      ]
+    },
+    {
+      "id": "sub_cvs_case_5",
+      "type": "case",
+      "caseBody": "A premature infant presents with poor weight gain, decreased exercise tolerance, and repeated lower respiratory tract infections. Examination reveals bounding peripheral pulses with a water hammer pulse. Auscultation reveals a continuous \"machinery\" murmur at the left infraclavicular area.",
+      "subQuestions": [
+        {
+          "id": "sub_cvs_case_5_q1",
+          "questionText": "What is the diagnosis?",
+          "back": "Large Patent Ductus Arteriosus (PDA)."
+        },
+        {
+          "id": "sub_cvs_case_5_q2",
+          "questionText": "Mention the medical management indicated for this condition in premature infants.",
+          "back": "In premature infants with symptomatic PDAs, cyclooxygenase inhibitors such as indomethacin, ibuprofen, or recently paracetamol are highly effective and widely used to pharmacologically close the PDA."
+        }
+      ]
     }
   ],
   "_SUBCHAPTER_Infection": [
@@ -3946,6 +4191,50 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
           "questionText": "What is the medical term for the pathognomonic spots found on the buccal mucosa, and what therapeutic agent reduces morbidity and mortality in these children?",
           "back": "* Spots term: Koplik spots.\n* Therapeutic Agent: Oral Vitamin A."
         }
+      ]
+    },
+    {
+      "id": "sub_inf_match_2",
+      "type": "matching",
+      "front": "Match the infectious exanthem disease to its correct causative organism.",
+      "matchingPairs": [
+        { "left": "Erythema infectiosum (5th disease)", "right": "Parvovirus B19" },
+        { "left": "Roseola infantum (6th disease)", "right": "Human Herpesvirus-6 (HHV-6)" },
+        { "left": "Chickenpox (Varicella)", "right": "Varicella-Zoster Virus (VZV)" },
+        { "left": "Measles (Rubeola)", "right": "RNA Paramyxovirus / Measles virus" }
+      ]
+    },
+    {
+      "id": "sub_inf_match_3",
+      "type": "matching",
+      "front": "Match the infectious disease to its characteristic prodrome or initial presentation.",
+      "matchingPairs": [
+        { "left": "Measles (Rubeola)", "right": "High fever, 3 Cs (Cough, Coryza, Conjunctivitis), and Koplik spots opposite second molars" },
+        { "left": "Rubella (German measles)", "right": "Low-grade fever with characteristic postauricular and suboccipital lymphadenopathy" },
+        { "left": "Roseola infantum (6th disease)", "right": "High fever for 3-5 days, with abrupt defervescence before rash appears" },
+        { "left": "Erythema infectiosum", "right": "Mild or absent prodrome, followed by a classic 'Slapped cheek' appearance" }
+      ]
+    },
+    {
+      "id": "sub_inf_match_4",
+      "type": "matching",
+      "front": "Match the infectious disease to the correct description of its rash.",
+      "matchingPairs": [
+        { "left": "Chickenpox (Varicella)", "right": "Pruritic rash evolving from macules to papules to vesicles to crusts ('dewdrops on a rose petal')" },
+        { "left": "Measles (Rubeola)", "right": "Maculopapular rash starting at hairline/behind ears, spreading downward, followed by desquamation" },
+        { "left": "Erythema infectiosum", "right": "Reticular or lacy rash appearing on the trunk and extremities" },
+        { "left": "Rubella (German measles)", "right": "Maculopapular rash starting on face with rapid downward spread, characteristically fading in 3 days" }
+      ]
+    },
+    {
+      "id": "sub_inf_match_5",
+      "type": "matching",
+      "front": "Match the infectious disease to its potential classic complications.",
+      "matchingPairs": [
+        { "left": "Measles (Rubeola)", "right": "Otitis media, pneumonia, post-infectious encephalitis, and delayed lethal SSPE" },
+        { "left": "Rubella (German measles)", "right": "Congenital Rubella Syndrome (CRS) if contracted during early pregnancy" },
+        { "left": "Erythema infectiosum", "right": "Aplastic crisis in patients with hemoglobinopathies, and hydrops fetalis in pregnancy" },
+        { "left": "Roseola infantum (6th disease)", "right": "Febrile seizures due to the rapid rise of high-grade fever" }
       ]
     }
   ],
