@@ -3949,6 +3949,80 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       ]
     }
   ],
+  "_SUBCHAPTER_Neurology": [
+    {
+      "id": "sub_neuro_enum_1",
+      "front": "Enumerate four topographic (anatomic) classifications of Cerebral Palsy (CP).",
+      "back": "1. Hemiplegia: Arm & Leg on the same side of the body.\n2. Diplegia: Arms and Legs involved, but legs are more involved.\n3. Quadriplegia (Tetraplegia): Arms and Legs equally involved or arms more involved than legs.\n4. Monoplegia (one limb involved) / Paraplegia (only legs involved)."
+    },
+    {
+      "id": "sub_neuro_enum_2",
+      "front": "Enumerate four clinical signs used to diagnose severe persistent hypotonia in a Floppy Infant.",
+      "back": "1. Frog leg position: denotes hypotonia of lower limbs.\n2. Head lag: when pulling the baby up from his hands in a supine position, the head lags backwards.\n3. Curved trunk on ventral suspension: when suspended in a prone position over the examiner's hand, the baby drops around it.\n4. Slippage on vertical suspension: denotes hypotonia of shoulder girdle muscles."
+    },
+    {
+      "id": "sub_neuro_enum_3",
+      "front": "Enumerate the four obligatory criteria characterized by Muscular Dystrophies.",
+      "back": "1. Primary myopathy.\n2. Progressive course.\n3. Genetic basis.\n4. Characteristic muscle fiber degeneration and muscle cell death at some stage."
+    },
+    {
+      "id": "sub_neuro_def_1",
+      "front": "Define Cerebral Palsy (Little's Disease).",
+      "back": "It is an encephalopathy resulting from malfunction of the motor unit of the developing brain due to brain insult during prenatal, natal, and postnatal periods, leading to a central motor deficit that is characteristically non-progressive, non-familial, and non-hereditary."
+    },
+    {
+      "id": "sub_neuro_def_2",
+      "front": "List four lower motor unit disorders/levels that can cause Floppy Infant syndrome.",
+      "back": "1. Spinal cord lesion: Anterior horn cell disease (Werdnig-Hoffmann spinal muscular atrophy).\n2. Peripheral nerves: Acute polyneuropathy (Guillain-Barré Syndrome).\n3. Neuromuscular junction: Neonatal myasthenia gravis / Infantile botulism.\n4. Myopathies: Muscular dystrophies / Congenital myopathies."
+    },
+    {
+      "id": "sub_neuro_match_1",
+      "front": "Match the physiological classification of CP or clinical reflex to the correct clinical description.",
+      "type": "matching",
+      "matchingPairs": [
+        { "left": "Characterized by hypertonia with hyperreflexia, a positive Babinski sign, and persistence of primitive neonatal reflexes", "right": "Spastic CP" },
+        { "left": "Characterized by abnormal involuntary movements such as chorea, athetosis, and dystonia, with variable muscle tone", "right": "Dyskinetic CP" },
+        { "left": "Passive rotation of the head to one side causes extension of limbs on the same side and flexion of contralateral limbs; its persistence beyond 3 months prevents rolling", "right": "Asymmetric tonic neck reflex" },
+        { "left": "A primitive neonatal reflex that is considered a warning sign of developmental delay if it persists beyond 6 months of age", "right": "Moro reflex" }
+      ]
+    },
+    {
+      "id": "sub_neuro_case_1",
+      "front": "Case 1",
+      "type": "case",
+      "caseBody": "A 4-year-old male boy is brought to the pediatric neurology clinic by his parents because of progressive difficulty running and climbing stairs. On physical examination, he shows a waddling lordotic gait and uses his hands to \"climb up\" his own thighs to stand up from a sitting position on the floor. The pediatrician notices firm, prominent pseudohypertrophy of his calf muscles.",
+      "subQuestions": [
+        {
+          "id": "sub_neuro_case_1_q1",
+          "questionText": "What is the most likely diagnosis for this boy?",
+          "back": "Duchenne Muscle Dystrophy (DMD)."
+        },
+        {
+          "id": "sub_neuro_case_1_q2",
+          "questionText": "Mention one blood enzyme test that is consistently markedly elevated and one diagnostic test to confirm this disease.",
+          "back": "* Blood Enzyme Test: Creatine kinase (CK) or Creatine phosphokinase (CPK).\n* Confirmative Test: Muscle biopsy (shows muscle fiber degeneration with replacement with fat and fibrosis)."
+        }
+      ]
+    },
+    {
+      "id": "sub_neuro_case_2",
+      "front": "Case 2",
+      "type": "case",
+      "caseBody": "A 10-month-old infant with a history of severe perinatal birth asphyxia is evaluated for delayed motor milestones. His mother notices that he cannot sit without support and keeps his hands tightly clenched. On physical examination, there is an early abnormal neck support, and the pediatrician notes a significant difficulty in abducting his thighs during a diaper change.",
+      "subQuestions": [
+        {
+          "id": "sub_neuro_case_2_q1",
+          "questionText": "What is your provisional diagnosis for this infant?",
+          "back": "Spastic Cerebral Palsy (CP)."
+        },
+        {
+          "id": "sub_neuro_case_2_q2",
+          "questionText": "List two prenatal or perinatal risk factors associated with the etiology of this condition.",
+          "back": "1. Prenatal: TORCH infection / teratogens / intrauterine hypoxia.\n2. Perinatal: Birth asphyxia / birth trauma / intracranial hemorrhage."
+        }
+      ]
+    }
+  ],
   "_CHAPTER_Growth & development": [
     {
       "id": "gd_saq1",

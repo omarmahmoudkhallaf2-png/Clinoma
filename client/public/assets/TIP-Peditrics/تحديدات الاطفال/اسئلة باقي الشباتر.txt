@@ -1,0 +1,450 @@
+الثاني (Chapter 2: Nutrition & Nutritional Disorders)
+1. Short Essay & Enumerate
+س1: Enumerate the four constant features of Kwashiorkor (KWO).
+الإجابة النموذجية:
+Growth failure (Weight for age < 80% of reference).
+Pitting edema (starts in feet and legs, moon face).
+Mental changes (apathy, no interest in surroundings).
+Muscle wasting with preserved subcutaneous fat.
+س2: Enumerate the classic radiological findings (epiphyseal triad) seen in an active wrist X-ray of a child with Rickets.
+الإجابة النموذجية:
+Broadening of the metaphysis.
+Cupping (concave metaphysis).
+Fraying (irregular epiphyseal line).
+2. Short Answered Questions (Definitions, Mention, List)
+س3: List four anti-infective properties or factors found in human breast milk.
+الإجابة (يُكتفى بأربعة نقاط):
+Secretory IgA.
+Bifidus factor.
+Lactoferrin.
+Lysozymes.
+س4: Define Marasmus according to the clinical and anthropometric criteria.
+الإجابة: It is a chronic state of protein energy malnutrition (PEM) resulting from a low intake of energy, characterized by a weight-for-age < 60% of the reference with completely absent edema, and severe loss of subcutaneous fat and muscle wasting.
+3. Extended Matching Questions
+الخيارات المتاحة: أ) Absolute Maternal Contraindication ب) Relative Maternal Contraindication ج) Absolute Infant Contraindication د) Relative Infant Contraindication
+قم بتوصيل الخيار الصحيح بالعبارات التالية:
+Galactosemia in a newborn infant. (الإجابة: ج - Absolute Infant Contraindication)
+Maternal HIV infection. (الإجابة: أ - Absolute Maternal Contraindication)
+Acute breast abscess and mastitis. (الإجابة: ب - Relative Maternal Contraindication)
+Breast milk jaundice. (الإجابة: د - Relative Infant Contraindication)
+4. Problem Solving (Cases)
+الحالة الأولى: A 14-month-old female infant is brought to the outpatient clinic with a history of recurrent diarrhea and failure to thrive since she was weaned abruptly onto a pure carbohydrate diet (rice and starch) two months ago. On physical examination, she is irritable, has generalized pitting edema, a "moon face" appearance, and her hair is dry, sparse, with alternating bands of normal and light coloration.
+س1: What is the clinical diagnosis for this child?
+الإجابة: Kwashiorkor (KWO).
+س2: What does the hair sign (alternating bands of coloration) represent?
+الإجابة: It is called the Flag Sign, and it signifies periods of nutritional relapse alternating with periods of normal dietary intake.
+الحالة الثانية: A 10-month-old exclusively breastfed infant who doesn't receive any vitamin D supplementation or sun exposure is brought with complaints of delayed teeth eruption and excessive frontal sweating. Physical examination reveals frontal bossing of the skull, a palpable rachitic rosary on the chest wall, and prominent thickening of both wrists.
+س1: What is your provisional diagnosis?
+الإجابة: Nutritional Rickets (Active Rickets).
+س2: Mention the expected biochemical changes in the serum for Calcium, Phosphorus, and Alkaline Phosphatase in this active phase.
+الإجابة: * Serum Calcium: Normal (or low-normal).
+Serum Phosphorus: Decreased.
+Serum Alkaline Phosphatase: Markedly increased.
+
+
+
+
+
+
+
+
+
+
+Genetics (Chromosomal Disorders & Prenatal Diagnosis)
+1. Short Essay & Enumerate
+س1: Enumerate four dysmorphic features seen in the face and head of a child with Down Syndrome.
+الإجابة النموذجية (يُكتفى بأربعة نقاط):
+Upward slanting palpebral fissures.
+Epicanthus and Brushfield spots of iris.
+Small dysplastic pinnae and low set ears.
+Mid face hypoplasia, micrognathia, and protruded tongue.
+س2: Enumerate four indications for performing Prenatal Diagnosis in a pregnant woman.
+الإجابة النموذجية (يُكتفى بأربعة نقاط):
+Advanced maternal age (women aged 35 years or more).
+History of recurrent abortions or a previous child with chromosomal abnormalities.
+Parents who are carriers for chromosomal abnormalities or X-linked inherited disorders (e.g., Duchenne muscular dystrophy).
+Screening for inborn errors of metabolism or neural tube defects.
+2. Short Answered Questions (Definitions, Mention, List)
+س3: Define Turner Syndrome and mention its most common genotype.
+الإجابة: * Definition: A chromosomal disorder affecting females characterized by short stature, webbed neck, lack of development of secondary sexual characteristics due to gonadal dysgenesis, and possible cardiovascular/renal anomalies.
+Most Common Genotype: 45X.
+س4: List four invasive screening tests used for Prenatal Diagnosis.
+الإجابة:
+Chorionic villus sampling (CVS).
+Amniocentesis.
+Fetal blood sampling (Cordocentesis).
+Fetoscopy / Fetal tissue sampling.
+3. Extended Matching Questions
+الخيارات المتاحة (Maternal Serum Triple Test Patterns): أ) Increased AFP, Not applicable uE3, Not applicable HCG ب) Decreased AFP, Decreased uE3, Increased HCG ج) Decreased AFP, Decreased uE3, Decreased HCG د) Normal or Decreased AFP, Decreased uE3, Increased HCG
+قم بتوصيل الخيار الصحيح بالعبارات المرضية التالية:
+Maternal serum biochemical marker pattern indicating Down Syndrome. (الاجابة: ب)
+Maternal serum biochemical marker pattern indicating Turner Syndrome. (الاجابة: د)
+Maternal serum biochemical marker pattern indicating Open Neural Tube Defects. (الاجابة: أ)
+Maternal serum biochemical marker pattern indicating Edward Syndrome. (الاجابة: ج)
+4. Problem Solving (Cases)
+الحالة الأولى: A 41-year-old pregnant female gives birth to a male newborn. On physical examination, the neonate shows generalized hypotonia, upward slanting palpebral fissures, a flat midface with a protruding tongue, and a single transverse palmar crease on both hands. Auscultation of the heart reveals a loud pansystolic murmur at the lower left sternal border.
+س1: What is your provisional diagnosis for this neonate?
+الإجابة: Down Syndrome (Trisomy 21) associated with a Congenital Heart Defect (most likely VSD).
+س2: Mention the most common cytogenetic type responsible for this condition and its recurrence risk.
+الإجابة: Nondisjunction type (occurs in 94% of cases). It is not familial and has a low recurrence risk of less than 1-2%.
+الحالة الثانية: A 14-year-old girl is brought to the pediatric endocrine clinic due to severe short stature and failure to achieve menarche. On examination, her intelligence is completely normal, but she has a short webbed neck, a low posterior hairline, a broad chest with widely spaced nipples, and a wide carrying angle at her elbows. Her blood pressure is persistently elevated at 140/90 mmHg.
+س1: What is the most likely clinical diagnosis?
+الإجابة: Turner Syndrome.
+س2: Mention two essential components in the long-term medical management of this condition during adolescence.
+الإجابة: 1. Growth Hormone therapy (to treat short stature). 2. Estrogen replacement therapy (at the time of puberty to develop secondary sexual characteristics and manage amenorrhea).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+G.I.T. (Gastroenterology)
+1. Short Essay & Enumerate
+س1: Enumerate four clinical diagnostic Red Flags that suggest Organic Abdominal Pain in children.
+الإجابة النموذجية (يُكتفى بأربعة نقاط):
+Clearly localized pain that is localized mostly away from the umbilicus.
+Pain that wakes the child up from sleep at night.
+Pain associated with persistent fever or involuntary weight loss.
+Evidence of blood in the stools (occult or macroscopically obvious).
+س2: Enumerate four acute clinical manifestations of IgE-Mediated Cow's Milk Allergy (CMA).
+الإجابة النموذجية (يُكتفى بأربعة نقاط):
+Skin signs: Urticaria, angioedema, flushing, or pruritus.
+Gastrointestinal signs: Acute vomiting, abdominal pain, or diarrhea.
+Respiratory signs: Wheeze, cough, stridor, or rhinitis.
+Systemic signs: Life-threatening anaphylaxis.
+2. Short Answered Questions (Definitions, Mention, List)
+س3: Define "The Acute Abdomen" and list its three key physical signs.
+الإجابة: * Definition: A sudden onset of severe abdominal pain developing rapidly over a short period of time.
+Three Key Physical Signs:
+Guarding (reflex contraction of abdominal muscles).
+Rigidity (involuntary hardness of the abdominal wall).
+Rebound tenderness.
+س4: Differentiate between the definitions of "Vomiting" and "Regurgitation".
+الإجابة:
+Vomiting: Forceful oral expulsion of gastric contents associated with the contraction of the abdominal and chest wall musculature.
+Regurgitation: The act by which food is brought back into the mouth without the abdominal and diaphragmatic muscular activity.
+3. Extended Matching Questions
+الخيارات المتاحة (Management Choices): أ) Extensively Hydrolyzed Formula (eHF) ب) Amino Acid Formula (AAF) ج) Lactose-free formula د) Intramuscular Epinephrine injection
+قم بتوصيل الخيار الصحيح بالعبارات التالية:
+The first-line dietary choice for a formula-fed infant diagnosed with mild-to-moderate Cow's Milk Allergy. (الإجابة: أ)
+Dietary management used if the infant's allergic reactions are severe or completely unresponsive to extensively hydrolyzed formula. (الإجابة: ب)
+Immediate emergency treatment required for severe acute anaphylaxis due to milk allergy. (الإجابة: د)
+4. Problem Solving (Cases)
+الحالة الأولى: A 3-month-old formula-fed male infant is brought to the clinic with a history of chronic diarrhea, failure to thrive, and frequent streaks of blood and mucus in his stool. Physical examination reveals chronic, severe, and refractory atopic dermatitis on his cheeks and limbs. The symptoms started 3 weeks after introducing standard cow's milk formula.
+س1: What is the most likely diagnosis?
+الإجابة: Non-IgE-mediated Cow's Milk Allergy (CMA).
+س2: Mention the gold standard test to confirm this diagnosis.
+الإجابة: Oral Food Challenge (performed strictly under medical supervision).
+الحالة الثانية: An 8-year-old girl presents with recurrent episodes of abdominal pain over the past 4 months. The pain is paroxysmal, has a gradual onset, and is localized mostly to the periumbilical region with no relationship to food intake or defecation. She is completely symptom-free between episodes, and her physical examination is normal with no localized tenderness or organomegaly.
+س1: What is the most likely diagnosis for this child?
+الإجابة: Dysfunctional / Functional Abdominal Pain (according to Rome IV criteria).
+س2: Mention two autonomic symptoms that can be associated with this condition.
+الإجابة (يُكتفى باثنين): Pallor, nausea, generalized fatigue, or anxiety.
+
+
+
+
+
+
+
+
+
+
+
+Endocrinology
+1. Short Essay & Enumerate
+س1: Enumerate four secondary (systemic or endocrine) causes of Pathological Short Stature.
+الإجابة النموذجية (يُكتفى بأربعة نقاط):
+Endocrine causes (e.g., Hypothyroidism, Growth Hormone Deficiency, Cushing syndrome).
+Malnutrition / Under-nutrition (e.g., Protein Energy Malnutrition).
+Gastrointestinal disorders (e.g., Malabsorption syndromes like Celiac disease or Cystic Fibrosis).
+Chronic Renal diseases (e.g., Chronic uremia, Pyelonephritis).
+س2: Enumerate four clinical precipitating factors that can lead to Diabetic Ketoacidosis (DKA).
+الإجابة النموذجية:
+Acute Infections (most commonly Urinary Tract Infections - UTIs).
+Negligence of parents or patient to give insulin therapy (omission of insulin).
+Physical trauma or major surgical stress.
+Severe psychological disturbances.
+2. Short Answered Questions (Definitions, Mention, List)
+س3: Define "Short Stature" according to the standard pediatric growth criteria.
+الإجابة: It is a term applied to a child whose height is 2 Standard Deviations (SD) or more below the mean for children of that same sex and chronologic age (and ideally of the same racial-ethnic group). It is also considered if growth velocity is below the 25th percentile over 6-12 months of observation.
+س4: List four endocrine or genetic causes/syndromes associated with Childhood Obesity.
+الإجابة:
+Hypothyroidism.
+Cushing syndrome.
+Prader-Willi Syndrome.
+Congenital Leptin deficiency.
+3. Extended Matching Questions
+الخيارات المتاحة (DKA Severity Classification): أ) Mild DKA ب) Moderate DKA ج) Severe DKA د) Normal variant
+قم بتوصيل الخيار الصحيح بالعبارات السريرية التالية:
+Venous pH between 7.15 - 7.25, plasma HCO3 is 10 - 15 mEq/L, patient has Kussmaul respirations and is oriented but sleepy or arousable. (الإجابة: ب - Moderate DKA)
+Venous pH < 7.15, plasma HCO3 < 10 mEq/L, patient presents with severe Kussmaul or depressed respiration, deep sleep to depressed sensorium, or coma. (الإجابة: ج - Severe DKA)
+Venous pH between 7.25 - 7.35, plasma HCO3 is 16 - 20 mEq/L, patient is oriented, alert but fatigued. (الإجابة: أ - Mild DKA)
+4. Problem Solving (Cases)
+الحالة الأولى: A 5-month-old infant is brought to the pediatric clinic by his mother because of a severe delay in physical and mental development. On physical examination, the child's growth is severely stunted with short extremities, the anterior fontanel is wide open, the eyes appear far apart with a depressed nasal bridge, and the infant keeps his mouth open with a thick, broad protruding tongue. The skin is dry and scaly.
+س1: What is the most likely diagnosis for this neglected presentation?
+الإجابة: Congenital Hypothyroidism (CHT).
+س2: Mention the standard screening test protocol used to detect this condition early in the first week of life.
+الإجابة: Neonatal screening via a heel-prick blood test performed between the 3rd and 7th day of age to measure serum TSH levels (highly successful if TSH > 20 uIU/ml).
+الحالة الثانية: A 9-year-old girl is brought to the emergency department presenting with severe vomiting, persistent abdominal pain, and rapid, deep breathing (Kussmaul respiration). Her parents noted that she had a history of progressive weight loss, polyuria, and excessive thirst (polydipsia) over the past two weeks. On examination, she is intensely dehydrated and drowsy. Laboratory tests show a random plasma glucose of 400 mg/dL and a venous pH of 7.12.
+س1: What is your clinical diagnosis for this acute medical emergency?
+الإجابة: Severe Diabetic Ketoacidosis (DKA) secondary to newly diagnosed Type 1 Diabetes Mellitus.
+س2: List four essential lines of medical management required immediately for this patient.
+الإجابة (يُكتفى بأربعة خطوط رئيسية):
+Hospitalization (admission to PICU).
+Correction of fluids (IV fluid resuscitation for dehydration).
+Insulin therapy (continuous low-dose IV insulin infusion).
+Correction of electrolytes (especially monitoring and replacement of Potassium).
+
+
+
+
+
+
+
+
+
+Hematology and Oncology
+1. Short Essay & Enumerate
+س1: Enumerate four clinical features (symptoms and signs) of Iron Deficiency Anemia (IDA) in children.
+الإجابة النموذجية:
+Pallor, weakness and fatigue.
+Glossitis.
+Cheilitis (inflammation/fissures of lips).
+Pica (intense craving for nonfood items like clay, dirt, chalk, or paper).
+س2: Enumerate four diagnostic laboratory findings in the Iron Profile of a patient with Iron Deficiency Anemia.
+الإجابة النموذجية:
+Low serum iron.
+Low serum ferritin.
+Increased Total iron binding capacity (TIBC).
+Decreased transferrin saturation (TS).
+س3: Enumerate the three criteria required to diagnose Severe Aplastic Anemia in a patient with a hypocellular bone marrow.
+الإجابة النموذجية (يُشترط وجود Hypocellular BM مع اثنين من الآتي):
+Platelet count of less than 20,000/mm³.
+Absolute reticulocyte count of less than 40,000/mm³.
+Absolute neutrophil count (ANC) of less than 500/mm³.
+س4: Enumerate four prognostic factors used to determine the outcome in Acute Lymphoblastic Leukemia (ALL).
+الإجابة النموذجية (يُكتفى بأربعة نقاط):
+Age (between 1 and 9 years is favorable, less than 1 or more than 10 is less favorable).
+White blood cell count (WBCs less than 50 x 10⁹/L is favorable).
+Immunophenotype (B-precursor has a better prognosis than T cell).
+Sex (Girls have a more favorable prognosis than Boys).
+س5: Enumerate four triggers or precipitating factors that can produce acute episodes of intravascular hemolysis in G6PD deficiency.
+الإجابة النموذجية:
+Fava beans ingestion (favism).
+Infections and acute illnesses (e.g., Sepsis, hepatitis).
+Diabetic ketoacidosis (DKA).
+Oxidative Medications (such as Sulfonamides, aspirin, or chloramphenicol).
+2. Short Answered Questions (Definitions, Mention, List)
+س6: Define Immune Thrombocytopenia (ITP) in children.
+الإجابة: It is an acquired autoimmune disorder characterized by an isolated low platelet count (platelet count <100,000/microL with completely normal WBCs and hemoglobin) resulting from antibody-mediated platelet destruction and impaired platelet production.
+س7: List the three systemic symptoms classified as "B symptoms" in Hodgkin Lymphoma (HL) staging.
+الإجابة:
+Unexplained fever higher than 38°C.
+Weight loss more than 10% of total body weight over 6 months.
+Drenching night sweats.
+س8: Define Hereditary Spherocytosis (HS) and mention its primary mode of inheritance.
+الإجابة: * Definition: It is an inherited chronic hemolytic anemia caused by a defect or dysfunction in spectrin or ankyrin (components of the RBC cytoskeleton), leading to a loss of cell surface area and resulting in a spherical shape of RBCs with premature destruction in the spleen.
+Inheritance: Autosomal dominant (AD) mode of inheritance in 75% of cases.
+3. Extended Matching Questions
+الخيارات المتاحة (Coagulation & Hematological Screening Profiles): أ) Prolonged aPTT, Normal PT, normal platelet count, normal bleeding time ب) Normal aPTT, Normal PT, severely decreased platelet count ج) Prolonged aPTT, Prolonged PT, prolonged TT, markedly increased D-Dimer, reduced platelet count د) Normal aPTT, Normal PT, normal platelet count
+قم بتوصيل الخيار الصحيح بالعبارات السريرية التالية:
+The classic initial screening laboratory pattern indicating Hemophilia A or B. (الإجابة: أ)
+The initial screening laboratory profile indicating acute childhood Immune Thrombocytopenia (ITP). (الإجابة: ب)
+The laboratory profile indicating acute consumption of factors and platelets in Disseminated Intravascular Coagulopathy (DIC). (الإجابة: ج)
+4. Problem Solving (Cases)
+الحالة الأولى: A 3-year-old girl is brought to the pediatric outpatient clinic with a sudden appearance of a widespread petechial rash and multiple bruises over her lower limbs. Her parents state that she is otherwise perfectly active, well, completely afebrile, and has no bone pain. On physical examination, there is no significant lymphadenopathy or hepatosplenomegaly. Initial CBC shows an isolated platelet count of 12,000/mm³, with normal hemoglobin and normal WBC count.
+س1: What is your clinical diagnosis for this well active child?
+الإجابة: Newly diagnosed primary Immune Thrombocytopenia (ITP).
+س2: Mention two first-line medical therapies that can be initiated if the child develops significant mucosal membrane bleeding.
+الإجابة (يُكتفى باثنين): 1. Glucocorticoids (oral Prednisone or IV Methylprednisolone). 2. Intravenous Immunoglobulin (IVIG).
+الحالة الثانية: An 8-month-old male infant is evaluated for progressive pallor, weakness, and failure to thrive that became noticeable during the second 6 months of life. Physical examination reveals severe pallor, maxilla hyperplasia with a flat nasal bridge and frontal bossing (thalassemic facies), and marked hepatosplenomegaly. Hemoglobin electrophoresis is performed, demonstrating a marked increase in HbF% and a complete absence of HbA.
+س1: What is the most likely diagnosis for this infant?
+الإجابة: Homozygous beta-thalassemia (Thalassemia Major / Cooley anemia).
+س2: Mention two essential pillars in the long-term medical management of this major quantitative hemoglobinopathy.
+الإجابة: 1. Chronic regular blood transfusion (maintaining hemoglobin levels at 9-10 g/dL). 2. Iron chelator therapy (such as Deferoxamine or oral Deferasirox, initiated when serum ferritin is >1000 ng/mL).
+
+
+
+
+
+
+
+
+
+C.V.S. (Cardiovascular Diseases)
+1. Short Essay & Enumerate
+س1: Enumerate four indications and timing for the closure (surgical or device) of a Ventricular Septal Defect (VSD).
+الإجابة النموذجية (يُكتفى بأربعة نقاط):
+Failure to thrive (if growth failure cannot be improved by medical therapy).
+If the pulmonary artery (PA) pressure is more than 50% of systemic pressure (should be closed by the end of the first year).
+Dilated left-sided chambers.
+Intractable congestive heart failure.
+س2: Enumerate four clinical precipitating factors that can trigger a Hypercyanotic spell (Tetrad spell) in a child with Tetralogy of Fallot (TOF).
+الإجابة النموذجية (يُكتفى بأربعة نقاط):
+Crying (which increases pulmonary vascular resistance).
+Feeding or awakening from naps.
+Fever (which reduces systemic vascular resistance).
+Defecation or straining.
+س3: Enumerate four manifestations of systemic congestion seen in Right-Sided Heart Failure in older children.
+الإجابة النموذجية (يُكتفى بأربعة نقاط):
+Congested pulsating neck veins.
+Enlarged tender liver (congested liver).
+Pain in the epigastrium and right hypochondrium.
+Anorexia, nausea, and vomiting (congested stomach).
+2. Short Answered Questions (Definitions, Mention, List)
+س4: Define the classic diagnostic triad of Heart Failure in infants.
+الإجابة: هو الثلاثي التشخيصي الرئيسي الذي يضم:
+Tachypnea.
+Tachycardia.
+Enlarged tender liver.
+س5: Define complete Transposition of the Great Arteries (TGA) and mention its characteristic finding on a Chest X-ray.
+الإجابة: * Definition: A cyanotic congenital heart disease where two independent circulations exist; the aorta arises anteriorly from the right ventricle (RV) carrying desaturated blood to the body, and the pulmonary artery arises posteriorly from the left ventricle (LV) carrying oxygenated blood back to the lungs.
+Chest X-ray finding: Narrow mediastinum with mild cardiomegaly / Egg-shaped heart.
+3. Extended Matching Questions
+الخيارات المتاحة: أ) Boot-shaped heart (Coeur en sabot) ب) Egg-shaped heart ج) Water-hammer pulse (Bounding peripheral pulses) د) Differential cyanosis
+قم بتوصيل الخيار الصحيح بالعبارات السريرية والتشخيصية التالية:
+The characteristic cardiac contour seen on a Chest X-ray in a patient with Tetralogy of Fallot (TOF) due to RV hypertrophy and a concave pulmonary segment. (الإجابة: أ)
+The classic peripheral pulse finding characteristic of a large Patent Ductus Arteriosus (PDA). (الإجابة: ج)
+The clinical phenomenon that occurs in PDA if pulmonary vascular obstructive disease develops, causing cyanosis only in the lower half of the body. (الإجابة: د)
+The typical chest X-ray contour finding in a patient with d-transposition of the great arteries (TGA). (الإجابة: ب)
+4. Problem Solving (Cases)
+الحالة الأولى: A 2-month-old female infant is brought to the emergency department with severe feeding difficulty, excessive sweating during feeding, and poor weight gain. On physical examination, she is tachypneic and tachycardic, and her liver is palpable 4 cm below the costal margin and tender. Auscultation reveals a loud, harsh pansystolic murmur best heard at the lower left sternal border.
+س1: What is the most likely diagnosis for this infant?
+الإجابة: Large Ventricular Septal Defect (VSD) complicated by Congestive Heart Failure (CHF).
+س2: Mention the standard medical management guidelines utilized initially to control heart failure in this case.
+الإجابة: Treatment with diuretics and Angiotensin-Converting Enzyme (ACE) inhibitors, alongside frequent feedings of high-calorie formulas.
+الحالة الثانية: A 7-month-old boy known to have cyanotic congenital heart disease is brought to the clinic. While crying intensely during examination, the infant suddenly develops severe dyspnea, deeply increased cyanosis, and rapid, deep respirations, followed by generalized weakness and somnolence.
+س1: What is the medical term for this acute life-threatening event?
+الإجابة: Hypercyanotic spell / Tetrad spell.
+س2: Mention the diagnostic cardiac anomaly layout of this disease and explain how squatting or the knee-chest position works to relieve this spell. الإجابة: * Layout (Tetralogy of Fallot): VSD, overriding aorta, pulmonary stenosis, and right ventricular hypertrophy.
+Mechanism of relief: Squatting increases systemic vascular resistance (SVR), which reduces the right-to-left shunt and improves pulmonary blood flow. 
+
+
+
+
+
+
+
+
+
+Infection
+1. Short Essay & Enumerate
+س1: Enumerate four respiratory or neurological complications of Measles.
+الإجابة النموذجية (يُكتفى بأربعة نقاط سواء تنفسية أو عصبية):
+Pneumonia.
+Otitis media.
+Laryngitis & Laryngo-tracheo-bronchitis.
+Post-infectious or Parainfectious encephalitis. (أو: SSPE - Subacute sclerosing pan-encephalitis / Sinusitis).
+س2: Enumerate four clinical features or signs of increased intra-cranial tension seen in Acute Bacterial Meningitis.
+الإجابة النموذجية (يُكتفى بأربعة نقاط):
+Headache & Vomiting (usually projectile).
+Bulging anterior fontanel (in infants < 1 year of age).
+Changes in sensorium.
+Convulsions (usually generalized).
+2. Short Answered Questions (Definitions, Mention, List)
+س3: Define Roseola Infantum and mention its pathognomonic link between fever and rash.
+الإجابة: * Definition: A viral infection common in infants aged 6 months–2 years, caused mainly by Human herpes virus-6 (HHV-6).
+Fever and Rash link: It is characteristically presenting with a high fever for 3–5 days, followed by a sudden fall of temperature (onset of drop of fever) and the immediate appearance of a maculopapular rash.
+س4: List four major clinical features or peripheral blood findings in a patient with Infectious Mononucleosis.
+الإجابة: 1. Fever. 2. Sore throat. 3. Cervical lymphadenopathy. 4. Atypical lymphocytes in peripheral blood. (أو: Fatigue / Hepatosplenomegaly).
+3. Extended Matching Questions
+الخيارات المتاحة (Causative Organisms): أ) Human herpes virus-6 (HHV-6) ب) Epstein–Barr virus (EBV) ج) Varicella-zoster virus (VZV) د) Mumps virus
+قم بتوصيل الخيار الصحيح بالعبارات السريرية التالية:
+An acute viral infection characterized by a highly contagious itchy vesicular rash appearing in different stages described as "dew drops on a rose petal". (الإجابة: ج)
+Caused by an RNA paramyxovirus and characterized by painful parotid gland swelling and fever, with risks of complicating into orchitis or pancreatitis. (الإجابة: د)
+Associated with a characteristic triad of fever, sore throat, and cervical lymphadenopathy, with a peripheral blood film showing atypical lymphocytes. (الإجابة: ب)
+The causative pathogen of a childhood exanthem where maculopapular rashes characteristically appear only with the onset of drop of fever. (الإجابة: أ)
+4. Problem Solving (Cases)
+الحالة الأولى: A 14-month-old infant is brought to the emergency room with a history of abrupt onset of high-grade fever, projectile vomiting, and extreme irritability. On physical examination, the infant has a bulging and tense anterior fontanel. When the pediatrician attempts to perform rapid passive flexion of the infant's head, a severe neck stiffness is noted, and this maneuver is immediately accompanied by a brisk, involuntary flexion of both knees.
+س1: What is your provisional diagnosis for this infant?
+الإجابة: Acute Bacterial Meningitis (Septic Meningitis).
+س2: What is the medical term for the sign elicited during head flexion, and what is the specific antibiotic combination if the patient is an infant < 6 months old?
+الإجابة: * Sign term: Positive Brudzinski's sign.
+Antibiotic combination (< 6 months): Ampicillin + Gentamicin (IV).
+الحالة الثانية: A 3-year-old boy presents with a 4-day history of high fever, severe cough, coryza, and conjunctivitis. On examining the buccal mucosa, the pediatrician detects small, bluish-white spots opposite the second molar teeth. The next day, a prominent maculopapular rash appears at the hairline and begins spreading downwards to involve the face and neck.
+س1: What is the clinical diagnosis for this child?
+الإجابة: Measles (Morbilli).
+س2: What is the medical term for the pathognomonic spots found on the buccal mucosa, and what therapeutic agent reduces morbidity and mortality in these children?
+الإجابة: * Spots term: Koplik spots.
+Therapeutic Agent: Oral Vitamin A. 
+
+
+
+
+
+
+
+
+
+
+إليك يا صلاح بنك أسئلة التحديدات الشامل لشابتر VIII - C.N.S. (Neurology) بناءً على التحديدات والمواضيع المذكورة في الكتاب (Cerebral Palsy, Floppy infant, Duchenne muscle dystrophy) وطبقاً لنظام ومواصفات امتحانك الدقيقة (Enumerate, Short Answer, Extended Matching, Problem Solving) وبدون استخدام أي جداول نهائياً:
+# أسئلة شابتر الـ CNS & Neurology
+### 1. Short Essay & Enumerate
+س1: Enumerate four topographic (anatomic) classifications of Cerebral Palsy (CP).
+ * الإجابة النموذجية (يُكتفى بأربعة نقاط):
+   1. Hemiplegia: Arm & Leg on the same side of the body.
+   2. Diplegia: Arms and Legs involved, but legs are more involved.
+   3. Quadriplegia (Tetraplegia): Arms and Legs equally involved or arms more involved than legs.
+   4. Monoplegia (one limb involved) / Paraplegia (only legs involved).
+س2: Enumerate four clinical signs used to diagnose severe persistent hypotonia in a Floppy Infant.
+ * الإجابة النموذجية:
+   1. Frog leg position: denotes hypotonia of lower limbs.
+   2. Head lag: when pulling the baby up from his hands in a supine position, the head lags backwards.
+   3. Curved trunk on ventral suspension: when suspended in a prone position over the examiner's hand, the baby drops around it.
+   4. Slippage on vertical suspension: denotes hypotonia of shoulder girdle muscles.
+س3: Enumerate the four obligatory criteria characterized by Muscular Dystrophies.
+ * الإجابة النموذجية:
+   1. Primary myopathy.
+   2. Progressive course.
+   3. Genetic basis.
+   4. Characteristic muscle fiber degeneration and muscle cell death at some stage.
+### 2. Short Answered Questions (Definitions, Mention, List)
+س4: Define Cerebral Palsy (Little's Disease).
+ * الإجابة: It is an encephalopathy resulting from malfunction of the motor unit of the developing brain due to brain insult during prenatal, natal, and postnatal periods, leading to a central motor deficit that is characteristically non-progressive, non-familial, and non-hereditary.
+س5: List four lower motor unit disorders/levels that can cause Floppy Infant syndrome.
+ * الإجابة (يُكتفى بأربعة نقاط):
+   1. Spinal cord lesion: Anterior horn cell disease (Werdnig-Hoffmann spinal muscular atrophy).
+   2. Peripheral nerves: Acute polyneuropathy (Guillain-Barré Syndrome).
+   3. Neuromuscular junction: Neonatal myasthenia gravis / Infantile botulism.
+   4. Myopathies: Muscular dystrophies / Congenital myopathies.
+### 3. Extended Matching Questions
+الخيارات المتاحة (Physiological Classification of CP & Reflexes):
+أ) Spastic CP
+ب) Dyskinetic CP
+ج) Ataxic CP
+د) Moro reflex
+هـ) Asymmetric tonic neck reflex (ATNR)
+قم بتوصيل الخيار الصحيح بالعبارات السريرية التالية:
+ 1. Characterized by hypertonia with hyperreflexia, a positive Babinski sign, and persistence of primitive neonatal reflexes. (الاجابة: أ - Spastic CP)
+ 2. Characterized by abnormal involuntary movements such as chorea, athetosis, and dystonia, with variable muscle tone. (الاجابة: ب - Dyskinetic CP)
+ 3. Passive rotation of the head to one side causes extension of limbs on the same side and flexion of contralateral limbs; its persistence beyond 3 months prevents rolling. (الاجابة: هـ - Asymmetric tonic neck reflex)
+ 4. A primitive neonatal reflex that is considered a warning sign of developmental delay if it persists beyond 6 months of age. (الاجابة: د - Moro reflex)
+### 4. Problem Solving (2 Cases)
+الحالة الأولى:
+A 4-year-old male boy is brought to the pediatric neurology clinic by his parents because of progressive difficulty running and climbing stairs. On physical examination, he shows a waddling lordotic gait and uses his hands to "climb up" his own thighs to stand up from a sitting position on the floor. The pediatrician notices firm, prominent pseudohypertrophy of his calf muscles.
+* س1: What is the most likely diagnosis for this boy?
+   * الإجابة: Duchenne Muscle Dystrophy (DMD).
+ * س2: Mention one blood enzyme test that is consistently markedly elevated and one diagnostic test to confirm this disease.
+   * الإجابة: * Blood Enzyme Test: Creatine kinase (CK) or Creatine phosphokinase (CPK).
+     * Confirmative Test: Muscle biopsy (shows muscle fiber degeneration with replacement with fat and fibrosis).
+الحالة الثانية:
+A 10-month-old infant with a history of severe perinatal birth asphyxia is evaluated for delayed motor milestones. His mother notices that he cannot sit without support and keeps his hands tightly clenched. On physical examination, there is an early abnormal neck support, and the pediatrician notes a significant difficulty in abducting his thighs during a diaper change.
+ * س1: What is your provisional diagnosis for this infant?
+   * الإجابة: Spastic Cerebral Palsy (CP).
+ * س2: List two prenatal or perinatal risk factors associated with the etiology of this condition.
+   * الإجابة (يُكتفى باثنين من الآتي): 1. Prenatal: TORCH infection / teratogens / intrauterine hypoxia.
+     2. Perinatal: Birth asphyxia / birth trauma / intracranial hemorrhage.
+
+
+
