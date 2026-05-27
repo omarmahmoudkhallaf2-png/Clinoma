@@ -3375,6 +3375,580 @@ interface Question {
 }
 
 const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
+  "_SUBCHAPTER_Growth & Development": [
+    {
+      "id": "sub_gd_enum_1",
+      "front": "Enumerate four clinical uses of Percentile Curves in growth charts.",
+      "back": "Early detection of protein energy malnutrition (by tracking flattening of the weight curve).\nEarly detection of hydrocephalus (by tracking jumping of head circumference curve above normal percentiles).\nDetermination of risk for obesity (if BMI lies between 85th - 95th percentiles).\nDiagnosis of overweight or obesity (if BMI is above the 95th percentile)."
+    },
+    {
+      "id": "sub_gd_enum_2",
+      "front": "Enumerate four key development warning signs in children.",
+      "back": "Persistence of primitive reflexes beyond 6 months of age.\nNot walking by 18 months of age.\nNo clear spoken words by 18 months of age.\nNo two-word sentences by 2 years of age."
+    },
+    {
+      "id": "sub_gd_def_1",
+      "front": "Define the terms \"Growth\" and \"Development\".",
+      "back": "* Growth: Natural increase in the size of the body either by hyperplasia or hypertrophy.\n* Development: Functional maturation of the central nervous system leading to gaining skills and social adaptation."
+    },
+    {
+      "id": "sub_gd_list_1",
+      "front": "List four major causes of Delayed Walking in pediatrics.",
+      "back": "Cerebral palsy.\nMental retardation.\nMuscles disorders (like Duchenne).\nChronic systemic disorders."
+    },
+    {
+      "id": "sub_gd_match_1",
+      "front": "Match the developmental milestone to the correct age.",
+      "type": "matching",
+      "matchingPairs": [
+        { "left": "An infant can sit without support with a round back", "right": "6 Months" },
+        { "left": "Social smile is expected to appear", "right": "2 Months" },
+        { "left": "Moro reflex completely disappears", "right": "4 Months" },
+        { "left": "An infant develops a pincer grip (grasp by thumb and finger)", "right": "9 Months" }
+      ]
+    },
+    {
+      "id": "sub_gd_case_1",
+      "front": "Case 1",
+      "type": "case",
+      "caseBody": "A Mother brings her 18-month-old male infant to the pediatric clinic complaining that he cannot walk alone or even with support. On examination, the infant shows marked head lag on pulling up from a supine position and an exaggerated \"U-shape\" during ventral suspension.",
+      "subQuestions": [
+        {
+          "id": "sub_gd_case_1_q1",
+          "questionText": "What is your provisional diagnosis?",
+          "back": "Delayed walking due to severe hypotonia (Floppy Infant syndrome)."
+        },
+        {
+          "id": "sub_gd_case_1_q2",
+          "questionText": "Mention two lower motor unit disorders that can cause this presentation.",
+          "back": "1. Werdnig-Hoffmann disease (Anterior horn cell disease)\n2. Congenital myopathy / Muscular dystrophy."
+        }
+      ]
+    },
+    {
+      "id": "sub_gd_case_2",
+      "front": "Case 2",
+      "type": "case",
+      "caseBody": "A 3-year-old boy is evaluated for short stature. His height is below the 3rd percentile on the growth chart. On reviewing his medical records, his height velocity is low-normal and running parallel to the 3rd percentile. His bone age is delayed compared to his chronologic age. His parents noted that there is a history of late pubertal growth in the family.",
+      "subQuestions": [
+        {
+          "id": "sub_gd_case_2_q1",
+          "questionText": "What is the most likely diagnosis for this normal variant of growth?",
+          "back": "Constitutional delay of growth and puberty (CDGP)."
+        },
+        {
+          "id": "sub_gd_case_2_q2",
+          "questionText": "How can you distinguish this condition from Familial Short Stature?",
+          "back": "In Familial Short Stature, the bone age is consistent with chronologic age, whereas in CDGP, the bone age is characteristically delayed."
+        }
+      ]
+    }
+  ],
+  "_SUBCHAPTER_Nutrition": [
+    {
+      "id": "sub_nut_enum_1",
+      "front": "Enumerate the four constant features of Kwashiorkor (KWO).",
+      "back": "1. Growth failure (Weight for age < 80% of reference).\n2. Pitting edema (starts in feet and legs, moon face).\n3. Mental changes (apathy, no interest in surroundings).\n4. Muscle wasting with preserved subcutaneous fat."
+    },
+    {
+      "id": "sub_nut_enum_2",
+      "front": "Enumerate the classic radiological findings (epiphyseal triad) seen in an active wrist X-ray of a child with Rickets.",
+      "back": "1. Broadening of the metaphysis.\n2. Cupping (concave metaphysis).\n3. Fraying (irregular epiphyseal line)."
+    },
+    {
+      "id": "sub_nut_def_1",
+      "front": "List four anti-infective properties or factors found in human breast milk.",
+      "back": "1. Secretory IgA.\n2. Bifidus factor.\n3. Lactoferrin.\n4. Lysozymes."
+    },
+    {
+      "id": "sub_nut_def_2",
+      "front": "Define Marasmus according to the clinical and anthropometric criteria.",
+      "back": "It is a chronic state of protein energy malnutrition (PEM) resulting from a low intake of energy, characterized by a weight-for-age < 60% of the reference with completely absent edema, and severe loss of subcutaneous fat and muscle wasting."
+    },
+    {
+      "id": "sub_nut_match_1",
+      "front": "Match the maternal or infant clinical condition to the correct breast feeding contraindication type.",
+      "type": "matching",
+      "matchingPairs": [
+        { "left": "Galactosemia in a newborn infant", "right": "Absolute Infant Contraindication" },
+        { "left": "Maternal HIV infection", "right": "Absolute Maternal Contraindication" },
+        { "left": "Acute breast abscess and mastitis", "right": "Relative Maternal Contraindication" },
+        { "left": "Breast milk jaundice", "right": "Relative Infant Contraindication" }
+      ]
+    },
+    {
+      "id": "sub_nut_case_1",
+      "front": "Case 1",
+      "type": "case",
+      "caseBody": "A 14-month-old female infant is brought to the outpatient clinic with a history of recurrent diarrhea and failure to thrive since she was weaned abruptly onto a pure carbohydrate diet (rice and starch) two months ago. On physical examination, she is irritable, has generalized pitting edema, a \"moon face\" appearance, and her hair is dry, sparse, with alternating bands of normal and light coloration.",
+      "subQuestions": [
+        {
+          "id": "sub_nut_case_1_q1",
+          "questionText": "What is the clinical diagnosis for this child?",
+          "back": "Kwashiorkor (KWO)."
+        },
+        {
+          "id": "sub_nut_case_1_q2",
+          "questionText": "What does the hair sign (alternating bands of coloration) represent?",
+          "back": "It is called the Flag Sign, and it signifies periods of nutritional relapse alternating with periods of normal dietary intake."
+        }
+      ]
+    },
+    {
+      "id": "sub_nut_case_2",
+      "front": "Case 2",
+      "type": "case",
+      "caseBody": "A 10-month-old exclusively breastfed infant who doesn't receive any vitamin D supplementation or sun exposure is brought with complaints of delayed teeth eruption and excessive frontal sweating. Physical examination reveals frontal bossing of the skull, a palpable rachitic rosary on the chest wall, and prominent thickening of both wrists.",
+      "subQuestions": [
+        {
+          "id": "sub_nut_case_2_q1",
+          "questionText": "What is your provisional diagnosis?",
+          "back": "Nutritional Rickets (Active Rickets)."
+        },
+        {
+          "id": "sub_nut_case_2_q2",
+          "questionText": "Mention the expected biochemical changes in the serum for Calcium, Phosphorus, and Alkaline Phosphatase in this active phase.",
+          "back": "* Serum Calcium: Normal (or low-normal).\n* Serum Phosphorus: Decreased.\n* Serum Alkaline Phosphatase: Markedly increased."
+        }
+      ]
+    }
+  ],
+  "_SUBCHAPTER_Genetics": [
+    {
+      "id": "sub_gen_enum_1",
+      "front": "Enumerate four dysmorphic features seen in the face and head of a child with Down Syndrome.",
+      "back": "1. Upward slanting palpebral fissures.\n2. Epicanthus and Brushfield spots of iris.\n3. Small dysplastic pinnae and low set ears.\n4. Mid face hypoplasia, micrognathia, and protruded tongue."
+    },
+    {
+      "id": "sub_gen_enum_2",
+      "front": "Enumerate four indications for performing Prenatal Diagnosis in a pregnant woman.",
+      "back": "1. Advanced maternal age (women aged 35 years or more).\n2. History of recurrent abortions or a previous child with chromosomal abnormalities.\n3. Parents who are carriers for chromosomal abnormalities or X-linked inherited disorders (e.g., Duchenne muscular dystrophy).\n4. Screening for inborn errors of metabolism or neural tube defects."
+    },
+    {
+      "id": "sub_gen_def_1",
+      "front": "Define Turner Syndrome and mention its most common genotype.",
+      "back": "* Definition: A chromosomal disorder affecting females characterized by short stature, webbed neck, lack of development of secondary sexual characteristics due to gonadal dysgenesis, and possible cardiovascular/renal anomalies.\n* Most Common Genotype: 45X."
+    },
+    {
+      "id": "sub_gen_def_2",
+      "front": "List four invasive screening tests used for Prenatal Diagnosis.",
+      "back": "1. Chorionic villus sampling (CVS).\n2. Amniocentesis.\n3. Fetal blood sampling (Cordocentesis).\n4. Fetoscopy / Fetal tissue sampling."
+    },
+    {
+      "id": "sub_gen_match_1",
+      "front": "Match the pathological condition to the correct Maternal Serum Triple Test Pattern.",
+      "type": "matching",
+      "matchingPairs": [
+        { "left": "Maternal serum biochemical marker pattern indicating Down Syndrome", "right": "Decreased AFP, Decreased uE3, Increased HCG" },
+        { "left": "Maternal serum biochemical marker pattern indicating Turner Syndrome", "right": "Normal or Decreased AFP, Decreased uE3, Increased HCG" },
+        { "left": "Maternal serum biochemical marker pattern indicating Open Neural Tube Defects", "right": "Increased AFP, Not applicable uE3, Not applicable HCG" },
+        { "left": "Maternal serum biochemical marker pattern indicating Edward Syndrome", "right": "Decreased AFP, Decreased uE3, Decreased HCG" }
+      ]
+    },
+    {
+      "id": "sub_gen_case_1",
+      "front": "Case 1",
+      "type": "case",
+      "caseBody": "A 41-year-old pregnant female gives birth to a male newborn. On physical examination, the neonate shows generalized hypotonia, upward slanting palpebral fissures, a flat midface with a protruding tongue, and a single transverse palmar crease on both hands. Auscultation of the heart reveals a loud pansystolic murmur at the lower left sternal border.",
+      "subQuestions": [
+        {
+          "id": "sub_gen_case_1_q1",
+          "questionText": "What is your provisional diagnosis for this neonate?",
+          "back": "Down Syndrome (Trisomy 21) associated with a Congenital Heart Defect (most likely VSD)."
+        },
+        {
+          "id": "sub_gen_case_1_q2",
+          "questionText": "Mention the most common cytogenetic type responsible for this condition and its recurrence risk.",
+          "back": "Nondisjunction type (occurs in 94% of cases). It is not familial and has a low recurrence risk of less than 1-2%."
+        }
+      ]
+    },
+    {
+      "id": "sub_gen_case_2",
+      "front": "Case 2",
+      "type": "case",
+      "caseBody": "A 14-year-old girl is brought to the pediatric endocrine clinic due to severe short stature and failure to achieve menarche. On examination, her intelligence is completely normal, but she has a short webbed neck, a low posterior hairline, a broad chest with widely spaced nipples, and a wide carrying angle at her elbows. Her blood pressure is persistently elevated at 140/90 mmHg.",
+      "subQuestions": [
+        {
+          "id": "sub_gen_case_2_q1",
+          "questionText": "What is the most likely clinical diagnosis?",
+          "back": "Turner Syndrome."
+        },
+        {
+          "id": "sub_gen_case_2_q2",
+          "questionText": "Mention two essential components in the long-term medical management of this condition during adolescence.",
+          "back": "1. Growth Hormone therapy (to treat short stature).\n2. Estrogen replacement therapy (at the time of puberty to develop secondary sexual characteristics and manage amenorrhea)."
+        }
+      ]
+    }
+  ],
+  "_SUBCHAPTER_GIT": [
+    {
+      "id": "sub_git_enum_1",
+      "front": "Enumerate four clinical diagnostic Red Flags that suggest Organic Abdominal Pain in children.",
+      "back": "1. Clearly localized pain that is localized mostly away from the umbilicus.\n2. Pain that wakes the child up from sleep at night.\n3. Pain associated with persistent fever or involuntary weight loss.\n4. Evidence of blood in the stools (occult or macroscopically obvious)."
+    },
+    {
+      "id": "sub_git_enum_2",
+      "front": "Enumerate four acute clinical manifestations of IgE-Mediated Cow's Milk Allergy (CMA).",
+      "back": "1. Skin signs: Urticaria, angioedema, flushing, or pruritus.\n2. Gastrointestinal signs: Acute vomiting, abdominal pain, or diarrhea.\n3. Respiratory signs: Wheeze, cough, stridor, or rhinitis.\n4. Systemic signs: Life-threatening anaphylaxis."
+    },
+    {
+      "id": "sub_git_def_1",
+      "front": "Define \"The Acute Abdomen\" and list its three key physical signs.",
+      "back": "* Definition: A sudden onset of severe abdominal pain developing rapidly over a short period of time.\n* Three Key Physical Signs:\n1. Guarding (reflex contraction of abdominal muscles).\n2. Rigidity (involuntary hardness of the abdominal wall).\n3. Rebound tenderness."
+    },
+    {
+      "id": "sub_git_def_2",
+      "front": "Differentiate between the definitions of \"Vomiting\" and \"Regurgitation\".",
+      "back": "* Vomiting: Forceful oral expulsion of gastric contents associated with the contraction of the abdominal and chest wall musculature.\n* Regurgitation: The act by which food is brought back into the mouth without the abdominal and diaphragmatic muscular activity."
+    },
+    {
+      "id": "sub_git_match_1",
+      "front": "Match the clinical description to the correct Cow's Milk Allergy (CMA) dietary or emergency management choice.",
+      "type": "matching",
+      "matchingPairs": [
+        { "left": "The first-line dietary choice for a formula-fed infant diagnosed with mild-to-moderate Cow's Milk Allergy", "right": "Extensively Hydrolyzed Formula (eHF)" },
+        { "left": "Dietary management used if the infant's allergic reactions are severe or completely unresponsive to extensively hydrolyzed formula", "right": "Amino Acid Formula (AAF)" },
+        { "left": "Immediate emergency treatment required for severe acute anaphylaxis due to milk allergy", "right": "Intramuscular Epinephrine injection" }
+      ]
+    },
+    {
+      "id": "sub_git_case_1",
+      "front": "Case 1",
+      "type": "case",
+      "caseBody": "A 3-month-old formula-fed male infant is brought to the clinic with a history of chronic diarrhea, failure to thrive, and frequent streaks of blood and mucus in his stool. Physical examination reveals chronic, severe, and refractory atopic dermatitis on his cheeks and limbs. The symptoms started 3 weeks after introducing standard cow's milk formula.",
+      "subQuestions": [
+        {
+          "id": "sub_git_case_1_q1",
+          "questionText": "What is the most likely diagnosis?",
+          "back": "Non-IgE-mediated Cow's Milk Allergy (CMA)."
+        },
+        {
+          "id": "sub_git_case_1_q2",
+          "questionText": "Mention the gold standard test to confirm this diagnosis.",
+          "back": "Oral Food Challenge (performed strictly under medical supervision)."
+        }
+      ]
+    },
+    {
+      "id": "sub_git_case_2",
+      "front": "Case 2",
+      "type": "case",
+      "caseBody": "An 8-year-old girl presents with recurrent episodes of abdominal pain over the past 4 months. The pain is paroxysmal, has a gradual onset, and is localized mostly to the periumbilical region with no relationship to food intake or defecation. She is completely symptom-free between episodes, and her physical examination is normal with no localized tenderness or organomegaly.",
+      "subQuestions": [
+        {
+          "id": "sub_git_case_2_q1",
+          "questionText": "What is the most likely diagnosis for this child?",
+          "back": "Dysfunctional / Functional Abdominal Pain (according to Rome IV criteria)."
+        },
+        {
+          "id": "sub_git_case_2_q2",
+          "questionText": "Mention two autonomic symptoms that can be associated with this condition.",
+          "back": "Pallor, nausea, generalized fatigue, or anxiety."
+        }
+      ]
+    }
+  ],
+  "_SUBCHAPTER_Endocrinology": [
+    {
+      "id": "sub_endo_enum_1",
+      "front": "Enumerate four secondary (systemic or endocrine) causes of Pathological Short Stature.",
+      "back": "1. Endocrine causes (e.g., Hypothyroidism, Growth Hormone Deficiency, Cushing syndrome).\n2. Malnutrition / Under-nutrition (e.g., Protein Energy Malnutrition).\n3. Gastrointestinal disorders (e.g., Malabsorption syndromes like Celiac disease or Cystic Fibrosis).\n4. Chronic Renal diseases (e.g., Chronic uremia, Pyelonephritis)."
+    },
+    {
+      "id": "sub_endo_enum_2",
+      "front": "Enumerate four clinical precipitating factors that can lead to Diabetic Ketoacidosis (DKA).",
+      "back": "1. Acute Infections (most commonly Urinary Tract Infections - UTIs).\n2. Negligence of parents or patient to give insulin therapy (omission of insulin).\n3. Physical trauma or major surgical stress.\n4. Severe psychological disturbances."
+    },
+    {
+      "id": "sub_endo_def_1",
+      "front": "Define \"Short Stature\" according to the standard pediatric growth criteria.",
+      "back": "It is a term applied to a child whose height is 2 Standard Deviations (SD) or more below the mean for children of that same sex and chronologic age (and ideally of the same racial-ethnic group). It is also considered if growth velocity is below the 25th percentile over 6-12 months of observation."
+    },
+    {
+      "id": "sub_endo_def_2",
+      "front": "List four endocrine or genetic causes/syndromes associated with Childhood Obesity.",
+      "back": "1. Hypothyroidism.\n2. Cushing syndrome.\n3. Prader-Willi Syndrome.\n4. Congenital Leptin deficiency."
+    },
+    {
+      "id": "sub_endo_match_1",
+      "front": "Match the clinical and biochemical details to the correct Diabetic Ketoacidosis (DKA) Severity Classification.",
+      "type": "matching",
+      "matchingPairs": [
+        { "left": "Venous pH between 7.15 - 7.25, plasma HCO3 is 10 - 15 mEq/L, patient has Kussmaul respirations and is oriented but sleepy or arousable", "right": "Moderate DKA" },
+        { "left": "Venous pH < 7.15, plasma HCO3 < 10 mEq/L, patient presents with severe Kussmaul or depressed respiration, deep sleep to depressed sensorium, or coma", "right": "Severe DKA" },
+        { "left": "Venous pH between 7.25 - 7.35, plasma HCO3 is 16 - 20 mEq/L, patient is oriented, alert but fatigued", "right": "Mild DKA" }
+      ]
+    },
+    {
+      "id": "sub_endo_case_1",
+      "front": "Case 1",
+      "type": "case",
+      "caseBody": "A 5-month-old infant is brought to the pediatric clinic by his mother because of a severe delay in physical and mental development. On physical examination, the child's growth is severely stunted with short extremities, the anterior fontanel is wide open, the eyes appear far apart with a depressed nasal bridge, and the infant keeps his mouth open with a thick, broad protruding tongue. The skin is dry and scaly.",
+      "subQuestions": [
+        {
+          "id": "sub_endo_case_1_q1",
+          "questionText": "What is the most likely diagnosis for this neglected presentation?",
+          "back": "Congenital Hypothyroidism (CHT)."
+        },
+        {
+          "id": "sub_endo_case_1_q2",
+          "questionText": "Mention the standard screening test protocol used to detect this condition early in the first week of life.",
+          "back": "Neonatal screening via a heel-prick blood test performed between the 3rd and 7th day of age to measure serum TSH levels (highly successful if TSH > 20 uIU/ml)."
+        }
+      ]
+    },
+    {
+      "id": "sub_endo_case_2",
+      "front": "Case 2",
+      "type": "case",
+      "caseBody": "A 9-year-old girl is brought to the emergency department presenting with severe vomiting, persistent abdominal pain, and rapid, deep breathing (Kussmaul respiration). Her parents noted that she had a history of progressive weight loss, polyuria, and excessive thirst (polydipsia) over the past two weeks. On examination, she is intensely dehydrated and drowsy. Laboratory tests show a random plasma glucose of 400 mg/dL and a venous pH of 7.12.",
+      "subQuestions": [
+        {
+          "id": "sub_endo_case_2_q1",
+          "questionText": "What is your clinical diagnosis for this acute medical emergency?",
+          "back": "Severe Diabetic Ketoacidosis (DKA) secondary to newly diagnosed Type 1 Diabetes Mellitus."
+        },
+        {
+          "id": "sub_endo_case_2_q2",
+          "questionText": "List four essential lines of medical management required immediately for this patient.",
+          "back": "1. Hospitalization (admission to PICU).\n2. Correction of fluids (IV fluid resuscitation for dehydration).\n3. Insulin therapy (continuous low-dose IV insulin infusion).\n4. Correction of electrolytes (especially monitoring and replacement of Potassium)."
+        }
+      ]
+    }
+  ],
+  "_SUBCHAPTER_Hematology & Oncology": [
+    {
+      "id": "sub_hem_enum_1",
+      "front": "Enumerate four clinical features (symptoms and signs) of Iron Deficiency Anemia (IDA) in children.",
+      "back": "1. Pallor, weakness and fatigue.\n2. Glossitis.\n3. Cheilitis (inflammation/fissures of lips).\n4. Pica (intense craving for nonfood items like clay, dirt, chalk, or paper)."
+    },
+    {
+      "id": "sub_hem_enum_2",
+      "front": "Enumerate four diagnostic laboratory findings in the Iron Profile of a patient with Iron Deficiency Anemia.",
+      "back": "1. Low serum iron.\n2. Low serum ferritin.\n3. Increased Total iron binding capacity (TIBC).\n4. Decreased transferrin saturation (TS)."
+    },
+    {
+      "id": "sub_hem_enum_3",
+      "front": "Enumerate the three criteria required to diagnose Severe Aplastic Anemia in a patient with a hypocellular bone marrow.",
+      "back": "Hypocellular BM with two of the following:\n1. Platelet count of less than 20,000/mm³.\n2. Absolute reticulocyte count of less than 40,000/mm³.\n3. Absolute neutrophil count (ANC) of less than 500/mm³."
+    },
+    {
+      "id": "sub_hem_enum_4",
+      "front": "Enumerate four prognostic factors used to determine the outcome in Acute Lymphoblastic Leukemia (ALL).",
+      "back": "1. Age (between 1 and 9 years is favorable, less than 1 or more than 10 is less favorable).\n2. White blood cell count (WBCs less than 50 x 10⁹/L is favorable).\n3. Immunophenotype (B-precursor has a better prognosis than T cell).\n4. Sex (Girls have a more favorable prognosis than Boys)."
+    },
+    {
+      "id": "sub_hem_enum_5",
+      "front": "Enumerate four triggers or precipitating factors that can produce acute episodes of intravascular hemolysis in G6PD deficiency.",
+      "back": "1. Fava beans ingestion (favism).\n2. Infections and acute illnesses (e.g., Sepsis, hepatitis).\n3. Diabetic ketoacidosis (DKA).\n4. Oxidative Medications (such as Sulfonamides, aspirin, or chloramphenicol)."
+    },
+    {
+      "id": "sub_hem_def_1",
+      "front": "Define Immune Thrombocytopenia (ITP) in children.",
+      "back": "It is an acquired autoimmune disorder characterized by an isolated low platelet count (platelet count <100,000/microL with completely normal WBCs and hemoglobin) resulting from antibody-mediated platelet destruction and impaired platelet production."
+    },
+    {
+      "id": "sub_hem_def_2",
+      "front": "List the three systemic symptoms classified as \"B symptoms\" in Hodgkin Lymphoma (HL) staging.",
+      "back": "1. Unexplained fever higher than 38°C.\n2. Weight loss more than 10% of total body weight over 6 months.\n3. Drenching night sweats."
+    },
+    {
+      "id": "sub_hem_def_3",
+      "front": "Define Hereditary Spherocytosis (HS) and mention its primary mode of inheritance.",
+      "back": "* Definition: It is an inherited chronic hemolytic anemia caused by a defect or dysfunction in spectrin or ankyrin (components of the RBC cytoskeleton), leading to a loss of cell surface area and resulting in a spherical shape of RBCs with premature destruction in the spleen.\n* Inheritance: Autosomal dominant (AD) mode of inheritance in 75% of cases."
+    },
+    {
+      "id": "sub_hem_match_1",
+      "front": "Match the clinical condition to the correct Coagulation & Hematological Screening Profile.",
+      "type": "matching",
+      "matchingPairs": [
+        { "left": "The classic initial screening laboratory pattern indicating Hemophilia A or B", "right": "Prolonged aPTT, Normal PT, normal platelet count, normal bleeding time" },
+        { "left": "The initial screening laboratory profile indicating acute childhood Immune Thrombocytopenia (ITP)", "right": "Normal aPTT, Normal PT, severely decreased platelet count" },
+        { "left": "The laboratory profile indicating acute consumption of factors and platelets in Disseminated Intravascular Coagulopathy (DIC)", "right": "Prolonged aPTT, Prolonged PT, prolonged TT, markedly increased D-Dimer, reduced platelet count" }
+      ]
+    },
+    {
+      "id": "sub_hem_case_1",
+      "front": "Case 1",
+      "type": "case",
+      "caseBody": "A 3-year-old girl is brought to the pediatric outpatient clinic with a sudden appearance of a widespread petechial rash and multiple bruises over her lower limbs. Her parents state that she is otherwise perfectly active, well, completely afebrile, and has no bone pain. On physical examination, there is no significant lymphadenopathy or hepatosplenomegaly. Initial CBC shows an isolated platelet count of 12,000/mm³, with normal hemoglobin and normal WBC count.",
+      "subQuestions": [
+        {
+          "id": "sub_hem_case_1_q1",
+          "questionText": "What is your clinical diagnosis for this well active child?",
+          "back": "Newly diagnosed primary Immune Thrombocytopenia (ITP)."
+        },
+        {
+          "id": "sub_hem_case_1_q2",
+          "questionText": "Mention two first-line medical therapies that can be initiated if the child develops significant mucosal membrane bleeding.",
+          "back": "1. Glucocorticoids (oral Prednisone or IV Methylprednisolone).\n2. Intravenous Immunoglobulin (IVIG)."
+        }
+      ]
+    },
+    {
+      "id": "sub_hem_case_2",
+      "front": "Case 2",
+      "type": "case",
+      "caseBody": "An 8-month-old male infant is evaluated for progressive pallor, weakness, and failure to thrive that became noticeable during the second 6 months of life. Physical examination reveals severe pallor, maxilla hyperplasia with a flat nasal bridge and frontal bossing (thalassemic facies), and marked hepatosplenomegaly. Hemoglobin electrophoresis is performed, demonstrating a marked increase in HbF% and a complete absence of HbA.",
+      "subQuestions": [
+        {
+          "id": "sub_hem_case_2_q1",
+          "questionText": "What is the most likely diagnosis for this infant?",
+          "back": "Homozygous beta-thalassemia (Thalassemia Major / Cooley anemia)."
+        },
+        {
+          "id": "sub_hem_case_2_q2",
+          "questionText": "Mention two essential pillars in the long-term medical management of this major quantitative hemoglobinopathy.",
+          "back": "1. Chronic regular blood transfusion (maintaining hemoglobin levels at 9-10 g/dL).\n2. Iron chelator therapy (such as Deferoxamine or oral Deferasirox, initiated when serum ferritin is >1000 ng/mL)."
+        }
+      ]
+    }
+  ],
+  "_SUBCHAPTER_CVS": [
+    {
+      "id": "sub_cvs_enum_1",
+      "front": "Enumerate four indications and timing for the closure (surgical or device) of a Ventricular Septal Defect (VSD).",
+      "back": "1. Failure to thrive (if growth failure cannot be improved by medical therapy).\n2. If the pulmonary artery (PA) pressure is more than 50% of systemic pressure (should be closed by the end of the first year).\n3. Dilated left-sided chambers.\n4. Intractable congestive heart failure."
+    },
+    {
+      "id": "sub_cvs_enum_2",
+      "front": "Enumerate four clinical precipitating factors that can trigger a Hypercyanotic spell (Tetrad spell) in a child with Tetralogy of Fallot (TOF).",
+      "back": "1. Crying (which increases pulmonary vascular resistance).\n2. Feeding or awakening from naps.\n3. Fever (which reduces systemic vascular resistance).\n4. Defecation or straining."
+    },
+    {
+      "id": "sub_cvs_enum_3",
+      "front": "Enumerate four manifestations of systemic congestion seen in Right-Sided Heart Failure in older children.",
+      "back": "1. Congested pulsating neck veins.\n2. Enlarged tender liver (congested liver).\n3. Pain in the epigastrium and right hypochondrium.\n4. Anorexia, nausea, and vomiting (congested stomach)."
+    },
+    {
+      "id": "sub_cvs_def_1",
+      "front": "Define the classic diagnostic triad of Heart Failure in infants.",
+      "back": "The classic diagnostic triad of Heart Failure in infants comprises:\n1. Tachypnea.\n2. Tachycardia.\n3. Enlarged tender liver."
+    },
+    {
+      "id": "sub_cvs_def_2",
+      "front": "Define complete Transposition of the Great Arteries (TGA) and mention its characteristic finding on a Chest X-ray.",
+      "back": "* Definition: A cyanotic congenital heart disease where two independent circulations exist; the aorta arises anteriorly from the right ventricle (RV) carrying desaturated blood to the body, and the aorta arises posteriorly from the left ventricle (LV) carrying oxygenated blood back to the lungs.\n* Chest X-ray finding: Narrow mediastinum with mild cardiomegaly / Egg-shaped heart."
+    },
+    {
+      "id": "sub_cvs_match_1",
+      "front": "Match the clinical or diagnostic description to the correct cardiovascular contour or pulse finding.",
+      "type": "matching",
+      "matchingPairs": [
+        { "left": "The characteristic cardiac contour seen on a Chest X-ray in a patient with Tetralogy of Fallot (TOF) due to RV hypertrophy and a concave pulmonary segment", "right": "Boot-shaped heart (Coeur en sabot)" },
+        { "left": "The classic peripheral pulse finding characteristic of a large Patent Ductus Arteriosus (PDA)", "right": "Water-hammer pulse (Bounding peripheral pulses)" },
+        { "left": "The clinical phenomenon that occurs in PDA if pulmonary vascular obstructive disease develops, causing cyanosis only in the lower half of the body", "right": "Differential cyanosis" },
+        { "left": "The typical chest X-ray contour finding in a patient with d-transposition of the great arteries (TGA)", "right": "Egg-shaped heart" }
+      ]
+    },
+    {
+      "id": "sub_cvs_case_1",
+      "front": "Case 1",
+      "type": "case",
+      "caseBody": "A 2-month-old female infant is brought to the emergency department with severe feeding difficulty, excessive sweating during feeding, and poor weight gain. On physical examination, she is tachypneic and tachycardic, and her liver is palpable 4 cm below the costal margin and tender. Auscultation reveals a loud, harsh pansystolic murmur best heard at the lower left sternal border.",
+      "subQuestions": [
+        {
+          "id": "sub_cvs_case_1_q1",
+          "questionText": "What is the most likely diagnosis for this infant?",
+          "back": "Large Ventricular Septal Defect (VSD) complicated by Congestive Heart Failure (CHF)."
+        },
+        {
+          "id": "sub_cvs_case_1_q2",
+          "questionText": "Mention the standard medical management guidelines utilized initially to control heart failure in this case.",
+          "back": "Treatment with diuretics and Angiotensin-Converting Exchange (ACE) inhibitors, alongside frequent feedings of high-calorie formulas."
+        }
+      ]
+    },
+    {
+      "id": "sub_cvs_case_2",
+      "front": "Case 2",
+      "type": "case",
+      "caseBody": "A 7-month-old boy known to have cyanotic congenital heart disease is brought to the clinic. While crying intensely during examination, the infant suddenly develops severe dyspnea, deeply increased cyanosis, and rapid, deep respirations, followed by generalized weakness and somnolence.",
+      "subQuestions": [
+        {
+          "id": "sub_cvs_case_2_q1",
+          "questionText": "What is the medical term for this acute life-threatening event?",
+          "back": "Hypercyanotic spell / Tetrad spell."
+        },
+        {
+          "id": "sub_cvs_case_2_q2",
+          "questionText": "Mention the diagnostic cardiac anomaly layout of this disease and explain how squatting or the knee-chest position works to relieve this spell.",
+          "back": "* Layout (Tetralogy of Fallot): VSD, overriding aorta, pulmonary stenosis, and right ventricular hypertrophy.\n* Mechanism of relief: Squatting increases systemic vascular resistance (SVR), which reduces the right-to-left shunt and improves pulmonary blood flow."
+        }
+      ]
+    }
+  ],
+  "_SUBCHAPTER_Infection": [
+    {
+      "id": "sub_inf_enum_1",
+      "front": "Enumerate four respiratory or neurological complications of Measles.",
+      "back": "1. Pneumonia.\n2. Otitis media.\n3. Laryngitis & Laryngo-tracheo-bronchitis.\n4. Post-infectious or Parainfectious encephalitis (or SSPE / Sinusitis)."
+    },
+    {
+      "id": "sub_inf_enum_2",
+      "front": "Enumerate four clinical features or signs of increased intra-cranial tension seen in Acute Bacterial Meningitis.",
+      "back": "1. Headache & Vomiting (usually projectile).\n2. Bulging anterior fontanel (in infants < 1 year of age).\n3. Changes in sensorium.\n4. Convulsions (usually generalized)."
+    },
+    {
+      "id": "sub_inf_def_1",
+      "front": "Define Roseola Infantum and mention its pathognomonic link between fever and rash.",
+      "back": "* Definition: A viral infection common in infants aged 6 months–2 years, caused mainly by Human herpes virus-6 (HHV-6).\n* Fever and Rash link: It is characteristically presenting with a high fever for 3–5 days, followed by a sudden fall of temperature (onset of drop of fever) and the immediate appearance of a maculopapular rash."
+    },
+    {
+      "id": "sub_inf_def_2",
+      "front": "List four major clinical features or peripheral blood findings in a patient with Infectious Mononucleosis.",
+      "back": "1. Fever.\n2. Sore throat.\n3. Cervical lymphadenopathy.\n4. Atypical lymphocytes in peripheral blood (or Fatigue / Hepatosplenomegaly)."
+    },
+    {
+      "id": "sub_inf_match_1",
+      "front": "Match the clinical description to the correct causative viral pathogen.",
+      "type": "matching",
+      "matchingPairs": [
+        { "left": "An acute viral infection characterized by a highly contagious itchy vesicular rash appearing in different stages described as 'dew drops on a rose petal'", "right": "Varicella-zoster virus (VZV)" },
+        { "left": "Caused by an RNA paramyxovirus and characterized by painful parotid gland swelling and fever, with risks of complicating into orchitis or pancreatitis", "right": "Mumps virus" },
+        { "left": "Associated with a characteristic triad of fever, sore throat, and cervical lymphadenopathy, with a peripheral blood film showing atypical lymphocytes", "right": "Epstein–Barr virus (EBV)" },
+        { "left": "The causative pathogen of a childhood exanthem where maculopapular rashes characteristically appear only with the onset of drop of fever", "right": "Human herpes virus-6 (HHV-6)" }
+      ]
+    },
+    {
+      "id": "sub_inf_case_1",
+      "front": "Case 1",
+      "type": "case",
+      "caseBody": "A 14-month-old infant is brought to the emergency room with a history of abrupt onset of high-grade fever, projectile vomiting, and extreme irritability. On physical examination, the infant has a bulging and tense anterior fontanel. When the pediatrician attempts to perform rapid passive flexion of the infant's head, a severe neck stiffness is noted, and this maneuver is immediately accompanied by a brisk, involuntary flexion of both knees.",
+      "subQuestions": [
+        {
+          "id": "sub_inf_case_1_q1",
+          "questionText": "What is your provisional diagnosis for this infant?",
+          "back": "Acute Bacterial Meningitis (Septic Meningitis)."
+        },
+        {
+          "id": "sub_inf_case_1_q2",
+          "questionText": "What is the medical term for the sign elicited during head flexion, and what is the specific antibiotic combination if the patient is an infant < 6 months old?",
+          "back": "* Sign term: Positive Brudzinski's sign.\n* Antibiotic combination (< 6 months): Ampicillin + Gentamicin (IV)."
+        }
+      ]
+    },
+    {
+      "id": "sub_inf_case_2",
+      "front": "Case 2",
+      "type": "case",
+      "caseBody": "A 3-year-old boy presents with a 4-day history of high fever, severe cough, coryza, and conjunctivitis. On examining the buccal mucosa, the pediatrician detects small, bluish-white spots opposite the second molar teeth. The next day, a prominent maculopapular rash appears at the hairline and begins spreading downwards to involve the face and neck.",
+      "subQuestions": [
+        {
+          "id": "sub_inf_case_2_q1",
+          "questionText": "What is the clinical diagnosis for this child?",
+          "back": "Measles (Morbilli)."
+        },
+        {
+          "id": "sub_inf_case_2_q2",
+          "questionText": "What is the medical term for the pathognomonic spots found on the buccal mucosa, and what therapeutic agent reduces morbidity and mortality in these children?",
+          "back": "* Spots term: Koplik spots.\n* Therapeutic Agent: Oral Vitamin A."
+        }
+      ]
+    }
+  ],
   "_CHAPTER_Growth & development": [
     {
       "id": "gd_saq1",
@@ -5789,6 +6363,10 @@ const groupCases = (questions: any[]) => {
     
     questions.forEach(q => {
       if (!q) return;
+      if (q.type === 'case') {
+        result.push(q);
+        return;
+      }
       if (q.front && typeof q.front === 'string' && q.front.toLowerCase().startsWith('case ')) {
         const match = q.front.match(/^(Case\s+Study(?:\s+\(Continued\))?|Case\s+\d+)\s*:/i);
         let caseIdentifier = match ? match[1].replace(/\s*\(Continued\)/i, '').trim() : "Unknown Case";
@@ -5868,31 +6446,39 @@ const CaseStudyUI = ({ question, onComplete, currentPriority, onSetPriority }: {
   return (
     <div className="flex flex-col w-full h-full max-w-4xl mx-auto overflow-hidden bg-slate-50 dark:bg-slate-900 rounded-3xl border-2 border-slate-100 dark:border-slate-800 shadow-xl" onClick={e => e.stopPropagation()}>
       {/* Top Header - Case Body */}
-      <div className="w-full bg-indigo-50 dark:bg-indigo-900/30 p-6 md:p-8 shrink-0 relative">
+      <div className="w-full bg-indigo-50 dark:bg-indigo-900/30 p-6 md:p-8 shrink-0 relative flex flex-col gap-4">
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-purple-500" />
 
+        {/* Header Controls: Title & Priority Selector */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-indigo-100 dark:bg-indigo-800 rounded-xl flex items-center justify-center shrink-0 animate-pulse">
+              <span className="text-indigo-600 dark:text-indigo-300 font-black">C</span>
+            </div>
+            <span className="font-black text-slate-500 dark:text-slate-400 text-xs md:text-sm uppercase tracking-wider">Case Study Description</span>
+          </div>
+
           {onSetPriority && (
-            <div className="absolute top-6 right-6 flex items-center gap-2 bg-white/50 dark:bg-slate-800/50 p-2 rounded-2xl border border-slate-200 dark:border-slate-700/50 shadow-sm">
-              <span className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mx-2">Priority:</span>
+            <div className="flex items-center gap-2 bg-white/70 dark:bg-slate-800/70 p-1.5 rounded-2xl border border-slate-200/60 dark:border-slate-700/50 shadow-sm self-end sm:self-auto shrink-0">
+              <span className="text-[10px] md:text-[11px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest mx-2">Priority:</span>
               {(['A', 'B', 'C'] as const).map(p => (
                 <button
                   key={p}
                   onClick={(e) => { e.stopPropagation(); onSetPriority(currentPriority === p ? null : p); }}
-                  className={`w-8 h-8 rounded-lg flex items-center justify-center font-black transition-all ${currentPriority === p ? (p === 'A' ? 'bg-rose-500 text-white shadow-lg shadow-rose-500/20 scale-110' : p === 'B' ? 'bg-amber-500 text-white shadow-lg shadow-amber-500/20 scale-110' : 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/20 scale-110') : 'bg-white dark:bg-slate-700 text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-600'}`}
+                  className={`w-8 h-8 rounded-xl flex items-center justify-center font-black transition-all text-xs ${currentPriority === p ? (p === 'A' ? 'bg-rose-500 text-white shadow-lg shadow-rose-500/20 scale-110' : p === 'B' ? 'bg-amber-500 text-white shadow-lg shadow-amber-500/20 scale-110' : 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/20 scale-110') : 'bg-white dark:bg-slate-700 text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-600'}`}
                 >
                   {p}
                 </button>
               ))}
             </div>
           )}
+        </div>
 
-        <div className="flex items-start gap-4">
-          <div className="w-10 h-10 bg-indigo-100 dark:bg-indigo-800 rounded-xl flex items-center justify-center shrink-0">
-            <span className="text-indigo-600 dark:text-indigo-300 font-black">C</span>
-          </div>
-          <div>
-            <h3 className="font-black text-slate-800 dark:text-slate-100 text-base md:text-lg whitespace-pre-wrap leading-relaxed" dir="auto">{question.caseBody}</h3>
-          </div>
+        {/* Case Text Content */}
+        <div className="w-full pr-1">
+          <h3 className="font-black text-slate-800 dark:text-slate-100 text-base md:text-lg whitespace-pre-wrap leading-relaxed" dir="auto">
+            {question.caseBody}
+          </h3>
         </div>
       </div>
       
@@ -5999,6 +6585,7 @@ const FlashSpace = () => {
   const [showExplanation, setShowExplanation] = useState(false);
   const [showQuestions, setShowQuestions] = useState(false);
   const [showSummary, setShowSummary] = useState(false);
+  const [showStudyExitConfirm, setShowStudyExitConfirm] = useState(false);
   const [activeNoteTab, setActiveNoteTab] = useState<'notes' | 'questions'>('notes');
 
   // --- Question Session State ---
@@ -6046,6 +6633,57 @@ const FlashSpace = () => {
       console.error("Failed to set priority", error);
       toast.error('Failed to update priority');
     }
+  };
+
+  const handleConfirmExitStudySession = async () => {
+    const earnedPoints = Math.floor(sessionSeconds * 3);
+    
+    if (user && earnedPoints > 0) {
+      try {
+        const userRef = doc(db, 'users', user.uid);
+        await updateDoc(userRef, {
+          points: increment(earnedPoints),
+          spacePoints: increment(earnedPoints)
+        });
+        toast.success(`أحسنت! لقد ربحت ${earnedPoints} نقطة لمذاكرتك النشطة! 🏆`, {
+          duration: 5000,
+          position: 'top-center',
+          style: {
+            background: '#10b981',
+            color: '#fff',
+            fontWeight: 'bold',
+            borderRadius: '1rem',
+          }
+        });
+      } catch (error) {
+        console.error("Failed to add study time points", error);
+      }
+    } else if (earnedPoints === 0) {
+      toast.success('تم إنهاء جلسة المذاكرة بنجاح');
+    }
+    
+    setSelectedBoard(null);
+    setSelectedSystem(null);
+    setSelectedSubSystem(null);
+    setIsSidebarOpen(false);
+    setPaths([]);
+    setRedoPaths([]);
+    setIsChapterQuestionMode(false);
+    setShowQuestions(false);
+    setShowExplanation(false);
+    setSessionSeconds(0);
+    setIsTimerActive(false);
+    setShowStudyExitConfirm(false);
+  };
+
+  const triggerExitStudySession = () => {
+    setIsTimerActive(false);
+    setShowStudyExitConfirm(true);
+  };
+
+  const handleCancelExitStudySession = () => {
+    setIsTimerActive(true);
+    setShowStudyExitConfirm(false);
   };
 
   const [activeCategory, setActiveCategory] = useState<string>('All');
@@ -6147,7 +6785,7 @@ const FlashSpace = () => {
               system: chapter,
               subSystem: chapter === 'تحديدات الاطفال' && file.includes('/') ? file.split('/')[1] : undefined,
               disease: title,
-              medicalImage: file.includes('/') ? `/assets/TIP-Peditrics/${file.split('/').map(p => encodeURIComponent(p)).join('/')}` : `/assets/TIP-Peditrics/${encodeURIComponent(chapter)}/${encodeURIComponent(file)}`,
+              medicalImage: file.includes('/') ? `/assets/TIP-Peditrics/${file}` : `/assets/TIP-Peditrics/${chapter}/${file}`,
               explanation: customExp || `A comprehensive visual study guide for ${title} under the Pediatrics ${chapter} system. Use this interactive flash space to annotate, highlight, and review key clinical presentation, diagnostic criteria, and management protocols.`,
               createdAt: Date.now()
             });
@@ -6709,6 +7347,7 @@ const FlashSpace = () => {
                               trackGrowthView();
                             }
                             setSelectedSystem(sys);
+                            setSelectedSubSystem(null);
                             setIsChapterQuestionMode(false);
                             setShowQuestions(false);
                             setShowExplanation(false);
@@ -6781,6 +7420,11 @@ const FlashSpace = () => {
               <div className="flex items-center gap-4 shrink-0 mt-2">
                 <button onClick={() => {
                   setSelectedSystem(null);
+                  setSelectedSubSystem(null);
+                  setSelectedBoard(null);
+                  setIsChapterQuestionMode(false);
+                  setShowQuestions(false);
+                  setShowExplanation(false);
                 }} className="p-2.5 bg-white/5 active:bg-white/15 hover:bg-white/10 rounded-2xl text-slate-400 transition-all border border-white/5 hover:border-white/10 hover:shadow-lg hover:shadow-black/20">
                   <ChevronLeft className="w-5 h-5" />
                 </button>
@@ -6863,6 +7507,10 @@ const FlashSpace = () => {
                     } else {
                       setSelectedSystem(null);
                     }
+                    setSelectedBoard(null);
+                    setIsChapterQuestionMode(false);
+                    setShowQuestions(false);
+                    setShowExplanation(false);
                   }} className="p-2.5 bg-white/5 active:bg-white/15 hover:bg-white/10 rounded-2xl text-slate-400 transition-all border border-white/5 hover:border-white/10 hover:shadow-lg hover:shadow-black/20">
                     <ChevronLeft className="w-5 h-5" />
                   </button>
@@ -6889,12 +7537,13 @@ const FlashSpace = () => {
                   // --- CHAPTER QUESTIONS TAB - Flashcard Session ---
                   (() => {
                     const chapterSlides = boards.filter(b => b.module === selectedModule && b.system === selectedSystem && (selectedSubSystem ? b.subSystem === selectedSubSystem : true));
-                    const chapterQuestions = chapterSlides.flatMap(board => {
+                    const chapterQuestions = selectedSystem === 'تحديدات الاطفال' ? [] : chapterSlides.flatMap(board => {
                       const diseaseKey = (board.disease || '').replace(/\.(jpeg|jpg|png)\s*$/i, '').trim();
                       return getQuestionsForKey(diseaseKey);
                     });
                     const generalQuestions = getQuestionsForKey(`_CHAPTER_${selectedSystem}`);
-                    const allQuestions = [...chapterQuestions, ...generalQuestions];
+                    const subChapterQuestions = selectedSubSystem ? getQuestionsForKey(`_SUBCHAPTER_${selectedSubSystem}`) : [];
+                    const allQuestions = [...chapterQuestions, ...generalQuestions, ...subChapterQuestions];
 
                     const isNeuroChapter = selectedSystem === 'Neurology';
                     const hasNeuroCategories = isNeuroChapter && allQuestions.some(q => (q as any).category);
@@ -7186,21 +7835,29 @@ const FlashSpace = () => {
                       </div>
                     </button>
                   ))}
-                    {selectedSystem !== 'تحديدات الاطفال' && (
                     <button
                       onClick={() => {
-                        const chapterSlides = boards.filter(b => b.module === selectedModule && b.system === selectedSystem);
-                        const chapterQuestions = chapterSlides.flatMap(board => {
+                        const chapterSlides = (selectedSystem === 'تحديدات الاطفال' && selectedSubSystem)
+                          ? boards.filter(b => b.system === selectedSystem && b.subSystem === selectedSubSystem)
+                          : boards.filter(b => b.module === selectedModule && b.system === selectedSystem);
+                        
+                        const chapterQuestions = selectedSystem === 'تحديدات الاطفال' ? [] : chapterSlides.flatMap(board => {
                           const diseaseKey = (board.disease || '').replace(/\.(jpeg|jpg|png)\s*$/i, '').trim();
                           return getQuestionsForKey(diseaseKey);
                         });
+                        
                         const generalQuestions = getQuestionsForKey(`_CHAPTER_${selectedSystem}`);
-                        const allQuestions = [...chapterQuestions, ...generalQuestions];
+                        const subChapterQuestions = selectedSubSystem ? getQuestionsForKey(`_SUBCHAPTER_${selectedSubSystem}`) : [];
+                        
+                        const allQuestions = (selectedSystem === 'تحديدات الاطفال' && selectedSubSystem)
+                          ? [...subChapterQuestions]
+                          : [...chapterQuestions, ...generalQuestions];
+
                         if (allQuestions.length > 0) {
                           startQuestionSession(allQuestions);
                           setIsChapterQuestionMode(true);
                         } else {
-                          toast.error('No questions available for this chapter yet');
+                          toast.error('No questions available for this section yet');
                         }
                       }}
                       className="group relative bg-slate-900/50 backdrop-blur-xl border border-white/5 active:border-emerald-500/50 hover:border-emerald-500/40 rounded-3xl overflow-hidden transition-all duration-300 active:scale-[0.97] hover:scale-[1.02] text-left flex flex-col hover:shadow-2xl hover:shadow-emerald-500/20"
@@ -7223,8 +7880,7 @@ const FlashSpace = () => {
                         </div>
                       </div>
                     </button>
-                  )}
-                </div>
+                  </div>
                 )}
               </div>
             </div>
@@ -7248,7 +7904,16 @@ const FlashSpace = () => {
               </div>
               <div className="space-y-3">
                 <button
-                  onClick={() => { setShowSummary(false); setSelectedBoard(null); setIsTimerActive(false); setSessionSeconds(0); setPaths([]); setRedoPaths([]); }}
+                  onClick={() => {
+                    setShowSummary(false);
+                    setSelectedBoard(null);
+                    setIsTimerActive(false);
+                    setSessionSeconds(0);
+                    setPaths([]);
+                    setRedoPaths([]);
+                    setIsChapterQuestionMode(false);
+                    setSelectedSubSystem(null);
+                  }}
                   className="w-full py-5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-2xl font-black transition-all"
                 >
                   لوحة أخرى
@@ -7329,13 +7994,23 @@ const FlashSpace = () => {
                   {(() => {
                     try {
                       const chapterSlides = boards.filter(b => b.module === selectedModule && b.system === selectedSystem);
-                      const chapterQuestions = chapterSlides.flatMap(board => {
+                      const chapterQuestions = selectedSystem === 'تحديدات الاطفال' ? [] : chapterSlides.flatMap(board => {
                         if (!board) return [];
                         const diseaseKey = (board.disease || '').replace(/\.(jpeg|jpg|png)\s*$/i, '').trim();
                         return getQuestionsForKey(diseaseKey);
                       });
                       const generalQuestions = getQuestionsForKey(`_CHAPTER_${selectedSystem}`);
-                      const allChapterQuestions = groupCases([...chapterQuestions, ...generalQuestions]);
+                      const allChapterQuestions = selectedSystem === 'تحديدات الاطفال'
+                        ? (() => {
+                            const subChapters = Array.from(new Set(boards
+                              .filter(b => b.system === 'تحديدات الاطفال')
+                              .map(b => b.subSystem)
+                              .filter(Boolean)
+                            ));
+                            const subChapterQuestions = subChapters.flatMap(sub => getQuestionsForKey(`_SUBCHAPTER_${sub}`));
+                            return groupCases(subChapterQuestions);
+                          })()
+                        : groupCases([...chapterQuestions, ...generalQuestions]);
                       
                       const filteredQs = allChapterQuestions.filter(q => q && spacePriorities[q.id] === reviewFilter);
                       
@@ -7467,7 +8142,7 @@ const FlashSpace = () => {
         <div className="shrink-0 border-b border-slate-100">
           <div className="flex items-center justify-between px-4 py-3 bg-slate-50">
             <button
-              onClick={() => { setSelectedBoard(null); setSelectedSystem(null); setIsSidebarOpen(false); setPaths([]); setRedoPaths([]); }}
+              onClick={triggerExitStudySession}
               className="flex items-center gap-2 text-slate-500 hover:text-indigo-600 font-bold text-xs transition-all group"
             >
               <ChevronLeft className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" />
@@ -7489,9 +8164,9 @@ const FlashSpace = () => {
         {/* Slides list */}
         <div className="flex-1 overflow-y-auto py-2 custom-scrollbar">
           {(() => {
-            const filteredBoards = boards.filter(b => b.module === selectedBoard?.module && b.system === selectedBoard?.system);
+            const filteredBoards = boards.filter(b => b.module === selectedModule && b.system === selectedSystem);
             
-            if (selectedBoard?.system === 'تحديدات الاطفال') {
+            if (selectedSystem === 'تحديدات الاطفال') {
               const grouped = filteredBoards.reduce((acc, b) => {
                 const sub = b.subSystem || 'Other';
                 if (!acc[sub]) acc[sub] = [];
@@ -7502,9 +8177,38 @@ const FlashSpace = () => {
               let globalIdx = 0;
               return Object.entries(grouped).map(([subSys, sysBoards]) => (
                 <div key={subSys}>
-                  <div className="bg-slate-100/80 px-4 py-2 sticky top-0 backdrop-blur-md border-y border-slate-200 z-10 flex items-center gap-2 shadow-sm">
-                    <div className="w-1.5 h-1.5 rounded-full bg-indigo-400" />
-                    <span className="text-[10px] font-black text-slate-600 uppercase tracking-widest">{subSys}</span>
+                  <div className="bg-slate-100/80 px-4 py-2 sticky top-0 backdrop-blur-md border-y border-slate-200 z-10 flex items-center justify-between shadow-sm">
+                    <div className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 rounded-full bg-indigo-400" />
+                      <span className="text-[10px] font-black text-slate-600 uppercase tracking-widest">{subSys}</span>
+                    </div>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        const generalQuestions = getQuestionsForKey(`_SUBCHAPTER_${subSys}`);
+                        const allQuestions = [...generalQuestions];
+                        if (allQuestions.length > 0) {
+                          setSelectedBoard(null);
+                          setPaths([]); 
+                          setRedoPaths([]);
+                          setShowQuestions(false);
+                          setIsSidebarOpen(false);
+                          if (selectedBoard) {
+                            setSelectedModule(selectedBoard.module);
+                            setSelectedSystem(selectedBoard.system);
+                          }
+                          setSelectedSubSystem(subSys);
+                          startQuestionSession(allQuestions);
+                          setIsChapterQuestionMode(true);
+                        } else {
+                          toast.error('No questions available for this sub-chapter yet');
+                        }
+                      }}
+                      className="p-1 hover:bg-emerald-100 rounded text-emerald-500 transition-colors"
+                      title={`Practice ${subSys}`}
+                    >
+                      <Brain className="w-3.5 h-3.5" />
+                    </button>
                   </div>
                   {sysBoards.map((board) => {
                     globalIdx++;
@@ -7596,7 +8300,7 @@ const FlashSpace = () => {
               <Menu className="w-4 h-4" />
             </button>
             <button
-              onClick={() => setShowSummary(true)}
+              onClick={triggerExitStudySession}
               className="p-2 bg-rose-50 text-rose-500 active:bg-rose-100 hover:bg-rose-100 rounded-xl transition-all"
               title="End session"
             >
@@ -7888,7 +8592,9 @@ const FlashSpace = () => {
                     // --- QUESTIONS TAB - Flashcard Session ---
                     (() => {
                       const diseaseKey = (selectedBoard.disease || '').replace(/\.(jpeg|jpg|png)\s*$/i, '').trim();
-                      const allQuestions = getQuestionsForKey(diseaseKey);
+                      const allQuestions = selectedBoard.system === 'تحديدات الاطفال'
+                        ? getQuestionsForKey(`_SUBCHAPTER_${selectedBoard.subSystem}`)
+                        : getQuestionsForKey(diseaseKey);
                       
                       const getFilteredQuestions = (cat: string) => {
                         let filtered = allQuestions;
@@ -8159,13 +8865,71 @@ const FlashSpace = () => {
             </div>
             <div className="space-y-3">
               <button
-                onClick={() => { setShowSummary(false); setSelectedBoard(null); setIsTimerActive(false); setSessionSeconds(0); setPaths([]); setRedoPaths([]); }}
+                onClick={() => {
+                  setShowSummary(false);
+                  setSelectedBoard(null);
+                  setIsTimerActive(false);
+                  setSessionSeconds(0);
+                  setPaths([]);
+                  setRedoPaths([]);
+                  setIsChapterQuestionMode(false);
+                  setSelectedSubSystem(null);
+                }}
                 className="w-full py-5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-2xl font-black transition-all"
               >
                 لوحة أخرى
               </button>
               <button onClick={() => navigate('/dashboard')} className="w-full py-5 bg-slate-900 text-white rounded-2xl font-black hover:bg-indigo-600 transition-all">
                 العودة للداشبورد
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Study Exit Confirmation Modal */}
+      {showStudyExitConfirm && (
+        <div className="fixed inset-0 z-[2000] flex items-center justify-center bg-slate-950/85 backdrop-blur-2xl p-4">
+          <div className="w-full max-w-md bg-white rounded-[3.5rem] p-8 md:p-10 text-center space-y-6 shadow-3xl animate-in zoom-in-95 duration-300 border border-slate-100">
+            <div className="w-20 h-20 bg-rose-500/10 text-rose-500 rounded-[2.5rem] flex items-center justify-center mx-auto">
+              <LogOut className="w-9 h-9" />
+            </div>
+            
+            <div className="space-y-2">
+              <h2 className="text-2xl font-black text-slate-800">مغادرة جلسة المذاكرة؟ 🚪</h2>
+              <p className="text-slate-500 text-sm font-medium leading-relaxed">
+                هل أنت متأكد من رغبتك في إنهاء جلسة المذاكرة الحالية؟ سيتم حساب وقت مجهودك وإضافة رصيد نقاطك فوراً!
+              </p>
+            </div>
+
+            {/* Time and Points summary card */}
+            <div className="p-6 bg-indigo-50/50 rounded-[2rem] border border-indigo-100/50 grid grid-cols-2 gap-4">
+              <div className="text-center border-r border-indigo-100/50">
+                <span className="text-[10px] font-black text-indigo-500 uppercase tracking-wider block mb-1">وقت المذاكرة</span>
+                <span className="text-xl font-black text-indigo-900">
+                  {Math.floor(sessionSeconds / 60)}د {sessionSeconds % 60}ث
+                </span>
+              </div>
+              <div className="text-center">
+                <span className="text-[10px] font-black text-emerald-500 uppercase tracking-wider block mb-1">النقاط المكتسبة</span>
+                <span className="text-xl font-black text-emerald-700">
+                  +{Math.floor(sessionSeconds * 3)} 🏆
+                </span>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-3 pt-2">
+              <button
+                onClick={handleConfirmExitStudySession}
+                className="w-full py-4 bg-rose-600 text-white rounded-2xl font-black hover:bg-rose-700 active:scale-[0.98] transition-all shadow-lg shadow-rose-600/20 text-sm"
+              >
+                نعم، إنهاء وحفظ النقاط
+              </button>
+              <button
+                onClick={handleCancelExitStudySession}
+                className="w-full py-4 bg-slate-100 text-slate-600 rounded-2xl font-black hover:bg-slate-200 active:scale-[0.98] transition-all text-sm"
+              >
+                تراجع، مواصلة الدراسة
               </button>
             </div>
           </div>
@@ -8241,13 +9005,23 @@ const FlashSpace = () => {
                 {(() => {
                   try {
                     const chapterSlides = boards.filter(b => b.module === selectedModule && b.system === selectedSystem);
-                    const chapterQuestions = chapterSlides.flatMap(board => {
+                    const chapterQuestions = selectedSystem === 'تحديدات الاطفال' ? [] : chapterSlides.flatMap(board => {
                       if (!board) return [];
                       const diseaseKey = (board.disease || '').replace(/\.(jpeg|jpg|png)\s*$/i, '').trim();
                       return getQuestionsForKey(diseaseKey);
                     });
                     const generalQuestions = getQuestionsForKey(`_CHAPTER_${selectedSystem}`);
-                    const allChapterQuestions = groupCases([...chapterQuestions, ...generalQuestions]);
+                    const allChapterQuestions = selectedSystem === 'تحديدات الاطفال'
+                      ? (() => {
+                          const subChapters = Array.from(new Set(boards
+                            .filter(b => b.system === 'تحديدات الاطفال')
+                            .map(b => b.subSystem)
+                            .filter(Boolean)
+                          ));
+                          const subChapterQuestions = subChapters.flatMap(sub => getQuestionsForKey(`_SUBCHAPTER_${sub}`));
+                          return groupCases(subChapterQuestions);
+                        })()
+                      : groupCases([...chapterQuestions, ...generalQuestions]);
                     
                     const filteredQs = allChapterQuestions.filter(q => q && spacePriorities[q.id] === reviewFilter);
                     
