@@ -33,3 +33,9 @@ Thumbs.db
 !.env.example
 
 New folder/
+temp_compressed_hq/
+temp_compressed/
+scratch/
+تحديدات_الأطفال_مضغوط.pdf
+تحديدات_الأطفال.pdf
+*.log

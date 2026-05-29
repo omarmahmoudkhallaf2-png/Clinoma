@@ -39,7 +39,9 @@ import {
   Lock,
   Eye,
   Check,
-  Edit
+  Edit,
+  Download,
+  Loader2
 } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { useNavigate } from 'react-router-dom';
@@ -6905,6 +6907,165 @@ const FlashSpace = () => {
   const [selectedBoard, setSelectedBoard] = useState<Board | null>(null);
   const [showSubscriptionModal, setShowSubscriptionModal] = useState(false);
   const [growthViews, setGrowthViews] = useState<number>(0);
+  const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
+  const [downloadProgress, setDownloadProgress] = useState(0);
+  const [downloadStatus, setDownloadStatus] = useState<string | null>(null);
+
+  const handleDownloadPDF = async (compressFlag: boolean) => {
+    setDownloadProgress(0);
+    setDownloadStatus("جاري الاتصال وسحب الملف الأصلي...");
+    
+    const pdfUrl = compressFlag ? "/tahdedat_pediatrics_compressed.pdf" : "/tahdedat_pediatrics.pdf";
+    const displayName = user?.displayName || userData?.name || "Omar Mahmoud";
+    const displayEmail = user?.email || userData?.email || "omar.mahmoud@gmail.com";
+    
+    try {
+      // Step 1: Fetch PDF bytes
+      const response = await fetch(pdfUrl);
+      if (!response.ok) throw new Error("Failed to load PDF template file.");
+      
+      const contentLength = response.headers.get("content-length");
+      const totalBytes = contentLength ? parseInt(contentLength, 10) : 0;
+      
+      const reader = response.body?.getReader();
+      if (!reader) throw new Error("Failed to initialize PDF stream reader.");
+      
+      let receivedBytes = 0;
+      const chunks: Uint8Array[] = [];
+      
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        
+        chunks.push(value);
+        receivedBytes += value.length;
+        
+        if (totalBytes > 0) {
+          const percent = Math.round((receivedBytes / totalBytes) * 70); // Up to 70% for fetching
+          setDownloadProgress(percent);
+          setDownloadStatus(`جاري تحميل عناصر التجميعة الطبية... ${percent}%`);
+        }
+      }
+      
+      setDownloadProgress(75);
+      setDownloadStatus("جاري تهيئة وتوقيع ملف الـ PDF مائياً في المتصفح...");
+      
+      // Step 2: Combine chunks
+      const pdfBytes = new Uint8Array(receivedBytes);
+      let offset = 0;
+      for (const chunk of chunks) {
+        pdfBytes.set(chunk, offset);
+        offset += chunk.length;
+      }
+      
+      // Step 3: Load pdf-lib dynamically from CDN (highly optimized ESM)
+      const { PDFDocument, rgb, StandardFonts } = await import('https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.esm.js');
+      
+      const pdfDoc = await PDFDocument.load(pdfBytes);
+      const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
+      const helveticaBoldFont = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
+      
+      setDownloadProgress(85);
+      setDownloadStatus("جاري كتابة وتشفير هويتك الرقمية كعلامة مائية أمنية...");
+      
+      // Page numbers of chapter covers to skip watermarking
+      const chapterCovers = [3, 7, 11, 15, 19, 24, 35, 43];
+      const pageCount = pdfDoc.getPageCount();
+      
+      for (let i = 0; i < pageCount; i++) {
+        const p = i + 1;
+        // Skip cover, index, and chapter covers
+        if (p > 2 && !chapterCovers.includes(p)) {
+          const page = pdfDoc.getPage(i);
+          const height = page.getHeight();
+          const width = page.getWidth();
+          const margin = 12;
+          const box_w = 200;
+          const box_h = 13;
+          const header_y = height - margin - 17;
+          
+          // Draw left box
+          page.drawRectangle({
+            x: margin + 5,
+            y: header_y,
+            width: box_w,
+            height: box_h,
+            color: rgb(240/255, 249/255, 255/255),
+            borderColor: rgb(186/255, 230/255, 253/255),
+            borderWidth: 0.5,
+            opacity: 1,
+          });
+          page.drawText('USER:', {
+            x: margin + 10,
+            y: header_y + 3.5,
+            size: 7,
+            font: helveticaBoldFont,
+            color: rgb(3/255, 105/255, 161/255),
+          });
+          page.drawText(displayName, {
+            x: margin + 42,
+            y: header_y + 3.5,
+            size: 7,
+            font: helveticaFont,
+            color: rgb(15/255, 23/255, 42/255),
+          });
+          
+          // Draw right box
+          page.drawRectangle({
+            x: width - margin - box_w - 5,
+            y: header_y,
+            width: box_w,
+            height: box_h,
+            color: rgb(240/255, 249/255, 255/255),
+            borderColor: rgb(186/255, 230/255, 253/255),
+            borderWidth: 0.5,
+            opacity: 1,
+          });
+          page.drawText('EMAIL:', {
+            x: width - margin - box_w + 10,
+            y: header_y + 3.5,
+            size: 7,
+            font: helveticaBoldFont,
+            color: rgb(3/255, 105/255, 161/255),
+          });
+          page.drawText(displayEmail, {
+            x: width - margin - box_w + 45,
+            y: header_y + 3.5,
+            size: 7,
+            font: helveticaFont,
+            color: rgb(15/255, 23/255, 42/255),
+          });
+        }
+      }
+      
+      setDownloadProgress(95);
+      setDownloadStatus("جاري حفظ مستند التجميعة المشفر...");
+      
+      const modifiedPdfBytes = await pdfDoc.save();
+      
+      // Step 4: Trigger native browser download
+      const blob = new Blob([modifiedPdfBytes], { type: "application/pdf" });
+      const downloadUrl = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = downloadUrl;
+      link.download = compressFlag ? "تحديدات_الأطفال_مضغوط.pdf" : "تحديدات_الأطفال.pdf";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(downloadUrl);
+      
+      setDownloadProgress(100);
+      setDownloadStatus("تم التنزيل بنجاح! 🎉");
+      setTimeout(() => {
+        setIsDownloadModalOpen(false);
+        setDownloadStatus(null);
+      }, 1000);
+    } catch (err: any) {
+      console.error(err);
+      alert(`فشل تجهيز وتنزيل الملف: ${err.message}`);
+      setDownloadStatus(null);
+    }
+  };
 
   useEffect(() => {
     if (userRole === 'admin') {
@@ -7787,24 +7948,35 @@ const FlashSpace = () => {
           ) : selectedSystem === 'تحديدات الاطفال' && !selectedSubSystem ? (
             // --- SUB-SYSTEM SELECTION FOR TAHDEDAT ---
             <div className="h-full flex flex-col p-4 md:p-8 gap-6 md:gap-8 max-w-7xl mx-auto w-full">
-              <div className="flex items-center gap-4 shrink-0 mt-2">
-                <button onClick={() => {
-                  setSelectedSystem(null);
-                  setSelectedSubSystem(null);
-                  setSelectedBoard(null);
-                  setIsChapterQuestionMode(false);
-                  setShowQuestions(false);
-                  setShowExplanation(false);
-                }} className="p-2.5 bg-white/5 active:bg-white/15 hover:bg-white/10 rounded-2xl text-slate-400 transition-all border border-white/5 hover:border-white/10 hover:shadow-lg hover:shadow-black/20">
-                  <ChevronLeft className="w-5 h-5" />
-                </button>
-                <div>
-                  <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/5 rounded-full text-slate-400 text-xs font-bold uppercase tracking-widest mb-2 border border-white/5">
-                    {selectedModule} <ChevronRight className="w-3 h-3 mx-1" /> تحديدات الاطفال
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 shrink-0 mt-2">
+                <div className="flex items-center gap-4">
+                  <button onClick={() => {
+                    setSelectedSystem(null);
+                    setSelectedSubSystem(null);
+                    setSelectedBoard(null);
+                    setIsChapterQuestionMode(false);
+                    setShowQuestions(false);
+                    setShowExplanation(false);
+                  }} className="p-2.5 bg-white/5 active:bg-white/15 hover:bg-white/10 rounded-2xl text-slate-400 transition-all border border-white/5 hover:border-white/10 hover:shadow-lg hover:shadow-black/20">
+                    <ChevronLeft className="w-5 h-5" />
+                  </button>
+                  <div>
+                    <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/5 rounded-full text-slate-400 text-xs font-bold uppercase tracking-widest mb-2 border border-white/5">
+                      {selectedModule} <ChevronRight className="w-3 h-3 mx-1" /> تحديدات الاطفال
+                    </div>
+                    <h2 className="text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-white/60">Choose a Chapter</h2>
+                    <p className="text-slate-500 text-sm mt-0.5 tracking-wide uppercase font-bold">Select a Chapter</p>
                   </div>
-                  <h2 className="text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-white/60">Choose a Chapter</h2>
-                  <p className="text-slate-500 text-sm mt-0.5 tracking-wide uppercase font-bold">Select a Chapter</p>
                 </div>
+                
+                {/* Download PDF Button */}
+                <button
+                  onClick={() => setIsDownloadModalOpen(true)}
+                  className="px-6 py-3 bg-gradient-to-r from-indigo-500 to-violet-500 hover:from-indigo-400 hover:to-violet-400 text-white rounded-2xl font-black shadow-lg shadow-indigo-500/20 active:scale-[0.98] transition-all flex items-center justify-center gap-2 border border-indigo-400/20"
+                >
+                  <Download className="w-5 h-5" />
+                  <span>تنزيل تجميعة الـ PDF</span>
+                </button>
               </div>
               <div className="flex-1 overflow-y-auto pb-8">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
@@ -8423,6 +8595,80 @@ const FlashSpace = () => {
                       return <div className="text-rose-500 p-8 font-bold">حدث خطأ أثناء تحميل الأسئلة.</div>;
                     }
                   })()}
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* Download PDF Modal */}
+        {isDownloadModalOpen && (
+          <div className="fixed inset-0 z-[99999] flex items-center justify-center p-4">
+            <div className="absolute inset-0 bg-slate-950/80 backdrop-blur-md" onClick={() => !downloadStatus && setIsDownloadModalOpen(false)} />
+            <div className="relative bg-slate-900 border border-white/10 rounded-[2rem] p-8 max-w-md w-full shadow-2xl flex flex-col items-center text-center animate-in fade-in zoom-in duration-300">
+              <button 
+                onClick={() => !downloadStatus && setIsDownloadModalOpen(false)} 
+                disabled={!!downloadStatus}
+                className="absolute top-4 right-4 p-2 text-slate-400 hover:text-white bg-white/5 hover:bg-white/10 rounded-xl transition-all disabled:opacity-50"
+              >
+                <X className="w-5 h-5" />
+              </button>
+              
+              <div className="w-16 h-16 bg-indigo-500/20 text-indigo-400 rounded-2xl flex items-center justify-center mb-6 border border-indigo-500/30 shadow-inner">
+                <Download className="w-8 h-8" />
+              </div>
+              
+              <h2 className="text-2xl font-black text-white mb-2">تنزيل تجميعة الـ PDF</h2>
+              <p className="text-slate-400 mb-6 font-medium leading-relaxed">
+                سيتم توليد وتوقيع نسختك من التجميعة تلقائياً ببياناتك الأمنية (<strong className="text-white">{user?.displayName || userData?.name || "اسمك الشخصي"}</strong>) لمنع تسريب الملف.
+              </p>
+              
+              {downloadStatus ? (
+                // Progress View
+                <div className="w-full space-y-4 py-4">
+                  <div className="flex items-center justify-center gap-2 text-indigo-400 font-bold animate-pulse text-sm">
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    <span>{downloadStatus}</span>
+                  </div>
+                  <div className="w-full bg-slate-950 rounded-full h-2 overflow-hidden border border-white/5">
+                    <div 
+                      className="bg-gradient-to-r from-indigo-500 to-violet-500 h-2 rounded-full transition-all duration-300"
+                      style={{ width: `${downloadProgress}%` }}
+                    />
+                  </div>
+                  <div className="text-[10px] text-slate-500 font-bold uppercase tracking-widest text-right">
+                    {downloadProgress}% Completed
+                  </div>
+                </div>
+              ) : (
+                // Options View
+                <div className="w-full space-y-4">
+                  <button
+                    onClick={() => handleDownloadPDF(true)}
+                    className="group relative w-full p-4 bg-slate-950/50 hover:bg-indigo-500/10 border border-white/5 hover:border-indigo-500/30 rounded-2xl text-left transition-all active:scale-[0.98] duration-300"
+                  >
+                    <div className="absolute top-2 right-2 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-[9px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider">
+                      موصى به
+                    </div>
+                    <div className="text-white font-black text-base flex items-center gap-2 mb-1">
+                      <span>النسخة مضغوطة فائقة الجودة</span>
+                    </div>
+                    <div className="text-xs text-slate-400 font-bold leading-relaxed">
+                      دقة 2K عالية جداً مع الاحتفاظ بكل تفاصيل الخطوط والنصوص الطبية. حجم صغير جداً (21.8 MB).
+                    </div>
+                  </button>
+                  
+                  <button
+                    onClick={() => handleDownloadPDF(false)}
+                    className="group w-full p-4 bg-slate-950/50 hover:bg-white/5 border border-white/5 hover:border-white/10 rounded-2xl text-left transition-all active:scale-[0.98] duration-300"
+                  >
+                    <div className="text-white font-black text-base flex items-center gap-2 mb-1">
+                      <span>النسخة الأصلية بالدقة الكاملة</span>
+                    </div>
+                    <div className="text-xs text-slate-400 font-bold leading-relaxed">
+                      الملف الأصلي المصدر بجميع الصور بأعلى جودة تجميعية ممكنة. حجم كبير جداً (148.6 MB).
+                    </div>
+                  </button>
                 </div>
               )}
             </div>
@@ -9434,6 +9680,80 @@ const FlashSpace = () => {
                     return <div className="text-rose-500 p-8 font-bold">حدث خطأ أثناء تحميل الأسئلة.</div>;
                   }
                 })()}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* Download PDF Modal */}
+      {isDownloadModalOpen && (
+        <div className="fixed inset-0 z-[99999] flex items-center justify-center p-4">
+          <div className="absolute inset-0 bg-slate-950/80 backdrop-blur-md" onClick={() => !downloadStatus && setIsDownloadModalOpen(false)} />
+          <div className="relative bg-slate-900 border border-white/10 rounded-[2rem] p-8 max-w-md w-full shadow-2xl flex flex-col items-center text-center animate-in fade-in zoom-in duration-300">
+            <button 
+              onClick={() => !downloadStatus && setIsDownloadModalOpen(false)} 
+              disabled={!!downloadStatus}
+              className="absolute top-4 right-4 p-2 text-slate-400 hover:text-white bg-white/5 hover:bg-white/10 rounded-xl transition-all disabled:opacity-50"
+            >
+              <X className="w-5 h-5" />
+            </button>
+            
+            <div className="w-16 h-16 bg-indigo-500/20 text-indigo-400 rounded-2xl flex items-center justify-center mb-6 border border-indigo-500/30 shadow-inner">
+              <Download className="w-8 h-8" />
+            </div>
+            
+            <h2 className="text-2xl font-black text-white mb-2">تنزيل تجميعة الـ PDF</h2>
+            <p className="text-slate-400 mb-6 font-medium leading-relaxed">
+              سيتم توليد وتوقيع نسختك من التجميعة تلقائياً ببياناتك الأمنية (<strong className="text-white">{user?.displayName || userData?.name || "اسمك الشخصي"}</strong>) لمنع تسريب الملف.
+            </p>
+            
+            {downloadStatus ? (
+              // Progress View
+              <div className="w-full space-y-4 py-4">
+                <div className="flex items-center justify-center gap-2 text-indigo-400 font-bold animate-pulse text-sm">
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                  <span>{downloadStatus}</span>
+                </div>
+                <div className="w-full bg-slate-950 rounded-full h-2 overflow-hidden border border-white/5">
+                  <div 
+                    className="bg-gradient-to-r from-indigo-500 to-violet-500 h-2 rounded-full transition-all duration-300"
+                    style={{ width: `${downloadProgress}%` }}
+                  />
+                </div>
+                <div className="text-[10px] text-slate-500 font-bold uppercase tracking-widest text-right">
+                  {downloadProgress}% Completed
+                </div>
+              </div>
+            ) : (
+              // Options View
+              <div className="w-full space-y-4">
+                <button
+                  onClick={() => handleDownloadPDF(true)}
+                  className="group relative w-full p-4 bg-slate-950/50 hover:bg-indigo-500/10 border border-white/5 hover:border-indigo-500/30 rounded-2xl text-left transition-all active:scale-[0.98] duration-300"
+                >
+                  <div className="absolute top-2 right-2 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-[9px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider">
+                    موصى به
+                  </div>
+                  <div className="text-white font-black text-base flex items-center gap-2 mb-1">
+                    <span>النسخة مضغوطة فائقة الجودة</span>
+                  </div>
+                  <div className="text-xs text-slate-400 font-bold leading-relaxed">
+                    دقة 2K عالية جداً مع الاحتفاظ بكل تفاصيل الخطوط والنصوص الطبية. حجم صغير جداً (21.8 MB).
+                  </div>
+                </button>
+                
+                <button
+                  onClick={() => handleDownloadPDF(false)}
+                  className="group w-full p-4 bg-slate-950/50 hover:bg-white/5 border border-white/5 hover:border-white/10 rounded-2xl text-left transition-all active:scale-[0.98] duration-300"
+                >
+                  <div className="text-white font-black text-base flex items-center gap-2 mb-1">
+                    <span>النسخة الأصلية بالدقة الكاملة</span>
+                  </div>
+                  <div className="text-xs text-slate-400 font-bold leading-relaxed">
+                    الملف الأصلي المصدر بجميع الصور بأعلى جودة تجميعية ممكنة. حجم كبير جداً (148.6 MB).
+                  </div>
+                </button>
               </div>
             )}
           </div>
