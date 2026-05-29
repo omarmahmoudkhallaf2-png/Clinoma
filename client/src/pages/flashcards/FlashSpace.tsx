@@ -8080,35 +8080,7 @@ const FlashSpace = () => {
                 </div>
               </div>
 
-              {/* View Tab Switcher */}
-              <div className="flex justify-center gap-4 border-b border-white/5 pb-4 shrink-0">
-                <button
-                  onClick={() => setCampActiveTab('chapters')}
-                  className={cn(
-                    "px-6 py-2.5 rounded-xl font-black text-xs md:text-sm transition-all flex items-center gap-2",
-                    campActiveTab === 'chapters' 
-                      ? "bg-white/10 text-white border border-white/10" 
-                      : "text-slate-400 hover:text-white"
-                  )}
-                >
-                  <BookOpen className="w-4 h-4" /> الشباتر والملفات الدراسية
-                </button>
-                <button
-                  onClick={() => setCampActiveTab('notebook')}
-                  className={cn(
-                    "px-6 py-2.5 rounded-xl font-black text-xs md:text-sm transition-all flex items-center gap-2",
-                    campActiveTab === 'notebook' 
-                      ? "bg-gradient-to-r from-emerald-500 to-teal-500 text-white shadow-lg shadow-emerald-500/20 animate-pulse" 
-                      : "text-slate-400 hover:text-white"
-                  )}
-                >
-                  <Pencil className="w-4 h-4" /> كشكول جدول المذاكرة (ToDo List)
-                </button>
-              </div>
-
-              {campActiveTab === 'chapters' ? (
-                <>
-                  {/* Day Switcher */}
+              {/* Day Switcher */}
               <div className="flex justify-center gap-3 shrink-0 my-2">
                 {[1, 2, 3].map((day) => (
                   <button
@@ -8304,13 +8276,7 @@ const FlashSpace = () => {
                   </div>
                 </div>
               </div>
-            </>
-          ) : (
-            <div className="flex-1 overflow-y-auto pb-8">
-              <CampNotebookToDo />
             </div>
-          )}
-          </div>
           ) : selectedSystem === 'تحديدات الاطفال' && !selectedSubSystem ? (
             // --- SUB-SYSTEM SELECTION FOR TAHDEDAT ---
             <div className="h-full flex flex-col p-4 md:p-8 gap-6 md:gap-8 max-w-7xl mx-auto w-full">
