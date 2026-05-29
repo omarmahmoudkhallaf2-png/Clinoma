@@ -193,6 +193,7 @@ const PEDIATRICS_SLIDES: Record<string, string[]> = {
     'URINARY TRACT INFECTIONS (UTIs) & RENAL IMAGING PROTOCOL.jpeg'
   ],
   'تحديدات الاطفال': [
+    'تحديدات الاطفال/CVS/Atrial Septal Defect (ASD).jpeg',
     'تحديدات الاطفال/CVS/Complete Transposition of the Great Arteries (TGA).jpeg',
     'تحديدات الاطفال/CVS/Patent Ductus Arteriosus (PDA).jpeg',
     'تحديدات الاطفال/CVS/Pediatric Heart Failure (HF).jpeg',
