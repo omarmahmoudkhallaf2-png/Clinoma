@@ -149,7 +149,7 @@
       align-self: flex-start;
     }
 
-    /* Cute planner row layout - RTL aligned */
+    /* Cute planner row layout - RTL aligned with robust wrapping & gaps */
     .topic-row {
       display: flex;
       align-items: center;
@@ -157,15 +157,17 @@
       padding: 10px 15px;
       border-radius: 16px;
       border-bottom: 1px dashed #cbd5e1;
+      gap: 20px; /* Strong gap prevents overlapping */
     }
 
     .topic-info {
       display: flex;
       align-items: center;
       gap: 14px;
-      width: 55%;
+      flex-grow: 1; /* Takes up remaining space dynamically */
       text-align: right;
       justify-content: flex-start;
+      min-width: 0; /* Safe boundaries to prevent clipping */
     }
 
     /* Cute rounded bullet checkbox marker on the right */
@@ -179,18 +181,20 @@
     }
 
     .topic-name {
-      font-size: 14px;
+      font-size: 13.5px;
       font-weight: 700;
       color: #334155;
       line-height: 1.5;
       text-align: right;
+      white-space: normal; /* Wraps clean on multiple lines if too long */
+      word-break: break-word;
     }
 
     /* Multi-Checkboxes Grid on Left */
     .checkboxes-box {
       display: flex;
       gap: 10px;
-      width: 45%;
+      flex-shrink: 0; /* Prevents checkboxes from getting squeezed or cut off */
       justify-content: flex-end;
     }
 
@@ -239,10 +243,11 @@
     }
 
     .quote-text {
-      font-size: 12px;
+      font-size: 14px;
       font-weight: 700;
-      color: #64748b;
-      line-height: 1.6;
+      color: #334155;
+      line-height: 1.8;
+      text-align: right;
     }
 
     /* Elegant CSS/SVG Doodle of succulent pot in bottom corner */
@@ -485,7 +490,7 @@
 
       <div class="footer-area">
         <div class="quote-text">
-          من كان يومه مثل أمسه فهو مغبون.. شطب أهدافك يوماً بيوم لتصل إلى الصدارة! 🌸<br>
+          ﴿يَرْفَعِ اللَّهُ الَّذِينَ آمَنُوا مِنْكُمْ وَالَّذِينَ أُوتُوا الْعِلْمَ دَرَجَاتٍ﴾ [المجادلة: 11] 🌸<br>
           <strong>منصة CLINOMA للأطفال ⚡</strong>
         </div>
         <div class="doodle-pot"></div>
@@ -639,7 +644,7 @@
 
       <div class="footer-area">
         <div class="quote-text">
-          من كان يومه مثل أمسه فهو مغبون.. شطب أهدافك يوماً بيوم لتصل إلى الصدارة! 🌸<br>
+          قَالَ رَسُولُ اللَّهِ ﷺ: «مَنْ سَلَكَ طَرِيقًا يَلْتَمِسُ فِيهِ عِلْمًا، سَهَّلَ اللَّهُ لَهُ بِهِ طَرِيقًا إِلَى الْجَنَّةِ» [رواه مسلم] 🌸<br>
           <strong>منصة CLINOMA للأطفال ⚡</strong>
         </div>
         <div class="doodle-pot"></div>
@@ -745,7 +750,7 @@
 
       <div class="footer-area">
         <div class="quote-text">
-          من كان يومه مثل أمسه فهو مغبون.. شطب أهدافك يوماً بيوم لتصل إلى الصدارة! 🌸<br>
+          ﴿إِنَّا لَا نُضِيعُ أَجْرَ مَنْ أَحَسَنَ عَمَلًا﴾ [الكهف: 30] 🌸<br>
           <strong>منصة CLINOMA للأطفال ⚡</strong>
         </div>
         <div class="doodle-pot"></div>
