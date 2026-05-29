@@ -8,7 +8,7 @@
   <!-- Premium Google Fonts for Cute Planner Aesthetics -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Marhey:wght@400;700&family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
   
   <style>
     /* Global Resets */
@@ -70,7 +70,7 @@
       background-color: #ffffff;
       border-radius: 40px;
       box-shadow: 0 15px 45px rgba(0, 0, 0, 0.04);
-      padding: 40px;
+      padding: 50px;
       position: relative;
       min-height: 1050px;
       display: flex;
@@ -91,9 +91,9 @@
     .header-card {
       background-color: #ffffff;
       border-radius: 20px;
-      padding: 15px 30px;
+      padding: 20px 30px;
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 35px;
       border: 3px dashed #cbd5e1;
     }
 
@@ -103,19 +103,19 @@
       font-weight: 700;
       color: #94a3b8;
       letter-spacing: 2px;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
 
     .main-title {
       font-family: 'Fredoka', 'Cairo', sans-serif;
-      font-size: 28px;
+      font-size: 30px;
       font-weight: 900;
       color: #1e293b;
-      margin-bottom: 2px;
+      margin-bottom: 4px;
     }
 
     .sub-title {
-      font-size: 13px;
+      font-size: 14.5px;
       font-weight: 700;
       color: #64748b;
     }
@@ -125,67 +125,72 @@
       flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 25px;
+      gap: 30px;
     }
 
     .chapter-section {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 15px;
     }
 
     .chapter-badge {
       font-family: 'Fredoka', 'Cairo', sans-serif;
-      font-size: 13px;
+      font-size: 13.5px;
       font-weight: 700;
-      color: #475569;
+      color: #1e293b;
       background-color: #f1f5f9;
-      padding: 6px 16px;
-      border-radius: 12px;
+      padding: 8px 20px;
+      border-radius: 14px;
       display: inline-block;
       width: fit-content;
-      margin-bottom: 5px;
+      margin-bottom: 8px;
+      text-align: right;
+      align-self: flex-start;
     }
 
-    /* Cute planner row layout */
+    /* Cute planner row layout - RTL aligned */
     .topic-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 8px 10px;
+      padding: 10px 15px;
       border-radius: 16px;
-      transition: all 0.3s ease;
+      border-bottom: 1px dashed #cbd5e1;
     }
 
     .topic-info {
       display: flex;
       align-items: center;
-      gap: 12px;
-      width: 48%;
+      gap: 14px;
+      width: 55%;
+      text-align: right;
+      justify-content: flex-start;
     }
 
-    /* Cute rounded bullet checkbox marker */
+    /* Cute rounded bullet checkbox marker on the right */
     .bullet-marker {
-      width: 20px;
-      height: 20px;
-      border: 2px solid #94a3b8;
-      border-radius: 6px;
+      width: 22px;
+      height: 22px;
+      border: 2px solid #cbd5e1;
+      border-radius: 8px;
       flex-shrink: 0;
       background-color: #f8fafc;
     }
 
     .topic-name {
-      font-size: 13.5px;
+      font-size: 14px;
       font-weight: 700;
-      color: #475569;
+      color: #334155;
       line-height: 1.5;
+      text-align: right;
     }
 
     /* Multi-Checkboxes Grid on Left */
     .checkboxes-box {
       display: flex;
       gap: 10px;
-      width: 52%;
+      width: 45%;
       justify-content: flex-end;
     }
 
@@ -276,12 +281,15 @@
       box-shadow: 0 4px 6px rgba(0,0,0,0.05);
     }
 
-    /* Print styling rules */
+    /* Print styling rules - Hides headers and footers from browser printing */
     @media print {
+      @page {
+        margin: 0;
+      }
       body {
         background-color: white !important;
         padding: 0 !important;
-        margin: 0 !important;
+        margin: 1.6cm !important;
       }
       .print-btn {
         display: none !important;
