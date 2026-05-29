@@ -6960,6 +6960,7 @@ const FlashSpace = () => {
       }
       
       // Step 3: Load pdf-lib dynamically from CDN (highly optimized ESM)
+      // @ts-ignore
       const { PDFDocument, rgb, StandardFonts } = await import('https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.esm.js');
       
       const pdfDoc = await PDFDocument.load(pdfBytes);
