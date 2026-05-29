@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>معسكر الورقة الأولى - جدول المذاكرة ⚡</title>
+  
+  <!-- Premium Google Fonts for Cute Planner Aesthetics -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Marhey:wght@400;700&family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+  
+  <style>
+    /* Global Resets */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: #f8fafc;
+      color: #3f3f46;
+      padding: 50px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* Floating Print Button */
+    .print-btn {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #fb7185 0%, #f43f5e 100%);
+      color: white;
+      border: none;
+      padding: 16px 36px;
+      font-size: 15px;
+      font-weight: 700;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(244, 63, 94, 0.35);
+      transition: all 0.3s ease;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Fredoka', 'Cairo', sans-serif;
+    }
+    .print-btn:hover {
+      transform: translateX(-50%) scale(1.05);
+      box-shadow: 0 15px 30px rgba(244, 63, 94, 0.45);
+    }
+
+    /* Main Planner Container */
+    .planner-container {
+      width: 100%;
+      max-width: 750px;
+      margin-top: 60px;
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+    }
+
+    /* Cute Rounded Planner Page */
+    .planner-page {
+      background-color: #ffffff;
+      border-radius: 40px;
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.04);
+      padding: 40px;
+      position: relative;
+      min-height: 1050px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      page-break-after: always; /* Force PDF page break */
+      overflow: hidden;
+      border: 15px solid #ffe4e6; /* Soft pastel border by default */
+      transition: border-color 0.3s ease;
+    }
+
+    /* Theme Pastel Backgrounds per Day */
+    .planner-page.day1 { border-color: #fbcfe8; } /* Day 1 - Soft Pastel Pink/Rose */
+    .planner-page.day2 { border-color: #c7d2fe; } /* Day 2 - Soft Pastel Lavender/Indigo */
+    .planner-page.day3 { border-color: #a7f3d0; } /* Day 3 - Soft Pastel Mint */
+
+    /* Inner Paper Card Header */
+    .header-card {
+      background-color: #ffffff;
+      border-radius: 20px;
+      padding: 15px 30px;
+      text-align: center;
+      margin-bottom: 30px;
+      border: 3px dashed #cbd5e1;
+    }
+
+    .platform-title {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: #94a3b8;
+      letter-spacing: 2px;
+      margin-bottom: 4px;
+    }
+
+    .main-title {
+      font-family: 'Fredoka', 'Cairo', sans-serif;
+      font-size: 28px;
+      font-weight: 900;
+      color: #1e293b;
+      margin-bottom: 2px;
+    }
+
+    .sub-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #64748b;
+    }
+
+    /* Topics list with cute planner simplicity */
+    .chapters-area {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .chapter-section {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .chapter-badge {
+      font-family: 'Fredoka', 'Cairo', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: #475569;
+      background-color: #f1f5f9;
+      padding: 6px 16px;
+      border-radius: 12px;
+      display: inline-block;
+      width: fit-content;
+      margin-bottom: 5px;
+    }
+
+    /* Cute planner row layout */
+    .topic-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 10px;
+      border-radius: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .topic-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 48%;
+    }
+
+    /* Cute rounded bullet checkbox marker */
+    .bullet-marker {
+      width: 20px;
+      height: 20px;
+      border: 2px solid #94a3b8;
+      border-radius: 6px;
+      flex-shrink: 0;
+      background-color: #f8fafc;
+    }
+
+    .topic-name {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #475569;
+      line-height: 1.5;
+    }
+
+    /* Multi-Checkboxes Grid on Left */
+    .checkboxes-box {
+      display: flex;
+      gap: 10px;
+      width: 52%;
+      justify-content: flex-end;
+    }
+
+    .check-item {
+      font-family: 'Cairo', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: #64748b;
+      padding: 6px 12px;
+      border-radius: 10px;
+      background-color: #f8fafc;
+      border: 1.5px solid #e2e8f0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      min-width: 92px;
+      justify-content: center;
+    }
+
+    .check-box-circle {
+      width: 14px;
+      height: 14px;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 4px;
+      display: inline-block;
+    }
+
+    /* Pastel colors for study status items */
+    .check-item.study { border-color: #fbcfe8; color: #db2777; background-color: #fff1f2; }
+    .check-item.study .check-box-circle { border-color: #f472b6; }
+
+    .check-item.quiz { border-color: #c7d2fe; color: #4f46e5; background-color: #eef2ff; }
+    .check-item.quiz .check-box-circle { border-color: #818cf8; }
+
+    .check-item.review { border-color: #a7f3d0; color: #059669; background-color: #ecfdf5; }
+    .check-item.review .check-box-circle { border-color: #34d399; }
+
+    /* Footer decoration with plant doodle */
+    .footer-area {
+      margin-top: 30px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      border-top: 2px dashed #cbd5e1;
+      padding-top: 20px;
+    }
+
+    .quote-text {
+      font-size: 12px;
+      font-weight: 700;
+      color: #64748b;
+      line-height: 1.6;
+    }
+
+    /* Elegant CSS/SVG Doodle of succulent pot in bottom corner */
+    .doodle-pot {
+      width: 60px;
+      height: 70px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      position: relative;
+    }
+
+    /* Leaves */
+    .doodle-pot::before {
+      content: '';
+      position: absolute;
+      bottom: 25px;
+      width: 45px;
+      height: 45px;
+      background: radial-gradient(circle, #34d399 20%, #10b981 80%);
+      border-radius: 50% 50% 10% 10%;
+      border: 2px solid #065f46;
+      z-index: 1;
+    }
+
+    /* Pot */
+    .doodle-pot::after {
+      content: '';
+      width: 40px;
+      height: 28px;
+      background-color: #fca5a5;
+      border: 2px solid #991b1b;
+      border-radius: 4px 4px 12px 12px;
+      z-index: 2;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+
+    /* Print styling rules */
+    @media print {
+      body {
+        background-color: white !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+      .print-btn {
+        display: none !important;
+      }
+      .planner-container {
+        margin-top: 0 !important;
+        gap: 0 !important;
+      }
+      .planner-page {
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        padding: 30px !important;
+        min-height: 100vh !important;
+        border-width: 15px !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Download Button -->
+  <button class="print-btn" onclick="window.print()">
+    <span>🌸</span> اضغط لحفظ جدول المذاكرة كـ PDF
+  </button>
+
+  <div class="planner-container">
+
+    <!-- ==============================================
+         PAGE 1: DAY 1 (Rose/Pink Theme)
+         ============================================== -->
+    <div class="planner-page day1">
+      <div>
+        <div class="header-card">
+          <div class="platform-title">CLINOMA PLATFORM</div>
+          <h1 class="main-title">معسكر الورقة الأولى ⚡</h1>
+          <div class="sub-title">جدول التحصيل والمذاكرة - اليوم الأول 🥇</div>
+        </div>
+
+        <div class="chapters-area">
+          <!-- Chapter 1 -->
+          <div class="chapter-section">
+            <div class="chapter-badge">I. GROWTH AND DEVELOPMENT</div>
+            
+            <div class="topic-row">
+              <div class="topic-info">
+                <div class="bullet-marker"></div>
+                <div class="topic-name">Growth charts</div>
+              </div>
+              <div class="checkboxes-box">
+                <div class="check-item study"><span class="check-box-circle"></span>مذاكرة 📚</div>
+                <div class="check-item quiz"><span class="check-box-circle"></span>حل أسئلة ✍️</div>
+                <div class="check-item review"><span class="check-box-circle"></span>مراجعة 🔄</div>
+              </div>
+            </div>
+
+            <div class="topic-row">
+              <div class="topic-info">
+                <div class="bullet-marker"></div>
+                <div class="topic-name">Development milestones during 1st 4 years</div>
+              </div>
+              <div class="checkboxes-box">
+                <div class="check-item study"><span class="check-box-circle"></span>مذاكرة 📚</div>
+                <div class="check-item quiz"><span class="check-box-circle"></span>حل أسئلة ✍️</div>
+                <div class="check-item review"><span class="check-box-circle"></span>مراجعة 🔄</div>
+              </div>
+            </div>
+
+            <div class="topic-row">
+              <div class="topic-info">
+                <div class="bullet-marker"></div>
+                <div class="topic-name">Key warning signs & delayed milestones</div>
+              </div>
+              <div class="checkboxes-box">
+                <div class="check-item study"><span class="check-box-circle"></span>مذاكرة 📚</div>
+                <div class="check-item quiz"><span class="check-box-circle"></span>حل أسئلة ✍️</div>
+                <div class="check-item review"><span class="check-box-circle"></span>مراجعة 🔄</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chapter 2 -->
+          <div class="chapter-section">
+            <div class="chapter-badge">II. NUTRITION</div>
+            
+            <div class="topic-row">
+              <div class="topic-info">
+                <div class="bullet-marker"></div>
+                <div class="topic-name">Advantages of breast feeding & contraindication</div>
+              </div>
+              <div class="checkboxes-box">
+                <div class="check-item study"><span class="check-box-circle"></span>مذاكرة 📚</div>
+                <div class="check-item quiz"><span class="check-box-circle"></span>حل أسئلة ✍️</div>
+                <div class="check-item review"><span class="check-box-circle"></span>مراجعة 🔄</div>
+              </div>
+            </div>
+
+            <div class="topic-row">
+              <div class="topic-info">
+                <div class="bullet-marker"></div>
+                <div class="topic-name">Nutritional disorders: Kwashiorkor & Marasmus</div>
+              </div>
+              <div class="checkboxes-box">
+                <div class="check-item study"><span class="check-box-circle"></span>مذاكرة 📚</div>
+                <div class="check-item quiz"><span class="check-box-circle"></span>حل أسئلة ✍️</div>
+                <div class="check-item review"><span class="check-box-circle"></span>مراجعة 🔄</div>
+              </div>
+            </div>
+
+            <div class="topic-row">
+              <div class="topic-info">
+                <div class="bullet-marker"></div>
+                <div class="topic-name">Nutritional disorders: Rickets</div>
+              </div>
+              <div class="checkboxes-box">
+                <div class="check-item study"><span class="check-box-circle"></span>مذاكرة 📚</div>
+                <div class="check-item quiz"><span class="check-box-circle"></span>حل أسئلة ✍️</div>
+                <div class="check-item review"><span class="check-box-circle"></span>مراجعة 🔄</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chapter 3 -->
+          <div class="chapter-section">
+            <div class="chapter-badge">III. GIT</div>
+            
+            <div class="topic-row">
+              <div class="topic-info">
+                <div class="bullet-marker"></div>
+                <div class="topic-name">Cow's milk allergy in Pediatrics</div>
+              </div>
+              <div class="checkboxes-box">
+                <div class="check-item study"><span class="check-box-circle"></span>مذاكرة 📚</div>
+                <div class="check-item quiz"><span class="check-box-circle"></span>حل أسئلة ✍️</div>
+                <div class="check-item review"><span class="check-box-circle"></span>مراجعة 🔄</div>
+              </div>
+            </div>
+
+            <div class="topic-row">
+              <div class="topic-info">
+                <div class="bullet-marker"></div>
+                <div class="topic-name">Vomiting in pediatrics</div>
+              </div>
+              <div class="checkboxes-box">
+                <div class="check-item study"><span class="check-box-circle"></span>مذاكرة 📚</div>
+                <div class="check-item quiz"><span class="check-box-circle"></span>حل أسئلة ✍️</div>
+                <div class="check-item review"><span class="check-box-circle"></span>مراجعة 🔄</div>
+              </div>
+            </div>
+
+            <div class="topic-row">
+              <div class="topic-info">
+                <div class="bullet-marker"></div>
+                <div class="topic-name">Abdominal pain in pediatrics</div>
+              </div>
+              <div class="checkboxes-box">
+                <div class="check-item study"><span class="check-box-circle"></span>مذاكرة 📚</div>
+                <div class="check-item quiz"><span class="check-box-circle"></span>حل أسئلة ✍️</div>
+                <div class="check-item review"><span class="check-box-circle"></span>مراجعة 🔄</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chapter 4 -->
+          <div class="chapter-section">
+            <div class="chapter-badge">IV. GENETIC DISEASES</div>
+            
+            <div class="topic-row">
+              <div class="topic-info">
+                <div class="bullet-marker"></div>
+                <div class="topic-name">Chromosomal disorders: Down Syndrome</div>
+              </div>
+              <div class="checkboxes-box">
+                <div class="check-item study"><span class="check-box-circle"></span>مذاكرة 📚</div>
+                <div class="check-item quiz"><span class="check-box-circle"></span>حل أسئلة ✍️</div>
+                <div class="check-item review"><span class="check-box-circle"></span>مراجعة 🔄</div>
+              </div>
+            </div>
+
+            <div class="topic-row">
+              <div class="topic-info">
+                <div class="bullet-marker"></div>
+                <div class="topic-name">Chromosomal disorders: Turner syndrome</div>
+              </div>
+              <div class="checkboxes-box">
+                <div class="check-item study"><span class="check-box-circle"></span>مذاكرة 📚</div>
+                <div class="check-item quiz"><span class="check-box-circle"></span>حل أسئلة ✍️</div>
+                <div class="check-item review"><span class="check-box-circle"></span>مراجعة 🔄</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-area">
+        <div class="quote-text">
+          من كان يومه مثل أمسه فهو مغبون.. شطب أهدافك يوماً بيوم لتصل إلى الصدارة! 🌸<br>
+          <strong>منصة CLINOMA للأطفال ⚡</strong>
+        </div>
+        <div class="doodle-pot"></div>
+      </div>
+    </div>
+
+
+    <!-- ==============================================
+         PAGE 2: DAY 2 (Indigo/Lavender Theme)
+         ============================================== -->
+    <div class="planner-page day2">
+      <div>
+        <div class="header-card">
+          <div class="platform-title">CLINOMA PLATFORM</div>
+          <h1 class="main-title">معسكر الورقة الأولى ⚡</h1>
+          <div class="sub-title">جدول التحصيل والمذاكرة - اليوم الثاني 🥈</div>
+        </div>
+
+        <div class="chapters-area">
+          <!-- Chapter 5 -->
+          <div class="chapter-section">
+            <div class="chapter-badge">V. ENDOCRINOLOGY</div>
+            
+            <div class="topic-row">
+              <div class="topic-info">
+                <div class="bullet-marker"></div>
+                <div class="topic-name">Short stature</div>
+              </div>
+              <div class="checkboxes-box">
+                <div class="check-item study"><span class="check-box-circle"></span>مذاكرة 📚</div>
+                <div class="check-item quiz"><span class="check-box-circle"></span>حل أسئلة ✍️</div>
+                <div class="check-item review"><span class="check-box-circle"></span>مراجعة 🔄</div>
+              </div>
+            </div>
+
+            <div class="topic-row">
+              <div class="topic-info">
+                <div class="bullet-marker"></div>
+                <div class="topic-name">Hypothyroidism</div>
+              </div>
+              <div class="checkboxes-box">
+                <div class="check-item study"><span class="check-box-circle"></span>مذاكرة 📚</div>
+                <div class="check-item quiz"><span class="check-box-circle"></span>حل أسئلة ✍️</div>
+                <div class="check-item review"><span class="check-box-circle"></span>مراجعة 🔄</div>
+              </div>
+            </div>
+
+            <div class="topic-row">
+              <div class="topic-info">
+                <div class="bullet-marker"></div>
+                <div class="topic-name">Diabetes Mellitus Type 1 & DKA</div>
+              </div>
+              <div class="checkboxes-box">
+                <div class="check-item study"><span class="check-box-circle"></span>مذاكرة 📚</div>
+                <div class="check-item quiz"><span class="check-box-circle"></span>حل أسئلة ✍️</div>
+                <div class="check-item review"><span class="check-box-circle"></span>مراجعة 🔄</div>
+              </div>
+            </div>
+
+            <div class="topic-row">
+              <div class="topic-info">
+                <div class="bullet-marker"></div>
+                <div class="topic-name">Childhood obesity</div>
+              </div>
+              <div class="checkboxes-box">
+                <div class="check-item study"><span class="check-box-circle"></span>مذاكرة 📚</div>
+                <div class="check-item quiz"><span class="check-box-circle"></span>حل أسئلة ✍️</div>
+                <div class="check-item review"><span class="check-box-circle"></span>مراجعة 🔄</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chapter 6 -->
+          <div class="chapter-section">
+            <div class="chapter-badge">VI. HEMATOLOGY AND ONCOLOGY</div>
+            
+            <div class="topic-row">
+              <div class="topic-info">
+                <div class="bullet-marker"></div>
+                <div class="topic-name">Iron deficiency anaemia</div>
+              </div>
+              <div class="checkboxes-box">
+                <div class="check-item study"><span class="check-box-circle"></span>مذاكرة 📚</div>
+                <div class="check-item quiz"><span class="check-box-circle"></span>حل أسئلة ✍️</div>
+                <div class="check-item review"><span class="check-box-circle"></span>مراجعة 🔄</div>
+              </div>
+            </div>
+
+            <div class="topic-row">
+              <div class="topic-info">
+                <div class="bullet-marker"></div>
+                <div class="topic-name">Aplastic anaemia</div>
+              </div>
+              <div class="checkboxes-box">
+                <div class="check-item study"><span class="check-box-circle"></span>مذاكرة 📚</div>
+                <div class="check-item quiz"><span class="check-box-circle"></span>حل أسئلة ✍️</div>
+                <div class="check-item review"><span class="check-box-circle"></span>مراجعة 🔄</div>
+              </div>
+            </div>
+
+            <div class="topic-row">
+              <div class="topic-info">
+                <div class="bullet-marker"></div>
+                <div class="topic-name">Chronic hemolytic anaemia</div>
+              </div>
+              <div class="checkboxes-box">
+                <div class="check-item study"><span class="check-box-circle"></span>مذاكرة 📚</div>
+                <div class="check-item quiz"><span class="check-box-circle"></span>حل أسئلة ✍️</div>
+                <div class="check-item review"><span class="check-box-circle"></span>مراجعة 🔄</div>
+              </div>
+            </div>
+
+            <div class="topic-row">
+              <div class="topic-info">
+                <div class="bullet-marker"></div>
+                <div class="topic-name">RBC abnormalities: Spherocytosis</div>
+              </div>
+              <div class="checkboxes-box">
+                <div class="check-item study"><span class="check-box-circle"></span>مذاكرة 📚</div>
+                <div class="check-item quiz"><span class="check-box-circle"></span>حل أسئلة ✍️</div>
+                <div class="check-item review"><span class="check-box-circle"></span>مراجعة 🔄</div>
+              </div>
+            </div>
+
+            <div class="topic-row">
+              <div class="topic-info">
+                <div class="bullet-marker"></div>
+                <div class="topic-name">RBC abnormalities: Thalassemias</div>
+              </div>
+              <div class="checkboxes-box">
+                <div class="check-item study"><span class="check-box-circle"></span>مذاكرة 📚</div>
+                <div class="check-item quiz"><span class="check-box-circle"></span>حل أسئلة ✍️</div>
+                <div class="check-item review"><span class="check-box-circle"></span>مراجعة 🔄</div>
+              </div>
+            </div>
+
+            <div class="topic-row">
+              <div class="topic-info">
+                <div class="bullet-marker"></div>
+                <div class="topic-name">Hemophilia | ITP (Immune Thrombocytopenic Purpura)</div>
+              </div>
+              <div class="checkboxes-box">
+                <div class="check-item study"><span class="check-box-circle"></span>مذاكرة 📚</div>
+                <div class="check-item quiz"><span class="check-box-circle"></span>حل أسئلة ✍️</div>
+                <div class="check-item review"><span class="check-box-circle"></span>مراجعة 🔄</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-area">
+        <div class="quote-text">
+          من كان يومه مثل أمسه فهو مغبون.. شطب أهدافك يوماً بيوم لتصل إلى الصدارة! 🌸<br>
+          <strong>منصة CLINOMA للأطفال ⚡</strong>
+        </div>
+        <div class="doodle-pot"></div>
+      </div>
+    </div>
+
+
+    <!-- ==============================================
+         PAGE 3: DAY 3 (Mint/Green Theme)
+         ============================================== -->
+    <div class="planner-page day3">
+      <div>
+        <div class="header-card">
+          <div class="platform-title">CLINOMA PLATFORM</div>
+          <h1 class="main-title">معسكر الورقة الأولى ⚡</h1>
+          <div class="sub-title">جدول التحصيل والمذاكرة - اليوم الثالث 🥉</div>
+        </div>
+
+        <div class="chapters-area">
+          <!-- Chapter 7 -->
+          <div class="chapter-section">
+            <div class="chapter-badge">VII. CVS</div>
+            
+            <div class="topic-row">
+              <div class="topic-info">
+                <div class="bullet-marker"></div>
+                <div class="topic-name">Acyanotic Heart: VSD (Part 1 & 2)</div>
+              </div>
+              <div class="checkboxes-box">
+                <div class="check-item study"><span class="check-box-circle"></span>مذاكرة 📚</div>
+                <div class="check-item quiz"><span class="check-box-circle"></span>حل أسئلة ✍️</div>
+                <div class="check-item review"><span class="check-box-circle"></span>مراجعة 🔄</div>
+              </div>
+            </div>
+
+            <div class="topic-row">
+              <div class="topic-info">
+                <div class="bullet-marker"></div>
+                <div class="topic-name">Acyanotic Heart: ASD | Patent Ductus Arteriosus (PDA)</div>
+              </div>
+              <div class="checkboxes-box">
+                <div class="check-item study"><span class="check-box-circle"></span>مذاكرة 📚</div>
+                <div class="check-item quiz"><span class="check-box-circle"></span>حل أسئلة ✍️</div>
+                <div class="check-item review"><span class="check-box-circle"></span>مراجعة 🔄</div>
+              </div>
+            </div>
+
+            <div class="topic-row">
+              <div class="topic-info">
+                <div class="bullet-marker"></div>
+                <div class="topic-name">Cyanotic Heart: TGA | Fallot / TOF</div>
+              </div>
+              <div class="checkboxes-box">
+                <div class="check-item study"><span class="check-box-circle"></span>مذاكرة 📚</div>
+                <div class="check-item quiz"><span class="check-box-circle"></span>حل أسئلة ✍️</div>
+                <div class="check-item review"><span class="check-box-circle"></span>مراجعة 🔄</div>
+              </div>
+            </div>
+
+            <div class="topic-row">
+              <div class="topic-info">
+                <div class="bullet-marker"></div>
+                <div class="topic-name">Heart Failure</div>
+              </div>
+              <div class="checkboxes-box">
+                <div class="check-item study"><span class="check-box-circle"></span>مذاكرة 📚</div>
+                <div class="check-item quiz"><span class="check-box-circle"></span>حل أسئلة ✍️</div>
+                <div class="check-item review"><span class="check-box-circle"></span>مراجعة 🔄</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chapter 8 -->
+          <div class="chapter-section">
+            <div class="chapter-badge">VIII. CNS</div>
+            
+            <div class="topic-row">
+              <div class="topic-info">
+                <div class="bullet-marker"></div>
+                <div class="topic-name">Cerebral Palsy | Floppy infant</div>
+              </div>
+              <div class="checkboxes-box">
+                <div class="check-item study"><span class="check-box-circle"></span>مذاكرة 📚</div>
+                <div class="check-item quiz"><span class="check-box-circle"></span>حل أسئلة ✍️</div>
+                <div class="check-item review"><span class="check-box-circle"></span>مراجعة 🔄</div>
+              </div>
+            </div>
+
+            <div class="topic-row">
+              <div class="topic-info">
+                <div class="bullet-marker"></div>
+                <div class="topic-name">Duchenne muscle dystrophy | Infection</div>
+              </div>
+              <div class="checkboxes-box">
+                <div class="check-item study"><span class="check-box-circle"></span>مذاكرة 📚</div>
+                <div class="check-item quiz"><span class="check-box-circle"></span>حل أسئلة ✍️</div>
+                <div class="check-item review"><span class="check-box-circle"></span>مراجعة 🔄</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-area">
+        <div class="quote-text">
+          من كان يومه مثل أمسه فهو مغبون.. شطب أهدافك يوماً بيوم لتصل إلى الصدارة! 🌸<br>
+          <strong>منصة CLINOMA للأطفال ⚡</strong>
+        </div>
+        <div class="doodle-pot"></div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
