@@ -149,7 +149,7 @@
       align-self: flex-start;
     }
 
-    /* Cute planner row layout - RTL aligned with robust wrapping & gaps */
+    /* Flipped Layout: Instructions (Checkboxes) on the Right, Topics on the Left */
     .topic-row {
       display: flex;
       align-items: center;
@@ -157,20 +157,21 @@
       padding: 10px 15px;
       border-radius: 16px;
       border-bottom: 1px dashed #cbd5e1;
-      gap: 20px; /* Strong gap prevents overlapping */
+      gap: 20px;
+      flex-direction: row-reverse; /* Flipped visually: first child goes to left, second to right */
     }
 
     .topic-info {
       display: flex;
       align-items: center;
       gap: 14px;
-      flex-grow: 1; /* Takes up remaining space dynamically */
-      text-align: right;
-      justify-content: flex-start;
-      min-width: 0; /* Safe boundaries to prevent clipping */
+      flex-grow: 1;
+      text-align: left;
+      justify-content: flex-end; /* Align topics to the left edge */
+      min-width: 0;
     }
 
-    /* Cute rounded bullet checkbox marker on the right */
+    /* Cute rounded bullet checkbox marker on the left side of text */
     .bullet-marker {
       width: 22px;
       height: 22px;
@@ -178,24 +179,26 @@
       border-radius: 8px;
       flex-shrink: 0;
       background-color: #f8fafc;
+      order: 2; /* Forces bullet to be rendered after the text (on the far left edge) */
     }
 
     .topic-name {
-      font-size: 13.5px;
+      font-size: 14px;
       font-weight: 700;
       color: #334155;
       line-height: 1.5;
-      text-align: right;
-      white-space: normal; /* Wraps clean on multiple lines if too long */
+      text-align: left; /* Align text on the left */
+      order: 1;
+      white-space: normal;
       word-break: break-word;
     }
 
-    /* Multi-Checkboxes Grid on Left */
+    /* Multi-Checkboxes Grid on the Right Side */
     .checkboxes-box {
       display: flex;
       gap: 10px;
-      flex-shrink: 0; /* Prevents checkboxes from getting squeezed or cut off */
-      justify-content: flex-end;
+      flex-shrink: 0;
+      justify-content: flex-start; /* Align instructions to the right edge */
     }
 
     .check-item {
