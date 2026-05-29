@@ -41,7 +41,8 @@ import {
   Check,
   Edit,
   Download,
-  Loader2
+  Loader2,
+  Settings
 } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { useNavigate } from 'react-router-dom';
@@ -215,6 +216,7 @@ const PEDIATRICS_SLIDES: Record<string, string[]> = {
     'تحديدات الاطفال/Growth & Development/Key development warning signs & Delayed milestone causes.jpeg',
     'تحديدات الاطفال/Hematology & Oncology/Acute lymphoplastic leukemia.jpeg',
     'تحديدات الاطفال/Hematology & Oncology/Aplastic anemia.jpeg',
+    'تحديدات الاطفال/Hematology & Oncology/Chronic Hemolytic Anemia & Hereditary Spherocytosis.jpeg',
     'تحديدات الاطفال/Hematology & Oncology/GP6D.jpeg',
     'تحديدات الاطفال/Hematology & Oncology/HODGKIN lymphoma.jpeg',
     'تحديدات الاطفال/Hematology & Oncology/Hemophilia.jpeg',
@@ -229,6 +231,9 @@ const PEDIATRICS_SLIDES: Record<string, string[]> = {
     'تحديدات الاطفال/Nutrition/advantages of breastfeeding & contraindication.jpeg',
     'تحديدات الاطفال/Nutrition/PEM.jpeg',
     'تحديدات الاطفال/Nutrition/Rickets.jpeg'
+  ],
+  'معسكر الورقة الأولى': [
+    'معسكر الورقة الأولى.jpeg'
   ]
 };
 
@@ -6905,12 +6910,37 @@ const FlashSpace = () => {
   const [selectedModule, setSelectedModule] = useState<string | null>(null);
   const [selectedSystem, setSelectedSystem] = useState<string | null>(null);
   const [selectedSubSystem, setSelectedSubSystem] = useState<string | null>(null);
+  const matchesSubSystem = (bSubSystem: string | undefined, selSubSys: string | null) => {
+    if (!selSubSys) return true;
+    if (selSubSys === 'CNS') return bSubSystem === 'Neurology' || bSubSystem === 'Infection';
+    return bSubSystem === selSubSys;
+  };
   const [selectedBoard, setSelectedBoard] = useState<Board | null>(null);
   const [showSubscriptionModal, setShowSubscriptionModal] = useState(false);
   const [growthViews, setGrowthViews] = useState<number>(0);
   const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
   const [downloadProgress, setDownloadProgress] = useState(0);
   const [downloadStatus, setDownloadStatus] = useState<string | null>(null);
+
+  // --- First Paper Camp states ---
+  const [campActiveDay, setCampActiveDay] = useState<number>(1);
+  const [campShowSettings, setCampShowSettings] = useState(false);
+  const [campStartTimeStr, setCampStartTimeStr] = useState<string>(() => {
+    return localStorage.getItem('camp_start_time') || new Date(Date.now() - 5 * 60 * 1000).toISOString().slice(0, 16);
+  });
+  const [campDurationMins, setCampDurationMins] = useState<number>(() => {
+    return Number(localStorage.getItem('camp_duration') || '15');
+  });
+  const [campTimeRemainingToStart, setCampTimeRemainingToStart] = useState<number>(0);
+  const [campExamState, setCampExamState] = useState<'locked' | 'ready' | 'active' | 'finished'>('ready');
+  const [campGameQuestions, setCampGameQuestions] = useState<{ id: string; text: string }[]>([]);
+  const [campGameAnswers, setCampGameAnswers] = useState<{ id: string; text: string }[]>([]);
+  const [campSelectedQ, setCampSelectedQ] = useState<string | null>(null);
+  const [campSelectedA, setCampSelectedA] = useState<string | null>(null);
+  const [campMatches, setCampMatches] = useState<Record<string, string>>({});
+  const [campWrongMatches, setCampWrongMatches] = useState<string[]>([]);
+  const [campTestTimeLeft, setCampTestTimeLeft] = useState<number>(0);
+  const [campScore, setCampScore] = useState<number>(0);
 
   const handleDownloadPDF = async (compressFlag: boolean) => {
     setDownloadProgress(0);
@@ -7348,6 +7378,74 @@ const FlashSpace = () => {
     };
     fetchData();
   }, []);
+
+  // --- First Paper Camp Scheduler & Timers ---
+  useEffect(() => {
+    const checkSchedule = () => {
+      const startMs = new Date(campStartTimeStr).getTime();
+      const nowMs = Date.now();
+      const diff = startMs - nowMs;
+      
+      if (diff > 0) {
+        setCampTimeRemainingToStart(Math.ceil(diff / 1000));
+        setCampExamState('locked');
+      } else {
+        setCampTimeRemainingToStart(0);
+        if (campExamState === 'locked') {
+          setCampExamState('ready');
+        }
+      }
+    };
+
+    checkSchedule();
+    const interval = setInterval(checkSchedule, 1000);
+    return () => clearInterval(interval);
+  }, [campStartTimeStr, campExamState]);
+
+  useEffect(() => {
+    if (campExamState !== 'active') return;
+
+    if (campTestTimeLeft <= 0) {
+      const correctCount = Object.keys(campMatches).length;
+      const finalScore = Math.round((correctCount / (campGameQuestions.length || 6)) * 100);
+      setCampScore(finalScore);
+      setCampExamState('finished');
+      return;
+    }
+
+    const interval = setInterval(() => {
+      setCampTestTimeLeft(prev => prev - 1);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [campTestTimeLeft, campExamState]);
+
+  const startCampMatchingGame = () => {
+    const MATCHING_POOL = [
+      { id: '1', question: 'Widely split & fixed S2', answer: 'Atrial Septal Defect (ASD)' },
+      { id: '2', question: 'Continuous machinery murmur', answer: 'Patent Ductus Arteriosus (PDA)' },
+      { id: '3', question: 'Boot-shaped heart on X-ray', answer: 'Tetralogy of Fallot (TOF)' },
+      { id: '4', question: 'Egg-on-a-string heart shape', answer: 'Transposition of Great Arteries (TGA)' },
+      { id: '5', question: 'Rib notching on Chest X-ray', answer: 'Coarctation of the Aorta (CoA)' },
+      { id: '6', question: 'Knee-Chest position therapy', answer: 'Hypercyanotic Tet Spell' },
+      { id: '7', question: 'Webbed neck & short female stature', answer: 'Turner Syndrome' },
+      { id: '8', question: '47, XXY karyotype & long limbs', answer: 'Klinefelter Syndrome' },
+      { id: '9', question: 'Overlapping fingers & rocker-bottom feet', answer: 'Edward Syndrome (Trisomy 18)' },
+      { id: '10', question: 'Cleft lip/palate & microphthalmia', answer: 'Patau Syndrome (Trisomy 13)' }
+    ];
+    const shuffledPool = [...MATCHING_POOL].sort(() => Math.random() - 0.5).slice(0, 6);
+    const qs = shuffledPool.map(item => ({ id: item.id, text: item.question })).sort(() => Math.random() - 0.5);
+    const ans = shuffledPool.map(item => ({ id: item.id, text: item.answer })).sort(() => Math.random() - 0.5);
+    
+    setCampGameQuestions(qs);
+    setCampGameAnswers(ans);
+    setCampMatches({});
+    setCampWrongMatches([]);
+    setCampSelectedQ(null);
+    setCampSelectedA(null);
+    setCampTestTimeLeft(campDurationMins * 60);
+    setCampExamState('active');
+  };
 
   // --- Pro Rendering Engine (Optimized) ---
   const drawPath = useCallback((ctx: CanvasRenderingContext2D, path: Path, opacityOverride?: number) => {
@@ -7836,10 +7934,15 @@ const FlashSpace = () => {
               <div className="flex-1 overflow-y-auto pb-8">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
                   {[...(systems[selectedModule] || [])].sort((a, b) => {
-                    if (a === 'Growth & development') return -1;
-                    if (b === 'Growth & development') return 1;
-                    if (a === 'تحديدات الاطفال') return -1;
-                    if (b === 'تحديدات الاطفال') return 1;
+                    const getPriority = (x: string) => {
+                      if (x === 'تحديدات الاطفال') return 1;
+                      if (x === 'معسكر الورقة الأولى') return 2;
+                      if (x === 'Growth & development') return 3;
+                      return 100;
+                    };
+                    const pA = getPriority(a);
+                    const pB = getPriority(b);
+                    if (pA !== pB) return pA - pB;
                     return a.localeCompare(b);
                   }).map(sys => {
                     const color = SYSTEM_COLORS[sys] || '#6366f1';
@@ -7847,6 +7950,7 @@ const FlashSpace = () => {
                     
                     const SYSTEM_BGS: Record<string, string> = {
                       'تحديدات الاطفال': '/assets/chapters/tahdedat_bg.jpg',
+                      'معسكر الورقة الأولى': '/assets/chapters/camp_bg.png',
                       'Cardiovascular diseases': '/assets/chapters/cardio_bg_1779636563389.png',
                       'Endocrinology': '/assets/chapters/endo_bg_1779636576095.png',
                       'Gastroenterology & hepatology': '/assets/chapters/gastro_bg_1779636588519.png',
@@ -7935,15 +8039,239 @@ const FlashSpace = () => {
                         </div>
 
                         <div className="relative z-10 mt-6">
-                          <h3 className="text-white font-black text-lg leading-tight mb-1">{sys}</h3>
-                          <div className="flex items-center gap-2">
-                            <div className="w-1.5 h-1.5 rounded-full" style={{background: color, boxShadow: `0 0 10px ${color}`}} />
-                            <p className="text-slate-400 text-xs font-semibold">{count} visual slides</p>
-                          </div>
+                          <h3 className="text-white font-black text-lg leading-tight mb-1">
+                            {sys === 'معسكر الورقة الأولى' ? 'معسكر الورقة الأولى ⚡' : sys}
+                          </h3>
+                          {sys !== 'معسكر الورقة الأولى' && (
+                            <div className="flex items-center gap-2">
+                              <div className="w-1.5 h-1.5 rounded-full" style={{background: color, boxShadow: `0 0 10px ${color}`}} />
+                              <p className="text-slate-400 text-xs font-semibold">{count} visual slides</p>
+                            </div>
+                          )}
                         </div>
                       </button>
                     );
                   })}
+                </div>
+              </div>
+            </div>
+          ) : selectedSystem === 'معسكر الورقة الأولى' ? (
+            // --- CUSTOM CAMP DASHBOARD INSIDE FLASH SPACE ---
+            <div className="h-full flex flex-col p-4 md:p-8 gap-6 md:gap-8 max-w-7xl mx-auto w-full relative" dir="rtl">
+              {/* Header */}
+              <div className="flex items-center justify-between gap-4 shrink-0 mt-2">
+                <div className="flex items-center gap-4">
+                  <button onClick={() => {
+                    setSelectedSystem(null);
+                    setSelectedSubSystem(null);
+                    setSelectedBoard(null);
+                    setIsChapterQuestionMode(false);
+                    setShowQuestions(false);
+                    setShowExplanation(false);
+                  }} className="p-2.5 bg-white/5 active:bg-white/15 hover:bg-white/10 rounded-2xl text-slate-400 transition-all border border-white/5 hover:border-white/10 hover:shadow-lg hover:shadow-black/20">
+                    <ChevronLeft className="w-5 h-5" />
+                  </button>
+                  <div>
+                    <h2 className="text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-white/60">معسكر الورقة الأولى للأطفال ⚡</h2>
+                    <p className="text-slate-500 text-xs font-bold uppercase mt-1">تصفح المعسكر المكثف مقسماً إلى 3 أيام</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Day Switcher */}
+              <div className="flex justify-center gap-3 shrink-0 my-2">
+                {[1, 2, 3].map((day) => (
+                  <button
+                    key={day}
+                    onClick={() => setCampActiveDay(day)}
+                    className={`px-6 py-3 rounded-2xl font-black text-sm md:text-base transition-all duration-300 shadow-md ${
+                      campActiveDay === day 
+                        ? 'bg-gradient-to-r from-amber-500 to-rose-500 text-white scale-[1.04]'
+                        : 'bg-slate-900/50 border border-white/5 text-slate-350 hover:bg-white/5'
+                    }`}
+                  >
+                    اليوم {day === 1 ? 'الأول' : day === 2 ? 'الثاني' : 'الثالث'}
+                  </button>
+                ))}
+              </div>
+
+              {/* Grid of Chapter Slides */}
+              <div className="flex-1 overflow-y-auto pb-8">
+                {(() => {
+                  const dayLabel = campActiveDay === 1 ? 'اليوم الأول' : campActiveDay === 2 ? 'اليوم الثاني' : 'اليوم الثالث';
+                  const dayLabelEng = campActiveDay === 1 ? 'Day 1' : campActiveDay === 2 ? 'Day 2' : 'Day 3';
+                  const campActiveSlides = (
+                    campActiveDay === 1 ? [
+                      { 
+                        label: 'I. GROWTH AND DEVELOPMENT', 
+                        subSystemKey: 'Growth & Development', 
+                        arabic: 'النمو والتطور للأطفال',
+                        gradient: 'from-amber-500 to-orange-500 bg-amber-500/10 text-amber-400' 
+                      },
+                      { 
+                        label: 'II. NUTRITION', 
+                        subSystemKey: 'Nutrition', 
+                        arabic: 'التغذية العلاجية للأطفال',
+                        gradient: 'from-emerald-500 to-teal-500 bg-emerald-500/10 text-emerald-400' 
+                      },
+                      { 
+                        label: 'III. GIT', 
+                        subSystemKey: 'GIT', 
+                        arabic: 'الجهاز الهضمي للأطفال',
+                        gradient: 'from-indigo-500 to-blue-500 bg-indigo-500/10 text-indigo-400' 
+                      },
+                      { 
+                        label: 'IV. GENETIC DISEASES', 
+                        subSystemKey: 'Genetics', 
+                        arabic: 'الأمراض الوراثية للأطفال',
+                        gradient: 'from-rose-500 to-pink-500 bg-rose-500/10 text-rose-400' 
+                      }
+                    ] : campActiveDay === 2 ? [
+                      { 
+                        label: 'V. ENDOCRINOLOGY', 
+                        subSystemKey: 'Endocrinology', 
+                        arabic: 'الغدد الصماء للأطفال',
+                        gradient: 'from-violet-500 to-fuchsia-500 bg-violet-500/10 text-violet-400' 
+                      },
+                      { 
+                        label: 'VI. HEMATOLOGY AND ONCOLOGY', 
+                        subSystemKey: 'Hematology & Oncology', 
+                        arabic: 'أمراض الدم والأورام للأطفال',
+                        gradient: 'from-red-500 to-rose-500 bg-red-500/10 text-red-400' 
+                      }
+                    ] : [
+                      { 
+                        label: 'VII. CVS', 
+                        subSystemKey: 'CVS', 
+                        arabic: 'القلب والأوعية الدموية للأطفال',
+                        gradient: 'from-amber-500 to-orange-500 bg-amber-500/10 text-amber-400' 
+                      },
+                      { 
+                        label: 'VIII. CNS', 
+                        subSystemKey: 'CNS', 
+                        arabic: 'الجهاز العصبي والالتهابات للأطفال',
+                        gradient: 'from-indigo-500 to-cyan-500 bg-indigo-500/10 text-indigo-400' 
+                      }
+                    ]
+                  );
+
+                  if (campActiveSlides.length === 0) {
+                    return (
+                      <div className="py-16 text-center bg-slate-900/30 backdrop-blur-md rounded-[2rem] border border-dashed border-white/5 space-y-3">
+                        <p className="text-base font-black text-slate-300">سيتم إضافة محتوى {dayLabel} قريباً 📚</p>
+                        <p className="text-xs text-slate-500 font-bold">يرجى متابعة التحديثات القادمة للمعسكر المتميز.</p>
+                      </div>
+                    );
+                  }
+
+                  return (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      {campActiveSlides.map((item, idx) => {
+                        const slideCount = boards.filter(b => 
+                          b.system === 'تحديدات الاطفال' && 
+                          b.subSystem === item.subSystemKey
+                        ).length;
+
+                        return (
+                          <div 
+                            key={idx}
+                            onClick={() => {
+                              setSelectedSystem('تحديدات الاطفال');
+                              setSelectedSubSystem(item.subSystemKey);
+                            }}
+                            className="group bg-slate-900/50 backdrop-blur-xl border border-white/5 hover:border-indigo-500/40 rounded-3xl p-6 shadow-lg active:scale-[0.98] hover:scale-[1.01] transition-all duration-300 cursor-pointer flex flex-col justify-between min-h-[160px]"
+                          >
+                            <div className="space-y-3 text-right">
+                              <div className="flex items-center justify-between">
+                                <span className={`inline-block text-[10px] font-black uppercase tracking-wider px-3.5 py-1.5 rounded-full ${item.gradient}`}>
+                                  {slideCount} ملفات تفاعلية
+                                </span>
+                                <span className="text-[10px] font-bold text-slate-500 uppercase">تحديدات الاطفال</span>
+                              </div>
+                              <h3 className="text-xl font-black text-white group-hover:text-amber-400 transition-colors leading-snug font-mono tracking-wide uppercase">
+                                {item.label}
+                              </h3>
+                            </div>
+                            <div className="flex items-center justify-between border-t border-white/5 pt-4 mt-6 text-xs font-black text-slate-400 group-hover:text-amber-400 transition-colors">
+                              <span className="transform group-hover:translate-x-[-6px] transition-transform">← افتح محتوى الشابتر بالأسئلة والتحديدات كاملة</span>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  );
+                })()}
+
+                {/* PDFs and Timed Matching Section */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 pt-10">
+                  {/* PDF Center */}
+                  <div className="bg-slate-900/40 backdrop-blur-xl border border-white/5 rounded-[2rem] p-6 space-y-4">
+                    <div className="flex items-center gap-3 text-right">
+                      <div className="w-10 h-10 bg-amber-500/10 text-amber-500 rounded-xl flex items-center justify-center">
+                        <FileText className="w-5 h-5" />
+                      </div>
+                      <div>
+                        <h3 className="text-lg font-black text-white">تحميل ملفات الـ PDF</h3>
+                        <p className="text-xs text-slate-400 font-semibold">تنزيل مذكرات وأسئلة المعسكر التفاعلية.</p>
+                      </div>
+                    </div>
+
+                    <div className="py-8 text-center bg-slate-950/40 rounded-2xl border border-dashed border-white/5 space-y-2">
+                      <p className="text-xs font-black text-slate-350">سيتم إضافة مذكرات التحميل قريباً 📚</p>
+                      <p className="text-[10px] text-slate-500 font-bold">يمكنك تحميل مذكرات المراجعة والأسئلة فور رفعها.</p>
+                    </div>
+                  </div>
+
+                  {/* Timed Test */}
+                  <div className="bg-slate-900/40 backdrop-blur-xl border border-white/5 rounded-[2rem] p-6 space-y-4 flex flex-col justify-between">
+                    <div className="space-y-3 text-right">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 bg-rose-500/10 text-rose-500 rounded-xl flex items-center justify-center">
+                          <Trophy className="w-5 h-5" />
+                        </div>
+                        <div>
+                          <h3 className="text-lg font-black text-white">اختبار التوصيل التفاعلي</h3>
+                          <p className="text-xs text-slate-400 font-semibold">اختبار توصيل ذكي مدمج مثل بقية الشباتر.</p>
+                        </div>
+                      </div>
+
+                      <div className="bg-slate-950/80 border border-white/5 rounded-xl p-3 flex items-center gap-3">
+                        <Clock className="w-4 h-4 text-rose-500 animate-pulse" />
+                        <div className="text-right">
+                          <p className="text-[10px] text-slate-500 font-bold">نظام الاختبار</p>
+                          <p className="text-xs font-black text-slate-200">حل فوري وإرسال لكل سؤال بنظام الماتشينج الأصلي</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="pt-4">
+                      <button 
+                        onClick={() => {
+                          const campSlides = boards.filter(b => b.module === 'Pediatrics' && b.system === 'معسكر الورقة الأولى');
+                          const campQuestions = campSlides.flatMap(board => {
+                            const diseaseKey = (board.disease || '').replace(/\.(jpeg|jpg|png)\s*$/i, '').trim();
+                            return getQuestionsForKey(diseaseKey);
+                          });
+                          const generalQuestions = getQuestionsForKey(`_CHAPTER_معسكر الورقة الأولى`);
+                          const matchingQs = [...campQuestions, ...generalQuestions].filter(q => q.type === 'matching' || q.front.toLowerCase().startsWith('match'));
+                          
+                          if (matchingQs.length === 0) {
+                            toast.error('سيتم إضافة أسئلة اختبار التوصيل لهذا المعسكر قريباً!');
+                            return;
+                          }
+                          
+                          setIsChapterQuestionMode(true);
+                          setShowQuestions(true);
+                          setShowExplanation(false);
+                          setActiveCategory('Matching');
+                          startQuestionSession(matchingQs);
+                        }}
+                        className="w-full py-4 bg-gradient-to-r from-amber-500 to-rose-500 hover:from-amber-600 hover:to-rose-600 text-white rounded-2xl font-black text-sm transition-all shadow-lg active:scale-[0.98] hover:scale-[1.01]"
+                      >
+                        ابدأ اختبار التوصيل الآن
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -8080,7 +8408,7 @@ const FlashSpace = () => {
                 {isChapterQuestionMode ? (
                   // --- CHAPTER QUESTIONS TAB - Flashcard Session ---
                   (() => {
-                    const chapterSlides = boards.filter(b => b.module === selectedModule && b.system === selectedSystem && (selectedSubSystem ? b.subSystem === selectedSubSystem : true));
+                    const chapterSlides = boards.filter(b => b.module === selectedModule && b.system === selectedSystem && matchesSubSystem(b.subSystem, selectedSubSystem));
                     const chapterQuestions = selectedSystem === 'تحديدات الاطفال' ? [] : chapterSlides.flatMap(board => {
                       const diseaseKey = (board.disease || '').replace(/\.(jpeg|jpg|png)\s*$/i, '').trim();
                       return getQuestionsForKey(diseaseKey);
@@ -8353,7 +8681,7 @@ const FlashSpace = () => {
                   })()
                 ) : (
                   <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-                    {boards.filter(b => b.module === selectedModule && b.system === selectedSystem && (selectedSubSystem ? b.subSystem === selectedSubSystem : true)).map(board => (
+                    {boards.filter(b => b.module === selectedModule && b.system === selectedSystem && matchesSubSystem(b.subSystem, selectedSubSystem)).map(board => (
                     <button
                       key={board.id}
                       onClick={() => { setSelectedBoard(board); setIsTimerActive(true); setPaths([]); setRedoPaths([]); }}
@@ -8382,7 +8710,7 @@ const FlashSpace = () => {
                     <button
                       onClick={() => {
                         const chapterSlides = (selectedSystem === 'تحديدات الاطفال' && selectedSubSystem)
-                          ? boards.filter(b => b.system === selectedSystem && b.subSystem === selectedSubSystem)
+                          ? boards.filter(b => b.system === selectedSystem && matchesSubSystem(b.subSystem, selectedSubSystem))
                           : boards.filter(b => b.module === selectedModule && b.system === selectedSystem);
                         
                         const chapterQuestions = selectedSystem === 'تحديدات الاطفال' ? [] : chapterSlides.flatMap(board => {
@@ -8526,7 +8854,7 @@ const FlashSpace = () => {
                       </div>
                     ))
                   }
-                  {boards.filter(b => b.module === selectedModule && b.system === selectedSystem && (selectedSubSystem ? b.subSystem === selectedSubSystem : true) && spacePriorities[b.id] === reviewFilter).length === 0 && (
+                  {boards.filter(b => b.module === selectedModule && b.system === selectedSystem && matchesSubSystem(b.subSystem, selectedSubSystem) && spacePriorities[b.id] === reviewFilter).length === 0 && (
                     <div className="col-span-full py-20 flex flex-col items-center justify-center text-slate-500">
                       <Target className="w-16 h-16 mb-4 opacity-20" />
                       <p className="font-bold text-lg">لا توجد صور في هذه الأولوية</p>

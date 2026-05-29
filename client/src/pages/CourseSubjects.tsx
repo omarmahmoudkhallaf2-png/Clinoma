@@ -35,6 +35,7 @@ export default function CourseSubjects() {
           description: 'تصفح تخصصات طب الأطفال الفرعية بمجلدات اللوحات البصرية والشروحات والأسئلة.'
         });
         setSubjects([
+          { id: 'first_paper_camp', name: '🔥 معسكر الورقة الأولى (First Paper Camp)', courseId: 'pediatrics_course' },
           { id: 'cardiovascular_diseases', name: 'أمراض القلب للأطفال (Cardiovascular)', courseId: 'pediatrics_course' },
           { id: 'endocrinology', name: 'الغدد الصماء (Endocrinology)', courseId: 'pediatrics_course' },
           { id: 'gastroenterology_hepatology', name: 'الجهاز الهضمي والكبد (Gastroenterology & Hepatology)', courseId: 'pediatrics_course' },

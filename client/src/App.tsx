@@ -43,6 +43,7 @@ const Pomodoro = lazy(() => import("./pages/Pomodoro"));
 const DataThemes = lazy(() => import("./pages/DataThemes"));
 const PediatricsHub = lazy(() => import("./pages/PediatricsHub"));
 const PediatricsFolder = lazy(() => import("./pages/PediatricsFolder"));
+const FirstPaperCamp = lazy(() => import("./pages/FirstPaperCamp"));
 
 import { CommandPalette } from "./components/ui/CommandPalette";
 import { AmbientAudioProvider } from "./context/AmbientAudioContext";
@@ -85,6 +86,7 @@ const AnimatedRoutes = () => {
           {/* Protected User Routes */}
           <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
           <Route path="/available" element={<ProtectedRoute><AvailableCourses /></ProtectedRoute>} />
+          <Route path="/course/pediatrics_course/subject/first_paper_camp/lectures" element={<ProtectedRoute><FirstPaperCamp /></ProtectedRoute>} />
           <Route path="/course/pediatrics_course/subject/:subjectId/lectures" element={<ProtectedRoute><PediatricsHub /></ProtectedRoute>} />
           <Route path="/course/pediatrics_course/subject/:subjectId/folder/:folderId" element={<ProtectedRoute><PediatricsFolder /></ProtectedRoute>} />
           <Route path="/course/:courseId" element={<ProtectedRoute><CourseSubjects /></ProtectedRoute>} />
