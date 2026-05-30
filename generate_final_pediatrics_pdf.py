@@ -241,18 +241,22 @@ def build_pdf(filename="تحديدات_الأطفال_تجميعي.pdf", compres
     english_dir = "d:/Med Prep/client/dist/assets/TIP-Peditrics"
     
     temp_compressed_dir = "d:/Med Prep/temp_compressed_hq"
-    if compress:
-        if not os.path.exists(temp_compressed_dir):
-            os.makedirs(temp_compressed_dir)
-            
+    if not os.path.exists(temp_compressed_dir):
+        os.makedirs(temp_compressed_dir)
+        
     def get_maybe_compressed_image(img_path):
-        if not compress or not os.path.exists(img_path):
+        if not os.path.exists(img_path):
             return img_path
+        
+        # Always optimize slightly to stay under GitHub's 100MB limit
+        # If compress=True, use quality=78. Otherwise use quality=88 (very high quality).
+        quality_val = 78 if compress else 88
+        max_width = 2048 if compress else 2560
         
         base_name = os.path.basename(img_path)
         # Prefix with parent directory name to prevent collisions
         parent_dir = os.path.basename(os.path.dirname(img_path))
-        temp_name = f"{parent_dir}_{base_name}"
+        temp_name = f"{'comp_' if compress else 'hq_'}{parent_dir}_{base_name}"
         temp_path = os.path.join(temp_compressed_dir, temp_name)
         
         if os.path.exists(temp_path):
@@ -261,15 +265,14 @@ def build_pdf(filename="تحديدات_الأطفال_تجميعي.pdf", compres
         try:
             from PIL import Image as PILImage
             with PILImage.open(img_path) as im:
-                max_width = 2048
                 if im.width > max_width:
                     w_percent = (max_width / float(im.width))
                     h_size = int((float(im.height) * float(w_percent)))
                     im = im.resize((max_width, h_size), PILImage.Resampling.LANCZOS)
-                im.convert("RGB").save(temp_path, "JPEG", quality=78, optimize=True)
+                im.convert("RGB").save(temp_path, "JPEG", quality=quality_val, optimize=True)
             return temp_path
         except Exception as e:
-            print(f"Error compressing image {img_path}: {e}")
+            print(f"Error optimizing image {img_path}: {e}")
             return img_path
     
     # 1. Structure the exact layout requested by the user

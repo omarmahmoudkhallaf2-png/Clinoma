@@ -3406,17 +3406,6 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "back": "Cerebral palsy.\nMental retardation.\nMuscles disorders (like Duchenne).\nChronic systemic disorders."
     },
     {
-      "id": "sub_gd_match_1",
-      "front": "Match the developmental milestone to the correct age.",
-      "type": "matching",
-      "matchingPairs": [
-        { "left": "An infant can sit without support with a round back", "right": "6 Months" },
-        { "left": "Social smile is expected to appear", "right": "2 Months" },
-        { "left": "Moro reflex completely disappears", "right": "4 Months" },
-        { "left": "An infant develops a pincer grip (grasp by thumb and finger)", "right": "9 Months" }
-      ]
-    },
-    {
       "id": "sub_gd_case_1",
       "front": "Case 1",
       "type": "case",
@@ -3451,6 +3440,98 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
           "back": "In Familial Short Stature, the bone age is consistent with chronologic age, whereas in CDGP, the bone age is characteristically delayed."
         }
       ]
+    },
+    {
+      "id": "new_match_gd_charts",
+      "front": "Match the description to the correct type of growth curve:",
+      "type": "matching",
+      "matchingPairs": [
+        {
+          "left": "Used clinically to determine the response to treatment of pathologic short stature, such as treatment by growth hormone and thyroxine.",
+          "right": "Velocity Curves"
+        },
+        {
+          "left": "These are centiles in which the reference data are adjusted for some specific factor over or above age and sex, such as midparent height.",
+          "right": "Conditional Centiles"
+        },
+        {
+          "left": "Used for early detection of protein energy malnutrition by following a flattening curve, or early detection of hydrocephalus if jumping to above curves.",
+          "right": "Percentile Curves"
+        },
+        {
+          "left": "Used to diagnose microcephaly or short stature if a body parameter falls at or below -2SD from the expected mean.",
+          "right": "Standard Deviation Curves"
+        }
+      ]
+    },
+    {
+      "id": "new_match_gd_milestones_early",
+      "front": "Match the developmental milestone to the correct age (Early Infancy):",
+      "type": "matching",
+      "matchingPairs": [
+        {
+          "left": "At this age, Moro reflexes completely disappear, the infant sits with support, rolls from back to front, and recognizes the mother.",
+          "right": "4 Months"
+        },
+        {
+          "left": "At this age, the infant raises the head more when prone briefly, lifts the head to 45 degrees in prone, and smiles socially.",
+          "right": "2 Months"
+        },
+        {
+          "left": "The infant achieves continuous head support, coos, brings hands together (hand regards), and anticipates feeding.",
+          "right": "3 Months"
+        },
+        {
+          "left": "The infant is now able to sit without support with a characteristically round back and can transfer objects from one hand to another.",
+          "right": "6 Months"
+        }
+      ]
+    },
+    {
+      "id": "new_match_gd_milestones_late",
+      "front": "Match the developmental milestone to the correct age (Late Infancy to Early Toddler):",
+      "type": "matching",
+      "matchingPairs": [
+        {
+          "left": "The infant can creep or crawl, pulls to a standing position, and develops a pincer grip (grasp by thumb and finger).",
+          "right": "9 Months"
+        },
+        {
+          "left": "The child walks alone or with one hand unsteadily with a broad gait, stops mouthing objects, and says 2-3 words.",
+          "right": "12 Months"
+        },
+        {
+          "left": "The child walks well steadily, drinks from a cup, speaks in baby's own jargon, and achieves sphincter control by daytime.",
+          "right": "15 Months"
+        },
+        {
+          "left": "The infant sits completely without support with a straight back and is able to grasp objects by palm.",
+          "right": "8 Months"
+        }
+      ]
+    },
+    {
+      "id": "new_match_gd_milestones_advanced",
+      "front": "Match the developmental milestone to the correct age (Advanced Toddler to Childhood):",
+      "type": "matching",
+      "matchingPairs": [
+        {
+          "left": "The child jumps, copies a circle or a cross, counts 3 objects, and dresses himself with supervision.",
+          "right": "3 Years"
+        },
+        {
+          "left": "The child walks upstairs with one hand, downstairs step by step, uses 2-3 word sentences, and achieves sphincter control day and night.",
+          "right": "2 Years"
+        },
+        {
+          "left": "The child runs, builds a tower of 3 cups, and has an average vocabulary of 10 words.",
+          "right": "18 Months"
+        },
+        {
+          "left": "The child hops on one foot, buttons and unbuttons clothes, draws a man, names colors, and goes to the toilet.",
+          "right": "4 Years"
+        }
+      ]
     }
   ],
   "_SUBCHAPTER_Nutrition": [
@@ -3473,17 +3554,6 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "id": "sub_nut_def_2",
       "front": "Define Marasmus according to the clinical and anthropometric criteria.",
       "back": "It is a chronic state of protein energy malnutrition (PEM) resulting from a low intake of energy, characterized by a weight-for-age < 60% of the reference with completely absent edema, and severe loss of subcutaneous fat and muscle wasting."
-    },
-    {
-      "id": "sub_nut_match_1",
-      "front": "Match the maternal or infant clinical condition to the correct breast feeding contraindication type.",
-      "type": "matching",
-      "matchingPairs": [
-        { "left": "Galactosemia in a newborn infant", "right": "Absolute Infant Contraindication" },
-        { "left": "Maternal HIV infection", "right": "Absolute Maternal Contraindication" },
-        { "left": "Acute breast abscess and mastitis", "right": "Relative Maternal Contraindication" },
-        { "left": "Breast milk jaundice", "right": "Relative Infant Contraindication" }
-      ]
     },
     {
       "id": "sub_nut_case_1",
@@ -3520,6 +3590,25 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
           "back": "* Serum Calcium: Normal (or low-normal).\n* Serum Phosphorus: Decreased.\n* Serum Alkaline Phosphatase: Markedly increased."
         }
       ]
+    },
+    {
+      "id": "new_match_nutrition",
+      "front": "Match the clinical description to the correct nutritional disorder/classification:",
+      "type": "matching",
+      "matchingPairs": [
+        {
+          "left": "A chronic state of protein energy malnutrition resulting from a low intake of energy, characterized by weight for age < 60% of reference with no edema.",
+          "right": "Marasmus"
+        },
+        {
+          "left": "A clinical condition resulting from deficiency of protein in the diet in the presence of almost normal caloric intake, characterized by pitting edema, growth failure, and mental apathy.",
+          "right": "Kwashiorkor"
+        },
+        {
+          "left": "A systemic disease characterized by the failure of mineralization of growing bone, presenting with a visible rachitic rosary, Harrison's sulcus, and Marfan's sign.",
+          "right": "Rickets"
+        }
+      ]
     }
   ],
   "_SUBCHAPTER_Genetics": [
@@ -3542,17 +3631,6 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "id": "sub_gen_def_2",
       "front": "List four invasive screening tests used for Prenatal Diagnosis.",
       "back": "1. Chorionic villus sampling (CVS).\n2. Amniocentesis.\n3. Fetal blood sampling (Cordocentesis).\n4. Fetoscopy / Fetal tissue sampling."
-    },
-    {
-      "id": "sub_gen_match_1",
-      "front": "Match the pathological condition to the correct Maternal Serum Triple Test Pattern.",
-      "type": "matching",
-      "matchingPairs": [
-        { "left": "Maternal serum biochemical marker pattern indicating Down Syndrome", "right": "Decreased AFP, Decreased uE3, Increased HCG" },
-        { "left": "Maternal serum biochemical marker pattern indicating Turner Syndrome", "right": "Normal or Decreased AFP, Decreased uE3, Increased HCG" },
-        { "left": "Maternal serum biochemical marker pattern indicating Open Neural Tube Defects", "right": "Increased AFP, Not applicable uE3, Not applicable HCG" },
-        { "left": "Maternal serum biochemical marker pattern indicating Edward Syndrome", "right": "Decreased AFP, Decreased uE3, Decreased HCG" }
-      ]
     },
     {
       "id": "sub_gen_case_1",
@@ -3589,6 +3667,25 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
           "back": "1. Growth Hormone therapy (to treat short stature).\n2. Estrogen replacement therapy (at the time of puberty to develop secondary sexual characteristics and manage amenorrhea)."
         }
       ]
+    },
+    {
+      "id": "new_match_genetics",
+      "front": "Match the description to the correct genetic syndrome/karyotype:",
+      "type": "matching",
+      "matchingPairs": [
+        {
+          "left": "A chromosomal disorder in which a female presents with a 45X genotype, short stature, short webbed neck, low posterior hairline, and primary amenorrhea.",
+          "right": "Turner Syndrome"
+        },
+        {
+          "left": "The most common cytogenetic type (94%) where chromosome 21 pair fails to separate during egg/sperm formation; it is not familial and carries a low recurrence risk.",
+          "right": "Nondisjunction Type Down Syndrome"
+        },
+        {
+          "left": "The familial type of Down syndrome (3-4% of cases) where extra chromosome 21 material is translocated onto another chromosome, carrying an increased recurrence risk.",
+          "right": "Translocation Type Down Syndrome"
+        }
+      ]
     }
   ],
   "_SUBCHAPTER_GIT": [
@@ -3611,16 +3708,6 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "id": "sub_git_def_2",
       "front": "Differentiate between the definitions of \"Vomiting\" and \"Regurgitation\".",
       "back": "* Vomiting: Forceful oral expulsion of gastric contents associated with the contraction of the abdominal and chest wall musculature.\n* Regurgitation: The act by which food is brought back into the mouth without the abdominal and diaphragmatic muscular activity."
-    },
-    {
-      "id": "sub_git_match_1",
-      "front": "Match the clinical description to the correct Cow's Milk Allergy (CMA) dietary or emergency management choice.",
-      "type": "matching",
-      "matchingPairs": [
-        { "left": "The first-line dietary choice for a formula-fed infant diagnosed with mild-to-moderate Cow's Milk Allergy", "right": "Extensively Hydrolyzed Formula (eHF)" },
-        { "left": "Dietary management used if the infant's allergic reactions are severe or completely unresponsive to extensively hydrolyzed formula", "right": "Amino Acid Formula (AAF)" },
-        { "left": "Immediate emergency treatment required for severe acute anaphylaxis due to milk allergy", "right": "Intramuscular Epinephrine injection" }
-      ]
     },
     {
       "id": "sub_git_case_1",
@@ -3720,22 +3807,22 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       ]
     },
     {
-      "id": "sub_git_match_2",
+      "id": "new_match_git",
+      "front": "Match the clinical presentation to the correct gastroenterology disorder:",
       "type": "matching",
-      "front": "Match the clinical/pathological description to the correct milk-related condition.",
       "matchingPairs": [
-        { "left": "Immune-mediated mechanism in infancy with GI, skin, and respiratory symptoms (blood in stool common)", "right": "Cow's Milk Allergy (CMA)" },
-        { "left": "Enzyme deficiency mechanism in older children with strictly GI symptoms (blood in stool never present)", "right": "Lactose Intolerance" }
-      ]
-    },
-    {
-      "id": "sub_git_match_3",
-      "type": "matching",
-      "front": "Match the clinical classification of CMA to its correct characteristics.",
-      "matchingPairs": [
-        { "left": "IgE-mediated CMA", "right": "Immediate reactions (minutes to 2 hours), mediated by IgE antibodies" },
-        { "left": "Non-IgE-mediated CMA", "right": "Delayed reactions (hours to days), cell-mediated immune response" },
-        { "left": "Mixed CMA", "right": "Features of both IgE and non-IgE reactions" }
+        {
+          "left": "Characterized by immediate acute reactions occurring within minutes to 2 hours, manifesting as urticaria, angioedema, flushing, vomiting, or anaphylaxis.",
+          "right": "IgE-mediated Cow's Milk Allergy"
+        },
+        {
+          "left": "Characterized by delayed reactions manifesting over hours to days, causing chronic diarrhea, blood or mucus in stool, vomiting, and failure to thrive.",
+          "right": "Non-IgE-mediated Cow's Milk Allergy"
+        },
+        {
+          "left": "Characterized as paroxysmal abdominal pain presenting in the complete absence of any structural/anatomic abnormality, inflammation, or tissue injury.",
+          "right": "Dysfunctional Abdominal Pain"
+        }
       ]
     }
   ],
@@ -3759,16 +3846,6 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "id": "sub_endo_def_2",
       "front": "List four endocrine or genetic causes/syndromes associated with Childhood Obesity.",
       "back": "1. Hypothyroidism.\n2. Cushing syndrome.\n3. Prader-Willi Syndrome.\n4. Congenital Leptin deficiency."
-    },
-    {
-      "id": "sub_endo_match_1",
-      "front": "Match the clinical and biochemical details to the correct Diabetic Ketoacidosis (DKA) Severity Classification.",
-      "type": "matching",
-      "matchingPairs": [
-        { "left": "Venous pH between 7.15 - 7.25, plasma HCO3 is 10 - 15 mEq/L, patient has Kussmaul respirations and is oriented but sleepy or arousable", "right": "Moderate DKA" },
-        { "left": "Venous pH < 7.15, plasma HCO3 < 10 mEq/L, patient presents with severe Kussmaul or depressed respiration, deep sleep to depressed sensorium, or coma", "right": "Severe DKA" },
-        { "left": "Venous pH between 7.25 - 7.35, plasma HCO3 is 16 - 20 mEq/L, patient is oriented, alert but fatigued", "right": "Mild DKA" }
-      ]
     },
     {
       "id": "sub_endo_case_1",
@@ -3868,23 +3945,22 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       ]
     },
     {
-      "id": "sub_endo_match_2",
+      "id": "new_match_endocrinology",
+      "front": "Match the clinical description to the correct endocrine disorder:",
       "type": "matching",
-      "front": "Match the type of insulin to its correct pharmacokinetic characteristics.",
       "matchingPairs": [
-        { "left": "Rapid-acting insulin", "right": "Takes effect within 15 minutes, taken before a meal" },
-        { "left": "Regular/Short-acting insulin", "right": "Takes effect within 30-60 minutes, imitates bolus secretion" },
-        { "left": "Intermediate-acting insulin", "right": "Lasts 10-16 hours, generally taken twice a day, imitates basal secretion" },
-        { "left": "Long-acting insulin", "right": "Lasts 20-24 hours, usually taken once a day" }
-      ]
-    },
-    {
-      "id": "sub_endo_match_3",
-      "type": "matching",
-      "front": "Match the clinical profiles to the correct type of Diabetes Mellitus.",
-      "matchingPairs": [
-        { "left": "Sudden onset in children, thin/normal body size, common DKA, low/absent endogenous insulin", "right": "Type 1 Diabetes Mellitus" },
-        { "left": "Gradual onset in older/obese patients, rare DKA, absent autoantibodies, insulin resistance", "right": "Type 2 Diabetes Mellitus" }
+        {
+          "left": "A medical emergency caused by severe insulin deficiency, characterized by hyperglycemia, metabolic acidosis, hyperketonemia, and Kussmaul respirations.",
+          "right": "Diabetic Ketoacidosis (DKA)"
+        },
+        {
+          "left": "A normal variant of growth where children have childhood short stature, a downward shift in growth rate at 3-6 months, delayed pubertal maturation, and a characteristically delayed bone age.",
+          "right": "Constitutional Delay of Growth and Puberty (CDGP)"
+        },
+        {
+          "left": "A common cause of preventable intellectual disability present at birth, clinically fully developed by 3-6 months with a thick broad protruding tongue, short thick neck, and dry scaly skin.",
+          "right": "Congenital Hypothyroidism"
+        }
       ]
     }
   ],
@@ -3930,16 +4006,6 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "back": "* Definition: It is an inherited chronic hemolytic anemia caused by a defect or dysfunction in spectrin or ankyrin (components of the RBC cytoskeleton), leading to a loss of cell surface area and resulting in a spherical shape of RBCs with premature destruction in the spleen.\n* Inheritance: Autosomal dominant (AD) mode of inheritance in 75% of cases."
     },
     {
-      "id": "sub_hem_match_1",
-      "front": "Match the clinical condition to the correct Coagulation & Hematological Screening Profile.",
-      "type": "matching",
-      "matchingPairs": [
-        { "left": "The classic initial screening laboratory pattern indicating Hemophilia A or B", "right": "Prolonged aPTT, Normal PT, normal platelet count, normal bleeding time" },
-        { "left": "The initial screening laboratory profile indicating acute childhood Immune Thrombocytopenia (ITP)", "right": "Normal aPTT, Normal PT, severely decreased platelet count" },
-        { "left": "The laboratory profile indicating acute consumption of factors and platelets in Disseminated Intravascular Coagulopathy (DIC)", "right": "Prolonged aPTT, Prolonged PT, prolonged TT, markedly increased D-Dimer, reduced platelet count" }
-      ]
-    },
-    {
       "id": "sub_hem_case_1",
       "front": "Case 1",
       "type": "case",
@@ -3974,6 +4040,25 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
           "back": "1. Chronic regular blood transfusion (maintaining hemoglobin levels at 9-10 g/dL).\n2. Iron chelator therapy (such as Deferoxamine or oral Deferasirox, initiated when serum ferritin is >1000 ng/mL)."
         }
       ]
+    },
+    {
+      "id": "new_match_hema_onc",
+      "front": "Match the clinical description to the correct hematological disorder:",
+      "type": "matching",
+      "matchingPairs": [
+        {
+          "left": "An inherited chronic hemolytic anemia caused by an autosomal dominant defect or dysfunction in spectrin or ankyrin, presenting with increased MCHC above 35 g/dL and a negative Coombs test.",
+          "right": "Hereditary Spherocytosis"
+        },
+        {
+          "left": "Characterized by pancytopenia with reticulocytopenia and a hypocellular bone marrow, presenting with an absolute absence of hepatosplenomegaly or lymphadenopathy.",
+          "right": "Aplastic Anemia"
+        },
+        {
+          "left": "An X-linked recessive enzymatic disorder where oxidative stresses (like fava beans or medications) denature hemoglobin, forming Heinz bodies and bite cells during acute intravascular hemolysis.",
+          "right": "Glucose-6-Phosphate Dehydrogenase (G6PD) Deficiency"
+        }
+      ]
     }
   ],
   "_SUBCHAPTER_CVS": [
@@ -4001,17 +4086,6 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "id": "sub_cvs_def_2",
       "front": "Define complete Transposition of the Great Arteries (TGA) and mention its characteristic finding on a Chest X-ray.",
       "back": "* Definition: A cyanotic congenital heart disease where two independent circulations exist; the aorta arises anteriorly from the right ventricle (RV) carrying desaturated blood to the body, and the aorta arises posteriorly from the left ventricle (LV) carrying oxygenated blood back to the lungs.\n* Chest X-ray finding: Narrow mediastinum with mild cardiomegaly / Egg-shaped heart."
-    },
-    {
-      "id": "sub_cvs_match_1",
-      "front": "Match the clinical or diagnostic description to the correct cardiovascular contour or pulse finding.",
-      "type": "matching",
-      "matchingPairs": [
-        { "left": "The characteristic cardiac contour seen on a Chest X-ray in a patient with Tetralogy of Fallot (TOF) due to RV hypertrophy and a concave pulmonary segment", "right": "Boot-shaped heart (Coeur en sabot)" },
-        { "left": "The classic peripheral pulse finding characteristic of a large Patent Ductus Arteriosus (PDA)", "right": "Water-hammer pulse (Bounding peripheral pulses)" },
-        { "left": "The clinical phenomenon that occurs in PDA if pulmonary vascular obstructive disease develops, causing cyanosis only in the lower half of the body", "right": "Differential cyanosis" },
-        { "left": "The typical chest X-ray contour finding in a patient with d-transposition of the great arteries (TGA)", "right": "Egg-shaped heart" }
-      ]
     },
     {
       "id": "sub_cvs_case_1",
@@ -4083,28 +4157,6 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       ]
     },
     {
-      "id": "sub_cvs_match_2",
-      "type": "matching",
-      "front": "Match the Congenital Heart Disease (CHD) classification to its correct list of conditions.",
-      "matchingPairs": [
-        { "left": "Acyanotic CHD with left to right shunt", "right": "VSD, PDA, ASD, Endocardial cushion defect (ECD)" },
-        { "left": "Acyanotic CHD without shunt (Obstructive lesions)", "right": "Coarctation of the Aorta, Aortic Stenosis, Pulmonary Stenosis" },
-        { "left": "Acyanotic CHD without shunt (Non-obstructive lesions)", "right": "Dextrocardia" },
-        { "left": "Cyanotic congenital heart diseases", "right": "Complete Transposition of the Great Arteries (TGA) & Tetralogy of Fallot (TOF)" }
-      ]
-    },
-    {
-      "id": "sub_cvs_match_3",
-      "type": "matching",
-      "front": "Match the Congenital Heart Disease (CHD) to its characteristic auscultatory finding.",
-      "matchingPairs": [
-        { "left": "Atrial Septal Defect (ASD)", "right": "Second heart sound widely split and fixed, with soft systolic ejection murmur over pulmonary area" },
-        { "left": "Patent Ductus Arteriosus (PDA)", "right": "Grade 1 to 4 of 6 continuous 'machinery' murmur, best audible at the left infraclavicular area" },
-        { "left": "Ventricular Septal Defect (VSD)", "right": "Harsh (grade 3 to 5 of 6) pansystolic murmur on lower left sternal border propagated all over the precordium" },
-        { "left": "Pulmonary Stenosis", "right": "Systolic ejection murmur (grade 2 to 5/6), best audible at the upper left sternal border and transmitting to the back" }
-      ]
-    },
-    {
       "id": "sub_cvs_case_4",
       "front": "Case 4",
       "type": "case",
@@ -4163,17 +4215,6 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "back": "1. Fever.\n2. Sore throat.\n3. Cervical lymphadenopathy.\n4. Atypical lymphocytes in peripheral blood (or Fatigue / Hepatosplenomegaly)."
     },
     {
-      "id": "sub_inf_match_1",
-      "front": "Match the clinical description to the correct causative viral pathogen.",
-      "type": "matching",
-      "matchingPairs": [
-        { "left": "An acute viral infection characterized by a highly contagious itchy vesicular rash appearing in different stages described as 'dew drops on a rose petal'", "right": "Varicella-zoster virus (VZV)" },
-        { "left": "Caused by an RNA paramyxovirus and characterized by painful parotid gland swelling and fever, with risks of complicating into orchitis or pancreatitis", "right": "Mumps virus" },
-        { "left": "Associated with a characteristic triad of fever, sore throat, and cervical lymphadenopathy, with a peripheral blood film showing atypical lymphocytes", "right": "Epstein–Barr virus (EBV)" },
-        { "left": "The causative pathogen of a childhood exanthem where maculopapular rashes characteristically appear only with the onset of drop of fever", "right": "Human herpes virus-6 (HHV-6)" }
-      ]
-    },
-    {
       "id": "sub_inf_case_1",
       "front": "Case 1",
       "type": "case",
@@ -4210,47 +4251,60 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       ]
     },
     {
-      "id": "sub_inf_match_2",
+      "id": "new_match_infection_set1",
+      "front": "Match the clinical description to the correct viral infection (Exanthematous Viral Infections):",
       "type": "matching",
-      "front": "Match the infectious exanthem disease to its correct causative organism.",
       "matchingPairs": [
-        { "left": "Erythema infectiosum (5th disease)", "right": "Parvovirus B19" },
-        { "left": "Roseola infantum (6th disease)", "right": "Human Herpesvirus-6 (HHV-6)" },
-        { "left": "Chickenpox (Varicella)", "right": "Varicella-Zoster Virus (VZV)" },
-        { "left": "Measles (Rubeola)", "right": "RNA Paramyxovirus / Measles virus" }
+        {
+          "left": "Highly contagious childhood illness characterized by successive crops of typical vesicles on skin and mucous membranes described as \"dew drops on a rose petal\".",
+          "right": "Chickenpox"
+        },
+        {
+          "left": "Common in infants aged 6 months–2 years, characterized by high fever for 3–5 days, followed by a sudden fall of temperature and the appearance of a maculopapular rash starting on the trunk.",
+          "right": "Roseola Infantum"
+        },
+        {
+          "left": "Features a 4-day prodromal stage with fever, cough, coryza, conjunctivitis, and pathognomonic Koplik spots on the buccal mucosa before a maculopapular rash spreads from the hairline downward.",
+          "right": "Measles"
+        }
       ]
     },
     {
-      "id": "sub_inf_match_3",
+      "id": "new_match_infection_set2",
+      "front": "Match the clinical description to the correct infection (Localized Organ Inflammation):",
       "type": "matching",
-      "front": "Match the infectious disease to its characteristic prodrome or initial presentation.",
       "matchingPairs": [
-        { "left": "Measles (Rubeola)", "right": "High fever, 3 Cs (Cough, Coryza, Conjunctivitis), and Koplik spots opposite second molars" },
-        { "left": "Rubella (German measles)", "right": "Low-grade fever with characteristic postauricular and suboccipital lymphadenopathy" },
-        { "left": "Roseola infantum (6th disease)", "right": "High fever for 3-5 days, with abrupt defervescence before rash appears" },
-        { "left": "Erythema infectiosum", "right": "Mild or absent prodrome, followed by a classic 'Slapped cheek' appearance" }
+        {
+          "left": "Inflammation of brain tissue, commonly viral in origin, presenting with fever, seizures, disturbed consciousness (sensorium), confusion, and focal neurological signs.",
+          "right": "Encephalitis"
+        },
+        {
+          "left": "Viral infection characterized by painful parotid gland swelling and fever, which spreads through respiratory droplets and may cause orchitis or pancreatitis.",
+          "right": "Mumps"
+        },
+        {
+          "left": "Acute inflammation of the meninges causing fever, vomiting, irritability, neck stiffness, bulging/tense anterior fontanel, and positive Kernig and Brudzinski signs.",
+          "right": "Meningitis"
+        }
       ]
     },
     {
-      "id": "sub_inf_match_4",
+      "id": "new_match_infection_set3",
+      "front": "Match the clinical presentation to the correct viral pathogen/marker:",
       "type": "matching",
-      "front": "Match the infectious disease to the correct description of its rash.",
       "matchingPairs": [
-        { "left": "Chickenpox (Varicella)", "right": "Pruritic rash evolving from macules to papules to vesicles to crusts ('dewdrops on a rose petal')" },
-        { "left": "Measles (Rubeola)", "right": "Maculopapular rash starting at hairline/behind ears, spreading downward, followed by desquamation" },
-        { "left": "Erythema infectiosum", "right": "Reticular or lacy rash appearing on the trunk and extremities" },
-        { "left": "Rubella (German measles)", "right": "Maculopapular rash starting on face with rapid downward spread, characteristically fading in 3 days" }
-      ]
-    },
-    {
-      "id": "sub_inf_match_5",
-      "type": "matching",
-      "front": "Match the infectious disease to its potential classic complications.",
-      "matchingPairs": [
-        { "left": "Measles (Rubeola)", "right": "Otitis media, pneumonia, post-infectious encephalitis, and delayed lethal SSPE" },
-        { "left": "Rubella (German measles)", "right": "Congenital Rubella Syndrome (CRS) if contracted during early pregnancy" },
-        { "left": "Erythema infectiosum", "right": "Aplastic crisis in patients with hemoglobinopathies, and hydrops fetalis in pregnancy" },
-        { "left": "Roseola infantum (6th disease)", "right": "Febrile seizures due to the rapid rise of high-grade fever" }
+        {
+          "left": "The specific viral pathogen that causes Infectious Mononucleosis, presenting with fever, sore throat, cervical lymphadenopathy, fatigue, and atypical lymphocytes in peripheral blood.",
+          "right": "Epstein–Barr virus (EBV)"
+        },
+        {
+          "left": "The specific viral pathogen responsible for causing Roseola infantum, where febrile convulsions may occur during the high fever phase.",
+          "right": "Human herpes virus-6 (HHV-6)"
+        },
+        {
+          "left": "Recognized as an important viral cause of encephalitis in children that presents with seizures and a disturbed sensorium.",
+          "right": "Herpes Simplex Virus (HSV)"
+        }
       ]
     }
   ],
@@ -4279,17 +4333,6 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "id": "sub_neuro_def_2",
       "front": "List four lower motor unit disorders/levels that can cause Floppy Infant syndrome.",
       "back": "1. Spinal cord lesion: Anterior horn cell disease (Werdnig-Hoffmann spinal muscular atrophy).\n2. Peripheral nerves: Acute polyneuropathy (Guillain-Barré Syndrome).\n3. Neuromuscular junction: Neonatal myasthenia gravis / Infantile botulism.\n4. Myopathies: Muscular dystrophies / Congenital myopathies."
-    },
-    {
-      "id": "sub_neuro_match_1",
-      "front": "Match the physiological classification of CP or clinical reflex to the correct clinical description.",
-      "type": "matching",
-      "matchingPairs": [
-        { "left": "Characterized by hypertonia with hyperreflexia, a positive Babinski sign, and persistence of primitive neonatal reflexes", "right": "Spastic CP" },
-        { "left": "Characterized by abnormal involuntary movements such as chorea, athetosis, and dystonia, with variable muscle tone", "right": "Dyskinetic CP" },
-        { "left": "Passive rotation of the head to one side causes extension of limbs on the same side and flexion of contralateral limbs; its persistence beyond 3 months prevents rolling", "right": "Asymmetric tonic neck reflex" },
-        { "left": "A primitive neonatal reflex that is considered a warning sign of developmental delay if it persists beyond 6 months of age", "right": "Moro reflex" }
-      ]
     },
     {
       "id": "sub_neuro_case_1",
@@ -4326,6 +4369,25 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
           "back": "1. Prenatal: TORCH infection / teratogens / intrauterine hypoxia.\n2. Perinatal: Birth asphyxia / birth trauma / intracranial hemorrhage."
         }
       ]
+    },
+    {
+      "id": "new_match_neurology",
+      "front": "Match the clinical description to the correct neurological/muscular disorder:",
+      "type": "matching",
+      "matchingPairs": [
+        {
+          "left": "An X-linked recessive disorder due to a defect in a protein called dystrophin, presenting in males aged 3-5 years with pelvic girdle weakness, a positive Gower sign, and pseudohypertrophy of the calf muscles.",
+          "right": "Duchenne Muscular Dystrophy (DMD)"
+        },
+        {
+          "left": "Defined as severe persistent hypotonia present at birth or early infancy, clinically diagnosed by a frog leg position, head lag, curved trunk on ventral suspension, and slippage on vertical suspension.",
+          "right": "Floppy Infant Syndrome"
+        },
+        {
+          "left": "The most common type of cerebral palsy (70-80%), characterized by hypertonia with hyperreflexia, a positive Babinski sign, and the persistence of primitive neonatal reflexes beyond 6 months of age.",
+          "right": "Spastic Cerebral Palsy"
+        }
+      ]
     }
   ],
   "_CHAPTER_Growth & development": [
@@ -4358,29 +4420,6 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "id": "gd_saq6",
       "front": "Enumerate four causes of delayed walking.",
       "back": "Cerebral palsy.\n\nMental retardation.\n\nPeripheral nerves disorders.\n\nMuscles disorders."
-    },
-    {
-      "id": "gd_match1",
-      "front": "Match the developmental milestone with the correct normal median age of achievement:",
-      "type": "matching",
-      "matchingPairs": [
-        {
-          "left": "Social smile",
-          "right": "2 months"
-        },
-        {
-          "left": "Sitting without support",
-          "right": "8 months"
-        },
-        {
-          "left": "Pincer grip",
-          "right": "9 months"
-        },
-        {
-          "left": "Walking well",
-          "right": "15 months"
-        }
-      ]
     },
     {
       "id": "gd_case1_q1",
@@ -4453,17 +4492,6 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "id": "inf_saq_10",
       "front": "Enumerate four systemic or intestinal clinical manifestations of Ancylostomiasis (Hookworm infestation).",
       "back": "Possible answers: \"Ground itch\" at skin invasion, Loeffler-like pulmonary syndrome (dry cough, wheeze, eosinophilia), Abdominal pain, distension and steatorrhea, Severe hypochromic microcytic iron-deficiency anemia (pica, fatigue, dyspnea, palpitations)."
-    },
-    {
-      "id": "inf_match_1",
-      "type": "matching",
-      "front": "Match the pathognomonic clinical sign, skin manifestation, or diagnostic test in Group (A) with its exact matching disease or description in Group (B).",
-      "matchingPairs": [
-        { "left": "Koplik spots", "right": "Small spots erupting on the buccal mucosa opposite the second molar teeth, pathognomonic for Measles." },
-        { "left": "Widal test", "right": "An agglutination test that demonstrates antibodies against somatic \"O\" and flagellar \"H\" antigens to diagnose Typhoid fever." },
-        { "left": "Rose spots", "right": "A skin rash appearing on the lower chest and abdomen at the end of the 1st week of Typhoid fever." },
-        { "left": "Brudzinski's sign", "right": "A sign of meningeal irritation where rapid passive flexion of the head is accompanied by brisk flexion of both knees." }
-      ]
     },
     {
       "id": "inf_case1_q1",
@@ -4750,29 +4778,6 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "back": "Hypothermia.\nSevere anemia and congestive cardiac failure.\nPersistent vomiting.\nAge less than 1 year."
     },
     {
-      "id": "nut_match_1",
-      "type": "matching",
-      "front": "Match the clinical sign/term in Group (A) with its exact diagnostic description in Group (B):",
-      "matchingPairs": [
-        {
-          "left": "Flag sign",
-          "right": "Alternating bands of normal color and hypopigmentations due to alternating periods of normal state and protein malnutrition."
-        },
-        {
-          "left": "Marfan's sign",
-          "right": "Transverse groove on both malleoli due to abnormal proliferation of osteoid tissue at two different centers, pathognomonic for rickets."
-        },
-        {
-          "left": "Trousseau sign",
-          "right": "Carpal spasm induced by occlusion of arterial flow to the arm by inflating the cuff of a sphygmomanometer above systolic pressure for 3 minutes."
-        },
-        {
-          "left": "Craniotabes",
-          "right": "Abnormal softness due to thinning of the outer skull plate where a squash ball sensation is felt by pressing firmly over the occipital bones."
-        }
-      ]
-    },
-    {
       "id": "nut_case1_q1",
       "front": "Case 1: A 2-year-old child is brought to the hospital presentation with generalized pitting edema starting in the feet, a puffy \"moon face\", severe muscle wasting, but with preserved subcutaneous fat. The child is extremely apathetic and shows no interest in his surroundings.\n\nWhat is the diagnosis of this clinical condition according to the Welcome classification?",
       "back": "Kwashiorkor (severe PEM with edema)."
@@ -4935,29 +4940,6 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "back": "Simple collection.\nMore analytes stable.\nSimple transportation.\nStorage easy and compact."
     },
     {
-      "id": "gen_match_1",
-      "type": "matching",
-      "front": "Match the chromosomal disorder or prenatal finding in Group (A) with its exact genetic description or diagnostic marker in Group (B):",
-      "matchingPairs": [
-        {
-          "left": "Turner syndrome",
-          "right": "A condition characterized by a 45,X genotype, short stature, webbed neck, and primary amenorrhea."
-        },
-        {
-          "left": "Klinefelter syndrome",
-          "right": "A condition characterized by a 47,XXY genotype, tall stature, eunuchoid build, small testes, and gynecomastia."
-        },
-        {
-          "left": "Edward syndrome",
-          "right": "Trisomy 18 presenting with low-set malformed auricles, a clenched hand with overlapping fingers, and rocker bottom feet."
-        },
-        {
-          "left": "Down syndrome prenatal triple test",
-          "right": "Decreased maternal serum alpha-fetoprotein (AFP), decreased unconjugated estriol (uE3), and increased human chorionic gonadotrophin (hCG)."
-        }
-      ]
-    },
-    {
       "id": "gen_case1_q1",
       "front": "Case 1: A 37-year-old pregnant woman has a routine prenatal triple test done at 16 weeks of gestation. The laboratory report reveals: Decreased alpha-fetoprotein (AFP), decreased unconjugated estriol (uE3), and significantly increased human chorionic gonadotrophin (hCG).\n\nWhat is the most likely chromosomal disorder affecting the fetus?",
       "back": "Down Syndrome (Trisomy 21)."
@@ -5053,29 +5035,6 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "id": "git_saq_11",
       "front": "Enumerate four clinical situations/red flags when an inborn error of metabolism should be highly suspected.",
       "back": "The \"Crash\" After Birth: A baby who is born healthy but suddenly gets very sick after their first few feedings.\nLooking Like Sepsis: A child who looks like they have a severe infection, but tests for bacteria are negative and antibiotics aren't working.\nLosing Skills: A child who was hitting their milestones but suddenly starts losing those abilities.\nStrange Smells: Unusual odors from the baby's breath, urine, or skin."
-    },
-    {
-      "id": "git_match_1",
-      "type": "matching",
-      "front": "Match the clinical screening test/investigation in Group (A) with its exact diagnostic significance in Group (B):",
-      "matchingPairs": [
-        {
-          "left": "Fecal Calprotectin (FC)",
-          "right": "The most sensitive fecal marker for pediatric inflammatory bowel disease (IBD) screening."
-        },
-        {
-          "left": "ASCA (Anti-Saccharomyces cerevisiae)",
-          "right": "A serological marker primarily associated with Crohn's Disease (60-70% of cases)."
-        },
-        {
-          "left": "pANCA (Perinuclear Anti-Neutrophil Cytoplasmic Antibodies)",
-          "right": "A serological marker primarily associated with Ulcerative Colitis (60-80% of cases)."
-        },
-        {
-          "left": "Suction rectal biopsy",
-          "right": "The gold standard diagnostic investigation for confirming Hirschsprung Disease."
-        }
-      ]
     },
     {
       "id": "git_case1_q1",
@@ -5180,29 +5139,6 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "back": "Type 2 diabetes.\nHigh cholesterol and high blood pressure.\nJoint pain (in the hips, knees, and back).\nBreathing problems (Asthma and obstructive sleep apnea) or Non-alcoholic fatty liver disease (NAFLD)."
     },
     {
-      "id": "endo_match_1",
-      "type": "matching",
-      "front": "Match the clinical term or syndrome in Group (A) with its exact diagnostic/physiological description in Group (B):",
-      "matchingPairs": [
-        {
-          "left": "Kallmann Syndrome",
-          "right": "A form of congenital permanent hypogonadotropic hypogonadism that is characteristically associated with anosmia."
-        },
-        {
-          "left": "21-hydroxylase deficiency",
-          "right": "The most common type of inherited enzyme defect responsible for Congenital Adrenal Hyperplasia (CAH)."
-        },
-        {
-          "left": "Thelarche",
-          "right": "The onset of female breast development, which represents the first sign of puberty in girls."
-        },
-        {
-          "left": "Kussmaul respiration",
-          "right": "Deep rapid respiration due to metabolic acidosis in an attempt to excrete excess CO2, characteristic of DKA."
-        }
-      ]
-    },
-    {
       "id": "endo_case1_q1",
       "front": "Case 1: A 3-week-old infant is brought to the outpatient clinic due to prolonged physiological jaundice, poor feeding, and extreme sluggishness. On physical examination, the clinician notes generalized hypotonia, a wide anterior fontanel, an open and large posterior fontanel, a protruding thick tongue, and a prominent umbilical hernia.\n\nWhat is the most likely diagnosis?",
       "back": "Congenital Hypothyroidism (CHT)."
@@ -5303,29 +5239,6 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "id": "hema_saq_11",
       "front": "Enumerate four clinical \"red flags\" for malignancy in pediatric patients.",
       "back": "Pathological lymphadenopathy (non-tender, rubbery/hard, increasing or persisting size).\nJoint or bone pain.\nPersistent headache.\nHepatosplenomegaly or a palpable abdominal mass."
-    },
-    {
-      "id": "hema_match_1",
-      "type": "matching",
-      "front": "Match the pathognomonic diagnostic finding or cell type in Group (A) with its corresponding hematological/oncological condition in Group (B):",
-      "matchingPairs": [
-        {
-          "left": "Target cells",
-          "right": "Thalassemia Syndromes"
-        },
-        {
-          "left": "Heinz bodies",
-          "right": "Glucose-6-phosphate dehydrogenase (G6PD) deficiency"
-        },
-        {
-          "left": "Schistocytes (fragmented RBCs)",
-          "right": "Disseminated Intravascular Coagulopathy (DIC)"
-        },
-        {
-          "left": "Reed-Sternberg (RS) cells",
-          "right": "Hodgkin Lymphoma"
-        }
-      ]
     },
     {
       "id": "hema_case1_q1",
@@ -6484,13 +6397,15 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "id": "pg2",
       "front": "Mention types of Growth charts",
       "back": "Percentile curves.\nStandard deviation curves.\nVelocity curves.\nConditional centiles."
-    }],
+    }
+  ],
   "Biological Age & Maturation (Bone & Teeth)": [
     {
       "id": "bone1",
       "front": "Enumerate the causes of Delayed Dentition.",
       "back": "Rickets (أشهر وأهم سبب)\nHypothyroidism\nHypopituitarism\nDown syndrome\nMalnutrition\nFamilial / Idiopathic\n\n💡 Mnemonic لتسهيل التذكر:\n(عيلة داون عندها نقص تغذية وكساح في الغدة)"
-    }],
+    }
+  ],
   "_CHAPTER_Neurology": [
     {
       "id": "neuro_q1",
@@ -6601,30 +6516,6 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "type": "flashcard",
       "front": "Enumerate four cranial causes of macrocephaly (conditions with a thickened skull).",
       "back": "(Any 4 of the following)\n1. Rickets.\n2. Chronic hemolytic anemia.\n3. Osteopetrosis.\n4. Osteogenesis imperfecta.\n5. Bone dysplasia."
-    },
-    {
-      "id": "neuro_clinoma_matching_1",
-      "category": "clinoma",
-      "type": "matching",
-      "front": "Match the pathognomonic clinical sign, EEG pattern, or skull deformity with its exact diagnostic description or condition:",
-      "matchingPairs": [
-        {
-          "left": "Gowers sign",
-          "right": "A classic clinical sign demonstrating proximal motor weakness, characteristically seen when a patient climbs up his own body to stand up."
-        },
-        {
-          "left": "Hypsarrhythmia",
-          "right": "A chaotic, high-voltage slow-wave discharge seen on an EEG, which is characteristically diagnostic of Infantile Spasms (West syndrome)."
-        },
-        {
-          "left": "Scaphocephaly",
-          "right": "The most common form of primary craniostenosis, caused by premature closure of the sagittal suture, resulting in a long and narrow skull."
-        },
-        {
-          "left": "Milkmaid's grip",
-          "right": "A neurological sign in Sydenham's chorea characterized by an inability to maintain a hand grip, causing the child to squeeze and release the examiner's hand."
-        }
-      ]
     },
     {
       "id": "neuro_clinoma_case_1",

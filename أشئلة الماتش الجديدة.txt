@@ -1,0 +1,283 @@
+Chapter 1: Growth and Development (General Growth & Charts)
+Options:
+A) Percentile Curves
+B) Standard Deviation Curves
+C) Velocity Curves
+D) Conditional Centiles
+Scenarios:
+Used clinically to determine the response to treatment of pathologic short stature, such as treatment by growth hormone and thyroxine.
+These are centiles in which the reference data are adjusted for some specific factor over or above age and sex, such as midparent height.
+Used for early detection of protein energy malnutrition by following a flattening curve, or early detection of hydrocephalus if jumping to above curves.
+Used to diagnose microcephaly or short stature if a body parameter falls at or below -2SD from the expected mean.
+Answers:
+1 — C) Velocity Curves
+2 — D) Conditional Centiles
+3 — A) Percentile Curves
+4 — B) Standard Deviation Curves
+Chapter 1: Developmental Milestones (Set 1: Early Infancy)
+Options:
+A) 2 Months
+B) 3 Months
+C) 4 Months
+D) 6 Months
+Scenarios:
+At this age, Moro reflexes completely disappear, the infant sits with support, rolls from back to front, and recognizes the mother.
+At this age, the infant raises the head more when prone briefly, lifts the head to 45 degrees in prone, and smiles socially.
+The infant achieves continuous head support, coos, brings hands together (hand regards), and anticipates feeding.
+The infant is now able to sit without support with a characteristically round back and can transfer objects from one hand to another.
+Answers:
+1 — C) 4 Months
+2 — A) 2 Months
+3 — B) 3 Months
+4 — D) 6 Months
+Chapter 1: Developmental Milestones (Set 2: Late Infancy to Early Toddler)
+Options:
+A) 8 Months
+B) 9 Months
+C) 12 Months
+D) 15 Months
+Scenarios:
+The infant can creep or crawl, pulls to a standing position, and develops a pincer grip (grasp by thumb and finger).
+The child walks alone or with one hand unsteadily with a broad gait, stops mouthing objects, and says 2-3 words.
+The child walks well steadily, drinks from a cup, speaks in baby's own jargon, and achieves sphincter control by daytime.
+The infant sits completely without support with a straight back and is able to grasp objects by palm.
+Answers:
+1 — B) 9 Months
+2 — C) 12 Months
+3 — D) 15 Months
+4 — A) 8 Months
+Chapter 1: Developmental Milestones (Set 3: Advanced Toddler to Childhood)
+Options:
+A) 18 Months
+B) 2 Years
+C) 3 Years
+D) 4 Years
+Scenarios:
+The child jumps, copies a circle or a cross, counts 3 objects, and dresses himself with supervision.
+The child walks upstairs with one hand, downstairs step by step, uses 2-3 word sentences, and achieves sphincter control day and night.
+The child runs, builds a tower of 3 cups, and has an average vocabulary of 10 words.
+The child hops on one foot, buttons and unbuttons clothes, draws a man, names colors, and goes to the toilet.
+Answers:
+1 — C) 3 Years
+2 — B) 2 Years
+3 — A) 18 Months
+4 — D) 4 Years
+
+
+
+
+
+
+
+
+
+Chapter 2: Nutrition & Nutritional Disorders
+Options:
+A) Kwashiorkor
+B) Marasmus
+C) Rickets
+D) Welcome Classification
+Scenarios:
+A chronic state of protein energy malnutrition resulting from a low intake of energy, characterized by weight for age < 60% of reference with no edema.
+A clinical condition resulting from deficiency of protein in the diet in the presence of almost normal caloric intake, characterized by pitting edema, growth failure, and mental apathy.
+A systemic disease characterized by the failure of mineralization of growing bone, presenting with a visible rachitic rosary, Harrison's sulcus, and Marfan's sign.
+Answers:
+1 — B) Marasmus
+2 — A) Kwashiorkor
+3 — C) Rickets
+
+
+
+
+
+
+
+
+
+
+Chapter 3: GIT (Gastroenterology)
+Options:
+A) IgE-mediated Cow's Milk Allergy
+B) Non-IgE-mediated Cow's Milk Allergy
+C) Dysfunctional Abdominal Pain
+D) Lactose Intolerance
+Scenarios:
+Characterized by immediate acute reactions occurring within minutes to 2 hours, manifesting as urticaria, angioedema, flushing, vomiting, or anaphylaxis.
+Characterized by delayed reactions manifesting over hours to days, causing chronic diarrhea, blood or mucus in stool, vomiting, and failure to thrive.
+Characterized as paroxysmal abdominal pain presenting in the complete absence of any structural/anatomic abnormality, inflammation, or tissue injury.
+Answers:
+1 — A) IgE-mediated Cow's Milk Allergy
+2 — B) Non-IgE-mediated Cow's Milk Allergy
+3 — C) Dysfunctional Abdominal Pain
+
+
+Chapter 4: Genetic Diseases
+Options:
+A) Nondisjunction Type Down Syndrome
+B) Translocation Type Down Syndrome
+C) Mosaic Type Down Syndrome
+D) Turner Syndrome
+Scenarios:
+A chromosomal disorder in which a female presents with a 45X genotype, short stature, short webbed neck, low posterior hairline, and primary amenorrhea.
+The most common cytogenetic type (94%) where chromosome 21 pair fails to separate during egg/sperm formation; it is not familial and carries a low recurrence risk.
+The familial type of Down syndrome (3-4% of cases) where extra chromosome 21 material is translocated onto another chromosome, carrying an increased recurrence risk.
+Answers:
+1 — D) Turner Syndrome
+2 — A) Nondisjunction Type Down Syndrome
+3 — B) Translocation Type Down Syndrome
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Chapter 5: Endocrinology
+Options:
+A) Constitutional Delay of Growth and Puberty (CDGP)
+B) Familial Short Stature
+C) Congenital Hypothyroidism
+D) Diabetic Ketoacidosis (DKA)
+Scenarios:
+A medical emergency caused by severe insulin deficiency, characterized by hyperglycemia, metabolic acidosis, hyperketonemia, and Kussmaul respirations.
+A normal variant of growth where children have childhood short stature, a downward shift in growth rate at 3-6 months, delayed pubertal maturation, and a characteristically delayed bone age.
+A common cause of preventable intellectual disability present at birth, clinically fully developed by 3-6 months with a thick broad protruding tongue, short thick neck, and dry scaly skin.
+Answers:
+1 — D) Diabetic Ketoacidosis (DKA)
+2 — A) Constitutional Delay of Growth and Puberty (CDGP)
+3 — C) Congenital Hypothyroidism
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Chapter 6: Hematology & Oncology
+Options:
+A) Hereditary Spherocytosis
+B) Glucose-6-Phosphate Dehydrogenase (G6PD) Deficiency
+C) Aplastic Anemia
+D) Acute Lymphoblastic Leukemia
+Scenarios:
+An inherited chronic hemolytic anemia caused by an autosomal dominant defect or dysfunction in spectrin or ankyrin, presenting with increased MCHC above 35 g/dL and a negative Coombs test.
+Characterized by pancytopenia with reticulocytopenia and a hypocellular bone marrow, presenting with an absolute absence of hepatosplenomegaly or lymphadenopathy.
+An X-linked recessive enzymatic disorder where oxidative stresses (like fava beans or medications) denature hemoglobin, forming Heinz bodies and bite cells during acute intravascular hemolysis.
+Answers:
+1 — A) Hereditary Spherocytosis
+2 — C) Aplastic Anemia
+3 — B) Glucose-6-Phosphate Dehydrogenase (G6PD) Deficiency
+
+
+
+
+
+
+
+
+
+
+
+Chapter 8: CNS / Neurology
+Options:
+A) Spastic Cerebral Palsy
+B) Dyskinetic Cerebral Palsy
+C) Floppy Infant Syndrome
+D) Duchenne Muscular Dystrophy (DMD)
+Scenarios:
+An X-linked recessive disorder due to a defect in a protein called dystrophin, presenting in males aged 3-5 years with pelvic girdle weakness, a positive Gower sign, and pseudohypertrophy of the calf muscles.
+Defined as severe persistent hypotonia present at birth or early infancy, clinically diagnosed by a frog leg position, head lag, curved trunk on ventral suspension, and slippage on vertical suspension.
+The most common type of cerebral palsy (70-80%), characterized by hypertonia with hyperreflexia, a positive Babinski sign, and the persistence of primitive neonatal reflexes beyond 6 months of age.
+Answers:
+1 — D) Duchenne Muscular Dystrophy (DMD)
+2 — C) Floppy Infant Syndrome
+3 — A) Spastic Cerebral Palsy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Chapter 9: Infection (Set 1: Exanthematous Viral Infections)
+Options:
+A) Measles
+B) Chickenpox
+C) Roseola Infantum
+D) Encephalitis
+Scenarios:
+Highly contagious childhood illness characterized by successive crops of typical vesicles on skin and mucous membranes described as "dew drops on a rose petal".
+Common in infants aged 6 months–2 years, characterized by high fever for 3–5 days, followed by a sudden fall of temperature and the appearance of a maculopapular rash starting on the trunk.
+Features a 4-day prodromal stage with fever, cough, coryza, conjunctivitis, and pathognomonic Koplik spots on the buccal mucosa before a maculopapular rash spreads from the hairline downward.
+Answers:
+1 — B) Chickenpox
+2 — C) Roseola Infantum
+3 — A) Measles
+Chapter 9: Infection (Set 2: Localized Organ Inflammation)
+Options:
+A) Meningitis
+B) Encephalitis
+C) Mumps
+D) Infectious Mononucleosis
+Scenarios:
+Inflammation of brain tissue, commonly viral in origin, presenting with fever, seizures, disturbed consciousness (sensorium), confusion, and focal neurological signs.
+Viral infection characterized by painful parotid gland swelling and fever, which spreads through respiratory droplets and may cause orchitis or pancreatitis.
+Acute inflammation of the meninges causing fever, vomiting, irritability, neck stiffness, bulging/tense anterior fontanel, and positive Kernig and Brudzinski signs.
+Answers:
+1 — B) Encephalitis
+2 — C) Mumps
+3 — A) Meningitis
+Chapter 9: Infection (Set 3: Etiological & Diagnostic Markers)
+Options:
+A) Human herpes virus-6 (HHV-6)
+B) Epstein–Barr virus (EBV)
+C) Herpes Simplex Virus (HSV)
+D) Measles virus
+Scenarios:
+The specific viral pathogen that causes Infectious Mononucleosis, presenting with fever, sore throat, cervical lymphadenopathy, fatigue, and atypical lymphocytes in peripheral blood.
+The specific viral pathogen responsible for causing Roseola infantum, where febrile convulsions may occur during the high fever phase.
+Recognized as an important viral cause of encephalitis in children that presents with seizures and a disturbed sensorium.
+Answers:
+1 — B) Epstein–Barr virus (EBV)
+2 — A) Human herpes virus-6 (HHV-6)
+3 — C) Herpes Simplex Virus (HSV)
+
+
+
+
+
+
+
+
+
+
+
