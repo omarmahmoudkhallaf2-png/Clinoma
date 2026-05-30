@@ -210,6 +210,7 @@ const PEDIATRICS_SLIDES: Record<string, string[]> = {
     'تحديدات الاطفال/Genetics/Prenatal diagnosis.jpeg',
     'تحديدات الاطفال/Genetics/Turner syndrome.jpeg',
     'تحديدات الاطفال/GIT/Cow milk allergy.jpeg',
+    'تحديدات الاطفال/GIT/GERD & HPS.jpeg',
     'تحديدات الاطفال/GIT/Pediatrics abdominal pain.jpeg',
     'تحديدات الاطفال/GIT/Vomiting.jpeg',
     'تحديدات الاطفال/Growth & Development/Developmental milestones.jpeg',

@@ -302,7 +302,8 @@ def build_pdf(filename="تحديدات_الأطفال_تجميعي.pdf", compres
             "section_name": "Gastroenterology",
             "slides": [
                 {"num": "7", "title": "Cow's milk allergy in Pediatrics", "file": "GIT/Cow milk allergy.jpeg"},
-                {"num": "8", "title": "Vomiting in pediatrics", "file": "GIT/Vomiting.jpeg"},
+                {"num": "8a", "title": "GERD & Hypertrophic Pyloric Stenosis", "file": "GIT/GERD & HPS.jpeg"},
+                {"num": "8b", "title": "Vomiting in pediatrics", "file": "GIT/Vomiting.jpeg"},
                 {"num": "9", "title": "Abdominal pain in pediatrics", "file": "GIT/Pediatrics abdominal pain.jpeg"}
             ]
         },
@@ -725,3 +726,13 @@ if __name__ == "__main__":
         # Local compile of both PDFs for testing
         build_pdf("d:/Med Prep/تحديدات_الأطفال.pdf", compress=False, student_name="Omar Mahmoud", student_email="omar.mahmoud@gmail.com")
         build_pdf("d:/Med Prep/تحديدات_الأطفال_مضغوط.pdf", compress=True, student_name="Omar Mahmoud", student_email="omar.mahmoud@gmail.com")
+        
+        # Automatically copy to client/public static folder for release
+        import shutil
+        print("Copying generated PDFs to client/public static assets...")
+        try:
+            shutil.copy2("d:/Med Prep/تحديدات_الأطفال.pdf", "d:/Med Prep/client/public/tahdedat_pediatrics.pdf")
+            shutil.copy2("d:/Med Prep/تحديدات_الأطفال_مضغوط.pdf", "d:/Med Prep/client/public/tahdedat_pediatrics_compressed.pdf")
+            print("SUCCESS! Copied to client/public/tahdedat_pediatrics.pdf")
+        except Exception as e:
+            print(f"Error copying PDFs: {e}")
