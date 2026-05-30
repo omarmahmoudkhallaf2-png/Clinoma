@@ -248,10 +248,11 @@ def build_pdf(filename="تحديدات_الأطفال_تجميعي.pdf", compres
         if not os.path.exists(img_path):
             return img_path
         
-        # Always optimize slightly to stay under GitHub's 100MB limit
-        # If compress=True, use quality=78. Otherwise use quality=88 (very high quality).
-        quality_val = 78 if compress else 88
-        max_width = 2048 if compress else 2560
+        # Optimize to stay under Cloudflare Pages' strict 25MB file size limit!
+        # If compress=True, use quality=74 and max_width=1920 (~16MB PDF).
+        # Otherwise, use quality=82 and max_width=2048 (~23.5MB PDF).
+        quality_val = 74 if compress else 82
+        max_width = 1920 if compress else 2048
         
         base_name = os.path.basename(img_path)
         # Prefix with parent directory name to prevent collisions
