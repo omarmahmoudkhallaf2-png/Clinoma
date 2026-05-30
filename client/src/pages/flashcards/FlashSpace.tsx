@@ -6840,8 +6840,9 @@ const FlashSpace = () => {
     setDownloadStatus("جاري الاتصال وسحب الملف الأصلي...");
     
     const pdfUrl = compressFlag ? "/tahdedat_pediatrics_compressed.pdf" : "/tahdedat_pediatrics.pdf";
-    const displayName = user?.displayName || userData?.name || "Omar Mahmoud";
+    const rawDisplayName = user?.displayName || userData?.name || "Omar Mahmoud";
     const displayEmail = user?.email || userData?.email || "omar.mahmoud@gmail.com";
+    const cleanDisplayName = rawDisplayName.replace(/[^\x00-\x7F]/g, "").trim() || displayEmail.split('@')[0];
     
     try {
       // Step 1: Fetch PDF bytes
@@ -6927,7 +6928,7 @@ const FlashSpace = () => {
             font: helveticaBoldFont,
             color: rgb(3/255, 105/255, 161/255),
           });
-          page.drawText(displayName, {
+          page.drawText(cleanDisplayName, {
             x: margin + 42,
             y: header_y + 3.5,
             size: 7,
