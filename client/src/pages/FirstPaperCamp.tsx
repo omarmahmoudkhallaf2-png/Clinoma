@@ -5,6 +5,7 @@ import {
   CheckCircle, AlertTriangle, ShieldAlert, Award, RefreshCw, Settings, HelpCircle, X, ChevronRight, Check
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useAuth } from '../context/AuthContext';
 
 // Mocking audio feedback for premium interaction
 const playSound = (type: 'click' | 'correct' | 'wrong' | 'success') => {
@@ -86,8 +87,10 @@ const DAY_CHAPTERS: Record<number, Chapter[]> = {
 };
 
 const PDF_RESOURCES = [
-  { id: 'questions', title: 'أسئلة بنك معسكر الورقة الأولى PDF', size: '2.4 MB', type: 'أسئلة تفصيلية' },
-  { id: 'summary', title: 'مذكرة المراجعة السريعة للمعسكر PDF', size: '1.8 MB', type: 'ملخص الذهبي' }
+  { id: 'questions', title: 'Questions Booklet PDF (كراسة الأسئلة للحل)', file: '/معسكر_الورقة_الأولى_اليوم_الأول_أسئلة.pdf', size: '79 KB', type: 'Questions Only' },
+  { id: 'answers', title: 'Answers Booklet PDF (كراسة الأسئلة بالإجابات)', file: '/معسكر_الورقة_الأولى_اليوم_الأول_إجابات.pdf', size: '85 KB', type: 'Model Answers' },
+  { id: 'quiz', title: 'Matching Quiz Booklet PDF (كراسة اختبار التوصيل)', file: '/معسكر_الورقة_الأولى_اليوم_الأول_كويز.pdf', size: '124 KB', type: 'Matching Quiz' },
+  { id: 'quiz_answers', title: 'Matching Quiz Answers PDF (كراسة إجابات اختبار التوصيل)', file: '/معسكر_الورقة_الأولى_اليوم_الأول_كويز_إجابات.pdf', size: '128 KB', type: 'Quiz Answers' }
 ];
 
 interface MatchingPair {
@@ -251,6 +254,7 @@ const MATCHING_POOL: MatchingPair[] = [
 
 export default function FirstPaperCamp() {
   const navigate = useNavigate();
+  const { userData, user } = useAuth();
   const [activeDay, setActiveDay] = useState<number>(1);
   const [showSettings, setShowSettings] = useState(false);
 
@@ -264,6 +268,142 @@ export default function FirstPaperCamp() {
 
   const [timeRemainingToStart, setTimeRemainingToStart] = useState<number>(0);
   const [examState, setExamState] = useState<'locked' | 'ready' | 'active' | 'finished'>('ready');
+  
+  const [downloadProgress, setDownloadProgress] = useState(0);
+  const [downloadStatus, setDownloadStatus] = useState<string | null>(null);
+  const [isQuizCompleted, setIsQuizCompleted] = useState<boolean>(() => {
+    return localStorage.getItem('day1_quiz_completed') === 'true';
+  });
+
+  const handleDownloadPDF = async (pdfId: string, pdfUrl: string, defaultName: string) => {
+    setDownloadProgress(0);
+    setDownloadStatus("Connecting to document server...");
+    const rawDisplayName = user?.displayName || userData?.name || "Student Name";
+    const displayEmail = user?.email || userData?.email || "student@email.com";
+    const cleanDisplayName = rawDisplayName.replace(/[^\x00-\x7F]/g, "").trim() || displayEmail.split('@')[0];
+    
+    try {
+      const response = await fetch(pdfUrl);
+      if (!response.ok) throw new Error("Failed to load PDF template file.");
+      
+      const contentLength = response.headers.get("content-length");
+      const totalBytes = contentLength ? parseInt(contentLength, 10) : 0;
+      
+      const reader = response.body?.getReader();
+      if (!reader) throw new Error("Failed to initialize PDF stream reader.");
+      
+      let receivedBytes = 0;
+      const chunks: Uint8Array[] = [];
+      
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        chunks.push(value);
+        receivedBytes += value.length;
+        if (totalBytes > 0) {
+          const percent = Math.round((receivedBytes / totalBytes) * 70);
+          setDownloadProgress(percent);
+          setDownloadStatus(`Fetching PDF pages... ${percent}%`);
+        }
+      }
+      
+      setDownloadProgress(75);
+      setDownloadStatus("Watermarking PDF in browser...");
+      
+      const pdfBytes = new Uint8Array(receivedBytes);
+      let offset = 0;
+      for (const chunk of chunks) {
+        pdfBytes.set(chunk, offset);
+        offset += chunk.length;
+      }
+      
+      // @ts-ignore
+      const { PDFDocument, rgb, StandardFonts } = await import('https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.esm.js');
+      
+      const pdfDoc = await PDFDocument.load(pdfBytes);
+      const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
+      
+      const pageCount = pdfDoc.getPageCount();
+      let chapterCovers: number[] = [];
+      if (pdfId === 'questions' || pdfId === 'answers') {
+        chapterCovers = [2, 5, 8, 13];
+      }
+      
+      for (let i = 0; i < pageCount; i++) {
+        const p = i + 1;
+        if (p > 1 && !chapterCovers.includes(p)) {
+          const page = pdfDoc.getPage(i);
+          const height = page.getHeight();
+          const width = page.getWidth();
+          
+          const margin = 20;
+          const box_w = 170;
+          const box_h = 14;
+          const header_y = height - margin - 22;
+          
+          // Clear generic "Student Name" text
+          page.drawRectangle({
+            x: margin + 40,
+            y: header_y + 1.5,
+            width: box_w - 42,
+            height: box_h - 3,
+            color: rgb(240/255, 249/255, 255/255),
+            opacity: 1
+          });
+          
+          // Clear generic "student@email.com" text
+          page.drawRectangle({
+            x: width - margin - box_w + 42,
+            y: header_y + 1.5,
+            width: box_w - 44,
+            height: box_h - 3,
+            color: rgb(240/255, 249/255, 255/255),
+            opacity: 1
+          });
+
+          // Draw custom student user name
+          page.drawText(cleanDisplayName, {
+            x: margin + 42,
+            y: header_y + 3.5,
+            size: 7.5,
+            font: helveticaFont,
+            color: rgb(15/255, 23/255, 42/255),
+          });
+          
+          // Draw custom student email
+          page.drawText(displayEmail, {
+            x: width - margin - box_w + 45,
+            y: header_y + 3.5,
+            size: 7.5,
+            font: helveticaFont,
+            color: rgb(15/255, 23/255, 42/255),
+          });
+        }
+      }
+      
+      setDownloadProgress(95);
+      setDownloadStatus("Saving PDF file...");
+      
+      const modifiedPdfBytes = await pdfDoc.save();
+      const blob = new Blob([modifiedPdfBytes], { type: "application/pdf" });
+      const downloadUrl = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = downloadUrl;
+      link.download = defaultName;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(downloadUrl);
+      
+      setDownloadProgress(100);
+      setDownloadStatus("Successfully compiled! 🎉");
+      setTimeout(() => setDownloadStatus(null), 1000);
+    } catch (err: any) {
+      console.error(err);
+      alert(`Error compiling watermarked PDF: ${err.message}`);
+      setDownloadStatus(null);
+    }
+  };
 
   // Matching Test Gameplay State
   const [gameQuestions, setGameQuestions] = useState<{ id: string; text: string }[]>([]);
@@ -503,6 +643,8 @@ export default function FirstPaperCamp() {
     const finalScore = Math.round((finalCorrect / total) * 100);
     setScore(finalScore);
     setExamState('finished');
+    setIsQuizCompleted(true);
+    localStorage.setItem('day1_quiz_completed', 'true');
   };
 
   const handleChapterClick = (chap: Chapter) => {
@@ -619,50 +761,54 @@ export default function FirstPaperCamp() {
         </div>
 
         {/* Mid-Camp Interactive Grid: PDFs and Testing */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 pt-6">
-          
-          {/* PDF Download Center */}
-          <div className="bg-white/80 dark:bg-slate-900/60 backdrop-blur-xl border border-slate-200 dark:border-slate-800 rounded-[3rem] p-8 space-y-6 shadow-lg">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-amber-500/10 text-amber-600 dark:text-amber-400 rounded-2xl flex items-center justify-center">
-                <FileText className="w-6 h-6" />
-              </div>
-              <div>
-                <h2 className="text-2xl font-black text-slate-950 dark:text-white">مركز تحميل الـ PDF</h2>
-                <p className="text-sm font-bold text-slate-455">حمل مذكرات الأسئلة والشروحات الخاصة بالمعسكر.</p>
-              </div>
-            </div>
-
-            <div className="space-y-4">
-              {PDF_RESOURCES.map((pdf) => (
-                <div 
-                  key={pdf.id}
-                  className="bg-white dark:bg-slate-955 border border-slate-200/50 dark:border-slate-800/60 rounded-2xl p-4 flex items-center justify-between hover:border-amber-500/40 transition-colors"
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 bg-slate-100 dark:bg-slate-900 text-slate-500 rounded-xl flex items-center justify-center font-bold text-xs">
-                      PDF
-                    </div>
-                    <div className="space-y-0.5">
-                      <h4 className="text-sm md:text-base font-black text-slate-800 dark:text-slate-200">{pdf.title}</h4>
-                      <p className="text-[11px] text-slate-450 font-bold flex items-center gap-2">
-                        <span>الحجم: {pdf.size}</span>
-                        <span>•</span>
-                        <span className="text-amber-600 dark:text-amber-400">{pdf.type}</span>
-                      </p>
-                    </div>
-                  </div>
-                  <a 
-                    href="#" 
-                    onClick={(e) => { e.preventDefault(); playSound('click'); alert(`جاري تحضير ملف ${pdf.title} للتحميل المباشر...`); }}
-                    className="p-3 bg-amber-500/10 text-amber-600 dark:text-amber-400 hover:bg-amber-500 hover:text-white rounded-xl transition-all"
-                  >
-                    <Download className="w-4 h-4" />
-                  </a>
+        {activeDay === 1 && (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 pt-6">
+            
+            {/* PDF Download Center */}
+            <div className="bg-white/80 dark:bg-slate-900/60 backdrop-blur-xl border border-slate-200 dark:border-slate-800 rounded-[3rem] p-8 space-y-6 shadow-lg">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-amber-500/10 text-amber-600 dark:text-amber-400 rounded-2xl flex items-center justify-center">
+                  <FileText className="w-6 h-6" />
                 </div>
-              ))}
+                <div>
+                  <h2 className="text-2xl font-black text-slate-950 dark:text-white">مركز تحميل الـ PDF</h2>
+                  <p className="text-sm font-bold text-slate-455">حمل مذكرات الأسئلة والشروحات الخاصة بالمعسكر.</p>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                {PDF_RESOURCES.filter(pdf => pdf.id !== 'quiz_answers').map((pdf) => (
+                  <div 
+                    key={pdf.id}
+                    className="bg-white dark:bg-slate-955 border border-slate-200/50 dark:border-slate-800/60 rounded-2xl p-4 flex items-center justify-between hover:border-amber-500/40 transition-colors"
+                  >
+                    <div className="flex items-center gap-4">
+                      <div className="w-10 h-10 bg-slate-100 dark:bg-slate-900 text-slate-500 rounded-xl flex items-center justify-center font-bold text-xs">
+                        PDF
+                      </div>
+                      <div className="space-y-0.5">
+                        <h4 className="text-sm md:text-base font-black text-slate-800 dark:text-slate-200">{pdf.title}</h4>
+                        <p className="text-[11px] text-slate-455 font-bold flex items-center gap-2">
+                          <span>الحجم: {pdf.size}</span>
+                          <span>•</span>
+                          <span className="text-amber-600 dark:text-amber-400">{pdf.type}</span>
+                        </p>
+                      </div>
+                    </div>
+                    <button 
+                      onClick={(e) => { 
+                        e.preventDefault(); 
+                        playSound('click'); 
+                        handleDownloadPDF(pdf.id, pdf.file, `${pdf.id}_day1_camp.pdf`); 
+                      }}
+                      className="p-3 bg-amber-500/10 text-amber-600 dark:text-amber-400 hover:bg-amber-500 hover:text-white rounded-xl transition-all"
+                    >
+                      <Download className="w-4 h-4" />
+                    </button>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
 
           {/* Timed & Scheduled Matching Test Box */}
           <div className="bg-white/80 dark:bg-slate-900/60 backdrop-blur-xl border border-slate-200 dark:border-slate-800 rounded-[3rem] p-8 space-y-6 shadow-lg flex flex-col justify-between">
@@ -700,6 +846,30 @@ export default function FirstPaperCamp() {
                     {formatCountdown(timeRemainingToStart)}
                   </div>
                 </div>
+              ) : isQuizCompleted && examState !== 'active' ? (
+                <div className="space-y-4 text-center p-6 bg-emerald-500/5 border border-dashed border-emerald-500/20 rounded-[2rem]">
+                  <Award className="w-12 h-12 mx-auto text-emerald-500 animate-bounce" />
+                  <div className="space-y-1">
+                    <h4 className="text-base font-black text-emerald-400">لقد أتممت هذا الاختبار بنجاح! 🎉</h4>
+                    <p className="text-xs font-bold text-slate-400">درجتك الأخيرة: <span className="text-emerald-500 text-sm font-black">{score}%</span></p>
+                  </div>
+                  <button
+                    onClick={() => {
+                      playSound('click');
+                      handleDownloadPDF('quiz_answers', '/معسكر_الورقة_الأولى_اليوم_الأول_كويز_إجابات.pdf', 'quiz_answers_day1_camp.pdf');
+                    }}
+                    className="w-full py-3 bg-amber-500 hover:bg-amber-600 text-slate-950 font-black rounded-xl text-xs flex items-center justify-center gap-2 transition-all shadow-md"
+                  >
+                    <Download className="w-4 h-4 text-slate-950" />
+                    <span>تحميل كراسة إجابات الكويز المتجاوبة (PDF)</span>
+                  </button>
+                  <button
+                    onClick={startMatchingTest}
+                    className="w-full py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold rounded-xl text-xs transition-all"
+                  >
+                    إعادة محاولة حل الكويز
+                  </button>
+                </div>
               ) : examState === 'ready' ? (
                 <button
                   onClick={startMatchingTest}
@@ -729,7 +899,8 @@ export default function FirstPaperCamp() {
               )}
             </div>
           </div>
-        </div>
+          </div>
+        )}
 
       </div>
 

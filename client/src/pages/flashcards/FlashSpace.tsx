@@ -6807,8 +6807,10 @@ interface MatchingSet {
 }
 
 const PDF_RESOURCES = [
-  { id: 'questions', title: 'أسئلة بنك معسكر الورقة الأولى PDF', size: '2.4 MB', type: 'أسئلة تفصيلية' },
-  { id: 'summary', title: 'مذكرة المراجعة السريعة للمعسكر PDF', size: '1.8 MB', type: 'ملخص الذهبي' }
+  { id: 'questions', title: 'Questions Booklet PDF (كراسة الأسئلة للحل)', file: '/معسكر_الورقة_الأولى_اليوم_الأول_أسئلة.pdf', size: '79 KB', type: 'Questions Only' },
+  { id: 'answers', title: 'Answers Booklet PDF (كراسة الأسئلة بالإجابات)', file: '/معسكر_الورقة_الأولى_اليوم_الأول_إجابات.pdf', size: '85 KB', type: 'Model Answers' },
+  { id: 'quiz', title: 'Matching Quiz Booklet PDF (كراسة اختبار التوصيل)', file: '/معسكر_الورقة_الأولى_اليوم_الأول_كويز.pdf', size: '124 KB', type: 'Matching Quiz' },
+  { id: 'quiz_answers', title: 'Matching Quiz Answers PDF (كراسة إجابات اختبار التوصيل)', file: '/معسكر_الورقة_الأولى_اليوم_الأول_كويز_إجابات.pdf', size: '128 KB', type: 'Quiz Answers' }
 ];
 
 const DAY1_MATCHING_SETS: MatchingSet[] = [
@@ -7045,12 +7047,29 @@ const FlashSpace = () => {
   const [campRenderTick, setCampRenderTick] = useState<number>(0);
   const [campAllSetsMatches, setCampAllSetsMatches] = useState<Record<number, Record<string, string>>>({});
   const [campTimeSpentSeconds, setCampTimeSpentSeconds] = useState<number>(0);
+  const [isQuizCompleted, setIsQuizCompleted] = useState<boolean>(() => {
+    return localStorage.getItem('day1_quiz_completed') === 'true';
+  });
 
-  const handleDownloadPDF = async (compressFlag: boolean) => {
+  const handleDownloadPDF = async (pdfIdOrCompress: string | boolean, pdfUrlInput?: string, defaultNameInput?: string) => {
     setDownloadProgress(0);
     setDownloadStatus("جاري الاتصال وسحب الملف الأصلي...");
     
-    const pdfUrl = compressFlag ? "/tahdedat_pediatrics_compressed.pdf" : "/tahdedat_pediatrics.pdf";
+    let pdfId = "tahdedat";
+    let pdfUrl = "/tahdedat_pediatrics.pdf";
+    let defaultName = "تحديدات_الأطفال.pdf";
+    
+    if (typeof pdfIdOrCompress === 'boolean') {
+      const compressFlag = pdfIdOrCompress;
+      pdfUrl = compressFlag ? "/tahdedat_pediatrics_compressed.pdf" : "/tahdedat_pediatrics.pdf";
+      defaultName = compressFlag ? "تحديدات_الأطفال_مضغوط.pdf" : "تحديدات_الأطفال.pdf";
+      pdfId = "tahdedat";
+    } else {
+      pdfId = pdfIdOrCompress;
+      pdfUrl = pdfUrlInput || "";
+      defaultName = defaultNameInput || "document.pdf";
+    }
+    
     const rawDisplayName = user?.displayName || userData?.name || "Omar Mahmoud";
     const displayEmail = user?.email || userData?.email || "omar.mahmoud@gmail.com";
     const cleanDisplayName = rawDisplayName.replace(/[^\x00-\x7F]/g, "").trim() || displayEmail.split('@')[0];
@@ -7106,39 +7125,99 @@ const FlashSpace = () => {
       setDownloadStatus("جاري كتابة وتشفير هويتك الرقمية كعلامة مائية أمنية...");
       
       // Page numbers of chapter covers to skip watermarking
-      const chapterCovers = [3, 7, 11, 15, 19, 24, 35, 43];
+      let chapterCovers: number[] = [];
+      let margin = 12;
+      let box_w = 200;
+      let box_h = 13;
+      
+      if (pdfId === 'questions' || pdfId === 'answers') {
+        chapterCovers = [2, 5, 8, 13];
+        margin = 20;
+        box_w = 170;
+        box_h = 14;
+      } else if (pdfId === 'quiz' || pdfId === 'quiz_answers') {
+        chapterCovers = [];
+        margin = 20;
+        box_w = 170;
+        box_h = 14;
+      } else {
+        chapterCovers = [3, 7, 11, 15, 19, 24, 35, 43];
+        margin = 12;
+        box_w = 200;
+        box_h = 13;
+      }
+      
       const pageCount = pdfDoc.getPageCount();
       
       for (let i = 0; i < pageCount; i++) {
         const p = i + 1;
         // Skip cover, index, and chapter covers
-        if (p > 2 && !chapterCovers.includes(p)) {
+        const skipThreshold = (pdfId === 'questions' || pdfId === 'answers' || pdfId === 'quiz' || pdfId === 'quiz_answers') ? 1 : 2;
+        if (p > skipThreshold && !chapterCovers.includes(p)) {
           const page = pdfDoc.getPage(i);
           const height = page.getHeight();
           const width = page.getWidth();
-          const margin = 12;
-          const box_w = 200;
-          const box_h = 13;
-          const header_y = height - margin - 17;
+          const header_y = height - margin - (pdfId === 'questions' || pdfId === 'answers' || pdfId === 'quiz' || pdfId === 'quiz_answers' ? 22 : 17);
           
-          // Draw left box
-          page.drawRectangle({
-            x: margin + 5,
-            y: header_y,
-            width: box_w,
-            height: box_h,
-            color: rgb(240/255, 249/255, 255/255),
-            borderColor: rgb(186/255, 230/255, 253/255),
-            borderWidth: 0.5,
-            opacity: 1,
-          });
-          page.drawText('USER:', {
-            x: margin + 10,
-            y: header_y + 3.5,
-            size: 7,
-            font: helveticaBoldFont,
-            color: rgb(3/255, 105/255, 161/255),
-          });
+          if (pdfId === 'questions' || pdfId === 'answers' || pdfId === 'quiz' || pdfId === 'quiz_answers') {
+            // Clear placeholders
+            page.drawRectangle({
+              x: margin + 40,
+              y: header_y + 1.5,
+              width: box_w - 42,
+              height: box_h - 3,
+              color: rgb(240/255, 249/255, 255/255),
+              opacity: 1
+            });
+            page.drawRectangle({
+              x: width - margin - box_w + 42,
+              y: header_y + 1.5,
+              width: box_w - 44,
+              height: box_h - 3,
+              color: rgb(240/255, 249/255, 255/255),
+              opacity: 1
+            });
+          } else {
+            // Draw left box
+            page.drawRectangle({
+              x: margin + 5,
+              y: header_y,
+              width: box_w,
+              height: box_h,
+              color: rgb(240/255, 249/255, 255/255),
+              borderColor: rgb(186/255, 230/255, 253/255),
+              borderWidth: 0.5,
+              opacity: 1,
+            });
+            
+            // Draw right box
+            page.drawRectangle({
+              x: width - margin - box_w - 5,
+              y: header_y,
+              width: box_w,
+              height: box_h,
+              color: rgb(240/255, 249/255, 255/255),
+              borderColor: rgb(186/255, 230/255, 253/255),
+              borderWidth: 0.5,
+              opacity: 1,
+            });
+            
+            page.drawText('USER:', {
+              x: margin + 10,
+              y: header_y + 3.5,
+              size: 7,
+              font: helveticaBoldFont,
+              color: rgb(3/255, 105/255, 161/255),
+            });
+            page.drawText('EMAIL:', {
+              x: width - margin - box_w + 10,
+              y: header_y + 3.5,
+              size: 7,
+              font: helveticaBoldFont,
+              color: rgb(3/255, 105/255, 161/255),
+            });
+          }
+          
           page.drawText(cleanDisplayName, {
             x: margin + 42,
             y: header_y + 3.5,
@@ -7147,24 +7226,6 @@ const FlashSpace = () => {
             color: rgb(15/255, 23/255, 42/255),
           });
           
-          // Draw right box
-          page.drawRectangle({
-            x: width - margin - box_w - 5,
-            y: header_y,
-            width: box_w,
-            height: box_h,
-            color: rgb(240/255, 249/255, 255/255),
-            borderColor: rgb(186/255, 230/255, 253/255),
-            borderWidth: 0.5,
-            opacity: 1,
-          });
-          page.drawText('EMAIL:', {
-            x: width - margin - box_w + 10,
-            y: header_y + 3.5,
-            size: 7,
-            font: helveticaBoldFont,
-            color: rgb(3/255, 105/255, 161/255),
-          });
           page.drawText(displayEmail, {
             x: width - margin - box_w + 45,
             y: header_y + 3.5,
@@ -7185,7 +7246,7 @@ const FlashSpace = () => {
       const downloadUrl = URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = downloadUrl;
-      link.download = compressFlag ? "تحديدات_الأطفال_مضغوط.pdf" : "تحديدات_الأطفال.pdf";
+      link.download = defaultName;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -7528,6 +7589,7 @@ const FlashSpace = () => {
         setCampAttemptScore(attempt.score);
         setCampScore(attempt.score);
         setCampExamState('locked');
+        localStorage.setItem('day1_quiz_completed', 'true');
       }
     });
     return () => unsubscribe();
@@ -7761,6 +7823,8 @@ const FlashSpace = () => {
     const finalScore = Math.round((finalCorrect / total) * 100);
     setCampScore(finalScore);
     setCampExamState('finished');
+    setIsQuizCompleted(true);
+    localStorage.setItem('day1_quiz_completed', 'true');
 
     if (user) {
       try {
@@ -8556,7 +8620,7 @@ const FlashSpace = () => {
                     </div>
 
                     <div className="space-y-4">
-                      {PDF_RESOURCES.map((pdf) => (
+                      {PDF_RESOURCES.filter(pdf => pdf.id !== 'quiz_answers').map((pdf) => (
                         <div 
                           key={pdf.id}
                           className="bg-slate-950/60 border border-white/5 rounded-2xl p-4 flex items-center justify-between hover:border-amber-500/40 transition-colors"
@@ -8578,7 +8642,7 @@ const FlashSpace = () => {
                             onClick={(e) => { 
                               e.preventDefault(); 
                               playSound('click'); 
-                              handleDownloadPDF(pdf.id === 'summary'); 
+                              handleDownloadPDF(pdf.id, pdf.file, `${pdf.id}_day1_camp.pdf`); 
                             }}
                             className="p-3 bg-amber-500/10 text-amber-500 hover:bg-amber-500 hover:text-white rounded-xl transition-all"
                           >
@@ -8613,12 +8677,22 @@ const FlashSpace = () => {
 
                     <div className="pt-4">
                       {hasAttemptedCamp ? (
-                        <div className="text-center p-4 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl space-y-2">
+                        <div className="text-center p-4 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl space-y-2" dir="rtl">
                           <p className="text-sm font-black text-emerald-400">لقد أتممت هذا الاختبار بنجاح! 🎉</p>
-                          <p className="text-xs font-bold text-slate-350">
+                          <p className="text-xs font-bold text-slate-300">
                             درجتك المسجلة في خوادم الإدارة: <span className="text-amber-400 text-sm font-black">{campAttemptScore}%</span>
                           </p>
-                          <p className="text-[10px] text-slate-500">غير مسموح بإعادة المحاولة لضمان مبدأ تكافؤ الفرص.</p>
+                          <p className="text-[10px] text-slate-400">غير مسموح بإعادة المحاولة لضمان مبدأ تكافؤ الفرص.</p>
+                          <button
+                            onClick={() => {
+                              playSound('click');
+                              handleDownloadPDF('quiz_answers', '/معسكر_الورقة_الأولى_اليوم_الأول_كويز_إجابات.pdf', 'quiz_answers_day1_camp.pdf');
+                            }}
+                            className="mt-3 w-full py-2.5 bg-amber-500 hover:bg-amber-600 text-slate-950 font-black rounded-xl text-xs flex items-center justify-center gap-2 transition-all shadow-md cursor-pointer"
+                          >
+                            <Download className="w-4 h-4 text-slate-950" />
+                            <span>تحميل كراسة إجابات الكويز المتجاوبة (PDF)</span>
+                          </button>
                         </div>
                       ) : campExamState === 'locked' ? (
                         campTimeRemainingToStart === -1 ? (
