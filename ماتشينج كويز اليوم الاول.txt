@@ -1,0 +1,419 @@
+Match the following curves with their correct description:
+
+Column I (Curve Type)
+
+Percentile Curves
+
+Standard Deviation Curves
+
+Velocity Curves
+
+Conditional Centiles
+
+Column II (Description)
+A. Shows how much variation or 'dispersion' there is from the average (mean).
+B. Centiles in which reference data are conditional on or adjusted for some specific factor over or above age and sex.
+C. Considers the change (increment) in growth over time from year to year.
+D. Consists of: "Length-for-age," "Weight-for-age, "Stature-for-age," BMI-for-age, Head circumference-for-age, and Weight-for-length.
+
+Answer Key (الإجابات):
+
+1 matches with D * 2 matches with A * 3 matches with C * 4 matches with B
+
+
+
+
+
+
+
+Match the following developmental milestones with the correct age:
+Column I (Milestone)
+
+Walks alone or with one hand
+
+Moro reflexes disappear
+
+Jumps
+
+Smile socially
+
+Coos
+
+Sit without support
+
+er of 3
+
+Head support
+
+Column II (Age)
+A. 18 months
+B. 3 months
+C. 12 months
+D. 4 months
+E. 3 years
+F. 7 months
+G. 2 months
+H. 3 months
+
+Answer Key (الإجابات):
+1 matches with C (12 months)
+
+2 matches with D (4 months)
+
+3 matches with E (3 years)
+
+4 matches with G (2 months)
+
+5 matches with B or H (3 months)
+
+6 matches with F (7 months)
+
+7 matches with A (18 months)
+
+8 matches with B or H (3 months)
+
+
+
+
+
+
+
+
+
+
+Match the following developmental red flags with the corresponding age:
+Column I (Red Flag)
+
+No Clear Spoken Words
+
+Problems with Social Interaction
+
+Persistence of Primitive Reflexes
+
+No Two-Word Sentences
+
+Not Walking
+
+No Response to Environment or Parent
+
+Column II (Age)
+A. by 12 months
+B. by 18 months
+C. > 6 months
+D. by 2 years
+E. at 3 years
+F. by 18 months
+
+Answer Key (الإجابات):
+1 matches with B or F (by 18 months)
+
+2 matches with E (at 3 years)
+
+3 matches with C (> 6 months)
+
+4 matches with D (by 2 years)
+
+5 matches with B or F (by 18 months)
+
+6 matches with A (by 12 months)
+
+(ملاحظة: النقطتين 1 و 5 إجابتهم by 18 months، فممكن ياخدوا الاختيار B أو F عادي).
+
+
+
+
+
+
+Match the following factors/conditions (Column I) with their correct description or classification (Column II):
+
+Column I
+
+Lactoferrin
+
+Bifidus factor
+
+Galactosemia
+
+Acute mastitis
+
+Column II
+A. An absolute infant contraindication for breastfeeding.
+B. A relative maternal contraindication that requires regular breast evacuation until recovery.
+C. An iron-binding protein that prevents iron uptake by organisms, causing a bacteriostatic effect.
+D. Stimulates lactic acid production, changing intestinal pH to become unsuitable for pathogenic organisms.
+
+Answer Key (الإجابات):
+
+1 matches with C
+
+2 matches with D
+
+3 matches with A
+
+4 matches with B
+
+
+
+
+
+
+Match the following Clinical Pictures (Column I) with their corresponding Causes/Progression (Column II):
+Column I (Clinical Picture)
+
+Pitting oedema
+
+Mental changes
+
+Skin changes
+
+Abdominal distension
+
+Loss of subcutaneous fat
+
+Column II (Causes / Progression)
+A. First abdomen, then limbs, finally buccal pad of fat (→ senile face).
+B. Caused by deficient amino acids and trace elements Cu, Mg, Zn.
+C. Deficiency of essential fatty acids, amino acids, Vit A, Zn.
+D. hypokalemia/toxic ileus.
+E. Causes: decreased plasma proteins, increased plasma aldosterone/ADH, oxidative stress.
+
+Answer Key (الإجابات):
+1 matches with E
+
+2 matches with B
+
+3 matches with C
+
+4 matches with D
+
+5 matches with A
+
+
+
+
+
+
+
+Match the following types of Refractory Rickets/Syndromes (Column I) with their correct Genetics and defects (Column II):
+Column I (Type/Syndrome)
+
+Primary Hypophosphatemic Rickets
+
+Vitamin D Dependent Rickets Type I
+
+Vitamin D Dependent Rickets Type II
+
+Lowe Syndrome (Oculo-Cerebrorenal Disease)
+
+Hypophosphatasia
+
+Column II (Genetics & Defects)
+A. Autosomal recessive, marked deficiency of alkaline phosphatase.
+B. X-linked recessive.
+C. Autosomal recessive, target organ resistance.
+D. X-linked dominant, defect in phosphate reabsorption & Vit D conversion.
+E. Autosomal recessive, renal 1α hydroxylase defect.
+
+Answer Key (الإجابات):
+1 matches with D
+
+2 matches with E
+
+3 matches with C
+
+4 matches with B
+
+5 matches with A
+
+
+
+
+
+
+
+
+
+Match the following types of Refractory Rickets/Syndromes (Column I) with their correct Genetics and defects (Column II):
+Column I (Type/Syndrome)
+
+Primary Hypophosphatemic Rickets
+
+Vitamin D Dependent Rickets Type I
+
+Vitamin D Dependent Rickets Type II
+
+Lowe Syndrome (Oculo-Cerebrorenal Disease)
+
+Hypophosphatasia
+
+Column II (Genetics & Defects)
+A. Autosomal recessive, marked deficiency of alkaline phosphatase.
+B. X-linked recessive.
+C. Autosomal recessive, target organ resistance.
+D. X-linked dominant, defect in phosphate reabsorption & Vit D conversion.
+E. Autosomal recessive, renal 1α hydroxylase defect.
+
+Answer Key (الإجابات):
+1 matches with D
+
+2 matches with E
+
+3 matches with C
+
+4 matches with B
+
+5 matches with A
+
+
+
+
+
+
+
+Match the following terms/tests (Column I) with their correct description (Column II):
+Column I (Term/Test)
+
+IgE-mediated CMA
+
+Non-IgE-mediated CMA
+
+Skin Prick Test (SPT)
+
+Elimination Diet
+
+Oral Food Challenge (Gold Standard)
+
+Column II (Description)
+A. Strict medical supervision; contraindicated in severe anaphylaxis
+B. Identifies IgE-mediated CMA; positive points to allergy
+C. Immediate reactions (minutes to 2 hours), mediated by IgE antibodies
+D. Delayed reactions (hours to days), driven by cell-mediated response
+E. Complete removal for 2-4 weeks; clinical improvement supports diagnosis
+
+Answer Key (الإجابات):
+1 matches with C
+
+2 matches with D
+
+3 matches with B
+
+4 matches with E
+
+5 matches with A
+
+
+
+
+
+
+
+Match the following Core Definitions (Column I) with their correct description (Column II):
+Column I (Term)
+
+Nausea
+
+Vomiting
+
+Regurgitation
+
+Column II (Definition)
+A. The act by which food is brought back into the mouth without the abdominal and diaphragmatic muscular activity that characterizes true vomiting.
+B. An unpleasant sensation of the imminent need to vomit, usually referred to the throat or epigastrium; a sensation that may or may not ultimately lead to the act of vomiting.
+C. Forceful oral expulsion of gastric contents associated with the contraction of the abdominal and chest wall musculature.
+
+Answer Key (الإجابات):
+1 matches with B
+
+2 matches with C
+
+3 matches with A 
+
+
+
+
+
+Set 1: Clinical Phenotype & Life Stage Presentation (Down vs. Turner)
+Column I (Condition / Stage)
+
+Turner Syndrome: Intrauterine
+
+Turner Syndrome: Neonatal
+
+Down Syndrome: Dysmorphic Features
+
+Turner Syndrome: Childhood
+
+Down Syndrome: Orthopedics Affection
+
+Column II (Clinical Features)
+A. Short fingers, curved 5th finger, transverse palmer crease, wide gap between 1st and 2nd toes.
+B. Intelligence usually normal (mild learning disabilities possible), short stature, short webbed neck, wide carrying angle at elbows.
+C. May be presented with polyhydramnios and lung hypoplasia.
+D. Upward slanting palpebral fissures, Epicanthus and Burchfield spots of iris.
+E. May be presented with lymphedema of hands and feet, low posterior hair line and cystic hygroma.
+
+Answer Key (Set 1):
+
+1 matches with C
+
+2 matches with E
+
+3 matches with D
+
+4 matches with B
+
+5 matches with A
+
+Set 2: Prenatal Screening - Triple Tests Result (Biochemical Markers)
+Column I (Genetic Disorder)
+
+Open neural tube defect
+
+Down syndrome
+
+Turner syndrome
+
+Edward syndrome
+
+Column II (Triple Test Result)
+A. AFP Decreased, HCG Decreased
+B. AFP Normal/Decreased, HCG Increased
+C. AFP Increased, HCG Not applicable
+D. AFP Decreased, HCG Increased
+
+Answer Key (Set 2):
+
+1 matches with C
+
+2 matches with D
+
+3 matches with B
+
+4 matches with A
+
+Set 3: Invasive Screening Tests (Timing & Mechanism)
+Column I (Test Name)
+
+Chorionic villus sampling
+
+Amniocentesis
+
+Fetal blood sampling
+
+Fetoscopy
+
+Column II (Description / Timing)
+A. Can be done at 16-18/20 weeks, transabdominally.
+B. Permit direct access to fetus via percutaneous introduction of small fiberoptic telescope in amniotic cavity.
+C. Can be done at about 10-11 weeks, either transvaginal or transabdominally.
+D. Blood is taken from the umbilical vein at the placental insertion.
+
+Answer Key (Set 3):
+
+1 matches with C
+
+2 matches with A
+
+3 matches with D
+
+4 matches with B 

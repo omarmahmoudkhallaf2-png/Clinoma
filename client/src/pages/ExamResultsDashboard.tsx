@@ -13,6 +13,20 @@ import * as XLSX from 'xlsx';
 import { cn } from '../lib/utils';
 
 export default function ExamResultsDashboard() {
+  const getNormalizedScore = (attempt: any) => {
+    let rawScore = attempt.score || 0;
+    let rawTotal = attempt.totalQuestions || 45;
+    
+    if (attempt.examId === 'first_paper_camp_matching' && !attempt.totalQuestions && rawScore > 45) {
+      const percentage = rawScore;
+      const correct = Math.round((percentage / 100) * 45);
+      return { score: correct, totalQuestions: 45, percentage };
+    }
+    
+    const percentage = Math.round((rawScore / rawTotal) * 100);
+    return { score: rawScore, totalQuestions: rawTotal, percentage };
+  };
+
   const [attempts, setAttempts] = useState<any[]>([]);
   const [exams, setExams] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -32,7 +46,14 @@ export default function ExamResultsDashboard() {
 
     const examsQ = query(collection(db, 'formal_exams'), orderBy('createdAt', 'desc'));
     const unsubscribeExams = onSnapshot(examsQ, (snapshot) => {
-      setExams(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+      const dbExams = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      const campExam = {
+        id: 'first_paper_camp_matching',
+        title: '🔥 معسكر الورقة الأولى - اختبار التوصيل التفاعلي',
+        durationMinutes: 15,
+        createdAt: new Date()
+      };
+      setExams([campExam, ...dbExams]);
     });
 
     return () => {
@@ -50,19 +71,28 @@ export default function ExamResultsDashboard() {
   };
 
   const sortedAttempts = [...attempts].sort((a, b) => {
+    const normA = getNormalizedScore(a);
+    const normB = getNormalizedScore(b);
+    
     if (sortConfig.key === 'score') {
-      if (a.score !== b.score) {
-        return sortConfig.direction === 'asc' ? a.score - b.score : b.score - a.score;
+      if (normA.percentage !== normB.percentage) {
+        return sortConfig.direction === 'asc' ? normA.percentage - normB.percentage : normB.percentage - normA.percentage;
       }
-      // Secondary sort: lowest time first when scores are equal
-      return a.timeSpentSeconds - b.timeSpentSeconds;
+      return (a.timeSpentSeconds || 0) - (b.timeSpentSeconds || 0);
+    }
+    
+    if (sortConfig.key === 'timeSpentSeconds') {
+      const tA = a.timeSpentSeconds || 0;
+      const tB = b.timeSpentSeconds || 0;
+      return sortConfig.direction === 'asc' ? tA - tB : tB - tA;
     }
 
     if (a[sortConfig.key] < b[sortConfig.key]) return sortConfig.direction === 'asc' ? -1 : 1;
     if (a[sortConfig.key] > b[sortConfig.key]) return sortConfig.direction === 'asc' ? 1 : -1;
     return 0;
   }).filter(a => {
-    const matchesSearch = a.studentName?.toLowerCase().includes(search.toLowerCase()) || a.userEmail?.toLowerCase().includes(search.toLowerCase());
+    const studentName = a.studentName || a.userName || '';
+    const matchesSearch = studentName.toLowerCase().includes(search.toLowerCase()) || a.userEmail?.toLowerCase().includes(search.toLowerCase());
     const matchesExam = a.examId === selectedExamId;
     return matchesSearch && matchesExam;
   });
@@ -110,12 +140,12 @@ export default function ExamResultsDashboard() {
 
   const handleExportExcel = () => {
     const data = sortedAttempts.map(a => ({
-      'اسم الطالب': a.studentName,
+      'اسم الطالب': a.studentName || a.userName || 'طالب معسكر',
       'البريد الإلكتروني': a.userEmail,
-      'الدرجة': `${a.score} / ${a.totalQuestions}`,
-      'النسبة المئوية': `${Math.round((a.score / a.totalQuestions) * 100)}%`,
-      'الوقت المستغرق': formatTime(a.timeSpentSeconds),
-      'التاريخ': a.startTime?.toDate ? a.startTime.toDate().toLocaleString('ar-EG') : 'N/A'
+      'الدرجة': `${a.score} / ${a.totalQuestions || 45}`,
+      'النسبة المئوية': `${Math.round((a.score / (a.totalQuestions || 45)) * 100)}%`,
+      'الوقت المستغرق': formatTime(a.timeSpentSeconds || 0),
+      'التاريخ': a.startTime?.toDate ? a.startTime.toDate().toLocaleString('ar-EG') : (a.createdAt?.toDate ? a.createdAt.toDate().toLocaleString('ar-EG') : 'N/A')
     }));
 
     const ws = XLSX.utils.json_to_sheet(data);
@@ -187,7 +217,7 @@ export default function ExamResultsDashboard() {
           <ArrowRight className="w-5 h-5" />
           العودة لقائمة الإختبارات
         </button>
-
+ 
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
           <div>
             <h1 className="text-3xl md:text-4xl font-black tracking-tight">{selectedExam?.title}</h1>
@@ -256,43 +286,46 @@ export default function ExamResultsDashboard() {
               </tr>
             </thead>
             <tbody className="divide-y-2 divide-border">
-              {sortedAttempts.map((attempt) => (
-                <tr key={attempt.id} className="hover:bg-secondary/10 transition-colors group">
-                  <td className="p-6">
-                    <div className="flex items-center gap-4 justify-end">
-                      <div className="text-right">
-                        <p className="font-black text-lg">{attempt.studentName}</p>
-                        {attempt.userEmail && (
-                          <p className="text-xs font-bold text-muted-foreground">{attempt.userEmail}</p>
-                        )}
+              {sortedAttempts.map((attempt) => {
+                const norm = getNormalizedScore(attempt);
+                return (
+                  <tr key={attempt.id} className="hover:bg-secondary/10 transition-colors group">
+                    <td className="p-6">
+                      <div className="flex items-center gap-4 justify-end">
+                        <div className="text-right">
+                          <p className="font-black text-lg">{attempt.studentName || attempt.userName || 'طالب معسكر'}</p>
+                          {attempt.userEmail && (
+                            <p className="text-xs font-bold text-muted-foreground">{attempt.userEmail}</p>
+                          )}
+                        </div>
+                        <div className="w-10 h-10 bg-secondary rounded-xl flex items-center justify-center text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary transition-colors">
+                          <User className="w-5 h-5" />
+                        </div>
                       </div>
-                      <div className="w-10 h-10 bg-secondary rounded-xl flex items-center justify-center text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary transition-colors">
-                        <User className="w-5 h-5" />
+                    </td>
+                    <td className="p-6">
+                      <p className="font-bold text-sm text-muted-foreground text-right">
+                        {attempt.userEmail ?? '—'}
+                      </p>
+                    </td>
+                    <td className="p-6">
+                      <div className="flex items-center gap-4 justify-end">
+                        <span className="font-black text-2xl text-primary">{norm.score} / {norm.totalQuestions}</span>
+                        <Trophy className="w-5 h-5 text-amber-500" />
                       </div>
-                    </div>
-                  </td>
-                  <td className="p-6">
-                    <p className="font-bold text-sm text-muted-foreground text-right">
-                      {attempt.userEmail ?? '—'}
-                    </p>
-                  </td>
-                  <td className="p-6">
-                    <div className="flex items-center gap-4 justify-end">
-                      <span className="font-black text-2xl text-primary">{attempt.score} / {attempt.totalQuestions}</span>
-                      <Trophy className="w-5 h-5 text-amber-500" />
-                    </div>
-                  </td>
-                  <td className="p-6">
-                    <div className="flex items-center gap-4 justify-end">
-                      <span className="font-bold text-lg">{formatTime(attempt.timeSpentSeconds)}</span>
-                      <Clock className="w-5 h-5 text-indigo-500" />
-                    </div>
-                  </td>
-                  <td className="p-6 text-muted-foreground font-bold">
-                    {attempt.startTime?.toDate ? attempt.startTime.toDate().toLocaleString('ar-EG') : 'N/A'}
-                  </td>
-                </tr>
-              ))}
+                    </td>
+                    <td className="p-6">
+                      <div className="flex items-center gap-4 justify-end">
+                        <span className="font-bold text-lg">{formatTime(attempt.timeSpentSeconds || 0)}</span>
+                        <Clock className="w-5 h-5 text-indigo-500" />
+                      </div>
+                    </td>
+                    <td className="p-6 text-muted-foreground font-bold">
+                      {attempt.startTime?.toDate ? attempt.startTime.toDate().toLocaleString('ar-EG') : (attempt.createdAt?.toDate ? attempt.createdAt.toDate().toLocaleString('ar-EG') : 'N/A')}
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
           
@@ -356,24 +389,27 @@ export default function ExamResultsDashboard() {
             </tr>
           </thead>
           <tbody>
-            {sortedAttempts.map((a, i) => (
-              <tr key={a.id} className={cn("text-slate-700", i % 2 === 0 ? "bg-slate-50" : "bg-white")}>
-                <td className="p-4 rounded-r-xl font-black text-sm">{a.studentName}</td>
-                <td className="p-4 font-black text-sm text-center text-slate-900">{a.score} / {a.totalQuestions}</td>
-                <td className="p-4 font-black text-sm text-center">
-                  <span className={cn(
-                    "px-2 py-1 rounded-lg text-xs",
-                    (a.score / a.totalQuestions) >= 0.5 ? "bg-emerald-100 text-emerald-700" : "bg-rose-100 text-rose-700"
-                  )}>
-                    {Math.round((a.score / a.totalQuestions) * 100)}%
-                  </span>
-                </td>
-                <td className="p-4 font-bold text-sm text-center text-slate-500">{formatTime(a.timeSpentSeconds)}</td>
-                <td className="p-4 rounded-l-xl font-bold text-xs text-left text-slate-400">
-                  {a.startTime?.toDate ? a.startTime.toDate().toLocaleDateString('ar-EG') : 'N/A'}
-                </td>
-              </tr>
-            ))}
+            {sortedAttempts.map((a, i) => {
+              const norm = getNormalizedScore(a);
+              return (
+                <tr key={a.id} className={cn("text-slate-700", i % 2 === 0 ? "bg-slate-50" : "bg-white")}>
+                  <td className="p-4 rounded-r-xl font-black text-sm">{a.studentName || a.userName || 'طالب معسكر'}</td>
+                  <td className="p-4 font-black text-sm text-center text-slate-900">{norm.score} / {norm.totalQuestions}</td>
+                  <td className="p-4 font-black text-sm text-center">
+                    <span className={cn(
+                      "px-2 py-1 rounded-lg text-xs",
+                      (norm.score / norm.totalQuestions) >= 0.5 ? "bg-emerald-100 text-emerald-700" : "bg-rose-100 text-rose-700"
+                    )}>
+                      {norm.percentage}%
+                    </span>
+                  </td>
+                  <td className="p-4 font-bold text-sm text-center text-slate-500">{formatTime(a.timeSpentSeconds || 0)}</td>
+                  <td className="p-4 rounded-l-xl font-bold text-xs text-left text-slate-400">
+                    {a.startTime?.toDate ? a.startTime.toDate().toLocaleDateString('ar-EG') : (a.createdAt?.toDate ? a.createdAt.toDate().toLocaleDateString('ar-EG') : 'N/A')}
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
 

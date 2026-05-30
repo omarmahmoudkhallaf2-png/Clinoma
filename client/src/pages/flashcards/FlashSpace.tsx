@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   ChevronLeft, 
   Pencil, 
@@ -42,14 +43,15 @@ import {
   Edit,
   Download,
   Loader2,
-  Settings
+  Settings,
+  Award
 } from 'lucide-react';
 import { cn } from '../../lib/utils';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { useAuth } from '../../context/AuthContext';
-import { db, auth } from '../../lib/firebase';
-import { collection, query, getDocs, orderBy, doc, updateDoc, increment, arrayUnion, deleteField, getDoc, setDoc } from 'firebase/firestore';
+import { db, auth, dbExam } from '../../lib/firebase';
+import { collection, query, getDocs, orderBy, doc, updateDoc, increment, arrayUnion, deleteField, getDoc, setDoc, addDoc, serverTimestamp, where, onSnapshot } from 'firebase/firestore';
 import ReactMarkdown from 'react-markdown';
 import { CampNotebookToDo } from '../../components/CampNotebookToDo';
 
@@ -6791,8 +6793,209 @@ const CaseStudyUI = ({ question, onComplete, currentPriority, onSetPriority }: {
   );
 };
 
+interface MatchingPair {
+  id: string;
+  question: string;
+  answer: string;
+}
+
+interface MatchingSet {
+  id: string;
+  title: string;
+  description: string;
+  pairs: MatchingPair[];
+}
+
+const PDF_RESOURCES = [
+  { id: 'questions', title: 'أسئلة بنك معسكر الورقة الأولى PDF', size: '2.4 MB', type: 'أسئلة تفصيلية' },
+  { id: 'summary', title: 'مذكرة المراجعة السريعة للمعسكر PDF', size: '1.8 MB', type: 'ملخص الذهبي' }
+];
+
+const DAY1_MATCHING_SETS: MatchingSet[] = [
+  {
+    id: 'set1',
+    title: 'المجموعة 1: منحنيات النمو (Curves Types)',
+    description: 'قم بتوصيل جميع النقاط، ثم اضغط إرسال للانتقال للمجموعة التالية.',
+    pairs: [
+      { id: 'c1', question: 'Percentile Curves', answer: 'Consists of: "Length-for-age," "Weight-for-age," "Stature-for-age," BMI-for-age, Head circumference-for-age, and Weight-for-length' },
+      { id: 'c2', question: 'Standard Deviation Curves', answer: 'Shows how much variation or \'dispersion\' there is from the average (mean)' },
+      { id: 'c3', question: 'Velocity Curves', answer: 'Considers the change (increment) in growth over time from year to year' },
+      { id: 'c4', question: 'Conditional Centiles', answer: 'Centiles in which reference data are conditional on or adjusted for some specific factor over or above age and sex' }
+    ]
+  },
+  {
+    id: 'set2',
+    title: 'المجموعة 2: عمر التطور العصبي (Milestones)',
+    description: 'قم بتوصيل جميع النقاط، ثم اضغط إرسال للانتقال للمجموعة التالية.',
+    pairs: [
+      { id: 'm1', question: 'Walks alone or with one hand', answer: '12 months' },
+      { id: 'm2', question: 'Moro reflexes disappear', answer: '4 months' },
+      { id: 'm3', question: 'Jumps', answer: '3 years' },
+      { id: 'm4', question: 'Smile socially', answer: '2 months' },
+      { id: 'm5', question: 'Coos', answer: '3 months' },
+      { id: 'm6', question: 'Sit without support', answer: '7 months' },
+      { id: 'm7', question: 'walks up stairs, feeds self', answer: '18 months' },
+      { id: 'm8', question: 'Head support', answer: '3 months' }
+    ]
+  },
+  {
+    id: 'set3',
+    title: 'المجموعة 3: علامات الخطورة في النمو (Red Flags)',
+    description: 'قم بتوصيل جميع النقاط، ثم اضغط إرسال للانتقال للمجموعة التالية.',
+    pairs: [
+      { id: 'rf1', question: 'No Clear Spoken Words', answer: 'by 18 months' },
+      { id: 'rf2', question: 'Problems with Social Interaction', answer: 'at 3 years' },
+      { id: 'rf3', question: 'Persistence of Primitive Reflexes', answer: '> 6 months' },
+      { id: 'rf4', question: 'No Two-Word Sentences', answer: 'by 2 years' },
+      { id: 'rf5', question: 'Not Walking', answer: 'by 18 months' },
+      { id: 'rf6', question: 'No Response to Environment or Parent', answer: 'by 12 months' }
+    ]
+  },
+  {
+    id: 'set4',
+    title: 'المجموعة 4: الرضاعة الطبيعية (Breastfeeding)',
+    description: 'قم بتوصيل جميع النقاط، ثم اضغط إرسال للانتقال للمجموعة التالية.',
+    pairs: [
+      { id: 'bf1', question: 'Lactoferrin', answer: 'An iron-binding protein that prevents iron uptake by organisms, causing a bacteriostatic effect.' },
+      { id: 'bf2', question: 'Bifidus factor', answer: 'Stimulates lactic acid production, changing intestinal pH to become unsuitable for pathogenic organisms.' },
+      { id: 'bf3', question: 'Galactosemia', answer: 'An absolute infant contraindication for breastfeeding.' },
+      { id: 'bf4', question: 'Acute mastitis', answer: 'A relative maternal contraindication that requires regular breast evacuation until recovery.' }
+    ]
+  },
+  {
+    id: 'set5',
+    title: 'المجموعة 5: أعراض وأسباب سوء التغذية (Malnutrition)',
+    description: 'قم بتوصيل جميع النقاط، ثم اضغط إرسال للانتقال للمجموعة التالية.',
+    pairs: [
+      { id: 'cp1', question: 'Pitting oedema', answer: 'Causes: decreased plasma proteins, increased plasma aldosterone/ADH, oxidative stress.' },
+      { id: 'cp2', question: 'Mental changes', answer: 'Caused by deficient amino acids and trace elements Cu, Mg, Zn.' },
+      { id: 'cp3', question: 'Skin changes', answer: 'Deficiency of essential fatty acids, amino acids, Vit A, Zn.' },
+      { id: 'cp4', question: 'Abdominal distension', answer: 'hypokalemia/toxic ileus.' },
+      { id: 'cp5', question: 'Loss of subcutaneous fat', answer: 'First abdomen, then limbs, finally buccal pad of fat (→ senile face).' }
+    ]
+  },
+  {
+    id: 'set6',
+    title: 'المجموعة 6: الكساح المقاوم للفيتامينات (Refractory Rickets)',
+    description: 'قم بتوصيل جميع النقاط، ثم اضغط إرسال للانتقال للمجموعة التالية.',
+    pairs: [
+      { id: 'rr1', question: 'Primary Hypophosphatemic Rickets', answer: 'X-linked dominant, defect in phosphate reabsorption & Vit D conversion.' },
+      { id: 'rr2', question: 'Vitamin D Dependent Rickets Type I', answer: 'Autosomal recessive, renal 1α hydroxylase defect.' },
+      { id: 'rr3', question: 'Vitamin D Dependent Rickets Type II', answer: 'Autosomal recessive, target organ resistance.' },
+      { id: 'rr4', question: 'Lowe Syndrome (Oculo-Cerebrorenal Disease)', answer: 'X-linked recessive.' },
+      { id: 'rr5', question: 'Hypophosphatasia', answer: 'Autosomal recessive, marked deficiency of alkaline phosphatase.' }
+    ]
+  },
+  {
+    id: 'set7',
+    title: 'المجموعة 7: حساسية ألبان الأبقار (CMA)',
+    description: 'قم بتوصيل جميع النقاط، ثم اضغط إرسال للانتقال للمجموعة التالية.',
+    pairs: [
+      { id: 'cma1', question: 'IgE-mediated CMA', answer: 'Immediate reactions (minutes to 2 hours), mediated by IgE antibodies.' },
+      { id: 'cma2', question: 'Non-IgE-mediated CMA', answer: 'Delayed reactions (hours to days), driven by cell-mediated response.' },
+      { id: 'cma3', question: 'Skin Prick Test (SPT)', answer: 'Identifies IgE-mediated CMA; positive points to allergy.' },
+      { id: 'cma4', question: 'Elimination Diet', answer: 'Complete removal for 2-4 weeks; clinical improvement supports diagnosis.' },
+      { id: 'cma5', question: 'Oral Food Challenge (Gold Standard)', answer: 'Strict medical supervision; contraindicated in severe anaphylaxis.' }
+    ]
+  },
+  {
+    id: 'set8',
+    title: 'المجموعة 8: مصطلحات القيء (Vomiting Definitions)',
+    description: 'قم بتوصيل جميع النقاط، ثم اضغط إرسال للانتقال للمجموعة التالية.',
+    pairs: [
+      { id: 'v1', question: 'Nausea', answer: 'An unpleasant sensation of the imminent need to vomit, usually referred to the throat or epigastrium; a sensation that may or may not ultimately lead to the act of vomiting.' },
+      { id: 'v2', question: 'Vomiting', answer: 'Forceful oral expulsion of gastric contents associated with the contraction of the abdominal and chest wall musculature.' },
+      { id: 'v3', question: 'Regurgitation', answer: 'The act by which food is brought back into the mouth without the abdominal and diaphragmatic muscular activity that characterizes true vomiting.' }
+    ]
+  },
+  {
+    id: 'set9',
+    title: 'المجموعة 9: متلازمات الكروموسومات (Down vs. Turner)',
+    description: 'قم بتوصيل جميع النقاط، ثم اضغط إرسال للانتقال للمجموعة التالية.',
+    pairs: [
+      { id: 'dt1', question: 'Turner Syndrome: Intrauterine', answer: 'May be presented with polyhydramnios and lung hypoplasia.' },
+      { id: 'dt2', question: 'Turner Syndrome: Neonatal', answer: 'May be presented with lymphedema of hands and feet, low posterior hair line and cystic hygroma.' },
+      { id: 'dt3', question: 'Down Syndrome: Dysmorphic Features', answer: 'Upward slanting palpebral fissures, Epicanthus and Burchfield spots of iris.' },
+      { id: 'dt4', question: 'Turner Syndrome: Childhood', answer: 'Intelligence usually normal (mild learning disabilities possible), short stature, short webbed neck, wide carrying angle at elbows.' },
+      { id: 'dt5', question: 'Down Syndrome: Orthopedics Affection', answer: 'Short fingers, curved 5th finger, transverse palmer crease, wide gap between 1st and 2nd toes.' }
+    ]
+  },
+  {
+    id: 'set10',
+    title: 'المجموعة 10: الفحص قبل الولادة (Prenatal screening)',
+    description: 'قم بتوصيل جميع النقاط، ثم اضغط إرسال للانتقال للمجموعة التالية.',
+    pairs: [
+      { id: 'ps1', question: 'Open neural tube defect', answer: 'AFP Increased, HCG Not applicable' },
+      { id: 'ps2', question: 'Down syndrome', answer: 'AFP Decreased, HCG Increased' },
+      { id: 'ps3', question: 'Turner syndrome', answer: 'AFP Normal/Decreased, HCG Increased' },
+      { id: 'ps4', question: 'Edward syndrome', answer: 'AFP Decreased, HCG Decreased' }
+    ]
+  },
+  {
+    id: 'set11',
+    title: 'المجموعة 11: الفحوصات التداخلية (Invasive Screening Tests)',
+    description: 'قم بتوصيل جميع النقاط، ثم اضغط إرسال لتسليم الكويز بالكامل.',
+    pairs: [
+      { id: 'is1', question: 'Chorionic villus sampling', answer: 'Can be done at about 10-11 weeks, either transvaginal or transabdominally.' },
+      { id: 'is2', question: 'Amniocentesis', answer: 'Can be done at 16-18/20 weeks, transabdominally.' },
+      { id: 'is3', question: 'Fetal blood sampling', answer: 'Blood is taken from the umbilical vein at the placental insertion.' },
+      { id: 'is4', question: 'Fetoscopy', answer: 'Permit direct access to fetus via percutaneous introduction of small fiberoptic telescope in amniotic cavity.' }
+    ]
+  }
+];
+
+const playSound = (type: 'click' | 'correct' | 'wrong' | 'success') => {
+  try {
+    const audioCtx = new (window.AudioContext || (window as any).webkitAudioContext)();
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    
+    if (type === 'click') {
+      osc.frequency.setValueAtTime(400, audioCtx.currentTime);
+      gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
+      osc.start();
+      osc.stop(audioCtx.currentTime + 0.1);
+    } else if (type === 'correct') {
+      osc.frequency.setValueAtTime(600, audioCtx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(800, audioCtx.currentTime + 0.15);
+      gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.2);
+      osc.start();
+      osc.stop(audioCtx.currentTime + 0.2);
+    } else if (type === 'wrong') {
+      osc.frequency.setValueAtTime(250, audioCtx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(150, audioCtx.currentTime + 0.2);
+      gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.25);
+      osc.start();
+      osc.stop(audioCtx.currentTime + 0.25);
+    } else if (type === 'success') {
+      const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
+      notes.forEach((freq, idx) => {
+        const oscNode = audioCtx.createOscillator();
+        const gainNode = audioCtx.createGain();
+        oscNode.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+        oscNode.frequency.setValueAtTime(freq, audioCtx.currentTime + idx * 0.1);
+        gainNode.gain.setValueAtTime(0.06, audioCtx.currentTime + idx * 0.1);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + idx * 0.1 + 0.2);
+        oscNode.start(audioCtx.currentTime + idx * 0.1);
+        oscNode.stop(audioCtx.currentTime + idx * 0.1 + 0.25);
+      });
+    }
+  } catch (e) {
+    console.error("Audio Context playback error:", e);
+  }
+};
+
 const FlashSpace = () => {
   const navigate = useNavigate();
+  const itemRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const scrollContainerRef = useRef<HTMLDivElement | null>(null);
   const { isSpaceSubscribed, userData, user } = useAuth();
   const userRole = userData?.role;
   const [loading, setLoading] = useState(true);
@@ -6820,10 +7023,10 @@ const FlashSpace = () => {
   const [campActiveTab, setCampActiveTab] = useState<'chapters' | 'notebook'>('chapters');
   const [campShowSettings, setCampShowSettings] = useState(false);
   const [campStartTimeStr, setCampStartTimeStr] = useState<string>(() => {
-    return localStorage.getItem('camp_start_time') || new Date(Date.now() - 5 * 60 * 1000).toISOString().slice(0, 16);
+    return localStorage.getItem('camp_start_time') || '2026-05-30T22:00';
   });
   const [campDurationMins, setCampDurationMins] = useState<number>(() => {
-    return Number(localStorage.getItem('camp_duration') || '15');
+    return Number(localStorage.getItem('camp_duration') || '20');
   });
   const [campTimeRemainingToStart, setCampTimeRemainingToStart] = useState<number>(0);
   const [campExamState, setCampExamState] = useState<'locked' | 'ready' | 'active' | 'finished'>('ready');
@@ -6835,6 +7038,13 @@ const FlashSpace = () => {
   const [campWrongMatches, setCampWrongMatches] = useState<string[]>([]);
   const [campTestTimeLeft, setCampTestTimeLeft] = useState<number>(0);
   const [campScore, setCampScore] = useState<number>(0);
+  const [campCurrentSetIdx, setCampCurrentSetIdx] = useState<number>(0);
+  const [campTotalCorrectCount, setCampTotalCorrectCount] = useState<number>(0);
+  const [campTotalPairsCount, setCampTotalPairsCount] = useState<number>(0);
+  const [campActiveSelection, setCampActiveSelection] = useState<{ id: string; side: 'left' | 'right' } | null>(null);
+  const [campRenderTick, setCampRenderTick] = useState<number>(0);
+  const [campAllSetsMatches, setCampAllSetsMatches] = useState<Record<number, Record<string, string>>>({});
+  const [campTimeSpentSeconds, setCampTimeSpentSeconds] = useState<number>(0);
 
   const handleDownloadPDF = async (compressFlag: boolean) => {
     setDownloadProgress(0);
@@ -7278,11 +7488,14 @@ const FlashSpace = () => {
   useEffect(() => {
     const checkSchedule = () => {
       const startMs = new Date(campStartTimeStr).getTime();
+      const endMs = new Date('2026-05-31T00:00:00').getTime();
       const nowMs = Date.now();
-      const diff = startMs - nowMs;
       
-      if (diff > 0) {
-        setCampTimeRemainingToStart(Math.ceil(diff / 1000));
+      if (nowMs < startMs) {
+        setCampTimeRemainingToStart(Math.ceil((startMs - nowMs) / 1000));
+        setCampExamState('locked');
+      } else if (nowMs > endMs) {
+        setCampTimeRemainingToStart(-1);
         setCampExamState('locked');
       } else {
         setCampTimeRemainingToStart(0);
@@ -7297,49 +7510,280 @@ const FlashSpace = () => {
     return () => clearInterval(interval);
   }, [campStartTimeStr, campExamState]);
 
+  // Firestore Attempt Sync / Lockout check
+  const [hasAttemptedCamp, setHasAttemptedCamp] = useState<boolean>(false);
+  const [campAttemptScore, setCampAttemptScore] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (!user) return;
+    const q = query(
+      collection(dbExam, 'exam_attempts'),
+      where('userId', '==', user.uid),
+      where('examId', '==', 'first_paper_camp_matching')
+    );
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      if (!snapshot.empty) {
+        const attempt = snapshot.docs[0].data();
+        setHasAttemptedCamp(true);
+        setCampAttemptScore(attempt.score);
+        setCampScore(attempt.score);
+        setCampExamState('locked');
+      }
+    });
+    return () => unsubscribe();
+  }, [user]);
+
+  const campMatchesRef = useRef(campMatches);
+  const campCurrentSetIdxRef = useRef(campCurrentSetIdx);
+  const campAllSetsMatchesRef = useRef(campAllSetsMatches);
+  const campTotalPairsCountRef = useRef(campTotalPairsCount);
+
+  useEffect(() => { campMatchesRef.current = campMatches; }, [campMatches]);
+  useEffect(() => { campCurrentSetIdxRef.current = campCurrentSetIdx; }, [campCurrentSetIdx]);
+  useEffect(() => { campAllSetsMatchesRef.current = campAllSetsMatches; }, [campAllSetsMatches]);
+  useEffect(() => { campTotalPairsCountRef.current = campTotalPairsCount; }, [campTotalPairsCount]);
+
   useEffect(() => {
     if (campExamState !== 'active') return;
 
-    if (campTestTimeLeft <= 0) {
-      const correctCount = Object.keys(campMatches).length;
-      const finalScore = Math.round((correctCount / (campGameQuestions.length || 6)) * 100);
-      setCampScore(finalScore);
-      setCampExamState('finished');
-      return;
-    }
-
     const interval = setInterval(() => {
-      setCampTestTimeLeft(prev => prev - 1);
+      setCampTestTimeLeft(prev => {
+        if (prev <= 1) {
+          clearInterval(interval);
+          const totalCorrect = getCampTotalCorrectAllSets(campMatchesRef.current, campCurrentSetIdxRef.current);
+          finishCampTest(totalCorrect, campTotalPairsCountRef.current);
+          return 0;
+        }
+        const nextTime = prev - 1;
+        setCampTimeSpentSeconds(campDurationMins * 60 - nextTime);
+        return nextTime;
+      });
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [campTestTimeLeft, campExamState]);
+  }, [campExamState, campDurationMins]);
+
+  // Scroll and Resize coordinate updater
+  useEffect(() => {
+    const handleUpdate = () => setCampRenderTick(t => t + 1);
+    window.addEventListener('resize', handleUpdate);
+    
+    const scrollEl = scrollContainerRef.current;
+    if (scrollEl) {
+      scrollEl.addEventListener('scroll', handleUpdate);
+    }
+
+    const interval = setInterval(handleUpdate, 250);
+
+    return () => {
+      window.removeEventListener('resize', handleUpdate);
+      if (scrollEl) {
+        scrollEl.removeEventListener('scroll', handleUpdate);
+      }
+      clearInterval(interval);
+    };
+  }, [campExamState, campCurrentSetIdx]);
 
   const startCampMatchingGame = () => {
-    const MATCHING_POOL = [
-      { id: '1', question: 'Widely split & fixed S2', answer: 'Atrial Septal Defect (ASD)' },
-      { id: '2', question: 'Continuous machinery murmur', answer: 'Patent Ductus Arteriosus (PDA)' },
-      { id: '3', question: 'Boot-shaped heart on X-ray', answer: 'Tetralogy of Fallot (TOF)' },
-      { id: '4', question: 'Egg-on-a-string heart shape', answer: 'Transposition of Great Arteries (TGA)' },
-      { id: '5', question: 'Rib notching on Chest X-ray', answer: 'Coarctation of the Aorta (CoA)' },
-      { id: '6', question: 'Knee-Chest position therapy', answer: 'Hypercyanotic Tet Spell' },
-      { id: '7', question: 'Webbed neck & short female stature', answer: 'Turner Syndrome' },
-      { id: '8', question: '47, XXY karyotype & long limbs', answer: 'Klinefelter Syndrome' },
-      { id: '9', question: 'Overlapping fingers & rocker-bottom feet', answer: 'Edward Syndrome (Trisomy 18)' },
-      { id: '10', question: 'Cleft lip/palate & microphthalmia', answer: 'Patau Syndrome (Trisomy 13)' }
-    ];
-    const shuffledPool = [...MATCHING_POOL].sort(() => Math.random() - 0.5).slice(0, 6);
-    const qs = shuffledPool.map(item => ({ id: item.id, text: item.question })).sort(() => Math.random() - 0.5);
-    const ans = shuffledPool.map(item => ({ id: item.id, text: item.answer })).sort(() => Math.random() - 0.5);
+    if (hasAttemptedCamp) {
+      toast.error('لقد قمت بحل هذا الاختبار سابقاً، غير مسموح بالدخول مرة أخرى!');
+      return;
+    }
+    playSound('success');
+    
+    setCampCurrentSetIdx(0);
+    setCampTotalCorrectCount(0);
+    setCampAllSetsMatches({});
+    setCampTimeSpentSeconds(0);
+    
+    const totalPairs = DAY1_MATCHING_SETS.reduce((acc, s) => acc + s.pairs.length, 0);
+    setCampTotalPairsCount(totalPairs);
+    
+    loadCampSet(0, {});
+    setCampTestTimeLeft(campDurationMins * 60);
+    setCampExamState('active');
+  };
+
+  const loadCampSet = (setIdx: number, allSets = campAllSetsMatches) => {
+    const currentSet = DAY1_MATCHING_SETS[setIdx];
+    if (!currentSet) return;
+    
+    const qs = currentSet.pairs.map(item => ({ id: item.id, text: item.question })).sort(() => Math.random() - 0.5);
+    const ans = currentSet.pairs.map(item => ({ id: item.id, text: item.answer })).sort(() => Math.random() - 0.5);
     
     setCampGameQuestions(qs);
     setCampGameAnswers(ans);
-    setCampMatches({});
+    setCampMatches(allSets[setIdx] || {});
     setCampWrongMatches([]);
     setCampSelectedQ(null);
     setCampSelectedA(null);
-    setCampTestTimeLeft(campDurationMins * 60);
-    setCampExamState('active');
+    setCampActiveSelection(null);
+    itemRefs.current = {};
+    setTimeout(() => setCampRenderTick(t => t + 1), 100);
+  };
+
+  const getCampDotCoordinates = (id: string, side: 'left' | 'right') => {
+    const element = itemRefs.current[`${side}_${id}`];
+    if (!element || !containerRef.current) return null;
+    
+    const containerRect = containerRef.current.getBoundingClientRect();
+    const rect = element.getBoundingClientRect();
+    const isRightEdge = side === 'left'; 
+    
+    return {
+      x: rect.left - containerRect.left + (isRightEdge ? rect.width + 12 : -12),
+      y: rect.top - containerRect.top + (rect.height / 2)
+    };
+  };
+
+  const updateCampAllSetsMatches = (newMatches: Record<string, string>) => {
+    setCampAllSetsMatches(prev => ({
+      ...prev,
+      [campCurrentSetIdx]: newMatches
+    }));
+  };
+
+  const handleCampItemClick = (id: string, side: 'left' | 'right') => {
+    playSound('click');
+    if (!campActiveSelection) {
+      setCampActiveSelection({ id, side });
+    } else {
+      if (campActiveSelection.side === side) {
+        if (campActiveSelection.id === id) {
+          setCampActiveSelection(null);
+        } else {
+          setCampActiveSelection({ id, side });
+        }
+      } else {
+        const leftId = side === 'left' ? id : campActiveSelection.id;
+        const rightId = side === 'right' ? id : campActiveSelection.id;
+
+        const newMatches = { ...campMatches };
+        Object.keys(newMatches).forEach(key => {
+          if (newMatches[key] === rightId || key === leftId) {
+            delete newMatches[key];
+          }
+        });
+
+        newMatches[leftId] = rightId;
+        setCampMatches(newMatches);
+        updateCampAllSetsMatches(newMatches);
+        setCampActiveSelection(null);
+      }
+    }
+    setCampRenderTick(t => t + 1);
+  };
+
+  const handleCampItemDisconnect = (id: string, side: 'left' | 'right') => {
+    playSound('click');
+    const newMatches = { ...campMatches };
+    if (side === 'left') {
+      delete newMatches[id];
+    } else {
+      const qId = Object.keys(newMatches).find(key => newMatches[key] === id);
+      if (qId) delete newMatches[qId];
+    }
+    setCampMatches(newMatches);
+    updateCampAllSetsMatches(newMatches);
+    setCampActiveSelection(null);
+    setCampRenderTick(t => t + 1);
+  };
+
+  const renderCampLines = () => {
+    const lines: React.ReactNode[] = [];
+    Object.entries(campMatches).forEach(([leftId, rightId], idx) => {
+      const p1 = getCampDotCoordinates(leftId, 'left');
+      const p2 = getCampDotCoordinates(rightId, 'right');
+      if (!p1 || !p2) return;
+
+      lines.push(
+        <line 
+          key={`conn_${idx}`}
+          x1={p1.x} y1={p1.y} 
+          x2={p2.x} y2={p2.y} 
+          stroke="#eab308" 
+          strokeWidth="3.5"
+          strokeLinecap="round"
+          className="transition-all duration-300 drop-shadow-[0_0_8px_rgba(234,179,8,0.6)]"
+        />
+      );
+    });
+    return lines;
+  };
+
+  const getCampCorrectMatchesInCurrentSet = () => {
+    let count = 0;
+    campGameQuestions.forEach(q => {
+      const draftAns = campMatches[q.id];
+      if (draftAns === q.id) count += 1;
+    });
+    return count;
+  };
+
+  const getCampTotalCorrectAllSets = (finalCurrentMatches = campMatches, currentIdx = campCurrentSetIdx) => {
+    let totalCorrect = 0;
+    DAY1_MATCHING_SETS.forEach((set, setIdx) => {
+      const setMatches = setIdx === currentIdx ? finalCurrentMatches : (campAllSetsMatches[setIdx] || {});
+      set.pairs.forEach(pair => {
+        if (setMatches[pair.id] === pair.id) {
+          totalCorrect += 1;
+        }
+      });
+    });
+    return totalCorrect;
+  };
+
+  const handleCampPrevSet = () => {
+    if (campCurrentSetIdx > 0) {
+      playSound('click');
+      const prevIdx = campCurrentSetIdx - 1;
+      setCampCurrentSetIdx(prevIdx);
+      loadCampSet(prevIdx);
+    }
+  };
+
+  const handleCampNextSet = () => {
+    if (campCurrentSetIdx < DAY1_MATCHING_SETS.length - 1) {
+      playSound('success');
+      const nextIdx = campCurrentSetIdx + 1;
+      setCampCurrentSetIdx(nextIdx);
+      loadCampSet(nextIdx);
+    }
+  };
+
+  const handleCampSubmitQuiz = () => {
+    const totalCorrect = getCampTotalCorrectAllSets(campMatches, campCurrentSetIdx);
+    finishCampTest(totalCorrect, campTotalPairsCount);
+  };
+
+  const finishCampTest = async (finalCorrect: number, total: number) => {
+    playSound('success');
+    const finalScore = Math.round((finalCorrect / total) * 100);
+    setCampScore(finalScore);
+    setCampExamState('finished');
+
+    if (user) {
+      try {
+        await addDoc(collection(dbExam, 'exam_attempts'), {
+          userId: user.uid,
+          userEmail: user.email || 'unknown@gmail.com',
+          studentName: userData?.name || user.displayName || 'طالب معسكر',
+          userName: userData?.name || user.displayName || 'طالب معسكر',
+          examId: 'first_paper_camp_matching',
+          examTitle: '🔥 معسكر الورقة الأولى - اختبار التوصيل التفاعلي',
+          score: finalCorrect,
+          totalQuestions: total,
+          completedAt: serverTimestamp(),
+          createdAt: serverTimestamp(),
+          startTime: serverTimestamp(),
+          durationMinutes: campDurationMins,
+          timeSpentSeconds: campTimeSpentSeconds
+        });
+        toast.success('تم تسجيل نتيجتك بنجاح في قاعدة البيانات!');
+      } catch (e) {
+        console.error('Failed to log camp score in Firestore:', e);
+      }
+    }
   };
 
   // --- Pro Rendering Engine (Optimized) ---
@@ -8106,14 +8550,42 @@ const FlashSpace = () => {
                         <FileText className="w-5 h-5" />
                       </div>
                       <div>
-                        <h3 className="text-lg font-black text-white">تحميل ملفات الـ PDF</h3>
-                        <p className="text-xs text-slate-400 font-semibold">تنزيل مذكرات وأسئلة المعسكر التفاعلية.</p>
+                        <h3 className="text-lg font-black text-white">تحميل ملفات الـ PDF الموقعة</h3>
+                        <p className="text-xs text-slate-400 font-semibold">تنزيل مذكرات وأسئلة المعسكر التفاعلية المدمجة.</p>
                       </div>
                     </div>
 
-                    <div className="py-8 text-center bg-slate-950/40 rounded-2xl border border-dashed border-white/5 space-y-2">
-                      <p className="text-xs font-black text-slate-350">سيتم إضافة مذكرات التحميل قريباً 📚</p>
-                      <p className="text-[10px] text-slate-500 font-bold">يمكنك تحميل مذكرات المراجعة والأسئلة فور رفعها.</p>
+                    <div className="space-y-4">
+                      {PDF_RESOURCES.map((pdf) => (
+                        <div 
+                          key={pdf.id}
+                          className="bg-slate-950/60 border border-white/5 rounded-2xl p-4 flex items-center justify-between hover:border-amber-500/40 transition-colors"
+                        >
+                          <div className="flex items-center gap-4 text-right">
+                            <div className="w-10 h-10 bg-slate-900 text-amber-500 rounded-xl flex items-center justify-center font-bold text-xs">
+                              PDF
+                            </div>
+                            <div className="space-y-0.5">
+                              <h4 className="text-sm font-black text-white">{pdf.title}</h4>
+                              <p className="text-[11px] text-slate-500 font-bold flex items-center gap-2">
+                                <span>الحجم: {pdf.size}</span>
+                                <span>•</span>
+                                <span className="text-amber-500">{pdf.type}</span>
+                              </p>
+                            </div>
+                          </div>
+                          <button 
+                            onClick={(e) => { 
+                              e.preventDefault(); 
+                              playSound('click'); 
+                              handleDownloadPDF(pdf.id === 'summary'); 
+                            }}
+                            className="p-3 bg-amber-500/10 text-amber-500 hover:bg-amber-500 hover:text-white rounded-xl transition-all"
+                          >
+                            <Download className="w-4 h-4" />
+                          </button>
+                        </div>
+                      ))}
                     </div>
                   </div>
 
@@ -8122,49 +8594,79 @@ const FlashSpace = () => {
                     <div className="space-y-3 text-right">
                       <div className="flex items-center gap-3">
                         <div className="w-10 h-10 bg-rose-500/10 text-rose-500 rounded-xl flex items-center justify-center">
-                          <Trophy className="w-5 h-5" />
+                          <Trophy className="w-5 h-5 animate-pulse" />
                         </div>
                         <div>
                           <h3 className="text-lg font-black text-white">اختبار التوصيل التفاعلي</h3>
-                          <p className="text-xs text-slate-400 font-semibold">اختبار توصيل ذكي مدمج مثل بقية الشباتر.</p>
+                          <p className="text-xs text-slate-400 font-semibold">توصيل ذكي مدمج بـ z-index فائق لعدم التداخل.</p>
                         </div>
                       </div>
 
                       <div className="bg-slate-950/80 border border-white/5 rounded-xl p-3 flex items-center gap-3">
                         <Clock className="w-4 h-4 text-rose-500 animate-pulse" />
                         <div className="text-right">
-                          <p className="text-[10px] text-slate-500 font-bold">نظام الاختبار</p>
-                          <p className="text-xs font-black text-slate-200">حل فوري وإرسال لكل سؤال بنظام الماتشينج الأصلي</p>
+                          <p className="text-[10px] text-slate-500 font-bold">مدة الاختبار المقررة</p>
+                          <p className="text-xs font-black text-slate-200">{campDurationMins} دقيقة كاملة</p>
                         </div>
                       </div>
                     </div>
 
                     <div className="pt-4">
-                      <button 
-                        onClick={() => {
-                          const campSlides = boards.filter(b => b.module === 'Pediatrics' && b.system === 'معسكر الورقة الأولى');
-                          const campQuestions = campSlides.flatMap(board => {
-                            const diseaseKey = (board.disease || '').replace(/\.(jpeg|jpg|png)\s*$/i, '').trim();
-                            return getQuestionsForKey(diseaseKey);
-                          });
-                          const generalQuestions = getQuestionsForKey(`_CHAPTER_معسكر الورقة الأولى`);
-                          const matchingQs = [...campQuestions, ...generalQuestions].filter(q => q.type === 'matching' || q.front.toLowerCase().startsWith('match'));
-                          
-                          if (matchingQs.length === 0) {
-                            toast.error('سيتم إضافة أسئلة اختبار التوصيل لهذا المعسكر قريباً!');
-                            return;
-                          }
-                          
-                          setIsChapterQuestionMode(true);
-                          setShowQuestions(true);
-                          setShowExplanation(false);
-                          setActiveCategory('Matching');
-                          startQuestionSession(matchingQs);
-                        }}
-                        className="w-full py-4 bg-gradient-to-r from-amber-500 to-rose-500 hover:from-amber-600 hover:to-rose-600 text-white rounded-2xl font-black text-sm transition-all shadow-lg active:scale-[0.98] hover:scale-[1.01]"
-                      >
-                        ابدأ اختبار التوصيل الآن
-                      </button>
+                      {hasAttemptedCamp ? (
+                        <div className="text-center p-4 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl space-y-2">
+                          <p className="text-sm font-black text-emerald-400">لقد أتممت هذا الاختبار بنجاح! 🎉</p>
+                          <p className="text-xs font-bold text-slate-350">
+                            درجتك المسجلة في خوادم الإدارة: <span className="text-amber-400 text-sm font-black">{campAttemptScore}%</span>
+                          </p>
+                          <p className="text-[10px] text-slate-500">غير مسموح بإعادة المحاولة لضمان مبدأ تكافؤ الفرص.</p>
+                        </div>
+                      ) : campExamState === 'locked' ? (
+                        campTimeRemainingToStart === -1 ? (
+                          <div className="space-y-3 text-center p-4 bg-rose-500/5 border border-dashed border-rose-500/20 rounded-2xl">
+                            <ShieldAlert className="w-8 h-8 mx-auto text-rose-500 animate-pulse" />
+                            <div className="space-y-0.5">
+                              <h4 className="text-xs font-black text-rose-400">عذراً، انتهى الوقت المتاح للاختبار! ⏰</h4>
+                              <p className="text-[10px] text-slate-400">كان متاحاً فقط من الساعة 10:00 مساءً حتى الساعة 12:00 منتصف الليل.</p>
+                            </div>
+                          </div>
+                        ) : (
+                          <div className="space-y-3 text-center p-4 bg-amber-500/5 border border-dashed border-amber-500/20 rounded-2xl">
+                            <ShieldAlert className="w-8 h-8 mx-auto text-amber-500 animate-pulse" />
+                            <div className="space-y-0.5">
+                              <h4 className="text-xs font-black text-white">الاختبار مغلق ومجدول حالياً</h4>
+                              <p className="text-[10px] text-slate-400">يفتح الاختبار تلقائياً بعد انتهاء الوقت التالي:</p>
+                            </div>
+                            <div className="text-lg font-black text-amber-500 tracking-wider">
+                              {(() => {
+                                const hours = Math.floor(campTimeRemainingToStart / 3600);
+                                const minutes = Math.floor((campTimeRemainingToStart % 3600) / 60);
+                                const seconds = campTimeRemainingToStart % 60;
+                                return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                              })()}
+                            </div>
+                          </div>
+                        )
+                      ) : campExamState === 'ready' ? (
+                        <button 
+                          onClick={startCampMatchingGame}
+                          className="w-full py-4 bg-gradient-to-r from-amber-500 to-rose-500 hover:from-amber-600 hover:to-rose-600 text-white rounded-2xl font-black text-sm transition-all shadow-lg active:scale-[0.98] hover:scale-[1.01] flex items-center justify-center gap-2"
+                        >
+                          <Play className="w-4 h-4 fill-white text-white" />
+                          <span>ابدأ اختبار التوصيل الآن ({campDurationMins} د)</span>
+                        </button>
+                      ) : (
+                        <div className="space-y-2">
+                          <div className="text-center text-xs font-black text-rose-400 bg-rose-500/10 p-2.5 rounded-xl">
+                            الاختبار قيد التشغيل حالياً!
+                          </div>
+                          <button
+                            onClick={() => { playSound('click'); setCampExamState('active'); }}
+                            className="w-full py-3.5 rounded-2xl bg-white text-slate-900 font-black text-xs transition-all hover:scale-[1.01]"
+                          >
+                            الرجوع لنافذة الاختبار النشط
+                          </button>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -8949,7 +9451,7 @@ const FlashSpace = () => {
                 >
                   Subscribe via Telegram
                 </a>
-                <button 
+                 <button 
                   onClick={() => setShowSubscriptionModal(false)}
                   className="w-full py-3 rounded-xl font-bold text-slate-400 hover:text-white transition-colors"
                 >
@@ -8959,6 +9461,269 @@ const FlashSpace = () => {
             </div>
           </div>
         )}
+
+        {/* 2. Active Matching Gameplay Overlay */}
+        <AnimatePresence>
+          {campExamState === 'active' && (
+            <div className="fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-[999999] flex items-center justify-center p-4">
+              <motion.div 
+                ref={containerRef}
+                initial={{ scale: 0.98, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.98, opacity: 0 }}
+                className="w-full max-w-5xl h-[90vh] bg-slate-900 border border-slate-800 rounded-[3rem] p-6 md:p-8 flex flex-col justify-between text-white relative shadow-2xl overflow-hidden"
+              >
+                {/* SVG Overlay covering the entire parent coordinate system */}
+                <svg className="absolute inset-0 w-full h-full pointer-events-none z-10" style={{ overflow: 'visible' }}>
+                  {campRenderTick > -1 && renderCampLines()}
+                </svg>
+
+                {/* Decorative accents */}
+                <div className="absolute top-0 left-0 w-80 h-80 bg-rose-500/10 rounded-full blur-[100px] pointer-events-none" />
+
+                {/* Game Top Info */}
+                <div className="flex items-center justify-between border-b border-slate-800 pb-4 relative z-20">
+                  <div className="flex items-center gap-4 text-right">
+                    <div className="p-2.5 bg-rose-500/10 text-rose-500 rounded-xl">
+                      <Award className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h3 className="text-base md:text-lg font-black text-amber-500 tracking-tight">
+                        {DAY1_MATCHING_SETS[campCurrentSetIdx].title}
+                      </h3>
+                      <p className="text-xs text-slate-400 font-bold">
+                        {DAY1_MATCHING_SETS[campCurrentSetIdx].description}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-6 bg-slate-950 border border-slate-800 px-5 py-2.5 rounded-2xl">
+                    <div className="flex items-center gap-2">
+                      <Clock className="w-4 h-4 text-rose-500 animate-pulse" />
+                      <span className="font-mono text-lg font-bold text-rose-500">
+                        {Math.floor(campTestTimeLeft / 60)}:{(campTestTimeLeft % 60).toString().padStart(2, '0')}
+                      </span>
+                    </div>
+                    <div className="h-4 w-px bg-slate-800" />
+                    <div className="text-xs font-black text-slate-400">
+                      المجموعة: <span className="text-amber-500">{campCurrentSetIdx + 1}</span> / {DAY1_MATCHING_SETS.length}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Free Question Set Navigation Controls */}
+                <div className="flex flex-wrap gap-1.5 md:gap-2 justify-center bg-slate-950/60 p-2.5 rounded-2xl border border-slate-800/60 my-2 relative z-20" dir="rtl">
+                  <span className="text-xs font-bold text-slate-400 self-center ml-2">انتقال سريع للمجموعات:</span>
+                  {DAY1_MATCHING_SETS.map((_, idx) => {
+                    const isCurrent = campCurrentSetIdx === idx;
+                    const setMatches = idx === campCurrentSetIdx ? campMatches : (campAllSetsMatches[idx] || {});
+                    const isCompleted = Object.keys(setMatches).length === DAY1_MATCHING_SETS[idx].pairs.length;
+                    
+                    return (
+                      <button
+                        key={idx}
+                        onClick={() => {
+                          playSound('click');
+                          setCampCurrentSetIdx(idx);
+                          loadCampSet(idx);
+                        }}
+                        className={`w-8 h-8 rounded-lg font-black text-xs flex items-center justify-center transition-all ${
+                          isCurrent 
+                            ? 'bg-amber-500 text-slate-950 scale-110 shadow-md shadow-amber-500/20' 
+                            : isCompleted 
+                              ? 'bg-emerald-500/25 border border-emerald-500/40 text-emerald-400 font-bold'
+                              : 'bg-slate-900 border border-slate-850 text-slate-400 hover:bg-slate-800'
+                        }`}
+                      >
+                        {idx + 1}
+                      </button>
+                    );
+                  })}
+                </div>
+
+                {/* Matching Board Grid */}
+                <div 
+                  ref={scrollContainerRef}
+                  className="game-scroll-container grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16 my-8 overflow-y-auto flex-1 px-4 relative"
+                  dir="ltr"
+                >
+                  {/* Column 1: Questions (Left Items) */}
+                  <div className="flex-1 flex flex-col gap-4 relative z-20">
+                    <h4 className="font-bold text-slate-400 dark:text-slate-500 text-xs uppercase tracking-widest text-center mb-2">العلامة أو المصطلح</h4>
+                    {campGameQuestions.map((q) => {
+                      const matchedAnsId = campMatches[q.id];
+                      const isActive = campActiveSelection?.id === q.id && campActiveSelection?.side === 'left';
+                      
+                      let borderClass = 'border-slate-800 bg-slate-950 text-slate-200 hover:border-slate-700';
+                      if (isActive) borderClass = 'border-amber-400 bg-amber-500/10 shadow-md scale-[1.02] ring-2 ring-amber-500/30';
+                      else if (matchedAnsId) borderClass = 'border-amber-500/30 bg-slate-950/80 text-slate-205 shadow-inner';
+
+                      return (
+                        <div
+                          key={`left_${q.id}`}
+                          ref={el => { itemRefs.current[`left_${q.id}`] = el; }}
+                          onClick={() => {
+                            if (matchedAnsId) handleCampItemDisconnect(q.id, 'left');
+                            else handleCampItemClick(q.id, 'left');
+                          }}
+                          className={`
+                            relative text-right p-4 rounded-2xl border-2 transition-all font-black text-sm md:text-base leading-relaxed cursor-pointer z-20 select-none
+                            ${borderClass}
+                          `}
+                          dir="rtl"
+                        >
+                          {q.text}
+                          {/* Dot on the right edge of left column Question card */}
+                          <div className={`absolute top-1/2 -right-3 -translate-y-1/2 w-4 h-4 rounded-full border-2 bg-slate-950 transition-colors ${isActive || matchedAnsId ? 'border-amber-500 scale-125' : 'border-slate-800'}`} />
+                        </div>
+                      );
+                    })}
+                  </div>
+
+                  {/* Column 2: Answers (Right Items) */}
+                  <div className="flex-1 flex flex-col gap-4 relative z-20">
+                    <h4 className="font-bold text-slate-400 dark:text-slate-500 text-xs uppercase tracking-widest text-center mb-2">الوصف العلمي المطابق</h4>
+                    {campGameAnswers.map((a) => {
+                      const matchedQId = Object.keys(campMatches).find(key => campMatches[key] === a.id);
+                      const isActive = campActiveSelection?.id === a.id && campActiveSelection?.side === 'right';
+                      
+                      let borderClass = 'border-slate-800 bg-slate-950 text-slate-200 hover:border-slate-700';
+                      if (isActive) borderClass = 'border-amber-400 bg-amber-500/10 shadow-md scale-[1.02] ring-2 ring-amber-500/30';
+                      else if (matchedQId) borderClass = 'border-amber-500/30 bg-slate-950/80 text-slate-205 shadow-inner';
+
+                      return (
+                        <div
+                          key={`right_${a.id}`}
+                          ref={el => { itemRefs.current[`right_${a.id}`] = el; }}
+                          onClick={() => {
+                            if (matchedQId) handleCampItemDisconnect(a.id, 'right');
+                            else handleCampItemClick(a.id, 'right');
+                          }}
+                          className={`
+                            relative text-right p-4 rounded-2xl border-2 transition-all font-bold text-xs leading-relaxed cursor-pointer z-20 select-none
+                            ${borderClass}
+                          `}
+                          dir="rtl"
+                        >
+                          {/* Dot on the left edge of right column Answer card */}
+                          <div className={`absolute top-1/2 -left-3 -translate-y-1/2 w-4 h-4 rounded-full border-2 bg-slate-950 transition-colors ${isActive || matchedQId ? 'border-amber-500 scale-125' : 'border-slate-800'}`} />
+                          {a.text}
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Game Bottom Actions */}
+                <div className="border-t border-slate-800 pt-4 flex flex-col md:flex-row md:items-center justify-between gap-4 relative z-20" dir="rtl">
+                  <div className="flex gap-3">
+                    <button
+                      onClick={() => { playSound('click'); setCampExamState('ready'); }}
+                      className="px-5 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl font-black text-xs transition-colors"
+                    >
+                      انسحاب وإغلاق
+                    </button>
+                    <button
+                      onClick={handleCampSubmitQuiz}
+                      className="px-6 py-2.5 bg-rose-500/20 border border-rose-500/40 hover:bg-rose-500 hover:text-white text-rose-450 font-black rounded-xl text-xs transition-all shadow-md flex items-center gap-1.5"
+                    >
+                      <span>إنهاء وتسليم الكويز بالكامل 🏁</span>
+                    </button>
+                  </div>
+
+                  {/* Previous / Next buttons */}
+                  <div className="flex items-center gap-3">
+                    <button
+                      onClick={handleCampPrevSet}
+                      disabled={campCurrentSetIdx === 0}
+                      className="px-5 py-2.5 bg-slate-900 border border-slate-800 text-slate-350 disabled:opacity-30 disabled:cursor-not-allowed hover:bg-slate-850 rounded-xl font-black text-xs transition-colors"
+                    >
+                      السابق
+                    </button>
+
+                    <span className="text-xs font-bold text-slate-500 font-mono">
+                      {campCurrentSetIdx + 1} / {DAY1_MATCHING_SETS.length}
+                    </span>
+
+                    <button
+                      onClick={handleCampNextSet}
+                      disabled={campCurrentSetIdx === DAY1_MATCHING_SETS.length - 1}
+                      className="px-5 py-2.5 bg-slate-900 border border-slate-800 text-slate-350 disabled:opacity-30 disabled:cursor-not-allowed hover:bg-slate-850 rounded-xl font-black text-xs transition-colors"
+                    >
+                      التالي
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          )}
+        </AnimatePresence>
+
+        {/* 3. Finished Test Score Overlay */}
+        <AnimatePresence>
+          {campExamState === 'finished' && (
+            <div className="fixed inset-0 bg-slate-950/98 backdrop-blur-2xl z-[999999] flex items-center justify-center p-4">
+              <motion.div 
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                className="bg-slate-900 border border-slate-800 rounded-[3rem] w-full max-w-lg p-10 text-center text-white space-y-6 shadow-2xl relative overflow-hidden"
+                dir="rtl"
+              >
+                <div className="absolute top-0 right-0 w-48 h-48 bg-amber-500/10 rounded-full blur-[80px]" />
+
+                <div className="space-y-4">
+                  <div className="w-20 h-20 bg-gradient-to-r from-amber-500 to-rose-500 text-white rounded-full flex items-center justify-center mx-auto shadow-lg shadow-rose-500/20">
+                    <Award className="w-10 h-10" />
+                  </div>
+                  <h2 className="text-3xl font-black">أحسنت يا بطل! اكتمل الاختبار</h2>
+                  <p className="text-sm font-bold text-slate-400">نتيجتك النهائية في معسكر الورقة الأولى هي:</p>
+                </div>
+
+                {/* Score circular badge */}
+                <div className="relative w-40 h-40 mx-auto flex items-center justify-center bg-slate-950 border-4 border-slate-800 rounded-full">
+                  <div className="space-y-1">
+                    <span className="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-rose-400">
+                      {campScore}%
+                    </span>
+                    <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">التقييم العام</p>
+                  </div>
+                </div>
+
+                {/* Time spent and duration info card */}
+                <div className="bg-slate-950/60 border border-slate-850 rounded-2xl p-4 flex justify-between items-center text-xs font-bold text-slate-300">
+                  <span>الوقت المستغرق في الحل:</span>
+                  <span className="text-amber-500 text-sm font-black flex items-center gap-1.5">
+                    <Clock className="w-4 h-4 text-amber-500 animate-pulse" />
+                    {(() => {
+                      const mins = Math.floor(campTimeSpentSeconds / 60);
+                      const secs = campTimeSpentSeconds % 60;
+                      return `${mins} دقيقة و ${secs} ثانية`;
+                    })()}
+                  </span>
+                </div>
+
+                {/* Feedback message */}
+                <div className="bg-slate-950/60 border border-slate-800/80 rounded-2xl p-4 text-sm font-bold text-slate-350">
+                  {campScore >= 80 
+                    ? 'رائع جداً! مستواك متميز ومستعد تماماً لاجتياز الورقة الأولى بتفوق باهر.' 
+                    : campScore >= 50 
+                      ? 'جيد جداً! لديك أساس قوي ولكن مراجعة بعض شباتر المعسكر ستضمن لك الدرجة الكاملة.'
+                      : 'فرصة رائعة للمذاكرة! أعد تصفح مجلدات الأيام الثلاثة وأعد الاختبار لتحقق درجة أفضل.'}
+                </div>
+
+                <div className="flex gap-4">
+                  <button
+                    onClick={() => { playSound('click'); setCampExamState('ready'); }}
+                    className="flex-1 py-4 bg-gradient-to-r from-amber-500 to-rose-500 text-white rounded-2xl font-black text-sm hover:scale-[1.01] transition-transform"
+                  >
+                    العودة للمعسكر
+                  </button>
+                </div>
+              </motion.div>
+            </div>
+          )}
+        </AnimatePresence>
       </div>
     );
   }

@@ -102,7 +102,13 @@ export default function CourseSubjects() {
         {subjects.map((sub) => (
           <button
             key={sub.id}
-            onClick={() => navigate(`/course/${courseId}/subject/${sub.id}/lectures`)}
+            onClick={() => {
+              if (sub.id === 'first_paper_camp') {
+                navigate('/flashcards', { state: { selectSystem: 'معسكر الورقة الأولى' } });
+              } else {
+                navigate(`/course/${courseId}/subject/${sub.id}/lectures`);
+              }
+            }}
             className="p-8 bg-card border-2 border-border rounded-[3rem] shadow-xl hover:scale-[1.02] hover:border-primary transition-all text-left group flex items-center justify-between"
           >
             <div className="flex items-center gap-6">
