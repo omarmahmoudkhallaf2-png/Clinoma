@@ -236,9 +236,13 @@ class UltraSleekSecurityCanvas(canvas.Canvas):
 
 
 def build_pdf(filename="تحديدات_الأطفال_تجميعي.pdf", compress=False, student_name="Omar Mahmoud", student_email="omar.mahmoud@gmail.com"):
-    # Base paths
-    arabic_dir = u"d:/Med Prep/client/dist/assets/TIP-Peditrics/\u062a\u062d\u062f\u064a\u062f\u0627\u062a \u0627\u0644\u0627\u0637\u0641\u0627\u0644"
-    english_dir = "d:/Med Prep/client/dist/assets/TIP-Peditrics"
+    # Primary look in public source folder, fallback to dist compiled assets
+    arabic_dir = u"d:/Med Prep/client/public/assets/TIP-Peditrics/\u062a\u062d\u062f\u064a\u062f\u0627\u062a \u0627\u0644\u0627\u0637\u0641\u0627\u0644"
+    english_dir = "d:/Med Prep/client/public/assets/TIP-Peditrics"
+    
+    if not os.path.exists(arabic_dir):
+        arabic_dir = u"d:/Med Prep/client/dist/assets/TIP-Peditrics/\u062a\u062d\u062f\u064a\u062f\u0627\u062a \u0627\u0644\u0627\u0637\u0641\u0627\u0644"
+        english_dir = "d:/Med Prep/client/dist/assets/TIP-Peditrics"
     
     temp_compressed_dir = "d:/Med Prep/temp_compressed_hq"
     if not os.path.exists(temp_compressed_dir):
