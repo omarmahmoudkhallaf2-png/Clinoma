@@ -44,6 +44,7 @@ const DataThemes = lazy(() => import("./pages/DataThemes"));
 const PediatricsHub = lazy(() => import("./pages/PediatricsHub"));
 const PediatricsFolder = lazy(() => import("./pages/PediatricsFolder"));
 const FirstPaperCamp = lazy(() => import("./pages/FirstPaperCamp"));
+const QuestionBanksPortal = lazy(() => import("./pages/QuestionBanksPortal"));
 
 import { CommandPalette } from "./components/ui/CommandPalette";
 import { AmbientAudioProvider } from "./context/AmbientAudioContext";
@@ -98,6 +99,8 @@ const AnimatedRoutes = () => {
           
           <Route path="/incorrect" element={<ProtectedRoute><FilteredQuiz type="incorrect" /></ProtectedRoute>} />
           <Route path="/flagged" element={<ProtectedRoute><FilteredQuiz type="flagged" /></ProtectedRoute>} />
+          <Route path="/question-banks" element={<ProtectedRoute><QuestionBanksPortal /></ProtectedRoute>} />
+          
           <Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
 
           

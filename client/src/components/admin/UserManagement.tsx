@@ -12,6 +12,7 @@ interface UserData {
   photoURL: string;
   role: 'admin' | 'user';
   plan: 'free' | 'premium';
+  batch?: '43' | '44';
   subscriptions?: Record<string, boolean>; // e.g., { "f1": true, "f2": false }
   spaceSubscriptions?: Record<string, boolean>; // e.g., { "Pediatrics": true }
   createdAt?: any;
@@ -23,6 +24,7 @@ export default function UserManagement() {
   const [spaceModules, setSpaceModules] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
+  const [selectedBatch, setSelectedBatch] = useState<'all' | '43' | '44'>('all');
   const { updateUserStatus } = useAuth();
 
   const fetchData = async () => {
@@ -125,10 +127,16 @@ export default function UserManagement() {
   };
 
   const filteredUsers = users
-    .filter(u => 
-      u.email?.toLowerCase().includes(search.toLowerCase()) || 
-      u.displayName?.toLowerCase().includes(search.toLowerCase())
-    )
+    .filter(u => {
+      if (selectedBatch !== 'all') {
+        const uBatch = u.batch || '43';
+        if (uBatch !== selectedBatch) return false;
+      }
+      return (
+        u.email?.toLowerCase().includes(search.toLowerCase()) || 
+        u.displayName?.toLowerCase().includes(search.toLowerCase())
+      );
+    })
     .sort((a, b) => {
       // Admins always on top
       if (a.role === 'admin' && b.role !== 'admin') return -1;
@@ -162,6 +170,42 @@ export default function UserManagement() {
         </div>
       </div>
 
+      {/* Batch Segment Selection */}
+      <div className="flex justify-end border-b border-border/40 pb-2">
+        <div className="flex bg-muted/30 p-1.5 rounded-2xl border border-border/60 gap-1" dir="rtl">
+          <button
+            onClick={() => setSelectedBatch('all')}
+            className={`px-6 py-2.5 rounded-xl text-xs font-black transition-all ${
+              selectedBatch === 'all'
+                ? 'bg-primary text-white shadow-lg shadow-primary/20'
+                : 'text-muted-foreground hover:text-foreground hover:bg-secondary/40'
+            }`}
+          >
+            الكل ({users.length})
+          </button>
+          <button
+            onClick={() => setSelectedBatch('43')}
+            className={`px-6 py-2.5 rounded-xl text-xs font-black transition-all ${
+              selectedBatch === '43'
+                ? 'bg-primary text-white shadow-lg shadow-primary/20'
+                : 'text-muted-foreground hover:text-foreground hover:bg-secondary/40'
+            }`}
+          >
+            الدفعة 43 ({users.filter(u => (u.batch || '43') === '43').length})
+          </button>
+          <button
+            onClick={() => setSelectedBatch('44')}
+            className={`px-6 py-2.5 rounded-xl text-xs font-black transition-all ${
+              selectedBatch === '44'
+                ? 'bg-primary text-white shadow-lg shadow-primary/20'
+                : 'text-muted-foreground hover:text-foreground hover:bg-secondary/40'
+            }`}
+          >
+            الدفعة 44 ({users.filter(u => u.batch === '44').length})
+          </button>
+        </div>
+      </div>
+
       <div className="bg-card border border-border rounded-[2.5rem] shadow-xl overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-right" dir="rtl">
@@ -192,7 +236,16 @@ export default function UserManagement() {
                         <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 border-2 border-card rounded-full" />
                       </div>
                       <div>
-                        <div className="font-black text-foreground text-lg">{user.displayName || 'بدون اسم'}</div>
+                        <div className="font-black text-foreground text-lg flex items-center gap-2">
+                          {user.displayName || 'بدون اسم'}
+                          <span className={`inline-flex px-2 py-0.5 rounded-lg text-[9px] font-black ${
+                            (user.batch || '43') === '43' 
+                              ? 'bg-indigo-500/10 text-indigo-500 border border-indigo-500/20' 
+                              : 'bg-purple-500/10 text-purple-500 border border-purple-500/20'
+                          }`}>
+                            دفعة {user.batch || '43'}
+                          </span>
+                        </div>
                         <div className="text-xs text-muted-foreground font-bold flex items-center gap-1">
                           <Mail className="w-3 h-3" />
                           {user.email}

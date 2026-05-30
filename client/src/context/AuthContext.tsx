@@ -102,6 +102,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
               await updateDoc(userRef, { role: 'admin', plan: 'premium' });
               data = { ...data, role: 'admin', plan: 'premium' };
             }
+            if (!data.batch) {
+              await updateDoc(userRef, { batch: '43' });
+              data = { ...data, batch: '43' };
+            }
             setUserData(data);
           }
         } else {

@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { Brain, ArrowRight, User as UserIcon, Loader2 } from 'lucide-react';
+import { Brain, ArrowRight, User as UserIcon, Loader2, GraduationCap } from 'lucide-react';
 
 export default function CompleteProfile() {
   const [fullName, setFullName] = useState('');
+  const [batch, setBatch] = useState<'43' | '44'>('43');
   const [loading, setLoading] = useState(false);
   const { user, updateUserStatus } = useAuth();
   const navigate = useNavigate();
@@ -21,6 +22,7 @@ export default function CompleteProfile() {
       if (user) {
         await updateUserStatus(user.uid, { 
           displayName_ar: fullName.trim(),
+          batch,
           profileCompleted: true 
         });
         navigate('/dashboard');
@@ -64,6 +66,49 @@ export default function CompleteProfile() {
                 dir="rtl"
                 required
               />
+            </div>
+          </div>
+
+          <div className="space-y-3">
+            <label className="text-xs font-black text-slate-500 uppercase tracking-widest block text-right">الدفعة الدراسية</label>
+            <div className="grid grid-cols-2 gap-4">
+              <button
+                type="button"
+                onClick={() => setBatch('43')}
+                className={`p-5 rounded-2xl border text-center transition-all relative overflow-hidden flex flex-col items-center justify-center gap-2 group ${
+                  batch === '43'
+                    ? 'bg-gradient-to-br from-primary/20 to-purple-600/10 border-primary text-white shadow-lg shadow-primary/15 scale-[1.02]'
+                    : 'bg-slate-950 border-slate-800 text-slate-400 hover:border-slate-700 hover:text-slate-200'
+                }`}
+              >
+                <div className={`p-2 rounded-xl transition-all ${batch === '43' ? 'bg-primary/20 text-primary' : 'bg-slate-900 text-slate-500'}`}>
+                  <GraduationCap className="w-5 h-5" />
+                </div>
+                <span className="font-black text-sm">الدفعة 43</span>
+                <span className="text-[9px] font-bold opacity-60">دفعة 43</span>
+                {batch === '43' && (
+                  <div className="absolute top-2 right-2 w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                )}
+              </button>
+              
+              <button
+                type="button"
+                onClick={() => setBatch('44')}
+                className={`p-5 rounded-2xl border text-center transition-all relative overflow-hidden flex flex-col items-center justify-center gap-2 group ${
+                  batch === '44'
+                    ? 'bg-gradient-to-br from-primary/20 to-purple-600/10 border-primary text-white shadow-lg shadow-primary/15 scale-[1.02]'
+                    : 'bg-slate-950 border-slate-800 text-slate-400 hover:border-slate-700 hover:text-slate-200'
+                }`}
+              >
+                <div className={`p-2 rounded-xl transition-all ${batch === '44' ? 'bg-primary/20 text-primary' : 'bg-slate-900 text-slate-500'}`}>
+                  <GraduationCap className="w-5 h-5" />
+                </div>
+                <span className="font-black text-sm">الدفعة 44</span>
+                <span className="text-[9px] font-bold opacity-60">الدفعة الجديدة</span>
+                {batch === '44' && (
+                  <div className="absolute top-2 right-2 w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                )}
+              </button>
             </div>
           </div>
 
