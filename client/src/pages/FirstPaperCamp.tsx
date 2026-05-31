@@ -86,12 +86,18 @@ const DAY_CHAPTERS: Record<number, Chapter[]> = {
   ]
 };
 
-const PDF_RESOURCES = [
-  { id: 'questions', title: 'Questions Booklet PDF (كراسة الأسئلة للحل)', file: '/معسكر_الورقة_الأولى_اليوم_الأول_أسئلة.pdf', size: '79 KB', type: 'Questions Only' },
-  { id: 'answers', title: 'Answers Booklet PDF (كراسة الأسئلة بالإجابات)', file: '/معسكر_الورقة_الأولى_اليوم_الأول_إجابات.pdf', size: '85 KB', type: 'Model Answers' },
-  { id: 'quiz', title: 'Matching Quiz Booklet PDF (كراسة اختبار التوصيل)', file: '/معسكر_الورقة_الأولى_اليوم_الأول_كويز.pdf', size: '124 KB', type: 'Matching Quiz' },
-  { id: 'quiz_answers', title: 'Matching Quiz Answers PDF (كراسة إجابات اختبار التوصيل)', file: '/معسكر_الورقة_الأولى_اليوم_الأول_كويز_إجابات.pdf', size: '128 KB', type: 'Quiz Answers' }
-];
+const CAMP_PDF_RESOURCES: Record<number, { id: string; title: string; file: string; size: string; type: string }[]> = {
+  1: [
+    { id: 'questions', title: 'Questions Booklet PDF (كراسة الأسئلة للحل - اليوم الأول)', file: '/معسكر_الورقة_الأولى_اليوم_الأول_أسئلة.pdf', size: '79 KB', type: 'Questions Only' },
+    { id: 'answers', title: 'Answers Booklet PDF (كراسة الأسئلة بالإجابات - اليوم الأول)', file: '/معسكر_الورقة_الأولى_اليوم_الأول_إجابات.pdf', size: '85 KB', type: 'Model Answers' },
+    { id: 'quiz', title: 'Matching Quiz Booklet PDF (كراسة اختبار التوصيل - اليوم الأول)', file: '/معسكر_الورقة_الأولى_اليوم_الأول_كويز.pdf', size: '124 KB', type: 'Matching Quiz' }
+  ],
+  2: [
+    { id: 'questions', title: 'Questions Booklet PDF (كراسة الأسئلة للحل - اليوم الثاني)', file: '/معسكر_الورقة_الأولى_اليوم_الثاني_أسئلة.pdf', size: '82 KB', type: 'Questions Only' },
+    { id: 'answers', title: 'Answers Booklet PDF (كراسة الأسئلة بالإجابات - اليوم الثاني)', file: '/معسكر_الورقة_الأولى_اليوم_الثاني_إجابات.pdf', size: '88 KB', type: 'Model Answers' }
+  ],
+  3: []
+};
 
 interface MatchingPair {
   id: string;
@@ -889,7 +895,7 @@ export default function FirstPaperCamp() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 pt-6">
             
             {/* PDF Download Center */}
-            {activeDay === 1 && (
+            {(activeDay === 1 || activeDay === 2) && (
               <div className="bg-white/80 dark:bg-slate-900/60 backdrop-blur-xl border border-slate-200 dark:border-slate-800 rounded-[3rem] p-8 space-y-6 shadow-lg">
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-amber-500/10 text-amber-600 dark:text-amber-400 rounded-2xl flex items-center justify-center">
@@ -902,7 +908,7 @@ export default function FirstPaperCamp() {
                 </div>
 
                 <div className="space-y-4">
-                  {PDF_RESOURCES.filter(pdf => pdf.id !== 'quiz_answers').map((pdf) => (
+                  {(CAMP_PDF_RESOURCES[activeDay] || []).map((pdf) => (
                     <div 
                       key={pdf.id}
                       className="bg-white dark:bg-slate-955 border border-slate-200/50 dark:border-slate-800/60 rounded-2xl p-4 flex items-center justify-between hover:border-amber-500/40 transition-colors"
@@ -924,7 +930,7 @@ export default function FirstPaperCamp() {
                         onClick={(e) => { 
                           e.preventDefault(); 
                           playSound('click'); 
-                          handleDownloadPDF(pdf.id, pdf.file, `${pdf.id}_day1_camp.pdf`); 
+                          handleDownloadPDF(pdf.id, pdf.file, `${pdf.id}_day${activeDay}_camp.pdf`); 
                         }}
                         className="p-3 bg-amber-500/10 text-amber-600 dark:text-amber-400 hover:bg-amber-500 hover:text-white rounded-xl transition-all"
                       >
@@ -937,7 +943,7 @@ export default function FirstPaperCamp() {
             )}
 
             {/* Timed & Scheduled Matching Test Box */}
-            <div className={`bg-white/80 dark:bg-slate-900/60 backdrop-blur-xl border border-slate-200 dark:border-slate-800 rounded-[3rem] p-8 space-y-6 shadow-lg flex flex-col justify-between ${activeDay === 2 ? 'col-span-1 lg:col-span-2' : ''}`}>
+            <div className="bg-white/80 dark:bg-slate-900/60 backdrop-blur-xl border border-slate-200 dark:border-slate-800 rounded-[3rem] p-8 space-y-6 shadow-lg flex flex-col justify-between">
               <div className="space-y-4">
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-rose-500/10 text-rose-500 rounded-2xl flex items-center justify-center">

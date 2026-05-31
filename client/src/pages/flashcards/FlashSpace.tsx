@@ -6806,12 +6806,18 @@ interface MatchingSet {
   pairs: MatchingPair[];
 }
 
-const PDF_RESOURCES = [
-  { id: 'questions', title: 'Questions Booklet PDF (كراسة الأسئلة للحل)', file: '/معسكر_الورقة_الأولى_اليوم_الأول_أسئلة.pdf', size: '79 KB', type: 'Questions Only' },
-  { id: 'answers', title: 'Answers Booklet PDF (كراسة الأسئلة بالإجابات)', file: '/معسكر_الورقة_الأولى_اليوم_الأول_إجابات.pdf', size: '85 KB', type: 'Model Answers' },
-  { id: 'quiz', title: 'Matching Quiz Booklet PDF (كراسة اختبار التوصيل)', file: '/معسكر_الورقة_الأولى_اليوم_الأول_كويز.pdf', size: '124 KB', type: 'Matching Quiz' },
-  { id: 'quiz_answers', title: 'Matching Quiz Answers PDF (كراسة إجابات اختبار التوصيل)', file: '/معسكر_الورقة_الأولى_اليوم_الأول_كويز_إجابات.pdf', size: '128 KB', type: 'Quiz Answers' }
-];
+const CAMP_PDF_RESOURCES: Record<number, { id: string; title: string; file: string; size: string; type: string }[]> = {
+  1: [
+    { id: 'questions', title: 'Questions Booklet PDF (كراسة الأسئلة للحل - اليوم الأول)', file: '/معسكر_الورقة_الأولى_اليوم_الأول_أسئلة.pdf', size: '79 KB', type: 'Questions Only' },
+    { id: 'answers', title: 'Answers Booklet PDF (كراسة الأسئلة بالإجابات - اليوم الأول)', file: '/معسكر_الورقة_الأولى_اليوم_الأول_إجابات.pdf', size: '85 KB', type: 'Model Answers' },
+    { id: 'quiz', title: 'Matching Quiz Booklet PDF (كراسة اختبار التوصيل - اليوم الأول)', file: '/معسكر_الورقة_الأولى_اليوم_الأول_كويز.pdf', size: '124 KB', type: 'Matching Quiz' }
+  ],
+  2: [
+    { id: 'questions', title: 'Questions Booklet PDF (كراسة الأسئلة للحل - اليوم الثاني)', file: '/معسكر_الورقة_الأولى_اليوم_الثاني_أسئلة.pdf', size: '82 KB', type: 'Questions Only' },
+    { id: 'answers', title: 'Answers Booklet PDF (كراسة الأسئلة بالإجابات - اليوم الثاني)', file: '/معسكر_الورقة_الأولى_اليوم_الثاني_إجابات.pdf', size: '88 KB', type: 'Model Answers' }
+  ],
+  3: []
+};
 
 const DAY1_MATCHING_SETS: MatchingSet[] = [
   {
@@ -8764,10 +8770,10 @@ const FlashSpace = () => {
                     </div>
 
                     <div className="space-y-4">
-                      {PDF_RESOURCES.filter(pdf => pdf.id !== 'quiz_answers').map((pdf) => (
+                      {(CAMP_PDF_RESOURCES[campActiveDay] || []).map((pdf) => (
                         <div 
                           key={pdf.id}
-                          className="bg-slate-950/60 border border-white/5 rounded-2xl p-4 flex items-center justify-between hover:border-amber-500/40 transition-colors"
+                          className="bg-slate-955 border border-slate-800 rounded-2xl p-4 flex items-center justify-between hover:border-amber-500/40 transition-colors"
                         >
                           <div className="flex items-center gap-4 text-right">
                             <div className="w-10 h-10 bg-slate-900 text-amber-500 rounded-xl flex items-center justify-center font-bold text-xs">
@@ -8786,7 +8792,7 @@ const FlashSpace = () => {
                             onClick={(e) => { 
                               e.preventDefault(); 
                               playSound('click'); 
-                              handleDownloadPDF(pdf.id, pdf.file, `${pdf.id}_day1_camp.pdf`); 
+                              handleDownloadPDF(pdf.id, pdf.file, `${pdf.id}_day${campActiveDay}_camp.pdf`); 
                             }}
                             className="p-3 bg-amber-500/10 text-amber-500 hover:bg-amber-500 hover:text-white rounded-xl transition-all"
                           >
