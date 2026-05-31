@@ -6813,8 +6813,8 @@ const CAMP_PDF_RESOURCES: Record<number, { id: string; title: string; file: stri
     { id: 'quiz', title: 'Matching Quiz Booklet PDF (كراسة اختبار التوصيل - اليوم الأول)', file: '/معسكر_الورقة_الأولى_اليوم_الأول_كويز.pdf', size: '124 KB', type: 'Matching Quiz' }
   ],
   2: [
-    { id: 'questions', title: 'Questions Booklet PDF (كراسة الأسئلة للحل - اليوم الثاني)', file: '/معسكر_الورقة_الأولى_اليوم_الثاني_أسئلة.pdf', size: '72 KB', type: 'Questions Only' },
-    { id: 'answers', title: 'Answers Booklet PDF (كراسة الأسئلة بالإجابات - اليوم الثاني)', file: '/معسكر_الورقة_الأولى_اليوم_الثاني_إجابات.pdf', size: '76 KB', type: 'Model Answers' }
+    { id: 'questions', title: 'Questions Booklet PDF (كراسة الأسئلة للحل - اليوم الثاني)', file: '/معسكر_الورقة_الأولى_اليوم_الثاني_أسئلة.pdf', size: '70 KB', type: 'Questions Only' },
+    { id: 'answers', title: 'Answers Booklet PDF (كراسة الأسئلة بالإجابات - اليوم الثاني)', file: '/معسكر_الورقة_الأولى_اليوم_الثاني_إجابات.pdf', size: '74 KB', type: 'Model Answers' }
   ],
   3: []
 };

@@ -139,17 +139,30 @@ def parse_questions_file_day2(file_path):
 
         # Detect Chapter (Examination / Model header)
         if "Examination - Model" in line_str or "Examination" in line_str:
-            title = line_str
-            # Clean up the chapter title
-            title = title.replace("Pediatric Endocrinology Examination - ", "")
-            title = title.replace("Pediatric Hematology & Oncology Examination - ", "")
-            title = title.replace(" (Corrected)", "")
+            clean_title = ""
+            if "Endocrinology" in line_str:
+                clean_title = "Pediatric Endocrinology"
+            elif "Hematology" in line_str:
+                clean_title = "Pediatric Hematology & Oncology"
+            else:
+                clean_title = line_str
+
+            # Check if this chapter already exists
+            existing_chapter = None
+            for ch in chapters:
+                if ch["title"] == clean_title:
+                    existing_chapter = ch
+                    break
             
-            current_chapter = {
-                "title": title,
-                "items": []
-            }
-            chapters.append(current_chapter)
+            if existing_chapter:
+                current_chapter = existing_chapter
+            else:
+                current_chapter = {
+                    "title": clean_title,
+                    "items": []
+                }
+                chapters.append(current_chapter)
+                
             current_section = None
             current_case = None
             current_question = None
