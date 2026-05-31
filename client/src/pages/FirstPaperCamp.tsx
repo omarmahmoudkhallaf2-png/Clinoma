@@ -368,10 +368,10 @@ export default function FirstPaperCamp() {
 
   // Time & Date scheduling configuration
   const [startTimeStr, setStartTimeStr] = useState<string>(() => {
-    return localStorage.getItem('camp_start_time') || new Date(Date.now() - 5 * 60 * 1000).toISOString().slice(0, 16); // Defaults to 5 mins ago (active)
+    return localStorage.getItem('camp_start_time') || '2026-05-31T21:00';
   });
   const [durationMins, setDurationMins] = useState<number>(() => {
-    return Number(localStorage.getItem('camp_duration') || '15');
+    return Number(localStorage.getItem('camp_duration') || '30');
   });
 
   const [timeRemainingToStart, setTimeRemainingToStart] = useState<number>(0);
@@ -385,6 +385,14 @@ export default function FirstPaperCamp() {
 
   useEffect(() => {
     setIsQuizCompleted(localStorage.getItem(`day${activeDay}_quiz_completed`) === 'true');
+    setExamState('ready');
+    setCurrentSetIdx(0);
+    setMatches({});
+    setWrongMatches([]);
+    setSelectedQ(null);
+    setSelectedA(null);
+    setActiveSelection(null);
+    setTotalCorrectCount(0);
   }, [activeDay]);
 
   const handleDownloadPDF = async (pdfId: string, pdfUrl: string, defaultName: string) => {
@@ -543,11 +551,14 @@ export default function FirstPaperCamp() {
   useEffect(() => {
     const checkSchedule = () => {
       const startMs = new Date(startTimeStr).getTime();
+      const endMs = startMs + 2 * 60 * 60 * 1000; // Open for a 2-hour window (e.g. 9 to 11 PM)
       const nowMs = Date.now();
-      const diff = startMs - nowMs;
       
-      if (diff > 0) {
-        setTimeRemainingToStart(Math.ceil(diff / 1000));
+      if (nowMs < startMs) {
+        setTimeRemainingToStart(Math.ceil((startMs - nowMs) / 1000));
+        setExamState('locked');
+      } else if (nowMs > endMs) {
+        setTimeRemainingToStart(-1); // Indication that the exam window expired
         setExamState('locked');
       } else {
         setTimeRemainingToStart(0);
@@ -951,16 +962,26 @@ export default function FirstPaperCamp() {
               {/* Test Action Box */}
               <div className="pt-6">
                 {examState === 'locked' ? (
-                  <div className="space-y-4 text-center p-6 bg-amber-500/5 border border-dashed border-amber-500/20 rounded-[2rem]">
-                    <ShieldAlert className="w-12 h-12 mx-auto text-amber-500 animate-pulse" />
-                    <div className="space-y-1">
-                      <h4 className="text-base font-black text-slate-800 dark:text-slate-200">هذا الاختبار مغلق حالياً</h4>
-                      <p className="text-xs font-bold text-slate-400">سيفتح الاختبار تلقائياً بعد انتهاء الوقت التالي:</p>
+                  timeRemainingToStart === -1 ? (
+                    <div className="space-y-4 text-center p-6 bg-rose-500/5 border border-dashed border-rose-500/20 rounded-[2rem]">
+                      <ShieldAlert className="w-12 h-12 mx-auto text-rose-500 animate-pulse" />
+                      <div className="space-y-1">
+                        <h4 className="text-base font-black text-rose-600 dark:text-rose-450">عذراً، انتهى الوقت المتاح للاختبار! ⏰</h4>
+                        <p className="text-xs font-bold text-slate-400">كان متاحاً فقط من الساعة 09:00 مساءً حتى الساعة 11:00 مساءً.</p>
+                      </div>
                     </div>
-                    <div className="text-2xl md:text-3xl font-black text-amber-600 dark:text-amber-400 tracking-wider">
-                      {formatCountdown(timeRemainingToStart)}
+                  ) : (
+                    <div className="space-y-4 text-center p-6 bg-amber-500/5 border border-dashed border-amber-500/20 rounded-[2rem]">
+                      <ShieldAlert className="w-12 h-12 mx-auto text-amber-500 animate-pulse" />
+                      <div className="space-y-1">
+                        <h4 className="text-base font-black text-slate-800 dark:text-slate-200">هذا الاختبار مغلق حالياً</h4>
+                        <p className="text-xs font-bold text-slate-400">سيفتح الاختبار تلقائياً بعد انتهاء الوقت التالي:</p>
+                      </div>
+                      <div className="text-2xl md:text-3xl font-black text-amber-600 dark:text-amber-400 tracking-wider">
+                        {formatCountdown(timeRemainingToStart)}
+                      </div>
                     </div>
-                  </div>
+                  )
                 ) : isQuizCompleted && examState !== 'active' ? (
                   <div className="space-y-4 text-center p-6 bg-emerald-500/5 border border-dashed border-emerald-500/20 rounded-[2rem]">
                     <Award className="w-12 h-12 mx-auto text-emerald-500 animate-bounce" />

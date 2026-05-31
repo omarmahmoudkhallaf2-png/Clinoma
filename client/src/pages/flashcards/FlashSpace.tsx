@@ -6946,6 +6946,114 @@ const DAY1_MATCHING_SETS: MatchingSet[] = [
   }
 ];
 
+const DAY2_MATCHING_SETS: MatchingSet[] = [
+  {
+    id: 'day2_set1',
+    title: 'المجموعة 1: سمنة الأطفال التشخيص التفريقي (Childhood Obesity Differential)',
+    description: 'قم بتوصيل كل حالة بالتعريف أو الإجراء السريري المطابق لها.',
+    pairs: [
+      { id: 'd2_s1_p1', question: 'Nutritional Obesity', answer: 'Consistent/accelerated growth, early puberty, advanced bone age (> 2 SD).' },
+      { id: 'd2_s1_p2', question: 'Endocrine Obesity', answer: 'Decreased/decelerated linear growth. Test for thyroid hormones.' },
+      { id: 'd2_s1_p3', question: 'Genetic Syndrome Obesity', answer: 'Severe obesity < 5 years. Developmental delay, short stature, dysmorphic facies, hyperphagia.' }
+    ]
+  },
+  {
+    id: 'day2_set2',
+    title: 'المجموعة 2: خمول الغدة الدرقية الخلقي (Congenital Hypothyroidism)',
+    description: 'قم بتوصيل الأسباب وطرق الفحص بالوصف المناسب لها.',
+    pairs: [
+      { id: 'd2_s2_p1', question: 'Defect of fetal thyroid development (DYSGENESIS)', answer: 'Aplasia, Hypoplasia, Ectopia.' },
+      { id: 'd2_s2_p2', question: 'Defect in thyroid hormone synthesis (DYSHORMONOGENESIS)', answer: 'Defect in thyroid hormone synthesis.' },
+      { id: 'd2_s2_p3', question: 'Thyroid scan', answer: 'Missing or too small gland.' },
+      { id: 'd2_s2_p4', question: 'Bone age (Greulich & Pyle method)', answer: 'Absent/small epiphyses, stippled appearance, cortical thickening.' }
+    ]
+  },
+  {
+    id: 'day2_set3',
+    title: 'المجموعة 3: علاج السكري وإدارة الإنسولين (Diabetes & Insulin)',
+    description: 'قم بتوصيل نوع الإنسولين بفترة فاعليته وتوقيت إعطائه.',
+    pairs: [
+      { id: 'd2_s3_p1', question: 'Rapid/Short-acting (Lispro, Aspart)', answer: '15 mins before meals.' },
+      { id: 'd2_s3_p2', question: 'Regular', answer: '30–60 mins before meals.' },
+      { id: 'd2_s3_p3', question: 'Intermediate (NPH, Lente)', answer: '10–16 hours.' },
+      { id: 'd2_s3_p4', question: 'Long-acting (Glargine, Detemir)', answer: '20–24 hours.' }
+    ]
+  },
+  {
+    id: 'day2_set4',
+    title: 'المجموعة 4: قصر القامة والأنماط الطبيعية للنمو (Short Stature)',
+    description: 'قم بتوصيل نمط قصر القامة بالمميزات والعلامات التشخيصية له.',
+    pairs: [
+      { id: 'd2_s4_p1', question: 'Familial Short Stature', answer: 'Bone Age = Chronologic Age (Crucial differential point).' },
+      { id: 'd2_s4_p2', question: 'Constitutional Delay of Growth and Puberty (CDGP)', answer: 'Normal birth size → downward shift at 3–6 months → grows parallel to but below the 3rd percentile by 3–4 years.' },
+      { id: 'd2_s4_p3', question: 'Idiopathic Short Stature (ISS)', answer: 'Height ≤ 2 SD below the mean with no endocrine, metabolic, or systemic diagnosis.' },
+      { id: 'd2_s4_p4', question: 'Small for Gestational Age (SGA) Infants', answer: 'Most achieve catch-up growth by 2 years of age to enter the normal range.' }
+    ]
+  },
+  {
+    id: 'day2_set5',
+    title: 'المجموعة 5: مميزات وعلامات أمراض الدم (Hematology Hallmarks)',
+    description: 'قم بتوصيل المرض أو الخلل بالعلامة المخبرية أو الخلوية المميزة له.',
+    pairs: [
+      { id: 'd2_s5_p1', question: 'G6PD-deficient individuals', answer: 'Denatured hemoglobin aggregates are VISUALIZED as HEINZ BODIES in peripheral blood smears.' },
+      { id: 'd2_s5_p2', question: 'Hereditary Spherocytosis (HS)', answer: 'Eosin-5-maleimide (EMA) is the diagnostic test of choice.' },
+      { id: 'd2_s5_p3', question: 'Hodgkin lymphoma (HL)', answer: 'The Reed-Sternberg (RS) cell is the hallmark diagnostic feature, characterized as a large cell (15-45 μm in diameter) containing multiple or multilobulated nuclei ("owl-eye" appearance).' },
+      { id: 'd2_s5_p4', question: 'Beta-Thalassemia Major', answer: 'Peripheral smear: TARGET CELLS, ANISOCYTOSIS, POIKILOCYTOSIS.' },
+      { id: 'd2_s5_p5', question: 'SEVERE APLASTIC ANEMIA CRITERIA', answer: 'Hypocellular BM for age plus two of the following three criteria: Platelet count < 20,000/mm³, Absolute reticulocyte count < 40,000/mm³, or Absolute neutrophil count (ANC) < 500/mm³.' },
+      { id: 'd2_s5_p6', question: 'Acute Lymphoblastic Leukemia (ALL)', answer: 'Bone marrow aspiration and biopsy are confirmative and diagnostic if more than 25% of the bone marrow cells are lymphoblasts.' }
+    ]
+  },
+  {
+    id: 'day2_set6',
+    title: 'المجموعة 6: الوراثة وأنماط التوارث الجيني (Genetics & Inheritance)',
+    description: 'قم بتوصيل المرض أو المتلازمة بالنمط الوراثي أو الطفرة المسؤولة عنها.',
+    pairs: [
+      { id: 'd2_s6_p1', question: 'Hemophilia A (Classic)', answer: 'Factor VIII deficiency. (X-linked recessive, affects males)' },
+      { id: 'd2_s6_p2', question: 'Hemophilia C', answer: 'Factor XI deficiency. (Autosomal recessive, rarest)' },
+      { id: 'd2_s6_p3', question: 'HYDROPS FETALIS', answer: 'SEVERE HEMOLYSIS in utero, leading to DEATH (4 genes deleted).' },
+      { id: 'd2_s6_p4', question: 'Hereditary Spherocytosis (HS)', answer: 'Mode of inheritance: Autosomal Dominant (AD) in 75% of cases.' },
+      { id: 'd2_s6_p5', question: 'G6PD DEFICIENCY', answer: 'MOST COMMON ENZYMATIC DISORDER of RBCs, inherited via SEX-LINKED RECESSIVE MODE on the X CHROMOSOME.' },
+      { id: 'd2_s6_p6', question: 'CONGENITAL (Mostly Inherited) Etiology of Aplastic Anemia', answer: 'Fanconi anemia and Diamond Blackfan syndrome.' }
+    ]
+  },
+  {
+    id: 'day2_set7',
+    title: 'المجموعة 7: العلامات والأعراض السريرية المميزة (Clinical Signs)',
+    description: 'قم بتوصيل المرض أو العوز بالعلامة السريرية الفارقة له.',
+    pairs: [
+      { id: 'd2_s7_p1', question: 'Iron deficiency anemia (IDA)', answer: 'pica, which is the intense craving for nonfood items like clay, dirt, rocks, starch, chalk, soap, paper, or cardboard.' },
+      { id: 'd2_s7_p2', question: 'IMMUNE THROMBOCYTOPENIA (ITP)', answer: 'SUDDEN APPEARANCE of PETECHIAL RASH, PURPURA, & ECCHYMOSES (BRUISING) in an otherwise healthy child.' },
+      { id: 'd2_s7_p3', question: 'BETA-THALASSEMIA MAJOR (COOLEY ANEMIA)', answer: '"THALASSEMIC FACIES" (frontal bossing, flat nasal bridge, maxilla hyperplasia)' },
+      { id: 'd2_s7_p4', question: 'Childhood Acute Lymphoblastic Leukemia (ALL) Initial presentation', answer: 'Nonspecific signs including anorexia, fatigue, malaise, irritability, and intermittent low-grade fever.' },
+      { id: 'd2_s7_p5', question: 'Hemophilia in Mobile Children & Adolescents', answer: 'Hemarthrosis (Joint Bleeding): Most common site (up to 80% of hemorrhages). Affects ankles, knees, elbows.' }
+    ]
+  },
+  {
+    id: 'day2_set8',
+    title: 'المجموعة 8: التحاليل المخبرية والتشخيصية (Laboratory Profiles)',
+    description: 'قم بتوصيل الحالة بنتائج التحاليل والفحوصات الخاصة بها.',
+    pairs: [
+      { id: 'd2_s8_p1', question: 'Iron profile in IDA', answer: 'shows low serum iron, low serum ferritin, increased Total iron binding capacity (TIBC), and decreased transferrin saturation (TS).' },
+      { id: 'd2_s8_p2', question: 'Diagnosis in ITP', answer: 'CBC shows ISOLATED THROMBOCYTOPENIA' },
+      { id: 'd2_s8_p3', question: 'Blood chemistry in ALL', answer: 'shows markedly elevated lactate dehydrogenase (LDH) and uric acid.' },
+      { id: 'd2_s8_p4', question: 'Biochemistry in Beta-Thalassemia Major', answer: 'INCREASED indirect bilirubin, high serum ferritin, high serum iron, high transferrin saturation.' },
+      { id: 'd2_s8_p5', question: 'Investigations in Hemophilia', answer: 'Coagulation time & Activated partial thromboplastin time (aPTT): Prolonged' }
+    ]
+  },
+  {
+    id: 'day2_set9',
+    title: 'المجموعة 9: المضاعفات والأزمات الخطيرة وطوارئ الدم (Crises & Emergencies)',
+    description: 'قم بتوصيل الأزمة أو المضاعفة الطارئة بالتعريف ووصف مسبباتها.',
+    pairs: [
+      { id: 'd2_s9_p1', question: 'APLASTIC CRISIS', answer: 'MOST DANGEROUS! Almost universally triggered by Parvovirus B19. Completely halts marrow erythropoiesis.' },
+      { id: 'd2_s9_p2', question: 'MEGALOBLASTIC CRISIS', answer: 'Due to rapid, severe depletion of nutritional folate stores driven by chronic, highly accelerated bone marrow erythropoiesis.' },
+      { id: 'd2_s9_p3', question: 'HEMOLYTIC CRISIS', answer: 'Sudden, temporary acceleration of RBC destruction, precipitated by acute bacterial or viral infections.' },
+      { id: 'd2_s9_p4', question: 'Tumor Lysis Syndrome (TLS)', answer: 'A life-threatening complication managed with aggressive IV hydration before chemotherapy, uric acid reduction via allopurinol, and close electrolyte monitoring.' },
+      { id: 'd2_s9_p5', question: 'Inhibitors (Major Complication)', answer: 'IgG antibodies that neutralize clotting factor concentrates. Occurs in 30% of severe Hemophilia A.' }
+    ]
+  }
+];
+
 const playSound = (type: 'click' | 'correct' | 'wrong' | 'success') => {
   try {
     const audioCtx = new (window.AudioContext || (window as any).webkitAudioContext)();
@@ -7022,13 +7130,26 @@ const FlashSpace = () => {
 
   // --- First Paper Camp states ---
   const [campActiveDay, setCampActiveDay] = useState<number>(1);
+  const currentMatchingSets = campActiveDay === 2 ? DAY2_MATCHING_SETS : DAY1_MATCHING_SETS;
+
+  useEffect(() => {
+    setCampCurrentSetIdx(0);
+    setCampMatches({});
+    setCampWrongMatches([]);
+    setCampActiveSelection(null);
+    setCampTimeSpentSeconds(0);
+    const setsPool = campActiveDay === 2 ? DAY2_MATCHING_SETS : DAY1_MATCHING_SETS;
+    const totalPairs = setsPool.reduce((acc: number, s: MatchingSet) => acc + s.pairs.length, 0);
+    setCampTotalPairsCount(totalPairs);
+  }, [campActiveDay]);
+
   const [campActiveTab, setCampActiveTab] = useState<'chapters' | 'notebook'>('chapters');
   const [campShowSettings, setCampShowSettings] = useState(false);
   const [campStartTimeStr, setCampStartTimeStr] = useState<string>(() => {
-    return localStorage.getItem('camp_start_time') || '2026-05-30T22:00';
+    return localStorage.getItem('camp_start_time') || '2026-05-31T21:00';
   });
   const [campDurationMins, setCampDurationMins] = useState<number>(() => {
-    return Number(localStorage.getItem('camp_duration') || '20');
+    return Number(localStorage.getItem('camp_duration') || '30');
   });
   const [campTimeRemainingToStart, setCampTimeRemainingToStart] = useState<number>(0);
   const [campExamState, setCampExamState] = useState<'locked' | 'ready' | 'active' | 'finished'>('ready');
@@ -7549,7 +7670,7 @@ const FlashSpace = () => {
   useEffect(() => {
     const checkSchedule = () => {
       const startMs = new Date(campStartTimeStr).getTime();
-      const endMs = new Date('2026-05-31T00:00:00').getTime();
+      const endMs = startMs + 2 * 60 * 60 * 1000; // 2-hour window (e.g. 9 to 11 PM)
       const nowMs = Date.now();
       
       if (nowMs < startMs) {
@@ -7576,11 +7697,23 @@ const FlashSpace = () => {
   const [campAttemptScore, setCampAttemptScore] = useState<number | null>(null);
 
   useEffect(() => {
-    if (!user) return;
+    if (!user) {
+      const localCompleted = localStorage.getItem(`day${campActiveDay}_quiz_completed`) === 'true';
+      setIsQuizCompleted(localCompleted);
+      if (localCompleted) {
+        setCampExamState('finished');
+      } else {
+        setCampExamState('ready');
+      }
+      setHasAttemptedCamp(false);
+      setCampAttemptScore(null);
+      return;
+    }
+    const currentExamId = campActiveDay === 2 ? 'first_paper_camp_matching_day2' : 'first_paper_camp_matching';
     const q = query(
       collection(dbExam, 'exam_attempts'),
       where('userId', '==', user.uid),
-      where('examId', '==', 'first_paper_camp_matching')
+      where('examId', '==', currentExamId)
     );
     const unsubscribe = onSnapshot(q, (snapshot) => {
       if (!snapshot.empty) {
@@ -7589,11 +7722,22 @@ const FlashSpace = () => {
         setCampAttemptScore(attempt.score);
         setCampScore(attempt.score);
         setCampExamState('locked');
-        localStorage.setItem('day1_quiz_completed', 'true');
+        setIsQuizCompleted(true);
+        localStorage.setItem(`day${campActiveDay}_quiz_completed`, 'true');
+      } else {
+        setHasAttemptedCamp(false);
+        setCampAttemptScore(null);
+        const localCompleted = localStorage.getItem(`day${campActiveDay}_quiz_completed`) === 'true';
+        setIsQuizCompleted(localCompleted);
+        if (localCompleted) {
+          setCampExamState('finished');
+        } else {
+          setCampExamState('ready');
+        }
       }
     });
     return () => unsubscribe();
-  }, [user]);
+  }, [user, campActiveDay]);
 
   const campMatchesRef = useRef(campMatches);
   const campCurrentSetIdxRef = useRef(campCurrentSetIdx);
@@ -7658,7 +7802,7 @@ const FlashSpace = () => {
     setCampAllSetsMatches({});
     setCampTimeSpentSeconds(0);
     
-    const totalPairs = DAY1_MATCHING_SETS.reduce((acc, s) => acc + s.pairs.length, 0);
+    const totalPairs = currentMatchingSets.reduce((acc: number, s: MatchingSet) => acc + s.pairs.length, 0);
     setCampTotalPairsCount(totalPairs);
     
     loadCampSet(0, {});
@@ -7667,11 +7811,11 @@ const FlashSpace = () => {
   };
 
   const loadCampSet = (setIdx: number, allSets = campAllSetsMatches) => {
-    const currentSet = DAY1_MATCHING_SETS[setIdx];
+    const currentSet = currentMatchingSets[setIdx];
     if (!currentSet) return;
     
-    const qs = currentSet.pairs.map(item => ({ id: item.id, text: item.question })).sort(() => Math.random() - 0.5);
-    const ans = currentSet.pairs.map(item => ({ id: item.id, text: item.answer })).sort(() => Math.random() - 0.5);
+    const qs = currentSet.pairs.map((item: MatchingPair) => ({ id: item.id, text: item.question })).sort(() => Math.random() - 0.5);
+    const ans = currentSet.pairs.map((item: MatchingPair) => ({ id: item.id, text: item.answer })).sort(() => Math.random() - 0.5);
     
     setCampGameQuestions(qs);
     setCampGameAnswers(ans);
@@ -7784,9 +7928,9 @@ const FlashSpace = () => {
 
   const getCampTotalCorrectAllSets = (finalCurrentMatches = campMatches, currentIdx = campCurrentSetIdx) => {
     let totalCorrect = 0;
-    DAY1_MATCHING_SETS.forEach((set, setIdx) => {
+    currentMatchingSets.forEach((set: MatchingSet, setIdx: number) => {
       const setMatches = setIdx === currentIdx ? finalCurrentMatches : (campAllSetsMatches[setIdx] || {});
-      set.pairs.forEach(pair => {
+      set.pairs.forEach((pair: MatchingPair) => {
         if (setMatches[pair.id] === pair.id) {
           totalCorrect += 1;
         }
@@ -7805,7 +7949,7 @@ const FlashSpace = () => {
   };
 
   const handleCampNextSet = () => {
-    if (campCurrentSetIdx < DAY1_MATCHING_SETS.length - 1) {
+    if (campCurrentSetIdx < currentMatchingSets.length - 1) {
       playSound('success');
       const nextIdx = campCurrentSetIdx + 1;
       setCampCurrentSetIdx(nextIdx);
@@ -9563,10 +9707,10 @@ const FlashSpace = () => {
                     </div>
                     <div>
                       <h3 className="text-base md:text-lg font-black text-amber-500 tracking-tight">
-                        {DAY1_MATCHING_SETS[campCurrentSetIdx].title}
+                        {currentMatchingSets[campCurrentSetIdx].title}
                       </h3>
                       <p className="text-xs text-slate-400 font-bold">
-                        {DAY1_MATCHING_SETS[campCurrentSetIdx].description}
+                        {currentMatchingSets[campCurrentSetIdx].description}
                       </p>
                     </div>
                   </div>
@@ -9580,7 +9724,7 @@ const FlashSpace = () => {
                     </div>
                     <div className="h-4 w-px bg-slate-800" />
                     <div className="text-xs font-black text-slate-400">
-                      المجموعة: <span className="text-amber-500">{campCurrentSetIdx + 1}</span> / {DAY1_MATCHING_SETS.length}
+                      المجموعة: <span className="text-amber-500">{campCurrentSetIdx + 1}</span> / {currentMatchingSets.length}
                     </div>
                   </div>
                 </div>
@@ -9588,10 +9732,10 @@ const FlashSpace = () => {
                 {/* Free Question Set Navigation Controls */}
                 <div className="flex flex-wrap gap-1.5 md:gap-2 justify-center bg-slate-950/60 p-2.5 rounded-2xl border border-slate-800/60 my-2 relative z-20" dir="rtl">
                   <span className="text-xs font-bold text-slate-400 self-center ml-2">انتقال سريع للمجموعات:</span>
-                  {DAY1_MATCHING_SETS.map((_, idx) => {
+                  {currentMatchingSets.map((_: MatchingSet, idx: number) => {
                     const isCurrent = campCurrentSetIdx === idx;
                     const setMatches = idx === campCurrentSetIdx ? campMatches : (campAllSetsMatches[idx] || {});
-                    const isCompleted = Object.keys(setMatches).length === DAY1_MATCHING_SETS[idx].pairs.length;
+                    const isCompleted = Object.keys(setMatches).length === currentMatchingSets[idx].pairs.length;
                     
                     return (
                       <button
@@ -9716,12 +9860,12 @@ const FlashSpace = () => {
                     </button>
 
                     <span className="text-xs font-bold text-slate-500 font-mono">
-                      {campCurrentSetIdx + 1} / {DAY1_MATCHING_SETS.length}
+                      {campCurrentSetIdx + 1} / {currentMatchingSets.length}
                     </span>
 
                     <button
                       onClick={handleCampNextSet}
-                      disabled={campCurrentSetIdx === DAY1_MATCHING_SETS.length - 1}
+                      disabled={campCurrentSetIdx === currentMatchingSets.length - 1}
                       className="px-5 py-2.5 bg-slate-900 border border-slate-800 text-slate-350 disabled:opacity-30 disabled:cursor-not-allowed hover:bg-slate-850 rounded-xl font-black text-xs transition-colors"
                     >
                       التالي
