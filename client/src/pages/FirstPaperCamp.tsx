@@ -239,6 +239,114 @@ const DAY1_MATCHING_SETS: MatchingSet[] = [
   }
 ];
 
+const DAY2_MATCHING_SETS: MatchingSet[] = [
+  {
+    id: 'day2_set1',
+    title: 'المجموعة 1: سمنة الأطفال التشخيص التفريقي (Childhood Obesity Differential)',
+    description: 'قم بتوصيل كل حالة بالتعريف أو الإجراء السريري المطابق لها.',
+    pairs: [
+      { id: 'd2_s1_p1', question: 'Nutritional Obesity', answer: 'Consistent/accelerated growth, early puberty, advanced bone age (> 2 SD).' },
+      { id: 'd2_s1_p2', question: 'Endocrine Obesity', answer: 'Decreased/decelerated linear growth. Test for thyroid hormones.' },
+      { id: 'd2_s1_p3', question: 'Genetic Syndrome Obesity', answer: 'Severe obesity < 5 years. Developmental delay, short stature, dysmorphic facies, hyperphagia.' }
+    ]
+  },
+  {
+    id: 'day2_set2',
+    title: 'المجموعة 2: خمول الغدة الدرقية الخلقي (Congenital Hypothyroidism)',
+    description: 'قم بتوصيل الأسباب وطرق الفحص بالوصف المناسب لها.',
+    pairs: [
+      { id: 'd2_s2_p1', question: 'Defect of fetal thyroid development (DYSGENESIS)', answer: 'Aplasia, Hypoplasia, Ectopia.' },
+      { id: 'd2_s2_p2', question: 'Defect in thyroid hormone synthesis (DYSHORMONOGENESIS)', answer: 'Defect in thyroid hormone synthesis.' },
+      { id: 'd2_s2_p3', question: 'Thyroid scan', answer: 'Missing or too small gland.' },
+      { id: 'd2_s2_p4', question: 'Bone age (Greulich & Pyle method)', answer: 'Absent/small epiphyses, stippled appearance, cortical thickening.' }
+    ]
+  },
+  {
+    id: 'day2_set3',
+    title: 'المجموعة 3: علاج السكري وإدارة الإنسولين (Diabetes & Insulin)',
+    description: 'قم بتوصيل نوع الإنسولين بفترة فاعليته وتوقيت إعطائه.',
+    pairs: [
+      { id: 'd2_s3_p1', question: 'Rapid/Short-acting (Lispro, Aspart)', answer: '15 mins before meals.' },
+      { id: 'd2_s3_p2', question: 'Regular', answer: '30–60 mins before meals.' },
+      { id: 'd2_s3_p3', question: 'Intermediate (NPH, Lente)', answer: '10–16 hours.' },
+      { id: 'd2_s3_p4', question: 'Long-acting (Glargine, Detemir)', answer: '20–24 hours.' }
+    ]
+  },
+  {
+    id: 'day2_set4',
+    title: 'المجموعة 4: قصر القامة والأنماط الطبيعية للنمو (Short Stature)',
+    description: 'قم بتوصيل نمط قصر القامة بالمميزات والعلامات التشخيصية له.',
+    pairs: [
+      { id: 'd2_s4_p1', question: 'Familial Short Stature', answer: 'Bone Age = Chronologic Age (Crucial differential point).' },
+      { id: 'd2_s4_p2', question: 'Constitutional Delay of Growth and Puberty (CDGP)', answer: 'Normal birth size → downward shift at 3–6 months → grows parallel to but below the 3rd percentile by 3–4 years.' },
+      { id: 'd2_s4_p3', question: 'Idiopathic Short Stature (ISS)', answer: 'Height ≤ 2 SD below the mean with no endocrine, metabolic, or systemic diagnosis.' },
+      { id: 'd2_s4_p4', question: 'Small for Gestational Age (SGA) Infants', answer: 'Most achieve catch-up growth by 2 years of age to enter the normal range.' }
+    ]
+  },
+  {
+    id: 'day2_set5',
+    title: 'المجموعة 5: مميزات وعلامات أمراض الدم (Hematology Hallmarks)',
+    description: 'قم بتوصيل المرض أو الخلل بالعلامة المخبرية أو الخلوية المميزة له.',
+    pairs: [
+      { id: 'd2_s5_p1', question: 'G6PD-deficient individuals', answer: 'Denatured hemoglobin aggregates are VISUALIZED as HEINZ BODIES in peripheral blood smears.' },
+      { id: 'd2_s5_p2', question: 'Hereditary Spherocytosis (HS)', answer: 'Eosin-5-maleimide (EMA) is the diagnostic test of choice.' },
+      { id: 'd2_s5_p3', question: 'Hodgkin lymphoma (HL)', answer: 'The Reed-Sternberg (RS) cell is the hallmark diagnostic feature, characterized as a large cell (15-45 μm in diameter) containing multiple or multilobulated nuclei ("owl-eye" appearance).' },
+      { id: 'd2_s5_p4', question: 'Beta-Thalassemia Major', answer: 'Peripheral smear: TARGET CELLS, ANISOCYTOSIS, POIKILOCYTOSIS.' },
+      { id: 'd2_s5_p5', question: 'SEVERE APLASTIC ANEMIA CRITERIA', answer: 'Hypocellular BM for age plus two of the following three criteria: Platelet count < 20,000/mm³, Absolute reticulocyte count < 40,000/mm³, or Absolute neutrophil count (ANC) < 500/mm³.' },
+      { id: 'd2_s5_p6', question: 'Acute Lymphoblastic Leukemia (ALL)', answer: 'Bone marrow aspiration and biopsy are confirmative and diagnostic if more than 25% of the bone marrow cells are lymphoblasts.' }
+    ]
+  },
+  {
+    id: 'day2_set6',
+    title: 'المجموعة 6: الوراثة وأنماط التوارث الجيني (Genetics & Inheritance)',
+    description: 'قم بتوصيل المرض أو المتلازمة بالنمط الوراثي أو الطفرة المسؤولة عنها.',
+    pairs: [
+      { id: 'd2_s6_p1', question: 'Hemophilia A (Classic)', answer: 'Factor VIII deficiency. (X-linked recessive, affects males)' },
+      { id: 'd2_s6_p2', question: 'Hemophilia C', answer: 'Factor XI deficiency. (Autosomal recessive, rarest)' },
+      { id: 'd2_s6_p3', question: 'HYDROPS FETALIS', answer: 'SEVERE HEMOLYSIS in utero, leading to DEATH (4 genes deleted).' },
+      { id: 'd2_s6_p4', question: 'Hereditary Spherocytosis (HS)', answer: 'Mode of inheritance: Autosomal Dominant (AD) in 75% of cases.' },
+      { id: 'd2_s6_p5', question: 'G6PD DEFICIENCY', answer: 'MOST COMMON ENZYMATIC DISORDER of RBCs, inherited via SEX-LINKED RECESSIVE MODE on the X CHROMOSOME.' },
+      { id: 'd2_s6_p6', question: 'CONGENITAL (Mostly Inherited) Etiology of Aplastic Anemia', answer: 'Fanconi anemia and Diamond Blackfan syndrome.' }
+    ]
+  },
+  {
+    id: 'day2_set7',
+    title: 'المجموعة 7: العلامات والأعراض السريرية المميزة (Clinical Signs)',
+    description: 'قم بتوصيل المرض أو العوز بالعلامة السريرية الفارقة له.',
+    pairs: [
+      { id: 'd2_s7_p1', question: 'Iron deficiency anemia (IDA)', answer: 'pica, which is the intense craving for nonfood items like clay, dirt, rocks, starch, chalk, soap, paper, or cardboard.' },
+      { id: 'd2_s7_p2', question: 'IMMUNE THROMBOCYTOPENIA (ITP)', answer: 'SUDDEN APPEARANCE of PETECHIAL RASH, PURPURA, & ECCHYMOSES (BRUISING) in an otherwise healthy child.' },
+      { id: 'd2_s7_p3', question: 'BETA-THALASSEMIA MAJOR (COOLEY ANEMIA)', answer: '"THALASSEMIC FACIES" (frontal bossing, flat nasal bridge, maxilla hyperplasia)' },
+      { id: 'd2_s7_p4', question: 'Childhood Acute Lymphoblastic Leukemia (ALL) Initial presentation', answer: 'Nonspecific signs including anorexia, fatigue, malaise, irritability, and intermittent low-grade fever.' },
+      { id: 'd2_s7_p5', question: 'Hemophilia in Mobile Children & Adolescents', answer: 'Hemarthrosis (Joint Bleeding): Most common site (up to 80% of hemorrhages). Affects ankles, knees, elbows.' }
+    ]
+  },
+  {
+    id: 'day2_set8',
+    title: 'المجموعة 8: التحاليل المخبرية والتشخيصية (Laboratory Profiles)',
+    description: 'قم بتوصيل الحالة بنتائج التحاليل والفحوصات الخاصة بها.',
+    pairs: [
+      { id: 'd2_s8_p1', question: 'Iron profile in IDA', answer: 'shows low serum iron, low serum ferritin, increased Total iron binding capacity (TIBC), and decreased transferrin saturation (TS).' },
+      { id: 'd2_s8_p2', question: 'Diagnosis in ITP', answer: 'CBC shows ISOLATED THROMBOCYTOPENIA' },
+      { id: 'd2_s8_p3', question: 'Blood chemistry in ALL', answer: 'shows markedly elevated lactate dehydrogenase (LDH) and uric acid.' },
+      { id: 'd2_s8_p4', question: 'Biochemistry in Beta-Thalassemia Major', answer: 'INCREASED indirect bilirubin, high serum ferritin, high serum iron, high transferrin saturation.' },
+      { id: 'd2_s8_p5', question: 'Investigations in Hemophilia', answer: 'Coagulation time & Activated partial thromboplastin time (aPTT): Prolonged' }
+    ]
+  },
+  {
+    id: 'day2_set9',
+    title: 'المجموعة 9: المضاعفات والأزمات الخطيرة وطوارئ الدم (Crises & Emergencies)',
+    description: 'قم بتوصيل الأزمة أو المضاعفة الطارئة بالتعريف ووصف مسبباتها.',
+    pairs: [
+      { id: 'd2_s9_p1', question: 'APLASTIC CRISIS', answer: 'MOST DANGEROUS! Almost universally triggered by Parvovirus B19. Completely halts marrow erythropoiesis.' },
+      { id: 'd2_s9_p2', question: 'MEGALOBLASTIC CRISIS', answer: 'Due to rapid, severe depletion of nutritional folate stores driven by chronic, highly accelerated bone marrow erythropoiesis.' },
+      { id: 'd2_s9_p3', question: 'HEMOLYTIC CRISIS', answer: 'Sudden, temporary acceleration of RBC destruction, precipitated by acute bacterial or viral infections.' },
+      { id: 'd2_s9_p4', question: 'Tumor Lysis Syndrome (TLS)', answer: 'A life-threatening complication managed with aggressive IV hydration before chemotherapy, uric acid reduction via allopurinol, and close electrolyte monitoring.' },
+      { id: 'd2_s9_p5', question: 'Inhibitors (Major Complication)', answer: 'IgG antibodies that neutralize clotting factor concentrates. Occurs in 30% of severe Hemophilia A.' }
+    ]
+  }
+];
+
 const MATCHING_POOL: MatchingPair[] = [
   { id: '1', question: 'Widely split & fixed S2', answer: 'Atrial Septal Defect (ASD)' },
   { id: '2', question: 'Continuous machinery murmur', answer: 'Patent Ductus Arteriosus (PDA)' },
@@ -274,6 +382,10 @@ export default function FirstPaperCamp() {
   const [isQuizCompleted, setIsQuizCompleted] = useState<boolean>(() => {
     return localStorage.getItem('day1_quiz_completed') === 'true';
   });
+
+  useEffect(() => {
+    setIsQuizCompleted(localStorage.getItem(`day${activeDay}_quiz_completed`) === 'true');
+  }, [activeDay]);
 
   const handleDownloadPDF = async (pdfId: string, pdfUrl: string, defaultName: string) => {
     setDownloadProgress(0);
@@ -477,7 +589,7 @@ export default function FirstPaperCamp() {
     playSound('success');
     
     // Choose appropriate sets pool
-    const setsPool = DAY1_MATCHING_SETS;
+    const setsPool = activeDay === 2 ? DAY2_MATCHING_SETS : DAY1_MATCHING_SETS;
     setCurrentSetIdx(0);
     setTotalCorrectCount(0);
     
@@ -489,7 +601,7 @@ export default function FirstPaperCamp() {
     setExamState('active');
   };
 
-  const loadSet = (setIdx: number, sets = DAY1_MATCHING_SETS) => {
+  const loadSet = (setIdx: number, sets = activeDay === 2 ? DAY2_MATCHING_SETS : DAY1_MATCHING_SETS) => {
     const currentSet = sets[setIdx];
     if (!currentSet) return;
     
@@ -628,11 +740,12 @@ export default function FirstPaperCamp() {
     const newTotalCorrect = totalCorrectCount + correctCountInCurrentSet;
     setTotalCorrectCount(newTotalCorrect);
     
-    if (currentSetIdx < DAY1_MATCHING_SETS.length - 1) {
+    const sets = activeDay === 2 ? DAY2_MATCHING_SETS : DAY1_MATCHING_SETS;
+    if (currentSetIdx < sets.length - 1) {
       playSound('success');
       const nextIdx = currentSetIdx + 1;
       setCurrentSetIdx(nextIdx);
-      loadSet(nextIdx);
+      loadSet(nextIdx, sets);
     } else {
       finishTest(newTotalCorrect, totalPairsCount);
     }
@@ -644,7 +757,7 @@ export default function FirstPaperCamp() {
     setScore(finalScore);
     setExamState('finished');
     setIsQuizCompleted(true);
-    localStorage.setItem('day1_quiz_completed', 'true');
+    localStorage.setItem(`day${activeDay}_quiz_completed`, 'true');
   };
 
   const handleChapterClick = (chap: Chapter) => {
@@ -761,108 +874,114 @@ export default function FirstPaperCamp() {
         </div>
 
         {/* Mid-Camp Interactive Grid: PDFs and Testing */}
-        {activeDay === 1 && (
+        {(activeDay === 1 || activeDay === 2) && (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 pt-6">
             
             {/* PDF Download Center */}
-            <div className="bg-white/80 dark:bg-slate-900/60 backdrop-blur-xl border border-slate-200 dark:border-slate-800 rounded-[3rem] p-8 space-y-6 shadow-lg">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-amber-500/10 text-amber-600 dark:text-amber-400 rounded-2xl flex items-center justify-center">
-                  <FileText className="w-6 h-6" />
+            {activeDay === 1 && (
+              <div className="bg-white/80 dark:bg-slate-900/60 backdrop-blur-xl border border-slate-200 dark:border-slate-800 rounded-[3rem] p-8 space-y-6 shadow-lg">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-amber-500/10 text-amber-600 dark:text-amber-400 rounded-2xl flex items-center justify-center">
+                    <FileText className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h2 className="text-2xl font-black text-slate-950 dark:text-white">مركز تحميل الـ PDF</h2>
+                    <p className="text-sm font-bold text-slate-455">حمل مذكرات الأسئلة والشروحات الخاصة بالمعسكر.</p>
+                  </div>
                 </div>
-                <div>
-                  <h2 className="text-2xl font-black text-slate-950 dark:text-white">مركز تحميل الـ PDF</h2>
-                  <p className="text-sm font-bold text-slate-455">حمل مذكرات الأسئلة والشروحات الخاصة بالمعسكر.</p>
-                </div>
-              </div>
 
-              <div className="space-y-4">
-                {PDF_RESOURCES.filter(pdf => pdf.id !== 'quiz_answers').map((pdf) => (
-                  <div 
-                    key={pdf.id}
-                    className="bg-white dark:bg-slate-955 border border-slate-200/50 dark:border-slate-800/60 rounded-2xl p-4 flex items-center justify-between hover:border-amber-500/40 transition-colors"
-                  >
-                    <div className="flex items-center gap-4">
-                      <div className="w-10 h-10 bg-slate-100 dark:bg-slate-900 text-slate-500 rounded-xl flex items-center justify-center font-bold text-xs">
-                        PDF
-                      </div>
-                      <div className="space-y-0.5">
-                        <h4 className="text-sm md:text-base font-black text-slate-800 dark:text-slate-200">{pdf.title}</h4>
-                        <p className="text-[11px] text-slate-455 font-bold flex items-center gap-2">
-                          <span>الحجم: {pdf.size}</span>
-                          <span>•</span>
-                          <span className="text-amber-600 dark:text-amber-400">{pdf.type}</span>
-                        </p>
-                      </div>
-                    </div>
-                    <button 
-                      onClick={(e) => { 
-                        e.preventDefault(); 
-                        playSound('click'); 
-                        handleDownloadPDF(pdf.id, pdf.file, `${pdf.id}_day1_camp.pdf`); 
-                      }}
-                      className="p-3 bg-amber-500/10 text-amber-600 dark:text-amber-400 hover:bg-amber-500 hover:text-white rounded-xl transition-all"
+                <div className="space-y-4">
+                  {PDF_RESOURCES.filter(pdf => pdf.id !== 'quiz_answers').map((pdf) => (
+                    <div 
+                      key={pdf.id}
+                      className="bg-white dark:bg-slate-955 border border-slate-200/50 dark:border-slate-800/60 rounded-2xl p-4 flex items-center justify-between hover:border-amber-500/40 transition-colors"
                     >
-                      <Download className="w-4 h-4" />
+                      <div className="flex items-center gap-4">
+                        <div className="w-10 h-10 bg-slate-100 dark:bg-slate-900 text-slate-500 rounded-xl flex items-center justify-center font-bold text-xs">
+                          PDF
+                        </div>
+                        <div className="space-y-0.5">
+                          <h4 className="text-sm md:text-base font-black text-slate-800 dark:text-slate-200">{pdf.title}</h4>
+                          <p className="text-[11px] text-slate-455 font-bold flex items-center gap-2">
+                            <span>الحجم: {pdf.size}</span>
+                            <span>•</span>
+                            <span className="text-amber-600 dark:text-amber-400">{pdf.type}</span>
+                          </p>
+                        </div>
+                      </div>
+                      <button 
+                        onClick={(e) => { 
+                          e.preventDefault(); 
+                          playSound('click'); 
+                          handleDownloadPDF(pdf.id, pdf.file, `${pdf.id}_day1_camp.pdf`); 
+                        }}
+                        className="p-3 bg-amber-500/10 text-amber-600 dark:text-amber-400 hover:bg-amber-500 hover:text-white rounded-xl transition-all"
+                      >
+                        <Download className="w-4 h-4" />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Timed & Scheduled Matching Test Box */}
+            <div className={`bg-white/80 dark:bg-slate-900/60 backdrop-blur-xl border border-slate-200 dark:border-slate-800 rounded-[3rem] p-8 space-y-6 shadow-lg flex flex-col justify-between ${activeDay === 2 ? 'col-span-1 lg:col-span-2' : ''}`}>
+              <div className="space-y-4">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-rose-500/10 text-rose-500 rounded-2xl flex items-center justify-center">
+                    <Award className="w-6 h-6 animate-bounce" />
+                  </div>
+                  <div>
+                    <h2 className="text-2xl font-black text-slate-950 dark:text-white">اختبار التوصيل التفاعلي</h2>
+                    <p className="text-sm font-bold text-slate-455">اختبر معلوماتك في تشخيص حالات الأطفال بوقت وموعد محدد.</p>
+                  </div>
+                </div>
+
+                {/* Status banner */}
+                <div className="bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-850/80 rounded-2xl p-4 flex items-center gap-4">
+                  <Clock className="w-5 h-5 text-amber-500" />
+                  <div className="space-y-0.5">
+                    <p className="text-xs font-bold text-slate-400">مدة الاختبار المحددة</p>
+                    <p className="text-sm font-black text-slate-850 dark:text-slate-200">{durationMins} دقيقة كاملة</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Test Action Box */}
+              <div className="pt-6">
+                {examState === 'locked' ? (
+                  <div className="space-y-4 text-center p-6 bg-amber-500/5 border border-dashed border-amber-500/20 rounded-[2rem]">
+                    <ShieldAlert className="w-12 h-12 mx-auto text-amber-500 animate-pulse" />
+                    <div className="space-y-1">
+                      <h4 className="text-base font-black text-slate-800 dark:text-slate-200">هذا الاختبار مغلق حالياً</h4>
+                      <p className="text-xs font-bold text-slate-400">سيفتح الاختبار تلقائياً بعد انتهاء الوقت التالي:</p>
+                    </div>
+                    <div className="text-2xl md:text-3xl font-black text-amber-600 dark:text-amber-400 tracking-wider">
+                      {formatCountdown(timeRemainingToStart)}
+                    </div>
+                  </div>
+                ) : isQuizCompleted && examState !== 'active' ? (
+                  <div className="space-y-4 text-center p-6 bg-emerald-500/5 border border-dashed border-emerald-500/20 rounded-[2rem]">
+                    <Award className="w-12 h-12 mx-auto text-emerald-500 animate-bounce" />
+                    <div className="space-y-1">
+                      <h4 className="text-base font-black text-emerald-400">لقد أتممت هذا الاختبار بنجاح! 🎉</h4>
+                      <p className="text-xs font-bold text-slate-400">درجتك الأخيرة: <span className="text-emerald-500 text-sm font-black">{score}%</span></p>
+                    </div>
+                    <button
+                      onClick={() => {
+                        playSound('click');
+                        if (activeDay === 2) {
+                          handleDownloadPDF('quiz_answers_day2', '/معسكر_الورقة_الأولى_اليوم_الثاني_كويز_إجابات.pdf', 'quiz_answers_day2_camp.pdf');
+                        } else {
+                          handleDownloadPDF('quiz_answers', '/معسكر_الورقة_الأولى_اليوم_الأول_كويز_إجابات.pdf', 'quiz_answers_day1_camp.pdf');
+                        }
+                      }}
+                      className="w-full py-3 bg-amber-500 hover:bg-amber-600 text-slate-950 font-black rounded-xl text-xs flex items-center justify-center gap-2 transition-all shadow-md"
+                    >
+                      <Download className="w-4 h-4 text-slate-950" />
+                      <span>تحميل كراسة إجابات الكويز المتجاوبة (PDF)</span>
                     </button>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-          {/* Timed & Scheduled Matching Test Box */}
-          <div className="bg-white/80 dark:bg-slate-900/60 backdrop-blur-xl border border-slate-200 dark:border-slate-800 rounded-[3rem] p-8 space-y-6 shadow-lg flex flex-col justify-between">
-            <div className="space-y-4">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-rose-500/10 text-rose-500 rounded-2xl flex items-center justify-center">
-                  <Award className="w-6 h-6 animate-bounce" />
-                </div>
-                <div>
-                  <h2 className="text-2xl font-black text-slate-950 dark:text-white">اختبار التوصيل التفاعلي</h2>
-                  <p className="text-sm font-bold text-slate-455">اختبر معلوماتك في تشخيص حالات الأطفال بوقت وموعد محدد.</p>
-                </div>
-              </div>
-
-              {/* Status banner */}
-              <div className="bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-850/80 rounded-2xl p-4 flex items-center gap-4">
-                <Clock className="w-5 h-5 text-amber-500" />
-                <div className="space-y-0.5">
-                  <p className="text-xs font-bold text-slate-400">مدة الاختبار المحددة</p>
-                  <p className="text-sm font-black text-slate-850 dark:text-slate-200">{durationMins} دقيقة كاملة</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Test Action Box */}
-            <div className="pt-6">
-              {examState === 'locked' ? (
-                <div className="space-y-4 text-center p-6 bg-amber-500/5 border border-dashed border-amber-500/20 rounded-[2rem]">
-                  <ShieldAlert className="w-12 h-12 mx-auto text-amber-500 animate-pulse" />
-                  <div className="space-y-1">
-                    <h4 className="text-base font-black text-slate-800 dark:text-slate-200">هذا الاختبار مغلق حالياً</h4>
-                    <p className="text-xs font-bold text-slate-400">سيفتح الاختبار تلقائياً بعد انتهاء الوقت التالي:</p>
-                  </div>
-                  <div className="text-2xl md:text-3xl font-black text-amber-600 dark:text-amber-400 tracking-wider">
-                    {formatCountdown(timeRemainingToStart)}
-                  </div>
-                </div>
-              ) : isQuizCompleted && examState !== 'active' ? (
-                <div className="space-y-4 text-center p-6 bg-emerald-500/5 border border-dashed border-emerald-500/20 rounded-[2rem]">
-                  <Award className="w-12 h-12 mx-auto text-emerald-500 animate-bounce" />
-                  <div className="space-y-1">
-                    <h4 className="text-base font-black text-emerald-400">لقد أتممت هذا الاختبار بنجاح! 🎉</h4>
-                    <p className="text-xs font-bold text-slate-400">درجتك الأخيرة: <span className="text-emerald-500 text-sm font-black">{score}%</span></p>
-                  </div>
-                  <button
-                    onClick={() => {
-                      playSound('click');
-                      handleDownloadPDF('quiz_answers', '/معسكر_الورقة_الأولى_اليوم_الأول_كويز_إجابات.pdf', 'quiz_answers_day1_camp.pdf');
-                    }}
-                    className="w-full py-3 bg-amber-500 hover:bg-amber-600 text-slate-950 font-black rounded-xl text-xs flex items-center justify-center gap-2 transition-all shadow-md"
-                  >
-                    <Download className="w-4 h-4 text-slate-950" />
-                    <span>تحميل كراسة إجابات الكويز المتجاوبة (PDF)</span>
-                  </button>
                   <button
                     onClick={startMatchingTest}
                     className="w-full py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold rounded-xl text-xs transition-all"
@@ -996,10 +1115,10 @@ export default function FirstPaperCamp() {
                   </div>
                   <div>
                     <h3 className="text-base md:text-lg font-black text-amber-500 tracking-tight">
-                      {DAY1_MATCHING_SETS[currentSetIdx].title}
+                      {(activeDay === 2 ? DAY2_MATCHING_SETS : DAY1_MATCHING_SETS)[currentSetIdx].title}
                     </h3>
                     <p className="text-xs text-slate-400 font-bold">
-                      {DAY1_MATCHING_SETS[currentSetIdx].description}
+                      {(activeDay === 2 ? DAY2_MATCHING_SETS : DAY1_MATCHING_SETS)[currentSetIdx].description}
                     </p>
                   </div>
                 </div>
@@ -1013,7 +1132,7 @@ export default function FirstPaperCamp() {
                   </div>
                   <div className="h-4 w-px bg-slate-800" />
                   <div className="text-xs font-black text-slate-400">
-                    السؤال (المجموعة): <span className="text-amber-500">{currentSetIdx + 1}</span> / {DAY1_MATCHING_SETS.length}
+                    السؤال (المجموعة): <span className="text-amber-500">{currentSetIdx + 1}</span> / {(activeDay === 2 ? DAY2_MATCHING_SETS : DAY1_MATCHING_SETS).length}
                   </div>
                 </div>
               </div>
@@ -1107,7 +1226,7 @@ export default function FirstPaperCamp() {
                     onClick={handleNextSet}
                     className="px-8 py-3 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-slate-950 font-black rounded-xl text-sm shadow-lg shadow-emerald-500/15 flex items-center gap-2"
                   >
-                    <span>{currentSetIdx === DAY1_MATCHING_SETS.length - 1 ? 'تسليم الكويز وإنهاء الاختبار' : 'إرسال والانتقال للسؤال التالي'}</span>
+                    <span>{currentSetIdx === (activeDay === 2 ? DAY2_MATCHING_SETS : DAY1_MATCHING_SETS).length - 1 ? 'تسليم الكويز وإنهاء الاختبار' : 'إرسال والانتقال للسؤال التالي'}</span>
                     <ChevronRight className="w-4 h-4 rotate-180" />
                   </motion.button>
                 ) : (

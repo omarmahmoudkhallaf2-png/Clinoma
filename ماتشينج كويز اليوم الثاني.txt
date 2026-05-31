@@ -1,0 +1,287 @@
+Set 1: Childhood Obesity (Differential Diagnosis)
+Column I (Obesity Type)
+
+Nutritional Obesity
+
+Endocrine Obesity
+
+Genetic Syndrome Obesity
+
+Column II (Characteristics)
+A. Severe obesity < 5 years. Developmental delay, short stature, dysmorphic facies, hyperphagia.
+B. Decreased/decelerated linear growth. Test for thyroid hormones.
+C. Consistent/accelerated growth, early puberty, advanced bone age (> 2 SD).
+
+Answer Key (Set 1):
+
+1 matches with C
+
+2 matches with B
+
+3 matches with A
+
+Set 2: Congenital Hypothyroidism (Causes & Radiographic Features)
+Column I
+
+Defect of fetal thyroid development (DYSGENESIS)
+
+Defect in thyroid hormone synthesis (DYSHORMONOGENESIS)
+
+Thyroid scan
+
+Bone age (Greulich & Pyle method)
+
+Column II
+A. Missing or too small gland.
+B. Absent/small epiphyses, stippled appearance, cortical thickening.
+C. Aplasia, Hypoplasia, Ectopia.
+D. Defect in thyroid hormone synthesis.
+
+Answer Key (Set 2):
+
+1 matches with C
+
+2 matches with D
+
+3 matches with A
+
+4 matches with B
+
+Set 3: Diabetes Mellitus (Insulin Therapy Management)
+Column I (Insulin Type)
+
+Rapid/Short-acting (Lispro, Aspart)
+
+Regular
+
+Intermediate (NPH, Lente)
+
+Long-acting (Glargine, Detemir)
+
+Column II (Timing / Duration)
+A. 10–16 hours
+B. 20–24 hours
+C. 15 mins before meals
+D. 30–60 mins before meals
+
+Answer Key (Set 3):
+
+1 matches with C
+
+2 matches with D
+
+3 matches with A
+
+4 matches with B
+
+Set 4: Short Stature (Normal Variants of Growth)
+Column I (Variant)
+
+Familial Short Stature
+
+Constitutional Delay of Growth and Puberty (CDGP)
+
+Idiopathic Short Stature (ISS)
+
+Small for Gestational Age (SGA) Infants
+
+Column II (Key Features / Outcome)
+A. Normal birth size → downward shift at 3–6 months → grows parallel to but below the 3rd percentile by 3–4 years.
+B. Height ≤ 2 SD below the mean with no endocrine, metabolic, or systemic diagnosis.
+C. Bone Age = Chronologic Age (Crucial differential point).
+D. Most achieve catch-up growth by 2 years of age to enter the normal range.
+
+Answer Key (Set 4):
+
+1 matches with C
+
+2 matches with A
+
+3 matches with B
+
+4 matches with D
+
+
+
+
+
+
+
+
+
+Set 1: Hematological Hallmarks & Pathognomonic Features (6 Points)
+Column I (Condition / Disease)
+
+G6PD-deficient individuals
+
+Hereditary Spherocytosis (HS)
+
+Hodgkin lymphoma (HL)
+
+Beta-Thalassemia Major
+
+SEVERE APLASTIC ANEMIA CRITERIA
+
+Acute Lymphoblastic Leukemia (ALL)
+
+Column II (Diagnostic Feature / Finding)
+A. Bone marrow aspiration and biopsy are confirmative and diagnostic if more than 25% of the bone marrow cells are lymphoblasts.
+B. Denatured hemoglobin aggregates are VISUALIZED as HEINZ BODIES in peripheral blood smears.
+C. Hypocellular BM for age plus two of the following three criteria: Platelet count < 20,000/mm³, Absolute reticulocyte count < 40,000/mm³, or Absolute neutrophil count (ANC) < 500/mm³.
+D. Eosin-5-maleimide (EMA) is the diagnostic test of choice.
+E. Peripheral smear: TARGET CELLS, ANISOCYTOSIS, POIKILOCYTOSIS.
+F. The Reed-Sternberg (RS) cell is the hallmark diagnostic feature, characterized as a large cell (15-45 μm in diameter) containing multiple or multilobulated nuclei ("owl-eye" appearance).
+
+Answer Key (Set 1):
+
+1 matches with B
+
+2 matches with D
+
+3 matches with F
+
+4 matches with E
+
+5 matches with C
+
+6 matches with A
+
+Set 2: Genetics & Inheritance Patterns (6 Points)
+Column I (Disease / Subtype)
+
+Hemophilia A (Classic)
+
+Hemophilia C
+
+HYDROPS FETALIS
+
+Hereditary Spherocytosis (HS)
+
+G6PD DEFICIENCY
+
+CONGENITAL (Mostly Inherited) Etiology of Aplastic Anemia
+
+Column II (Genetic Mechanism)
+A. Factor VIII deficiency. (X-linked recessive, affects males)
+B. Mode of inheritance: Autosomal Dominant (AD) in 75% of cases.
+C. Fanconi anemia and Diamond Blackfan syndrome.
+D. Factor XI deficiency. (Autosomal recessive, rarest)
+E. SEVERE HEMOLYSIS in utero, leading to DEATH (4 genes deleted).
+F. MOST COMMON ENZYMATIC DISORDER of RBCs, inherited via SEX-LINKED RECESSIVE MODE on the X CHROMOSOME.
+
+Answer Key (Set 2):
+
+1 matches with A
+
+2 matches with D
+
+3 matches with E
+
+4 matches with B
+
+5 matches with F
+
+6 matches with C
+
+Set 3: Clinical Manifestations & Unique Signs (5 Points)
+Column I (Condition)
+
+Iron deficiency anemia (IDA)
+
+IMMUNE THROMBOCYTOPENIA (ITP)
+
+BETA-THALASSEMIA MAJOR (COOLEY ANEMIA)
+
+Childhood Acute Lymphoblastic Leukemia (ALL) Initial presentation
+
+Hemophilia in Mobile Children & Adolescents
+
+Column II (Clinical Sign)
+A. "THALASSEMIC FACIES" (frontal bossing, flat nasal bridge, maxilla hyperplasia)
+B. Hemarthrosis (Joint Bleeding): Most common site (up to 80% of hemorrhages). Affects ankles, knees, elbows.
+C. pica, which is the intense craving for nonfood items like clay, dirt, rocks, starch, chalk, soap, paper, or cardboard.
+D. SUDDEN APPEARANCE of PETECHIAL RASH, PURPURA, & ECCHYMOSES (BRUISING) in an otherwise healthy child.
+E. Nonspecific signs including anorexia, fatigue, malaise, irritability, and intermittent low-grade fever.
+
+Answer Key (Set 3):
+
+1 matches with C
+
+2 matches with D
+
+3 matches with A
+
+4 matches with E
+
+5 matches with B
+
+Set 4: Laboratory Profiles & Investigations (5 Points)
+Column I (Disease / Test Category)
+
+Iron profile in IDA
+
+Diagnosis in ITP
+
+Blood chemistry in ALL
+
+Biochemistry in Beta-Thalassemia Major
+
+Investigations in Hemophilia
+
+Column II (Finding)
+A. CBC shows ISOLATED THROMBOCYTOPENIA
+B. shows markedly elevated lactate dehydrogenase (LDH) and uric acid.
+C. INCREASED indirect bilirubin, high serum ferritin, high serum iron, high transferrin saturation.
+D. shows low serum iron, low serum ferritin, increased Total iron binding capacity (TIBC), and decreased transferrin saturation (TS).
+E. Coagulation time & Activated partial thromboplastin time (aPTT): Prolonged
+
+Answer Key (Set 4):
+
+1 matches with D
+
+2 matches with A
+
+3 matches with B
+
+4 matches with C
+
+5 matches with E
+
+Set 5: Severe Complications, Crises & Emergencies (5 Points)
+Column I (Crisis / Complication)
+
+APLASTIC CRISIS
+
+MEGALOBLASTIC CRISIS
+
+HEMOLYTIC CRISIS
+
+Tumor Lysis Syndrome (TLS)
+
+Inhibitors (Major Complication)
+
+Column II (Description / Trigger)
+A. A life-threatening complication managed with aggressive IV hydration before chemotherapy, uric acid reduction via allopurinol, and close electrolyte monitoring.
+B. Sudden, temporary acceleration of RBC destruction, precipitated by acute bacterial or viral infections.
+C. IgG antibodies that neutralize clotting factor concentrates. Occurs in 30% of severe Hemophilia A.
+D. Due to rapid, severe depletion of nutritional folate stores driven by chronic, highly accelerated bone marrow erythropoiesis.
+E. MOST DANGEROUS! Almost universally triggered by Parvovirus B19. Completely halts marrow erythropoiesis.
+
+Answer Key (Set 5):
+
+1 matches with E
+
+2 matches with D
+
+3 matches with B
+
+4 matches with A
+
+5 matches with C
+
+
+
+
+
+
+
