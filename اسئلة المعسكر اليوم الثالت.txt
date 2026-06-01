@@ -1,0 +1,372 @@
+1. Short Essay / Enumerate
+Q1. Enumerate four main characteristic weakness features of Duchenne Muscular Dystrophy (DMD).
+Answer:
+Bilateral symmetrical, proximal > distal weakness, with no sensory manifestation.
+Weakness of the shoulder girdle muscles (unable to raise arm above head, winging of scapula).
+Weakness of pelvic girdle muscles (waddling lordotic gait, difficulty climbing up stairs, positive Gower sign).
+Pseudohypertrophy of the calf muscles, deltoid, and forearm.
+Q2. Enumerate four prenatal factors involved in the etiology of Cerebral Palsy (CP).
+Answer:
+TORCH infection.
+Teratogens.
+Intrauterine hypoxia.
+Genetic basis.
+Q3. Enumerate four diagnostic investigations used for Duchenne Muscular Dystrophy (DMD).
+Answer:
+Creatine kinase (CK) / Creatine phosphokinase (CPK) level estimation.
+Electromyography (EMG).
+Muscle biopsy.
+Prenatal diagnosis (Amniocentesis or chorionic villous sampling).
+2. Short Answer Questions (Mention / List)
+Q1. Mention four clinical signs or evaluation maneuvers used to assess a child with Floppy Infant Syndrome.
+Answer:
+Frog Leg Position.
+Head Lag.
+Curved Trunk (Ventral Suspension).
+Slippage (Vertical Suspension).
+Q2. List four associated deficits that may accompany the core motor deficit in Cerebral Palsy (CP).
+Answer:
+Mental retardation.
+Epilepsy.
+Visual defect.
+Deafness / Speech defect.
+3. Extended Matching Questions (EMG)
+Options: A. Spastic CP B. Dyskinetic CP C. Ataxic CP D. Atonic (Hypotonic) CP E. Becker Muscle Dystrophy F. Duchenne Muscular Dystrophy G. Werdnig-Hoffman disease
+Match the following clinical descriptions to the correct option above:
+A 4-year-old boy presenting with progressive proximal muscle weakness, calf pseudohypertrophy, markedly elevated creatine kinase (CK), and a history of a slowly progressive course with an X-linked recessive inheritance.
+Answer: F (Duchenne Muscular Dystrophy)
+An infant exhibiting disturbances in balance and equilibrium, walking unsteadily with poor coordination, accompanied by hypotonia and nystagmus.
+Answer: C (Ataxic CP)
+A child presenting with hypertonia, a positive Babinski sign (extensor plantar response), and persistent primitive reflexes.
+Answer: A (Spastic CP)
+An anterior horn cell disease that serves as a spinal cord lesion cause of Floppy Infant Syndrome.
+Answer: G (Werdnig-Hoffman disease)
+4. Problem Solving (Cases)
+Case 1
+A 3-year-old male child is brought to the clinic by his parents because he has difficulty climbing stairs and falls frequently. On examination, the clinician notes a waddling lordotic gait. When asked to rise from the floor, the child uses his hands to walk up his own legs to attain an erect posture. Prominent enlargement of the calf muscles is noted bilaterally, which feels firm rather than strong.
+Questions & Answers:
+What is the most likely diagnosis?
+Duchenne Muscular Dystrophy (DMD).
+What is the sign described when the child walks up his legs to stand?
+Positive Gower sign.
+Name the underlying protein defect responsible for this condition.
+Dystrophin.
+What diagnostic test serves as the definitive tool to confirm the muscle pathology?
+Muscle biopsy.
+Case 2
+An 18-month-old child presents with a non-progressive central motor deficit. The mother reports a history of severe birth asphyxia during delivery. Physical examination reveals dynamic, involuntary, slow twisting movements along the long axis of the upper limbs, which become more prominent distally. Muscle tone fluctuates between increased and decreased states.
+Questions & Answers:
+What is the general diagnosis for this child?
+Cerebral Palsy (CP).
+Which specific physiological classification of CP does this case represent?
+Dyskinetic CP (specifically showing Athetosis).
+Based on the timing of insult, which category does birth asphyxia fall under?
+Perinatal factors.
+Is this neurological condition progressive or non-progressive?
+Non-progressive.
+5. Definitions
+Q1. Define Duchenne Muscular Dystrophy (DMD).
+Answer: It is the commonest type of muscular dystrophy. It is an X-linked recessive (XLR) disorder characterized as a primary, progressive myopathy with a genetic basis, caused by a defect in the dystrophin protein of the skeletal, cardiac, and brain tissues.
+Q2. Define Cerebral Palsy (CP).
+Answer: It is an encephalopathy resulting from malfunction of the motor unit of the developing brain due to a brain insult during prenatal, natal, and postnatal periods. Its core motor deficit is strictly non-progressive, non-familial, and non-hereditary.
+Q3. Define Floppy Infant Syndrome.
+Answer: It is a clinical concept defined as severe persistent hypotonia present at birth or early infancy.
+1. Short Essay / Enumerate
+Q1. Enumerate four physiological classifications (Major Motor Abnormalities) of Cerebral Palsy (CP).
+Answer:
+Spastic CP.
+Dyskinetic CP.
+Ataxic CP.
+Atonic (Hypotonic) CP.
+Q2. Enumerate four anatomical and etiological causes of Floppy Infant Syndrome under the category of "Cerebral Causes".
+Answer:
+Perinatal Asphyxia.
+Kernicterus.
+Cerebral Palsy (specifically the atonic type).
+Chromosomal Anomalies (including Down syndrome).
+Q3. Enumerate four criteria used to differentiate Central Hypotonia from Peripheral causes in a floppy infant.
+Answer:
+Abnormal Brain Functions (seizures or disturbed conscious level).
+Cognitive Deficit (association with mental retardation).
+Dysmorphic Features (phenotypic signs of chromosomal disorders).
+Deep Tendon Reflexes (characterized by hyperreflexia).
+2. Short Answer Questions (Mention / List)
+Q1. Mention three associated features (comorbidities) that are constantly or frequently found with Duchenne Muscular Dystrophy (DMD).
+Answer:
+Cardiomyopathy.
+Mental subnormality (frank MR in 25% of cases).
+Frequent respiratory infections and UTI.
+Q2. List the treatment lines available for a patient with Duchenne Muscular Dystrophy (DMD).
+Answer:
+No specific treatment.
+Adequate nutrition and treatment of complications.
+Treatment under trials (Gene therapy, myoblast transfer).
+3. Extended Matching Questions (EMG)
+Options: A. Hemiplegia B. Diplegia C. Quadriplegia / Tetraplegia D. Monoplegia E. Paraplegia F. Rigidity G. Chorea
+Match the following anatomical or physiological descriptions of Cerebral Palsy to the correct option above:
+Arms and legs are equally involved, or arms are more involved than legs.
+Answer: C (Quadriplegia / Tetraplegia)
+Arm and leg on the same side of the body are involved (Right or Left).
+Answer: A (Hemiplegia)
+Quick irregular dysrhythmic movements involving proximal skeletal muscles.
+Answer: G (Chorea)
+Involvement of the legs only.
+Answer: E (Paraplegia)
+4. Problem Solving (Cases)
+Case 1
+A 2-month-old infant is brought to the pediatric clinic because the mother feels the baby is "too soft and limp" compared to her older siblings. On examination, when the baby is placed in a supine position, his lower limbs rest flat on the bed in a "Frog Leg Position". When pulling the infant up from his hands into a sitting position, the head completely falls backward. Nerve Conduction Velocity (NCV) and Electromyography (EMG) are ordered to differentiate lower motor unit disorders from central conditions.
+Questions & Answers:
+What is the provisional diagnosis for this clinical presentation?
+Floppy Infant Syndrome.
+What does the "Head Lag" sign denote during evaluation?
+It denotes hypotonia of the neck muscles.
+If the NCV and EMG confirm a lower motor unit disorder with a neuropathy pattern, what characteristic would you expect to find regarding deep tendon reflexes?
+Areflexia or hyporeflexia.
+Mention one anterior horn cell disease that could cause this presentation.
+Werdnig-Hoffman spinal muscular atrophy.
+Case 2
+A 5-year-old child presents with a non-progressive central motor deficit. Examination shows dynamic deformities and a history pointing toward a perinatal birth trauma. A multidisciplinary team is assigned to manage the patient. The pediatrician prescribes muscle relaxants and sedatives to manage the child's severe spasticity.
+Questions & Answers:
+What is the core diagnosis?
+Cerebral Palsy (CP).
+Why are muscle relaxants and sedatives prescribed by the pediatrician in this case?
+To reduce sleep and decrease irritability, and to manage spasticity.
+Name two other specialists who should be part of this multidisciplinary management team.
+Occupational and physical therapists, social workers, or speech pathologists (any two).
+Why might this child be referred to an orthopedic surgeon?
+To correct deformities, and provide stability and rehabilitation.
+5. Definitions
+Q1. Define Lower Motor Unit Disorders Criteria in the context of Floppy Infant Syndrome.
+1. Short Essay / Enumerate
+Q1. Enumerate four physiological classifications (Major Motor Abnormalities) of Cerebral Palsy (CP).
+Answer:
+Spastic CP.
+Dyskinetic CP.
+Ataxic CP.
+Atonic (Hypotonic) CP.
+Q2. Enumerate four anatomical and etiological causes of Floppy Infant Syndrome under the category of "Cerebral Causes".
+Answer:
+Perinatal Asphyxia.
+Kernicterus.
+Cerebral Palsy (specifically the atonic type).
+Chromosomal Anomalies (including Down syndrome).
+Q3. Enumerate four criteria used to differentiate Central Hypotonia from Peripheral causes in a floppy infant.
+Answer:
+Abnormal Brain Functions (seizures or disturbed conscious level).
+Cognitive Deficit (association with mental retardation).
+Dysmorphic Features (phenotypic signs of chromosomal disorders).
+Deep Tendon Reflexes (characterized by hyperreflexia).
+2. Short Answer Questions (Mention / List)
+Q1. Mention three associated features (comorbidities) that are constantly or frequently found with Duchenne Muscular Dystrophy (DMD).
+Answer:
+Cardiomyopathy.
+Mental subnormality (frank MR in 25% of cases).
+Frequent respiratory infections and UTI.
+Q2. List the treatment lines available for a patient with Duchenne Muscular Dystrophy (DMD).
+Answer:
+No specific treatment.
+Adequate nutrition and treatment of complications.
+Treatment under trials (Gene therapy, myoblast transfer).
+3. Extended Matching Questions (EMG)
+Options: A. Hemiplegia B. Diplegia C. Quadriplegia / Tetraplegia D. Monoplegia E. Paraplegia F. Rigidity G. Chorea
+Match the following anatomical or physiological descriptions of Cerebral Palsy to the correct option above:
+Arms and legs are equally involved, or arms are more involved than legs.
+Answer: C (Quadriplegia / Tetraplegia)
+Arm and leg on the same side of the body are involved (Right or Left).
+Answer: A (Hemiplegia)
+Quick irregular dysrhythmic movements involving proximal skeletal muscles.
+Answer: G (Chorea)
+Involvement of the legs only.
+Answer: E (Paraplegia)
+4. Problem Solving (Cases)
+Case 1
+A 2-month-old infant is brought to the pediatric clinic because the mother feels the baby is "too soft and limp" compared to her older siblings. On examination, when the baby is placed in a supine position, his lower limbs rest flat on the bed in a "Frog Leg Position". When pulling the infant up from his hands into a sitting position, the head completely falls backward. Nerve Conduction Velocity (NCV) and Electromyography (EMG) are ordered to differentiate lower motor unit disorders from central conditions.
+Questions & Answers:
+What is the provisional diagnosis for this clinical presentation?
+Floppy Infant Syndrome.
+What does the "Head Lag" sign denote during evaluation?
+It denotes hypotonia of the neck muscles.
+If the NCV and EMG confirm a lower motor unit disorder with a neuropathy pattern, what characteristic would you expect to find regarding deep tendon reflexes?
+Areflexia or hyporeflexia.
+Mention one anterior horn cell disease that could cause this presentation.
+Werdnig-Hoffman spinal muscular atrophy.
+Case 2
+A 5-year-old child presents with a non-progressive central motor deficit. Examination shows dynamic deformities and a history pointing toward a perinatal birth trauma. A multidisciplinary team is assigned to manage the patient. The pediatrician prescribes muscle relaxants and sedatives to manage the child's severe spasticity.
+Questions & Answers:
+What is the core diagnosis?
+Cerebral Palsy (CP).
+Why are muscle relaxants and sedatives prescribed by the pediatrician in this case?
+To reduce sleep and decrease irritability, and to manage spasticity.
+Name two other specialists who should be part of this multidisciplinary management team.
+Occupational and physical therapists, social workers, or speech pathologists (any two).
+Why might this child be referred to an orthopedic surgeon?
+To correct deformities, and provide stability and rehabilitation.
+5. Definitions
+Q1. Define Lower Motor Unit Disorders Criteria in the context of Floppy Infant Syndrome.
+Answer: It is a category of diagnostic differentiation characterized by deep tendon reflexes showing areflexia or hyporeflexia, prominent muscle atrophy and fasciculations in muscle bulk, a neuropathy pattern with total loss of reflexes with residual movements, or a myopathy pattern with diminished reflexes consistent with muscle weakness.
+Q2. Define Becker Muscle Dystrophy (BMD).
+Answer: It is an X-linked recessive disease of late onset during late childhood, characterized by a slowly progressive course and a longer time of survival, caused by dysfunctioning dystrophin or insufficient production of dystrophin.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CHAPTER  CVS
+1. Short Essay / Enumerate
+Q1. Enumerate the 4 Classic Components of Tetralogy of Fallot (TOF).
+Answer:
+Ventricular Septal Defect (VSD).
+Overriding Aorta.
+Pulmonary Stenosis (mainly infundibular).
+Right Ventricular Hypertrophy (RVH).
+Q2. Enumerate four absolute contraindications or side effects/toxicity signs of Digoxin therapy (Digitalis Protocol) in Pediatric Heart Failure.
+Answer: (Choosing 4 from the absolute contraindications and toxicity symptoms)
+Absolute Contraindication: Obstructive lesions (TOF, Hypertrophic Cardiomyopathy).
+Absolute Contraindication: Heart failure with decreased systolic function (e.g., DCM) & atrial arrhythmias (added later in large shunts).
+Toxicity Symptom: Gastrointestinal signs like anorexia, nausea, and vomiting.
+Toxicity Symptom: Neurological/Cardiac signs like bradycardia, visual disturbances, and severe arrhythmias.
+Q3. Enumerate four definitive closure indications and timing criteria for a patient with a Ventricular Septal Defect (VSD).
+Answer:
+Failure to thrive.
+Pulmonary Artery (PA) pressure $>50\%$ systemic (by 1 year).
+Dilated left chambers.
+Intractable CHF or subaortic VSD with AR.
+2. Short Answer Questions (Mention / List)
+Q1. Mention the components of "The Essential Triad" in the clinical picture of Heart Failure in infants.
+Answer:
+Tachypnea.
+Tachycardia.
+Enlarged tender liver.
+Q2. List four early closure indications (before 2 years of age) for a patient with an Atrial Septal Defect (ASD).
+Answer:
+Significant left-to-right shunt with clear evidence of RV volume overload (dilated right chambers or $Q_p/Q_s \ge 1.5:1$).
+Failure to thrive (FTT).
+Congestive heart failure completely unresponsive to medical management.
+3. Extended Matching Questions (EMG)
+Options:
+A. Ventricular Septal Defect (VSD)
+B. Atrial Septal Defect (ASD)
+C. Patent Ductus Arteriosus (PDA)
+D. Complete Transposition of the Great Arteries (TGA)
+E. Tetralogy of Fallot (TOF)
+F. Aortic Stenosis (AS)
+Match the following clinical descriptions or diagnostic findings to the correct option above:
+A newborn presenting with intense cyanosis since birth that is completely unrelieved by $100\%$ oxygen therapy, with a chest X-ray showing a classic "Egg on a string" contour.
+Answer: D (Complete Transposition of the Great Arteries)
+A 4-year-old child presenting with an auscultation finding of a pathognomonic grade 1 to 4 of 6 continuous machinery murmur, best audible at the left infraclavicular area.
+Answer: C (Patent Ductus Arteriosus)
+A cyanotic infant who exhibits sudden attacks of deepening cyanosis and crying, where a chest X-ray reveals a normal heart size with a distinct boot-shaped contour ("coeur en sabot").
+Answer: E (Tetralogy of Fallot)
+The most common form of congenital heart disease, accounting for about $30\%$ of all such defects, characterized by a structural defect in the interventricular septum.
+Answer: A (Ventricular Septal Defect)
+4. Problem Solving (Cases)
+Case 1
+A 7-month-old infant is brought to the emergency department during a crying episode. The mother notes that the child suddenly became deeply cyanotic, agitated, and started breathing very rapidly. On physical examination, the child is tachypneic and irritable. Auscultation reveals a systolic ejection murmur at the left sternal border that softens significantly during this acute episode. The emergency team immediately places the infant in a Knee-Chest position and prepares to administer supplemental oxygen and Morphine Sulfate.
+Questions & Answers:
+What is the diagnosis for this acute clinical episode?
+Hypercyanotic (TET) Spell.
+What is the underlying congenital heart disease?
+Tetralogy of Fallot (TOF).
+Why does the systolic ejection murmur soften or disappear during this spell?
+Because the murmur is caused strictly by the pulmonary stenosis, and during a spell, pulmonary blood flow decreases dramatically.
+Mention two medications or interventions that are strictly contraindicated during this event.
+NO Inotropes and NO Diuretics (Critical absolute contraindications).
+Case 2 
+An 8-week-old infant with a known history of a large Ventricular Septal Defect (VSD) presents with delayed growth, excessive sweating during feeding, and recurrent chest infections. On examination, the infant has tachypnea and a heart rate of 175 bpm. The liver is palpable 4 cm below the costal margin and is tender. The pediatrician diagnoses Congestive Heart Failure (CHF).
+Questions & Answers:
+According to the Ross Classification for heart failure, what class does this infant belong to?
+Class III (Marked tachypnea/diaphoresis with feedings or exertion; prolonged feeding times with growth failure).
+What is the drug of choice recommended for preload reduction in this patient?
+Loop Diuretics (Furosemide).
+What type of nutritional management is indicated to support growth?
+High-calorie feedings (administered via NG tube or orally).
+What class of afterload-reducing agents is vital for infants with large left-to-right shunts?
+ACE Inhibitors (e.g., Captopril, Enalapril).
+5. Definitions
+Q1. Define Eisenmenger Syndrome (in the context of left-to-right shunts).
+Answer: It is a condition where the persistence of pulmonary plethora causes pulmonary hypertension, leading to symptoms of low cardiac output (COP). The pulmonary hypertension increases right ventricular pressure, causing a reversal of the shunt (Right-to-Left shunt) resulting in 'persistent cyanosis'.
+Q2. Define Pediatric Heart Failure (HF).
+Answer: It is a clinical state where the heart cannot deliver an adequate cardiac output to meet the body's metabolic needs.
+Q3. Define Ostium Secundum Defect.
+Answer: It is the commonest presentation of an Atrial Septal Defect (ASD), located in the center of the inter-atrial septum, occurring in $5\%$ to $10\%$ of all congenital heart defects.
+1. Short Essay / Enumerate
+Q1. Enumerate the four Core Mechanisms & Causes of Pediatric Heart Failure (HF) based on its pathogenesis.
+Answer: 1. Increased Afterload (Pressure Overload).
+2. Increased Preload (Volume Overload).
+3. Decreased Myocardial Contractility.
+4. Tachyarrhythmias.
+Q2. Enumerate four clinical manifestations found under the category of "Systemic Congestion (Right-Sided Heart Failure)" in older children.
+Answer: 1. Congested pulsating neck veins.
+2. Epigastric/right hypochondrium pain.
+3. Enlarged tender liver, anorexia, nausea, vomiting, ascites.
+4. Lower limb edema.
+Q3. Enumerate four features or symptoms observed during the "Eisenmenger's Phase" of a moderate to large Ventricular Septal Defect (VSD).
+Answer: 1. Cyanosis.
+2. Clubbing.
+3. Decreased activity.
+4. Association with pulmonary vascular obstructive disease.
+2. Short Answer Questions (Mention / List)
+Q1. Mention four precipitating factors that can lead to Pediatric Heart Failure (HF).
+Answer: (Mentioning 4 from the source list)
+Infections (endocarditis, pneumonia).
+Physical or emotional stress.
+Arrhythmias or anemia.
+Iatrogenic factors (excessive IV fluids, beta-blockers in acute stages, or corticosteroids).
+Q2. List three physiological and anatomical types of Atrial Septal Defect (ASD).
+Answer: (Listing any 3 of the following)
+Ostium Secundum Defect.
+Ostium Primum Defect.
+Sinus Venosus Defect (or Coronary Sinus ASD).
+3. Extended Matching Questions (EMG)
+Options:
+A. Membranous VSD
+B. Muscular VSD
+C. Infundibular VSD
+D. Patent Ductus Arteriosus (PDA)
+E. Ostium Secundum Defect
+F. Complete Transposition of the Great Arteries (TGA)
+Match the following anatomical or auscultatory descriptions to the correct option above:
+A defect located in the muscular part of the septum, which is divided into inlet, trabecular, and outlet components, and is noted as being less common.
+Answer: B (Muscular VSD)
+The commonest presentation of an Atrial Septal Defect, which is located strictly in the center of the inter-atrial septum.
+Answer: E (Ostium Secundum Defect)
+A specific type of VSD characterized during auscultation by a soft early diastolic AR murmur caused by aortic cusp herniation.
+Answer: C (Infundibular VSD)
+A single defect in the membranous part of the interventricular septum, usually involving part of the muscular tissue adjacent to it.
+Answer: A (Membranous VSD)
+4. Problem Solving (Cases)
+Case 1
+A 3-week-old male infant, born full-term, presents to the neonatal intensive care unit with acute, rapid onset of congestive heart failure symptoms, progressive dyspnea, and severe feeding difficulties. On clinical examination, the patient exhibits intense cyanosis that was noted within the first 2 days of life and fails to show any improvement when placed under $100\%$ oxygen therapy. Systemic congestion with noticeable hepatomegaly is noted. Echocardiography is immediately performed as the primary diagnostic modality.
+Questions & Answers:
+What is the most likely diagnosis for this infant? * Complete Transposition of the Great Arteries (TGA).
+What anatomical reversal characterizes this condition? * Reversal of normal anteroposterior relation where the Aorta arises anterior and rightward from the Right Ventricle (RV), and the Pulmonary Artery arises posterior and leftward from the Left Ventricle (LV).
+Why does this condition carry a survival obligation incompatible with life without mixing sites? * Because it creates two independent circulations running in parallel rather than in series.
+Name the emergency intravenous medication that must be administered immediately to keep a mixing site open. * Intravenous Prostaglandin ($PGE_1$).
+Case 2
+A 4-month-old female infant is evaluated for poor weight gain and delayed growth. Her mother reports that the baby sweats excessively during feedings and breathes very fast. Cardiovascular examination reveals a hyperkinetic apex, a precordial bulge, and a palpable systolic thrill at the lower left sternal border. Auscultation confirms a harsh pansystolic murmur at the lower left sternal border. A chest X-ray reveals cardiomegaly with clear enlargement of the left atrium and left ventricle along with increased pulmonary vascular markings.
+Questions & Answers:
+What congenital cardiac defect is most consistent with this presentation? * Moderate to Large Ventricular Septal Defect (VSD).
+What does the increased pulmonary vascular markings on the chest X-ray relate to? * It relates directly to the shunt magnitude (Pulmonary Plethora).
+Which chamber enlargement is typically identified first on an ECG in a moderate VSD? * Left Ventricular Hypertrophy (LVH) & Left Atrial Hypertrophy (LAH).
+What medical management protocol should be initiated for this infant's growth and heart symptoms? * Diuretics & ACE inhibitors, along with high-calorie feedings (via oral or NG tube).
+5. Definitions
+Q1. Define Patent Ductus Arteriosus (PDA).
+Answer: It is a congenital heart condition defined as the persistence of the normal fetal communication between the main pulmonary artery and the aortic arch, located specifically after the origin of the left subclavian artery.
+Q2. Define Hypercyanotic (TET) Spells.
+Answer: They are sudden attacks of deepening cyanosis, tachypnea, irritability, and crying seen typically in children with Tetralogy of Fallot (TOF), which can lead to unconsciousness, convulsions, or death if left untreated.
+Q3. Define Ross Classification Class IV.
+Answer: It is a functional classification category for infants and children with heart failure, defined as being completely symptomatic at rest with tachypnea, retractions, grunting, or diaphoresis.

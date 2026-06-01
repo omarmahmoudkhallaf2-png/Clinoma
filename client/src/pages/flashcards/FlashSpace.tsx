@@ -6816,7 +6816,10 @@ const CAMP_PDF_RESOURCES: Record<number, { id: string; title: string; file: stri
     { id: 'questions', title: 'Questions Booklet PDF (كراسة الأسئلة للحل - اليوم الثاني)', file: '/معسكر_الورقة_الأولى_اليوم_الثاني_أسئلة.pdf', size: '70 KB', type: 'Questions Only' },
     { id: 'answers', title: 'Answers Booklet PDF (كراسة الأسئلة بالإجابات - اليوم الثاني)', file: '/معسكر_الورقة_الأولى_اليوم_الثاني_إجابات.pdf', size: '74 KB', type: 'Model Answers' }
   ],
-  3: []
+  3: [
+    { id: 'questions', title: 'Questions Booklet PDF (كراسة الأسئلة للحل - اليوم الثالث)', file: '/معسكر_الورقة_الأولى_اليوم_الثالث_أسئلة.pdf', size: '202 KB', type: 'Questions Only' },
+    { id: 'answers', title: 'Answers Booklet PDF (كراسة الأسئلة بالإجابات - اليوم الثالث)', file: '/معسكر_الورقة_الأولى_اليوم_الثالث_إجابات.pdf', size: '209 KB', type: 'Model Answers' }
+  ]
 };
 
 const DAY1_MATCHING_SETS: MatchingSet[] = [
@@ -7197,8 +7200,8 @@ const FlashSpace = () => {
       defaultName = defaultNameInput || "document.pdf";
     }
     
-    const rawDisplayName = user?.displayName || userData?.name || "Omar Mahmoud";
-    const displayEmail = user?.email || userData?.email || "omar.mahmoud@gmail.com";
+    const rawDisplayName = user?.displayName || userData?.name || "Mohamed Ahmed";
+    const displayEmail = user?.email || userData?.email || "mohamed.ahmed@gmail.com";
     const cleanDisplayName = rawDisplayName.replace(/[^\x00-\x7F]/g, "").trim() || displayEmail.split('@')[0];
     
     try {

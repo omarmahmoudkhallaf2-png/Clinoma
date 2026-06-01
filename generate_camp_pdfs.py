@@ -58,8 +58,8 @@ class NumberedCanvas(canvas.Canvas):
     def draw_page_decorations(self, total_pages):
         page_num = self._pageNumber
         page_type = getattr(self, '_page_type', 'content')
-        student_name = getattr(self, 'student_name', "Omar Mahmoud")
-        student_email = getattr(self, 'student_email', "omar.mahmoud@gmail.com")
+        student_name = getattr(self, 'student_name', "Mohamed Ahmed")
+        student_email = getattr(self, 'student_email', "mohamed.ahmed@gmail.com")
         
         if page_type == 'cover':
             # Cover Page Decorations (Drawn in first pass, nothing in second pass)
@@ -254,7 +254,7 @@ def parse_questions_file(file_path):
 
     return chapters
 
-def build_pdf_version(chapters, output_filename, is_answered_version=False, student_name="Omar Mahmoud", student_email="omar.mahmoud@gmail.com"):
+def build_pdf_version(chapters, output_filename, is_answered_version=False, student_name="Mohamed Ahmed", student_email="mohamed.ahmed@gmail.com"):
     """Build the PDF document using BaseDocTemplate and PageTemplates."""
     # Define primary printable frame
     printable_frame = Frame(

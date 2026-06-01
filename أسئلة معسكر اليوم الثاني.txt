@@ -1,0 +1,166 @@
+Pediatric Endocrinology Examination - Model 1 (Corrected)
+Part I: Short Essay & Enumerate Questions
+(Answer the following questions by listing 4 clear points for each)
+1. Enumerate four clinical manifestations of "Neglected" (untreated) Hypothyroidism during infancy and childhood (by 3-6 months of age).
+Answer: Any four of the following:
+Retardation of physical and mental development.
+Stunted growth (short extremities with normal or increased head size).
+Depressed nasal bridge and eyes appearing far apart.
+Thick, broad protruding tongue with mouth kept open.
+Dry and scaly skin.
+Coarse, brittle, and scanty hair.
+2. Enumerate four primary (congenital) causes of short stature.
+Answer: Any four of the following:
+Skeletal Dysplasia (e.g., Achondroplasia, Osteogenesis imperfecta).
+Chromosomal abnormalities (e.g., Down syndrome, Turner's syndrome).
+Intrauterine growth retardation (IUGR) due to maternal infection, toxins, or malnutrition.
+Genetic syndromes (e.g., Prader-Willi syndrome).
+3. Enumerate four acute or long-term micro-vascular complications of Type 1 Diabetes Mellitus.
+Answer: Any four of the following:
+Diabetic ketoacidosis (Acute complication).
+Hypoglycaemia (Acute complication).
+Diabetic retinopathy (Long-term micro-vascular).
+Diabetic nephropathy (Long-term micro-vascular).
+Diabetic neuropathy (Long-term micro-vascular).
+Diabetic cardiomyopathy (Long-term micro-vascular).
+Part II: Short Answered Questions
+(Definitions, Mention, and List)
+4. Define "Idiopathic Short Stature (ISS)" according to the curriculum.
+Answer: It is practically defined as a child's height below 2 standard deviations (SD) of the mean for age, in the total absence of any endocrine, metabolic, or other specific diagnoses.
+5. Mention the criteria used for the biochemical diagnosis of Diabetes Mellitus.
+Answer: Any of the following criteria:
+Glycosylated hemoglobin (HbA1C) > 6.5%.
+Fasting Plasma Glucose (FPG) > 126 mg/dL (7.0 mmol/L).
+Oral Glucose Tolerance Test (OGTT) > 200 mg/dL (11.1 mmol/L).
+Random plasma glucose > 200 mg/dL (11.1 mmol/L) accompanied by classic symptoms.
+6. List four environmental risk factors or hypotheses that act as initiators or accelerators for beta-cell destruction in Type 1 Diabetes.
+Answer:
+The Viral Hypothesis (Enteroviruses interfering with gut immunoregulation).
+Shorter duration of breast-feeding (Loss of maternal protective antibodies).
+Premature Dietary Exposure (Early introduction of foreign dietary proteins like cow's milk).
+Lack of gut barrier maturation support due to early deprivation of breast milk growth factors/cytokines.
+Part III: Problem Solving (Clinical Cases)
+Case 1: A pediatric team is performing a routine neonatal screening for a 5-day-old baby via a heel-prick blood test. The laboratory results return showing a significantly elevated Thyroid Stimulating Hormone (TSH) level of 35 uIU/ml and a low Thyroxin (T4) level.
+a) What is the provisional diagnosis for this newborn?
+Answer: Congenital Hypothyroidism (CHT).
+b) Why is neonatal screening highly important for this specific condition even if the baby looks completely normal at birth?
+Answer: Because most affected infants are completely asymptomatic at birth, and early detection and treatment are vital to prevent permanent intellectual disability.
+Case 2: A 7-year-old girl is brought by her parents due to a noticeable downward shift in her growth rate that originally started when she was about 6 months old. Her current growth curve remains below, but completely parallel to, the 3rd percentile for height. Her bone age radiograph is delayed but matches her height age, and she has no chronic illnesses or endocrine abnormalities. Her parents note a family history of "late bloomers."
+a) What is the most likely diagnosis among the normal variants of short stature?
+Answer: Constitutional Delay of Growth and Puberty (CDGP).
+b) What is the expected long-term adult height outcome for this child?
+Answer: She will achieve a relatively normal adult height after experiencing catch-up growth when she enters puberty later than her peers.
+
+Pediatric Endocrinology Examination - Model 2 (Corrected)
+Part I: Short Essay & Enumerate Questions
+(Answer the following questions by listing 4 clear points for each)
+1. Enumerate four general risk factors (other than diet and lack of exercise) that increase the risk of a child becoming overweight.
+Answer: Any four of the following:
+Family factors (overweight family, high-calorie food availability).
+Psychological factors (stress, boredom, overeating to cope).
+Socioeconomic factors (low income, limited access to supermarkets/safe exercise places).
+Certain medications (like Prednisone, Lithium, Amitriptyline, or Propranolol).
+2. Enumerate four clinical features of Type 1 Diabetes Mellitus (Classic presentation and other symptoms).
+Answer: Any four of the following:
+Polyuria (Frequent urination).
+Polydipsia (Excessive thirst).
+Polyphagia (Increased hunger).
+Weight loss.
+Lethargy and weakness.
+Repeated infections (e.g., repeated UTIs).
+3. Enumerate four components of the detailed history required to evaluate a child presenting with Short Stature.
+Answer: Any four of the following:
+Family history of similar cases (or parental heights).
+Birth weight (to check for SGA/IUGR).
+Delayed milestones.
+Nutritional history.
+History of chronic systemic illnesses.
+Part II: Short Answered Questions
+(Definitions, Mention, and List)
+4. Define "Childhood Obesity" and "Overweight" using BMI percentile charts for children over 2 years of age.
+Answer:
+Overweight: BMI between the 85th percentile and less than the 95th percentile.
+Obese: BMI equal to, or greater than the 95th percentile.
+5. Mention the three components of the "Triple Cascade" (Pathophysiology) that occur in a patient during severe insulinopenia leading to DKA.
+Answer:
+Excessive glucose production coupled with reduced glucose utilization (leading to hyperglycemia and osmotic diuresis).
+Increased catabolic processes (resulting in cellular losses of electrolytes).
+Increased release of free fatty acids (supplying substrate for hepatic ketoacid production and metabolic acidosis).
+6. List four clinical symptoms or signs that appear within weeks or months after birth in severe cases of Congenital Hypothyroidism.
+Answer: Any four of the following:
+Prolonged physiological jaundice.
+Umbilical hernia.
+Constipation.
+Wide anterior fontanel or large open posterior fontanel.
+Hypothermia.
+Macroglossia (Thick, broad tongue).
+Part III: Problem Solving (Clinical Cases)
+Case 1:
+A 10-year-old boy is brought to the clinic for weight evaluation. His Body Mass Index (BMI) is calculated and found to be on the 98th percentile for his age and sex. On physical examination, his linear growth (height velocity) is found to be completely normal and consistent with his target height.
+a) Based on his BMI percentile, how is this child's weight condition classified?
+Answer: Obese (since BMI is $\geq$ 95th percentile).
+b) Does his normal/consistent linear growth suggest Nutritional Obesity or an underlying Endocrinopathy?
+Answer: Nutritional obesity (Nutritional obesity causes consistent or accelerated growth, while underlying endocrinopathies typically cause decreased linear growth).
+Case 2:
+A 5-year-old girl is brought by her parents due to severe short stature. On examination, her height is 2.5 Standard Deviations (SD) below the mean for her age. All her body parts are in the usual proportions (proportionate short stature). Laboratory tests reveal a high TSH level and a very low Free T4 level.
+a) What is the underlying cause of this child's short stature?
+Answer: Hypothyroidism (Primary Hypothyroidism).
+b) What is the treatment of choice for this condition?
+Answer: Thyroid hormone replacement therapy (Levothyroxine).
+
+
+
+
+Pediatric Hematology & Oncology Examination - Model 4
+Part I: Short Essay & Enumerate Questions
+(Answer the following questions by listing 4 clear points for each)
+1. Enumerate four general protective measures or clinical practices that must be STRICTLY AVOIDED in a child diagnosed with Hemophilia.
+Answer: Any four of the following:
+Avoid intramuscular (IM) injections and deep venipuncture.
+Avoid violent contact sports (e.g., boxing).
+Avoid medications that increase bleeding risk (e.g., Aspirin, NSAIDs, anticoagulants).
+Avoid any invasive procedures or surgeries without prophylactic clotting factor replacement.
+2. Enumerate four clinical manifestations or multi-organ complications caused by severe systemic Iron Overload (Hemosiderosis) in Thalassemia Major patients.
+Answer: Any four of the following:
+Cardiac hemochromatosis (leading to arrhythmias or cardiomyopathy/heart failure).
+Endocrine dysfunction (such as Diabetes Mellitus, hypothyroidism, or hypogonadism).
+Liver cirrhosis or extensive hepatic fibrosis.
+Dark skin hyperpigmentation.
+3. Enumerate four clinical manifestations resulting directly from Leukopenia (Neutropenia) and Thrombocytopenia in a patient with Aplastic Anemia.
+Answer:
+Recurrent bacterial or fungal infections (due to leukopenia).
+Easy bruising and skin ecchymoses (due to thrombocytopenia).
+Petechial skin rash (due to thrombocytopenia).
+Mucous membrane bleeding or severe epistaxis (due to thrombocytopenia).
+Part II: Short Answered Questions
+(Definitions, Mention, and List)
+4. Define "Erythropoiesis" and mention the key hormone that drives it along with its primary organ of production.
+Answer:
+Definition: A specific subset of hematopoiesis responsible for the production of mature red blood cells within the bone marrow.
+Hormone & Organ: Driven primarily by Erythropoietin (EPO), which is produced by the kidneys in response to low tissue oxygen levels.
+5. Mention four specific oxidant triggers (medications or acute conditions) that can precipitate severe intravascular hemolysis in a child with G6PD deficiency.
+Answer: Any four of the following:
+Ingestion of Fava beans (Favism).
+Certain antibiotics (such as Sulfonamides, Nitrofurantoin, or Fluoroquinolones).
+Analgesics (such as Aspirin).
+Acute clinical illnesses (such as Sepsis, viral hepatitis, or Diabetic Ketoacidosis [DKA]).
+6. Define "Koilonychia" and state the specific type of pediatric nutritional anemia it is classically associated with.
+Answer:
+Definition: A clinical sign presenting as abnormal spoon-shaped nails.
+Association: Classically associated with severe, chronic Iron Deficiency Anemia (IDA).
+Part III: Problem Solving (Clinical Cases)
+Case 1: A 4-year-old boy is brought to the emergency room with a painful swelling, warmth, and limited range of motion in his left knee joint following a minor slip while playing. His mother reports a positive family history of a chronic bleeding disorder on the maternal side affecting her brother. Laboratory investigations show: a completely normal platelet count, normal Bleeding Time (BT), normal Prothrombin Time (PT), but a significantly prolonged activated Partial Thromboplastin Time (aPTT).
+a) What is the most likely provisional diagnosis?
+Answer: Hemophilia A (or Hemophilia B).
+b) What is the standard supportive first-aid protocol used for managing this child's joint bleed (hemarthrosis) alongside specific factor replacement?
+Answer: The PRICE protocol:
+Protection.
+Rest.
+Ice.
+Compression.
+Elevation.
+Case 2: A 6-year-old girl is evaluated for chronic, intermittent episodes of mild jaundice, fatigue, and a palpable left upper quadrant mass (splenomegaly). Her father notes that he had to undergo a splenectomy during his adolescence for a similar condition. A peripheral blood smear is performed, revealing numerous small, densely stained red blood cells that completely lack a central pale area (spherocytes). The Direct Antiglobulin Test (Coombs test) is negative.
+a) What is the most likely hereditary diagnosis?
+Answer: Hereditary Spherocytosis (HS).
+b) Name the specific laboratory test considered the absolute diagnostic test of choice to confirm this red blood cell membrane defect.
+Answer: Eosin-5-maleimide (EMA) dye binding test (or alternatively, the Acidified Glycerol Lysis Test [AGLT] / Osmotic Fragility test).   

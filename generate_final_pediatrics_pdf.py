@@ -133,8 +133,8 @@ class UltraSleekSecurityCanvas(canvas.Canvas):
         self.saveState()
         width, height = CUSTOM_PAGE_SIZE
         
-        student_name = getattr(self, '_student_name', "Omar Mahmoud")
-        student_email = getattr(self, '_student_email', "omar.mahmoud@gmail.com")
+        student_name = getattr(self, '_student_name', "Mohamed Ahmed")
+        student_email = getattr(self, '_student_email', "mohamed.ahmed@gmail.com")
         
         if p == 1:
             # COVER PAGE FOREGROUND (Text on Cover)
@@ -235,7 +235,7 @@ class UltraSleekSecurityCanvas(canvas.Canvas):
         self.restoreState()
 
 
-def build_pdf(filename="تحديدات_الأطفال_تجميعي.pdf", compress=False, student_name="Omar Mahmoud", student_email="omar.mahmoud@gmail.com"):
+def build_pdf(filename="تحديدات_الأطفال_تجميعي.pdf", compress=False, student_name="Mohamed Ahmed", student_email="mohamed.ahmed@gmail.com"):
     # Primary look in public source folder, fallback to dist compiled assets
     arabic_dir = u"d:/Med Prep/client/public/assets/TIP-Peditrics/\u062a\u062d\u062f\u064a\u062f\u0627\u062a \u0627\u0644\u0627\u0637\u0641\u0627\u0644"
     english_dir = "d:/Med Prep/client/public/assets/TIP-Peditrics"
@@ -680,8 +680,8 @@ def build_pdf(filename="تحديدات_الأطفال_تجميعي.pdf", compres
     )
     
     def onPage(canvas, doc):
-        canvas._student_name = getattr(doc, '_student_name', "Omar Mahmoud")
-        canvas._student_email = getattr(doc, '_student_email', "omar.mahmoud@gmail.com")
+        canvas._student_name = getattr(doc, '_student_name', "Mohamed Ahmed")
+        canvas._student_email = getattr(doc, '_student_email', "mohamed.ahmed@gmail.com")
         p = canvas._pageNumber
         if p in [1, 2]:
             canvas._is_chapter_page = False
@@ -708,8 +708,8 @@ if __name__ == "__main__":
     
     # Platform dynamic generation defaults
     output_filename = "d:/Med Prep/تحديدات_الأطفال.pdf"
-    student_name = "Omar Mahmoud"
-    student_email = "omar.mahmoud@gmail.com"
+    student_name = "Mohamed Ahmed"
+    student_email = "mohamed.ahmed@gmail.com"
     compress_flag = False
     
     # Parse CLI arguments if executed from platform server backend
@@ -728,8 +728,8 @@ if __name__ == "__main__":
         build_pdf(output_filename, compress=compress_flag, student_name=student_name, student_email=student_email)
     else:
         # Local compile of both PDFs for testing
-        build_pdf("d:/Med Prep/تحديدات_الأطفال.pdf", compress=False, student_name="Omar Mahmoud", student_email="omar.mahmoud@gmail.com")
-        build_pdf("d:/Med Prep/تحديدات_الأطفال_مضغوط.pdf", compress=True, student_name="Omar Mahmoud", student_email="omar.mahmoud@gmail.com")
+        build_pdf("d:/Med Prep/تحديدات_الأطفال.pdf", compress=False, student_name="Mohamed Ahmed", student_email="mohamed.ahmed@gmail.com")
+        build_pdf("d:/Med Prep/تحديدات_الأطفال_مضغوط.pdf", compress=True, student_name="Mohamed Ahmed", student_email="mohamed.ahmed@gmail.com")
         
         # Automatically copy to client/public static folder for release
         import shutil
