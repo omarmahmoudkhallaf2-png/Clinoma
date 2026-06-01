@@ -7256,6 +7256,20 @@ const FlashSpace = () => {
     const setsPool = campActiveDay === 3 ? DAY3_MATCHING_SETS : (campActiveDay === 2 ? DAY2_MATCHING_SETS : DAY1_MATCHING_SETS);
     const totalPairs = setsPool.reduce((acc: number, s: MatchingSet) => acc + s.pairs.length, 0);
     setCampTotalPairsCount(totalPairs);
+
+    // Calculate start time dynamically based on the selected day:
+    // Day 1: 2026-05-31T22:00 (10:00 PM)
+    // Day 2: 2026-06-01T22:00 (10:00 PM)
+    // Day 3: 2026-06-02T22:00 (10:00 PM)
+    const baseDate = new Date('2026-05-31T22:00:00');
+    baseDate.setDate(baseDate.getDate() + (campActiveDay - 1));
+    const year = baseDate.getFullYear();
+    const month = String(baseDate.getMonth() + 1).padStart(2, '0');
+    const date = String(baseDate.getDate()).padStart(2, '0');
+    const hours = String(baseDate.getHours()).padStart(2, '0');
+    const minutes = String(baseDate.getMinutes()).padStart(2, '0');
+    const calculatedStartStr = `${year}-${month}-${date}T${hours}:${minutes}`;
+    setCampStartTimeStr(calculatedStartStr);
   }, [campActiveDay]);
 
   const [campActiveTab, setCampActiveTab] = useState<'chapters' | 'notebook'>('chapters');
