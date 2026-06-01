@@ -6818,8 +6818,7 @@ const CAMP_PDF_RESOURCES: Record<number, { id: string; title: string; file: stri
   ],
   3: [
     { id: 'questions', title: 'Questions Booklet PDF (كراسة الأسئلة للحل - اليوم الثالث)', file: '/معسكر_الورقة_الأولى_اليوم_الثالث_أسئلة.pdf', size: '87 KB', type: 'Questions Only' },
-    { id: 'answers', title: 'Answers Booklet PDF (كراسة الأسئلة بالإجابات - اليوم الثالث)', file: '/معسكر_الورقة_الأولى_اليوم_الثالث_إجابات.pdf', size: '92 KB', type: 'Model Answers' },
-    { id: 'quiz', title: 'Matching Quiz Booklet PDF (كراسة اختبار التوصيل - اليوم الثالث)', file: '/معسكر_الورقة_الأولى_اليوم_الثالث_كويز.pdf', size: '66 KB', type: 'Matching Quiz' }
+    { id: 'answers', title: 'Answers Booklet PDF (كراسة الأسئلة بالإجابات - اليوم الثالث)', file: '/معسكر_الورقة_الأولى_اليوم_الثالث_إجابات.pdf', size: '92 KB', type: 'Model Answers' }
   ]
 };
 
