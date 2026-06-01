@@ -7258,10 +7258,10 @@ const FlashSpace = () => {
     setCampTotalPairsCount(totalPairs);
 
     // Calculate start time dynamically based on the selected day:
-    // Day 1: 2026-05-31T22:00 (10:00 PM)
-    // Day 2: 2026-06-01T22:00 (10:00 PM)
-    // Day 3: 2026-06-02T22:00 (10:00 PM)
-    const baseDate = new Date('2026-05-31T22:00:00');
+    // Day 1: 2026-05-30T22:00 (10:00 PM)
+    // Day 2: 2026-05-31T22:00 (10:00 PM)
+    // Day 3: 2026-06-01T22:00 (10:00 PM)
+    const baseDate = new Date('2026-05-30T22:00:00');
     baseDate.setDate(baseDate.getDate() + (campActiveDay - 1));
     const year = baseDate.getFullYear();
     const month = String(baseDate.getMonth() + 1).padStart(2, '0');
