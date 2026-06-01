@@ -112,51 +112,82 @@ class QuizCanvas(canvas.Canvas):
         
         self.restoreState()
 
-def parse_matching_sets_day3():
-    return [
-        {
-            "id": "1",
-            "title": "Set 1: Cerebral Palsy & Muscular Dystrophy Classifications",
-            "pairs": [
-                {"q": "Becker Muscle Dystrophy", "a": "A 4-year-old boy presenting with progressive proximal muscle weakness, calf pseudohypertrophy, markedly elevated creatine kinase (CK), and a history of a slowly progressive course with an X-linked recessive inheritance."},
-                {"q": "Ataxic CP", "a": "An infant exhibiting disturbances in balance and equilibrium, walking unsteadily with poor coordination, accompanied by hypotonia and nystagmus."},
-                {"q": "Spastic CP", "a": "A child presenting with hypertonia, a positive Babinski sign (extensor plantar response), and persistent primitive reflexes."},
-                {"q": "Werdnig-Hoffman disease", "a": "An anterior horn cell disease that serves as a spinal cord lesion cause of Floppy Infant Syndrome."}
-            ]
-        },
-        {
-            "id": "2",
-            "title": "Set 2: Anatomical/Physiological descriptions of Cerebral Palsy",
-            "pairs": [
-                {"q": "Quadriplegia / Tetraplegia", "a": "Arms and legs are equally involved, or arms are more involved than legs."},
-                {"q": "Hemiplegia", "a": "Arm and leg on the same side of the body are involved (Right or Left)."},
-                {"q": "Chorea", "a": "Quick irregular dysrhythmic movements involving proximal skeletal muscles."},
-                {"q": "Paraplegia", "a": "Involvement of the legs only."}
-            ]
-        },
-        {
-            "id": "3",
-            "title": "Set 3: Congenital Heart Diseases & Clinical Signs",
-            "pairs": [
-                {"q": "Complete Transposition of the Great Arteries (TGA)", "a": "A newborn presenting with intense cyanosis since birth that is completely unrelieved by 100% oxygen therapy, with a chest X-ray showing a classic \"Egg on a string\" contour."},
-                {"q": "Patent Ductus Arteriosus (PDA)", "a": "A 4-year-old child presenting with an auscultation finding of a grade 1 to 4 of 6 continuous machinery murmur, best audible at the left infraclavicular area."},
-                {"q": "Tetralogy of Fallot (TOF)", "a": "A cyanotic infant who exhibits sudden attacks of deepening cyanosis and crying, where a chest X-ray reveals a normal heart size with a distinct boot-shaped contour (\"coeur en sabot\")."},
-                {"q": "Ventricular Septal Defect (VSD)", "a": "The most common form of congenital heart disease, accounting for about 30% of all such defects, characterized by a structural defect in the interventricular septum."}
-            ]
-        },
-        {
-            "id": "4",
-            "title": "Set 4: Ventricular/Atrial Septal Defects & PDA Descriptions",
-            "pairs": [
-                {"q": "Muscular VSD", "a": "A defect located in the muscular part of the septum, which is divided into inlet, trabecular, and outlet components, and is noted as being less common."},
-                {"q": "Ostium Secundum Defect", "a": "The commonest presentation of an Atrial Septal Defect, which is located strictly in the center of the inter-atrial septum."},
-                {"q": "Infundibular VSD", "a": "A specific type of VSD characterized during auscultation by a soft early diastolic AR murmur caused by aortic cusp herniation."},
-                {"q": "Membranous VSD", "a": "A single defect in the membranous part of the interventricular septum, usually involving part of the muscular tissue adjacent to it."}
-            ]
-        }
-    ]
+def parse_matching_sets_day3(file_path):
+    if not os.path.exists(file_path):
+        raise FileNotFoundError(f"File not found: {file_path}")
+        
+    with open(file_path, "r", encoding="utf-8") as f:
+        lines = f.readlines()
+        
+    sets = []
+    current_set = None
+    collecting_q = False
+    collecting_a = False
+    collecting_key = False
+    
+    for line in lines:
+        line_str = line.strip()
+        if not line_str:
+            continue
+            
+        if line_str.startswith("Set "):
+            current_set = {
+                "title": line_str,
+                "qs": [],
+                "as_dict": {},
+                "pairs": []
+            }
+            sets.append(current_set)
+            collecting_q = False
+            collecting_a = False
+            collecting_key = False
+            continue
+            
+        if current_set:
+            if line_str.startswith("Column II"):
+                collecting_q = False
+                collecting_a = True
+                collecting_key = False
+                continue
+            elif line_str.startswith("Column I"):
+                collecting_q = True
+                collecting_a = False
+                collecting_key = False
+                continue
+            elif line_str.startswith("Answer Key"):
+                collecting_q = False
+                collecting_a = False
+                collecting_key = True
+                continue
+                
+            if collecting_q:
+                current_set["qs"].append(line_str)
+                continue
+                
+            if collecting_a:
+                match = re.match(r"^([A-Z])\.\s+(.*)$", line_str)
+                if match:
+                    letter = match.group(1)
+                    text = match.group(2)
+                    current_set["as_dict"][letter] = text
+                continue
+                
+            if collecting_key:
+                match = re.match(r"^(\d+)\s+matches\s+with\s+([A-Z])$", line_str)
+                if match:
+                    q_num = int(match.group(1))
+                    a_letter = match.group(2)
+                    q_text = current_set["qs"][q_num - 1]
+                    a_text = current_set["as_dict"][a_letter]
+                    current_set["pairs"].append({
+                        "q": q_text,
+                        "a": a_text
+                    })
+                continue
+                
+    return sets
 
-def build_quiz_pdf(output_filename, is_answered_version=False, student_name="Student Name", student_email="student@email.com"):
+def build_quiz_pdf(input_file, output_filename, is_answered_version=False, student_name="Mohamed Ahmed", student_email="mohamed.ahmed@gmail.com"):
     printable_frame = Frame(
         36,
         45,
@@ -277,7 +308,7 @@ def build_quiz_pdf(output_filename, is_answered_version=False, student_name="Stu
     story.append(Paragraph("CLINOMA PLATFORM", ParagraphStyle('ClinomaEng', parent=meta_style, fontName='ComicFont-Bold', fontSize=15, spaceAfter=40)))
     story.append(Paragraph("MATCHING ASSESSMENT", title_style))
     
-    sub_text = "Day 3 Neurology & Cardiology Quiz Booklet" if not is_answered_version else "Day 3 Neurology & Cardiology Quiz Answers Key"
+    sub_text = "Day 3 Camp Quiz Booklet" if not is_answered_version else "Day 3 Camp Quiz Answers Key"
     story.append(Paragraph(sub_text, subtitle_style))
     story.append(Spacer(1, 60))
     story.append(Paragraph("Interactive Diagnosis & Classification", meta_style))
@@ -291,7 +322,7 @@ def build_quiz_pdf(output_filename, is_answered_version=False, student_name="Stu
     story.append(NextPageTemplate('ContentPage'))
     story.append(PageBreak())
 
-    matching_sets = parse_matching_sets_day3()
+    matching_sets = parse_matching_sets_day3(input_file)
     answer_keys = []
 
     # 2. MATCHING SETS CONTENT
@@ -402,11 +433,12 @@ def build_quiz_pdf(output_filename, is_answered_version=False, student_name="Stu
 
 if __name__ == "__main__":
     import sys
+    input_file = "d:/Med Prep/كويز معسكر اليوم الثالث.txt"
     output_q = "d:/Med Prep/معسكر_الورقة_الأولى_اليوم_الثالث_كويز.pdf"
     output_a = "d:/Med Prep/معسكر_الورقة_الأولى_اليوم_الثالث_كويز_إجابات.pdf"
     
-    student_name = "Student Name"
-    student_email = "student@email.com"
+    student_name = "Mohamed Ahmed"
+    student_email = "mohamed.ahmed@gmail.com"
     
     if len(sys.argv) > 1:
         student_name = sys.argv[1]
@@ -418,7 +450,7 @@ if __name__ == "__main__":
         output_a = sys.argv[4]
         
     print("Generating Matching Quiz Day 3 (Questions)...")
-    build_quiz_pdf(output_q, is_answered_version=False, student_name=student_name, student_email=student_email)
+    build_quiz_pdf(input_file, output_q, is_answered_version=False, student_name=student_name, student_email=student_email)
     print("Generating Matching Quiz Day 3 (Answers)...")
-    build_quiz_pdf(output_a, is_answered_version=True, student_name=student_name, student_email=student_email)
+    build_quiz_pdf(input_file, output_a, is_answered_version=True, student_name=student_name, student_email=student_email)
     print("Matching Quiz Day 3 booklets generated successfully.")

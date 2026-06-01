@@ -6817,8 +6817,9 @@ const CAMP_PDF_RESOURCES: Record<number, { id: string; title: string; file: stri
     { id: 'answers', title: 'Answers Booklet PDF (كراسة الأسئلة بالإجابات - اليوم الثاني)', file: '/معسكر_الورقة_الأولى_اليوم_الثاني_إجابات.pdf', size: '74 KB', type: 'Model Answers' }
   ],
   3: [
-    { id: 'questions', title: 'Questions Booklet PDF (كراسة الأسئلة للحل - اليوم الثالث)', file: '/معسكر_الورقة_الأولى_اليوم_الثالث_أسئلة.pdf', size: '202 KB', type: 'Questions Only' },
-    { id: 'answers', title: 'Answers Booklet PDF (كراسة الأسئلة بالإجابات - اليوم الثالث)', file: '/معسكر_الورقة_الأولى_اليوم_الثالث_إجابات.pdf', size: '209 KB', type: 'Model Answers' }
+    { id: 'questions', title: 'Questions Booklet PDF (كراسة الأسئلة للحل - اليوم الثالث)', file: '/معسكر_الورقة_الأولى_اليوم_الثالث_أسئلة.pdf', size: '87 KB', type: 'Questions Only' },
+    { id: 'answers', title: 'Answers Booklet PDF (كراسة الأسئلة بالإجابات - اليوم الثالث)', file: '/معسكر_الورقة_الأولى_اليوم_الثالث_إجابات.pdf', size: '92 KB', type: 'Model Answers' },
+    { id: 'quiz', title: 'Matching Quiz Booklet PDF (كراسة اختبار التوصيل - اليوم الثالث)', file: '/معسكر_الورقة_الأولى_اليوم_الثالث_كويز.pdf', size: '66 KB', type: 'Matching Quiz' }
   ]
 };
 
@@ -7057,8 +7058,113 @@ const DAY2_MATCHING_SETS: MatchingSet[] = [
       { id: 'd2_s9_p1', question: 'APLASTIC CRISIS', answer: 'MOST DANGEROUS! Almost universally triggered by Parvovirus B19. Completely halts marrow erythropoiesis.' },
       { id: 'd2_s9_p2', question: 'MEGALOBLASTIC CRISIS', answer: 'Due to rapid, severe depletion of nutritional folate stores driven by chronic, highly accelerated bone marrow erythropoiesis.' },
       { id: 'd2_s9_p3', question: 'HEMOLYTIC CRISIS', answer: 'Sudden, temporary acceleration of RBC destruction, precipitated by acute bacterial or viral infections.' },
-      { id: 'd2_s9_p4', question: 'Tumor Lysis Syndrome (TLS)', answer: 'A life-threatening complication managed with aggressive IV hydration before chemotherapy, uric acid reduction via allopurinol, and close electrolyte monitoring.' },
-      { id: 'd2_s9_p5', question: 'Inhibitors (Major Complication)', answer: 'IgG antibodies that neutralize clotting factor concentrates. Occurs in 30% of severe Hemophilia A.' }
+    ]
+  }
+];
+
+const DAY3_MATCHING_SETS: MatchingSet[] = [
+  {
+    id: 'day3_set1',
+    title: 'المجموعة 1: الأسباب والمسببات المرضية (Infection Organisms)',
+    description: 'قم بتوصيل المرض بالمسبب أو الوصف الطبي المناسب.',
+    pairs: [
+      { id: 'd3_s1_p1', question: 'Infectious Mononucleosis', answer: 'Caused by Epstein-Barr virus with atypical lymphocytes' },
+      { id: 'd3_s1_p2', question: 'Chickenpox (Varicella)', answer: 'Causative Organism: Varicella-zoster virus (VZV)' },
+      { id: 'd3_s1_p3', question: 'Roseola Infantum', answer: 'Causative Organism: Human herpes virus-6 (HHV-6) mainly' },
+      { id: 'd3_s1_p4', question: 'Encephalitis', answer: 'Etiology: HSV (Herpes Simplex Virus) is important cause in children.' }
+    ]
+  },
+  {
+    id: 'day3_set2',
+    title: 'المجموعة 2: المظاهر والأعراض السريرية المميزة (Clinical Signs)',
+    description: 'قم بتوصيل المرض بالعلامة السريرية المميزة والخاصة به.',
+    pairs: [
+      { id: 'd3_s2_p1', question: 'Measles (Rubeola)', answer: 'Koplik spots (Pathognomonic, buccal mucosa, opposite 2nd molars)' },
+      { id: 'd3_s2_p2', question: 'Chickenpox (Varicella)', answer: 'Fever & itchy vesicular rash in different stages ("dew drops on a rose petal").' },
+      { id: 'd3_s2_p3', question: 'Roseola Infantum', answer: 'Characterized by high fever for 3-5 days, followed by sudden fall of temperature and appearance of maculopapular rash' },
+      { id: 'd3_s2_p4', question: 'Meningitis (Acute Bacterial)', answer: 'Infants: bulging/tense anterior fontanel, poor feeding' }
+    ]
+  },
+  {
+    id: 'day3_set3',
+    title: 'المجموعة 3: الإدارة السريرية والمضاعفات (Management & Complications)',
+    description: 'قم بتوصيل الحالة ببروتوكول العلاج أو قائمة المضاعفات التابعة لها.',
+    pairs: [
+      { id: 'd3_s3_p1', question: 'Mumps (Epidemic Parotitis) Complications', answer: 'Orchitis, pancreatitis, meningitis, thyroiditis, mastitis, myocarditis, arthritis, hepatitis, nephritis, unilateral deafness, ocular, Mumps Embryopathy' },
+      { id: 'd3_s3_p2', question: 'Measles (Rubeola) Treatment', answer: 'Vitamin A (Reduces morbidity/mortality in developing countries)' },
+      { id: 'd3_s3_p3', question: 'Meningitis Specific Antibiotic Treatment (Infants < 6 months)', answer: 'ampicillin + gentamicin (IV)' },
+      { id: 'd3_s3_p4', question: 'Encephalitis Management', answer: 'Requires urgent antiviral/supportive treatment' }
+    ]
+  },
+  {
+    id: 'day3_set4',
+    title: 'المجموعة 4: فسيولوجيا أمراض الأعصاب والعضلات (Neurology Integration)',
+    description: 'قم بتوصيل المصطلح بالتعريف أو الميكانيكية المسببة له.',
+    pairs: [
+      { id: 'd3_s4_p1', question: 'Duchenne Muscle Dystrophy Pathophysiology', answer: 'Due to a defect in a protein called dystrophin of the skeletal muscle, cardiac muscle and the brain.' },
+      { id: 'd3_s4_p2', question: 'Cerebral Palsy Core Deficit', answer: 'Central motor deficit that is strictly non-progressive, non-familial, and non-hereditary.' },
+      { id: 'd3_s4_p3', question: 'Kernicterus', answer: 'Bilirubin-induced encephalopathy.' },
+      { id: 'd3_s4_p4', question: 'Anterior Horn Cell Disease', answer: 'Werdnig-Hoffman spinal muscular atrophy.' },
+      { id: 'd3_s4_p5', question: 'Becker Muscle Dystrophy Comparison Note', answer: 'X-linked recessive disease of late onset during late childhood, with a slowly progressive course and a longer time of survival.' }
+    ]
+  },
+  {
+    id: 'day3_set5',
+    title: 'المجموعة 5: علامات الضعف وأنماط الحركة (Signs & Postures)',
+    description: 'قم بتوصيل العلامة السريرية بالوصف الوظيفي لها.',
+    pairs: [
+      { id: 'd3_s5_p1', question: 'Weakness of pelvic girdle muscles (in DMD)', answer: 'Waddling lordotic gait (weak gluteus medius and minimus), Difficulty climbing up stairs, and Positive Gower sign.' },
+      { id: 'd3_s5_p2', question: 'Slippage (Vertical Suspension)', answer: 'The infant slips through the examiner\'s hands when held under the arms, denoting hypotonia of the shoulder girdle muscles.' },
+      { id: 'd3_s5_p3', question: 'Diplegia', answer: 'Arms and Legs but legs are more involved.' },
+      { id: 'd3_s5_p4', question: 'Dystonia', answer: 'Painful sustained contraction of a muscle group\'s → prolonged, twisting, posturing of the face, limb or trunk, which involved.' },
+      { id: 'd3_s5_p5', question: 'Curved Trunk (Ventral Suspension)', answer: 'When the baby is suspended in a prone position over the examiner\'s hand, they drop around it in a "U-shape", denoting hypotonia of the trunk muscles.' }
+    ]
+  },
+  {
+    id: 'day3_set6',
+    title: 'المجموعة 6: الفحوصات والمعايير التشخيصية (Diagnostics)',
+    description: 'قم بتوصيل الفحص أو المتلازمة بالنتيجة المخبرية أو السريرية المطابقة.',
+    pairs: [
+      { id: 'd3_s6_p1', question: 'Muscle biopsy (Diagnostic) for DMD', answer: 'Shows muscle fiber degeneration with replacement with fat and fibrosis.' },
+      { id: 'd3_s6_p2', question: 'Lower Motor Unit Disorders Criteria (Deep Tendon Reflexes)', answer: 'Characterized by areflexia or hyporeflexia.' },
+      { id: 'd3_s6_p3', question: 'Spastic CP (70 to 80%)', answer: 'Hypertonia with hyperreflexia, positive Babinski sign (extensor plantar response), and persistent primitive reflexes.' },
+      { id: 'd3_s6_p4', question: 'Neonatal Myasthenia Gravis', answer: 'Transient autoimmune neuromuscular blockade.' }
+    ]
+  },
+  {
+    id: 'day3_set7',
+    title: 'المجموعة 7: أصوات القلب والنفخات الكلاسيكية (Classic Murmurs)',
+    description: 'قم بتوصيل الحالة بالصوت أو النفخة القلبية المميزة لها.',
+    pairs: [
+      { id: 'd3_s7_p1', question: 'Crucial Note in ASD', answer: 'There is absolutely NO MURMUR produced by the actual passage of blood through the ASD itself.' },
+      { id: 'd3_s7_p2', question: 'PDA Auscultation (Murmur)', answer: 'Characterized by a pathognomonic grade 1 to 4 of 6 continuous machinery murmur, best audible at the left infraclavicular area and propagated to the pulmonary area and the back.' },
+      { id: 'd3_s7_p3', question: 'ASD Heart Sounds', answer: 'The second heart sound (S2) is widely split and fixed, which stands as the pathognomonic and characteristic finding of ASD.' },
+      { id: 'd3_s7_p4', question: 'TOF Auscultation Murmur', answer: 'A systolic ejection murmur at the left sternal border caused strictly by the pulmonary stenosis, not the VSD.' },
+      { id: 'd3_s7_p5', question: 'VSD Auscultation (Murmurs)', answer: 'Harsh pansystolic murmur (lower left sternal border, propagated).' }
+    ]
+  },
+  {
+    id: 'day3_set8',
+    title: 'المجموعة 8: الآلية الفسيولوجية والعلامات السريرية الفريدة (CVS Pathophysiology)',
+    description: 'قم بتوصيل العلامة أو المتلازمة بالميكانيكية أو الوصف الخاص بها.',
+    pairs: [
+      { id: 'd3_s8_p1', question: 'The Squatting Mechanism', answer: 'Older children squat to increase systemic vascular resistance, which reduces the right-to-left shunt and improves pulmonary blood flow.' },
+      { id: 'd3_s8_p2', question: 'Large PDAs General Examination', answer: 'bounding peripheral pulses and a classic water hammer pulse, caused directly by a wide pulse pressure with elevated systolic pressure and lower diastolic pressure.' },
+      { id: 'd3_s8_p3', question: 'The Essential Triad in Infants', answer: 'Tachypnea, Tachycardia, Enlarged tender liver' },
+      { id: 'd3_s8_p4', question: 'TGA Chest X-RAY (CXR)', answer: 'Classic EGG-SHAPED ("EGG ON A STRING")' },
+      { id: 'd3_s8_p5', question: 'Eisenmenger Syndrome', answer: 'Pulmonary hypertension increases right ventricular pressure, causing Eisenmenger Syndrome and resulting in \'persistent cyanosis\'.' }
+    ]
+  },
+  {
+    id: 'day3_set9',
+    title: 'المجموعة 9: العلاجات، الأدوية وموانع الاستعمال (Protocols & Drugs)',
+    description: 'قم بتوصيل الإجراء الطبي أو العقار الدوائي بالتفاصيل السريرية المطابقة.',
+    pairs: [
+      { id: 'd3_s9_p1', question: 'TET SPELLS CRITICAL ABSOLUTE CONTRAINDICATIONS', answer: 'Give NO INOTROPES and NO DIURETICS during a spell.' },
+      { id: 'd3_s9_p2', question: 'Digitalis Toxicity Symptoms', answer: 'Anorexia, nausea, vomiting, bradycardia, visual disturbances, severe arrhythmias.' },
+      { id: 'd3_s9_p3', question: 'ARTERIAL SWITCH OPERATION (ASO)', answer: 'Surgically switches Aorta and Pulmonary Artery to correct ventricles. Must occur EARLY (3-8 WEEKS).' },
+      { id: 'd3_s9_p4', question: 'PDA Medical Prophylaxis (Premature Only)', answer: 'Pharmacological closure using indomethacin, ibuprofen, or paracetamol is highly effective and widely used to close the PDA strictly in premature infants.' },
+      { id: 'd3_s9_p5', question: 'INTRAVENOUS PROSTAGLANDIN', answer: 'IMMEDIATE administration to keep DUCTUS ARTERIOSUS PATENT' }
     ]
   }
 ];
@@ -7139,7 +7245,7 @@ const FlashSpace = () => {
 
   // --- First Paper Camp states ---
   const [campActiveDay, setCampActiveDay] = useState<number>(1);
-  const currentMatchingSets = campActiveDay === 2 ? DAY2_MATCHING_SETS : DAY1_MATCHING_SETS;
+  const currentMatchingSets = campActiveDay === 3 ? DAY3_MATCHING_SETS : (campActiveDay === 2 ? DAY2_MATCHING_SETS : DAY1_MATCHING_SETS);
 
   useEffect(() => {
     setCampCurrentSetIdx(0);
@@ -7147,7 +7253,7 @@ const FlashSpace = () => {
     setCampWrongMatches([]);
     setCampActiveSelection(null);
     setCampTimeSpentSeconds(0);
-    const setsPool = campActiveDay === 2 ? DAY2_MATCHING_SETS : DAY1_MATCHING_SETS;
+    const setsPool = campActiveDay === 3 ? DAY3_MATCHING_SETS : (campActiveDay === 2 ? DAY2_MATCHING_SETS : DAY1_MATCHING_SETS);
     const totalPairs = setsPool.reduce((acc: number, s: MatchingSet) => acc + s.pairs.length, 0);
     setCampTotalPairsCount(totalPairs);
   }, [campActiveDay]);
@@ -8839,7 +8945,9 @@ const FlashSpace = () => {
                           <button
                             onClick={() => {
                               playSound('click');
-                              handleDownloadPDF('quiz_answers', '/معسكر_الورقة_الأولى_اليوم_الأول_كويز_إجابات.pdf', 'quiz_answers_day1_camp.pdf');
+                              const dayNames = ['الأول', 'الثاني', 'الثالث'];
+                              const dayName = dayNames[campActiveDay - 1] || 'الأول';
+                              handleDownloadPDF('quiz_answers', `/معسكر_الورقة_الأولى_اليوم_${dayName}_كويز_إجابات.pdf`, `quiz_answers_day${campActiveDay}_camp.pdf`);
                             }}
                             className="mt-3 w-full py-2.5 bg-amber-500 hover:bg-amber-600 text-slate-950 font-black rounded-xl text-xs flex items-center justify-center gap-2 transition-all shadow-md cursor-pointer"
                           >
@@ -8855,6 +8963,18 @@ const FlashSpace = () => {
                               <h4 className="text-xs font-black text-rose-400">عذراً، انتهى الوقت المتاح للاختبار! ⏰</h4>
                               <p className="text-[10px] text-slate-400">كان متاحاً فقط من الساعة 10:00 مساءً حتى الساعة 12:00 منتصف الليل.</p>
                             </div>
+                            <button
+                              onClick={() => {
+                                playSound('click');
+                                const dayNames = ['الأول', 'الثاني', 'الثالث'];
+                                const dayName = dayNames[campActiveDay - 1] || 'الأول';
+                                handleDownloadPDF('quiz_answers', `/معسكر_الورقة_الأولى_اليوم_${dayName}_كويز_إجابات.pdf`, `quiz_answers_day${campActiveDay}_camp.pdf`);
+                              }}
+                              className="mt-3 w-full py-2.5 bg-amber-500 hover:bg-amber-600 text-slate-950 font-black rounded-xl text-xs flex items-center justify-center gap-2 transition-all shadow-md cursor-pointer"
+                            >
+                              <Download className="w-4 h-4 text-slate-950" />
+                              <span>تحميل كراسة إجابات الكويز المتجاوبة (PDF)</span>
+                            </button>
                           </div>
                         ) : (
                           <div className="space-y-3 text-center p-4 bg-amber-500/5 border border-dashed border-amber-500/20 rounded-2xl">

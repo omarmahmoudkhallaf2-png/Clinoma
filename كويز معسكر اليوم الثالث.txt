@@ -1,0 +1,313 @@
+CHAPTER: Infection
+Set 1: Causative Organisms & Etiology (4 Points)
+Column I (Disease/Condition)
+
+Infectious Mononucleosis
+
+Chickenpox (Varicella)
+
+Roseola Infantum
+
+Encephalitis
+
+Column II (Etiology / Organism)
+A. Etiology: HSV (Herpes Simplex Virus) is important cause in children.
+B. Causative Organism: Varicella-zoster virus (VZV)
+C. Causative Organism: Human herpes virus-6 (HHV-6) mainly
+D. Caused by Epstein-Barr virus with atypical lymphocytes
+
+Answer Key (Set 1):
+
+1 matches with D
+
+2 matches with B
+
+3 matches with C
+
+4 matches with A
+
+Set 2: Hallmark Clinical Presentations (4 Points)
+Column I (Disease/Condition)
+
+Measles (Rubeola)
+
+Chickenpox (Varicella)
+
+Roseola Infantum
+
+Meningitis (Acute Bacterial)
+
+Column II (Clinical Picture / Signs)
+A. Characterized by high fever for 3-5 days, followed by sudden fall of temperature and appearance of maculopapular rash
+B. Koplik spots (Pathognomonic, buccal mucosa, opposite 2nd molars)
+C. Infants: bulging/tense anterior fontanel, poor feeding
+D. Fever & itchy vesicular rash in different stages ("dew drops on a rose petal").
+
+Answer Key (Set 2):
+
+1 matches with B
+
+2 matches with D
+
+3 matches with A
+
+4 matches with C
+
+Set 3: Specific Management & Complications (4 Points)
+Column I (Category)
+
+Mumps (Epidemic Parotitis) Complications
+
+Measles (Rubeola) Treatment
+
+Meningitis Specific Antibiotic Treatment (Infants < 6 months)
+
+Encephalitis Management
+
+Column II (Protocol / Details)
+A. Vitamin A (Reduces morbidity/mortality in developing countries)
+B. Orchitis, pancreatitis, meningitis, thyroiditis, mastitis, myocarditis, arthritis, hepatitis, nephritis, unilateral deafness, ocular, Mumps Embryopathy
+C. Requires urgent antiviral/supportive treatment
+D. ampicillin + gentamicin (IV)
+
+Answer Key (Set 3):
+
+1 matches with B
+
+2 matches with A
+
+3 matches with D
+
+4 matches with C
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Set 1: Pathophysiology & Etiology Integration (5 Points)
+Column I (Disease / Concept)
+
+Duchenne Muscle Dystrophy Pathophysiology
+
+Cerebral Palsy Core Deficit
+
+Kernicterus
+
+Anterior Horn Cell Disease
+
+Becker Muscle Dystrophy Comparison Note
+
+Column II (Definition / Characteristic)
+A. X-linked recessive disease of late onset during late childhood, with a slowly progressive course and a longer time of survival.
+B. Central motor deficit that is strictly non-progressive, non-familial, and non-hereditary.
+C. Due to a defect in a protein called dystrophin of the skeletal muscle, cardiac muscle and the brain.
+D. Werdnig-Hoffman spinal muscular atrophy.
+E. Bilirubin-induced encephalopathy.
+
+Answer Key (Set 1):
+
+1 matches with C
+
+2 matches with B
+
+3 matches with E
+
+4 matches with D
+
+5 matches with A
+
+Set 2: Clinical Signs, Postures & Motor Abnormalities (5 Points)
+Column I (Sign / Topographic class)
+
+Weakness of pelvic girdle muscles (in DMD)
+
+Slippage (Vertical Suspension)
+
+Diplegia
+
+Dystonia
+
+Curved Trunk (Ventral Suspension)
+
+Column II (Description)
+A. When the baby is suspended in a prone position over the examiner's hand, they drop around it in a "U-shape", denoting hypotonia of the trunk muscles.
+B. Arms and Legs but legs are more involved.
+C. Waddling lordotic gait (weak gluteus medius and minimus), Difficulty climbing up stairs, and Positive Gower sign.
+D. Painful sustained contraction of a muscle group's → prolonged, twisting, posturing of the face, limb or trunk, which involved.
+E. The infant slips through the examiner's hands when held under the arms, denoting hypotonia of the shoulder girdle muscles.
+
+Answer Key (Set 2):
+
+1 matches with C
+
+2 matches with E
+
+3 matches with B
+
+4 matches with D
+
+5 matches with A
+
+Set 3: Diagnostics & Diagnostic Criteria (4 Points)
+Column I (Condition / Investigation)
+
+Muscle biopsy (Diagnostic) for DMD
+
+Lower Motor Unit Disorders Criteria (Deep Tendon Reflexes)
+
+Spastic CP (70 to 80%)
+
+Neonatal Myasthenia Gravis
+
+Column II (Finding / Feature)
+A. Characterized by areflexia or hyporeflexia.
+B. Transient autoimmune neuromuscular blockade.
+C. Shows muscle fiber degeneration with replacement with fat and fibrosis.
+D. Hypertonia with hyperreflexia, positive Babinski sign (extensor plantar response), and persistent primitive reflexes.
+
+Answer Key (Set 3):
+
+1 matches with C
+
+2 matches with A
+
+3 matches with D
+
+4 matches with B
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Set 1: Classic Murmurs & Auscultatory Findings (5 Points)
+Column I (Condition / Note)
+
+Crucial Note in ASD
+
+PDA Auscultation (Murmur)
+
+ASD Heart Sounds
+
+TOF Auscultation Murmur
+
+VSD Auscultation (Murmurs)
+
+Column II (Finding / Characteristic)
+A. Harsh pansystolic murmur (lower left sternal border, propagated).
+B. The second heart sound (S2) is widely split and fixed, which stands as the pathognomonic and characteristic finding of ASD.
+C. Characterized by a pathognomonic grade 1 to 4 of 6 continuous machinery murmur, best audible at the left infraclavicular area and propagated to the pulmonary area and the back.
+D. A systolic ejection murmur at the left sternal border caused strictly by the pulmonary stenosis, not the VSD.
+E. There is absolutely NO MURMUR produced by the actual passage of blood through the ASD itself.
+
+Answer Key (Set 1):
+
+1 matches with E
+
+2 matches with C
+
+3 matches with B
+
+4 matches with D
+
+5 matches with A
+
+Set 2: Pathophysiology & Unique Clinical Signs (5 Points)
+Column I (Sign / Mechanism)
+
+The Squatting Mechanism
+
+Large PDAs General Examination
+
+The Essential Triad in Infants
+
+TGA Chest X-RAY (CXR)
+
+Eisenmenger Syndrome
+
+Column II (Description / Result)
+A. Tachypnea, Tachycardia, Enlarged tender liver
+B. Classic EGG-SHAPED ("EGG ON A STRING")
+C. Pulmonary hypertension increases right ventricular pressure, causing Eisenmenger Syndrome and resulting in 'persistent cyanosis'.
+D. Older children squat to increase systemic vascular resistance, which reduces the right-to-left shunt and improves pulmonary blood flow.
+E. bounding peripheral pulses and a classic water hammer pulse, caused directly by a wide pulse pressure with elevated systolic pressure and lower diastolic pressure.
+
+Answer Key (Set 2):
+
+1 matches with D
+
+2 matches with E
+
+3 matches with A
+
+4 matches with B
+
+5 matches with C
+
+Set 3: Protocols, Drugs & Contraindications (5 Points)
+Column I (Treatment / Protocol)
+
+TET SPELLS CRITICAL ABSOLUTE CONTRAINDICATIONS
+
+Digitalis Toxicity Symptoms
+
+ARTERIAL SWITCH OPERATION (ASO)
+
+PDA Medical Prophylaxis (Premature Only)
+
+INTRAVENOUS PROSTAGLANDIN
+
+Column II (Detail / Action)
+A. IMMEDIATE administration to keep DUCTUS ARTERIOSUS PATENT
+B. Give NO INOTROPES and NO DIURETICS during a spell.
+C. Pharmacological closure using indomethacin, ibuprofen, or paracetamol is highly effective and widely used to close the PDA strictly in premature infants.
+D. Anorexia, nausea, vomiting, bradycardia, visual disturbances, severe arrhythmias.
+E. Surgically switches Aorta and Pulmonary Artery to correct ventricles. Must occur EARLY (3-8 WEEKS).
+
+Answer Key (Set 3):
+
+1 matches with B
+
+2 matches with D
+
+3 matches with E
+
+4 matches with C
+
+5 matches with A
+
+
+
+
+
+
+
+
+
+
+
