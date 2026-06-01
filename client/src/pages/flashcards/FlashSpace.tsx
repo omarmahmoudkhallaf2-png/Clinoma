@@ -7258,10 +7258,10 @@ const FlashSpace = () => {
     setCampTotalPairsCount(totalPairs);
 
     // Calculate start time dynamically based on the selected day:
-    // Day 1: 2026-05-30T22:00 (10:00 PM)
-    // Day 2: 2026-05-31T22:00 (10:00 PM)
-    // Day 3: 2026-06-01T22:00 (10:00 PM)
-    const baseDate = new Date('2026-05-30T22:00:00');
+    // Day 1: 2026-05-30T21:00 (09:00 PM)
+    // Day 2: 2026-05-31T21:00 (09:00 PM)
+    // Day 3: 2026-06-01T21:00 (09:00 PM)
+    const baseDate = new Date('2026-05-30T21:00:00');
     baseDate.setDate(baseDate.getDate() + (campActiveDay - 1));
     const year = baseDate.getFullYear();
     const month = String(baseDate.getMonth() + 1).padStart(2, '0');
@@ -8997,7 +8997,7 @@ const FlashSpace = () => {
                             <ShieldAlert className="w-8 h-8 mx-auto text-rose-500 animate-pulse" />
                             <div className="space-y-0.5">
                               <h4 className="text-xs font-black text-rose-400">عذراً، انتهى الوقت المتاح للاختبار! ⏰</h4>
-                              <p className="text-[10px] text-slate-400">كان متاحاً فقط من الساعة 10:00 مساءً حتى الساعة 12:00 منتصف الليل.</p>
+                              <p className="text-[10px] text-slate-400">كان متاحاً فقط من الساعة 09:00 مساءً حتى الساعة 11:00 مساءً.</p>
                             </div>
                             <button
                               onClick={() => {
