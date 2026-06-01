@@ -504,6 +504,8 @@ def build_pdf_version(chapters, output_filename, is_answered_version=False, stud
         # Content items
         for item in ch["items"]:
             if item["type"] == "section":
+                if "Extended Matching Questions" in item["title"] or "EMG" in item["title"]:
+                    continue
                 story.append(Paragraph(item["title"], section_style))
             
             elif item["type"] == "case":
@@ -555,41 +557,7 @@ def build_pdf_version(chapters, output_filename, is_answered_version=False, stud
                 story.append(KeepTogether([case_container_table, Spacer(1, 15)]))
 
             elif item["type"] == "emg":
-                emg_elements = []
-                emg_elements.append(Paragraph(f"<b>Options:</b> {item['options']}", emg_options_style))
-                if item["instruction"]:
-                    emg_elements.append(Paragraph(item["instruction"], case_text_style))
-                
-                for p_idx, pair in enumerate(item["pairs"]):
-                    sc_text = f"<b>{p_idx+1}.</b> {pair['scenario']}"
-                    emg_elements.append(Paragraph(sc_text, q_text_style))
-                    emg_elements.append(Spacer(1, 4))
-                    
-                    if is_answered_version:
-                        ans_full = pair["answer"]
-                        ans_box_data = [[Paragraph(f"<b>Answer:</b> {ans_full}", ans_text_style)]]
-                        ans_table = Table(ans_box_data, colWidths=[PAGE_WIDTH - 100])
-                        ans_table.setStyle(TableStyle([
-                            ('BACKGROUND', (0,0), (-1,-1), colors.HexColor("#F0FDFA")),
-                            ('LEFTPADDING', (0,0), (-1,-1), 10),
-                            ('RIGHTPADDING', (0,0), (-1,-1), 10),
-                            ('TOPPADDING', (0,0), (-1,-1), 6),
-                            ('BOTTOMPADDING', (0,0), (-1,-1), 6),
-                            ('LINELEFT', (0,0), (-1,-1), 3, colors.HexColor("#0D9488")),
-                        ]))
-                        emg_elements.append(ans_table)
-                        emg_elements.append(Spacer(1, 8))
-                    else:
-                        dotted_lines = Table([[""]], colWidths=[PAGE_WIDTH - 100], rowHeights=[18])
-                        dotted_lines.setStyle(TableStyle([
-                            ('LINEBELOW', (0,0), (-1,-1), 0.5, colors.HexColor("#CBD5E1"), 0, (2, 2)),
-                            ('BOTTOMPADDING', (0,0), (-1,-1), 2),
-                        ]))
-                        emg_elements.append(dotted_lines)
-                        emg_elements.append(Spacer(1, 10))
-                
-                story.append(KeepTogether(emg_elements))
-                story.append(Spacer(1, 15))
+                continue
             
             elif item["type"] == "question":
                 q_num_formatted = f"<b>{item['num']}:</b> {item['text']}"
