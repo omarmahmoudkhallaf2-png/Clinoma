@@ -7824,7 +7824,9 @@ const FlashSpace = () => {
       setCampAttemptScore(null);
       return;
     }
-    const currentExamId = campActiveDay === 2 ? 'first_paper_camp_matching_day2' : 'first_paper_camp_matching';
+    const currentExamId = campActiveDay === 3 
+      ? 'first_paper_camp_matching_day3' 
+      : (campActiveDay === 2 ? 'first_paper_camp_matching_day2' : 'first_paper_camp_matching');
     const q = query(
       collection(dbExam, 'exam_attempts'),
       where('userId', '==', user.uid),
