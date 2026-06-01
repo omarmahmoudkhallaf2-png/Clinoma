@@ -9044,15 +9044,32 @@ const FlashSpace = () => {
                     <p className="text-slate-500 text-sm mt-0.5 tracking-wide uppercase font-bold">Select a Chapter</p>
                   </div>
                 </div>
-                
-                {/* Download PDF Button */}
-                <button
-                  onClick={() => setIsDownloadModalOpen(true)}
-                  className="px-6 py-3 bg-gradient-to-r from-indigo-500 to-violet-500 hover:from-indigo-400 hover:to-violet-400 text-white rounded-2xl font-black shadow-lg shadow-indigo-500/20 active:scale-[0.98] transition-all flex items-center justify-center gap-2 border border-indigo-400/20"
-                >
-                  <Download className="w-5 h-5" />
-                  <span>تنزيل تجميعة الـ PDF</span>
-                </button>
+                <div className="flex items-center gap-3 flex-wrap">
+                  {/* Glowing Predictions Button (Free for all) */}
+                  <a
+                    href="https://clinomapediatricsqs.pages.dev/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => playSound('click')}
+                    className="px-6 py-3 bg-gradient-to-r from-amber-500 via-rose-500 to-amber-500 hover:from-amber-400 hover:via-rose-400 hover:to-amber-400 text-white rounded-2xl font-black shadow-lg shadow-amber-500/50 hover:shadow-rose-500/60 active:scale-[0.98] transition-all flex items-center justify-center gap-2 border border-amber-400/20 relative overflow-hidden group animate-bounce-subtle"
+                    style={{
+                      boxShadow: '0 0 15px rgba(245, 158, 11, 0.4), 0 0 25px rgba(244, 63, 94, 0.2)'
+                    }}
+                  >
+                    <Trophy className="w-5 h-5 text-white animate-pulse" />
+                    <span>توقعات كلينوما للورقة الأولى</span>
+                    <span className="bg-white/20 text-[10px] px-2 py-0.5 rounded-lg font-bold">مجاني</span>
+                  </a>
+
+                  {/* Download PDF Button */}
+                  <button
+                    onClick={() => setIsDownloadModalOpen(true)}
+                    className="px-6 py-3 bg-gradient-to-r from-indigo-500 to-violet-500 hover:from-indigo-400 hover:to-violet-400 text-white rounded-2xl font-black shadow-lg shadow-indigo-500/20 active:scale-[0.98] transition-all flex items-center justify-center gap-2 border border-indigo-400/20"
+                  >
+                    <Download className="w-5 h-5" />
+                    <span>تنزيل تجميعة الـ PDF</span>
+                  </button>
+                </div>
               </div>
               <div className="flex-1 overflow-y-auto pb-8">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
