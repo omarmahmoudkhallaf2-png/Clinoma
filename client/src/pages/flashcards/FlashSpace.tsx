@@ -8578,22 +8578,42 @@ const FlashSpace = () => {
           ) : !selectedSystem ? (
             // SYSTEM SELECTION - premium glassmorphism layout
             <div className="h-full flex flex-col p-4 md:p-8 gap-6 md:gap-8 max-w-7xl mx-auto w-full">
-              <div className="flex items-center gap-4 shrink-0 mt-2">
-                <button onClick={() => {
-                  setSelectedModule(null);
-                  setSelectedSystem(null);
-                  setSelectedSubSystem(null);
-                  setSelectedBoard(null);
-                  setIsChapterQuestionMode(false);
-                  setShowQuestions(false);
-                  setShowExplanation(false);
-                }} className="p-2.5 bg-white/5 active:bg-white/15 hover:bg-white/10 rounded-2xl text-slate-400 transition-all border border-white/5 hover:border-white/10 hover:shadow-lg hover:shadow-black/20">
-                  <ChevronLeft className="w-5 h-5" />
-                </button>
-                <div>
-                  <h2 className="text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-white/60">{selectedModule}</h2>
-                  <p className="text-slate-500 text-sm mt-0.5 tracking-wide uppercase font-bold">Select a Chapter</p>
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 shrink-0 mt-2">
+                <div className="flex items-center gap-4">
+                  <button onClick={() => {
+                    setSelectedModule(null);
+                    setSelectedSystem(null);
+                    setSelectedSubSystem(null);
+                    setSelectedBoard(null);
+                    setIsChapterQuestionMode(false);
+                    setShowQuestions(false);
+                    setShowExplanation(false);
+                  }} className="p-2.5 bg-white/5 active:bg-white/15 hover:bg-white/10 rounded-2xl text-slate-400 transition-all border border-white/5 hover:border-white/10 hover:shadow-lg hover:shadow-black/20">
+                    <ChevronLeft className="w-5 h-5" />
+                  </button>
+                  <div>
+                    <h2 className="text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-white/60">{selectedModule}</h2>
+                    <p className="text-slate-500 text-sm mt-0.5 tracking-wide uppercase font-bold">Select a Chapter</p>
+                  </div>
                 </div>
+                {selectedModule === 'Pediatrics' && (
+                  <div className="flex items-center gap-3">
+                    <a
+                      href="https://clinomapediatricsqs.pages.dev/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => playSound('click')}
+                      className="px-6 py-3 bg-gradient-to-r from-amber-500 via-rose-500 to-amber-500 hover:from-amber-400 hover:via-rose-400 hover:to-amber-400 text-white rounded-2xl font-black shadow-lg shadow-amber-500/50 hover:shadow-rose-500/60 active:scale-[0.98] transition-all flex items-center justify-center gap-2 border border-amber-400/20 relative overflow-hidden group animate-bounce-subtle animate-pulse"
+                      style={{
+                        boxShadow: '0 0 15px rgba(245, 158, 11, 0.4), 0 0 25px rgba(244, 63, 94, 0.2)'
+                      }}
+                    >
+                      <Trophy className="w-5 h-5 text-white animate-pulse" />
+                      <span>توقعات كلينوما للورقة الأولى</span>
+                      <span className="bg-white/20 text-[10px] px-2 py-0.5 rounded-lg font-bold">مجاني</span>
+                    </a>
+                  </div>
+                )}
               </div>
               <div className="flex-1 overflow-y-auto pb-8">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
@@ -9045,22 +9065,6 @@ const FlashSpace = () => {
                   </div>
                 </div>
                 <div className="flex items-center gap-3 flex-wrap">
-                  {/* Glowing Predictions Button (Free for all) */}
-                  <a
-                    href="https://clinomapediatricsqs.pages.dev/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => playSound('click')}
-                    className="px-6 py-3 bg-gradient-to-r from-amber-500 via-rose-500 to-amber-500 hover:from-amber-400 hover:via-rose-400 hover:to-amber-400 text-white rounded-2xl font-black shadow-lg shadow-amber-500/50 hover:shadow-rose-500/60 active:scale-[0.98] transition-all flex items-center justify-center gap-2 border border-amber-400/20 relative overflow-hidden group animate-bounce-subtle"
-                    style={{
-                      boxShadow: '0 0 15px rgba(245, 158, 11, 0.4), 0 0 25px rgba(244, 63, 94, 0.2)'
-                    }}
-                  >
-                    <Trophy className="w-5 h-5 text-white animate-pulse" />
-                    <span>توقعات كلينوما للورقة الأولى</span>
-                    <span className="bg-white/20 text-[10px] px-2 py-0.5 rounded-lg font-bold">مجاني</span>
-                  </a>
-
                   {/* Download PDF Button */}
                   <button
                     onClick={() => setIsDownloadModalOpen(true)}
