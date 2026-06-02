@@ -9078,6 +9078,17 @@ const FlashSpace = () => {
                   </div>
                 </div>
                 <div className="flex items-center gap-3 flex-wrap">
+                  {/* نماذج اليوم الاخير Button */}
+                  <a
+                    href="https://clinoma-final-day.pages.dev/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-6 py-3 bg-gradient-to-r from-rose-500 to-orange-500 hover:from-rose-650 hover:to-orange-650 text-white rounded-2xl font-black shadow-lg shadow-rose-500/20 active:scale-[0.98] transition-all flex items-center justify-center gap-2 border border-rose-400/20"
+                  >
+                    <BookOpen className="w-5 h-5" />
+                    <span>نماذج اليوم الأخير</span>
+                  </a>
+
                   {/* Download PDF Button */}
                   <button
                     onClick={() => setIsDownloadModalOpen(true)}
