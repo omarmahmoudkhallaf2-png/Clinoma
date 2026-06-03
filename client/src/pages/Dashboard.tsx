@@ -194,41 +194,6 @@ export default function Dashboard() {
         </Card>
       </div>
 
-      {/* Pediatrics Question Bank Card - Enhanced Premium Design */}
-      <div 
-        onClick={() => window.open('https://pediatrics-qbank-clinoma-support.pages.dev/', '_blank')}
-        className="relative group cursor-pointer"
-      >
-        <div className="absolute -inset-1 bg-gradient-to-r from-emerald-600 via-teal-500 to-cyan-400 rounded-3xl blur opacity-25 group-hover:opacity-60 transition duration-1000 group-hover:duration-200" />
-        <Card className="relative bg-white dark:bg-slate-900 border-none overflow-hidden h-24 md:h-32 flex items-center px-6 md:px-8 shadow-lg transition-all duration-500">
-          <div className="relative z-10 flex items-center justify-between w-full">
-            <div className="flex items-center gap-4 md:gap-8">
-              <div className="relative">
-                <div className="relative p-3 md:p-5 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl md:rounded-[2rem] shadow-lg shadow-emerald-500/20">
-                  <Database className="w-6 h-6 md:w-10 md:h-10 text-white" />
-                </div>
-              </div>
-              
-              <div className="flex flex-col space-y-0.5 md:space-y-1">
-                <div className="flex items-center gap-2 md:gap-3">
-                  <span className="text-lg md:text-3xl font-black text-slate-900 dark:text-white tracking-tighter leading-none">بنك أسئلة الأطفال و الرمد</span>
-                  <div className="px-2 py-0.5 bg-emerald-500 text-white text-[8px] font-black rounded-full">FREE</div>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <Sparkles className="w-3 h-3 text-emerald-500" />
-                  <span className="text-[10px] md:text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">Clinoma + Support</span>
-                </div>
-              </div>
-            </div>
-            
-            <div className="hidden sm:flex items-center gap-6">
-              <div className="p-3 bg-slate-50 dark:bg-slate-800 rounded-xl group-hover:bg-emerald-500 group-hover:text-white transition-all duration-500">
-                <ArrowRight className="w-5 h-5" />
-              </div>
-            </div>
-          </div>
-        </Card>
-      </div>
 
 
       <div className="space-y-10">
@@ -268,7 +233,14 @@ export default function Dashboard() {
                       </div>
                       <div className="flex items-center justify-end w-full">
                         <Button 
-                          onClick={() => course.isFlashSpace ? navigate('/flashcards/space') : navigate(`/course/${course.id}`)} 
+                          onClick={() => {
+                            if (course.isFlashSpace) {
+                              const modParam = course.flashSpaceModule ? `?module=${encodeURIComponent(course.flashSpaceModule)}` : '';
+                              navigate(`/flashcards/space${modParam}`);
+                            } else {
+                              navigate(`/course/${course.id}`);
+                            }
+                          }}
                           className={`w-full md:w-auto px-8 py-4 rounded-2xl font-black text-xs uppercase shadow-lg ${course.isFlashSpace ? 'bg-indigo-600 hover:bg-indigo-700 shadow-indigo-600/20' : 'shadow-primary/10 hover:shadow-xl'} hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3`}
                         >
                           <span>استكمال المذاكرة</span>

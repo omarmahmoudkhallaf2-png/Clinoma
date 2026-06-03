@@ -48,14 +48,6 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
 
       const staticCourses = [
         {
-          id: 'clinical_nutrition_course',
-          name: 'التغذية الإكلينيكية (Clinical Nutrition)',
-          description: 'بنك أسئلة مادة التغذية الإكلينيكية الشامل مقسم إلى شباتر الكتاب الأصلية.',
-          level: 'fifth',
-          price: '0',
-          details: 'أكثر من 170 سؤال MCQ\nمقسمة حسب شباتر الكتاب الأصلية (8 شباتر)\nشرح تفصيلي لكل سؤال\nمتابعة مستوى ونظام تكرار متباعد SRS'
-        },
-        {
           id: 'pediatrics_flash_space',
           name: 'طب الأطفال (Pediatrics)',
           description: 'Flash Space - مساحة دراسة تفاعلية وحصرية لكورس الأطفال. مدعومة بتقنيات متقدمة.',
@@ -63,11 +55,23 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
           price: '0',
           details: 'مساحة دراسة بصرية تفاعلية (Flash Space)\nشرح وحفظ الصور الطبية بطريقة سهلة\nمئات البطاقات وأسئلة بنظام SRS\nحفظ وتدوين ملاحظات مخصصة',
           isFlashSpace: true,
+          flashSpaceModule: 'Pediatrics',
+          trending: true,
+        },
+        {
+          id: 'second_paper_flash_space',
+          name: 'الورقة الثانية (Second Paper)',
+          description: 'Flash Space - مساحة دراسة تفاعلية وحصرية لشباتر الورقة الثانية للأطفال. مدعومة بتقنيات متقدمة.',
+          level: 'fifth',
+          price: '0',
+          details: 'مساحة دراسة بصرية تفاعلية (Flash Space)\nشرح وحفظ الصور الطبية بطريقة سهلة لأسئلة الورقة الثانية\nشباتر الصدرية، الطوارئ، طب الأسرة، حديثي الولادة، والكلى\nحفظ وتدوين ملاحظات مخصصة',
+          isFlashSpace: true,
+          flashSpaceModule: 'الورقة الثانية',
           trending: true,
         }
       ];
 
-      const allCourses = [...fetchedCourses];
+      const allCourses = [...fetchedCourses].filter(c => c.id !== 'clinical_nutrition_course');
       staticCourses.forEach(sc => {
         if (!allCourses.some(c => c.id === sc.id)) {
           allCourses.push(sc);

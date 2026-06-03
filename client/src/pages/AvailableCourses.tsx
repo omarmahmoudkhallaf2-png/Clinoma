@@ -106,7 +106,14 @@ export default function AvailableCourses() {
                 </ul>
 
                 <button 
-                  onClick={() => plan.isFlashSpace ? navigate('/flashcards/space') : navigate(`/course/${plan.id}`)}
+                  onClick={() => {
+                    if (plan.isFlashSpace) {
+                      const modParam = plan.flashSpaceModule ? `?module=${encodeURIComponent(plan.flashSpaceModule)}` : '';
+                      navigate(`/flashcards/space${modParam}`);
+                    } else {
+                      navigate(`/course/${plan.id}`);
+                    }
+                  }}
                   className={`w-full py-6 rounded-3xl font-black text-2xl shadow-2xl transition-all active:scale-95 ${plan.isFlashSpace ? 'bg-indigo-600 shadow-indigo-600/20' : color.primary} text-white ${plan.isFlashSpace ? '' : color.shadow} hover:shadow-2xl hover:scale-[1.02]`}
                 >
                   ابدأ الدراسة الآن

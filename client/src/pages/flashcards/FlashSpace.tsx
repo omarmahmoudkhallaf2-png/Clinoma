@@ -241,6 +241,61 @@ const PEDIATRICS_SLIDES: Record<string, string[]> = {
   ]
 };
 
+const SECOND_PAPER_SLIDES: Record<string, string[]> = {
+  'Chest diseases': [
+    'Bronchial Asthma.jpeg',
+    'Bronchiolitis.jpeg',
+    'Childhood Pneumonia Part1 Classifications.jpeg',
+    'Childhood Pneumonia Part2 Misleading_Signs.jpeg',
+    'Childhood Pneumonia Part3 Diagnostics ICU.jpeg',
+    'Childhood Pneumonia Part4 Therapeutics Unresolved.jpeg',
+    'Epiglottitis.jpeg',
+    'Pneumonia كلها مختصرة.jpeg',
+    'Viral Croup.jpeg',
+    'Wheezing & Foreign Body.jpeg'
+  ],
+  'Emergency Medicine': [
+    'Cardiopulmonary Resuscitation (CPR).jpeg',
+    'Coma.jpeg',
+    'Glasgow Coma Scale and its Advantages.jpeg',
+    'Shock.jpeg'
+  ],
+  'Family Medicine': [
+    'Adolescent Psychosocial Health & HEADSSS Interview.jpeg',
+    'Anticipatory Care & Immunization Guidelines.jpeg',
+    'Basic Benefit Package & Level of Care.jpeg',
+    'Breastfeeding Management & Composition.jpeg',
+    'Comparative Medical Models.jpeg',
+    'Family Dynamics & The Human Life Cycle.jpeg',
+    'Family Health Team & PHC Services.jpeg',
+    'IMCI Case Management Overview.jpeg',
+    'IMCI Management of Diarrhoea and Dehydration.jpeg',
+    'IMCI Treatment Antibiotics & Wheezing Management.jpeg',
+    'IMCI Young Infant Care (Up to 2 Months).jpeg',
+    'Patient Education & Verbal Counseling.jpeg',
+    'Principles of Family Medicine.jpeg',
+    'Referral & Consultation Processes.jpeg',
+    'The Family Physician & RISE Framework.jpeg'
+  ],
+  'Neonatology': [
+    'Complications of Indirect Hyperbilirubinemia.jpeg',
+    'Neonatal Jaundice.jpeg',
+    'Neonatal Sepsis.jpeg',
+    'Pathological Jaundice.jpeg',
+    'Physiological Jaundice and its differentiation from Pathological Jaundice.jpeg',
+    'Prematurity and its Complications.jpeg',
+    'Transient Cutaneous Lesions.jpeg'
+  ],
+  'Renal diseases': [
+    'Acute Kidney Injury (AKI) & pRIFLE Criteria.jpeg',
+    'Acute Nephritic Syndrome & APSGN.jpeg',
+    'Chronic Kidney Disease (CKD).jpeg',
+    'Nephrotic Syndrome (NS).jpeg',
+    'Pediatric Hematuria Approach & Evaluation.jpeg',
+    'Urinary Tract Infections & Pyelonephritis.jpeg'
+  ]
+};
+
 const PEDIATRICS_EXPLANATIONS: Record<string, string> = {
   'Acute Rheumatic Fever (ARF)': `
 ### 3. الحمى الروماتيزمية الحادة (Acute Rheumatic Fever - ARF)
@@ -7217,6 +7272,7 @@ const playSound = (type: 'click' | 'correct' | 'wrong' | 'success') => {
 
 const FlashSpace = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const itemRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const containerRef = useRef<HTMLDivElement | null>(null);
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
@@ -7227,9 +7283,35 @@ const FlashSpace = () => {
   const [modules, setModules] = useState<string[]>([]);
   const [systems, setSystems] = useState<Record<string, string[]>>({});
   
-  const [selectedModule, setSelectedModule] = useState<string | null>(null);
+  const [selectedModule, setSelectedModule] = useState<string | null>(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    return searchParams.get('module') || null;
+  });
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    const queryMod = searchParams.get('module');
+    if (queryMod) {
+      setSelectedModule(queryMod);
+    }
+  }, [location.search]);
+
   const [selectedSystem, setSelectedSystem] = useState<string | null>(null);
   const [selectedSubSystem, setSelectedSubSystem] = useState<string | null>(null);
+  
+  const isChapterUnlocked = (moduleName: string | null, chapterName: string) => {
+    if (!moduleName) return false;
+    if (userData?.role === 'admin') return true;
+    if (chapterName === 'Growth & development') return true;
+    if (moduleName === 'الورقة الثانية') {
+      if (chapterName !== 'Family Medicine') {
+        return isSpaceSubscribed('Pediatrics') || isSpaceSubscribed('الورقة الثانية');
+      }
+      return isSpaceSubscribed('الورقة الثانية');
+    }
+    return isSpaceSubscribed(moduleName);
+  };
+
   const matchesSubSystem = (bSubSystem: string | undefined, selSubSys: string | null) => {
     if (!selSubSys) return true;
     if (selSubSys === 'CNS') return bSubSystem === 'Neurology' || bSubSystem === 'Infection';
@@ -7619,10 +7701,14 @@ const FlashSpace = () => {
     if (user && earnedPoints > 0) {
       try {
         const userRef = doc(db, 'users', user.uid);
-        await updateDoc(userRef, {
+        const updates: any = {
           points: increment(earnedPoints),
           spacePoints: increment(earnedPoints)
-        });
+        };
+        if (selectedModule) {
+          updates[`points_${selectedModule}`] = increment(earnedPoints);
+        }
+        await updateDoc(userRef, updates);
         toast.success(`أحسنت! لقد ربحت ${earnedPoints} نقطة لمذاكرتك النشطة! 🏆`, {
           duration: 5000,
           position: 'top-center',
@@ -7770,7 +7856,24 @@ const FlashSpace = () => {
           });
         });
 
-        const finalBoards = [...generatedPediatricsBoards, ...fetched];
+        // Add the Second Paper boards dynamically
+        const generatedSecondPaperBoards: Board[] = [];
+        Object.entries(SECOND_PAPER_SLIDES).forEach(([chapter, files]) => {
+          files.forEach(file => {
+            const title = (file.split('/').pop() || file).replace(/\.[^/.]+$/, "");
+            generatedSecondPaperBoards.push({
+              id: `second_paper_${chapter.toLowerCase().replace(/[^a-z0-9]/g, '_')}_${title.toLowerCase().replace(/[^a-z0-9]/g, '_')}`,
+              module: 'الورقة الثانية',
+              system: chapter,
+              disease: title,
+              medicalImage: `/assets/الورقة التانيه/${chapter}/${file}`,
+              explanation: `A comprehensive visual study guide for ${title} under the ${chapter} chapter of Second Paper. Use this interactive flash space to annotate, highlight, and review key clinical presentation, diagnostic criteria, and management protocols.`,
+              createdAt: Date.now()
+            });
+          });
+        });
+
+        const finalBoards = [...generatedPediatricsBoards, ...generatedSecondPaperBoards, ...fetched];
         setBoards(finalBoards);
         
         const mods = Array.from(new Set(finalBoards.map(b => b.module))).filter(Boolean);
@@ -8466,6 +8569,10 @@ const FlashSpace = () => {
               }
             }
 
+            if (selectedModule) {
+              updates[`points_${selectedModule}`] = increment(earnedPoints);
+            }
+
             const userRef = doc(db, 'users', user.uid);
             updateDoc(userRef, updates)
               .then(() => toast.success(successMessage))
@@ -8481,6 +8588,29 @@ const FlashSpace = () => {
       }
     }, 300);
   };
+
+  const isPediatricSubscribed = isSpaceSubscribed('Pediatrics');
+  let subPrice = "50";
+  let subDescription = "Unlock all chapters and interactive boards for a complete learning experience.";
+  let subTitle = "Premium Content";
+  let subDetailsTitle = "For ALL Chapters";
+  let subWhatsAppText = "أريد الاستفسار أكثر عن كورس pediatrics على flash space";
+
+  if (selectedModule === 'الورقة الثانية') {
+    if (!isPediatricSubscribed) {
+      subPrice = "100";
+      subTitle = "اشتراك الورقة الثانية + الرمد";
+      subDescription = "احصل على وصول كامل لشباتر الورقة الثانية بالإضافة إلى الرمد الشامل بـ 100 جنيه فقط.";
+      subDetailsTitle = "الورقة الثانية + الرمد";
+      subWhatsAppText = "أريد الاشتراك في كورس الورقة الثانية + الرمد بـ 100ج";
+    } else {
+      subPrice = "80";
+      subTitle = "اشتراك الاسرة + الرمد";
+      subDescription = "عرض خاص لطلاب كورس الأطفال: احصل على وصول كامل لشابتر الأسرة المتبقي بالإضافة للرمد بـ 80 جنيه فقط.";
+      subDetailsTitle = "طب الأسرة + الرمد";
+      subWhatsAppText = "أريد الاشتراك في كورس طب الأسرة + الرمد بـ 80ج";
+    }
+  }
 
   // --- Premium UI ---
   if (loading) return (
@@ -8544,6 +8674,12 @@ const FlashSpace = () => {
             <div className="flex items-center gap-1.5 px-3 py-1.5 bg-amber-500/10 text-amber-400 border border-amber-500/20 rounded-xl text-xs font-black">
               ⭐ {userData?.points ?? 0}
             </div>
+            <button 
+              onClick={() => navigate('/flashcards/fantasy')} 
+              className="px-4 py-2 bg-indigo-500/20 hover:bg-indigo-500/30 border border-indigo-500/30 rounded-xl text-indigo-300 font-black text-xs flex items-center gap-2 transition-all"
+            >
+              🏆 مجموعات التحدي (Fantasy)
+            </button>
             <button onClick={() => navigate('/flashcards')} className="px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl text-slate-400 font-bold text-xs flex items-center gap-2 transition-all">
               <ChevronLeft className="w-4 h-4" /> Back
             </button>
@@ -8658,6 +8794,10 @@ const FlashSpace = () => {
                       'Neurology': '/assets/chapters/neuro_bg_1779636673967.png',
                       'Nutrition': '/assets/chapters/nutrition_bg_1779636686441.png',
                       'Renal diseases': '/assets/chapters/renal_bg_1779636699582.png',
+                      'Chest diseases': '/assets/chapters/chest_bg.png',
+                      'Emergency Medicine': '/assets/chapters/emergency_bg.png',
+                      'Family Medicine': '/assets/chapters/family_bg.png',
+                      'Neonatology': '/assets/chapters/neonatology_bg.png',
                     };
 
                     const lwSys = sys.toLowerCase();
@@ -8676,7 +8816,7 @@ const FlashSpace = () => {
                       <button key={sys} onClick={(e) => {
                           e.preventDefault();
                           e.stopPropagation();
-                          if (sys === 'Growth & development' || (selectedModule && isSpaceSubscribed(selectedModule))) {
+                          if (isChapterUnlocked(selectedModule, sys)) {
                             if (sys === 'Growth & development') {
                               trackGrowthView();
                             }
@@ -8692,7 +8832,7 @@ const FlashSpace = () => {
                         }}
                         className="group relative bg-slate-900/50 backdrop-blur-xl border border-white/5 active:border-white/20 hover:border-white/20 rounded-3xl text-left transition-all duration-300 active:scale-[0.97] hover:scale-[1.02] overflow-hidden p-6 flex flex-col justify-between min-h-[160px] hover:shadow-2xl"
                       >
-                        {(!selectedModule || !isSpaceSubscribed(selectedModule)) && sys !== 'Growth & development' && (
+                        {!isChapterUnlocked(selectedModule, sys) && (
                           <div className="absolute top-4 right-4 z-10 bg-amber-500/20 text-amber-500 border border-amber-500/30 px-3 py-1.5 rounded-full flex items-center gap-1.5 backdrop-blur-sm shadow-lg">
                             <Lock className="w-3.5 h-3.5" />
                             <span className="text-xs font-bold uppercase tracking-wider">Premium</span>
@@ -9805,12 +9945,12 @@ const FlashSpace = () => {
                 <Lock className="w-8 h-8" />
               </div>
               
-              <h2 className="text-2xl font-black text-white mb-2">Premium Content</h2>
-              <p className="text-slate-400 mb-6">Unlock all chapters and interactive boards for a complete learning experience.</p>
+               <h2 className="text-2xl font-black text-white mb-2">{subTitle}</h2>
+              <p className="text-slate-400 mb-6">{subDescription}</p>
               
               <div className="bg-slate-950/50 rounded-2xl p-6 w-full mb-6 border border-white/5">
-                <div className="text-4xl font-black text-white mb-2">50 EGP</div>
-                <div className="text-sm font-bold text-amber-400 uppercase tracking-widest">Special prices for groups</div>
+                <div className="text-4xl font-black text-white mb-2">{subPrice} EGP</div>
+                <div className="text-sm font-bold text-amber-400 uppercase tracking-widest">{subDetailsTitle}</div>
                 
                 <ul className="mt-6 space-y-3 text-left">
                   <li className="flex items-center gap-3 text-slate-300 text-sm">
@@ -9830,7 +9970,7 @@ const FlashSpace = () => {
               
               <div className="w-full space-y-3">
                 <a 
-                  href="https://wa.me/201039322938?text=أريد الاستفسار أكثر عن كورس pediatrics على flash space"
+                  href={`https://wa.me/201039322938?text=${encodeURIComponent(subWhatsAppText)}`}
                   target="_blank"
                   rel="noreferrer"
                   className="w-full py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-white transition-all shadow-lg shadow-[#25D366]/20"
@@ -9838,7 +9978,7 @@ const FlashSpace = () => {
                   Subscribe via WhatsApp
                 </a>
                 <a 
-                  href="https://t.me/Clinoma_Admins?text=أريد الاستفسار أكثر عن كورس pediatrics على flash space"
+                  href={`https://t.me/Clinoma_Admins?text=${encodeURIComponent(subWhatsAppText)}`}
                   target="_blank"
                   rel="noreferrer"
                   className="w-full py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 bg-[#0088cc] hover:bg-[#0077b5] text-white transition-all shadow-lg shadow-[#0088cc]/20"
@@ -11153,15 +11293,15 @@ const FlashSpace = () => {
               <Lock className="w-8 h-8" />
             </div>
             
-            <h2 className="text-2xl font-black text-white mb-2">Premium Access</h2>
-            <p className="text-slate-400 mb-6 font-medium leading-relaxed">Unlock <strong className="text-white">ALL</strong> remaining chapters with a single, affordable subscription.</p>
+            <h2 className="text-2xl font-black text-white mb-2">{subTitle}</h2>
+            <p className="text-slate-400 mb-6 font-medium leading-relaxed">{subDescription}</p>
             
             <div className="bg-slate-950/50 rounded-2xl p-6 w-full mb-6 border border-white/5 relative overflow-hidden">
               <div className="absolute top-0 right-0 bg-amber-500 text-amber-950 text-[10px] font-black px-3 py-1 rounded-bl-xl uppercase tracking-widest">One-Time Payment</div>
               <div className="text-4xl font-black text-white mb-1 flex items-baseline justify-center gap-1">
-                50 <span className="text-xl text-slate-400">EGP</span>
+                {subPrice} <span className="text-xl text-slate-400">EGP</span>
               </div>
-              <div className="text-sm font-black text-amber-400 uppercase tracking-widest mb-1">For ALL Chapters</div>
+              <div className="text-sm font-black text-amber-400 uppercase tracking-widest mb-1">{subDetailsTitle}</div>
               <div className="text-xs font-bold text-slate-500">Special prices available for groups</div>
               
               <ul className="mt-6 space-y-3 text-left">
@@ -11188,7 +11328,7 @@ const FlashSpace = () => {
             
             <div className="w-full space-y-3">
               <a 
-                href="https://wa.me/201039322938?text=أريد الاستفسار أكثر عن كورس pediatrics على flash space"
+                href={`https://wa.me/201039322938?text=${encodeURIComponent(subWhatsAppText)}`}
                 target="_blank"
                 rel="noreferrer"
                 className="w-full py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-white transition-all shadow-lg shadow-[#25D366]/20"
@@ -11196,7 +11336,7 @@ const FlashSpace = () => {
                 Subscribe via WhatsApp
               </a>
               <a 
-                href="https://t.me/Clinoma_Admins?text=أريد الاستفسار أكثر عن كورس pediatrics على flash space"
+                href={`https://t.me/Clinoma_Admins?text=${encodeURIComponent(subWhatsAppText)}`}
                 target="_blank"
                 rel="noreferrer"
                 className="w-full py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 bg-[#0088cc] hover:bg-[#0077b5] text-white transition-all shadow-lg shadow-[#0088cc]/20"

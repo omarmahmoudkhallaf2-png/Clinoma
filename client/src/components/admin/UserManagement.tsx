@@ -48,6 +48,7 @@ export default function UserManagement() {
 
       const uniqueModules = Array.from(new Set([
         'Pediatrics', // Always show Pediatrics
+        'الورقة الثانية', // Always show الورقة الثانية
         ...boardSnap.docs.map(d => d.data().module).filter(Boolean)
       ])) as string[];
 

@@ -38,6 +38,7 @@ const StudyMode = lazy(() => import("./pages/flashcards/StudyMode"));
 const CreateCard = lazy(() => import("./pages/flashcards/CreateCard"));
 const ImportCards = lazy(() => import("./pages/flashcards/ImportCards"));
 const FlashSpace = lazy(() => import("./pages/flashcards/FlashSpace"));
+const FantasyGroups = lazy(() => import("./pages/flashcards/FantasyGroups"));
 const AIExamGenerator = lazy(() => import("./pages/AIExamGenerator"));
 const Pomodoro = lazy(() => import("./pages/Pomodoro"));
 const DataThemes = lazy(() => import("./pages/DataThemes"));
@@ -112,6 +113,7 @@ const AnimatedRoutes = () => {
           <Route path="/flashcards" element={<ProtectedRoute><FlashSelection /></ProtectedRoute>} />
           <Route path="/flashcards/decks" element={<ProtectedRoute><FlashcardsDashboard /></ProtectedRoute>} />
           <Route path="/flashcards/space" element={<ProtectedRoute useLayout={false}><FlashSpace /></ProtectedRoute>} />
+          <Route path="/flashcards/fantasy" element={<ProtectedRoute useLayout={false}><FantasyGroups /></ProtectedRoute>} />
           <Route path="/flashcards/study/:deckId" element={<ProtectedRoute useLayout={false}><StudyMode /></ProtectedRoute>} />
           <Route path="/flashcards/create" element={<ProtectedRoute><CreateCard /></ProtectedRoute>} />
           <Route path="/flashcards/edit/:deckId" element={<ProtectedRoute><CreateCard /></ProtectedRoute>} />
