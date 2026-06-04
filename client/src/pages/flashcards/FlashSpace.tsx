@@ -8252,6 +8252,106 @@ const processBBCodeInChildren = (children: any): any => {
   return children;
 };
 
+const BBCodeMarkdown = ({ content, components }: { content: string, components: any }) => {
+  const renderInline = (text: string): React.ReactNode[] => {
+    if (!text) return [];
+    
+    const regex = /\[(u|color|size|font|highlight)(?:=([^\]]+))?\]([\s\S]*?)\[\/\1\]/g;
+    let parts: React.ReactNode[] = [];
+    let lastIndex = 0;
+    let match;
+    
+    while ((match = regex.exec(text)) !== null) {
+      const plainText = text.substring(lastIndex, match.index);
+      if (plainText) {
+        parts.push(
+          <ReactMarkdown 
+            key={`plain-${lastIndex}`} 
+            components={components}
+            disallowedElements={['p']}
+            unwrapDisallowed={true}
+          >
+            {plainText}
+          </ReactMarkdown>
+        );
+      }
+      
+      const tag = match[1];
+      const value = match[2] || '';
+      const innerContent = match[3] || '';
+      const key = `bb-${match.index}`;
+      
+      const parsedInner = renderInline(innerContent);
+      
+      if (tag === 'u') {
+        parts.push(<span key={key} style={{ textDecoration: 'underline' }}>{parsedInner}</span>);
+      } else if (tag === 'color') {
+        parts.push(<span key={key} style={{ color: value }}>{parsedInner}</span>);
+      } else if (tag === 'size') {
+        const sizeVal = /^\d+$/.test(value) ? `${value}px` : value;
+        parts.push(<span key={key} style={{ fontSize: sizeVal }}>{parsedInner}</span>);
+      } else if (tag === 'font') {
+        let fontFamily = value;
+        if (value.toLowerCase() === 'cartoon' || value.toLowerCase() === 'fredoka') {
+          fontFamily = "'Fredoka', sans-serif";
+        } else if (value.toLowerCase() === 'lalezar') {
+          fontFamily = "'Lalezar', cursive";
+        } else if (value.toLowerCase() === 'cairo') {
+          fontFamily = "'Cairo', sans-serif";
+        } else if (value.toLowerCase() === 'outfit') {
+          fontFamily = "'Outfit', sans-serif";
+        }
+        parts.push(<span key={key} style={{ fontFamily }}>{parsedInner}</span>);
+      } else if (tag === 'highlight') {
+        parts.push(<span key={key} style={{ backgroundColor: value }} className="px-1.5 py-0.5 rounded mx-0.5">{parsedInner}</span>);
+      }
+      
+      lastIndex = regex.lastIndex;
+    }
+    
+    const tail = text.substring(lastIndex);
+    if (tail) {
+      parts.push(
+        <ReactMarkdown 
+          key={`plain-tail-${lastIndex}`} 
+          components={components}
+          disallowedElements={['p']}
+          unwrapDisallowed={true}
+        >
+          {tail}
+        </ReactMarkdown>
+      );
+    }
+    
+    return parts;
+  };
+
+  const paragraphs = content.split(/\n\s*\n/);
+  return (
+    <div className="space-y-4">
+      {paragraphs.map((pText, idx) => {
+        const isHeading = pText.trim().startsWith('#');
+        const isList = pText.trim().startsWith('*') || pText.trim().startsWith('-') || /^\d+\./.test(pText.trim());
+        const isHr = pText.trim() === '---';
+        
+        if (isHeading || isList || isHr) {
+          return (
+            <div key={idx} className="text-right">
+              {renderInline(pText)}
+            </div>
+          );
+        }
+        
+        return (
+          <p key={idx} className="mb-4 text-black leading-loose text-base text-right">
+            {renderInline(pText)}
+          </p>
+        );
+      })}
+    </div>
+  );
+};
+
 const FlashSpace = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -11750,21 +11850,20 @@ const FlashSpace = () => {
                   {activeNoteTab === 'notes' ? (
                     <div className="max-w-3xl mx-auto px-6 md:px-10 py-8 pb-20" dir="rtl">
                       {(firebaseNotes[selectedBoard.disease] || PEDIATRICS_EXPLANATIONS[selectedBoard.disease]) ? (
-                        <ReactMarkdown
+                        <BBCodeMarkdown
+                          content={firebaseNotes[selectedBoard.disease] || PEDIATRICS_EXPLANATIONS[selectedBoard.disease]}
                           components={{
-                            h1: ({node, children, ...props}) => <h1 className="text-2xl font-black text-black mt-8 mb-4 border-b pb-3 border-slate-200 text-right" {...props}>{processBBCodeInChildren(children)}</h1>,
-                            h2: ({node, children, ...props}) => <h2 className="text-xl font-black text-black mt-6 mb-3 border-r-4 border-black pr-3 text-right" {...props}>{processBBCodeInChildren(children)}</h2>,
-                            h3: ({node, children, ...props}) => <h3 className="text-lg font-extrabold text-black mt-5 mb-2 text-right" {...props}>{processBBCodeInChildren(children)}</h3>,
-                            p: ({node, children, ...props}) => <p className="mb-4 text-black leading-loose text-base text-right" {...props}>{processBBCodeInChildren(children)}</p>,
-                            ul: ({node, children, ...props}) => <ul className="list-disc list-inside mr-4 mb-4 space-y-2 text-black text-right" {...props}>{processBBCodeInChildren(children)}</ul>,
-                            ol: ({node, children, ...props}) => <ol className="list-decimal list-inside mr-4 mb-4 space-y-2 text-black text-right" {...props}>{processBBCodeInChildren(children)}</ol>,
-                            li: ({node, children, ...props}) => <li className="marker:text-black" {...props}>{processBBCodeInChildren(children)}</li>,
-                            strong: ({node, children, ...props}) => <strong className="text-black font-black bg-slate-100 px-2 py-0.5 rounded-lg mx-0.5" {...props}>{processBBCodeInChildren(children)}</strong>,
+                            h1: ({node, ...props}) => <h1 className="text-2xl font-black text-black mt-8 mb-4 border-b pb-3 border-slate-200 text-right" {...props} />,
+                            h2: ({node, ...props}) => <h2 className="text-xl font-black text-black mt-6 mb-3 border-r-4 border-black pr-3 text-right" {...props} />,
+                            h3: ({node, ...props}) => <h3 className="text-lg font-extrabold text-black mt-5 mb-2 text-right" {...props} />,
+                            p: ({node, ...props}) => <span className="text-black leading-loose text-base text-right" {...props} />,
+                            ul: ({node, ...props}) => <ul className="list-disc list-inside mr-4 mb-4 space-y-2 text-black text-right" {...props} />,
+                            ol: ({node, ...props}) => <ol className="list-decimal list-inside mr-4 mb-4 space-y-2 text-black text-right" {...props} />,
+                            li: ({node, ...props}) => <li className="marker:text-black" {...props} />,
+                            strong: ({node, ...props}) => <strong className="text-black font-black bg-slate-100 px-2 py-0.5 rounded-lg mx-0.5" {...props} />,
                             hr: ({node, ...props}) => <hr className="my-8 border-slate-200" {...props} />,
                           }}
-                        >
-                          {firebaseNotes[selectedBoard.disease] || PEDIATRICS_EXPLANATIONS[selectedBoard.disease]}
-                        </ReactMarkdown>
+                        />
                       ) : (
                         <div className="flex flex-col items-center justify-center py-24 text-center" dir="ltr">
                           <div className="w-16 h-16 bg-slate-100 rounded-2xl flex items-center justify-center mb-4">
@@ -12540,21 +12639,20 @@ const FlashSpace = () => {
               {/* Live Preview */}
               <div className="flex-1 h-full overflow-y-auto bg-slate-50 rounded-xl border border-slate-200 p-6 custom-scrollbar" dir="rtl">
                 <p className="text-xs font-black text-slate-400 uppercase tracking-widest mb-4 pb-2 border-b border-slate-200">Live Preview</p>
-                <ReactMarkdown
+                <BBCodeMarkdown
+                  content={editedNoteText || 'سيظهر العرض هنا...'}
                   components={{
-                    h1: ({node, children, ...props}) => <h1 className="text-2xl font-black text-black mt-8 mb-4 border-b pb-3 border-slate-200 text-right" {...props}>{processBBCodeInChildren(children)}</h1>,
-                    h2: ({node, children, ...props}) => <h2 className="text-xl font-black text-black mt-6 mb-3 border-r-4 border-black pr-3 text-right" {...props}>{processBBCodeInChildren(children)}</h2>,
-                    h3: ({node, children, ...props}) => <h3 className="text-lg font-extrabold text-black mt-5 mb-2 text-right" {...props}>{processBBCodeInChildren(children)}</h3>,
-                    p: ({node, children, ...props}) => <p className="mb-4 text-black leading-loose text-base text-right" {...props}>{processBBCodeInChildren(children)}</p>,
-                    ul: ({node, children, ...props}) => <ul className="list-disc list-inside mr-4 mb-4 space-y-2 text-black text-right" {...props}>{processBBCodeInChildren(children)}</ul>,
-                    ol: ({node, children, ...props}) => <ol className="list-decimal list-inside mr-4 mb-4 space-y-2 text-black text-right" {...props}>{processBBCodeInChildren(children)}</ol>,
-                    li: ({node, children, ...props}) => <li className="marker:text-black" {...props}>{processBBCodeInChildren(children)}</li>,
-                    strong: ({node, children, ...props}) => <strong className="text-black font-black bg-slate-200 px-2 py-0.5 rounded-lg mx-0.5" {...props}>{processBBCodeInChildren(children)}</strong>,
+                    h1: ({node, ...props}) => <h1 className="text-2xl font-black text-black mt-8 mb-4 border-b pb-3 border-slate-200 text-right" {...props} />,
+                    h2: ({node, ...props}) => <h2 className="text-xl font-black text-black mt-6 mb-3 border-r-4 border-black pr-3 text-right" {...props} />,
+                    h3: ({node, ...props}) => <h3 className="text-lg font-extrabold text-black mt-5 mb-2 text-right" {...props} />,
+                    p: ({node, ...props}) => <span className="text-black leading-loose text-base text-right" {...props} />,
+                    ul: ({node, ...props}) => <ul className="list-disc list-inside mr-4 mb-4 space-y-2 text-black text-right" {...props} />,
+                    ol: ({node, ...props}) => <ol className="list-decimal list-inside mr-4 mb-4 space-y-2 text-black text-right" {...props} />,
+                    li: ({node, ...props}) => <li className="marker:text-black" {...props} />,
+                    strong: ({node, ...props}) => <strong className="text-black font-black bg-slate-200 px-2 py-0.5 rounded-lg mx-0.5" {...props} />,
                     hr: ({node, ...props}) => <hr className="my-8 border-slate-200" {...props} />,
                   }}
-                >
-                  {editedNoteText || 'سيظهر العرض هنا...'}
-                </ReactMarkdown>
+                />
               </div>
             </div>
             
