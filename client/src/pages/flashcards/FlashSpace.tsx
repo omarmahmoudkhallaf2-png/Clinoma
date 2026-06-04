@@ -7547,7 +7547,275 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
         }
       ]
     }
-  ]
+  ],
+  "Principles of Family Medicine": [
+  {
+    "id": "sec_paper_principles_of_family_medicine_q1",
+    "front": "Define family medicine as a unique clinical discipline.",
+    "back": "Family medicine is a unique clinical discipline distinguished by its process of care, not merely by its content. At the center of this process lies the patient-physician relationship, with the patient viewed within the context of the family and the community."
+  },
+  {
+    "id": "sec_paper_principles_of_family_medicine_q2",
+    "front": "Provide the American Academy of Family Physicians (AAFP) definition of Family Medicine.",
+    "back": "\"Family medicine is the medical specialty which provides continuing and comprehensive health care for the individual and the family. In breadth, it integrates the biological, clinical, and behavioral sciences. The scope of family practice encompasses all ages, sexes, organ systems, and every disease entity.\""
+  },
+  {
+    "id": "sec_paper_principles_of_family_medicine_q3",
+    "front": "Provide the Olesen Definition (2006) of the family physician.",
+    "back": "\"The family physician is the specialist trained to work at the front line of the health care system and to take the initial steps in providing care for any health problem a patient may have.\""
+  },
+  {
+    "id": "sec_paper_principles_of_family_medicine_q4",
+    "front": "Enumerate the core principles of Family Medicine.",
+    "back": "Continuity of Care\nComprehensiveness\nCoordination and Collaboration\nCommunity-Oriented Care & Family-Oriented Care"
+  },
+  {
+    "id": "sec_paper_principles_of_family_medicine_q5",
+    "front": "List the key elements of Continuity of Care in family practice.",
+    "back": "Mutual trust between patient and physician, Long-term therapeutic relationship, Effectiveness of care, and Continuity focused on the patient, not on isolated diseases."
+  }
+],
+  "The Family Physician & RISE Framework": [
+  {
+    "id": "sec_paper_the_family_physician___rise_framework_q1",
+    "front": "Define the Family Physician.",
+    "back": "A family physician is a medical doctor working at the front line of health care, responsible for providing comprehensive, continuous, and person-centered care (physical, psychological, and social) to individuals within the context of their families, and to families within the context of their communities."
+  },
+  {
+    "id": "sec_paper_the_family_physician___rise_framework_q2",
+    "front": "List the roles of the family physician as a Five-Star Doctor summarized by the WHO.",
+    "back": "Assesses and improves the quality of care by responding to the patient's total health needs.\nMakes optimal use of new technologies in health care.\nPromotes healthy lifestyles.\nRecognizes individual and community health needs.\nWorks efficiently as a member of the health care team."
+  },
+  {
+    "id": "sec_paper_the_family_physician___rise_framework_q3",
+    "front": "Explain the preventive role of the family physician using the RISE framework.",
+    "back": "R - Risk assessment: Identification of risk factors at individual and family levels.\nI - Immunization: Responsibility for vaccination services.\nS - Screening: Early detection of diseases.\nE - Education: Health education of individuals, families, and the community regarding health problems and their solutions."
+  },
+  {
+    "id": "sec_paper_the_family_physician___rise_framework_q4",
+    "front": "Enumerate the managerial roles of the family physician within the Family Health Center.",
+    "back": "Responsible for all activities within the Family Health Center (FHC), promotes intersectoral coordination, ensures implementation of national health policies, and investigates public complaints to meet community needs."
+  }
+],
+  "Comparative Medical Models": [
+  {
+    "id": "sec_paper_comparative_medical_models_q1",
+    "front": "Compare the Specialist Care Model and the Family Medicine Model regarding patient context, focus, and continuity.",
+    "back": "Specialist Care Model: Care regardless of family context; Problem-centered (focuses on specific disease); Limited appreciation of physician-patient relationship; Fragmented care.\nFamily Medicine Model: Care within the context of the family; Patient-centered (recognizes patient concerns/values); Strong emphasis on a healing, continuous relationship; Continuous care."
+  },
+  {
+    "id": "sec_paper_comparative_medical_models_q2",
+    "front": "Enumerate the differences between the Traditional Model of Practice and the Family Medicine Model regarding medical records, team structure, and approach.",
+    "back": "Traditional Model: Paper-based medical records; Single physician is the main source of care; Care is mostly reactive; Non-organized chronic disease management.\nFamily Medicine Model: Electronic health records; Multidisciplinary healthcare team approach; Care is both responsive and proactive; Purposeful, organized chronic disease management."
+  }
+],
+  "Family Health Team & PHC Services": [
+  {
+    "id": "sec_paper_family_health_team___phc_services_q1",
+    "front": "List the composition of the clinical staff in a Family Health Team.",
+    "back": "Family Physician (Team Leader), Nurses, Pharmacists, Laboratory Technicians, Laboratory Assistants, Social Worker, and Sanitarian."
+  },
+  {
+    "id": "sec_paper_family_health_team___phc_services_q2",
+    "front": "Enumerate 4 core services delivered by the Family Health Team at the FHU/FHC.",
+    "back": "Creating and maintaining family folders.\nProviding bio-psycho-social care throughout all stages of the human life cycle.\nConducting initial examinations for all family members.\nEarly detection of health problems through periodic examinations and screening tests."
+  },
+  {
+    "id": "sec_paper_family_health_team___phc_services_q3",
+    "front": "List the factors that help in upgrading and improving Family Health Team performance.",
+    "back": "Clearly defined job descriptions, regular training and capacity-building, regular team meetings for planning/monitoring, incentives (financial and non-financial), and an effective system of communication."
+  }
+],
+  "Family Dynamics & The Human Life Cycle": [
+  {
+    "id": "sec_paper_family_dynamics___the_human_life_cycle_q1",
+    "front": "Define Family.",
+    "back": "The family is the structural and functional unit of the community, consisting of two or more related persons living together for more than 6 months."
+  },
+  {
+    "id": "sec_paper_family_dynamics___the_human_life_cycle_q2",
+    "front": "Enumerate the main functions of the family using the CAPRS framework.",
+    "back": "C - Care: Provision of basic needs such as food, shelter, and social support.\nA - Affection: Psychosocial support including love, warmth, and emotional security.\nP - Providing status: Helping members determine future education, occupation, and social roles.\nR - Reproduction: Continuity of the family through legal marriage and childbearing.\nS - Socialization: Teaching social skills, norms, values, and acceptable behaviors."
+  },
+  {
+    "id": "sec_paper_family_dynamics___the_human_life_cycle_q3",
+    "front": "List 4 developmental stages of the human life cycle and their corresponding transitional events.",
+    "back": "Preconception (Conception), Fetal life (Birth), Breast dependence (Weaning), and Preschool age (School entry)."
+  },
+  {
+    "id": "sec_paper_family_dynamics___the_human_life_cycle_q4",
+    "front": "Classify the stressful life events that affect family dynamics.",
+    "back": "Severe stress events: Death, divorce, marital separation, legal problems.\nModerate stress events: Illness, job problems, outstanding achievements.\nMild stress events: Change of residence, changes in sleep or eating habits, holidays."
+  }
+],
+  "Basic Benefit Package & Level of Care": [
+  {
+    "id": "sec_paper_basic_benefit_package___level_of_care_q1",
+    "front": "Define the Basic Benefit Package (BBP).",
+    "back": "The Basic Benefit Package (BBP) is a defined group of essential medical services delivered through primary health care to meet the priority health needs of the population, with particular emphasis on women, children, and vulnerable groups."
+  },
+  {
+    "id": "sec_paper_basic_benefit_package___level_of_care_q2",
+    "front": "Mention the three levels of service delivery of the BBP.",
+    "back": "Family Health Unit (FHU)\nFamily Health Centre (FHC)\nHospital Level"
+  },
+  {
+    "id": "sec_paper_basic_benefit_package___level_of_care_q3",
+    "front": "Enumerate the laboratory investigations available specifically at the Family Health Unit (FHU) level.",
+    "back": "Blood glucose, Blood group and Rh factor, Erythrocyte sedimentation rate (ESR), Hemoglobin (Hb), Pregnancy test, Stool analysis, and Urine analysis."
+  }
+],
+  "Patient Education & Verbal Counseling": [
+  {
+    "id": "sec_paper_patient_education___verbal_counseling_q1",
+    "front": "Define Patient Education.",
+    "back": "Patient education is a continuous process of teaching and learning between health care providers and patients that aims to influence patient behaviour and produce positive changes in knowledge, attitudes, and skills required to maintain or improve health."
+  },
+  {
+    "id": "sec_paper_patient_education___verbal_counseling_q2",
+    "front": "Mention 4 appropriate times to integrate patient education during a clinical encounter.",
+    "back": "During history taking, during physical examination, during diagnosis discussion, and during treatment planning."
+  },
+  {
+    "id": "sec_paper_patient_education___verbal_counseling_q3",
+    "front": "Enumerate the core principles of effective patient education.",
+    "back": "Feedback, Reinforcement, Individualization, Facilitation, Use of multiple educational channels, Assessment of patient knowledge, and Evaluation of understanding."
+  }
+],
+  "Referral & Consultation Processes": [
+  {
+    "id": "sec_paper_referral___consultation_processes_q1",
+    "front": "Define Referral and differentiate it from a Consultation.",
+    "back": "Referral is formal communication between family physicians and specialists, transferring the responsibility of a patient to another physician for care of a specific problem. Consultation is the practice of one physician asking another for an opinion or assistance regarding the diagnosis and management."
+  },
+  {
+    "id": "sec_paper_referral___consultation_processes_q2",
+    "front": "Mention 4 valid clinical reasons for a family physician to refer a patient to secondary care.",
+    "back": "Inadequate diagnostic or therapeutic resources in the clinic; confirmation of diagnosis or plan of management; patient's request for a second opinion; and when the physician is unsatisfied with the patient's prognosis."
+  },
+  {
+    "id": "sec_paper_referral___consultation_processes_q3",
+    "front": "List 4 essential elements that must be included in a proper referral letter.",
+    "back": "Socio-demographic data (name, age, sex, record number); type of referral (urgent or elective); complaint and present history; and provisional diagnosis/reasons for referral."
+  }
+],
+  "Anticipatory Care & Immunization Guidelines": [
+  {
+    "id": "sec_paper_anticipatory_care___immunization_guidelines_q1",
+    "front": "Define Anticipatory Care and list its main aims.",
+    "back": "All measures aiming to promote good health and prevent or delay diseases or their complications at different age groups. Aims include improving quality of life, reducing the burden of disability, and increasing life expectancy."
+  },
+  {
+    "id": "sec_paper_anticipatory_care___immunization_guidelines_q2",
+    "front": "Enumerate the true contraindications to vaccination.",
+    "back": "Anaphylactic reaction to a vaccine; seizure or fever > 40.5°C within 48 hours of a pertussis vaccine; true Egg Allergy (MMR); Neomycin allergy (MMR); immunocompromised patient (OPV); and untreated moderate to severe illness + fever."
+  },
+  {
+    "id": "sec_paper_anticipatory_care___immunization_guidelines_q3",
+    "front": "List 4 conditions that are NOT true contraindications to immunization.",
+    "back": "Prematurity (immunize at usual chronological age); recent mild infection like otitis media; penicillin allergy; and a breast-feeding or pregnant mother."
+  }
+],
+  "Adolescent Psychosocial Health & HEADSSS Interview": [
+  {
+    "id": "sec_paper_adolescent_psychosocial_health___headsss_interview_q1",
+    "front": "List the components evaluated during the HEEADSSS psychosocial interview for adolescents.",
+    "back": "Home, Eating, Education, Activities, Drugs, Suicide/depression, Sex, and Safety."
+  },
+  {
+    "id": "sec_paper_adolescent_psychosocial_health___headsss_interview_q2",
+    "front": "Mention the 5 clinical premises useful when communicating with and caring for adolescents.",
+    "back": "Explain Facts (clear understanding of illness).\nExplore Fears (worries about body image/identity).\nAddress any Fables (misinformation).\nExplore relationship with Family.\nAsk how the adolescent views the Future."
+  }
+],
+  "IMCI Case Management Overview": [
+  {
+    "id": "sec_paper_imci_case_management_overview_q1",
+    "front": "List the sequential steps involved in the IMCI case management process.",
+    "back": "1. Assess all sick infants and children; 2. Classify each health condition using color-coded charts; 3. Treat; 4. Counsel caregivers; 5. Provide follow-up care."
+  },
+  {
+    "id": "sec_paper_imci_case_management_overview_q2",
+    "front": "Enumerate the 4 General Danger Signs that must be checked for every sick child aged 2 months to 5 years.",
+    "back": "Is the child able to drink or breastfeed?\nDoes the child vomit everything?\nHas the child had convulsions?\nIs the child lethargic or unconscious?"
+  },
+  {
+    "id": "sec_paper_imci_case_management_overview_q3",
+    "front": "Explain what the 3 color-coded classifications represent in IMCI.",
+    "back": "RED: Very serious condition requiring urgent pre-referral treatment and hospital referral.\nYELLOW: Serious condition needing specific treatment and advice within the clinic.\nGREEN: Less serious condition needing home treatment and advice."
+  }
+],
+  "IMCI Treatment Antibiotics & Wheezing Management": [
+  {
+    "id": "sec_paper_imci_treatment_antibiotics___wheezing_management_q1",
+    "front": "List the first-line and second-line oral antibiotics recommended by IMCI for Pneumonia or Acute Ear Infection.",
+    "back": "First-line antibiotic: Amoxicillin. Second-line antibiotic: Cotrimoxazole."
+  },
+  {
+    "id": "sec_paper_imci_treatment_antibiotics___wheezing_management_q2",
+    "front": "Explain the IMCI management strategy for a child presenting with wheezing and a general danger sign or stridor.",
+    "back": "Give one dose of a rapid-acting bronchodilator (such as nebulized salbutamol or MDI with spacer) and refer urgently to the hospital."
+  },
+  {
+    "id": "sec_paper_imci_treatment_antibiotics___wheezing_management_q3",
+    "front": "Mention the instructions and recipe to treat a child to prevent low blood sugar in the clinic.",
+    "back": "If able to swallow, give expressed breastmilk or sugar water. To make sugar water: Dissolve 4 level teaspoons of sugar (20 grams) in a 200-ml cup of clean water. If unable to swallow, give 50 ml of milk or sugar water by nasogastric tube."
+  }
+],
+  "IMCI Management of Diarrhoea and Dehydration": [
+  {
+    "id": "sec_paper_imci_management_of_diarrhoea_and_dehydration_q1",
+    "front": "List the 4 clinical signs evaluated in IMCI to classify dehydration in a child with diarrhea.",
+    "back": "General condition (lethargic/unconscious vs restless/irritable); sunken eyes; fluid offering response (not able to drink/poorly vs drinking eagerly/thirsty); and the abdominal skin pinch test."
+  },
+  {
+    "id": "sec_paper_imci_management_of_diarrhoea_and_dehydration_q2",
+    "front": "Short Clinical Case",
+    "type": "case",
+    "caseBody": "A 3-year-old child presents with watery diarrhea. On exam, the child is restless and irritable, has sunken eyes, and drinks eagerly/thirsty when offered fluid. The skin pinch goes back slowly.",
+    "subQuestions": [
+      {
+        "id": "sec_paper_imci_management_of_diarrhoea_and_dehydration_q2_sub1",
+        "questionText": "Classify the dehydration status.",
+        "back": "Classification: Some Dehydration (due to presence of two signs: restless/irritable, sunken eyes, and drinking eagerly)."
+      },
+      {
+        "id": "sec_paper_imci_management_of_diarrhoea_and_dehydration_q2_sub2",
+        "questionText": "Identify the required IMCI treatment plan.",
+        "back": "Treatment: Plan B (Treat Some Dehydration with ORS over a 4-hour period in the clinic, give Zinc Syrup for 14 days, and advise on when to return immediately)."
+      }
+    ]
+  }
+],
+  "IMCI Young Infant Care (Up to 2 Months)": [
+  {
+    "id": "sec_paper_imci_young_infant_care__up_to_2_months__q1",
+    "front": "List the 5 primary conditions that must be assessed in every sick young infant up to 2 months old.",
+    "back": "1. Possible bacterial infection; 2. Significant jaundice; 3. Diarrhoea; 4. Feeding problem or low weight; 5. Young infant's immunization status."
+  },
+  {
+    "id": "sec_paper_imci_young_infant_care__up_to_2_months__q2",
+    "front": "Enumerate 4 clinical signs that classify a young infant under 2 months as having a \"Possible Serious Bacterial Infection\".",
+    "back": "Not able to feed, convulsions, fast breathing (60 breaths per minute or more), severe chest indrawing, nasal flaring, grunting, bulging fontanelle, fever (37.5°C or above), or low body temperature (less than 35.5°C)."
+  }
+],
+  "Breastfeeding Management & Composition": [
+  {
+    "id": "sec_paper_breastfeeding_management___composition_q1",
+    "front": "Enumerate 4 health benefits of breastfeeding for the lactating mother.",
+    "back": "Reduces risk of breast and ovarian cancer; lowers risk of type 2 diabetes and hypertension; reduces risk of developing osteoporosis; and produces oxytocin to help contract the uterus back to its pre-pregnancy size."
+  },
+  {
+    "id": "sec_paper_breastfeeding_management___composition_q2",
+    "front": "Differentiate between \"Fore-milk\" and \"Hind-milk\" in mature breast milk.",
+    "back": "Fore-milk: Found at the beginning of the feeding; contains water, vitamins, and protein to keep the infant hydrated.\nHind-milk: Occurs after the initial release of milk; contains higher levels of fat and is necessary for proper weight gain."
+  },
+  {
+    "id": "sec_paper_breastfeeding_management___composition_q3",
+    "front": "List 3 absolute contraindications where a mother must NOT breastfeed or feed expressed breast milk.",
+    "back": "Infant diagnosed with classic galactosemia.\nMother has HIV and is not on antiretroviral therapy (ART).\nMother is using an illicit drug (such as opioids, PCP, or cocaine)."
+  }
+]
 };
 
 const getQuestionsForKey = (key: string) => {
