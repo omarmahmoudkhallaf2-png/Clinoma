@@ -9364,7 +9364,7 @@ const FlashSpace = () => {
       let chapterMd = `## 📂 ${chapter}\n\n`;
       
       files.forEach(file => {
-        const title = (file.split('/').pop() || file).replace(/\\.[^/.]+$/, "");
+        const title = (file.split('/').pop() || file).replace(/\.[^/.]+$/, "");
         const note = firebaseNotes[title];
         if (note && note.trim()) {
           chapterHasNotes = true;
