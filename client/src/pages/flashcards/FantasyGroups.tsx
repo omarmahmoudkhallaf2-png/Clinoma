@@ -24,6 +24,8 @@ interface FantasyGroup {
   createdBy: string;
   createdAt: number;
   members: GroupMember[];
+  totalPoints?: number;
+  lastPointsUpdate?: number;
 }
 
 const AVATARS = [
@@ -52,6 +54,10 @@ export default function FantasyGroups() {
   const [refreshingLeaderboard, setRefreshingLeaderboard] = useState(false);
   const [copiedCode, setCopiedCode] = useState(false);
 
+  const [activeTab, setActiveTab] = useState<'my-groups' | 'global-leaderboard'>('my-groups');
+  const [globalGroups, setGlobalGroups] = useState<FantasyGroup[]>([]);
+  const [loadingGlobal, setLoadingGlobal] = useState(false);
+
   // Forms
   const [showCreate, setShowCreate] = useState(false);
   const [showJoin, setShowJoin] = useState(false);
@@ -68,6 +74,77 @@ export default function FantasyGroups() {
   useEffect(() => {
     fetchMyGroups();
   }, [user]);
+
+  useEffect(() => {
+    if (activeTab === 'global-leaderboard') {
+      fetchGlobalLeaderboard();
+    }
+  }, [activeTab]);
+
+  const fetchGlobalLeaderboard = async (forceRefresh = false) => {
+    setLoadingGlobal(true);
+    try {
+      const snap = await getDocs(collection(db, 'fantasy_groups'));
+      const allGroups = snap.docs.map(d => ({ id: d.id, ...d.data() } as FantasyGroup));
+      
+      const twoHoursMs = 2 * 60 * 60 * 1000;
+      const updatedGroups = await Promise.all(
+        allGroups.map(async (group) => {
+          const needsUpdate = 
+            forceRefresh || 
+            group.totalPoints === undefined || 
+            !group.lastPointsUpdate || 
+            (Date.now() - group.lastPointsUpdate > twoHoursMs);
+
+          if (needsUpdate) {
+            let total = 0;
+            const updatedMembers = await Promise.all(
+              group.members.map(async (member) => {
+                try {
+                  const uSnap = await getDoc(doc(db, 'users', member.userId));
+                  if (uSnap.exists()) {
+                    const uData = uSnap.data();
+                    const courseKey = `points_${group.course}`;
+                    const points = uData[courseKey] ?? uData.spacePoints ?? uData.points ?? 0;
+                    total += points;
+                    return { ...member, points };
+                  }
+                } catch (e) {
+                  console.error(e);
+                }
+                return { ...member, points: 0 };
+              })
+            );
+
+            // Update in firestore
+            const groupRef = doc(db, 'fantasy_groups', group.id);
+            await updateDoc(groupRef, {
+              totalPoints: total,
+              lastPointsUpdate: Date.now()
+            });
+
+            return {
+              ...group,
+              totalPoints: total,
+              lastPointsUpdate: Date.now(),
+              members: updatedMembers
+            };
+          }
+
+          return group;
+        })
+      );
+
+      // Sort by totalPoints descending
+      updatedGroups.sort((a, b) => (b.totalPoints ?? 0) - (a.totalPoints ?? 0));
+      setGlobalGroups(updatedGroups);
+    } catch (err) {
+      console.error(err);
+      toast.error('خطأ أثناء تحميل الترتيب العام للمجموعات');
+    } finally {
+      setLoadingGlobal(false);
+    }
+  };
 
   const fetchMyGroups = async () => {
     if (!user) return;
@@ -138,7 +215,9 @@ export default function FantasyGroups() {
           name: createNickname.trim(),
           avatar: createAvatar
         }
-      ]
+      ],
+      totalPoints: 0,
+      lastPointsUpdate: 0
     };
 
     try {
@@ -186,7 +265,10 @@ export default function FantasyGroups() {
         }
       ];
 
-      await updateDoc(gRef, { members: updatedMembers });
+      await updateDoc(gRef, { 
+        members: updatedMembers,
+        lastPointsUpdate: 0 
+      });
       toast.success('تم الانضمام للمجموعة بنجاح! 🚀');
       setJoinCode('');
       setJoinNickname('');
@@ -380,38 +462,111 @@ export default function FantasyGroups() {
             </form>
           )}
 
-          {/* Groups List */}
-          <div className="space-y-3">
-            <h3 className="text-sm font-black text-slate-400 uppercase tracking-widest px-2 text-right">مجموعاتك ({groups.length})</h3>
-            
-            {loading ? (
-              <div className="py-12 flex justify-center">
-                <div className="w-8 h-8 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin" />
-              </div>
-            ) : groups.length === 0 ? (
-              <div className="bg-slate-900/20 border border-white/5 rounded-[2rem] p-8 text-center text-slate-500 font-bold text-sm">
-                لم تنضم لأي مجموعات بعد. أنشئ مجموعة وشارك الكود مع أصدقائك!
-              </div>
-            ) : (
-              <div className="space-y-2">
-                {groups.map(g => (
-                  <button 
-                    key={g.id} 
-                    onClick={() => handleSelectGroup(g)}
-                    className={`w-full p-5 rounded-[2rem] text-right transition-all flex justify-between items-center ${activeGroup?.id === g.id ? 'bg-indigo-600 text-white shadow-xl shadow-indigo-600/10 border border-indigo-500' : 'bg-slate-900/30 hover:bg-slate-900/50 border border-white/5'}`}
-                  >
-                    <div className="flex items-center gap-2">
-                      <span className="text-[10px] font-black px-2 py-1 bg-white/10 rounded-lg">{g.members.length} أعضاء</span>
-                    </div>
-                    <div className="space-y-1">
-                      <div className="font-black text-base">{g.name}</div>
-                      <div className="text-[10px] opacity-75 font-semibold">مادة التحدي: {g.course}</div>
-                    </div>
-                  </button>
-                ))}
-              </div>
-            )}
+          {/* Tab Selector */}
+          <div className="flex bg-slate-900/40 p-1.5 rounded-[2rem] border border-white/5">
+            <button 
+              onClick={() => setActiveTab('global-leaderboard')}
+              className={`flex-1 py-3 text-xs font-black rounded-3xl transition-all ${activeTab === 'global-leaderboard' ? 'bg-indigo-600 text-white shadow-lg' : 'text-slate-400 hover:text-white'}`}
+            >
+              ترتيب المجموعات العام
+            </button>
+            <button 
+              onClick={() => setActiveTab('my-groups')}
+              className={`flex-1 py-3 text-xs font-black rounded-3xl transition-all ${activeTab === 'my-groups' ? 'bg-indigo-600 text-white shadow-lg' : 'text-slate-400 hover:text-white'}`}
+            >
+              مجموعاتي
+            </button>
           </div>
+
+          {/* Groups List / Global Leaderboard */}
+          {activeTab === 'my-groups' && (
+            <div className="space-y-3">
+              <h3 className="text-sm font-black text-slate-400 uppercase tracking-widest px-2 text-right">مجموعاتك ({groups.length})</h3>
+              
+              {loading ? (
+                <div className="py-12 flex justify-center">
+                  <div className="w-8 h-8 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin" />
+                </div>
+              ) : groups.length === 0 ? (
+                <div className="bg-slate-900/20 border border-white/5 rounded-[2rem] p-8 text-center text-slate-500 font-bold text-sm">
+                  لم تنضم لأي مجموعات بعد. أنشئ مجموعة وشارك الكود مع أصدقائك!
+                </div>
+              ) : (
+                <div className="space-y-2">
+                  {groups.map(g => (
+                    <button 
+                      key={g.id} 
+                      onClick={() => handleSelectGroup(g)}
+                      className={`w-full p-5 rounded-[2rem] text-right transition-all flex justify-between items-center ${activeGroup?.id === g.id ? 'bg-indigo-600 text-white shadow-xl shadow-indigo-600/10 border border-indigo-500' : 'bg-slate-900/30 hover:bg-slate-900/50 border border-white/5'}`}
+                    >
+                      <div className="flex items-center gap-2">
+                        <span className="text-[10px] font-black px-2 py-1 bg-white/10 rounded-lg">{g.members.length} أعضاء</span>
+                      </div>
+                      <div className="space-y-1">
+                        <div className="font-black text-base">{g.name}</div>
+                        <div className="text-[10px] opacity-75 font-semibold">مادة التحدي: {g.course}</div>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+
+          {activeTab === 'global-leaderboard' && (
+            <div className="space-y-3">
+              <div className="flex justify-between items-center px-2">
+                <button 
+                  onClick={() => fetchGlobalLeaderboard(true)}
+                  disabled={loadingGlobal}
+                  className="px-3 py-1.5 bg-slate-900 hover:bg-slate-800 border border-white/5 rounded-xl text-[10px] font-bold text-indigo-400 flex items-center gap-1.5 transition-all disabled:opacity-50"
+                >
+                  <RefreshCw className={`w-3 h-3 ${loadingGlobal ? 'animate-spin' : ''}`} />
+                  تحديث الكل
+                </button>
+                <h3 className="text-sm font-black text-slate-400 uppercase tracking-widest text-right">الترتيب العام للمجموعات ({globalGroups.length})</h3>
+              </div>
+
+              {loadingGlobal && globalGroups.length === 0 ? (
+                <div className="py-12 flex justify-center">
+                  <div className="w-8 h-8 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin" />
+                </div>
+              ) : globalGroups.length === 0 ? (
+                <div className="bg-slate-900/20 border border-white/5 rounded-[2rem] p-8 text-center text-slate-500 font-bold text-sm">
+                  لا توجد مجموعات بعد.
+                </div>
+              ) : (
+                <div className="space-y-2">
+                  {globalGroups.map((g, index) => {
+                    const isSelected = activeGroup?.id === g.id;
+                    const rank = index + 1;
+                    return (
+                      <button 
+                        key={g.id} 
+                        onClick={() => handleSelectGroup(g)}
+                        className={`w-full p-5 rounded-[2rem] text-right transition-all flex justify-between items-center ${isSelected ? 'bg-indigo-600 text-white shadow-xl shadow-indigo-600/10 border border-indigo-500' : 'bg-slate-900/30 hover:bg-slate-900/50 border border-white/5'}`}
+                      >
+                        <div className="flex items-center gap-3">
+                          <span className="text-sm font-black text-amber-400">
+                            {rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : `#${rank}`}
+                          </span>
+                          <span className="text-[10px] font-black px-2 py-1 bg-white/10 rounded-lg">{g.totalPoints ?? 0} نقطة</span>
+                        </div>
+                        <div className="space-y-1">
+                          <div className="font-black text-base">{g.name}</div>
+                          <div className="text-[10px] opacity-75 font-semibold flex justify-end gap-2 text-slate-400">
+                            <span>أعضاء: {g.members.length}</span>
+                            <span>•</span>
+                            <span>{g.course}</span>
+                          </div>
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+          )}
         </div>
 
         {/* Right Side: Active Group Leaderboard */}

@@ -3443,4380 +3443,4374 @@ interface Question {
 const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
   "Pediatric Hematuria Approach & Evaluation": [
   {
-    "id": "sec_paper_pediatric_hematuria_approach_and_evaluation_q1",
-    "front": "Define \"Microscopic Hematuria\" in children.",
-    "back": "It is defined as the presence of more than 5 RBCs per high power field (HPF) in the sediment from 10 ml of centrifuged, freshly voided urine."
-  },
+      "id": "sec_paper_pediatric_hematuria_approach_and_evaluation_q1",
+      "front": "Define \"Microscopic Hematuria\" in children.",
+      "back": "It is defined as the presence of more than 5 RBCs per high power field (HPF) in the sediment from 10 ml of centrifuged, freshly voided urine."
+    },
   {
-    "id": "sec_paper_pediatric_hematuria_approach_and_evaluation_q2",
-    "front": "Enumerate 4 common causes of \"Gross Hematuria\" in pediatric patients.",
-    "back": "1. Urinary Tract Infection (UTI).\n2. Acute Post-Streptococcal Glomerulonephritis (APSGN).\n3. Trauma to the urinary tract.\n4. Urolithiasis / Hypercalciuria."
-  },
+      "id": "sec_paper_pediatric_hematuria_approach_and_evaluation_q2",
+      "front": "Enumerate 4 common causes of \"Gross Hematuria\" in pediatric patients.",
+      "back": "1. Urinary Tract Infection (UTI).\n2. Acute Post-Streptococcal Glomerulonephritis (APSGN).\n3. Trauma to the urinary tract.\n4. Urolithiasis / Hypercalciuria."
+    },
   {
-    "id": "sec_paper_pediatric_hematuria_approach_and_evaluation_q3",
-    "front": "Enumerate 4 classic features that differentiate Renal (Glomerular) Hematuria from Urinary Tract (Lower) Hematuria.",
-    "back": "1. Urine color is cola-colored or smoky in renal hematuria.\n2. RBCs are deformed or dysmorphic under microscopy in renal hematuria.\n3. Blood clots are completely absent in renal hematuria.\n4. Significant proteinuria (exceeding 100 mg/dL) is present in renal hematuria."
-  },
+      "id": "sec_paper_pediatric_hematuria_approach_and_evaluation_q3",
+      "front": "Enumerate 4 classic features that differentiate Renal (Glomerular) Hematuria from Urinary Tract (Lower) Hematuria.",
+      "back": "1. Urine color is cola-colored or smoky in renal hematuria.\n2. RBCs are deformed or dysmorphic under microscopy in renal hematuria.\n3. Blood clots are completely absent in renal hematuria.\n4. Significant proteinuria (exceeding 100 mg/dL) is present in renal hematuria."
+    },
   {
-    "id": "sec_paper_pediatric_hematuria_approach_and_evaluation_q4",
-    "front": "Match the clinical feature with the correct source of hematuria:",
-    "type": "matching",
-    "matchingPairs": [
-      {
-        "left": "Presence of erythrocyte/RBC casts in urine sediment.",
-        "right": "Renal / Glomerular source."
-      },
-      {
-        "left": "Terminal hematuria occurring at the end of the urine stream.",
-        "right": "Lower urinary tract source."
+      "id": "sec_paper_pediatric_hematuria_approach_and_evaluation_q4",
+      "front": "Match the clinical feature with the correct source of hematuria:",
+      "type": "matching",
+      "matchingPairs": [
+        {
+          "left": "Presence of erythrocyte/RBC casts in urine sediment.",
+          "right": "Renal / Glomerular source."
+        },
+        {
+          "left": "Terminal hematuria occurring at the end of the urine stream.",
+          "right": "Lower urinary tract source."
+        }
+      ]
+    },
+  {
+      "id": "sec_paper_pediatric_hematuria_approach_and_evaluation_q5",
+      "front": "Short Clinical Case",
+      "type": "case",
+      "caseBody": "An 11-year-old child presents with painless gross hematuria. Urinalysis shows bright red urine with normal isomorphic RBCs and the presence of blood clots. Proteinuria is minimal (<100 mg/dL).",
+      "subQuestions": [
+        {
+          "id": "sec_paper_pediatric_hematuria_approach_and_evaluation_q5_sub1",
+          "questionText": "Is the source of hematuria glomerular or extra-glomerular?",
+          "back": "Extra-glomerular (Lower urinary tract)."
+        },
+        {
+          "id": "sec_paper_pediatric_hematuria_approach_and_evaluation_q5_sub2",
+          "questionText": "Enumerate 2 potential diagnostic causes for this presentation.",
+          "back": "Urinary Tract Infection (UTI) and Urolithiasis (Urinary stones)."
+        }
+      ]
+    },
+  {
+        "id": "phae1",
+        "front": "List 4 indications of renal biopsy in acute post-streptococcal glomerulonephritis.",
+        "back": "Acute kidney injury (AKI) and rapidly progressive glomerulonephritis (RPGN).\n\nNephrotic range proteinuria.\n\nAbsence of evidence for previous streptococcal infection.\n\nNormal complement (C3) levels.\n\nPersistent hematuria, proteinuria, diminished renal function, and/or a low C3 level persisting for more than 2 months after onset."
       }
-    ]
-  },
-  {
-    "id": "sec_paper_pediatric_hematuria_approach_and_evaluation_q5",
-    "front": "Short Clinical Case",
-    "type": "case",
-    "caseBody": "An 11-year-old child presents with painless gross hematuria. Urinalysis shows bright red urine with normal isomorphic RBCs and the presence of blood clots. Proteinuria is minimal (<100 mg/dL).",
-    "subQuestions": [
-      {
-        "id": "sec_paper_pediatric_hematuria_approach_and_evaluation_q5_sub1",
-        "questionText": "Is the source of hematuria glomerular or extra-glomerular?",
-        "back": "Extra-glomerular (Lower urinary tract)."
-      },
-      {
-        "id": "sec_paper_pediatric_hematuria_approach_and_evaluation_q5_sub2",
-        "questionText": "Enumerate 2 potential diagnostic causes for this presentation.",
-        "back": "Urinary Tract Infection (UTI) and Urolithiasis (Urinary stones)."
-      }
-    ]
-  }
-],
+  ],
   "Acute Nephritic Syndrome & APSGN": [
   {
-    "id": "sec_paper_acute_nephritic_syndrome_and_apsgn_q1",
-    "front": "Define \"Acute Post-Streptococcal Glomerulonephritis (APSGN)\".",
-    "back": "It is an acute, specific, self-limited glomerulonephritis due to prior streptococcal infection, characterized by the sudden onset of gross hematuria, mild to moderate edema, hypertension, and potential oliguria."
-  },
+      "id": "sec_paper_acute_nephritic_syndrome_and_apsgn_q1",
+      "front": "Define \"Acute Post-Streptococcal Glomerulonephritis (APSGN)\".",
+      "back": "It is an acute, specific, self-limited glomerulonephritis due to prior streptococcal infection, characterized by the sudden onset of gross hematuria, mild to moderate edema, hypertension, and potential oliguria."
+    },
   {
-    "id": "sec_paper_acute_nephritic_syndrome_and_apsgn_q2",
-    "front": "Enumerate the 4 core clinical manifestations of the acute nephritic syndrome in APSGN.",
-    "back": "1. Sudden onset of gross hematuria (smoky or cola-colored urine).\n2. Edema (mild to moderate, typically periorbital).\n3. Hypertension.\n4. Oliguria."
-  },
+      "id": "sec_paper_acute_nephritic_syndrome_and_apsgn_q2",
+      "front": "Enumerate the 4 core clinical manifestations of the acute nephritic syndrome in APSGN.",
+      "back": "1. Sudden onset of gross hematuria (smoky or cola-colored urine).\n2. Edema (mild to moderate, typically periorbital).\n3. Hypertension.\n4. Oliguria."
+    },
   {
-    "id": "sec_paper_acute_nephritic_syndrome_and_apsgn_q3",
-    "front": "Enumerate 4 essential laboratory investigations used to confirm the diagnosis of APSGN.",
-    "back": "1. Urine analysis (detecting dysmorphic RBCs and RBC casts).\n2. Serum C3 complement level (characteristically reduced in the acute phase).\n3. Antistreptolysin O (ASO) titer (elevated after pharyngeal streptococcal infection).\n4. Renal function tests (elevated blood urea nitrogen and serum creatinine)."
-  },
+      "id": "sec_paper_acute_nephritic_syndrome_and_apsgn_q3",
+      "front": "Enumerate 4 essential laboratory investigations used to confirm the diagnosis of APSGN.",
+      "back": "1. Urine analysis (detecting dysmorphic RBCs and RBC casts).\n2. Serum C3 complement level (characteristically reduced in the acute phase).\n3. Antistreptolysin O (ASO) titer (elevated after pharyngeal streptococcal infection).\n4. Renal function tests (elevated blood urea nitrogen and serum creatinine)."
+    },
   {
-    "id": "sec_paper_acute_nephritic_syndrome_and_apsgn_q4",
-    "front": "Enumerate 4 life-threatening acute complications (medical emergencies) of APSGN.",
-    "back": "1. Hypertensive encephalopathy.\n2. Congestive heart failure / Acute pulmonary edema.\n3. Hyperkalemia.\n4. Rapidly progressive glomerulonephritis (RPGN)."
-  },
+      "id": "sec_paper_acute_nephritic_syndrome_and_apsgn_q4",
+      "front": "Enumerate 4 life-threatening acute complications (medical emergencies) of APSGN.",
+      "back": "1. Hypertensive encephalopathy.\n2. Congestive heart failure / Acute pulmonary edema.\n3. Hyperkalemia.\n4. Rapidly progressive glomerulonephritis (RPGN)."
+    },
   {
-    "id": "sec_paper_acute_nephritic_syndrome_and_apsgn_q5",
-    "front": "Short Clinical Case",
-    "type": "case",
-    "caseBody": "An 8-year-old girl develops generalized body puffiness, a severe headache, and passes tea-colored urine. Her blood pressure is 140/95 mmHg. Urinalysis reveals dysmorphic RBCs and RBC casts. Her serum C3 complement level is markedly depressed.",
-    "subQuestions": [
-      {
-        "id": "sec_paper_acute_nephritic_syndrome_and_apsgn_q5_sub1",
-        "questionText": "What is the most likely diagnosis?",
-        "back": "Acute Post-Streptococcal Glomerulonephritis (APSGN)."
-      },
-      {
-        "id": "sec_paper_acute_nephritic_syndrome_and_apsgn_q5_sub2",
-        "questionText": "Mention the calculated fluid restriction guideline for this patient during the oliguric phase.",
-        "back": "Fluid intake = Urine Output + 400 ml/m2 of body surface area."
-      }
-    ]
-  }
-],
+      "id": "sec_paper_acute_nephritic_syndrome_and_apsgn_q5",
+      "front": "Short Clinical Case",
+      "type": "case",
+      "caseBody": "An 8-year-old girl develops generalized body puffiness, a severe headache, and passes tea-colored urine. Her blood pressure is 140/95 mmHg. Urinalysis reveals dysmorphic RBCs and RBC casts. Her serum C3 complement level is markedly depressed.",
+      "subQuestions": [
+        {
+          "id": "sec_paper_acute_nephritic_syndrome_and_apsgn_q5_sub1",
+          "questionText": "What is the most likely diagnosis?",
+          "back": "Acute Post-Streptococcal Glomerulonephritis (APSGN)."
+        },
+        {
+          "id": "sec_paper_acute_nephritic_syndrome_and_apsgn_q5_sub2",
+          "questionText": "Mention the calculated fluid restriction guideline for this patient during the oliguric phase.",
+          "back": "Fluid intake = Urine Output + 400 ml/m2 of body surface area."
+        }
+      ]
+    }
+  ],
   "Nephrotic Syndrome (NS)": [
   {
-    "id": "sec_paper_nephrotic_syndrome_ns_q1",
-    "front": "Define \"Nephrotic Syndrome\" in children.",
-    "back": "It is a primary pediatric glomerular disorder characterized by the triad of heavy proteinuria, hypoalbuminemia, and generalized edema, frequently accompanied by hyperlipidemia."
-  },
+      "id": "sec_paper_nephrotic_syndrome_ns_q1",
+      "front": "Define \"Nephrotic Syndrome\" in children.",
+      "back": "It is a primary pediatric glomerular disorder characterized by the triad of heavy proteinuria, hypoalbuminemia, and generalized edema, frequently accompanied by hyperlipidemia."
+    },
   {
-    "id": "sec_paper_nephrotic_syndrome_ns_q2",
-    "front": "Enumerate the 4 essential diagnostic laboratory and clinical features of Nephrotic Syndrome.",
-    "back": "1. Heavy proteinuria (>40 mg/m2/hr or random spot protein/creatinine ratio >2).\n2. Hypoalbuminemia (serum albumin <2.5 g/dL).\n3. Generalized edema (anasarca).\n4. Hyperlipidemia (serum cholesterol >250 mg/dL)."
-  },
+      "id": "sec_paper_nephrotic_syndrome_ns_q2",
+      "front": "Enumerate the 4 essential diagnostic laboratory and clinical features of Nephrotic Syndrome.",
+      "back": "1. Heavy proteinuria (>40 mg/m2/hr or random spot protein/creatinine ratio >2).\n2. Hypoalbuminemia (serum albumin <2.5 g/dL).\n3. Generalized edema (anasarca).\n4. Hyperlipidemia (serum cholesterol >250 mg/dL)."
+    },
   {
-    "id": "sec_paper_nephrotic_syndrome_ns_q3",
-    "front": "Enumerate 4 prominent complications associated with Nephrotic Syndrome in children.",
-    "back": "1. Severe bacterial infections (such as Spontaneous Bacterial Peritonitis).\n2. Thromboembolic events (arterial or venous thrombosis).\n3. Hypovolemic shock (induced by aggressive diuresis or severe fluid shift).\n4. Acute renal failure."
-  },
+      "id": "sec_paper_nephrotic_syndrome_ns_q3",
+      "front": "Enumerate 4 prominent complications associated with Nephrotic Syndrome in children.",
+      "back": "1. Severe bacterial infections (such as Spontaneous Bacterial Peritonitis).\n2. Thromboembolic events (arterial or venous thrombosis).\n3. Hypovolemic shock (induced by aggressive diuresis or severe fluid shift).\n4. Acute renal failure."
+    },
   {
-    "id": "sec_paper_nephrotic_syndrome_ns_q4",
-    "front": "Enumerate 4 specific indications for performing a Renal Biopsy in a child with Nephrotic Syndrome.",
-    "back": "1. Age of onset less than 1 year or greater than 10 years.\n2. Presence of persistent hypertension or gross hematuria.\n3. Structural renal insufficiency or low complement (C3) level.\n4. Steroid-resistant nephrotic syndrome (failure to respond after 4-6 weeks of prednisone)."
-  },
+      "id": "sec_paper_nephrotic_syndrome_ns_q4",
+      "front": "Enumerate 4 specific indications for performing a Renal Biopsy in a child with Nephrotic Syndrome.",
+      "back": "1. Age of onset less than 1 year or greater than 10 years.\n2. Presence of persistent hypertension or gross hematuria.\n3. Structural renal insufficiency or low complement (C3) level.\n4. Steroid-resistant nephrotic syndrome (failure to respond after 4-6 weeks of prednisone)."
+    },
   {
-    "id": "sec_paper_nephrotic_syndrome_ns_q5",
-    "front": "Short Clinical Case",
-    "type": "case",
-    "caseBody": "A 4-year-old boy presents with progressive swelling around his eyes and lower limbs. Urinalysis reveals a frothy appearance with 4+ proteinuria. Laboratory values show a serum albumin of 1.7 g/dL and a serum cholesterol of 280 mg/dL. His blood pressure is normal.",
-    "subQuestions": [
-      {
-        "id": "sec_paper_nephrotic_syndrome_ns_q5_sub1",
-        "questionText": "What is the most likely diagnosis?",
-        "back": "Minimal Change Nephrotic Syndrome (MCNS)."
+      "id": "sec_paper_nephrotic_syndrome_ns_q5",
+      "front": "Short Clinical Case",
+      "type": "case",
+      "caseBody": "A 4-year-old boy presents with progressive swelling around his eyes and lower limbs. Urinalysis reveals a frothy appearance with 4+ proteinuria. Laboratory values show a serum albumin of 1.7 g/dL and a serum cholesterol of 280 mg/dL. His blood pressure is normal.",
+      "subQuestions": [
+        {
+          "id": "sec_paper_nephrotic_syndrome_ns_q5_sub1",
+          "questionText": "What is the most likely diagnosis?",
+          "back": "Minimal Change Nephrotic Syndrome (MCNS)."
+        },
+        {
+          "id": "sec_paper_nephrotic_syndrome_ns_q5_sub2",
+          "questionText": "Mention the standard initial drug dose and duration used to induce remission.",
+          "back": "Oral Prednisone at 60 mg/m2/day (maximum 60 mg) divided into 2-3 doses for at least 4 consecutive weeks."
+        }
+      ]
+    },
+  {
+        "id": "ns1",
+        "front": "Enumerate 4 of the differential diagnoses of a child presented with generalized edema.",
+        "back": "Renal causes (e.g., Nephrotic syndrome, Acute nephritic syndrome).\n\nCardiac causes (e.g., Congestive heart failure).\n\nHepatic causes (e.g., Liver cirrhosis / failure causing hypoalbuminemia).\n\nNutritional causes (e.g., Kwashiorkor / Protein-energy malnutrition).\n\n(Angioneurotic edema)."
       },
-      {
-        "id": "sec_paper_nephrotic_syndrome_ns_q5_sub2",
-        "questionText": "Mention the standard initial drug dose and duration used to induce remission.",
-        "back": "Oral Prednisone at 60 mg/m2/day (maximum 60 mg) divided into 2-3 doses for at least 4 consecutive weeks."
+  {
+        "id": "ns2",
+        "front": "List 4 complications of nephrotic syndrome.",
+        "back": "Infections (e.g., Spontaneous bacterial peritonitis, pneumonia, sepsis).\n\nThromboembolic events (arterial and venous thrombosis, like renal vein thrombosis).\n\nHypovolemic shock (with aggressive diuretic therapy).\n\nAcute renal failure.\n\nComplications of therapy (e.g., Steroid toxicity, cyclophosphamide toxicity)."
+      },
+  {
+        "id": "ns3",
+        "front": "Enumerate 5 causes of secondary Nephrotic Syndrome.",
+        "back": "Systemic Lupus Erythematosus (SLE).\n\nHenoch-Schönlein purpura (HSP).\n\nCongenital infections (TORCH).\n\nDenys-Drash syndrome (Wilms tumor, genitourinary anomalies).\n\nDrug-induced."
+      },
+  {
+        "id": "ns4",
+        "front": "Case Study: Mona is 7 years-old, presented to pediatric clinic by generalized edema. There is past history similar condition 5 times during the last year. Investigations: Plasma proteins: 3 gm/dl (N=6-8 gm/dl), Serum albumin: 1.4 gm/dl, Serum cholesterol: 290 mg/dl (N=120-180 mg/dl), Blood urea: 25 mg/dl (N=20-40 mg/dl), Serum creatinine: 0.7 mg/dl (N=0.5-1.0 mg/dl), Urine examination: granular cast, protein in urine: 60 mg/m2/hour (N<4 mg/m2/hour). What is the most likely diagnosis?",
+        "back": "Idiopathic Nephrotic Syndrome (Specifically: Frequent Relapsing Nephrotic Syndrome)."
+      },
+  {
+        "id": "ns5",
+        "front": "Case Study (Mona, 7 yrs old with generalized edema...): Explain your answer.",
+        "back": "The diagnosis is confirmed by the classic tetrad of Nephrotic Syndrome:\n\nHeavy (Nephrotic range) Proteinuria: Exceeding 40 mg/m2/hr (Patient has 60 mg/m2/hour).\n\nHypoalbuminemia/Hypoproteinemia: Serum albumin is 1.4 gm/dl (Normal >2.5).\n\nHypercholesterolemia (Hyperlipidemia): Serum cholesterol is 290 mg/dl.\n\nGeneralized Edema.\n\nThe normal blood urea and serum creatinine indicate intact kidney function (ruling out nephritic syndrome/renal failure). The history of recurring 5 times in the last year defines her as a \"Frequent Relapser\"."
       }
-    ]
-  }
-],
+  ],
   "Acute Kidney Injury (AKI) & pRIFLE Criteria": [
   {
-    "id": "sec_paper_acute_kidney_injury_aki_and_prifle_criteria_q1",
-    "front": "Define \"Acute Kidney Injury (AKI)\".",
-    "back": "It is a rapid decline (within a few hours to days) in glomerular filtration rate (GFR) resulting in the disturbance of renal physiological functions, leading to the impairment of nitrogenous waste product excretion and loss of water, electrolyte, and acid-base regulation."
-  },
+      "id": "sec_paper_acute_kidney_injury_aki_and_prifle_criteria_q1",
+      "front": "Define \"Acute Kidney Injury (AKI)\".",
+      "back": "It is a rapid decline (within a few hours to days) in glomerular filtration rate (GFR) resulting in the disturbance of renal physiological functions, leading to the impairment of nitrogenous waste product excretion and loss of water, electrolyte, and acid-base regulation."
+    },
   {
-    "id": "sec_paper_acute_kidney_injury_aki_and_prifle_criteria_q2",
-    "front": "Enumerate 4 common \"Prerenal\" causes of AKI in pediatric emergencies.",
-    "back": "1. Severe dehydration (e.g., from vomiting and diarrhea).\n2. Massive hemorrhage (acute blood loss).\n3. Septic shock (severe fulminant sepsis causing renal hypoperfusion).\n4. Severe burns (plasma fluid losses)."
-  },
+      "id": "sec_paper_acute_kidney_injury_aki_and_prifle_criteria_q2",
+      "front": "Enumerate 4 common \"Prerenal\" causes of AKI in pediatric emergencies.",
+      "back": "1. Severe dehydration (e.g., from vomiting and diarrhea).\n2. Massive hemorrhage (acute blood loss).\n3. Septic shock (severe fulminant sepsis causing renal hypoperfusion).\n4. Severe burns (plasma fluid losses)."
+    },
   {
-    "id": "sec_paper_acute_kidney_injury_aki_and_prifle_criteria_q3",
-    "front": "Enumerate 4 laboratory or clinical findings seen during the \"Oliguric Phase\" of advanced AKI.",
-    "back": "1. Oliguria or anuria.\n2. Hyperkalemia (inducing cardiac arrhythmias).\n3. Metabolic acidosis (deep, rapid acidotic breathing).\n4. Uremic encephalopathy (confusion, convulsions, or coma)."
-  },
+      "id": "sec_paper_acute_kidney_injury_aki_and_prifle_criteria_q3",
+      "front": "Enumerate 4 laboratory or clinical findings seen during the \"Oliguric Phase\" of advanced AKI.",
+      "back": "1. Oliguria or anuria.\n2. Hyperkalemia (inducing cardiac arrhythmias).\n3. Metabolic acidosis (deep, rapid acidotic breathing).\n4. Uremic encephalopathy (confusion, convulsions, or coma)."
+    },
   {
-    "id": "sec_paper_acute_kidney_injury_aki_and_prifle_criteria_q4",
-    "front": "Match the urine biochemistry finding with the correct diagnostic category of AKI:",
-    "type": "matching",
-    "matchingPairs": [
-      {
-        "left": "Urinary Sodium < 20 mEq/L and Fractional Excretion of Sodium (FENa) < 1%.",
-        "right": "Prerenal AKI (Prerenal Azotemia)."
-      },
-      {
-        "left": "Urinary Sodium > 40 mEq/L and Fractional Excretion of Sodium (FENa) > 2%.",
-        "right": "Intrinsic Renal AKI (Parenchymal damage)."
-      }
-    ]
-  },
+      "id": "sec_paper_acute_kidney_injury_aki_and_prifle_criteria_q4",
+      "front": "Match the urine biochemistry finding with the correct diagnostic category of AKI:",
+      "type": "matching",
+      "matchingPairs": [
+        {
+          "left": "Urinary Sodium < 20 mEq/L and Fractional Excretion of Sodium (FENa) < 1%.",
+          "right": "Prerenal AKI (Prerenal Azotemia)."
+        },
+        {
+          "left": "Urinary Sodium > 40 mEq/L and Fractional Excretion of Sodium (FENa) > 2%.",
+          "right": "Intrinsic Renal AKI (Parenchymal damage)."
+        }
+      ]
+    },
   {
-    "id": "sec_paper_acute_kidney_injury_aki_and_prifle_criteria_q5",
-    "front": "Short Clinical Case",
-    "type": "case",
-    "caseBody": "A 2-year-old infant with a 3-day history of severe vomiting and diarrhea presents with anuria for 14 hours, dry mucous membranes, and tachycardia. Laboratory testing reveals elevated serum blood urea nitrogen (BUN) and creatinine.",
-    "subQuestions": [
-      {
-        "id": "sec_paper_acute_kidney_injury_aki_and_prifle_criteria_q5_sub1",
-        "questionText": "What type of Acute Kidney Injury is this?",
-        "back": "Prerenal Acute Kidney Injury."
-      },
-      {
-        "id": "sec_paper_acute_kidney_injury_aki_and_prifle_criteria_q5_sub2",
-        "questionText": "Enumerate 2 essential initial urinary indicators used to confirm this specific type.",
-        "back": "Low urine sodium (<20 mEq/L) and a Fractional Excretion of Sodium (FENa) less than 1%."
-      }
-    ]
-  }
-],
+      "id": "sec_paper_acute_kidney_injury_aki_and_prifle_criteria_q5",
+      "front": "Short Clinical Case",
+      "type": "case",
+      "caseBody": "A 2-year-old infant with a 3-day history of severe vomiting and diarrhea presents with anuria for 14 hours, dry mucous membranes, and tachycardia. Laboratory testing reveals elevated serum blood urea nitrogen (BUN) and creatinine.",
+      "subQuestions": [
+        {
+          "id": "sec_paper_acute_kidney_injury_aki_and_prifle_criteria_q5_sub1",
+          "questionText": "What type of Acute Kidney Injury is this?",
+          "back": "Prerenal Acute Kidney Injury."
+        },
+        {
+          "id": "sec_paper_acute_kidney_injury_aki_and_prifle_criteria_q5_sub2",
+          "questionText": "Enumerate 2 essential initial urinary indicators used to confirm this specific type.",
+          "back": "Low urine sodium (<20 mEq/L) and a Fractional Excretion of Sodium (FENa) less than 1%."
+        }
+      ]
+    }
+  ],
   "Chronic Kidney Disease (CKD)": [
   {
-    "id": "sec_paper_chronic_kidney_disease_ckd_q1",
-    "front": "Define \"Chronic Kidney Disease (CKD)\" according to KDOQI criteria.",
-    "back": "It is defined as structural or functional abnormalities of the kidney for more than 3 months with health implications, or a persistent decrease in Glomerular Filtration Rate (GFR) to less than 60 ml/min/1.73m2 for more than 3 months."
-  },
+      "id": "sec_paper_chronic_kidney_disease_ckd_q1",
+      "front": "Define \"Chronic Kidney Disease (CKD)\" according to KDOQI criteria.",
+      "back": "It is defined as structural or functional abnormalities of the kidney for more than 3 months with health implications, or a persistent decrease in Glomerular Filtration Rate (GFR) to less than 60 ml/min/1.73m2 for more than 3 months."
+    },
   {
-    "id": "sec_paper_chronic_kidney_disease_ckd_q2",
-    "front": "Enumerate 4 underlying clinical mechanisms or metabolic findings characteristically seen in CKD.",
-    "back": "1. Accumulation of nitrogenous waste products (elevated BUN and creatinine).\n2. Metabolic acidosis (impaired net acid excretion).\n3. Hyperkalemia.\n4. Renal osteodystrophy (secondary hyperparathyroidism)."
-  },
+      "id": "sec_paper_chronic_kidney_disease_ckd_q2",
+      "front": "Enumerate 4 underlying clinical mechanisms or metabolic findings characteristically seen in CKD.",
+      "back": "1. Accumulation of nitrogenous waste products (elevated BUN and creatinine).\n2. Metabolic acidosis (impaired net acid excretion).\n3. Hyperkalemia.\n4. Renal osteodystrophy (secondary hyperparathyroidism)."
+    },
   {
-    "id": "sec_paper_chronic_kidney_disease_ckd_q3",
-    "front": "Enumerate 4 core long-term complications of CKD that require targeted pharmacological interventions.",
-    "back": "1. Renal osteodystrophy (high-turnover bone disease).\n2. Growth retardation (short stature).\n3. Normochromic normocytic anemia (erythropoietin deficiency).\n4. Hypertension (volume overload or excessive renin production)."
-  },
+      "id": "sec_paper_chronic_kidney_disease_ckd_q3",
+      "front": "Enumerate 4 core long-term complications of CKD that require targeted pharmacological interventions.",
+      "back": "1. Renal osteodystrophy (high-turnover bone disease).\n2. Growth retardation (short stature).\n3. Normochromic normocytic anemia (erythropoietin deficiency).\n4. Hypertension (volume overload or excessive renin production)."
+    },
   {
-    "id": "sec_paper_chronic_kidney_disease_ckd_q4",
-    "front": "Match the Glomerular Filtration Rate (GFR) bracket with the correct stage of CKD:",
-    "type": "matching",
-    "matchingPairs": [
-      {
-        "left": "GFR between 30 and 59 ml/min/1.73m2.",
-        "right": "Stage 3 CKD."
-      },
-      {
-        "left": "GFR less than 15 ml/min/1.73m2.",
-        "right": "Stage 5 CKD (End-Stage Renal Disease)."
-      }
-    ]
-  },
+      "id": "sec_paper_chronic_kidney_disease_ckd_q4",
+      "front": "Match the Glomerular Filtration Rate (GFR) bracket with the correct stage of CKD:",
+      "type": "matching",
+      "matchingPairs": [
+        {
+          "left": "GFR between 30 and 59 ml/min/1.73m2.",
+          "right": "Stage 3 CKD."
+        },
+        {
+          "left": "GFR less than 15 ml/min/1.73m2.",
+          "right": "Stage 5 CKD (End-Stage Renal Disease)."
+        }
+      ]
+    },
   {
-    "id": "sec_paper_chronic_kidney_disease_ckd_q5",
-    "front": "Short Clinical Case",
-    "type": "case",
-    "caseBody": "A 6-year-old boy with a history of chronic glomerulonephritis presents with short stature, severe pallor, and a bone deformity of the long legs. Lab work demonstrates chronic elevations of serum creatinine, hypocalcemia, hyperphosphatemia, and a hemoglobin level of 7.5 g/dL.",
-    "subQuestions": [
-      {
-        "id": "sec_paper_chronic_kidney_disease_ckd_q5_sub1",
-        "questionText": "What is the cause of his severe pallor and low hemoglobin?",
-        "back": "Anemia of CKD due to inadequate erythropoietin production by the failing kidneys."
-      },
-      {
-        "id": "sec_paper_chronic_kidney_disease_ckd_q5_sub2",
-        "questionText": "Enumerate 2 management lines used to treat his specific bone disorder.",
-        "back": "Low phosphorus diet and administration of oral phosphate binders followed by active Vitamin D supplementation."
-      }
-    ]
-  }
-],
+      "id": "sec_paper_chronic_kidney_disease_ckd_q5",
+      "front": "Short Clinical Case",
+      "type": "case",
+      "caseBody": "A 6-year-old boy with a history of chronic glomerulonephritis presents with short stature, severe pallor, and a bone deformity of the long legs. Lab work demonstrates chronic elevations of serum creatinine, hypocalcemia, hyperphosphatemia, and a hemoglobin level of 7.5 g/dL.",
+      "subQuestions": [
+        {
+          "id": "sec_paper_chronic_kidney_disease_ckd_q5_sub1",
+          "questionText": "What is the cause of his severe pallor and low hemoglobin?",
+          "back": "Anemia of CKD due to inadequate erythropoietin production by the failing kidneys."
+        },
+        {
+          "id": "sec_paper_chronic_kidney_disease_ckd_q5_sub2",
+          "questionText": "Enumerate 2 management lines used to treat his specific bone disorder.",
+          "back": "Low phosphorus diet and administration of oral phosphate binders followed by active Vitamin D supplementation."
+        }
+      ]
+    }
+  ],
   "Viral Croup": [
   {
-    "id": "sec_paper_viral_croup_q1",
-    "front": "Define \"Croup (Laryngo-tracheo-bronchitis)\".",
-    "back": "It is a viral infection of the glottic and subglottic regions, standing as the most common syndrome of inflammatory upper airway obstruction in young children."
-  },
+      "id": "sec_paper_viral_croup_q1",
+      "front": "Define \"Croup (Laryngo-tracheo-bronchitis)\".",
+      "back": "It is a viral infection of the glottic and subglottic regions, standing as the most common syndrome of inflammatory upper airway obstruction in young children."
+    },
   {
-    "id": "sec_paper_viral_croup_q2",
-    "front": "Enumerate the 4 classic clinical symptoms that define the presentation of Croup.",
-    "back": "1. Barking cough.\n2. Inspiratory stridor.\n3. Hoarseness of voice.\n4. Respiratory distress (worse at night)."
-  },
+      "id": "sec_paper_viral_croup_q2",
+      "front": "Enumerate the 4 classic clinical symptoms that define the presentation of Croup.",
+      "back": "1. Barking cough.\n2. Inspiratory stridor.\n3. Hoarseness of voice.\n4. Respiratory distress (worse at night)."
+    },
   {
-    "id": "sec_paper_viral_croup_q3",
-    "front": "Enumerate 4 components of the therapeutic management plan for a child with Croup.",
-    "back": "1. Supplemental humidified oxygen.\n2. Nebulized Epinephrine (L-epinephrine or racemic epinephrine) to reduce edema.\n3. A single dose of systemic Corticosteroids (oral or IM Dexamethasone).\n4. Keeping the patient nothing per mouth (NPO) and avoiding agitation."
-  },
+      "id": "sec_paper_viral_croup_q3",
+      "front": "Enumerate 4 components of the therapeutic management plan for a child with Croup.",
+      "back": "1. Supplemental humidified oxygen.\n2. Nebulized Epinephrine (L-epinephrine or racemic epinephrine) to reduce edema.\n3. A single dose of systemic Corticosteroids (oral or IM Dexamethasone).\n4. Keeping the patient nothing per mouth (NPO) and avoiding agitation."
+    },
   {
-    "id": "sec_paper_viral_croup_q4",
-    "front": "Enumerate 4 clinical signs that indicate impending respiratory failure in a child with severe Croup.",
-    "back": "1. Cyanosis.\n2. Pallor.\n3. Decreased level of consciousness / depressed sensorium.\n4. Decreased stridor or barking cough despite severe retractions (failing effort)."
-  },
+      "id": "sec_paper_viral_croup_q4",
+      "front": "Enumerate 4 clinical signs that indicate impending respiratory failure in a child with severe Croup.",
+      "back": "1. Cyanosis.\n2. Pallor.\n3. Decreased level of consciousness / depressed sensorium.\n4. Decreased stridor or barking cough despite severe retractions (failing effort)."
+    },
   {
-    "id": "sec_paper_viral_croup_q5",
-    "front": "Short Clinical Case",
-    "type": "case",
-    "caseBody": "A 2-year-old boy is brought to the emergency clinic at midnight with a barking cough and high-pitched noisy sounds heard on inspiration. On examination, he has low-grade fever and mild subcostal retractions, but remains alert.",
-    "subQuestions": [
-      {
-        "id": "sec_paper_viral_croup_q5_sub1",
-        "questionText": "What is the most likely diagnosis?",
-        "back": "Acute Viral Croup."
-      },
-      {
-        "id": "sec_paper_viral_croup_q5_sub2",
-        "questionText": "What classic radiological sign is expected on a postero-anterior neck X-ray?",
-        "back": "The Steeple Sign (uniform subglottic narrowing of the airway)."
-      }
-    ]
-  }
-],
+      "id": "sec_paper_viral_croup_q5",
+      "front": "Short Clinical Case",
+      "type": "case",
+      "caseBody": "A 2-year-old boy is brought to the emergency clinic at midnight with a barking cough and high-pitched noisy sounds heard on inspiration. On examination, he has low-grade fever and mild subcostal retractions, but remains alert.",
+      "subQuestions": [
+        {
+          "id": "sec_paper_viral_croup_q5_sub1",
+          "questionText": "What is the most likely diagnosis?",
+          "back": "Acute Viral Croup."
+        },
+        {
+          "id": "sec_paper_viral_croup_q5_sub2",
+          "questionText": "What classic radiological sign is expected on a postero-anterior neck X-ray?",
+          "back": "The Steeple Sign (uniform subglottic narrowing of the airway)."
+        }
+      ]
+    }
+  ],
   "Epiglottitis": [
   {
-    "id": "sec_paper_epiglottitis_q1",
-    "front": "Define \"Acute Epiglottitis\".",
-    "back": "It is a life-threatening, rapidly progressive bacterial infection of the epiglottis and surrounding structures, capable of causing complete airway obstruction."
-  },
+      "id": "sec_paper_epiglottitis_q1",
+      "front": "Define \"Acute Epiglottitis\".",
+      "back": "It is a life-threatening, rapidly progressive bacterial infection of the epiglottis and surrounding structures, capable of causing complete airway obstruction."
+    },
   {
-    "id": "sec_paper_epiglottitis_q2",
-    "front": "Enumerate 4 classic clinical manifestations of Acute Epiglottitis.",
-    "back": "1. Acute onset of high-grade fever and severe sore throat.\n2. Drooling of saliva (due to severe inability to swallow).\n3. Hyperextension of the neck (sniffing position to maintain airway).\n4. Severe, rapidly progressive respiratory distress without a barking cough."
-  },
+      "id": "sec_paper_epiglottitis_q2",
+      "front": "Enumerate 4 classic clinical manifestations of Acute Epiglottitis.",
+      "back": "1. Acute onset of high-grade fever and severe sore throat.\n2. Drooling of saliva (due to severe inability to swallow).\n3. Hyperextension of the neck (sniffing position to maintain airway).\n4. Severe, rapidly progressive respiratory distress without a barking cough."
+    },
   {
-    "id": "sec_paper_epiglottitis_q3",
-    "front": "Enumerate 4 critical clinical contraindications in the immediate management of suspected Epiglottitis.",
-    "back": "1. Do not place the child in a supine position.\n2. Do not examine the oral cavity or throat using a tongue depressor (risk of sudden cardiac arrest).\n3. Do not perform agitating diagnostic tests (like phlebotomy) before securing the airway.\n4. Do not rely on corticosteroids or nebulized epinephrine, as they are ineffective."
-  },
+      "id": "sec_paper_epiglottitis_q3",
+      "front": "Enumerate 4 critical clinical contraindications in the immediate management of suspected Epiglottitis.",
+      "back": "1. Do not place the child in a supine position.\n2. Do not examine the oral cavity or throat using a tongue depressor (risk of sudden cardiac arrest).\n3. Do not perform agitating diagnostic tests (like phlebotomy) before securing the airway.\n4. Do not rely on corticosteroids or nebulized epinephrine, as they are ineffective."
+    },
   {
-    "id": "sec_paper_epiglottitis_q4",
-    "front": "Enumerate the 4 components of the standard therapeutic intervention for confirmed Epiglottitis.",
-    "back": "1. Immediate insertion of an artificial airway (endotracheal intubation) in the OR or ICU.\n2. Empiric intravenous antibiotic therapy (Vancomycin plus Ceftriaxone for 10 days).\n3. Supplemental oxygen delivery without mask agitation.\n4. Continuous monitoring of airway patency and direct visualization before extubation."
-  },
+      "id": "sec_paper_epiglottitis_q4",
+      "front": "Enumerate the 4 components of the standard therapeutic intervention for confirmed Epiglottitis.",
+      "back": "1. Immediate insertion of an artificial airway (endotracheal intubation) in the OR or ICU.\n2. Empiric intravenous antibiotic therapy (Vancomycin plus Ceftriaxone for 10 days).\n3. Supplemental oxygen delivery without mask agitation.\n4. Continuous monitoring of airway patency and direct visualization before extubation."
+    },
   {
-    "id": "sec_paper_epiglottitis_q5",
-    "front": "Short Clinical Case",
-    "type": "case",
-    "caseBody": "A 4-year-old unimmunized child presents with a sudden onset of high fever, severe respiratory distress, and is sitting leaning forward while drooling saliva. The clinician suspects an upper airway emergency.",
-    "subQuestions": [
-      {
-        "id": "sec_paper_epiglottitis_q5_sub1",
-        "questionText": "What is the most likely diagnosis?",
-        "back": "Acute Epiglottitis."
-      },
-      {
-        "id": "sec_paper_epiglottitis_q5_sub2",
-        "questionText": "What is the primary causative organism for this specific presentation?",
-        "back": "Hemophilus influenzae type b (Hib)."
-      }
-    ]
-  }
-],
+      "id": "sec_paper_epiglottitis_q5",
+      "front": "Short Clinical Case",
+      "type": "case",
+      "caseBody": "A 4-year-old unimmunized child presents with a sudden onset of high fever, severe respiratory distress, and is sitting leaning forward while drooling saliva. The clinician suspects an upper airway emergency.",
+      "subQuestions": [
+        {
+          "id": "sec_paper_epiglottitis_q5_sub1",
+          "questionText": "What is the most likely diagnosis?",
+          "back": "Acute Epiglottitis."
+        },
+        {
+          "id": "sec_paper_epiglottitis_q5_sub2",
+          "questionText": "What is the primary causative organism for this specific presentation?",
+          "back": "Hemophilus influenzae type b (Hib)."
+        }
+      ]
+    }
+  ],
   "Wheezing & Foreign Body": [
   {
-    "id": "sec_paper_wheezing_and_foreign_body_q1",
-    "front": "Define \"Wheezing\".",
-    "back": "It is an expiratory continuous musical respiratory sound produced by turbulent airflow through partially obstructed small bronchi and bronchioles."
-  },
+      "id": "sec_paper_wheezing_and_foreign_body_q1",
+      "front": "Define \"Wheezing\".",
+      "back": "It is an expiratory continuous musical respiratory sound produced by turbulent airflow through partially obstructed small bronchi and bronchioles."
+    },
   {
-    "id": "sec_paper_wheezing_and_foreign_body_q2",
-    "front": "Enumerate 4 common pediatric causes of \"Recurrent Wheezing\".",
-    "back": "1. Bronchial asthma.\n2. Recurrent aspiration (e.g., in infants with GERD).\n3. Chronic chest infections.\n4. Bronchopulmonary dysplasia (BPD)."
-  },
+      "id": "sec_paper_wheezing_and_foreign_body_q2",
+      "front": "Enumerate 4 common pediatric causes of \"Recurrent Wheezing\".",
+      "back": "1. Bronchial asthma.\n2. Recurrent aspiration (e.g., in infants with GERD).\n3. Chronic chest infections.\n4. Bronchopulmonary dysplasia (BPD)."
+    },
   {
-    "id": "sec_paper_wheezing_and_foreign_body_q3",
-    "front": "Enumerate 4 clinical signs or complications characteristic of Foreign Body Aspiration in a child.",
-    "back": "1. History of sudden choking, coughing, or gagging while playing.\n2. Fixed, localized unilateral wheeze on auscultation.\n3. Unilaterally diminished breath sounds.\n4. Recurrent pneumonia or abscess localized in the exact same lung lobe."
-  },
+      "id": "sec_paper_wheezing_and_foreign_body_q3",
+      "front": "Enumerate 4 clinical signs or complications characteristic of Foreign Body Aspiration in a child.",
+      "back": "1. History of sudden choking, coughing, or gagging while playing.\n2. Fixed, localized unilateral wheeze on auscultation.\n3. Unilaterally diminished breath sounds.\n4. Recurrent pneumonia or abscess localized in the exact same lung lobe."
+    },
   {
-    "id": "sec_paper_wheezing_and_foreign_body_q4",
-    "front": "Match the noisy breathing sound with its correct physiological cause:",
-    "type": "matching",
-    "matchingPairs": [
-      {
-        "left": "Expiratory continuous musical sound due to small airway obstruction.",
-        "right": "Wheezing."
-      },
-      {
-        "left": "Inspiratory continuous harsh sound due to larynx or trachea obstruction.",
-        "right": "Stridor."
-      }
-    ]
-  },
+      "id": "sec_paper_wheezing_and_foreign_body_q4",
+      "front": "Match the noisy breathing sound with its correct physiological cause:",
+      "type": "matching",
+      "matchingPairs": [
+        {
+          "left": "Expiratory continuous musical sound due to small airway obstruction.",
+          "right": "Wheezing."
+        },
+        {
+          "left": "Inspiratory continuous harsh sound due to larynx or trachea obstruction.",
+          "right": "Stridor."
+        }
+      ]
+    },
   {
-    "id": "sec_paper_wheezing_and_foreign_body_q5",
-    "front": "Short Clinical Case",
-    "type": "case",
-    "caseBody": "A 3-year-old child is rushed to the ER with sudden violent coughing, choking, and localized respiratory distress. On chest auscultation, a fixed localized wheeze is heard over the right lung alongside diminished breath sounds on that side.",
-    "subQuestions": [
-      {
-        "id": "sec_paper_wheezing_and_foreign_body_q5_sub1",
-        "questionText": "What is the most likely diagnosis?",
-        "back": "Foreign Body Aspiration."
-      },
-      {
-        "id": "sec_paper_wheezing_and_foreign_body_q5_sub2",
-        "questionText": "What is the definitive management choice for this condition?",
-        "back": "Rigid bronchoscopic extraction of the foreign body."
-      }
-    ]
-  }
-],
+      "id": "sec_paper_wheezing_and_foreign_body_q5",
+      "front": "Short Clinical Case",
+      "type": "case",
+      "caseBody": "A 3-year-old child is rushed to the ER with sudden violent coughing, choking, and localized respiratory distress. On chest auscultation, a fixed localized wheeze is heard over the right lung alongside diminished breath sounds on that side.",
+      "subQuestions": [
+        {
+          "id": "sec_paper_wheezing_and_foreign_body_q5_sub1",
+          "questionText": "What is the most likely diagnosis?",
+          "back": "Foreign Body Aspiration."
+        },
+        {
+          "id": "sec_paper_wheezing_and_foreign_body_q5_sub2",
+          "questionText": "What is the definitive management choice for this condition?",
+          "back": "Rigid bronchoscopic extraction of the foreign body."
+        }
+      ]
+    }
+  ],
   "Pneumonia كلها مختصرة": [
   {
-    "id": "sec_paper_pneumonia_كلها_مختصرة_q1",
-    "front": "Define \"Community-Acquired Pneumonia (CAP)\".",
-    "back": "It is the presence of clinical signs and symptoms of inflammation of the lung parenchyma in a previously healthy child, caused by an infection acquired outside of a hospital setting."
-  },
+      "id": "sec_paper_pneumonia_كلها_مختصرة_q1",
+      "front": "Define \"Community-Acquired Pneumonia (CAP)\".",
+      "back": "It is the presence of clinical signs and symptoms of inflammation of the lung parenchyma in a previously healthy child, caused by an infection acquired outside of a hospital setting."
+    },
   {
-    "id": "sec_paper_pneumonia_كلها_مختصرة_q2",
-    "front": "Enumerate 4 physical chest examination findings characteristic of localized lung consolidation in Pneumonia.",
-    "back": "1. Diminished breath sounds over the affected field.\n2. Localized scattered crackles (crepitations).\n3. Bronchial breathing.\n4. Dullness on percussion."
-  },
+      "id": "sec_paper_pneumonia_كلها_مختصرة_q2",
+      "front": "Enumerate 4 physical chest examination findings characteristic of localized lung consolidation in Pneumonia.",
+      "back": "1. Diminished breath sounds over the affected field.\n2. Localized scattered crackles (crepitations).\n3. Bronchial breathing.\n4. Dullness on percussion."
+    },
   {
-    "id": "sec_paper_pneumonia_كلها_مختصرة_q3",
-    "front": "Enumerate 4 non-respiratory systemic manifestations that can occur during childhood Pneumonia.",
-    "back": "1. Gastrointestinal disturbances (vomiting, anorexia, diarrhea).\n2. Abdominal distention (due to paralytic ileus or swallowed air).\n3. Severe abdominal pain (mimicking acute surgical conditions in lower-lobe pneumonia).\n4. Neck rigidity or meningism (seen in right upper lobe pneumonia)."
-  },
+      "id": "sec_paper_pneumonia_كلها_مختصرة_q3",
+      "front": "Enumerate 4 non-respiratory systemic manifestations that can occur during childhood Pneumonia.",
+      "back": "1. Gastrointestinal disturbances (vomiting, anorexia, diarrhea).\n2. Abdominal distention (due to paralytic ileus or swallowed air).\n3. Severe abdominal pain (mimicking acute surgical conditions in lower-lobe pneumonia).\n4. Neck rigidity or meningism (seen in right upper lobe pneumonia)."
+    },
   {
-    "id": "sec_paper_pneumonia_كلها_مختصرة_q4",
-    "front": "Enumerate 4 primary clinical criteria used to identify the need for Hospitalization in pediatric Pneumonia.",
-    "back": "1. Age less than 6 months.\n2. Moderate to severe respiratory distress or hypoxemia (oxygen saturation <90% in room air).\n3. Toxic appearance or signs of clinical shock/severe dehydration.\n4. Inability to tolerate oral medications/fluids, or failure of oral antibiotic outpatient therapy."
-  },
+      "id": "sec_paper_pneumonia_كلها_مختصرة_q4",
+      "front": "Enumerate 4 primary clinical criteria used to identify the need for Hospitalization in pediatric Pneumonia.",
+      "back": "1. Age less than 6 months.\n2. Moderate to severe respiratory distress or hypoxemia (oxygen saturation <90% in room air).\n3. Toxic appearance or signs of clinical shock/severe dehydration.\n4. Inability to tolerate oral medications/fluids, or failure of oral antibiotic outpatient therapy."
+    },
   {
-    "id": "sec_paper_pneumonia_كلها_مختصرة_q5",
-    "front": "Short Clinical Case",
-    "type": "case",
-    "caseBody": "A 10-month-old infant presents with a high fever, a severe productive cough, and a respiratory rate of 55 breaths/minute. On chest examination, localized bronchial breathing and crackles are heard over the right lung base.",
-    "subQuestions": [
-      {
-        "id": "sec_paper_pneumonia_كلها_مختصرة_q5_sub1",
-        "questionText": "Does this infant meet the WHO criteria for fast breathing (Tachypnea)?",
-        "back": "Yes, tachypnea for infants aged 2-12 months is defined as a respiratory rate >50 breaths/minute."
-      },
-      {
-        "id": "sec_paper_pneumonia_كلها_مختصرة_q5_sub2",
-        "questionText": "What is the first-line empiric oral antibiotic of choice for outpatient management?",
-        "back": "High-dose Amoxicillin (90 mg/kg/24 hr)."
-      }
-    ]
-  }
-],
+      "id": "sec_paper_pneumonia_كلها_مختصرة_q5",
+      "front": "Short Clinical Case",
+      "type": "case",
+      "caseBody": "A 10-month-old infant presents with a high fever, a severe productive cough, and a respiratory rate of 55 breaths/minute. On chest examination, localized bronchial breathing and crackles are heard over the right lung base.",
+      "subQuestions": [
+        {
+          "id": "sec_paper_pneumonia_كلها_مختصرة_q5_sub1",
+          "questionText": "Does this infant meet the WHO criteria for fast breathing (Tachypnea)?",
+          "back": "Yes, tachypnea for infants aged 2-12 months is defined as a respiratory rate >50 breaths/minute."
+        },
+        {
+          "id": "sec_paper_pneumonia_كلها_مختصرة_q5_sub2",
+          "questionText": "What is the first-line empiric oral antibiotic of choice for outpatient management?",
+          "back": "High-dose Amoxicillin (90 mg/kg/24 hr)."
+        }
+      ]
+    }
+  ],
   "Bronchiolitis": [
   {
-    "id": "sec_paper_bronchiolitis_q1",
-    "front": "Define \"Acute Bronchiolitis\".",
-    "back": "It is the acute inflammatory obstruction of the small airways (bronchioles) by mucus, inflammatory cell infiltration, and desquamated epithelial cells, occurring predominantly during the first 2 years of life with a peak at 6 months of age."
-  },
+      "id": "sec_paper_bronchiolitis_q1",
+      "front": "Define \"Acute Bronchiolitis\".",
+      "back": "It is the acute inflammatory obstruction of the small airways (bronchioles) by mucus, inflammatory cell infiltration, and desquamated epithelial cells, occurring predominantly during the first 2 years of life with a peak at 6 months of age."
+    },
   {
-    "id": "sec_paper_bronchiolitis_q2",
-    "front": "Enumerate 4 standard clinical picture findings seen during a physical examination of an infant with Bronchiolitis.",
-    "back": "1. Sharp, dry repetitive cough and tachypnea (RR 60-80/min).\n2. Hyperinflation of the chest with an increased anteroposterior diameter.\n3. Subcostal and intercostal retractions with diaphragmatic downward displacement of the liver.\n4. Widespread fine end-inspiratory consonating crackles and prolonged expiration with wheezing."
-  },
+      "id": "sec_paper_bronchiolitis_q2",
+      "front": "Enumerate 4 standard clinical picture findings seen during a physical examination of an infant with Bronchiolitis.",
+      "back": "1. Sharp, dry repetitive cough and tachypnea (RR 60-80/min).\n2. Hyperinflation of the chest with an increased anteroposterior diameter.\n3. Subcostal and intercostal retractions with diaphragmatic downward displacement of the liver.\n4. Widespread fine end-inspiratory consonating crackles and prolonged expiration with wheezing."
+    },
   {
-    "id": "sec_paper_bronchiolitis_q3",
-    "front": "Enumerate 4 complications that can result from severe Acute Bronchiolitis.",
-    "back": "1. Apneic spells (especially in young infants <2 months old).\n2. Secondary bacterial infection or otitis media.\n3. Dehydration and electrolyte imbalance.\n4. Respiratory failure or cardiorespiratory collapse."
-  },
+      "id": "sec_paper_bronchiolitis_q3",
+      "front": "Enumerate 4 complications that can result from severe Acute Bronchiolitis.",
+      "back": "1. Apneic spells (especially in young infants <2 months old).\n2. Secondary bacterial infection or otitis media.\n3. Dehydration and electrolyte imbalance.\n4. Respiratory failure or cardiorespiratory collapse."
+    },
   {
-    "id": "sec_paper_bronchiolitis_q4",
-    "front": "Enumerate 4 core treatment modalities for a hospitalized infant with Bronchiolitis.",
-    "back": "1. Humidified supplemental oxygen therapy via nasal prongs.\n2. Parenteral fluid therapy to maintain hydration and electrolyte balance.\n3. Implementation of a single-dose trial of an inhaled bronchodilator.\n4. Avoidance of sedatives, antibiotics, and systemic steroids (unless specifically indicated)."
-  },
+      "id": "sec_paper_bronchiolitis_q4",
+      "front": "Enumerate 4 core treatment modalities for a hospitalized infant with Bronchiolitis.",
+      "back": "1. Humidified supplemental oxygen therapy via nasal prongs.\n2. Parenteral fluid therapy to maintain hydration and electrolyte balance.\n3. Implementation of a single-dose trial of an inhaled bronchodilator.\n4. Avoidance of sedatives, antibiotics, and systemic steroids (unless specifically indicated)."
+    },
   {
-    "id": "sec_paper_bronchiolitis_q5",
-    "front": "Short Clinical Case",
-    "type": "case",
-    "caseBody": "A 5-month-old infant presents during winter with a 2-day history of rhinitis followed by a severe dry cough, tachypnea, and chest indrawing. Chest exam reveals a hyper-resonant percussion note and diffuse fine end-inspiratory crackles with wheezes.",
-    "subQuestions": [
-      {
-        "id": "sec_paper_bronchiolitis_q5_sub1",
-        "questionText": "What is the most likely diagnosis?",
-        "back": "Acute Bronchiolitis."
-      },
-      {
-        "id": "sec_paper_bronchiolitis_q5_sub2",
-        "questionText": "What is the primary viral etiology responsible for roughly 50% of these cases?",
-        "back": "Respiratory Syncytial Virus (RSV)."
-      }
-    ]
-  }
-],
+      "id": "sec_paper_bronchiolitis_q5",
+      "front": "Short Clinical Case",
+      "type": "case",
+      "caseBody": "A 5-month-old infant presents during winter with a 2-day history of rhinitis followed by a severe dry cough, tachypnea, and chest indrawing. Chest exam reveals a hyper-resonant percussion note and diffuse fine end-inspiratory crackles with wheezes.",
+      "subQuestions": [
+        {
+          "id": "sec_paper_bronchiolitis_q5_sub1",
+          "questionText": "What is the most likely diagnosis?",
+          "back": "Acute Bronchiolitis."
+        },
+        {
+          "id": "sec_paper_bronchiolitis_q5_sub2",
+          "questionText": "What is the primary viral etiology responsible for roughly 50% of these cases?",
+          "back": "Respiratory Syncytial Virus (RSV)."
+        }
+      ]
+    }
+  ],
   "Bronchial Asthma": [
   {
-    "id": "sec_paper_bronchial_asthma_q1",
-    "front": "Define \"Bronchial Asthma\".",
-    "back": "It is a chronic, diffuse obstructive inflammatory lung disease characterized by airway hyperreactivity to a variety of stimuli, airway inflammation, and a high degree of reversibility of the obstruction either spontaneously or with treatment."
-  },
+      "id": "sec_paper_bronchial_asthma_q1",
+      "front": "Define \"Bronchial Asthma\".",
+      "back": "It is a chronic, diffuse obstructive inflammatory lung disease characterized by airway hyperreactivity to a variety of stimuli, airway inflammation, and a high degree of reversibility of the obstruction either spontaneously or with treatment."
+    },
   {
-    "id": "sec_paper_bronchial_asthma_q2",
-    "front": "Enumerate 4 common environmental or physical triggers of childhood Asthma exacerbations.",
-    "back": "1. Viral respiratory infections.\n2. Indoor/outdoor allergens (dust mites, pollens, animal dander).\n3. Air pollutants (tobacco smoke, strong chemical odors).\n4. Cold dry air or strenuous physical exercise."
-  },
+      "id": "sec_paper_bronchial_asthma_q2",
+      "front": "Enumerate 4 common environmental or physical triggers of childhood Asthma exacerbations.",
+      "back": "1. Viral respiratory infections.\n2. Indoor/outdoor allergens (dust mites, pollens, animal dander).\n3. Air pollutants (tobacco smoke, strong chemical odors).\n4. Cold dry air or strenuous physical exercise."
+    },
   {
-    "id": "sec_paper_bronchial_asthma_q3",
-    "front": "Enumerate 4 physical signs indicating a severe acute asthma attack (Status Asthmaticus).",
-    "back": "1. Severe dyspnea with prolonged expiration and intense use of accessory muscles (SCM retraction).\n2. Cyanosis and thoracic hyperinflation.\n3. Tachycardia and pulsus paradoxus.\n4. Altered mental status ranging from agitation to somnolence."
-  },
+      "id": "sec_paper_bronchial_asthma_q3",
+      "front": "Enumerate 4 physical signs indicating a severe acute asthma attack (Status Asthmaticus).",
+      "back": "1. Severe dyspnea with prolonged expiration and intense use of accessory muscles (SCM retraction).\n2. Cyanosis and thoracic hyperinflation.\n3. Tachycardia and pulsus paradoxus.\n4. Altered mental status ranging from agitation to somnolence."
+    },
   {
-    "id": "sec_paper_bronchial_asthma_q4",
-    "front": "Enumerate 4 rapid-acting pharmacological medications used as \"Quick Relievers\" during an acute asthma attack.",
-    "back": "1. Inhaled Short-Acting Beta2-agonists (SABAs like nebulized Albuterol/Salbutamol).\n2. Inhaled Anticholinergics (Nebulized Ipratropium bromide).\n3. Systemic Corticosteroids (Oral Prednisolone or IV Dexamethasone).\n4. Intravenous Magnesium Sulphate (infused slowly over 15-30 minutes)."
-  },
+      "id": "sec_paper_bronchial_asthma_q4",
+      "front": "Enumerate 4 rapid-acting pharmacological medications used as \"Quick Relievers\" during an acute asthma attack.",
+      "back": "1. Inhaled Short-Acting Beta2-agonists (SABAs like nebulized Albuterol/Salbutamol).\n2. Inhaled Anticholinergics (Nebulized Ipratropium bromide).\n3. Systemic Corticosteroids (Oral Prednisolone or IV Dexamethasone).\n4. Intravenous Magnesium Sulphate (infused slowly over 15-30 minutes)."
+    },
   {
-    "id": "sec_paper_bronchial_asthma_q5",
-    "front": "Short Clinical Case",
-    "type": "case",
-    "caseBody": "A 6-year-old boy known to have recurrent wheezing presents to the emergency room with severe breathlessness and a tight cough after playing outdoors in cold weather. Spirometry demonstrates a low FEV1 that increases by 14% after an albuterol nebulizer treatment.",
-    "subQuestions": [
-      {
-        "id": "sec_paper_bronchial_asthma_q5_sub1",
-        "questionText": "What is the clinical significance of the 14% increase in FEV1?",
-        "back": "It demonstrates a high degree of reversible airflow limitation, which is a hallmark diagnostic feature of bronchial asthma."
-      },
-      {
-        "id": "sec_paper_bronchial_asthma_q5_sub2",
-        "questionText": "Enumerate 2 structural thoracic complications this child is at risk of if the acute attack deteriorates suddenly.",
-        "back": "Pneumothorax (air-leak) and segmental/subsegmental lung collapse."
-      }
-    ]
-  }
-],
+      "id": "sec_paper_bronchial_asthma_q5",
+      "front": "Short Clinical Case",
+      "type": "case",
+      "caseBody": "A 6-year-old boy known to have recurrent wheezing presents to the emergency room with severe breathlessness and a tight cough after playing outdoors in cold weather. Spirometry demonstrates a low FEV1 that increases by 14% after an albuterol nebulizer treatment.",
+      "subQuestions": [
+        {
+          "id": "sec_paper_bronchial_asthma_q5_sub1",
+          "questionText": "What is the clinical significance of the 14% increase in FEV1?",
+          "back": "It demonstrates a high degree of reversible airflow limitation, which is a hallmark diagnostic feature of bronchial asthma."
+        },
+        {
+          "id": "sec_paper_bronchial_asthma_q5_sub2",
+          "questionText": "Enumerate 2 structural thoracic complications this child is at risk of if the acute attack deteriorates suddenly.",
+          "back": "Pneumothorax (air-leak) and segmental/subsegmental lung collapse."
+        }
+      ]
+    }
+  ],
   "Cardiopulmonary Resuscitation (CPR)": [
   {
-    "id": "sec_paper_cardiopulmonary_resuscitation_cpr_q1",
-    "front": "Define \"Cardiopulmonary Arrest\" in children.",
-    "back": "It is a sudden, unexpected cessation of systemic circulation and/or respiration in a pediatric patient who is unlikely to die and for whom the potential for clinical recovery is good."
-  },
+      "id": "sec_paper_cardiopulmonary_resuscitation_cpr_q1",
+      "front": "Define \"Cardiopulmonary Arrest\" in children.",
+      "back": "It is a sudden, unexpected cessation of systemic circulation and/or respiration in a pediatric patient who is unlikely to die and for whom the potential for clinical recovery is good."
+    },
   {
-    "id": "sec_paper_cardiopulmonary_resuscitation_cpr_q2",
-    "front": "Enumerate 4 early warning signs of circulatory or respiratory decompensation (pre-arrest criteria).",
-    "back": "1. Cyanosis and slow, irregular respiration.\n2. Bradycardia (impending cardiac arrest in children).\n3. Weak peripheral pulses and poor tissue perfusion.\n4. Decreased responsiveness, altered consciousness, or extreme restlessness."
-  },
+      "id": "sec_paper_cardiopulmonary_resuscitation_cpr_q2",
+      "front": "Enumerate 4 early warning signs of circulatory or respiratory decompensation (pre-arrest criteria).",
+      "back": "1. Cyanosis and slow, irregular respiration.\n2. Bradycardia (impending cardiac arrest in children).\n3. Weak peripheral pulses and poor tissue perfusion.\n4. Decreased responsiveness, altered consciousness, or extreme restlessness."
+    },
   {
-    "id": "sec_paper_cardiopulmonary_resuscitation_cpr_q3",
-    "front": "Enumerate 4 distinct components of the Basic Life Support (BLS) airway and ventilation protocols.",
-    "back": "1. Opening the airway channel using the Triple Airway Maneuver.\n2. Visualizing and clearing the mouth or oropharynx via suction (avoiding blind finger sweeps).\n3. Inserting an appropriately sized oropharyngeal airway in an unconscious patient.\n4. Providing artificial ventilation using a bag-valve-mask device with 100% oxygen at 20 breaths/min."
-  },
+      "id": "sec_paper_cardiopulmonary_resuscitation_cpr_q3",
+      "front": "Enumerate 4 distinct components of the Basic Life Support (BLS) airway and ventilation protocols.",
+      "back": "1. Opening the airway channel using the Triple Airway Maneuver.\n2. Visualizing and clearing the mouth or oropharynx via suction (avoiding blind finger sweeps).\n3. Inserting an appropriately sized oropharyngeal airway in an unconscious patient.\n4. Providing artificial ventilation using a bag-valve-mask device with 100% oxygen at 20 breaths/min."
+    },
   {
-    "id": "sec_paper_cardiopulmonary_resuscitation_cpr_q4",
-    "front": "Enumerate 4 critical emergency medications administered during Advanced Life Support (ALS), including their indications or doses.",
-    "back": "1. Intravenous fluid bolus (Normal Saline or Ringer's Lactate at 20 ml/kg over 10 minutes).\n2. Intravenous Adrenaline (0.1 ml/kg of a 1:10,000 diluted solution) for asystole.\n3. Intravenous Sodium Bicarbonate (1 ml/kg of an 8.4% solution) to correct severe metabolic acidosis.\n4. Defibrillation electrical doses (2 Joules/kg up to 8 Joules/kg) for ventricular fibrillation control."
-  },
+      "id": "sec_paper_cardiopulmonary_resuscitation_cpr_q4",
+      "front": "Enumerate 4 critical emergency medications administered during Advanced Life Support (ALS), including their indications or doses.",
+      "back": "1. Intravenous fluid bolus (Normal Saline or Ringer's Lactate at 20 ml/kg over 10 minutes).\n2. Intravenous Adrenaline (0.1 ml/kg of a 1:10,000 diluted solution) for asystole.\n3. Intravenous Sodium Bicarbonate (1 ml/kg of an 8.4% solution) to correct severe metabolic acidosis.\n4. Defibrillation electrical doses (2 Joules/kg up to 8 Joules/kg) for ventricular fibrillation control."
+    },
   {
-    "id": "sec_paper_cardiopulmonary_resuscitation_cpr_q5",
-    "front": "Short Clinical Case",
-    "type": "case",
-    "caseBody": "A 10-month-old infant is brought into the resuscitation bay unresponsive, pulseless, and apneic. The resuscitation team leader institutes immediate basic life support maneuvers.",
-    "subQuestions": [
-      {
-        "id": "sec_paper_cardiopulmonary_resuscitation_cpr_q5_sub1",
-        "questionText": "Mention the 3 specific physical maneuvers that comprise the \"Triple Airway Maneuver\" to open the airway.",
-        "back": "Head tilt, Jaw thrust, and Mouth opening."
-      },
-      {
-        "id": "sec_paper_cardiopulmonary_resuscitation_cpr_q5_sub2",
-        "questionText": "What is the correct site, technique, and ratio of chest compressions required if two healthcare rescuers are present?",
-        "back": "Site is midsternum; technique is the two-thumb encircling method; compression-to-ventilation ratio is 15:2."
-      }
-    ]
-  }
-],
+      "id": "sec_paper_cardiopulmonary_resuscitation_cpr_q5",
+      "front": "Short Clinical Case",
+      "type": "case",
+      "caseBody": "A 10-month-old infant is brought into the resuscitation bay unresponsive, pulseless, and apneic. The resuscitation team leader institutes immediate basic life support maneuvers.",
+      "subQuestions": [
+        {
+          "id": "sec_paper_cardiopulmonary_resuscitation_cpr_q5_sub1",
+          "questionText": "Mention the 3 specific physical maneuvers that comprise the \"Triple Airway Maneuver\" to open the airway.",
+          "back": "Head tilt, Jaw thrust, and Mouth opening."
+        },
+        {
+          "id": "sec_paper_cardiopulmonary_resuscitation_cpr_q5_sub2",
+          "questionText": "What is the correct site, technique, and ratio of chest compressions required if two healthcare rescuers are present?",
+          "back": "Site is midsternum; technique is the two-thumb encircling method; compression-to-ventilation ratio is 15:2."
+        }
+      ]
+    }
+  ],
   "Shock": [
   {
-    "id": "sec_paper_shock_q1",
-    "front": "Define \"Circulatory Shock\".",
-    "back": "It is the clinical state of systemic circulatory inadequacy characterized by a disruption of tissue perfusion, leading to inadequate delivery of oxygen and nutrients to cells and inadequate removal of metabolic waste products from end organs."
-  },
+      "id": "sec_paper_shock_q1",
+      "front": "Define \"Circulatory Shock\".",
+      "back": "It is the clinical state of systemic circulatory inadequacy characterized by a disruption of tissue perfusion, leading to inadequate delivery of oxygen and nutrients to cells and inadequate removal of metabolic waste products from end organs."
+    },
   {
-    "id": "sec_paper_shock_q2",
-    "front": "Enumerate 4 prominent \"Types\" of shock categorized in pediatric emergency medicine.",
-    "back": "1. Hypovolemic shock (e.g., from severe dehydration or hemorrhage).\n2. Septic shock (systemic inflammatory response due to fulminant infection).\n3. Cardiogenic shock (due to acute heart failure or myocarditis).\n4. Distributive shock (e.g., Anaphylactic shock or Neurogenic shock)."
-  },
+      "id": "sec_paper_shock_q2",
+      "front": "Enumerate 4 prominent \"Types\" of shock categorized in pediatric emergency medicine.",
+      "back": "1. Hypovolemic shock (e.g., from severe dehydration or hemorrhage).\n2. Septic shock (systemic inflammatory response due to fulminant infection).\n3. Cardiogenic shock (due to acute heart failure or myocarditis).\n4. Distributive shock (e.g., Anaphylactic shock or Neurogenic shock)."
+    },
   {
-    "id": "sec_paper_shock_q3",
-    "front": "Enumerate 4 classic clinical findings that distinguish \"Compensated Shock\" from decompensated shock.",
-    "back": "1. Marked tachycardia.\n2. Delayed capillary refill time (>2 seconds).\n3. Cold, pale, or mottled peripheries.\n4. Normal or near-normal systolic blood pressure."
-  },
+      "id": "sec_paper_shock_q3",
+      "front": "Enumerate 4 classic clinical findings that distinguish \"Compensated Shock\" from decompensated shock.",
+      "back": "1. Marked tachycardia.\n2. Delayed capillary refill time (>2 seconds).\n3. Cold, pale, or mottled peripheries.\n4. Normal or near-normal systolic blood pressure."
+    },
   {
-    "id": "sec_paper_shock_q4",
-    "front": "Enumerate 4 vasoactive inotropic medications utilized in fluid-refractory shock, including their primary clinical indications.",
-    "back": "1. Epinephrine (Adrenaline): First-line agent for pediatric fluid-refractory cold septic shock or cardiogenic shock.\n2. Norepinephrine (Noradrenaline): First-line potent vasoconstrictor for warm distributive septic shock.\n3. Dobutamine: Strong inotrope indicated for low cardiac output states with a normal baseline blood pressure.\n4. Milrinone: Inodilator indicated for myocardial dysfunction, left ventricular failure, or post-cardiac surgery."
-  },
+      "id": "sec_paper_shock_q4",
+      "front": "Enumerate 4 vasoactive inotropic medications utilized in fluid-refractory shock, including their primary clinical indications.",
+      "back": "1. Epinephrine (Adrenaline): First-line agent for pediatric fluid-refractory cold septic shock or cardiogenic shock.\n2. Norepinephrine (Noradrenaline): First-line potent vasoconstrictor for warm distributive septic shock.\n3. Dobutamine: Strong inotrope indicated for low cardiac output states with a normal baseline blood pressure.\n4. Milrinone: Inodilator indicated for myocardial dysfunction, left ventricular failure, or post-cardiac surgery."
+    },
   {
-    "id": "sec_paper_shock_q5",
-    "front": "Short Clinical Case",
-    "type": "case",
-    "caseBody": "A 3-year-old child presents with a severe toxic look, high fever, cold hands, bounding peripheral pulses, and a delayed capillary refill of 4 seconds. His systolic blood pressure has dropped significantly below the normal range for his age, and he is passing minimal urine.",
-    "subQuestions": [
-      {
-        "id": "sec_paper_shock_q5_sub1",
-        "questionText": "Is this shock compensated or uncompensated?",
-        "back": "Uncompensated shock (due to the drop in blood pressure and organ hypoperfusion)."
-      },
-      {
-        "id": "sec_paper_shock_q5_sub2",
-        "questionText": "What is the immediate first-line preload fluid expansion protocol, including specific fluid type and initial dose?",
-        "back": "Intravenous bolus of an isotonic crystalloid (Normal Saline or Ringer's Lactate) at a dose of 20 ml/kg infused rapidly over 10-15 minutes."
-      }
-    ]
-  }
-],
+      "id": "sec_paper_shock_q5",
+      "front": "Short Clinical Case",
+      "type": "case",
+      "caseBody": "A 3-year-old child presents with a severe toxic look, high fever, cold hands, bounding peripheral pulses, and a delayed capillary refill of 4 seconds. His systolic blood pressure has dropped significantly below the normal range for his age, and he is passing minimal urine.",
+      "subQuestions": [
+        {
+          "id": "sec_paper_shock_q5_sub1",
+          "questionText": "Is this shock compensated or uncompensated?",
+          "back": "Uncompensated shock (due to the drop in blood pressure and organ hypoperfusion)."
+        },
+        {
+          "id": "sec_paper_shock_q5_sub2",
+          "questionText": "What is the immediate first-line preload fluid expansion protocol, including specific fluid type and initial dose?",
+          "back": "Intravenous bolus of an isotonic crystalloid (Normal Saline or Ringer's Lactate) at a dose of 20 ml/kg infused rapidly over 10-15 minutes."
+        }
+      ]
+    }
+  ],
   "Coma": [
   {
-    "id": "sec_paper_coma_q1",
-    "front": "Define \"Coma\".",
-    "back": "It is a state of prolonged, sustained unconsciousness from which the pediatric patient cannot be aroused, failing to show any purposeful response even to deep painful external stimuli."
-  },
+      "id": "sec_paper_coma_q1",
+      "front": "Define \"Coma\".",
+      "back": "It is a state of prolonged, sustained unconsciousness from which the pediatric patient cannot be aroused, failing to show any purposeful response even to deep painful external stimuli."
+    },
   {
-    "id": "sec_paper_coma_q2",
-    "front": "Enumerate 4 secondary brain lesions or encephalopathies that cause a secondary metabolic Coma.",
-    "back": "1. Hypoxic encephalopathy (following cardiac arrest or severe shock).\n2. Diabetic Ketoacidosis (DKA) encephalopathy.\n3. Hypoglycemic coma.\n4. Uremic or hepatic encephalopathy (secondary to acute renal or hepatic failure)."
-  },
+      "id": "sec_paper_coma_q2",
+      "front": "Enumerate 4 secondary brain lesions or encephalopathies that cause a secondary metabolic Coma.",
+      "back": "1. Hypoxic encephalopathy (following cardiac arrest or severe shock).\n2. Diabetic Ketoacidosis (DKA) encephalopathy.\n3. Hypoglycemic coma.\n4. Uremic or hepatic encephalopathy (secondary to acute renal or hepatic failure)."
+    },
   {
-    "id": "sec_paper_coma_q3",
-    "front": "Enumerate 4 urgent diagnostic laboratory or screening investigations required for a child presenting in an unexplained coma.",
-    "back": "1. Rapid blood glucose level (to rule out hypoglycemia or DKA).\n2. Arterial Blood Gases (ABG) and serum electrolytes.\n3. Renal function tests (blood urea nitrogen and creatinine) and liver enzymes.\n4. Urgent sepsis screening (CBC, CRP) and toxicological screening if suspected."
-  },
+      "id": "sec_paper_coma_q3",
+      "front": "Enumerate 4 urgent diagnostic laboratory or screening investigations required for a child presenting in an unexplained coma.",
+      "back": "1. Rapid blood glucose level (to rule out hypoglycemia or DKA).\n2. Arterial Blood Gases (ABG) and serum electrolytes.\n3. Renal function tests (blood urea nitrogen and creatinine) and liver enzymes.\n4. Urgent sepsis screening (CBC, CRP) and toxicological screening if suspected."
+    },
   {
-    "id": "sec_paper_coma_q4",
-    "front": "Enumerate 4 standard non-specific medical measures implemented to control acute increased Intracranial Pressure (ICP) in a comatose child.",
-    "back": "1. Head elevation to 30 degrees in a neutral midline position (to enhance venous drainage).\n2. Maintenance fluid restriction to approximately 70% of normal requirements.\n3. Administration of osmotic diuretics, specifically intravenous Mannitol (0.25-0.5 g/kg).\n4. Administration of loop diuretics (Lasix) and instituting controlled mechanical hyperventilation."
-  },
+      "id": "sec_paper_coma_q4",
+      "front": "Enumerate 4 standard non-specific medical measures implemented to control acute increased Intracranial Pressure (ICP) in a comatose child.",
+      "back": "1. Head elevation to 30 degrees in a neutral midline position (to enhance venous drainage).\n2. Maintenance fluid restriction to approximately 70% of normal requirements.\n3. Administration of osmotic diuretics, specifically intravenous Mannitol (0.25-0.5 g/kg).\n4. Administration of loop diuretics (Lasix) and instituting controlled mechanical hyperventilation."
+    },
   {
-    "id": "sec_paper_coma_q5",
-    "front": "Short Clinical Case",
-    "type": "case",
-    "caseBody": "A 5-year-old child is brought to the resuscitation room completely unconscious following a severe head injury. On physical assessment, he does not respond to painful stimuli, breathes spontaneously, features a bulging anterior fontanel, and demonstrates asymmetric sluggish pupillary responses to light.",
-    "subQuestions": [
-      {
-        "id": "sec_paper_coma_q5_sub1",
-        "questionText": "What does the presence of asymmetric pupillary responses and asymmetric motor signs indicate?",
-        "back": "It indicates a lateralizing sign, suggesting a focal brain lesion or localized mass effect/hemorrhage."
-      },
-      {
-        "id": "sec_paper_coma_q5_sub2",
-        "questionText": "Enumerate 2 gastrointestinal and eye/skin protective measures required in the daily management of this comatose child.",
-        "back": "Administration of antacids to prevent stress ulcers, and applying protective eye drops/ointments to prevent corneal damage."
-      }
-    ]
-  }
-],
+      "id": "sec_paper_coma_q5",
+      "front": "Short Clinical Case",
+      "type": "case",
+      "caseBody": "A 5-year-old child is brought to the resuscitation room completely unconscious following a severe head injury. On physical assessment, he does not respond to painful stimuli, breathes spontaneously, features a bulging anterior fontanel, and demonstrates asymmetric sluggish pupillary responses to light.",
+      "subQuestions": [
+        {
+          "id": "sec_paper_coma_q5_sub1",
+          "questionText": "What does the presence of asymmetric pupillary responses and asymmetric motor signs indicate?",
+          "back": "It indicates a lateralizing sign, suggesting a focal brain lesion or localized mass effect/hemorrhage."
+        },
+        {
+          "id": "sec_paper_coma_q5_sub2",
+          "questionText": "Enumerate 2 gastrointestinal and eye/skin protective measures required in the daily management of this comatose child.",
+          "back": "Administration of antacids to prevent stress ulcers, and applying protective eye drops/ointments to prevent corneal damage."
+        }
+      ]
+    }
+  ],
   "Glasgow Coma Scale and its Advantages": [
   {
-    "id": "sec_paper_glasgow_coma_scale_and_its_advantages_q1",
-    "front": "Define the \"Glasgow Coma Scale (GCS)\" and state its primary clinical purpose.",
-    "back": "It is an objective, standardized neurological scale providing a numerical score from 3 to 15 based on three behavioral parameters (Eye opening, Verbal response, Motor response), utilized to rapidly assess the depth of altered consciousness and cerebral cortical function."
-  },
+      "id": "sec_paper_glasgow_coma_scale_and_its_advantages_q1",
+      "front": "Define the \"Glasgow Coma Scale (GCS)\" and state its primary clinical purpose.",
+      "back": "It is an objective, standardized neurological scale providing a numerical score from 3 to 15 based on three behavioral parameters (Eye opening, Verbal response, Motor response), utilized to rapidly assess the depth of altered consciousness and cerebral cortical function."
+    },
   {
-    "id": "sec_paper_glasgow_coma_scale_and_its_advantages_q2",
-    "front": "Enumerate 4 distinct \"Advantages\" of utilizing the Glasgow Coma Scale in pediatric emergency settings.",
-    "back": "1. Objective and standardized: Eliminates subjective bias, providing a numerical score to easily track changes over time.\n2. Simple and quick: Can be rapidly applied at the bedside in emergency rooms, trauma bays, and PICUs.\n3. Widely accepted internationally: Allows clear, standardized communication regarding patient status between different medical providers.\n4. Strong predictive and triage value: A GCS score of 8 or less accurately identifies severe brain injury and dictates the immediate need for airway protection."
-  },
+      "id": "sec_paper_glasgow_coma_scale_and_its_advantages_q2",
+      "front": "Enumerate 4 distinct \"Advantages\" of utilizing the Glasgow Coma Scale in pediatric emergency settings.",
+      "back": "1. Objective and standardized: Eliminates subjective bias, providing a numerical score to easily track changes over time.\n2. Simple and quick: Can be rapidly applied at the bedside in emergency rooms, trauma bays, and PICUs.\n3. Widely accepted internationally: Allows clear, standardized communication regarding patient status between different medical providers.\n4. Strong predictive and triage value: A GCS score of 8 or less accurately identifies severe brain injury and dictates the immediate need for airway protection."
+    },
   {
-    "id": "sec_paper_glasgow_coma_scale_and_its_advantages_q3",
-    "front": "Enumerate 4 prominent \"Disadvantages or Limitations\" of the Glasgow Coma Scale.",
-    "back": "1. Limited utility in young preverbal infants: The verbal component is highly difficult to score accurately in children who cannot talk.\n2. Confounded by medical interventions: Therapeutic sedation, endotracheal intubation, or neuromuscular blockade completely alter or mask true scores.\n3. Fails to evaluate brainstem function directly: Crucial indicators like pupillary reactivity, oculocephalic reflexes, and corneal responses are entirely excluded.\n4. Fails to identify the etiology: It solely measures the clinical level of consciousness, providing no diagnostic insight into the cause of coma."
-  },
+      "id": "sec_paper_glasgow_coma_scale_and_its_advantages_q3",
+      "front": "Enumerate 4 prominent \"Disadvantages or Limitations\" of the Glasgow Coma Scale.",
+      "back": "1. Limited utility in young preverbal infants: The verbal component is highly difficult to score accurately in children who cannot talk.\n2. Confounded by medical interventions: Therapeutic sedation, endotracheal intubation, or neuromuscular blockade completely alter or mask true scores.\n3. Fails to evaluate brainstem function directly: Crucial indicators like pupillary reactivity, oculocephalic reflexes, and corneal responses are entirely excluded.\n4. Fails to identify the etiology: It solely measures the clinical level of consciousness, providing no diagnostic insight into the cause of coma."
+    },
   {
-    "id": "sec_paper_glasgow_coma_scale_and_its_advantages_q4",
-    "front": "Match the pediatric behavioral response with its correct points score on the GCS:",
-    "type": "matching",
-    "matchingPairs": [
-      {
-        "left": "Motor response: The patient localizes pain purposefully.",
-        "right": "5 Points."
-      },
-      {
-        "left": "Eye opening response: The patient opens eyes only in response to painful stimuli.",
-        "right": "2 Points."
-      }
-    ]
-  },
+      "id": "sec_paper_glasgow_coma_scale_and_its_advantages_q4",
+      "front": "Match the pediatric behavioral response with its correct points score on the GCS:",
+      "type": "matching",
+      "matchingPairs": [
+        {
+          "left": "Motor response: The patient localizes pain purposefully.",
+          "right": "5 Points."
+        },
+        {
+          "left": "Eye opening response: The patient opens eyes only in response to painful stimuli.",
+          "right": "2 Points."
+        }
+      ]
+    },
   {
-    "id": "sec_paper_glasgow_coma_scale_and_its_advantages_q5",
-    "front": "Short Clinical Case",
-    "type": "case",
-    "caseBody": "A 3-year-old child is evaluated in the emergency room following a fall. On assessment, she opens her eyes only when spoken to (3 points), emits consolable crying when irritable (4 points), and withdraws her limb from a painful stimulus (4 points).",
-    "subQuestions": [
-      {
-        "id": "sec_paper_glasgow_coma_scale_and_its_advantages_q5_sub1",
-        "questionText": "Calculate the total Glasgow Coma Scale score for this pediatric patient.",
-        "back": "Total GCS Score = 3 (Eye) + 4 (Verbal) + 4 (Motor) = 11."
-      },
-      {
-        "id": "sec_paper_glasgow_coma_scale_and_its_advantages_q5_sub2",
-        "questionText": "Does this patient's score indicate an immediate, mandatory requirement for endotracheal intubation based on GCS guidelines?",
-        "back": "No, aggressive airway protection and intubation are indicated when the GCS score drops to 8 or less."
-      }
-    ]
-  }
-],
+      "id": "sec_paper_glasgow_coma_scale_and_its_advantages_q5",
+      "front": "Short Clinical Case",
+      "type": "case",
+      "caseBody": "A 3-year-old child is evaluated in the emergency room following a fall. On assessment, she opens her eyes only when spoken to (3 points), emits consolable crying when irritable (4 points), and withdraws her limb from a painful stimulus (4 points).",
+      "subQuestions": [
+        {
+          "id": "sec_paper_glasgow_coma_scale_and_its_advantages_q5_sub1",
+          "questionText": "Calculate the total Glasgow Coma Scale score for this pediatric patient.",
+          "back": "Total GCS Score = 3 (Eye) + 4 (Verbal) + 4 (Motor) = 11."
+        },
+        {
+          "id": "sec_paper_glasgow_coma_scale_and_its_advantages_q5_sub2",
+          "questionText": "Does this patient's score indicate an immediate, mandatory requirement for endotracheal intubation based on GCS guidelines?",
+          "back": "No, aggressive airway protection and intubation are indicated when the GCS score drops to 8 or less."
+        }
+      ]
+    }
+  ],
   "Transient Cutaneous Lesions": [
   {
-    "id": "sec_paper_transient_cutaneous_lesions_q1",
-    "front": "Define \"Acrocyanosis\" in a newborn infant.",
-    "back": "It is a benign, common, and transient neonatal condition characterized by a harmless cyanotic discoloration of the hands and feet due to peripheral circulatory sluggishness and vasomotor instability, especially when exposed to cool temperatures."
-  },
+      "id": "sec_paper_transient_cutaneous_lesions_q1",
+      "front": "Define \"Acrocyanosis\" in a newborn infant.",
+      "back": "It is a benign, common, and transient neonatal condition characterized by a harmless cyanotic discoloration of the hands and feet due to peripheral circulatory sluggishness and vasomotor instability, especially when exposed to cool temperatures."
+    },
   {
-    "id": "sec_paper_transient_cutaneous_lesions_q2",
-    "front": "Enumerate 4 distinct benign \"Transient Cutaneous Lesions\" observed during a normal newborn skin examination.",
-    "back": "1. Mongolian spots (blue macular pigmentation over the buttocks).\n2. Erythema toxicum (white papules on an erythematous base containing eosinophils).\n3. Milia of the face (tiny white pinpoint papules representing distended sebaceous glands on the nose).\n4. Salmon patch (transitory macular capillary hemangiomas on the eyelids or neck)."
-  },
+      "id": "sec_paper_transient_cutaneous_lesions_q2",
+      "front": "Enumerate 4 distinct benign \"Transient Cutaneous Lesions\" observed during a normal newborn skin examination.",
+      "back": "1. Mongolian spots (blue macular pigmentation over the buttocks).\n2. Erythema toxicum (white papules on an erythematous base containing eosinophils).\n3. Milia of the face (tiny white pinpoint papules representing distended sebaceous glands on the nose).\n4. Salmon patch (transitory macular capillary hemangiomas on the eyelids or neck)."
+    },
   {
-    "id": "sec_paper_transient_cutaneous_lesions_q3",
-    "front": "Enumerate 4 clinical features or properties that define \"Erythema Toxicum\" in neonates.",
-    "back": "1. Develops 1 to 3 days after birth.\n2. Presents as small, white papules or vesiculopustules on an erythematous base.\n3. Lesions characteristically contain a high concentration of eosinophils on smear.\n4. Distributed primarily on the face, trunk, and extremities, resolving spontaneously within 1 week."
-  },
+      "id": "sec_paper_transient_cutaneous_lesions_q3",
+      "front": "Enumerate 4 clinical features or properties that define \"Erythema Toxicum\" in neonates.",
+      "back": "1. Develops 1 to 3 days after birth.\n2. Presents as small, white papules or vesiculopustules on an erythematous base.\n3. Lesions characteristically contain a high concentration of eosinophils on smear.\n4. Distributed primarily on the face, trunk, and extremities, resolving spontaneously within 1 week."
+    },
   {
-    "id": "sec_paper_transient_cutaneous_lesions_q4",
-    "front": "Match the transient neonatal skin finding with its proper descriptive definition:",
-    "type": "matching",
-    "matchingPairs": [
-      {
-        "left": "Distended sebaceous glands producing tiny white pinpoint papules on the nose and chin that disappear in 2-3 weeks.",
-        "right": "Milia."
-      },
-      {
-        "left": "Well-demarcated blue areas of pigmentation seen over the buttocks and back in more than 50% of newborns that fade in the first year.",
-        "right": "Mongolian spots."
-      }
-    ]
-  },
+      "id": "sec_paper_transient_cutaneous_lesions_q4",
+      "front": "Match the transient neonatal skin finding with its proper descriptive definition:",
+      "type": "matching",
+      "matchingPairs": [
+        {
+          "left": "Distended sebaceous glands producing tiny white pinpoint papules on the nose and chin that disappear in 2-3 weeks.",
+          "right": "Milia."
+        },
+        {
+          "left": "Well-demarcated blue areas of pigmentation seen over the buttocks and back in more than 50% of newborns that fade in the first year.",
+          "right": "Mongolian spots."
+        }
+      ]
+    },
   {
-    "id": "sec_paper_transient_cutaneous_lesions_q5",
-    "front": "Short Clinical Case",
-    "type": "case",
-    "caseBody": "A 2-day-old full-term healthy infant is noted by his mother to have an eruption of scattered small white bumps surrounded by a red ring across his chest and face. A skin scraping reveals the presence of numerous eosinophils. The infant is active and feeding well.",
-    "subQuestions": [
-      {
-        "id": "sec_paper_transient_cutaneous_lesions_q5_sub1",
-        "questionText": "What is the most likely diagnosis?",
-        "back": "Erythema Toxicum."
-      },
-      {
-        "id": "sec_paper_transient_cutaneous_lesions_q5_sub2",
-        "questionText": "What is the appropriate treatment line for this condition?",
-        "back": "No treatment is required; it is a benign condition that resolves spontaneously within a week."
-      }
-    ]
-  }
-],
+      "id": "sec_paper_transient_cutaneous_lesions_q5",
+      "front": "Short Clinical Case",
+      "type": "case",
+      "caseBody": "A 2-day-old full-term healthy infant is noted by his mother to have an eruption of scattered small white bumps surrounded by a red ring across his chest and face. A skin scraping reveals the presence of numerous eosinophils. The infant is active and feeding well.",
+      "subQuestions": [
+        {
+          "id": "sec_paper_transient_cutaneous_lesions_q5_sub1",
+          "questionText": "What is the most likely diagnosis?",
+          "back": "Erythema Toxicum."
+        },
+        {
+          "id": "sec_paper_transient_cutaneous_lesions_q5_sub2",
+          "questionText": "What is the appropriate treatment line for this condition?",
+          "back": "No treatment is required; it is a benign condition that resolves spontaneously within a week."
+        }
+      ]
+    }
+  ],
   "Prematurity and its Complications": [
   {
-    "id": "sec_paper_prematurity_and_its_complications_q1",
-    "front": "Define a \"Premature Infant\" according to the World Health Organization.",
-    "back": "It is defined as any live-born infant delivered before 37 completed weeks of gestation (less than 37 weeks)."
-  },
+      "id": "sec_paper_prematurity_and_its_complications_q1",
+      "front": "Define a \"Premature Infant\" according to the World Health Organization.",
+      "back": "It is defined as any live-born infant delivered before 37 completed weeks of gestation (less than 37 weeks)."
+    },
   {
-    "id": "sec_paper_prematurity_and_its_complications_q2",
-    "front": "Enumerate 4 major \"Physiological Handicaps\" resulting from the functional immaturity of organ systems in a premature infant.",
-    "back": "1. Immature thermoregulatory mechanisms (due to a large surface area, lack of subcutaneous fat, and immature centers).\n2. Respiratory center immaturity combined with a structural deficiency of pulmonary surfactant.\n3. Hepatic immaturity causing impaired conjugation of bilirubin and deficiency of Vitamin K-dependent clotting factors.\n4. Renal immaturity leading to a low glomerular filtration rate (GFR) and inability to effectively concentrate urine."
-  },
+      "id": "sec_paper_prematurity_and_its_complications_q2",
+      "front": "Enumerate 4 major \"Physiological Handicaps\" resulting from the functional immaturity of organ systems in a premature infant.",
+      "back": "1. Immature thermoregulatory mechanisms (due to a large surface area, lack of subcutaneous fat, and immature centers).\n2. Respiratory center immaturity combined with a structural deficiency of pulmonary surfactant.\n3. Hepatic immaturity causing impaired conjugation of bilirubin and deficiency of Vitamin K-dependent clotting factors.\n4. Renal immaturity leading to a low glomerular filtration rate (GFR) and inability to effectively concentrate urine."
+    },
   {
-    "id": "sec_paper_prematurity_and_its_complications_q3",
-    "front": "Enumerate 4 prominent \"Central Nervous System and Sensory\" complications that specifically affect preterm neonates.",
-    "back": "1. Intraventricular Hemorrhage (IVH).\n2. Periventricular Leukomalacia (PVL).\n3. Retinopathy of Prematurity (ROP).\n4. Kernicterus (bilirubin encephalopathy developing at lower total bilirubin thresholds)."
-  },
+      "id": "sec_paper_prematurity_and_its_complications_q3",
+      "front": "Enumerate 4 prominent \"Central Nervous System and Sensory\" complications that specifically affect preterm neonates.",
+      "back": "1. Intraventricular Hemorrhage (IVH).\n2. Periventricular Leukomalacia (PVL).\n3. Retinopathy of Prematurity (ROP).\n4. Kernicterus (bilirubin encephalopathy developing at lower total bilirubin thresholds)."
+    },
   {
-    "id": "sec_paper_prematurity_and_its_complications_q4",
-    "front": "Enumerate 4 basic elements required in the nutritional management and feeding protocol of a stable preterm infant in the NICU.",
-    "back": "1. Utilization of maternal breast milk or specialized preterm formulas.\n2. Implementation of small-volume trophic feedings (minimal enteral nutrition) within 2-4 hours of life if stable to avoid hypoglycemia.\n3. Utilizing a nasogastric tube (gavage feeding) or dropper if the infant lacks coordinated suckling and swallowing reflexes.\n4. Careful monitoring of gastric residuals before each feed, ensuring increments do not exceed 20 mL/kg/24 hr."
-  },
+      "id": "sec_paper_prematurity_and_its_complications_q4",
+      "front": "Enumerate 4 basic elements required in the nutritional management and feeding protocol of a stable preterm infant in the NICU.",
+      "back": "1. Utilization of maternal breast milk or specialized preterm formulas.\n2. Implementation of small-volume trophic feedings (minimal enteral nutrition) within 2-4 hours of life if stable to avoid hypoglycemia.\n3. Utilizing a nasogastric tube (gavage feeding) or dropper if the infant lacks coordinated suckling and swallowing reflexes.\n4. Careful monitoring of gastric residuals before each feed, ensuring increments do not exceed 20 mL/kg/24 hr."
+    },
   {
-    "id": "sec_paper_prematurity_and_its_complications_q5",
-    "front": "Short Clinical Case",
-    "type": "case",
-    "caseBody": "A male infant is delivered via emergency cesarean section at 31 weeks of gestation due to severe maternal pre-eclampsia. His birth weight is 1300 grams. On admission to the NICU, he is weak, hypoactive, has thin translucent skin, and underdeveloped sole creases.",
-    "subQuestions": [
-      {
-        "id": "sec_paper_prematurity_and_its_complications_q5_sub1",
-        "questionText": "Classify this newborn based on his birth weight category.",
-        "back": "Very Low Birth Weight (VLBW) infant (defined as a birth weight less than 1500 grams)."
-      },
-      {
-        "id": "sec_paper_prematurity_and_its_complications_q5_sub2",
-        "questionText": "Enumerate 2 immediate respiratory or gastrointestinal complications this preterm infant is at high risk of developing in his first week of life.",
-        "back": "Respiratory Distress Syndrome (RDS / Hyaline Membrane Disease) and Necrotizing Enterocolitis (NEC)."
-      }
-    ]
-  }
-],
+      "id": "sec_paper_prematurity_and_its_complications_q5",
+      "front": "Short Clinical Case",
+      "type": "case",
+      "caseBody": "A male infant is delivered via emergency cesarean section at 31 weeks of gestation due to severe maternal pre-eclampsia. His birth weight is 1300 grams. On admission to the NICU, he is weak, hypoactive, has thin translucent skin, and underdeveloped sole creases.",
+      "subQuestions": [
+        {
+          "id": "sec_paper_prematurity_and_its_complications_q5_sub1",
+          "questionText": "Classify this newborn based on his birth weight category.",
+          "back": "Very Low Birth Weight (VLBW) infant (defined as a birth weight less than 1500 grams)."
+        },
+        {
+          "id": "sec_paper_prematurity_and_its_complications_q5_sub2",
+          "questionText": "Enumerate 2 immediate respiratory or gastrointestinal complications this preterm infant is at high risk of developing in his first week of life.",
+          "back": "Respiratory Distress Syndrome (RDS / Hyaline Membrane Disease) and Necrotizing Enterocolitis (NEC)."
+        }
+      ]
+    }
+  ],
   "Physiological Jaundice and its differentiation from Pathological Jaundice": [
   {
-    "id": "sec_paper_physiological_jaundice_and_its_differentiation_from_pathological_jaundice_q1",
-    "front": "Define \"Neonatal Jaundice\".",
-    "back": "It is the yellowish discoloration of the skin, sclera, and mucous membranes in a newborn infant, caused by the systemic accumulation of bilirubin exceeding 1 mg/dL due to increased RBC turnover and immature conjugation."
-  },
+      "id": "sec_paper_physiological_jaundice_and_its_differentiation_from_pathological_jaundice_q1",
+      "front": "Define \"Neonatal Jaundice\".",
+      "back": "It is the yellowish discoloration of the skin, sclera, and mucous membranes in a newborn infant, caused by the systemic accumulation of bilirubin exceeding 1 mg/dL due to increased RBC turnover and immature conjugation."
+    },
   {
-    "id": "sec_paper_physiological_jaundice_and_its_differentiation_from_pathological_jaundice_q2",
-    "front": "Enumerate 4 core clinical characteristics of \"Physiological Jaundice\" in a full-term infant.",
-    "back": "1. It appears after the first 24 hours of life (typically on the second or third day).\n2. The total serum bilirubin level is mild and remains below 12 mg/dL.\n3. It reaches a peak at day 3 to 5, and resolves spontaneously within 7 days.\n4. The infant is completely healthy, active, feeds well, and exhibits no anemia or hepatosplenomegaly."
-  },
+      "id": "sec_paper_physiological_jaundice_and_its_differentiation_from_pathological_jaundice_q2",
+      "front": "Enumerate 4 core clinical characteristics of \"Physiological Jaundice\" in a full-term infant.",
+      "back": "1. It appears after the first 24 hours of life (typically on the second or third day).\n2. The total serum bilirubin level is mild and remains below 12 mg/dL.\n3. It reaches a peak at day 3 to 5, and resolves spontaneously within 7 days.\n4. The infant is completely healthy, active, feeds well, and exhibits no anemia or hepatosplenomegaly."
+    },
   {
-    "id": "sec_paper_physiological_jaundice_and_its_differentiation_from_pathological_jaundice_q3",
-    "front": "Enumerate 4 distinct clinical or laboratory warning signs that signify the presence of \"Pathological Jaundice\".",
-    "back": "1. Jaundice that appears within the first 24 hours of life.\n2. Total serum bilirubin rising rapidly at a rate faster than 5 mg/dL/24 hours.\n3. Total serum bilirubin exceeding 12 mg/dL in a full-term infant or 14 mg/dL in a preterm infant.\n4. Jaundice that persists beyond 14 days of life, or is associated with a high direct-reacting (conjugated) bilirubin fraction."
-  },
+      "id": "sec_paper_physiological_jaundice_and_its_differentiation_from_pathological_jaundice_q3",
+      "front": "Enumerate 4 distinct clinical or laboratory warning signs that signify the presence of \"Pathological Jaundice\".",
+      "back": "1. Jaundice that appears within the first 24 hours of life.\n2. Total serum bilirubin rising rapidly at a rate faster than 5 mg/dL/24 hours.\n3. Total serum bilirubin exceeding 12 mg/dL in a full-term infant or 14 mg/dL in a preterm infant.\n4. Jaundice that persists beyond 14 days of life, or is associated with a high direct-reacting (conjugated) bilirubin fraction."
+    },
   {
-    "id": "sec_paper_physiological_jaundice_and_its_differentiation_from_pathological_jaundice_q4",
-    "front": "Enumerate 4 common underlying clinical risk factors that can lead to an exaggerated or severe physiological jaundice.",
-    "back": "1. Prematurity or near-term gestational age.\n2. Maternal diabetes mellitus.\n3. Polycythemia or significant cutaneous bruising/cephalohematoma.\n4. Excessive neonatal weight loss due to dehydration or caloric deprivation from delayed breastfeeding."
-  },
+      "id": "sec_paper_physiological_jaundice_and_its_differentiation_from_pathological_jaundice_q4",
+      "front": "Enumerate 4 common underlying clinical risk factors that can lead to an exaggerated or severe physiological jaundice.",
+      "back": "1. Prematurity or near-term gestational age.\n2. Maternal diabetes mellitus.\n3. Polycythemia or significant cutaneous bruising/cephalohematoma.\n4. Excessive neonatal weight loss due to dehydration or caloric deprivation from delayed breastfeeding."
+    },
   {
-    "id": "sec_paper_physiological_jaundice_and_its_differentiation_from_pathological_jaundice_q5",
-    "front": "Short Clinical Case",
-    "type": "case",
-    "caseBody": "A full-term healthy infant develops mild jaundice on his third day of life. He is active, breastfeeds eagerly, and has completely normal stool and urine color. His serum bilirubin is checked and reveals a level of 9 mg/dL, which is entirely unconjugated.",
-    "subQuestions": [
-      {
-        "id": "sec_paper_physiological_jaundice_and_its_differentiation_from_pathological_jaundice_q5_sub1",
-        "questionText": "What is the diagnostic classification of this jaundice?",
-        "back": "Physiological Jaundice."
-      },
-      {
-        "id": "sec_paper_physiological_jaundice_and_its_differentiation_from_pathological_jaundice_q5_sub2",
-        "questionText": "What is the expected course and recommended treatment line for this infant?",
-        "back": "It will resolve spontaneously within 7 days; no treatment is required except clinical observation and ensuring adequate feeding."
-      }
-    ]
-  }
-],
+      "id": "sec_paper_physiological_jaundice_and_its_differentiation_from_pathological_jaundice_q5",
+      "front": "Short Clinical Case",
+      "type": "case",
+      "caseBody": "A full-term healthy infant develops mild jaundice on his third day of life. He is active, breastfeeds eagerly, and has completely normal stool and urine color. His serum bilirubin is checked and reveals a level of 9 mg/dL, which is entirely unconjugated.",
+      "subQuestions": [
+        {
+          "id": "sec_paper_physiological_jaundice_and_its_differentiation_from_pathological_jaundice_q5_sub1",
+          "questionText": "What is the diagnostic classification of this jaundice?",
+          "back": "Physiological Jaundice."
+        },
+        {
+          "id": "sec_paper_physiological_jaundice_and_its_differentiation_from_pathological_jaundice_q5_sub2",
+          "questionText": "What is the expected course and recommended treatment line for this infant?",
+          "back": "It will resolve spontaneously within 7 days; no treatment is required except clinical observation and ensuring adequate feeding."
+        }
+      ]
+    }
+  ],
   "Pathological Jaundice": [
   {
-    "id": "sec_paper_pathological_jaundice_q1",
-    "front": "Enumerate 4 characteristic \"Clinical Features\" of Pathological Jaundice caused specifically by ABO Incompatibility.",
-    "back": "1. Early onset of jaundice developing within the first 24 hours of life.\n2. Presence of hemolytic anemia and active hemolysis.\n3. Significant elevation of toxic unconjugated bilirubin.\n4. Presence of a positive direct Coombs test result."
-  },
+      "id": "sec_paper_pathological_jaundice_q1",
+      "front": "Enumerate 4 characteristic \"Clinical Features\" of Pathological Jaundice caused specifically by ABO Incompatibility.",
+      "back": "1. Early onset of jaundice developing within the first 24 hours of life.\n2. Presence of hemolytic anemia and active hemolysis.\n3. Significant elevation of toxic unconjugated bilirubin.\n4. Presence of a positive direct Coombs test result."
+    },
   {
-    "id": "sec_paper_pathological_jaundice_q2",
-    "front": "Enumerate 4 distinct \"Clinical Features\" that define the presentation of Galactosemia in a newborn.",
-    "back": "1. Onset of severe pathological jaundice shortly after milk feeding is initiated.\n2. Severe vomiting and poor feeding.\n3. Marked hepatomegaly.\n4. Presence of hypoglycemia and reducing substances in the urine."
-  },
+      "id": "sec_paper_pathological_jaundice_q2",
+      "front": "Enumerate 4 distinct \"Clinical Features\" that define the presentation of Galactosemia in a newborn.",
+      "back": "1. Onset of severe pathological jaundice shortly after milk feeding is initiated.\n2. Severe vomiting and poor feeding.\n3. Marked hepatomegaly.\n4. Presence of hypoglycemia and reducing substances in the urine."
+    },
   {
-    "id": "sec_paper_pathological_jaundice_q3",
-    "front": "Enumerate 4 characteristic clinical or laboratory manifestations of Extrahepatic Biliary Atresia.",
-    "back": "1. Persistent jaundice that continues or worsens beyond 2 weeks of age.\n2. Progressively pale, clay-colored, or acholic stools.\n3. Dark yellow urine that stains the diaper.\n4. Persistent conjugated (direct) hyperbilirubinemia accompanied by hepatomegaly."
-  },
+      "id": "sec_paper_pathological_jaundice_q3",
+      "front": "Enumerate 4 characteristic clinical or laboratory manifestations of Extrahepatic Biliary Atresia.",
+      "back": "1. Persistent jaundice that continues or worsens beyond 2 weeks of age.\n2. Progressively pale, clay-colored, or acholic stools.\n3. Dark yellow urine that stains the diaper.\n4. Persistent conjugated (direct) hyperbilirubinemia accompanied by hepatomegaly."
+    },
   {
-    "id": "sec_paper_pathological_jaundice_q4",
-    "front": "Enumerate the clinical presentation findings that distinguish \"Breast Milk Jaundice\" from other forms of pathological hyperbilirubinemia.",
-    "back": "1. It typically appears later, during the first or second week of life.\n2. It presents as a mild, prolonged, but completely unconjugated hyperbilirubinemia.\n3. The infant is completely healthy, active, and gaining weight normally.\n4. Stool and urine maintain completely normal color, and breastfeeding should safely continue."
-  },
+      "id": "sec_paper_pathological_jaundice_q4",
+      "front": "Enumerate the clinical presentation findings that distinguish \"Breast Milk Jaundice\" from other forms of pathological hyperbilirubinemia.",
+      "back": "1. It typically appears later, during the first or second week of life.\n2. It presents as a mild, prolonged, but completely unconjugated hyperbilirubinemia.\n3. The infant is completely healthy, active, and gaining weight normally.\n4. Stool and urine maintain completely normal color, and breastfeeding should safely continue."
+    },
   {
-    "id": "sec_paper_pathological_jaundice_q5",
-    "front": "Short Clinical Case",
-    "type": "case",
-    "caseBody": "A 3-week-old female infant presents with a history of persistent yellow skin. Her mother reports that the baby's stools are clay-colored and her urine is dark. On examination, she has a firm, enlarged liver. Laboratory analysis demonstrates severe conjugated hyperbilirubinemia.",
-    "subQuestions": [
-      {
-        "id": "sec_paper_pathological_jaundice_q5_sub1",
-        "questionText": "What is the most likely diagnosis?",
-        "back": "Extrahepatic Biliary Atresia."
-      },
-      {
-        "id": "sec_paper_pathological_jaundice_q5_sub2",
-        "questionText": "What is the required definitive management, and what is its prognosis if delayed?",
-        "back": "Early surgical intervention (Kasai portoenterostomy); delay significantly worsens the prognosis, leading to biliary cirrhosis."
-      }
-    ]
-  }
-],
+      "id": "sec_paper_pathological_jaundice_q5",
+      "front": "Short Clinical Case",
+      "type": "case",
+      "caseBody": "A 3-week-old female infant presents with a history of persistent yellow skin. Her mother reports that the baby's stools are clay-colored and her urine is dark. On examination, she has a firm, enlarged liver. Laboratory analysis demonstrates severe conjugated hyperbilirubinemia.",
+      "subQuestions": [
+        {
+          "id": "sec_paper_pathological_jaundice_q5_sub1",
+          "questionText": "What is the most likely diagnosis?",
+          "back": "Extrahepatic Biliary Atresia."
+        },
+        {
+          "id": "sec_paper_pathological_jaundice_q5_sub2",
+          "questionText": "What is the required definitive management, and what is its prognosis if delayed?",
+          "back": "Early surgical intervention (Kasai portoenterostomy); delay significantly worsens the prognosis, leading to biliary cirrhosis."
+        }
+      ]
+    }
+  ],
   "Complications of Indirect Hyperbilirubinemia": [
   {
-    "id": "sec_paper_complications_of_indirect_hyperbilirubinemia_q1",
-    "front": "Define \"Kernicterus (Bilirubin Encephalopathy)\".",
-    "back": "It is a severe neurological syndrome resulting from the structural deposition of unconjugated bilirubin in the basal ganglia and brainstem nuclei, leading to irreversible cell death and neural damage."
-  },
+      "id": "sec_paper_complications_of_indirect_hyperbilirubinemia_q1",
+      "front": "Define \"Kernicterus (Bilirubin Encephalopathy)\".",
+      "back": "It is a severe neurological syndrome resulting from the structural deposition of unconjugated bilirubin in the basal ganglia and brainstem nuclei, leading to irreversible cell death and neural damage."
+    },
   {
-    "id": "sec_paper_complications_of_indirect_hyperbilirubinemia_q2",
-    "front": "Enumerate 4 predisposing clinical risk factors that facilitate the development of Kernicterus.",
-    "back": "1. Severe, uncontrolled unconjugated hyperbilirubinemia.\n2. Severe hypoalbuminemia (decreasing bilirubin binding capacity).\n3. Disruption or increased permeability of the blood-brain barrier (caused by hypoxia, acidosis, or sepsis).\n4. Administration of drugs that compete for albumin binding sites (such as sulfonamides, salicylates, or heavy vitamin K3)."
-  },
+      "id": "sec_paper_complications_of_indirect_hyperbilirubinemia_q2",
+      "front": "Enumerate 4 predisposing clinical risk factors that facilitate the development of Kernicterus.",
+      "back": "1. Severe, uncontrolled unconjugated hyperbilirubinemia.\n2. Severe hypoalbuminemia (decreasing bilirubin binding capacity).\n3. Disruption or increased permeability of the blood-brain barrier (caused by hypoxia, acidosis, or sepsis).\n4. Administration of drugs that compete for albumin binding sites (such as sulfonamides, salicylates, or heavy vitamin K3)."
+    },
   {
-    "id": "sec_paper_complications_of_indirect_hyperbilirubinemia_q3",
-    "front": "Enumerate 4 clinical signs seen during Phase 1 (the first 1-2 days) of the acute form of Kernicterus.",
-    "back": "1. Poor sucking and feeding intolerance.\n2. Loss of the normal Moro reflex.\n3. Marked lethargy or stupor.\n4. Hypotonia accompanied by a high-pitched cry or seizures."
-  },
+      "id": "sec_paper_complications_of_indirect_hyperbilirubinemia_q3",
+      "front": "Enumerate 4 clinical signs seen during Phase 1 (the first 1-2 days) of the acute form of Kernicterus.",
+      "back": "1. Poor sucking and feeding intolerance.\n2. Loss of the normal Moro reflex.\n3. Marked lethargy or stupor.\n4. Hypotonia accompanied by a high-pitched cry or seizures."
+    },
   {
-    "id": "sec_paper_complications_of_indirect_hyperbilirubinemia_q4",
-    "front": "Enumerate 4 prominent long-term manifestations that comprise the complete chronic neurological syndrome of Kernicterus by 3 years of age.",
-    "back": "1. Bilateral choreoathetosis (extrapyramidal involuntary movements) and muscle rigidity.\n2. Mental deficiency / cognitive impairment.\n3. High-frequency sensorineural hearing loss.\n4. Squinting and defective upward movement of the eyes."
-  },
+      "id": "sec_paper_complications_of_indirect_hyperbilirubinemia_q4",
+      "front": "Enumerate 4 prominent long-term manifestations that comprise the complete chronic neurological syndrome of Kernicterus by 3 years of age.",
+      "back": "1. Bilateral choreoathetosis (extrapyramidal involuntary movements) and muscle rigidity.\n2. Mental deficiency / cognitive impairment.\n3. High-frequency sensorineural hearing loss.\n4. Squinting and defective upward movement of the eyes."
+    },
   {
-    "id": "sec_paper_complications_of_indirect_hyperbilirubinemia_q5",
-    "front": "Short Clinical Case",
-    "type": "case",
-    "caseBody": "A 5-day-old term infant with a total serum bilirubin level of 34 mg/dL exhibits poor sucking, hypotonia, a high-pitched cry, and an episodic backwards arching of his neck and trunk (opisthotonos).",
-    "subQuestions": [
-      {
-        "id": "sec_paper_complications_of_indirect_hyperbilirubinemia_q5_sub1",
-        "questionText": "What severe complication has this infant developed?",
-        "back": "Bilirubin Encephalopathy / Acute Kernicterus."
-      },
-      {
-        "id": "sec_paper_complications_of_indirect_hyperbilirubinemia_q5_sub2",
-        "questionText": "Enumerate 2 major therapeutic modalities used immediately to reduce indirect bilirubin levels below neurotoxic thresholds.",
-        "back": "Intensive Phototherapy and immediate Exchange Transfusion."
-      }
-    ]
-  }
-],
+      "id": "sec_paper_complications_of_indirect_hyperbilirubinemia_q5",
+      "front": "Short Clinical Case",
+      "type": "case",
+      "caseBody": "A 5-day-old term infant with a total serum bilirubin level of 34 mg/dL exhibits poor sucking, hypotonia, a high-pitched cry, and an episodic backwards arching of his neck and trunk (opisthotonos).",
+      "subQuestions": [
+        {
+          "id": "sec_paper_complications_of_indirect_hyperbilirubinemia_q5_sub1",
+          "questionText": "What severe complication has this infant developed?",
+          "back": "Bilirubin Encephalopathy / Acute Kernicterus."
+        },
+        {
+          "id": "sec_paper_complications_of_indirect_hyperbilirubinemia_q5_sub2",
+          "questionText": "Enumerate 2 major therapeutic modalities used immediately to reduce indirect bilirubin levels below neurotoxic thresholds.",
+          "back": "Intensive Phototherapy and immediate Exchange Transfusion."
+        }
+      ]
+    }
+  ],
   "Neonatal Sepsis": [
   {
-    "id": "sec_paper_neonatal_sepsis_q1",
-    "front": "Define \"Neonatal Sepsis (Septicemia)\".",
-    "back": "It is a clinical syndrome of systemic illness characterized by signs of systemic infection and accompanied by documented bacteremia occurring within the first 4 weeks of life."
-  },
-  {
-    "id": "sec_paper_neonatal_sepsis_q2",
-    "front": "Enumerate 4 critical \"Maternal Risk Factors\" strongly correlated with the development of early-onset Neonatal Sepsis.",
-    "back": "1. Premature Rupture of Membranes (PROM) lasting longer than 24 hours.\n2. Maternal peripartum fever (temperature >=38°C) or documented chorioamnionitis.\n3. Active maternal urinary tract infection (UTI) or perineal colonization with E. coli/GBS.\n4. Foul-smelling, cloudy, or meconium-stained amniotic fluid."
-  },
-  {
-    "id": "sec_paper_neonatal_sepsis_q3",
-    "front": "Enumerate the 7 clinical components/signs utilized to calculate the \"Clinical Sepsis Score\" (Sepsis is suspected if 3 or more are present).",
-    "back": "1. Respiratory signs: Apnea, tachypnea, cyanosis, or respiratory distress.\n2. Cardiovascular signs: Bradycardia or tachycardia.\n3. Neuromuscular signs: Hypotonia or seizures.\n4. Circulatory signs: Poor skin color or poor peripheral circulation.\n5. Behavioral signs: Irritability, lethargy, or poor feeding.\n6. Gastrointestinal signs: Hepatosplenomegaly or abdominal distension.\n7. Metabolic signs: Fever or hypothermia."
-  },
-  {
-    "id": "sec_paper_neonatal_sepsis_q4",
-    "front": "Enumerate 4 inflammatory laboratory biomarkers or findings included in a neonatal Sepsis Workup.",
-    "back": "1. Neutropenia (a sign of severe sepsis) or neutrophilia.\n2. An elevated ratio of immature band cells to total neutrophils greater than 0.2.\n3. Marked thrombocytopenia (a late finding).\n4. Significantly elevated acute-phase reactants, specifically C-Reactive Protein (CRP) and ESR."
-  },
-  {
-    "id": "sec_paper_neonatal_sepsis_q5",
-    "front": "Short Clinical Case",
-    "type": "case",
-    "caseBody": "A 4-day-old preterm infant in the NICU exhibits a sudden onset of temperature instability (hypothermia of 35.4°C), poor feeding, new-onset apneic spells, and severe abdominal distention. The maternal history confirms a prolonged rupture of membranes lasting 30 hours.",
-    "subQuestions": [
-      {
-        "id": "sec_paper_neonatal_sepsis_q5_sub1",
-        "questionText": "Calculate the infant's clinical status based on the Clinical Sepsis Score parameters.",
-        "back": "The infant exhibits 4 positive signs (respiratory/apnea, behavioral/poor feeding, GI/distention, metabolic/hypothermia), strongly indicating sepsis as the score is >=3."
-      },
-      {
-        "id": "sec_paper_neonatal_sepsis_q5_sub2",
-        "questionText": "Mention the diagnostic category if this infant features a highly suggestive clinical picture alongside a positive blood culture for Klebsiella.",
-        "back": "Proven Neonatal Sepsis."
-      }
-    ]
-  }
-],
-
-  "_SUBCHAPTER_Growth & Development": [
-    {
-      "id": "sub_gd_enum_1",
-      "front": "Enumerate four clinical uses of Percentile Curves in growth charts.",
-      "back": "Early detection of protein energy malnutrition (by tracking flattening of the weight curve).\nEarly detection of hydrocephalus (by tracking jumping of head circumference curve above normal percentiles).\nDetermination of risk for obesity (if BMI lies between 85th - 95th percentiles).\nDiagnosis of overweight or obesity (if BMI is above the 95th percentile)."
+      "id": "sec_paper_neonatal_sepsis_q1",
+      "front": "Define \"Neonatal Sepsis (Septicemia)\".",
+      "back": "It is a clinical syndrome of systemic illness characterized by signs of systemic infection and accompanied by documented bacteremia occurring within the first 4 weeks of life."
     },
-    {
-      "id": "sub_gd_enum_2",
-      "front": "Enumerate four key development warning signs in children.",
-      "back": "Persistence of primitive reflexes beyond 6 months of age.\nNot walking by 18 months of age.\nNo clear spoken words by 18 months of age.\nNo two-word sentences by 2 years of age."
+  {
+      "id": "sec_paper_neonatal_sepsis_q2",
+      "front": "Enumerate 4 critical \"Maternal Risk Factors\" strongly correlated with the development of early-onset Neonatal Sepsis.",
+      "back": "1. Premature Rupture of Membranes (PROM) lasting longer than 24 hours.\n2. Maternal peripartum fever (temperature >=38°C) or documented chorioamnionitis.\n3. Active maternal urinary tract infection (UTI) or perineal colonization with E. coli/GBS.\n4. Foul-smelling, cloudy, or meconium-stained amniotic fluid."
     },
-    {
-      "id": "sub_gd_def_1",
-      "front": "Define the terms \"Growth\" and \"Development\".",
-      "back": "* Growth: Natural increase in the size of the body either by hyperplasia or hypertrophy.\n* Development: Functional maturation of the central nervous system leading to gaining skills and social adaptation."
+  {
+      "id": "sec_paper_neonatal_sepsis_q3",
+      "front": "Enumerate the 7 clinical components/signs utilized to calculate the \"Clinical Sepsis Score\" (Sepsis is suspected if 3 or more are present).",
+      "back": "1. Respiratory signs: Apnea, tachypnea, cyanosis, or respiratory distress.\n2. Cardiovascular signs: Bradycardia or tachycardia.\n3. Neuromuscular signs: Hypotonia or seizures.\n4. Circulatory signs: Poor skin color or poor peripheral circulation.\n5. Behavioral signs: Irritability, lethargy, or poor feeding.\n6. Gastrointestinal signs: Hepatosplenomegaly or abdominal distension.\n7. Metabolic signs: Fever or hypothermia."
     },
-    {
-      "id": "sub_gd_list_1",
-      "front": "List four major causes of Delayed Walking in pediatrics.",
-      "back": "Cerebral palsy.\nMental retardation.\nMuscles disorders (like Duchenne).\nChronic systemic disorders."
+  {
+      "id": "sec_paper_neonatal_sepsis_q4",
+      "front": "Enumerate 4 inflammatory laboratory biomarkers or findings included in a neonatal Sepsis Workup.",
+      "back": "1. Neutropenia (a sign of severe sepsis) or neutrophilia.\n2. An elevated ratio of immature band cells to total neutrophils greater than 0.2.\n3. Marked thrombocytopenia (a late finding).\n4. Significantly elevated acute-phase reactants, specifically C-Reactive Protein (CRP) and ESR."
     },
-    {
-      "id": "sub_gd_case_1",
-      "front": "Case 1",
+  {
+      "id": "sec_paper_neonatal_sepsis_q5",
+      "front": "Short Clinical Case",
       "type": "case",
-      "caseBody": "A Mother brings her 18-month-old male infant to the pediatric clinic complaining that he cannot walk alone or even with support. On examination, the infant shows marked head lag on pulling up from a supine position and an exaggerated \"U-shape\" during ventral suspension.",
+      "caseBody": "A 4-day-old preterm infant in the NICU exhibits a sudden onset of temperature instability (hypothermia of 35.4°C), poor feeding, new-onset apneic spells, and severe abdominal distention. The maternal history confirms a prolonged rupture of membranes lasting 30 hours.",
       "subQuestions": [
         {
-          "id": "sub_gd_case_1_q1",
-          "questionText": "What is your provisional diagnosis?",
-          "back": "Delayed walking due to severe hypotonia (Floppy Infant syndrome)."
+          "id": "sec_paper_neonatal_sepsis_q5_sub1",
+          "questionText": "Calculate the infant's clinical status based on the Clinical Sepsis Score parameters.",
+          "back": "The infant exhibits 4 positive signs (respiratory/apnea, behavioral/poor feeding, GI/distention, metabolic/hypothermia), strongly indicating sepsis as the score is >=3."
         },
         {
-          "id": "sub_gd_case_1_q2",
-          "questionText": "Mention two lower motor unit disorders that can cause this presentation.",
-          "back": "1. Werdnig-Hoffmann disease (Anterior horn cell disease)\n2. Congenital myopathy / Muscular dystrophy."
-        }
-      ]
-    },
-    {
-      "id": "sub_gd_case_2",
-      "front": "Case 2",
-      "type": "case",
-      "caseBody": "A 3-year-old boy is evaluated for short stature. His height is below the 3rd percentile on the growth chart. On reviewing his medical records, his height velocity is low-normal and running parallel to the 3rd percentile. His bone age is delayed compared to his chronologic age. His parents noted that there is a history of late pubertal growth in the family.",
-      "subQuestions": [
-        {
-          "id": "sub_gd_case_2_q1",
-          "questionText": "What is the most likely diagnosis for this normal variant of growth?",
-          "back": "Constitutional delay of growth and puberty (CDGP)."
-        },
-        {
-          "id": "sub_gd_case_2_q2",
-          "questionText": "How can you distinguish this condition from Familial Short Stature?",
-          "back": "In Familial Short Stature, the bone age is consistent with chronologic age, whereas in CDGP, the bone age is characteristically delayed."
-        }
-      ]
-    },
-    {
-      "id": "new_match_gd_charts",
-      "front": "Match the description to the correct type of growth curve:",
-      "type": "matching",
-      "matchingPairs": [
-        {
-          "left": "Used clinically to determine the response to treatment of pathologic short stature, such as treatment by growth hormone and thyroxine.",
-          "right": "Velocity Curves"
-        },
-        {
-          "left": "These are centiles in which the reference data are adjusted for some specific factor over or above age and sex, such as midparent height.",
-          "right": "Conditional Centiles"
-        },
-        {
-          "left": "Used for early detection of protein energy malnutrition by following a flattening curve, or early detection of hydrocephalus if jumping to above curves.",
-          "right": "Percentile Curves"
-        },
-        {
-          "left": "Used to diagnose microcephaly or short stature if a body parameter falls at or below -2SD from the expected mean.",
-          "right": "Standard Deviation Curves"
-        }
-      ]
-    },
-    {
-      "id": "new_match_gd_milestones_early",
-      "front": "Match the developmental milestone to the correct age (Early Infancy):",
-      "type": "matching",
-      "matchingPairs": [
-        {
-          "left": "At this age, Moro reflexes completely disappear, the infant sits with support, rolls from back to front, and recognizes the mother.",
-          "right": "4 Months"
-        },
-        {
-          "left": "At this age, the infant raises the head more when prone briefly, lifts the head to 45 degrees in prone, and smiles socially.",
-          "right": "2 Months"
-        },
-        {
-          "left": "The infant achieves continuous head support, coos, brings hands together (hand regards), and anticipates feeding.",
-          "right": "3 Months"
-        },
-        {
-          "left": "The infant is now able to sit without support with a characteristically round back and can transfer objects from one hand to another.",
-          "right": "6 Months"
-        }
-      ]
-    },
-    {
-      "id": "new_match_gd_milestones_late",
-      "front": "Match the developmental milestone to the correct age (Late Infancy to Early Toddler):",
-      "type": "matching",
-      "matchingPairs": [
-        {
-          "left": "The infant can creep or crawl, pulls to a standing position, and develops a pincer grip (grasp by thumb and finger).",
-          "right": "9 Months"
-        },
-        {
-          "left": "The child walks alone or with one hand unsteadily with a broad gait, stops mouthing objects, and says 2-3 words.",
-          "right": "12 Months"
-        },
-        {
-          "left": "The child walks well steadily, drinks from a cup, speaks in baby's own jargon, and achieves sphincter control by daytime.",
-          "right": "15 Months"
-        },
-        {
-          "left": "The infant sits completely without support with a straight back and is able to grasp objects by palm.",
-          "right": "8 Months"
-        }
-      ]
-    },
-    {
-      "id": "new_match_gd_milestones_advanced",
-      "front": "Match the developmental milestone to the correct age (Advanced Toddler to Childhood):",
-      "type": "matching",
-      "matchingPairs": [
-        {
-          "left": "The child jumps, copies a circle or a cross, counts 3 objects, and dresses himself with supervision.",
-          "right": "3 Years"
-        },
-        {
-          "left": "The child walks upstairs with one hand, downstairs step by step, uses 2-3 word sentences, and achieves sphincter control day and night.",
-          "right": "2 Years"
-        },
-        {
-          "left": "The child runs, builds a tower of 3 cups, and has an average vocabulary of 10 words.",
-          "right": "18 Months"
-        },
-        {
-          "left": "The child hops on one foot, buttons and unbuttons clothes, draws a man, names colors, and goes to the toilet.",
-          "right": "4 Years"
+          "id": "sec_paper_neonatal_sepsis_q5_sub2",
+          "questionText": "Mention the diagnostic category if this infant features a highly suggestive clinical picture alongside a positive blood culture for Klebsiella.",
+          "back": "Proven Neonatal Sepsis."
         }
       ]
     }
+  ],
+  "_SUBCHAPTER_Growth & Development": [
+  {
+        "id": "sub_gd_enum_1",
+        "front": "Enumerate four clinical uses of Percentile Curves in growth charts.",
+        "back": "Early detection of protein energy malnutrition (by tracking flattening of the weight curve).\nEarly detection of hydrocephalus (by tracking jumping of head circumference curve above normal percentiles).\nDetermination of risk for obesity (if BMI lies between 85th - 95th percentiles).\nDiagnosis of overweight or obesity (if BMI is above the 95th percentile)."
+      },
+  {
+        "id": "sub_gd_enum_2",
+        "front": "Enumerate four key development warning signs in children.",
+        "back": "Persistence of primitive reflexes beyond 6 months of age.\nNot walking by 18 months of age.\nNo clear spoken words by 18 months of age.\nNo two-word sentences by 2 years of age."
+      },
+  {
+        "id": "sub_gd_def_1",
+        "front": "Define the terms \"Growth\" and \"Development\".",
+        "back": "* Growth: Natural increase in the size of the body either by hyperplasia or hypertrophy.\n* Development: Functional maturation of the central nervous system leading to gaining skills and social adaptation."
+      },
+  {
+        "id": "sub_gd_list_1",
+        "front": "List four major causes of Delayed Walking in pediatrics.",
+        "back": "Cerebral palsy.\nMental retardation.\nMuscles disorders (like Duchenne).\nChronic systemic disorders."
+      },
+  {
+        "id": "sub_gd_case_1",
+        "front": "Case 1",
+        "type": "case",
+        "caseBody": "A Mother brings her 18-month-old male infant to the pediatric clinic complaining that he cannot walk alone or even with support. On examination, the infant shows marked head lag on pulling up from a supine position and an exaggerated \"U-shape\" during ventral suspension.",
+        "subQuestions": [
+          {
+            "id": "sub_gd_case_1_q1",
+            "questionText": "What is your provisional diagnosis?",
+            "back": "Delayed walking due to severe hypotonia (Floppy Infant syndrome)."
+          },
+          {
+            "id": "sub_gd_case_1_q2",
+            "questionText": "Mention two lower motor unit disorders that can cause this presentation.",
+            "back": "1. Werdnig-Hoffmann disease (Anterior horn cell disease)\n2. Congenital myopathy / Muscular dystrophy."
+          }
+        ]
+      },
+  {
+        "id": "sub_gd_case_2",
+        "front": "Case 2",
+        "type": "case",
+        "caseBody": "A 3-year-old boy is evaluated for short stature. His height is below the 3rd percentile on the growth chart. On reviewing his medical records, his height velocity is low-normal and running parallel to the 3rd percentile. His bone age is delayed compared to his chronologic age. His parents noted that there is a history of late pubertal growth in the family.",
+        "subQuestions": [
+          {
+            "id": "sub_gd_case_2_q1",
+            "questionText": "What is the most likely diagnosis for this normal variant of growth?",
+            "back": "Constitutional delay of growth and puberty (CDGP)."
+          },
+          {
+            "id": "sub_gd_case_2_q2",
+            "questionText": "How can you distinguish this condition from Familial Short Stature?",
+            "back": "In Familial Short Stature, the bone age is consistent with chronologic age, whereas in CDGP, the bone age is characteristically delayed."
+          }
+        ]
+      },
+  {
+        "id": "new_match_gd_charts",
+        "front": "Match the description to the correct type of growth curve:",
+        "type": "matching",
+        "matchingPairs": [
+          {
+            "left": "Used clinically to determine the response to treatment of pathologic short stature, such as treatment by growth hormone and thyroxine.",
+            "right": "Velocity Curves"
+          },
+          {
+            "left": "These are centiles in which the reference data are adjusted for some specific factor over or above age and sex, such as midparent height.",
+            "right": "Conditional Centiles"
+          },
+          {
+            "left": "Used for early detection of protein energy malnutrition by following a flattening curve, or early detection of hydrocephalus if jumping to above curves.",
+            "right": "Percentile Curves"
+          },
+          {
+            "left": "Used to diagnose microcephaly or short stature if a body parameter falls at or below -2SD from the expected mean.",
+            "right": "Standard Deviation Curves"
+          }
+        ]
+      },
+  {
+        "id": "new_match_gd_milestones_early",
+        "front": "Match the developmental milestone to the correct age (Early Infancy):",
+        "type": "matching",
+        "matchingPairs": [
+          {
+            "left": "At this age, Moro reflexes completely disappear, the infant sits with support, rolls from back to front, and recognizes the mother.",
+            "right": "4 Months"
+          },
+          {
+            "left": "At this age, the infant raises the head more when prone briefly, lifts the head to 45 degrees in prone, and smiles socially.",
+            "right": "2 Months"
+          },
+          {
+            "left": "The infant achieves continuous head support, coos, brings hands together (hand regards), and anticipates feeding.",
+            "right": "3 Months"
+          },
+          {
+            "left": "The infant is now able to sit without support with a characteristically round back and can transfer objects from one hand to another.",
+            "right": "6 Months"
+          }
+        ]
+      },
+  {
+        "id": "new_match_gd_milestones_late",
+        "front": "Match the developmental milestone to the correct age (Late Infancy to Early Toddler):",
+        "type": "matching",
+        "matchingPairs": [
+          {
+            "left": "The infant can creep or crawl, pulls to a standing position, and develops a pincer grip (grasp by thumb and finger).",
+            "right": "9 Months"
+          },
+          {
+            "left": "The child walks alone or with one hand unsteadily with a broad gait, stops mouthing objects, and says 2-3 words.",
+            "right": "12 Months"
+          },
+          {
+            "left": "The child walks well steadily, drinks from a cup, speaks in baby's own jargon, and achieves sphincter control by daytime.",
+            "right": "15 Months"
+          },
+          {
+            "left": "The infant sits completely without support with a straight back and is able to grasp objects by palm.",
+            "right": "8 Months"
+          }
+        ]
+      },
+  {
+        "id": "new_match_gd_milestones_advanced",
+        "front": "Match the developmental milestone to the correct age (Advanced Toddler to Childhood):",
+        "type": "matching",
+        "matchingPairs": [
+          {
+            "left": "The child jumps, copies a circle or a cross, counts 3 objects, and dresses himself with supervision.",
+            "right": "3 Years"
+          },
+          {
+            "left": "The child walks upstairs with one hand, downstairs step by step, uses 2-3 word sentences, and achieves sphincter control day and night.",
+            "right": "2 Years"
+          },
+          {
+            "left": "The child runs, builds a tower of 3 cups, and has an average vocabulary of 10 words.",
+            "right": "18 Months"
+          },
+          {
+            "left": "The child hops on one foot, buttons and unbuttons clothes, draws a man, names colors, and goes to the toilet.",
+            "right": "4 Years"
+          }
+        ]
+      }
   ],
   "_SUBCHAPTER_Nutrition": [
-    {
-      "id": "sub_nut_enum_1",
-      "front": "Enumerate the four constant features of Kwashiorkor (KWO).",
-      "back": "1. Growth failure (Weight for age < 80% of reference).\n2. Pitting edema (starts in feet and legs, moon face).\n3. Mental changes (apathy, no interest in surroundings).\n4. Muscle wasting with preserved subcutaneous fat."
-    },
-    {
-      "id": "sub_nut_enum_2",
-      "front": "Enumerate the classic radiological findings (epiphyseal triad) seen in an active wrist X-ray of a child with Rickets.",
-      "back": "1. Broadening of the metaphysis.\n2. Cupping (concave metaphysis).\n3. Fraying (irregular epiphyseal line)."
-    },
-    {
-      "id": "sub_nut_def_1",
-      "front": "List four anti-infective properties or factors found in human breast milk.",
-      "back": "1. Secretory IgA.\n2. Bifidus factor.\n3. Lactoferrin.\n4. Lysozymes."
-    },
-    {
-      "id": "sub_nut_def_2",
-      "front": "Define Marasmus according to the clinical and anthropometric criteria.",
-      "back": "It is a chronic state of protein energy malnutrition (PEM) resulting from a low intake of energy, characterized by a weight-for-age < 60% of the reference with completely absent edema, and severe loss of subcutaneous fat and muscle wasting."
-    },
-    {
-      "id": "sub_nut_case_1",
-      "front": "Case 1",
-      "type": "case",
-      "caseBody": "A 14-month-old female infant is brought to the outpatient clinic with a history of recurrent diarrhea and failure to thrive since she was weaned abruptly onto a pure carbohydrate diet (rice and starch) two months ago. On physical examination, she is irritable, has generalized pitting edema, a \"moon face\" appearance, and her hair is dry, sparse, with alternating bands of normal and light coloration.",
-      "subQuestions": [
-        {
-          "id": "sub_nut_case_1_q1",
-          "questionText": "What is the clinical diagnosis for this child?",
-          "back": "Kwashiorkor (KWO)."
-        },
-        {
-          "id": "sub_nut_case_1_q2",
-          "questionText": "What does the hair sign (alternating bands of coloration) represent?",
-          "back": "It is called the Flag Sign, and it signifies periods of nutritional relapse alternating with periods of normal dietary intake."
-        }
-      ]
-    },
-    {
-      "id": "sub_nut_case_2",
-      "front": "Case 2",
-      "type": "case",
-      "caseBody": "A 10-month-old exclusively breastfed infant who doesn't receive any vitamin D supplementation or sun exposure is brought with complaints of delayed teeth eruption and excessive frontal sweating. Physical examination reveals frontal bossing of the skull, a palpable rachitic rosary on the chest wall, and prominent thickening of both wrists.",
-      "subQuestions": [
-        {
-          "id": "sub_nut_case_2_q1",
-          "questionText": "What is your provisional diagnosis?",
-          "back": "Nutritional Rickets (Active Rickets)."
-        },
-        {
-          "id": "sub_nut_case_2_q2",
-          "questionText": "Mention the expected biochemical changes in the serum for Calcium, Phosphorus, and Alkaline Phosphatase in this active phase.",
-          "back": "* Serum Calcium: Normal (or low-normal).\n* Serum Phosphorus: Decreased.\n* Serum Alkaline Phosphatase: Markedly increased."
-        }
-      ]
-    },
-    {
-      "id": "new_match_nutrition",
-      "front": "Match the clinical description to the correct nutritional disorder/classification:",
-      "type": "matching",
-      "matchingPairs": [
-        {
-          "left": "A chronic state of protein energy malnutrition resulting from a low intake of energy, characterized by weight for age < 60% of reference with no edema.",
-          "right": "Marasmus"
-        },
-        {
-          "left": "A clinical condition resulting from deficiency of protein in the diet in the presence of almost normal caloric intake, characterized by pitting edema, growth failure, and mental apathy.",
-          "right": "Kwashiorkor"
-        },
-        {
-          "left": "A systemic disease characterized by the failure of mineralization of growing bone, presenting with a visible rachitic rosary, Harrison's sulcus, and Marfan's sign.",
-          "right": "Rickets"
-        }
-      ]
-    }
+  {
+        "id": "sub_nut_enum_1",
+        "front": "Enumerate the four constant features of Kwashiorkor (KWO).",
+        "back": "1. Growth failure (Weight for age < 80% of reference).\n2. Pitting edema (starts in feet and legs, moon face).\n3. Mental changes (apathy, no interest in surroundings).\n4. Muscle wasting with preserved subcutaneous fat."
+      },
+  {
+        "id": "sub_nut_enum_2",
+        "front": "Enumerate the classic radiological findings (epiphyseal triad) seen in an active wrist X-ray of a child with Rickets.",
+        "back": "1. Broadening of the metaphysis.\n2. Cupping (concave metaphysis).\n3. Fraying (irregular epiphyseal line)."
+      },
+  {
+        "id": "sub_nut_def_1",
+        "front": "List four anti-infective properties or factors found in human breast milk.",
+        "back": "1. Secretory IgA.\n2. Bifidus factor.\n3. Lactoferrin.\n4. Lysozymes."
+      },
+  {
+        "id": "sub_nut_def_2",
+        "front": "Define Marasmus according to the clinical and anthropometric criteria.",
+        "back": "It is a chronic state of protein energy malnutrition (PEM) resulting from a low intake of energy, characterized by a weight-for-age < 60% of the reference with completely absent edema, and severe loss of subcutaneous fat and muscle wasting."
+      },
+  {
+        "id": "sub_nut_case_1",
+        "front": "Case 1",
+        "type": "case",
+        "caseBody": "A 14-month-old female infant is brought to the outpatient clinic with a history of recurrent diarrhea and failure to thrive since she was weaned abruptly onto a pure carbohydrate diet (rice and starch) two months ago. On physical examination, she is irritable, has generalized pitting edema, a \"moon face\" appearance, and her hair is dry, sparse, with alternating bands of normal and light coloration.",
+        "subQuestions": [
+          {
+            "id": "sub_nut_case_1_q1",
+            "questionText": "What is the clinical diagnosis for this child?",
+            "back": "Kwashiorkor (KWO)."
+          },
+          {
+            "id": "sub_nut_case_1_q2",
+            "questionText": "What does the hair sign (alternating bands of coloration) represent?",
+            "back": "It is called the Flag Sign, and it signifies periods of nutritional relapse alternating with periods of normal dietary intake."
+          }
+        ]
+      },
+  {
+        "id": "sub_nut_case_2",
+        "front": "Case 2",
+        "type": "case",
+        "caseBody": "A 10-month-old exclusively breastfed infant who doesn't receive any vitamin D supplementation or sun exposure is brought with complaints of delayed teeth eruption and excessive frontal sweating. Physical examination reveals frontal bossing of the skull, a palpable rachitic rosary on the chest wall, and prominent thickening of both wrists.",
+        "subQuestions": [
+          {
+            "id": "sub_nut_case_2_q1",
+            "questionText": "What is your provisional diagnosis?",
+            "back": "Nutritional Rickets (Active Rickets)."
+          },
+          {
+            "id": "sub_nut_case_2_q2",
+            "questionText": "Mention the expected biochemical changes in the serum for Calcium, Phosphorus, and Alkaline Phosphatase in this active phase.",
+            "back": "* Serum Calcium: Normal (or low-normal).\n* Serum Phosphorus: Decreased.\n* Serum Alkaline Phosphatase: Markedly increased."
+          }
+        ]
+      },
+  {
+        "id": "new_match_nutrition",
+        "front": "Match the clinical description to the correct nutritional disorder/classification:",
+        "type": "matching",
+        "matchingPairs": [
+          {
+            "left": "A chronic state of protein energy malnutrition resulting from a low intake of energy, characterized by weight for age < 60% of reference with no edema.",
+            "right": "Marasmus"
+          },
+          {
+            "left": "A clinical condition resulting from deficiency of protein in the diet in the presence of almost normal caloric intake, characterized by pitting edema, growth failure, and mental apathy.",
+            "right": "Kwashiorkor"
+          },
+          {
+            "left": "A systemic disease characterized by the failure of mineralization of growing bone, presenting with a visible rachitic rosary, Harrison's sulcus, and Marfan's sign.",
+            "right": "Rickets"
+          }
+        ]
+      }
   ],
   "_SUBCHAPTER_Genetics": [
-    {
-      "id": "sub_gen_enum_1",
-      "front": "Enumerate four dysmorphic features seen in the face and head of a child with Down Syndrome.",
-      "back": "1. Upward slanting palpebral fissures.\n2. Epicanthus and Brushfield spots of iris.\n3. Small dysplastic pinnae and low set ears.\n4. Mid face hypoplasia, micrognathia, and protruded tongue."
-    },
-    {
-      "id": "sub_gen_enum_2",
-      "front": "Enumerate four indications for performing Prenatal Diagnosis in a pregnant woman.",
-      "back": "1. Advanced maternal age (women aged 35 years or more).\n2. History of recurrent abortions or a previous child with chromosomal abnormalities.\n3. Parents who are carriers for chromosomal abnormalities or X-linked inherited disorders (e.g., Duchenne muscular dystrophy).\n4. Screening for inborn errors of metabolism or neural tube defects."
-    },
-    {
-      "id": "sub_gen_def_1",
-      "front": "Define Turner Syndrome and mention its most common genotype.",
-      "back": "* Definition: A chromosomal disorder affecting females characterized by short stature, webbed neck, lack of development of secondary sexual characteristics due to gonadal dysgenesis, and possible cardiovascular/renal anomalies.\n* Most Common Genotype: 45X."
-    },
-    {
-      "id": "sub_gen_def_2",
-      "front": "List four invasive screening tests used for Prenatal Diagnosis.",
-      "back": "1. Chorionic villus sampling (CVS).\n2. Amniocentesis.\n3. Fetal blood sampling (Cordocentesis).\n4. Fetoscopy / Fetal tissue sampling."
-    },
-    {
-      "id": "sub_gen_case_1",
-      "front": "Case 1",
-      "type": "case",
-      "caseBody": "A 41-year-old pregnant female gives birth to a male newborn. On physical examination, the neonate shows generalized hypotonia, upward slanting palpebral fissures, a flat midface with a protruding tongue, and a single transverse palmar crease on both hands. Auscultation of the heart reveals a loud pansystolic murmur at the lower left sternal border.",
-      "subQuestions": [
-        {
-          "id": "sub_gen_case_1_q1",
-          "questionText": "What is your provisional diagnosis for this neonate?",
-          "back": "Down Syndrome (Trisomy 21) associated with a Congenital Heart Defect (most likely VSD)."
-        },
-        {
-          "id": "sub_gen_case_1_q2",
-          "questionText": "Mention the most common cytogenetic type responsible for this condition and its recurrence risk.",
-          "back": "Nondisjunction type (occurs in 94% of cases). It is not familial and has a low recurrence risk of less than 1-2%."
-        }
-      ]
-    },
-    {
-      "id": "sub_gen_case_2",
-      "front": "Case 2",
-      "type": "case",
-      "caseBody": "A 14-year-old girl is brought to the pediatric endocrine clinic due to severe short stature and failure to achieve menarche. On examination, her intelligence is completely normal, but she has a short webbed neck, a low posterior hairline, a broad chest with widely spaced nipples, and a wide carrying angle at her elbows. Her blood pressure is persistently elevated at 140/90 mmHg.",
-      "subQuestions": [
-        {
-          "id": "sub_gen_case_2_q1",
-          "questionText": "What is the most likely clinical diagnosis?",
-          "back": "Turner Syndrome."
-        },
-        {
-          "id": "sub_gen_case_2_q2",
-          "questionText": "Mention two essential components in the long-term medical management of this condition during adolescence.",
-          "back": "1. Growth Hormone therapy (to treat short stature).\n2. Estrogen replacement therapy (at the time of puberty to develop secondary sexual characteristics and manage amenorrhea)."
-        }
-      ]
-    },
-    {
-      "id": "new_match_genetics",
-      "front": "Match the description to the correct genetic syndrome/karyotype:",
-      "type": "matching",
-      "matchingPairs": [
-        {
-          "left": "A chromosomal disorder in which a female presents with a 45X genotype, short stature, short webbed neck, low posterior hairline, and primary amenorrhea.",
-          "right": "Turner Syndrome"
-        },
-        {
-          "left": "The most common cytogenetic type (94%) where chromosome 21 pair fails to separate during egg/sperm formation; it is not familial and carries a low recurrence risk.",
-          "right": "Nondisjunction Type Down Syndrome"
-        },
-        {
-          "left": "The familial type of Down syndrome (3-4% of cases) where extra chromosome 21 material is translocated onto another chromosome, carrying an increased recurrence risk.",
-          "right": "Translocation Type Down Syndrome"
-        }
-      ]
-    }
+  {
+        "id": "sub_gen_enum_1",
+        "front": "Enumerate four dysmorphic features seen in the face and head of a child with Down Syndrome.",
+        "back": "1. Upward slanting palpebral fissures.\n2. Epicanthus and Brushfield spots of iris.\n3. Small dysplastic pinnae and low set ears.\n4. Mid face hypoplasia, micrognathia, and protruded tongue."
+      },
+  {
+        "id": "sub_gen_enum_2",
+        "front": "Enumerate four indications for performing Prenatal Diagnosis in a pregnant woman.",
+        "back": "1. Advanced maternal age (women aged 35 years or more).\n2. History of recurrent abortions or a previous child with chromosomal abnormalities.\n3. Parents who are carriers for chromosomal abnormalities or X-linked inherited disorders (e.g., Duchenne muscular dystrophy).\n4. Screening for inborn errors of metabolism or neural tube defects."
+      },
+  {
+        "id": "sub_gen_def_1",
+        "front": "Define Turner Syndrome and mention its most common genotype.",
+        "back": "* Definition: A chromosomal disorder affecting females characterized by short stature, webbed neck, lack of development of secondary sexual characteristics due to gonadal dysgenesis, and possible cardiovascular/renal anomalies.\n* Most Common Genotype: 45X."
+      },
+  {
+        "id": "sub_gen_def_2",
+        "front": "List four invasive screening tests used for Prenatal Diagnosis.",
+        "back": "1. Chorionic villus sampling (CVS).\n2. Amniocentesis.\n3. Fetal blood sampling (Cordocentesis).\n4. Fetoscopy / Fetal tissue sampling."
+      },
+  {
+        "id": "sub_gen_case_1",
+        "front": "Case 1",
+        "type": "case",
+        "caseBody": "A 41-year-old pregnant female gives birth to a male newborn. On physical examination, the neonate shows generalized hypotonia, upward slanting palpebral fissures, a flat midface with a protruding tongue, and a single transverse palmar crease on both hands. Auscultation of the heart reveals a loud pansystolic murmur at the lower left sternal border.",
+        "subQuestions": [
+          {
+            "id": "sub_gen_case_1_q1",
+            "questionText": "What is your provisional diagnosis for this neonate?",
+            "back": "Down Syndrome (Trisomy 21) associated with a Congenital Heart Defect (most likely VSD)."
+          },
+          {
+            "id": "sub_gen_case_1_q2",
+            "questionText": "Mention the most common cytogenetic type responsible for this condition and its recurrence risk.",
+            "back": "Nondisjunction type (occurs in 94% of cases). It is not familial and has a low recurrence risk of less than 1-2%."
+          }
+        ]
+      },
+  {
+        "id": "sub_gen_case_2",
+        "front": "Case 2",
+        "type": "case",
+        "caseBody": "A 14-year-old girl is brought to the pediatric endocrine clinic due to severe short stature and failure to achieve menarche. On examination, her intelligence is completely normal, but she has a short webbed neck, a low posterior hairline, a broad chest with widely spaced nipples, and a wide carrying angle at her elbows. Her blood pressure is persistently elevated at 140/90 mmHg.",
+        "subQuestions": [
+          {
+            "id": "sub_gen_case_2_q1",
+            "questionText": "What is the most likely clinical diagnosis?",
+            "back": "Turner Syndrome."
+          },
+          {
+            "id": "sub_gen_case_2_q2",
+            "questionText": "Mention two essential components in the long-term medical management of this condition during adolescence.",
+            "back": "1. Growth Hormone therapy (to treat short stature).\n2. Estrogen replacement therapy (at the time of puberty to develop secondary sexual characteristics and manage amenorrhea)."
+          }
+        ]
+      },
+  {
+        "id": "new_match_genetics",
+        "front": "Match the description to the correct genetic syndrome/karyotype:",
+        "type": "matching",
+        "matchingPairs": [
+          {
+            "left": "A chromosomal disorder in which a female presents with a 45X genotype, short stature, short webbed neck, low posterior hairline, and primary amenorrhea.",
+            "right": "Turner Syndrome"
+          },
+          {
+            "left": "The most common cytogenetic type (94%) where chromosome 21 pair fails to separate during egg/sperm formation; it is not familial and carries a low recurrence risk.",
+            "right": "Nondisjunction Type Down Syndrome"
+          },
+          {
+            "left": "The familial type of Down syndrome (3-4% of cases) where extra chromosome 21 material is translocated onto another chromosome, carrying an increased recurrence risk.",
+            "right": "Translocation Type Down Syndrome"
+          }
+        ]
+      }
   ],
   "_SUBCHAPTER_GIT": [
-    {
-      "id": "sub_git_enum_1",
-      "front": "Enumerate four clinical diagnostic Red Flags that suggest Organic Abdominal Pain in children.",
-      "back": "1. Clearly localized pain that is localized mostly away from the umbilicus.\n2. Pain that wakes the child up from sleep at night.\n3. Pain associated with persistent fever or involuntary weight loss.\n4. Evidence of blood in the stools (occult or macroscopically obvious)."
-    },
-    {
-      "id": "sub_git_enum_2",
-      "front": "Enumerate four acute clinical manifestations of IgE-Mediated Cow's Milk Allergy (CMA).",
-      "back": "1. Skin signs: Urticaria, angioedema, flushing, or pruritus.\n2. Gastrointestinal signs: Acute vomiting, abdominal pain, or diarrhea.\n3. Respiratory signs: Wheeze, cough, stridor, or rhinitis.\n4. Systemic signs: Life-threatening anaphylaxis."
-    },
-    {
-      "id": "sub_git_def_1",
-      "front": "Define \"The Acute Abdomen\" and list its three key physical signs.",
-      "back": "* Definition: A sudden onset of severe abdominal pain developing rapidly over a short period of time.\n* Three Key Physical Signs:\n1. Guarding (reflex contraction of abdominal muscles).\n2. Rigidity (involuntary hardness of the abdominal wall).\n3. Rebound tenderness."
-    },
-    {
-      "id": "sub_git_def_2",
-      "front": "Differentiate between the definitions of \"Vomiting\" and \"Regurgitation\".",
-      "back": "* Vomiting: Forceful oral expulsion of gastric contents associated with the contraction of the abdominal and chest wall musculature.\n* Regurgitation: The act by which food is brought back into the mouth without the abdominal and diaphragmatic muscular activity."
-    },
-    {
-      "id": "sub_git_case_1",
-      "front": "Case 1",
-      "type": "case",
-      "caseBody": "A 3-month-old formula-fed male infant is brought to the clinic with a history of chronic diarrhea, failure to thrive, and frequent streaks of blood and mucus in his stool. Physical examination reveals chronic, severe, and refractory atopic dermatitis on his cheeks and limbs. The symptoms started 3 weeks after introducing standard cow's milk formula.",
-      "subQuestions": [
-        {
-          "id": "sub_git_case_1_q1",
-          "questionText": "What is the most likely diagnosis?",
-          "back": "Non-IgE-mediated Cow's Milk Allergy (CMA)."
-        },
-        {
-          "id": "sub_git_case_1_q2",
-          "questionText": "Mention the gold standard test to confirm this diagnosis.",
-          "back": "Oral Food Challenge (performed strictly under medical supervision)."
-        }
-      ]
-    },
-    {
-      "id": "sub_git_case_2",
-      "front": "Case 2",
-      "type": "case",
-      "caseBody": "An 8-year-old girl presents with recurrent episodes of abdominal pain over the past 4 months. The pain is paroxysmal, has a gradual onset, and is localized mostly to the periumbilical region with no relationship to food intake or defecation. She is completely symptom-free between episodes, and her physical examination is normal with no localized tenderness or organomegaly.",
-      "subQuestions": [
-        {
-          "id": "sub_git_case_2_q1",
-          "questionText": "What is the most likely diagnosis for this child?",
-          "back": "Dysfunctional / Functional Abdominal Pain (according to Rome IV criteria)."
-        },
-        {
-          "id": "sub_git_case_2_q2",
-          "questionText": "Mention two autonomic symptoms that can be associated with this condition.",
-          "back": "Pallor, nausea, generalized fatigue, or anxiety."
-        }
-      ]
-    },
-    {
-      "id": "sub_git_def_3",
-      "front": "Define Cow's Milk Allergy (CMA).",
-      "back": "Cow's Milk Allergy (CMA) is an immunologically mediated adverse reaction to one or more proteins in cow's milk, occurring mainly in infants and young children."
-    },
-    {
-      "id": "sub_git_enum_3",
-      "front": "Enumerate the major allergenic proteins in cow's milk.",
-      "back": "* Casein (80%)\n* Whey proteins (20%):\n  - β-lactoglobulin\n  - α-lactalbumin"
-    },
-    {
-      "id": "sub_git_enum_4",
-      "front": "Enumerate the risk factors for developing Cow's Milk Allergy.",
-      "back": "* Family history of atopy (asthma, eczema, allergic rhinitis).\n* Early exposure to cow's milk protein.\n* Atopic dermatitis.\n* Other food allergies."
-    },
-    {
-      "id": "sub_git_saq_1",
-      "front": "Mention the diagnostic tests used for Cow's Milk Allergy (CMA), and state which one is considered the gold standard.",
-      "back": "* Skin Prick Test (SPT).\n* Serum Specific IgE.\n* Elimination Diet.\n* Oral Food Challenge (Gold Standard)."
-    },
-    {
-      "id": "sub_git_saq_2",
-      "front": "Mention the management recommendations for a breastfed infant diagnosed with Cow's Milk Allergy (CMA).",
-      "back": "* Continue breastfeeding.\n* Maternal dietary elimination: Mother avoids milk, cheese, yogurt, and butter.\n* Calcium and vitamin D supplementation for the breastfeeding mother."
-    },
-    {
-      "id": "sub_git_case_3",
-      "front": "Case 3",
-      "type": "case",
-      "caseBody": "An infant presents with delayed symptoms after formula feeding, including chronic diarrhea, blood and mucus in stool, abdominal distension, constipation, and failure to thrive. Skin examination reveals chronic, refractory atopic dermatitis.",
-      "subQuestions": [
-        {
-          "id": "sub_git_case_3_q1",
-          "questionText": "What is the immunological classification of this allergy?",
-          "back": "Classification: Non-IgE-Mediated Cow's Milk Allergy (Delayed reaction)."
-        },
-        {
-          "id": "sub_git_case_3_q2",
-          "questionText": "Mention the first-line and alternative formula-feeding management for this infant.",
-          "back": "* First-line: Extensively Hydrolyzed Formula (eHF).\n* Alternative (if severe or unresponsive to eHF): Amino Acid Formula (AAF).\n* Note: Avoid standard formula, partially hydrolyzed formula, and goat milk."
-        }
-      ]
-    },
-    {
-      "id": "sub_git_case_4",
-      "front": "Case 4",
-      "type": "case",
-      "caseBody": "An infant develops immediate symptoms within minutes of ingesting cow's milk protein. The manifestations include urticaria, flushing, vomiting, wheeze, stridor, and eventually signs of a life-threatening systemic reaction.",
-      "subQuestions": [
-        {
-          "id": "sub_git_case_4_q1",
-          "questionText": "What is the diagnosis and its underlying mechanism?",
-          "back": "Diagnosis: IgE-Mediated Cow's Milk Allergy (Acute reaction).\nMechanism: Immediate hypersensitivity reaction mediated by allergen-specific IgE antibodies bound to mast cells."
-        },
-        {
-          "id": "sub_git_case_4_q2",
-          "questionText": "How should the severe/anaphylactic reaction be managed?",
-          "back": "* Immediate intramuscular epinephrine injection.\n* Emergency referral to the PICU/ER.\n* Parent education on the use of an adrenaline auto-injector (if indicated)."
-        }
-      ]
-    },
-    {
-      "id": "new_match_git",
-      "front": "Match the clinical presentation to the correct gastroenterology disorder:",
-      "type": "matching",
-      "matchingPairs": [
-        {
-          "left": "Characterized by immediate acute reactions occurring within minutes to 2 hours, manifesting as urticaria, angioedema, flushing, vomiting, or anaphylaxis.",
-          "right": "IgE-mediated Cow's Milk Allergy"
-        },
-        {
-          "left": "Characterized by delayed reactions manifesting over hours to days, causing chronic diarrhea, blood or mucus in stool, vomiting, and failure to thrive.",
-          "right": "Non-IgE-mediated Cow's Milk Allergy"
-        },
-        {
-          "left": "Characterized as paroxysmal abdominal pain presenting in the complete absence of any structural/anatomic abnormality, inflammation, or tissue injury.",
-          "right": "Dysfunctional Abdominal Pain"
-        }
-      ]
-    }
+  {
+        "id": "sub_git_enum_1",
+        "front": "Enumerate four clinical diagnostic Red Flags that suggest Organic Abdominal Pain in children.",
+        "back": "1. Clearly localized pain that is localized mostly away from the umbilicus.\n2. Pain that wakes the child up from sleep at night.\n3. Pain associated with persistent fever or involuntary weight loss.\n4. Evidence of blood in the stools (occult or macroscopically obvious)."
+      },
+  {
+        "id": "sub_git_enum_2",
+        "front": "Enumerate four acute clinical manifestations of IgE-Mediated Cow's Milk Allergy (CMA).",
+        "back": "1. Skin signs: Urticaria, angioedema, flushing, or pruritus.\n2. Gastrointestinal signs: Acute vomiting, abdominal pain, or diarrhea.\n3. Respiratory signs: Wheeze, cough, stridor, or rhinitis.\n4. Systemic signs: Life-threatening anaphylaxis."
+      },
+  {
+        "id": "sub_git_def_1",
+        "front": "Define \"The Acute Abdomen\" and list its three key physical signs.",
+        "back": "* Definition: A sudden onset of severe abdominal pain developing rapidly over a short period of time.\n* Three Key Physical Signs:\n1. Guarding (reflex contraction of abdominal muscles).\n2. Rigidity (involuntary hardness of the abdominal wall).\n3. Rebound tenderness."
+      },
+  {
+        "id": "sub_git_def_2",
+        "front": "Differentiate between the definitions of \"Vomiting\" and \"Regurgitation\".",
+        "back": "* Vomiting: Forceful oral expulsion of gastric contents associated with the contraction of the abdominal and chest wall musculature.\n* Regurgitation: The act by which food is brought back into the mouth without the abdominal and diaphragmatic muscular activity."
+      },
+  {
+        "id": "sub_git_case_1",
+        "front": "Case 1",
+        "type": "case",
+        "caseBody": "A 3-month-old formula-fed male infant is brought to the clinic with a history of chronic diarrhea, failure to thrive, and frequent streaks of blood and mucus in his stool. Physical examination reveals chronic, severe, and refractory atopic dermatitis on his cheeks and limbs. The symptoms started 3 weeks after introducing standard cow's milk formula.",
+        "subQuestions": [
+          {
+            "id": "sub_git_case_1_q1",
+            "questionText": "What is the most likely diagnosis?",
+            "back": "Non-IgE-mediated Cow's Milk Allergy (CMA)."
+          },
+          {
+            "id": "sub_git_case_1_q2",
+            "questionText": "Mention the gold standard test to confirm this diagnosis.",
+            "back": "Oral Food Challenge (performed strictly under medical supervision)."
+          }
+        ]
+      },
+  {
+        "id": "sub_git_case_2",
+        "front": "Case 2",
+        "type": "case",
+        "caseBody": "An 8-year-old girl presents with recurrent episodes of abdominal pain over the past 4 months. The pain is paroxysmal, has a gradual onset, and is localized mostly to the periumbilical region with no relationship to food intake or defecation. She is completely symptom-free between episodes, and her physical examination is normal with no localized tenderness or organomegaly.",
+        "subQuestions": [
+          {
+            "id": "sub_git_case_2_q1",
+            "questionText": "What is the most likely diagnosis for this child?",
+            "back": "Dysfunctional / Functional Abdominal Pain (according to Rome IV criteria)."
+          },
+          {
+            "id": "sub_git_case_2_q2",
+            "questionText": "Mention two autonomic symptoms that can be associated with this condition.",
+            "back": "Pallor, nausea, generalized fatigue, or anxiety."
+          }
+        ]
+      },
+  {
+        "id": "sub_git_def_3",
+        "front": "Define Cow's Milk Allergy (CMA).",
+        "back": "Cow's Milk Allergy (CMA) is an immunologically mediated adverse reaction to one or more proteins in cow's milk, occurring mainly in infants and young children."
+      },
+  {
+        "id": "sub_git_enum_3",
+        "front": "Enumerate the major allergenic proteins in cow's milk.",
+        "back": "* Casein (80%)\n* Whey proteins (20%):\n  - β-lactoglobulin\n  - α-lactalbumin"
+      },
+  {
+        "id": "sub_git_enum_4",
+        "front": "Enumerate the risk factors for developing Cow's Milk Allergy.",
+        "back": "* Family history of atopy (asthma, eczema, allergic rhinitis).\n* Early exposure to cow's milk protein.\n* Atopic dermatitis.\n* Other food allergies."
+      },
+  {
+        "id": "sub_git_saq_1",
+        "front": "Mention the diagnostic tests used for Cow's Milk Allergy (CMA), and state which one is considered the gold standard.",
+        "back": "* Skin Prick Test (SPT).\n* Serum Specific IgE.\n* Elimination Diet.\n* Oral Food Challenge (Gold Standard)."
+      },
+  {
+        "id": "sub_git_saq_2",
+        "front": "Mention the management recommendations for a breastfed infant diagnosed with Cow's Milk Allergy (CMA).",
+        "back": "* Continue breastfeeding.\n* Maternal dietary elimination: Mother avoids milk, cheese, yogurt, and butter.\n* Calcium and vitamin D supplementation for the breastfeeding mother."
+      },
+  {
+        "id": "sub_git_case_3",
+        "front": "Case 3",
+        "type": "case",
+        "caseBody": "An infant presents with delayed symptoms after formula feeding, including chronic diarrhea, blood and mucus in stool, abdominal distension, constipation, and failure to thrive. Skin examination reveals chronic, refractory atopic dermatitis.",
+        "subQuestions": [
+          {
+            "id": "sub_git_case_3_q1",
+            "questionText": "What is the immunological classification of this allergy?",
+            "back": "Classification: Non-IgE-Mediated Cow's Milk Allergy (Delayed reaction)."
+          },
+          {
+            "id": "sub_git_case_3_q2",
+            "questionText": "Mention the first-line and alternative formula-feeding management for this infant.",
+            "back": "* First-line: Extensively Hydrolyzed Formula (eHF).\n* Alternative (if severe or unresponsive to eHF): Amino Acid Formula (AAF).\n* Note: Avoid standard formula, partially hydrolyzed formula, and goat milk."
+          }
+        ]
+      },
+  {
+        "id": "sub_git_case_4",
+        "front": "Case 4",
+        "type": "case",
+        "caseBody": "An infant develops immediate symptoms within minutes of ingesting cow's milk protein. The manifestations include urticaria, flushing, vomiting, wheeze, stridor, and eventually signs of a life-threatening systemic reaction.",
+        "subQuestions": [
+          {
+            "id": "sub_git_case_4_q1",
+            "questionText": "What is the diagnosis and its underlying mechanism?",
+            "back": "Diagnosis: IgE-Mediated Cow's Milk Allergy (Acute reaction).\nMechanism: Immediate hypersensitivity reaction mediated by allergen-specific IgE antibodies bound to mast cells."
+          },
+          {
+            "id": "sub_git_case_4_q2",
+            "questionText": "How should the severe/anaphylactic reaction be managed?",
+            "back": "* Immediate intramuscular epinephrine injection.\n* Emergency referral to the PICU/ER.\n* Parent education on the use of an adrenaline auto-injector (if indicated)."
+          }
+        ]
+      },
+  {
+        "id": "new_match_git",
+        "front": "Match the clinical presentation to the correct gastroenterology disorder:",
+        "type": "matching",
+        "matchingPairs": [
+          {
+            "left": "Characterized by immediate acute reactions occurring within minutes to 2 hours, manifesting as urticaria, angioedema, flushing, vomiting, or anaphylaxis.",
+            "right": "IgE-mediated Cow's Milk Allergy"
+          },
+          {
+            "left": "Characterized by delayed reactions manifesting over hours to days, causing chronic diarrhea, blood or mucus in stool, vomiting, and failure to thrive.",
+            "right": "Non-IgE-mediated Cow's Milk Allergy"
+          },
+          {
+            "left": "Characterized as paroxysmal abdominal pain presenting in the complete absence of any structural/anatomic abnormality, inflammation, or tissue injury.",
+            "right": "Dysfunctional Abdominal Pain"
+          }
+        ]
+      }
   ],
   "_SUBCHAPTER_Endocrinology": [
-    {
-      "id": "sub_endo_enum_1",
-      "front": "Enumerate four secondary (systemic or endocrine) causes of Pathological Short Stature.",
-      "back": "1. Endocrine causes (e.g., Hypothyroidism, Growth Hormone Deficiency, Cushing syndrome).\n2. Malnutrition / Under-nutrition (e.g., Protein Energy Malnutrition).\n3. Gastrointestinal disorders (e.g., Malabsorption syndromes like Celiac disease or Cystic Fibrosis).\n4. Chronic Renal diseases (e.g., Chronic uremia, Pyelonephritis)."
-    },
-    {
-      "id": "sub_endo_enum_2",
-      "front": "Enumerate four clinical precipitating factors that can lead to Diabetic Ketoacidosis (DKA).",
-      "back": "1. Acute Infections (most commonly Urinary Tract Infections - UTIs).\n2. Negligence of parents or patient to give insulin therapy (omission of insulin).\n3. Physical trauma or major surgical stress.\n4. Severe psychological disturbances."
-    },
-    {
-      "id": "sub_endo_def_1",
-      "front": "Define \"Short Stature\" according to the standard pediatric growth criteria.",
-      "back": "It is a term applied to a child whose height is 2 Standard Deviations (SD) or more below the mean for children of that same sex and chronologic age (and ideally of the same racial-ethnic group). It is also considered if growth velocity is below the 25th percentile over 6-12 months of observation."
-    },
-    {
-      "id": "sub_endo_def_2",
-      "front": "List four endocrine or genetic causes/syndromes associated with Childhood Obesity.",
-      "back": "1. Hypothyroidism.\n2. Cushing syndrome.\n3. Prader-Willi Syndrome.\n4. Congenital Leptin deficiency."
-    },
-    {
-      "id": "sub_endo_case_1",
-      "front": "Case 1",
-      "type": "case",
-      "caseBody": "A 5-month-old infant is brought to the pediatric clinic by his mother because of a severe delay in physical and mental development. On physical examination, the child's growth is severely stunted with short extremities, the anterior fontanel is wide open, the eyes appear far apart with a depressed nasal bridge, and the infant keeps his mouth open with a thick, broad protruding tongue. The skin is dry and scaly.",
-      "subQuestions": [
-        {
-          "id": "sub_endo_case_1_q1",
-          "questionText": "What is the most likely diagnosis for this neglected presentation?",
-          "back": "Congenital Hypothyroidism (CHT)."
-        },
-        {
-          "id": "sub_endo_case_1_q2",
-          "questionText": "Mention the standard screening test protocol used to detect this condition early in the first week of life.",
-          "back": "Neonatal screening via a heel-prick blood test performed between the 3rd and 7th day of age to measure serum TSH levels (highly successful if TSH > 20 uIU/ml)."
-        }
-      ]
-    },
-    {
-      "id": "sub_endo_case_2",
-      "front": "Case 2",
-      "type": "case",
-      "caseBody": "A 9-year-old girl is brought to the emergency department presenting with severe vomiting, persistent abdominal pain, and rapid, deep breathing (Kussmaul respiration). Her parents noted that she had a history of progressive weight loss, polyuria, and excessive thirst (polydipsia) over the past two weeks. On examination, she is intensely dehydrated and drowsy. Laboratory tests show a random plasma glucose of 400 mg/dL and a venous pH of 7.12.",
-      "subQuestions": [
-        {
-          "id": "sub_endo_case_2_q1",
-          "questionText": "What is your clinical diagnosis for this acute medical emergency?",
-          "back": "Severe Diabetic Ketoacidosis (DKA) secondary to newly diagnosed Type 1 Diabetes Mellitus."
-        },
-        {
-          "id": "sub_endo_case_2_q2",
-          "questionText": "List four essential lines of medical management required immediately for this patient.",
-          "back": "1. Hospitalization (admission to PICU).\n2. Correction of fluids (IV fluid resuscitation for dehydration).\n3. Insulin therapy (continuous low-dose IV insulin infusion).\n4. Correction of electrolytes (especially monitoring and replacement of Potassium)."
-        }
-      ]
-    },
-    {
-      "id": "sub_endo_def_3",
-      "front": "Define Type 1 Diabetes Mellitus.",
-      "back": "Type 1 Diabetes Mellitus is the most common metabolic disorder of childhood and adolescence. It is a syndrome of disturbed energy homeostasis caused by deficiency of insulin, resulting in abnormal metabolism of carbohydrates, fats, and proteins. Both genetic susceptibility and environmental factors are involved in its etiology."
-    },
-    {
-      "id": "sub_endo_enum_3",
-      "front": "Enumerate the diagnostic criteria for Diabetes Mellitus according to standard guidelines.",
-      "back": "* Glycosylated hemoglobin (HbA1C) >= 6.5%.\n* Fasting Plasma Glucose (FPG) >= 126 mg/dL (7.0 mmol/L).\n* 2-hour post-load glucose during OGTT >= 200 mg/dL (11.1 mmol/L).\n* Random plasma glucose >= 200 mg/dL (11.1 mmol/L) associated with classic symptoms of diabetes."
-    },
-    {
-      "id": "sub_endo_enum_4",
-      "front": "Enumerate the acute and long-term microvascular complications of Type 1 Diabetes Mellitus.",
-      "back": "* Acute complications:\n  - Diabetic Ketoacidosis (DKA).\n  - Hypoglycemia.\n* Long-term microvascular diseases:\n  - Diabetic retinopathy.\n  - Diabetic nephropathy.\n  - Diabetic neuropathy.\n  - Diabetic cardiomyopathy."
-    },
-    {
-      "id": "sub_endo_saq_1",
-      "front": "Mention the pathophysiological mechanisms of Diabetes Mellitus.",
-      "back": "* Core defects:\n  1. Insulin deficiency (destruction of beta cells).\n  2. Insulin resistance at peripheral tissues.\n* Other mechanisms (The Ominous Octet):\n  - Incretin deficiency / resistance.\n  - Increased glucagon secretion.\n  - Increased hepatic glucose production.\n  - Increased renal threshold for glucose.\n  - Neurotransmitter dysfunction in the brain.\n  - Increased lipolysis."
-    },
-    {
-      "id": "sub_endo_saq_2",
-      "front": "Mention the 4 autoantibodies that serve as markers of beta cell autoimmunity in Type 1 Diabetes Mellitus.",
-      "back": "* Islet cell antibodies (ICA).\n* Glutamic acid decarboxylase antibodies (GAD-65).\n* Insulin autoantibodies (IAA).\n* IA-2A (antibodies to protein tyrosine phosphatase)."
-    },
-    {
-      "id": "sub_endo_case_3",
-      "front": "Case 3",
-      "type": "case",
-      "caseBody": "A diabetic child presents to the hospital with deep rapid respiration (Kussmaul respiration), an odor of acetone on the breath, severe dehydration, and abdominal pain. Laboratory tests reveal blood glucose > 300 mg%, and venous pH is 7.20.",
-      "subQuestions": [
-        {
-          "id": "sub_endo_case_3_q1",
-          "questionText": "What is the diagnosis and its clinical classification based on the pH level?",
-          "back": "Diagnosis: Diabetic Ketoacidosis (DKA).\nClassification: Moderate DKA (as venous pH is between 7.15 and 7.25)."
-        },
-        {
-          "id": "sub_endo_case_3_q2",
-          "questionText": "Enumerate the lines of management for this condition.",
-          "back": "1. Hospitalization (admission to PICU).\n2. Correction of fluids (IV fluid resuscitation).\n3. Correction of electrolytes (especially Potassium).\n4. Correction of acid-base balance.\n5. Insulin therapy (continuous low-dose IV infusion).\n6. Management of precipitating causes (e.g., infections)."
-        }
-      ]
-    },
-    {
-      "id": "sub_endo_case_4",
-      "front": "Case 4",
-      "type": "case",
-      "caseBody": "A thin child presents with sudden onset of polyuria, polydipsia, and polyphagia. Laboratory tests show low endogenous insulin and the presence of autoantibodies.",
-      "subQuestions": [
-        {
-          "id": "sub_endo_case_4_q1",
-          "questionText": "What is the most likely type of diabetes in this patient?",
-          "back": "Type 1 Diabetes Mellitus."
-        },
-        {
-          "id": "sub_endo_case_4_q2",
-          "questionText": "Mention the other classic clinical manifestations of this disease.",
-          "back": "* Classic presentation: Polyuria, polydipsia, and polyphagia.\n* Systemic: Weight loss, lethargy, weakness, and abdominal pain.\n* Infections: Repeated infections (e.g., urinary tract infections, candidiasis).\n* Acute Emergency: Diabetic Ketoacidosis (DKA)."
-        }
-      ]
-    },
-    {
-      "id": "new_match_endocrinology",
-      "front": "Match the clinical description to the correct endocrine disorder:",
-      "type": "matching",
-      "matchingPairs": [
-        {
-          "left": "A medical emergency caused by severe insulin deficiency, characterized by hyperglycemia, metabolic acidosis, hyperketonemia, and Kussmaul respirations.",
-          "right": "Diabetic Ketoacidosis (DKA)"
-        },
-        {
-          "left": "A normal variant of growth where children have childhood short stature, a downward shift in growth rate at 3-6 months, delayed pubertal maturation, and a characteristically delayed bone age.",
-          "right": "Constitutional Delay of Growth and Puberty (CDGP)"
-        },
-        {
-          "left": "A common cause of preventable intellectual disability present at birth, clinically fully developed by 3-6 months with a thick broad protruding tongue, short thick neck, and dry scaly skin.",
-          "right": "Congenital Hypothyroidism"
-        }
-      ]
-    }
+  {
+        "id": "sub_endo_enum_1",
+        "front": "Enumerate four secondary (systemic or endocrine) causes of Pathological Short Stature.",
+        "back": "1. Endocrine causes (e.g., Hypothyroidism, Growth Hormone Deficiency, Cushing syndrome).\n2. Malnutrition / Under-nutrition (e.g., Protein Energy Malnutrition).\n3. Gastrointestinal disorders (e.g., Malabsorption syndromes like Celiac disease or Cystic Fibrosis).\n4. Chronic Renal diseases (e.g., Chronic uremia, Pyelonephritis)."
+      },
+  {
+        "id": "sub_endo_enum_2",
+        "front": "Enumerate four clinical precipitating factors that can lead to Diabetic Ketoacidosis (DKA).",
+        "back": "1. Acute Infections (most commonly Urinary Tract Infections - UTIs).\n2. Negligence of parents or patient to give insulin therapy (omission of insulin).\n3. Physical trauma or major surgical stress.\n4. Severe psychological disturbances."
+      },
+  {
+        "id": "sub_endo_def_1",
+        "front": "Define \"Short Stature\" according to the standard pediatric growth criteria.",
+        "back": "It is a term applied to a child whose height is 2 Standard Deviations (SD) or more below the mean for children of that same sex and chronologic age (and ideally of the same racial-ethnic group). It is also considered if growth velocity is below the 25th percentile over 6-12 months of observation."
+      },
+  {
+        "id": "sub_endo_def_2",
+        "front": "List four endocrine or genetic causes/syndromes associated with Childhood Obesity.",
+        "back": "1. Hypothyroidism.\n2. Cushing syndrome.\n3. Prader-Willi Syndrome.\n4. Congenital Leptin deficiency."
+      },
+  {
+        "id": "sub_endo_case_1",
+        "front": "Case 1",
+        "type": "case",
+        "caseBody": "A 5-month-old infant is brought to the pediatric clinic by his mother because of a severe delay in physical and mental development. On physical examination, the child's growth is severely stunted with short extremities, the anterior fontanel is wide open, the eyes appear far apart with a depressed nasal bridge, and the infant keeps his mouth open with a thick, broad protruding tongue. The skin is dry and scaly.",
+        "subQuestions": [
+          {
+            "id": "sub_endo_case_1_q1",
+            "questionText": "What is the most likely diagnosis for this neglected presentation?",
+            "back": "Congenital Hypothyroidism (CHT)."
+          },
+          {
+            "id": "sub_endo_case_1_q2",
+            "questionText": "Mention the standard screening test protocol used to detect this condition early in the first week of life.",
+            "back": "Neonatal screening via a heel-prick blood test performed between the 3rd and 7th day of age to measure serum TSH levels (highly successful if TSH > 20 uIU/ml)."
+          }
+        ]
+      },
+  {
+        "id": "sub_endo_case_2",
+        "front": "Case 2",
+        "type": "case",
+        "caseBody": "A 9-year-old girl is brought to the emergency department presenting with severe vomiting, persistent abdominal pain, and rapid, deep breathing (Kussmaul respiration). Her parents noted that she had a history of progressive weight loss, polyuria, and excessive thirst (polydipsia) over the past two weeks. On examination, she is intensely dehydrated and drowsy. Laboratory tests show a random plasma glucose of 400 mg/dL and a venous pH of 7.12.",
+        "subQuestions": [
+          {
+            "id": "sub_endo_case_2_q1",
+            "questionText": "What is your clinical diagnosis for this acute medical emergency?",
+            "back": "Severe Diabetic Ketoacidosis (DKA) secondary to newly diagnosed Type 1 Diabetes Mellitus."
+          },
+          {
+            "id": "sub_endo_case_2_q2",
+            "questionText": "List four essential lines of medical management required immediately for this patient.",
+            "back": "1. Hospitalization (admission to PICU).\n2. Correction of fluids (IV fluid resuscitation for dehydration).\n3. Insulin therapy (continuous low-dose IV insulin infusion).\n4. Correction of electrolytes (especially monitoring and replacement of Potassium)."
+          }
+        ]
+      },
+  {
+        "id": "sub_endo_def_3",
+        "front": "Define Type 1 Diabetes Mellitus.",
+        "back": "Type 1 Diabetes Mellitus is the most common metabolic disorder of childhood and adolescence. It is a syndrome of disturbed energy homeostasis caused by deficiency of insulin, resulting in abnormal metabolism of carbohydrates, fats, and proteins. Both genetic susceptibility and environmental factors are involved in its etiology."
+      },
+  {
+        "id": "sub_endo_enum_3",
+        "front": "Enumerate the diagnostic criteria for Diabetes Mellitus according to standard guidelines.",
+        "back": "* Glycosylated hemoglobin (HbA1C) >= 6.5%.\n* Fasting Plasma Glucose (FPG) >= 126 mg/dL (7.0 mmol/L).\n* 2-hour post-load glucose during OGTT >= 200 mg/dL (11.1 mmol/L).\n* Random plasma glucose >= 200 mg/dL (11.1 mmol/L) associated with classic symptoms of diabetes."
+      },
+  {
+        "id": "sub_endo_enum_4",
+        "front": "Enumerate the acute and long-term microvascular complications of Type 1 Diabetes Mellitus.",
+        "back": "* Acute complications:\n  - Diabetic Ketoacidosis (DKA).\n  - Hypoglycemia.\n* Long-term microvascular diseases:\n  - Diabetic retinopathy.\n  - Diabetic nephropathy.\n  - Diabetic neuropathy.\n  - Diabetic cardiomyopathy."
+      },
+  {
+        "id": "sub_endo_saq_1",
+        "front": "Mention the pathophysiological mechanisms of Diabetes Mellitus.",
+        "back": "* Core defects:\n  1. Insulin deficiency (destruction of beta cells).\n  2. Insulin resistance at peripheral tissues.\n* Other mechanisms (The Ominous Octet):\n  - Incretin deficiency / resistance.\n  - Increased glucagon secretion.\n  - Increased hepatic glucose production.\n  - Increased renal threshold for glucose.\n  - Neurotransmitter dysfunction in the brain.\n  - Increased lipolysis."
+      },
+  {
+        "id": "sub_endo_saq_2",
+        "front": "Mention the 4 autoantibodies that serve as markers of beta cell autoimmunity in Type 1 Diabetes Mellitus.",
+        "back": "* Islet cell antibodies (ICA).\n* Glutamic acid decarboxylase antibodies (GAD-65).\n* Insulin autoantibodies (IAA).\n* IA-2A (antibodies to protein tyrosine phosphatase)."
+      },
+  {
+        "id": "sub_endo_case_3",
+        "front": "Case 3",
+        "type": "case",
+        "caseBody": "A diabetic child presents to the hospital with deep rapid respiration (Kussmaul respiration), an odor of acetone on the breath, severe dehydration, and abdominal pain. Laboratory tests reveal blood glucose > 300 mg%, and venous pH is 7.20.",
+        "subQuestions": [
+          {
+            "id": "sub_endo_case_3_q1",
+            "questionText": "What is the diagnosis and its clinical classification based on the pH level?",
+            "back": "Diagnosis: Diabetic Ketoacidosis (DKA).\nClassification: Moderate DKA (as venous pH is between 7.15 and 7.25)."
+          },
+          {
+            "id": "sub_endo_case_3_q2",
+            "questionText": "Enumerate the lines of management for this condition.",
+            "back": "1. Hospitalization (admission to PICU).\n2. Correction of fluids (IV fluid resuscitation).\n3. Correction of electrolytes (especially Potassium).\n4. Correction of acid-base balance.\n5. Insulin therapy (continuous low-dose IV infusion).\n6. Management of precipitating causes (e.g., infections)."
+          }
+        ]
+      },
+  {
+        "id": "sub_endo_case_4",
+        "front": "Case 4",
+        "type": "case",
+        "caseBody": "A thin child presents with sudden onset of polyuria, polydipsia, and polyphagia. Laboratory tests show low endogenous insulin and the presence of autoantibodies.",
+        "subQuestions": [
+          {
+            "id": "sub_endo_case_4_q1",
+            "questionText": "What is the most likely type of diabetes in this patient?",
+            "back": "Type 1 Diabetes Mellitus."
+          },
+          {
+            "id": "sub_endo_case_4_q2",
+            "questionText": "Mention the other classic clinical manifestations of this disease.",
+            "back": "* Classic presentation: Polyuria, polydipsia, and polyphagia.\n* Systemic: Weight loss, lethargy, weakness, and abdominal pain.\n* Infections: Repeated infections (e.g., urinary tract infections, candidiasis).\n* Acute Emergency: Diabetic Ketoacidosis (DKA)."
+          }
+        ]
+      },
+  {
+        "id": "new_match_endocrinology",
+        "front": "Match the clinical description to the correct endocrine disorder:",
+        "type": "matching",
+        "matchingPairs": [
+          {
+            "left": "A medical emergency caused by severe insulin deficiency, characterized by hyperglycemia, metabolic acidosis, hyperketonemia, and Kussmaul respirations.",
+            "right": "Diabetic Ketoacidosis (DKA)"
+          },
+          {
+            "left": "A normal variant of growth where children have childhood short stature, a downward shift in growth rate at 3-6 months, delayed pubertal maturation, and a characteristically delayed bone age.",
+            "right": "Constitutional Delay of Growth and Puberty (CDGP)"
+          },
+          {
+            "left": "A common cause of preventable intellectual disability present at birth, clinically fully developed by 3-6 months with a thick broad protruding tongue, short thick neck, and dry scaly skin.",
+            "right": "Congenital Hypothyroidism"
+          }
+        ]
+      }
   ],
   "_SUBCHAPTER_Hematology & Oncology": [
-    {
-      "id": "sub_hem_enum_1",
-      "front": "Enumerate four clinical features (symptoms and signs) of Iron Deficiency Anemia (IDA) in children.",
-      "back": "1. Pallor, weakness and fatigue.\n2. Glossitis.\n3. Cheilitis (inflammation/fissures of lips).\n4. Pica (intense craving for nonfood items like clay, dirt, chalk, or paper)."
-    },
-    {
-      "id": "sub_hem_enum_2",
-      "front": "Enumerate four diagnostic laboratory findings in the Iron Profile of a patient with Iron Deficiency Anemia.",
-      "back": "1. Low serum iron.\n2. Low serum ferritin.\n3. Increased Total iron binding capacity (TIBC).\n4. Decreased transferrin saturation (TS)."
-    },
-    {
-      "id": "sub_hem_enum_3",
-      "front": "Enumerate the three criteria required to diagnose Severe Aplastic Anemia in a patient with a hypocellular bone marrow.",
-      "back": "Hypocellular BM with two of the following:\n1. Platelet count of less than 20,000/mm³.\n2. Absolute reticulocyte count of less than 40,000/mm³.\n3. Absolute neutrophil count (ANC) of less than 500/mm³."
-    },
-    {
-      "id": "sub_hem_enum_4",
-      "front": "Enumerate four prognostic factors used to determine the outcome in Acute Lymphoblastic Leukemia (ALL).",
-      "back": "1. Age (between 1 and 9 years is favorable, less than 1 or more than 10 is less favorable).\n2. White blood cell count (WBCs less than 50 x 10⁹/L is favorable).\n3. Immunophenotype (B-precursor has a better prognosis than T cell).\n4. Sex (Girls have a more favorable prognosis than Boys)."
-    },
-    {
-      "id": "sub_hem_enum_5",
-      "front": "Enumerate four triggers or precipitating factors that can produce acute episodes of intravascular hemolysis in G6PD deficiency.",
-      "back": "1. Fava beans ingestion (favism).\n2. Infections and acute illnesses (e.g., Sepsis, hepatitis).\n3. Diabetic ketoacidosis (DKA).\n4. Oxidative Medications (such as Sulfonamides, aspirin, or chloramphenicol)."
-    },
-    {
-      "id": "sub_hem_def_1",
-      "front": "Define Immune Thrombocytopenia (ITP) in children.",
-      "back": "It is an acquired autoimmune disorder characterized by an isolated low platelet count (platelet count <100,000/microL with completely normal WBCs and hemoglobin) resulting from antibody-mediated platelet destruction and impaired platelet production."
-    },
-    {
-      "id": "sub_hem_def_2",
-      "front": "List the three systemic symptoms classified as \"B symptoms\" in Hodgkin Lymphoma (HL) staging.",
-      "back": "1. Unexplained fever higher than 38°C.\n2. Weight loss more than 10% of total body weight over 6 months.\n3. Drenching night sweats."
-    },
-    {
-      "id": "sub_hem_def_3",
-      "front": "Define Hereditary Spherocytosis (HS) and mention its primary mode of inheritance.",
-      "back": "* Definition: It is an inherited chronic hemolytic anemia caused by a defect or dysfunction in spectrin or ankyrin (components of the RBC cytoskeleton), leading to a loss of cell surface area and resulting in a spherical shape of RBCs with premature destruction in the spleen.\n* Inheritance: Autosomal dominant (AD) mode of inheritance in 75% of cases."
-    },
-    {
-      "id": "sub_hem_case_1",
-      "front": "Case 1",
-      "type": "case",
-      "caseBody": "A 3-year-old girl is brought to the pediatric outpatient clinic with a sudden appearance of a widespread petechial rash and multiple bruises over her lower limbs. Her parents state that she is otherwise perfectly active, well, completely afebrile, and has no bone pain. On physical examination, there is no significant lymphadenopathy or hepatosplenomegaly. Initial CBC shows an isolated platelet count of 12,000/mm³, with normal hemoglobin and normal WBC count.",
-      "subQuestions": [
-        {
-          "id": "sub_hem_case_1_q1",
-          "questionText": "What is your clinical diagnosis for this well active child?",
-          "back": "Newly diagnosed primary Immune Thrombocytopenia (ITP)."
-        },
-        {
-          "id": "sub_hem_case_1_q2",
-          "questionText": "Mention two first-line medical therapies that can be initiated if the child develops significant mucosal membrane bleeding.",
-          "back": "1. Glucocorticoids (oral Prednisone or IV Methylprednisolone).\n2. Intravenous Immunoglobulin (IVIG)."
-        }
-      ]
-    },
-    {
-      "id": "sub_hem_case_2",
-      "front": "Case 2",
-      "type": "case",
-      "caseBody": "An 8-month-old male infant is evaluated for progressive pallor, weakness, and failure to thrive that became noticeable during the second 6 months of life. Physical examination reveals severe pallor, maxilla hyperplasia with a flat nasal bridge and frontal bossing (thalassemic facies), and marked hepatosplenomegaly. Hemoglobin electrophoresis is performed, demonstrating a marked increase in HbF% and a complete absence of HbA.",
-      "subQuestions": [
-        {
-          "id": "sub_hem_case_2_q1",
-          "questionText": "What is the most likely diagnosis for this infant?",
-          "back": "Homozygous beta-thalassemia (Thalassemia Major / Cooley anemia)."
-        },
-        {
-          "id": "sub_hem_case_2_q2",
-          "questionText": "Mention two essential pillars in the long-term medical management of this major quantitative hemoglobinopathy.",
-          "back": "1. Chronic regular blood transfusion (maintaining hemoglobin levels at 9-10 g/dL).\n2. Iron chelator therapy (such as Deferoxamine or oral Deferasirox, initiated when serum ferritin is >1000 ng/mL)."
-        }
-      ]
-    },
-    {
-      "id": "new_match_hema_onc",
-      "front": "Match the clinical description to the correct hematological disorder:",
-      "type": "matching",
-      "matchingPairs": [
-        {
-          "left": "An inherited chronic hemolytic anemia caused by an autosomal dominant defect or dysfunction in spectrin or ankyrin, presenting with increased MCHC above 35 g/dL and a negative Coombs test.",
-          "right": "Hereditary Spherocytosis"
-        },
-        {
-          "left": "Characterized by pancytopenia with reticulocytopenia and a hypocellular bone marrow, presenting with an absolute absence of hepatosplenomegaly or lymphadenopathy.",
-          "right": "Aplastic Anemia"
-        },
-        {
-          "left": "An X-linked recessive enzymatic disorder where oxidative stresses (like fava beans or medications) denature hemoglobin, forming Heinz bodies and bite cells during acute intravascular hemolysis.",
-          "right": "Glucose-6-Phosphate Dehydrogenase (G6PD) Deficiency"
-        }
-      ]
-    }
+  {
+        "id": "sub_hem_enum_1",
+        "front": "Enumerate four clinical features (symptoms and signs) of Iron Deficiency Anemia (IDA) in children.",
+        "back": "1. Pallor, weakness and fatigue.\n2. Glossitis.\n3. Cheilitis (inflammation/fissures of lips).\n4. Pica (intense craving for nonfood items like clay, dirt, chalk, or paper)."
+      },
+  {
+        "id": "sub_hem_enum_2",
+        "front": "Enumerate four diagnostic laboratory findings in the Iron Profile of a patient with Iron Deficiency Anemia.",
+        "back": "1. Low serum iron.\n2. Low serum ferritin.\n3. Increased Total iron binding capacity (TIBC).\n4. Decreased transferrin saturation (TS)."
+      },
+  {
+        "id": "sub_hem_enum_3",
+        "front": "Enumerate the three criteria required to diagnose Severe Aplastic Anemia in a patient with a hypocellular bone marrow.",
+        "back": "Hypocellular BM with two of the following:\n1. Platelet count of less than 20,000/mm³.\n2. Absolute reticulocyte count of less than 40,000/mm³.\n3. Absolute neutrophil count (ANC) of less than 500/mm³."
+      },
+  {
+        "id": "sub_hem_enum_4",
+        "front": "Enumerate four prognostic factors used to determine the outcome in Acute Lymphoblastic Leukemia (ALL).",
+        "back": "1. Age (between 1 and 9 years is favorable, less than 1 or more than 10 is less favorable).\n2. White blood cell count (WBCs less than 50 x 10⁹/L is favorable).\n3. Immunophenotype (B-precursor has a better prognosis than T cell).\n4. Sex (Girls have a more favorable prognosis than Boys)."
+      },
+  {
+        "id": "sub_hem_enum_5",
+        "front": "Enumerate four triggers or precipitating factors that can produce acute episodes of intravascular hemolysis in G6PD deficiency.",
+        "back": "1. Fava beans ingestion (favism).\n2. Infections and acute illnesses (e.g., Sepsis, hepatitis).\n3. Diabetic ketoacidosis (DKA).\n4. Oxidative Medications (such as Sulfonamides, aspirin, or chloramphenicol)."
+      },
+  {
+        "id": "sub_hem_def_1",
+        "front": "Define Immune Thrombocytopenia (ITP) in children.",
+        "back": "It is an acquired autoimmune disorder characterized by an isolated low platelet count (platelet count <100,000/microL with completely normal WBCs and hemoglobin) resulting from antibody-mediated platelet destruction and impaired platelet production."
+      },
+  {
+        "id": "sub_hem_def_2",
+        "front": "List the three systemic symptoms classified as \"B symptoms\" in Hodgkin Lymphoma (HL) staging.",
+        "back": "1. Unexplained fever higher than 38°C.\n2. Weight loss more than 10% of total body weight over 6 months.\n3. Drenching night sweats."
+      },
+  {
+        "id": "sub_hem_def_3",
+        "front": "Define Hereditary Spherocytosis (HS) and mention its primary mode of inheritance.",
+        "back": "* Definition: It is an inherited chronic hemolytic anemia caused by a defect or dysfunction in spectrin or ankyrin (components of the RBC cytoskeleton), leading to a loss of cell surface area and resulting in a spherical shape of RBCs with premature destruction in the spleen.\n* Inheritance: Autosomal dominant (AD) mode of inheritance in 75% of cases."
+      },
+  {
+        "id": "sub_hem_case_1",
+        "front": "Case 1",
+        "type": "case",
+        "caseBody": "A 3-year-old girl is brought to the pediatric outpatient clinic with a sudden appearance of a widespread petechial rash and multiple bruises over her lower limbs. Her parents state that she is otherwise perfectly active, well, completely afebrile, and has no bone pain. On physical examination, there is no significant lymphadenopathy or hepatosplenomegaly. Initial CBC shows an isolated platelet count of 12,000/mm³, with normal hemoglobin and normal WBC count.",
+        "subQuestions": [
+          {
+            "id": "sub_hem_case_1_q1",
+            "questionText": "What is your clinical diagnosis for this well active child?",
+            "back": "Newly diagnosed primary Immune Thrombocytopenia (ITP)."
+          },
+          {
+            "id": "sub_hem_case_1_q2",
+            "questionText": "Mention two first-line medical therapies that can be initiated if the child develops significant mucosal membrane bleeding.",
+            "back": "1. Glucocorticoids (oral Prednisone or IV Methylprednisolone).\n2. Intravenous Immunoglobulin (IVIG)."
+          }
+        ]
+      },
+  {
+        "id": "sub_hem_case_2",
+        "front": "Case 2",
+        "type": "case",
+        "caseBody": "An 8-month-old male infant is evaluated for progressive pallor, weakness, and failure to thrive that became noticeable during the second 6 months of life. Physical examination reveals severe pallor, maxilla hyperplasia with a flat nasal bridge and frontal bossing (thalassemic facies), and marked hepatosplenomegaly. Hemoglobin electrophoresis is performed, demonstrating a marked increase in HbF% and a complete absence of HbA.",
+        "subQuestions": [
+          {
+            "id": "sub_hem_case_2_q1",
+            "questionText": "What is the most likely diagnosis for this infant?",
+            "back": "Homozygous beta-thalassemia (Thalassemia Major / Cooley anemia)."
+          },
+          {
+            "id": "sub_hem_case_2_q2",
+            "questionText": "Mention two essential pillars in the long-term medical management of this major quantitative hemoglobinopathy.",
+            "back": "1. Chronic regular blood transfusion (maintaining hemoglobin levels at 9-10 g/dL).\n2. Iron chelator therapy (such as Deferoxamine or oral Deferasirox, initiated when serum ferritin is >1000 ng/mL)."
+          }
+        ]
+      },
+  {
+        "id": "new_match_hema_onc",
+        "front": "Match the clinical description to the correct hematological disorder:",
+        "type": "matching",
+        "matchingPairs": [
+          {
+            "left": "An inherited chronic hemolytic anemia caused by an autosomal dominant defect or dysfunction in spectrin or ankyrin, presenting with increased MCHC above 35 g/dL and a negative Coombs test.",
+            "right": "Hereditary Spherocytosis"
+          },
+          {
+            "left": "Characterized by pancytopenia with reticulocytopenia and a hypocellular bone marrow, presenting with an absolute absence of hepatosplenomegaly or lymphadenopathy.",
+            "right": "Aplastic Anemia"
+          },
+          {
+            "left": "An X-linked recessive enzymatic disorder where oxidative stresses (like fava beans or medications) denature hemoglobin, forming Heinz bodies and bite cells during acute intravascular hemolysis.",
+            "right": "Glucose-6-Phosphate Dehydrogenase (G6PD) Deficiency"
+          }
+        ]
+      }
   ],
   "_SUBCHAPTER_CVS": [
-    {
-      "id": "sub_cvs_enum_1",
-      "front": "Enumerate four indications and timing for the closure (surgical or device) of a Ventricular Septal Defect (VSD).",
-      "back": "1. Failure to thrive (if growth failure cannot be improved by medical therapy).\n2. If the pulmonary artery (PA) pressure is more than 50% of systemic pressure (should be closed by the end of the first year).\n3. Dilated left-sided chambers.\n4. Intractable congestive heart failure."
-    },
-    {
-      "id": "sub_cvs_enum_2",
-      "front": "Enumerate four clinical precipitating factors that can trigger a Hypercyanotic spell (Tetrad spell) in a child with Tetralogy of Fallot (TOF).",
-      "back": "1. Crying (which increases pulmonary vascular resistance).\n2. Feeding or awakening from naps.\n3. Fever (which reduces systemic vascular resistance).\n4. Defecation or straining."
-    },
-    {
-      "id": "sub_cvs_enum_3",
-      "front": "Enumerate four manifestations of systemic congestion seen in Right-Sided Heart Failure in older children.",
-      "back": "1. Congested pulsating neck veins.\n2. Enlarged tender liver (congested liver).\n3. Pain in the epigastrium and right hypochondrium.\n4. Anorexia, nausea, and vomiting (congested stomach)."
-    },
-    {
-      "id": "sub_cvs_def_1",
-      "front": "Define the classic diagnostic triad of Heart Failure in infants.",
-      "back": "The classic diagnostic triad of Heart Failure in infants comprises:\n1. Tachypnea.\n2. Tachycardia.\n3. Enlarged tender liver."
-    },
-    {
-      "id": "sub_cvs_def_2",
-      "front": "Define complete Transposition of the Great Arteries (TGA) and mention its characteristic finding on a Chest X-ray.",
-      "back": "* Definition: A cyanotic congenital heart disease where two independent circulations exist; the aorta arises anteriorly from the right ventricle (RV) carrying desaturated blood to the body, and the aorta arises posteriorly from the left ventricle (LV) carrying oxygenated blood back to the lungs.\n* Chest X-ray finding: Narrow mediastinum with mild cardiomegaly / Egg-shaped heart."
-    },
-    {
-      "id": "sub_cvs_case_1",
-      "front": "Case 1",
-      "type": "case",
-      "caseBody": "A 2-month-old female infant is brought to the emergency department with severe feeding difficulty, excessive sweating during feeding, and poor weight gain. On physical examination, she is tachypneic and tachycardic, and her liver is palpable 4 cm below the costal margin and tender. Auscultation reveals a loud, harsh pansystolic murmur best heard at the lower left sternal border.",
-      "subQuestions": [
-        {
-          "id": "sub_cvs_case_1_q1",
-          "questionText": "What is the most likely diagnosis for this infant?",
-          "back": "Large Ventricular Septal Defect (VSD) complicated by Congestive Heart Failure (CHF)."
-        },
-        {
-          "id": "sub_cvs_case_1_q2",
-          "questionText": "Mention the standard medical management guidelines utilized initially to control heart failure in this case.",
-          "back": "Treatment with diuretics and Angiotensin-Converting Exchange (ACE) inhibitors, alongside frequent feedings of high-calorie formulas."
-        }
-      ]
-    },
-    {
-      "id": "sub_cvs_case_2",
-      "front": "Case 2",
-      "type": "case",
-      "caseBody": "A 7-month-old boy known to have cyanotic congenital heart disease is brought to the clinic. While crying intensely during examination, the infant suddenly develops severe dyspnea, deeply increased cyanosis, and rapid, deep respirations, followed by generalized weakness and somnolence.",
-      "subQuestions": [
-        {
-          "id": "sub_cvs_case_2_q1",
-          "questionText": "What is the medical term for this acute life-threatening event?",
-          "back": "Hypercyanotic spell / Tetrad spell."
-        },
-        {
-          "id": "sub_cvs_case_2_q2",
-          "questionText": "Mention the diagnostic cardiac anomaly layout of this disease and explain how squatting or the knee-chest position works to relieve this spell.",
-          "back": "* Layout (Tetralogy of Fallot): VSD, overriding aorta, pulmonary stenosis, and right ventricular hypertrophy.\n* Mechanism of relief: Squatting increases systemic vascular resistance (SVR), which reduces the right-to-left shunt and improves pulmonary blood flow."
-        }
-      ]
-    },
-    {
-      "id": "sub_cvs_enum_4",
-      "front": "Enumerate the measures for the medical management of Congestive Heart Failure (CHF) in a patient with Acute Rheumatic Fever.",
-      "back": "* Complete bed rest with orthopneic position and moist, cool oxygen.\n* Prednisone for severe carditis of recent onset.\n* Digoxin used with caution, starting with half the usual recommended loading dose.\n* Furosemide (1 mg/kg every 6 to 12 hours) if diuretics are indicated."
-    },
-    {
-      "id": "sub_cvs_saq_1",
-      "front": "Mention the medical treatment of Congestive Heart Failure (CHF) in infants with Ventricular Septal Defect (VSD).",
-      "back": "* Medical treatment is indicated with diuretics and Angiotensin-Converting Enzyme (ACE) inhibitors for 2 to 4 months.\n* Nutritional support: Frequent feedings of high-calorie formulas, either by nasogastric tube or oral feeding, to support growth."
-    },
-    {
-      "id": "sub_cvs_saq_2",
-      "front": "Mention the clinical signs of Congestive Heart Failure (CHF) in symptomatic newborns with Coarctation of the Aorta (COA).",
-      "back": "* General: Poor feeding and dyspnea.\n* Physical findings: A loud gallop rhythm and weak, thready peripheral pulses (with no significant heart murmur in sick infants)."
-    },
-    {
-      "id": "sub_cvs_case_3",
-      "front": "Case 3",
-      "type": "case",
-      "caseBody": "An infant presents with delayed growth and development, decreased exercise tolerance (tachypnea and excessive sweating with feeding), and symptoms of CHF. On examination, a harsh pansystolic murmur is heard on the lower left sternal border.",
-      "subQuestions": [
-        {
-          "id": "sub_cvs_case_3_q1",
-          "questionText": "What is the most likely diagnosis?",
-          "back": "Moderate to large Ventricular Septal Defect (VSD) complicated by Congestive Heart Failure."
-        },
-        {
-          "id": "sub_cvs_case_3_q2",
-          "questionText": "Enumerate the indications for surgical or device closure of this defect.",
-          "back": "* Failure to thrive (if growth failure cannot be improved by medical therapy).\n* Pulmonary artery (PA) pressure > 50% of systemic pressure (closure should be done by the end of the 1st year).\n* Dilated left-sided cardiac chambers.\n* Intractable congestive heart failure.\n* Subaortic VSD causing aortic regurgitation (AR)."
-        }
-      ]
-    },
-    {
-      "id": "sub_cvs_case_4",
-      "front": "Case 4",
-      "type": "case",
-      "caseBody": "A child experiences sudden episodes of becoming dyspneic and intensely cyanotic (hypercyanotic or \"tetrad\" spells). The mother notices that the child often assumes a \"squatting\" position after physical activity. On examination, a systolic ejection murmur is located along the middle and upper left sternal border. Chest X-ray shows a boot-shaped heart (coeur en sabot).",
-      "subQuestions": [
-        {
-          "id": "sub_cvs_case_4_q1",
-          "questionText": "What is the diagnosis?",
-          "back": "Tetralogy of Fallot (TOF) associated with hypercyanotic spells."
-        },
-        {
-          "id": "sub_cvs_case_4_q2",
-          "questionText": "Enumerate the four classic components of this disease.",
-          "back": "1. Ventricular Septal Defect (VSD).\n2. Overriding Aorta (aorta overrides the VSD).\n3. Pulmonary Stenosis (generally infundibular in location).\n4. Right Ventricular Hypertrophy."
-        }
-      ]
-    },
-    {
-      "id": "sub_cvs_case_5",
-      "front": "Case 5",
-      "type": "case",
-      "caseBody": "A premature infant presents with poor weight gain, decreased exercise tolerance, and repeated lower respiratory tract infections. Examination reveals bounding peripheral pulses with a water hammer pulse. Auscultation reveals a continuous \"machinery\" murmur at the left infraclavicular area.",
-      "subQuestions": [
-        {
-          "id": "sub_cvs_case_5_q1",
-          "questionText": "What is the diagnosis?",
-          "back": "Large Patent Ductus Arteriosus (PDA)."
-        },
-        {
-          "id": "sub_cvs_case_5_q2",
-          "questionText": "Mention the medical management indicated for this condition in premature infants.",
-          "back": "In premature infants with symptomatic PDAs, cyclooxygenase inhibitors such as indomethacin, ibuprofen, or recently paracetamol are highly effective and widely used to pharmacologically close the PDA."
-        }
-      ]
-    }
+  {
+        "id": "sub_cvs_enum_1",
+        "front": "Enumerate four indications and timing for the closure (surgical or device) of a Ventricular Septal Defect (VSD).",
+        "back": "1. Failure to thrive (if growth failure cannot be improved by medical therapy).\n2. If the pulmonary artery (PA) pressure is more than 50% of systemic pressure (should be closed by the end of the first year).\n3. Dilated left-sided chambers.\n4. Intractable congestive heart failure."
+      },
+  {
+        "id": "sub_cvs_enum_2",
+        "front": "Enumerate four clinical precipitating factors that can trigger a Hypercyanotic spell (Tetrad spell) in a child with Tetralogy of Fallot (TOF).",
+        "back": "1. Crying (which increases pulmonary vascular resistance).\n2. Feeding or awakening from naps.\n3. Fever (which reduces systemic vascular resistance).\n4. Defecation or straining."
+      },
+  {
+        "id": "sub_cvs_enum_3",
+        "front": "Enumerate four manifestations of systemic congestion seen in Right-Sided Heart Failure in older children.",
+        "back": "1. Congested pulsating neck veins.\n2. Enlarged tender liver (congested liver).\n3. Pain in the epigastrium and right hypochondrium.\n4. Anorexia, nausea, and vomiting (congested stomach)."
+      },
+  {
+        "id": "sub_cvs_def_1",
+        "front": "Define the classic diagnostic triad of Heart Failure in infants.",
+        "back": "The classic diagnostic triad of Heart Failure in infants comprises:\n1. Tachypnea.\n2. Tachycardia.\n3. Enlarged tender liver."
+      },
+  {
+        "id": "sub_cvs_def_2",
+        "front": "Define complete Transposition of the Great Arteries (TGA) and mention its characteristic finding on a Chest X-ray.",
+        "back": "* Definition: A cyanotic congenital heart disease where two independent circulations exist; the aorta arises anteriorly from the right ventricle (RV) carrying desaturated blood to the body, and the aorta arises posteriorly from the left ventricle (LV) carrying oxygenated blood back to the lungs.\n* Chest X-ray finding: Narrow mediastinum with mild cardiomegaly / Egg-shaped heart."
+      },
+  {
+        "id": "sub_cvs_case_1",
+        "front": "Case 1",
+        "type": "case",
+        "caseBody": "A 2-month-old female infant is brought to the emergency department with severe feeding difficulty, excessive sweating during feeding, and poor weight gain. On physical examination, she is tachypneic and tachycardic, and her liver is palpable 4 cm below the costal margin and tender. Auscultation reveals a loud, harsh pansystolic murmur best heard at the lower left sternal border.",
+        "subQuestions": [
+          {
+            "id": "sub_cvs_case_1_q1",
+            "questionText": "What is the most likely diagnosis for this infant?",
+            "back": "Large Ventricular Septal Defect (VSD) complicated by Congestive Heart Failure (CHF)."
+          },
+          {
+            "id": "sub_cvs_case_1_q2",
+            "questionText": "Mention the standard medical management guidelines utilized initially to control heart failure in this case.",
+            "back": "Treatment with diuretics and Angiotensin-Converting Exchange (ACE) inhibitors, alongside frequent feedings of high-calorie formulas."
+          }
+        ]
+      },
+  {
+        "id": "sub_cvs_case_2",
+        "front": "Case 2",
+        "type": "case",
+        "caseBody": "A 7-month-old boy known to have cyanotic congenital heart disease is brought to the clinic. While crying intensely during examination, the infant suddenly develops severe dyspnea, deeply increased cyanosis, and rapid, deep respirations, followed by generalized weakness and somnolence.",
+        "subQuestions": [
+          {
+            "id": "sub_cvs_case_2_q1",
+            "questionText": "What is the medical term for this acute life-threatening event?",
+            "back": "Hypercyanotic spell / Tetrad spell."
+          },
+          {
+            "id": "sub_cvs_case_2_q2",
+            "questionText": "Mention the diagnostic cardiac anomaly layout of this disease and explain how squatting or the knee-chest position works to relieve this spell.",
+            "back": "* Layout (Tetralogy of Fallot): VSD, overriding aorta, pulmonary stenosis, and right ventricular hypertrophy.\n* Mechanism of relief: Squatting increases systemic vascular resistance (SVR), which reduces the right-to-left shunt and improves pulmonary blood flow."
+          }
+        ]
+      },
+  {
+        "id": "sub_cvs_enum_4",
+        "front": "Enumerate the measures for the medical management of Congestive Heart Failure (CHF) in a patient with Acute Rheumatic Fever.",
+        "back": "* Complete bed rest with orthopneic position and moist, cool oxygen.\n* Prednisone for severe carditis of recent onset.\n* Digoxin used with caution, starting with half the usual recommended loading dose.\n* Furosemide (1 mg/kg every 6 to 12 hours) if diuretics are indicated."
+      },
+  {
+        "id": "sub_cvs_saq_1",
+        "front": "Mention the medical treatment of Congestive Heart Failure (CHF) in infants with Ventricular Septal Defect (VSD).",
+        "back": "* Medical treatment is indicated with diuretics and Angiotensin-Converting Enzyme (ACE) inhibitors for 2 to 4 months.\n* Nutritional support: Frequent feedings of high-calorie formulas, either by nasogastric tube or oral feeding, to support growth."
+      },
+  {
+        "id": "sub_cvs_saq_2",
+        "front": "Mention the clinical signs of Congestive Heart Failure (CHF) in symptomatic newborns with Coarctation of the Aorta (COA).",
+        "back": "* General: Poor feeding and dyspnea.\n* Physical findings: A loud gallop rhythm and weak, thready peripheral pulses (with no significant heart murmur in sick infants)."
+      },
+  {
+        "id": "sub_cvs_case_3",
+        "front": "Case 3",
+        "type": "case",
+        "caseBody": "An infant presents with delayed growth and development, decreased exercise tolerance (tachypnea and excessive sweating with feeding), and symptoms of CHF. On examination, a harsh pansystolic murmur is heard on the lower left sternal border.",
+        "subQuestions": [
+          {
+            "id": "sub_cvs_case_3_q1",
+            "questionText": "What is the most likely diagnosis?",
+            "back": "Moderate to large Ventricular Septal Defect (VSD) complicated by Congestive Heart Failure."
+          },
+          {
+            "id": "sub_cvs_case_3_q2",
+            "questionText": "Enumerate the indications for surgical or device closure of this defect.",
+            "back": "* Failure to thrive (if growth failure cannot be improved by medical therapy).\n* Pulmonary artery (PA) pressure > 50% of systemic pressure (closure should be done by the end of the 1st year).\n* Dilated left-sided cardiac chambers.\n* Intractable congestive heart failure.\n* Subaortic VSD causing aortic regurgitation (AR)."
+          }
+        ]
+      },
+  {
+        "id": "sub_cvs_case_4",
+        "front": "Case 4",
+        "type": "case",
+        "caseBody": "A child experiences sudden episodes of becoming dyspneic and intensely cyanotic (hypercyanotic or \"tetrad\" spells). The mother notices that the child often assumes a \"squatting\" position after physical activity. On examination, a systolic ejection murmur is located along the middle and upper left sternal border. Chest X-ray shows a boot-shaped heart (coeur en sabot).",
+        "subQuestions": [
+          {
+            "id": "sub_cvs_case_4_q1",
+            "questionText": "What is the diagnosis?",
+            "back": "Tetralogy of Fallot (TOF) associated with hypercyanotic spells."
+          },
+          {
+            "id": "sub_cvs_case_4_q2",
+            "questionText": "Enumerate the four classic components of this disease.",
+            "back": "1. Ventricular Septal Defect (VSD).\n2. Overriding Aorta (aorta overrides the VSD).\n3. Pulmonary Stenosis (generally infundibular in location).\n4. Right Ventricular Hypertrophy."
+          }
+        ]
+      },
+  {
+        "id": "sub_cvs_case_5",
+        "front": "Case 5",
+        "type": "case",
+        "caseBody": "A premature infant presents with poor weight gain, decreased exercise tolerance, and repeated lower respiratory tract infections. Examination reveals bounding peripheral pulses with a water hammer pulse. Auscultation reveals a continuous \"machinery\" murmur at the left infraclavicular area.",
+        "subQuestions": [
+          {
+            "id": "sub_cvs_case_5_q1",
+            "questionText": "What is the diagnosis?",
+            "back": "Large Patent Ductus Arteriosus (PDA)."
+          },
+          {
+            "id": "sub_cvs_case_5_q2",
+            "questionText": "Mention the medical management indicated for this condition in premature infants.",
+            "back": "In premature infants with symptomatic PDAs, cyclooxygenase inhibitors such as indomethacin, ibuprofen, or recently paracetamol are highly effective and widely used to pharmacologically close the PDA."
+          }
+        ]
+      }
   ],
   "_SUBCHAPTER_Infection": [
-    {
-      "id": "sub_inf_enum_1",
-      "front": "Enumerate four respiratory or neurological complications of Measles.",
-      "back": "1. Pneumonia.\n2. Otitis media.\n3. Laryngitis & Laryngo-tracheo-bronchitis.\n4. Post-infectious or Parainfectious encephalitis (or SSPE / Sinusitis)."
-    },
-    {
-      "id": "sub_inf_enum_2",
-      "front": "Enumerate four clinical features or signs of increased intra-cranial tension seen in Acute Bacterial Meningitis.",
-      "back": "1. Headache & Vomiting (usually projectile).\n2. Bulging anterior fontanel (in infants < 1 year of age).\n3. Changes in sensorium.\n4. Convulsions (usually generalized)."
-    },
-    {
-      "id": "sub_inf_def_1",
-      "front": "Define Roseola Infantum and mention its pathognomonic link between fever and rash.",
-      "back": "* Definition: A viral infection common in infants aged 6 months–2 years, caused mainly by Human herpes virus-6 (HHV-6).\n* Fever and Rash link: It is characteristically presenting with a high fever for 3–5 days, followed by a sudden fall of temperature (onset of drop of fever) and the immediate appearance of a maculopapular rash."
-    },
-    {
-      "id": "sub_inf_def_2",
-      "front": "List four major clinical features or peripheral blood findings in a patient with Infectious Mononucleosis.",
-      "back": "1. Fever.\n2. Sore throat.\n3. Cervical lymphadenopathy.\n4. Atypical lymphocytes in peripheral blood (or Fatigue / Hepatosplenomegaly)."
-    },
-    {
-      "id": "sub_inf_case_1",
-      "front": "Case 1",
-      "type": "case",
-      "caseBody": "A 14-month-old infant is brought to the emergency room with a history of abrupt onset of high-grade fever, projectile vomiting, and extreme irritability. On physical examination, the infant has a bulging and tense anterior fontanel. When the pediatrician attempts to perform rapid passive flexion of the infant's head, a severe neck stiffness is noted, and this maneuver is immediately accompanied by a brisk, involuntary flexion of both knees.",
-      "subQuestions": [
-        {
-          "id": "sub_inf_case_1_q1",
-          "questionText": "What is your provisional diagnosis for this infant?",
-          "back": "Acute Bacterial Meningitis (Septic Meningitis)."
-        },
-        {
-          "id": "sub_inf_case_1_q2",
-          "questionText": "What is the medical term for the sign elicited during head flexion, and what is the specific antibiotic combination if the patient is an infant < 6 months old?",
-          "back": "* Sign term: Positive Brudzinski's sign.\n* Antibiotic combination (< 6 months): Ampicillin + Gentamicin (IV)."
-        }
-      ]
-    },
-    {
-      "id": "sub_inf_case_2",
-      "front": "Case 2",
-      "type": "case",
-      "caseBody": "A 3-year-old boy presents with a 4-day history of high fever, severe cough, coryza, and conjunctivitis. On examining the buccal mucosa, the pediatrician detects small, bluish-white spots opposite the second molar teeth. The next day, a prominent maculopapular rash appears at the hairline and begins spreading downwards to involve the face and neck.",
-      "subQuestions": [
-        {
-          "id": "sub_inf_case_2_q1",
-          "questionText": "What is the clinical diagnosis for this child?",
-          "back": "Measles (Morbilli)."
-        },
-        {
-          "id": "sub_inf_case_2_q2",
-          "questionText": "What is the medical term for the pathognomonic spots found on the buccal mucosa, and what therapeutic agent reduces morbidity and mortality in these children?",
-          "back": "* Spots term: Koplik spots.\n* Therapeutic Agent: Oral Vitamin A."
-        }
-      ]
-    },
-    {
-      "id": "new_match_infection_set1",
-      "front": "Match the clinical description to the correct viral infection (Exanthematous Viral Infections):",
-      "type": "matching",
-      "matchingPairs": [
-        {
-          "left": "Highly contagious childhood illness characterized by successive crops of typical vesicles on skin and mucous membranes described as \"dew drops on a rose petal\".",
-          "right": "Chickenpox"
-        },
-        {
-          "left": "Common in infants aged 6 months–2 years, characterized by high fever for 3–5 days, followed by a sudden fall of temperature and the appearance of a maculopapular rash starting on the trunk.",
-          "right": "Roseola Infantum"
-        },
-        {
-          "left": "Features a 4-day prodromal stage with fever, cough, coryza, conjunctivitis, and pathognomonic Koplik spots on the buccal mucosa before a maculopapular rash spreads from the hairline downward.",
-          "right": "Measles"
-        }
-      ]
-    },
-    {
-      "id": "new_match_infection_set2",
-      "front": "Match the clinical description to the correct infection (Localized Organ Inflammation):",
-      "type": "matching",
-      "matchingPairs": [
-        {
-          "left": "Inflammation of brain tissue, commonly viral in origin, presenting with fever, seizures, disturbed consciousness (sensorium), confusion, and focal neurological signs.",
-          "right": "Encephalitis"
-        },
-        {
-          "left": "Viral infection characterized by painful parotid gland swelling and fever, which spreads through respiratory droplets and may cause orchitis or pancreatitis.",
-          "right": "Mumps"
-        },
-        {
-          "left": "Acute inflammation of the meninges causing fever, vomiting, irritability, neck stiffness, bulging/tense anterior fontanel, and positive Kernig and Brudzinski signs.",
-          "right": "Meningitis"
-        }
-      ]
-    },
-    {
-      "id": "new_match_infection_set3",
-      "front": "Match the clinical presentation to the correct viral pathogen/marker:",
-      "type": "matching",
-      "matchingPairs": [
-        {
-          "left": "The specific viral pathogen that causes Infectious Mononucleosis, presenting with fever, sore throat, cervical lymphadenopathy, fatigue, and atypical lymphocytes in peripheral blood.",
-          "right": "Epstein–Barr virus (EBV)"
-        },
-        {
-          "left": "The specific viral pathogen responsible for causing Roseola infantum, where febrile convulsions may occur during the high fever phase.",
-          "right": "Human herpes virus-6 (HHV-6)"
-        },
-        {
-          "left": "Recognized as an important viral cause of encephalitis in children that presents with seizures and a disturbed sensorium.",
-          "right": "Herpes Simplex Virus (HSV)"
-        }
-      ]
-    }
+  {
+        "id": "sub_inf_enum_1",
+        "front": "Enumerate four respiratory or neurological complications of Measles.",
+        "back": "1. Pneumonia.\n2. Otitis media.\n3. Laryngitis & Laryngo-tracheo-bronchitis.\n4. Post-infectious or Parainfectious encephalitis (or SSPE / Sinusitis)."
+      },
+  {
+        "id": "sub_inf_enum_2",
+        "front": "Enumerate four clinical features or signs of increased intra-cranial tension seen in Acute Bacterial Meningitis.",
+        "back": "1. Headache & Vomiting (usually projectile).\n2. Bulging anterior fontanel (in infants < 1 year of age).\n3. Changes in sensorium.\n4. Convulsions (usually generalized)."
+      },
+  {
+        "id": "sub_inf_def_1",
+        "front": "Define Roseola Infantum and mention its pathognomonic link between fever and rash.",
+        "back": "* Definition: A viral infection common in infants aged 6 months–2 years, caused mainly by Human herpes virus-6 (HHV-6).\n* Fever and Rash link: It is characteristically presenting with a high fever for 3–5 days, followed by a sudden fall of temperature (onset of drop of fever) and the immediate appearance of a maculopapular rash."
+      },
+  {
+        "id": "sub_inf_def_2",
+        "front": "List four major clinical features or peripheral blood findings in a patient with Infectious Mononucleosis.",
+        "back": "1. Fever.\n2. Sore throat.\n3. Cervical lymphadenopathy.\n4. Atypical lymphocytes in peripheral blood (or Fatigue / Hepatosplenomegaly)."
+      },
+  {
+        "id": "sub_inf_case_1",
+        "front": "Case 1",
+        "type": "case",
+        "caseBody": "A 14-month-old infant is brought to the emergency room with a history of abrupt onset of high-grade fever, projectile vomiting, and extreme irritability. On physical examination, the infant has a bulging and tense anterior fontanel. When the pediatrician attempts to perform rapid passive flexion of the infant's head, a severe neck stiffness is noted, and this maneuver is immediately accompanied by a brisk, involuntary flexion of both knees.",
+        "subQuestions": [
+          {
+            "id": "sub_inf_case_1_q1",
+            "questionText": "What is your provisional diagnosis for this infant?",
+            "back": "Acute Bacterial Meningitis (Septic Meningitis)."
+          },
+          {
+            "id": "sub_inf_case_1_q2",
+            "questionText": "What is the medical term for the sign elicited during head flexion, and what is the specific antibiotic combination if the patient is an infant < 6 months old?",
+            "back": "* Sign term: Positive Brudzinski's sign.\n* Antibiotic combination (< 6 months): Ampicillin + Gentamicin (IV)."
+          }
+        ]
+      },
+  {
+        "id": "sub_inf_case_2",
+        "front": "Case 2",
+        "type": "case",
+        "caseBody": "A 3-year-old boy presents with a 4-day history of high fever, severe cough, coryza, and conjunctivitis. On examining the buccal mucosa, the pediatrician detects small, bluish-white spots opposite the second molar teeth. The next day, a prominent maculopapular rash appears at the hairline and begins spreading downwards to involve the face and neck.",
+        "subQuestions": [
+          {
+            "id": "sub_inf_case_2_q1",
+            "questionText": "What is the clinical diagnosis for this child?",
+            "back": "Measles (Morbilli)."
+          },
+          {
+            "id": "sub_inf_case_2_q2",
+            "questionText": "What is the medical term for the pathognomonic spots found on the buccal mucosa, and what therapeutic agent reduces morbidity and mortality in these children?",
+            "back": "* Spots term: Koplik spots.\n* Therapeutic Agent: Oral Vitamin A."
+          }
+        ]
+      },
+  {
+        "id": "new_match_infection_set1",
+        "front": "Match the clinical description to the correct viral infection (Exanthematous Viral Infections):",
+        "type": "matching",
+        "matchingPairs": [
+          {
+            "left": "Highly contagious childhood illness characterized by successive crops of typical vesicles on skin and mucous membranes described as \"dew drops on a rose petal\".",
+            "right": "Chickenpox"
+          },
+          {
+            "left": "Common in infants aged 6 months–2 years, characterized by high fever for 3–5 days, followed by a sudden fall of temperature and the appearance of a maculopapular rash starting on the trunk.",
+            "right": "Roseola Infantum"
+          },
+          {
+            "left": "Features a 4-day prodromal stage with fever, cough, coryza, conjunctivitis, and pathognomonic Koplik spots on the buccal mucosa before a maculopapular rash spreads from the hairline downward.",
+            "right": "Measles"
+          }
+        ]
+      },
+  {
+        "id": "new_match_infection_set2",
+        "front": "Match the clinical description to the correct infection (Localized Organ Inflammation):",
+        "type": "matching",
+        "matchingPairs": [
+          {
+            "left": "Inflammation of brain tissue, commonly viral in origin, presenting with fever, seizures, disturbed consciousness (sensorium), confusion, and focal neurological signs.",
+            "right": "Encephalitis"
+          },
+          {
+            "left": "Viral infection characterized by painful parotid gland swelling and fever, which spreads through respiratory droplets and may cause orchitis or pancreatitis.",
+            "right": "Mumps"
+          },
+          {
+            "left": "Acute inflammation of the meninges causing fever, vomiting, irritability, neck stiffness, bulging/tense anterior fontanel, and positive Kernig and Brudzinski signs.",
+            "right": "Meningitis"
+          }
+        ]
+      },
+  {
+        "id": "new_match_infection_set3",
+        "front": "Match the clinical presentation to the correct viral pathogen/marker:",
+        "type": "matching",
+        "matchingPairs": [
+          {
+            "left": "The specific viral pathogen that causes Infectious Mononucleosis, presenting with fever, sore throat, cervical lymphadenopathy, fatigue, and atypical lymphocytes in peripheral blood.",
+            "right": "Epstein–Barr virus (EBV)"
+          },
+          {
+            "left": "The specific viral pathogen responsible for causing Roseola infantum, where febrile convulsions may occur during the high fever phase.",
+            "right": "Human herpes virus-6 (HHV-6)"
+          },
+          {
+            "left": "Recognized as an important viral cause of encephalitis in children that presents with seizures and a disturbed sensorium.",
+            "right": "Herpes Simplex Virus (HSV)"
+          }
+        ]
+      }
   ],
   "_SUBCHAPTER_Neurology": [
-    {
-      "id": "sub_neuro_enum_1",
-      "front": "Enumerate four topographic (anatomic) classifications of Cerebral Palsy (CP).",
-      "back": "1. Hemiplegia: Arm & Leg on the same side of the body.\n2. Diplegia: Arms and Legs involved, but legs are more involved.\n3. Quadriplegia (Tetraplegia): Arms and Legs equally involved or arms more involved than legs.\n4. Monoplegia (one limb involved) / Paraplegia (only legs involved)."
-    },
-    {
-      "id": "sub_neuro_enum_2",
-      "front": "Enumerate four clinical signs used to diagnose severe persistent hypotonia in a Floppy Infant.",
-      "back": "1. Frog leg position: denotes hypotonia of lower limbs.\n2. Head lag: when pulling the baby up from his hands in a supine position, the head lags backwards.\n3. Curved trunk on ventral suspension: when suspended in a prone position over the examiner's hand, the baby drops around it.\n4. Slippage on vertical suspension: denotes hypotonia of shoulder girdle muscles."
-    },
-    {
-      "id": "sub_neuro_enum_3",
-      "front": "Enumerate the four obligatory criteria characterized by Muscular Dystrophies.",
-      "back": "1. Primary myopathy.\n2. Progressive course.\n3. Genetic basis.\n4. Characteristic muscle fiber degeneration and muscle cell death at some stage."
-    },
-    {
-      "id": "sub_neuro_def_1",
-      "front": "Define Cerebral Palsy (Little's Disease).",
-      "back": "It is an encephalopathy resulting from malfunction of the motor unit of the developing brain due to brain insult during prenatal, natal, and postnatal periods, leading to a central motor deficit that is characteristically non-progressive, non-familial, and non-hereditary."
-    },
-    {
-      "id": "sub_neuro_def_2",
-      "front": "List four lower motor unit disorders/levels that can cause Floppy Infant syndrome.",
-      "back": "1. Spinal cord lesion: Anterior horn cell disease (Werdnig-Hoffmann spinal muscular atrophy).\n2. Peripheral nerves: Acute polyneuropathy (Guillain-Barré Syndrome).\n3. Neuromuscular junction: Neonatal myasthenia gravis / Infantile botulism.\n4. Myopathies: Muscular dystrophies / Congenital myopathies."
-    },
-    {
-      "id": "sub_neuro_case_1",
-      "front": "Case 1",
-      "type": "case",
-      "caseBody": "A 4-year-old male boy is brought to the pediatric neurology clinic by his parents because of progressive difficulty running and climbing stairs. On physical examination, he shows a waddling lordotic gait and uses his hands to \"climb up\" his own thighs to stand up from a sitting position on the floor. The pediatrician notices firm, prominent pseudohypertrophy of his calf muscles.",
-      "subQuestions": [
-        {
-          "id": "sub_neuro_case_1_q1",
-          "questionText": "What is the most likely diagnosis for this boy?",
-          "back": "Duchenne Muscle Dystrophy (DMD)."
-        },
-        {
-          "id": "sub_neuro_case_1_q2",
-          "questionText": "Mention one blood enzyme test that is consistently markedly elevated and one diagnostic test to confirm this disease.",
-          "back": "* Blood Enzyme Test: Creatine kinase (CK) or Creatine phosphokinase (CPK).\n* Confirmative Test: Muscle biopsy (shows muscle fiber degeneration with replacement with fat and fibrosis)."
-        }
-      ]
-    },
-    {
-      "id": "sub_neuro_case_2",
-      "front": "Case 2",
-      "type": "case",
-      "caseBody": "A 10-month-old infant with a history of severe perinatal birth asphyxia is evaluated for delayed motor milestones. His mother notices that he cannot sit without support and keeps his hands tightly clenched. On physical examination, there is an early abnormal neck support, and the pediatrician notes a significant difficulty in abducting his thighs during a diaper change.",
-      "subQuestions": [
-        {
-          "id": "sub_neuro_case_2_q1",
-          "questionText": "What is your provisional diagnosis for this infant?",
-          "back": "Spastic Cerebral Palsy (CP)."
-        },
-        {
-          "id": "sub_neuro_case_2_q2",
-          "questionText": "List two prenatal or perinatal risk factors associated with the etiology of this condition.",
-          "back": "1. Prenatal: TORCH infection / teratogens / intrauterine hypoxia.\n2. Perinatal: Birth asphyxia / birth trauma / intracranial hemorrhage."
-        }
-      ]
-    },
-    {
-      "id": "new_match_neurology",
-      "front": "Match the clinical description to the correct neurological/muscular disorder:",
-      "type": "matching",
-      "matchingPairs": [
-        {
-          "left": "An X-linked recessive disorder due to a defect in a protein called dystrophin, presenting in males aged 3-5 years with pelvic girdle weakness, a positive Gower sign, and pseudohypertrophy of the calf muscles.",
-          "right": "Duchenne Muscular Dystrophy (DMD)"
-        },
-        {
-          "left": "Defined as severe persistent hypotonia present at birth or early infancy, clinically diagnosed by a frog leg position, head lag, curved trunk on ventral suspension, and slippage on vertical suspension.",
-          "right": "Floppy Infant Syndrome"
-        },
-        {
-          "left": "The most common type of cerebral palsy (70-80%), characterized by hypertonia with hyperreflexia, a positive Babinski sign, and the persistence of primitive neonatal reflexes beyond 6 months of age.",
-          "right": "Spastic Cerebral Palsy"
-        }
-      ]
-    }
+  {
+        "id": "sub_neuro_enum_1",
+        "front": "Enumerate four topographic (anatomic) classifications of Cerebral Palsy (CP).",
+        "back": "1. Hemiplegia: Arm & Leg on the same side of the body.\n2. Diplegia: Arms and Legs involved, but legs are more involved.\n3. Quadriplegia (Tetraplegia): Arms and Legs equally involved or arms more involved than legs.\n4. Monoplegia (one limb involved) / Paraplegia (only legs involved)."
+      },
+  {
+        "id": "sub_neuro_enum_2",
+        "front": "Enumerate four clinical signs used to diagnose severe persistent hypotonia in a Floppy Infant.",
+        "back": "1. Frog leg position: denotes hypotonia of lower limbs.\n2. Head lag: when pulling the baby up from his hands in a supine position, the head lags backwards.\n3. Curved trunk on ventral suspension: when suspended in a prone position over the examiner's hand, the baby drops around it.\n4. Slippage on vertical suspension: denotes hypotonia of shoulder girdle muscles."
+      },
+  {
+        "id": "sub_neuro_enum_3",
+        "front": "Enumerate the four obligatory criteria characterized by Muscular Dystrophies.",
+        "back": "1. Primary myopathy.\n2. Progressive course.\n3. Genetic basis.\n4. Characteristic muscle fiber degeneration and muscle cell death at some stage."
+      },
+  {
+        "id": "sub_neuro_def_1",
+        "front": "Define Cerebral Palsy (Little's Disease).",
+        "back": "It is an encephalopathy resulting from malfunction of the motor unit of the developing brain due to brain insult during prenatal, natal, and postnatal periods, leading to a central motor deficit that is characteristically non-progressive, non-familial, and non-hereditary."
+      },
+  {
+        "id": "sub_neuro_def_2",
+        "front": "List four lower motor unit disorders/levels that can cause Floppy Infant syndrome.",
+        "back": "1. Spinal cord lesion: Anterior horn cell disease (Werdnig-Hoffmann spinal muscular atrophy).\n2. Peripheral nerves: Acute polyneuropathy (Guillain-Barré Syndrome).\n3. Neuromuscular junction: Neonatal myasthenia gravis / Infantile botulism.\n4. Myopathies: Muscular dystrophies / Congenital myopathies."
+      },
+  {
+        "id": "sub_neuro_case_1",
+        "front": "Case 1",
+        "type": "case",
+        "caseBody": "A 4-year-old male boy is brought to the pediatric neurology clinic by his parents because of progressive difficulty running and climbing stairs. On physical examination, he shows a waddling lordotic gait and uses his hands to \"climb up\" his own thighs to stand up from a sitting position on the floor. The pediatrician notices firm, prominent pseudohypertrophy of his calf muscles.",
+        "subQuestions": [
+          {
+            "id": "sub_neuro_case_1_q1",
+            "questionText": "What is the most likely diagnosis for this boy?",
+            "back": "Duchenne Muscle Dystrophy (DMD)."
+          },
+          {
+            "id": "sub_neuro_case_1_q2",
+            "questionText": "Mention one blood enzyme test that is consistently markedly elevated and one diagnostic test to confirm this disease.",
+            "back": "* Blood Enzyme Test: Creatine kinase (CK) or Creatine phosphokinase (CPK).\n* Confirmative Test: Muscle biopsy (shows muscle fiber degeneration with replacement with fat and fibrosis)."
+          }
+        ]
+      },
+  {
+        "id": "sub_neuro_case_2",
+        "front": "Case 2",
+        "type": "case",
+        "caseBody": "A 10-month-old infant with a history of severe perinatal birth asphyxia is evaluated for delayed motor milestones. His mother notices that he cannot sit without support and keeps his hands tightly clenched. On physical examination, there is an early abnormal neck support, and the pediatrician notes a significant difficulty in abducting his thighs during a diaper change.",
+        "subQuestions": [
+          {
+            "id": "sub_neuro_case_2_q1",
+            "questionText": "What is your provisional diagnosis for this infant?",
+            "back": "Spastic Cerebral Palsy (CP)."
+          },
+          {
+            "id": "sub_neuro_case_2_q2",
+            "questionText": "List two prenatal or perinatal risk factors associated with the etiology of this condition.",
+            "back": "1. Prenatal: TORCH infection / teratogens / intrauterine hypoxia.\n2. Perinatal: Birth asphyxia / birth trauma / intracranial hemorrhage."
+          }
+        ]
+      },
+  {
+        "id": "new_match_neurology",
+        "front": "Match the clinical description to the correct neurological/muscular disorder:",
+        "type": "matching",
+        "matchingPairs": [
+          {
+            "left": "An X-linked recessive disorder due to a defect in a protein called dystrophin, presenting in males aged 3-5 years with pelvic girdle weakness, a positive Gower sign, and pseudohypertrophy of the calf muscles.",
+            "right": "Duchenne Muscular Dystrophy (DMD)"
+          },
+          {
+            "left": "Defined as severe persistent hypotonia present at birth or early infancy, clinically diagnosed by a frog leg position, head lag, curved trunk on ventral suspension, and slippage on vertical suspension.",
+            "right": "Floppy Infant Syndrome"
+          },
+          {
+            "left": "The most common type of cerebral palsy (70-80%), characterized by hypertonia with hyperreflexia, a positive Babinski sign, and the persistence of primitive neonatal reflexes beyond 6 months of age.",
+            "right": "Spastic Cerebral Palsy"
+          }
+        ]
+      }
   ],
   "_CHAPTER_Growth & development": [
-    {
-      "id": "gd_saq1",
-      "front": "Define the following terms: Growth and Development.",
-      "back": "Growth: Natural increase in the size of the body either by (hyperplasia) through multiplication of different cells of different organs or (hypertrophy) through increase in the cell size.\n\nDevelopment: Functional maturation of the central nervous system that leading to gaining skills and social adaptation."
-    },
-    {
-      "id": "gd_saq2",
-      "front": "Enumerate four types of childhood growth patterns.",
-      "back": "General (somatic) growth pattern.\n\nLymphatic growth pattern.\n\nGenital growth pattern.\n\nNeural growth pattern."
-    },
-    {
-      "id": "gd_saq3",
-      "front": "Enumerate four clinical uses of standard deviation (SD) curves in growth charts.",
-      "back": "Diagnosis of short stature if the height is -2SD below the mean.\n\nDiagnosis of tall stature if the height is +2SD above the mean.\n\nDiagnosis of microcephaly if head circumference is -2SD below the mean.\n\nDiagnosis of macrocephaly if head circumference is +2SD above the mean."
-    },
-    {
-      "id": "gd_saq4",
-      "front": "Enumerate four causes of delayed bone age.",
-      "back": "Malnutrition.\n\nHypopituitarism.\n\nHypothyroidism.\n\nHypoparathyroidism."
-    },
-    {
-      "id": "gd_saq5",
-      "front": "Enumerate four key development warning signs in children.",
-      "back": "Discrepant head size or crossing centile lines (too large or too small).\n\nPersistence of primitive reflexes > 6 months of age.\n\nNot walking by 18 months.\n\nNo clear spoken words by 18 months."
-    },
-    {
-      "id": "gd_saq6",
-      "front": "Enumerate four causes of delayed walking.",
-      "back": "Cerebral palsy.\n\nMental retardation.\n\nPeripheral nerves disorders.\n\nMuscles disorders."
-    },
-    {
-      "id": "gd_case1_q1",
-      "front": "Case 1: A mother brings her 10-month-old infant to your clinic for a routine check-up. On physical examination, you note that the infant can sit steadily without support with a straight back and can creep on the floor. However, the infant cannot stand or walk alone yet.\n\nIs this infant's gross motor development normal or delayed based on his current age?",
-      "back": "Normal development, as sitting without support with a straight back is expected by 8 months , and creeping is achieved at 9 months."
-    },
-    {
-      "id": "gd_case1_q2",
-      "front": "Case 1: A mother brings her 10-month-old infant to your clinic for a routine check-up. On physical examination, you note that the infant can sit steadily without support with a straight back and can creep on the floor. However, the infant cannot stand or walk alone yet.\n\nAt what age is walking well typically achieved?",
-      "back": "15 months."
-    },
-    {
-      "id": "gd_case2_q1",
-      "front": "Case 2: An 18-month-old child is brought to the pediatric clinic because he is still unable to walk independently and has no clear spoken words.\n\nIdentify the two key development warning signs present in this child.",
-      "back": "Not walking by 18 months and no clear spoken words by 18 months."
-    },
-    {
-      "id": "gd_case2_q2",
-      "front": "Case 2: An 18-month-old child is brought to the pediatric clinic because he is still unable to walk independently and has no clear spoken words.\n\nEnumerate two muscular or neurological causes that could lead to delayed walking in this child.",
-      "back": "Cerebral palsy and muscles disorders."
-    }
+  {
+        "id": "gd_saq1",
+        "front": "Define the following terms: Growth and Development.",
+        "back": "Growth: Natural increase in the size of the body either by (hyperplasia) through multiplication of different cells of different organs or (hypertrophy) through increase in the cell size.\n\nDevelopment: Functional maturation of the central nervous system that leading to gaining skills and social adaptation."
+      },
+  {
+        "id": "gd_saq2",
+        "front": "Enumerate four types of childhood growth patterns.",
+        "back": "General (somatic) growth pattern.\n\nLymphatic growth pattern.\n\nGenital growth pattern.\n\nNeural growth pattern."
+      },
+  {
+        "id": "gd_saq3",
+        "front": "Enumerate four clinical uses of standard deviation (SD) curves in growth charts.",
+        "back": "Diagnosis of short stature if the height is -2SD below the mean.\n\nDiagnosis of tall stature if the height is +2SD above the mean.\n\nDiagnosis of microcephaly if head circumference is -2SD below the mean.\n\nDiagnosis of macrocephaly if head circumference is +2SD above the mean."
+      },
+  {
+        "id": "gd_saq4",
+        "front": "Enumerate four causes of delayed bone age.",
+        "back": "Malnutrition.\n\nHypopituitarism.\n\nHypothyroidism.\n\nHypoparathyroidism."
+      },
+  {
+        "id": "gd_saq5",
+        "front": "Enumerate four key development warning signs in children.",
+        "back": "Discrepant head size or crossing centile lines (too large or too small).\n\nPersistence of primitive reflexes > 6 months of age.\n\nNot walking by 18 months.\n\nNo clear spoken words by 18 months."
+      },
+  {
+        "id": "gd_saq6",
+        "front": "Enumerate four causes of delayed walking.",
+        "back": "Cerebral palsy.\n\nMental retardation.\n\nPeripheral nerves disorders.\n\nMuscles disorders."
+      },
+  {
+        "id": "gd_case1_q1",
+        "front": "Case 1: A mother brings her 10-month-old infant to your clinic for a routine check-up. On physical examination, you note that the infant can sit steadily without support with a straight back and can creep on the floor. However, the infant cannot stand or walk alone yet.\n\nIs this infant's gross motor development normal or delayed based on his current age?",
+        "back": "Normal development, as sitting without support with a straight back is expected by 8 months , and creeping is achieved at 9 months."
+      },
+  {
+        "id": "gd_case1_q2",
+        "front": "Case 1: A mother brings her 10-month-old infant to your clinic for a routine check-up. On physical examination, you note that the infant can sit steadily without support with a straight back and can creep on the floor. However, the infant cannot stand or walk alone yet.\n\nAt what age is walking well typically achieved?",
+        "back": "15 months."
+      },
+  {
+        "id": "gd_case2_q1",
+        "front": "Case 2: An 18-month-old child is brought to the pediatric clinic because he is still unable to walk independently and has no clear spoken words.\n\nIdentify the two key development warning signs present in this child.",
+        "back": "Not walking by 18 months and no clear spoken words by 18 months."
+      },
+  {
+        "id": "gd_case2_q2",
+        "front": "Case 2: An 18-month-old child is brought to the pediatric clinic because he is still unable to walk independently and has no clear spoken words.\n\nEnumerate two muscular or neurological causes that could lead to delayed walking in this child.",
+        "back": "Cerebral palsy and muscles disorders."
+      }
   ],
   "_CHAPTER_Infections": [
-    {
-      "id": "inf_saq_1",
-      "front": "Define the following terms:\nFever of Unknown Origin (FUO): Fever >38°C for >14 days with no cause found by clinical history, physical examination, and routine laboratory tests.",
-      "back": "Fever of Unknown Origin (FUO): Fever >38°C for >14 days with no cause found by clinical history, physical examination, and routine laboratory tests."
-    },
-    {
-      "id": "inf_saq_2",
-      "front": "Define the following terms:\nDysentery: It is defined as diarrhea with visible blood in the stool.",
-      "back": "Dysentery is defined as diarrhea with visible blood in the stool."
-    },
-    {
-      "id": "inf_saq_3",
-      "front": "Define the following terms:\nPertussis (Whooping Cough): An acute respiratory infection which is caused by Bordetella pertussis (a Gram-negative bacillus).",
-      "back": "Pertussis (Whooping Cough) is an acute respiratory infection caused by Bordetella pertussis (a Gram-negative bacillus)."
-    },
-    {
-      "id": "inf_saq_4",
-      "front": "Define the following terms:\nAcute Bacterial Meningitis (\"Septic Meningitis\"): Acute inflammation of the meninges covering the brain and spinal cord, with the production of a purulent exudate.",
-      "back": "Acute Bacterial Meningitis (\"Septic Meningitis\") is acute inflammation of the meninges covering the brain and spinal cord, with production of a purulent exudate."
-    },
-    {
-      "id": "inf_saq_5",
-      "front": "Enumerate four nervous or respiratory complications associated with Measles. (Any 4)",
-      "back": "Possible answers include: Pneumonia, Otitis media, Post-infectious or parainfectious encephalitis, Subacute sclerosing pan-encephalitis (SSPE), Laryngitis and laryngo-tracheo-bronchitis."
-    },
-    {
-      "id": "inf_saq_6",
-      "front": "Enumerate four clinical features characteristic of the prodromal and eruptive stages of Scarlet Fever. (Any 4)",
-      "back": "Possible answers include: Acute onset of high fever (40°C) with severe sore throat and purulent tonsillar exudate, Diffuse finely papular erythematous eruption that blanches on pressure, Flushed cheeks with circum-oral pallor, White strawberry tongue progressing to red strawberry tongue, Skin desquamation of hands and feet at end of first week."
-    },
-    {
-      "id": "inf_saq_7",
-      "front": "Enumerate the three distinct clinical stages of a Pertussis infection and their durations.",
-      "back": "1. Catarrhal Stage: 1-2 weeks.\n2. Paroxysmal Stage: 2-4 weeks.\n3. Convalescent Stage: 1-2 weeks."
-    },
-    {
-      "id": "inf_saq_8",
-      "front": "Enumerate the common causative organisms of Acute Bacterial Meningitis in the neonatal period versus childhood.",
-      "back": "Neonatal: E. coli, Group-B streptococci, Listeria monocytogenes.\nChildhood: Neisseria meningitidis, Streptococcus pneumoniae, Haemophilus influenzae type-b (up to 5 years)."
-    },
-    {
-      "id": "inf_saq_9",
-      "front": "Enumerate four non-infectious causes or categories that can present as a Fever of Unknown Origin (FUO).",
-      "back": "Possible answers: Juvenile Rheumatoid Arthritis (JRA), Systemic Lupus Erythematosus (SLE), Leukemia, Lymphoma, Neuroblastoma, Drug fever."
-    },
-    {
-      "id": "inf_saq_10",
-      "front": "Enumerate four systemic or intestinal clinical manifestations of Ancylostomiasis (Hookworm infestation).",
-      "back": "Possible answers: \"Ground itch\" at skin invasion, Loeffler-like pulmonary syndrome (dry cough, wheeze, eosinophilia), Abdominal pain, distension and steatorrhea, Severe hypochromic microcytic iron-deficiency anemia (pica, fatigue, dyspnea, palpitations)."
-    },
-    {
-      "id": "inf_case1_q1",
-      "front": "Case 1: A 5-year-old boy presents with abrupt high fever (40°C), severe sore throat, purulent tonsillar exudate, and within 24 hours a diffuse bright red erythematous rash that blanches on pressure, flushed cheeks with circum-oral pallor, and a red strawberry tongue. What is the most likely diagnosis?",
-      "back": "Scarlet Fever."
-    },
-    {
-      "id": "inf_case1_q2",
-      "front": "What is the specific causative organism and toxin responsible for Scarlet Fever?",
-      "back": "Group A beta-hemolytic streptococci producing an erythrogenic toxin."
-    },
-    {
-      "id": "inf_case1_q3",
-      "front": "Drug of choice to eradicate Scarlet Fever and two late non-suppurative complications to screen for?",
-      "back": "Drug of choice: Penicillin (or Erythromycin if allergic). Late complications: Rheumatic fever and acute post-streptococcal glomerulonephritis."
-    },
-    {
-      "id": "inf_case2_q1",
-      "front": "Case 2: 11-month-old infant with severe coughing bouts, 5-10 forceful coughs per expiration followed by a loud \"whoop\" and post-cough vomiting. No trans-placental immunity or vaccination. What is the clinical diagnosis and current disease stage?",
-      "back": "Pertussis (Whooping Cough), Paroxysmal stage."
-    },
-    {
-      "id": "inf_case2_q2",
-      "front": "What CBC finding supports the diagnosis of Pertussis?",
-      "back": "Marked leukocytosis with absolute lymphocytosis."
-    },
-    {
-      "id": "inf_case2_q3",
-      "front": "Standard antimicrobial treatment regimen and duration for Pertussis?",
-      "back": "Erythromycin 50 mg/kg/day in 4 divided doses for 14 days."
-    },
-    {
-      "id": "inf_case3_q1",
-      "front": "Case 3: 3-year-old with high fever, severe headache, vomiting, petechial rash, rigid neck, positive Kernig and Brudzinski signs. What is the diagnosis and likely organism?",
-      "back": "Acute Bacterial Meningitis (Septic Meningitis), most likely Meningococci due to petechial rash."
-    },
-    {
-      "id": "inf_case3_q2",
-      "front": "What is the urgent diagnostic investigation required for Acute Bacterial Meningitis?",
-      "back": "Lumbar puncture for CSF analysis, culture, and antibiotic sensitivity testing."
-    },
-    {
-      "id": "inf_case4_q1",
-      "front": "Case 4: 7-year-old girl with 9-day fever, headache, anorexia, muscle pain, coated tongue, abdominal distension, splenomegaly, normocytic anemia, leukopenia with relative lymphocytosis, eosinopenia. Most suspected diagnosis?",
-      "back": "Typhoid Fever (Enterica)."
-    },
-    {
-      "id": "inf_case4_q2",
-      "front": "Which investigation is likely positive in the second week of Typhoid Fever to detect specific antibodies?",
-      "back": "Widal test detecting antibodies against O and H antigens."
-    },
-    {
-      "id": "inf_case4_q3",
-      "front": "Preferred intravenous antibiotic treatment and pediatric dose for Typhoid Fever?",
-      "back": "Ceftriaxone 50-80 mg/kg/day administered as a single daily dose."
-    },
-    {
-      "id": "inf_case5_q1",
-      "front": "Case 5: 4-year-old with restless sleep, irritability, nocturnal anal pruritus, teeth grinding, similar symptoms in siblings. Most likely parasitic infestation?",
-      "back": "Enterobiasis (Pinworm infestation)."
-    },
-    {
-      "id": "inf_case5_q2",
-      "front": "What is the definitive laboratory diagnosis for Enterobiasis?",
-      "back": "Finding characteristic eggs via cellophane tape test from peri-anal skin."
-    },
-    {
-      "id": "inf_case5_q3",
-      "front": "Treatment protocol and crucial epidemiological rule for the family in Enterobiasis?",
-      "back": "Single oral dose of 100 mg Mebendazole or Flubendazole repeated after 2-3 weeks; all infected individuals and family members must be treated simultaneously."
-    }
+  {
+        "id": "inf_saq_1",
+        "front": "Define the following terms:\nFever of Unknown Origin (FUO): Fever >38°C for >14 days with no cause found by clinical history, physical examination, and routine laboratory tests.",
+        "back": "Fever of Unknown Origin (FUO): Fever >38°C for >14 days with no cause found by clinical history, physical examination, and routine laboratory tests."
+      },
+  {
+        "id": "inf_saq_2",
+        "front": "Define the following terms:\nDysentery: It is defined as diarrhea with visible blood in the stool.",
+        "back": "Dysentery is defined as diarrhea with visible blood in the stool."
+      },
+  {
+        "id": "inf_saq_3",
+        "front": "Define the following terms:\nPertussis (Whooping Cough): An acute respiratory infection which is caused by Bordetella pertussis (a Gram-negative bacillus).",
+        "back": "Pertussis (Whooping Cough) is an acute respiratory infection caused by Bordetella pertussis (a Gram-negative bacillus)."
+      },
+  {
+        "id": "inf_saq_4",
+        "front": "Define the following terms:\nAcute Bacterial Meningitis (\"Septic Meningitis\"): Acute inflammation of the meninges covering the brain and spinal cord, with the production of a purulent exudate.",
+        "back": "Acute Bacterial Meningitis (\"Septic Meningitis\") is acute inflammation of the meninges covering the brain and spinal cord, with production of a purulent exudate."
+      },
+  {
+        "id": "inf_saq_5",
+        "front": "Enumerate four nervous or respiratory complications associated with Measles. (Any 4)",
+        "back": "Possible answers include: Pneumonia, Otitis media, Post-infectious or parainfectious encephalitis, Subacute sclerosing pan-encephalitis (SSPE), Laryngitis and laryngo-tracheo-bronchitis."
+      },
+  {
+        "id": "inf_saq_6",
+        "front": "Enumerate four clinical features characteristic of the prodromal and eruptive stages of Scarlet Fever. (Any 4)",
+        "back": "Possible answers include: Acute onset of high fever (40°C) with severe sore throat and purulent tonsillar exudate, Diffuse finely papular erythematous eruption that blanches on pressure, Flushed cheeks with circum-oral pallor, White strawberry tongue progressing to red strawberry tongue, Skin desquamation of hands and feet at end of first week."
+      },
+  {
+        "id": "inf_saq_7",
+        "front": "Enumerate the three distinct clinical stages of a Pertussis infection and their durations.",
+        "back": "1. Catarrhal Stage: 1-2 weeks.\n2. Paroxysmal Stage: 2-4 weeks.\n3. Convalescent Stage: 1-2 weeks."
+      },
+  {
+        "id": "inf_saq_8",
+        "front": "Enumerate the common causative organisms of Acute Bacterial Meningitis in the neonatal period versus childhood.",
+        "back": "Neonatal: E. coli, Group-B streptococci, Listeria monocytogenes.\nChildhood: Neisseria meningitidis, Streptococcus pneumoniae, Haemophilus influenzae type-b (up to 5 years)."
+      },
+  {
+        "id": "inf_saq_9",
+        "front": "Enumerate four non-infectious causes or categories that can present as a Fever of Unknown Origin (FUO).",
+        "back": "Possible answers: Juvenile Rheumatoid Arthritis (JRA), Systemic Lupus Erythematosus (SLE), Leukemia, Lymphoma, Neuroblastoma, Drug fever."
+      },
+  {
+        "id": "inf_saq_10",
+        "front": "Enumerate four systemic or intestinal clinical manifestations of Ancylostomiasis (Hookworm infestation).",
+        "back": "Possible answers: \"Ground itch\" at skin invasion, Loeffler-like pulmonary syndrome (dry cough, wheeze, eosinophilia), Abdominal pain, distension and steatorrhea, Severe hypochromic microcytic iron-deficiency anemia (pica, fatigue, dyspnea, palpitations)."
+      },
+  {
+        "id": "inf_case1_q1",
+        "front": "Case 1: A 5-year-old boy presents with abrupt high fever (40°C), severe sore throat, purulent tonsillar exudate, and within 24 hours a diffuse bright red erythematous rash that blanches on pressure, flushed cheeks with circum-oral pallor, and a red strawberry tongue. What is the most likely diagnosis?",
+        "back": "Scarlet Fever."
+      },
+  {
+        "id": "inf_case1_q2",
+        "front": "What is the specific causative organism and toxin responsible for Scarlet Fever?",
+        "back": "Group A beta-hemolytic streptococci producing an erythrogenic toxin."
+      },
+  {
+        "id": "inf_case1_q3",
+        "front": "Drug of choice to eradicate Scarlet Fever and two late non-suppurative complications to screen for?",
+        "back": "Drug of choice: Penicillin (or Erythromycin if allergic). Late complications: Rheumatic fever and acute post-streptococcal glomerulonephritis."
+      },
+  {
+        "id": "inf_case2_q1",
+        "front": "Case 2: 11-month-old infant with severe coughing bouts, 5-10 forceful coughs per expiration followed by a loud \"whoop\" and post-cough vomiting. No trans-placental immunity or vaccination. What is the clinical diagnosis and current disease stage?",
+        "back": "Pertussis (Whooping Cough), Paroxysmal stage."
+      },
+  {
+        "id": "inf_case2_q2",
+        "front": "What CBC finding supports the diagnosis of Pertussis?",
+        "back": "Marked leukocytosis with absolute lymphocytosis."
+      },
+  {
+        "id": "inf_case2_q3",
+        "front": "Standard antimicrobial treatment regimen and duration for Pertussis?",
+        "back": "Erythromycin 50 mg/kg/day in 4 divided doses for 14 days."
+      },
+  {
+        "id": "inf_case3_q1",
+        "front": "Case 3: 3-year-old with high fever, severe headache, vomiting, petechial rash, rigid neck, positive Kernig and Brudzinski signs. What is the diagnosis and likely organism?",
+        "back": "Acute Bacterial Meningitis (Septic Meningitis), most likely Meningococci due to petechial rash."
+      },
+  {
+        "id": "inf_case3_q2",
+        "front": "What is the urgent diagnostic investigation required for Acute Bacterial Meningitis?",
+        "back": "Lumbar puncture for CSF analysis, culture, and antibiotic sensitivity testing."
+      },
+  {
+        "id": "inf_case4_q1",
+        "front": "Case 4: 7-year-old girl with 9-day fever, headache, anorexia, muscle pain, coated tongue, abdominal distension, splenomegaly, normocytic anemia, leukopenia with relative lymphocytosis, eosinopenia. Most suspected diagnosis?",
+        "back": "Typhoid Fever (Enterica)."
+      },
+  {
+        "id": "inf_case4_q2",
+        "front": "Which investigation is likely positive in the second week of Typhoid Fever to detect specific antibodies?",
+        "back": "Widal test detecting antibodies against O and H antigens."
+      },
+  {
+        "id": "inf_case4_q3",
+        "front": "Preferred intravenous antibiotic treatment and pediatric dose for Typhoid Fever?",
+        "back": "Ceftriaxone 50-80 mg/kg/day administered as a single daily dose."
+      },
+  {
+        "id": "inf_case5_q1",
+        "front": "Case 5: 4-year-old with restless sleep, irritability, nocturnal anal pruritus, teeth grinding, similar symptoms in siblings. Most likely parasitic infestation?",
+        "back": "Enterobiasis (Pinworm infestation)."
+      },
+  {
+        "id": "inf_case5_q2",
+        "front": "What is the definitive laboratory diagnosis for Enterobiasis?",
+        "back": "Finding characteristic eggs via cellophane tape test from peri-anal skin."
+      },
+  {
+        "id": "inf_case5_q3",
+        "front": "Treatment protocol and crucial epidemiological rule for the family in Enterobiasis?",
+        "back": "Single oral dose of 100 mg Mebendazole or Flubendazole repeated after 2-3 weeks; all infected individuals and family members must be treated simultaneously."
+      }
   ],
   "_CHAPTER_Nutrition": [
-    {
-      "id": "nut_infant_req_cf",
-      "front": "What are the approximate Caloric and Fluid daily requirements for a healthy infant in the first 6 months?",
-      "back": "- Caloric: ~110-120 kcal/kg/day (drops to ~100 kcal/kg/day from 6-12 months).\n- Fluids: ~150 ml/kg/day (crucial to prevent dehydration due to large surface area).",
-      "type": "flashcard"
-    },
-    {
-      "id": "nut_infant_supp",
-      "front": "State the guidelines for Vitamin D, Vitamin K, and Iron supplementation in infants.",
-      "back": "- Vitamin D: 400 IU/day from birth to 1 year to prevent Rickets.\n- Vitamin K: IM injection at birth to prevent Hemorrhagic disease of the newborn.\n- Iron: Stores last for the first 4-6 months, after which iron-rich foods must be introduced to prevent Anemia.",
-      "type": "flashcard"
-    },
-    {
-      "id": "nut_infant_nutrients",
-      "front": "Enumerate the basic nutritional requirements for a healthy infant.",
-      "back": "Mnemonic: (ميه وسكر وبروتين.. دهون ومعادن وفيتامين)\n\n1. Water (Fluids)\n2. Carbohydrates (Lactose)\n3. Proteins\n4. Fats (essential for Brain/Neurological development)\n5. Vitamins (e.g., Vit D, Vit K)\n6. Minerals (e.g., Iron, Calcium, Zinc)",
-      "type": "flashcard"
-    },
-    {
-      "id": "nut_rickets_def",
-      "front": "Define Rickets and state its primary causes.",
-      "back": "- Definition: Defective mineralization of growing bones (occurs only in children before epiphyses closure).\n- Causes: Vitamin D deficiency, Calcium deficiency, or Phosphorus deficiency.",
-      "type": "flashcard"
-    },
-    {
-      "id": "nut_rickets_cp",
-      "front": "Enumerate the Clinical Picture of Rickets (from head to toe).",
-      "back": "Mnemonic: (رأسه طرية ومربعة متأخرة في التسنين.. صدره محبب ومطبق.. وإيده ورجله عراض ومقوسين)\n\n- Head: Craniotabes, Frontal bossing (Box-like head), Delayed closure of anterior fontanelle, Delayed dentition.\n- Chest: Rachitic rosary, Harrison's sulcus.\n- Extremities: Broadening of wrists & ankles, Bow legs (Genu varum), Knock knees (Genu valgum).",
-      "type": "flashcard"
-    },
-    {
-      "id": "nut_rickets_inv_tmt",
-      "front": "Enumerate the Investigations & Treatment of Rickets.",
-      "back": "- Labs: Serum Ca (Normal/Low), Serum P (Low), ALP (Very High - best marker for activity/healing).\n- X-ray (wrist/hand): Cupping, Fraying, Widening.\n- Treatment: Vitamin D (daily or Stoss therapy) + Calcium supplementation (to prevent Hungry bone syndrome/Tetany).",
-      "type": "flashcard"
-    },
-    {
-      "id": "nut_tetany_latent",
-      "front": "Define Tetany and describe the signs of Latent Tetany.",
-      "back": "- Definition: Hyperexcitability of neuromuscular system due to Hypocalcemia.\n- Latent Tetany (requires stimulus):\n  1. Chvostek's sign: Facial muscle spasm on tapping Facial nerve.\n  2. Trousseau's sign: Carpal spasm after inflating BP cuff above systolic for 3 mins.",
-      "type": "flashcard"
-    },
-    {
-      "id": "nut_tetany_manifest",
-      "front": "Enumerate the signs of Manifest Tetany.",
-      "back": "Mnemonic: (قفشة في إيده ورجله، تشنج في مخه، وشرقة في حنجرته)\n\n1. Carpopedal spasm (painful spasm in hands/feet).\n2. Laryngospasm (causes stridor, can be fatal).\n3. Convulsions (Generalized seizures).",
-      "type": "flashcard"
-    },
-    {
-      "id": "nut_pem_def",
-      "front": "Define Protein Energy Malnutrition (PEM) and differentiate between Marasmus and Kwashiorkor.",
-      "back": "PEM is a spectrum of diseases caused by severe deficiency of proteins, calories, or both.\n\n- Marasmus: Severe energy (calorie) deficiency.\n- Kwashiorkor: Severe protein deficiency despite adequate carbohydrate calories.\n- Marasmic-Kwashiorkor: Mixed features of both.",
-      "type": "flashcard"
-    },
-    {
-      "id": "nut_pem_causes",
-      "front": "Enumerate the causes of PEM.",
-      "back": "Mnemonic: (جهل وفقر جابوا عدوى.. وأكل ناقص وقت الفطام)\n\n1. Dietary inadequacy\n2. Ignorance & Poverty\n3. Infections (e.g., Gastroenteritis, Measles)\n4. Faulty weaning (too early/late without proper supplements)",
-      "type": "flashcard"
-    },
-    {
-      "id": "nut_pem_marasmus",
-      "front": "Describe the Clinical Picture of Marasmus.",
-      "back": "Mnemonic: (عجوز جعان ومتعصب، جلد وعضم من غير ورم)\n\n1. Severe wasting of muscle & subcutaneous fat (starts in abdomen, ends in face).\n2. Senile face / Old man look (loss of buccal pad of fat).\n3. Irritable & Hungry.\n4. No Edema.\n5. Subnormal temperature & Bradycardia (to conserve energy).",
-      "type": "flashcard"
-    },
-    {
-      "id": "nut_pem_kwashiorkor",
-      "front": "Describe the Clinical Picture of Kwashiorkor.",
-      "back": "Mnemonic: (قمر مورّم، كبده كبير، شعره بيقع ومالوش نفس)\n\n1. Edema (Starts in lower limbs, becomes generalized due to Hypoalbuminemia).\n2. Moon face.\n3. Apathetic & Anorexic.\n4. Hepatomegaly (Fatty liver).\n5. Hair & Skin changes (Flaky paint dermatosis, hair falls easily).",
-      "type": "flashcard"
-    },
-    {
-      "id": "nut_hm_colostrum",
-      "front": "What is Colostrum, when is it secreted, and what are its main characteristics?",
-      "back": "- Secreted in the first days (days 1-5).\n- Yellowish, small amount, but very rich in Proteins and Immunoglobulins (especially Secretory IgA).\n- Acts as a mild laxative to help clear Meconium.",
-      "type": "flashcard"
-    },
-    {
-      "id": "nut_hm_mature",
-      "front": "Compare Transitional milk and Mature milk (including Foremilk vs. Hindmilk).",
-      "back": "- Transitional (days 5-14): Increased volume, fats, and carbs. Proteins decrease.\n- Mature (after 14 days):\n  * Foremilk (start of feed): rich in water, lactose, proteins (quenches thirst).\n  * Hindmilk (end of feed): rich in fats (gives energy and satiety).",
-      "type": "flashcard"
-    },
-    {
-      "id": "nut_hm_comp",
-      "front": "Describe the Proteins and Carbohydrates composition in Human Milk.",
-      "back": "- Proteins: Ideal Whey to Casein ratio (approx 60:40), making it very easy to digest compared to cow's milk.\n- Carbs: High Lactose, provides energy, aids Calcium absorption, and stimulates Lactobacillus bifidus (beneficial bacteria).",
-      "type": "flashcard"
-    },
-    {
-      "id": "nut_hm_fats",
-      "front": "Why are the Fats in Human Milk essential for the infant?",
-      "back": "Contains Essential fatty acids (like DHA & ARA) which are absolutely critical for Brain and Retinal development.",
-      "type": "flashcard"
-    },
-    {
-      "id": "nut_hm_advantages",
-      "front": "Enumerate the advantages of Breastfeeding.",
-      "back": "Mnemonic: (أكل مجاني بيحمي من العدوى.. وحضن بيحمي الأم من النزيف والكانسر)\n1. Nutritional: Ideal, complete, easy to digest.\n2. Economic & Convenient: Free, always ready, sterile, perfect temp.\n3. Immunological: Protects from infections (IgA, Macrophages, Lactoferrin).\n4. Psychological: Mother-infant bonding.\n5. Maternal benefits: Uterine involution, Lactational amenorrhea, decreases Breast & Ovarian cancer risk.",
-      "type": "flashcard"
-    },
-    {
-      "id": "nut_wean_artificial_ind",
-      "front": "When is Artificial Feeding (Formulas) indicated?",
-      "back": "Only in cases of Breastfeeding Contraindications or insufficient breast milk production.",
-      "type": "flashcard"
-    },
-    {
-      "id": "nut_wean_artificial_comp",
-      "front": "Enumerate the main complications and risks of Artificial Feeding.",
-      "back": "- Gastroenteritis & Infections (due to contaminated bottles)\n- Malnutrition (if formula is over-diluted)\n- Cow's milk protein allergy\n- Obesity (due to overfeeding)",
-      "type": "flashcard"
-    },
-    {
-      "id": "nut_wean_timing",
-      "front": "Define Complementary Feeding (Weaning) and state its recommended timing.",
-      "back": "- Definition: Gradual introduction of semi-solid & solid foods to meet increasing nutritional needs (especially Iron & Energy).\n- Timing: Recommended at 6 months. NEVER before 4 months (GI/kidneys are immature, increased allergy risk).",
-      "type": "flashcard"
-    },
-    {
-      "id": "nut_wean_rules",
-      "front": "Enumerate the rules of successful weaning.",
-      "back": "Mnemonic: (بالتدريج صنف واحد بالمعلقة.. ونضيف من غير غصب)\n1. Gradual introduction: increase amount and thickness gradually.\n2. One single food item at a time: wait 3-5 days to check for Food allergy/intolerance.\n3. Use spoon and cup: avoid bottles.\n4. Proper hygiene: prevent Gastroenteritis.\n5. Never force the baby.",
-      "type": "flashcard"
-    },
-    {
-      "id": "nut_bf_management",
-      "front": "Enumerate the basic rules for successful Management of Breastfeeding.",
-      "back": "1. Early initiation: Within 30-60 mins to get Colostrum.\n2. Exclusive breastfeeding: First 6 months.\n3. On-demand feeding: Feed when hungry/crying, no strict schedule.\n4. Proper latching & attachment: Avoid swallowing air and maternal nipple issues.",
-      "type": "flashcard"
-    },
-    {
-      "id": "nut_bf_engorgement",
-      "front": "What is Breast engorgement, and how is it treated?",
-      "back": "- Occurs in first days due to increased milk.\n- Treatment: Warm compresses BEFORE feeding (increase flow), Cold compresses AFTER feeding (reduce swelling). Frequent emptying of the breast. Do NOT stop breastfeeding.",
-      "type": "flashcard"
-    },
-    {
-      "id": "nut_bf_cracked",
-      "front": "What is the primary cause of Cracked nipples during breastfeeding, and what is the treatment?",
-      "back": "- Cause: Poor attachment / Improper latching.\n- Treatment: Correct feeding position, apply drops of breast milk on nipple and let dry, or use baby-safe soothing creams.",
-      "type": "flashcard"
-    },
-    {
-      "id": "nut_bf_mastitis",
-      "front": "What is Mastitis, and what is its treatment plan?",
-      "back": "- Bacterial infection causing pain, redness, swelling, and Fever.\n- Treatment: Safe Antibiotics, Analgesics. CRITICAL: Continue breastfeeding from affected breast to empty it and prevent Breast abscess.",
-      "type": "flashcard"
-    },
-    {
-      "id": "nut_bf_contra_maternal",
-      "front": "Enumerate the Absolute Contraindications of Breastfeeding (Maternal causes).",
-      "back": "Mnemonic: (أم مريضة إيدز وسل وهربس وبتاخد كيماوي.. وابنها عنده جالاكتوزيميا)\n1. HIV infection\n2. Active untreated TB\n3. Maternal chemotherapy or radiotherapy\n4. Active Herpes simplex lesions on the breast\n5. Illicit drug abuse",
-      "type": "flashcard"
-    },
-    {
-      "id": "nut_bf_contra_infant",
-      "front": "What is the primary Infant absolute contraindication for Breastfeeding?",
-      "back": "Galactosemia (Infant lacks the enzyme to break down galactose in milk).\n\nMnemonic: (أم مريضة إيدز وسل وهربس وبتاخد كيماوي.. وابنها عنده جالاكتوزيميا)",
-      "type": "flashcard"
-    },
-    {
-      "id": "nut_saq_1",
-      "front": "Define the following terms:\nComplementary feeding (Weaning):",
-      "back": "It is the provision of any nutrient containing foods or liquids other than breast milk and includes both solid food and infant formula."
-    },
-    {
-      "id": "nut_saq_2",
-      "front": "Define the following terms:\nTetany:",
-      "back": "A state of hyper-excitability of central and peripheral nervous systems resulting from decreased ionic concentration of Ca or Mg or alkalosis."
-    },
-    {
-      "id": "nut_saq_3",
-      "front": "Enumerate four anti-infective properties or components present in human breast milk.",
-      "back": "Immunoglobulins especially secretory IgA against different pathogens.\nPhagocytes & lymphocytes.\nLactoperoxidase, which protects against different bacterial pathogens.\nLysozymes that destroy bacterial cell wall."
-    },
-    {
-      "id": "nut_saq_4",
-      "front": "Enumerate four absolute contraindications to breastfeeding (Maternal or Infant).",
-      "back": "Cancer breast.\nInsanity of the mother.\nHIV infection.\nInborn errors of metabolism in the infant (e.g., galactosemia)."
-    },
-    {
-      "id": "nut_saq_5",
-      "front": "Enumerate the four constant features of Kwashiorkor.",
-      "back": "Growth failure.\nPitting oedema.\nMental changes.\nMuscle wasting with preserved subcutaneous fat."
-    },
-    {
-      "id": "nut_saq_6",
-      "front": "Enumerate four variable (non-constant) ectodermal or systemic features of Kwashiorkor.",
-      "back": "Skin changes (erythema, hyperpigmentation, desquamation).\nHair changes (dry, sparse, easily pickable, alternating color bands).\nAnemia.\nGIT changes (hepatomegaly, diarrhea, abdominal distension)."
-    },
-    {
-      "id": "nut_saq_7",
-      "front": "Enumerate four causes of death in a child with severe Protein Energy Malnutrition (PEM).",
-      "back": "Recurrent infections.\nElectrolytes imbalance as a result of refeeding syndrome or acute gastroenteritis.\nHypothermia.\nHypoglycemia."
-    },
-    {
-      "id": "nut_saq_8",
-      "front": "Enumerate four skeletal manifestations found in the head or thorax of a child with advanced rickets.",
-      "back": "Frontal and parietal bossing leading to box shaped skull (caput quadratum).\nWide anterior fontanelles.\nRachitic rosaries (visible or palpable enlargement of the costochondral junction).\nHarrison sulcus (horizontal groove along lower border of the chest cage)."
-    },
-    {
-      "id": "nut_saq_9",
-      "front": "Enumerate the three steps in the diagnostic approach to refractory rickets.",
-      "back": "1st step: Measure serum phosphorus.\n2nd step: Measure blood pH.\n3rd step: Measure serum calcium."
-    },
-    {
-      "id": "nut_saq_10",
-      "front": "Enumerate four indications for hospitalization in a child with severe malnutrition.",
-      "back": "Hypothermia.\nSevere anemia and congestive cardiac failure.\nPersistent vomiting.\nAge less than 1 year."
-    },
-    {
-      "id": "nut_case1_q1",
-      "front": "Case 1: A 2-year-old child is brought to the hospital presentation with generalized pitting edema starting in the feet, a puffy \"moon face\", severe muscle wasting, but with preserved subcutaneous fat. The child is extremely apathetic and shows no interest in his surroundings.\n\nWhat is the diagnosis of this clinical condition according to the Welcome classification?",
-      "back": "Kwashiorkor (severe PEM with edema)."
-    },
-    {
-      "id": "nut_case1_q2",
-      "front": "Case 1: A 2-year-old child is brought to the hospital presentation with generalized pitting edema starting in the feet, a puffy \"moon face\", severe muscle wasting, but with preserved subcutaneous fat. The child is extremely apathetic and shows no interest in his surroundings.\n\nEnumerate two possible causes for the mental changes (apathy) observed in this child.",
-      "back": "Deficient aromatic amino acids and deficient trace elements (Cu, Mg, Zn)."
-    },
-    {
-      "id": "nut_case2_q1",
-      "front": "Case 2: A 10-month-old male infant presents with broad wrists, bow-legs, and delayed teething. Blood chemistry: normal Ca, low Ph and very high alkaline phosphatase. X-ray of wrist shows cupping & fraying.\n\nWhat is your provisional diagnosis?",
-      "back": "Active Infantile (Nutritional) Rickets."
-    },
-    {
-      "id": "nut_case2_q2",
-      "front": "Case 2: A 10-month-old male infant presents with broad wrists, bow-legs, and delayed teething. Blood chemistry: normal Ca, low Ph and very high alkaline phosphatase. X-ray of wrist shows cupping & fraying.\n\nExplain the mechanism behind the increased level of serum alkaline phosphatase in this disease.",
-      "back": "It is due to increased osteoblastic activity."
-    },
-    {
-      "id": "nut_case2_q3",
-      "front": "Case 2: A 10-month-old male infant presents with broad wrists, bow-legs, and delayed teething. Blood chemistry: normal Ca, low Ph and very high alkaline phosphatase. X-ray of wrist shows cupping & fraying.\n\nEnumerate the two therapeutic methods/options for treating this infantile disease.",
-      "back": "Oral daily dose of 1500-5000 IU vitamin D till complete recovery, or Shock therapy (a single oral dose of 600,000 IU vitamin D)."
-    },
-    {
-      "id": "n1",
-      "front": "Describe five benefits of breastfeeding (for mothers)?",
-      "back": "It helps in the involution of the birth canal.\nIt serves as a natural method of contraception.\nIt decreases the clinical incidence of breast cancer."
-    },
-    {
-      "id": "n2",
-      "front": "Mention foods avoided in weaning diet.",
-      "back": "Foods that cause choking, such as nuts, fruits with seeds, and potato chips.\nFoods containing artificial colors and artificial flavors.\nSalted food, as it might cause hypertension.\nJunk food such as sweets and candies, which deprive the child from taking food that is more nutritious and encourages a desire for sweets.\nHighly spiced and fatty food."
-    },
-    {
-      "id": "n3",
-      "front": "Describe skin changes in Kwashiorkor and explain its cause.",
-      "back": "Description: Skin changes start as erythema followed by hyperpigmentation and desquamation, leading directly to ulceration, fissuring, and crackling. Secondary skin infections and even gangrene are highly common because the pitting edema constitutes a suitable media for the entry of pathogenic organisms. The commonest anatomical sites involved are pressure sites (buttocks and back) and flexural sites (groin and axilla).\nCause: These pathognomonic skin changes are primarily caused by deficiencies in essential fatty acids, essential amino acids, sulfur-containing amino acids, vitamin A, and zinc."
-    },
-    {
-      "id": "n4",
-      "front": "List 5 causes of death in PEM",
-      "back": "Recurrent systemic infections.\nElectrolytes imbalance occurring as a result of refeeding syndrome or acute gastroenteritis.\nHypothermia.\nHypoglycemia, due to low glycogen content in the liver and defects in catecholamine and glucagon hormone formation.\nHeart failure, due to either anemic heart failure or degenerative changes in the cardiac muscles."
-    },
-    {
-      "id": "n5",
-      "front": "Explain the causes of infection in protein-energy malnutrition.",
-      "back": "Edema-Related Susceptibility: Pitting edema creates an ideal, compromised environment and suitable media for the entry of micro-organisms, leading to high rates of skin infections and gangrene.\nGastrointestinal Barrier Defect: Defective epithelization of the intestinal mucosa impairs natural defenses, making the patient highly vulnerable to bacterial, viral, and protozoal gastroenteritis."
-    },
-    {
-      "id": "n6",
-      "front": "Explain why weaning should start after the age of 4 months.",
-      "back": "Weaning must begin at the age of 4 months because maternal breast milk becomes insufficient to fulfill the baseline nutritional requirements of the infant, creating a critical deficit across multiple components:\nCalories: A clear energy gap forms between breast milk intake (356 kcal/day) and total daily requirement (536.8 kcal/day) at 4 months.\nProteins: A protein intake deficit emerges between baseline intake (6.6 g/day) and requirement (9.1 g/day) at 4 months.\nVitamin D: A substantial micronutrient gap exists between intake (528 ng/day) and requirement (5000 ng/day) at 4 months.\nZinc: Intake drops below required levels, with intake at 0.98 mg/day against a requirement of 2 mg/day after 4 months.\nIron: A severe developmental gap opens between intake (0.29 mg/day) and requirement (11 mg/day) after 6 months of age. Introducing complementary feeding at 4 months is therefore mandated to explicitly avoid caloric, vitamin, and mineral deficiencies."
-    },
-    {
-      "id": "n7",
-      "front": "Discuss welcome classification for protein energy malnutrition",
-      "back": "The Welcome classification categorizes protein-energy malnutrition by assessing the patient's body weight-for-age percentage relative to the standard (50th percentile reference) and evaluating for the clinical presence or absence of pitting edema:\nWeight-for-age between 60% and 80% of standard:\nWithout edema: Underweight (mild PEM).\nWith edema: Kwashiorkor (severe PEM).\nWeight-for-age < 60% of standard:\nWithout edema: Marasmus (severe PEM).\nWith edema: Marasmic Kwashiorkor (severe PEM)."
-    },
-    {
-      "id": "n8",
-      "front": "Mention Breast feeding reflexes",
-      "back": "Maternal Secretory & Ejection Reflexes:\nMilk secretion reflex (prolactin reflex): Suckling directly stimulates nerve endings in the nipple, inducing anterior pituitary production of prolactin, which drives milk production.\nMilk ejection or let-down reflex (oxytocin reflex): Suckling stimulates oxytocin release from the posterior pituitary, causing acute contraction of myoepithelial cells around the lactiferous ducts to cause milk ejection.\nInfant Feeding Reflexes:\nRooting reflex: Mechanical touch to the lip or cheek causes the infant to turn toward the stimulus and open the mouth.\nSuckling reflex: Tactile stimulation of the palate directly initiates suckling.\nSwallowing reflex: The presence of milk filling the oral cavity triggers automatic swallowing."
-    },
-    {
-      "id": "n9",
-      "front": "Case 3: 1- What is most likely diagnosis?",
-      "back": "The most likely diagnosis is Kwashiorkor. It is a form of severe protein-energy malnutrition caused by selective protein deficiency in the setting of nearly normal caloric intake, characterized clinically by pitting edema and growth failure."
-    },
-    {
-      "id": "n10",
-      "front": "Case 3: 2- What are the other features should be present?",
-      "back": "Constant Features: Severe growth failure (weight-for-age < 80% of reference), psychological/mental changes (apathy, marked irritability, lack of interest in surroundings, absence of smile), and muscle wasting with preserved subcutaneous fat.\nVariable (Non-constant) Features: Skin changes (erythema, hyperpigmentation, desquamation, flaky paint dermatosis), hair changes (loss of luster, dry/sparse hair, color lightening, or alternating bands known as the flag sign), nutritional anemia, and gastrointestinal changes (hepatomegaly from fatty infiltration, diarrhea, and abdominal distension)."
-    },
-    {
-      "id": "n11",
-      "front": "Case 3: 3- What are the investigations should be done?",
-      "back": "Serum Albumin: To evaluate the degree of hypoproteinemia (characteristically low).\nUrinary Urea per Gram Creatinine: To demonstrate reduced protein intake and metabolism (low).\nBlood Glucose Level: To evaluate for concurrent fasting hypoglycemia.\nSerum Electrolytes: To check for underlying potassium and magnesium deficiencies.\nComplete Blood Count (CBC): To identify microcytic, macrocytic, or normocytic anemia.\nRadiological Bone Age: To confirm delayed skeletal maturation."
-    },
-    {
-      "id": "n12",
-      "front": "Mention causes of hypocalcemia and tetany in rickets.",
-      "back": "Hypocalcemia and manifest tetany present in rickets under specific metabolic circumstances:\nParathyroid gland failure to respond to systemic hypocalcemia due to gland exhaustion.\nComplete exhaustion of total skeletal bone stores of calcium.\nAdministration of high-dose vitamin D shock therapy without concurrent oral calcium supplementation.\nSevere concurrent chest infections causing hyperventilation, inducing a CO2 wash, resulting in systemic respiratory alkalosis tetany."
-    },
-    {
-      "id": "n13",
-      "front": "Describe the clinical picture of latent tetany.",
-      "back": "Latent tetany occurs when total serum calcium levels range between 7 and 9 mg%. It lacks spontaneous clinical symptoms but is explicitly confirmed via three diagnostic neurological signs:\nChvostek sign: Mechanical tapping over the facial nerve anterior to the tragus produces immediate contraction of the ipsilateral facial muscles.\nTrousseau sign: Occlusion of arterial flow to the upper extremity using a sphygmomanometer cuff inflated above systolic pressure for 3 minutes induces ischemia, resulting in a classic carpal spasm.\nPeroneal sign: Tapping the peroneal nerve over the neck of the fibula produces immediate dorsiflexion and eversion of the foot."
-    },
-    {
-      "id": "n14",
-      "front": "Case 4: 1- What is most likely diagnosis?",
-      "back": "The most likely diagnosis is Renal Osteodystrophy (Uremic Rickets). This clinical entity comprises skeletal mineralization defects secondary to chronic renal failure, presenting with rickets-like epiphyseal broadening, severe short stature, metabolic acidosis, and renal-induced systemic hypertension."
-    },
-    {
-      "id": "n15",
-      "front": "Case 4: 2- What are the investigations should be done?",
-      "back": "Serum Kidney Function Tests: Evaluating blood urea and creatinine levels, which will be pathologically elevated.\nSerum Phosphorus: To confirm hyperphosphatemia caused by decreased glomerular filtration.\nSerum Calcium: To identify hypocalcemia secondary to failure of renal vitamin D hydroxylation.\nSerum Alkaline Phosphatase: Characteristically elevated due to high osteoblastic remodeling.\nBlood Gas Analysis (pH): To diagnose underlying metabolic acidosis.\nRadiological X-ray of Wrists/Long Bones: To visualize structural epiphyseal cupping, fraying, and broadening."
-    },
-    {
-      "id": "n16",
-      "front": "Case 4: 3- What is the treatment?",
-      "back": "Radical management of the underlying renal pathology via chronic hemodialysis or renal transplantation.\nActive Calcitriol (1,25-dihydroxyvitamin D) administration to bypass compromised renal 1-alpha-hydroxylase activity.\nEnsuring high oral calcium intake.\nImplementation of a low phosphate diet.\nAdministration of oral phosphate binders to restrict GI absorption of dietary phosphorus."
-    }
+  {
+        "id": "nut_infant_req_cf",
+        "front": "What are the approximate Caloric and Fluid daily requirements for a healthy infant in the first 6 months?",
+        "back": "- Caloric: ~110-120 kcal/kg/day (drops to ~100 kcal/kg/day from 6-12 months).\n- Fluids: ~150 ml/kg/day (crucial to prevent dehydration due to large surface area).",
+        "type": "flashcard"
+      },
+  {
+        "id": "nut_infant_supp",
+        "front": "State the guidelines for Vitamin D, Vitamin K, and Iron supplementation in infants.",
+        "back": "- Vitamin D: 400 IU/day from birth to 1 year to prevent Rickets.\n- Vitamin K: IM injection at birth to prevent Hemorrhagic disease of the newborn.\n- Iron: Stores last for the first 4-6 months, after which iron-rich foods must be introduced to prevent Anemia.",
+        "type": "flashcard"
+      },
+  {
+        "id": "nut_infant_nutrients",
+        "front": "Enumerate the basic nutritional requirements for a healthy infant.",
+        "back": "Mnemonic: (ميه وسكر وبروتين.. دهون ومعادن وفيتامين)\n\n1. Water (Fluids)\n2. Carbohydrates (Lactose)\n3. Proteins\n4. Fats (essential for Brain/Neurological development)\n5. Vitamins (e.g., Vit D, Vit K)\n6. Minerals (e.g., Iron, Calcium, Zinc)",
+        "type": "flashcard"
+      },
+  {
+        "id": "nut_rickets_def",
+        "front": "Define Rickets and state its primary causes.",
+        "back": "- Definition: Defective mineralization of growing bones (occurs only in children before epiphyses closure).\n- Causes: Vitamin D deficiency, Calcium deficiency, or Phosphorus deficiency.",
+        "type": "flashcard"
+      },
+  {
+        "id": "nut_rickets_cp",
+        "front": "Enumerate the Clinical Picture of Rickets (from head to toe).",
+        "back": "Mnemonic: (رأسه طرية ومربعة متأخرة في التسنين.. صدره محبب ومطبق.. وإيده ورجله عراض ومقوسين)\n\n- Head: Craniotabes, Frontal bossing (Box-like head), Delayed closure of anterior fontanelle, Delayed dentition.\n- Chest: Rachitic rosary, Harrison's sulcus.\n- Extremities: Broadening of wrists & ankles, Bow legs (Genu varum), Knock knees (Genu valgum).",
+        "type": "flashcard"
+      },
+  {
+        "id": "nut_rickets_inv_tmt",
+        "front": "Enumerate the Investigations & Treatment of Rickets.",
+        "back": "- Labs: Serum Ca (Normal/Low), Serum P (Low), ALP (Very High - best marker for activity/healing).\n- X-ray (wrist/hand): Cupping, Fraying, Widening.\n- Treatment: Vitamin D (daily or Stoss therapy) + Calcium supplementation (to prevent Hungry bone syndrome/Tetany).",
+        "type": "flashcard"
+      },
+  {
+        "id": "nut_tetany_latent",
+        "front": "Define Tetany and describe the signs of Latent Tetany.",
+        "back": "- Definition: Hyperexcitability of neuromuscular system due to Hypocalcemia.\n- Latent Tetany (requires stimulus):\n  1. Chvostek's sign: Facial muscle spasm on tapping Facial nerve.\n  2. Trousseau's sign: Carpal spasm after inflating BP cuff above systolic for 3 mins.",
+        "type": "flashcard"
+      },
+  {
+        "id": "nut_tetany_manifest",
+        "front": "Enumerate the signs of Manifest Tetany.",
+        "back": "Mnemonic: (قفشة في إيده ورجله، تشنج في مخه، وشرقة في حنجرته)\n\n1. Carpopedal spasm (painful spasm in hands/feet).\n2. Laryngospasm (causes stridor, can be fatal).\n3. Convulsions (Generalized seizures).",
+        "type": "flashcard"
+      },
+  {
+        "id": "nut_pem_def",
+        "front": "Define Protein Energy Malnutrition (PEM) and differentiate between Marasmus and Kwashiorkor.",
+        "back": "PEM is a spectrum of diseases caused by severe deficiency of proteins, calories, or both.\n\n- Marasmus: Severe energy (calorie) deficiency.\n- Kwashiorkor: Severe protein deficiency despite adequate carbohydrate calories.\n- Marasmic-Kwashiorkor: Mixed features of both.",
+        "type": "flashcard"
+      },
+  {
+        "id": "nut_pem_causes",
+        "front": "Enumerate the causes of PEM.",
+        "back": "Mnemonic: (جهل وفقر جابوا عدوى.. وأكل ناقص وقت الفطام)\n\n1. Dietary inadequacy\n2. Ignorance & Poverty\n3. Infections (e.g., Gastroenteritis, Measles)\n4. Faulty weaning (too early/late without proper supplements)",
+        "type": "flashcard"
+      },
+  {
+        "id": "nut_pem_marasmus",
+        "front": "Describe the Clinical Picture of Marasmus.",
+        "back": "Mnemonic: (عجوز جعان ومتعصب، جلد وعضم من غير ورم)\n\n1. Severe wasting of muscle & subcutaneous fat (starts in abdomen, ends in face).\n2. Senile face / Old man look (loss of buccal pad of fat).\n3. Irritable & Hungry.\n4. No Edema.\n5. Subnormal temperature & Bradycardia (to conserve energy).",
+        "type": "flashcard"
+      },
+  {
+        "id": "nut_pem_kwashiorkor",
+        "front": "Describe the Clinical Picture of Kwashiorkor.",
+        "back": "Mnemonic: (قمر مورّم، كبده كبير، شعره بيقع ومالوش نفس)\n\n1. Edema (Starts in lower limbs, becomes generalized due to Hypoalbuminemia).\n2. Moon face.\n3. Apathetic & Anorexic.\n4. Hepatomegaly (Fatty liver).\n5. Hair & Skin changes (Flaky paint dermatosis, hair falls easily).",
+        "type": "flashcard"
+      },
+  {
+        "id": "nut_hm_colostrum",
+        "front": "What is Colostrum, when is it secreted, and what are its main characteristics?",
+        "back": "- Secreted in the first days (days 1-5).\n- Yellowish, small amount, but very rich in Proteins and Immunoglobulins (especially Secretory IgA).\n- Acts as a mild laxative to help clear Meconium.",
+        "type": "flashcard"
+      },
+  {
+        "id": "nut_hm_mature",
+        "front": "Compare Transitional milk and Mature milk (including Foremilk vs. Hindmilk).",
+        "back": "- Transitional (days 5-14): Increased volume, fats, and carbs. Proteins decrease.\n- Mature (after 14 days):\n  * Foremilk (start of feed): rich in water, lactose, proteins (quenches thirst).\n  * Hindmilk (end of feed): rich in fats (gives energy and satiety).",
+        "type": "flashcard"
+      },
+  {
+        "id": "nut_hm_comp",
+        "front": "Describe the Proteins and Carbohydrates composition in Human Milk.",
+        "back": "- Proteins: Ideal Whey to Casein ratio (approx 60:40), making it very easy to digest compared to cow's milk.\n- Carbs: High Lactose, provides energy, aids Calcium absorption, and stimulates Lactobacillus bifidus (beneficial bacteria).",
+        "type": "flashcard"
+      },
+  {
+        "id": "nut_hm_fats",
+        "front": "Why are the Fats in Human Milk essential for the infant?",
+        "back": "Contains Essential fatty acids (like DHA & ARA) which are absolutely critical for Brain and Retinal development.",
+        "type": "flashcard"
+      },
+  {
+        "id": "nut_hm_advantages",
+        "front": "Enumerate the advantages of Breastfeeding.",
+        "back": "Mnemonic: (أكل مجاني بيحمي من العدوى.. وحضن بيحمي الأم من النزيف والكانسر)\n1. Nutritional: Ideal, complete, easy to digest.\n2. Economic & Convenient: Free, always ready, sterile, perfect temp.\n3. Immunological: Protects from infections (IgA, Macrophages, Lactoferrin).\n4. Psychological: Mother-infant bonding.\n5. Maternal benefits: Uterine involution, Lactational amenorrhea, decreases Breast & Ovarian cancer risk.",
+        "type": "flashcard"
+      },
+  {
+        "id": "nut_wean_artificial_ind",
+        "front": "When is Artificial Feeding (Formulas) indicated?",
+        "back": "Only in cases of Breastfeeding Contraindications or insufficient breast milk production.",
+        "type": "flashcard"
+      },
+  {
+        "id": "nut_wean_artificial_comp",
+        "front": "Enumerate the main complications and risks of Artificial Feeding.",
+        "back": "- Gastroenteritis & Infections (due to contaminated bottles)\n- Malnutrition (if formula is over-diluted)\n- Cow's milk protein allergy\n- Obesity (due to overfeeding)",
+        "type": "flashcard"
+      },
+  {
+        "id": "nut_wean_timing",
+        "front": "Define Complementary Feeding (Weaning) and state its recommended timing.",
+        "back": "- Definition: Gradual introduction of semi-solid & solid foods to meet increasing nutritional needs (especially Iron & Energy).\n- Timing: Recommended at 6 months. NEVER before 4 months (GI/kidneys are immature, increased allergy risk).",
+        "type": "flashcard"
+      },
+  {
+        "id": "nut_wean_rules",
+        "front": "Enumerate the rules of successful weaning.",
+        "back": "Mnemonic: (بالتدريج صنف واحد بالمعلقة.. ونضيف من غير غصب)\n1. Gradual introduction: increase amount and thickness gradually.\n2. One single food item at a time: wait 3-5 days to check for Food allergy/intolerance.\n3. Use spoon and cup: avoid bottles.\n4. Proper hygiene: prevent Gastroenteritis.\n5. Never force the baby.",
+        "type": "flashcard"
+      },
+  {
+        "id": "nut_bf_management",
+        "front": "Enumerate the basic rules for successful Management of Breastfeeding.",
+        "back": "1. Early initiation: Within 30-60 mins to get Colostrum.\n2. Exclusive breastfeeding: First 6 months.\n3. On-demand feeding: Feed when hungry/crying, no strict schedule.\n4. Proper latching & attachment: Avoid swallowing air and maternal nipple issues.",
+        "type": "flashcard"
+      },
+  {
+        "id": "nut_bf_engorgement",
+        "front": "What is Breast engorgement, and how is it treated?",
+        "back": "- Occurs in first days due to increased milk.\n- Treatment: Warm compresses BEFORE feeding (increase flow), Cold compresses AFTER feeding (reduce swelling). Frequent emptying of the breast. Do NOT stop breastfeeding.",
+        "type": "flashcard"
+      },
+  {
+        "id": "nut_bf_cracked",
+        "front": "What is the primary cause of Cracked nipples during breastfeeding, and what is the treatment?",
+        "back": "- Cause: Poor attachment / Improper latching.\n- Treatment: Correct feeding position, apply drops of breast milk on nipple and let dry, or use baby-safe soothing creams.",
+        "type": "flashcard"
+      },
+  {
+        "id": "nut_bf_mastitis",
+        "front": "What is Mastitis, and what is its treatment plan?",
+        "back": "- Bacterial infection causing pain, redness, swelling, and Fever.\n- Treatment: Safe Antibiotics, Analgesics. CRITICAL: Continue breastfeeding from affected breast to empty it and prevent Breast abscess.",
+        "type": "flashcard"
+      },
+  {
+        "id": "nut_bf_contra_maternal",
+        "front": "Enumerate the Absolute Contraindications of Breastfeeding (Maternal causes).",
+        "back": "Mnemonic: (أم مريضة إيدز وسل وهربس وبتاخد كيماوي.. وابنها عنده جالاكتوزيميا)\n1. HIV infection\n2. Active untreated TB\n3. Maternal chemotherapy or radiotherapy\n4. Active Herpes simplex lesions on the breast\n5. Illicit drug abuse",
+        "type": "flashcard"
+      },
+  {
+        "id": "nut_bf_contra_infant",
+        "front": "What is the primary Infant absolute contraindication for Breastfeeding?",
+        "back": "Galactosemia (Infant lacks the enzyme to break down galactose in milk).\n\nMnemonic: (أم مريضة إيدز وسل وهربس وبتاخد كيماوي.. وابنها عنده جالاكتوزيميا)",
+        "type": "flashcard"
+      },
+  {
+        "id": "nut_saq_1",
+        "front": "Define the following terms:\nComplementary feeding (Weaning):",
+        "back": "It is the provision of any nutrient containing foods or liquids other than breast milk and includes both solid food and infant formula."
+      },
+  {
+        "id": "nut_saq_2",
+        "front": "Define the following terms:\nTetany:",
+        "back": "A state of hyper-excitability of central and peripheral nervous systems resulting from decreased ionic concentration of Ca or Mg or alkalosis."
+      },
+  {
+        "id": "nut_saq_3",
+        "front": "Enumerate four anti-infective properties or components present in human breast milk.",
+        "back": "Immunoglobulins especially secretory IgA against different pathogens.\nPhagocytes & lymphocytes.\nLactoperoxidase, which protects against different bacterial pathogens.\nLysozymes that destroy bacterial cell wall."
+      },
+  {
+        "id": "nut_saq_4",
+        "front": "Enumerate four absolute contraindications to breastfeeding (Maternal or Infant).",
+        "back": "Cancer breast.\nInsanity of the mother.\nHIV infection.\nInborn errors of metabolism in the infant (e.g., galactosemia)."
+      },
+  {
+        "id": "nut_saq_5",
+        "front": "Enumerate the four constant features of Kwashiorkor.",
+        "back": "Growth failure.\nPitting oedema.\nMental changes.\nMuscle wasting with preserved subcutaneous fat."
+      },
+  {
+        "id": "nut_saq_6",
+        "front": "Enumerate four variable (non-constant) ectodermal or systemic features of Kwashiorkor.",
+        "back": "Skin changes (erythema, hyperpigmentation, desquamation).\nHair changes (dry, sparse, easily pickable, alternating color bands).\nAnemia.\nGIT changes (hepatomegaly, diarrhea, abdominal distension)."
+      },
+  {
+        "id": "nut_saq_7",
+        "front": "Enumerate four causes of death in a child with severe Protein Energy Malnutrition (PEM).",
+        "back": "Recurrent infections.\nElectrolytes imbalance as a result of refeeding syndrome or acute gastroenteritis.\nHypothermia.\nHypoglycemia."
+      },
+  {
+        "id": "nut_saq_8",
+        "front": "Enumerate four skeletal manifestations found in the head or thorax of a child with advanced rickets.",
+        "back": "Frontal and parietal bossing leading to box shaped skull (caput quadratum).\nWide anterior fontanelles.\nRachitic rosaries (visible or palpable enlargement of the costochondral junction).\nHarrison sulcus (horizontal groove along lower border of the chest cage)."
+      },
+  {
+        "id": "nut_saq_9",
+        "front": "Enumerate the three steps in the diagnostic approach to refractory rickets.",
+        "back": "1st step: Measure serum phosphorus.\n2nd step: Measure blood pH.\n3rd step: Measure serum calcium."
+      },
+  {
+        "id": "nut_saq_10",
+        "front": "Enumerate four indications for hospitalization in a child with severe malnutrition.",
+        "back": "Hypothermia.\nSevere anemia and congestive cardiac failure.\nPersistent vomiting.\nAge less than 1 year."
+      },
+  {
+        "id": "nut_case1_q1",
+        "front": "Case 1: A 2-year-old child is brought to the hospital presentation with generalized pitting edema starting in the feet, a puffy \"moon face\", severe muscle wasting, but with preserved subcutaneous fat. The child is extremely apathetic and shows no interest in his surroundings.\n\nWhat is the diagnosis of this clinical condition according to the Welcome classification?",
+        "back": "Kwashiorkor (severe PEM with edema)."
+      },
+  {
+        "id": "nut_case1_q2",
+        "front": "Case 1: A 2-year-old child is brought to the hospital presentation with generalized pitting edema starting in the feet, a puffy \"moon face\", severe muscle wasting, but with preserved subcutaneous fat. The child is extremely apathetic and shows no interest in his surroundings.\n\nEnumerate two possible causes for the mental changes (apathy) observed in this child.",
+        "back": "Deficient aromatic amino acids and deficient trace elements (Cu, Mg, Zn)."
+      },
+  {
+        "id": "nut_case2_q1",
+        "front": "Case 2: A 10-month-old male infant presents with broad wrists, bow-legs, and delayed teething. Blood chemistry: normal Ca, low Ph and very high alkaline phosphatase. X-ray of wrist shows cupping & fraying.\n\nWhat is your provisional diagnosis?",
+        "back": "Active Infantile (Nutritional) Rickets."
+      },
+  {
+        "id": "nut_case2_q2",
+        "front": "Case 2: A 10-month-old male infant presents with broad wrists, bow-legs, and delayed teething. Blood chemistry: normal Ca, low Ph and very high alkaline phosphatase. X-ray of wrist shows cupping & fraying.\n\nExplain the mechanism behind the increased level of serum alkaline phosphatase in this disease.",
+        "back": "It is due to increased osteoblastic activity."
+      },
+  {
+        "id": "nut_case2_q3",
+        "front": "Case 2: A 10-month-old male infant presents with broad wrists, bow-legs, and delayed teething. Blood chemistry: normal Ca, low Ph and very high alkaline phosphatase. X-ray of wrist shows cupping & fraying.\n\nEnumerate the two therapeutic methods/options for treating this infantile disease.",
+        "back": "Oral daily dose of 1500-5000 IU vitamin D till complete recovery, or Shock therapy (a single oral dose of 600,000 IU vitamin D)."
+      },
+  {
+        "id": "n1",
+        "front": "Describe five benefits of breastfeeding (for mothers)?",
+        "back": "It helps in the involution of the birth canal.\nIt serves as a natural method of contraception.\nIt decreases the clinical incidence of breast cancer."
+      },
+  {
+        "id": "n2",
+        "front": "Mention foods avoided in weaning diet.",
+        "back": "Foods that cause choking, such as nuts, fruits with seeds, and potato chips.\nFoods containing artificial colors and artificial flavors.\nSalted food, as it might cause hypertension.\nJunk food such as sweets and candies, which deprive the child from taking food that is more nutritious and encourages a desire for sweets.\nHighly spiced and fatty food."
+      },
+  {
+        "id": "n3",
+        "front": "Describe skin changes in Kwashiorkor and explain its cause.",
+        "back": "Description: Skin changes start as erythema followed by hyperpigmentation and desquamation, leading directly to ulceration, fissuring, and crackling. Secondary skin infections and even gangrene are highly common because the pitting edema constitutes a suitable media for the entry of pathogenic organisms. The commonest anatomical sites involved are pressure sites (buttocks and back) and flexural sites (groin and axilla).\nCause: These pathognomonic skin changes are primarily caused by deficiencies in essential fatty acids, essential amino acids, sulfur-containing amino acids, vitamin A, and zinc."
+      },
+  {
+        "id": "n4",
+        "front": "List 5 causes of death in PEM",
+        "back": "Recurrent systemic infections.\nElectrolytes imbalance occurring as a result of refeeding syndrome or acute gastroenteritis.\nHypothermia.\nHypoglycemia, due to low glycogen content in the liver and defects in catecholamine and glucagon hormone formation.\nHeart failure, due to either anemic heart failure or degenerative changes in the cardiac muscles."
+      },
+  {
+        "id": "n5",
+        "front": "Explain the causes of infection in protein-energy malnutrition.",
+        "back": "Edema-Related Susceptibility: Pitting edema creates an ideal, compromised environment and suitable media for the entry of micro-organisms, leading to high rates of skin infections and gangrene.\nGastrointestinal Barrier Defect: Defective epithelization of the intestinal mucosa impairs natural defenses, making the patient highly vulnerable to bacterial, viral, and protozoal gastroenteritis."
+      },
+  {
+        "id": "n6",
+        "front": "Explain why weaning should start after the age of 4 months.",
+        "back": "Weaning must begin at the age of 4 months because maternal breast milk becomes insufficient to fulfill the baseline nutritional requirements of the infant, creating a critical deficit across multiple components:\nCalories: A clear energy gap forms between breast milk intake (356 kcal/day) and total daily requirement (536.8 kcal/day) at 4 months.\nProteins: A protein intake deficit emerges between baseline intake (6.6 g/day) and requirement (9.1 g/day) at 4 months.\nVitamin D: A substantial micronutrient gap exists between intake (528 ng/day) and requirement (5000 ng/day) at 4 months.\nZinc: Intake drops below required levels, with intake at 0.98 mg/day against a requirement of 2 mg/day after 4 months.\nIron: A severe developmental gap opens between intake (0.29 mg/day) and requirement (11 mg/day) after 6 months of age. Introducing complementary feeding at 4 months is therefore mandated to explicitly avoid caloric, vitamin, and mineral deficiencies."
+      },
+  {
+        "id": "n7",
+        "front": "Discuss welcome classification for protein energy malnutrition",
+        "back": "The Welcome classification categorizes protein-energy malnutrition by assessing the patient's body weight-for-age percentage relative to the standard (50th percentile reference) and evaluating for the clinical presence or absence of pitting edema:\nWeight-for-age between 60% and 80% of standard:\nWithout edema: Underweight (mild PEM).\nWith edema: Kwashiorkor (severe PEM).\nWeight-for-age < 60% of standard:\nWithout edema: Marasmus (severe PEM).\nWith edema: Marasmic Kwashiorkor (severe PEM)."
+      },
+  {
+        "id": "n8",
+        "front": "Mention Breast feeding reflexes",
+        "back": "Maternal Secretory & Ejection Reflexes:\nMilk secretion reflex (prolactin reflex): Suckling directly stimulates nerve endings in the nipple, inducing anterior pituitary production of prolactin, which drives milk production.\nMilk ejection or let-down reflex (oxytocin reflex): Suckling stimulates oxytocin release from the posterior pituitary, causing acute contraction of myoepithelial cells around the lactiferous ducts to cause milk ejection.\nInfant Feeding Reflexes:\nRooting reflex: Mechanical touch to the lip or cheek causes the infant to turn toward the stimulus and open the mouth.\nSuckling reflex: Tactile stimulation of the palate directly initiates suckling.\nSwallowing reflex: The presence of milk filling the oral cavity triggers automatic swallowing."
+      },
+  {
+        "id": "n9",
+        "front": "Case 3: 1- What is most likely diagnosis?",
+        "back": "The most likely diagnosis is Kwashiorkor. It is a form of severe protein-energy malnutrition caused by selective protein deficiency in the setting of nearly normal caloric intake, characterized clinically by pitting edema and growth failure."
+      },
+  {
+        "id": "n10",
+        "front": "Case 3: 2- What are the other features should be present?",
+        "back": "Constant Features: Severe growth failure (weight-for-age < 80% of reference), psychological/mental changes (apathy, marked irritability, lack of interest in surroundings, absence of smile), and muscle wasting with preserved subcutaneous fat.\nVariable (Non-constant) Features: Skin changes (erythema, hyperpigmentation, desquamation, flaky paint dermatosis), hair changes (loss of luster, dry/sparse hair, color lightening, or alternating bands known as the flag sign), nutritional anemia, and gastrointestinal changes (hepatomegaly from fatty infiltration, diarrhea, and abdominal distension)."
+      },
+  {
+        "id": "n11",
+        "front": "Case 3: 3- What are the investigations should be done?",
+        "back": "Serum Albumin: To evaluate the degree of hypoproteinemia (characteristically low).\nUrinary Urea per Gram Creatinine: To demonstrate reduced protein intake and metabolism (low).\nBlood Glucose Level: To evaluate for concurrent fasting hypoglycemia.\nSerum Electrolytes: To check for underlying potassium and magnesium deficiencies.\nComplete Blood Count (CBC): To identify microcytic, macrocytic, or normocytic anemia.\nRadiological Bone Age: To confirm delayed skeletal maturation."
+      },
+  {
+        "id": "n12",
+        "front": "Mention causes of hypocalcemia and tetany in rickets.",
+        "back": "Hypocalcemia and manifest tetany present in rickets under specific metabolic circumstances:\nParathyroid gland failure to respond to systemic hypocalcemia due to gland exhaustion.\nComplete exhaustion of total skeletal bone stores of calcium.\nAdministration of high-dose vitamin D shock therapy without concurrent oral calcium supplementation.\nSevere concurrent chest infections causing hyperventilation, inducing a CO2 wash, resulting in systemic respiratory alkalosis tetany."
+      },
+  {
+        "id": "n13",
+        "front": "Describe the clinical picture of latent tetany.",
+        "back": "Latent tetany occurs when total serum calcium levels range between 7 and 9 mg%. It lacks spontaneous clinical symptoms but is explicitly confirmed via three diagnostic neurological signs:\nChvostek sign: Mechanical tapping over the facial nerve anterior to the tragus produces immediate contraction of the ipsilateral facial muscles.\nTrousseau sign: Occlusion of arterial flow to the upper extremity using a sphygmomanometer cuff inflated above systolic pressure for 3 minutes induces ischemia, resulting in a classic carpal spasm.\nPeroneal sign: Tapping the peroneal nerve over the neck of the fibula produces immediate dorsiflexion and eversion of the foot."
+      },
+  {
+        "id": "n14",
+        "front": "Case 4: 1- What is most likely diagnosis?",
+        "back": "The most likely diagnosis is Renal Osteodystrophy (Uremic Rickets). This clinical entity comprises skeletal mineralization defects secondary to chronic renal failure, presenting with rickets-like epiphyseal broadening, severe short stature, metabolic acidosis, and renal-induced systemic hypertension."
+      },
+  {
+        "id": "n15",
+        "front": "Case 4: 2- What are the investigations should be done?",
+        "back": "Serum Kidney Function Tests: Evaluating blood urea and creatinine levels, which will be pathologically elevated.\nSerum Phosphorus: To confirm hyperphosphatemia caused by decreased glomerular filtration.\nSerum Calcium: To identify hypocalcemia secondary to failure of renal vitamin D hydroxylation.\nSerum Alkaline Phosphatase: Characteristically elevated due to high osteoblastic remodeling.\nBlood Gas Analysis (pH): To diagnose underlying metabolic acidosis.\nRadiological X-ray of Wrists/Long Bones: To visualize structural epiphyseal cupping, fraying, and broadening."
+      },
+  {
+        "id": "n16",
+        "front": "Case 4: 3- What is the treatment?",
+        "back": "Radical management of the underlying renal pathology via chronic hemodialysis or renal transplantation.\nActive Calcitriol (1,25-dihydroxyvitamin D) administration to bypass compromised renal 1-alpha-hydroxylase activity.\nEnsuring high oral calcium intake.\nImplementation of a low phosphate diet.\nAdministration of oral phosphate binders to restrict GI absorption of dietary phosphorus."
+      }
   ],
   "_CHAPTER_Genetic diseases": [
-    {
-      "id": "gen_saq_1",
-      "front": "Define the following terms:\nGenetics:",
-      "back": "The study of heredity or genes."
-    },
-    {
-      "id": "gen_saq_2",
-      "front": "Define the following terms:\nGene:",
-      "back": "The basic unit of inheritance; a section of DNA that takes a specific location on a chromosome and codes for a protein product."
-    },
-    {
-      "id": "gen_saq_3",
-      "front": "Define the following terms:\nKaryotype:",
-      "back": "A standardized format or photograph where individual chromosomes are arranged in pairs to detect numerical or gross structural abnormalities."
-    },
-    {
-      "id": "gen_saq_4",
-      "front": "Define the following terms:\nSyndrome:",
-      "back": "Multiple anomalies in one or more tissues thought to be pathologically related due to a specific etiologic mechanism."
-    },
-    {
-      "id": "gen_saq_5",
-      "front": "Enumerate four clinical indications for chromosomal analysis.",
-      "back": "Mental retardation, growth retardation, and developmental delay.\nDysmorphic features and multiple congenital anomalies.\nFemale with short stature.\nRecurrent abortions and fertility problems."
-    },
-    {
-      "id": "gen_saq_6",
-      "front": "Enumerate four structural chromosomal aberrations.",
-      "back": "Deletions.\nDuplications.\nInversion.\nTranslocation."
-    },
-    {
-      "id": "gen_saq_7",
-      "front": "Enumerate the three cytogenetic types of Down Syndrome.",
-      "back": "Nondisjunction Type.\nTranslocation type.\nMosaic type."
-    },
-    {
-      "id": "gen_saq_8",
-      "front": "Enumerate four characteristics of Autosomal Dominant inheritance.",
-      "back": "Affected mothers and fathers transmit the phenotype to both sons and daughters equally.\nEach child of an affected parent has a 50% chance of inheriting the disease.\nThe phenotype appears in every generation presenting a \"vertical pattern\".\nExamples include Achondroplasia and Huntington disease."
-    },
-    {
-      "id": "gen_saq_9",
-      "front": "Enumerate four indications for Genetic Counseling.",
-      "back": "A personal or family history of a genetic condition, birth defect, or chromosomal disorder.\nA woman who is pregnant or plans to become pregnant at or after age 35.\nHistory of recurrent miscarriages or a stillbirth.\nAbnormal test results that suggest a genetic or chromosomal condition."
-    },
-    {
-      "id": "gen_saq_10",
-      "front": "Enumerate four criteria for an ideal newborn screening program.",
-      "back": "Screened condition should be an important, frequent, well-known health problem.\nScreening test should be inexpensive, simple, safe, reliable, precise and validated.\nEffective treatment or intervention must exist.\nAdequate staffing and facilities for testing, diagnosis, treatment, and program management."
-    },
-    {
-      "id": "gen_saq_11",
-      "front": "Enumerate four advantages of filter paper usage in newborn screening.",
-      "back": "Simple collection.\nMore analytes stable.\nSimple transportation.\nStorage easy and compact."
-    },
-    {
-      "id": "gen_case1_q1",
-      "front": "Case 1: A 37-year-old pregnant woman has a routine prenatal triple test done at 16 weeks of gestation. The laboratory report reveals: Decreased alpha-fetoprotein (AFP), decreased unconjugated estriol (uE3), and significantly increased human chorionic gonadotrophin (hCG).\n\nWhat is the most likely chromosomal disorder affecting the fetus?",
-      "back": "Down Syndrome (Trisomy 21)."
-    },
-    {
-      "id": "gen_case1_q2",
-      "front": "Case 1: A 37-year-old pregnant woman has a routine prenatal triple test done at 16 weeks of gestation. The laboratory report reveals: Decreased alpha-fetoprotein (AFP), decreased unconjugated estriol (uE3), and significantly increased human chorionic gonadotrophin (hCG).\n\nEnumerate two invasive screening methods that can be offered to this patient to obtain fetal cells for a definitive diagnosis.",
-      "back": "Amniocentesis and Chorionic villus sampling."
-    },
-    {
-      "id": "gen_case2_q1",
-      "front": "Case 2: A newborn male infant is examined in the neonatal unit. The clinician observes upward slanting palpebral fissures, an epicanthic fold, a single transverse palmar crease (simian crease), a wide gap between the first and second toes, and marked generalized hypotonia.\n\nWhat is the clinical diagnosis for this infant?",
-      "back": "Down Syndrome."
-    },
-    {
-      "id": "gen_case2_q2",
-      "front": "Case 2: A newborn male infant is examined in the neonatal unit. The clinician observes upward slanting palpebral fissures, an epicanthic fold, a single transverse palmar crease (simian crease), a wide gap between the first and second toes, and marked generalized hypotonia.\n\nWhat is the most common cytogenetic mechanism responsible for this syndrome, and what is its relation to maternal age?",
-      "back": "Nondisjunction Type (accounts for 94% of cases) ; its risk increases significantly with advanced maternal age."
-    },
-    {
-      "id": "gen_case3_q1",
-      "front": "Case 3: A 16-year-old female presents to the endocrine clinic with complaints of failure to start her periods (primary amenorrhea) and short stature. On physical examination, she has a low posterior hairline, a short webbed neck, a broad chest with widely spaced nipples, and a wide carrying angle at her elbows.\n\nWhat is the most likely diagnosis?",
-      "back": "Turner syndrome."
-    },
-    {
-      "id": "gen_case3_q2",
-      "front": "Case 3: A 16-year-old female presents to the endocrine clinic with complaints of failure to start her periods (primary amenorrhea) and short stature. On physical examination, she has a low posterior hairline, a short webbed neck, a broad chest with widely spaced nipples, and a wide carrying angle at her elbows.\n\nWhat is the most common genotype associated with this condition?",
-      "back": "45,X (or 45,XO)."
-    },
-    {
-      "id": "gen_case4_q1",
-      "front": "Case 4: A 17-year-old boy is brought for evaluation because of delayed puberty and learning difficulties. He is noted to be tall with long limbs and a eunuchoid build. Physical examination reveals minimal facial hair, bilateral breast enlargement (gynecomastia), and small, firm testes.\n\nWhat is the most likely clinical diagnosis?",
-      "back": "Klinefelter syndrome."
-    },
-    {
-      "id": "gen_case4_q2",
-      "front": "Case 4: A 17-year-old boy is brought for evaluation because of delayed puberty and learning difficulties. He is noted to be tall with long limbs and a eunuchoid build. Physical examination reveals minimal facial hair, bilateral breast enlargement (gynecomastia), and small, firm testes.\n\nWhat is the typical genotype for this syndrome, and when is it usually diagnosed?",
-      "back": "47,XXY ; the diagnosis is rarely made before puberty."
-    }
+  {
+        "id": "gen_saq_1",
+        "front": "Define the following terms:\nGenetics:",
+        "back": "The study of heredity or genes."
+      },
+  {
+        "id": "gen_saq_2",
+        "front": "Define the following terms:\nGene:",
+        "back": "The basic unit of inheritance; a section of DNA that takes a specific location on a chromosome and codes for a protein product."
+      },
+  {
+        "id": "gen_saq_3",
+        "front": "Define the following terms:\nKaryotype:",
+        "back": "A standardized format or photograph where individual chromosomes are arranged in pairs to detect numerical or gross structural abnormalities."
+      },
+  {
+        "id": "gen_saq_4",
+        "front": "Define the following terms:\nSyndrome:",
+        "back": "Multiple anomalies in one or more tissues thought to be pathologically related due to a specific etiologic mechanism."
+      },
+  {
+        "id": "gen_saq_5",
+        "front": "Enumerate four clinical indications for chromosomal analysis.",
+        "back": "Mental retardation, growth retardation, and developmental delay.\nDysmorphic features and multiple congenital anomalies.\nFemale with short stature.\nRecurrent abortions and fertility problems."
+      },
+  {
+        "id": "gen_saq_6",
+        "front": "Enumerate four structural chromosomal aberrations.",
+        "back": "Deletions.\nDuplications.\nInversion.\nTranslocation."
+      },
+  {
+        "id": "gen_saq_7",
+        "front": "Enumerate the three cytogenetic types of Down Syndrome.",
+        "back": "Nondisjunction Type.\nTranslocation type.\nMosaic type."
+      },
+  {
+        "id": "gen_saq_8",
+        "front": "Enumerate four characteristics of Autosomal Dominant inheritance.",
+        "back": "Affected mothers and fathers transmit the phenotype to both sons and daughters equally.\nEach child of an affected parent has a 50% chance of inheriting the disease.\nThe phenotype appears in every generation presenting a \"vertical pattern\".\nExamples include Achondroplasia and Huntington disease."
+      },
+  {
+        "id": "gen_saq_9",
+        "front": "Enumerate four indications for Genetic Counseling.",
+        "back": "A personal or family history of a genetic condition, birth defect, or chromosomal disorder.\nA woman who is pregnant or plans to become pregnant at or after age 35.\nHistory of recurrent miscarriages or a stillbirth.\nAbnormal test results that suggest a genetic or chromosomal condition."
+      },
+  {
+        "id": "gen_saq_10",
+        "front": "Enumerate four criteria for an ideal newborn screening program.",
+        "back": "Screened condition should be an important, frequent, well-known health problem.\nScreening test should be inexpensive, simple, safe, reliable, precise and validated.\nEffective treatment or intervention must exist.\nAdequate staffing and facilities for testing, diagnosis, treatment, and program management."
+      },
+  {
+        "id": "gen_saq_11",
+        "front": "Enumerate four advantages of filter paper usage in newborn screening.",
+        "back": "Simple collection.\nMore analytes stable.\nSimple transportation.\nStorage easy and compact."
+      },
+  {
+        "id": "gen_case1_q1",
+        "front": "Case 1: A 37-year-old pregnant woman has a routine prenatal triple test done at 16 weeks of gestation. The laboratory report reveals: Decreased alpha-fetoprotein (AFP), decreased unconjugated estriol (uE3), and significantly increased human chorionic gonadotrophin (hCG).\n\nWhat is the most likely chromosomal disorder affecting the fetus?",
+        "back": "Down Syndrome (Trisomy 21)."
+      },
+  {
+        "id": "gen_case1_q2",
+        "front": "Case 1: A 37-year-old pregnant woman has a routine prenatal triple test done at 16 weeks of gestation. The laboratory report reveals: Decreased alpha-fetoprotein (AFP), decreased unconjugated estriol (uE3), and significantly increased human chorionic gonadotrophin (hCG).\n\nEnumerate two invasive screening methods that can be offered to this patient to obtain fetal cells for a definitive diagnosis.",
+        "back": "Amniocentesis and Chorionic villus sampling."
+      },
+  {
+        "id": "gen_case2_q1",
+        "front": "Case 2: A newborn male infant is examined in the neonatal unit. The clinician observes upward slanting palpebral fissures, an epicanthic fold, a single transverse palmar crease (simian crease), a wide gap between the first and second toes, and marked generalized hypotonia.\n\nWhat is the clinical diagnosis for this infant?",
+        "back": "Down Syndrome."
+      },
+  {
+        "id": "gen_case2_q2",
+        "front": "Case 2: A newborn male infant is examined in the neonatal unit. The clinician observes upward slanting palpebral fissures, an epicanthic fold, a single transverse palmar crease (simian crease), a wide gap between the first and second toes, and marked generalized hypotonia.\n\nWhat is the most common cytogenetic mechanism responsible for this syndrome, and what is its relation to maternal age?",
+        "back": "Nondisjunction Type (accounts for 94% of cases) ; its risk increases significantly with advanced maternal age."
+      },
+  {
+        "id": "gen_case3_q1",
+        "front": "Case 3: A 16-year-old female presents to the endocrine clinic with complaints of failure to start her periods (primary amenorrhea) and short stature. On physical examination, she has a low posterior hairline, a short webbed neck, a broad chest with widely spaced nipples, and a wide carrying angle at her elbows.\n\nWhat is the most likely diagnosis?",
+        "back": "Turner syndrome."
+      },
+  {
+        "id": "gen_case3_q2",
+        "front": "Case 3: A 16-year-old female presents to the endocrine clinic with complaints of failure to start her periods (primary amenorrhea) and short stature. On physical examination, she has a low posterior hairline, a short webbed neck, a broad chest with widely spaced nipples, and a wide carrying angle at her elbows.\n\nWhat is the most common genotype associated with this condition?",
+        "back": "45,X (or 45,XO)."
+      },
+  {
+        "id": "gen_case4_q1",
+        "front": "Case 4: A 17-year-old boy is brought for evaluation because of delayed puberty and learning difficulties. He is noted to be tall with long limbs and a eunuchoid build. Physical examination reveals minimal facial hair, bilateral breast enlargement (gynecomastia), and small, firm testes.\n\nWhat is the most likely clinical diagnosis?",
+        "back": "Klinefelter syndrome."
+      },
+  {
+        "id": "gen_case4_q2",
+        "front": "Case 4: A 17-year-old boy is brought for evaluation because of delayed puberty and learning difficulties. He is noted to be tall with long limbs and a eunuchoid build. Physical examination reveals minimal facial hair, bilateral breast enlargement (gynecomastia), and small, firm testes.\n\nWhat is the typical genotype for this syndrome, and when is it usually diagnosed?",
+        "back": "47,XXY ; the diagnosis is rarely made before puberty."
+      }
   ],
   "_CHAPTER_Gastroenterology & hepatology": [
-    {
-      "id": "git_saq_1",
-      "front": "Define the following terms:\nDysentery:",
-      "back": "It is diarrhea with visible blood in stool."
-    },
-    {
-      "id": "git_saq_2",
-      "front": "Define the following terms:\nUpper Gastrointestinal (UGI) Bleeding:",
-      "back": "It is defined as bleed occurring in the GI tract above the ligament of Trietz."
-    },
-    {
-      "id": "git_saq_3",
-      "front": "Define the following terms:\nHypertrophic Pyloric Stenosis:",
-      "back": "Progressive hypertrophy of circular muscles fibers of the pylorus with subsequent pyloric narrowing and gastric outflow obstruction."
-    },
-    {
-      "id": "git_saq_4",
-      "front": "Define the following terms:\nPhenylketonuria (PKU):",
-      "back": "A rare, inherited metabolic disorder that prevents the body from breaking down an amino acid called phenylalanine (Phe)."
-    },
-    {
-      "id": "git_saq_5",
-      "front": "Enumerate four causes of persistent diarrhea.",
-      "back": "Lactose intolerance.\nCow milk protein allergy.\nBacterial overgrowth.\nPersistent infection (Giardiasis)."
-    },
-    {
-      "id": "git_saq_6",
-      "front": "Enumerate four red flags for mothers to seek medical care regarding a child with diarrhea.",
-      "back": "Many watery stools.\nRepeated vomiting.\nEating or drinking poorly.\nBecomes very thirsty."
-    },
-    {
-      "id": "git_saq_7",
-      "front": "Enumerate four methods for the prevention of diarrhea.",
-      "back": "Exclusive breastfeeding.\nSafe water and sanitation.\nHand washing.\nVaccination (Rotavirus)."
-    },
-    {
-      "id": "git_saq_8",
-      "front": "Enumerate four clinical diagnostic criteria (Rome IV) for functional constipation.",
-      "back": "Infrequent Stool: Fewer than 3 bowel movements per week.\nHard Stools: Large, dry, or painful-to-pass stools.\nWithholding Behavior: Posturing (stiffening legs, hiding) to avoid pooping.\nFecal Incontinence: Leakage of liquid stool in underwear."
-    },
-    {
-      "id": "git_saq_9",
-      "front": "Enumerate four mechanisms of hepatomegaly.",
-      "back": "Congestion (e.g., CCF).\nInflammation (e.g., various forms of hepatitis).\nInfiltration (e.g., malignancy).\nStorage/fat accumulation (e.g., glycogen storage disease, fatty liver)."
-    },
-    {
-      "id": "git_saq_10",
-      "front": "Enumerate four clinical \"red flags\" that point to organic rather than dysfunctional recurrent abdominal pain (RAP).",
-      "back": "Clearly localized pain (burning, stabbing, etc.) mostly away from umbilicus.\nPain awakening the child at night.\nPain with weight loss.\nBlood in stools (occult/obvious)."
-    },
-    {
-      "id": "git_saq_11",
-      "front": "Enumerate four clinical situations/red flags when an inborn error of metabolism should be highly suspected.",
-      "back": "The \"Crash\" After Birth: A baby who is born healthy but suddenly gets very sick after their first few feedings.\nLooking Like Sepsis: A child who looks like they have a severe infection, but tests for bacteria are negative and antibiotics aren't working.\nLosing Skills: A child who was hitting their milestones but suddenly starts losing those abilities.\nStrange Smells: Unusual odors from the baby's breath, urine, or skin."
-    },
-    {
-      "id": "git_case1_q1",
-      "front": "Case 1: A 4-week-old male infant presents with progressive, nonbilious projectile vomiting immediately following each feed. The mother notes that the infant is always extremely hungry and wants to feed again right after vomiting. On deep physical examination, a firm, hard, movable, olive-shaped mass is palpated above and to the right of the umbilicus.\n\nWhat is the most likely diagnosis?",
-      "back": "Hypertrophic Pyloric Stenosis."
-    },
-    {
-      "id": "git_case1_q2",
-      "front": "Case 1: A 4-week-old male infant presents with progressive, nonbilious projectile vomiting immediately following each feed. The mother notes that the infant is always extremely hungry and wants to feed again right after vomiting. On deep physical examination, a firm, hard, movable, olive-shaped mass is palpated above and to the right of the umbilicus.\n\nWhat specific metabolic and electrolyte disturbance is characteristic of this condition?",
-      "back": "Hypochloremic metabolic alkalosis."
-    },
-    {
-      "id": "git_case1_q3",
-      "front": "Case 1: A 4-week-old male infant presents with progressive, nonbilious projectile vomiting immediately following each feed. The mother notes that the infant is always extremely hungry and wants to feed again right after vomiting. On deep physical examination, a firm, hard, movable, olive-shaped mass is palpated above and to the right of the umbilicus.\n\nWhat is the definitive surgical procedure of choice for this infant?",
-      "back": "Ramstedt pyloromyotomy."
-    },
-    {
-      "id": "git_case2_q1",
-      "front": "Case 2: A newborn male infant fails to pass meconium within the first 48 hours of life and develops clinical features of intestinal obstruction including abdominal distension and vomiting. A contrast barium enema is performed and demonstrates a clear transition zone with a narrow distal rectal segment.\n\nWhat is the clinical diagnosis?",
-      "back": "Hirschsprung Disease (Congenital Aganglionic Megacolon)."
-    },
-    {
-      "id": "git_case2_q2",
-      "front": "Case 2: A newborn male infant fails to pass meconium within the first 48 hours of life and develops clinical features of intestinal obstruction including abdominal distension and vomiting. A contrast barium enema is performed and demonstrates a clear transition zone with a narrow distal rectal segment.\n\nWhat is the underlying pathology of this condition?",
-      "back": "Absence of ganglionic cells in the myenteric & submucosal plexuses of the rectum and a variable distance of the colon."
-    },
-    {
-      "id": "git_case2_q3",
-      "front": "Case 2: A newborn male infant fails to pass meconium within the first 48 hours of life and develops clinical features of intestinal obstruction including abdominal distension and vomiting. A contrast barium enema is performed and demonstrates a clear transition zone with a narrow distal rectal segment.\n\nWhat occurs during physical examination when a digital rectal examination (PR) is performed on this child?",
-      "back": "The ampulla is found empty, and its examination causes a gush of liquid stools & flatus."
-    },
-    {
-      "id": "git_case3_q1",
-      "front": "Case 3: A 5-month-old infant who appeared normal at birth is brought to the hospital with developmental delay and loss of social skills. The parents report a distinct musty or mousy odor from the child's breath and urine. On examination, the infant has microcephaly, lighter skin and hair pigmentation than the rest of his family members, and severe eczema.\n\nWhat is the most likely diagnosis?",
-      "back": "Phenylketonuria (PKU)."
-    },
-    {
-      "id": "git_case3_q2",
-      "front": "Case 3: A 5-month-old infant who appeared normal at birth is brought to the hospital with developmental delay and loss of social skills. The parents report a distinct musty or mousy odor from the child's breath and urine. On examination, the infant has microcephaly, lighter skin and hair pigmentation than the rest of his family members, and severe eczema.\n\nWhat is the genetic mode of inheritance for this disorder, and what gene is defective?",
-      "back": "It is an autosomal recessive disorder caused by mutations in the PAH gene."
-    },
-    {
-      "id": "git_case3_q3",
-      "front": "Case 3: A 5-month-old infant who appeared normal at birth is brought to the hospital with developmental delay and loss of social skills. The parents report a distinct musty or mousy odor from the child's breath and urine. On examination, the infant has microcephaly, lighter skin and hair pigmentation than the rest of his family members, and severe eczema.\n\nWhat is the cornerstone of lifelong treatment for this patient?",
-      "back": "A low-protein diet (\"metabolic diet\") that excludes high-protein foods, strictly avoids aspartame, and utilizes a phenylalanine-free medical formula."
-    }
+  {
+        "id": "git_saq_1",
+        "front": "Define the following terms:\nDysentery:",
+        "back": "It is diarrhea with visible blood in stool."
+      },
+  {
+        "id": "git_saq_2",
+        "front": "Define the following terms:\nUpper Gastrointestinal (UGI) Bleeding:",
+        "back": "It is defined as bleed occurring in the GI tract above the ligament of Trietz."
+      },
+  {
+        "id": "git_saq_3",
+        "front": "Define the following terms:\nHypertrophic Pyloric Stenosis:",
+        "back": "Progressive hypertrophy of circular muscles fibers of the pylorus with subsequent pyloric narrowing and gastric outflow obstruction."
+      },
+  {
+        "id": "git_saq_4",
+        "front": "Define the following terms:\nPhenylketonuria (PKU):",
+        "back": "A rare, inherited metabolic disorder that prevents the body from breaking down an amino acid called phenylalanine (Phe)."
+      },
+  {
+        "id": "git_saq_5",
+        "front": "Enumerate four causes of persistent diarrhea.",
+        "back": "Lactose intolerance.\nCow milk protein allergy.\nBacterial overgrowth.\nPersistent infection (Giardiasis)."
+      },
+  {
+        "id": "git_saq_6",
+        "front": "Enumerate four red flags for mothers to seek medical care regarding a child with diarrhea.",
+        "back": "Many watery stools.\nRepeated vomiting.\nEating or drinking poorly.\nBecomes very thirsty."
+      },
+  {
+        "id": "git_saq_7",
+        "front": "Enumerate four methods for the prevention of diarrhea.",
+        "back": "Exclusive breastfeeding.\nSafe water and sanitation.\nHand washing.\nVaccination (Rotavirus)."
+      },
+  {
+        "id": "git_saq_8",
+        "front": "Enumerate four clinical diagnostic criteria (Rome IV) for functional constipation.",
+        "back": "Infrequent Stool: Fewer than 3 bowel movements per week.\nHard Stools: Large, dry, or painful-to-pass stools.\nWithholding Behavior: Posturing (stiffening legs, hiding) to avoid pooping.\nFecal Incontinence: Leakage of liquid stool in underwear."
+      },
+  {
+        "id": "git_saq_9",
+        "front": "Enumerate four mechanisms of hepatomegaly.",
+        "back": "Congestion (e.g., CCF).\nInflammation (e.g., various forms of hepatitis).\nInfiltration (e.g., malignancy).\nStorage/fat accumulation (e.g., glycogen storage disease, fatty liver)."
+      },
+  {
+        "id": "git_saq_10",
+        "front": "Enumerate four clinical \"red flags\" that point to organic rather than dysfunctional recurrent abdominal pain (RAP).",
+        "back": "Clearly localized pain (burning, stabbing, etc.) mostly away from umbilicus.\nPain awakening the child at night.\nPain with weight loss.\nBlood in stools (occult/obvious)."
+      },
+  {
+        "id": "git_saq_11",
+        "front": "Enumerate four clinical situations/red flags when an inborn error of metabolism should be highly suspected.",
+        "back": "The \"Crash\" After Birth: A baby who is born healthy but suddenly gets very sick after their first few feedings.\nLooking Like Sepsis: A child who looks like they have a severe infection, but tests for bacteria are negative and antibiotics aren't working.\nLosing Skills: A child who was hitting their milestones but suddenly starts losing those abilities.\nStrange Smells: Unusual odors from the baby's breath, urine, or skin."
+      },
+  {
+        "id": "git_case1_q1",
+        "front": "Case 1: A 4-week-old male infant presents with progressive, nonbilious projectile vomiting immediately following each feed. The mother notes that the infant is always extremely hungry and wants to feed again right after vomiting. On deep physical examination, a firm, hard, movable, olive-shaped mass is palpated above and to the right of the umbilicus.\n\nWhat is the most likely diagnosis?",
+        "back": "Hypertrophic Pyloric Stenosis."
+      },
+  {
+        "id": "git_case1_q2",
+        "front": "Case 1: A 4-week-old male infant presents with progressive, nonbilious projectile vomiting immediately following each feed. The mother notes that the infant is always extremely hungry and wants to feed again right after vomiting. On deep physical examination, a firm, hard, movable, olive-shaped mass is palpated above and to the right of the umbilicus.\n\nWhat specific metabolic and electrolyte disturbance is characteristic of this condition?",
+        "back": "Hypochloremic metabolic alkalosis."
+      },
+  {
+        "id": "git_case1_q3",
+        "front": "Case 1: A 4-week-old male infant presents with progressive, nonbilious projectile vomiting immediately following each feed. The mother notes that the infant is always extremely hungry and wants to feed again right after vomiting. On deep physical examination, a firm, hard, movable, olive-shaped mass is palpated above and to the right of the umbilicus.\n\nWhat is the definitive surgical procedure of choice for this infant?",
+        "back": "Ramstedt pyloromyotomy."
+      },
+  {
+        "id": "git_case2_q1",
+        "front": "Case 2: A newborn male infant fails to pass meconium within the first 48 hours of life and develops clinical features of intestinal obstruction including abdominal distension and vomiting. A contrast barium enema is performed and demonstrates a clear transition zone with a narrow distal rectal segment.\n\nWhat is the clinical diagnosis?",
+        "back": "Hirschsprung Disease (Congenital Aganglionic Megacolon)."
+      },
+  {
+        "id": "git_case2_q2",
+        "front": "Case 2: A newborn male infant fails to pass meconium within the first 48 hours of life and develops clinical features of intestinal obstruction including abdominal distension and vomiting. A contrast barium enema is performed and demonstrates a clear transition zone with a narrow distal rectal segment.\n\nWhat is the underlying pathology of this condition?",
+        "back": "Absence of ganglionic cells in the myenteric & submucosal plexuses of the rectum and a variable distance of the colon."
+      },
+  {
+        "id": "git_case2_q3",
+        "front": "Case 2: A newborn male infant fails to pass meconium within the first 48 hours of life and develops clinical features of intestinal obstruction including abdominal distension and vomiting. A contrast barium enema is performed and demonstrates a clear transition zone with a narrow distal rectal segment.\n\nWhat occurs during physical examination when a digital rectal examination (PR) is performed on this child?",
+        "back": "The ampulla is found empty, and its examination causes a gush of liquid stools & flatus."
+      },
+  {
+        "id": "git_case3_q1",
+        "front": "Case 3: A 5-month-old infant who appeared normal at birth is brought to the hospital with developmental delay and loss of social skills. The parents report a distinct musty or mousy odor from the child's breath and urine. On examination, the infant has microcephaly, lighter skin and hair pigmentation than the rest of his family members, and severe eczema.\n\nWhat is the most likely diagnosis?",
+        "back": "Phenylketonuria (PKU)."
+      },
+  {
+        "id": "git_case3_q2",
+        "front": "Case 3: A 5-month-old infant who appeared normal at birth is brought to the hospital with developmental delay and loss of social skills. The parents report a distinct musty or mousy odor from the child's breath and urine. On examination, the infant has microcephaly, lighter skin and hair pigmentation than the rest of his family members, and severe eczema.\n\nWhat is the genetic mode of inheritance for this disorder, and what gene is defective?",
+        "back": "It is an autosomal recessive disorder caused by mutations in the PAH gene."
+      },
+  {
+        "id": "git_case3_q3",
+        "front": "Case 3: A 5-month-old infant who appeared normal at birth is brought to the hospital with developmental delay and loss of social skills. The parents report a distinct musty or mousy odor from the child's breath and urine. On examination, the infant has microcephaly, lighter skin and hair pigmentation than the rest of his family members, and severe eczema.\n\nWhat is the cornerstone of lifelong treatment for this patient?",
+        "back": "A low-protein diet (\"metabolic diet\") that excludes high-protein foods, strictly avoids aspartame, and utilizes a phenylalanine-free medical formula."
+      }
   ],
   "_CHAPTER_Endocrinology": [
-    {
-      "id": "endo_saq_1",
-      "front": "Define the following terms:\nShort stature:",
-      "back": "A term applied to a child whose height is 2 standard deviations (SD) or more below the mean for children of that sex and chronologic age."
-    },
-    {
-      "id": "endo_saq_2",
-      "front": "Define the following terms:\nDelayed puberty:",
-      "back": "No thelarche (breast development) by age 13 in girls, or no testicular enlargement (≥ 4 mL) by age 14 in boys."
-    },
-    {
-      "id": "endo_saq_3",
-      "front": "Define the following terms:\nCongenital Adrenal Hyperplasia (CAH):",
-      "back": "A group of inherited enzyme defects in cortisol synthesis with overproduction of adrenal androgens."
-    },
-    {
-      "id": "endo_saq_4",
-      "front": "Define the following terms:\nDiabetic Ketoacidosis (DKA):",
-      "back": "A metabolic abnormality characterized by hyperglycemia (blood glucose above 14 mmol/L) and metabolic acidosis (arterial PH below 7.35 and/or plasma bicarbonate less than 16 mEq/L) due to hyperketonemia with depression of conscious level."
-    },
-    {
-      "id": "endo_saq_5",
-      "front": "Enumerate four secondary causes of pathological short stature.",
-      "back": "Under nutrition (e.g., Protein energy malnutrition).\nGastrointestinal causes (e.g., Malabsorption syndromes like celiac or cystic fibrosis).\nEndocrine causes (e.g., Hypothyroidism, Hypopituitarism, or Diabetes Mellitus).\nRenal diseases (e.g., polycystic kidney, chronic uremia, or Pyelonephritis)."
-    },
-    {
-      "id": "endo_saq_6",
-      "front": "Enumerate four early clinical signs of Congenital Hypothyroidism in infants.",
-      "back": "Prolonged physiological jaundice.\nLethargy, sluggishness & poor feeding.\nHypotonia and abdominal distension.\nUmbilical hernia (or Opened, large posterior fontanel)."
-    },
-    {
-      "id": "endo_saq_7",
-      "front": "Enumerate four clinical manifestations of Hypoparathyroidism.",
-      "back": "Tetany.\nCarpopedal spasm.\nPositive Chvostek and Trousseau signs.\nSeizures."
-    },
-    {
-      "id": "endo_saq_8",
-      "front": "Enumerate four causes of delayed puberty.",
-      "back": "Constitutional Delay of Growth and Puberty (CDGP).\nHypergonadotropic Hypogonadism (Primary Failure, e.g., Turner or Klinefelter Syndrome).\nHypogonadotropic Hypogonadism (Central Failure, e.g., Kallmann Syndrome).\nFunctional Hypogonadism (Secondary to Stress/Chronic illness)."
-    },
-    {
-      "id": "endo_saq_9",
-      "front": "Enumerate four physical clinical features of Cushing Syndrome.",
-      "back": "Moon face.\nCentral obesity.\nBuffalo hump.\nMuscle weakness (or Hypertension)."
-    },
-    {
-      "id": "endo_saq_10",
-      "front": "Enumerate the four laboratory criteria for the diagnosis of Diabetes Mellitus.",
-      "back": "Glycosylated hemoglobin (HbA1C) > 6.5%.\nFasting Plasma Glucose (FPG) > 126 mg/dL (7.0 mmol/L).\nOral Glucose Tolerance Test (OGTT) > 200 mg/dL (11.1 mmol/L).\nRandom plasma glucose > 200 mg/dL (11.1 mmol/L) accompanied by symptoms."
-    },
-    {
-      "id": "endo_saq_11",
-      "front": "Enumerate four physical complications of childhood obesity.",
-      "back": "Type 2 diabetes.\nHigh cholesterol and high blood pressure.\nJoint pain (in the hips, knees, and back).\nBreathing problems (Asthma and obstructive sleep apnea) or Non-alcoholic fatty liver disease (NAFLD)."
-    },
-    {
-      "id": "endo_case1_q1",
-      "front": "Case 1: A 3-week-old infant is brought to the outpatient clinic due to prolonged physiological jaundice, poor feeding, and extreme sluggishness. On physical examination, the clinician notes generalized hypotonia, a wide anterior fontanel, an open and large posterior fontanel, a protruding thick tongue, and a prominent umbilical hernia.\n\nWhat is the most likely diagnosis?",
-      "back": "Congenital Hypothyroidism (CHT)."
-    },
-    {
-      "id": "endo_case1_q2",
-      "front": "Case 1: A 3-week-old infant is brought to the outpatient clinic due to prolonged physiological jaundice, poor feeding, and extreme sluggishness. On physical examination, the clinician notes generalized hypotonia, a wide anterior fontanel, an open and large posterior fontanel, a protruding thick tongue, and a prominent umbilical hernia.\n\nHow are newborns screened for this condition, and what specific parameter is measured?",
-      "back": "Screened using a heel-prick blood test performed from the third to seventh day of age to measure Thyroid Stimulating Hormone (TSH) levels."
-    },
-    {
-      "id": "endo_case1_q3",
-      "front": "Case 1: A 3-week-old infant is brought to the outpatient clinic due to prolonged physiological jaundice, poor feeding, and extreme sluggishness. On physical examination, the clinician notes generalized hypotonia, a wide anterior fontanel, an open and large posterior fontanel, a protruding thick tongue, and a prominent umbilical hernia.\n\nWhat is the immediate drug of choice for treating this infant?",
-      "back": "Levothyroxine (synthetic thyroid hormone, T4) started without delay."
-    },
-    {
-      "id": "endo_case2_q1",
-      "front": "Case 2: An 8-year-old child known to have Type 1 Diabetes Mellitus is rushed to the emergency department with severe dehydration, deep and rapid breathing (Kussmaul respiration), and a distinct fruity odor of acetone on his breath. The parents mention he has had a high fever and a urinary tract infection for the past 2 days. Emergency laboratory findings show: Blood glucose 350 mg%, venous pH 7.10, and serum bicarbonate 8 mEq/L.\n\nWhat is the clinical diagnosis and what is its severity classification?",
-      "back": "Severe Diabetic Ketoacidosis (DKA) (since pH is < 7.15 and HCO3 is < 10 mEq/L)."
-    },
-    {
-      "id": "endo_case2_q2",
-      "front": "Case 2: An 8-year-old child known to have Type 1 Diabetes Mellitus is rushed to the emergency department with severe dehydration, deep and rapid breathing (Kussmaul respiration), and a distinct fruity odor of acetone on his breath. The parents mention he has had a high fever and a urinary tract infection for the past 2 days. Emergency laboratory findings show: Blood glucose 350 mg%, venous pH 7.10, and serum bicarbonate 8 mEq/L.\n\nIdentify the specific precipitating factor in this child's history.",
-      "back": "Infection (specifically a urinary tract infection)."
-    },
-    {
-      "id": "endo_case2_q3",
-      "front": "Case 2: An 8-year-old child known to have Type 1 Diabetes Mellitus is rushed to the emergency department with severe dehydration, deep and rapid breathing (Kussmaul respiration), and a distinct fruity odor of acetone on his breath. The parents mention he has had a high fever and a urinary tract infection for the past 2 days. Emergency laboratory findings show: Blood glucose 350 mg%, venous pH 7.10, and serum bicarbonate 8 mEq/L.\n\nEnumerate three major lines of management that must be initiated immediately.",
-      "back": "Correction of fluids.\nInsulin therapy.\nCorrection of electrolytes (and acid-base balance)."
-    },
-    {
-      "id": "endo_case3_q1",
-      "front": "Case 3: A newborn infant is examined in the delivery room and found to have ambiguous genitalia that cannot be clearly classified as male or female. Within the first week of life, the infant develops severe vomiting, dehydration, and circulatory shock (acute adrenal crisis). Laboratory evaluation reveals severe hyponatremia, hyperkalemia, and hypoglycemia.\n\nWhat is the most likely diagnosis?",
-      "back": "Congenital Adrenal Hyperplasia (CAH) (Salt-wasting type)."
-    },
-    {
-      "id": "endo_case3_q2",
-      "front": "Case 3: A newborn infant is examined in the delivery room and found to have ambiguous genitalia that cannot be clearly classified as male or female. Within the first week of life, the infant develops severe vomiting, dehydration, and circulatory shock (acute adrenal crisis). Laboratory evaluation reveals severe hyponatremia, hyperkalemia, and hypoglycemia.\n\nWhat is the \"Golden Rule\" mentioned in your textbook regarding the management of ambiguous genitalia in the delivery room?",
-      "back": "Never guess the sex in the delivery room. Tell the parents: \"The genitals are not fully developed; we need tests to be sure.\""
-    },
-    {
-      "id": "endo_case3_q3",
-      "front": "Case 3: A newborn infant is examined in the delivery room and found to have ambiguous genitalia that cannot be clearly classified as male or female. Within the first week of life, the infant develops severe vomiting, dehydration, and circulatory shock (acute adrenal crisis). Laboratory evaluation reveals severe hyponatremia, hyperkalemia, and hypoglycemia.\n\nWhat does the long-term replacement medical therapy for this condition consist of?",
-      "back": "Long term replacement therapy with hydrocortisone and a salt-retaining steroid like fludrocortisone."
-    }
+  {
+        "id": "endo_saq_1",
+        "front": "Define the following terms:\nShort stature:",
+        "back": "A term applied to a child whose height is 2 standard deviations (SD) or more below the mean for children of that sex and chronologic age."
+      },
+  {
+        "id": "endo_saq_2",
+        "front": "Define the following terms:\nDelayed puberty:",
+        "back": "No thelarche (breast development) by age 13 in girls, or no testicular enlargement (≥ 4 mL) by age 14 in boys."
+      },
+  {
+        "id": "endo_saq_3",
+        "front": "Define the following terms:\nCongenital Adrenal Hyperplasia (CAH):",
+        "back": "A group of inherited enzyme defects in cortisol synthesis with overproduction of adrenal androgens."
+      },
+  {
+        "id": "endo_saq_4",
+        "front": "Define the following terms:\nDiabetic Ketoacidosis (DKA):",
+        "back": "A metabolic abnormality characterized by hyperglycemia (blood glucose above 14 mmol/L) and metabolic acidosis (arterial PH below 7.35 and/or plasma bicarbonate less than 16 mEq/L) due to hyperketonemia with depression of conscious level."
+      },
+  {
+        "id": "endo_saq_5",
+        "front": "Enumerate four secondary causes of pathological short stature.",
+        "back": "Under nutrition (e.g., Protein energy malnutrition).\nGastrointestinal causes (e.g., Malabsorption syndromes like celiac or cystic fibrosis).\nEndocrine causes (e.g., Hypothyroidism, Hypopituitarism, or Diabetes Mellitus).\nRenal diseases (e.g., polycystic kidney, chronic uremia, or Pyelonephritis)."
+      },
+  {
+        "id": "endo_saq_6",
+        "front": "Enumerate four early clinical signs of Congenital Hypothyroidism in infants.",
+        "back": "Prolonged physiological jaundice.\nLethargy, sluggishness & poor feeding.\nHypotonia and abdominal distension.\nUmbilical hernia (or Opened, large posterior fontanel)."
+      },
+  {
+        "id": "endo_saq_7",
+        "front": "Enumerate four clinical manifestations of Hypoparathyroidism.",
+        "back": "Tetany.\nCarpopedal spasm.\nPositive Chvostek and Trousseau signs.\nSeizures."
+      },
+  {
+        "id": "endo_saq_8",
+        "front": "Enumerate four causes of delayed puberty.",
+        "back": "Constitutional Delay of Growth and Puberty (CDGP).\nHypergonadotropic Hypogonadism (Primary Failure, e.g., Turner or Klinefelter Syndrome).\nHypogonadotropic Hypogonadism (Central Failure, e.g., Kallmann Syndrome).\nFunctional Hypogonadism (Secondary to Stress/Chronic illness)."
+      },
+  {
+        "id": "endo_saq_9",
+        "front": "Enumerate four physical clinical features of Cushing Syndrome.",
+        "back": "Moon face.\nCentral obesity.\nBuffalo hump.\nMuscle weakness (or Hypertension)."
+      },
+  {
+        "id": "endo_saq_10",
+        "front": "Enumerate the four laboratory criteria for the diagnosis of Diabetes Mellitus.",
+        "back": "Glycosylated hemoglobin (HbA1C) > 6.5%.\nFasting Plasma Glucose (FPG) > 126 mg/dL (7.0 mmol/L).\nOral Glucose Tolerance Test (OGTT) > 200 mg/dL (11.1 mmol/L).\nRandom plasma glucose > 200 mg/dL (11.1 mmol/L) accompanied by symptoms."
+      },
+  {
+        "id": "endo_saq_11",
+        "front": "Enumerate four physical complications of childhood obesity.",
+        "back": "Type 2 diabetes.\nHigh cholesterol and high blood pressure.\nJoint pain (in the hips, knees, and back).\nBreathing problems (Asthma and obstructive sleep apnea) or Non-alcoholic fatty liver disease (NAFLD)."
+      },
+  {
+        "id": "endo_case1_q1",
+        "front": "Case 1: A 3-week-old infant is brought to the outpatient clinic due to prolonged physiological jaundice, poor feeding, and extreme sluggishness. On physical examination, the clinician notes generalized hypotonia, a wide anterior fontanel, an open and large posterior fontanel, a protruding thick tongue, and a prominent umbilical hernia.\n\nWhat is the most likely diagnosis?",
+        "back": "Congenital Hypothyroidism (CHT)."
+      },
+  {
+        "id": "endo_case1_q2",
+        "front": "Case 1: A 3-week-old infant is brought to the outpatient clinic due to prolonged physiological jaundice, poor feeding, and extreme sluggishness. On physical examination, the clinician notes generalized hypotonia, a wide anterior fontanel, an open and large posterior fontanel, a protruding thick tongue, and a prominent umbilical hernia.\n\nHow are newborns screened for this condition, and what specific parameter is measured?",
+        "back": "Screened using a heel-prick blood test performed from the third to seventh day of age to measure Thyroid Stimulating Hormone (TSH) levels."
+      },
+  {
+        "id": "endo_case1_q3",
+        "front": "Case 1: A 3-week-old infant is brought to the outpatient clinic due to prolonged physiological jaundice, poor feeding, and extreme sluggishness. On physical examination, the clinician notes generalized hypotonia, a wide anterior fontanel, an open and large posterior fontanel, a protruding thick tongue, and a prominent umbilical hernia.\n\nWhat is the immediate drug of choice for treating this infant?",
+        "back": "Levothyroxine (synthetic thyroid hormone, T4) started without delay."
+      },
+  {
+        "id": "endo_case2_q1",
+        "front": "Case 2: An 8-year-old child known to have Type 1 Diabetes Mellitus is rushed to the emergency department with severe dehydration, deep and rapid breathing (Kussmaul respiration), and a distinct fruity odor of acetone on his breath. The parents mention he has had a high fever and a urinary tract infection for the past 2 days. Emergency laboratory findings show: Blood glucose 350 mg%, venous pH 7.10, and serum bicarbonate 8 mEq/L.\n\nWhat is the clinical diagnosis and what is its severity classification?",
+        "back": "Severe Diabetic Ketoacidosis (DKA) (since pH is < 7.15 and HCO3 is < 10 mEq/L)."
+      },
+  {
+        "id": "endo_case2_q2",
+        "front": "Case 2: An 8-year-old child known to have Type 1 Diabetes Mellitus is rushed to the emergency department with severe dehydration, deep and rapid breathing (Kussmaul respiration), and a distinct fruity odor of acetone on his breath. The parents mention he has had a high fever and a urinary tract infection for the past 2 days. Emergency laboratory findings show: Blood glucose 350 mg%, venous pH 7.10, and serum bicarbonate 8 mEq/L.\n\nIdentify the specific precipitating factor in this child's history.",
+        "back": "Infection (specifically a urinary tract infection)."
+      },
+  {
+        "id": "endo_case2_q3",
+        "front": "Case 2: An 8-year-old child known to have Type 1 Diabetes Mellitus is rushed to the emergency department with severe dehydration, deep and rapid breathing (Kussmaul respiration), and a distinct fruity odor of acetone on his breath. The parents mention he has had a high fever and a urinary tract infection for the past 2 days. Emergency laboratory findings show: Blood glucose 350 mg%, venous pH 7.10, and serum bicarbonate 8 mEq/L.\n\nEnumerate three major lines of management that must be initiated immediately.",
+        "back": "Correction of fluids.\nInsulin therapy.\nCorrection of electrolytes (and acid-base balance)."
+      },
+  {
+        "id": "endo_case3_q1",
+        "front": "Case 3: A newborn infant is examined in the delivery room and found to have ambiguous genitalia that cannot be clearly classified as male or female. Within the first week of life, the infant develops severe vomiting, dehydration, and circulatory shock (acute adrenal crisis). Laboratory evaluation reveals severe hyponatremia, hyperkalemia, and hypoglycemia.\n\nWhat is the most likely diagnosis?",
+        "back": "Congenital Adrenal Hyperplasia (CAH) (Salt-wasting type)."
+      },
+  {
+        "id": "endo_case3_q2",
+        "front": "Case 3: A newborn infant is examined in the delivery room and found to have ambiguous genitalia that cannot be clearly classified as male or female. Within the first week of life, the infant develops severe vomiting, dehydration, and circulatory shock (acute adrenal crisis). Laboratory evaluation reveals severe hyponatremia, hyperkalemia, and hypoglycemia.\n\nWhat is the \"Golden Rule\" mentioned in your textbook regarding the management of ambiguous genitalia in the delivery room?",
+        "back": "Never guess the sex in the delivery room. Tell the parents: \"The genitals are not fully developed; we need tests to be sure.\""
+      },
+  {
+        "id": "endo_case3_q3",
+        "front": "Case 3: A newborn infant is examined in the delivery room and found to have ambiguous genitalia that cannot be clearly classified as male or female. Within the first week of life, the infant develops severe vomiting, dehydration, and circulatory shock (acute adrenal crisis). Laboratory evaluation reveals severe hyponatremia, hyperkalemia, and hypoglycemia.\n\nWhat does the long-term replacement medical therapy for this condition consist of?",
+        "back": "Long term replacement therapy with hydrocortisone and a salt-retaining steroid like fludrocortisone."
+      }
   ],
   "_CHAPTER_Hematology & Oncology": [
-    {
-      "id": "hema_saq_1",
-      "front": "Define the following terms:\nHematopoiesis:",
-      "back": "The process by which blood cells are produced."
-    },
-    {
-      "id": "hema_saq_2",
-      "front": "Define the following terms:\nErythropoiesis:",
-      "back": "A specific subset of hematopoiesis responsible for the production of red blood cells."
-    },
-    {
-      "id": "hema_saq_3",
-      "front": "Define the following terms:\nAnemia:",
-      "back": "Reduced blood hemoglobin (Hb) concentration or red blood cell (RBC) mass below normal range according to age and sex."
-    },
-    {
-      "id": "hema_saq_4",
-      "front": "Define the following terms:\nImmune Thrombocytopenia (ITP):",
-      "back": "An acquired autoimmune disorder characterized by a low platelet count resulting from platelet destruction and impaired platelet production."
-    },
-    {
-      "id": "hema_saq_5",
-      "front": "Enumerate four etiological mechanisms/causes of Iron Deficiency Anemia (IDA).",
-      "back": "Inadequate iron intake (e.g., poor diet, poverty, ignorance).\nPoor absorption (e.g., less vitamin C, inhibitors like phytates/tannin, or small intestine disorders).\nIncreased iron demand (periods of rapid growth like infancy, childhood, and adolescence).\nExcessive iron loss (e.g., menstruation, intestinal worms, hookworm infestation)."
-    },
-    {
-      "id": "hema_saq_6",
-      "front": "Enumerate four congenital physical anomalies associated with Fanconi Anemia.",
-      "back": "Hypo or hyperpigmented skin patches with café-au-lait spots.\nShort stature (or Microcephaly).\nUpper or lower limb abnormalities (e.g., absent radius, absent or hypoplastic thumb).\nCongenital heart disease (or Renal anomalies like horseshoe kidney)."
-    },
-    {
-      "id": "hema_saq_7",
-      "front": "Enumerate four clinical manifestations of chronic hemolytic anemia.",
-      "back": "Anemia (pallor) and unconjugated hyperbilirubinemia (jaundice).\nHepatosplenomegaly.\nPigmentary bilirubinate gallstones.\nSkeletal manifestations due to marrow expansion (large head, prominent maxillae, protruding central incisors) or Leg ulcers."
-    },
-    {
-      "id": "hema_saq_8",
-      "front": "Enumerate four clinical indications for starting blood transfusion in a patient with Thalassemia.",
-      "back": "Hemoglobin level < 7 gm/dL (on at least 2 measurements).\nPoor growth.\nFacial bone changes.\nPathological fractures or extramedullary hematopoiesis."
-    },
-    {
-      "id": "hema_saq_9",
-      "front": "Enumerate the four classic clinical manifestations (tetrad) of Henoch-Schönlein Purpura (HSP).",
-      "back": "Palpable purpura without thrombocytopenia and coagulopathy.\nArthralgia and/or arthritis.\nAbdominal pain.\nKidney disease (such as initial hematuria)."
-    },
-    {
-      "id": "hema_saq_10",
-      "front": "Enumerate four favorable prognostic factors for pediatric Acute Lymphoblastic Leukemia (ALL).",
-      "back": "Age: between 1 and 9 years old.\nWhite blood cell count (WBCs): less than 50 × 10^9/L.\nImmunophenotype: B-precursor cellular lineage.\nSex: Girls have a more favorable prognosis than boys."
-    },
-    {
-      "id": "hema_saq_11",
-      "front": "Enumerate four clinical \"red flags\" for malignancy in pediatric patients.",
-      "back": "Pathological lymphadenopathy (non-tender, rubbery/hard, increasing or persisting size).\nJoint or bone pain.\nPersistent headache.\nHepatosplenomegaly or a palpable abdominal mass."
-    },
-    {
-      "id": "hema_case1_q1",
-      "front": "Case 1: A 9-month-old male infant is brought to the clinic because of progressive pallor and poor feeding. The dietary history reveals that he has been fed unmodified cow's milk since the age of 4 months with no introduction of solid foods. A complete blood count (CBC) reveals a hemoglobin level of 6.5 g/dL with a mean corpuscular volume (MCV) of 62 fL (Normal: 75-90 fL).\n\nWhat is the morphological classification of this child's anemia?",
-      "back": "Microcytic hypochromic anemia."
-    },
-    {
-      "id": "hema_case1_q2",
-      "front": "Case 1: A 9-month-old male infant is brought to the clinic because of progressive pallor and poor feeding. The dietary history reveals that he has been fed unmodified cow's milk since the age of 4 months with no introduction of solid foods. A complete blood count (CBC) reveals a hemoglobin level of 6.5 g/dL with a mean corpuscular volume (MCV) of 62 fL (Normal: 75-90 fL).\n\nWhat is the most likely diagnosis?",
-      "back": "Iron Deficiency Anemia (IDA)."
-    },
-    {
-      "id": "hema_case1_q3",
-      "front": "Case 1: A 9-month-old male infant is brought to the clinic because of progressive pallor and poor feeding. The dietary history reveals that he has been fed unmodified cow's milk since the age of 4 months with no introduction of solid foods. A complete blood count (CBC) reveals a hemoglobin level of 6.5 g/dL with a mean corpuscular volume (MCV) of 62 fL (Normal: 75-90 fL).\n\nWhat dietary measure should have been taken to prevent this condition, according to your textbook guidelines?",
-      "back": "Introduce iron-rich complementary foods at 4 to 6 months of age and completely avoid unmodified cow's milk until age 1 year."
-    },
-    {
-      "id": "hema_case2_q1",
-      "front": "Case 2: A 4-year-old boy is rushed to the emergency room with a sudden onset of dark, tea-colored urine, yellowish discoloration of the eyes (jaundice), and an abrupt drop in his hemoglobin concentration by 3.5 g/dL following the consumption of fava beans 48 hours ago. A peripheral blood smear shows characteristic bite cells and blister cells.\n\nWhat is the clinical diagnosis?",
-      "back": "Acute hemolytic anemia secondary to G6PD deficiency (Favism)."
-    },
-    {
-      "id": "hema_case2_q2",
-      "front": "Case 2: A 4-year-old boy is rushed to the emergency room with a sudden onset of dark, tea-colored urine, yellowish discoloration of the eyes (jaundice), and an abrupt drop in his hemoglobin concentration by 3.5 g/dL following the consumption of fava beans 48 hours ago. A peripheral blood smear shows characteristic bite cells and blister cells.\n\nWhat is the genetic mode of inheritance for this enzyme disorder?",
-      "back": "Sex-linked (X-linked) recessive mode of inheritance."
-    },
-    {
-      "id": "hema_case2_q3",
-      "front": "Case 2: A 4-year-old boy is rushed to the emergency room with a sudden onset of dark, tea-colored urine, yellowish discoloration of the eyes (jaundice), and an abrupt drop in his hemoglobin concentration by 3.5 g/dL following the consumption of fava beans 48 hours ago. A peripheral blood smear shows characteristic bite cells and blister cells.\n\nWhy should a diagnostic G6PD enzyme activity assay not be relied upon during this acute hemolytic episode?",
-      "back": "Because during an acute hemolytic episode, enzyme activity may appear falsely normal (false-negative), and testing must be repeated approximately 3 months after the episode resolves."
-    },
-    {
-      "id": "hema_case3_q1",
-      "front": "Case 3: A 10-month-old boy presents with a large, painful swelling of his right knee (hemarthrosis) that developed after he started crawling around the house. His parents mention he also had excessive, prolonged bleeding following his circumcision at 7 months of age. Laboratory screening reveals a prolonged activated partial thromboplastin time (aPTT) but a completely normal prothrombin time (PT) and normal platelet count.\n\nWhat is the most likely clinical diagnosis?",
-      "back": "Inherited Hemophilia (A or B)."
-    },
-    {
-      "id": "hema_case3_q2",
-      "front": "Case 3: A 10-month-old boy presents with a large, painful swelling of his right knee (hemarthrosis) that developed after he started crawling around the house. His parents mention he also had excessive, prolonged bleeding following his circumcision at 7 months of age. Laboratory screening reveals a prolonged activated partial thromboplastin time (aPTT) but a completely normal prothrombin time (PT) and normal platelet count.\n\nWhat is the genetic inheritance pattern of this disease, and why are males predominantly affected?",
-      "back": "It is an X-linked recessive disorder; males are predominantly affected because they possess a single X chromosome."
-    },
-    {
-      "id": "hema_case3_q3",
-      "front": "Case 3: A 10-month-old boy presents with a large, painful swelling of his right knee (hemarthrosis) that developed after he started crawling around the house. His parents mention he also had excessive, prolonged bleeding following his circumcision at 7 months of age. Laboratory screening reveals a prolonged activated partial thromboplastin time (aPTT) but a completely normal prothrombin time (PT) and normal platelet count.\n\nEnumerate two standard safe alternatives for analgesia/pain control in this patient.",
-      "back": "Paracetamol, COX-2 inhibitors, or opioids."
-    },
-    {
-      "id": "hema_case4_q1",
-      "front": "Case 4: An otherwise completely healthy and active 3-year-old girl develops a sudden generalized skin rash consisting of pinpoint petechiae, purpura, and scattered bruises (ecchymoses). The mother reports that the child had a mild viral upper respiratory tract infection 2 weeks ago. Physical examination reveals an absence of fever, no lymphadenopathy, and no hepatosplenomegaly. A CBC shows an isolated platelet count of 15,000/μL with completely normal hemoglobin and normal WBC count.\n\nWhat is the most likely clinical diagnosis?",
-      "back": "Primary Immune Thrombocytopenia (ITP) of childhood."
-    },
-    {
-      "id": "hema_case4_q2",
-      "front": "Case 4: An otherwise completely healthy and active 3-year-old girl develops a sudden generalized skin rash consisting of pinpoint petechiae, purpura, and scattered bruises (ecchymoses). The mother reports that the child had a mild viral upper respiratory tract infection 2 weeks ago. Physical examination reveals an absence of fever, no lymphadenopathy, and no hepatosplenomegaly. A CBC shows an isolated platelet count of 15,000/μL with completely normal hemoglobin and normal WBC count.\n\nWhat would a bone marrow aspiration (BMA) characteristically demonstrate if performed?",
-      "back": "Normal granulocytic and erythrocytic series with characteristically normal or increased numbers of megakaryocytes."
-    },
-    {
-      "id": "hema_case4_q3",
-      "front": "Case 4: An otherwise completely healthy and active 3-year-old girl develops a sudden generalized skin rash consisting of pinpoint petechiae, purpura, and scattered bruises (ecchymoses). The mother reports that the child had a mild viral upper respiratory tract infection 2 weeks ago. Physical examination reveals an absence of fever, no lymphadenopathy, and no hepatosplenomegaly. A CBC shows an isolated platelet count of 15,000/μL with completely normal hemoglobin and normal WBC count.\n\nIf this patient develops an acute, life-threatening intracranial hemorrhage, what is the only clinical indication for a platelet transfusion in ITP management?",
-      "back": "Life-threatening bleeding is the only indication for a platelet transfusion in the treatment of ITP."
-    },
-    {
-      "id": "hema_case5_q1",
-      "front": "Case 5: A 3-year-old child presents with an asymptomatic, firm, smooth abdominal mass that was discovered incidentally by his mother while bathing him. On physical examination, the clinician notes that the mass does not cross the midline. The child's blood pressure is elevated for his age (135/90 mmHg). Urinalysis reveals microscopic hematuria, but urinary catecholamine metabolites (VMA and HVA) are entirely within normal limits.\n\nWhat is the most likely primary malignant renal diagnosis?",
-      "back": "Wilms tumor (Nephroblastoma)."
-    },
-    {
-      "id": "hema_case5_q2",
-      "front": "Case 5: A 3-year-old child presents with an asymptomatic, firm, smooth abdominal mass that was discovered incidentally by his mother while bathing him. On physical examination, the clinician notes that the mass does not cross the midline. The child's blood pressure is elevated for his age (135/90 mmHg). Urinalysis reveals microscopic hematuria, but urinary catecholamine metabolites (VMA and HVA) are entirely within normal limits.\n\nWhy should the clinician avoid vigorous or deep abdominal palpation during the physical examination of this child?",
-      "back": "Care should be taken to avoid vigorous palpation to prevent the risk of renal capsule rupture."
-    },
-    {
-      "id": "hema_case5_q3",
-      "front": "Case 5: A 3-year-old child presents with an asymptomatic, firm, smooth abdominal mass that was discovered incidentally by his mother while bathing him. On physical examination, the clinician notes that the mass does not cross the midline. The child's blood pressure is elevated for his age (135/90 mmHg). Urinalysis reveals microscopic hematuria, but urinary catecholamine metabolites (VMA and HVA) are entirely within normal limits.\n\nWhy is a diagnostic percutaneous needle biopsy discouraged in this condition?",
-      "back": "Because it results in disease upstaging."
-    }
+  {
+        "id": "hema_saq_1",
+        "front": "Define the following terms:\nHematopoiesis:",
+        "back": "The process by which blood cells are produced."
+      },
+  {
+        "id": "hema_saq_2",
+        "front": "Define the following terms:\nErythropoiesis:",
+        "back": "A specific subset of hematopoiesis responsible for the production of red blood cells."
+      },
+  {
+        "id": "hema_saq_3",
+        "front": "Define the following terms:\nAnemia:",
+        "back": "Reduced blood hemoglobin (Hb) concentration or red blood cell (RBC) mass below normal range according to age and sex."
+      },
+  {
+        "id": "hema_saq_4",
+        "front": "Define the following terms:\nImmune Thrombocytopenia (ITP):",
+        "back": "An acquired autoimmune disorder characterized by a low platelet count resulting from platelet destruction and impaired platelet production."
+      },
+  {
+        "id": "hema_saq_5",
+        "front": "Enumerate four etiological mechanisms/causes of Iron Deficiency Anemia (IDA).",
+        "back": "Inadequate iron intake (e.g., poor diet, poverty, ignorance).\nPoor absorption (e.g., less vitamin C, inhibitors like phytates/tannin, or small intestine disorders).\nIncreased iron demand (periods of rapid growth like infancy, childhood, and adolescence).\nExcessive iron loss (e.g., menstruation, intestinal worms, hookworm infestation)."
+      },
+  {
+        "id": "hema_saq_6",
+        "front": "Enumerate four congenital physical anomalies associated with Fanconi Anemia.",
+        "back": "Hypo or hyperpigmented skin patches with café-au-lait spots.\nShort stature (or Microcephaly).\nUpper or lower limb abnormalities (e.g., absent radius, absent or hypoplastic thumb).\nCongenital heart disease (or Renal anomalies like horseshoe kidney)."
+      },
+  {
+        "id": "hema_saq_7",
+        "front": "Enumerate four clinical manifestations of chronic hemolytic anemia.",
+        "back": "Anemia (pallor) and unconjugated hyperbilirubinemia (jaundice).\nHepatosplenomegaly.\nPigmentary bilirubinate gallstones.\nSkeletal manifestations due to marrow expansion (large head, prominent maxillae, protruding central incisors) or Leg ulcers."
+      },
+  {
+        "id": "hema_saq_8",
+        "front": "Enumerate four clinical indications for starting blood transfusion in a patient with Thalassemia.",
+        "back": "Hemoglobin level < 7 gm/dL (on at least 2 measurements).\nPoor growth.\nFacial bone changes.\nPathological fractures or extramedullary hematopoiesis."
+      },
+  {
+        "id": "hema_saq_9",
+        "front": "Enumerate the four classic clinical manifestations (tetrad) of Henoch-Schönlein Purpura (HSP).",
+        "back": "Palpable purpura without thrombocytopenia and coagulopathy.\nArthralgia and/or arthritis.\nAbdominal pain.\nKidney disease (such as initial hematuria)."
+      },
+  {
+        "id": "hema_saq_10",
+        "front": "Enumerate four favorable prognostic factors for pediatric Acute Lymphoblastic Leukemia (ALL).",
+        "back": "Age: between 1 and 9 years old.\nWhite blood cell count (WBCs): less than 50 × 10^9/L.\nImmunophenotype: B-precursor cellular lineage.\nSex: Girls have a more favorable prognosis than boys."
+      },
+  {
+        "id": "hema_saq_11",
+        "front": "Enumerate four clinical \"red flags\" for malignancy in pediatric patients.",
+        "back": "Pathological lymphadenopathy (non-tender, rubbery/hard, increasing or persisting size).\nJoint or bone pain.\nPersistent headache.\nHepatosplenomegaly or a palpable abdominal mass."
+      },
+  {
+        "id": "hema_case1_q1",
+        "front": "Case 1: A 9-month-old male infant is brought to the clinic because of progressive pallor and poor feeding. The dietary history reveals that he has been fed unmodified cow's milk since the age of 4 months with no introduction of solid foods. A complete blood count (CBC) reveals a hemoglobin level of 6.5 g/dL with a mean corpuscular volume (MCV) of 62 fL (Normal: 75-90 fL).\n\nWhat is the morphological classification of this child's anemia?",
+        "back": "Microcytic hypochromic anemia."
+      },
+  {
+        "id": "hema_case1_q2",
+        "front": "Case 1: A 9-month-old male infant is brought to the clinic because of progressive pallor and poor feeding. The dietary history reveals that he has been fed unmodified cow's milk since the age of 4 months with no introduction of solid foods. A complete blood count (CBC) reveals a hemoglobin level of 6.5 g/dL with a mean corpuscular volume (MCV) of 62 fL (Normal: 75-90 fL).\n\nWhat is the most likely diagnosis?",
+        "back": "Iron Deficiency Anemia (IDA)."
+      },
+  {
+        "id": "hema_case1_q3",
+        "front": "Case 1: A 9-month-old male infant is brought to the clinic because of progressive pallor and poor feeding. The dietary history reveals that he has been fed unmodified cow's milk since the age of 4 months with no introduction of solid foods. A complete blood count (CBC) reveals a hemoglobin level of 6.5 g/dL with a mean corpuscular volume (MCV) of 62 fL (Normal: 75-90 fL).\n\nWhat dietary measure should have been taken to prevent this condition, according to your textbook guidelines?",
+        "back": "Introduce iron-rich complementary foods at 4 to 6 months of age and completely avoid unmodified cow's milk until age 1 year."
+      },
+  {
+        "id": "hema_case2_q1",
+        "front": "Case 2: A 4-year-old boy is rushed to the emergency room with a sudden onset of dark, tea-colored urine, yellowish discoloration of the eyes (jaundice), and an abrupt drop in his hemoglobin concentration by 3.5 g/dL following the consumption of fava beans 48 hours ago. A peripheral blood smear shows characteristic bite cells and blister cells.\n\nWhat is the clinical diagnosis?",
+        "back": "Acute hemolytic anemia secondary to G6PD deficiency (Favism)."
+      },
+  {
+        "id": "hema_case2_q2",
+        "front": "Case 2: A 4-year-old boy is rushed to the emergency room with a sudden onset of dark, tea-colored urine, yellowish discoloration of the eyes (jaundice), and an abrupt drop in his hemoglobin concentration by 3.5 g/dL following the consumption of fava beans 48 hours ago. A peripheral blood smear shows characteristic bite cells and blister cells.\n\nWhat is the genetic mode of inheritance for this enzyme disorder?",
+        "back": "Sex-linked (X-linked) recessive mode of inheritance."
+      },
+  {
+        "id": "hema_case2_q3",
+        "front": "Case 2: A 4-year-old boy is rushed to the emergency room with a sudden onset of dark, tea-colored urine, yellowish discoloration of the eyes (jaundice), and an abrupt drop in his hemoglobin concentration by 3.5 g/dL following the consumption of fava beans 48 hours ago. A peripheral blood smear shows characteristic bite cells and blister cells.\n\nWhy should a diagnostic G6PD enzyme activity assay not be relied upon during this acute hemolytic episode?",
+        "back": "Because during an acute hemolytic episode, enzyme activity may appear falsely normal (false-negative), and testing must be repeated approximately 3 months after the episode resolves."
+      },
+  {
+        "id": "hema_case3_q1",
+        "front": "Case 3: A 10-month-old boy presents with a large, painful swelling of his right knee (hemarthrosis) that developed after he started crawling around the house. His parents mention he also had excessive, prolonged bleeding following his circumcision at 7 months of age. Laboratory screening reveals a prolonged activated partial thromboplastin time (aPTT) but a completely normal prothrombin time (PT) and normal platelet count.\n\nWhat is the most likely clinical diagnosis?",
+        "back": "Inherited Hemophilia (A or B)."
+      },
+  {
+        "id": "hema_case3_q2",
+        "front": "Case 3: A 10-month-old boy presents with a large, painful swelling of his right knee (hemarthrosis) that developed after he started crawling around the house. His parents mention he also had excessive, prolonged bleeding following his circumcision at 7 months of age. Laboratory screening reveals a prolonged activated partial thromboplastin time (aPTT) but a completely normal prothrombin time (PT) and normal platelet count.\n\nWhat is the genetic inheritance pattern of this disease, and why are males predominantly affected?",
+        "back": "It is an X-linked recessive disorder; males are predominantly affected because they possess a single X chromosome."
+      },
+  {
+        "id": "hema_case3_q3",
+        "front": "Case 3: A 10-month-old boy presents with a large, painful swelling of his right knee (hemarthrosis) that developed after he started crawling around the house. His parents mention he also had excessive, prolonged bleeding following his circumcision at 7 months of age. Laboratory screening reveals a prolonged activated partial thromboplastin time (aPTT) but a completely normal prothrombin time (PT) and normal platelet count.\n\nEnumerate two standard safe alternatives for analgesia/pain control in this patient.",
+        "back": "Paracetamol, COX-2 inhibitors, or opioids."
+      },
+  {
+        "id": "hema_case4_q1",
+        "front": "Case 4: An otherwise completely healthy and active 3-year-old girl develops a sudden generalized skin rash consisting of pinpoint petechiae, purpura, and scattered bruises (ecchymoses). The mother reports that the child had a mild viral upper respiratory tract infection 2 weeks ago. Physical examination reveals an absence of fever, no lymphadenopathy, and no hepatosplenomegaly. A CBC shows an isolated platelet count of 15,000/μL with completely normal hemoglobin and normal WBC count.\n\nWhat is the most likely clinical diagnosis?",
+        "back": "Primary Immune Thrombocytopenia (ITP) of childhood."
+      },
+  {
+        "id": "hema_case4_q2",
+        "front": "Case 4: An otherwise completely healthy and active 3-year-old girl develops a sudden generalized skin rash consisting of pinpoint petechiae, purpura, and scattered bruises (ecchymoses). The mother reports that the child had a mild viral upper respiratory tract infection 2 weeks ago. Physical examination reveals an absence of fever, no lymphadenopathy, and no hepatosplenomegaly. A CBC shows an isolated platelet count of 15,000/μL with completely normal hemoglobin and normal WBC count.\n\nWhat would a bone marrow aspiration (BMA) characteristically demonstrate if performed?",
+        "back": "Normal granulocytic and erythrocytic series with characteristically normal or increased numbers of megakaryocytes."
+      },
+  {
+        "id": "hema_case4_q3",
+        "front": "Case 4: An otherwise completely healthy and active 3-year-old girl develops a sudden generalized skin rash consisting of pinpoint petechiae, purpura, and scattered bruises (ecchymoses). The mother reports that the child had a mild viral upper respiratory tract infection 2 weeks ago. Physical examination reveals an absence of fever, no lymphadenopathy, and no hepatosplenomegaly. A CBC shows an isolated platelet count of 15,000/μL with completely normal hemoglobin and normal WBC count.\n\nIf this patient develops an acute, life-threatening intracranial hemorrhage, what is the only clinical indication for a platelet transfusion in ITP management?",
+        "back": "Life-threatening bleeding is the only indication for a platelet transfusion in the treatment of ITP."
+      },
+  {
+        "id": "hema_case5_q1",
+        "front": "Case 5: A 3-year-old child presents with an asymptomatic, firm, smooth abdominal mass that was discovered incidentally by his mother while bathing him. On physical examination, the clinician notes that the mass does not cross the midline. The child's blood pressure is elevated for his age (135/90 mmHg). Urinalysis reveals microscopic hematuria, but urinary catecholamine metabolites (VMA and HVA) are entirely within normal limits.\n\nWhat is the most likely primary malignant renal diagnosis?",
+        "back": "Wilms tumor (Nephroblastoma)."
+      },
+  {
+        "id": "hema_case5_q2",
+        "front": "Case 5: A 3-year-old child presents with an asymptomatic, firm, smooth abdominal mass that was discovered incidentally by his mother while bathing him. On physical examination, the clinician notes that the mass does not cross the midline. The child's blood pressure is elevated for his age (135/90 mmHg). Urinalysis reveals microscopic hematuria, but urinary catecholamine metabolites (VMA and HVA) are entirely within normal limits.\n\nWhy should the clinician avoid vigorous or deep abdominal palpation during the physical examination of this child?",
+        "back": "Care should be taken to avoid vigorous palpation to prevent the risk of renal capsule rupture."
+      },
+  {
+        "id": "hema_case5_q3",
+        "front": "Case 5: A 3-year-old child presents with an asymptomatic, firm, smooth abdominal mass that was discovered incidentally by his mother while bathing him. On physical examination, the clinician notes that the mass does not cross the midline. The child's blood pressure is elevated for his age (135/90 mmHg). Urinalysis reveals microscopic hematuria, but urinary catecholamine metabolites (VMA and HVA) are entirely within normal limits.\n\nWhy is a diagnostic percutaneous needle biopsy discouraged in this condition?",
+        "back": "Because it results in disease upstaging."
+      }
   ],
   "Renal Anatomy, Functions & Urine Color Changes": [],
-  "Pediatric Hematuria Approach & Evaluation": [
-    {
-      "id": "phae1",
-      "front": "List 4 indications of renal biopsy in acute post-streptococcal glomerulonephritis.",
-      "back": "Acute kidney injury (AKI) and rapidly progressive glomerulonephritis (RPGN).\n\nNephrotic range proteinuria.\n\nAbsence of evidence for previous streptococcal infection.\n\nNormal complement (C3) levels.\n\nPersistent hematuria, proteinuria, diminished renal function, and/or a low C3 level persisting for more than 2 months after onset."
-    }
-  ],
   "Acute Nephritic Syndrome & APSGN (1)": [
-    {
-      "id": "ans1",
-      "front": "Regarding acute poststreptococcal glomerulonephritis: Name 2 diagnostic criteria of APSGN.",
-      "back": "Acute nephritic syndrome presentation (Sudden onset of gross hematuria, edema, hypertension, oliguria).\n\nEvidence of recent streptococcal infection (e.g., positive throat culture, or rising ASO/Anti-DNase B titer).\n\n(Low C3 level which returns to normal after 6-8 weeks)."
-    },
-    {
-      "id": "ans2",
-      "front": "Regarding acute poststreptococcal glomerulonephritis: Enumerate 2 possible related complications.",
-      "back": "Hypertensive encephalopathy.\n\nCongestive heart failure (due to hypervolemia/fluid overload).\n\n(Hyperkalemia, Acute kidney injury, or Rapidly Progressive Glomerulonephritis)."
-    }
+  {
+        "id": "ans1",
+        "front": "Regarding acute poststreptococcal glomerulonephritis: Name 2 diagnostic criteria of APSGN.",
+        "back": "Acute nephritic syndrome presentation (Sudden onset of gross hematuria, edema, hypertension, oliguria).\n\nEvidence of recent streptococcal infection (e.g., positive throat culture, or rising ASO/Anti-DNase B titer).\n\n(Low C3 level which returns to normal after 6-8 weeks)."
+      },
+  {
+        "id": "ans2",
+        "front": "Regarding acute poststreptococcal glomerulonephritis: Enumerate 2 possible related complications.",
+        "back": "Hypertensive encephalopathy.\n\nCongestive heart failure (due to hypervolemia/fluid overload).\n\n(Hyperkalemia, Acute kidney injury, or Rapidly Progressive Glomerulonephritis)."
+      }
   ],
   "Acute Nephritic Syndrome & APSGN (2)": [],
   "Proteinuria Detection & Etiological Sorting": [],
-  "Nephrotic Syndrome (NS)": [
-    {
-      "id": "ns1",
-      "front": "Enumerate 4 of the differential diagnoses of a child presented with generalized edema.",
-      "back": "Renal causes (e.g., Nephrotic syndrome, Acute nephritic syndrome).\n\nCardiac causes (e.g., Congestive heart failure).\n\nHepatic causes (e.g., Liver cirrhosis / failure causing hypoalbuminemia).\n\nNutritional causes (e.g., Kwashiorkor / Protein-energy malnutrition).\n\n(Angioneurotic edema)."
-    },
-    {
-      "id": "ns2",
-      "front": "List 4 complications of nephrotic syndrome.",
-      "back": "Infections (e.g., Spontaneous bacterial peritonitis, pneumonia, sepsis).\n\nThromboembolic events (arterial and venous thrombosis, like renal vein thrombosis).\n\nHypovolemic shock (with aggressive diuretic therapy).\n\nAcute renal failure.\n\nComplications of therapy (e.g., Steroid toxicity, cyclophosphamide toxicity)."
-    },
-    {
-      "id": "ns3",
-      "front": "Enumerate 5 causes of secondary Nephrotic Syndrome.",
-      "back": "Systemic Lupus Erythematosus (SLE).\n\nHenoch-Schönlein purpura (HSP).\n\nCongenital infections (TORCH).\n\nDenys-Drash syndrome (Wilms tumor, genitourinary anomalies).\n\nDrug-induced."
-    },
-    {
-      "id": "ns4",
-      "front": "Case Study: Mona is 7 years-old, presented to pediatric clinic by generalized edema. There is past history similar condition 5 times during the last year. Investigations: Plasma proteins: 3 gm/dl (N=6-8 gm/dl), Serum albumin: 1.4 gm/dl, Serum cholesterol: 290 mg/dl (N=120-180 mg/dl), Blood urea: 25 mg/dl (N=20-40 mg/dl), Serum creatinine: 0.7 mg/dl (N=0.5-1.0 mg/dl), Urine examination: granular cast, protein in urine: 60 mg/m2/hour (N<4 mg/m2/hour). What is the most likely diagnosis?",
-      "back": "Idiopathic Nephrotic Syndrome (Specifically: Frequent Relapsing Nephrotic Syndrome)."
-    },
-    {
-      "id": "ns5",
-      "front": "Case Study (Mona, 7 yrs old with generalized edema...): Explain your answer.",
-      "back": "The diagnosis is confirmed by the classic tetrad of Nephrotic Syndrome:\n\nHeavy (Nephrotic range) Proteinuria: Exceeding 40 mg/m2/hr (Patient has 60 mg/m2/hour).\n\nHypoalbuminemia/Hypoproteinemia: Serum albumin is 1.4 gm/dl (Normal >2.5).\n\nHypercholesterolemia (Hyperlipidemia): Serum cholesterol is 290 mg/dl.\n\nGeneralized Edema.\n\nThe normal blood urea and serum creatinine indicate intact kidney function (ruling out nephritic syndrome/renal failure). The history of recurring 5 times in the last year defines her as a \"Frequent Relapser\"."
-    }
-  ],
-  "Acute Kidney Injury (AKI) & pRIFLE Criteria": [],
   "Chronic Kidney Disease (CKD) & Growth Retardation": [
-    {
-      "id": "ckd1",
-      "front": "Write short account about Stages of CKD.",
-      "back": "Staging is based on the Glomerular Filtration Rate (GFR in ml/min/1.73m2):\n\nStage 1: GFR More than 90 (Kidney damage with normal or increased GFR).\n\nStage 2: GFR 60 - 89 (Mild decrease in GFR).\n\nStage 3: GFR 30 - 59 (Moderate decrease in GFR).\n\nStage 4: GFR 15 - 29 (Severe decrease in GFR).\n\nStage 5: GFR < 15 (End Stage Renal Disease / ESRD, requiring dialysis or transplant)."
-    },
-    {
-      "id": "ckd2",
-      "front": "List 4 causes contributing to the pathogenesis of renal osteodystrophy in cases with chronic kidney disease.",
-      "back": "Impaired renal production of active vitamin D (1,25-dihydroxycholecalciferol).\n\nHyperphosphatemia (due to decreased glomerular filtration).\n\nHypocalcemia (resulting from low active Vitamin D and high phosphate).\n\nSecondary hyperparathyroidism (excessive PTH secretion in response to hypocalcemia and hyperphosphatemia)."
-    }
+  {
+        "id": "ckd1",
+        "front": "Write short account about Stages of CKD.",
+        "back": "Staging is based on the Glomerular Filtration Rate (GFR in ml/min/1.73m2):\n\nStage 1: GFR More than 90 (Kidney damage with normal or increased GFR).\n\nStage 2: GFR 60 - 89 (Mild decrease in GFR).\n\nStage 3: GFR 30 - 59 (Moderate decrease in GFR).\n\nStage 4: GFR 15 - 29 (Severe decrease in GFR).\n\nStage 5: GFR < 15 (End Stage Renal Disease / ESRD, requiring dialysis or transplant)."
+      },
+  {
+        "id": "ckd2",
+        "front": "List 4 causes contributing to the pathogenesis of renal osteodystrophy in cases with chronic kidney disease.",
+        "back": "Impaired renal production of active vitamin D (1,25-dihydroxycholecalciferol).\n\nHyperphosphatemia (due to decreased glomerular filtration).\n\nHypocalcemia (resulting from low active Vitamin D and high phosphate).\n\nSecondary hyperparathyroidism (excessive PTH secretion in response to hypocalcemia and hyperphosphatemia)."
+      }
   ],
   "URINARY TRACT INFECTIONS (UTIs) & RENAL IMAGING PROTOCOL": [
-    {
-      "id": "uti1",
-      "front": "Case Study 1: A 5-year-old female child presented with fever, chills and flank pain. Investigations: Blood urea: 20 mg/dl, Serum creatinine: 0.7 mg/dl, Urine exam: WBCs casts, 100 pus cells/HPF. What is the most likely diagnosis?",
-      "back": "Acute Pyelonephritis (Upper Urinary Tract Infection)."
-    },
-    {
-      "id": "uti2",
-      "front": "Case Study 1 (5-year-old female with fever, chills, flank pain...): Describe the possible treatment plan.",
-      "back": "Medical Therapy: Parenteral broad-spectrum antibiotics for 14 days. Ceftriaxone (50-75 mg/kg/24 hr) OR Ampicillin with an Aminoglycoside (Gentamicin).\n\nSupportive: Adequate hydration and antipyretics.\n\nImaging / Follow-up: Renal ultrasound (to rule out hydronephrosis/abscess) and a Voiding Cystourethrogram (VCUG) since she is ≤5 years old with a febrile UTI, to check for Vesicoureteral Reflux (VUR) or anatomical abnormalities."
-    },
-    {
-      "id": "uti3",
-      "front": "Case Study 2: Mona is 5 years old child, presented by fever, chills and flank pain. Investigations: Blood urea: 20 mg/dl, Serum creatinine: 0.6 mg/dl, Urine analysis: WBCs casts, 100 pus cells/HPF. What is the most likely diagnosis?",
-      "back": "Acute Pyelonephritis."
-    },
-    {
-      "id": "uti4",
-      "front": "Case Study 2 (Mona, 5 years old with fever, chills, flank pain...): What is the possible TTT (Treatment)?",
-      "back": "Parenteral antibiotic therapy (Ceftriaxone or Ampicillin + Gentamicin) for 14 days, combined with imaging studies (US & VCUG) to detect any predisposing anomalies like VUR."
-    }
+  {
+        "id": "uti1",
+        "front": "Case Study 1: A 5-year-old female child presented with fever, chills and flank pain. Investigations: Blood urea: 20 mg/dl, Serum creatinine: 0.7 mg/dl, Urine exam: WBCs casts, 100 pus cells/HPF. What is the most likely diagnosis?",
+        "back": "Acute Pyelonephritis (Upper Urinary Tract Infection)."
+      },
+  {
+        "id": "uti2",
+        "front": "Case Study 1 (5-year-old female with fever, chills, flank pain...): Describe the possible treatment plan.",
+        "back": "Medical Therapy: Parenteral broad-spectrum antibiotics for 14 days. Ceftriaxone (50-75 mg/kg/24 hr) OR Ampicillin with an Aminoglycoside (Gentamicin).\n\nSupportive: Adequate hydration and antipyretics.\n\nImaging / Follow-up: Renal ultrasound (to rule out hydronephrosis/abscess) and a Voiding Cystourethrogram (VCUG) since she is ≤5 years old with a febrile UTI, to check for Vesicoureteral Reflux (VUR) or anatomical abnormalities."
+      },
+  {
+        "id": "uti3",
+        "front": "Case Study 2: Mona is 5 years old child, presented by fever, chills and flank pain. Investigations: Blood urea: 20 mg/dl, Serum creatinine: 0.6 mg/dl, Urine analysis: WBCs casts, 100 pus cells/HPF. What is the most likely diagnosis?",
+        "back": "Acute Pyelonephritis."
+      },
+  {
+        "id": "uti4",
+        "front": "Case Study 2 (Mona, 5 years old with fever, chills, flank pain...): What is the possible TTT (Treatment)?",
+        "back": "Parenteral antibiotic therapy (Ceftriaxone or Ampicillin + Gentamicin) for 14 days, combined with imaging studies (US & VCUG) to detect any predisposing anomalies like VUR."
+      }
   ],
   "RBC Physiology, Indices & Morphology": [],
   "Classification & Evaluation of Anemia": [
-    {
-      "id": "cea1",
-      "front": "Hematological causes of splenomegaly?",
-      "back": "Chronic hemolytic anemia (e.g., Thalassemia, Hereditary spherocytosis).\n\nLeukemias (ALL, AML, CML).\n\nLymphomas (Hodgkin's and Non-Hodgkin's).\n\nExtramedullary hematopoiesis."
-    },
-    {
-      "id": "cea2",
-      "front": "List 4 indications for splenectomy in hematological diseases?",
-      "back": "Hereditary spherocytosis (after age of 5 years).\n\nThalassemia major (if hypersplenism occurs causing increased blood transfusion needs).\n\nImmune Thrombocytopenic Purpura (ITP) (chronic refractory cases).\n\nAutoimmune hemolytic anemia (unresponsive to steroids)."
-    },
-    {
-      "id": "cea3",
-      "front": "List the different types of chronic hemolytic anemia that could be diagnosed through blood film examination, and name the diagnostic cells for each.",
-      "back": "Hereditary Spherocytosis: Spherocytes (small, dense RBCs with no central pallor).\n\nSickle Cell Disease: Sickle cells (crescent-shaped RBCs).\n\nThalassemia: Target cells, hypochromic microcytic RBCs, and nucleated RBCs.\n\nG6PD Deficiency (during attack): Bite cells and Heinz bodies (requires special stain)."
-    },
-    {
-      "id": "cea4",
-      "front": "List 4 early post splenectomy complications?",
-      "back": "Bleeding (hemorrhage).\n\nInfection (Overwhelming Post-Splenectomy Infection - OPSI, mainly by encapsulated organisms like Pneumococcus).\n\nThrombocytosis.\n\nPancreatitis or injury to surrounding organs during surgery."
-    },
-    {
-      "id": "cea5",
-      "front": "Case 1: A 20-month-old boy presents to you with pallor. His diet contains a good amount of fortified cereal and red meat. HB 9.0, MCV 58, MCHC 28, normal platelets, and a reticulocyte count of 4%. What is the most likely diagnosis?",
-      "back": "Thalassemia Trait (Beta-thalassemia minor) - suggested by the microcytic hypochromic anemia with a slightly elevated reticulocyte count in a child with a good iron intake."
-    },
-    {
-      "id": "cea6",
-      "front": "Case 1 (20-month-old boy with pallor, HB 9.0, MCV 58...): What is the D.D.?",
-      "back": "Iron Deficiency Anemia (IDA), Sideroblastic anemia, Lead poisoning."
-    },
-    {
-      "id": "cea7",
-      "front": "Case 1 (20-month-old boy with pallor, HB 9.0, MCV 58...): What are the further investigations to help diagnosis?",
-      "back": "Hemoglobin electrophoresis (High HbA2 and HbF indicates Thalassemia trait) and Iron profile to exclude IDA (will be normal in Thalassemia)."
-    }
+  {
+        "id": "cea1",
+        "front": "Hematological causes of splenomegaly?",
+        "back": "Chronic hemolytic anemia (e.g., Thalassemia, Hereditary spherocytosis).\n\nLeukemias (ALL, AML, CML).\n\nLymphomas (Hodgkin's and Non-Hodgkin's).\n\nExtramedullary hematopoiesis."
+      },
+  {
+        "id": "cea2",
+        "front": "List 4 indications for splenectomy in hematological diseases?",
+        "back": "Hereditary spherocytosis (after age of 5 years).\n\nThalassemia major (if hypersplenism occurs causing increased blood transfusion needs).\n\nImmune Thrombocytopenic Purpura (ITP) (chronic refractory cases).\n\nAutoimmune hemolytic anemia (unresponsive to steroids)."
+      },
+  {
+        "id": "cea3",
+        "front": "List the different types of chronic hemolytic anemia that could be diagnosed through blood film examination, and name the diagnostic cells for each.",
+        "back": "Hereditary Spherocytosis: Spherocytes (small, dense RBCs with no central pallor).\n\nSickle Cell Disease: Sickle cells (crescent-shaped RBCs).\n\nThalassemia: Target cells, hypochromic microcytic RBCs, and nucleated RBCs.\n\nG6PD Deficiency (during attack): Bite cells and Heinz bodies (requires special stain)."
+      },
+  {
+        "id": "cea4",
+        "front": "List 4 early post splenectomy complications?",
+        "back": "Bleeding (hemorrhage).\n\nInfection (Overwhelming Post-Splenectomy Infection - OPSI, mainly by encapsulated organisms like Pneumococcus).\n\nThrombocytosis.\n\nPancreatitis or injury to surrounding organs during surgery."
+      },
+  {
+        "id": "cea5",
+        "front": "Case 1: A 20-month-old boy presents to you with pallor. His diet contains a good amount of fortified cereal and red meat. HB 9.0, MCV 58, MCHC 28, normal platelets, and a reticulocyte count of 4%. What is the most likely diagnosis?",
+        "back": "Thalassemia Trait (Beta-thalassemia minor) - suggested by the microcytic hypochromic anemia with a slightly elevated reticulocyte count in a child with a good iron intake."
+      },
+  {
+        "id": "cea6",
+        "front": "Case 1 (20-month-old boy with pallor, HB 9.0, MCV 58...): What is the D.D.?",
+        "back": "Iron Deficiency Anemia (IDA), Sideroblastic anemia, Lead poisoning."
+      },
+  {
+        "id": "cea7",
+        "front": "Case 1 (20-month-old boy with pallor, HB 9.0, MCV 58...): What are the further investigations to help diagnosis?",
+        "back": "Hemoglobin electrophoresis (High HbA2 and HbF indicates Thalassemia trait) and Iron profile to exclude IDA (will be normal in Thalassemia)."
+      }
   ],
   "Iron Deficiency Anemia (IDA)": [
-    {
-      "id": "ida1",
-      "front": "2 & 4) Causes of IDA, clinical picture, investigation: Causes",
-      "back": "Decreased intake: prolonged exclusive breastfeeding without supplementation, early cow's milk introduction, poor diet.\nIncreased demand: prematurity, rapid growth (infancy and puberty).\nBlood loss: parasitic infestations, cow's milk allergy (occult bleeding), peptic ulcer, menstruation.\nMalabsorption: Celiac disease."
-    },
-    {
-      "id": "ida2",
-      "front": "2 & 4) Causes of IDA, clinical picture, investigation: Clinical picture",
-      "back": "General: pallor, fatigue, anorexia, tachycardia, heart murmur.\nSpecific signs: Pica (eating non-nutritive substances), spooning of nails (koilonychia), angular stomatitis, smooth red tongue."
-    },
-    {
-      "id": "ida3",
-      "front": "2 & 4) Causes of IDA, clinical picture, investigation: Investigations",
-      "back": "CBC: Microcytic hypochromic anemia (low MCV, low MCH, low Hb).\n\nIron profile: Low serum Iron, Low Ferritin, High TIBC."
-    },
-    {
-      "id": "ida4",
-      "front": "Case Scenario: A 3-year-old girl is brought for routine well-childcare. The family says she is a \"picky\" eater, preferring whole milk over meats. CBC shows microcytosis with hypochromia and hemoglobin of 8 g/dl. What is the most likely etiology for this child's microcytic anemia?",
-      "back": "Iron Deficiency Anemia."
-    },
-    {
-      "id": "ida5",
-      "front": "Case Scenario (3-year-old picky eater...): What is the most appropriate test to confirm this etiology?",
-      "back": "Serum Ferritin level (will be low)."
-    },
-    {
-      "id": "ida6",
-      "front": "Case Scenario (3-year-old picky eater...): What is the treatment?",
-      "back": "Oral Iron therapy (Ferrous sulfate) for 3-6 months + Dietary modification (decrease cow's milk, increase iron-rich foods)."
-    }
+  {
+        "id": "ida1",
+        "front": "2 & 4) Causes of IDA, clinical picture, investigation: Causes",
+        "back": "Decreased intake: prolonged exclusive breastfeeding without supplementation, early cow's milk introduction, poor diet.\nIncreased demand: prematurity, rapid growth (infancy and puberty).\nBlood loss: parasitic infestations, cow's milk allergy (occult bleeding), peptic ulcer, menstruation.\nMalabsorption: Celiac disease."
+      },
+  {
+        "id": "ida2",
+        "front": "2 & 4) Causes of IDA, clinical picture, investigation: Clinical picture",
+        "back": "General: pallor, fatigue, anorexia, tachycardia, heart murmur.\nSpecific signs: Pica (eating non-nutritive substances), spooning of nails (koilonychia), angular stomatitis, smooth red tongue."
+      },
+  {
+        "id": "ida3",
+        "front": "2 & 4) Causes of IDA, clinical picture, investigation: Investigations",
+        "back": "CBC: Microcytic hypochromic anemia (low MCV, low MCH, low Hb).\n\nIron profile: Low serum Iron, Low Ferritin, High TIBC."
+      },
+  {
+        "id": "ida4",
+        "front": "Case Scenario: A 3-year-old girl is brought for routine well-childcare. The family says she is a \"picky\" eater, preferring whole milk over meats. CBC shows microcytosis with hypochromia and hemoglobin of 8 g/dl. What is the most likely etiology for this child's microcytic anemia?",
+        "back": "Iron Deficiency Anemia."
+      },
+  {
+        "id": "ida5",
+        "front": "Case Scenario (3-year-old picky eater...): What is the most appropriate test to confirm this etiology?",
+        "back": "Serum Ferritin level (will be low)."
+      },
+  {
+        "id": "ida6",
+        "front": "Case Scenario (3-year-old picky eater...): What is the treatment?",
+        "back": "Oral Iron therapy (Ferrous sulfate) for 3-6 months + Dietary modification (decrease cow's milk, increase iron-rich foods)."
+      }
   ],
   "Megaloblastic Anemias (B12 & Folate Deficiency)": [],
   "Aplastic Anemia & BM Failure Syndromes": [
-    {
-      "id": "aa1",
-      "front": "Enumerate 4 complications of bone marrow transplantation?",
-      "back": "Graft-versus-host disease (GVHD).\n\nInfections (due to severe immunosuppression).\n\nGraft rejection / failure.\n\nVeno-occlusive disease of the liver (Hepatic sinusoidal obstruction syndrome)."
-    },
-    {
-      "id": "aa2",
-      "front": "Outline the management of patient with aplastic anemia?",
-      "back": "Supportive: Red blood cell & Platelet transfusions, broad-spectrum antibiotics (for febrile neutropenia).\n\nDefinitive: Hematopoietic Stem Cell Transplantation (HSCT) if an HLA-matched sibling donor is available.\n\nMedical: Immunosuppressive therapy (Antithymocyte globulin \"ATG\" + Cyclosporine) if no matched donor."
-    }
+  {
+        "id": "aa1",
+        "front": "Enumerate 4 complications of bone marrow transplantation?",
+        "back": "Graft-versus-host disease (GVHD).\n\nInfections (due to severe immunosuppression).\n\nGraft rejection / failure.\n\nVeno-occlusive disease of the liver (Hepatic sinusoidal obstruction syndrome)."
+      },
+  {
+        "id": "aa2",
+        "front": "Outline the management of patient with aplastic anemia?",
+        "back": "Supportive: Red blood cell & Platelet transfusions, broad-spectrum antibiotics (for febrile neutropenia).\n\nDefinitive: Hematopoietic Stem Cell Transplantation (HSCT) if an HLA-matched sibling donor is available.\n\nMedical: Immunosuppressive therapy (Antithymocyte globulin \"ATG\" + Cyclosporine) if no matched donor."
+      }
   ],
   "Chronic Hemolytic Anemia & Hereditary Spherocytosis": [
-    {
-      "id": "hs1",
-      "front": "3 & 7) About Hereditary spherocytosis (Definition, Pathogenesis):",
-      "back": "Definition: Inherited (autosomal dominant) chronic hemolytic anemia characterized by abnormally shaped red blood cells (spherocytes) that are easily destroyed in the spleen.\n\nPathogenesis: Genetic defect in the RBC membrane cytoskeleton proteins (Spectrin or Ankyrin). RBCs become spherical (spherocytes) and rigid, trapping them in the spleen where they are prematurely destroyed by macrophages."
-    },
-    {
-      "id": "hs2",
-      "front": "3 & 7) About Hereditary spherocytosis (C/P, Complications, Treatment):",
-      "back": "C/P (Clinical Picture): Triad of Anemia, Jaundice (fluctuating), and Splenomegaly. Often positive family history.\n\nComplications: Aplastic crisis (Parvovirus B19), Hemolytic crisis, Pigment gallstones.\n\nTreatment: Folic acid supplementation. Splenectomy (curative) after the age of 5 years."
-    },
-    {
-      "id": "hs3",
-      "front": "Explain how splenectomy can be curative in hereditary spherocytosis.",
-      "back": "The premature destruction (hemolysis) occurs exclusively in the spleen because the rigid spherocytes cannot pass through its microcirculation. Removing the spleen eliminates the primary site of destruction, allowing the spherocytes to survive normally in the circulation, thus curing the anemia."
-    },
-    {
-      "id": "hs4",
-      "front": "Case Scenario: A previously normal 10-year-old experiences pallor, fatigue, and a fall in hemoglobin level from 13 to 8 g/dl. His spleen is slightly enlarged. The reticulocyte count is 10%. Many spherocytes are observed on the blood smear. What is the most likely diagnosis?",
-      "back": "Hereditary Spherocytosis (experiencing a hemolytic crisis)."
-    },
-    {
-      "id": "hs5",
-      "front": "Case Scenario (10-year-old with spherocytes...): What is the best treatment?",
-      "back": "Splenectomy (since he is > 5 years old) preceded by vaccines."
-    },
-    {
-      "id": "hs6",
-      "front": "Case Scenario (10-year-old with spherocytes...): What is the next diagnostic step?",
-      "back": "Osmotic fragility test (will be increased)."
-    }
+  {
+        "id": "hs1",
+        "front": "3 & 7) About Hereditary spherocytosis (Definition, Pathogenesis):",
+        "back": "Definition: Inherited (autosomal dominant) chronic hemolytic anemia characterized by abnormally shaped red blood cells (spherocytes) that are easily destroyed in the spleen.\n\nPathogenesis: Genetic defect in the RBC membrane cytoskeleton proteins (Spectrin or Ankyrin). RBCs become spherical (spherocytes) and rigid, trapping them in the spleen where they are prematurely destroyed by macrophages."
+      },
+  {
+        "id": "hs2",
+        "front": "3 & 7) About Hereditary spherocytosis (C/P, Complications, Treatment):",
+        "back": "C/P (Clinical Picture): Triad of Anemia, Jaundice (fluctuating), and Splenomegaly. Often positive family history.\n\nComplications: Aplastic crisis (Parvovirus B19), Hemolytic crisis, Pigment gallstones.\n\nTreatment: Folic acid supplementation. Splenectomy (curative) after the age of 5 years."
+      },
+  {
+        "id": "hs3",
+        "front": "Explain how splenectomy can be curative in hereditary spherocytosis.",
+        "back": "The premature destruction (hemolysis) occurs exclusively in the spleen because the rigid spherocytes cannot pass through its microcirculation. Removing the spleen eliminates the primary site of destruction, allowing the spherocytes to survive normally in the circulation, thus curing the anemia."
+      },
+  {
+        "id": "hs4",
+        "front": "Case Scenario: A previously normal 10-year-old experiences pallor, fatigue, and a fall in hemoglobin level from 13 to 8 g/dl. His spleen is slightly enlarged. The reticulocyte count is 10%. Many spherocytes are observed on the blood smear. What is the most likely diagnosis?",
+        "back": "Hereditary Spherocytosis (experiencing a hemolytic crisis)."
+      },
+  {
+        "id": "hs5",
+        "front": "Case Scenario (10-year-old with spherocytes...): What is the best treatment?",
+        "back": "Splenectomy (since he is > 5 years old) preceded by vaccines."
+      },
+  {
+        "id": "hs6",
+        "front": "Case Scenario (10-year-old with spherocytes...): What is the next diagnostic step?",
+        "back": "Osmotic fragility test (will be increased)."
+      }
   ],
   "The Thalassemia Syndromes (Alpha & Beta)": [],
   "Sickle Cell Disease (SCD)": [
-    {
-      "id": "scd1",
-      "front": "List four crises occurring in children with sickle cell disease",
-      "back": "Four Crises: 1) Vaso-occlusive (painful) crisis. 2) Splenic sequestration crisis. 3) Aplastic crisis. 4) Hemolytic crisis."
-    },
-    {
-      "id": "scd2",
-      "front": "describe the clinical picture, and the treatment for one of them (Vaso-occlusive crisis)",
-      "back": "Clinical Picture: Severe pain in bones (arms, legs, back), Dactylitis in infants, acute chest syndrome, or stroke.\n\nTreatment: Intravenous hydration, potent Analgesia (NSAIDs or Opiates like Morphine), Oxygen therapy if hypoxic."
-    }
+  {
+        "id": "scd1",
+        "front": "List four crises occurring in children with sickle cell disease",
+        "back": "Four Crises: 1) Vaso-occlusive (painful) crisis. 2) Splenic sequestration crisis. 3) Aplastic crisis. 4) Hemolytic crisis."
+      },
+  {
+        "id": "scd2",
+        "front": "describe the clinical picture, and the treatment for one of them (Vaso-occlusive crisis)",
+        "back": "Clinical Picture: Severe pain in bones (arms, legs, back), Dactylitis in infants, acute chest syndrome, or stroke.\n\nTreatment: Intravenous hydration, potent Analgesia (NSAIDs or Opiates like Morphine), Oxygen therapy if hypoxic."
+      }
   ],
   "G6PD Deficiency & Immune Hemolytic Anemias": [
-    {
-      "id": "g6pd1",
-      "front": "Case Scenario: A previously normal African American army recruit was assigned to Southeast Asia and given malarial prophylaxis. He experienced pallor, fatigue, and dark urine. His hemoglobin level decreased from 14.8 to 9 g/dL. What is the most likely diagnosis?",
-      "back": "G6PD Deficiency (Acute hemolytic episode precipitated by antimalarial drugs)."
-    },
-    {
-      "id": "g6pd2",
-      "front": "Case Scenario (Army recruit given malarial prophylaxis...): What is the best treatment?",
-      "back": "Immediate discontinuation of the offending drug. Blood transfusion if anemia is severe."
-    },
-    {
-      "id": "g6pd3",
-      "front": "Case Scenario (Army recruit given malarial prophylaxis...): What is the next diagnostic step?",
-      "back": "Quantitative G6PD enzyme assay (done weeks after the acute episode resolves). During the attack, a blood film showing \"Heinz bodies\" and \"bite cells\" is suggestive."
-    }
+  {
+        "id": "g6pd1",
+        "front": "Case Scenario: A previously normal African American army recruit was assigned to Southeast Asia and given malarial prophylaxis. He experienced pallor, fatigue, and dark urine. His hemoglobin level decreased from 14.8 to 9 g/dL. What is the most likely diagnosis?",
+        "back": "G6PD Deficiency (Acute hemolytic episode precipitated by antimalarial drugs)."
+      },
+  {
+        "id": "g6pd2",
+        "front": "Case Scenario (Army recruit given malarial prophylaxis...): What is the best treatment?",
+        "back": "Immediate discontinuation of the offending drug. Blood transfusion if anemia is severe."
+      },
+  {
+        "id": "g6pd3",
+        "front": "Case Scenario (Army recruit given malarial prophylaxis...): What is the next diagnostic step?",
+        "back": "Quantitative G6PD enzyme assay (done weeks after the acute episode resolves). During the attack, a blood film showing \"Heinz bodies\" and \"bite cells\" is suggestive."
+      }
   ],
   "Hemostasis & Bleeding Disorders": [
-    {
-      "id": "hbd1",
-      "front": "Enumerate Causes of bleeding tendency.",
-      "back": "Platelet disorders (Quantitative like ITP, or Qualitative).\n\nCoagulation factor deficiencies (Hemophilia A/B, VWD).\n\nVascular disorders (Henoch-Schönlein Purpura - HSP).\n\nMixed/Acquired conditions (DIC, Liver failure)."
-    },
-    {
-      "id": "hbd2",
-      "front": "Mention 3 differentiating clinical points between platelet disorders & clotting factor disorders.",
-      "back": "Site of bleeding: Platelet (mucocutaneous); Factor (deep tissues - joints, muscles).\n\nLesions: Platelet (Petechiae and superficial ecchymoses); Factor (Large hematomas, no petechiae).\n\nBleeding after trauma: Platelet (Immediate but stops with local pressure); Factor (Delayed bleeding, not easily controlled by pressure)."
-    },
-    {
-      "id": "hbd3",
-      "front": "40 & 41) When to suspect bleeding or hemorrhage disorder? / The most important point in a history is:",
-      "back": "Suspect it in: Spontaneous heavy bleeding, prolonged bleeding post-trauma/circumcision, bleeding from multiple orifices, or recurrent hemarthrosis.\n\nMost important point in history: Family history."
-    }
+  {
+        "id": "hbd1",
+        "front": "Enumerate Causes of bleeding tendency.",
+        "back": "Platelet disorders (Quantitative like ITP, or Qualitative).\n\nCoagulation factor deficiencies (Hemophilia A/B, VWD).\n\nVascular disorders (Henoch-Schönlein Purpura - HSP).\n\nMixed/Acquired conditions (DIC, Liver failure)."
+      },
+  {
+        "id": "hbd2",
+        "front": "Mention 3 differentiating clinical points between platelet disorders & clotting factor disorders.",
+        "back": "Site of bleeding: Platelet (mucocutaneous); Factor (deep tissues - joints, muscles).\n\nLesions: Platelet (Petechiae and superficial ecchymoses); Factor (Large hematomas, no petechiae).\n\nBleeding after trauma: Platelet (Immediate but stops with local pressure); Factor (Delayed bleeding, not easily controlled by pressure)."
+      },
+  {
+        "id": "hbd3",
+        "front": "40 & 41) When to suspect bleeding or hemorrhage disorder? / The most important point in a history is:",
+        "back": "Suspect it in: Spontaneous heavy bleeding, prolonged bleeding post-trauma/circumcision, bleeding from multiple orifices, or recurrent hemarthrosis.\n\nMost important point in history: Family history."
+      }
   ],
   "Inherited Coagulation Hemophilia & VWD": [
-    {
-      "id": "ich1",
-      "front": "Mention C/P and management of hemophilia.",
-      "back": "C/P: Exclusively in males. Deep tissue bleeding (Hemarthrosis, Muscle hematomas), prolonged bleeding after trauma/circumcision. No petechiae.\n\nManagement: Avoid trauma/IM injections/Aspirin. Specific therapy: Factor VIII concentrate replacement (for Hemophilia A) or Factor IX (for Hemophilia B)."
-    },
-    {
-      "id": "ich2",
-      "front": "List 4 differences between VWD and hemophilia A and mention the treatment of one of them?",
-      "back": "Differences: 1) Inheritance: VWD (Autosomal dominant); Hemophilia (X-linked recessive).\n2) Bleeding Type: VWD (Mucocutaneous); Hemophilia (Deep tissue).\n3) Defect: VWD (vWF affecting primary hemostasis); Hemophilia (Factor VIII).\n4) Labs: VWD (Prolonged Bleeding Time and APTT); Hemophilia (Normal Bleeding Time, Prolonged APTT).\n\nTreatment of VWD: Desmopressin (DDAVP) or vWF/Factor VIII concentrates."
-    },
-    {
-      "id": "ich3",
-      "front": "Describe a management plan for a child with severe hemophilia.",
-      "back": "Prophylactic regular replacement therapy with Factor VIII concentrates (e.g., 3 times a week).\n\nPrompt \"on-demand\" factor replacement during acute bleeding.\n\nMultidisciplinary care (physiotherapy for joints), avoid NSAIDs."
-    },
-    {
-      "id": "ich4",
-      "front": "Young girl presented with menorrhagia & severe pallor: Important point in history?",
-      "back": "Family history of mucosal bleeding or heavy menses."
-    },
-    {
-      "id": "ich5",
-      "front": "Young girl presented with menorrhagia & severe pallor: Investigations?",
-      "back": "CBC, Bleeding Time (Prolonged), APTT, vWF antigen level."
-    },
-    {
-      "id": "ich6",
-      "front": "Young girl presented with menorrhagia & severe pallor: Diagnosis?",
-      "back": "Von Willebrand Disease (VWD)."
-    },
-    {
-      "id": "ich7",
-      "front": "Young girl presented with menorrhagia & severe pallor: Treatment?",
-      "back": "Desmopressin (DDAVP), Antifibrinolytics (Tranexamic acid), or OCPs."
-    }
+  {
+        "id": "ich1",
+        "front": "Mention C/P and management of hemophilia.",
+        "back": "C/P: Exclusively in males. Deep tissue bleeding (Hemarthrosis, Muscle hematomas), prolonged bleeding after trauma/circumcision. No petechiae.\n\nManagement: Avoid trauma/IM injections/Aspirin. Specific therapy: Factor VIII concentrate replacement (for Hemophilia A) or Factor IX (for Hemophilia B)."
+      },
+  {
+        "id": "ich2",
+        "front": "List 4 differences between VWD and hemophilia A and mention the treatment of one of them?",
+        "back": "Differences: 1) Inheritance: VWD (Autosomal dominant); Hemophilia (X-linked recessive).\n2) Bleeding Type: VWD (Mucocutaneous); Hemophilia (Deep tissue).\n3) Defect: VWD (vWF affecting primary hemostasis); Hemophilia (Factor VIII).\n4) Labs: VWD (Prolonged Bleeding Time and APTT); Hemophilia (Normal Bleeding Time, Prolonged APTT).\n\nTreatment of VWD: Desmopressin (DDAVP) or vWF/Factor VIII concentrates."
+      },
+  {
+        "id": "ich3",
+        "front": "Describe a management plan for a child with severe hemophilia.",
+        "back": "Prophylactic regular replacement therapy with Factor VIII concentrates (e.g., 3 times a week).\n\nPrompt \"on-demand\" factor replacement during acute bleeding.\n\nMultidisciplinary care (physiotherapy for joints), avoid NSAIDs."
+      },
+  {
+        "id": "ich4",
+        "front": "Young girl presented with menorrhagia & severe pallor: Important point in history?",
+        "back": "Family history of mucosal bleeding or heavy menses."
+      },
+  {
+        "id": "ich5",
+        "front": "Young girl presented with menorrhagia & severe pallor: Investigations?",
+        "back": "CBC, Bleeding Time (Prolonged), APTT, vWF antigen level."
+      },
+  {
+        "id": "ich6",
+        "front": "Young girl presented with menorrhagia & severe pallor: Diagnosis?",
+        "back": "Von Willebrand Disease (VWD)."
+      },
+  {
+        "id": "ich7",
+        "front": "Young girl presented with menorrhagia & severe pallor: Treatment?",
+        "back": "Desmopressin (DDAVP), Antifibrinolytics (Tranexamic acid), or OCPs."
+      }
   ],
   "Platelet Disorders ITP & Thrombocytopenias": [
-    {
-      "id": "pd1",
-      "front": "3 & 6) Enumerate 4 causes of thrombocytopenia? / causes of platelets disorders:",
-      "back": "Increased destruction (Immune: ITP / Non-immune: HUS, DIC, Hypersplenism).\n\nDecreased production (Aplastic anemia, Leukemia).\n\nSequestration (Splenomegaly).\n\nInherited (Wiskott-Aldrich syndrome)."
-    },
-    {
-      "id": "pd2",
-      "front": "Outline the management of patient with thrombocytopenia? (Specifically acute ITP)",
-      "back": "Observation: If bleeding is mild and platelets >20,000-30,000.\n\nMedical Treatment: Oral Corticosteroids, IVIG, or Anti-D (if active bleeding or very low platelets).\n\nEmergency: Platelet transfusion + IVIG + high-dose IV steroids."
-    },
-    {
-      "id": "pd3",
-      "front": "Case Study: A 10-year-old male child presented with increased paleness... HSM with no lymphadenopathy. Platelet count was 26 x 10³/µL. What is your provisional diagnosis?",
-      "back": "Hypersplenism secondary to Portal Hypertension OR a storage disease like Gaucher disease."
-    },
-    {
-      "id": "pd4",
-      "front": "Case Study (10-year-old with HSM, Platelets 26k...): Is there any further needed investigation?",
-      "back": "LFTs, Abdominal Ultrasound (with Doppler), and Bone marrow aspiration."
-    },
-    {
-      "id": "pd5",
-      "front": "Case Study (10-year-old with HSM, Platelets 26k...): Treatment plan?",
-      "back": "Treatment of the underlying cause. Avoid trauma. Splenectomy may be considered in severe cases."
-    },
-    {
-      "id": "pd6",
-      "front": "Case Scenario: A 4-year-old child... new onset of severe bruising on her legs. Mucosal bleeding in the oral cavity. Flu-like symptoms several weeks earlier. No family history of bleeding disorders. a. Grades of severity & management of patient with ITP?",
-      "back": "Mild (Observation), Moderate/Severe as in this case (Medical treatment: IVIG or Steroids), Life-threatening (Platelets + high dose meds)."
-    },
-    {
-      "id": "pd7",
-      "front": "Case Scenario (4-year-old child with severe bruising...): b. Important findings in clinical examination?",
-      "back": "Presence of petechiae/mucosal bleeding. Crucial negative findings: NO hepatosplenomegaly and NO lymphadenopathy."
-    },
-    {
-      "id": "pd8",
-      "front": "Case Scenario (4-year-old child with severe bruising...): d. Most useful initial investigation?",
-      "back": "CBC with Peripheral Blood Smear."
-    },
-    {
-      "id": "pd9",
-      "front": "Case Scenario (4-year-old child with severe bruising...): e. Treatment plan?",
-      "back": "Restrict physical activity, avoid NSAIDs, and start IVIG or oral Corticosteroids (due to mucosal bleeding)."
-    },
-    {
-      "id": "pd10",
-      "front": "Case 1: A 22-year-old female patient... multiple petechiae and mild epistaxis. Plt 30,000. Bone marrow biopsy showed numerous megakaryocytes. Spleen diameter 10 cm. Most probable diagnosis?",
-      "back": "Immune Thrombocytopenic Purpura (ITP)."
-    },
-    {
-      "id": "pd11",
-      "front": "Case 1 (22-year-old female with petechiae...): Justify your Diagnosis?",
-      "back": "Isolated thrombocytopenia, clinically normal spleen size, and a bone marrow biopsy showing increased megakaryocytes (indicating peripheral destruction)."
-    },
-    {
-      "id": "pd12",
-      "front": "Case 1 (22-year-old female with petechiae...): Outline the treatment?",
-      "back": "First-line: Corticosteroids. If severe: IVIG or Anti-D."
-    },
-    {
-      "id": "pd13",
-      "front": "Case Scenario: A 3-year-old boy presents with sudden onset of rash (small red spots and large purple area). Three weeks previously, he had a mild illness. Spleen is not palpable. Platelet count is 20,000/mm³. Most likely diagnosis?",
-      "back": "Acute Immune Thrombocytopenic Purpura (Acute ITP)."
-    },
-    {
-      "id": "pd14",
-      "front": "Case Scenario (3-year-old boy with rash...): Next step in management?",
-      "back": "Reassurance, restrict physical activities, avoid IM injections/NSAIDs. A short course of oral Corticosteroids or observation depending on guidelines."
-    }
+  {
+        "id": "pd1",
+        "front": "3 & 6) Enumerate 4 causes of thrombocytopenia? / causes of platelets disorders:",
+        "back": "Increased destruction (Immune: ITP / Non-immune: HUS, DIC, Hypersplenism).\n\nDecreased production (Aplastic anemia, Leukemia).\n\nSequestration (Splenomegaly).\n\nInherited (Wiskott-Aldrich syndrome)."
+      },
+  {
+        "id": "pd2",
+        "front": "Outline the management of patient with thrombocytopenia? (Specifically acute ITP)",
+        "back": "Observation: If bleeding is mild and platelets >20,000-30,000.\n\nMedical Treatment: Oral Corticosteroids, IVIG, or Anti-D (if active bleeding or very low platelets).\n\nEmergency: Platelet transfusion + IVIG + high-dose IV steroids."
+      },
+  {
+        "id": "pd3",
+        "front": "Case Study: A 10-year-old male child presented with increased paleness... HSM with no lymphadenopathy. Platelet count was 26 x 10³/µL. What is your provisional diagnosis?",
+        "back": "Hypersplenism secondary to Portal Hypertension OR a storage disease like Gaucher disease."
+      },
+  {
+        "id": "pd4",
+        "front": "Case Study (10-year-old with HSM, Platelets 26k...): Is there any further needed investigation?",
+        "back": "LFTs, Abdominal Ultrasound (with Doppler), and Bone marrow aspiration."
+      },
+  {
+        "id": "pd5",
+        "front": "Case Study (10-year-old with HSM, Platelets 26k...): Treatment plan?",
+        "back": "Treatment of the underlying cause. Avoid trauma. Splenectomy may be considered in severe cases."
+      },
+  {
+        "id": "pd6",
+        "front": "Case Scenario: A 4-year-old child... new onset of severe bruising on her legs. Mucosal bleeding in the oral cavity. Flu-like symptoms several weeks earlier. No family history of bleeding disorders. a. Grades of severity & management of patient with ITP?",
+        "back": "Mild (Observation), Moderate/Severe as in this case (Medical treatment: IVIG or Steroids), Life-threatening (Platelets + high dose meds)."
+      },
+  {
+        "id": "pd7",
+        "front": "Case Scenario (4-year-old child with severe bruising...): b. Important findings in clinical examination?",
+        "back": "Presence of petechiae/mucosal bleeding. Crucial negative findings: NO hepatosplenomegaly and NO lymphadenopathy."
+      },
+  {
+        "id": "pd8",
+        "front": "Case Scenario (4-year-old child with severe bruising...): d. Most useful initial investigation?",
+        "back": "CBC with Peripheral Blood Smear."
+      },
+  {
+        "id": "pd9",
+        "front": "Case Scenario (4-year-old child with severe bruising...): e. Treatment plan?",
+        "back": "Restrict physical activity, avoid NSAIDs, and start IVIG or oral Corticosteroids (due to mucosal bleeding)."
+      },
+  {
+        "id": "pd10",
+        "front": "Case 1: A 22-year-old female patient... multiple petechiae and mild epistaxis. Plt 30,000. Bone marrow biopsy showed numerous megakaryocytes. Spleen diameter 10 cm. Most probable diagnosis?",
+        "back": "Immune Thrombocytopenic Purpura (ITP)."
+      },
+  {
+        "id": "pd11",
+        "front": "Case 1 (22-year-old female with petechiae...): Justify your Diagnosis?",
+        "back": "Isolated thrombocytopenia, clinically normal spleen size, and a bone marrow biopsy showing increased megakaryocytes (indicating peripheral destruction)."
+      },
+  {
+        "id": "pd12",
+        "front": "Case 1 (22-year-old female with petechiae...): Outline the treatment?",
+        "back": "First-line: Corticosteroids. If severe: IVIG or Anti-D."
+      },
+  {
+        "id": "pd13",
+        "front": "Case Scenario: A 3-year-old boy presents with sudden onset of rash (small red spots and large purple area). Three weeks previously, he had a mild illness. Spleen is not palpable. Platelet count is 20,000/mm³. Most likely diagnosis?",
+        "back": "Acute Immune Thrombocytopenic Purpura (Acute ITP)."
+      },
+  {
+        "id": "pd14",
+        "front": "Case Scenario (3-year-old boy with rash...): Next step in management?",
+        "back": "Reassurance, restrict physical activities, avoid IM injections/NSAIDs. A short course of oral Corticosteroids or observation depending on guidelines."
+      }
   ],
   "Non-Thrombocytopenic Purpura (Vascular & HSP)": [
-    {
-      "id": "ntp1",
-      "front": "Case 2: A 5-year-old boy... low-grade fever, colicky abdominal pain, and a rash mainly on the back of his legs and buttocks. Stool positive for blood and a normal platelet count. What is the most likely diagnosis?",
-      "back": "Henoch-Schönlein Purpura (HSP) / IgA Vasculitis."
-    },
-    {
-      "id": "ntp2",
-      "front": "Case 2 (5-year-old boy with HSP...): What are the renal manifestations?",
-      "back": "Microscopic or macroscopic hematuria, proteinuria, and sometimes glomerulonephritis."
-    },
-    {
-      "id": "ntp3",
-      "front": "Case 2 (5-year-old boy with HSP...): What is the treatment?",
-      "back": "Supportive (Hydration, rest, NSAIDs for joint pain). Systemic Corticosteroids are indicated for severe colicky abdominal pain or severe GI bleeding."
-    }
+  {
+        "id": "ntp1",
+        "front": "Case 2: A 5-year-old boy... low-grade fever, colicky abdominal pain, and a rash mainly on the back of his legs and buttocks. Stool positive for blood and a normal platelet count. What is the most likely diagnosis?",
+        "back": "Henoch-Schönlein Purpura (HSP) / IgA Vasculitis."
+      },
+  {
+        "id": "ntp2",
+        "front": "Case 2 (5-year-old boy with HSP...): What are the renal manifestations?",
+        "back": "Microscopic or macroscopic hematuria, proteinuria, and sometimes glomerulonephritis."
+      },
+  {
+        "id": "ntp3",
+        "front": "Case 2 (5-year-old boy with HSP...): What is the treatment?",
+        "back": "Supportive (Hydration, rest, NSAIDs for joint pain). Systemic Corticosteroids are indicated for severe colicky abdominal pain or severe GI bleeding."
+      }
   ],
   "Pediatric Oncology The Leukemias (ALL & AML)": [
-    {
-      "id": "pol1",
-      "front": "Define leukemia and its classification in children, then mention clinical picture and treatment of the most common type in children.",
-      "back": "Definition: Malignant proliferation of white blood cell precursors (blasts) in the bone marrow, which suppress normal hematopoiesis.\n\nClassification: Acute Lymphoblastic Leukemia (ALL) - most common (80%). Acute Myeloid Leukemia (AML) (15-20%).\n\nMost common type (ALL) C/P: Bone marrow failure signs (Pallor, bleeding/petechiae, fever/infections) + Infiltration signs (Bone pain, hepatosplenomegaly, lymphadenopathy).\n\nTreatment of ALL: Multi-agent chemotherapy (Induction, Consolidation, Maintenance) + CNS prophylaxis (intrathecal methotrexate)."
-    },
-    {
-      "id": "pol2",
-      "front": "Describe the clinical picture of acute lymphoblastic leukemia in children, list the investigations required for diagnosis.",
-      "back": "Clinical picture: Bone marrow failure signs (Pallor, bleeding/petechiae, fever/infections) + Infiltration signs (Bone pain, hepatosplenomegaly, lymphadenopathy).\n\nInvestigations: CBC (abnormal blasts), Bone Marrow Aspiration (>20% blasts), Flow cytometry (Immunophenotyping), and Lumbar puncture."
-    },
-    {
-      "id": "pol3",
-      "front": "About AML: a. What is the Diagnosis?",
-      "back": "Diagnosis: CBC and Bone Marrow Aspiration showing >20% myeloblasts (often contain \"Auer rods\" and are MPO positive)."
-    },
-    {
-      "id": "pol4",
-      "front": "About AML: b. What is the Treatment?",
-      "back": "Treatment: Intensive combination chemotherapy (Cytarabine + Anthracycline) +/- HSCT."
-    },
-    {
-      "id": "pol5",
-      "front": "From Blood Film Test: 1) Name of this test: 2) Enumerate abnormalities in this test:",
-      "back": "1) Name of this test: Peripheral blood smear.\n\n2) Abnormalities: Presence of abnormal nucleated cells (blasts), decreased RBCs, decreased platelets."
-    },
-    {
-      "id": "pol6",
-      "front": "From Blood Film Test: 3) Name the abnormal cells: 4) Diagnosis:",
-      "back": "3) Name the abnormal cells: Blast cells (Lymphoblasts or Myeloblasts).\n\n4) Diagnosis: Acute Leukemia."
-    },
-    {
-      "id": "pol7",
-      "front": "Case scenario of acute leukemia in a child: a. Classifications of acute leukemia? b. Cutoff points of blast cells for diagnosis?",
-      "back": "a. Classifications: ALL (B-cell or T-cell) and AML.\n\nb. Cutoff points: > 20% blast cells in the bone marrow."
-    },
-    {
-      "id": "pol8",
-      "front": "Case scenario of acute leukemia in a child: c. Is there any staging system for leukemia? d. Principle of ttt of acute leukemia:",
-      "back": "c. Staging: No traditional TNM staging. \"Risk Stratification\" is used (Standard Risk vs. High Risk).\n\nd. Principle of ttt: Systemic combination chemotherapy divided into phases (Induction, Consolidation, Maintenance) + CNS-directed therapy."
-    }
+  {
+        "id": "pol1",
+        "front": "Define leukemia and its classification in children, then mention clinical picture and treatment of the most common type in children.",
+        "back": "Definition: Malignant proliferation of white blood cell precursors (blasts) in the bone marrow, which suppress normal hematopoiesis.\n\nClassification: Acute Lymphoblastic Leukemia (ALL) - most common (80%). Acute Myeloid Leukemia (AML) (15-20%).\n\nMost common type (ALL) C/P: Bone marrow failure signs (Pallor, bleeding/petechiae, fever/infections) + Infiltration signs (Bone pain, hepatosplenomegaly, lymphadenopathy).\n\nTreatment of ALL: Multi-agent chemotherapy (Induction, Consolidation, Maintenance) + CNS prophylaxis (intrathecal methotrexate)."
+      },
+  {
+        "id": "pol2",
+        "front": "Describe the clinical picture of acute lymphoblastic leukemia in children, list the investigations required for diagnosis.",
+        "back": "Clinical picture: Bone marrow failure signs (Pallor, bleeding/petechiae, fever/infections) + Infiltration signs (Bone pain, hepatosplenomegaly, lymphadenopathy).\n\nInvestigations: CBC (abnormal blasts), Bone Marrow Aspiration (>20% blasts), Flow cytometry (Immunophenotyping), and Lumbar puncture."
+      },
+  {
+        "id": "pol3",
+        "front": "About AML: a. What is the Diagnosis?",
+        "back": "Diagnosis: CBC and Bone Marrow Aspiration showing >20% myeloblasts (often contain \"Auer rods\" and are MPO positive)."
+      },
+  {
+        "id": "pol4",
+        "front": "About AML: b. What is the Treatment?",
+        "back": "Treatment: Intensive combination chemotherapy (Cytarabine + Anthracycline) +/- HSCT."
+      },
+  {
+        "id": "pol5",
+        "front": "From Blood Film Test: 1) Name of this test: 2) Enumerate abnormalities in this test:",
+        "back": "1) Name of this test: Peripheral blood smear.\n\n2) Abnormalities: Presence of abnormal nucleated cells (blasts), decreased RBCs, decreased platelets."
+      },
+  {
+        "id": "pol6",
+        "front": "From Blood Film Test: 3) Name the abnormal cells: 4) Diagnosis:",
+        "back": "3) Name the abnormal cells: Blast cells (Lymphoblasts or Myeloblasts).\n\n4) Diagnosis: Acute Leukemia."
+      },
+  {
+        "id": "pol7",
+        "front": "Case scenario of acute leukemia in a child: a. Classifications of acute leukemia? b. Cutoff points of blast cells for diagnosis?",
+        "back": "a. Classifications: ALL (B-cell or T-cell) and AML.\n\nb. Cutoff points: > 20% blast cells in the bone marrow."
+      },
+  {
+        "id": "pol8",
+        "front": "Case scenario of acute leukemia in a child: c. Is there any staging system for leukemia? d. Principle of ttt of acute leukemia:",
+        "back": "c. Staging: No traditional TNM staging. \"Risk Stratification\" is used (Standard Risk vs. High Risk).\n\nd. Principle of ttt: Systemic combination chemotherapy divided into phases (Induction, Consolidation, Maintenance) + CNS-directed therapy."
+      }
   ],
   "Lymphomas & Solid Tumors": [
-    {
-      "id": "lst1",
-      "front": "Define neuroblastoma, describe its clinical presentation and outline its diagnostic workup.",
-      "back": "Definition: Embryonal extracranial solid tumor arising from neural crest cells, commonly in the adrenal medulla or sympathetic ganglia.\n\nClinical presentation: Abdominal mass (firm, irregular, often crossing the midline), signs of metastasis (proptosis/\"raccoon eyes\", bone pain), and Paraneoplastic syndromes (Opsoclonus-myoclonus syndrome).\n\nDiagnostic workup: Urine catecholamine metabolites (VMA and HVA), Abdominal CT/MRI, MIBG scan, and Tissue Biopsy."
-    },
-    {
-      "id": "lst2",
-      "front": "Describe the clinical picture of Wilms tumor in children, list the investigations required for the diagnosis and treatment.",
-      "back": "Clinical picture: Asymptomatic, smooth, firm abdominal mass that rarely crosses the midline. May present with microscopic hematuria or hypertension.\n\nInvestigations: Abdominal Ultrasound, CT/MRI of abdomen, CT chest (to check for lung metastasis), Urinalysis.\n\nTreatment: Surgical excision (radical nephrectomy) + Chemotherapy +/- Radiotherapy."
-    },
-    {
-      "id": "lst3",
-      "front": "Regarding Lymphoma Management Protocols: Supportive care of a case of NHL:",
-      "back": "Vigorous IV hydration, Allopurinol/Rasburicase (prevent Tumor Lysis Syndrome), Alkalinization of urine, and infection treatment."
-    },
-    {
-      "id": "lst4",
-      "front": "Regarding Lymphoma Management Protocols: Role of surgery in lymphoma? Diagnosis?",
-      "back": "Role of surgery: Strictly diagnostic (Excisional biopsy of lymph node). Not for debulking.\n\nDiagnosis: Excisional tissue biopsy is the gold standard."
-    },
-    {
-      "id": "lst5",
-      "front": "Regarding Lymphoma Management Protocols: Compression manifestation (obstruction)?",
-      "back": "Superior Vena Cava (SVC) syndrome, mediastinal mass airway obstruction, or intussusception."
-    },
-    {
-      "id": "lst6",
-      "front": "Regarding Lymphoma Management Protocols: Role of radiotherapy in lymphoma HL, before splenectomy?",
-      "back": "Involved-field radiotherapy is often used in Hodgkin Lymphoma as consolidation therapy for bulky disease."
-    },
-    {
-      "id": "lst7",
-      "front": "Case Scenario: A 3-year-old male... rapidly growing mass in left side of abdomen. Pink tinge to urine (hematuria). Mass with smooth, regular margins that did not cross the midline. What are needed in general and abdominal examination?",
-      "back": "General examination: Check Blood Pressure (hypertension), look for congenital anomalies (Aniridia, Hemihypertrophy).\n\nAbdominal examination: Very gentle palpation to confirm the mass (Do NOT palpate vigorously to avoid tumor spillage)."
-    },
-    {
-      "id": "lst8",
-      "front": "Case Scenario (3-year-old with abdominal mass): DD (Differential Diagnosis)? Investigations?",
-      "back": "DD: Wilms tumor, Neuroblastoma, Hydronephrosis.\n\nInvestigations: Abdominal Ultrasound, CT of abdomen & pelvis, CT chest, Urinalysis."
-    }
+  {
+        "id": "lst1",
+        "front": "Define neuroblastoma, describe its clinical presentation and outline its diagnostic workup.",
+        "back": "Definition: Embryonal extracranial solid tumor arising from neural crest cells, commonly in the adrenal medulla or sympathetic ganglia.\n\nClinical presentation: Abdominal mass (firm, irregular, often crossing the midline), signs of metastasis (proptosis/\"raccoon eyes\", bone pain), and Paraneoplastic syndromes (Opsoclonus-myoclonus syndrome).\n\nDiagnostic workup: Urine catecholamine metabolites (VMA and HVA), Abdominal CT/MRI, MIBG scan, and Tissue Biopsy."
+      },
+  {
+        "id": "lst2",
+        "front": "Describe the clinical picture of Wilms tumor in children, list the investigations required for the diagnosis and treatment.",
+        "back": "Clinical picture: Asymptomatic, smooth, firm abdominal mass that rarely crosses the midline. May present with microscopic hematuria or hypertension.\n\nInvestigations: Abdominal Ultrasound, CT/MRI of abdomen, CT chest (to check for lung metastasis), Urinalysis.\n\nTreatment: Surgical excision (radical nephrectomy) + Chemotherapy +/- Radiotherapy."
+      },
+  {
+        "id": "lst3",
+        "front": "Regarding Lymphoma Management Protocols: Supportive care of a case of NHL:",
+        "back": "Vigorous IV hydration, Allopurinol/Rasburicase (prevent Tumor Lysis Syndrome), Alkalinization of urine, and infection treatment."
+      },
+  {
+        "id": "lst4",
+        "front": "Regarding Lymphoma Management Protocols: Role of surgery in lymphoma? Diagnosis?",
+        "back": "Role of surgery: Strictly diagnostic (Excisional biopsy of lymph node). Not for debulking.\n\nDiagnosis: Excisional tissue biopsy is the gold standard."
+      },
+  {
+        "id": "lst5",
+        "front": "Regarding Lymphoma Management Protocols: Compression manifestation (obstruction)?",
+        "back": "Superior Vena Cava (SVC) syndrome, mediastinal mass airway obstruction, or intussusception."
+      },
+  {
+        "id": "lst6",
+        "front": "Regarding Lymphoma Management Protocols: Role of radiotherapy in lymphoma HL, before splenectomy?",
+        "back": "Involved-field radiotherapy is often used in Hodgkin Lymphoma as consolidation therapy for bulky disease."
+      },
+  {
+        "id": "lst7",
+        "front": "Case Scenario: A 3-year-old male... rapidly growing mass in left side of abdomen. Pink tinge to urine (hematuria). Mass with smooth, regular margins that did not cross the midline. What are needed in general and abdominal examination?",
+        "back": "General examination: Check Blood Pressure (hypertension), look for congenital anomalies (Aniridia, Hemihypertrophy).\n\nAbdominal examination: Very gentle palpation to confirm the mass (Do NOT palpate vigorously to avoid tumor spillage)."
+      },
+  {
+        "id": "lst8",
+        "front": "Case Scenario (3-year-old with abdominal mass): DD (Differential Diagnosis)? Investigations?",
+        "back": "DD: Wilms tumor, Neuroblastoma, Hydronephrosis.\n\nInvestigations: Abdominal Ultrasound, CT of abdomen & pelvis, CT chest, Urinalysis."
+      }
   ],
   "Acquired Bleeding & DIC": [],
   "Safe Blood Transfusion & Complications": [],
   "Acute Rheumatic Fever (ARF)": [
-    {
-      "id": "arf1",
-      "front": "What are the diagnostic criteria of rheumatic fever?",
-      "back": "Jones Criteria: Diagnosis requires evidence of a preceding Group A Streptococcal infection (e.g., positive throat culture, positive rapid strep test, or elevated ASO titer) PLUS either:\n\nTwo Major criteria, OR\n\nOne Major criterion and Two Minor criteria."
-    },
-    {
-      "id": "arf2",
-      "front": "Enumerate 2 major and 2 minor criteria of acute rheumatic fever:",
-      "back": "2 Major criteria: 1. Carditis. 2. Polyarthritis. (أو Chorea, Erythema marginatum, Subcutaneous nodules).\n\n2 Minor criteria: 1. Fever. 2. Elevated acute phase reactants (High ESR or High CRP). (أو Polyarthralgia, Prolonged PR interval on ECG)."
-    }
+  {
+        "id": "arf1",
+        "front": "What are the diagnostic criteria of rheumatic fever?",
+        "back": "Jones Criteria: Diagnosis requires evidence of a preceding Group A Streptococcal infection (e.g., positive throat culture, positive rapid strep test, or elevated ASO titer) PLUS either:\n\nTwo Major criteria, OR\n\nOne Major criterion and Two Minor criteria."
+      },
+  {
+        "id": "arf2",
+        "front": "Enumerate 2 major and 2 minor criteria of acute rheumatic fever:",
+        "back": "2 Major criteria: 1. Carditis. 2. Polyarthritis. (أو Chorea, Erythema marginatum, Subcutaneous nodules).\n\n2 Minor criteria: 1. Fever. 2. Elevated acute phase reactants (High ESR or High CRP). (أو Polyarthralgia, Prolonged PR interval on ECG)."
+      }
   ],
   "Acyanotic Obstructive Lesions (Aortic Stenosis)": [
-    {
-      "id": "as1",
-      "front": "Describe murmur of sever aortic stenosis?",
-      "back": "Harsh Ejection Systolic Murmur, best heard at the aortic area (right upper sternal border) and radiates to the neck (carotids) and apex. It is usually accompanied by a systolic thrill and an early systolic ejection click."
-    }
+  {
+        "id": "as1",
+        "front": "Describe murmur of sever aortic stenosis?",
+        "back": "Harsh Ejection Systolic Murmur, best heard at the aortic area (right upper sternal border) and radiates to the neck (carotids) and apex. It is usually accompanied by a systolic thrill and an early systolic ejection click."
+      }
   ],
   "Acyanotic Obstructive Lesions (Pulmonary Stenosis)": [],
   "Atrial Septal Defect (ASD)": [
-    {
-      "id": "asd1",
-      "front": "From Comparison Table: Compare between ASD and VSD regarding: Chambers that will dilate",
-      "back": "ASD: Right Atrium (RA) and Right Ventricle (RV).\n\nVSD: Left Atrium (LA) and Left Ventricle (LV)."
-    },
-    {
-      "id": "asd2",
-      "front": "From Comparison Table: Compare between ASD and VSD regarding: Murmur",
-      "back": "ASD: Ejection systolic murmur at the pulmonary area + Wide fixed splitting of the 2nd heart sound (S2).\n\nVSD: Harsh holosystolic (pansystolic) murmur at the left lower sternal border."
-    },
-    {
-      "id": "asd3",
-      "front": "From Comparison Table: Compare between ASD and VSD regarding: Indications of surgical closure",
-      "back": "ASD: Significant left-to-right shunt (Qp:Qs > 1.5:1) causing RV volume overload (usually done electively at 3-5 years of age).\n\nVSD: Uncontrolled heart failure, elevated pulmonary vascular resistance (pulmonary hypertension), or significant shunt."
-    }
+  {
+        "id": "asd1",
+        "front": "From Comparison Table: Compare between ASD and VSD regarding: Chambers that will dilate",
+        "back": "ASD: Right Atrium (RA) and Right Ventricle (RV).\n\nVSD: Left Atrium (LA) and Left Ventricle (LV)."
+      },
+  {
+        "id": "asd2",
+        "front": "From Comparison Table: Compare between ASD and VSD regarding: Murmur",
+        "back": "ASD: Ejection systolic murmur at the pulmonary area + Wide fixed splitting of the 2nd heart sound (S2).\n\nVSD: Harsh holosystolic (pansystolic) murmur at the left lower sternal border."
+      },
+  {
+        "id": "asd3",
+        "front": "From Comparison Table: Compare between ASD and VSD regarding: Indications of surgical closure",
+        "back": "ASD: Significant left-to-right shunt (Qp:Qs > 1.5:1) causing RV volume overload (usually done electively at 3-5 years of age).\n\nVSD: Uncontrolled heart failure, elevated pulmonary vascular resistance (pulmonary hypertension), or significant shunt."
+      }
   ],
   "CHD Introduction & Etiological Classifications": [],
   "Coarctation of the Aorta (CoA)": [
-    {
-      "id": "coa1",
-      "front": "From case study (2-week-old neonate with weak femoral pulses and severe narrowing of the aorta): 1. Explain why symptoms appeared after the first week of life rather than immediately after birth.",
-      "back": "Because the presence of the Patent Ductus Arteriosus (PDA) during the first few days of life provides a bypass for blood to reach the descending aorta, masking the severe obstruction. When the ductus arteriosus naturally closes after the first week, the severe narrowing (coarctation) is unmasked, leading to sudden hypoperfusion of the lower body and severe symptoms (ductal-dependent systemic circulation)."
-    },
-    {
-      "id": "coa2",
-      "front": "Case study (2-week-old neonate with weak femoral pulses...): 2. Identify the ECG findings most likely to be present in this neonate.",
-      "back": "Right Ventricular Hypertrophy (RVH) is commonly seen in neonates with severe CoA (because the RV was pumping against systemic resistance in utero via the PDA)."
-    },
-    {
-      "id": "coa3",
-      "front": "Case study (2-week-old neonate with weak femoral pulses...): 3. Describe the immediate management required.",
-      "back": "Continuous IV infusion of Prostaglandin E1 (PGE1) to keep the ductus arteriosus open (to maintain systemic perfusion).\n\nInotropic support and Diuretics (to manage heart failure).\n\nCorrection of metabolic acidosis.\n\nUrgent surgical repair or balloon angioplasty once stabilized."
-    }
+  {
+        "id": "coa1",
+        "front": "From case study (2-week-old neonate with weak femoral pulses and severe narrowing of the aorta): 1. Explain why symptoms appeared after the first week of life rather than immediately after birth.",
+        "back": "Because the presence of the Patent Ductus Arteriosus (PDA) during the first few days of life provides a bypass for blood to reach the descending aorta, masking the severe obstruction. When the ductus arteriosus naturally closes after the first week, the severe narrowing (coarctation) is unmasked, leading to sudden hypoperfusion of the lower body and severe symptoms (ductal-dependent systemic circulation)."
+      },
+  {
+        "id": "coa2",
+        "front": "Case study (2-week-old neonate with weak femoral pulses...): 2. Identify the ECG findings most likely to be present in this neonate.",
+        "back": "Right Ventricular Hypertrophy (RVH) is commonly seen in neonates with severe CoA (because the RV was pumping against systemic resistance in utero via the PDA)."
+      },
+  {
+        "id": "coa3",
+        "front": "Case study (2-week-old neonate with weak femoral pulses...): 3. Describe the immediate management required.",
+        "back": "Continuous IV infusion of Prostaglandin E1 (PGE1) to keep the ductus arteriosus open (to maintain systemic perfusion).\n\nInotropic support and Diuretics (to manage heart failure).\n\nCorrection of metabolic acidosis.\n\nUrgent surgical repair or balloon angioplasty once stabilized."
+      }
   ],
   "Complete Transposition of the Great Arteries (TGA)": [
-    {
-      "id": "tga1",
-      "front": "From Comparison Tables: Compare between Tetralogy of Fallot and Transposition of Great Arteries (TGA) regarding: 1- Time of Clinical Presentation (Onset of cyanosis)",
-      "back": "TOF: Gradual onset, usually appears after the neonatal period (around 3 to 6 months of age), unless severe (pulmonary atresia).\n\nTGA: Immediate, early neonatal period (first hours/days of life)."
-    },
-    {
-      "id": "tga2",
-      "front": "From Comparison Tables: Compare between TOF and TGA regarding: 2- Cardiac X-Ray Findings",
-      "back": "TOF: Boot-shaped heart (Coeur en sabot) with oligemic (dark) lung fields due to decreased pulmonary blood flow.\n\nTGA: Egg-shaped heart (Egg on a string appearance) with plethoric (congested) lung fields due to increased pulmonary blood flow."
-    },
-    {
-      "id": "tga3",
-      "front": "From Comparison Tables: Compare between TOF and TGA regarding: 3- Lines of treatment / Best Time for Complete Surgical repair",
-      "back": "TOF: Medical: Management of hypoxic spells. Surgical: Palliative (Blalock-Taussig shunt) if needed early. Complete repair (VSD closure + RVOT enlargement) is best done electively at 6 - 12 months of age.\n\nTGA: Medical: Prostaglandin E1 (to keep PDA open) +/- Balloon atrial septostomy (Rashkind procedure) to improve mixing. Surgical: Complete repair (Arterial Switch Operation / Jatene procedure) is best done within the first 1 to 2 weeks of life."
-    }
+  {
+        "id": "tga1",
+        "front": "From Comparison Tables: Compare between Tetralogy of Fallot and Transposition of Great Arteries (TGA) regarding: 1- Time of Clinical Presentation (Onset of cyanosis)",
+        "back": "TOF: Gradual onset, usually appears after the neonatal period (around 3 to 6 months of age), unless severe (pulmonary atresia).\n\nTGA: Immediate, early neonatal period (first hours/days of life)."
+      },
+  {
+        "id": "tga2",
+        "front": "From Comparison Tables: Compare between TOF and TGA regarding: 2- Cardiac X-Ray Findings",
+        "back": "TOF: Boot-shaped heart (Coeur en sabot) with oligemic (dark) lung fields due to decreased pulmonary blood flow.\n\nTGA: Egg-shaped heart (Egg on a string appearance) with plethoric (congested) lung fields due to increased pulmonary blood flow."
+      },
+  {
+        "id": "tga3",
+        "front": "From Comparison Tables: Compare between TOF and TGA regarding: 3- Lines of treatment / Best Time for Complete Surgical repair",
+        "back": "TOF: Medical: Management of hypoxic spells. Surgical: Palliative (Blalock-Taussig shunt) if needed early. Complete repair (VSD closure + RVOT enlargement) is best done electively at 6 - 12 months of age.\n\nTGA: Medical: Prostaglandin E1 (to keep PDA open) +/- Balloon atrial septostomy (Rashkind procedure) to improve mixing. Surgical: Complete repair (Arterial Switch Operation / Jatene procedure) is best done within the first 1 to 2 weeks of life."
+      }
   ],
   "Patent Ductus Arteriosus (PDA)": [],
   "Pediatric Heart Failure (HF)": [
-    {
-      "id": "phf1",
-      "front": "3 clinical signs of left sided heart failure.",
-      "back": "Tachypnea (Respiratory distress/orthopnea).\n\nTachycardia (with gallop rhythm).\n\nPulmonary congestion findings (Crackles/crepitations on chest auscultation)."
-    },
-    {
-      "id": "phf2",
-      "front": "Define Heart failure",
-      "back": "Definition: It is the inability of the heart to pump an adequate amount of blood to meet the metabolic and oxygen demands of the body."
-    },
-    {
-      "id": "phf3",
-      "front": "Enumerate 3 mechanisms of HF in Pediatric.",
-      "back": "Volume overload (e.g., left-to-right shunts like VSD, PDA).\n\nPressure overload (e.g., obstructive lesions like Aortic stenosis, Coarctation of the aorta).\n\nMyocardial dysfunction / Pump failure (e.g., Myocarditis, Cardiomyopathies)."
-    },
-    {
-      "id": "phf4",
-      "front": "Enumerate types of heart failure.",
-      "back": "Left-sided vs. Right-sided vs. Biventricular heart failure.\n\nSystolic vs. Diastolic heart failure.\n\nHigh output vs. Low output heart failure."
-    },
-    {
-      "id": "phf5",
-      "front": "Q4) Enumerate 3 cardiac lesions that cause this condition (heart failure).",
-      "back": "Ventricular Septal Defect (VSD).\n\nPatent Ductus Arteriosus (PDA).\n\nCoarctation of the Aorta (CoA).\n(ويمكن ذكر Myocarditis أو Rheumatic carditis)."
-    },
-    {
-      "id": "phf6",
-      "front": "Q2) Explain 3 lines of treatment (for heart failure case).",
-      "back": "Diuretics: (e.g., Furosemide/Lasix) to decrease preload and relieve pulmonary/systemic congestion.\n\nInotropes: (e.g., Digoxin) to increase myocardial contractility.\n\nAfterload Reducing Agents: (e.g., ACE inhibitors like Captopril/Enalapril) to decrease peripheral resistance and improve cardiac output.\n(ويمكن إضافة: General measures like semi-sitting position, oxygen therapy, and treating the underlying cause)."
-    }
+  {
+        "id": "phf1",
+        "front": "3 clinical signs of left sided heart failure.",
+        "back": "Tachypnea (Respiratory distress/orthopnea).\n\nTachycardia (with gallop rhythm).\n\nPulmonary congestion findings (Crackles/crepitations on chest auscultation)."
+      },
+  {
+        "id": "phf2",
+        "front": "Define Heart failure",
+        "back": "Definition: It is the inability of the heart to pump an adequate amount of blood to meet the metabolic and oxygen demands of the body."
+      },
+  {
+        "id": "phf3",
+        "front": "Enumerate 3 mechanisms of HF in Pediatric.",
+        "back": "Volume overload (e.g., left-to-right shunts like VSD, PDA).\n\nPressure overload (e.g., obstructive lesions like Aortic stenosis, Coarctation of the aorta).\n\nMyocardial dysfunction / Pump failure (e.g., Myocarditis, Cardiomyopathies)."
+      },
+  {
+        "id": "phf4",
+        "front": "Enumerate types of heart failure.",
+        "back": "Left-sided vs. Right-sided vs. Biventricular heart failure.\n\nSystolic vs. Diastolic heart failure.\n\nHigh output vs. Low output heart failure."
+      },
+  {
+        "id": "phf5",
+        "front": "Q4) Enumerate 3 cardiac lesions that cause this condition (heart failure).",
+        "back": "Ventricular Septal Defect (VSD).\n\nPatent Ductus Arteriosus (PDA).\n\nCoarctation of the Aorta (CoA).\n(ويمكن ذكر Myocarditis أو Rheumatic carditis)."
+      },
+  {
+        "id": "phf6",
+        "front": "Q2) Explain 3 lines of treatment (for heart failure case).",
+        "back": "Diuretics: (e.g., Furosemide/Lasix) to decrease preload and relieve pulmonary/systemic congestion.\n\nInotropes: (e.g., Digoxin) to increase myocardial contractility.\n\nAfterload Reducing Agents: (e.g., ACE inhibitors like Captopril/Enalapril) to decrease peripheral resistance and improve cardiac output.\n(ويمكن إضافة: General measures like semi-sitting position, oxygen therapy, and treating the underlying cause)."
+      }
   ],
   "Tetralogy of Fallot (TOF) & Hypercyanotic Spells": [
-    {
-      "id": "tof1",
-      "front": "From Comparison Tables: Compare between Tetralogy of Fallot and Transposition of Great Arteries (TGA) regarding: 1- Time of Clinical Presentation (Onset of cyanosis)",
-      "back": "TOF: Gradual onset, usually appears after the neonatal period (around 3 to 6 months of age), unless severe (pulmonary atresia).\n\nTGA: Immediate, early neonatal period (first hours/days of life)."
-    },
-    {
-      "id": "tof2",
-      "front": "From Comparison Tables: Compare between TOF and TGA regarding: 2- Cardiac X-Ray Findings",
-      "back": "TOF: Boot-shaped heart (Coeur en sabot) with oligemic (dark) lung fields due to decreased pulmonary blood flow.\n\nTGA: Egg-shaped heart (Egg on a string appearance) with plethoric (congested) lung fields due to increased pulmonary blood flow."
-    },
-    {
-      "id": "tof3",
-      "front": "From Comparison Tables: Compare between TOF and TGA regarding: 3- Lines of treatment / Best Time for Complete Surgical repair",
-      "back": "TOF: Medical: Management of hypoxic spells. Surgical: Palliative (Blalock-Taussig shunt) if needed early. Complete repair (VSD closure + RVOT enlargement) is best done electively at 6 - 12 months of age.\n\nTGA: Medical: Prostaglandin E1 (to keep PDA open) +/- Balloon atrial septostomy (Rashkind procedure) to improve mixing. Surgical: Complete repair (Arterial Switch Operation / Jatene procedure) is best done within the first 1 to 2 weeks of life."
-    },
-    {
-      "id": "tof4",
-      "front": "Regarding cyanotic (Tet) spell that may occur in patient with tetralogy of Fallot: 1. Explain the cause of its occurrence.",
-      "back": "It is caused by a sudden spasm/increase in the Right Ventricular Outflow Tract (RVOT) obstruction, OR a sudden drop in systemic vascular resistance (SVR). This forces more deoxygenated blood from the right ventricle to shunt across the VSD into the left ventricle and aorta (increased right-to-left shunt), leading to severe hypoxia and cyanosis."
-    },
-    {
-      "id": "tof5",
-      "front": "Regarding cyanotic (Tet) spell that may occur in patient with tetralogy of Fallot: 2. Enumerate 6 lines of treatment.",
-      "back": "Place the child in the Knee-chest position (to increase systemic vascular resistance).\n\nAdminister Oxygen (100%) via face mask.\n\nMorphine (IV or Subcutaneous) to calm the child and relieve infundibular spasm.\n\nIV fluids to expand intravascular volume.\n\nBeta-blockers (IV Propranolol/Esmolol) to relax the right ventricular outflow tract muscle.\n\nSodium bicarbonate (IV) to correct metabolic acidosis."
-    }
+  {
+        "id": "tof1",
+        "front": "From Comparison Tables: Compare between Tetralogy of Fallot and Transposition of Great Arteries (TGA) regarding: 1- Time of Clinical Presentation (Onset of cyanosis)",
+        "back": "TOF: Gradual onset, usually appears after the neonatal period (around 3 to 6 months of age), unless severe (pulmonary atresia).\n\nTGA: Immediate, early neonatal period (first hours/days of life)."
+      },
+  {
+        "id": "tof2",
+        "front": "From Comparison Tables: Compare between TOF and TGA regarding: 2- Cardiac X-Ray Findings",
+        "back": "TOF: Boot-shaped heart (Coeur en sabot) with oligemic (dark) lung fields due to decreased pulmonary blood flow.\n\nTGA: Egg-shaped heart (Egg on a string appearance) with plethoric (congested) lung fields due to increased pulmonary blood flow."
+      },
+  {
+        "id": "tof3",
+        "front": "From Comparison Tables: Compare between TOF and TGA regarding: 3- Lines of treatment / Best Time for Complete Surgical repair",
+        "back": "TOF: Medical: Management of hypoxic spells. Surgical: Palliative (Blalock-Taussig shunt) if needed early. Complete repair (VSD closure + RVOT enlargement) is best done electively at 6 - 12 months of age.\n\nTGA: Medical: Prostaglandin E1 (to keep PDA open) +/- Balloon atrial septostomy (Rashkind procedure) to improve mixing. Surgical: Complete repair (Arterial Switch Operation / Jatene procedure) is best done within the first 1 to 2 weeks of life."
+      },
+  {
+        "id": "tof4",
+        "front": "Regarding cyanotic (Tet) spell that may occur in patient with tetralogy of Fallot: 1. Explain the cause of its occurrence.",
+        "back": "It is caused by a sudden spasm/increase in the Right Ventricular Outflow Tract (RVOT) obstruction, OR a sudden drop in systemic vascular resistance (SVR). This forces more deoxygenated blood from the right ventricle to shunt across the VSD into the left ventricle and aorta (increased right-to-left shunt), leading to severe hypoxia and cyanosis."
+      },
+  {
+        "id": "tof5",
+        "front": "Regarding cyanotic (Tet) spell that may occur in patient with tetralogy of Fallot: 2. Enumerate 6 lines of treatment.",
+        "back": "Place the child in the Knee-chest position (to increase systemic vascular resistance).\n\nAdminister Oxygen (100%) via face mask.\n\nMorphine (IV or Subcutaneous) to calm the child and relieve infundibular spasm.\n\nIV fluids to expand intravascular volume.\n\nBeta-blockers (IV Propranolol/Esmolol) to relax the right ventricular outflow tract muscle.\n\nSodium bicarbonate (IV) to correct metabolic acidosis."
+      }
   ],
   "Ventricular Septal Defect (VSD) -1": [
-    {
-      "id": "vsd1",
-      "front": "From case study (3-month-old boy with tachypnea, retractions, and a 4/6 harsh holosystolic murmur): 1. What is the most appropriate diagnosis?",
-      "back": "Ventricular Septal Defect (VSD) - Moderate to Large."
-    },
-    {
-      "id": "vsd2",
-      "front": "Case study (3-month-old boy with tachypnea...): 2. Enumerate 2 complications that may occur in this case?",
-      "back": "Congestive Heart Failure (CHF).\n\nRecurrent chest infections (Bronchopneumonia).\n(ويمكن إضافة: Pulmonary hypertension, Infective endocarditis)."
-    },
-    {
-      "id": "vsd3",
-      "front": "Case study (3-month-old boy with tachypnea...): 3. Describe lines of treatment of this case?",
-      "back": "Medical Treatment (Anti-failure measures): Diuretics (e.g., Furosemide) to reduce preload, ACE inhibitors (e.g., Captopril) to reduce afterload, and Digoxin. Nutritional support (high caloric formula).\n\nSurgical Treatment: Surgical patch closure (indicated if severe heart failure not controlled by medical treatment or development of pulmonary hypertension)."
-    },
-    {
-      "id": "vsd4",
-      "front": "From Comparison Table: Compare between ASD and VSD regarding: Chambers that will dilate",
-      "back": "ASD: Right Atrium (RA) and Right Ventricle (RV).\n\nVSD: Left Atrium (LA) and Left Ventricle (LV)."
-    },
-    {
-      "id": "vsd5",
-      "front": "From Comparison Table: Compare between ASD and VSD regarding: Murmur",
-      "back": "ASD: Ejection systolic murmur at the pulmonary area + Wide fixed splitting of the 2nd heart sound (S2).\n\nVSD: Harsh holosystolic (pansystolic) murmur at the left lower sternal border."
-    },
-    {
-      "id": "vsd6",
-      "front": "From Comparison Table: Compare between ASD and VSD regarding: Indications of surgical closure",
-      "back": "ASD: Significant left-to-right shunt (Qp:Qs > 1.5:1) causing RV volume overload (usually done electively at 3-5 years of age).\n\nVSD: Uncontrolled heart failure, elevated pulmonary vascular resistance (pulmonary hypertension), or significant shunt."
-    }
+  {
+        "id": "vsd1",
+        "front": "From case study (3-month-old boy with tachypnea, retractions, and a 4/6 harsh holosystolic murmur): 1. What is the most appropriate diagnosis?",
+        "back": "Ventricular Septal Defect (VSD) - Moderate to Large."
+      },
+  {
+        "id": "vsd2",
+        "front": "Case study (3-month-old boy with tachypnea...): 2. Enumerate 2 complications that may occur in this case?",
+        "back": "Congestive Heart Failure (CHF).\n\nRecurrent chest infections (Bronchopneumonia).\n(ويمكن إضافة: Pulmonary hypertension, Infective endocarditis)."
+      },
+  {
+        "id": "vsd3",
+        "front": "Case study (3-month-old boy with tachypnea...): 3. Describe lines of treatment of this case?",
+        "back": "Medical Treatment (Anti-failure measures): Diuretics (e.g., Furosemide) to reduce preload, ACE inhibitors (e.g., Captopril) to reduce afterload, and Digoxin. Nutritional support (high caloric formula).\n\nSurgical Treatment: Surgical patch closure (indicated if severe heart failure not controlled by medical treatment or development of pulmonary hypertension)."
+      },
+  {
+        "id": "vsd4",
+        "front": "From Comparison Table: Compare between ASD and VSD regarding: Chambers that will dilate",
+        "back": "ASD: Right Atrium (RA) and Right Ventricle (RV).\n\nVSD: Left Atrium (LA) and Left Ventricle (LV)."
+      },
+  {
+        "id": "vsd5",
+        "front": "From Comparison Table: Compare between ASD and VSD regarding: Murmur",
+        "back": "ASD: Ejection systolic murmur at the pulmonary area + Wide fixed splitting of the 2nd heart sound (S2).\n\nVSD: Harsh holosystolic (pansystolic) murmur at the left lower sternal border."
+      },
+  {
+        "id": "vsd6",
+        "front": "From Comparison Table: Compare between ASD and VSD regarding: Indications of surgical closure",
+        "back": "ASD: Significant left-to-right shunt (Qp:Qs > 1.5:1) causing RV volume overload (usually done electively at 3-5 years of age).\n\nVSD: Uncontrolled heart failure, elevated pulmonary vascular resistance (pulmonary hypertension), or significant shunt."
+      }
   ],
   "Ventricular Septal Defect (VSD) - 2": [],
   "Acute Diarrhea & Dehydration Assessment": [
-    {
-      "id": "adda1",
-      "front": "Mention 3 causes of persistent diarrhea.",
-      "back": "Post-gastroenteritis syndrome (e.g., secondary lactose intolerance).\n\nCow's milk protein allergy.\n\nCeliac disease (or Immunodeficiency / Malnutrition)."
-    },
-    {
-      "id": "adda2",
-      "front": "Enumerate 4 signs of severe dehydration.\n(حسب بروتوكول IMCI المعتمد)",
-      "back": "Lethargic or unconscious.\n\nSunken eyes.\n\nNot able to drink or drinking poorly.\n\nSkin pinch goes back very slowly (≥ 2 seconds)."
-    },
-    {
-      "id": "adda3",
-      "front": "Case Study: Ahmed is a 2-year-old boy complaining of diarrhea for 5 days. He seems irritable, drinks eagerly, and his skin pinch goes back slowly. According to IMCI: 1. Assess the case.",
-      "back": "The child has two signs from the yellow row (Irritable, drinks eagerly, skin pinch goes back slowly)."
-    },
-    {
-      "id": "adda4",
-      "front": "Case Study: Ahmed is a 2-year-old boy... 2. Classify the degree of dehydration.",
-      "back": "Some Dehydration."
-    },
-    {
-      "id": "adda5",
-      "front": "Case Study: Ahmed is a 2-year-old boy... 3. Name the plan of management.",
-      "back": "Plan B (Oral Rehydration Therapy - ORS)."
-    },
-    {
-      "id": "adda6",
-      "front": "Case Study: A 6-month-old with 5 days of watery diarrhea (8 stools/day), vomiting, and poor feeding. The mother notices sunken eyes. 1. Is this acute or persistent diarrhea?",
-      "back": "Acute diarrhea (because it is less than 14 days)."
-    },
-    {
-      "id": "adda7",
-      "front": "Case Study: A 6-month-old with 5 days of watery diarrhea... 2. What signs of dehydration are present?",
-      "back": "Poor feeding (not able to drink/drinking poorly) and sunken eyes."
-    },
-    {
-      "id": "adda8",
-      "front": "Case Study: A 6-month-old with 5 days of watery diarrhea... 3. Which WHO plan is appropriate?",
-      "back": "Plan C (Intravenous fluids), as these signs indicate Severe Dehydration."
-    }
+  {
+        "id": "adda1",
+        "front": "Mention 3 causes of persistent diarrhea.",
+        "back": "Post-gastroenteritis syndrome (e.g., secondary lactose intolerance).\n\nCow's milk protein allergy.\n\nCeliac disease (or Immunodeficiency / Malnutrition)."
+      },
+  {
+        "id": "adda2",
+        "front": "Enumerate 4 signs of severe dehydration.\n(حسب بروتوكول IMCI المعتمد)",
+        "back": "Lethargic or unconscious.\n\nSunken eyes.\n\nNot able to drink or drinking poorly.\n\nSkin pinch goes back very slowly (≥ 2 seconds)."
+      },
+  {
+        "id": "adda3",
+        "front": "Case Study: Ahmed is a 2-year-old boy complaining of diarrhea for 5 days. He seems irritable, drinks eagerly, and his skin pinch goes back slowly. According to IMCI: 1. Assess the case.",
+        "back": "The child has two signs from the yellow row (Irritable, drinks eagerly, skin pinch goes back slowly)."
+      },
+  {
+        "id": "adda4",
+        "front": "Case Study: Ahmed is a 2-year-old boy... 2. Classify the degree of dehydration.",
+        "back": "Some Dehydration."
+      },
+  {
+        "id": "adda5",
+        "front": "Case Study: Ahmed is a 2-year-old boy... 3. Name the plan of management.",
+        "back": "Plan B (Oral Rehydration Therapy - ORS)."
+      },
+  {
+        "id": "adda6",
+        "front": "Case Study: A 6-month-old with 5 days of watery diarrhea (8 stools/day), vomiting, and poor feeding. The mother notices sunken eyes. 1. Is this acute or persistent diarrhea?",
+        "back": "Acute diarrhea (because it is less than 14 days)."
+      },
+  {
+        "id": "adda7",
+        "front": "Case Study: A 6-month-old with 5 days of watery diarrhea... 2. What signs of dehydration are present?",
+        "back": "Poor feeding (not able to drink/drinking poorly) and sunken eyes."
+      },
+  {
+        "id": "adda8",
+        "front": "Case Study: A 6-month-old with 5 days of watery diarrhea... 3. Which WHO plan is appropriate?",
+        "back": "Plan C (Intravenous fluids), as these signs indicate Severe Dehydration."
+      }
   ],
   "Diarrhea Management & Rehydration Protocols": [
-    {
-      "id": "dmrp1",
-      "front": "Mention three Complications of gastroenteritis? / 1) Enumerate metabolic complications of diarrhea.",
-      "back": "Dehydration.\n\nElectrolyte imbalance (Hypernatremia, Hyponatremia, Hypokalemia).\n\nMetabolic acidosis.\n\nPrerenal acute renal failure."
-    },
-    {
-      "id": "dmrp2",
-      "front": "TTT (Treatment) of diarrhea.",
-      "back": "Rehydration (Plan A, B, or C according to the degree of dehydration).\n\nZinc supplementation (reduces severity and duration).\n\nContinued feeding (do not stop breast milk or food).\n\nAntibiotics ONLY for specific indications (e.g., dysentery, cholera)."
-    },
-    {
-      "id": "dmrp3",
-      "front": "Which element to give in diarrhea.",
-      "back": "Zinc."
-    },
-    {
-      "id": "dmrp4",
-      "front": "Enumerate complications of diarrhea.",
-      "back": "Dehydration, electrolyte disturbances, metabolic acidosis, acute kidney injury."
-    }
+  {
+        "id": "dmrp1",
+        "front": "Mention three Complications of gastroenteritis? / 1) Enumerate metabolic complications of diarrhea.",
+        "back": "Dehydration.\n\nElectrolyte imbalance (Hypernatremia, Hyponatremia, Hypokalemia).\n\nMetabolic acidosis.\n\nPrerenal acute renal failure."
+      },
+  {
+        "id": "dmrp2",
+        "front": "TTT (Treatment) of diarrhea.",
+        "back": "Rehydration (Plan A, B, or C according to the degree of dehydration).\n\nZinc supplementation (reduces severity and duration).\n\nContinued feeding (do not stop breast milk or food).\n\nAntibiotics ONLY for specific indications (e.g., dysentery, cholera)."
+      },
+  {
+        "id": "dmrp3",
+        "front": "Which element to give in diarrhea.",
+        "back": "Zinc."
+      },
+  {
+        "id": "dmrp4",
+        "front": "Enumerate complications of diarrhea.",
+        "back": "Dehydration, electrolyte disturbances, metabolic acidosis, acute kidney injury."
+      }
   ],
   "Pediatric Inflammatory Bowel Disease (IBD)": [
-    {
-      "id": "pibd1",
-      "front": "TTT (Treatment) of UC (Ulcerative Colitis):",
-      "back": "Medical: Aminosalicylates (e.g., Mesalamine), Corticosteroids (for acute flares), Immunomodulators (Azathioprine), Biologics (Infliximab).\n\nSurgical: Colectomy (which is curative in UC)."
-    },
-    {
-      "id": "pibd2",
-      "front": "Which is characteristic in Crohn's disease: / 5) Crohn's disease is characterized by:",
-      "back": "Transmural inflammation.\n\nSkip lesions (discontinuous).\n\nCan affect any part of the GIT from mouth to anus (mostly terminal ileum).\n\nNon-caseating granulomas on biopsy.\n\nCobblestone appearance of the mucosa.\n\nPerianal diseases (fistulas, fissures)."
-    },
-    {
-      "id": "pibd3",
-      "front": "Compare between ulcerative colitis and Crohn's disease regarding the site of GIT affected in each and the layer of GIT wall affected.",
-      "back": "Site:\nUC: Confined to the colon and rectum (continuous inflammation).\nCrohn's: Any part of the GIT from mouth to anus (commonly terminal ileum/cecum) with skip lesions.\n\nLayer:\nUC: Affects mucosa and submucosa only.\nCrohn's: Transmural (affects all layers of the wall)."
-    },
-    {
-      "id": "pibd4",
-      "front": "Regarding Ulcerative Colitis: Enumerate three diagnostic criteria.",
-      "back": "1) Bloody diarrhea with tenesmus. 2) Continuous mucosal inflammation starting from the rectum on colonoscopy. 3) Crypt abscesses on biopsy."
-    },
-    {
-      "id": "pibd5",
-      "front": "Regarding Ulcerative Colitis: Mention two treatment lines and their indications.",
-      "back": "1) Medical (Corticosteroids for inducing remission during flare-ups / Aminosalicylates for maintenance).\n2) Surgical (Colectomy indicated in toxic megacolon, severe refractory cases, or dysplasia)."
-    },
-    {
-      "id": "pibd6",
-      "front": "Case Study: Male patient, 24 years old presented with diarrhea for 3 months with weight loss of 7 kg... Colonoscopy revealed linear ulcerations with cobblestone appearance in colon and terminal ileum. What is the diagnosis?",
-      "back": "Crohn's Disease."
-    },
-    {
-      "id": "pibd7",
-      "front": "Case Study (Crohn's Disease): How to confirm your diagnosis?",
-      "back": "Intestinal Biopsy (to detect transmural inflammation and non-caseating granulomas)."
-    },
-    {
-      "id": "pibd8",
-      "front": "Case Study (Crohn's Disease): Outline the management of this patient.",
-      "back": "Nutritional support, Medical therapy (Corticosteroids for remission, Immunosuppressants like Azathioprine, Biologics like Infliximab), and Surgery only if complications occur (like strictures or fistulas)."
-    }
+  {
+        "id": "pibd1",
+        "front": "TTT (Treatment) of UC (Ulcerative Colitis):",
+        "back": "Medical: Aminosalicylates (e.g., Mesalamine), Corticosteroids (for acute flares), Immunomodulators (Azathioprine), Biologics (Infliximab).\n\nSurgical: Colectomy (which is curative in UC)."
+      },
+  {
+        "id": "pibd2",
+        "front": "Which is characteristic in Crohn's disease: / 5) Crohn's disease is characterized by:",
+        "back": "Transmural inflammation.\n\nSkip lesions (discontinuous).\n\nCan affect any part of the GIT from mouth to anus (mostly terminal ileum).\n\nNon-caseating granulomas on biopsy.\n\nCobblestone appearance of the mucosa.\n\nPerianal diseases (fistulas, fissures)."
+      },
+  {
+        "id": "pibd3",
+        "front": "Compare between ulcerative colitis and Crohn's disease regarding the site of GIT affected in each and the layer of GIT wall affected.",
+        "back": "Site:\nUC: Confined to the colon and rectum (continuous inflammation).\nCrohn's: Any part of the GIT from mouth to anus (commonly terminal ileum/cecum) with skip lesions.\n\nLayer:\nUC: Affects mucosa and submucosa only.\nCrohn's: Transmural (affects all layers of the wall)."
+      },
+  {
+        "id": "pibd4",
+        "front": "Regarding Ulcerative Colitis: Enumerate three diagnostic criteria.",
+        "back": "1) Bloody diarrhea with tenesmus. 2) Continuous mucosal inflammation starting from the rectum on colonoscopy. 3) Crypt abscesses on biopsy."
+      },
+  {
+        "id": "pibd5",
+        "front": "Regarding Ulcerative Colitis: Mention two treatment lines and their indications.",
+        "back": "1) Medical (Corticosteroids for inducing remission during flare-ups / Aminosalicylates for maintenance).\n2) Surgical (Colectomy indicated in toxic megacolon, severe refractory cases, or dysplasia)."
+      },
+  {
+        "id": "pibd6",
+        "front": "Case Study: Male patient, 24 years old presented with diarrhea for 3 months with weight loss of 7 kg... Colonoscopy revealed linear ulcerations with cobblestone appearance in colon and terminal ileum. What is the diagnosis?",
+        "back": "Crohn's Disease."
+      },
+  {
+        "id": "pibd7",
+        "front": "Case Study (Crohn's Disease): How to confirm your diagnosis?",
+        "back": "Intestinal Biopsy (to detect transmural inflammation and non-caseating granulomas)."
+      },
+  {
+        "id": "pibd8",
+        "front": "Case Study (Crohn's Disease): Outline the management of this patient.",
+        "back": "Nutritional support, Medical therapy (Corticosteroids for remission, Immunosuppressants like Azathioprine, Biologics like Infliximab), and Surgery only if complications occur (like strictures or fistulas)."
+      }
   ],
   "GERD & Hypertrophic Pyloric Stenosis (CHIPS)": [
-    {
-      "id": "ghps1",
-      "front": "Gold standard investigation for HPS (Hypertrophic Pyloric Stenosis)?",
-      "back": "Abdominal Ultrasound (showing thickened and elongated pyloric muscle / target sign)."
-    }
+  {
+        "id": "ghps1",
+        "front": "Gold standard investigation for HPS (Hypertrophic Pyloric Stenosis)?",
+        "back": "Abdominal Ultrasound (showing thickened and elongated pyloric muscle / target sign)."
+      }
   ],
   "Hirschsprung Disease vs. Functional Constipation": [
-    {
-      "id": "hdfc1",
-      "front": "Which is characteristic in Hirschsprung's disease:",
-      "back": "Delayed passage of meconium (>48 hours after birth).\n\nAbdominal distension and bilious vomiting.\n\nEmpty ampulla of rectum on digital rectal examination (DRE), followed by an explosive discharge of stool and gas upon withdrawal of the finger."
-    },
-    {
-      "id": "hdfc2",
-      "front": "Compare between functional constipation and Hirschsprung disease.",
-      "back": "Onset: Functional (Toddler/preschool age); Hirschsprung (Since birth/neonatal period).\n\nMeconium passage: Functional (Normal); Hirschsprung (Delayed >48 hours).\n\nFecal soiling (Encopresis): Functional (Common); Hirschsprung (Rare).\n\nRectal exam: Functional (Ampulla full of stool); Hirschsprung (Empty tight ampulla)."
-    },
-    {
-      "id": "hdfc3",
-      "front": "Regarding Encopresis: Define the condition.",
-      "back": "It is fecal incontinence or repetitive voluntary/involuntary passage of stool in inappropriate places in a child ≥ 4 years old (after toilet training age)."
-    },
-    {
-      "id": "hdfc4",
-      "front": "Regarding Encopresis: Enumerate causes of encopresis.",
-      "back": "Chronic functional constipation (overflow incontinence), psychological/emotional distress, lack of proper toilet training."
-    },
-    {
-      "id": "hdfc5",
-      "front": "Regarding Encopresis: Outline the treatment.",
-      "back": "1) Disimpaction (using enemas or high-dose PEG).\n2) Maintenance therapy (Laxatives like PEG/Lactulose for months).\n3) Behavioral modification (scheduled toilet sitting after meals)."
-    },
-    {
-      "id": "hdfc6",
-      "front": "Regarding Encopresis: How to diagnose?",
-      "back": "Detailed history & physical examination (palpable fecal mass in abdomen, stool in rectum on DRE), occasionally Abdominal X-ray to confirm fecal loading."
-    }
+  {
+        "id": "hdfc1",
+        "front": "Which is characteristic in Hirschsprung's disease:",
+        "back": "Delayed passage of meconium (>48 hours after birth).\n\nAbdominal distension and bilious vomiting.\n\nEmpty ampulla of rectum on digital rectal examination (DRE), followed by an explosive discharge of stool and gas upon withdrawal of the finger."
+      },
+  {
+        "id": "hdfc2",
+        "front": "Compare between functional constipation and Hirschsprung disease.",
+        "back": "Onset: Functional (Toddler/preschool age); Hirschsprung (Since birth/neonatal period).\n\nMeconium passage: Functional (Normal); Hirschsprung (Delayed >48 hours).\n\nFecal soiling (Encopresis): Functional (Common); Hirschsprung (Rare).\n\nRectal exam: Functional (Ampulla full of stool); Hirschsprung (Empty tight ampulla)."
+      },
+  {
+        "id": "hdfc3",
+        "front": "Regarding Encopresis: Define the condition.",
+        "back": "It is fecal incontinence or repetitive voluntary/involuntary passage of stool in inappropriate places in a child ≥ 4 years old (after toilet training age)."
+      },
+  {
+        "id": "hdfc4",
+        "front": "Regarding Encopresis: Enumerate causes of encopresis.",
+        "back": "Chronic functional constipation (overflow incontinence), psychological/emotional distress, lack of proper toilet training."
+      },
+  {
+        "id": "hdfc5",
+        "front": "Regarding Encopresis: Outline the treatment.",
+        "back": "1) Disimpaction (using enemas or high-dose PEG).\n2) Maintenance therapy (Laxatives like PEG/Lactulose for months).\n3) Behavioral modification (scheduled toilet sitting after meals)."
+      },
+  {
+        "id": "hdfc6",
+        "front": "Regarding Encopresis: How to diagnose?",
+        "back": "Detailed history & physical examination (palpable fecal mass in abdomen, stool in rectum on DRE), occasionally Abdominal X-ray to confirm fecal loading."
+      }
   ],
   "Acute & Recurrent Abdominal Pain (RAP)": [
-    {
-      "id": "arap1",
-      "front": "Enumerate 4 items of red flags of abdominal pain.",
-      "back": "Unexplained weight loss or growth failure.\n\nGastrointestinal bleeding (hematemesis, melena, or hematochezia).\n\nPain that awakens the child from sleep.\n\nChronic severe diarrhea or unexplained fever."
-    }
+  {
+        "id": "arap1",
+        "front": "Enumerate 4 items of red flags of abdominal pain.",
+        "back": "Unexplained weight loss or growth failure.\n\nGastrointestinal bleeding (hematemesis, melena, or hematochezia).\n\nPain that awakens the child from sleep.\n\nChronic severe diarrhea or unexplained fever."
+      }
   ],
   "Acute Viral & Autoimmune Hepatitis": [
-    {
-      "id": "avah1",
-      "front": "Which indicates long immunity in HAV:",
-      "back": "Positive Anti-HAV IgG."
-    },
-    {
-      "id": "avah2",
-      "front": "Mention 3 hepatotropic viruses that have a vaccine.",
-      "back": "Hepatitis A Virus (HAV).\n\nHepatitis B Virus (HBV).\n(الفيروس الثالث هو Hepatitis E (HEV) حيث يوجد له لقاح معتمد في بعض الدول، ويمكن ذكر الفيروسات الأخرى بشكل عام ولكن HAV و HBV هما الأساس)."
-    },
-    {
-      "id": "avah3",
-      "front": "Case Study: A 10-year-old female patient presents to pediatric clinic with malaise... swelling in both knees... jaundice... AST and ALT of 250 and 180... positive LKM antibodies. What is the most likely diagnosis?",
-      "back": "Autoimmune Hepatitis (Type 2, indicated by positive anti-LKM-1 antibodies)."
-    },
-    {
-      "id": "avah4",
-      "front": "Case Study (Autoimmune Hepatitis): What is the best approach to the treatment of the patient?",
-      "back": "Immunosuppressive therapy using Corticosteroids (Prednisone) alone or in combination with Azathioprine."
-    },
-    {
-      "id": "avah5",
-      "front": "List 2 serum autoantibodies positive in autoimmune hepatitis.",
-      "back": "ANA (Anti-nuclear antibody) - Type 1.\n\nASMA (Anti-smooth muscle antibody) - Type 1.\n\nAnti-LKM-1 (Anti-liver kidney microsomal antibody) - Type 2."
-    }
+  {
+        "id": "avah1",
+        "front": "Which indicates long immunity in HAV:",
+        "back": "Positive Anti-HAV IgG."
+      },
+  {
+        "id": "avah2",
+        "front": "Mention 3 hepatotropic viruses that have a vaccine.",
+        "back": "Hepatitis A Virus (HAV).\n\nHepatitis B Virus (HBV).\n(الفيروس الثالث هو Hepatitis E (HEV) حيث يوجد له لقاح معتمد في بعض الدول، ويمكن ذكر الفيروسات الأخرى بشكل عام ولكن HAV و HBV هما الأساس)."
+      },
+  {
+        "id": "avah3",
+        "front": "Case Study: A 10-year-old female patient presents to pediatric clinic with malaise... swelling in both knees... jaundice... AST and ALT of 250 and 180... positive LKM antibodies. What is the most likely diagnosis?",
+        "back": "Autoimmune Hepatitis (Type 2, indicated by positive anti-LKM-1 antibodies)."
+      },
+  {
+        "id": "avah4",
+        "front": "Case Study (Autoimmune Hepatitis): What is the best approach to the treatment of the patient?",
+        "back": "Immunosuppressive therapy using Corticosteroids (Prednisone) alone or in combination with Azathioprine."
+      },
+  {
+        "id": "avah5",
+        "front": "List 2 serum autoantibodies positive in autoimmune hepatitis.",
+        "back": "ANA (Anti-nuclear antibody) - Type 1.\n\nASMA (Anti-smooth muscle antibody) - Type 1.\n\nAnti-LKM-1 (Anti-liver kidney microsomal antibody) - Type 2."
+      }
   ],
   "Hepatomegaly & Hepatosplenomegaly (HSM)": [
-    {
-      "id": "hsm1",
-      "front": "Enumerate five causes of pediatric hepatomegaly.",
-      "back": "Infections (e.g., Viral hepatitis, TORCH infections, Malaria).\n\nStorage diseases (e.g., Gaucher disease, Glycogen storage disease).\n\nMalignancy (e.g., Leukemia, Lymphoma, Neuroblastoma).\n\nCongestion (e.g., Congestive heart failure).\n\nBiliary tract diseases (e.g., Biliary atresia)."
-    }
+  {
+        "id": "hsm1",
+        "front": "Enumerate five causes of pediatric hepatomegaly.",
+        "back": "Infections (e.g., Viral hepatitis, TORCH infections, Malaria).\n\nStorage diseases (e.g., Gaucher disease, Glycogen storage disease).\n\nMalignancy (e.g., Leukemia, Lymphoma, Neuroblastoma).\n\nCongestion (e.g., Congestive heart failure).\n\nBiliary tract diseases (e.g., Biliary atresia)."
+      }
   ],
   "Gastrointestinal Bleeding (UGIB & LGIB)": [
-    {
-      "id": "gib1",
-      "front": "Heartburn, bloody diarrhea, no other complaints; next step of investigations?",
-      "back": "Stool analysis & culture (to rule out infectious colitis), followed by Colonoscopy with biopsy (to confirm Inflammatory Bowel Disease like Ulcerative Colitis)."
-    },
-    {
-      "id": "gib2",
-      "front": "Case of upper GI bleeding due to duodenal ulcer treatment by:",
-      "back": "Proton Pump Inhibitors (PPIs).\n\nEndoscopic therapy (if active bleeding is present).\n\nEradication of H. pylori if tests are positive (using a combination of PPI + 2 Antibiotics like Amoxicillin and Clarithromycin)."
-    }
+  {
+        "id": "gib1",
+        "front": "Heartburn, bloody diarrhea, no other complaints; next step of investigations?",
+        "back": "Stool analysis & culture (to rule out infectious colitis), followed by Colonoscopy with biopsy (to confirm Inflammatory Bowel Disease like Ulcerative Colitis)."
+      },
+  {
+        "id": "gib2",
+        "front": "Case of upper GI bleeding due to duodenal ulcer treatment by:",
+        "back": "Proton Pump Inhibitors (PPIs).\n\nEndoscopic therapy (if active bleeding is present).\n\nEradication of H. pylori if tests are positive (using a combination of PPI + 2 Antibiotics like Amoxicillin and Clarithromycin)."
+      }
   ],
   "Inborn Errors of Metabolism & Phenylketonuria (PKU)": [],
   "COW MILK ALLERGY & LACTOSE INTOLERANCE": [],
   "INTRODUCTION TO ENDOCRINE SYSTEM": [
-    {
-      "id": "ies1",
-      "front": "Mention three releasing hormones secreted from hypothalamus.",
-      "back": "Growth hormone-releasing hormone (GHRH).\n\nThyrotropin-releasing hormone (TRH).\n\nCorticotropin-releasing hormone (CRH).\n(ويمكن أيضاً إضافة Gonadotropin-releasing hormone (GnRH))."
-    }
+  {
+        "id": "ies1",
+        "front": "Mention three releasing hormones secreted from hypothalamus.",
+        "back": "Growth hormone-releasing hormone (GHRH).\n\nThyrotropin-releasing hormone (TRH).\n\nCorticotropin-releasing hormone (CRH).\n(ويمكن أيضاً إضافة Gonadotropin-releasing hormone (GnRH))."
+      }
   ],
   "SHORT STATURE & TALL STATURE": [
-    {
-      "id": "ssts1",
-      "front": "What are the red flags that suggest a pathological cause of short stature?",
-      "back": "Severe short stature (Height is far below the 3rd percentile / < -3 SD).\n\nAbnormal or decreased growth velocity (Crossing centile lines downwards).\n\nDisproportionate short stature (abnormal upper/lower segment ratio).\n\nPresence of dysmorphic features or congenital anomalies.\n\nSigns of chronic systemic diseases (e.g., chronic diarrhea, heart murmur, pallor).\n\nMarkedly delayed bone age."
-    },
-    {
-      "id": "ssts2",
-      "front": "Mention three causes of primary pathological short stature.",
-      "back": "Genetic / Chromosomal abnormalities: e.g., Turner syndrome, Down syndrome.\n\nSkeletal dysplasias: e.g., Achondroplasia.\n\nIntrauterine growth restriction (IUGR): Failure of catch-up growth."
-    }
+  {
+        "id": "ssts1",
+        "front": "What are the red flags that suggest a pathological cause of short stature?",
+        "back": "Severe short stature (Height is far below the 3rd percentile / < -3 SD).\n\nAbnormal or decreased growth velocity (Crossing centile lines downwards).\n\nDisproportionate short stature (abnormal upper/lower segment ratio).\n\nPresence of dysmorphic features or congenital anomalies.\n\nSigns of chronic systemic diseases (e.g., chronic diarrhea, heart murmur, pallor).\n\nMarkedly delayed bone age."
+      },
+  {
+        "id": "ssts2",
+        "front": "Mention three causes of primary pathological short stature.",
+        "back": "Genetic / Chromosomal abnormalities: e.g., Turner syndrome, Down syndrome.\n\nSkeletal dysplasias: e.g., Achondroplasia.\n\nIntrauterine growth restriction (IUGR): Failure of catch-up growth."
+      }
   ],
   "THYROID GLAND DISORDERS": [
-    {
-      "id": "tgd1",
-      "front": "Mention three radiological findings in hypothyroidism.",
-      "back": "Markedly delayed bone age.\n\nEpiphyseal dysgenesis (fragmentation or stippling of the epiphyses).\n\nEnlarged cardiac shadow (Cardiomegaly) which may be due to pericardial effusion.\n(يمكن أيضاً ذكر Anterior beaking of the vertebrae)."
-    },
-    {
-      "id": "tgd2",
-      "front": "A 5-month-old girl presented with a history of constipation, delayed developmental Milestones. She had a history of neonatal prolonged jaundice, On examination she Pale, hypoactive has an opened mouth with large tongue:\na. What is the most likely diagnosis?",
-      "back": "Congenital Hypothyroidism."
-    },
-    {
-      "id": "tgd3",
-      "front": "b. What is the diagnostic investigation in this case?",
-      "back": "Thyroid profile: Serum TSH (which will be markedly elevated) and Free T4 (which will be decreased)."
-    },
-    {
-      "id": "tgd4",
-      "front": "c. What is the treatment?",
-      "back": "Life-long replacement therapy with oral L-thyroxine (Levothyroxine)."
-    },
-    {
-      "id": "tgd5",
-      "front": "From Case Study (5 month old girl with constipation, delayed developmental milestones, prolonged jaundice, pale, hypoactive, opened mouth with large tongue): 1. What is the most likely diagnosis?",
-      "back": "Congenital Hypothyroidism."
-    },
-    {
-      "id": "tgd6",
-      "front": "From Case Study: 2. What is the diagnostic investigation in this case?",
-      "back": "Serum TSH and Free T4 levels."
-    },
-    {
-      "id": "tgd7",
-      "front": "From Case Study: 3. What is the treatment?",
-      "back": "L-thyroxine (Levothyroxine) replacement therapy."
-    }
+  {
+        "id": "tgd1",
+        "front": "Mention three radiological findings in hypothyroidism.",
+        "back": "Markedly delayed bone age.\n\nEpiphyseal dysgenesis (fragmentation or stippling of the epiphyses).\n\nEnlarged cardiac shadow (Cardiomegaly) which may be due to pericardial effusion.\n(يمكن أيضاً ذكر Anterior beaking of the vertebrae)."
+      },
+  {
+        "id": "tgd2",
+        "front": "A 5-month-old girl presented with a history of constipation, delayed developmental Milestones. She had a history of neonatal prolonged jaundice, On examination she Pale, hypoactive has an opened mouth with large tongue:\na. What is the most likely diagnosis?",
+        "back": "Congenital Hypothyroidism."
+      },
+  {
+        "id": "tgd3",
+        "front": "b. What is the diagnostic investigation in this case?",
+        "back": "Thyroid profile: Serum TSH (which will be markedly elevated) and Free T4 (which will be decreased)."
+      },
+  {
+        "id": "tgd4",
+        "front": "c. What is the treatment?",
+        "back": "Life-long replacement therapy with oral L-thyroxine (Levothyroxine)."
+      },
+  {
+        "id": "tgd5",
+        "front": "From Case Study (5 month old girl with constipation, delayed developmental milestones, prolonged jaundice, pale, hypoactive, opened mouth with large tongue): 1. What is the most likely diagnosis?",
+        "back": "Congenital Hypothyroidism."
+      },
+  {
+        "id": "tgd6",
+        "front": "From Case Study: 2. What is the diagnostic investigation in this case?",
+        "back": "Serum TSH and Free T4 levels."
+      },
+  {
+        "id": "tgd7",
+        "front": "From Case Study: 3. What is the treatment?",
+        "back": "L-thyroxine (Levothyroxine) replacement therapy."
+      }
   ],
   "PARATHYROID GLAND DISORDERS": [],
   "PUBERTY and DISORDERS": [],
   "ADRENAL GLAND DISORDERS & CUSHING SYNDROME": [],
   "DIABETES MELLITUS (DM) DIABETIC KETOACIDOSIS (DKA)": [
-    {
-      "id": "dm1",
-      "front": "Enumerate 3 Diagnostic criteria of Type 1 Diabetes Mellitus:",
-      "back": "Fasting plasma glucose ≥ 126 mg/dL (7.0 mmol/L).\n\nRandom plasma glucose ≥ 200 mg/dL (11.1 mmol/L) with classic symptoms of hyperglycemia (polyuria, polydipsia, weight loss).\n\n2-hour plasma glucose ≥ 200 mg/dL during an Oral Glucose Tolerance Test (OGTT).\n(يمكن إضافة HbA1c ≥ 6.5%)."
-    },
-    {
-      "id": "dm2",
-      "front": "Case Study 1: 5-year-old son with confusion, tachycardia, hypotension, slow deep respirations, weight loss, thirst, frequent urination, and new onset of nocturnal enuresis. 1. What is the most likely diagnosis?",
-      "back": "Diabetic Ketoacidosis (DKA) as the first presentation of Type 1 Diabetes Mellitus."
-    },
-    {
-      "id": "dm3",
-      "front": "Case Study 1: 2. What is the best therapy?",
-      "back": "IV fluid resuscitation (rehydration with normal saline).\n\nContinuous intravenous infusion of regular insulin.\n\nCorrection of electrolytes disturbances (specifically Potassium replacement)."
-    },
-    {
-      "id": "dm4",
-      "front": "Case Study 2: 9-year-old boy presenting with vomiting and abdominal pain, polyuria starting 2 months ago, weight loss, deep rapid breathing with respiratory rate 50/m. 1. What is the most likely diagnosis?",
-      "back": "Diabetic Ketoacidosis (DKA). (Note: The deep rapid breathing is Kussmaul breathing, a sign of metabolic acidosis)."
-    },
-    {
-      "id": "dm5",
-      "front": "Case Study 2: 2. What are the investigations?",
-      "back": "Blood glucose level (Hyperglycemia).\n\nArterial blood gases (Metabolic acidosis: Low pH and low HCO3).\n\nUrine analysis (Glycosuria and Ketonuria).\n\nSerum electrolytes (Na, K) and Serum Ketones."
-    },
-    {
-      "id": "dm6",
-      "front": "Case Study 2: 3. What is the treatment?",
-      "back": "Admission to ICU/hospital.\n\nGradual IV fluid replacement (to correct dehydration and prevent cerebral edema).\n\nIntravenous regular insulin therapy.\n\nPotassium replacement (as total body potassium is depleted)."
-    }
+  {
+        "id": "dm1",
+        "front": "Enumerate 3 Diagnostic criteria of Type 1 Diabetes Mellitus:",
+        "back": "Fasting plasma glucose ≥ 126 mg/dL (7.0 mmol/L).\n\nRandom plasma glucose ≥ 200 mg/dL (11.1 mmol/L) with classic symptoms of hyperglycemia (polyuria, polydipsia, weight loss).\n\n2-hour plasma glucose ≥ 200 mg/dL during an Oral Glucose Tolerance Test (OGTT).\n(يمكن إضافة HbA1c ≥ 6.5%)."
+      },
+  {
+        "id": "dm2",
+        "front": "Case Study 1: 5-year-old son with confusion, tachycardia, hypotension, slow deep respirations, weight loss, thirst, frequent urination, and new onset of nocturnal enuresis. 1. What is the most likely diagnosis?",
+        "back": "Diabetic Ketoacidosis (DKA) as the first presentation of Type 1 Diabetes Mellitus."
+      },
+  {
+        "id": "dm3",
+        "front": "Case Study 1: 2. What is the best therapy?",
+        "back": "IV fluid resuscitation (rehydration with normal saline).\n\nContinuous intravenous infusion of regular insulin.\n\nCorrection of electrolytes disturbances (specifically Potassium replacement)."
+      },
+  {
+        "id": "dm4",
+        "front": "Case Study 2: 9-year-old boy presenting with vomiting and abdominal pain, polyuria starting 2 months ago, weight loss, deep rapid breathing with respiratory rate 50/m. 1. What is the most likely diagnosis?",
+        "back": "Diabetic Ketoacidosis (DKA). (Note: The deep rapid breathing is Kussmaul breathing, a sign of metabolic acidosis)."
+      },
+  {
+        "id": "dm5",
+        "front": "Case Study 2: 2. What are the investigations?",
+        "back": "Blood glucose level (Hyperglycemia).\n\nArterial blood gases (Metabolic acidosis: Low pH and low HCO3).\n\nUrine analysis (Glycosuria and Ketonuria).\n\nSerum electrolytes (Na, K) and Serum Ketones."
+      },
+  {
+        "id": "dm6",
+        "front": "Case Study 2: 3. What is the treatment?",
+        "back": "Admission to ICU/hospital.\n\nGradual IV fluid replacement (to correct dehydration and prevent cerebral edema).\n\nIntravenous regular insulin therapy.\n\nPotassium replacement (as total body potassium is depleted)."
+      }
   ],
   "CHILDHOOD OBESITY": [
-    {
-      "id": "co1",
-      "front": "Enumerate indication for Bariatric surgery in pediatrics?",
-      "back": "BMI ≥ 35 kg/m² associated with severe comorbidities (e.g., Type 2 Diabetes Mellitus, severe obstructive sleep apnea, pseudotumor cerebri).\n\nBMI ≥ 40 kg/m² with milder comorbidities.\n\nPhysical maturity (usually reached Tanner stage IV or V, and near final adult height).\n\nFailure of a multidisciplinary weight loss program (diet, exercise, behavioral modifications) for at least 6 months.\n\nPsychological capability of the patient and family to adhere to strict post-operative dietary rules."
-    }
+  {
+        "id": "co1",
+        "front": "Enumerate indication for Bariatric surgery in pediatrics?",
+        "back": "BMI ≥ 35 kg/m² associated with severe comorbidities (e.g., Type 2 Diabetes Mellitus, severe obstructive sleep apnea, pseudotumor cerebri).\n\nBMI ≥ 40 kg/m² with milder comorbidities.\n\nPhysical maturity (usually reached Tanner stage IV or V, and near final adult height).\n\nFailure of a multidisciplinary weight loss program (diet, exercise, behavioral modifications) for at least 6 months.\n\nPsychological capability of the patient and family to adhere to strict post-operative dietary rules."
+      }
   ],
   "INTRODUCTION TO GENETICS & BASIC CONCEPTS": [
-    {
-      "id": "ig1",
-      "front": "Define Crossing over and when it occurs.",
-      "back": "Definition: Chromatids change parts between homologous chromatids during the meiosis, and this causes redistribution of the heredity material.\n\nWhen it occurs: During meiosis."
-    },
-    {
-      "id": "ig2",
-      "front": "Enumerate 4 differences between meiosis and mitosis.",
-      "back": "Mitosis:\nDivision of somatic cells.\nProduces two daughter cells from one parent cell.\nThe number of chromosomes does not change (Diploid).\nTakes 1-2 hours.\n\nMeiosis:\nOccurs only in gamete formation.\nOne diploid parent cell produces four haploid gametocytes.\nMature gametocytes have 23 chromosomes (Haploid/n).\nCrossing over occurs during this division."
-    }
+  {
+        "id": "ig1",
+        "front": "Define Crossing over and when it occurs.",
+        "back": "Definition: Chromatids change parts between homologous chromatids during the meiosis, and this causes redistribution of the heredity material.\n\nWhen it occurs: During meiosis."
+      },
+  {
+        "id": "ig2",
+        "front": "Enumerate 4 differences between meiosis and mitosis.",
+        "back": "Mitosis:\nDivision of somatic cells.\nProduces two daughter cells from one parent cell.\nThe number of chromosomes does not change (Diploid).\nTakes 1-2 hours.\n\nMeiosis:\nOccurs only in gamete formation.\nOne diploid parent cell produces four haploid gametocytes.\nMature gametocytes have 23 chromosomes (Haploid/n).\nCrossing over occurs during this division."
+      }
   ],
   "CHROMOSOMAL ABERRATIONS & DISORDERS": [
-    {
-      "id": "cad1",
-      "front": "Enumerate Complications of Turner Syndrome.",
-      "back": "Renal anomalies.\n\nCoarctation of the aorta & bicuspid aortic valve.\n\nGonadal dysgenesis leading to infertility & primary amenorrhea.\n\nIncreased risk of hypertension.\n\nLung hypoplasia (intrauterine)."
-    },
-    {
-      "id": "cad2",
-      "front": "Enumerate Types of structural aberrations of chromosomes.",
-      "back": "Translocation (reciprocal or Robertsonian, balanced or unbalanced).\n\nDeletions.\n\nDuplications.\n\nInversion (pericentric or paracentric).\n\nIsochromosome.\n\nDicentric chromosome.\n\nRing chromosomes."
-    },
-    {
-      "id": "cad3",
-      "front": "Define major anomaly and give an example.",
-      "back": "Definition: Abnormality that has medical, surgical, or cosmetic significance so it increases the risk of disability, morbidity or mortality.\n\nExample: Congenital heart defects (like VSD in Down syndrome) or Cleft lip +/- palate (in Patau syndrome)."
-    },
-    {
-      "id": "cad4",
-      "front": "Define aneuploidy and give an example.",
-      "back": "Definition: A change in the chromosome number that does not involve the entire set and involves trisomy (2n+1), monosomy (2n-1) or nullisomy (2n-2).\n\nExample: Down syndrome (Trisomy 21) or Turner Syndrome (Monosomy 45,X)."
-    },
-    {
-      "id": "cad5",
-      "front": "Mention 3 karyotyping styles for Down syndrome.",
-      "back": "Nondisjunction Type (94%).\n\nTranslocation type (3-4%).\n\nMosaic type (1-2%)."
-    },
-    {
-      "id": "cad6",
-      "front": "Explain the presence of delayed puberty in 45 X syndrome.",
-      "back": "Due to Gonadal dysgenesis, which leads to infertility, primary amenorrhea, and a lack of development of secondary sexual characteristics (absence of breast development and failure to menstruate)."
-    },
-    {
-      "id": "cad7",
-      "front": "Enumerate 6 dysmorphic features that may affect the head in Down syndrome.",
-      "back": "Upward slanting palpebral fissures.\n\nEpicanthus.\n\nBurchfield spots of iris.\n\nSmall dysplastic pinnae & low set ears.\n\nMid face hypoplasia.\n\nMicrognathia & protruded tongue."
-    },
-    {
-      "id": "cad8",
-      "front": "Define Translocation.",
-      "back": "It occurs when a piece of one chromosome breaks off and attaches to another chromosome. It may be reciprocal or Robertsonian, balanced or unbalanced."
-    },
-    {
-      "id": "cad9",
-      "front": "Mention 4 different management options for Turner syndrome.",
-      "back": "Early screening for cardiac disease.\n\nGrowth hormone therapy for short stature.\n\nEstrogen replacement at the time of puberty.\n\n(Regular follow-up and monitoring)."
-    },
-    {
-      "id": "cad10",
-      "front": "Case Study: A baby presents with upward slanting palpebral fissure, single palmar crease, and hypotonia. The baby is the fourth sibling, and maternal age is 39 years old.\n\nWhat is the most likely diagnosis and its cytogenetic type?",
-      "back": "Diagnosis: Down Syndrome.\n\nCytogenetic type: Nondisjunction Type (The risk increases with advanced maternal age)."
-    },
-    {
-      "id": "cad11",
-      "front": "Case Study (Continued): Mention two other congenital anomalies that may be present in this child.",
-      "back": "Congenital heart defects (particularly VSD).\n\nGastrointestinal anomalies (Duodenal/esophageal/anal atresia or Hirschsprung disease)."
-    },
-    {
-      "id": "cad12",
-      "front": "Enumerate 5 somatic features that may occur with Down syndrome.",
-      "back": "Short fingers & curved 5th finger.\n\nTransverse palmar crease (Single palmar crease).\n\nWide gap between 1st and 2nd toes.\n\nLax joints including dysplastic hips.\n\nVertebral anomalies including atlantoaxial instability."
-    },
-    {
-      "id": "cad13",
-      "front": "Case Study: A 36-year-old woman with little prenatal care delivers a 3900-g girl. The infant has decreased tone, up-slanting palpebral fissures, epicanthal folds, redundant nuchal skin, fifth finger clinodactyly and brachydactyly, and a single transverse palmar crease.\n\nWhat is the most likely diagnosis? What is the next step in the evaluation? What are the complications?",
-      "back": "Diagnosis: Down Syndrome (Trisomy 21).\n\nNext step: Karyotyping (Chromosomal analysis) to detect numerical or gross structural chromosomal abnormalities.\n\nComplications:\nCardiac: Congenital heart defects (septal defects/VSD).\nCNS: Microcephaly, mental retardation, and premature Alzheimer.\nEndocrine: Hypothyroidism, obesity, insulin resistance.\nGIT: Duodenal atresia, Hirschsprung disease.\nBlood: Leukemia."
-    }
+  {
+        "id": "cad1",
+        "front": "Enumerate Complications of Turner Syndrome.",
+        "back": "Renal anomalies.\n\nCoarctation of the aorta & bicuspid aortic valve.\n\nGonadal dysgenesis leading to infertility & primary amenorrhea.\n\nIncreased risk of hypertension.\n\nLung hypoplasia (intrauterine)."
+      },
+  {
+        "id": "cad2",
+        "front": "Enumerate Types of structural aberrations of chromosomes.",
+        "back": "Translocation (reciprocal or Robertsonian, balanced or unbalanced).\n\nDeletions.\n\nDuplications.\n\nInversion (pericentric or paracentric).\n\nIsochromosome.\n\nDicentric chromosome.\n\nRing chromosomes."
+      },
+  {
+        "id": "cad3",
+        "front": "Define major anomaly and give an example.",
+        "back": "Definition: Abnormality that has medical, surgical, or cosmetic significance so it increases the risk of disability, morbidity or mortality.\n\nExample: Congenital heart defects (like VSD in Down syndrome) or Cleft lip +/- palate (in Patau syndrome)."
+      },
+  {
+        "id": "cad4",
+        "front": "Define aneuploidy and give an example.",
+        "back": "Definition: A change in the chromosome number that does not involve the entire set and involves trisomy (2n+1), monosomy (2n-1) or nullisomy (2n-2).\n\nExample: Down syndrome (Trisomy 21) or Turner Syndrome (Monosomy 45,X)."
+      },
+  {
+        "id": "cad5",
+        "front": "Mention 3 karyotyping styles for Down syndrome.",
+        "back": "Nondisjunction Type (94%).\n\nTranslocation type (3-4%).\n\nMosaic type (1-2%)."
+      },
+  {
+        "id": "cad6",
+        "front": "Explain the presence of delayed puberty in 45 X syndrome.",
+        "back": "Due to Gonadal dysgenesis, which leads to infertility, primary amenorrhea, and a lack of development of secondary sexual characteristics (absence of breast development and failure to menstruate)."
+      },
+  {
+        "id": "cad7",
+        "front": "Enumerate 6 dysmorphic features that may affect the head in Down syndrome.",
+        "back": "Upward slanting palpebral fissures.\n\nEpicanthus.\n\nBurchfield spots of iris.\n\nSmall dysplastic pinnae & low set ears.\n\nMid face hypoplasia.\n\nMicrognathia & protruded tongue."
+      },
+  {
+        "id": "cad8",
+        "front": "Define Translocation.",
+        "back": "It occurs when a piece of one chromosome breaks off and attaches to another chromosome. It may be reciprocal or Robertsonian, balanced or unbalanced."
+      },
+  {
+        "id": "cad9",
+        "front": "Mention 4 different management options for Turner syndrome.",
+        "back": "Early screening for cardiac disease.\n\nGrowth hormone therapy for short stature.\n\nEstrogen replacement at the time of puberty.\n\n(Regular follow-up and monitoring)."
+      },
+  {
+        "id": "cad10",
+        "front": "Case Study: A baby presents with upward slanting palpebral fissure, single palmar crease, and hypotonia. The baby is the fourth sibling, and maternal age is 39 years old.\n\nWhat is the most likely diagnosis and its cytogenetic type?",
+        "back": "Diagnosis: Down Syndrome.\n\nCytogenetic type: Nondisjunction Type (The risk increases with advanced maternal age)."
+      },
+  {
+        "id": "cad11",
+        "front": "Case Study (Continued): Mention two other congenital anomalies that may be present in this child.",
+        "back": "Congenital heart defects (particularly VSD).\n\nGastrointestinal anomalies (Duodenal/esophageal/anal atresia or Hirschsprung disease)."
+      },
+  {
+        "id": "cad12",
+        "front": "Enumerate 5 somatic features that may occur with Down syndrome.",
+        "back": "Short fingers & curved 5th finger.\n\nTransverse palmar crease (Single palmar crease).\n\nWide gap between 1st and 2nd toes.\n\nLax joints including dysplastic hips.\n\nVertebral anomalies including atlantoaxial instability."
+      },
+  {
+        "id": "cad13",
+        "front": "Case Study: A 36-year-old woman with little prenatal care delivers a 3900-g girl. The infant has decreased tone, up-slanting palpebral fissures, epicanthal folds, redundant nuchal skin, fifth finger clinodactyly and brachydactyly, and a single transverse palmar crease.\n\nWhat is the most likely diagnosis? What is the next step in the evaluation? What are the complications?",
+        "back": "Diagnosis: Down Syndrome (Trisomy 21).\n\nNext step: Karyotyping (Chromosomal analysis) to detect numerical or gross structural chromosomal abnormalities.\n\nComplications:\nCardiac: Congenital heart defects (septal defects/VSD).\nCNS: Microcephaly, mental retardation, and premature Alzheimer.\nEndocrine: Hypothyroidism, obesity, insulin resistance.\nGIT: Duodenal atresia, Hirschsprung disease.\nBlood: Leukemia."
+      }
   ],
   "CHROMOSOMAL ANALYSIS & FAMILY PEDIGREE": [
-    {
-      "id": "cafp1",
-      "front": "Pedigree Chart Case 1: Draw the family pedigree: 'Ali is 3 years old, He is the 2nd spill of consanguinity marriage, one month ago, he suffers from bleeding after eating beans, His sister died from accident from 6 months'",
-      "back": "طريقة الرسم:\n\nيتم رسم مربع (يمثل الأب) ودائرة (تمثل الأم) ويوصل بينهما بخطين مزدوجين (للدلالة على زواج الأقارب Consanguinity).\n\nيتدلى من هذا الزواج فرعان (الأبناء):\n\nالفرع الأول (الأخت الكبرى التي ماتت): دائرة مشطوب عليها بخط مائل (للدلالة على الوفاة).\n\nالفرع الثاني (علي، المريض بـ G6PD، وهو مرض X-Linked Recessive): يتم رسم مربع مظلل بالكامل (Affected Male) ويوضع بجانبه سهم (للدلالة على أنه الـ Proband/المريض الأساسي). الأم في هذه الحالة يجب أن توضع بداخل دائرتها نقطة لتوضيح أنها (Carrier) حاملة للمرض."
-    },
-    {
-      "id": "cafp2",
-      "front": "Pedigree Chart Case 2: Draw the pedigree of Ahmed who was diagnosed as a neurofibromatosis case with his father complained of the same disease, his mother died in accident, (his parents were consanguineous), he has two sisters.",
-      "back": "طريقة الرسم:\n\nNeurofibromatosis هو مرض (Autosomal Dominant).\n\nيتم رسم مربع مظلل بالكامل يمثل (الأب المصاب)، ودائرة مشطوب عليها مائلاً تمثل (الأم المتوفاة في حادث). يوصل بينهما خطين مزدوجين (زواج أقارب).\n\nيتدلى من هذا الزواج ثلاثة أبناء:\n\nمربع مظلل بالكامل ويمثل (أحمد)، ويوضع بجانبه سهم (Proband).\n\nدائرتان غير مظللتين تمثلان (أختي أحمد)."
-    }
+  {
+        "id": "cafp1",
+        "front": "Pedigree Chart Case 1: Draw the family pedigree: 'Ali is 3 years old, He is the 2nd spill of consanguinity marriage, one month ago, he suffers from bleeding after eating beans, His sister died from accident from 6 months'",
+        "back": "طريقة الرسم:\n\nيتم رسم مربع (يمثل الأب) ودائرة (تمثل الأم) ويوصل بينهما بخطين مزدوجين (للدلالة على زواج الأقارب Consanguinity).\n\nيتدلى من هذا الزواج فرعان (الأبناء):\n\nالفرع الأول (الأخت الكبرى التي ماتت): دائرة مشطوب عليها بخط مائل (للدلالة على الوفاة).\n\nالفرع الثاني (علي، المريض بـ G6PD، وهو مرض X-Linked Recessive): يتم رسم مربع مظلل بالكامل (Affected Male) ويوضع بجانبه سهم (للدلالة على أنه الـ Proband/المريض الأساسي). الأم في هذه الحالة يجب أن توضع بداخل دائرتها نقطة لتوضيح أنها (Carrier) حاملة للمرض."
+      },
+  {
+        "id": "cafp2",
+        "front": "Pedigree Chart Case 2: Draw the pedigree of Ahmed who was diagnosed as a neurofibromatosis case with his father complained of the same disease, his mother died in accident, (his parents were consanguineous), he has two sisters.",
+        "back": "طريقة الرسم:\n\nNeurofibromatosis هو مرض (Autosomal Dominant).\n\nيتم رسم مربع مظلل بالكامل يمثل (الأب المصاب)، ودائرة مشطوب عليها مائلاً تمثل (الأم المتوفاة في حادث). يوصل بينهما خطين مزدوجين (زواج أقارب).\n\nيتدلى من هذا الزواج ثلاثة أبناء:\n\nمربع مظلل بالكامل ويمثل (أحمد)، ويوضع بجانبه سهم (Proband).\n\nدائرتان غير مظللتين تمثلان (أختي أحمد)."
+      }
   ],
   "PATTERNS OF SINGLE GENE INHERITANCE": [
-    {
-      "id": "psgi1",
-      "front": "Explain why a father cannot inherit G6PD to his boys.",
-      "back": "G6PD is an X-Linked Recessive disorder. The defective allele is located on the X-chromosome. Since males pass the Y chromosome to their sons (to make them male) and the X chromosome only to their daughters, affected males will never have affected sons (No male-to-male transmission), but all of their daughters will be carriers of the abnormal gene."
-    }
+  {
+        "id": "psgi1",
+        "front": "Explain why a father cannot inherit G6PD to his boys.",
+        "back": "G6PD is an X-Linked Recessive disorder. The defective allele is located on the X-chromosome. Since males pass the Y chromosome to their sons (to make them male) and the X chromosome only to their daughters, affected males will never have affected sons (No male-to-male transmission), but all of their daughters will be carriers of the abnormal gene."
+      }
   ],
   "PREVENTIVE GENETICS": [
-    {
-      "id": "pg1",
-      "front": "Define Genetic counseling.",
-      "back": "A health service that provides information and support to people who have or may be at risk for genetic disorders. During a consultation, a professional meets with an individual or family to discuss genetic risks or to diagnose, confirm, or rule out a genetic condition."
-    },
-    {
-      "id": "pg2",
-      "front": "Enumerate 3 prenatal screening methods for Down syndrome.",
-      "back": "Biochemical markers in maternal serum (Non-invasive): Triple tests (AFP, uE3, HCG).\n\nUltrasound (Non-invasive): to assess nuchal fold thickness and fetal measurements.\n\nInvasive screening tests: Chorionic villus sampling or Amniocentesis."
-    },
-    {
-      "id": "pg3",
-      "front": "Why is the Neonatal screening test done through the first 3 to 7 days? And enumerate 2 screening tests.",
-      "back": "Why: Because the baby should be fed at least once. Early detection and treatment results in prevention of irreversible complications before the baby has signs and symptoms.\n\n2 screening tests: Phenylketonuria (PKU) and Congenital Hypothyroidism (CHT)."
-    },
-    {
-      "id": "pg4",
-      "front": "Explain the need for genetic counseling for a 40 years old female planning for pregnancy.",
-      "back": "A woman who is pregnant or plans to become pregnant at or after age 35 is considered at high risk. Advanced maternal age (especially over 35-40 years) increases the occurrence of numerical chromosomal aberrations (nondisjunction) such as Down syndrome (Trisomy 21), where the risk reaches 1/20 by age 45. It also increases the risk of spontaneous abortions."
-    },
-    {
-      "id": "pg5",
-      "front": "Mention the technique of the heel pricking test.",
-      "back": "Whole blood samples are collected using either the lateral or medial plantar surface of the infant's heel for the puncture site on a filter paper (which is simple to collect, transport, and store)."
-    },
-    {
-      "id": "pg6",
-      "front": "Regarding the neonatal screening program in Egypt: Describe the technique of sample withdrawal and its timing. Give 1 example of a screened disease and its measured substance.",
-      "back": "Technique: Whole blood sample from a heel prick on a filter paper.\n\nTiming: Between 24 hours and 7 days after birth (usually 3rd to 7th day).\n\nExample: Congenital hypothyroidism (Measured substance: Thyroid Stimulating Hormone 'TSH')."
-    },
-    {
-      "id": "pg7",
-      "front": "Define Neonatal screening.",
-      "back": "It is a public health program designed to screen infants shortly after birth to detect babies at risk for congenital and heritable disorders before they have signs and symptoms, allowing early detection and treatment to prevent irreversible complications."
-    },
-    {
-      "id": "pg8",
-      "front": "List 4 methods of invasive prenatal screening tests.",
-      "back": "Chorionic villus sampling.\n\nAmniocentesis.\n\nFetal blood sampling (cordocentesis).\n\nFetoscopy.\n(ويمكن إضافة Fetal tissue sampling خامساً)."
-    },
-    {
-      "id": "pg9",
-      "front": "Name 3 examples of diseases screened in newly-born infants.",
-      "back": "Congenital hypothyroidism.\n\nPhenylketonuria.\n\nBlood cell disorders (like Sickle cell anemia or Beta-Thalassemia)."
-    },
-    {
-      "id": "pg10",
-      "front": "Name the example of the screened newborn disorder in Egypt.",
-      "back": "Congenital hypothyroidism (and Phenylketonuria)."
-    }
+  {
+        "id": "pg1",
+        "front": "Define Genetic counseling.",
+        "back": "A health service that provides information and support to people who have or may be at risk for genetic disorders. During a consultation, a professional meets with an individual or family to discuss genetic risks or to diagnose, confirm, or rule out a genetic condition."
+      },
+  {
+        "id": "pg2",
+        "front": "Enumerate 3 prenatal screening methods for Down syndrome.",
+        "back": "Biochemical markers in maternal serum (Non-invasive): Triple tests (AFP, uE3, HCG).\n\nUltrasound (Non-invasive): to assess nuchal fold thickness and fetal measurements.\n\nInvasive screening tests: Chorionic villus sampling or Amniocentesis."
+      },
+  {
+        "id": "pg3",
+        "front": "Why is the Neonatal screening test done through the first 3 to 7 days? And enumerate 2 screening tests.",
+        "back": "Why: Because the baby should be fed at least once. Early detection and treatment results in prevention of irreversible complications before the baby has signs and symptoms.\n\n2 screening tests: Phenylketonuria (PKU) and Congenital Hypothyroidism (CHT)."
+      },
+  {
+        "id": "pg4",
+        "front": "Explain the need for genetic counseling for a 40 years old female planning for pregnancy.",
+        "back": "A woman who is pregnant or plans to become pregnant at or after age 35 is considered at high risk. Advanced maternal age (especially over 35-40 years) increases the occurrence of numerical chromosomal aberrations (nondisjunction) such as Down syndrome (Trisomy 21), where the risk reaches 1/20 by age 45. It also increases the risk of spontaneous abortions."
+      },
+  {
+        "id": "pg5",
+        "front": "Mention the technique of the heel pricking test.",
+        "back": "Whole blood samples are collected using either the lateral or medial plantar surface of the infant's heel for the puncture site on a filter paper (which is simple to collect, transport, and store)."
+      },
+  {
+        "id": "pg6",
+        "front": "Regarding the neonatal screening program in Egypt: Describe the technique of sample withdrawal and its timing. Give 1 example of a screened disease and its measured substance.",
+        "back": "Technique: Whole blood sample from a heel prick on a filter paper.\n\nTiming: Between 24 hours and 7 days after birth (usually 3rd to 7th day).\n\nExample: Congenital hypothyroidism (Measured substance: Thyroid Stimulating Hormone 'TSH')."
+      },
+  {
+        "id": "pg7",
+        "front": "Define Neonatal screening.",
+        "back": "It is a public health program designed to screen infants shortly after birth to detect babies at risk for congenital and heritable disorders before they have signs and symptoms, allowing early detection and treatment to prevent irreversible complications."
+      },
+  {
+        "id": "pg8",
+        "front": "List 4 methods of invasive prenatal screening tests.",
+        "back": "Chorionic villus sampling.\n\nAmniocentesis.\n\nFetal blood sampling (cordocentesis).\n\nFetoscopy.\n(ويمكن إضافة Fetal tissue sampling خامساً)."
+      },
+  {
+        "id": "pg9",
+        "front": "Name 3 examples of diseases screened in newly-born infants.",
+        "back": "Congenital hypothyroidism.\n\nPhenylketonuria.\n\nBlood cell disorders (like Sickle cell anemia or Beta-Thalassemia)."
+      },
+  {
+        "id": "pg10",
+        "front": "Name the example of the screened newborn disorder in Egypt.",
+        "back": "Congenital hypothyroidism (and Phenylketonuria)."
+      }
   ],
   "PEDIATRIC GROWTH": [
-    {
-      "id": "pg1",
-      "front": "Define growth.",
-      "back": "Growth is the natural increase in the size of the body either by hyperplasia through the multiplication of different cells of different organs or by hypertrophy through an increase in cell size."
-    },
-    {
-      "id": "pg2",
-      "front": "Mention types of Growth charts",
-      "back": "Percentile curves.\nStandard deviation curves.\nVelocity curves.\nConditional centiles."
-    }
+  {
+        "id": "pg1",
+        "front": "Define growth.",
+        "back": "Growth is the natural increase in the size of the body either by hyperplasia through the multiplication of different cells of different organs or by hypertrophy through an increase in cell size."
+      },
+  {
+        "id": "pg2",
+        "front": "Mention types of Growth charts",
+        "back": "Percentile curves.\nStandard deviation curves.\nVelocity curves.\nConditional centiles."
+      }
   ],
   "Biological Age & Maturation (Bone & Teeth)": [
-    {
-      "id": "bone1",
-      "front": "Enumerate the causes of Delayed Dentition.",
-      "back": "Rickets (أشهر وأهم سبب)\nHypothyroidism\nHypopituitarism\nDown syndrome\nMalnutrition\nFamilial / Idiopathic\n\n💡 Mnemonic لتسهيل التذكر:\n(عيلة داون عندها نقص تغذية وكساح في الغدة)"
-    }
+  {
+        "id": "bone1",
+        "front": "Enumerate the causes of Delayed Dentition.",
+        "back": "Rickets (أشهر وأهم سبب)\nHypothyroidism\nHypopituitarism\nDown syndrome\nMalnutrition\nFamilial / Idiopathic\n\n💡 Mnemonic لتسهيل التذكر:\n(عيلة داون عندها نقص تغذية وكساح في الغدة)"
+      }
   ],
   "_CHAPTER_Neurology": [
-    {
-      "id": "neuro_q1",
-      "category": "previous_years",
-      "front": "Functional classification of cerebral palsy.",
-      "back": "Class 1: No limitation of activity.\nClass 2: Slight to moderate limitation of activity.\nClass 3: Moderate to great limitation of activity.\nClass 4: No useful physical activity."
-    },
-    {
-      "id": "neuro_q2",
-      "category": "previous_years",
-      "front": "Enumerate four investigations for Duchenne Muscular Dystrophy (DMD).",
-      "back": "1. Creatine kinase (CK) / CPK: Markedly elevated.\n2. Electromyography (EMG): Myopathic pattern.\n3. Muscle biopsy: Diagnostic — shows muscle fiber degeneration with replacement by fat and fibrosis.\n4. Prenatal diagnosis: Amniocentesis or chorionic villous sampling (genetic diagnosis). Detection of female carrier via high serum CPK can also be included."
-    },
-    {
-      "id": "neuro_q3",
-      "category": "previous_years",
-      "front": "Mention two main causes for inability to walk in children.",
-      "back": "1. Primary inability to walk (no walking till age 18 months):\n   - Paralytic: e.g. Cerebral palsy.\n   - Non-paralytic: e.g. Rickets.\n2. Secondary inability to walk (loss of previously acquired walking ability):\n   - Paralytic: e.g. Muscular dystrophies.\n   - Non-paralytic: e.g. Severe debilitating diseases."
-    },
-    {
-      "id": "neuro_q4",
-      "category": "previous_years",
-      "front": "Enumerate the clinical types (topographical distribution) of Spastic Cerebral Palsy.",
-      "back": "1. Hemiplegia: Arm & leg on the same side of the body.\n2. Diplegia: Arms and legs involved, but legs more than arms.\n3. Quadriplegia / Tetraplegia: Arms and legs equally involved OR arms more than legs.\n4. Monoplegia: One limb only.\n5. Triplegia: Three limbs.\n6. Paraplegia: Only legs involved."
-    },
-    {
-      "id": "neuro_q5",
-      "category": "previous_years",
-      "front": "Enumerate the clinical features and physical findings of a child presenting with Duchenne Muscular Dystrophy (DMD).",
-      "back": "Sex & Age: Usually male, presenting at 3–5 years of age.\nMuscle Weakness: Bilateral symmetrical, proximal > distal, with no sensory manifestation.\nShoulder Girdle Weakness: Unable to raise arm above the head; winging of scapula (weak serratus anterior).\nPelvic Girdle Weakness: Waddling lordotic gait, difficulty climbing stairs, positive Gower sign.\nPseudohypertrophy: Affects calf muscles, deltoid and forearm.\nPreserved Muscles: Hand muscles, extraocular muscles, urethral and anal sphincters, diaphragm.\nAssociated Features: Cardiomyopathy (constant feature), mental subnormality (frank MR in 25%), frequent respiratory infections and UTI.\nProgression: Most patients unable to walk by 12 years; death by end of second decade due to respiratory or heart failure."
-    },
-    {
-      "id": "neuro_q6",
-      "category": "previous_years",
-      "front": "Enumerate the causes of microcephaly in children.",
-      "back": "Primary (Genetic) Microcephaly:\n- Exposure of the embryo to a noxious agent during the first weeks after conception.\n- Microcephaly vera (AR inheritance).\n- Chromosomal disorders (Down syndrome, Edward syndrome).\n- Defective neurulation (Anencephaly, Encephalocele).\n- Defective prosencephalization (Agenesis of corpus callosum, Holoprosencephaly).\n- Defective cellular migration (Lissencephaly).\n\nSecondary Microcephaly:\n- Intrauterine disorders: Congenital infections (CMV, Rubella, Toxoplasmosis), drugs, fetal alcohol.\n- Perinatal brain injuries: HIE, Intracranial hemorrhage, Meningitis & Encephalitis.\n- Postnatal systemic disease: Chronic renal disease & Malnutrition."
-    },
-    {
-      "id": "neuro_q7",
-      "category": "previous_years",
-      "front": "Enumerate the clinical signs of increased intracranial pressure (ICP) in an infant.",
-      "back": "1. Seizures and disturbed level of consciousness.\n2. Hyperreflexia.\n3. Abnormal cranial expansion or bowing of the forehead (due to ventricular enlargement).\n4. Slippage on vertical suspension (associated with profound central hypotonia secondary to severe cerebral insults)."
-    },
-    {
-      "id": "neuro_q8",
-      "category": "previous_years",
-      "front": "Mention the clinical diagnostic criteria for Autism Spectrum Disorder (ASD).",
-      "back": "1. Persistent deficits in social communication and social interaction across multiple contexts.\n2. Restricted, repetitive patterns of behavior, interests, or activities (e.g. stereotyped motor movements, insistence on sameness, fixated interests).\n3. Symptoms must be present in the early developmental period.\n4. Symptoms cause clinically significant impairment in social, occupational, or other important areas of current functioning."
-    },
-    {
-      "id": "neuro_q9",
-      "category": "both",
-      "front": "Enumerate four main clinical features or diagnostic hallmarks of West Syndrome (Infantile Spasms).",
-      "back": "1. Onset: Characteristically between 4–8 months of age.\n2. Spasms in clusters: Sudden movements — Flexor (sudden flexion of neck, arms and legs), Extensor (extension of arms and extremities), or Mixed.\n3. EEG Hallmark: Hypsarrhythmia (chaotic high-voltage slow waves).\n4. Mental retardation / Developmental delay: Highly associated with secondary/organic forms (~80% of cases)."
-    },
-    {
-      "id": "neuro_clinoma_q1",
-      "category": "clinoma",
-      "type": "flashcard",
-      "front": "Define the following terms:\n1. Cerebral palsy\n2. Seizure\n3. Status Epilepticus\n4. Febrile convulsion\n5. Craniostenosis",
-      "back": "1. Cerebral palsy: An encephalopathy resulting from malfunction of motor unit of the developing brain due to brain insult during prenatal, natal and postnatal periods leading to central motor deficit which is non-progressive, non-familial, and non-hereditary.\n2. Seizure: Paroxysmal bouts of electrical activities of the brain manifested by impaired consciousness, motor, sensory, psychic or autonomic manifestations.\n3. Status Epilepticus: A seizure that lasts longer than 5 minutes, or having more than 1 seizure within a 5 minutes period, without returning to a normal level of consciousness between episodes.\n4. Febrile convulsion: Generalized, tonic-clonic seizure associated with a febrile illness, in infancy and childhood but without any CNS infection, severe metabolic disturbance, or other known neurological cause.\n5. Craniostenosis: Premature closure of one or more cranial sutures."
-    },
-    {
-      "id": "neuro_clinoma_q2",
-      "category": "clinoma",
-      "type": "flashcard",
-      "front": "Enumerate four clinical signs used for the early detection or suspicion of cerebral palsy in infants.",
-      "back": "(Any 4 of the following)\n1. Delayed motor milestones.\n2. Keeping the hand clenched after the age of 3 months.\n3. Difficulty of abduction of the thighs during a diaper change (early sign of spasticity).\n4. Early neck support.\n5. Persistence of Moro reflex after 6 months or Grasp reflex after 4 months."
-    },
-    {
-      "id": "neuro_clinoma_q3",
-      "category": "clinoma",
-      "type": "flashcard",
-      "front": "Enumerate the four clinical signs used to diagnose severe hypotonia in a floppy infant.",
-      "back": "1. Frog leg position (denotes hypotonia of lower limbs).\n2. Head lag (when pulled up from hands in supine position, the head lags backwards).\n3. Curved trunk on ventral suspension (the baby drops around the examiner's hand in prone suspension).\n4. Slippage on vertical suspension (denotes hypotonia of shoulder girdle muscles)."
-    },
-    {
-      "id": "neuro_clinoma_q4",
-      "category": "clinoma",
-      "type": "flashcard",
-      "front": "Enumerate the four obligatory criteria that characterize muscular dystrophies.",
-      "back": "1. Primary myopathy.\n2. Progressive.\n3. Genetic basis.\n4. Characteristic muscle fiber degeneration and muscle cell death at some stage."
-    },
-    {
-      "id": "neuro_clinoma_q5",
-      "category": "clinoma",
-      "type": "flashcard",
-      "front": "Enumerate four paralytic or non-paralytic causes of primary inability to walk (no walking by age 18 months).",
-      "back": "(Any 4 of the following)\n1. Cerebral palsy.\n2. Hydrocephalus.\n3. Poliomyelitis.\n4. Werding Hoffman disease.\n5. Mental retardation or Rickets."
-    },
-    {
-      "id": "neuro_clinoma_q6",
-      "category": "clinoma",
-      "type": "flashcard",
-      "front": "Enumerate four clinical criteria of a typical febrile convulsion.",
-      "back": "(Any 4 of the following)\n1. Susceptible age: 9 months up to 5 years.\n2. Seizure is generalized tonic-clonic.\n3. Brief duration (lasting from a few seconds to 15 minutes).\n4. Only one fit during the same illness in 24 hours.\n5. No signs of CNS infection."
-    },
-    {
-      "id": "neuro_clinoma_q7",
-      "category": "clinoma",
-      "type": "flashcard",
-      "front": "Enumerate four risk factors for developing epilepsy in a child with a history of febrile convulsions.",
-      "back": "1. Atypical features of the seizure (focal, repeated, or prolonged >15 min).\n2. Positive family history of epilepsy.\n3. An initial febrile seizure before 9 months of age.\n4. Delayed developmental milestones, or a pre-existing neurologic disorder."
-    },
-    {
-      "id": "neuro_clinoma_q8",
-      "category": "clinoma",
-      "type": "flashcard",
-      "front": "Enumerate four cranial causes of macrocephaly (conditions with a thickened skull).",
-      "back": "(Any 4 of the following)\n1. Rickets.\n2. Chronic hemolytic anemia.\n3. Osteopetrosis.\n4. Osteogenesis imperfecta.\n5. Bone dysplasia."
-    },
-    {
-      "id": "neuro_clinoma_case_1",
-      "category": "clinoma",
-      "type": "case",
-      "front": "Case Scenario 1 (Neurology)",
-      "caseBody": "A 4-year-old boy is brought to the clinic because of progressive difficulty in climbing stairs and a clumsy, waddling gait. On physical examination, the clinician notes bilateral, symmetrical proximal muscle weakness affecting the pelvic girdle, marked pseudohypertrophy of the calf muscles, and a positive Gowers sign. Laboratory investigations reveal a markedly elevated serum creatine kinase (CK) level.",
-      "subQuestions": [
-        {
-          "id": "neuro_c1_sq1",
-          "questionText": "What is the most likely clinical diagnosis?",
-          "back": "Duchenne muscular dystrophy."
-        },
-        {
-          "id": "neuro_c1_sq2",
-          "questionText": "What is the genetic mode of inheritance and the specific protein defect responsible for this disease?",
-          "back": "It is an X-linked recessive (XLR) disorder caused by a defect in the dystrophin protein."
-        },
-        {
-          "id": "neuro_c1_sq3",
-          "questionText": "What would a muscle biopsy characteristically demonstrate to confirm the diagnosis?",
-          "back": "Muscle fiber degeneration with replacement by fat and fibrosis."
-        }
-      ]
-    },
-    {
-      "id": "neuro_clinoma_case_2",
-      "category": "clinoma",
-      "type": "case",
-      "front": "Case Scenario 2 (Neurology)",
-      "caseBody": "A 3-year-old child with an acute out-of-hospital history of high fever due to acute otitis media is rushed to the emergency department while actively convulsing. The parent states that the generalized tonic-clonic fit has been continuous for the past 20 minutes, and the child has not regained normal consciousness between episodes.",
-      "subQuestions": [
-        {
-          "id": "neuro_c2_sq1",
-          "questionText": "What is the exact medical emergency diagnosis for this child's current condition?",
-          "back": "Status Epilepticus (specifically a prolonged febrile convulsion)."
-        },
-        {
-          "id": "neuro_c2_sq2",
-          "questionText": "What is the immediate first-line medication protocol and route of choice if intravenous (IV) access is not yet established?",
-          "back": "Rectal diazepam at a dose of 0.3-0.5 mg/kg (maximum 10 mg)."
-        },
-        {
-          "id": "neuro_c2_sq3",
-          "questionText": "What life-threatening risk must the clinician anticipate if intravenous Phenobarbital is administered immediately after giving Diazepam?",
-          "back": "Severe incidence of respiratory depression."
-        }
-      ]
-    },
-    {
-      "id": "neuro_clinoma_case_3",
-      "category": "clinoma",
-      "type": "case",
-      "front": "Case Scenario 3 (Neurology)",
-      "caseBody": "A 2-month-old infant is evaluated for profound, persistent generalized muscle weakness and severe floppy hypotonia noticed since birth. On physical examination, the infant lies in a complete \"frog leg position,\" shows marked head lag when pulled to sit, and has completely absent deep tendon reflexes. The clinician observes distinct fine fasciculations of the tongue, but notes that the infant is completely alert and responsive.",
-      "subQuestions": [
-        {
-          "id": "neuro_c3_sq1",
-          "questionText": "What is the most likely diagnosis?",
-          "back": "Werding Hoffman Disease (Spinal Muscular Atrophy)."
-        },
-        {
-          "id": "neuro_c3_sq2",
-          "questionText": "What is the primary underlying pathological mechanism of this disease?",
-          "back": "Primary degeneration and atrophy of the anterior horn cells (AHC) and motor nuclei of the brain stem."
-        },
-        {
-          "id": "neuro_c3_sq3",
-          "questionText": "What does a confirmatory muscle biopsy characteristically reveal?",
-          "back": "Neurogenic type of atrophy, or muscle spindles atrophied in groups."
-        }
-      ]
-    }
+  {
+        "id": "neuro_q1",
+        "category": "previous_years",
+        "front": "Functional classification of cerebral palsy.",
+        "back": "Class 1: No limitation of activity.\nClass 2: Slight to moderate limitation of activity.\nClass 3: Moderate to great limitation of activity.\nClass 4: No useful physical activity."
+      },
+  {
+        "id": "neuro_q2",
+        "category": "previous_years",
+        "front": "Enumerate four investigations for Duchenne Muscular Dystrophy (DMD).",
+        "back": "1. Creatine kinase (CK) / CPK: Markedly elevated.\n2. Electromyography (EMG): Myopathic pattern.\n3. Muscle biopsy: Diagnostic — shows muscle fiber degeneration with replacement by fat and fibrosis.\n4. Prenatal diagnosis: Amniocentesis or chorionic villous sampling (genetic diagnosis). Detection of female carrier via high serum CPK can also be included."
+      },
+  {
+        "id": "neuro_q3",
+        "category": "previous_years",
+        "front": "Mention two main causes for inability to walk in children.",
+        "back": "1. Primary inability to walk (no walking till age 18 months):\n   - Paralytic: e.g. Cerebral palsy.\n   - Non-paralytic: e.g. Rickets.\n2. Secondary inability to walk (loss of previously acquired walking ability):\n   - Paralytic: e.g. Muscular dystrophies.\n   - Non-paralytic: e.g. Severe debilitating diseases."
+      },
+  {
+        "id": "neuro_q4",
+        "category": "previous_years",
+        "front": "Enumerate the clinical types (topographical distribution) of Spastic Cerebral Palsy.",
+        "back": "1. Hemiplegia: Arm & leg on the same side of the body.\n2. Diplegia: Arms and legs involved, but legs more than arms.\n3. Quadriplegia / Tetraplegia: Arms and legs equally involved OR arms more than legs.\n4. Monoplegia: One limb only.\n5. Triplegia: Three limbs.\n6. Paraplegia: Only legs involved."
+      },
+  {
+        "id": "neuro_q5",
+        "category": "previous_years",
+        "front": "Enumerate the clinical features and physical findings of a child presenting with Duchenne Muscular Dystrophy (DMD).",
+        "back": "Sex & Age: Usually male, presenting at 3–5 years of age.\nMuscle Weakness: Bilateral symmetrical, proximal > distal, with no sensory manifestation.\nShoulder Girdle Weakness: Unable to raise arm above the head; winging of scapula (weak serratus anterior).\nPelvic Girdle Weakness: Waddling lordotic gait, difficulty climbing stairs, positive Gower sign.\nPseudohypertrophy: Affects calf muscles, deltoid and forearm.\nPreserved Muscles: Hand muscles, extraocular muscles, urethral and anal sphincters, diaphragm.\nAssociated Features: Cardiomyopathy (constant feature), mental subnormality (frank MR in 25%), frequent respiratory infections and UTI.\nProgression: Most patients unable to walk by 12 years; death by end of second decade due to respiratory or heart failure."
+      },
+  {
+        "id": "neuro_q6",
+        "category": "previous_years",
+        "front": "Enumerate the causes of microcephaly in children.",
+        "back": "Primary (Genetic) Microcephaly:\n- Exposure of the embryo to a noxious agent during the first weeks after conception.\n- Microcephaly vera (AR inheritance).\n- Chromosomal disorders (Down syndrome, Edward syndrome).\n- Defective neurulation (Anencephaly, Encephalocele).\n- Defective prosencephalization (Agenesis of corpus callosum, Holoprosencephaly).\n- Defective cellular migration (Lissencephaly).\n\nSecondary Microcephaly:\n- Intrauterine disorders: Congenital infections (CMV, Rubella, Toxoplasmosis), drugs, fetal alcohol.\n- Perinatal brain injuries: HIE, Intracranial hemorrhage, Meningitis & Encephalitis.\n- Postnatal systemic disease: Chronic renal disease & Malnutrition."
+      },
+  {
+        "id": "neuro_q7",
+        "category": "previous_years",
+        "front": "Enumerate the clinical signs of increased intracranial pressure (ICP) in an infant.",
+        "back": "1. Seizures and disturbed level of consciousness.\n2. Hyperreflexia.\n3. Abnormal cranial expansion or bowing of the forehead (due to ventricular enlargement).\n4. Slippage on vertical suspension (associated with profound central hypotonia secondary to severe cerebral insults)."
+      },
+  {
+        "id": "neuro_q8",
+        "category": "previous_years",
+        "front": "Mention the clinical diagnostic criteria for Autism Spectrum Disorder (ASD).",
+        "back": "1. Persistent deficits in social communication and social interaction across multiple contexts.\n2. Restricted, repetitive patterns of behavior, interests, or activities (e.g. stereotyped motor movements, insistence on sameness, fixated interests).\n3. Symptoms must be present in the early developmental period.\n4. Symptoms cause clinically significant impairment in social, occupational, or other important areas of current functioning."
+      },
+  {
+        "id": "neuro_q9",
+        "category": "both",
+        "front": "Enumerate four main clinical features or diagnostic hallmarks of West Syndrome (Infantile Spasms).",
+        "back": "1. Onset: Characteristically between 4–8 months of age.\n2. Spasms in clusters: Sudden movements — Flexor (sudden flexion of neck, arms and legs), Extensor (extension of arms and extremities), or Mixed.\n3. EEG Hallmark: Hypsarrhythmia (chaotic high-voltage slow waves).\n4. Mental retardation / Developmental delay: Highly associated with secondary/organic forms (~80% of cases)."
+      },
+  {
+        "id": "neuro_clinoma_q1",
+        "category": "clinoma",
+        "type": "flashcard",
+        "front": "Define the following terms:\n1. Cerebral palsy\n2. Seizure\n3. Status Epilepticus\n4. Febrile convulsion\n5. Craniostenosis",
+        "back": "1. Cerebral palsy: An encephalopathy resulting from malfunction of motor unit of the developing brain due to brain insult during prenatal, natal and postnatal periods leading to central motor deficit which is non-progressive, non-familial, and non-hereditary.\n2. Seizure: Paroxysmal bouts of electrical activities of the brain manifested by impaired consciousness, motor, sensory, psychic or autonomic manifestations.\n3. Status Epilepticus: A seizure that lasts longer than 5 minutes, or having more than 1 seizure within a 5 minutes period, without returning to a normal level of consciousness between episodes.\n4. Febrile convulsion: Generalized, tonic-clonic seizure associated with a febrile illness, in infancy and childhood but without any CNS infection, severe metabolic disturbance, or other known neurological cause.\n5. Craniostenosis: Premature closure of one or more cranial sutures."
+      },
+  {
+        "id": "neuro_clinoma_q2",
+        "category": "clinoma",
+        "type": "flashcard",
+        "front": "Enumerate four clinical signs used for the early detection or suspicion of cerebral palsy in infants.",
+        "back": "(Any 4 of the following)\n1. Delayed motor milestones.\n2. Keeping the hand clenched after the age of 3 months.\n3. Difficulty of abduction of the thighs during a diaper change (early sign of spasticity).\n4. Early neck support.\n5. Persistence of Moro reflex after 6 months or Grasp reflex after 4 months."
+      },
+  {
+        "id": "neuro_clinoma_q3",
+        "category": "clinoma",
+        "type": "flashcard",
+        "front": "Enumerate the four clinical signs used to diagnose severe hypotonia in a floppy infant.",
+        "back": "1. Frog leg position (denotes hypotonia of lower limbs).\n2. Head lag (when pulled up from hands in supine position, the head lags backwards).\n3. Curved trunk on ventral suspension (the baby drops around the examiner's hand in prone suspension).\n4. Slippage on vertical suspension (denotes hypotonia of shoulder girdle muscles)."
+      },
+  {
+        "id": "neuro_clinoma_q4",
+        "category": "clinoma",
+        "type": "flashcard",
+        "front": "Enumerate the four obligatory criteria that characterize muscular dystrophies.",
+        "back": "1. Primary myopathy.\n2. Progressive.\n3. Genetic basis.\n4. Characteristic muscle fiber degeneration and muscle cell death at some stage."
+      },
+  {
+        "id": "neuro_clinoma_q5",
+        "category": "clinoma",
+        "type": "flashcard",
+        "front": "Enumerate four paralytic or non-paralytic causes of primary inability to walk (no walking by age 18 months).",
+        "back": "(Any 4 of the following)\n1. Cerebral palsy.\n2. Hydrocephalus.\n3. Poliomyelitis.\n4. Werding Hoffman disease.\n5. Mental retardation or Rickets."
+      },
+  {
+        "id": "neuro_clinoma_q6",
+        "category": "clinoma",
+        "type": "flashcard",
+        "front": "Enumerate four clinical criteria of a typical febrile convulsion.",
+        "back": "(Any 4 of the following)\n1. Susceptible age: 9 months up to 5 years.\n2. Seizure is generalized tonic-clonic.\n3. Brief duration (lasting from a few seconds to 15 minutes).\n4. Only one fit during the same illness in 24 hours.\n5. No signs of CNS infection."
+      },
+  {
+        "id": "neuro_clinoma_q7",
+        "category": "clinoma",
+        "type": "flashcard",
+        "front": "Enumerate four risk factors for developing epilepsy in a child with a history of febrile convulsions.",
+        "back": "1. Atypical features of the seizure (focal, repeated, or prolonged >15 min).\n2. Positive family history of epilepsy.\n3. An initial febrile seizure before 9 months of age.\n4. Delayed developmental milestones, or a pre-existing neurologic disorder."
+      },
+  {
+        "id": "neuro_clinoma_q8",
+        "category": "clinoma",
+        "type": "flashcard",
+        "front": "Enumerate four cranial causes of macrocephaly (conditions with a thickened skull).",
+        "back": "(Any 4 of the following)\n1. Rickets.\n2. Chronic hemolytic anemia.\n3. Osteopetrosis.\n4. Osteogenesis imperfecta.\n5. Bone dysplasia."
+      },
+  {
+        "id": "neuro_clinoma_case_1",
+        "category": "clinoma",
+        "type": "case",
+        "front": "Case Scenario 1 (Neurology)",
+        "caseBody": "A 4-year-old boy is brought to the clinic because of progressive difficulty in climbing stairs and a clumsy, waddling gait. On physical examination, the clinician notes bilateral, symmetrical proximal muscle weakness affecting the pelvic girdle, marked pseudohypertrophy of the calf muscles, and a positive Gowers sign. Laboratory investigations reveal a markedly elevated serum creatine kinase (CK) level.",
+        "subQuestions": [
+          {
+            "id": "neuro_c1_sq1",
+            "questionText": "What is the most likely clinical diagnosis?",
+            "back": "Duchenne muscular dystrophy."
+          },
+          {
+            "id": "neuro_c1_sq2",
+            "questionText": "What is the genetic mode of inheritance and the specific protein defect responsible for this disease?",
+            "back": "It is an X-linked recessive (XLR) disorder caused by a defect in the dystrophin protein."
+          },
+          {
+            "id": "neuro_c1_sq3",
+            "questionText": "What would a muscle biopsy characteristically demonstrate to confirm the diagnosis?",
+            "back": "Muscle fiber degeneration with replacement by fat and fibrosis."
+          }
+        ]
+      },
+  {
+        "id": "neuro_clinoma_case_2",
+        "category": "clinoma",
+        "type": "case",
+        "front": "Case Scenario 2 (Neurology)",
+        "caseBody": "A 3-year-old child with an acute out-of-hospital history of high fever due to acute otitis media is rushed to the emergency department while actively convulsing. The parent states that the generalized tonic-clonic fit has been continuous for the past 20 minutes, and the child has not regained normal consciousness between episodes.",
+        "subQuestions": [
+          {
+            "id": "neuro_c2_sq1",
+            "questionText": "What is the exact medical emergency diagnosis for this child's current condition?",
+            "back": "Status Epilepticus (specifically a prolonged febrile convulsion)."
+          },
+          {
+            "id": "neuro_c2_sq2",
+            "questionText": "What is the immediate first-line medication protocol and route of choice if intravenous (IV) access is not yet established?",
+            "back": "Rectal diazepam at a dose of 0.3-0.5 mg/kg (maximum 10 mg)."
+          },
+          {
+            "id": "neuro_c2_sq3",
+            "questionText": "What life-threatening risk must the clinician anticipate if intravenous Phenobarbital is administered immediately after giving Diazepam?",
+            "back": "Severe incidence of respiratory depression."
+          }
+        ]
+      },
+  {
+        "id": "neuro_clinoma_case_3",
+        "category": "clinoma",
+        "type": "case",
+        "front": "Case Scenario 3 (Neurology)",
+        "caseBody": "A 2-month-old infant is evaluated for profound, persistent generalized muscle weakness and severe floppy hypotonia noticed since birth. On physical examination, the infant lies in a complete \"frog leg position,\" shows marked head lag when pulled to sit, and has completely absent deep tendon reflexes. The clinician observes distinct fine fasciculations of the tongue, but notes that the infant is completely alert and responsive.",
+        "subQuestions": [
+          {
+            "id": "neuro_c3_sq1",
+            "questionText": "What is the most likely diagnosis?",
+            "back": "Werding Hoffman Disease (Spinal Muscular Atrophy)."
+          },
+          {
+            "id": "neuro_c3_sq2",
+            "questionText": "What is the primary underlying pathological mechanism of this disease?",
+            "back": "Primary degeneration and atrophy of the anterior horn cells (AHC) and motor nuclei of the brain stem."
+          },
+          {
+            "id": "neuro_c3_sq3",
+            "questionText": "What does a confirmatory muscle biopsy characteristically reveal?",
+            "back": "Neurogenic type of atrophy, or muscle spindles atrophied in groups."
+          }
+        ]
+      }
   ],
   "Principles of Family Medicine": [
   {
-    "id": "sec_paper_principles_of_family_medicine_q1",
-    "front": "Define family medicine as a unique clinical discipline.",
-    "back": "Family medicine is a unique clinical discipline distinguished by its process of care, not merely by its content. At the center of this process lies the patient-physician relationship, with the patient viewed within the context of the family and the community."
-  },
+      "id": "sec_paper_principles_of_family_medicine_q1",
+      "front": "Define family medicine as a unique clinical discipline.",
+      "back": "Family medicine is a unique clinical discipline distinguished by its process of care, not merely by its content. At the center of this process lies the patient-physician relationship, with the patient viewed within the context of the family and the community."
+    },
   {
-    "id": "sec_paper_principles_of_family_medicine_q2",
-    "front": "Provide the American Academy of Family Physicians (AAFP) definition of Family Medicine.",
-    "back": "\"Family medicine is the medical specialty which provides continuing and comprehensive health care for the individual and the family. In breadth, it integrates the biological, clinical, and behavioral sciences. The scope of family practice encompasses all ages, sexes, organ systems, and every disease entity.\""
-  },
+      "id": "sec_paper_principles_of_family_medicine_q2",
+      "front": "Provide the American Academy of Family Physicians (AAFP) definition of Family Medicine.",
+      "back": "\"Family medicine is the medical specialty which provides continuing and comprehensive health care for the individual and the family. In breadth, it integrates the biological, clinical, and behavioral sciences. The scope of family practice encompasses all ages, sexes, organ systems, and every disease entity.\""
+    },
   {
-    "id": "sec_paper_principles_of_family_medicine_q3",
-    "front": "Provide the Olesen Definition (2006) of the family physician.",
-    "back": "\"The family physician is the specialist trained to work at the front line of the health care system and to take the initial steps in providing care for any health problem a patient may have.\""
-  },
+      "id": "sec_paper_principles_of_family_medicine_q3",
+      "front": "Provide the Olesen Definition (2006) of the family physician.",
+      "back": "\"The family physician is the specialist trained to work at the front line of the health care system and to take the initial steps in providing care for any health problem a patient may have.\""
+    },
   {
-    "id": "sec_paper_principles_of_family_medicine_q4",
-    "front": "Enumerate the core principles of Family Medicine.",
-    "back": "Continuity of Care\nComprehensiveness\nCoordination and Collaboration\nCommunity-Oriented Care & Family-Oriented Care"
-  },
+      "id": "sec_paper_principles_of_family_medicine_q4",
+      "front": "Enumerate the core principles of Family Medicine.",
+      "back": "Continuity of Care\nComprehensiveness\nCoordination and Collaboration\nCommunity-Oriented Care & Family-Oriented Care"
+    },
   {
-    "id": "sec_paper_principles_of_family_medicine_q5",
-    "front": "List the key elements of Continuity of Care in family practice.",
-    "back": "Mutual trust between patient and physician, Long-term therapeutic relationship, Effectiveness of care, and Continuity focused on the patient, not on isolated diseases."
-  }
-],
+      "id": "sec_paper_principles_of_family_medicine_q5",
+      "front": "List the key elements of Continuity of Care in family practice.",
+      "back": "Mutual trust between patient and physician, Long-term therapeutic relationship, Effectiveness of care, and Continuity focused on the patient, not on isolated diseases."
+    }
+  ],
   "The Family Physician & RISE Framework": [
   {
-    "id": "sec_paper_the_family_physician___rise_framework_q1",
-    "front": "Define the Family Physician.",
-    "back": "A family physician is a medical doctor working at the front line of health care, responsible for providing comprehensive, continuous, and person-centered care (physical, psychological, and social) to individuals within the context of their families, and to families within the context of their communities."
-  },
+      "id": "sec_paper_the_family_physician___rise_framework_q1",
+      "front": "Define the Family Physician.",
+      "back": "A family physician is a medical doctor working at the front line of health care, responsible for providing comprehensive, continuous, and person-centered care (physical, psychological, and social) to individuals within the context of their families, and to families within the context of their communities."
+    },
   {
-    "id": "sec_paper_the_family_physician___rise_framework_q2",
-    "front": "List the roles of the family physician as a Five-Star Doctor summarized by the WHO.",
-    "back": "Assesses and improves the quality of care by responding to the patient's total health needs.\nMakes optimal use of new technologies in health care.\nPromotes healthy lifestyles.\nRecognizes individual and community health needs.\nWorks efficiently as a member of the health care team."
-  },
+      "id": "sec_paper_the_family_physician___rise_framework_q2",
+      "front": "List the roles of the family physician as a Five-Star Doctor summarized by the WHO.",
+      "back": "Assesses and improves the quality of care by responding to the patient's total health needs.\nMakes optimal use of new technologies in health care.\nPromotes healthy lifestyles.\nRecognizes individual and community health needs.\nWorks efficiently as a member of the health care team."
+    },
   {
-    "id": "sec_paper_the_family_physician___rise_framework_q3",
-    "front": "Explain the preventive role of the family physician using the RISE framework.",
-    "back": "R - Risk assessment: Identification of risk factors at individual and family levels.\nI - Immunization: Responsibility for vaccination services.\nS - Screening: Early detection of diseases.\nE - Education: Health education of individuals, families, and the community regarding health problems and their solutions."
-  },
+      "id": "sec_paper_the_family_physician___rise_framework_q3",
+      "front": "Explain the preventive role of the family physician using the RISE framework.",
+      "back": "R - Risk assessment: Identification of risk factors at individual and family levels.\nI - Immunization: Responsibility for vaccination services.\nS - Screening: Early detection of diseases.\nE - Education: Health education of individuals, families, and the community regarding health problems and their solutions."
+    },
   {
-    "id": "sec_paper_the_family_physician___rise_framework_q4",
-    "front": "Enumerate the managerial roles of the family physician within the Family Health Center.",
-    "back": "Responsible for all activities within the Family Health Center (FHC), promotes intersectoral coordination, ensures implementation of national health policies, and investigates public complaints to meet community needs."
-  }
-],
+      "id": "sec_paper_the_family_physician___rise_framework_q4",
+      "front": "Enumerate the managerial roles of the family physician within the Family Health Center.",
+      "back": "Responsible for all activities within the Family Health Center (FHC), promotes intersectoral coordination, ensures implementation of national health policies, and investigates public complaints to meet community needs."
+    }
+  ],
   "Comparative Medical Models": [
   {
-    "id": "sec_paper_comparative_medical_models_q1",
-    "front": "Compare the Specialist Care Model and the Family Medicine Model regarding patient context, focus, and continuity.",
-    "back": "Specialist Care Model: Care regardless of family context; Problem-centered (focuses on specific disease); Limited appreciation of physician-patient relationship; Fragmented care.\nFamily Medicine Model: Care within the context of the family; Patient-centered (recognizes patient concerns/values); Strong emphasis on a healing, continuous relationship; Continuous care."
-  },
+      "id": "sec_paper_comparative_medical_models_q1",
+      "front": "Compare the Specialist Care Model and the Family Medicine Model regarding patient context, focus, and continuity.",
+      "back": "Specialist Care Model: Care regardless of family context; Problem-centered (focuses on specific disease); Limited appreciation of physician-patient relationship; Fragmented care.\nFamily Medicine Model: Care within the context of the family; Patient-centered (recognizes patient concerns/values); Strong emphasis on a healing, continuous relationship; Continuous care."
+    },
   {
-    "id": "sec_paper_comparative_medical_models_q2",
-    "front": "Enumerate the differences between the Traditional Model of Practice and the Family Medicine Model regarding medical records, team structure, and approach.",
-    "back": "Traditional Model: Paper-based medical records; Single physician is the main source of care; Care is mostly reactive; Non-organized chronic disease management.\nFamily Medicine Model: Electronic health records; Multidisciplinary healthcare team approach; Care is both responsive and proactive; Purposeful, organized chronic disease management."
-  }
-],
+      "id": "sec_paper_comparative_medical_models_q2",
+      "front": "Enumerate the differences between the Traditional Model of Practice and the Family Medicine Model regarding medical records, team structure, and approach.",
+      "back": "Traditional Model: Paper-based medical records; Single physician is the main source of care; Care is mostly reactive; Non-organized chronic disease management.\nFamily Medicine Model: Electronic health records; Multidisciplinary healthcare team approach; Care is both responsive and proactive; Purposeful, organized chronic disease management."
+    }
+  ],
   "Family Health Team & PHC Services": [
   {
-    "id": "sec_paper_family_health_team___phc_services_q1",
-    "front": "List the composition of the clinical staff in a Family Health Team.",
-    "back": "Family Physician (Team Leader), Nurses, Pharmacists, Laboratory Technicians, Laboratory Assistants, Social Worker, and Sanitarian."
-  },
+      "id": "sec_paper_family_health_team___phc_services_q1",
+      "front": "List the composition of the clinical staff in a Family Health Team.",
+      "back": "Family Physician (Team Leader), Nurses, Pharmacists, Laboratory Technicians, Laboratory Assistants, Social Worker, and Sanitarian."
+    },
   {
-    "id": "sec_paper_family_health_team___phc_services_q2",
-    "front": "Enumerate 4 core services delivered by the Family Health Team at the FHU/FHC.",
-    "back": "Creating and maintaining family folders.\nProviding bio-psycho-social care throughout all stages of the human life cycle.\nConducting initial examinations for all family members.\nEarly detection of health problems through periodic examinations and screening tests."
-  },
+      "id": "sec_paper_family_health_team___phc_services_q2",
+      "front": "Enumerate 4 core services delivered by the Family Health Team at the FHU/FHC.",
+      "back": "Creating and maintaining family folders.\nProviding bio-psycho-social care throughout all stages of the human life cycle.\nConducting initial examinations for all family members.\nEarly detection of health problems through periodic examinations and screening tests."
+    },
   {
-    "id": "sec_paper_family_health_team___phc_services_q3",
-    "front": "List the factors that help in upgrading and improving Family Health Team performance.",
-    "back": "Clearly defined job descriptions, regular training and capacity-building, regular team meetings for planning/monitoring, incentives (financial and non-financial), and an effective system of communication."
-  }
-],
+      "id": "sec_paper_family_health_team___phc_services_q3",
+      "front": "List the factors that help in upgrading and improving Family Health Team performance.",
+      "back": "Clearly defined job descriptions, regular training and capacity-building, regular team meetings for planning/monitoring, incentives (financial and non-financial), and an effective system of communication."
+    }
+  ],
   "Family Dynamics & The Human Life Cycle": [
   {
-    "id": "sec_paper_family_dynamics___the_human_life_cycle_q1",
-    "front": "Define Family.",
-    "back": "The family is the structural and functional unit of the community, consisting of two or more related persons living together for more than 6 months."
-  },
+      "id": "sec_paper_family_dynamics___the_human_life_cycle_q1",
+      "front": "Define Family.",
+      "back": "The family is the structural and functional unit of the community, consisting of two or more related persons living together for more than 6 months."
+    },
   {
-    "id": "sec_paper_family_dynamics___the_human_life_cycle_q2",
-    "front": "Enumerate the main functions of the family using the CAPRS framework.",
-    "back": "C - Care: Provision of basic needs such as food, shelter, and social support.\nA - Affection: Psychosocial support including love, warmth, and emotional security.\nP - Providing status: Helping members determine future education, occupation, and social roles.\nR - Reproduction: Continuity of the family through legal marriage and childbearing.\nS - Socialization: Teaching social skills, norms, values, and acceptable behaviors."
-  },
+      "id": "sec_paper_family_dynamics___the_human_life_cycle_q2",
+      "front": "Enumerate the main functions of the family using the CAPRS framework.",
+      "back": "C - Care: Provision of basic needs such as food, shelter, and social support.\nA - Affection: Psychosocial support including love, warmth, and emotional security.\nP - Providing status: Helping members determine future education, occupation, and social roles.\nR - Reproduction: Continuity of the family through legal marriage and childbearing.\nS - Socialization: Teaching social skills, norms, values, and acceptable behaviors."
+    },
   {
-    "id": "sec_paper_family_dynamics___the_human_life_cycle_q3",
-    "front": "List 4 developmental stages of the human life cycle and their corresponding transitional events.",
-    "back": "Preconception (Conception), Fetal life (Birth), Breast dependence (Weaning), and Preschool age (School entry)."
-  },
+      "id": "sec_paper_family_dynamics___the_human_life_cycle_q3",
+      "front": "List 4 developmental stages of the human life cycle and their corresponding transitional events.",
+      "back": "Preconception (Conception), Fetal life (Birth), Breast dependence (Weaning), and Preschool age (School entry)."
+    },
   {
-    "id": "sec_paper_family_dynamics___the_human_life_cycle_q4",
-    "front": "Classify the stressful life events that affect family dynamics.",
-    "back": "Severe stress events: Death, divorce, marital separation, legal problems.\nModerate stress events: Illness, job problems, outstanding achievements.\nMild stress events: Change of residence, changes in sleep or eating habits, holidays."
-  }
-],
+      "id": "sec_paper_family_dynamics___the_human_life_cycle_q4",
+      "front": "Classify the stressful life events that affect family dynamics.",
+      "back": "Severe stress events: Death, divorce, marital separation, legal problems.\nModerate stress events: Illness, job problems, outstanding achievements.\nMild stress events: Change of residence, changes in sleep or eating habits, holidays."
+    }
+  ],
   "Basic Benefit Package & Level of Care": [
   {
-    "id": "sec_paper_basic_benefit_package___level_of_care_q1",
-    "front": "Define the Basic Benefit Package (BBP).",
-    "back": "The Basic Benefit Package (BBP) is a defined group of essential medical services delivered through primary health care to meet the priority health needs of the population, with particular emphasis on women, children, and vulnerable groups."
-  },
+      "id": "sec_paper_basic_benefit_package___level_of_care_q1",
+      "front": "Define the Basic Benefit Package (BBP).",
+      "back": "The Basic Benefit Package (BBP) is a defined group of essential medical services delivered through primary health care to meet the priority health needs of the population, with particular emphasis on women, children, and vulnerable groups."
+    },
   {
-    "id": "sec_paper_basic_benefit_package___level_of_care_q2",
-    "front": "Mention the three levels of service delivery of the BBP.",
-    "back": "Family Health Unit (FHU)\nFamily Health Centre (FHC)\nHospital Level"
-  },
+      "id": "sec_paper_basic_benefit_package___level_of_care_q2",
+      "front": "Mention the three levels of service delivery of the BBP.",
+      "back": "Family Health Unit (FHU)\nFamily Health Centre (FHC)\nHospital Level"
+    },
   {
-    "id": "sec_paper_basic_benefit_package___level_of_care_q3",
-    "front": "Enumerate the laboratory investigations available specifically at the Family Health Unit (FHU) level.",
-    "back": "Blood glucose, Blood group and Rh factor, Erythrocyte sedimentation rate (ESR), Hemoglobin (Hb), Pregnancy test, Stool analysis, and Urine analysis."
-  }
-],
+      "id": "sec_paper_basic_benefit_package___level_of_care_q3",
+      "front": "Enumerate the laboratory investigations available specifically at the Family Health Unit (FHU) level.",
+      "back": "Blood glucose, Blood group and Rh factor, Erythrocyte sedimentation rate (ESR), Hemoglobin (Hb), Pregnancy test, Stool analysis, and Urine analysis."
+    }
+  ],
   "Patient Education & Verbal Counseling": [
   {
-    "id": "sec_paper_patient_education___verbal_counseling_q1",
-    "front": "Define Patient Education.",
-    "back": "Patient education is a continuous process of teaching and learning between health care providers and patients that aims to influence patient behaviour and produce positive changes in knowledge, attitudes, and skills required to maintain or improve health."
-  },
+      "id": "sec_paper_patient_education___verbal_counseling_q1",
+      "front": "Define Patient Education.",
+      "back": "Patient education is a continuous process of teaching and learning between health care providers and patients that aims to influence patient behaviour and produce positive changes in knowledge, attitudes, and skills required to maintain or improve health."
+    },
   {
-    "id": "sec_paper_patient_education___verbal_counseling_q2",
-    "front": "Mention 4 appropriate times to integrate patient education during a clinical encounter.",
-    "back": "During history taking, during physical examination, during diagnosis discussion, and during treatment planning."
-  },
+      "id": "sec_paper_patient_education___verbal_counseling_q2",
+      "front": "Mention 4 appropriate times to integrate patient education during a clinical encounter.",
+      "back": "During history taking, during physical examination, during diagnosis discussion, and during treatment planning."
+    },
   {
-    "id": "sec_paper_patient_education___verbal_counseling_q3",
-    "front": "Enumerate the core principles of effective patient education.",
-    "back": "Feedback, Reinforcement, Individualization, Facilitation, Use of multiple educational channels, Assessment of patient knowledge, and Evaluation of understanding."
-  }
-],
+      "id": "sec_paper_patient_education___verbal_counseling_q3",
+      "front": "Enumerate the core principles of effective patient education.",
+      "back": "Feedback, Reinforcement, Individualization, Facilitation, Use of multiple educational channels, Assessment of patient knowledge, and Evaluation of understanding."
+    }
+  ],
   "Referral & Consultation Processes": [
   {
-    "id": "sec_paper_referral___consultation_processes_q1",
-    "front": "Define Referral and differentiate it from a Consultation.",
-    "back": "Referral is formal communication between family physicians and specialists, transferring the responsibility of a patient to another physician for care of a specific problem. Consultation is the practice of one physician asking another for an opinion or assistance regarding the diagnosis and management."
-  },
+      "id": "sec_paper_referral___consultation_processes_q1",
+      "front": "Define Referral and differentiate it from a Consultation.",
+      "back": "Referral is formal communication between family physicians and specialists, transferring the responsibility of a patient to another physician for care of a specific problem. Consultation is the practice of one physician asking another for an opinion or assistance regarding the diagnosis and management."
+    },
   {
-    "id": "sec_paper_referral___consultation_processes_q2",
-    "front": "Mention 4 valid clinical reasons for a family physician to refer a patient to secondary care.",
-    "back": "Inadequate diagnostic or therapeutic resources in the clinic; confirmation of diagnosis or plan of management; patient's request for a second opinion; and when the physician is unsatisfied with the patient's prognosis."
-  },
+      "id": "sec_paper_referral___consultation_processes_q2",
+      "front": "Mention 4 valid clinical reasons for a family physician to refer a patient to secondary care.",
+      "back": "Inadequate diagnostic or therapeutic resources in the clinic; confirmation of diagnosis or plan of management; patient's request for a second opinion; and when the physician is unsatisfied with the patient's prognosis."
+    },
   {
-    "id": "sec_paper_referral___consultation_processes_q3",
-    "front": "List 4 essential elements that must be included in a proper referral letter.",
-    "back": "Socio-demographic data (name, age, sex, record number); type of referral (urgent or elective); complaint and present history; and provisional diagnosis/reasons for referral."
-  }
-],
+      "id": "sec_paper_referral___consultation_processes_q3",
+      "front": "List 4 essential elements that must be included in a proper referral letter.",
+      "back": "Socio-demographic data (name, age, sex, record number); type of referral (urgent or elective); complaint and present history; and provisional diagnosis/reasons for referral."
+    }
+  ],
   "Anticipatory Care & Immunization Guidelines": [
   {
-    "id": "sec_paper_anticipatory_care___immunization_guidelines_q1",
-    "front": "Define Anticipatory Care and list its main aims.",
-    "back": "All measures aiming to promote good health and prevent or delay diseases or their complications at different age groups. Aims include improving quality of life, reducing the burden of disability, and increasing life expectancy."
-  },
+      "id": "sec_paper_anticipatory_care___immunization_guidelines_q1",
+      "front": "Define Anticipatory Care and list its main aims.",
+      "back": "All measures aiming to promote good health and prevent or delay diseases or their complications at different age groups. Aims include improving quality of life, reducing the burden of disability, and increasing life expectancy."
+    },
   {
-    "id": "sec_paper_anticipatory_care___immunization_guidelines_q2",
-    "front": "Enumerate the true contraindications to vaccination.",
-    "back": "Anaphylactic reaction to a vaccine; seizure or fever > 40.5°C within 48 hours of a pertussis vaccine; true Egg Allergy (MMR); Neomycin allergy (MMR); immunocompromised patient (OPV); and untreated moderate to severe illness + fever."
-  },
+      "id": "sec_paper_anticipatory_care___immunization_guidelines_q2",
+      "front": "Enumerate the true contraindications to vaccination.",
+      "back": "Anaphylactic reaction to a vaccine; seizure or fever > 40.5°C within 48 hours of a pertussis vaccine; true Egg Allergy (MMR); Neomycin allergy (MMR); immunocompromised patient (OPV); and untreated moderate to severe illness + fever."
+    },
   {
-    "id": "sec_paper_anticipatory_care___immunization_guidelines_q3",
-    "front": "List 4 conditions that are NOT true contraindications to immunization.",
-    "back": "Prematurity (immunize at usual chronological age); recent mild infection like otitis media; penicillin allergy; and a breast-feeding or pregnant mother."
-  }
-],
+      "id": "sec_paper_anticipatory_care___immunization_guidelines_q3",
+      "front": "List 4 conditions that are NOT true contraindications to immunization.",
+      "back": "Prematurity (immunize at usual chronological age); recent mild infection like otitis media; penicillin allergy; and a breast-feeding or pregnant mother."
+    }
+  ],
   "Adolescent Psychosocial Health & HEADSSS Interview": [
   {
-    "id": "sec_paper_adolescent_psychosocial_health___headsss_interview_q1",
-    "front": "List the components evaluated during the HEEADSSS psychosocial interview for adolescents.",
-    "back": "Home, Eating, Education, Activities, Drugs, Suicide/depression, Sex, and Safety."
-  },
+      "id": "sec_paper_adolescent_psychosocial_health___headsss_interview_q1",
+      "front": "List the components evaluated during the HEEADSSS psychosocial interview for adolescents.",
+      "back": "Home, Eating, Education, Activities, Drugs, Suicide/depression, Sex, and Safety."
+    },
   {
-    "id": "sec_paper_adolescent_psychosocial_health___headsss_interview_q2",
-    "front": "Mention the 5 clinical premises useful when communicating with and caring for adolescents.",
-    "back": "Explain Facts (clear understanding of illness).\nExplore Fears (worries about body image/identity).\nAddress any Fables (misinformation).\nExplore relationship with Family.\nAsk how the adolescent views the Future."
-  }
-],
+      "id": "sec_paper_adolescent_psychosocial_health___headsss_interview_q2",
+      "front": "Mention the 5 clinical premises useful when communicating with and caring for adolescents.",
+      "back": "Explain Facts (clear understanding of illness).\nExplore Fears (worries about body image/identity).\nAddress any Fables (misinformation).\nExplore relationship with Family.\nAsk how the adolescent views the Future."
+    }
+  ],
   "IMCI Case Management Overview": [
   {
-    "id": "sec_paper_imci_case_management_overview_q1",
-    "front": "List the sequential steps involved in the IMCI case management process.",
-    "back": "1. Assess all sick infants and children; 2. Classify each health condition using color-coded charts; 3. Treat; 4. Counsel caregivers; 5. Provide follow-up care."
-  },
+      "id": "sec_paper_imci_case_management_overview_q1",
+      "front": "List the sequential steps involved in the IMCI case management process.",
+      "back": "1. Assess all sick infants and children; 2. Classify each health condition using color-coded charts; 3. Treat; 4. Counsel caregivers; 5. Provide follow-up care."
+    },
   {
-    "id": "sec_paper_imci_case_management_overview_q2",
-    "front": "Enumerate the 4 General Danger Signs that must be checked for every sick child aged 2 months to 5 years.",
-    "back": "Is the child able to drink or breastfeed?\nDoes the child vomit everything?\nHas the child had convulsions?\nIs the child lethargic or unconscious?"
-  },
+      "id": "sec_paper_imci_case_management_overview_q2",
+      "front": "Enumerate the 4 General Danger Signs that must be checked for every sick child aged 2 months to 5 years.",
+      "back": "Is the child able to drink or breastfeed?\nDoes the child vomit everything?\nHas the child had convulsions?\nIs the child lethargic or unconscious?"
+    },
   {
-    "id": "sec_paper_imci_case_management_overview_q3",
-    "front": "Explain what the 3 color-coded classifications represent in IMCI.",
-    "back": "RED: Very serious condition requiring urgent pre-referral treatment and hospital referral.\nYELLOW: Serious condition needing specific treatment and advice within the clinic.\nGREEN: Less serious condition needing home treatment and advice."
-  }
-],
+      "id": "sec_paper_imci_case_management_overview_q3",
+      "front": "Explain what the 3 color-coded classifications represent in IMCI.",
+      "back": "RED: Very serious condition requiring urgent pre-referral treatment and hospital referral.\nYELLOW: Serious condition needing specific treatment and advice within the clinic.\nGREEN: Less serious condition needing home treatment and advice."
+    }
+  ],
   "IMCI Treatment Antibiotics & Wheezing Management": [
   {
-    "id": "sec_paper_imci_treatment_antibiotics___wheezing_management_q1",
-    "front": "List the first-line and second-line oral antibiotics recommended by IMCI for Pneumonia or Acute Ear Infection.",
-    "back": "First-line antibiotic: Amoxicillin. Second-line antibiotic: Cotrimoxazole."
-  },
+      "id": "sec_paper_imci_treatment_antibiotics___wheezing_management_q1",
+      "front": "List the first-line and second-line oral antibiotics recommended by IMCI for Pneumonia or Acute Ear Infection.",
+      "back": "First-line antibiotic: Amoxicillin. Second-line antibiotic: Cotrimoxazole."
+    },
   {
-    "id": "sec_paper_imci_treatment_antibiotics___wheezing_management_q2",
-    "front": "Explain the IMCI management strategy for a child presenting with wheezing and a general danger sign or stridor.",
-    "back": "Give one dose of a rapid-acting bronchodilator (such as nebulized salbutamol or MDI with spacer) and refer urgently to the hospital."
-  },
+      "id": "sec_paper_imci_treatment_antibiotics___wheezing_management_q2",
+      "front": "Explain the IMCI management strategy for a child presenting with wheezing and a general danger sign or stridor.",
+      "back": "Give one dose of a rapid-acting bronchodilator (such as nebulized salbutamol or MDI with spacer) and refer urgently to the hospital."
+    },
   {
-    "id": "sec_paper_imci_treatment_antibiotics___wheezing_management_q3",
-    "front": "Mention the instructions and recipe to treat a child to prevent low blood sugar in the clinic.",
-    "back": "If able to swallow, give expressed breastmilk or sugar water. To make sugar water: Dissolve 4 level teaspoons of sugar (20 grams) in a 200-ml cup of clean water. If unable to swallow, give 50 ml of milk or sugar water by nasogastric tube."
-  }
-],
+      "id": "sec_paper_imci_treatment_antibiotics___wheezing_management_q3",
+      "front": "Mention the instructions and recipe to treat a child to prevent low blood sugar in the clinic.",
+      "back": "If able to swallow, give expressed breastmilk or sugar water. To make sugar water: Dissolve 4 level teaspoons of sugar (20 grams) in a 200-ml cup of clean water. If unable to swallow, give 50 ml of milk or sugar water by nasogastric tube."
+    }
+  ],
   "IMCI Management of Diarrhoea and Dehydration": [
   {
-    "id": "sec_paper_imci_management_of_diarrhoea_and_dehydration_q1",
-    "front": "List the 4 clinical signs evaluated in IMCI to classify dehydration in a child with diarrhea.",
-    "back": "General condition (lethargic/unconscious vs restless/irritable); sunken eyes; fluid offering response (not able to drink/poorly vs drinking eagerly/thirsty); and the abdominal skin pinch test."
-  },
+      "id": "sec_paper_imci_management_of_diarrhoea_and_dehydration_q1",
+      "front": "List the 4 clinical signs evaluated in IMCI to classify dehydration in a child with diarrhea.",
+      "back": "General condition (lethargic/unconscious vs restless/irritable); sunken eyes; fluid offering response (not able to drink/poorly vs drinking eagerly/thirsty); and the abdominal skin pinch test."
+    },
   {
-    "id": "sec_paper_imci_management_of_diarrhoea_and_dehydration_q2",
-    "front": "Short Clinical Case",
-    "type": "case",
-    "caseBody": "A 3-year-old child presents with watery diarrhea. On exam, the child is restless and irritable, has sunken eyes, and drinks eagerly/thirsty when offered fluid. The skin pinch goes back slowly.",
-    "subQuestions": [
-      {
-        "id": "sec_paper_imci_management_of_diarrhoea_and_dehydration_q2_sub1",
-        "questionText": "Classify the dehydration status.",
-        "back": "Classification: Some Dehydration (due to presence of two signs: restless/irritable, sunken eyes, and drinking eagerly)."
-      },
-      {
-        "id": "sec_paper_imci_management_of_diarrhoea_and_dehydration_q2_sub2",
-        "questionText": "Identify the required IMCI treatment plan.",
-        "back": "Treatment: Plan B (Treat Some Dehydration with ORS over a 4-hour period in the clinic, give Zinc Syrup for 14 days, and advise on when to return immediately)."
-      }
-    ]
-  }
-],
+      "id": "sec_paper_imci_management_of_diarrhoea_and_dehydration_q2",
+      "front": "Short Clinical Case",
+      "type": "case",
+      "caseBody": "A 3-year-old child presents with watery diarrhea. On exam, the child is restless and irritable, has sunken eyes, and drinks eagerly/thirsty when offered fluid. The skin pinch goes back slowly.",
+      "subQuestions": [
+        {
+          "id": "sec_paper_imci_management_of_diarrhoea_and_dehydration_q2_sub1",
+          "questionText": "Classify the dehydration status.",
+          "back": "Classification: Some Dehydration (due to presence of two signs: restless/irritable, sunken eyes, and drinking eagerly)."
+        },
+        {
+          "id": "sec_paper_imci_management_of_diarrhoea_and_dehydration_q2_sub2",
+          "questionText": "Identify the required IMCI treatment plan.",
+          "back": "Treatment: Plan B (Treat Some Dehydration with ORS over a 4-hour period in the clinic, give Zinc Syrup for 14 days, and advise on when to return immediately)."
+        }
+      ]
+    }
+  ],
   "IMCI Young Infant Care (Up to 2 Months)": [
   {
-    "id": "sec_paper_imci_young_infant_care__up_to_2_months__q1",
-    "front": "List the 5 primary conditions that must be assessed in every sick young infant up to 2 months old.",
-    "back": "1. Possible bacterial infection; 2. Significant jaundice; 3. Diarrhoea; 4. Feeding problem or low weight; 5. Young infant's immunization status."
-  },
+      "id": "sec_paper_imci_young_infant_care__up_to_2_months__q1",
+      "front": "List the 5 primary conditions that must be assessed in every sick young infant up to 2 months old.",
+      "back": "1. Possible bacterial infection; 2. Significant jaundice; 3. Diarrhoea; 4. Feeding problem or low weight; 5. Young infant's immunization status."
+    },
   {
-    "id": "sec_paper_imci_young_infant_care__up_to_2_months__q2",
-    "front": "Enumerate 4 clinical signs that classify a young infant under 2 months as having a \"Possible Serious Bacterial Infection\".",
-    "back": "Not able to feed, convulsions, fast breathing (60 breaths per minute or more), severe chest indrawing, nasal flaring, grunting, bulging fontanelle, fever (37.5°C or above), or low body temperature (less than 35.5°C)."
-  }
-],
+      "id": "sec_paper_imci_young_infant_care__up_to_2_months__q2",
+      "front": "Enumerate 4 clinical signs that classify a young infant under 2 months as having a \"Possible Serious Bacterial Infection\".",
+      "back": "Not able to feed, convulsions, fast breathing (60 breaths per minute or more), severe chest indrawing, nasal flaring, grunting, bulging fontanelle, fever (37.5°C or above), or low body temperature (less than 35.5°C)."
+    }
+  ],
   "Breastfeeding Management & Composition": [
   {
-    "id": "sec_paper_breastfeeding_management___composition_q1",
-    "front": "Enumerate 4 health benefits of breastfeeding for the lactating mother.",
-    "back": "Reduces risk of breast and ovarian cancer; lowers risk of type 2 diabetes and hypertension; reduces risk of developing osteoporosis; and produces oxytocin to help contract the uterus back to its pre-pregnancy size."
-  },
+      "id": "sec_paper_breastfeeding_management___composition_q1",
+      "front": "Enumerate 4 health benefits of breastfeeding for the lactating mother.",
+      "back": "Reduces risk of breast and ovarian cancer; lowers risk of type 2 diabetes and hypertension; reduces risk of developing osteoporosis; and produces oxytocin to help contract the uterus back to its pre-pregnancy size."
+    },
   {
-    "id": "sec_paper_breastfeeding_management___composition_q2",
-    "front": "Differentiate between \"Fore-milk\" and \"Hind-milk\" in mature breast milk.",
-    "back": "Fore-milk: Found at the beginning of the feeding; contains water, vitamins, and protein to keep the infant hydrated.\nHind-milk: Occurs after the initial release of milk; contains higher levels of fat and is necessary for proper weight gain."
-  },
+      "id": "sec_paper_breastfeeding_management___composition_q2",
+      "front": "Differentiate between \"Fore-milk\" and \"Hind-milk\" in mature breast milk.",
+      "back": "Fore-milk: Found at the beginning of the feeding; contains water, vitamins, and protein to keep the infant hydrated.\nHind-milk: Occurs after the initial release of milk; contains higher levels of fat and is necessary for proper weight gain."
+    },
   {
-    "id": "sec_paper_breastfeeding_management___composition_q3",
-    "front": "List 3 absolute contraindications where a mother must NOT breastfeed or feed expressed breast milk.",
-    "back": "Infant diagnosed with classic galactosemia.\nMother has HIV and is not on antiretroviral therapy (ART).\nMother is using an illicit drug (such as opioids, PCP, or cocaine)."
-  }
-]
-};
+      "id": "sec_paper_breastfeeding_management___composition_q3",
+      "front": "List 3 absolute contraindications where a mother must NOT breastfeed or feed expressed breast milk.",
+      "back": "Infant diagnosed with classic galactosemia.\nMother has HIV and is not on antiretroviral therapy (ART).\nMother is using an illicit drug (such as opioids, PCP, or cocaine)."
+    }
+  ]
+};;
 
 const getQuestionsForKey = (key: string) => {
   if (!key) return [];
@@ -12349,16 +12343,16 @@ const FlashSpace = () => {
                         <BBCodeMarkdown
                           content={firebaseNotes[selectedBoard.disease] || PEDIATRICS_EXPLANATIONS[selectedBoard.disease]}
                           components={{
-                            h1: ({node, ...props}) => <h1 className="text-2xl font-black text-current mt-8 mb-4 border-b pb-3 border-slate-200 text-right" {...props} />,
-                            h2: ({node, ...props}) => <h2 className="text-xl font-black text-current mt-6 mb-3 border-r-4 border-current pr-3 text-right" {...props} />,
-                            h3: ({node, ...props}) => <h3 className="text-lg font-extrabold text-current mt-5 mb-2 text-right" {...props} />,
-                            p: ({node, ...props}) => <span className="text-current leading-loose text-base text-right" {...props} />,
-                            ul: ({node, ...props}) => <ul className="list-disc list-inside mr-4 mb-4 space-y-2 text-current text-right" {...props} />,
-                            ol: ({node, ...props}) => <ol className="list-decimal list-inside mr-4 mb-4 space-y-2 text-current text-right" {...props} />,
-                            li: ({node, ...props}) => <li className="marker:text-current text-current" {...props} />,
-                            strong: ({node, ...props}) => <strong className="font-black text-current" {...props} />,
-                            code: ({node, ...props}) => <code className="font-mono text-sm bg-slate-100/60 px-2 py-0.5 rounded-lg mx-0.5 text-current font-bold" {...props} />,
-                            hr: ({node, ...props}) => <hr className="my-8 border-slate-200" {...props} />,
+                            h1: ({node, ...props}: any) => <h1 className="text-2xl font-black text-current mt-8 mb-4 border-b pb-3 border-slate-200 text-right" {...props} />,
+                            h2: ({node, ...props}: any) => <h2 className="text-xl font-black text-current mt-6 mb-3 border-r-4 border-current pr-3 text-right" {...props} />,
+                            h3: ({node, ...props}: any) => <h3 className="text-lg font-extrabold text-current mt-5 mb-2 text-right" {...props} />,
+                            p: ({node, ...props}: any) => <span className="text-current leading-loose text-base text-right" {...props} />,
+                            ul: ({node, ...props}: any) => <ul className="list-disc list-inside mr-4 mb-4 space-y-2 text-current text-right" {...props} />,
+                            ol: ({node, ...props}: any) => <ol className="list-decimal list-inside mr-4 mb-4 space-y-2 text-current text-right" {...props} />,
+                            li: ({node, ...props}: any) => <li className="marker:text-current text-current" {...props} />,
+                            strong: ({node, ...props}: any) => <strong className="font-black text-current" {...props} />,
+                            code: ({node, ...props}: any) => <code className="font-mono text-sm bg-slate-100/60 px-2 py-0.5 rounded-lg mx-0.5 text-current font-bold" {...props} />,
+                            hr: ({node, ...props}: any) => <hr className="my-8 border-slate-200" {...props} />,
                           }}
                         />
                       ) : (
