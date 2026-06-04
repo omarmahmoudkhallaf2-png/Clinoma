@@ -11853,14 +11853,15 @@ const FlashSpace = () => {
                         <BBCodeMarkdown
                           content={firebaseNotes[selectedBoard.disease] || PEDIATRICS_EXPLANATIONS[selectedBoard.disease]}
                           components={{
-                            h1: ({node, ...props}) => <h1 className="text-2xl font-black text-black mt-8 mb-4 border-b pb-3 border-slate-200 text-right" {...props} />,
-                            h2: ({node, ...props}) => <h2 className="text-xl font-black text-black mt-6 mb-3 border-r-4 border-black pr-3 text-right" {...props} />,
-                            h3: ({node, ...props}) => <h3 className="text-lg font-extrabold text-black mt-5 mb-2 text-right" {...props} />,
-                            p: ({node, ...props}) => <span className="text-black leading-loose text-base text-right" {...props} />,
-                            ul: ({node, ...props}) => <ul className="list-disc list-inside mr-4 mb-4 space-y-2 text-black text-right" {...props} />,
-                            ol: ({node, ...props}) => <ol className="list-decimal list-inside mr-4 mb-4 space-y-2 text-black text-right" {...props} />,
-                            li: ({node, ...props}) => <li className="marker:text-black" {...props} />,
-                            strong: ({node, ...props}) => <strong className="text-black font-black bg-slate-100 px-2 py-0.5 rounded-lg mx-0.5" {...props} />,
+                            h1: ({node, ...props}) => <h1 className="text-2xl font-black text-current mt-8 mb-4 border-b pb-3 border-slate-200 text-right" {...props} />,
+                            h2: ({node, ...props}) => <h2 className="text-xl font-black text-current mt-6 mb-3 border-r-4 border-current pr-3 text-right" {...props} />,
+                            h3: ({node, ...props}) => <h3 className="text-lg font-extrabold text-current mt-5 mb-2 text-right" {...props} />,
+                            p: ({node, ...props}) => <span className="text-current leading-loose text-base text-right" {...props} />,
+                            ul: ({node, ...props}) => <ul className="list-disc list-inside mr-4 mb-4 space-y-2 text-current text-right" {...props} />,
+                            ol: ({node, ...props}) => <ol className="list-decimal list-inside mr-4 mb-4 space-y-2 text-current text-right" {...props} />,
+                            li: ({node, ...props}) => <li className="marker:text-current text-current" {...props} />,
+                            strong: ({node, ...props}) => <strong className="font-black text-current" {...props} />,
+                            code: ({node, ...props}) => <code className="font-mono text-sm bg-slate-100/60 px-2 py-0.5 rounded-lg mx-0.5 text-current font-bold" {...props} />,
                             hr: ({node, ...props}) => <hr className="my-8 border-slate-200" {...props} />,
                           }}
                         />
@@ -12642,14 +12643,15 @@ const FlashSpace = () => {
                 <BBCodeMarkdown
                   content={editedNoteText || 'سيظهر العرض هنا...'}
                   components={{
-                    h1: ({node, ...props}) => <h1 className="text-2xl font-black text-black mt-8 mb-4 border-b pb-3 border-slate-200 text-right" {...props} />,
-                    h2: ({node, ...props}) => <h2 className="text-xl font-black text-black mt-6 mb-3 border-r-4 border-black pr-3 text-right" {...props} />,
-                    h3: ({node, ...props}) => <h3 className="text-lg font-extrabold text-black mt-5 mb-2 text-right" {...props} />,
-                    p: ({node, ...props}) => <span className="text-black leading-loose text-base text-right" {...props} />,
-                    ul: ({node, ...props}) => <ul className="list-disc list-inside mr-4 mb-4 space-y-2 text-black text-right" {...props} />,
-                    ol: ({node, ...props}) => <ol className="list-decimal list-inside mr-4 mb-4 space-y-2 text-black text-right" {...props} />,
-                    li: ({node, ...props}) => <li className="marker:text-black" {...props} />,
-                    strong: ({node, ...props}) => <strong className="text-black font-black bg-slate-200 px-2 py-0.5 rounded-lg mx-0.5" {...props} />,
+                    h1: ({node, ...props}) => <h1 className="text-2xl font-black text-current mt-8 mb-4 border-b pb-3 border-slate-200 text-right" {...props} />,
+                    h2: ({node, ...props}) => <h2 className="text-xl font-black text-current mt-6 mb-3 border-r-4 border-current pr-3 text-right" {...props} />,
+                    h3: ({node, ...props}) => <h3 className="text-lg font-extrabold text-current mt-5 mb-2 text-right" {...props} />,
+                    p: ({node, ...props}) => <span className="text-current leading-loose text-base text-right" {...props} />,
+                    ul: ({node, ...props}) => <ul className="list-disc list-inside mr-4 mb-4 space-y-2 text-current text-right" {...props} />,
+                    ol: ({node, ...props}) => <ol className="list-decimal list-inside mr-4 mb-4 space-y-2 text-current text-right" {...props} />,
+                    li: ({node, ...props}) => <li className="marker:text-current text-current" {...props} />,
+                    strong: ({node, ...props}) => <strong className="font-black text-current" {...props} />,
+                    code: ({node, ...props}) => <code className="font-mono text-sm bg-slate-100/60 px-2 py-0.5 rounded-lg mx-0.5 text-current font-bold" {...props} />,
                     hr: ({node, ...props}) => <hr className="my-8 border-slate-200" {...props} />,
                   }}
                 />
