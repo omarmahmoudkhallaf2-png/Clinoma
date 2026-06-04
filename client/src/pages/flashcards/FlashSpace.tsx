@@ -11848,7 +11848,7 @@ const FlashSpace = () => {
                 {/* Tab Content */}
                 <div className="flex-1 overflow-y-auto">
                   {activeNoteTab === 'notes' ? (
-                    <div className="max-w-3xl mx-auto px-6 md:px-10 py-8 pb-20" dir="rtl">
+                    <div className="max-w-3xl mx-auto px-6 md:px-10 py-8 pb-20 text-slate-800" dir="rtl">
                       {(firebaseNotes[selectedBoard.disease] || PEDIATRICS_EXPLANATIONS[selectedBoard.disease]) ? (
                         <BBCodeMarkdown
                           content={firebaseNotes[selectedBoard.disease] || PEDIATRICS_EXPLANATIONS[selectedBoard.disease]}
@@ -12638,7 +12638,7 @@ const FlashSpace = () => {
               />
               
               {/* Live Preview */}
-              <div className="flex-1 h-full overflow-y-auto bg-slate-50 rounded-xl border border-slate-200 p-6 custom-scrollbar" dir="rtl">
+              <div className="flex-1 h-full overflow-y-auto bg-slate-50 rounded-xl border border-slate-200 p-6 custom-scrollbar text-slate-800" dir="rtl">
                 <p className="text-xs font-black text-slate-400 uppercase tracking-widest mb-4 pb-2 border-b border-slate-200">Live Preview</p>
                 <BBCodeMarkdown
                   content={editedNoteText || 'سيظهر العرض هنا...'}
