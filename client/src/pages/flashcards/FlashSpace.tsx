@@ -8170,6 +8170,88 @@ const playSound = (type: 'click' | 'correct' | 'wrong' | 'success') => {
   }
 };
 
+const parseBBCode = (text: string): React.ReactNode[] => {
+  if (typeof text !== 'string') return [text];
+  
+  const regex = /\[(u|color|size|font|highlight)(?:=([^\]]+))?\]([\s\S]*?)\[\/\1\]/g;
+  let parts: React.ReactNode[] = [];
+  let lastIndex = 0;
+  let match;
+  
+  while ((match = regex.exec(text)) !== null) {
+    const plainText = text.substring(lastIndex, match.index);
+    if (plainText) {
+      parts.push(plainText);
+    }
+    
+    const tag = match[1];
+    const value = match[2] || '';
+    const content = match[3] || '';
+    
+    const parsedContent = parseBBCode(content);
+    const key = `bb-${match.index}`;
+    
+    if (tag === 'u') {
+      parts.push(<span key={key} style={{ textDecoration: 'underline' }}>{parsedContent}</span>);
+    } else if (tag === 'color') {
+      parts.push(<span key={key} style={{ color: value }}>{parsedContent}</span>);
+    } else if (tag === 'size') {
+      const sizeVal = /^\d+$/.test(value) ? `${value}px` : value;
+      parts.push(<span key={key} style={{ fontSize: sizeVal }}>{parsedContent}</span>);
+    } else if (tag === 'font') {
+      let fontFamily = value;
+      if (value.toLowerCase() === 'cartoon' || value.toLowerCase() === 'fredoka') {
+        fontFamily = "'Fredoka', sans-serif";
+      } else if (value.toLowerCase() === 'lalezar') {
+        fontFamily = "'Lalezar', cursive";
+      } else if (value.toLowerCase() === 'cairo') {
+        fontFamily = "'Cairo', sans-serif";
+      } else if (value.toLowerCase() === 'outfit') {
+        fontFamily = "'Outfit', sans-serif";
+      }
+      parts.push(<span key={key} style={{ fontFamily }}>{parsedContent}</span>);
+    } else if (tag === 'highlight') {
+      parts.push(<span key={key} style={{ backgroundColor: value }} className="px-1.5 py-0.5 rounded mx-0.5">{parsedContent}</span>);
+    }
+    
+    lastIndex = regex.lastIndex;
+  }
+  
+  const tail = text.substring(lastIndex);
+  if (tail) {
+    parts.push(tail);
+  }
+  
+  return parts.length > 0 ? parts : [text];
+};
+
+const processBBCodeInChildren = (children: any): any => {
+  if (!children) return children;
+  if (typeof children === 'string') {
+    return parseBBCode(children);
+  }
+  if (Array.isArray(children)) {
+    return children.map((child, idx) => {
+      if (typeof child === 'string') {
+        return <React.Fragment key={idx}>{parseBBCode(child)}</React.Fragment>;
+      }
+      if (React.isValidElement(child) && (child.props as any).children) {
+        return React.cloneElement(child, {
+          key: child.key || idx,
+          children: processBBCodeInChildren((child.props as any).children)
+        } as any);
+      }
+      return child;
+    });
+  }
+  if (React.isValidElement(children) && (children.props as any).children) {
+    return React.cloneElement(children, {
+      children: processBBCodeInChildren((children.props as any).children)
+    } as any);
+  }
+  return children;
+};
+
 const FlashSpace = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -8563,6 +8645,64 @@ const FlashSpace = () => {
   const [reviewFilter, setReviewFilter] = useState<'A'|'B'|'C'>('A');
   const [isEditingNotes, setIsEditingNotes] = useState(false);
   const [editedNoteText, setEditedNoteText] = useState("");
+  
+  const applyFormatting = (tag: string, value?: string) => {
+    const textarea = document.querySelector('textarea') as HTMLTextAreaElement;
+    if (!textarea) return;
+    
+    const start = textarea.selectionStart;
+    const end = textarea.selectionEnd;
+    const text = textarea.value;
+    const selectedText = text.substring(start, end);
+    
+    let formatted = '';
+    if (tag === 'bold') {
+      formatted = `**${selectedText || 'نص عريض'}**`;
+    } else if (tag === 'italic') {
+      formatted = `*${selectedText || 'نص مائل'}*`;
+    } else if (tag === 'underline') {
+      formatted = `[u]${selectedText || 'نص تحت خط'}[/u]`;
+    } else if (tag === 'color') {
+      formatted = `[color=${value}]${selectedText || 'نص ملون'}[/color]`;
+    } else if (tag === 'size') {
+      formatted = `[size=${value}]${selectedText || 'حجم النص'}[/size]`;
+    } else if (tag === 'font') {
+      formatted = `[font=${value}]${selectedText || 'خط مخصص'}[/font]`;
+    } else if (tag === 'highlight') {
+      formatted = `[highlight=${value}]${selectedText || 'نص مميز'}[/highlight]`;
+    } else if (tag === 'h1') {
+      formatted = `\n# ${selectedText || 'عنوان رئيسي'}\n`;
+    } else if (tag === 'h2') {
+      formatted = `\n## ${selectedText || 'عنوان فرعي 1'}\n`;
+    } else if (tag === 'h3') {
+      formatted = `\n### ${selectedText || 'عنوان فرعي 2'}\n`;
+    } else if (tag === 'list') {
+      formatted = `\n* ${selectedText || 'نقطة جديدة'}\n`;
+    } else if (tag === 'line') {
+      formatted = `\n\n---\n\n`;
+    }
+    
+    const newVal = text.substring(0, start) + formatted + text.substring(end);
+    setEditedNoteText(newVal);
+    
+    setTimeout(() => {
+      textarea.focus();
+      if (selectedText) {
+        textarea.setSelectionRange(start, start + formatted.length);
+      } else {
+        // Position cursor inside empty tag if possible
+        let offset = formatted.length;
+        if (formatted.includes(']')) {
+          offset = formatted.indexOf(']') + 1;
+        } else if (formatted.startsWith('**') && formatted.endsWith('**')) {
+          offset = 2;
+        } else if (formatted.startsWith('*') && formatted.endsWith('*')) {
+          offset = 1;
+        }
+        textarea.setSelectionRange(start + offset, start + offset);
+      }
+    }, 0);
+  };
   const [firebaseNotes, setFirebaseNotes] = useState<Record<string, string>>({});
   const [isSavingNote, setIsSavingNote] = useState(false);
 
@@ -11612,14 +11752,14 @@ const FlashSpace = () => {
                       {(firebaseNotes[selectedBoard.disease] || PEDIATRICS_EXPLANATIONS[selectedBoard.disease]) ? (
                         <ReactMarkdown
                           components={{
-                            h1: ({node, ...props}) => <h1 className="text-2xl font-black text-black mt-8 mb-4 border-b pb-3 border-slate-200 text-right" {...props} />,
-                            h2: ({node, ...props}) => <h2 className="text-xl font-black text-black mt-6 mb-3 border-r-4 border-black pr-3 text-right" {...props} />,
-                            h3: ({node, ...props}) => <h3 className="text-lg font-extrabold text-black mt-5 mb-2 text-right" {...props} />,
-                            p: ({node, ...props}) => <p className="mb-4 text-black leading-loose text-base text-right" {...props} />,
-                            ul: ({node, ...props}) => <ul className="list-disc list-inside mr-4 mb-4 space-y-2 text-black text-right" {...props} />,
-                            ol: ({node, ...props}) => <ol className="list-decimal list-inside mr-4 mb-4 space-y-2 text-black text-right" {...props} />,
-                            li: ({node, ...props}) => <li className="marker:text-black" {...props} />,
-                            strong: ({node, ...props}) => <strong className="text-black font-black bg-slate-100 px-2 py-0.5 rounded-lg mx-0.5" {...props} />,
+                            h1: ({node, children, ...props}) => <h1 className="text-2xl font-black text-black mt-8 mb-4 border-b pb-3 border-slate-200 text-right" {...props}>{processBBCodeInChildren(children)}</h1>,
+                            h2: ({node, children, ...props}) => <h2 className="text-xl font-black text-black mt-6 mb-3 border-r-4 border-black pr-3 text-right" {...props}>{processBBCodeInChildren(children)}</h2>,
+                            h3: ({node, children, ...props}) => <h3 className="text-lg font-extrabold text-black mt-5 mb-2 text-right" {...props}>{processBBCodeInChildren(children)}</h3>,
+                            p: ({node, children, ...props}) => <p className="mb-4 text-black leading-loose text-base text-right" {...props}>{processBBCodeInChildren(children)}</p>,
+                            ul: ({node, children, ...props}) => <ul className="list-disc list-inside mr-4 mb-4 space-y-2 text-black text-right" {...props}>{processBBCodeInChildren(children)}</ul>,
+                            ol: ({node, children, ...props}) => <ol className="list-decimal list-inside mr-4 mb-4 space-y-2 text-black text-right" {...props}>{processBBCodeInChildren(children)}</ol>,
+                            li: ({node, children, ...props}) => <li className="marker:text-black" {...props}>{processBBCodeInChildren(children)}</li>,
+                            strong: ({node, children, ...props}) => <strong className="text-black font-black bg-slate-100 px-2 py-0.5 rounded-lg mx-0.5" {...props}>{processBBCodeInChildren(children)}</strong>,
                             hr: ({node, ...props}) => <hr className="my-8 border-slate-200" {...props} />,
                           }}
                         >
@@ -12277,13 +12417,89 @@ const FlashSpace = () => {
             </div>
             <p className="text-slate-500 text-sm mb-4">قم بنسخ نص الـ Markdown من جيمني (Gemini) والصقه هنا. ستظهر المعاينة في الجهة اليسرى.</p>
             
-            <div className="w-full bg-slate-100 p-2 rounded-t-2xl border border-b-0 border-slate-200 flex gap-2">
-              <button onClick={() => setEditedNoteText(prev => prev + '\\n# عنوان رئيسي\\n')} className="px-3 py-1 bg-white border border-slate-200 rounded text-sm font-bold text-slate-700 hover:bg-slate-50">H1</button>
-              <button onClick={() => setEditedNoteText(prev => prev + '\\n## عنوان فرعي 1\\n')} className="px-3 py-1 bg-white border border-slate-200 rounded text-sm font-bold text-slate-700 hover:bg-slate-50">H2</button>
-              <button onClick={() => setEditedNoteText(prev => prev + '\\n### عنوان فرعي 2\\n')} className="px-3 py-1 bg-white border border-slate-200 rounded text-sm font-bold text-slate-700 hover:bg-slate-50">H3</button>
-              <button onClick={() => setEditedNoteText(prev => prev + '\\n**نص عريض**')} className="px-3 py-1 bg-white border border-slate-200 rounded text-sm font-bold text-slate-700 hover:bg-slate-50">Bold</button>
-              <button onClick={() => setEditedNoteText(prev => prev + '\\n* نقطة جديدة')} className="px-3 py-1 bg-white border border-slate-200 rounded text-sm font-bold text-slate-700 hover:bg-slate-50">List</button>
-              <button onClick={() => setEditedNoteText(prev => prev + '\\n\\n---\\n')} className="px-3 py-1 bg-white border border-slate-200 rounded text-sm font-bold text-slate-700 hover:bg-slate-50">Line</button>
+            <div className="w-full bg-slate-100 p-3 rounded-t-2xl border border-b-0 border-slate-200 flex flex-wrap gap-2 items-center justify-start animate-fade-in" dir="rtl">
+              {/* Font Style Buttons */}
+              <div className="flex gap-1 bg-white p-1 rounded-xl border border-slate-200">
+                <button onClick={() => applyFormatting('bold')} className="px-2.5 py-1 text-xs font-black text-slate-700 hover:bg-slate-100 rounded-lg transition-all" title="عريض (Bold)">B</button>
+                <button onClick={() => applyFormatting('italic')} className="px-2.5 py-1 text-xs italic font-bold text-slate-700 hover:bg-slate-100 rounded-lg transition-all" title="مائل (Italic)">I</button>
+                <button onClick={() => applyFormatting('underline')} className="px-2.5 py-1 text-xs underline font-bold text-slate-700 hover:bg-slate-100 rounded-lg transition-all" title="تحته خط (Underline)">U</button>
+              </div>
+
+              {/* Headings and Layout */}
+              <div className="flex gap-1 bg-white p-1 rounded-xl border border-slate-200">
+                <button onClick={() => applyFormatting('h1')} className="px-2 py-1 text-xs font-black text-slate-700 hover:bg-slate-100 rounded-lg transition-all">H1</button>
+                <button onClick={() => applyFormatting('h2')} className="px-2 py-1 text-xs font-black text-slate-700 hover:bg-slate-100 rounded-lg transition-all">H2</button>
+                <button onClick={() => applyFormatting('h3')} className="px-2 py-1 text-xs font-black text-slate-700 hover:bg-slate-100 rounded-lg transition-all">H3</button>
+                <button onClick={() => applyFormatting('list')} className="px-2 py-1 text-xs font-bold text-slate-700 hover:bg-slate-100 rounded-lg transition-all">List</button>
+                <button onClick={() => applyFormatting('line')} className="px-2 py-1 text-xs font-bold text-slate-700 hover:bg-slate-100 rounded-lg transition-all">Line</button>
+              </div>
+
+              {/* Font Size Selector */}
+              <div className="flex items-center gap-1.5 bg-white px-2.5 py-1 rounded-xl border border-slate-200">
+                <span className="text-[10px] font-bold text-slate-400">حجم الخط:</span>
+                <select 
+                  onChange={(e) => {
+                    if(e.target.value) {
+                      applyFormatting('size', e.target.value);
+                      e.target.value = ''; // Reset select
+                    }
+                  }} 
+                  className="bg-transparent border-0 outline-none text-xs font-bold text-slate-700 cursor-pointer"
+                  defaultValue=""
+                >
+                  <option value="" disabled hidden>اختر</option>
+                  <option value="12px">12</option>
+                  <option value="14px">14</option>
+                  <option value="16px">16</option>
+                  <option value="18px">18</option>
+                  <option value="20px">20</option>
+                  <option value="24px">24</option>
+                  <option value="28px">28</option>
+                  <option value="32px">32</option>
+                </select>
+              </div>
+
+              {/* Font Family Selector */}
+              <div className="flex items-center gap-1.5 bg-white px-2.5 py-1 rounded-xl border border-slate-200">
+                <span className="text-[10px] font-bold text-slate-400">الخط:</span>
+                <select 
+                  onChange={(e) => {
+                    if(e.target.value) {
+                      applyFormatting('font', e.target.value);
+                      e.target.value = ''; // Reset select
+                    }
+                  }} 
+                  className="bg-transparent border-0 outline-none text-xs font-bold text-slate-700 cursor-pointer"
+                  defaultValue=""
+                >
+                  <option value="" disabled hidden>اختر</option>
+                  <option value="Fredoka">Fredoka (كارتون رايق)</option>
+                  <option value="Lalezar">Lalezar (كارتون عريض)</option>
+                  <option value="Cairo">Cairo (كلاسيكي)</option>
+                  <option value="Outfit">Outfit (حديث)</option>
+                </select>
+              </div>
+
+              {/* Color Palette Selector */}
+              <div className="flex items-center gap-1 bg-white p-1 rounded-xl border border-slate-200">
+                <span className="text-[10px] font-bold text-slate-400 px-1">اللون:</span>
+                <button onClick={() => applyFormatting('color', '#ef4444')} className="w-4 h-4 rounded-full bg-red-500 hover:scale-110 transition-all border border-black/10" title="أحمر" />
+                <button onClick={() => applyFormatting('color', '#3b82f6')} className="w-4 h-4 rounded-full bg-blue-500 hover:scale-110 transition-all border border-black/10" title="أزرق" />
+                <button onClick={() => applyFormatting('color', '#10b981')} className="w-4 h-4 rounded-full bg-emerald-500 hover:scale-110 transition-all border border-black/10" title="أخضر" />
+                <button onClick={() => applyFormatting('color', '#f59e0b')} className="w-4 h-4 rounded-full bg-amber-500 hover:scale-110 transition-all border border-black/10" title="برتقالي" />
+                <button onClick={() => applyFormatting('color', '#8b5cf6')} className="w-4 h-4 rounded-full bg-violet-500 hover:scale-110 transition-all border border-black/10" title="بنفسجي" />
+                <button onClick={() => applyFormatting('color', '#1e293b')} className="w-4 h-4 rounded-full bg-slate-800 hover:scale-110 transition-all border border-black/10" title="رمادي غامق" />
+              </div>
+
+              {/* Highlight Selector */}
+              <div className="flex items-center gap-1 bg-white p-1 rounded-xl border border-slate-200">
+                <span className="text-[10px] font-bold text-slate-400 px-1">تظليل:</span>
+                <button onClick={() => applyFormatting('highlight', '#fef08a')} className="w-4 h-4 rounded-full bg-yellow-200 border border-yellow-300 hover:scale-110 transition-all" title="أصفر" />
+                <button onClick={() => applyFormatting('highlight', '#bbf7d0')} className="w-4 h-4 rounded-full bg-green-200 border border-green-300 hover:scale-110 transition-all" title="أخضر" />
+                <button onClick={() => applyFormatting('highlight', '#fbcfe8')} className="w-4 h-4 rounded-full bg-pink-200 border border-pink-300 hover:scale-110 transition-all" title="وردي" />
+                <button onClick={() => applyFormatting('highlight', '#bfdbfe')} className="w-4 h-4 rounded-full bg-blue-200 border border-blue-300 hover:scale-110 transition-all" title="أزرق" />
+                <button onClick={() => applyFormatting('highlight', '#fed7aa')} className="w-4 h-4 rounded-full bg-orange-200 border border-orange-300 hover:scale-110 transition-all" title="برتقالي" />
+              </div>
             </div>
             
             <div className="flex-1 min-h-0 bg-white rounded-b-2xl border border-slate-200 overflow-hidden mb-4 relative flex gap-4 p-4">
@@ -12326,14 +12542,14 @@ const FlashSpace = () => {
                 <p className="text-xs font-black text-slate-400 uppercase tracking-widest mb-4 pb-2 border-b border-slate-200">Live Preview</p>
                 <ReactMarkdown
                   components={{
-                    h1: ({node, ...props}) => <h1 className="text-2xl font-black text-black mt-8 mb-4 border-b pb-3 border-slate-200 text-right" {...props} />,
-                    h2: ({node, ...props}) => <h2 className="text-xl font-black text-black mt-6 mb-3 border-r-4 border-black pr-3 text-right" {...props} />,
-                    h3: ({node, ...props}) => <h3 className="text-lg font-extrabold text-black mt-5 mb-2 text-right" {...props} />,
-                    p: ({node, ...props}) => <p className="mb-4 text-black leading-loose text-base text-right" {...props} />,
-                    ul: ({node, ...props}) => <ul className="list-disc list-inside mr-4 mb-4 space-y-2 text-black text-right" {...props} />,
-                    ol: ({node, ...props}) => <ol className="list-decimal list-inside mr-4 mb-4 space-y-2 text-black text-right" {...props} />,
-                    li: ({node, ...props}) => <li className="marker:text-black" {...props} />,
-                    strong: ({node, ...props}) => <strong className="text-black font-black bg-slate-200 px-2 py-0.5 rounded-lg mx-0.5" {...props} />,
+                    h1: ({node, children, ...props}) => <h1 className="text-2xl font-black text-black mt-8 mb-4 border-b pb-3 border-slate-200 text-right" {...props}>{processBBCodeInChildren(children)}</h1>,
+                    h2: ({node, children, ...props}) => <h2 className="text-xl font-black text-black mt-6 mb-3 border-r-4 border-black pr-3 text-right" {...props}>{processBBCodeInChildren(children)}</h2>,
+                    h3: ({node, children, ...props}) => <h3 className="text-lg font-extrabold text-black mt-5 mb-2 text-right" {...props}>{processBBCodeInChildren(children)}</h3>,
+                    p: ({node, children, ...props}) => <p className="mb-4 text-black leading-loose text-base text-right" {...props}>{processBBCodeInChildren(children)}</p>,
+                    ul: ({node, children, ...props}) => <ul className="list-disc list-inside mr-4 mb-4 space-y-2 text-black text-right" {...props}>{processBBCodeInChildren(children)}</ul>,
+                    ol: ({node, children, ...props}) => <ol className="list-decimal list-inside mr-4 mb-4 space-y-2 text-black text-right" {...props}>{processBBCodeInChildren(children)}</ol>,
+                    li: ({node, children, ...props}) => <li className="marker:text-black" {...props}>{processBBCodeInChildren(children)}</li>,
+                    strong: ({node, children, ...props}) => <strong className="text-black font-black bg-slate-200 px-2 py-0.5 rounded-lg mx-0.5" {...props}>{processBBCodeInChildren(children)}</strong>,
                     hr: ({node, ...props}) => <hr className="my-8 border-slate-200" {...props} />,
                   }}
                 >

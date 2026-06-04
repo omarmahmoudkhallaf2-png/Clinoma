@@ -44,13 +44,13 @@ export default function UserManagement() {
       const fetchedCourses = courseSnap.docs.map(doc => ({
         id: doc.id,
         ...doc.data()
-      }));
+      })).filter((c: any) => c.level !== 'Clinical Nutrition' && c.id !== 'clinical_nutrition' && c.name !== 'Clinical Nutrition');
 
       const uniqueModules = Array.from(new Set([
         'Pediatrics', // Always show Pediatrics
         'الورقة الثانية', // Always show الورقة الثانية
         ...boardSnap.docs.map(d => d.data().module).filter(Boolean)
-      ])) as string[];
+      ])).filter((m: any) => m !== 'Clinical Nutrition') as string[];
 
       setUsers(fetchedUsers);
       setCourses(fetchedCourses);
@@ -150,33 +150,33 @@ export default function UserManagement() {
       return timeB - timeA;
     });
 
-  if (loading) return <div className="p-20 text-center"><Loader2 className="animate-spin mx-auto w-10 h-10 text-primary" /></div>;
+  if (loading) return <div className="p-8 md:p-20 text-center"><Loader2 className="animate-spin mx-auto w-10 h-10 text-primary" /></div>;
 
   return (
-    <div className="p-8 space-y-8 animate-in fade-in duration-500">
-      <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+    <div className="p-3 md:p-8 space-y-4 md:space-y-8 animate-in fade-in duration-500 max-w-full overflow-hidden">
+      <div className="flex flex-col md:flex-row justify-between items-stretch md:items-center gap-4 md:gap-6">
         <div>
-          <h2 className="text-2xl font-black">إدارة المستخدمين والصلاحيات</h2>
-          <p className="text-muted-foreground font-bold italic">تحكم في وصول الطلاب لكل كورس بشكل منفرد.</p>
+          <h2 className="text-lg md:text-2xl font-black text-right md:text-right">إدارة المستخدمين والصلاحيات</h2>
+          <p className="text-muted-foreground font-bold italic text-[11px] md:text-sm">تحكم في وصول الطلاب لكل كورس بشكل منفرد.</p>
         </div>
-        <div className="relative max-w-md w-full">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+        <div className="relative w-full md:max-w-md">
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 text-muted-foreground" />
           <input 
             type="text" 
             placeholder="ابحث عن دكتور بالاسم أو البريد..." 
             value={search}
             onChange={e => setSearch(e.target.value)}
-            className="w-full bg-card border border-border p-4 pl-12 rounded-2xl outline-none focus:ring-4 focus:ring-primary/10 transition-all font-bold"
+            className="w-full bg-card border border-border p-2.5 pl-10 md:p-4 md:pl-12 rounded-xl md:rounded-2xl outline-none focus:ring-4 focus:ring-primary/10 transition-all font-bold text-xs md:text-sm"
           />
         </div>
       </div>
 
       {/* Batch Segment Selection */}
       <div className="flex justify-end border-b border-border/40 pb-2">
-        <div className="flex bg-muted/30 p-1.5 rounded-2xl border border-border/60 gap-1" dir="rtl">
+        <div className="flex bg-muted/30 p-1 md:p-1.5 rounded-xl md:rounded-2xl border border-border/60 gap-1" dir="rtl">
           <button
             onClick={() => setSelectedBatch('all')}
-            className={`px-6 py-2.5 rounded-xl text-xs font-black transition-all ${
+            className={`px-3 py-1.5 md:px-6 md:py-2.5 rounded-lg md:rounded-xl text-[10px] md:text-xs font-black transition-all ${
               selectedBatch === 'all'
                 ? 'bg-primary text-white shadow-lg shadow-primary/20'
                 : 'text-muted-foreground hover:text-foreground hover:bg-secondary/40'
@@ -186,7 +186,7 @@ export default function UserManagement() {
           </button>
           <button
             onClick={() => setSelectedBatch('43')}
-            className={`px-6 py-2.5 rounded-xl text-xs font-black transition-all ${
+            className={`px-3 py-1.5 md:px-6 md:py-2.5 rounded-lg md:rounded-xl text-[10px] md:text-xs font-black transition-all ${
               selectedBatch === '43'
                 ? 'bg-primary text-white shadow-lg shadow-primary/20'
                 : 'text-muted-foreground hover:text-foreground hover:bg-secondary/40'
@@ -196,7 +196,7 @@ export default function UserManagement() {
           </button>
           <button
             onClick={() => setSelectedBatch('44')}
-            className={`px-6 py-2.5 rounded-xl text-xs font-black transition-all ${
+            className={`px-3 py-1.5 md:px-6 md:py-2.5 rounded-lg md:rounded-xl text-[10px] md:text-xs font-black transition-all ${
               selectedBatch === '44'
                 ? 'bg-primary text-white shadow-lg shadow-primary/20'
                 : 'text-muted-foreground hover:text-foreground hover:bg-secondary/40'
@@ -207,39 +207,39 @@ export default function UserManagement() {
         </div>
       </div>
 
-      <div className="bg-card border border-border rounded-[2.5rem] shadow-xl overflow-hidden">
-        <div className="overflow-x-auto">
-          <table className="w-full text-right" dir="rtl">
+      <div className="bg-card border border-border rounded-2xl md:rounded-[2.5rem] shadow-xl overflow-hidden">
+        <div className="overflow-x-auto custom-scrollbar">
+          <table className="w-full text-right table-auto min-w-[650px] md:min-w-full" dir="rtl">
             <thead>
               <tr className="bg-secondary/30 border-b border-border">
-                <th className="px-8 py-6 text-sm font-black uppercase tracking-widest text-muted-foreground">المستخدم</th>
+                <th className="px-3 md:px-8 py-3 md:py-6 text-[11px] md:text-sm font-black uppercase tracking-wider text-muted-foreground">المستخدم</th>
                 {courses.map(course => (
-                  <th key={course.id} className="px-6 py-6 text-sm font-black uppercase tracking-widest text-muted-foreground text-center border-l border-border/50">
+                  <th key={course.id} className="px-2 md:px-6 py-3 md:py-6 text-[10px] md:text-sm font-black uppercase tracking-wider text-muted-foreground text-center border-l border-border/50">
                     كورس {course.level}
                   </th>
                 ))}
                 {spaceModules.map(mod => (
-                  <th key={mod} className="px-6 py-6 text-sm font-black uppercase tracking-widest text-emerald-600 bg-emerald-500/5 text-center border-l border-border/50">
+                  <th key={mod} className="px-2 md:px-6 py-3 md:py-6 text-[10px] md:text-sm font-black uppercase tracking-wider text-emerald-600 bg-emerald-500/5 text-center border-l border-border/50">
                     سبيس: {mod}
                   </th>
                 ))}
-                <th className="px-6 py-6 text-sm font-black uppercase tracking-widest text-muted-foreground">الرتبة</th>
-                <th className="px-8 py-6 text-sm font-black uppercase tracking-widest text-muted-foreground">الإجراءات</th>
+                <th className="px-2 md:px-6 py-3 md:py-6 text-[10px] md:text-sm font-black uppercase tracking-wider text-muted-foreground">الرتبة</th>
+                <th className="px-3 md:px-8 py-3 md:py-6 text-[10px] md:text-sm font-black uppercase tracking-wider text-muted-foreground text-left">الإجراءات</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-border">
               {filteredUsers.map((user) => (
                 <tr key={user.id} className="hover:bg-secondary/5 transition-colors group">
-                  <td className="px-8 py-6">
-                    <div className="flex items-center gap-4">
-                      <div className="relative">
-                        <img src={user.photoURL} alt="" className="w-12 h-12 rounded-2xl bg-secondary border border-border shadow-sm group-hover:scale-105 transition-transform" />
-                        <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 border-2 border-card rounded-full" />
+                  <td className="px-3 md:px-8 py-3 md:py-6">
+                    <div className="flex items-center gap-2 md:gap-4">
+                      <div className="relative shrink-0">
+                        <img src={user.photoURL} alt="" className="w-8 h-8 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-secondary border border-border shadow-sm group-hover:scale-105 transition-transform" />
+                        <div className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 md:w-4 md:h-4 bg-green-500 border-2 border-card rounded-full" />
                       </div>
-                      <div>
-                        <div className="font-black text-foreground text-lg flex items-center gap-2">
+                      <div className="min-w-0">
+                        <div className="font-black text-foreground text-xs md:text-lg flex items-center gap-1.5 truncate">
                           {user.displayName || 'بدون اسم'}
-                          <span className={`inline-flex px-2 py-0.5 rounded-lg text-[9px] font-black ${
+                          <span className={`inline-flex px-1 py-0.2 md:px-2 md:py-0.5 rounded-md md:rounded-lg text-[8px] md:text-[9px] font-black shrink-0 ${
                             (user.batch || '43') === '43' 
                               ? 'bg-indigo-500/10 text-indigo-500 border border-indigo-500/20' 
                               : 'bg-purple-500/10 text-purple-500 border border-purple-500/20'
@@ -247,13 +247,13 @@ export default function UserManagement() {
                             دفعة {user.batch || '43'}
                           </span>
                         </div>
-                        <div className="text-xs text-muted-foreground font-bold flex items-center gap-1">
-                          <Mail className="w-3 h-3" />
+                        <div className="text-[10px] md:text-xs text-muted-foreground font-bold flex items-center gap-1 truncate">
+                          <Mail className="w-2.5 h-2.5 md:w-3 md:h-3 shrink-0" />
                           {user.email}
                         </div>
                         {user.createdAt && (
-                          <div className="text-[10px] text-muted-foreground/60 font-bold flex items-center gap-1 mt-0.5">
-                            <Clock className="w-2.5 h-2.5" />
+                          <div className="text-[8px] md:text-[10px] text-muted-foreground/60 font-bold flex items-center gap-1 mt-0.5">
+                            <Clock className="w-2.5 h-2.5 shrink-0" />
                             انضم في {new Date((user.createdAt?.seconds * 1000) || user.createdAt).toLocaleDateString('ar-EG', { day: 'numeric', month: 'short', year: 'numeric' })}
                           </div>
                         )}
@@ -268,17 +268,18 @@ export default function UserManagement() {
                     const isSubscribed = (user as any)[key] || false;
                     
                     return (
-                      <td key={course.id} className="px-6 py-6 text-center border-l border-border/50">
+                      <td key={course.id} className="px-2 md:px-6 py-3 md:py-6 text-center border-l border-border/50">
                         <button 
                           onClick={() => handleToggleSubscription(user, level)}
-                          className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl font-black text-xs transition-all ${
+                          className={`inline-flex items-center gap-1 px-2 py-1 md:px-4 md:py-2 rounded-lg md:rounded-xl font-black text-[9px] md:text-xs transition-all ${
                             isSubscribed 
                             ? 'bg-indigo-500 text-white shadow-lg shadow-indigo-500/20' 
                             : 'bg-secondary text-muted-foreground hover:bg-indigo-500/10 hover:text-indigo-500 border border-border'
                           }`}
                         >
-                          {isSubscribed ? <CheckCircle2 className="w-4 h-4" /> : <XCircle className="w-4 h-4 opacity-50" />}
-                          {isSubscribed ? 'مشترك' : 'تفعيل'}
+                          {isSubscribed ? <CheckCircle2 className="w-3.5 h-3.5" /> : <XCircle className="w-3.5 h-3.5 opacity-50" />}
+                          <span className="hidden sm:inline">{isSubscribed ? 'مشترك' : 'تفعيل'}</span>
+                          <span className="sm:hidden">{isSubscribed ? 'نشط' : 'تفعيل'}</span>
                         </button>
                       </td>
                     );
@@ -288,33 +289,34 @@ export default function UserManagement() {
                   {spaceModules.map(mod => {
                     const isSubscribed = user.spaceSubscriptions?.[mod] || false;
                     return (
-                      <td key={mod} className="px-6 py-6 text-center bg-emerald-500/5 border-l border-border/50">
+                      <td key={mod} className="px-2 md:px-6 py-3 md:py-6 text-center bg-emerald-500/5 border-l border-border/50">
                         <button 
                           onClick={() => handleToggleSpaceSubscription(user, mod)}
-                          className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl font-black text-xs transition-all ${
+                          className={`inline-flex items-center gap-1 px-2 py-1 md:px-4 md:py-2 rounded-lg md:rounded-xl font-black text-[9px] md:text-xs transition-all ${
                             isSubscribed 
                             ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/20' 
                             : 'bg-secondary/50 text-muted-foreground hover:bg-emerald-500/10 hover:text-emerald-500 border border-border/50'
                           }`}
                         >
-                          {isSubscribed ? <CheckCircle2 className="w-4 h-4" /> : <XCircle className="w-4 h-4 opacity-50" />}
-                          {isSubscribed ? 'مشترك' : 'تفعيل'}
+                          {isSubscribed ? <CheckCircle2 className="w-3.5 h-3.5" /> : <XCircle className="w-3.5 h-3.5 opacity-50" />}
+                          <span className="hidden sm:inline">{isSubscribed ? 'مشترك' : 'تفعيل'}</span>
+                          <span className="sm:hidden">{isSubscribed ? 'نشط' : 'تفعيل'}</span>
                         </button>
                       </td>
                     );
                   })}
 
-                  <td className="px-6 py-6">
-                    <span className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[10px] font-black tracking-tighter ${
+                  <td className="px-2 md:px-6 py-3 md:py-6">
+                    <span className={`inline-flex items-center gap-1 px-2 py-0.5 md:px-4 md:py-1.5 rounded-full text-[8px] md:text-[10px] font-black tracking-tighter ${
                       user.role === 'admin' ? 'bg-amber-500 text-white shadow-lg shadow-amber-500/20' : 'bg-primary/10 text-primary border border-primary/20'
                     }`}>
-                      {user.role === 'admin' ? <Shield className="w-3 h-3" /> : <UserIcon className="w-3 h-3" />}
+                      {user.role === 'admin' ? <Shield className="w-2.5 h-2.5" /> : <UserIcon className="w-2.5 h-2.5" />}
                       {user.role?.toUpperCase() || 'STUDENT'}
                     </span>
                   </td>
 
-                  <td className="px-8 py-6 text-left">
-                    <div className="flex items-center gap-2 justify-end">
+                  <td className="px-3 md:px-8 py-3 md:py-6 text-left">
+                    <div className="flex items-center gap-1 md:gap-2 justify-end">
                       <button
                         onClick={async () => {
                           const newRole = user.role === 'admin' ? 'user' : 'admin';
@@ -323,17 +325,17 @@ export default function UserManagement() {
                             fetchData();
                           }
                         }}
-                        className="px-4 py-2 text-xs font-black bg-background border border-border hover:bg-secondary rounded-xl transition-all shadow-sm"
+                        className="px-2 py-1.5 md:px-4 md:py-2 text-[9px] md:text-xs font-black bg-background border border-border hover:bg-secondary rounded-lg md:rounded-xl transition-all shadow-sm shrink-0"
                       >
-                        تغيير الصلاحية
+                        ترقية
                       </button>
 
                       <button
                         onClick={() => handleDeleteUser(user)}
-                        className="p-2.5 text-rose-500 bg-rose-500/5 hover:bg-rose-500 hover:text-white border border-rose-500/20 rounded-xl transition-all"
+                        className="p-1.5 md:p-2.5 text-rose-500 bg-rose-500/5 hover:bg-rose-500 hover:text-white border border-rose-500/20 rounded-lg md:rounded-xl transition-all shrink-0"
                         title="إزالة التسجيل"
                       >
-                        <Trash2 className="w-4 h-4" />
+                        <Trash2 className="w-3.5 h-3.5" />
                       </button>
                     </div>
                   </td>
@@ -342,7 +344,7 @@ export default function UserManagement() {
             </tbody>
           </table>
           {filteredUsers.length === 0 && (
-            <div className="p-20 text-center text-muted-foreground font-bold">
+            <div className="p-10 md:p-20 text-center text-muted-foreground font-bold text-xs md:text-sm">
               لا يوجد مستخدمين بهذا الاسم.
             </div>
           )}
