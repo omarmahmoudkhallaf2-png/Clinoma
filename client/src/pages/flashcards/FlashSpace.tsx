@@ -8352,6 +8352,186 @@ const BBCodeMarkdown = ({ content, components }: { content: string, components: 
   );
 };
 
+const bbcodeAndMarkdownToHtml = (text: string): string => {
+  if (!text) return '';
+  
+  // Escape HTML tags to prevent broken nodes
+  let html = text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+    
+  // Underline
+  html = html.replace(/\[u\]([\s\S]*?)\[\/u\]/gi, '<span style="text-decoration: underline;">$1</span>');
+  
+  // Font
+  html = html.replace(/\[font=([^\]]+)\]([\s\S]*?)\[\/font\]/gi, (match, fontName, content) => {
+    let family = fontName;
+    if (fontName.toLowerCase() === 'cartoon' || fontName.toLowerCase() === 'fredoka') {
+      family = "'Fredoka', sans-serif";
+    } else if (fontName.toLowerCase() === 'lalezar') {
+      family = "'Lalezar', cursive";
+    } else if (fontName.toLowerCase() === 'cairo') {
+      family = "'Cairo', sans-serif";
+    } else if (fontName.toLowerCase() === 'outfit') {
+      family = "'Outfit', sans-serif";
+    }
+    return `<span style="font-family: ${family};">${content}</span>`;
+  });
+  
+  // Color
+  html = html.replace(/\[color=([^\]]+)\]([\s\S]*?)\[\/color\]/gi, '<span style="color: $1;">$2</span>');
+  
+  // Highlight
+  html = html.replace(/\[highlight=([^\]]+)\]([\s\S]*?)\[\/highlight\]/gi, '<span style="background-color: $1;" class="px-1.5 py-0.5 rounded mx-0.5">$2</span>');
+  
+  // Size
+  html = html.replace(/\[size=([^\]]+)\]([\s\S]*?)\[\/size\]/gi, (match, sizeVal, content) => {
+    const size = /^\d+$/.test(sizeVal) ? `${sizeVal}px` : sizeVal;
+    return `<span style="font-size: ${size};">${content}</span>`;
+  });
+  
+  // Bold (**text** or __text__)
+  html = html.replace(/\*\*([\s\S]*?)\*\*/g, '<strong>$1</strong>');
+  
+  // Italic (*text* or _text_)
+  html = html.replace(/\*([\s\S]*?)\*/g, '<em>$1</em>');
+  
+  // Headings
+  html = html.replace(/^### (.*$)/gim, '<h3>$1</h3>');
+  html = html.replace(/^## (.*$)/gim, '<h2>$1</h2>');
+  html = html.replace(/^# (.*$)/gim, '<h1>$1</h1>');
+  
+  // HR line
+  html = html.replace(/^---$/gim, '<hr class="my-8 border-slate-200" />');
+  
+  // Bullet points
+  const lines = html.split('\n');
+  let inList = false;
+  let resultLines = [];
+  for (let line of lines) {
+    const cleanLine = line.trim();
+    if (cleanLine.startsWith('* ') || cleanLine.startsWith('- ')) {
+      const content = cleanLine.substring(2);
+      if (!inList) {
+        resultLines.push('<ul class="list-disc list-inside mr-4 mb-4 space-y-2 text-current text-right">');
+        inList = true;
+      }
+      resultLines.push(`<li class="marker:text-current text-current">${content}</li>`);
+    } else {
+      if (inList) {
+        resultLines.push('</ul>');
+        inList = false;
+      }
+      resultLines.push(line);
+    }
+  }
+  if (inList) {
+    resultLines.push('</ul>');
+  }
+  html = resultLines.join('\n');
+  
+  // Paragraphs
+  const paragraphs = html.split(/\n\s*\n/);
+  html = paragraphs.map(p => {
+    const trimmed = p.trim();
+    if (!trimmed) return '';
+    if (trimmed.startsWith('<h') || trimmed.startsWith('<ul') || trimmed.startsWith('<hr')) {
+      return trimmed;
+    }
+    return `<div class="leading-relaxed text-current text-right mb-4">${trimmed}</div>`;
+  }).join('');
+  
+  return html;
+};
+
+const domToBBCode = (node: Node): string => {
+  if (node.nodeType === Node.TEXT_NODE) {
+    return node.textContent || '';
+  }
+  if (node.nodeType !== Node.ELEMENT_NODE) {
+    return '';
+  }
+  
+  const el = node as HTMLElement;
+  let childrenContent = '';
+  for (let i = 0; i < el.childNodes.length; i++) {
+    childrenContent += domToBBCode(el.childNodes[i]);
+  }
+  
+  const tag = el.tagName.toLowerCase();
+  
+  if (tag === 'p' || tag === 'div') {
+    if (!childrenContent.trim()) return '';
+    return `${childrenContent}\n\n`;
+  }
+  if (tag === 'br') {
+    return '\n';
+  }
+  if (tag === 'strong' || tag === 'b') {
+    return `**${childrenContent}**`;
+  }
+  if (tag === 'em' || tag === 'i') {
+    return `*${childrenContent}*`;
+  }
+  if (tag === 'u') {
+    return `[u]${childrenContent}[/u]`;
+  }
+  if (tag === 'h1') {
+    return `\n# ${childrenContent}\n`;
+  }
+  if (tag === 'h2') {
+    return `\n## ${childrenContent}\n`;
+  }
+  if (tag === 'h3') {
+    return `\n### ${childrenContent}\n`;
+  }
+  if (tag === 'ul') {
+    return `\n${childrenContent}\n`;
+  }
+  if (tag === 'ol') {
+    return `\n${childrenContent}\n`;
+  }
+  if (tag === 'li') {
+    return `* ${childrenContent}\n`;
+  }
+  if (tag === 'hr') {
+    return `\n---\n`;
+  }
+  
+  if (tag === 'span') {
+    let result = childrenContent;
+    const color = el.style.color;
+    if (color) {
+      result = `[color=${color}]${result}[/color]`;
+    }
+    const bg = el.style.backgroundColor;
+    if (bg) {
+      result = `[highlight=${bg}]${result}[/highlight]`;
+    }
+    const fontSize = el.style.fontSize;
+    if (fontSize) {
+      result = `[size=${fontSize}]${result}[/size]`;
+    }
+    const fontFamily = el.style.fontFamily;
+    if (fontFamily) {
+      let fontKey = fontFamily.replace(/['"]/g, '');
+      if (fontKey.includes('Fredoka')) fontKey = 'Fredoka';
+      else if (fontKey.includes('Lalezar')) fontKey = 'Lalezar';
+      else if (fontKey.includes('Cairo')) fontKey = 'Cairo';
+      else if (fontKey.includes('Outfit')) fontKey = 'Outfit';
+      result = `[font=${fontKey}]${result}[/font]`;
+    }
+    const textDecoration = el.style.textDecoration;
+    if (textDecoration && textDecoration.includes('underline')) {
+      result = `[u]${result}[/u]`;
+    }
+    return result;
+  }
+  
+  return childrenContent;
+};
+
 const FlashSpace = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -8746,65 +8926,95 @@ const FlashSpace = () => {
   const [isEditingNotes, setIsEditingNotes] = useState(false);
   const [editedNoteText, setEditedNoteText] = useState("");
   
+  const editorRef = useRef<HTMLDivElement>(null);
+  
   const applyFormatting = (tag: string, value?: string) => {
-    const textarea = document.querySelector('textarea') as HTMLTextAreaElement;
-    if (!textarea) return;
+    const selection = window.getSelection();
+    if (!selection || !selection.rangeCount) return;
+    const range = selection.getRangeAt(0);
     
-    const start = textarea.selectionStart;
-    const end = textarea.selectionEnd;
-    const text = textarea.value;
-    const selectedText = text.substring(start, end);
-    
-    let formatted = '';
-    if (tag === 'bold') {
-      formatted = `**${selectedText || 'نص عريض'}**`;
-    } else if (tag === 'italic') {
-      formatted = `*${selectedText || 'نص مائل'}*`;
-    } else if (tag === 'underline') {
-      formatted = `[u]${selectedText || 'نص تحت خط'}[/u]`;
-    } else if (tag === 'color') {
-      formatted = `[color=${value}]${selectedText || 'نص ملون'}[/color]`;
-    } else if (tag === 'size') {
-      formatted = `[size=${value}]${selectedText || 'حجم النص'}[/size]`;
-    } else if (tag === 'font') {
-      formatted = `[font=${value}]${selectedText || 'خط مخصص'}[/font]`;
-    } else if (tag === 'highlight') {
-      formatted = `[highlight=${value}]${selectedText || 'نص مميز'}[/highlight]`;
-    } else if (tag === 'h1') {
-      formatted = `\n# ${selectedText || 'عنوان رئيسي'}\n`;
-    } else if (tag === 'h2') {
-      formatted = `\n## ${selectedText || 'عنوان فرعي 1'}\n`;
-    } else if (tag === 'h3') {
-      formatted = `\n### ${selectedText || 'عنوان فرعي 2'}\n`;
-    } else if (tag === 'list') {
-      formatted = `\n* ${selectedText || 'نقطة جديدة'}\n`;
-    } else if (tag === 'line') {
-      formatted = `\n\n---\n\n`;
+    // Check if selection is within the editor element
+    if (editorRef.current && !editorRef.current.contains(range.commonAncestorContainer)) {
+      return;
     }
     
-    const newVal = text.substring(0, start) + formatted + text.substring(end);
-    setEditedNoteText(newVal);
-    
-    setTimeout(() => {
-      textarea.focus();
-      if (selectedText) {
-        textarea.setSelectionRange(start, start + formatted.length);
-      } else {
-        // Position cursor inside empty tag if possible
-        let offset = formatted.length;
-        if (formatted.includes(']')) {
-          offset = formatted.indexOf(']') + 1;
-        } else if (formatted.startsWith('**') && formatted.endsWith('**')) {
-          offset = 2;
-        } else if (formatted.startsWith('*') && formatted.endsWith('*')) {
-          offset = 1;
-        }
-        textarea.setSelectionRange(start + offset, start + offset);
+    const wrapSelection = (elementName: string, styles?: Record<string, string>, classes?: string[]) => {
+      if (range.collapsed) {
+        const placeholder = document.createTextNode(tag === 'bold' ? 'نص عريض' : 'نص مخصص');
+        range.insertNode(placeholder);
+        range.selectNode(placeholder);
       }
-    }, 0);
+      const element = document.createElement(elementName);
+      if (styles) {
+        Object.assign(element.style, styles);
+      }
+      if (classes) {
+        element.className = classes.join(' ');
+      }
+      try {
+        element.appendChild(range.extractContents());
+        range.insertNode(element);
+        
+        selection.removeAllRanges();
+        const newRange = document.createRange();
+        newRange.selectNodeContents(element);
+        selection.addRange(newRange);
+      } catch (e) {
+        console.error(e);
+      }
+    };
+
+    if (tag === 'bold') {
+      document.execCommand('bold', false);
+    } else if (tag === 'italic') {
+      document.execCommand('italic', false);
+    } else if (tag === 'underline') {
+      wrapSelection('span', { textDecoration: 'underline' });
+    } else if (tag === 'color') {
+      wrapSelection('span', { color: value || '' });
+    } else if (tag === 'size') {
+      wrapSelection('span', { fontSize: value || '' });
+    } else if (tag === 'font') {
+      let family = value || '';
+      if (family.toLowerCase() === 'cartoon' || family.toLowerCase() === 'fredoka') {
+        family = "'Fredoka', sans-serif";
+      } else if (family.toLowerCase() === 'lalezar') {
+        family = "'Lalezar', cursive";
+      } else if (family.toLowerCase() === 'cairo') {
+        family = "'Cairo', sans-serif";
+      } else if (family.toLowerCase() === 'outfit') {
+        family = "'Outfit', sans-serif";
+      }
+      wrapSelection('span', { fontFamily: family });
+    } else if (tag === 'highlight') {
+      wrapSelection('span', { backgroundColor: value || '' }, ['px-1.5', 'py-0.5', 'rounded', 'mx-0.5']);
+    } else if (tag === 'h1') {
+      document.execCommand('formatBlock', false, '<h1>');
+    } else if (tag === 'h2') {
+      document.execCommand('formatBlock', false, '<h2>');
+    } else if (tag === 'h3') {
+      document.execCommand('formatBlock', false, '<h3>');
+    } else if (tag === 'list') {
+      document.execCommand('insertUnorderedList', false);
+    } else if (tag === 'line') {
+      document.execCommand('insertHorizontalRule', false);
+    }
+    
+    // Update state to compile HTML to BBCode
+    if (editorRef.current) {
+      setEditedNoteText(domToBBCode(editorRef.current));
+    }
   };
   const [firebaseNotes, setFirebaseNotes] = useState<Record<string, string>>({});
   const [isSavingNote, setIsSavingNote] = useState(false);
+
+  useEffect(() => {
+    if (isEditingNotes && editorRef.current) {
+      const initialText = firebaseNotes[selectedBoard.disease] || PEDIATRICS_EXPLANATIONS[selectedBoard.disease] || '';
+      editorRef.current.innerHTML = bbcodeAndMarkdownToHtml(initialText);
+      setEditedNoteText(initialText);
+    }
+  }, [isEditingNotes, selectedBoard.disease]);
 
   useEffect(() => {
     if (userData?.spacePriorities) {
@@ -12515,7 +12725,7 @@ const FlashSpace = () => {
                 <X className="w-5 h-5" />
               </button>
             </div>
-            <p className="text-slate-500 text-sm mb-4">قم بنسخ نص الـ Markdown من جيمني (Gemini) والصقه هنا. ستظهر المعاينة في الجهة اليسرى.</p>
+            <p className="text-slate-500 text-sm mb-4">يمكنك تعديل النوتس وتنسيقها مباشرة وبشكل مرئي في المحرر أدناه.</p>
             
             <div className="w-full bg-slate-100 p-3 rounded-t-2xl border border-b-0 border-slate-200 flex flex-wrap gap-2 items-center justify-start animate-fade-in" dir="rtl">
               {/* Font Style Buttons */}
@@ -12602,60 +12812,26 @@ const FlashSpace = () => {
               </div>
             </div>
             
-            <div className="flex-1 min-h-0 bg-white rounded-b-2xl border border-slate-200 overflow-hidden mb-4 relative flex gap-4 p-4">
-              {/* Textarea for Editing */}
-              <textarea
-                value={editedNoteText}
-                onChange={e => setEditedNoteText(e.target.value)}
-                onPaste={(e) => {
-                  const html = e.clipboardData.getData('text/html');
-                  if (html) {
-                    e.preventDefault();
-                    import('turndown').then((TurndownModule) => {
-                      const TurndownService = TurndownModule.default || TurndownModule;
-                      const turndownService = new TurndownService({ headingStyle: 'atx' });
-                      const markdown = turndownService.turndown(html);
-                      const target = e.target as HTMLTextAreaElement;
-                      const start = target.selectionStart;
-                      const end = target.selectionEnd;
-                      const currentVal = target.value;
-                      const newVal = currentVal.substring(0, start) + markdown + currentVal.substring(end);
-                      setEditedNoteText(newVal);
-                      
-                      // setTimeout used to focus and set cursor pos after React state update
-                      setTimeout(() => {
-                        target.focus();
-                        target.setSelectionRange(start + markdown.length, start + markdown.length);
-                      }, 0);
-                    }).catch(err => {
-                      console.error('Failed to load turndown', err);
-                    });
+            <div className="flex-1 min-h-0 bg-white rounded-b-2xl border border-slate-200 overflow-hidden mb-4 relative p-4 flex flex-col">
+              <div
+                ref={editorRef}
+                contentEditable
+                suppressContentEditableWarning
+                onInput={() => {
+                  if (editorRef.current) {
+                    setEditedNoteText(domToBBCode(editorRef.current));
                   }
                 }}
-                className="flex-1 h-full bg-slate-50 rounded-xl p-4 outline-none resize-none font-mono text-sm leading-relaxed text-slate-900 border border-slate-200 custom-scrollbar shadow-inner"
-                dir="auto"
-                placeholder="الصق النص هنا..."
+                onPaste={(e) => {
+                  setTimeout(() => {
+                    if (editorRef.current) {
+                      setEditedNoteText(domToBBCode(editorRef.current));
+                    }
+                  }, 50);
+                }}
+                className="flex-1 h-full overflow-y-auto bg-slate-50 rounded-xl border border-slate-200 p-6 custom-scrollbar text-slate-800 text-right leading-relaxed outline-none"
+                dir="rtl"
               />
-              
-              {/* Live Preview */}
-              <div className="flex-1 h-full overflow-y-auto bg-slate-50 rounded-xl border border-slate-200 p-6 custom-scrollbar text-slate-800" dir="rtl">
-                <p className="text-xs font-black text-slate-400 uppercase tracking-widest mb-4 pb-2 border-b border-slate-200">Live Preview</p>
-                <BBCodeMarkdown
-                  content={editedNoteText || 'سيظهر العرض هنا...'}
-                  components={{
-                    h1: ({node, ...props}) => <h1 className="text-2xl font-black text-current mt-8 mb-4 border-b pb-3 border-slate-200 text-right" {...props} />,
-                    h2: ({node, ...props}) => <h2 className="text-xl font-black text-current mt-6 mb-3 border-r-4 border-current pr-3 text-right" {...props} />,
-                    h3: ({node, ...props}) => <h3 className="text-lg font-extrabold text-current mt-5 mb-2 text-right" {...props} />,
-                    p: ({node, ...props}) => <span className="text-current leading-loose text-base text-right" {...props} />,
-                    ul: ({node, ...props}) => <ul className="list-disc list-inside mr-4 mb-4 space-y-2 text-current text-right" {...props} />,
-                    ol: ({node, ...props}) => <ol className="list-decimal list-inside mr-4 mb-4 space-y-2 text-current text-right" {...props} />,
-                    li: ({node, ...props}) => <li className="marker:text-current text-current" {...props} />,
-                    strong: ({node, ...props}) => <strong className="font-black text-current" {...props} />,
-                    code: ({node, ...props}) => <code className="font-mono text-sm bg-slate-100/60 px-2 py-0.5 rounded-lg mx-0.5 text-current font-bold" {...props} />,
-                    hr: ({node, ...props}) => <hr className="my-8 border-slate-200" {...props} />,
-                  }}
-                />
-              </div>
             </div>
             
             <div className="flex justify-end gap-3 shrink-0">
