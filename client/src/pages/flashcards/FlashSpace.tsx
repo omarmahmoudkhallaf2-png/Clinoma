@@ -3442,6 +3442,907 @@ interface Question {
 }
 
 const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
+  "Pediatric Hematuria Approach & Evaluation": [
+  {
+    "id": "sec_paper_pediatric_hematuria_approach_and_evaluation_q1",
+    "front": "Define \"Microscopic Hematuria\" in children.",
+    "back": "It is defined as the presence of more than 5 RBCs per high power field (HPF) in the sediment from 10 ml of centrifuged, freshly voided urine."
+  },
+  {
+    "id": "sec_paper_pediatric_hematuria_approach_and_evaluation_q2",
+    "front": "Enumerate 4 common causes of \"Gross Hematuria\" in pediatric patients.",
+    "back": "1. Urinary Tract Infection (UTI).\n2. Acute Post-Streptococcal Glomerulonephritis (APSGN).\n3. Trauma to the urinary tract.\n4. Urolithiasis / Hypercalciuria."
+  },
+  {
+    "id": "sec_paper_pediatric_hematuria_approach_and_evaluation_q3",
+    "front": "Enumerate 4 classic features that differentiate Renal (Glomerular) Hematuria from Urinary Tract (Lower) Hematuria.",
+    "back": "1. Urine color is cola-colored or smoky in renal hematuria.\n2. RBCs are deformed or dysmorphic under microscopy in renal hematuria.\n3. Blood clots are completely absent in renal hematuria.\n4. Significant proteinuria (exceeding 100 mg/dL) is present in renal hematuria."
+  },
+  {
+    "id": "sec_paper_pediatric_hematuria_approach_and_evaluation_q4",
+    "front": "Match the clinical feature with the correct source of hematuria:",
+    "type": "matching",
+    "matchingPairs": [
+      {
+        "left": "Presence of erythrocyte/RBC casts in urine sediment.",
+        "right": "Renal / Glomerular source."
+      },
+      {
+        "left": "Terminal hematuria occurring at the end of the urine stream.",
+        "right": "Lower urinary tract source."
+      }
+    ]
+  },
+  {
+    "id": "sec_paper_pediatric_hematuria_approach_and_evaluation_q5",
+    "front": "Short Clinical Case",
+    "type": "case",
+    "caseBody": "An 11-year-old child presents with painless gross hematuria. Urinalysis shows bright red urine with normal isomorphic RBCs and the presence of blood clots. Proteinuria is minimal (<100 mg/dL).",
+    "subQuestions": [
+      {
+        "id": "sec_paper_pediatric_hematuria_approach_and_evaluation_q5_sub1",
+        "questionText": "Is the source of hematuria glomerular or extra-glomerular?",
+        "back": "Extra-glomerular (Lower urinary tract)."
+      },
+      {
+        "id": "sec_paper_pediatric_hematuria_approach_and_evaluation_q5_sub2",
+        "questionText": "Enumerate 2 potential diagnostic causes for this presentation.",
+        "back": "Urinary Tract Infection (UTI) and Urolithiasis (Urinary stones)."
+      }
+    ]
+  }
+],
+  "Acute Nephritic Syndrome & APSGN": [
+  {
+    "id": "sec_paper_acute_nephritic_syndrome_and_apsgn_q1",
+    "front": "Define \"Acute Post-Streptococcal Glomerulonephritis (APSGN)\".",
+    "back": "It is an acute, specific, self-limited glomerulonephritis due to prior streptococcal infection, characterized by the sudden onset of gross hematuria, mild to moderate edema, hypertension, and potential oliguria."
+  },
+  {
+    "id": "sec_paper_acute_nephritic_syndrome_and_apsgn_q2",
+    "front": "Enumerate the 4 core clinical manifestations of the acute nephritic syndrome in APSGN.",
+    "back": "1. Sudden onset of gross hematuria (smoky or cola-colored urine).\n2. Edema (mild to moderate, typically periorbital).\n3. Hypertension.\n4. Oliguria."
+  },
+  {
+    "id": "sec_paper_acute_nephritic_syndrome_and_apsgn_q3",
+    "front": "Enumerate 4 essential laboratory investigations used to confirm the diagnosis of APSGN.",
+    "back": "1. Urine analysis (detecting dysmorphic RBCs and RBC casts).\n2. Serum C3 complement level (characteristically reduced in the acute phase).\n3. Antistreptolysin O (ASO) titer (elevated after pharyngeal streptococcal infection).\n4. Renal function tests (elevated blood urea nitrogen and serum creatinine)."
+  },
+  {
+    "id": "sec_paper_acute_nephritic_syndrome_and_apsgn_q4",
+    "front": "Enumerate 4 life-threatening acute complications (medical emergencies) of APSGN.",
+    "back": "1. Hypertensive encephalopathy.\n2. Congestive heart failure / Acute pulmonary edema.\n3. Hyperkalemia.\n4. Rapidly progressive glomerulonephritis (RPGN)."
+  },
+  {
+    "id": "sec_paper_acute_nephritic_syndrome_and_apsgn_q5",
+    "front": "Short Clinical Case",
+    "type": "case",
+    "caseBody": "An 8-year-old girl develops generalized body puffiness, a severe headache, and passes tea-colored urine. Her blood pressure is 140/95 mmHg. Urinalysis reveals dysmorphic RBCs and RBC casts. Her serum C3 complement level is markedly depressed.",
+    "subQuestions": [
+      {
+        "id": "sec_paper_acute_nephritic_syndrome_and_apsgn_q5_sub1",
+        "questionText": "What is the most likely diagnosis?",
+        "back": "Acute Post-Streptococcal Glomerulonephritis (APSGN)."
+      },
+      {
+        "id": "sec_paper_acute_nephritic_syndrome_and_apsgn_q5_sub2",
+        "questionText": "Mention the calculated fluid restriction guideline for this patient during the oliguric phase.",
+        "back": "Fluid intake = Urine Output + 400 ml/m2 of body surface area."
+      }
+    ]
+  }
+],
+  "Nephrotic Syndrome (NS)": [
+  {
+    "id": "sec_paper_nephrotic_syndrome_ns_q1",
+    "front": "Define \"Nephrotic Syndrome\" in children.",
+    "back": "It is a primary pediatric glomerular disorder characterized by the triad of heavy proteinuria, hypoalbuminemia, and generalized edema, frequently accompanied by hyperlipidemia."
+  },
+  {
+    "id": "sec_paper_nephrotic_syndrome_ns_q2",
+    "front": "Enumerate the 4 essential diagnostic laboratory and clinical features of Nephrotic Syndrome.",
+    "back": "1. Heavy proteinuria (>40 mg/m2/hr or random spot protein/creatinine ratio >2).\n2. Hypoalbuminemia (serum albumin <2.5 g/dL).\n3. Generalized edema (anasarca).\n4. Hyperlipidemia (serum cholesterol >250 mg/dL)."
+  },
+  {
+    "id": "sec_paper_nephrotic_syndrome_ns_q3",
+    "front": "Enumerate 4 prominent complications associated with Nephrotic Syndrome in children.",
+    "back": "1. Severe bacterial infections (such as Spontaneous Bacterial Peritonitis).\n2. Thromboembolic events (arterial or venous thrombosis).\n3. Hypovolemic shock (induced by aggressive diuresis or severe fluid shift).\n4. Acute renal failure."
+  },
+  {
+    "id": "sec_paper_nephrotic_syndrome_ns_q4",
+    "front": "Enumerate 4 specific indications for performing a Renal Biopsy in a child with Nephrotic Syndrome.",
+    "back": "1. Age of onset less than 1 year or greater than 10 years.\n2. Presence of persistent hypertension or gross hematuria.\n3. Structural renal insufficiency or low complement (C3) level.\n4. Steroid-resistant nephrotic syndrome (failure to respond after 4-6 weeks of prednisone)."
+  },
+  {
+    "id": "sec_paper_nephrotic_syndrome_ns_q5",
+    "front": "Short Clinical Case",
+    "type": "case",
+    "caseBody": "A 4-year-old boy presents with progressive swelling around his eyes and lower limbs. Urinalysis reveals a frothy appearance with 4+ proteinuria. Laboratory values show a serum albumin of 1.7 g/dL and a serum cholesterol of 280 mg/dL. His blood pressure is normal.",
+    "subQuestions": [
+      {
+        "id": "sec_paper_nephrotic_syndrome_ns_q5_sub1",
+        "questionText": "What is the most likely diagnosis?",
+        "back": "Minimal Change Nephrotic Syndrome (MCNS)."
+      },
+      {
+        "id": "sec_paper_nephrotic_syndrome_ns_q5_sub2",
+        "questionText": "Mention the standard initial drug dose and duration used to induce remission.",
+        "back": "Oral Prednisone at 60 mg/m2/day (maximum 60 mg) divided into 2-3 doses for at least 4 consecutive weeks."
+      }
+    ]
+  }
+],
+  "Acute Kidney Injury (AKI) & pRIFLE Criteria": [
+  {
+    "id": "sec_paper_acute_kidney_injury_aki_and_prifle_criteria_q1",
+    "front": "Define \"Acute Kidney Injury (AKI)\".",
+    "back": "It is a rapid decline (within a few hours to days) in glomerular filtration rate (GFR) resulting in the disturbance of renal physiological functions, leading to the impairment of nitrogenous waste product excretion and loss of water, electrolyte, and acid-base regulation."
+  },
+  {
+    "id": "sec_paper_acute_kidney_injury_aki_and_prifle_criteria_q2",
+    "front": "Enumerate 4 common \"Prerenal\" causes of AKI in pediatric emergencies.",
+    "back": "1. Severe dehydration (e.g., from vomiting and diarrhea).\n2. Massive hemorrhage (acute blood loss).\n3. Septic shock (severe fulminant sepsis causing renal hypoperfusion).\n4. Severe burns (plasma fluid losses)."
+  },
+  {
+    "id": "sec_paper_acute_kidney_injury_aki_and_prifle_criteria_q3",
+    "front": "Enumerate 4 laboratory or clinical findings seen during the \"Oliguric Phase\" of advanced AKI.",
+    "back": "1. Oliguria or anuria.\n2. Hyperkalemia (inducing cardiac arrhythmias).\n3. Metabolic acidosis (deep, rapid acidotic breathing).\n4. Uremic encephalopathy (confusion, convulsions, or coma)."
+  },
+  {
+    "id": "sec_paper_acute_kidney_injury_aki_and_prifle_criteria_q4",
+    "front": "Match the urine biochemistry finding with the correct diagnostic category of AKI:",
+    "type": "matching",
+    "matchingPairs": [
+      {
+        "left": "Urinary Sodium < 20 mEq/L and Fractional Excretion of Sodium (FENa) < 1%.",
+        "right": "Prerenal AKI (Prerenal Azotemia)."
+      },
+      {
+        "left": "Urinary Sodium > 40 mEq/L and Fractional Excretion of Sodium (FENa) > 2%.",
+        "right": "Intrinsic Renal AKI (Parenchymal damage)."
+      }
+    ]
+  },
+  {
+    "id": "sec_paper_acute_kidney_injury_aki_and_prifle_criteria_q5",
+    "front": "Short Clinical Case",
+    "type": "case",
+    "caseBody": "A 2-year-old infant with a 3-day history of severe vomiting and diarrhea presents with anuria for 14 hours, dry mucous membranes, and tachycardia. Laboratory testing reveals elevated serum blood urea nitrogen (BUN) and creatinine.",
+    "subQuestions": [
+      {
+        "id": "sec_paper_acute_kidney_injury_aki_and_prifle_criteria_q5_sub1",
+        "questionText": "What type of Acute Kidney Injury is this?",
+        "back": "Prerenal Acute Kidney Injury."
+      },
+      {
+        "id": "sec_paper_acute_kidney_injury_aki_and_prifle_criteria_q5_sub2",
+        "questionText": "Enumerate 2 essential initial urinary indicators used to confirm this specific type.",
+        "back": "Low urine sodium (<20 mEq/L) and a Fractional Excretion of Sodium (FENa) less than 1%."
+      }
+    ]
+  }
+],
+  "Chronic Kidney Disease (CKD)": [
+  {
+    "id": "sec_paper_chronic_kidney_disease_ckd_q1",
+    "front": "Define \"Chronic Kidney Disease (CKD)\" according to KDOQI criteria.",
+    "back": "It is defined as structural or functional abnormalities of the kidney for more than 3 months with health implications, or a persistent decrease in Glomerular Filtration Rate (GFR) to less than 60 ml/min/1.73m2 for more than 3 months."
+  },
+  {
+    "id": "sec_paper_chronic_kidney_disease_ckd_q2",
+    "front": "Enumerate 4 underlying clinical mechanisms or metabolic findings characteristically seen in CKD.",
+    "back": "1. Accumulation of nitrogenous waste products (elevated BUN and creatinine).\n2. Metabolic acidosis (impaired net acid excretion).\n3. Hyperkalemia.\n4. Renal osteodystrophy (secondary hyperparathyroidism)."
+  },
+  {
+    "id": "sec_paper_chronic_kidney_disease_ckd_q3",
+    "front": "Enumerate 4 core long-term complications of CKD that require targeted pharmacological interventions.",
+    "back": "1. Renal osteodystrophy (high-turnover bone disease).\n2. Growth retardation (short stature).\n3. Normochromic normocytic anemia (erythropoietin deficiency).\n4. Hypertension (volume overload or excessive renin production)."
+  },
+  {
+    "id": "sec_paper_chronic_kidney_disease_ckd_q4",
+    "front": "Match the Glomerular Filtration Rate (GFR) bracket with the correct stage of CKD:",
+    "type": "matching",
+    "matchingPairs": [
+      {
+        "left": "GFR between 30 and 59 ml/min/1.73m2.",
+        "right": "Stage 3 CKD."
+      },
+      {
+        "left": "GFR less than 15 ml/min/1.73m2.",
+        "right": "Stage 5 CKD (End-Stage Renal Disease)."
+      }
+    ]
+  },
+  {
+    "id": "sec_paper_chronic_kidney_disease_ckd_q5",
+    "front": "Short Clinical Case",
+    "type": "case",
+    "caseBody": "A 6-year-old boy with a history of chronic glomerulonephritis presents with short stature, severe pallor, and a bone deformity of the long legs. Lab work demonstrates chronic elevations of serum creatinine, hypocalcemia, hyperphosphatemia, and a hemoglobin level of 7.5 g/dL.",
+    "subQuestions": [
+      {
+        "id": "sec_paper_chronic_kidney_disease_ckd_q5_sub1",
+        "questionText": "What is the cause of his severe pallor and low hemoglobin?",
+        "back": "Anemia of CKD due to inadequate erythropoietin production by the failing kidneys."
+      },
+      {
+        "id": "sec_paper_chronic_kidney_disease_ckd_q5_sub2",
+        "questionText": "Enumerate 2 management lines used to treat his specific bone disorder.",
+        "back": "Low phosphorus diet and administration of oral phosphate binders followed by active Vitamin D supplementation."
+      }
+    ]
+  }
+],
+  "Viral Croup": [
+  {
+    "id": "sec_paper_viral_croup_q1",
+    "front": "Define \"Croup (Laryngo-tracheo-bronchitis)\".",
+    "back": "It is a viral infection of the glottic and subglottic regions, standing as the most common syndrome of inflammatory upper airway obstruction in young children."
+  },
+  {
+    "id": "sec_paper_viral_croup_q2",
+    "front": "Enumerate the 4 classic clinical symptoms that define the presentation of Croup.",
+    "back": "1. Barking cough.\n2. Inspiratory stridor.\n3. Hoarseness of voice.\n4. Respiratory distress (worse at night)."
+  },
+  {
+    "id": "sec_paper_viral_croup_q3",
+    "front": "Enumerate 4 components of the therapeutic management plan for a child with Croup.",
+    "back": "1. Supplemental humidified oxygen.\n2. Nebulized Epinephrine (L-epinephrine or racemic epinephrine) to reduce edema.\n3. A single dose of systemic Corticosteroids (oral or IM Dexamethasone).\n4. Keeping the patient nothing per mouth (NPO) and avoiding agitation."
+  },
+  {
+    "id": "sec_paper_viral_croup_q4",
+    "front": "Enumerate 4 clinical signs that indicate impending respiratory failure in a child with severe Croup.",
+    "back": "1. Cyanosis.\n2. Pallor.\n3. Decreased level of consciousness / depressed sensorium.\n4. Decreased stridor or barking cough despite severe retractions (failing effort)."
+  },
+  {
+    "id": "sec_paper_viral_croup_q5",
+    "front": "Short Clinical Case",
+    "type": "case",
+    "caseBody": "A 2-year-old boy is brought to the emergency clinic at midnight with a barking cough and high-pitched noisy sounds heard on inspiration. On examination, he has low-grade fever and mild subcostal retractions, but remains alert.",
+    "subQuestions": [
+      {
+        "id": "sec_paper_viral_croup_q5_sub1",
+        "questionText": "What is the most likely diagnosis?",
+        "back": "Acute Viral Croup."
+      },
+      {
+        "id": "sec_paper_viral_croup_q5_sub2",
+        "questionText": "What classic radiological sign is expected on a postero-anterior neck X-ray?",
+        "back": "The Steeple Sign (uniform subglottic narrowing of the airway)."
+      }
+    ]
+  }
+],
+  "Epiglottitis": [
+  {
+    "id": "sec_paper_epiglottitis_q1",
+    "front": "Define \"Acute Epiglottitis\".",
+    "back": "It is a life-threatening, rapidly progressive bacterial infection of the epiglottis and surrounding structures, capable of causing complete airway obstruction."
+  },
+  {
+    "id": "sec_paper_epiglottitis_q2",
+    "front": "Enumerate 4 classic clinical manifestations of Acute Epiglottitis.",
+    "back": "1. Acute onset of high-grade fever and severe sore throat.\n2. Drooling of saliva (due to severe inability to swallow).\n3. Hyperextension of the neck (sniffing position to maintain airway).\n4. Severe, rapidly progressive respiratory distress without a barking cough."
+  },
+  {
+    "id": "sec_paper_epiglottitis_q3",
+    "front": "Enumerate 4 critical clinical contraindications in the immediate management of suspected Epiglottitis.",
+    "back": "1. Do not place the child in a supine position.\n2. Do not examine the oral cavity or throat using a tongue depressor (risk of sudden cardiac arrest).\n3. Do not perform agitating diagnostic tests (like phlebotomy) before securing the airway.\n4. Do not rely on corticosteroids or nebulized epinephrine, as they are ineffective."
+  },
+  {
+    "id": "sec_paper_epiglottitis_q4",
+    "front": "Enumerate the 4 components of the standard therapeutic intervention for confirmed Epiglottitis.",
+    "back": "1. Immediate insertion of an artificial airway (endotracheal intubation) in the OR or ICU.\n2. Empiric intravenous antibiotic therapy (Vancomycin plus Ceftriaxone for 10 days).\n3. Supplemental oxygen delivery without mask agitation.\n4. Continuous monitoring of airway patency and direct visualization before extubation."
+  },
+  {
+    "id": "sec_paper_epiglottitis_q5",
+    "front": "Short Clinical Case",
+    "type": "case",
+    "caseBody": "A 4-year-old unimmunized child presents with a sudden onset of high fever, severe respiratory distress, and is sitting leaning forward while drooling saliva. The clinician suspects an upper airway emergency.",
+    "subQuestions": [
+      {
+        "id": "sec_paper_epiglottitis_q5_sub1",
+        "questionText": "What is the most likely diagnosis?",
+        "back": "Acute Epiglottitis."
+      },
+      {
+        "id": "sec_paper_epiglottitis_q5_sub2",
+        "questionText": "What is the primary causative organism for this specific presentation?",
+        "back": "Hemophilus influenzae type b (Hib)."
+      }
+    ]
+  }
+],
+  "Wheezing & Foreign Body": [
+  {
+    "id": "sec_paper_wheezing_and_foreign_body_q1",
+    "front": "Define \"Wheezing\".",
+    "back": "It is an expiratory continuous musical respiratory sound produced by turbulent airflow through partially obstructed small bronchi and bronchioles."
+  },
+  {
+    "id": "sec_paper_wheezing_and_foreign_body_q2",
+    "front": "Enumerate 4 common pediatric causes of \"Recurrent Wheezing\".",
+    "back": "1. Bronchial asthma.\n2. Recurrent aspiration (e.g., in infants with GERD).\n3. Chronic chest infections.\n4. Bronchopulmonary dysplasia (BPD)."
+  },
+  {
+    "id": "sec_paper_wheezing_and_foreign_body_q3",
+    "front": "Enumerate 4 clinical signs or complications characteristic of Foreign Body Aspiration in a child.",
+    "back": "1. History of sudden choking, coughing, or gagging while playing.\n2. Fixed, localized unilateral wheeze on auscultation.\n3. Unilaterally diminished breath sounds.\n4. Recurrent pneumonia or abscess localized in the exact same lung lobe."
+  },
+  {
+    "id": "sec_paper_wheezing_and_foreign_body_q4",
+    "front": "Match the noisy breathing sound with its correct physiological cause:",
+    "type": "matching",
+    "matchingPairs": [
+      {
+        "left": "Expiratory continuous musical sound due to small airway obstruction.",
+        "right": "Wheezing."
+      },
+      {
+        "left": "Inspiratory continuous harsh sound due to larynx or trachea obstruction.",
+        "right": "Stridor."
+      }
+    ]
+  },
+  {
+    "id": "sec_paper_wheezing_and_foreign_body_q5",
+    "front": "Short Clinical Case",
+    "type": "case",
+    "caseBody": "A 3-year-old child is rushed to the ER with sudden violent coughing, choking, and localized respiratory distress. On chest auscultation, a fixed localized wheeze is heard over the right lung alongside diminished breath sounds on that side.",
+    "subQuestions": [
+      {
+        "id": "sec_paper_wheezing_and_foreign_body_q5_sub1",
+        "questionText": "What is the most likely diagnosis?",
+        "back": "Foreign Body Aspiration."
+      },
+      {
+        "id": "sec_paper_wheezing_and_foreign_body_q5_sub2",
+        "questionText": "What is the definitive management choice for this condition?",
+        "back": "Rigid bronchoscopic extraction of the foreign body."
+      }
+    ]
+  }
+],
+  "Pneumonia كلها مختصرة": [
+  {
+    "id": "sec_paper_pneumonia_كلها_مختصرة_q1",
+    "front": "Define \"Community-Acquired Pneumonia (CAP)\".",
+    "back": "It is the presence of clinical signs and symptoms of inflammation of the lung parenchyma in a previously healthy child, caused by an infection acquired outside of a hospital setting."
+  },
+  {
+    "id": "sec_paper_pneumonia_كلها_مختصرة_q2",
+    "front": "Enumerate 4 physical chest examination findings characteristic of localized lung consolidation in Pneumonia.",
+    "back": "1. Diminished breath sounds over the affected field.\n2. Localized scattered crackles (crepitations).\n3. Bronchial breathing.\n4. Dullness on percussion."
+  },
+  {
+    "id": "sec_paper_pneumonia_كلها_مختصرة_q3",
+    "front": "Enumerate 4 non-respiratory systemic manifestations that can occur during childhood Pneumonia.",
+    "back": "1. Gastrointestinal disturbances (vomiting, anorexia, diarrhea).\n2. Abdominal distention (due to paralytic ileus or swallowed air).\n3. Severe abdominal pain (mimicking acute surgical conditions in lower-lobe pneumonia).\n4. Neck rigidity or meningism (seen in right upper lobe pneumonia)."
+  },
+  {
+    "id": "sec_paper_pneumonia_كلها_مختصرة_q4",
+    "front": "Enumerate 4 primary clinical criteria used to identify the need for Hospitalization in pediatric Pneumonia.",
+    "back": "1. Age less than 6 months.\n2. Moderate to severe respiratory distress or hypoxemia (oxygen saturation <90% in room air).\n3. Toxic appearance or signs of clinical shock/severe dehydration.\n4. Inability to tolerate oral medications/fluids, or failure of oral antibiotic outpatient therapy."
+  },
+  {
+    "id": "sec_paper_pneumonia_كلها_مختصرة_q5",
+    "front": "Short Clinical Case",
+    "type": "case",
+    "caseBody": "A 10-month-old infant presents with a high fever, a severe productive cough, and a respiratory rate of 55 breaths/minute. On chest examination, localized bronchial breathing and crackles are heard over the right lung base.",
+    "subQuestions": [
+      {
+        "id": "sec_paper_pneumonia_كلها_مختصرة_q5_sub1",
+        "questionText": "Does this infant meet the WHO criteria for fast breathing (Tachypnea)?",
+        "back": "Yes, tachypnea for infants aged 2-12 months is defined as a respiratory rate >50 breaths/minute."
+      },
+      {
+        "id": "sec_paper_pneumonia_كلها_مختصرة_q5_sub2",
+        "questionText": "What is the first-line empiric oral antibiotic of choice for outpatient management?",
+        "back": "High-dose Amoxicillin (90 mg/kg/24 hr)."
+      }
+    ]
+  }
+],
+  "Bronchiolitis": [
+  {
+    "id": "sec_paper_bronchiolitis_q1",
+    "front": "Define \"Acute Bronchiolitis\".",
+    "back": "It is the acute inflammatory obstruction of the small airways (bronchioles) by mucus, inflammatory cell infiltration, and desquamated epithelial cells, occurring predominantly during the first 2 years of life with a peak at 6 months of age."
+  },
+  {
+    "id": "sec_paper_bronchiolitis_q2",
+    "front": "Enumerate 4 standard clinical picture findings seen during a physical examination of an infant with Bronchiolitis.",
+    "back": "1. Sharp, dry repetitive cough and tachypnea (RR 60-80/min).\n2. Hyperinflation of the chest with an increased anteroposterior diameter.\n3. Subcostal and intercostal retractions with diaphragmatic downward displacement of the liver.\n4. Widespread fine end-inspiratory consonating crackles and prolonged expiration with wheezing."
+  },
+  {
+    "id": "sec_paper_bronchiolitis_q3",
+    "front": "Enumerate 4 complications that can result from severe Acute Bronchiolitis.",
+    "back": "1. Apneic spells (especially in young infants <2 months old).\n2. Secondary bacterial infection or otitis media.\n3. Dehydration and electrolyte imbalance.\n4. Respiratory failure or cardiorespiratory collapse."
+  },
+  {
+    "id": "sec_paper_bronchiolitis_q4",
+    "front": "Enumerate 4 core treatment modalities for a hospitalized infant with Bronchiolitis.",
+    "back": "1. Humidified supplemental oxygen therapy via nasal prongs.\n2. Parenteral fluid therapy to maintain hydration and electrolyte balance.\n3. Implementation of a single-dose trial of an inhaled bronchodilator.\n4. Avoidance of sedatives, antibiotics, and systemic steroids (unless specifically indicated)."
+  },
+  {
+    "id": "sec_paper_bronchiolitis_q5",
+    "front": "Short Clinical Case",
+    "type": "case",
+    "caseBody": "A 5-month-old infant presents during winter with a 2-day history of rhinitis followed by a severe dry cough, tachypnea, and chest indrawing. Chest exam reveals a hyper-resonant percussion note and diffuse fine end-inspiratory crackles with wheezes.",
+    "subQuestions": [
+      {
+        "id": "sec_paper_bronchiolitis_q5_sub1",
+        "questionText": "What is the most likely diagnosis?",
+        "back": "Acute Bronchiolitis."
+      },
+      {
+        "id": "sec_paper_bronchiolitis_q5_sub2",
+        "questionText": "What is the primary viral etiology responsible for roughly 50% of these cases?",
+        "back": "Respiratory Syncytial Virus (RSV)."
+      }
+    ]
+  }
+],
+  "Bronchial Asthma": [
+  {
+    "id": "sec_paper_bronchial_asthma_q1",
+    "front": "Define \"Bronchial Asthma\".",
+    "back": "It is a chronic, diffuse obstructive inflammatory lung disease characterized by airway hyperreactivity to a variety of stimuli, airway inflammation, and a high degree of reversibility of the obstruction either spontaneously or with treatment."
+  },
+  {
+    "id": "sec_paper_bronchial_asthma_q2",
+    "front": "Enumerate 4 common environmental or physical triggers of childhood Asthma exacerbations.",
+    "back": "1. Viral respiratory infections.\n2. Indoor/outdoor allergens (dust mites, pollens, animal dander).\n3. Air pollutants (tobacco smoke, strong chemical odors).\n4. Cold dry air or strenuous physical exercise."
+  },
+  {
+    "id": "sec_paper_bronchial_asthma_q3",
+    "front": "Enumerate 4 physical signs indicating a severe acute asthma attack (Status Asthmaticus).",
+    "back": "1. Severe dyspnea with prolonged expiration and intense use of accessory muscles (SCM retraction).\n2. Cyanosis and thoracic hyperinflation.\n3. Tachycardia and pulsus paradoxus.\n4. Altered mental status ranging from agitation to somnolence."
+  },
+  {
+    "id": "sec_paper_bronchial_asthma_q4",
+    "front": "Enumerate 4 rapid-acting pharmacological medications used as \"Quick Relievers\" during an acute asthma attack.",
+    "back": "1. Inhaled Short-Acting Beta2-agonists (SABAs like nebulized Albuterol/Salbutamol).\n2. Inhaled Anticholinergics (Nebulized Ipratropium bromide).\n3. Systemic Corticosteroids (Oral Prednisolone or IV Dexamethasone).\n4. Intravenous Magnesium Sulphate (infused slowly over 15-30 minutes)."
+  },
+  {
+    "id": "sec_paper_bronchial_asthma_q5",
+    "front": "Short Clinical Case",
+    "type": "case",
+    "caseBody": "A 6-year-old boy known to have recurrent wheezing presents to the emergency room with severe breathlessness and a tight cough after playing outdoors in cold weather. Spirometry demonstrates a low FEV1 that increases by 14% after an albuterol nebulizer treatment.",
+    "subQuestions": [
+      {
+        "id": "sec_paper_bronchial_asthma_q5_sub1",
+        "questionText": "What is the clinical significance of the 14% increase in FEV1?",
+        "back": "It demonstrates a high degree of reversible airflow limitation, which is a hallmark diagnostic feature of bronchial asthma."
+      },
+      {
+        "id": "sec_paper_bronchial_asthma_q5_sub2",
+        "questionText": "Enumerate 2 structural thoracic complications this child is at risk of if the acute attack deteriorates suddenly.",
+        "back": "Pneumothorax (air-leak) and segmental/subsegmental lung collapse."
+      }
+    ]
+  }
+],
+  "Cardiopulmonary Resuscitation (CPR)": [
+  {
+    "id": "sec_paper_cardiopulmonary_resuscitation_cpr_q1",
+    "front": "Define \"Cardiopulmonary Arrest\" in children.",
+    "back": "It is a sudden, unexpected cessation of systemic circulation and/or respiration in a pediatric patient who is unlikely to die and for whom the potential for clinical recovery is good."
+  },
+  {
+    "id": "sec_paper_cardiopulmonary_resuscitation_cpr_q2",
+    "front": "Enumerate 4 early warning signs of circulatory or respiratory decompensation (pre-arrest criteria).",
+    "back": "1. Cyanosis and slow, irregular respiration.\n2. Bradycardia (impending cardiac arrest in children).\n3. Weak peripheral pulses and poor tissue perfusion.\n4. Decreased responsiveness, altered consciousness, or extreme restlessness."
+  },
+  {
+    "id": "sec_paper_cardiopulmonary_resuscitation_cpr_q3",
+    "front": "Enumerate 4 distinct components of the Basic Life Support (BLS) airway and ventilation protocols.",
+    "back": "1. Opening the airway channel using the Triple Airway Maneuver.\n2. Visualizing and clearing the mouth or oropharynx via suction (avoiding blind finger sweeps).\n3. Inserting an appropriately sized oropharyngeal airway in an unconscious patient.\n4. Providing artificial ventilation using a bag-valve-mask device with 100% oxygen at 20 breaths/min."
+  },
+  {
+    "id": "sec_paper_cardiopulmonary_resuscitation_cpr_q4",
+    "front": "Enumerate 4 critical emergency medications administered during Advanced Life Support (ALS), including their indications or doses.",
+    "back": "1. Intravenous fluid bolus (Normal Saline or Ringer's Lactate at 20 ml/kg over 10 minutes).\n2. Intravenous Adrenaline (0.1 ml/kg of a 1:10,000 diluted solution) for asystole.\n3. Intravenous Sodium Bicarbonate (1 ml/kg of an 8.4% solution) to correct severe metabolic acidosis.\n4. Defibrillation electrical doses (2 Joules/kg up to 8 Joules/kg) for ventricular fibrillation control."
+  },
+  {
+    "id": "sec_paper_cardiopulmonary_resuscitation_cpr_q5",
+    "front": "Short Clinical Case",
+    "type": "case",
+    "caseBody": "A 10-month-old infant is brought into the resuscitation bay unresponsive, pulseless, and apneic. The resuscitation team leader institutes immediate basic life support maneuvers.",
+    "subQuestions": [
+      {
+        "id": "sec_paper_cardiopulmonary_resuscitation_cpr_q5_sub1",
+        "questionText": "Mention the 3 specific physical maneuvers that comprise the \"Triple Airway Maneuver\" to open the airway.",
+        "back": "Head tilt, Jaw thrust, and Mouth opening."
+      },
+      {
+        "id": "sec_paper_cardiopulmonary_resuscitation_cpr_q5_sub2",
+        "questionText": "What is the correct site, technique, and ratio of chest compressions required if two healthcare rescuers are present?",
+        "back": "Site is midsternum; technique is the two-thumb encircling method; compression-to-ventilation ratio is 15:2."
+      }
+    ]
+  }
+],
+  "Shock": [
+  {
+    "id": "sec_paper_shock_q1",
+    "front": "Define \"Circulatory Shock\".",
+    "back": "It is the clinical state of systemic circulatory inadequacy characterized by a disruption of tissue perfusion, leading to inadequate delivery of oxygen and nutrients to cells and inadequate removal of metabolic waste products from end organs."
+  },
+  {
+    "id": "sec_paper_shock_q2",
+    "front": "Enumerate 4 prominent \"Types\" of shock categorized in pediatric emergency medicine.",
+    "back": "1. Hypovolemic shock (e.g., from severe dehydration or hemorrhage).\n2. Septic shock (systemic inflammatory response due to fulminant infection).\n3. Cardiogenic shock (due to acute heart failure or myocarditis).\n4. Distributive shock (e.g., Anaphylactic shock or Neurogenic shock)."
+  },
+  {
+    "id": "sec_paper_shock_q3",
+    "front": "Enumerate 4 classic clinical findings that distinguish \"Compensated Shock\" from decompensated shock.",
+    "back": "1. Marked tachycardia.\n2. Delayed capillary refill time (>2 seconds).\n3. Cold, pale, or mottled peripheries.\n4. Normal or near-normal systolic blood pressure."
+  },
+  {
+    "id": "sec_paper_shock_q4",
+    "front": "Enumerate 4 vasoactive inotropic medications utilized in fluid-refractory shock, including their primary clinical indications.",
+    "back": "1. Epinephrine (Adrenaline): First-line agent for pediatric fluid-refractory cold septic shock or cardiogenic shock.\n2. Norepinephrine (Noradrenaline): First-line potent vasoconstrictor for warm distributive septic shock.\n3. Dobutamine: Strong inotrope indicated for low cardiac output states with a normal baseline blood pressure.\n4. Milrinone: Inodilator indicated for myocardial dysfunction, left ventricular failure, or post-cardiac surgery."
+  },
+  {
+    "id": "sec_paper_shock_q5",
+    "front": "Short Clinical Case",
+    "type": "case",
+    "caseBody": "A 3-year-old child presents with a severe toxic look, high fever, cold hands, bounding peripheral pulses, and a delayed capillary refill of 4 seconds. His systolic blood pressure has dropped significantly below the normal range for his age, and he is passing minimal urine.",
+    "subQuestions": [
+      {
+        "id": "sec_paper_shock_q5_sub1",
+        "questionText": "Is this shock compensated or uncompensated?",
+        "back": "Uncompensated shock (due to the drop in blood pressure and organ hypoperfusion)."
+      },
+      {
+        "id": "sec_paper_shock_q5_sub2",
+        "questionText": "What is the immediate first-line preload fluid expansion protocol, including specific fluid type and initial dose?",
+        "back": "Intravenous bolus of an isotonic crystalloid (Normal Saline or Ringer's Lactate) at a dose of 20 ml/kg infused rapidly over 10-15 minutes."
+      }
+    ]
+  }
+],
+  "Coma": [
+  {
+    "id": "sec_paper_coma_q1",
+    "front": "Define \"Coma\".",
+    "back": "It is a state of prolonged, sustained unconsciousness from which the pediatric patient cannot be aroused, failing to show any purposeful response even to deep painful external stimuli."
+  },
+  {
+    "id": "sec_paper_coma_q2",
+    "front": "Enumerate 4 secondary brain lesions or encephalopathies that cause a secondary metabolic Coma.",
+    "back": "1. Hypoxic encephalopathy (following cardiac arrest or severe shock).\n2. Diabetic Ketoacidosis (DKA) encephalopathy.\n3. Hypoglycemic coma.\n4. Uremic or hepatic encephalopathy (secondary to acute renal or hepatic failure)."
+  },
+  {
+    "id": "sec_paper_coma_q3",
+    "front": "Enumerate 4 urgent diagnostic laboratory or screening investigations required for a child presenting in an unexplained coma.",
+    "back": "1. Rapid blood glucose level (to rule out hypoglycemia or DKA).\n2. Arterial Blood Gases (ABG) and serum electrolytes.\n3. Renal function tests (blood urea nitrogen and creatinine) and liver enzymes.\n4. Urgent sepsis screening (CBC, CRP) and toxicological screening if suspected."
+  },
+  {
+    "id": "sec_paper_coma_q4",
+    "front": "Enumerate 4 standard non-specific medical measures implemented to control acute increased Intracranial Pressure (ICP) in a comatose child.",
+    "back": "1. Head elevation to 30 degrees in a neutral midline position (to enhance venous drainage).\n2. Maintenance fluid restriction to approximately 70% of normal requirements.\n3. Administration of osmotic diuretics, specifically intravenous Mannitol (0.25-0.5 g/kg).\n4. Administration of loop diuretics (Lasix) and instituting controlled mechanical hyperventilation."
+  },
+  {
+    "id": "sec_paper_coma_q5",
+    "front": "Short Clinical Case",
+    "type": "case",
+    "caseBody": "A 5-year-old child is brought to the resuscitation room completely unconscious following a severe head injury. On physical assessment, he does not respond to painful stimuli, breathes spontaneously, features a bulging anterior fontanel, and demonstrates asymmetric sluggish pupillary responses to light.",
+    "subQuestions": [
+      {
+        "id": "sec_paper_coma_q5_sub1",
+        "questionText": "What does the presence of asymmetric pupillary responses and asymmetric motor signs indicate?",
+        "back": "It indicates a lateralizing sign, suggesting a focal brain lesion or localized mass effect/hemorrhage."
+      },
+      {
+        "id": "sec_paper_coma_q5_sub2",
+        "questionText": "Enumerate 2 gastrointestinal and eye/skin protective measures required in the daily management of this comatose child.",
+        "back": "Administration of antacids to prevent stress ulcers, and applying protective eye drops/ointments to prevent corneal damage."
+      }
+    ]
+  }
+],
+  "Glasgow Coma Scale and its Advantages": [
+  {
+    "id": "sec_paper_glasgow_coma_scale_and_its_advantages_q1",
+    "front": "Define the \"Glasgow Coma Scale (GCS)\" and state its primary clinical purpose.",
+    "back": "It is an objective, standardized neurological scale providing a numerical score from 3 to 15 based on three behavioral parameters (Eye opening, Verbal response, Motor response), utilized to rapidly assess the depth of altered consciousness and cerebral cortical function."
+  },
+  {
+    "id": "sec_paper_glasgow_coma_scale_and_its_advantages_q2",
+    "front": "Enumerate 4 distinct \"Advantages\" of utilizing the Glasgow Coma Scale in pediatric emergency settings.",
+    "back": "1. Objective and standardized: Eliminates subjective bias, providing a numerical score to easily track changes over time.\n2. Simple and quick: Can be rapidly applied at the bedside in emergency rooms, trauma bays, and PICUs.\n3. Widely accepted internationally: Allows clear, standardized communication regarding patient status between different medical providers.\n4. Strong predictive and triage value: A GCS score of 8 or less accurately identifies severe brain injury and dictates the immediate need for airway protection."
+  },
+  {
+    "id": "sec_paper_glasgow_coma_scale_and_its_advantages_q3",
+    "front": "Enumerate 4 prominent \"Disadvantages or Limitations\" of the Glasgow Coma Scale.",
+    "back": "1. Limited utility in young preverbal infants: The verbal component is highly difficult to score accurately in children who cannot talk.\n2. Confounded by medical interventions: Therapeutic sedation, endotracheal intubation, or neuromuscular blockade completely alter or mask true scores.\n3. Fails to evaluate brainstem function directly: Crucial indicators like pupillary reactivity, oculocephalic reflexes, and corneal responses are entirely excluded.\n4. Fails to identify the etiology: It solely measures the clinical level of consciousness, providing no diagnostic insight into the cause of coma."
+  },
+  {
+    "id": "sec_paper_glasgow_coma_scale_and_its_advantages_q4",
+    "front": "Match the pediatric behavioral response with its correct points score on the GCS:",
+    "type": "matching",
+    "matchingPairs": [
+      {
+        "left": "Motor response: The patient localizes pain purposefully.",
+        "right": "5 Points."
+      },
+      {
+        "left": "Eye opening response: The patient opens eyes only in response to painful stimuli.",
+        "right": "2 Points."
+      }
+    ]
+  },
+  {
+    "id": "sec_paper_glasgow_coma_scale_and_its_advantages_q5",
+    "front": "Short Clinical Case",
+    "type": "case",
+    "caseBody": "A 3-year-old child is evaluated in the emergency room following a fall. On assessment, she opens her eyes only when spoken to (3 points), emits consolable crying when irritable (4 points), and withdraws her limb from a painful stimulus (4 points).",
+    "subQuestions": [
+      {
+        "id": "sec_paper_glasgow_coma_scale_and_its_advantages_q5_sub1",
+        "questionText": "Calculate the total Glasgow Coma Scale score for this pediatric patient.",
+        "back": "Total GCS Score = 3 (Eye) + 4 (Verbal) + 4 (Motor) = 11."
+      },
+      {
+        "id": "sec_paper_glasgow_coma_scale_and_its_advantages_q5_sub2",
+        "questionText": "Does this patient's score indicate an immediate, mandatory requirement for endotracheal intubation based on GCS guidelines?",
+        "back": "No, aggressive airway protection and intubation are indicated when the GCS score drops to 8 or less."
+      }
+    ]
+  }
+],
+  "Transient Cutaneous Lesions": [
+  {
+    "id": "sec_paper_transient_cutaneous_lesions_q1",
+    "front": "Define \"Acrocyanosis\" in a newborn infant.",
+    "back": "It is a benign, common, and transient neonatal condition characterized by a harmless cyanotic discoloration of the hands and feet due to peripheral circulatory sluggishness and vasomotor instability, especially when exposed to cool temperatures."
+  },
+  {
+    "id": "sec_paper_transient_cutaneous_lesions_q2",
+    "front": "Enumerate 4 distinct benign \"Transient Cutaneous Lesions\" observed during a normal newborn skin examination.",
+    "back": "1. Mongolian spots (blue macular pigmentation over the buttocks).\n2. Erythema toxicum (white papules on an erythematous base containing eosinophils).\n3. Milia of the face (tiny white pinpoint papules representing distended sebaceous glands on the nose).\n4. Salmon patch (transitory macular capillary hemangiomas on the eyelids or neck)."
+  },
+  {
+    "id": "sec_paper_transient_cutaneous_lesions_q3",
+    "front": "Enumerate 4 clinical features or properties that define \"Erythema Toxicum\" in neonates.",
+    "back": "1. Develops 1 to 3 days after birth.\n2. Presents as small, white papules or vesiculopustules on an erythematous base.\n3. Lesions characteristically contain a high concentration of eosinophils on smear.\n4. Distributed primarily on the face, trunk, and extremities, resolving spontaneously within 1 week."
+  },
+  {
+    "id": "sec_paper_transient_cutaneous_lesions_q4",
+    "front": "Match the transient neonatal skin finding with its proper descriptive definition:",
+    "type": "matching",
+    "matchingPairs": [
+      {
+        "left": "Distended sebaceous glands producing tiny white pinpoint papules on the nose and chin that disappear in 2-3 weeks.",
+        "right": "Milia."
+      },
+      {
+        "left": "Well-demarcated blue areas of pigmentation seen over the buttocks and back in more than 50% of newborns that fade in the first year.",
+        "right": "Mongolian spots."
+      }
+    ]
+  },
+  {
+    "id": "sec_paper_transient_cutaneous_lesions_q5",
+    "front": "Short Clinical Case",
+    "type": "case",
+    "caseBody": "A 2-day-old full-term healthy infant is noted by his mother to have an eruption of scattered small white bumps surrounded by a red ring across his chest and face. A skin scraping reveals the presence of numerous eosinophils. The infant is active and feeding well.",
+    "subQuestions": [
+      {
+        "id": "sec_paper_transient_cutaneous_lesions_q5_sub1",
+        "questionText": "What is the most likely diagnosis?",
+        "back": "Erythema Toxicum."
+      },
+      {
+        "id": "sec_paper_transient_cutaneous_lesions_q5_sub2",
+        "questionText": "What is the appropriate treatment line for this condition?",
+        "back": "No treatment is required; it is a benign condition that resolves spontaneously within a week."
+      }
+    ]
+  }
+],
+  "Prematurity and its Complications": [
+  {
+    "id": "sec_paper_prematurity_and_its_complications_q1",
+    "front": "Define a \"Premature Infant\" according to the World Health Organization.",
+    "back": "It is defined as any live-born infant delivered before 37 completed weeks of gestation (less than 37 weeks)."
+  },
+  {
+    "id": "sec_paper_prematurity_and_its_complications_q2",
+    "front": "Enumerate 4 major \"Physiological Handicaps\" resulting from the functional immaturity of organ systems in a premature infant.",
+    "back": "1. Immature thermoregulatory mechanisms (due to a large surface area, lack of subcutaneous fat, and immature centers).\n2. Respiratory center immaturity combined with a structural deficiency of pulmonary surfactant.\n3. Hepatic immaturity causing impaired conjugation of bilirubin and deficiency of Vitamin K-dependent clotting factors.\n4. Renal immaturity leading to a low glomerular filtration rate (GFR) and inability to effectively concentrate urine."
+  },
+  {
+    "id": "sec_paper_prematurity_and_its_complications_q3",
+    "front": "Enumerate 4 prominent \"Central Nervous System and Sensory\" complications that specifically affect preterm neonates.",
+    "back": "1. Intraventricular Hemorrhage (IVH).\n2. Periventricular Leukomalacia (PVL).\n3. Retinopathy of Prematurity (ROP).\n4. Kernicterus (bilirubin encephalopathy developing at lower total bilirubin thresholds)."
+  },
+  {
+    "id": "sec_paper_prematurity_and_its_complications_q4",
+    "front": "Enumerate 4 basic elements required in the nutritional management and feeding protocol of a stable preterm infant in the NICU.",
+    "back": "1. Utilization of maternal breast milk or specialized preterm formulas.\n2. Implementation of small-volume trophic feedings (minimal enteral nutrition) within 2-4 hours of life if stable to avoid hypoglycemia.\n3. Utilizing a nasogastric tube (gavage feeding) or dropper if the infant lacks coordinated suckling and swallowing reflexes.\n4. Careful monitoring of gastric residuals before each feed, ensuring increments do not exceed 20 mL/kg/24 hr."
+  },
+  {
+    "id": "sec_paper_prematurity_and_its_complications_q5",
+    "front": "Short Clinical Case",
+    "type": "case",
+    "caseBody": "A male infant is delivered via emergency cesarean section at 31 weeks of gestation due to severe maternal pre-eclampsia. His birth weight is 1300 grams. On admission to the NICU, he is weak, hypoactive, has thin translucent skin, and underdeveloped sole creases.",
+    "subQuestions": [
+      {
+        "id": "sec_paper_prematurity_and_its_complications_q5_sub1",
+        "questionText": "Classify this newborn based on his birth weight category.",
+        "back": "Very Low Birth Weight (VLBW) infant (defined as a birth weight less than 1500 grams)."
+      },
+      {
+        "id": "sec_paper_prematurity_and_its_complications_q5_sub2",
+        "questionText": "Enumerate 2 immediate respiratory or gastrointestinal complications this preterm infant is at high risk of developing in his first week of life.",
+        "back": "Respiratory Distress Syndrome (RDS / Hyaline Membrane Disease) and Necrotizing Enterocolitis (NEC)."
+      }
+    ]
+  }
+],
+  "Physiological Jaundice and its differentiation from Pathological Jaundice": [
+  {
+    "id": "sec_paper_physiological_jaundice_and_its_differentiation_from_pathological_jaundice_q1",
+    "front": "Define \"Neonatal Jaundice\".",
+    "back": "It is the yellowish discoloration of the skin, sclera, and mucous membranes in a newborn infant, caused by the systemic accumulation of bilirubin exceeding 1 mg/dL due to increased RBC turnover and immature conjugation."
+  },
+  {
+    "id": "sec_paper_physiological_jaundice_and_its_differentiation_from_pathological_jaundice_q2",
+    "front": "Enumerate 4 core clinical characteristics of \"Physiological Jaundice\" in a full-term infant.",
+    "back": "1. It appears after the first 24 hours of life (typically on the second or third day).\n2. The total serum bilirubin level is mild and remains below 12 mg/dL.\n3. It reaches a peak at day 3 to 5, and resolves spontaneously within 7 days.\n4. The infant is completely healthy, active, feeds well, and exhibits no anemia or hepatosplenomegaly."
+  },
+  {
+    "id": "sec_paper_physiological_jaundice_and_its_differentiation_from_pathological_jaundice_q3",
+    "front": "Enumerate 4 distinct clinical or laboratory warning signs that signify the presence of \"Pathological Jaundice\".",
+    "back": "1. Jaundice that appears within the first 24 hours of life.\n2. Total serum bilirubin rising rapidly at a rate faster than 5 mg/dL/24 hours.\n3. Total serum bilirubin exceeding 12 mg/dL in a full-term infant or 14 mg/dL in a preterm infant.\n4. Jaundice that persists beyond 14 days of life, or is associated with a high direct-reacting (conjugated) bilirubin fraction."
+  },
+  {
+    "id": "sec_paper_physiological_jaundice_and_its_differentiation_from_pathological_jaundice_q4",
+    "front": "Enumerate 4 common underlying clinical risk factors that can lead to an exaggerated or severe physiological jaundice.",
+    "back": "1. Prematurity or near-term gestational age.\n2. Maternal diabetes mellitus.\n3. Polycythemia or significant cutaneous bruising/cephalohematoma.\n4. Excessive neonatal weight loss due to dehydration or caloric deprivation from delayed breastfeeding."
+  },
+  {
+    "id": "sec_paper_physiological_jaundice_and_its_differentiation_from_pathological_jaundice_q5",
+    "front": "Short Clinical Case",
+    "type": "case",
+    "caseBody": "A full-term healthy infant develops mild jaundice on his third day of life. He is active, breastfeeds eagerly, and has completely normal stool and urine color. His serum bilirubin is checked and reveals a level of 9 mg/dL, which is entirely unconjugated.",
+    "subQuestions": [
+      {
+        "id": "sec_paper_physiological_jaundice_and_its_differentiation_from_pathological_jaundice_q5_sub1",
+        "questionText": "What is the diagnostic classification of this jaundice?",
+        "back": "Physiological Jaundice."
+      },
+      {
+        "id": "sec_paper_physiological_jaundice_and_its_differentiation_from_pathological_jaundice_q5_sub2",
+        "questionText": "What is the expected course and recommended treatment line for this infant?",
+        "back": "It will resolve spontaneously within 7 days; no treatment is required except clinical observation and ensuring adequate feeding."
+      }
+    ]
+  }
+],
+  "Pathological Jaundice": [
+  {
+    "id": "sec_paper_pathological_jaundice_q1",
+    "front": "Enumerate 4 characteristic \"Clinical Features\" of Pathological Jaundice caused specifically by ABO Incompatibility.",
+    "back": "1. Early onset of jaundice developing within the first 24 hours of life.\n2. Presence of hemolytic anemia and active hemolysis.\n3. Significant elevation of toxic unconjugated bilirubin.\n4. Presence of a positive direct Coombs test result."
+  },
+  {
+    "id": "sec_paper_pathological_jaundice_q2",
+    "front": "Enumerate 4 distinct \"Clinical Features\" that define the presentation of Galactosemia in a newborn.",
+    "back": "1. Onset of severe pathological jaundice shortly after milk feeding is initiated.\n2. Severe vomiting and poor feeding.\n3. Marked hepatomegaly.\n4. Presence of hypoglycemia and reducing substances in the urine."
+  },
+  {
+    "id": "sec_paper_pathological_jaundice_q3",
+    "front": "Enumerate 4 characteristic clinical or laboratory manifestations of Extrahepatic Biliary Atresia.",
+    "back": "1. Persistent jaundice that continues or worsens beyond 2 weeks of age.\n2. Progressively pale, clay-colored, or acholic stools.\n3. Dark yellow urine that stains the diaper.\n4. Persistent conjugated (direct) hyperbilirubinemia accompanied by hepatomegaly."
+  },
+  {
+    "id": "sec_paper_pathological_jaundice_q4",
+    "front": "Enumerate the clinical presentation findings that distinguish \"Breast Milk Jaundice\" from other forms of pathological hyperbilirubinemia.",
+    "back": "1. It typically appears later, during the first or second week of life.\n2. It presents as a mild, prolonged, but completely unconjugated hyperbilirubinemia.\n3. The infant is completely healthy, active, and gaining weight normally.\n4. Stool and urine maintain completely normal color, and breastfeeding should safely continue."
+  },
+  {
+    "id": "sec_paper_pathological_jaundice_q5",
+    "front": "Short Clinical Case",
+    "type": "case",
+    "caseBody": "A 3-week-old female infant presents with a history of persistent yellow skin. Her mother reports that the baby's stools are clay-colored and her urine is dark. On examination, she has a firm, enlarged liver. Laboratory analysis demonstrates severe conjugated hyperbilirubinemia.",
+    "subQuestions": [
+      {
+        "id": "sec_paper_pathological_jaundice_q5_sub1",
+        "questionText": "What is the most likely diagnosis?",
+        "back": "Extrahepatic Biliary Atresia."
+      },
+      {
+        "id": "sec_paper_pathological_jaundice_q5_sub2",
+        "questionText": "What is the required definitive management, and what is its prognosis if delayed?",
+        "back": "Early surgical intervention (Kasai portoenterostomy); delay significantly worsens the prognosis, leading to biliary cirrhosis."
+      }
+    ]
+  }
+],
+  "Complications of Indirect Hyperbilirubinemia": [
+  {
+    "id": "sec_paper_complications_of_indirect_hyperbilirubinemia_q1",
+    "front": "Define \"Kernicterus (Bilirubin Encephalopathy)\".",
+    "back": "It is a severe neurological syndrome resulting from the structural deposition of unconjugated bilirubin in the basal ganglia and brainstem nuclei, leading to irreversible cell death and neural damage."
+  },
+  {
+    "id": "sec_paper_complications_of_indirect_hyperbilirubinemia_q2",
+    "front": "Enumerate 4 predisposing clinical risk factors that facilitate the development of Kernicterus.",
+    "back": "1. Severe, uncontrolled unconjugated hyperbilirubinemia.\n2. Severe hypoalbuminemia (decreasing bilirubin binding capacity).\n3. Disruption or increased permeability of the blood-brain barrier (caused by hypoxia, acidosis, or sepsis).\n4. Administration of drugs that compete for albumin binding sites (such as sulfonamides, salicylates, or heavy vitamin K3)."
+  },
+  {
+    "id": "sec_paper_complications_of_indirect_hyperbilirubinemia_q3",
+    "front": "Enumerate 4 clinical signs seen during Phase 1 (the first 1-2 days) of the acute form of Kernicterus.",
+    "back": "1. Poor sucking and feeding intolerance.\n2. Loss of the normal Moro reflex.\n3. Marked lethargy or stupor.\n4. Hypotonia accompanied by a high-pitched cry or seizures."
+  },
+  {
+    "id": "sec_paper_complications_of_indirect_hyperbilirubinemia_q4",
+    "front": "Enumerate 4 prominent long-term manifestations that comprise the complete chronic neurological syndrome of Kernicterus by 3 years of age.",
+    "back": "1. Bilateral choreoathetosis (extrapyramidal involuntary movements) and muscle rigidity.\n2. Mental deficiency / cognitive impairment.\n3. High-frequency sensorineural hearing loss.\n4. Squinting and defective upward movement of the eyes."
+  },
+  {
+    "id": "sec_paper_complications_of_indirect_hyperbilirubinemia_q5",
+    "front": "Short Clinical Case",
+    "type": "case",
+    "caseBody": "A 5-day-old term infant with a total serum bilirubin level of 34 mg/dL exhibits poor sucking, hypotonia, a high-pitched cry, and an episodic backwards arching of his neck and trunk (opisthotonos).",
+    "subQuestions": [
+      {
+        "id": "sec_paper_complications_of_indirect_hyperbilirubinemia_q5_sub1",
+        "questionText": "What severe complication has this infant developed?",
+        "back": "Bilirubin Encephalopathy / Acute Kernicterus."
+      },
+      {
+        "id": "sec_paper_complications_of_indirect_hyperbilirubinemia_q5_sub2",
+        "questionText": "Enumerate 2 major therapeutic modalities used immediately to reduce indirect bilirubin levels below neurotoxic thresholds.",
+        "back": "Intensive Phototherapy and immediate Exchange Transfusion."
+      }
+    ]
+  }
+],
+  "Neonatal Sepsis": [
+  {
+    "id": "sec_paper_neonatal_sepsis_q1",
+    "front": "Define \"Neonatal Sepsis (Septicemia)\".",
+    "back": "It is a clinical syndrome of systemic illness characterized by signs of systemic infection and accompanied by documented bacteremia occurring within the first 4 weeks of life."
+  },
+  {
+    "id": "sec_paper_neonatal_sepsis_q2",
+    "front": "Enumerate 4 critical \"Maternal Risk Factors\" strongly correlated with the development of early-onset Neonatal Sepsis.",
+    "back": "1. Premature Rupture of Membranes (PROM) lasting longer than 24 hours.\n2. Maternal peripartum fever (temperature >=38°C) or documented chorioamnionitis.\n3. Active maternal urinary tract infection (UTI) or perineal colonization with E. coli/GBS.\n4. Foul-smelling, cloudy, or meconium-stained amniotic fluid."
+  },
+  {
+    "id": "sec_paper_neonatal_sepsis_q3",
+    "front": "Enumerate the 7 clinical components/signs utilized to calculate the \"Clinical Sepsis Score\" (Sepsis is suspected if 3 or more are present).",
+    "back": "1. Respiratory signs: Apnea, tachypnea, cyanosis, or respiratory distress.\n2. Cardiovascular signs: Bradycardia or tachycardia.\n3. Neuromuscular signs: Hypotonia or seizures.\n4. Circulatory signs: Poor skin color or poor peripheral circulation.\n5. Behavioral signs: Irritability, lethargy, or poor feeding.\n6. Gastrointestinal signs: Hepatosplenomegaly or abdominal distension.\n7. Metabolic signs: Fever or hypothermia."
+  },
+  {
+    "id": "sec_paper_neonatal_sepsis_q4",
+    "front": "Enumerate 4 inflammatory laboratory biomarkers or findings included in a neonatal Sepsis Workup.",
+    "back": "1. Neutropenia (a sign of severe sepsis) or neutrophilia.\n2. An elevated ratio of immature band cells to total neutrophils greater than 0.2.\n3. Marked thrombocytopenia (a late finding).\n4. Significantly elevated acute-phase reactants, specifically C-Reactive Protein (CRP) and ESR."
+  },
+  {
+    "id": "sec_paper_neonatal_sepsis_q5",
+    "front": "Short Clinical Case",
+    "type": "case",
+    "caseBody": "A 4-day-old preterm infant in the NICU exhibits a sudden onset of temperature instability (hypothermia of 35.4°C), poor feeding, new-onset apneic spells, and severe abdominal distention. The maternal history confirms a prolonged rupture of membranes lasting 30 hours.",
+    "subQuestions": [
+      {
+        "id": "sec_paper_neonatal_sepsis_q5_sub1",
+        "questionText": "Calculate the infant's clinical status based on the Clinical Sepsis Score parameters.",
+        "back": "The infant exhibits 4 positive signs (respiratory/apnea, behavioral/poor feeding, GI/distention, metabolic/hypothermia), strongly indicating sepsis as the score is >=3."
+      },
+      {
+        "id": "sec_paper_neonatal_sepsis_q5_sub2",
+        "questionText": "Mention the diagnostic category if this infant features a highly suggestive clinical picture alongside a positive blood culture for Klebsiella.",
+        "back": "Proven Neonatal Sepsis."
+      }
+    ]
+  }
+],
+
   "_SUBCHAPTER_Growth & Development": [
     {
       "id": "sub_gd_enum_1",
