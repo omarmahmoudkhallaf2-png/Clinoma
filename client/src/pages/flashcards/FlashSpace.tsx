@@ -9009,12 +9009,12 @@ const FlashSpace = () => {
   const [isSavingNote, setIsSavingNote] = useState(false);
 
   useEffect(() => {
-    if (isEditingNotes && editorRef.current) {
+    if (isEditingNotes && editorRef.current && selectedBoard) {
       const initialText = firebaseNotes[selectedBoard.disease] || PEDIATRICS_EXPLANATIONS[selectedBoard.disease] || '';
       editorRef.current.innerHTML = bbcodeAndMarkdownToHtml(initialText);
       setEditedNoteText(initialText);
     }
-  }, [isEditingNotes, selectedBoard.disease]);
+  }, [isEditingNotes, selectedBoard?.disease]);
 
   useEffect(() => {
     if (userData?.spacePriorities) {
