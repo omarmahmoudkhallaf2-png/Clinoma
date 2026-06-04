@@ -9353,6 +9353,48 @@ const FlashSpace = () => {
     setShowStudyExitConfirm(false);
   };
 
+  const exportSecondPaperNotes = () => {
+    let md = "# 📝 ملاحظات الورقة الثانية - Clinoma\n\n";
+    md += `تاريخ التصدير: ${new Date().toLocaleDateString('ar-EG')}\n\n`;
+    
+    let hasNotes = false;
+    
+    Object.entries(SECOND_PAPER_SLIDES).forEach(([chapter, files]) => {
+      let chapterHasNotes = false;
+      let chapterMd = `## 📂 ${chapter}\n\n`;
+      
+      files.forEach(file => {
+        const title = (file.split('/').pop() || file).replace(/\\.[^/.]+$/, "");
+        const note = firebaseNotes[title];
+        if (note && note.trim()) {
+          chapterHasNotes = true;
+          hasNotes = true;
+          chapterMd += `### 📌 ${title}\n\n${note}\n\n---\n\n`;
+        }
+      });
+      
+      if (chapterHasNotes) {
+        md += chapterMd;
+      }
+    });
+    
+    if (!hasNotes) {
+      toast.error("لا توجد ملاحظات مكتوبة حالياً للورقة الثانية لتصديرها!");
+      return;
+    }
+    
+    // Download as file
+    const blob = new Blob([md], { type: 'text/markdown;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", `second_paper_notes_${Date.now()}.md`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    toast.success("تم تحميل جميع ملاحظات الورقة الثانية بنجاح! 📥");
+  };
+
   const triggerExitStudySession = () => {
     setIsTimerActive(false);
     setShowStudyExitConfirm(true);
@@ -10304,6 +10346,14 @@ const FlashSpace = () => {
             <div className="flex items-center gap-1.5 px-3 py-1.5 bg-amber-500/10 text-amber-400 border border-amber-500/20 rounded-xl text-xs font-black">
               ⭐ {userData?.points ?? 0}
             </div>
+            {selectedModule === 'الورقة الثانية' && (
+              <button 
+                onClick={exportSecondPaperNotes}
+                className="px-4 py-2 bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-500/30 rounded-xl text-emerald-300 font-black text-xs flex items-center gap-2 transition-all"
+              >
+                📥 تحميل ملاحظاتي
+              </button>
+            )}
             <button 
               onClick={() => navigate('/flashcards/fantasy')} 
               className="px-4 py-2 bg-indigo-500/20 hover:bg-indigo-500/30 border border-indigo-500/30 rounded-xl text-indigo-300 font-black text-xs flex items-center gap-2 transition-all"
