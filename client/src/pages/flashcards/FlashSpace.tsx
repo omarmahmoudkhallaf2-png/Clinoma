@@ -9479,7 +9479,7 @@ const FlashSpace = () => {
               module: 'الورقة الثانية',
               system: chapter,
               disease: title,
-              medicalImage: `/assets/الورقة التانيه/${chapter}/${file}`,
+              medicalImage: `/assets/second_paper/${chapter}/${file}`,
               explanation: `A comprehensive visual study guide for ${title} under the ${chapter} chapter of Second Paper. Use this interactive flash space to annotate, highlight, and review key clinical presentation, diagnostic criteria, and management protocols.`,
               createdAt: Date.now()
             });
