@@ -9046,7 +9046,8 @@ const FlashSpace = () => {
   };
 
   const handleConfirmExitStudySession = async () => {
-    const earnedPoints = Math.floor(sessionSeconds * 3);
+    // 1 hour (3600 seconds) = 60 points, which is 1 point per 60 seconds (1 minute)
+    const earnedPoints = Math.floor(sessionSeconds / 60);
     
     if (user && earnedPoints > 0) {
       try {
@@ -9879,6 +9880,25 @@ const FlashSpace = () => {
     setIsCardFlipped(false);
   };
 
+  const calculateQuestionPoints = (q: Question): number => {
+    if (q.type === 'matching') {
+      return q.matchingPairs?.length || 1;
+    }
+    if (q.type === 'case') {
+      return q.subQuestions?.length || 1;
+    }
+    
+    const frontLower = (q.front || '').toLowerCase();
+    if (frontLower.includes('define')) {
+      return 2;
+    }
+    if (frontLower.includes('enumerate')) {
+      return 2;
+    }
+    
+    return 1;
+  };
+
   const rateCard = (rating: 'easy' | 'repeat' | 'hard') => {
     const current = qQueue[0];
     const rest = qQueue.slice(1);
@@ -9898,10 +9918,8 @@ const FlashSpace = () => {
           // Submit Points to Firebase
           const user = auth.currentUser;
           if (user) {
-            const minutes = Math.floor(sessionSeconds / 60);
-            const timePoints = minutes * 2;
-            let earnedPoints = newDone.length * 10 + timePoints;
-            const updates: any = { 
+            let earnedPoints = newDone.reduce((sum, q) => sum + calculateQuestionPoints(q), 0);
+            const updates: any = {
               points: increment(earnedPoints),
               spacePoints: increment(earnedPoints)
             };

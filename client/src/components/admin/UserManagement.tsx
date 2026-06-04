@@ -26,6 +26,52 @@ export default function UserManagement() {
   const [search, setSearch] = useState('');
   const [selectedBatch, setSelectedBatch] = useState<'all' | '43' | '44'>('all');
   const { updateUserStatus } = useAuth();
+  const [isResetting, setIsResetting] = useState(false);
+
+  const handleResetAllPoints = async () => {
+    if (!confirm("⚠️ تحذير هام جداً:\n\nهل أنت متأكد من تصفير نقاط جميع الطلاب والبدء من الصفر؟\nهذا الإجراء سيقوم بتصفير نقاط (points و spacePoints و points_*) لكل المستخدمين ولا يمكن التراجع عنه.")) {
+      return;
+    }
+    
+    setIsResetting(true);
+    try {
+      const { writeBatch, doc } = await import('firebase/firestore');
+      let batch = writeBatch(db);
+      let count = 0;
+      
+      for (const u of users) {
+        const userRef = doc(db, 'users', u.id);
+        const resetFields: any = {
+          points: 0,
+          spacePoints: 0
+        };
+        Object.keys(u).forEach(key => {
+          if (key.startsWith('points_')) {
+            resetFields[key] = 0;
+          }
+        });
+        batch.update(userRef, resetFields);
+        count++;
+        
+        if (count === 500) {
+          await batch.commit();
+          batch = writeBatch(db);
+          count = 0;
+        }
+      }
+      if (count > 0) {
+        await batch.commit();
+      }
+      
+      alert("🎉 تم تصفير جميع النقاط بنجاح للجميع!");
+      fetchData();
+    } catch (error: any) {
+      console.error("Error resetting points:", error);
+      alert("حدث خطأ أثناء تصفير النقاط: " + error.message);
+    } finally {
+      setIsResetting(false);
+    }
+  };
 
   const fetchData = async () => {
     try {
@@ -155,9 +201,19 @@ export default function UserManagement() {
   return (
     <div className="p-3 md:p-8 space-y-4 md:space-y-8 animate-in fade-in duration-500 max-w-full overflow-hidden">
       <div className="flex flex-col md:flex-row justify-between items-stretch md:items-center gap-4 md:gap-6">
-        <div>
-          <h2 className="text-lg md:text-2xl font-black text-right md:text-right">إدارة المستخدمين والصلاحيات</h2>
-          <p className="text-muted-foreground font-bold italic text-[11px] md:text-sm">تحكم في وصول الطلاب لكل كورس بشكل منفرد.</p>
+        <div className="flex flex-col md:flex-row md:items-center gap-4">
+          <div>
+            <h2 className="text-lg md:text-2xl font-black text-right md:text-right">إدارة المستخدمين والصلاحيات</h2>
+            <p className="text-muted-foreground font-bold italic text-[11px] md:text-sm">تحكم في وصول الطلاب لكل كورس بشكل منفرد.</p>
+          </div>
+          <button
+            onClick={handleResetAllPoints}
+            disabled={isResetting}
+            className="px-4 py-2 bg-rose-600 hover:bg-rose-700 text-white font-black text-xs md:text-sm rounded-xl transition-all shadow-md flex items-center justify-center gap-1.5 self-start md:self-center disabled:opacity-50 disabled:cursor-not-allowed shrink-0"
+          >
+            {isResetting ? <Loader2 className="w-4 h-4 animate-spin" /> : <Trash2 className="w-4 h-4" />}
+            تصفير نقاط الجميع
+          </button>
         </div>
         <div className="relative w-full md:max-w-md">
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 text-muted-foreground" />
