@@ -277,21 +277,21 @@ const SECOND_PAPER_SLIDES: Record<string, string[]> = {
     'Glasgow Coma Scale and its Advantages.jpeg'
   ],
   'Family Medicine': [
-    'Adolescent Psychosocial Health & HEADSSS Interview.jpeg',
-    'Anticipatory Care & Immunization Guidelines.jpeg',
-    'Basic Benefit Package & Level of Care.jpeg',
-    'Breastfeeding Management & Composition.jpeg',
-    'Comparative Medical Models.jpeg',
-    'Family Dynamics & The Human Life Cycle.jpeg',
-    'Family Health Team & PHC Services.jpeg',
-    'IMCI Case Management Overview.jpeg',
-    'IMCI Management of Diarrhoea and Dehydration.jpeg',
-    'IMCI Treatment Antibiotics & Wheezing Management.jpeg',
-    'IMCI Young Infant Care (Up to 2 Months).jpeg',
-    'Patient Education & Verbal Counseling.jpeg',
     'Principles of Family Medicine.jpeg',
+    'The Family Physician & RISE Framework.jpeg',
+    'Comparative Medical Models.jpeg',
+    'Family Health Team & PHC Services.jpeg',
+    'Family Dynamics & The Human Life Cycle.jpeg',
+    'Basic Benefit Package & Level of Care.jpeg',
+    'Patient Education & Verbal Counseling.jpeg',
     'Referral & Consultation Processes.jpeg',
-    'The Family Physician & RISE Framework.jpeg'
+    'Anticipatory Care & Immunization Guidelines.jpeg',
+    'Adolescent Psychosocial Health & HEADSSS Interview.jpeg',
+    'IMCI Case Management Overview.jpeg',
+    'IMCI Treatment Antibiotics & Wheezing Management.jpeg',
+    'IMCI Management of Diarrhoea and Dehydration.jpeg',
+    'IMCI Young Infant Care (Up to 2 Months).jpeg',
+    'Breastfeeding Management & Composition.jpeg'
   ]
 };
 
