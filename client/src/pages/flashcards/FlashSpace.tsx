@@ -242,23 +242,39 @@ const PEDIATRICS_SLIDES: Record<string, string[]> = {
 };
 
 const SECOND_PAPER_SLIDES: Record<string, string[]> = {
+  'Renal diseases': [
+    'Pediatric Hematuria Approach & Evaluation.jpeg',
+    'Acute Nephritic Syndrome & APSGN.jpeg',
+    'Nephrotic Syndrome (NS).jpeg',
+    'Acute Kidney Injury (AKI) & pRIFLE Criteria.jpeg',
+    'Chronic Kidney Disease (CKD).jpeg',
+    'Urinary Tract Infections & Pyelonephritis.jpeg'
+  ],
   'Chest diseases': [
-    'Bronchial Asthma.jpeg',
-    'Bronchiolitis.jpeg',
+    'Viral Croup.jpeg',
+    'Epiglottitis.jpeg',
+    'Wheezing & Foreign Body.jpeg',
+    'Pneumonia كلها مختصرة.jpeg',
     'Childhood Pneumonia Part1 Classifications.jpeg',
     'Childhood Pneumonia Part2 Misleading_Signs.jpeg',
     'Childhood Pneumonia Part3 Diagnostics ICU.jpeg',
     'Childhood Pneumonia Part4 Therapeutics Unresolved.jpeg',
-    'Epiglottitis.jpeg',
-    'Pneumonia كلها مختصرة.jpeg',
-    'Viral Croup.jpeg',
-    'Wheezing & Foreign Body.jpeg'
+    'Bronchiolitis.jpeg',
+    'Bronchial Asthma.jpeg'
+  ],
+  'Neonatology': [
+    'Transient Cutaneous Lesions.jpeg',
+    'Prematurity and its Complications.jpeg',
+    'Physiological Jaundice and its differentiation from Pathological Jaundice.jpeg',
+    'Pathological Jaundice.jpeg',
+    'Complications of Indirect Hyperbilirubinemia.jpeg',
+    'Neonatal Sepsis.jpeg'
   ],
   'Emergency Medicine': [
     'Cardiopulmonary Resuscitation (CPR).jpeg',
+    'Shock.jpeg',
     'Coma.jpeg',
-    'Glasgow Coma Scale and its Advantages.jpeg',
-    'Shock.jpeg'
+    'Glasgow Coma Scale and its Advantages.jpeg'
   ],
   'Family Medicine': [
     'Adolescent Psychosocial Health & HEADSSS Interview.jpeg',
@@ -276,23 +292,6 @@ const SECOND_PAPER_SLIDES: Record<string, string[]> = {
     'Principles of Family Medicine.jpeg',
     'Referral & Consultation Processes.jpeg',
     'The Family Physician & RISE Framework.jpeg'
-  ],
-  'Neonatology': [
-    'Complications of Indirect Hyperbilirubinemia.jpeg',
-    'Neonatal Jaundice.jpeg',
-    'Neonatal Sepsis.jpeg',
-    'Pathological Jaundice.jpeg',
-    'Physiological Jaundice and its differentiation from Pathological Jaundice.jpeg',
-    'Prematurity and its Complications.jpeg',
-    'Transient Cutaneous Lesions.jpeg'
-  ],
-  'Renal diseases': [
-    'Acute Kidney Injury (AKI) & pRIFLE Criteria.jpeg',
-    'Acute Nephritic Syndrome & APSGN.jpeg',
-    'Chronic Kidney Disease (CKD).jpeg',
-    'Nephrotic Syndrome (NS).jpeg',
-    'Pediatric Hematuria Approach & Evaluation.jpeg',
-    'Urinary Tract Infections & Pyelonephritis.jpeg'
   ]
 };
 
@@ -9672,6 +9671,13 @@ const FlashSpace = () => {
                       if (x === 'تحديدات الاطفال') return 1;
                       if (x === 'معسكر الورقة الأولى') return 2;
                       if (x === 'Growth & development') return 3;
+                      if (selectedModule === 'الورقة الثانية') {
+                        if (x === 'Renal diseases') return 10;
+                        if (x === 'Chest diseases') return 20;
+                        if (x === 'Neonatology') return 30;
+                        if (x === 'Emergency Medicine') return 40;
+                        if (x === 'Family Medicine') return 50;
+                      }
                       return 100;
                     };
                     const pA = getPriority(a);
