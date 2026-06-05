@@ -12141,6 +12141,54 @@ const FlashSpace = () => {
             </div>
           )}
         </AnimatePresence>
+      {/* Session Duration Selection Modal */}
+      {showSessionTimeModal && (
+        <div className="fixed inset-0 z-[2000] flex items-center justify-center bg-slate-950/85 backdrop-blur-md p-4">
+          <div className="w-full max-w-md bg-white rounded-[2.5rem] p-8 text-center space-y-6 shadow-2xl border border-slate-100 animate-in zoom-in-95 duration-200">
+            <div className="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mx-auto">
+              <Clock className="w-8 h-8" />
+            </div>
+            
+            <div className="space-y-2 font-sans">
+              <h2 className="text-2xl font-black text-slate-800">تحديد وقت الجلسة ⏱️</h2>
+              <p className="text-slate-500 text-sm font-medium">
+                اختر مدة الجلسة المفضلة لمذاكرة هذا الموضوع، وسنقوم بتنبيهك في منتصف الوقت.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 gap-3">
+              {[5, 10, 15, 30, 45, 60].map((mins) => (
+                <button
+                  key={mins}
+                  onClick={() => handleSelectSessionDuration(mins)}
+                  className="py-3 px-4 bg-slate-50 hover:bg-indigo-50 border border-slate-100 hover:border-indigo-200 text-slate-700 hover:text-indigo-700 font-bold rounded-2xl transition-all active:scale-[0.98] text-sm flex items-center justify-center gap-2"
+                >
+                  <Clock className="w-4 h-4 opacity-60" />
+                  <span>{mins} دقائق</span>
+                </button>
+              ))}
+            </div>
+
+            <div className="pt-2">
+              <button
+                onClick={() => handleSelectSessionDuration(null)}
+                className="w-full py-4 bg-indigo-600 text-white rounded-2xl font-black hover:bg-indigo-700 active:scale-[0.98] transition-all shadow-md shadow-indigo-650/20 text-sm"
+              >
+                جلسة مفتوحة (بدون حد زمني)
+              </button>
+              <button
+                onClick={() => {
+                  setShowSessionTimeModal(false);
+                  setPendingBoard(null);
+                }}
+                className="w-full mt-2 py-3 bg-slate-100 text-slate-600 rounded-2xl font-bold hover:bg-slate-200 active:scale-[0.98] transition-all text-xs"
+              >
+                إلغاء
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
       </div>
     );
   }
