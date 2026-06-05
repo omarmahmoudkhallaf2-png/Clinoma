@@ -245,53 +245,57 @@ const SECOND_PAPER_SLIDES: Record<string, string[]> = {
   'Renal diseases': [
     'Pediatric Hematuria Approach & Evaluation.jpeg',
     'Acute Nephritic Syndrome & APSGN.jpeg',
-    'Nephrotic Syndrome (NS).jpeg',
-    'Acute Kidney Injury (AKI) & pRIFLE Criteria.jpeg',
-    'Chronic Kidney Disease (CKD).jpeg',
+    'Nephrotic Syndrome.jpeg',
+    'Acute kidney injury.jpeg',
+    'Chronic kidney disease.jpeg',
     'Urinary Tract Infections & Pyelonephritis.jpeg'
   ],
   'Chest diseases': [
     'Viral Croup.jpeg',
     'Epiglottitis.jpeg',
+    'DD croup & pnuomonia.jpeg',
+    'Bronchiolitis.jpeg',
+    'Bronchial Asthma.jpeg',
     'Wheezing & Foreign Body.jpeg',
-    'Pneumonia كلها مختصرة.jpeg',
     'Childhood Pneumonia Part1 Classifications.jpeg',
     'Childhood Pneumonia Part2 Misleading_Signs.jpeg',
     'Childhood Pneumonia Part3 Diagnostics ICU.jpeg',
     'Childhood Pneumonia Part4 Therapeutics Unresolved.jpeg',
-    'Bronchiolitis.jpeg',
-    'Bronchial Asthma.jpeg'
+    'Pneumonia كلها مختصرة.jpeg'
   ],
   'Neonatology': [
-    'Transient Cutaneous Lesions.jpeg',
-    'Prematurity and its Complications.jpeg',
     'Physiological Jaundice and its differentiation from Pathological Jaundice.jpeg',
     'Pathological Jaundice.jpeg',
+    'Neonatal Jaundice.jpeg',
     'Complications of Indirect Hyperbilirubinemia.jpeg',
-    'Neonatal Sepsis.jpeg'
+    'Neonatal Sepsis.jpeg',
+    'Prematurity and its Complications.jpeg',
+    'Transient Cutaneous Lesions.jpeg'
   ],
   'Emergency Medicine': [
     'Cardiopulmonary Resuscitation (CPR).jpeg',
     'Shock.jpeg',
+    'Glascow coma scales.jpeg',
     'Coma.jpeg',
-    'Glasgow Coma Scale and its Advantages.jpeg'
+    'Complications of Indirect Hyperbilirubinemia.jpeg'
   ],
   'Family Medicine': [
     'Principles of Family Medicine.jpeg',
     'The Family Physician & RISE Framework.jpeg',
-    'Comparative Medical Models.jpeg',
-    'Family Health Team & PHC Services.jpeg',
     'Family Dynamics & The Human Life Cycle.jpeg',
+    'Comparative Medical Models.jpeg',
     'Basic Benefit Package & Level of Care.jpeg',
-    'Patient Education & Verbal Counseling.jpeg',
+    'Family Health Team & PHC Services.jpeg',
     'Referral & Consultation Processes.jpeg',
+    'Patient Education & Verbal Counseling.jpeg',
     'Anticipatory Care & Immunization Guidelines.jpeg',
-    'Adolescent Psychosocial Health & HEADSSS Interview.jpeg',
-    'IMCI Case Management Overview.jpeg',
-    'IMCI Treatment Antibiotics & Wheezing Management.jpeg',
-    'IMCI Management of Diarrhoea and Dehydration.jpeg',
-    'IMCI Young Infant Care (Up to 2 Months).jpeg',
-    'Breastfeeding Management & Composition.jpeg'
+    'Breastfeeding Management & Composition.jpeg',
+    'Adolescent Psychological Health & HEADSSS interview.jpeg',
+    'IMCI Overview & Case Management Steps.jpeg',
+    'IMCI_Young_Infant_Assessment_&_Classification_Age_Up_to_2_Months.jpeg',
+    'IMCI_Treatment_&_Care_Guidelines_for_Young_Infants_Up_to_2_Months.jpeg',
+    'IMCI_Assessment_&_Classification_Age_2_Months_to_5_Years_Danger.jpeg',
+    'IMCI Diarrhoea Management & Rehydration Plans.jpeg'
   ]
 };
 
