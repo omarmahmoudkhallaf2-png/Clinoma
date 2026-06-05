@@ -133,8 +133,8 @@ class UltraSleekSecurityCanvas(canvas.Canvas):
         self.saveState()
         width, height = CUSTOM_PAGE_SIZE
         
-        student_name = getattr(self, '_student_name', "Mohamed Ahmed")
-        student_email = getattr(self, '_student_email', "mohamed.ahmed@gmail.com")
+        student_name = getattr(self, '_student_name', "")
+        student_email = getattr(self, '_student_email', "")
         
         if p == 1:
             # COVER PAGE FOREGROUND (Text on Cover)
@@ -235,16 +235,17 @@ class UltraSleekSecurityCanvas(canvas.Canvas):
         self.restoreState()
 
 
-def build_pdf(filename="تحديدات_الأطفال_تجميعي.pdf", compress=False, student_name="Mohamed Ahmed", student_email="mohamed.ahmed@gmail.com"):
+def build_pdf(filename="تحديدات_الأطفال_تجميعي.pdf", compress=False, student_name="", student_email=""):
+    script_dir = os.path.dirname(os.path.abspath(__file__))
     # Primary look in public source folder, fallback to dist compiled assets
-    arabic_dir = u"d:/Med Prep/client/public/assets/TIP-Peditrics/\u062a\u062d\u062f\u064a\u062f\u0627\u062a \u0627\u0644\u0627\u0637\u0641\u0627\u0644"
-    english_dir = "d:/Med Prep/client/public/assets/TIP-Peditrics"
+    arabic_dir = os.path.join(script_dir, "client/public/assets/TIP-Peditrics/\u062a\u062d\u062f\u064a\u062f\u0627\u062a \u0627\u0644\u0627\u0637\u0641\u0627\u0644")
+    english_dir = os.path.join(script_dir, "client/public/assets/TIP-Peditrics")
     
     if not os.path.exists(arabic_dir):
-        arabic_dir = u"d:/Med Prep/client/dist/assets/TIP-Peditrics/\u062a\u062d\u062f\u064a\u062f\u0627\u062a \u0627\u0644\u0627\u0637\u0641\u0627\u0644"
-        english_dir = "d:/Med Prep/client/dist/assets/TIP-Peditrics"
+        arabic_dir = os.path.join(script_dir, "client/dist/assets/TIP-Peditrics/\u062a\u062d\u062f\u064a\u062f\u0627\u062a \u0627\u0644\u0627\u0637\u0641\u0627\u0644")
+        english_dir = os.path.join(script_dir, "client/dist/assets/TIP-Peditrics")
     
-    temp_compressed_dir = "d:/Med Prep/temp_compressed_hq"
+    temp_compressed_dir = os.path.join(script_dir, "temp_compressed_hq")
     if not os.path.exists(temp_compressed_dir):
         os.makedirs(temp_compressed_dir)
         
@@ -702,14 +703,15 @@ def build_pdf(filename="تحديدات_الأطفال_تجميعي.pdf", compres
     doc._student_email = student_email
     doc.build(story, canvasmaker=UltraSleekSecurityCanvas)
     print("SUCCESS! Final PDF generated successfully.")
-
 if __name__ == "__main__":
     import sys
     
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    
     # Platform dynamic generation defaults
-    output_filename = "d:/Med Prep/تحديدات_الأطفال.pdf"
-    student_name = "Mohamed Ahmed"
-    student_email = "mohamed.ahmed@gmail.com"
+    output_filename = os.path.join(script_dir, "تحديدات_الأطفال.pdf")
+    student_name = ""
+    student_email = ""
     compress_flag = False
     
     # Parse CLI arguments if executed from platform server backend
@@ -728,15 +730,17 @@ if __name__ == "__main__":
         build_pdf(output_filename, compress=compress_flag, student_name=student_name, student_email=student_email)
     else:
         # Local compile of both PDFs for testing
-        build_pdf("d:/Med Prep/تحديدات_الأطفال.pdf", compress=False, student_name="Mohamed Ahmed", student_email="mohamed.ahmed@gmail.com")
-        build_pdf("d:/Med Prep/تحديدات_الأطفال_مضغوط.pdf", compress=True, student_name="Mohamed Ahmed", student_email="mohamed.ahmed@gmail.com")
+        pdf_path = os.path.join(script_dir, "تحديدات_الأطفال.pdf")
+        pdf_path_comp = os.path.join(script_dir, "تحديدات_الأطفال_مضغوط.pdf")
+        build_pdf(pdf_path, compress=False, student_name="", student_email="")
+        build_pdf(pdf_path_comp, compress=True, student_name="", student_email="")
         
         # Automatically copy to client/public static folder for release
         import shutil
         print("Copying generated PDFs to client/public static assets...")
         try:
-            shutil.copy2("d:/Med Prep/تحديدات_الأطفال.pdf", "d:/Med Prep/client/public/tahdedat_pediatrics.pdf")
-            shutil.copy2("d:/Med Prep/تحديدات_الأطفال_مضغوط.pdf", "d:/Med Prep/client/public/tahdedat_pediatrics_compressed.pdf")
+            shutil.copy2(pdf_path, os.path.join(script_dir, "client/public/tahdedat_pediatrics.pdf"))
+            shutil.copy2(pdf_path_comp, os.path.join(script_dir, "client/public/tahdedat_pediatrics_compressed.pdf"))
             print("SUCCESS! Copied to client/public/tahdedat_pediatrics.pdf")
         except Exception as e:
             print(f"Error copying PDFs: {e}")

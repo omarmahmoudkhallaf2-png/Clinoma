@@ -8929,8 +8929,8 @@ const FlashSpace = () => {
       defaultName = defaultNameInput || "document.pdf";
     }
     
-    const rawDisplayName = user?.displayName || userData?.name || "Mohamed Ahmed";
-    const displayEmail = user?.email || userData?.email || "mohamed.ahmed@gmail.com";
+    const rawDisplayName = user?.displayName || userData?.name || user?.email?.split('@')[0] || "User";
+    const displayEmail = user?.email || userData?.email || "user@gmail.com";
     const cleanDisplayName = rawDisplayName.replace(/[^\x00-\x7F]/g, "").trim() || displayEmail.split('@')[0];
     
     try {
@@ -8999,6 +8999,15 @@ const FlashSpace = () => {
         margin = 20;
         box_w = 170;
         box_h = 14;
+      } else if (pdfId.startsWith('second_paper')) {
+        if (pdfId.includes('ped')) {
+          chapterCovers = [3, 15, 23, 30];
+        } else {
+          chapterCovers = [3, 15, 23, 30, 36];
+        }
+        margin = 30;
+        box_w = 170;
+        box_h = 13;
       } else {
         chapterCovers = [3, 7, 11, 15, 19, 24, 35, 43];
         margin = 12;
@@ -9016,82 +9025,123 @@ const FlashSpace = () => {
           const page = pdfDoc.getPage(i);
           const height = page.getHeight();
           const width = page.getWidth();
-          const header_y = height - margin - (pdfId === 'questions' || pdfId === 'answers' || pdfId === 'quiz' || pdfId === 'quiz_answers' ? 22 : 17);
           
-          if (pdfId === 'questions' || pdfId === 'answers' || pdfId === 'quiz' || pdfId === 'quiz_answers') {
-            // Clear placeholders
+          if (pdfId.startsWith('second_paper')) {
+            const header_y = height - 31;
+            
+            // Clear previous name text area (x: width - 30 - 2*box_w + 22, width: box_w - 24, height: box_h - 2)
             page.drawRectangle({
-              x: margin + 40,
+              x: width - 30 - (2 * box_w) + 22,
               y: header_y + 1.5,
-              width: box_w - 42,
+              width: box_w - 24,
               height: box_h - 3,
-              color: rgb(240/255, 249/255, 255/255),
+              color: rgb(248/255, 250/255, 252/255),
               opacity: 1
             });
+            
+            // Clear previous email text area (x: width - 30 - box_w + 36, width: box_w - 38, height: box_h - 2)
             page.drawRectangle({
-              x: width - margin - box_w + 42,
+              x: width - 30 - box_w + 36,
               y: header_y + 1.5,
-              width: box_w - 44,
+              width: box_w - 38,
               height: box_h - 3,
-              color: rgb(240/255, 249/255, 255/255),
+              color: rgb(248/255, 250/255, 252/255),
               opacity: 1
+            });
+            
+            page.drawText(cleanDisplayName, {
+              x: width - 30 - (2 * box_w) + 25,
+              y: header_y + 3.5,
+              size: 6.5,
+              font: helveticaFont,
+              color: rgb(15/255, 23/255, 42/255),
+            });
+            
+            page.drawText(displayEmail, {
+              x: width - 30 - box_w + 38,
+              y: header_y + 3.5,
+              size: 6.5,
+              font: helveticaFont,
+              color: rgb(15/255, 23/255, 42/255),
             });
           } else {
-            // Draw left box
-            page.drawRectangle({
-              x: margin + 5,
-              y: header_y,
-              width: box_w,
-              height: box_h,
-              color: rgb(240/255, 249/255, 255/255),
-              borderColor: rgb(186/255, 230/255, 253/255),
-              borderWidth: 0.5,
-              opacity: 1,
-            });
+            const header_y = height - margin - (pdfId === 'questions' || pdfId === 'answers' || pdfId === 'quiz' || pdfId === 'quiz_answers' ? 22 : 17);
             
-            // Draw right box
-            page.drawRectangle({
-              x: width - margin - box_w - 5,
-              y: header_y,
-              width: box_w,
-              height: box_h,
-              color: rgb(240/255, 249/255, 255/255),
-              borderColor: rgb(186/255, 230/255, 253/255),
-              borderWidth: 0.5,
-              opacity: 1,
-            });
+            if (pdfId === 'questions' || pdfId === 'answers' || pdfId === 'quiz' || pdfId === 'quiz_answers') {
+              // Clear placeholders
+              page.drawRectangle({
+                x: margin + 40,
+                y: header_y + 1.5,
+                width: box_w - 42,
+                height: box_h - 3,
+                color: rgb(240/255, 249/255, 255/255),
+                opacity: 1
+              });
+              page.drawRectangle({
+                x: width - margin - box_w + 42,
+                y: header_y + 1.5,
+                width: box_w - 44,
+                height: box_h - 3,
+                color: rgb(240/255, 249/255, 255/255),
+                opacity: 1
+              });
+            } else {
+              // Draw left box
+              page.drawRectangle({
+                x: margin + 5,
+                y: header_y,
+                width: box_w,
+                height: box_h,
+                color: rgb(240/255, 249/255, 255/255),
+                borderColor: rgb(186/255, 230/255, 253/255),
+                borderWidth: 0.5,
+                opacity: 1,
+              });
+              
+              // Draw right box
+              page.drawRectangle({
+                x: width - margin - box_w - 5,
+                y: header_y,
+                width: box_w,
+                height: box_h,
+                color: rgb(240/255, 249/255, 255/255),
+                borderColor: rgb(186/255, 230/255, 253/255),
+                borderWidth: 0.5,
+                opacity: 1,
+              });
+              
+              page.drawText('USER:', {
+                x: margin + 10,
+                y: header_y + 3.5,
+                size: 7,
+                font: helveticaBoldFont,
+                color: rgb(3/255, 105/255, 161/255),
+              });
+              page.drawText('EMAIL:', {
+                x: width - margin - box_w + 10,
+                y: header_y + 3.5,
+                size: 7,
+                font: helveticaBoldFont,
+                color: rgb(3/255, 105/255, 161/255),
+              });
+            }
             
-            page.drawText('USER:', {
-              x: margin + 10,
+            page.drawText(cleanDisplayName, {
+              x: margin + 42,
               y: header_y + 3.5,
               size: 7,
-              font: helveticaBoldFont,
-              color: rgb(3/255, 105/255, 161/255),
+              font: helveticaFont,
+              color: rgb(15/255, 23/255, 42/255),
             });
-            page.drawText('EMAIL:', {
-              x: width - margin - box_w + 10,
+            
+            page.drawText(displayEmail, {
+              x: width - margin - box_w + 45,
               y: header_y + 3.5,
               size: 7,
-              font: helveticaBoldFont,
-              color: rgb(3/255, 105/255, 161/255),
+              font: helveticaFont,
+              color: rgb(15/255, 23/255, 42/255),
             });
           }
-          
-          page.drawText(cleanDisplayName, {
-            x: margin + 42,
-            y: header_y + 3.5,
-            size: 7,
-            font: helveticaFont,
-            color: rgb(15/255, 23/255, 42/255),
-          });
-          
-          page.drawText(displayEmail, {
-            x: width - margin - box_w + 45,
-            y: header_y + 3.5,
-            size: 7,
-            font: helveticaFont,
-            color: rgb(15/255, 23/255, 42/255),
-          });
         }
       }
       

@@ -98,8 +98,8 @@ class LuxurySecurityCanvas(canvas.Canvas):
         self.saveState()
         width, height = CUSTOM_PAGE_SIZE
         
-        student_name = getattr(self, '_student_name', "Mohamed Ahmed")
-        student_email = getattr(self, '_student_email', "mohamed.ahmed@gmail.com")
+        student_name = getattr(self, '_student_name', "")
+        student_email = getattr(self, '_student_email', "")
         
         if p == 1:
             # Skip drawing text overlays because the generated Apple-style cover image
@@ -230,7 +230,7 @@ def process_slide_image(img_path, target_width=740, target_height=380, radius=12
         print(f"Error processing image {img_path}: {e}")
         return img_path
 
-def build_pdf(filename="تحديدات_الورقة_الثانية.pdf", compress=False, student_name="Mohamed Ahmed", student_email="mohamed.ahmed@gmail.com", exclude_family=False):
+def build_pdf(filename="تحديدات_الورقة_الثانية.pdf", compress=False, student_name="", student_email="", exclude_family=False):
     script_dir = os.path.dirname(os.path.abspath(__file__))
     base_assets_dir = os.path.join(script_dir, "client/public/assets/second_paper")
     if not os.path.exists(base_assets_dir):
@@ -619,8 +619,8 @@ if __name__ == "__main__":
     
     script_dir = os.path.dirname(os.path.abspath(__file__))
     output_filename = os.path.join(script_dir, "تحديدات_الورقة_الثانية.pdf")
-    student_name = "Mohamed Ahmed"
-    student_email = "mohamed.ahmed@gmail.com"
+    student_name = ""
+    student_email = ""
     compress_flag = False
     
     if len(sys.argv) > 1:
@@ -643,12 +643,12 @@ if __name__ == "__main__":
         pdf_path_ped_comp = os.path.join(script_dir, "تحديدات_الورقة_الثانية_أطفال_مضغوط.pdf")
         
         # Build standard and compressed full PDFs
-        build_pdf(pdf_path, compress=False, student_name="Mohamed Ahmed", student_email="mohamed.ahmed@gmail.com", exclude_family=False)
-        build_pdf(pdf_path_comp, compress=True, student_name="Mohamed Ahmed", student_email="mohamed.ahmed@gmail.com", exclude_family=False)
+        build_pdf(pdf_path, compress=False, student_name="", student_email="", exclude_family=False)
+        build_pdf(pdf_path_comp, compress=True, student_name="", student_email="", exclude_family=False)
         
         # Build standard and compressed pediatric-only PDFs
-        build_pdf(pdf_path_ped, compress=False, student_name="Mohamed Ahmed", student_email="mohamed.ahmed@gmail.com", exclude_family=True)
-        build_pdf(pdf_path_ped_comp, compress=True, student_name="Mohamed Ahmed", student_email="mohamed.ahmed@gmail.com", exclude_family=True)
+        build_pdf(pdf_path_ped, compress=False, student_name="", student_email="", exclude_family=True)
+        build_pdf(pdf_path_ped_comp, compress=True, student_name="", student_email="", exclude_family=True)
         
         print("Copying generated PDFs to client/public static assets...")
         try:
