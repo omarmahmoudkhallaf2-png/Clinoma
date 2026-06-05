@@ -95,6 +95,7 @@ export default function UserManagement() {
       const uniqueModules = Array.from(new Set([
         'Pediatrics', // Always show Pediatrics
         'الورقة الثانية', // Always show الورقة الثانية
+        'Opthalmology', // Always show Opthalmology
         ...boardSnap.docs.map(d => d.data().module).filter(Boolean)
       ])).filter((m: any) => m !== 'Clinical Nutrition') as string[];
 

@@ -9172,6 +9172,113 @@ const FlashSpace = () => {
   const [showStudyExitConfirm, setShowStudyExitConfirm] = useState(false);
   const [activeNoteTab, setActiveNoteTab] = useState<'notes' | 'questions'>('notes');
 
+  // --- New Session Duration & Completion States ---
+  const [completedBoards, setCompletedBoards] = useState<string[]>(() => {
+    try {
+      const saved = localStorage.getItem('flashspace_completed_boards');
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
+  const [showSessionTimeModal, setShowSessionTimeModal] = useState(false);
+  const [sessionDuration, setSessionDuration] = useState<number | null>(null); // in seconds
+  const [halftimeAlertSent, setHalftimeAlertSent] = useState(false);
+  const [showSlideCompletionConfirm, setShowSlideCompletionConfirm] = useState(false);
+  const [pendingBoard, setPendingBoard] = useState<Board | null>(null);
+
+  const addPointsSilently = async (seconds: number) => {
+    const earnedPoints = Math.floor(seconds / 60);
+    if (user && earnedPoints > 0) {
+      try {
+        const userRef = doc(db, 'users', user.uid);
+        const updates: any = {
+          points: increment(earnedPoints),
+          spacePoints: increment(earnedPoints)
+        };
+        if (selectedModule) {
+          updates[`points_${selectedModule}`] = increment(earnedPoints);
+        }
+        await updateDoc(userRef, updates);
+      } catch (error) {
+        console.error("Failed to add study time points silently", error);
+      }
+    }
+  };
+
+  const onNavigateToBoard = (board: Board | null) => {
+    if (board && selectedBoard && board.id === selectedBoard.id) {
+      return;
+    }
+    if (selectedBoard && sessionSeconds > 0) {
+      setPendingBoard(board);
+      setIsTimerActive(false);
+      setShowSlideCompletionConfirm(true);
+    } else {
+      if (board) {
+        setPendingBoard(board);
+        setShowSessionTimeModal(true);
+      } else {
+        handleConfirmExitStudySession();
+      }
+    }
+  };
+
+  const handleSelectSessionDuration = (durationMinutes: number | null) => {
+    const durationSeconds = durationMinutes ? durationMinutes * 60 : null;
+    setSessionDuration(durationSeconds);
+    setSessionSeconds(0);
+    setHalftimeAlertSent(false);
+    setShowSessionTimeModal(false);
+    
+    if (pendingBoard) {
+      setSelectedBoard(pendingBoard);
+      setPendingBoard(null);
+    }
+    setIsTimerActive(true);
+    setPaths([]);
+    setRedoPaths([]);
+    setShowExplanation(false);
+    setShowQuestions(false);
+  };
+
+  const handleSlideCompletionResponse = async (completed: boolean) => {
+    if (sessionSeconds > 0) {
+      await addPointsSilently(sessionSeconds);
+    }
+    
+    if (completed && selectedBoard) {
+      const nextCompleted = [...completedBoards];
+      if (!nextCompleted.includes(selectedBoard.id)) {
+        nextCompleted.push(selectedBoard.id);
+        setCompletedBoards(nextCompleted);
+        localStorage.setItem('flashspace_completed_boards', JSON.stringify(nextCompleted));
+      }
+    }
+    
+    setPaths([]);
+    setRedoPaths([]);
+    setSessionSeconds(0);
+    setIsTimerActive(false);
+    setShowSlideCompletionConfirm(false);
+    
+    const nextBoard = pendingBoard;
+    setPendingBoard(null);
+    
+    if (nextBoard) {
+      setPendingBoard(nextBoard);
+      setShowSessionTimeModal(true);
+    } else {
+      setSelectedBoard(null);
+      setSelectedSystem(null);
+      setSelectedSubSystem(null);
+      setIsSidebarOpen(false);
+      setIsChapterQuestionMode(false);
+      setShowQuestions(false);
+      setShowExplanation(false);
+    }
+  };
+
   // --- Question Session State ---
   const [qQueue, setQQueue] = useState<Question[]>([]);
   const [qDone, setQDone] = useState<Question[]>([]);
@@ -9272,11 +9379,11 @@ const FlashSpace = () => {
 
   useEffect(() => {
     if (isEditingNotes && editorRef.current && selectedBoard) {
-      const initialText = firebaseNotes[selectedBoard.disease] || PEDIATRICS_EXPLANATIONS[selectedBoard.disease] || '';
+      const initialText = getNoteForDisease(selectedBoard.disease) || PEDIATRICS_EXPLANATIONS[selectedBoard.disease] || '';
       editorRef.current.innerHTML = bbcodeAndMarkdownToHtml(initialText);
       setEditedNoteText(initialText);
     }
-  }, [isEditingNotes, selectedBoard?.disease]);
+  }, [isEditingNotes, selectedBoard?.disease, firebaseNotes]);
 
   useEffect(() => {
     if (userData?.spacePriorities) {
@@ -9353,6 +9460,27 @@ const FlashSpace = () => {
     setShowStudyExitConfirm(false);
   };
 
+  const getNoteForDisease = (diseaseName: string) => {
+    if (!diseaseName) return "";
+    const cleanName = diseaseName.trim();
+    if (firebaseNotes[cleanName]) return firebaseNotes[cleanName];
+    const nameWithoutExt = cleanName.replace(/\.[^/.]+$/, "");
+    if (firebaseNotes[nameWithoutExt]) return firebaseNotes[nameWithoutExt];
+    if (firebaseNotes[nameWithoutExt + ".jpeg"]) return firebaseNotes[nameWithoutExt + ".jpeg"];
+    if (firebaseNotes[nameWithoutExt + ".jpg"]) return firebaseNotes[nameWithoutExt + ".jpg"];
+    if (firebaseNotes[nameWithoutExt + ".png"]) return firebaseNotes[nameWithoutExt + ".png"];
+    
+    // Case insensitive & fallback check
+    const lowerClean = cleanName.toLowerCase();
+    const lowerCleanNoExt = nameWithoutExt.toLowerCase();
+    const foundKey = Object.keys(firebaseNotes).find(k => {
+      const kLower = k.trim().toLowerCase();
+      return kLower === lowerClean || kLower.replace(/\.[^/.]+$/, "") === lowerCleanNoExt;
+    });
+    if (foundKey) return firebaseNotes[foundKey];
+    return "";
+  };
+
   const exportSecondPaperNotes = () => {
     let md = "# 📝 ملاحظات الورقة الثانية - Clinoma\n\n";
     md += `تاريخ التصدير: ${new Date().toLocaleDateString('ar-EG')}\n\n`;
@@ -9365,7 +9493,7 @@ const FlashSpace = () => {
       
       files.forEach(file => {
         const title = (file.split('/').pop() || file).replace(/\.[^/.]+$/, "");
-        const note = firebaseNotes[title];
+        const note = getNoteForDisease(title) || getNoteForDisease(file);
         if (note && note.trim()) {
           chapterHasNotes = true;
           hasNotes = true;
@@ -9396,13 +9524,7 @@ const FlashSpace = () => {
   };
 
   const triggerExitStudySession = () => {
-    setIsTimerActive(false);
-    setShowStudyExitConfirm(true);
-  };
-
-  const handleCancelExitStudySession = () => {
-    setIsTimerActive(true);
-    setShowStudyExitConfirm(false);
+    onNavigateToBoard(null);
   };
 
   const [activeCategory, setActiveCategory] = useState<string>('All');
@@ -9467,10 +9589,52 @@ const FlashSpace = () => {
   useEffect(() => {
     let interval: any;
     if (isTimerActive) {
-      interval = setInterval(() => setSessionSeconds(s => s + 1), 1000);
+      interval = setInterval(() => {
+        setSessionSeconds(prev => {
+          const next = prev + 1;
+          
+          // Halftime alert check
+          if (sessionDuration && sessionDuration > 0 && !halftimeAlertSent) {
+            const halfTime = Math.floor(sessionDuration / 2);
+            if (next === halfTime) {
+              setHalftimeAlertSent(true);
+              toast('منتصف وقت الجلسة قد انقضى! استمر في التركيز 💪', {
+                icon: '⏰',
+                duration: 5000,
+                position: 'top-center',
+                style: {
+                  background: '#f59e0b',
+                  color: '#fff',
+                  fontWeight: 'bold',
+                  borderRadius: '1rem',
+                }
+              });
+            }
+          }
+          
+          // Session end check
+          if (sessionDuration && sessionDuration > 0) {
+            if (next >= sessionDuration) {
+              setIsTimerActive(false);
+              toast.success('لقد انتهى وقت الجلسة المحدد! عمل رائع 🏆', {
+                duration: 5000,
+                position: 'top-center',
+                style: {
+                  background: '#10b981',
+                  color: '#fff',
+                  fontWeight: 'bold',
+                  borderRadius: '1rem',
+                }
+              });
+            }
+          }
+          
+          return next;
+        });
+      }, 1000);
     }
     return () => clearInterval(interval);
-  }, [isTimerActive]);
+  }, [isTimerActive, sessionDuration, halftimeAlertSent]);
 
   // --- Data Fetching (Restored) ---
   useEffect(() => {
@@ -9532,6 +9696,9 @@ const FlashSpace = () => {
         setBoards(finalBoards);
         
         const mods = Array.from(new Set(finalBoards.map(b => b.module))).filter(Boolean);
+        if (!mods.includes('Opthalmology')) {
+          mods.push('Opthalmology');
+        }
         const sysMap: Record<string, string[]> = {};
         finalBoards.forEach(b => {
           if (b.module && b.system) {
@@ -10381,13 +10548,36 @@ const FlashSpace = () => {
               <div className="flex-1 overflow-y-auto pb-8">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                   {modules.map(mod => {
+                    const isOpthalmology = mod === 'Opthalmology';
+                    const hasAccess = userData?.role === 'admin' || isSpaceSubscribed(mod);
+
                     return (
-                    <button key={mod} onClick={() => setSelectedModule(mod)}
+                    <button key={mod} onClick={() => {
+                      if (isOpthalmology && !hasAccess) {
+                        toast('Coming Soon! قريباً جداً 🚀', {
+                          icon: '🚧',
+                          style: {
+                            borderRadius: '16px',
+                            background: '#1e293b',
+                            color: '#fff',
+                            fontWeight: 'bold'
+                          }
+                        });
+                        return;
+                      }
+                      setSelectedModule(mod);
+                    }}
                       className="group relative backdrop-blur-xl border border-white/5 active:border-indigo-500/50 hover:border-indigo-500/50 rounded-3xl text-left transition-all duration-300 active:scale-[0.98] hover:scale-[1.02] overflow-hidden p-6 hover:shadow-2xl hover:shadow-indigo-500/10 bg-slate-900/50"
                     >
                       {/* Gradient Glow */}
                       <div className="absolute top-0 right-0 w-40 h-40 opacity-10 group-hover:opacity-30 transition-opacity duration-500 blur-3xl rounded-full" style={{background: '#6366f1', transform: 'translate(40%, -40%)'}} />
                       
+                      {isOpthalmology && !hasAccess && (
+                        <div className="absolute top-4 right-4 z-10 bg-amber-500/20 text-amber-400 border border-amber-500/30 px-3 py-1 rounded-full flex items-center gap-1 backdrop-blur-sm shadow-md">
+                          <span className="text-[10px] font-black uppercase tracking-wider">Coming Soon 🚀</span>
+                        </div>
+                      )}
+
                       <div className="relative z-10 flex flex-col h-full gap-4">
                         <div className="w-14 h-14 bg-gradient-to-br from-indigo-500/20 to-violet-500/10 border border-indigo-500/20 rounded-2xl flex items-center justify-center text-indigo-400 shadow-inner group-hover:-translate-y-1 transition-transform duration-300">
                           <BookOpen className="w-7 h-7 drop-shadow-md" />
@@ -10395,7 +10585,9 @@ const FlashSpace = () => {
                         <div className="flex items-end justify-between mt-auto">
                           <div>
                             <h3 className="text-xl font-black text-white leading-tight">{mod}</h3>
-                            <p className="text-slate-400 text-xs font-semibold mt-1">{systems[mod]?.length || 0} chapters available</p>
+                            <p className="text-slate-400 text-xs font-semibold mt-1">
+                              {isOpthalmology ? 'Under Development' : `${systems[mod]?.length || 0} chapters available`}
+                            </p>
                           </div>
                         </div>
                       </div>
@@ -11302,7 +11494,7 @@ const FlashSpace = () => {
                     {boards.filter(b => b.module === selectedModule && b.system === selectedSystem && matchesSubSystem(b.subSystem, selectedSubSystem)).map(board => (
                     <button
                       key={board.id}
-                      onClick={() => { setSelectedBoard(board); setIsTimerActive(true); setPaths([]); setRedoPaths([]); }}
+                      onClick={() => { onNavigateToBoard(board); }}
                       className="group relative bg-slate-900/50 backdrop-blur-xl border border-white/5 active:border-indigo-500/50 hover:border-indigo-500/40 rounded-3xl overflow-hidden transition-all duration-300 active:scale-[0.97] hover:scale-[1.02] text-left flex flex-col hover:shadow-2xl hover:shadow-indigo-500/20"
                     >
                       <div className="flex-1 overflow-hidden bg-black/40 relative aspect-video">
@@ -11457,7 +11649,7 @@ const FlashSpace = () => {
                   {boards
                     .filter(b => b.module === selectedModule && b.system === selectedSystem && spacePriorities[b.id] === reviewFilter)
                     .map(board => (
-                      <div key={board.id} className="bg-slate-900 rounded-3xl overflow-hidden group cursor-pointer border border-white/5 hover:border-indigo-500/50 transition-all hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-1" onClick={() => { setSelectedBoard(board); setIsReviewCenterOpen(false); }}>
+                      <div key={board.id} className="bg-slate-900 rounded-3xl overflow-hidden group cursor-pointer border border-white/5 hover:border-indigo-500/50 transition-all hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-1" onClick={() => { onNavigateToBoard(board); setIsReviewCenterOpen(false); }}>
                         <div className="aspect-[4/3] bg-black/50 relative overflow-hidden">
                           <img src={board.medicalImage} className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110" />
                           <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-80" />
@@ -12042,7 +12234,7 @@ const FlashSpace = () => {
                     return (
                       <button
                         key={board.id}
-                        onClick={() => { setSelectedBoard(board); setIsSidebarOpen(false); setPaths([]); setRedoPaths([]); setShowExplanation(false); setShowQuestions(false); }}
+                        onClick={() => { onNavigateToBoard(board); setIsSidebarOpen(false); }}
                         className={cn(
                           "w-full text-left px-4 py-2.5 flex items-center gap-3 transition-all border-b border-slate-50",
                           selectedBoard?.id === board.id
@@ -12051,7 +12243,8 @@ const FlashSpace = () => {
                         )}
                       >
                         <span className={cn("text-[10px] font-black w-5 shrink-0", selectedBoard?.id === board.id ? "text-indigo-500" : "text-slate-300")}>{globalIdx}</span>
-                        <span className={cn("text-[11px] font-bold leading-snug line-clamp-2", selectedBoard?.id === board.id ? "text-indigo-700" : "text-slate-500")}>{board.disease}</span>
+                        <span className={cn("text-[11px] font-bold leading-snug line-clamp-2 flex-1", selectedBoard?.id === board.id ? "text-indigo-700" : "text-slate-500")}>{board.disease}</span>
+                        {completedBoards.includes(board.id) && <Check className="w-3.5 h-3.5 text-emerald-500 shrink-0" />}
                       </button>
                     )
                   })}
@@ -12062,7 +12255,7 @@ const FlashSpace = () => {
             return filteredBoards.map((board, idx) => (
               <button
                 key={board.id}
-                onClick={() => { setSelectedBoard(board); setIsSidebarOpen(false); setPaths([]); setRedoPaths([]); setShowExplanation(false); setShowQuestions(false); }}
+                onClick={() => { onNavigateToBoard(board); setIsSidebarOpen(false); }}
                 className={cn(
                   "w-full text-left px-4 py-2.5 flex items-center gap-3 transition-all border-b border-slate-50",
                   selectedBoard?.id === board.id
@@ -12071,7 +12264,8 @@ const FlashSpace = () => {
                 )}
               >
                 <span className={cn("text-[10px] font-black w-5 shrink-0", selectedBoard?.id === board.id ? "text-indigo-500" : "text-slate-300")}>{idx + 1}</span>
-                <span className={cn("text-[11px] font-bold leading-snug line-clamp-2", selectedBoard?.id === board.id ? "text-indigo-700" : "text-slate-500")}>{board.disease}</span>
+                <span className={cn("text-[11px] font-bold leading-snug line-clamp-2 flex-1", selectedBoard?.id === board.id ? "text-indigo-700" : "text-slate-500")}>{board.disease}</span>
+                {completedBoards.includes(board.id) && <Check className="w-3.5 h-3.5 text-emerald-500 shrink-0" />}
               </button>
             ));
           })()}
@@ -12354,7 +12548,7 @@ const FlashSpace = () => {
                   </div>
                   <div className="flex items-center gap-2">
                     {userRole === 'admin' && activeNoteTab === 'notes' && (
-                      <button onClick={() => { setIsEditingNotes(true); setEditedNoteText(firebaseNotes[selectedBoard.disease] || PEDIATRICS_EXPLANATIONS[selectedBoard.disease] || ''); }} className="p-2.5 bg-indigo-50 hover:bg-indigo-100 text-indigo-600 rounded-xl transition-all font-bold text-xs flex items-center gap-2 shadow-sm">
+                      <button onClick={() => { setIsEditingNotes(true); setEditedNoteText(getNoteForDisease(selectedBoard.disease) || PEDIATRICS_EXPLANATIONS[selectedBoard.disease] || ''); }} className="p-2.5 bg-indigo-50 hover:bg-indigo-100 text-indigo-600 rounded-xl transition-all font-bold text-xs flex items-center gap-2 shadow-sm">
                         <Edit className="w-4 h-4" />
                         تعديل النوتس
                       </button>
@@ -12389,9 +12583,9 @@ const FlashSpace = () => {
                 <div className="flex-1 overflow-y-auto">
                   {activeNoteTab === 'notes' ? (
                     <div className="max-w-3xl mx-auto px-6 md:px-10 py-8 pb-20 text-slate-800" dir="rtl">
-                      {(firebaseNotes[selectedBoard.disease] || PEDIATRICS_EXPLANATIONS[selectedBoard.disease]) ? (
+                      {(getNoteForDisease(selectedBoard.disease) || PEDIATRICS_EXPLANATIONS[selectedBoard.disease]) ? (
                         <BBCodeMarkdown
-                          content={firebaseNotes[selectedBoard.disease] || PEDIATRICS_EXPLANATIONS[selectedBoard.disease]}
+                          content={getNoteForDisease(selectedBoard.disease) || PEDIATRICS_EXPLANATIONS[selectedBoard.disease]}
                           components={{
                             h1: ({node, ...props}: any) => <h1 className="text-2xl font-black text-current mt-8 mb-4 border-b pb-3 border-slate-200 text-right" {...props} />,
                             h2: ({node, ...props}: any) => <h2 className="text-xl font-black text-current mt-6 mb-3 border-r-4 border-current pr-3 text-right" {...props} />,
@@ -12714,6 +12908,131 @@ const FlashSpace = () => {
         </div>
       )}
 
+      {/* Session Duration Selection Modal */}
+      {showSessionTimeModal && (
+        <div className="fixed inset-0 z-[2000] flex items-center justify-center bg-slate-950/85 backdrop-blur-md p-4">
+          <div className="w-full max-w-md bg-white rounded-[2.5rem] p-8 text-center space-y-6 shadow-2xl border border-slate-100 animate-in zoom-in-95 duration-200">
+            <div className="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mx-auto">
+              <Clock className="w-8 h-8" />
+            </div>
+            
+            <div className="space-y-2 font-sans">
+              <h2 className="text-2xl font-black text-slate-800">تحديد وقت الجلسة ⏱️</h2>
+              <p className="text-slate-500 text-sm font-medium">
+                اختر مدة الجلسة المفضلة لمذاكرة هذا الموضوع، وسنقوم بتنبيهك في منتصف الوقت.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 gap-3">
+              {[5, 10, 15, 30, 45, 60].map((mins) => (
+                <button
+                  key={mins}
+                  onClick={() => handleSelectSessionDuration(mins)}
+                  className="py-3 px-4 bg-slate-50 hover:bg-indigo-50 border border-slate-100 hover:border-indigo-200 text-slate-700 hover:text-indigo-700 font-bold rounded-2xl transition-all active:scale-[0.98] text-sm flex items-center justify-center gap-2"
+                >
+                  <Clock className="w-4 h-4 opacity-60" />
+                  <span>{mins} دقائق</span>
+                </button>
+              ))}
+            </div>
+
+            <div className="pt-2">
+              <button
+                onClick={() => handleSelectSessionDuration(null)}
+                className="w-full py-4 bg-indigo-600 text-white rounded-2xl font-black hover:bg-indigo-700 active:scale-[0.98] transition-all shadow-md shadow-indigo-650/20 text-sm"
+              >
+                جلسة مفتوحة (بدون حد زمني)
+              </button>
+              <button
+                onClick={() => {
+                  setShowSessionTimeModal(false);
+                  setPendingBoard(null);
+                }}
+                className="w-full mt-2 py-3 bg-slate-100 text-slate-600 rounded-2xl font-bold hover:bg-slate-200 active:scale-[0.98] transition-all text-xs"
+              >
+                إلغاء
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Slide Completion Confirmation Modal */}
+      {showSlideCompletionConfirm && (
+        <div className="fixed inset-0 z-[2000] flex items-center justify-center bg-slate-950/85 backdrop-blur-md p-4">
+          <div className="w-full max-w-md bg-white rounded-[2.5rem] p-8 text-center space-y-6 shadow-2xl border border-slate-100 animate-in zoom-in-95 duration-200">
+            <div className="w-16 h-16 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center mx-auto">
+              <CheckCircle2 className="w-8 h-8" />
+            </div>
+            
+            <div className="space-y-2 font-sans">
+              <h2 className="text-2xl font-black text-slate-800">هل أكملت مذاكرة هذا الموضوع؟ ✅</h2>
+              <p className="text-slate-500 text-sm font-medium">
+                عند الانتقال، سنقوم بحفظ نقاطك تلقائياً وبشكل صامت. هل ترغب في تمييز هذا الموضوع كمكتمل؟
+              </p>
+            </div>
+
+            <div className="p-4 bg-slate-50 rounded-2xl border border-slate-100 flex items-center justify-center gap-4">
+              <div className="text-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-wider block mb-0.5">الوقت المنقضي</span>
+                <span className="text-lg font-black text-slate-700">
+                  {Math.floor(sessionSeconds / 60)}د {sessionSeconds % 60}ث
+                </span>
+              </div>
+            </div>
+
+            {/* Priority Selector */}
+            {selectedBoard && (
+              <div className="p-4 bg-slate-50 rounded-2xl border border-slate-100 flex flex-col items-center gap-2">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-wider">تقييم أهمية الموضوع للمراجعة (Priority)</span>
+                <div className="flex justify-center gap-2 w-full">
+                  {(['A', 'B', 'C'] as const).map(p => (
+                    <button
+                      key={p}
+                      onClick={() => handleSetPriority(selectedBoard.id, spacePriorities[selectedBoard.id] === p ? null : p)}
+                      className={`flex-1 py-2 rounded-xl flex items-center justify-center font-black transition-all text-xs border ${
+                        spacePriorities[selectedBoard.id] === p
+                          ? (p === 'A' ? 'bg-rose-500 border-rose-500 text-white shadow-md shadow-rose-500/20 scale-105'
+                            : p === 'B' ? 'bg-amber-500 border-amber-500 text-white shadow-md shadow-amber-500/20 scale-105'
+                            : 'bg-emerald-500 border-emerald-500 text-white shadow-md shadow-emerald-500/20 scale-105')
+                          : 'bg-white border-slate-200 text-slate-400 hover:bg-slate-100'
+                      }`}
+                    >
+                      {p}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <div className="flex flex-col gap-2.5 pt-2">
+              <button
+                onClick={() => handleSlideCompletionResponse(true)}
+                className="w-full py-4 bg-emerald-600 text-white rounded-2xl font-black hover:bg-emerald-700 active:scale-[0.98] transition-all shadow-md shadow-emerald-650/20 text-sm"
+              >
+                نعم، أكملتها (وضع علامة صح)
+              </button>
+              <button
+                onClick={() => handleSlideCompletionResponse(false)}
+                className="w-full py-4 bg-indigo-600 text-white rounded-2xl font-black hover:bg-indigo-700 active:scale-[0.98] transition-all shadow-md shadow-indigo-650/20 text-sm"
+              >
+                لا، لم أكملها بعد (حفظ النقاط فقط)
+              </button>
+              <button
+                onClick={() => {
+                  setShowSlideCompletionConfirm(false);
+                  setPendingBoard(null);
+                  setIsTimerActive(true);
+                }}
+                className="w-full py-3 bg-slate-100 text-slate-600 rounded-2xl font-bold hover:bg-slate-200 active:scale-[0.98] transition-all text-xs"
+              >
+                تراجع (الاستمرار في المذاكرة)
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Study Exit Confirmation Modal */}
       {showStudyExitConfirm && (
         <div className="fixed inset-0 z-[2000] flex items-center justify-center bg-slate-950/85 backdrop-blur-2xl p-4">
@@ -12753,7 +13072,7 @@ const FlashSpace = () => {
                 نعم، إنهاء وحفظ النقاط
               </button>
               <button
-                onClick={handleCancelExitStudySession}
+                onClick={() => { setIsTimerActive(true); setShowStudyExitConfirm(false); }}
                 className="w-full py-4 bg-slate-100 text-slate-600 rounded-2xl font-black hover:bg-slate-200 active:scale-[0.98] transition-all text-sm"
               >
                 تراجع، مواصلة الدراسة
@@ -12805,7 +13124,7 @@ const FlashSpace = () => {
                 {boards
                   .filter(b => b.module === selectedModule && b.system === selectedSystem && spacePriorities[b.id] === reviewFilter)
                   .map(board => (
-                    <div key={board.id} className="bg-slate-900 rounded-3xl overflow-hidden group cursor-pointer border border-white/5 hover:border-indigo-500/50 transition-all hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-1" onClick={() => { setSelectedBoard(board); setIsReviewCenterOpen(false); }}>
+                    <div key={board.id} className="bg-slate-900 rounded-3xl overflow-hidden group cursor-pointer border border-white/5 hover:border-indigo-500/50 transition-all hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-1" onClick={() => { onNavigateToBoard(board); setIsReviewCenterOpen(false); }}>
                       <div className="aspect-[4/3] bg-black/50 relative overflow-hidden">
                         <img src={board.medicalImage} className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110" />
                         <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-80" />
