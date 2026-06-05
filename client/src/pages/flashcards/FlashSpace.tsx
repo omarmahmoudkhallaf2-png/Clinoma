@@ -10433,6 +10433,7 @@ const FlashSpace = () => {
   };
 
   const isPediatricSubscribed = isSpaceSubscribed('Pediatrics');
+  const isFamilySubscribed = isSpaceSubscribed('الورقة الثانية') || userData?.role === 'admin';
   let subPrice = "50";
   let subDescription = "Unlock all chapters and interactive boards for a complete learning experience.";
   let subTitle = "Premium Content";
@@ -10518,12 +10519,22 @@ const FlashSpace = () => {
               ⭐ {userData?.points ?? 0}
             </div>
             {selectedModule === 'الورقة الثانية' && (
-              <button 
-                onClick={exportSecondPaperNotes}
-                className="px-4 py-2 bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-500/30 rounded-xl text-emerald-300 font-black text-xs flex items-center gap-2 transition-all"
-              >
-                📥 تحميل ملاحظاتي
-              </button>
+              <>
+                <button 
+                  onClick={() => setIsDownloadModalOpen(true)}
+                  className="px-4 py-2 bg-indigo-500/20 hover:bg-indigo-500/30 border border-indigo-500/30 rounded-xl text-indigo-300 font-black text-xs flex items-center gap-2 transition-all"
+                >
+                  📥 تنزيل تجميعة الـ PDF
+                </button>
+                {userData?.role === 'admin' && (
+                  <button 
+                    onClick={exportSecondPaperNotes}
+                    className="px-4 py-2 bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-500/30 rounded-xl text-emerald-300 font-black text-xs flex items-center gap-2 transition-all"
+                  >
+                    📥 تحميل ملاحظاتي
+                  </button>
+                )}
+              </>
             )}
             <button 
               onClick={() => navigate('/flashcards/fantasy')} 
@@ -11786,33 +11797,127 @@ const FlashSpace = () => {
                 </div>
               ) : (
                 // Options View
-                <div className="w-full space-y-4">
-                  <button
-                    onClick={() => handleDownloadPDF(true)}
-                    className="group relative w-full p-4 bg-slate-950/50 hover:bg-indigo-500/10 border border-white/5 hover:border-indigo-500/30 rounded-2xl text-left transition-all active:scale-[0.98] duration-300"
-                  >
-                    <div className="absolute top-2 right-2 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-[9px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider">
-                      موصى به
-                    </div>
-                    <div className="text-white font-black text-base flex items-center gap-2 mb-1">
-                      <span>النسخة مضغوطة فائقة الجودة</span>
-                    </div>
-                    <div className="text-xs text-slate-400 font-bold leading-relaxed">
-                      دقة 2K عالية جداً مع الاحتفاظ بكل تفاصيل الخطوط والنصوص الطبية. حجم صغير جداً (21.8 MB).
-                    </div>
-                  </button>
-                  
-                  <button
-                    onClick={() => handleDownloadPDF(false)}
-                    className="group w-full p-4 bg-slate-950/50 hover:bg-white/5 border border-white/5 hover:border-white/10 rounded-2xl text-left transition-all active:scale-[0.98] duration-300"
-                  >
-                    <div className="text-white font-black text-base flex items-center gap-2 mb-1">
-                      <span>النسخة الأصلية بالدقة الكاملة</span>
-                    </div>
-                    <div className="text-xs text-slate-400 font-bold leading-relaxed">
-                      الملف الأصلي المصدر بجميع الصور بأعلى جودة تجميعية ممكنة. حجم كبير جداً (148.6 MB).
-                    </div>
-                  </button>
+                <div className="w-full space-y-4 max-h-[50vh] overflow-y-auto pr-1">
+                  {selectedModule === 'الورقة الثانية' ? (
+                    <>
+                      {/* 1. Full PDF Compressed */}
+                      <button
+                        onClick={() => handleDownloadPDF('second_paper_full_comp', '/tahdedat_second_paper_compressed.pdf', 'تحديدات_الورقة_الثانية_الكاملة_مضغوط.pdf')}
+                        disabled={!isFamilySubscribed}
+                        className={cn(
+                          "group relative w-full p-4 bg-slate-950/50 border rounded-2xl text-left transition-all active:scale-[0.98] duration-300",
+                          isFamilySubscribed
+                            ? "hover:bg-indigo-500/10 border-white/5 hover:border-indigo-500/30 cursor-pointer"
+                            : "opacity-40 border-white/5 cursor-not-allowed"
+                        )}
+                      >
+                        <div className="absolute top-2 right-2 bg-indigo-500/20 text-indigo-400 border border-indigo-500/30 text-[9px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider">
+                          {isFamilySubscribed ? "الكاملة (مضغوط)" : "🔒 غير مشترك"}
+                        </div>
+                        <div className="text-white font-black text-base flex items-center gap-2 mb-1">
+                          <span>الكاملة (أطفال + أسرة) - مضغوط</span>
+                        </div>
+                        <div className="text-xs text-slate-400 font-bold leading-relaxed">
+                          نسخة مضغوطة فائقة الجودة تشمل الأطفال والأسرة معاً (23.8 MB).
+                        </div>
+                      </button>
+
+                      {/* 2. Full PDF Original */}
+                      <button
+                        onClick={() => handleDownloadPDF('second_paper_full_std', '/tahdedat_second_paper.pdf', 'تحديدات_الورقة_الثانية_الكاملة.pdf')}
+                        disabled={!isFamilySubscribed}
+                        className={cn(
+                          "group relative w-full p-4 bg-slate-950/50 border rounded-2xl text-left transition-all active:scale-[0.98] duration-300",
+                          isFamilySubscribed
+                            ? "hover:bg-white/5 border-white/5 hover:border-white/10 cursor-pointer"
+                            : "opacity-40 border-white/5 cursor-not-allowed"
+                        )}
+                      >
+                        <div className="absolute top-2 right-2 bg-slate-800 text-slate-400 border border-slate-700 text-[9px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider">
+                          {isFamilySubscribed ? "الكاملة (الأصلية)" : "🔒 غير مشترك"}
+                        </div>
+                        <div className="text-white font-black text-base flex items-center gap-2 mb-1">
+                          <span>الكاملة (أطفال + أسرة) - الدقة الأصلية</span>
+                        </div>
+                        <div className="text-xs text-slate-400 font-bold leading-relaxed">
+                          الملف الأصلي بالدقة الكاملة للأطفال والأسرة معاً (30.1 MB).
+                        </div>
+                      </button>
+
+                      {/* 3. Pediatric Only Compressed */}
+                      <button
+                        onClick={() => handleDownloadPDF('second_paper_ped_comp', '/tahdedat_second_paper_pediatric_compressed.pdf', 'تحديدات_الورقة_الثانية_الأطفال_مضغوط.pdf')}
+                        disabled={!isPediatricSubscribed && !isFamilySubscribed}
+                        className={cn(
+                          "group relative w-full p-4 bg-slate-950/50 border rounded-2xl text-left transition-all active:scale-[0.98] duration-300",
+                          (isPediatricSubscribed || isFamilySubscribed)
+                            ? "hover:bg-indigo-500/10 border-white/5 hover:border-indigo-500/30 cursor-pointer"
+                            : "opacity-40 border-white/5 cursor-not-allowed"
+                        )}
+                      >
+                        <div className="absolute top-2 right-2 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-[9px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider">
+                          {(isPediatricSubscribed || isFamilySubscribed) ? "أطفال فقط (مضغوط)" : "🔒 غير مشترك"}
+                        </div>
+                        <div className="text-white font-black text-base flex items-center gap-2 mb-1">
+                          <span>الأطفال فقط (بدون أسرة) - مضغوط</span>
+                        </div>
+                        <div className="text-xs text-slate-400 font-bold leading-relaxed">
+                          نسخة مضغوطة فائقة الجودة لشابتر الأطفال فقط بدون الأسرة (16.2 MB).
+                        </div>
+                      </button>
+
+                      {/* 4. Pediatric Only Original */}
+                      <button
+                        onClick={() => handleDownloadPDF('second_paper_ped_std', '/tahdedat_second_paper_pediatric.pdf', 'تحديدات_الورقة_الثانية_الأطفال.pdf')}
+                        disabled={!isPediatricSubscribed && !isFamilySubscribed}
+                        className={cn(
+                          "group relative w-full p-4 bg-slate-950/50 border rounded-2xl text-left transition-all active:scale-[0.98] duration-300",
+                          (isPediatricSubscribed || isFamilySubscribed)
+                            ? "hover:bg-white/5 border-white/5 hover:border-white/10 cursor-pointer"
+                            : "opacity-40 border-white/5 cursor-not-allowed"
+                        )}
+                      >
+                        <div className="absolute top-2 right-2 bg-slate-800 text-slate-400 border border-slate-700 text-[9px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider">
+                          {(isPediatricSubscribed || isFamilySubscribed) ? "أطفال فقط (الأصلية)" : "🔒 غير مشترك"}
+                        </div>
+                        <div className="text-white font-black text-base flex items-center gap-2 mb-1">
+                          <span>الأطفال فقط (بدون أسرة) - الدقة الأصلية</span>
+                        </div>
+                        <div className="text-xs text-slate-400 font-bold leading-relaxed">
+                          الملف الأصلي بالدقة الكاملة لشابتر الأطفال فقط بدون الأسرة (20.5 MB).
+                        </div>
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <button
+                        onClick={() => handleDownloadPDF(true)}
+                        className="group relative w-full p-4 bg-slate-950/50 hover:bg-indigo-500/10 border border-white/5 hover:border-indigo-500/30 rounded-2xl text-left transition-all active:scale-[0.98] duration-300"
+                      >
+                        <div className="absolute top-2 right-2 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-[9px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider">
+                          موصى به
+                        </div>
+                        <div className="text-white font-black text-base flex items-center gap-2 mb-1">
+                          <span>النسخة مضغوطة فائقة الجودة</span>
+                        </div>
+                        <div className="text-xs text-slate-400 font-bold leading-relaxed">
+                          دقة 2K عالية جداً مع الاحتفاظ بكل تفاصيل الخطوط والنصوص الطبية. حجم صغير جداً (21.8 MB).
+                        </div>
+                      </button>
+                      
+                      <button
+                        onClick={() => handleDownloadPDF(false)}
+                        className="group w-full p-4 bg-slate-950/50 hover:bg-white/5 border border-white/5 hover:border-white/10 rounded-2xl text-left transition-all active:scale-[0.98] duration-300"
+                      >
+                        <div className="text-white font-black text-base flex items-center gap-2 mb-1">
+                          <span>النسخة الأصلية بالدقة الكاملة</span>
+                        </div>
+                        <div className="text-xs text-slate-400 font-bold leading-relaxed">
+                          الملف الأصلي المصدر بجميع الصور بأعلى جودة تجميعية ممكنة. حجم كبير جداً (148.6 MB).
+                        </div>
+                      </button>
+                    </>
+                  )}
                 </div>
               )}
             </div>
@@ -13309,33 +13414,127 @@ const FlashSpace = () => {
               </div>
             ) : (
               // Options View
-              <div className="w-full space-y-4">
-                <button
-                  onClick={() => handleDownloadPDF(true)}
-                  className="group relative w-full p-4 bg-slate-950/50 hover:bg-indigo-500/10 border border-white/5 hover:border-indigo-500/30 rounded-2xl text-left transition-all active:scale-[0.98] duration-300"
-                >
-                  <div className="absolute top-2 right-2 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-[9px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider">
-                    موصى به
-                  </div>
-                  <div className="text-white font-black text-base flex items-center gap-2 mb-1">
-                    <span>النسخة مضغوطة فائقة الجودة</span>
-                  </div>
-                  <div className="text-xs text-slate-400 font-bold leading-relaxed">
-                    دقة 2K عالية جداً مع الاحتفاظ بكل تفاصيل الخطوط والنصوص الطبية. حجم صغير جداً (21.8 MB).
-                  </div>
-                </button>
-                
-                <button
-                  onClick={() => handleDownloadPDF(false)}
-                  className="group w-full p-4 bg-slate-950/50 hover:bg-white/5 border border-white/5 hover:border-white/10 rounded-2xl text-left transition-all active:scale-[0.98] duration-300"
-                >
-                  <div className="text-white font-black text-base flex items-center gap-2 mb-1">
-                    <span>النسخة الأصلية بالدقة الكاملة</span>
-                  </div>
-                  <div className="text-xs text-slate-400 font-bold leading-relaxed">
-                    الملف الأصلي المصدر بجميع الصور بأعلى جودة تجميعية ممكنة. حجم كبير جداً (148.6 MB).
-                  </div>
-                </button>
+              <div className="w-full space-y-4 max-h-[50vh] overflow-y-auto pr-1">
+                {selectedModule === 'الورقة الثانية' ? (
+                  <>
+                    {/* 1. Full PDF Compressed */}
+                    <button
+                      onClick={() => handleDownloadPDF('second_paper_full_comp', '/tahdedat_second_paper_compressed.pdf', 'تحديدات_الورقة_الثانية_الكاملة_مضغوط.pdf')}
+                      disabled={!isFamilySubscribed}
+                      className={cn(
+                        "group relative w-full p-4 bg-slate-950/50 border rounded-2xl text-left transition-all active:scale-[0.98] duration-300",
+                        isFamilySubscribed
+                          ? "hover:bg-indigo-500/10 border-white/5 hover:border-indigo-500/30 cursor-pointer"
+                          : "opacity-40 border-white/5 cursor-not-allowed"
+                      )}
+                    >
+                      <div className="absolute top-2 right-2 bg-indigo-500/20 text-indigo-400 border border-indigo-500/30 text-[9px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider">
+                        {isFamilySubscribed ? "الكاملة (مضغوط)" : "🔒 غير مشترك"}
+                      </div>
+                      <div className="text-white font-black text-base flex items-center gap-2 mb-1">
+                        <span>الكاملة (أطفال + أسرة) - مضغوط</span>
+                      </div>
+                      <div className="text-xs text-slate-400 font-bold leading-relaxed">
+                        نسخة مضغوطة فائقة الجودة تشمل الأطفال والأسرة معاً (23.8 MB).
+                      </div>
+                    </button>
+
+                    {/* 2. Full PDF Original */}
+                    <button
+                      onClick={() => handleDownloadPDF('second_paper_full_std', '/tahdedat_second_paper.pdf', 'تحديدات_الورقة_الثانية_الكاملة.pdf')}
+                      disabled={!isFamilySubscribed}
+                      className={cn(
+                        "group relative w-full p-4 bg-slate-950/50 border rounded-2xl text-left transition-all active:scale-[0.98] duration-300",
+                        isFamilySubscribed
+                          ? "hover:bg-white/5 border-white/5 hover:border-white/10 cursor-pointer"
+                          : "opacity-40 border-white/5 cursor-not-allowed"
+                      )}
+                    >
+                      <div className="absolute top-2 right-2 bg-slate-800 text-slate-400 border border-slate-700 text-[9px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider">
+                        {isFamilySubscribed ? "الكاملة (الأصلية)" : "🔒 غير مشترك"}
+                      </div>
+                      <div className="text-white font-black text-base flex items-center gap-2 mb-1">
+                        <span>الكاملة (أطفال + أسرة) - الدقة الأصلية</span>
+                      </div>
+                      <div className="text-xs text-slate-400 font-bold leading-relaxed">
+                        الملف الأصلي بالدقة الكاملة للأطفال والأسرة معاً (30.1 MB).
+                      </div>
+                    </button>
+
+                    {/* 3. Pediatric Only Compressed */}
+                    <button
+                      onClick={() => handleDownloadPDF('second_paper_ped_comp', '/tahdedat_second_paper_pediatric_compressed.pdf', 'تحديدات_الورقة_الثانية_الأطفال_مضغوط.pdf')}
+                      disabled={!isPediatricSubscribed && !isFamilySubscribed}
+                      className={cn(
+                        "group relative w-full p-4 bg-slate-950/50 border rounded-2xl text-left transition-all active:scale-[0.98] duration-300",
+                        (isPediatricSubscribed || isFamilySubscribed)
+                          ? "hover:bg-indigo-500/10 border-white/5 hover:border-indigo-500/30 cursor-pointer"
+                          : "opacity-40 border-white/5 cursor-not-allowed"
+                      )}
+                    >
+                      <div className="absolute top-2 right-2 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-[9px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider">
+                        {(isPediatricSubscribed || isFamilySubscribed) ? "أطفال فقط (مضغوط)" : "🔒 غير مشترك"}
+                      </div>
+                      <div className="text-white font-black text-base flex items-center gap-2 mb-1">
+                        <span>الأطفال فقط (بدون أسرة) - مضغوط</span>
+                      </div>
+                      <div className="text-xs text-slate-400 font-bold leading-relaxed">
+                        نسخة مضغوطة فائقة الجودة لشابتر الأطفال فقط بدون الأسرة (16.2 MB).
+                      </div>
+                    </button>
+
+                    {/* 4. Pediatric Only Original */}
+                    <button
+                      onClick={() => handleDownloadPDF('second_paper_ped_std', '/tahdedat_second_paper_pediatric.pdf', 'تحديدات_الورقة_الثانية_الأطفال.pdf')}
+                      disabled={!isPediatricSubscribed && !isFamilySubscribed}
+                      className={cn(
+                        "group relative w-full p-4 bg-slate-950/50 border rounded-2xl text-left transition-all active:scale-[0.98] duration-300",
+                        (isPediatricSubscribed || isFamilySubscribed)
+                          ? "hover:bg-white/5 border-white/5 hover:border-white/10 cursor-pointer"
+                          : "opacity-40 border-white/5 cursor-not-allowed"
+                      )}
+                    >
+                      <div className="absolute top-2 right-2 bg-slate-800 text-slate-400 border border-slate-700 text-[9px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider">
+                        {(isPediatricSubscribed || isFamilySubscribed) ? "أطفال فقط (الأصلية)" : "🔒 غير مشترك"}
+                      </div>
+                      <div className="text-white font-black text-base flex items-center gap-2 mb-1">
+                        <span>الأطفال فقط (بدون أسرة) - الدقة الأصلية</span>
+                      </div>
+                      <div className="text-xs text-slate-400 font-bold leading-relaxed">
+                        الملف الأصلي بالدقة الكاملة لشابتر الأطفال فقط بدون الأسرة (20.5 MB).
+                      </div>
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <button
+                      onClick={() => handleDownloadPDF(true)}
+                      className="group relative w-full p-4 bg-slate-950/50 hover:bg-indigo-500/10 border border-white/5 hover:border-indigo-500/30 rounded-2xl text-left transition-all active:scale-[0.98] duration-300"
+                    >
+                      <div className="absolute top-2 right-2 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-[9px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider">
+                        موصى به
+                      </div>
+                      <div className="text-white font-black text-base flex items-center gap-2 mb-1">
+                        <span>النسخة مضغوطة فائقة الجودة</span>
+                      </div>
+                      <div className="text-xs text-slate-400 font-bold leading-relaxed">
+                        دقة 2K عالية جداً مع الاحتفاظ بكل تفاصيل الخطوط والنصوص الطبية. حجم صغير جداً (21.8 MB).
+                      </div>
+                    </button>
+                    
+                    <button
+                      onClick={() => handleDownloadPDF(false)}
+                      className="group w-full p-4 bg-slate-950/50 hover:bg-white/5 border border-white/5 hover:border-white/10 rounded-2xl text-left transition-all active:scale-[0.98] duration-300"
+                    >
+                      <div className="text-white font-black text-base flex items-center gap-2 mb-1">
+                        <span>النسخة الأصلية بالدقة الكاملة</span>
+                      </div>
+                      <div className="text-xs text-slate-400 font-bold leading-relaxed">
+                        الملف الأصلي المصدر بجميع الصور بأعلى جودة تجميعية ممكنة. حجم كبير جداً (148.6 MB).
+                      </div>
+                    </button>
+                  </>
+                )}
               </div>
             )}
           </div>

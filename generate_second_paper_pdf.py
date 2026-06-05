@@ -230,7 +230,7 @@ def process_slide_image(img_path, target_width=740, target_height=380, radius=12
         print(f"Error processing image {img_path}: {e}")
         return img_path
 
-def build_pdf(filename="تحديدات_الورقة_الثانية.pdf", compress=False, student_name="Mohamed Ahmed", student_email="mohamed.ahmed@gmail.com"):
+def build_pdf(filename="تحديدات_الورقة_الثانية.pdf", compress=False, student_name="Mohamed Ahmed", student_email="mohamed.ahmed@gmail.com", exclude_family=False):
     script_dir = os.path.dirname(os.path.abspath(__file__))
     base_assets_dir = os.path.join(script_dir, "client/public/assets/second_paper")
     if not os.path.exists(base_assets_dir):
@@ -318,6 +318,9 @@ def build_pdf(filename="تحديدات_الورقة_الثانية.pdf", compres
             ]
         }
     ]
+
+    if exclude_family:
+        chapters = [ch for ch in chapters if ch["section_name"] != "Family Medicine"]
 
     # Pre-calculate pages
     current_page = 3
@@ -630,17 +633,29 @@ if __name__ == "__main__":
         output_filename = sys.argv[4]
         
     if len(sys.argv) > 1:
-        build_pdf(output_filename, compress=compress_flag, student_name=student_name, student_email=student_email)
+        exclude_family_flag = sys.argv[4].lower() in ['true', '1', 'yes', 'y', 'exclude'] if len(sys.argv) > 4 else False
+        build_pdf(output_filename, compress=compress_flag, student_name=student_name, student_email=student_email, exclude_family=exclude_family_flag)
     else:
         pdf_path = os.path.join(script_dir, "تحديدات_الورقة_الثانية.pdf")
         pdf_path_comp = os.path.join(script_dir, "تحديدات_الورقة_الثانية_مضغوط.pdf")
-        build_pdf(pdf_path, compress=False, student_name="Mohamed Ahmed", student_email="mohamed.ahmed@gmail.com")
-        build_pdf(pdf_path_comp, compress=True, student_name="Mohamed Ahmed", student_email="mohamed.ahmed@gmail.com")
+        
+        pdf_path_ped = os.path.join(script_dir, "تحديدات_الورقة_الثانية_أطفال.pdf")
+        pdf_path_ped_comp = os.path.join(script_dir, "تحديدات_الورقة_الثانية_أطفال_مضغوط.pdf")
+        
+        # Build standard and compressed full PDFs
+        build_pdf(pdf_path, compress=False, student_name="Mohamed Ahmed", student_email="mohamed.ahmed@gmail.com", exclude_family=False)
+        build_pdf(pdf_path_comp, compress=True, student_name="Mohamed Ahmed", student_email="mohamed.ahmed@gmail.com", exclude_family=False)
+        
+        # Build standard and compressed pediatric-only PDFs
+        build_pdf(pdf_path_ped, compress=False, student_name="Mohamed Ahmed", student_email="mohamed.ahmed@gmail.com", exclude_family=True)
+        build_pdf(pdf_path_ped_comp, compress=True, student_name="Mohamed Ahmed", student_email="mohamed.ahmed@gmail.com", exclude_family=True)
         
         print("Copying generated PDFs to client/public static assets...")
         try:
             shutil.copy2(pdf_path, os.path.join(script_dir, "client/public/tahdedat_second_paper.pdf"))
             shutil.copy2(pdf_path_comp, os.path.join(script_dir, "client/public/tahdedat_second_paper_compressed.pdf"))
-            print("SUCCESS! Copied to client/public/tahdedat_second_paper.pdf")
+            shutil.copy2(pdf_path_ped, os.path.join(script_dir, "client/public/tahdedat_second_paper_pediatric.pdf"))
+            shutil.copy2(pdf_path_ped_comp, os.path.join(script_dir, "client/public/tahdedat_second_paper_pediatric_compressed.pdf"))
+            print("SUCCESS! Copied all four PDFs to client/public/ static assets.")
         except Exception as e:
             print(f"Error copying PDFs: {e}")
