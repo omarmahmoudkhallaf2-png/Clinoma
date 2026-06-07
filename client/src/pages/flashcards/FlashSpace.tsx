@@ -3495,10 +3495,10 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       ]
     },
   {
-        "id": "phae1",
-        "front": "List 4 indications of renal biopsy in acute post-streptococcal glomerulonephritis.",
-        "back": "Acute kidney injury (AKI) and rapidly progressive glomerulonephritis (RPGN).\n\nNephrotic range proteinuria.\n\nAbsence of evidence for previous streptococcal infection.\n\nNormal complement (C3) levels.\n\nPersistent hematuria, proteinuria, diminished renal function, and/or a low C3 level persisting for more than 2 months after onset."
-      }
+      "id": "sec_paper_pediatric_hematuria_approach_and_evaluation_q6",
+      "front": "Enumerate 4 indications for performing a Renal Biopsy in pediatric patients.",
+      "back": "1. Unexplained persistent or recurrent gross hematuria.\n2. Lupus nephritis.\n3. Glomerulonephritis with: Nephritic nephrosis or absent/low C3.\n4. Unexplained acute renal failure."
+    }
   ],
   "Acute Nephritic Syndrome & APSGN": [
   {
@@ -3538,6 +3538,11 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
           "back": "Fluid intake = Urine Output + 400 ml/m2 of body surface area."
         }
       ]
+    },
+  {
+      "id": "sec_paper_acute_nephritic_syndrome_and_apsgn_q6",
+      "front": "List 4 indications of renal biopsy in acute post-streptococcal glomerulonephritis.",
+      "back": "1. Acute kidney injury (AKI) and rapidly progressive glomerulonephritis (RPGN).\n2. Nephrotic range proteinuria.\n3. Absence of evidence for previous streptococcal infection or normal complement (C3) levels.\n4. Persistent hematuria, proteinuria, diminished renal function, or a low C3 level persisting for more than 2 months after onset."
     }
   ],
   "Nephrotic Syndrome (NS)": [
@@ -3757,11 +3762,6 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "back": "1. Acute onset of high-grade fever and severe sore throat.\n2. Drooling of saliva (due to severe inability to swallow).\n3. Hyperextension of the neck (sniffing position to maintain airway).\n4. Severe, rapidly progressive respiratory distress without a barking cough."
     },
   {
-      "id": "sec_paper_epiglottitis_q3",
-      "front": "Enumerate 4 critical clinical contraindications in the immediate management of suspected Epiglottitis.",
-      "back": "1. Do not place the child in a supine position.\n2. Do not examine the oral cavity or throat using a tongue depressor (risk of sudden cardiac arrest).\n3. Do not perform agitating diagnostic tests (like phlebotomy) before securing the airway.\n4. Do not rely on corticosteroids or nebulized epinephrine, as they are ineffective."
-    },
-  {
       "id": "sec_paper_epiglottitis_q4",
       "front": "Enumerate the 4 components of the standard therapeutic intervention for confirmed Epiglottitis.",
       "back": "1. Immediate insertion of an artificial airway (endotracheal intubation) in the OR or ICU.\n2. Empiric intravenous antibiotic therapy (Vancomycin plus Ceftriaxone for 10 days).\n3. Supplemental oxygen delivery without mask agitation.\n4. Continuous monitoring of airway patency and direct visualization before extubation."
@@ -3925,16 +3925,6 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "id": "sec_paper_bronchial_asthma_q2",
       "front": "Enumerate 4 common environmental or physical triggers of childhood Asthma exacerbations.",
       "back": "1. Viral respiratory infections.\n2. Indoor/outdoor allergens (dust mites, pollens, animal dander).\n3. Air pollutants (tobacco smoke, strong chemical odors).\n4. Cold dry air or strenuous physical exercise."
-    },
-  {
-      "id": "sec_paper_bronchial_asthma_q3",
-      "front": "Enumerate 4 physical signs indicating a severe acute asthma attack (Status Asthmaticus).",
-      "back": "1. Severe dyspnea with prolonged expiration and intense use of accessory muscles (SCM retraction).\n2. Cyanosis and thoracic hyperinflation.\n3. Tachycardia and pulsus paradoxus.\n4. Altered mental status ranging from agitation to somnolence."
-    },
-  {
-      "id": "sec_paper_bronchial_asthma_q4",
-      "front": "Enumerate 4 rapid-acting pharmacological medications used as \"Quick Relievers\" during an acute asthma attack.",
-      "back": "1. Inhaled Short-Acting Beta2-agonists (SABAs like nebulized Albuterol/Salbutamol).\n2. Inhaled Anticholinergics (Nebulized Ipratropium bromide).\n3. Systemic Corticosteroids (Oral Prednisolone or IV Dexamethasone).\n4. Intravenous Magnesium Sulphate (infused slowly over 15-30 minutes)."
     },
   {
       "id": "sec_paper_bronchial_asthma_q5",
