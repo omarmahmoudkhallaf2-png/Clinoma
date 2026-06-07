@@ -71,7 +71,7 @@ export default function QuestionBanksPortal() {
           {/* Batch 44 Card */}
           <motion.button
             variants={itemVariants}
-            onClick={() => window.open('https://bank-clinoma-mdm-44.pages.dev/', '_blank')}
+            onClick={() => window.open('https://clinomabank-44.pages.dev/', '_blank')}
             className="group relative p-8 rounded-[2.5rem] bg-card/45 backdrop-blur-xl border border-border/80 hover:border-purple-500/50 text-right transition-all hover:shadow-2xl hover:shadow-purple-500/10 flex flex-col justify-between h-[300px] overflow-hidden"
           >
             {/* Accent glow on hover */}
