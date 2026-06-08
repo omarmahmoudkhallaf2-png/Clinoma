@@ -10827,9 +10827,23 @@ const FlashSpace = () => {
 
                   {selectedModule === 'الورقة الثانية' && (
                     <button 
-                      onClick={() => navigate('/flashcards/second-paper-interactive')}
+                      onClick={() => {
+                        if (isSpaceSubscribed('الورقة الثانية') || userData?.role === 'admin') {
+                          navigate('/flashcards/second-paper-interactive');
+                        } else {
+                          setShowSubscriptionModal(true);
+                        }
+                      }}
                       className="group relative bg-gradient-to-br from-slate-950 via-[#1e1b18] to-slate-900 border border-amber-500/30 hover:border-amber-400/60 rounded-3xl text-right transition-all duration-500 active:scale-[0.98] hover:scale-[1.03] overflow-hidden p-6 flex flex-col justify-between min-h-[160px] shadow-[0_4px_30px_rgba(0,0,0,0.4)] hover:shadow-[0_0_35px_rgba(217,119,6,0.25)] cursor-pointer"
                     >
+                      {/* Subscription Lock Badge */}
+                      {!(isSpaceSubscribed('الورقة الثانية') || userData?.role === 'admin') && (
+                        <div className="absolute top-4 right-4 z-10 bg-amber-500/20 text-amber-500 border border-amber-500/30 px-3 py-1.5 rounded-full flex items-center gap-1.5 backdrop-blur-sm shadow-lg">
+                          <Lock className="w-3.5 h-3.5" />
+                          <span className="text-xs font-bold uppercase tracking-wider">Premium</span>
+                        </div>
+                      )}
+
                       {/* Luxurious Golden Animated Glow Background */}
                       <div className="absolute -right-10 -top-10 w-40 h-40 bg-gradient-to-br from-amber-500/20 to-yellow-500/10 rounded-full blur-3xl -z-10 group-hover:scale-150 group-hover:from-amber-400/30 transition-all duration-700 ease-out" />
                       <div className="absolute left-10 bottom-10 w-24 h-24 bg-amber-600/5 rounded-full blur-2xl -z-10 group-hover:scale-125 transition-transform duration-700" />
@@ -10839,9 +10853,11 @@ const FlashSpace = () => {
                         <div className="w-12 h-12 rounded-2xl flex items-center justify-center shadow-[0_0_20px_rgba(217,119,6,0.15)] group-hover:shadow-[0_0_25px_rgba(217,119,6,0.35)] transition-all duration-500 bg-gradient-to-br from-amber-500/20 to-yellow-600/10 border border-amber-500/40 group-hover:border-amber-400 text-amber-400 animate-pulse">
                           <Sparkles className="w-5 h-5 filter drop-shadow-[0_0_5px_rgba(245,158,11,0.5)]" />
                         </div>
-                        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-amber-500/10 text-amber-300 opacity-0 group-hover:opacity-100 transition-all duration-500 -translate-x-2 group-hover:translate-x-0 border border-amber-500/20">
-                          <ArrowRight className="w-4 h-4" />
-                        </div>
+                        {isSpaceSubscribed('الورقة الثانية') || userData?.role === 'admin' ? (
+                          <div className="flex items-center justify-center w-8 h-8 rounded-full bg-amber-500/10 text-amber-300 opacity-0 group-hover:opacity-100 transition-all duration-500 -translate-x-2 group-hover:translate-x-0 border border-amber-500/20">
+                            <ArrowRight className="w-4 h-4" />
+                          </div>
+                        ) : null}
                       </div>
 
                       {/* Content Area with Premium Text Style */}
