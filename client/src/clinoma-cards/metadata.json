@@ -1,8 +1,0 @@
-{
-  "name": "Clinoma",
-  "description": "Clinical Pediatrics Question Bank - Comprehensive flashcards and review for medical students.",
-  "requestFramePermissions": [],
-  "majorCapabilities": [
-    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
-  ]
-}
