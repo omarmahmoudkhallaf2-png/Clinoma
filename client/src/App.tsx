@@ -46,6 +46,7 @@ const PediatricsHub = lazy(() => import("./pages/PediatricsHub"));
 const PediatricsFolder = lazy(() => import("./pages/PediatricsFolder"));
 const FirstPaperCamp = lazy(() => import("./pages/FirstPaperCamp"));
 const QuestionBanksPortal = lazy(() => import("./pages/QuestionBanksPortal"));
+const ClinomaCardsApp = lazy(() => import("./clinoma-cards/src/App"));
 
 import { CommandPalette } from "./components/ui/CommandPalette";
 import { AmbientAudioProvider } from "./context/AmbientAudioContext";
@@ -113,6 +114,7 @@ const AnimatedRoutes = () => {
           <Route path="/flashcards" element={<ProtectedRoute><FlashSelection /></ProtectedRoute>} />
           <Route path="/flashcards/decks" element={<ProtectedRoute><FlashcardsDashboard /></ProtectedRoute>} />
           <Route path="/flashcards/space" element={<ProtectedRoute useLayout={false}><FlashSpace /></ProtectedRoute>} />
+          <Route path="/flashcards/second-paper-interactive" element={<ProtectedRoute useLayout={false}><ClinomaCardsApp onExit={() => window.history.back()} /></ProtectedRoute>} />
           <Route path="/flashcards/fantasy" element={<ProtectedRoute useLayout={false}><FantasyGroups /></ProtectedRoute>} />
           <Route path="/flashcards/study/:deckId" element={<ProtectedRoute useLayout={false}><StudyMode /></ProtectedRoute>} />
           <Route path="/flashcards/create" element={<ProtectedRoute><CreateCard /></ProtectedRoute>} />
