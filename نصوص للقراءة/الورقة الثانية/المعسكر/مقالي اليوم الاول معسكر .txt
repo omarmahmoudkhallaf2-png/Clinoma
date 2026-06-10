@@ -1,13 +1,9 @@
 Topic 1: Bronchial Asthma (Triggers, Investigations, Clinical Picture)
-Question 1 (Define): Define Bronchial Asthma.
-Answer: Asthma can be regarded as a diffuse obstructive lung disease with:
-Hyperactivity of airways to a variety of stimuli.
-A high degree of reversibility of the obstruction either spontaneously or with treatment.
-Chronic inflammation of the airways.
-Question 2 (Enumerate): Enumerate four risk factors associated with the epidemiology of childhood asthma.
-Answer: 1. Poverty. 2. Maternal smoking. 3. Birth weight less than 2500 g. 4. Overcrowding.
-Question 3 (List): List four major pathophysiology changes responsible for airway obstruction in asthma.
-Answer: 1. Bronchoconstriction. 2. Increased mucus secretion. 3. Mucosal oedema and cellular infiltration. 4. Desquamation of epithelial and inflammatory cells.
+
+
+
+
+
 Question 4 (Enumerate): Enumerate four indoor or seasonal allergens that act as asthma triggers.
 Answer: 1. Animal dander. 2. Dust mites. 3. Cockroaches. 4. Pollens.
 Question 5 (Mention): Mention three common comorbid conditions associated with asthma that make it difficult to treat.
@@ -16,8 +12,7 @@ Question 6 (List): List four key clinical signs and symptoms of an acute asthma 
 Answer: 1. Cough (tight and non-productive). 2. Wheezing. 3. Tachypnea and dyspnea with prolonged expiration. 4. Use of accessory muscles of respiration.
 Question 7 (Enumerate) — [From Final 38]: A 14-year-old boy presents with a history of cough and occasional wheezes at night, increasing during football matches. Enumerate the comprehensive Laboratory Investigations useful for this condition.
 Answer: 1. Blood examination: CBC usually shows eosinophilia more than $250\text{-}400\text{ cell/mm}^3$ , and Serum IgE levels are usually elevated. 2. Sputum: White and tenacious, usually showing eosinophilia and granules from disrupted cells. 3. Pulmonary function tests (Spirometry): Done for children > 5 years to evaluate airflow limitation and reversibility. 4. Blood gas analysis: Important in patients during exacerbations requiring hospitalization to monitor $PCO_2$, $PO_2$, and pH.
-Question 8 (List): List four life-threatening clinical signs found in a child with Status Asthmaticus.
-Answer: 1. Severe dyspnea. 2. Tachycardia. 3. Retraction of the sternocleidomastoid muscles. 4. Mental state ranging from agitation to somnolence.
+
 Topic 2: Pneumonia
 Question 9 (Define): Define Community-acquired pneumonia (CAP) and Hospital-acquired pneumonia (HAP).
 Answer: * Community-acquired pneumonia (CAP): It is the presence of signs and symptoms of pneumonia in a previously healthy child due to an infection acquired outside the hospital.
@@ -34,18 +29,8 @@ Question 14 (Enumerate) — [From Final 39]: Enumerate five clinical criteria th
 Answer: 1. Age < 6 mo. 2. Toxic appearance. 3. Moderate to severe respiratory distress (retractions, nasal flaring, grunting). 4. Hypoxemia (oxygen saturation <90% in room air). 5. Shock or Severe dehydration.
 Question 15 (Mention): Mention four diagnostic chest X-ray findings or clinical rules regarding the use of X-ray in pneumonia.
 Answer: 1. It shows a lobar, patchy, or interstitial infiltrate. 2. No need to order X-ray for a patient with mild pneumonia. 3. No need to repeat chest X-ray if the patient has clinically improved. 4. In viral pneumonia, it usually shows hyperinflation with bilateral interstitial infiltrates and peribronchial cuffing.
-Question 16 (Enumerate) — [From Final 42]: Enumerate four causes for pneumonia that failed to resolve (Unresolved pneumonia) after antibiotic treatment, and enumerate two investigations that can be performed.
-Answer: * Causes of delayed resolution (Choose 4):
-Inadequate therapy (inappropriate antibiotic choice, dose, interval, or poor compliance).
-Resistant organisms.
-Impaired host defenses (Immunodeficiency or ciliary dyskinesia).
-Nonbacterial causes of pneumonia (viruses, fungi, parasites, and TB).
-Foreign body aspiration or Cystic fibrosis.
-Congenital lung anomalies.
-Investigations (Choose 2):
-Repeat chest X-ray.
-High-resolution CT scans.
-Fiberoptic bronchoscopy and bronchoalveolar lavage (BAL).
+
+
 Question 17 (List) — [From Oral 2021]: List four thoracic cavity complications caused by the direct spread of pneumonia infection.
 Answer: 1. Pleural effusion. 2. Empyema. 3. Lung abscess. 4. Pericarditis.
 Topic 3: Wheezes

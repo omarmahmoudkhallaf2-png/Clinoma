@@ -98,13 +98,6 @@
     "answerText": "1. It shows a lobar, patchy, or interstitial infiltrate. 2. No need to order X-ray for a patient with mild pneumonia. 3. No need to repeat chest X-ray if the patient has clinically improved. 4. In viral pneumonia, it usually shows hyperinflation with bilateral interstitial infiltrates and peribronchial cuffing."
   },
   {
-    "section": "Topic 2: Pneumonia",
-    "caseText": "",
-    "questionNum": "Question 16",
-    "questionText": "Enumerate four causes for pneumonia that failed to resolve (Unresolved pneumonia) after antibiotic treatment, and enumerate two investigations that can be performed.",
-    "answerText": "* Causes of delayed resolution (Choose 4):\nInadequate therapy (inappropriate antibiotic choice, dose, interval, or poor compliance).\nResistant organisms.\nImpaired host defenses (Immunodeficiency or ciliary dyskinesia).\nNonbacterial causes of pneumonia (viruses, fungi, parasites, and TB).\nForeign body aspiration or Cystic fibrosis.\nCongenital lung anomalies.\nInvestigations (Choose 2):\nRepeat chest X-ray.\nHigh-resolution CT scans.\nFiberoptic bronchoscopy and bronchoalveolar lavage (BAL)."
-  },
-  {
     "section": "Topic 3: Wheezes",
     "caseText": "",
     "questionNum": "Question 18",
