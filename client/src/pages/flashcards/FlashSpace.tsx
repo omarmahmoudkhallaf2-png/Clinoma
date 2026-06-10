@@ -297,6 +297,9 @@ const SECOND_PAPER_SLIDES: Record<string, string[]> = {
     'IMCI_Treatment_&_Care_Guidelines_for_Young_Infants_Up_to_2_Months.jpeg',
     'IMCI_Assessment_&_Classification_Age_2_Months_to_5_Years_Danger.jpeg',
     'IMCI Diarrhoea Management & Rehydration Plans.jpeg'
+  ],
+  'معسكر الورقة الثانية': [
+    'معسكر الورقة الثانية.jpeg'
   ]
 };
 
@@ -8822,6 +8825,9 @@ const FlashSpace = () => {
     if (!moduleName) return false;
     if (userData?.role === 'admin') return true;
     if (chapterName === 'Growth & development') return true;
+    if (chapterName === 'معسكر الورقة الثانية') {
+      return isSpaceSubscribed('الورقة الثانية') || userData?.role === 'admin';
+    }
     if (moduleName === 'الورقة الثانية') {
       if (chapterName !== 'Family Medicine') {
         return isSpaceSubscribed('Pediatrics') || isSpaceSubscribed('الورقة الثانية');
@@ -8900,6 +8906,9 @@ const FlashSpace = () => {
   const [isQuizCompleted, setIsQuizCompleted] = useState<boolean>(() => {
     return localStorage.getItem('day1_quiz_completed') === 'true';
   });
+
+  // --- Second Paper Camp states ---
+  const [camp2ActiveDay, setCamp2ActiveDay] = useState<number>(1);
 
   const handleDownloadPDF = async (pdfIdOrCompress: string | boolean, pdfUrlInput?: string, defaultNameInput?: string) => {
     setDownloadProgress(0);
@@ -9751,6 +9760,11 @@ const FlashSpace = () => {
             if (!sysMap[b.module].includes(b.system)) sysMap[b.module].push(b.system);
           }
         });
+        // Manually inject معسكر الورقة الثانية into الورقة الثانية systems
+        if (!sysMap['الورقة الثانية']) sysMap['الورقة الثانية'] = [];
+        if (!sysMap['الورقة الثانية'].includes('معسكر الورقة الثانية')) {
+          sysMap['الورقة الثانية'].push('معسكر الورقة الثانية');
+        }
         setModules(mods);
         setSystems(sysMap);
       } catch (err) {
@@ -10700,6 +10714,7 @@ const FlashSpace = () => {
                       if (x === 'معسكر الورقة الأولى') return 2;
                       if (x === 'Growth & development') return 3;
                       if (selectedModule === 'الورقة الثانية') {
+                        if (x === 'معسكر الورقة الثانية') return 5;
                         if (x === 'Renal diseases') return 10;
                         if (x === 'Chest diseases') return 20;
                         if (x === 'Neonatology') return 30;
@@ -10719,6 +10734,7 @@ const FlashSpace = () => {
                     const SYSTEM_BGS: Record<string, string> = {
                       'تحديدات الاطفال': '/assets/chapters/tahdedat_bg.jpg',
                       'معسكر الورقة الأولى': '/assets/chapters/camp_bg.png',
+                      'معسكر الورقة الثانية': '/assets/chapters/camp_bg.png',
                       'Cardiovascular diseases': '/assets/chapters/cardio_bg_1779636563389.png',
                       'Endocrinology': '/assets/chapters/endo_bg_1779636576095.png',
                       'Gastroenterology & hepatology': '/assets/chapters/gastro_bg_1779636588519.png',
@@ -10812,9 +10828,9 @@ const FlashSpace = () => {
 
                         <div className="relative z-10 mt-6">
                           <h3 className="text-white font-black text-lg leading-tight mb-1">
-                            {sys === 'معسكر الورقة الأولى' ? 'معسكر الورقة الأولى ⚡' : sys}
+                            {sys === 'معسكر الورقة الأولى' ? 'معسكر الورقة الأولى ⚡' : sys === 'معسكر الورقة الثانية' ? 'معسكر الورقة الثانية ⚡' : sys}
                           </h3>
-                          {sys !== 'معسكر الورقة الأولى' && (
+                          {sys !== 'معسكر الورقة الأولى' && sys !== 'معسكر الورقة الثانية' && (
                             <div className="flex items-center gap-2">
                               <div className="w-1.5 h-1.5 rounded-full" style={{background: color, boxShadow: `0 0 10px ${color}`}} />
                               <p className="text-slate-400 text-xs font-semibold">{count} visual slides</p>
@@ -11173,6 +11189,192 @@ const FlashSpace = () => {
                       )}
                     </div>
                   </div>
+                </div>
+              </div>
+            </div>
+          ) : selectedSystem === 'معسكر الورقة الثانية' ? (
+            // --- CUSTOM CAMP 2 DASHBOARD INSIDE FLASH SPACE ---
+            <div className="h-full flex flex-col p-4 md:p-8 gap-6 md:gap-8 max-w-7xl mx-auto w-full relative" dir="rtl">
+              {/* Header */}
+              <div className="flex items-center justify-between gap-4 shrink-0 mt-2">
+                <div className="flex items-center gap-4">
+                  <button onClick={() => {
+                    setSelectedSystem(null);
+                    setSelectedSubSystem(null);
+                    setSelectedBoard(null);
+                    setIsChapterQuestionMode(false);
+                    setShowQuestions(false);
+                    setShowExplanation(false);
+                  }} className="p-2.5 bg-white/5 active:bg-white/15 hover:bg-white/10 rounded-2xl text-slate-400 transition-all border border-white/5 hover:border-white/10 hover:shadow-lg hover:shadow-black/20">
+                    <ChevronLeft className="w-5 h-5" />
+                  </button>
+                  <div>
+                    <h2 className="text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-white/60">معسكر الورقة الثانية للأطفال ⚡</h2>
+                    <p className="text-slate-500 text-xs font-bold uppercase mt-1">تصفح المعسكر المكثف مقسماً إلى يومين</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Day Switcher */}
+              <div className="flex justify-center gap-3 shrink-0 my-2">
+                {[1, 2].map((day) => (
+                  <button
+                    key={day}
+                    onClick={() => setCamp2ActiveDay(day)}
+                    className={`px-6 py-3 rounded-2xl font-black text-sm md:text-base transition-all duration-300 shadow-md ${
+                      camp2ActiveDay === day
+                        ? 'bg-gradient-to-r from-cyan-500 to-indigo-500 text-white scale-[1.04]'
+                        : 'bg-slate-900/50 border border-white/5 text-slate-350 hover:bg-white/5'
+                    }`}
+                  >
+                    اليوم {day === 1 ? 'الأول' : 'الثاني'}
+                  </button>
+                ))}
+              </div>
+
+              {/* Grid of Chapter Slides */}
+              <div className="flex-1 overflow-y-auto pb-8">
+                {(() => {
+                  const dayLabel = camp2ActiveDay === 1 ? 'اليوم الأول' : 'اليوم الثاني';
+                  const camp2ActiveSlides = (
+                    camp2ActiveDay === 1 ? [
+                      {
+                        label: 'I. CHEST DISEASES',
+                        subSystemKey: 'Chest diseases',
+                        arabic: 'أمراض الصدر والجهاز التنفسي',
+                        topics: [
+                          'Viral Croup', 'Epiglottitis', 'DD Croup & Pneumonia',
+                          'Bronchiolitis', 'Bronchial Asthma', 'Wheezing & Foreign Body',
+                          'Childhood Pneumonia: Classifications', 'Childhood Pneumonia: Misleading Signs',
+                          'Childhood Pneumonia: Diagnostics & ICU', 'Childhood Pneumonia: Therapeutics',
+                          'Pneumonia Summary'
+                        ],
+                        gradient: 'from-sky-500 to-indigo-500 bg-sky-500/10 text-sky-400'
+                      },
+                      {
+                        label: 'IV. EMERGENCY MEDICINE',
+                        subSystemKey: 'Emergency Medicine',
+                        arabic: 'طب الطوارئ',
+                        topics: [
+                          'Cardiopulmonary Resuscitation (CPR)', 'Shock Management',
+                          'Glasgow Coma Scale', 'Coma Approach', 'Hyperbilirubinemia Complications'
+                        ],
+                        gradient: 'from-rose-500 to-red-500 bg-rose-500/10 text-rose-400'
+                      },
+                      {
+                        label: 'V. FAMILY MEDICINE — الجزء الأول',
+                        subSystemKey: 'Family Medicine',
+                        arabic: 'طب الأسرة والمجتمع',
+                        topics: [
+                          'Principles of Family Medicine', 'The Family Physician & RISE Framework',
+                          'Family Dynamics & Human Life Cycle', 'Comparative Medical Models',
+                          'Basic Benefit Package & Level of Care', 'Family Health Team & PHC Services',
+                          'Referral & Consultation Processes', 'Patient Education & Verbal Counseling'
+                        ],
+                        gradient: 'from-emerald-500 to-teal-500 bg-emerald-500/10 text-emerald-400'
+                      }
+                    ] : [
+                      {
+                        label: 'II. NEONATOLOGY',
+                        subSystemKey: 'Neonatology',
+                        arabic: 'حديثي الولادة',
+                        topics: [
+                          'Physiological & Pathological Jaundice', 'Pathological Jaundice Details',
+                          'Neonatal Jaundice Overview', 'Complications of Indirect Hyperbilirubinemia',
+                          'Neonatal Sepsis', 'Prematurity and its Complications', 'Transient Cutaneous Lesions'
+                        ],
+                        gradient: 'from-amber-500 to-orange-500 bg-amber-500/10 text-amber-400'
+                      },
+                      {
+                        label: 'III. RENAL DISEASES',
+                        subSystemKey: 'Renal diseases',
+                        arabic: 'أمراض الكلى',
+                        topics: [
+                          'Pediatric Hematuria Evaluation', 'Acute Nephritic Syndrome & APSGN',
+                          'Nephrotic Syndrome', 'Acute Kidney Injury',
+                          'Chronic Kidney Disease', 'Urinary Tract Infections'
+                        ],
+                        gradient: 'from-cyan-500 to-blue-500 bg-cyan-500/10 text-cyan-400'
+                      },
+                      {
+                        label: 'V. FAMILY MEDICINE — الجزء الثاني',
+                        subSystemKey: 'Family Medicine',
+                        arabic: 'طب الأسرة والمجتمع',
+                        topics: [
+                          'Anticipatory Care & Immunization Guidelines', 'Breastfeeding Management & Composition',
+                          'Adolescent Health & HEADSSS Interview', 'IMCI Overview & Case Steps',
+                          'IMCI Young Infant Assessment (≤2M)', 'IMCI Young Infant Treatment (≤2M)',
+                          'IMCI Assessment (2M to 5Y)', 'IMCI Diarrhoea & Rehydration'
+                        ],
+                        gradient: 'from-violet-500 to-purple-500 bg-violet-500/10 text-violet-400'
+                      }
+                    ]
+                  );
+
+                  if (camp2ActiveSlides.length === 0) {
+                    return (
+                      <div className="py-16 text-center bg-slate-900/30 backdrop-blur-md rounded-[2rem] border border-dashed border-white/5 space-y-3">
+                        <p className="text-base font-black text-slate-300">سيتم إضافة محتوى {dayLabel} قريباً 📚</p>
+                        <p className="text-xs text-slate-500 font-bold">يرجى متابعة التحديثات القادمة للمعسكر المتميز.</p>
+                      </div>
+                    );
+                  }
+
+                  return (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      {camp2ActiveSlides.map((item, idx) => {
+                        const topicCount = item.topics?.length ?? 0;
+
+                        return (
+                          <div
+                            key={idx}
+                            onClick={() => {
+                              setSelectedSystem(item.subSystemKey);
+                              setSelectedSubSystem(null);
+                            }}
+                            className="group bg-slate-900/50 backdrop-blur-xl border border-white/5 hover:border-cyan-500/40 rounded-3xl p-6 shadow-lg active:scale-[0.98] hover:scale-[1.01] transition-all duration-300 cursor-pointer flex flex-col gap-4"
+                          >
+                            {/* Header */}
+                            <div className="space-y-2 text-right">
+                              <div className="flex items-center justify-between">
+                                <span className={`inline-block text-[10px] font-black uppercase tracking-wider px-3.5 py-1.5 rounded-full ${item.gradient}`}>
+                                  {topicCount} محاضرة
+                                </span>
+                                <span className="text-[10px] font-bold text-slate-500 uppercase">الورقة الثانية</span>
+                              </div>
+                              <h3 className="text-lg font-black text-white group-hover:text-cyan-400 transition-colors leading-snug font-mono tracking-wide uppercase">
+                                {item.label}
+                              </h3>
+                              <p className="text-xs text-slate-500 font-bold">{item.arabic}</p>
+                            </div>
+
+                            {/* Topics List */}
+                            {item.topics && item.topics.length > 0 && (
+                              <div className="space-y-1.5 border-t border-white/5 pt-3">
+                                {item.topics.map((topic, tIdx) => (
+                                  <div key={tIdx} className="flex items-center gap-2 text-right">
+                                    <div className={`w-1.5 h-1.5 rounded-full shrink-0 ${item.gradient.split(' ')[2]}`} />
+                                    <p className="text-[11px] text-slate-400 font-semibold leading-tight">{topic}</p>
+                                  </div>
+                                ))}
+                              </div>
+                            )}
+
+                            {/* Footer */}
+                            <div className="flex items-center justify-between border-t border-white/5 pt-3 mt-auto text-xs font-black text-slate-500 group-hover:text-cyan-400 transition-colors">
+                              <span className="transform group-hover:translate-x-[-4px] transition-transform">← افتح الشابتر</span>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  );
+                })()}
+
+                {/* Coming Soon Note */}
+                <div className="mt-8 py-6 text-center bg-slate-900/20 backdrop-blur-md rounded-[2rem] border border-dashed border-cyan-500/10 space-y-2">
+                  <p className="text-xs font-black text-slate-400">سيتم إضافة المزيد من محتوى معسكر الورقة الثانية قريباً 🚀</p>
+                  <p className="text-[11px] text-slate-600 font-bold">تابع التحديثات على المنصة</p>
                 </div>
               </div>
             </div>
