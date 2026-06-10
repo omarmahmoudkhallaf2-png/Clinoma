@@ -8383,6 +8383,117 @@ const DAY3_MATCHING_SETS: MatchingSet[] = [
   }
 ];
 
+const CAMP2_DAY1_MATCHING_SETS: MatchingSet[] = [
+  {
+    id: 'c2_d1_set1',
+    title: 'المجموعة 1: Acute Upper Airway Infections & Obstruction',
+    description: 'قم بتوصيل الحالة التشخيصية بالأعراض والقصة السريرية المناسبة لها.',
+    pairs: [
+      { id: 'c2_d1_s1_p1', question: 'A 6-month-old infant presents during winter with a first episode of expiratory wheezing, tachypnea, and chest retractions, following a 3-day history of coryza and low-grade fever.', answer: 'Acute Bronchiolitis' },
+      { id: 'c2_d1_s1_p2', question: 'Anteroposterior neck radiography of a 2-year-old child presenting with a barking cough and inspiratory stridor demonstrates subglottic narrowing known as the "steeple sign".', answer: 'Viral Croup' },
+      { id: 'c2_d1_s1_p3', question: 'A 3-year-old child presents with a sudden onset of barking cough at night without a preceding viral prodrome or fever, which completely resolves within a few hours.', answer: 'Spasmodic Croup' },
+      { id: 'c2_d1_s1_p4', question: 'A 4-year-old unimmunized child presents with a toxic appearance, high fever, severe respiratory distress, drooling of saliva, and insistence on sitting forward in a tripod position.', answer: 'Acute Epiglottitis' },
+      { id: 'c2_d1_s1_p5', question: 'A 14-month-old healthy toddler experiences a sudden episode of choking and coughing while playing, followed by a fixed localized wheeze and decreased breath sounds on one side.', answer: 'Foreign Body Aspiration' }
+    ]
+  },
+  {
+    id: 'c2_d1_set2',
+    title: 'المجموعة 2: Diagnostic & Management Safety Maneuvers',
+    description: 'قم بتوصيل الإجراء أو التشخيص بوصفه السريري أو الاحتياطي اللازم له.',
+    pairs: [
+      { id: 'c2_d1_s2_p1', question: 'A diagnostic evaluation modality used to confirm the diagnosis of Bronchial Asthma by documenting the reversible nature of the airway obstruction.', answer: 'Spirometry showing reversibility of airway obstruction' },
+      { id: 'c2_d1_s2_p2', question: 'A strictly prohibited procedure in a child suspected of acute epiglottitis due to the critical risk of precipitating fatal laryngospasm before securing the airway.', answer: 'Direct oral examination with a tongue depressor' },
+      { id: 'c2_d1_s2_p3', question: 'The preferred radiological technique used to visualize obstructive emphysema or localized air trapping caused by a radiolucent foreign body.', answer: 'Expiratory chest radiograph' },
+      { id: 'c2_d1_s2_p4', question: 'A fast-acting therapeutic intervention used to decrease subglottic edema in severe croup, requiring monitoring due to the risk of rebound symptom recurrence.', answer: 'Nebulized Epinephrine followed by a 2-hour observation period' },
+      { id: 'c2_d1_s2_p5', question: 'A management intervention that is strictly avoided and contraindicated in the standard supportive care of acute bronchiolitis.', answer: 'Routine administration of sedatives' }
+    ]
+  },
+  {
+    id: 'c2_d1_set3',
+    title: 'المجموعة 3: Differential Diagnosis & Pneumonia Mimics',
+    description: 'قم بتوصيل التشخيص التفريقي بوصف الحالة أو السبب السريري لها.',
+    pairs: [
+      { id: 'c2_d1_s3_p1', question: 'A metabolic condition that mimics respiratory distress by causing deep, rapid respiration (Kussmaul breathing), while the chest examination remains entirely clear.', answer: 'Diabetic Ketoacidosis (DKA)' },
+      { id: 'c2_d1_s3_p2', question: 'An underlying structural etiology that must be highly suspected in a child presenting with recurrent episodes of pneumonia restricted to the exact same lung site.', answer: 'Congenital Lung Anomalies (e.g., CCAM/Sequestration)' },
+      { id: 'c2_d1_s3_p3', question: 'Characterized by chronic airway inflammation, bronchial hyperresponsiveness, and recurrent acute episodes triggered by exposure to allergens.', answer: 'Bronchial Asthma' },
+      { id: 'c2_d1_s3_p4', question: 'A non-respiratory systemic condition presenting with tachypnea, cardiomegaly, a gallop rhythm, and a tender enlarged liver, which can be mistaken for childhood pneumonia.', answer: 'Heart Failure' },
+      { id: 'c2_d1_s3_p5', question: 'Characterized by transient pulmonary eosinophilic infiltrates accompanied by mild respiratory symptoms, often secondary to parasites or drugs.', answer: 'Loffler Syndrome' }
+    ]
+  },
+  {
+    id: 'c2_d1_set4',
+    title: 'المجموعة 4: Pediatric Pneumonia Pathogens',
+    description: 'قم بتوصيل الميكروب أو الفيروس المسبب للالتهاب الرئوي بخصائصه أو مضاعفاته المميزة.',
+    pairs: [
+      { id: 'c2_d1_s4_p1', question: 'A school-aged child presenting with an insidious onset of atypical pneumonia, where treatment with Macrolides is the preferred therapeutic choice.', answer: 'Mycoplasma pneumoniae' },
+      { id: 'c2_d1_s4_p2', question: 'A chest radiograph of a severely ill infant reveals pathogen-specific lung complications such as pneumatoceles, empyema, or pyopneumothorax.', answer: 'Staphylococcus aureus' },
+      { id: 'c2_d1_s4_p3', question: 'Characterized by a laboratory profile showing a normal to mildly elevated white blood cell count with a distinct lymphocyte predominance.', answer: 'Viral Pneumonia (e.g., RSV/Adenovirus)' },
+      { id: 'c2_d1_s4_p4', question: 'The most common cause of bacterial pneumonia, characterized by a high white blood cell count with polymorphonuclear (PMN) predominance and markedly elevated ESR and CRP.', answer: 'Streptococcus pneumoniae' },
+      { id: 'c2_d1_s4_p5', question: 'An infant presenting with subacute pneumonia, a characteristic staccato cough, and no fever, typically acquired during delivery through an infected birth canal.', answer: 'Chlamydia trachomatis' }
+    ]
+  },
+  {
+    id: 'c2_d1_set5',
+    title: 'المجموعة 5: Pneumonia Classifications & Hospitalization',
+    description: 'قم بتوصيل التصنيف أو العلامة السريرية للالتهاب الرئوي بالتعريف الصحيح لها.',
+    pairs: [
+      { id: 'c2_d1_s5_p1', question: 'A type of lower respiratory infection that presents clinically in a child more than 48 hours after hospital admission.', answer: 'Hospital-Acquired Pneumonia (HAP)' },
+      { id: 'c2_d1_s5_p2', question: 'A specific category of nosocomial pneumonia that characteristically develops more than 48 hours following endotracheal intubation.', answer: 'Ventilator-Associated Pneumonia (VAP)' },
+      { id: 'c2_d1_s5_p3', question: 'An absolute age-based indication for hospitalizing a child diagnosed with pneumonia, regardless of the initial mild clinical scoring.', answer: 'Age < 6 months' },
+      { id: 'c2_d1_s5_p4', question: 'Defined as signs and symptoms of pneumonia developing in a previously healthy child due to an infection acquired outside a hospital facility.', answer: 'Community-Acquired Pneumonia (CAP)' },
+      { id: 'c2_d1_s5_p5', question: 'The primary clinical sign used by the WHO classification to identify pneumonia in a child presenting with a cough or difficult breathing.', answer: 'Fast breathing (Tachypnea)' }
+    ]
+  },
+  {
+    id: 'c2_d1_set6',
+    title: 'المجموعة 6: Bronchial Asthma Triggers & Clinical Indicators',
+    description: 'قم بتوصيل المؤشر أو المسبب لمرض الربو الشعبي بنوعه أو أثره السريري.',
+    pairs: [
+      { id: 'c2_d1_s6_p1', question: 'The typical clinical onset pattern observed when an acute asthma episode is triggered following viral infections.', answer: 'Insidious onset of acute asthma episodes' },
+      { id: 'c2_d1_s6_p2', question: 'The typical clinical onset pattern observed when an acute asthma episode is caused by exposure to irritants like cold air or noxious fumes.', answer: 'Sudden onset of acute asthma episodes' },
+      { id: 'c2_d1_s6_p3', question: 'A cardiovascular clinical sign characterized by an exaggerated drop in systolic blood pressure during inspiration, accompanying severe asthma attacks.', answer: 'Pulsus paradoxus' },
+      { id: 'c2_d1_s6_p4', question: 'A physical examination finding in severe asthma that occurs entirely as a result of chest hyperinflation displacing the diaphragm downward.', answer: 'Palpable liver and spleen margins' },
+      { id: 'c2_d1_s6_p5', question: 'A diagnostic parameter obtained on lung function tests that indicates significant diurnal variation and airway reversibility in a child with asthma.', answer: 'Day-to-day and/or morning-to-evening variation of PEF or FEV1 >= 20%' }
+    ]
+  },
+  {
+    id: 'c2_d1_set7',
+    title: 'المجموعة 7: Bronchial Asthma Lab Profiles & Comorbidities',
+    description: 'قم بتوصيل الحالة السريرية أو الفحص المخبري لمرضى الربو بالتوصيف المطابق.',
+    pairs: [
+      { id: 'c2_d1_s7_p1', question: 'A chronic comorbid condition commonly associated with bronchial asthma that induces recurrent micro-aspiration, making the airway disease difficult to control.', answer: 'Gastroesophageal Reflux Disease (GERD)' },
+      { id: 'c2_d1_s7_p2', question: 'A blood laboratory finding that serves as a useful indicator of the underlying allergic or atopic profile in a child with bronchial asthma.', answer: 'Eosinophilia' },
+      { id: 'c2_d1_s7_p3', question: 'An arterial blood gas (ABG) profile during an initial asthma attack showing hypoxia, low PCO2, and respiratory alkalosis due to hyperventilation.', answer: 'Early-stage acute asthma exacerbation' },
+      { id: 'c2_d1_s7_p4', question: 'An arterial blood gas (ABG) profile showing a rising or normal PCO2 accompanied by respiratory acidosis, indicating severe respiratory muscle fatigue.', answer: 'Late-stage impending respiratory failure' },
+      { id: 'c2_d1_s7_p5', question: 'A critical auscultatory finding during a severe asthma attack where air entry is so poor that wheezing disappears, indicating imminent respiratory arrest.', answer: 'Silent chest' }
+    ]
+  },
+  {
+    id: 'c2_d1_set8',
+    title: 'المجموعة 8: Acute Bronchiolitis Pathophysiology & Complications',
+    description: 'قم بتوصيل المضاعفة أو الميكانيكية لمرض التهاب الشعيبات الهوائية بالوصف المطابق.',
+    pairs: [
+      { id: 'c2_d1_s8_p1', question: 'A critical life-threatening complication that must be closely anticipated in young infants below 2 months of age presenting with acute bronchiolitis.', answer: 'Apneic spells' },
+      { id: 'c2_d1_s8_p2', question: 'The primary supportive therapeutic agent routinely administered in acute bronchiolitis to manage documented hypoxemia.', answer: 'Humidified oxygen' },
+      { id: 'c2_d1_s8_p3', question: 'A specific antiviral agent that may be considered for the treatment of acute bronchiolitis in highly selected high-risk or congenital cases.', answer: 'Ribavirin' },
+      { id: 'c2_d1_s8_p4', question: 'The pathological mechanism in the bronchioles that directly results in hyperinflation, air trapping, and ventilation-perfusion mismatch.', answer: 'Complete plugging of airways by mucus and sloughed cells' },
+      { id: 'c2_d1_s8_p5', question: 'The most common underlying viral etiology responsible for the vast majority of cases of acute bronchiolitis in infants.', answer: 'Respiratory Syncytial Virus (RSV)' }
+    ]
+  },
+  {
+    id: 'c2_d1_set9',
+    title: 'المجموعة 9: WHO Tachypnea Definitions & Critical Airway Rules',
+    description: 'قم بتوصيل القاعدة السريرية أو المعيار العددي بالوصف المناسب له من منظمة الصحة العالمية.',
+    pairs: [
+      { id: 'c2_d1_s9_p1', question: 'The strict WHO threshold value used to define fast breathing (tachypnea) in an infant aged 2 months up to 12 months.', answer: 'Respiratory rate >= 50 breaths/minute' },
+      { id: 'c2_d1_s9_p2', question: 'The strict WHO threshold value used to define fast breathing (tachypnea) in a child aged 12 months up to 5 years.', answer: 'Respiratory rate >= 40 breaths/minute' },
+      { id: 'c2_d1_s9_p3', question: 'An immediate positioning safety protocol in epiglottitis required because gravity can cause the swollen epiglottis to occlude the airway completely.', answer: 'Avoid placing the child in a supine position' },
+      { id: 'c2_d1_s9_p4', question: 'A critical medical safety restriction in epiglottitis aimed at preventing any painful or stressful interventions that could trigger fatal laryngospasm.', answer: 'Avoid phlebotomy or IV line placement before airway control' },
+      { id: 'c2_d1_s9_p5', question: 'The strict WHO threshold value used to define fast breathing (tachypnea) in a young infant less than 2 months of age.', answer: 'Respiratory rate >= 60 breaths/minute' }
+    ]
+  }
+];
+
 const playSound = (type: 'click' | 'correct' | 'wrong' | 'success') => {
   try {
     const audioCtx = new (window.AudioContext || (window as any).webkitAudioContext)();
@@ -8805,6 +8916,151 @@ const FlashSpace = () => {
   const [modules, setModules] = useState<string[]>([]);
   const [systems, setSystems] = useState<Record<string, string[]>>({});
   
+  // Countdown state for the exam on 13/6/2026 at 10:00 AM Cairo Time (UTC+3)
+  const [countdownText, setCountdownText] = useState('');
+  useEffect(() => {
+    const EXAM_TIME = new Date('2026-06-13T10:00:00+03:00').getTime();
+    const updateCountdown = () => {
+      const now = Date.now();
+      const diff = EXAM_TIME - now;
+      if (diff <= 0) {
+        setCountdownText('بدأ الامتحان الآن 📝');
+        return;
+      }
+      const secs = Math.floor(diff / 1000);
+      const mins = Math.floor(secs / 60);
+      const hours = Math.floor(mins / 60);
+      const days = Math.floor(hours / 24);
+
+      const remainingHours = hours % 24;
+      const remainingMins = mins % 60;
+      const remainingSecs = secs % 60;
+
+      if (diff > 24 * 60 * 60 * 1000) {
+        // More than 1 day remaining: hide minutes and seconds
+        setCountdownText(`متبقي على الامتحان: ${days} يوم و ${remainingHours} ساعة`);
+      } else {
+        // 1 day or less remaining: show minutes and seconds
+        setCountdownText(`متبقي على الامتحان: ${hours} ساعة و ${remainingMins} دقيقة و ${remainingSecs} ثانية`);
+      }
+    };
+
+    updateCountdown();
+    const timer = setInterval(updateCountdown, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const renderSystemCard = (sys: string) => {
+    const color = SYSTEM_COLORS[sys] || '#6366f1';
+    const count = boards.filter(b => b.module === selectedModule && b.system === sys).length;
+    
+    const SYSTEM_BGS: Record<string, string> = {
+      'تحديدات الاطفال': '/assets/chapters/tahdedat_bg.jpg',
+      'معسكر الورقة الأولى': '/assets/chapters/camp_bg.png',
+      'معسكر الورقة الثانية': '/assets/chapters/camp_bg.png',
+      'Cardiovascular diseases': '/assets/chapters/cardio_bg_1779636563389.png',
+      'Endocrinology': '/assets/chapters/endo_bg_1779636576095.png',
+      'Gastroenterology & hepatology': '/assets/chapters/gastro_bg_1779636588519.png',
+      'Genetic diseases': '/assets/chapters/genetic_bg_1779636605335.png',
+      'Growth & development': '/assets/chapters/growth_bg_1779636618747.png',
+      'Hematology & Oncology': '/assets/chapters/hemato_bg_1779636647999.png',
+      'Infections': '/assets/chapters/infect_bg_1779636662158.png',
+      'Neurology': '/assets/chapters/neuro_bg_1779636673967.png',
+      'Nutrition': '/assets/chapters/nutrition_bg_1779636686441.png',
+      'Renal diseases': '/assets/chapters/renal_bg_1779636699582.png',
+      'Chest diseases': '/assets/chapters/chest_bg.png',
+      'Emergency Medicine': '/assets/chapters/emergency_bg.png',
+      'Family Medicine': '/assets/chapters/family_bg.png',
+      'Neonatology': '/assets/chapters/neonatology_bg.png',
+    };
+
+    const lwSys = sys.toLowerCase();
+    let SysIcon = Stethoscope;
+    if (sys === 'تحديدات الاطفال') SysIcon = Zap;
+    else if (lwSys.includes('cardio')) SysIcon = Heart;
+    else if (lwSys.includes('neuro')) SysIcon = Brain;
+    else if (lwSys.includes('gastro')) SysIcon = Apple;
+    else if (lwSys.includes('endo')) SysIcon = Target;
+    else if (lwSys.includes('genetic')) SysIcon = Dna;
+    else if (lwSys.includes('hematology')) SysIcon = Droplets;
+    else if (lwSys.includes('infect')) SysIcon = ShieldAlert;
+    else if (lwSys.includes('renal')) SysIcon = Activity;
+
+    return (
+      <button key={sys} onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          if (isChapterUnlocked(selectedModule, sys)) {
+            if (sys === 'Growth & development') {
+              trackGrowthView();
+            }
+            setSelectedSystem(sys);
+            setSelectedSubSystem(null);
+            setIsChapterQuestionMode(false);
+            setShowQuestions(false);
+            setShowExplanation(false);
+            setSelectedBoard(null);
+          } else {
+            setShowSubscriptionModal(true);
+          }
+        }}
+        className="group relative bg-slate-900/50 backdrop-blur-xl border border-white/5 active:border-white/20 hover:border-white/20 rounded-3xl text-left transition-all duration-300 active:scale-[0.97] hover:scale-[1.02] overflow-hidden p-6 flex flex-col justify-between min-h-[160px] hover:shadow-2xl w-full"
+      >
+        {!isChapterUnlocked(selectedModule, sys) && (
+          <div className="absolute top-4 right-4 z-10 bg-amber-500/20 text-amber-500 border border-amber-500/30 px-3 py-1.5 rounded-full flex items-center gap-1.5 backdrop-blur-sm shadow-lg">
+            <Lock className="w-3.5 h-3.5" />
+            <span className="text-xs font-bold uppercase tracking-wider">Premium</span>
+          </div>
+        )}
+        {sys === 'تحديدات الاطفال' && (
+          <div className="absolute top-4 left-4 z-10 bg-gradient-to-r from-rose-500 to-orange-500 text-white border border-rose-400/50 px-3 py-1.5 rounded-full flex items-center gap-1.5 backdrop-blur-md shadow-lg shadow-rose-500/20">
+            <span className="text-[14px]">🔥</span>
+            <span className="text-xs font-black tracking-wider">رائج الآن</span>
+          </div>
+        )}
+        {userRole === 'admin' && sys === 'Growth & development' && (
+          <div className="absolute top-4 left-4 z-10 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-3 py-1.5 rounded-full flex items-center gap-1.5 backdrop-blur-sm shadow-lg">
+            <Zap className="w-3.5 h-3.5" />
+            <span className="text-xs font-bold tracking-wider">{growthViews} Views</span>
+          </div>
+        )}
+        {SYSTEM_BGS[sys] && (
+          <div className="absolute inset-0 z-0">
+            <img src={SYSTEM_BGS[sys]} alt={sys} className="w-full h-full object-cover opacity-40 group-hover:opacity-70 transition-all duration-500 mix-blend-overlay" />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-transparent" />
+          </div>
+        )}
+
+        <div className="absolute top-0 right-0 w-32 h-32 opacity-10 group-hover:opacity-20 transition-opacity duration-500 blur-3xl rounded-full z-0" style={{background: color, transform: 'translate(30%, -30%)'}} />
+        
+        <div className="relative z-10 flex justify-between items-start w-full">
+          {sys === 'تحديدات الاطفال' ? (
+            <div className="w-12 h-12"></div>
+          ) : (
+            <div className="w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:-translate-y-1" style={{background: `linear-gradient(135deg, ${color}20, ${color}10)`, border: `1px solid ${color}40`, color: color}}>
+              <SysIcon className="w-6 h-6" />
+            </div>
+          )}
+          <div className="flex items-center justify-center w-8 h-8 rounded-full bg-white/5 text-slate-400 opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-x-2 group-hover:translate-x-0">
+            <ArrowRight className="w-4 h-4" />
+          </div>
+        </div>
+
+        <div className="relative z-10 mt-6 text-left">
+          <h3 className="text-white font-black text-lg leading-tight mb-1">
+            {sys === 'معسكر الورقة الأولى' ? 'معسكر الورقة الأولى ⚡' : sys === 'معسكر الورقة الثانية' ? 'معسكر الورقة الثانية ⚡' : sys}
+          </h3>
+          {sys !== 'معسكر الورقة الأولى' && sys !== 'معسكر الورقة الثانية' && (
+            <div className="flex items-center gap-2">
+              <div className="w-1.5 h-1.5 rounded-full" style={{background: color, boxShadow: `0 0 10px ${color}`}} />
+              <p className="text-slate-400 text-xs font-semibold">{count} visual slides</p>
+            </div>
+          )}
+        </div>
+      </button>
+    );
+  };
+
   const [selectedModule, setSelectedModule] = useState<string | null>(() => {
     const searchParams = new URLSearchParams(window.location.search);
     return searchParams.get('module') || null;
@@ -8851,7 +9107,9 @@ const FlashSpace = () => {
 
   // --- First Paper Camp states ---
   const [campActiveDay, setCampActiveDay] = useState<number>(1);
-  const currentMatchingSets = campActiveDay === 3 ? DAY3_MATCHING_SETS : (campActiveDay === 2 ? DAY2_MATCHING_SETS : DAY1_MATCHING_SETS);
+  const currentMatchingSets = selectedSystem === 'معسكر الورقة الثانية'
+    ? CAMP2_DAY1_MATCHING_SETS
+    : (campActiveDay === 3 ? DAY3_MATCHING_SETS : (campActiveDay === 2 ? DAY2_MATCHING_SETS : DAY1_MATCHING_SETS));
 
   useEffect(() => {
     setCampCurrentSetIdx(0);
@@ -8859,24 +9117,28 @@ const FlashSpace = () => {
     setCampWrongMatches([]);
     setCampActiveSelection(null);
     setCampTimeSpentSeconds(0);
-    const setsPool = campActiveDay === 3 ? DAY3_MATCHING_SETS : (campActiveDay === 2 ? DAY2_MATCHING_SETS : DAY1_MATCHING_SETS);
+    const setsPool = selectedSystem === 'معسكر الورقة الثانية'
+      ? CAMP2_DAY1_MATCHING_SETS
+      : (campActiveDay === 3 ? DAY3_MATCHING_SETS : (campActiveDay === 2 ? DAY2_MATCHING_SETS : DAY1_MATCHING_SETS));
     const totalPairs = setsPool.reduce((acc: number, s: MatchingSet) => acc + s.pairs.length, 0);
     setCampTotalPairsCount(totalPairs);
 
-    // Calculate start time dynamically based on the selected day:
-    // Day 1: 2026-05-30T21:00 (09:00 PM)
-    // Day 2: 2026-05-31T21:00 (09:00 PM)
-    // Day 3: 2026-06-01T21:00 (09:00 PM)
-    const baseDate = new Date('2026-05-30T21:00:00');
-    baseDate.setDate(baseDate.getDate() + (campActiveDay - 1));
-    const year = baseDate.getFullYear();
-    const month = String(baseDate.getMonth() + 1).padStart(2, '0');
-    const date = String(baseDate.getDate()).padStart(2, '0');
-    const hours = String(baseDate.getHours()).padStart(2, '0');
-    const minutes = String(baseDate.getMinutes()).padStart(2, '0');
-    const calculatedStartStr = `${year}-${month}-${date}T${hours}:${minutes}`;
-    setCampStartTimeStr(calculatedStartStr);
-  }, [campActiveDay]);
+    if (selectedSystem !== 'معسكر الورقة الثانية') {
+      // Calculate start time dynamically based on the selected day:
+      // Day 1: 2026-05-30T21:00 (09:00 PM)
+      // Day 2: 2026-05-31T21:00 (09:00 PM)
+      // Day 3: 2026-06-01T21:00 (09:00 PM)
+      const baseDate = new Date('2026-05-30T21:00:00');
+      baseDate.setDate(baseDate.getDate() + (campActiveDay - 1));
+      const year = baseDate.getFullYear();
+      const month = String(baseDate.getMonth() + 1).padStart(2, '0');
+      const date = String(baseDate.getDate()).padStart(2, '0');
+      const hours = String(baseDate.getHours()).padStart(2, '0');
+      const minutes = String(baseDate.getMinutes()).padStart(2, '0');
+      const calculatedStartStr = `${year}-${month}-${date}T${hours}:${minutes}`;
+      setCampStartTimeStr(calculatedStartStr);
+    }
+  }, [campActiveDay, selectedSystem]);
 
   const [campActiveTab, setCampActiveTab] = useState<'chapters' | 'notebook'>('chapters');
   const [campShowSettings, setCampShowSettings] = useState(false);
@@ -9007,6 +9269,11 @@ const FlashSpace = () => {
         margin = 20;
         box_w = 170;
         box_h = 14;
+      } else if (pdfId === 'camp2_quiz' || pdfId === 'camp2_quiz_answers' || pdfId === 'camp2_essay' || pdfId === 'camp2_essay_answers') {
+        chapterCovers = [];
+        margin = 15;
+        box_w = 170;
+        box_h = 14;
       } else if (pdfId.startsWith('second_paper')) {
         if (pdfId.includes('ped')) {
           chapterCovers = [3, 15, 23, 30];
@@ -9028,7 +9295,7 @@ const FlashSpace = () => {
       for (let i = 0; i < pageCount; i++) {
         const p = i + 1;
         // Skip cover, index, and chapter covers
-        const skipThreshold = (pdfId === 'questions' || pdfId === 'answers' || pdfId === 'quiz' || pdfId === 'quiz_answers') ? 1 : 2;
+        const skipThreshold = (pdfId === 'camp2_quiz' || pdfId === 'camp2_quiz_answers' || pdfId === 'camp2_essay' || pdfId === 'camp2_essay_answers') ? 0 : (pdfId === 'questions' || pdfId === 'answers' || pdfId === 'quiz' || pdfId === 'quiz_answers') ? 1 : 2;
         if (p > skipThreshold && !chapterCovers.includes(p)) {
           const page = pdfDoc.getPage(i);
           const height = page.getHeight();
@@ -9869,16 +10136,21 @@ const FlashSpace = () => {
 
     const check = () => {
       const now = Date.now();
+      if (hasAttemptedCamp2) {
+        setCamp2ExamState('finished');
+        setCamp2TimeRemainingToStart(0);
+        return;
+      }
       if (now < CAMP2_START) {
         setCamp2TimeRemainingToStart(Math.ceil((CAMP2_START - now) / 1000));
-        if (!hasAttemptedCamp2) setCamp2ExamState('locked');
+        setCamp2ExamState('locked');
       } else if (now > CAMP2_END) {
         setCamp2TimeRemainingToStart(-1);
         // After window: allow PDF download regardless
         setCamp2ExamState('finished');
       } else {
         setCamp2TimeRemainingToStart(0);
-        if (!hasAttemptedCamp2) setCamp2ExamState('ready');
+        setCamp2ExamState('ready');
       }
     };
 
@@ -9939,7 +10211,9 @@ const FlashSpace = () => {
   }, [campExamState, campCurrentSetIdx]);
 
   const startCampMatchingGame = () => {
-    if (hasAttemptedCamp) {
+    const isCamp2 = selectedSystem === 'معسكر الورقة الثانية';
+    const attempted = isCamp2 ? hasAttemptedCamp2 : hasAttemptedCamp;
+    if (attempted) {
       toast.error('لقد قمت بحل هذا الاختبار سابقاً، غير مسموح بالدخول مرة أخرى!');
       return;
     }
@@ -10113,10 +10387,20 @@ const FlashSpace = () => {
   const finishCampTest = async (finalCorrect: number, total: number) => {
     playSound('success');
     const finalScore = Math.round((finalCorrect / total) * 100);
-    setCampScore(finalScore);
-    setCampExamState('finished');
-    setIsQuizCompleted(true);
-    localStorage.setItem('day1_quiz_completed', 'true');
+    const isCamp2 = selectedSystem === 'معسكر الورقة الثانية';
+
+    if (isCamp2) {
+      setCamp2AttemptScore(finalCorrect);
+      setHasAttemptedCamp2(true);
+      setCamp2ExamState('finished');
+      localStorage.setItem('camp2_day1_quiz_completed', 'true');
+      localStorage.setItem('camp2_day1_quiz_score', String(finalCorrect));
+    } else {
+      setCampScore(finalScore);
+      setCampExamState('finished');
+      setIsQuizCompleted(true);
+      localStorage.setItem('day1_quiz_completed', 'true');
+    }
 
     if (user) {
       try {
@@ -10125,8 +10409,10 @@ const FlashSpace = () => {
           userEmail: user.email || 'unknown@gmail.com',
           studentName: userData?.name || user.displayName || 'طالب معسكر',
           userName: userData?.name || user.displayName || 'طالب معسكر',
-          examId: 'first_paper_camp_matching',
-          examTitle: '🔥 معسكر الورقة الأولى - اختبار التوصيل التفاعلي',
+          examId: isCamp2 ? 'second_paper_camp_matching_day1' : 'first_paper_camp_matching',
+          examTitle: isCamp2 
+            ? '🔥 معسكر الورقة الثانية - اختبار التوصيل التفاعلي - اليوم الأول' 
+            : '🔥 معسكر الورقة الأولى - اختبار التوصيل التفاعلي',
           score: finalCorrect,
           totalQuestions: total,
           completedAt: serverTimestamp(),
@@ -10250,6 +10536,10 @@ const FlashSpace = () => {
         y: ('touches' in e ? e.touches[0].clientY : e.clientY) - offset.y
       };
       return;
+    }
+
+    if (activeTool === 'laser') {
+      setShowSettingsFor(null);
     }
 
     const pos = getPos(e);
@@ -10739,189 +11029,122 @@ const FlashSpace = () => {
                     </a>
                   </div>
                 )}
+                {selectedModule === 'الورقة الثانية' && (
+                  <div className="flex items-center gap-2.5 px-4 py-2.5 bg-white/5 border border-white/10 rounded-2xl text-white text-xs md:text-sm font-black backdrop-blur-md shadow-md animate-pulse">
+                    <Clock className="w-4 h-4 text-white" />
+                    <span dir="rtl">{countdownText}</span>
+                  </div>
+                )}
               </div>
               <div className="flex-1 overflow-y-auto pb-8">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
-                  {[...(systems[selectedModule] || [])].sort((a, b) => {
-                    const getPriority = (x: string) => {
-                      if (x === 'تحديدات الاطفال') return 1;
-                      if (x === 'معسكر الورقة الأولى') return 2;
-                      if (x === 'Growth & development') return 3;
-                      if (selectedModule === 'الورقة الثانية') {
-                        if (x === 'معسكر الورقة الثانية') return 5;
-                        if (x === 'Renal diseases') return 10;
-                        if (x === 'Chest diseases') return 20;
-                        if (x === 'Neonatology') return 30;
-                        if (x === 'Emergency Medicine') return 40;
-                        if (x === 'Family Medicine') return 50;
-                      }
-                      return 100;
-                    };
-                    const pA = getPriority(a);
-                    const pB = getPriority(b);
-                    if (pA !== pB) return pA - pB;
-                    return a.localeCompare(b);
-                  }).map(sys => {
-                    const color = SYSTEM_COLORS[sys] || '#6366f1';
-                    const count = boards.filter(b => b.module === selectedModule && b.system === sys).length;
-                    
-                    const SYSTEM_BGS: Record<string, string> = {
-                      'تحديدات الاطفال': '/assets/chapters/tahdedat_bg.jpg',
-                      'معسكر الورقة الأولى': '/assets/chapters/camp_bg.png',
-                      'معسكر الورقة الثانية': '/assets/chapters/camp_bg.png',
-                      'Cardiovascular diseases': '/assets/chapters/cardio_bg_1779636563389.png',
-                      'Endocrinology': '/assets/chapters/endo_bg_1779636576095.png',
-                      'Gastroenterology & hepatology': '/assets/chapters/gastro_bg_1779636588519.png',
-                      'Genetic diseases': '/assets/chapters/genetic_bg_1779636605335.png',
-                      'Growth & development': '/assets/chapters/growth_bg_1779636618747.png',
-                      'Hematology & Oncology': '/assets/chapters/hemato_bg_1779636647999.png',
-                      'Infections': '/assets/chapters/infect_bg_1779636662158.png',
-                      'Neurology': '/assets/chapters/neuro_bg_1779636673967.png',
-                      'Nutrition': '/assets/chapters/nutrition_bg_1779636686441.png',
-                      'Renal diseases': '/assets/chapters/renal_bg_1779636699582.png',
-                      'Chest diseases': '/assets/chapters/chest_bg.png',
-                      'Emergency Medicine': '/assets/chapters/emergency_bg.png',
-                      'Family Medicine': '/assets/chapters/family_bg.png',
-                      'Neonatology': '/assets/chapters/neonatology_bg.png',
-                    };
+                {selectedModule === 'الورقة الثانية' ? (
+                  <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 text-right" dir="rtl">
+                    {/* Right Sidebar: Camp & Flashcards */}
+                    <div className="lg:col-span-1 flex flex-col gap-4">
+                      <div className="bg-slate-900/35 backdrop-blur-xl border border-white/5 rounded-[2rem] p-5 flex flex-col gap-4 text-right">
+                        <div className="flex items-center gap-2 border-b border-white/5 pb-3">
+                          <Zap className="w-5 h-5 text-amber-400 animate-pulse" />
+                          <h4 className="text-sm font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-amber-100 font-mono tracking-wide">
+                            المعسكر والمراجعة التفاعلية
+                          </h4>
+                        </div>
+                        <div className="flex flex-col gap-4">
+                          {renderSystemCard('معسكر الورقة الثانية')}
+                          
+                          <button 
+                            onClick={() => {
+                              if (isSpaceSubscribed('الورقة الثانية') || userData?.role === 'admin') {
+                                navigate('/flashcards/second-paper-interactive');
+                              } else {
+                                setShowSubscriptionModal(true);
+                              }
+                            }}
+                            className="group relative bg-gradient-to-br from-slate-950 via-[#1e1b18] to-slate-900 border border-amber-500/30 hover:border-amber-400/60 rounded-3xl text-right transition-all duration-500 active:scale-[0.98] hover:scale-[1.03] overflow-hidden p-6 flex flex-col justify-between min-h-[160px] shadow-[0_4px_30px_rgba(0,0,0,0.4)] hover:shadow-[0_0_35px_rgba(217,119,6,0.25)] cursor-pointer w-full"
+                          >
+                            {/* Subscription Lock Badge */}
+                            {!(isSpaceSubscribed('الورقة الثانية') || userData?.role === 'admin') && (
+                              <div className="absolute top-4 right-4 z-10 bg-amber-500/20 text-amber-500 border border-amber-500/30 px-3 py-1.5 rounded-full flex items-center gap-1.5 backdrop-blur-sm shadow-lg">
+                                <Lock className="w-3.5 h-3.5" />
+                                <span className="text-xs font-bold uppercase tracking-wider">Premium</span>
+                              </div>
+                            )}
 
-                    const lwSys = sys.toLowerCase();
-                    let SysIcon = Stethoscope;
-                    if (sys === 'تحديدات الاطفال') SysIcon = Zap;
-                    else if (lwSys.includes('cardio')) SysIcon = Heart;
-                    else if (lwSys.includes('neuro')) SysIcon = Brain;
-                    else if (lwSys.includes('gastro')) SysIcon = Apple;
-                    else if (lwSys.includes('endo')) SysIcon = Target;
-                    else if (lwSys.includes('genetic')) SysIcon = Dna;
-                    else if (lwSys.includes('hematology')) SysIcon = Droplets;
-                    else if (lwSys.includes('infect')) SysIcon = ShieldAlert;
-                    else if (lwSys.includes('renal')) SysIcon = Activity;
+                            {/* Luxurious Golden Animated Glow Background */}
+                            <div className="absolute -right-10 -top-10 w-40 h-40 bg-gradient-to-br from-amber-500/20 to-yellow-500/10 rounded-full blur-3xl -z-10 group-hover:scale-150 group-hover:from-amber-400/30 transition-all duration-700 ease-out" />
+                            <div className="absolute left-10 bottom-10 w-24 h-24 bg-amber-600/5 rounded-full blur-2xl -z-10 group-hover:scale-125 transition-transform duration-700" />
+                            
+                            {/* Top Bar with Luxurious Sparkles Icon and Arrow */}
+                            <div className="relative z-10 flex justify-between items-start w-full">
+                              <div className="w-12 h-12 rounded-2xl flex items-center justify-center shadow-[0_0_20px_rgba(217,119,6,0.15)] group-hover:shadow-[0_0_25px_rgba(217,119,6,0.35)] transition-all duration-500 bg-gradient-to-br from-amber-500/20 to-yellow-600/10 border border-amber-500/40 group-hover:border-amber-400 text-amber-400 animate-pulse">
+                                <Sparkles className="w-5 h-5 filter drop-shadow-[0_0_5px_rgba(245,158,11,0.5)]" />
+                              </div>
+                              {isSpaceSubscribed('الورقة الثانية') || userData?.role === 'admin' ? (
+                                <div className="flex items-center justify-center w-8 h-8 rounded-full bg-amber-500/10 text-amber-300 opacity-0 group-hover:opacity-100 transition-all duration-500 -translate-x-2 group-hover:translate-x-0 border border-amber-500/20">
+                                  <ArrowRight className="w-4 h-4" />
+                                </div>
+                              ) : null}
+                            </div>
 
-                    return (
-                      <button key={sys} onClick={(e) => {
-                          e.preventDefault();
-                          e.stopPropagation();
-                          if (isChapterUnlocked(selectedModule, sys)) {
-                            if (sys === 'Growth & development') {
-                              trackGrowthView();
-                            }
-                            setSelectedSystem(sys);
-                            setSelectedSubSystem(null);
-                            setIsChapterQuestionMode(false);
-                            setShowQuestions(false);
-                            setShowExplanation(false);
-                            setSelectedBoard(null);
-                          } else {
-                            setShowSubscriptionModal(true);
+                            {/* Content Area with Premium Text Style */}
+                            <div className="relative z-10 mt-6 text-right w-full">
+                              <h3 className="font-black text-lg leading-tight mb-1 text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-yellow-400 to-amber-300 group-hover:from-white group-hover:to-amber-200 transition-all duration-500">
+                                فلاش كارد الورقة الثانية ✨
+                              </h3>
+                              <p className="text-amber-500/70 group-hover:text-amber-300/90 text-xs font-semibold tracking-wide transition-colors duration-500">
+                                بوابة المراجعة التفاعلية الفخمة
+                              </p>
+                            </div>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Left/Bottom: The 5 core chapters */}
+                    <div className="lg:col-span-3">
+                      <div className="bg-slate-900/15 backdrop-blur-xl border border-white/5 rounded-[2rem] p-6 text-right">
+                        <div className="flex items-center gap-2 border-b border-white/5 pb-3 mb-6">
+                          <BookOpen className="w-5 h-5 text-cyan-400" />
+                          <h4 className="text-sm font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-indigo-300 font-mono tracking-wide">
+                            الشباتر الأساسية الخمسة
+                          </h4>
+                        </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
+                          {[...(systems[selectedModule] || [])]
+                            .filter(sys => sys !== 'معسكر الورقة الثانية')
+                            .sort((a, b) => {
+                              const getPriority = (x: string) => {
+                                if (x === 'Renal diseases') return 10;
+                                if (x === 'Chest diseases') return 20;
+                                if (x === 'Neonatology') return 30;
+                                if (x === 'Emergency Medicine') return 40;
+                                if (x === 'Family Medicine') return 50;
+                                return 100;
+                              };
+                              return getPriority(a) - getPriority(b);
+                            })
+                            .map(sys => renderSystemCard(sys))
                           }
-                        }}
-                        className="group relative bg-slate-900/50 backdrop-blur-xl border border-white/5 active:border-white/20 hover:border-white/20 rounded-3xl text-left transition-all duration-300 active:scale-[0.97] hover:scale-[1.02] overflow-hidden p-6 flex flex-col justify-between min-h-[160px] hover:shadow-2xl"
-                      >
-                        {!isChapterUnlocked(selectedModule, sys) && (
-                          <div className="absolute top-4 right-4 z-10 bg-amber-500/20 text-amber-500 border border-amber-500/30 px-3 py-1.5 rounded-full flex items-center gap-1.5 backdrop-blur-sm shadow-lg">
-                            <Lock className="w-3.5 h-3.5" />
-                            <span className="text-xs font-bold uppercase tracking-wider">Premium</span>
-                          </div>
-                        )}
-                        {sys === 'تحديدات الاطفال' && (
-                          <div className="absolute top-4 left-4 z-10 bg-gradient-to-r from-rose-500 to-orange-500 text-white border border-rose-400/50 px-3 py-1.5 rounded-full flex items-center gap-1.5 backdrop-blur-md shadow-lg shadow-rose-500/20">
-                            <span className="text-[14px]">🔥</span>
-                            <span className="text-xs font-black tracking-wider">رائج الآن</span>
-                          </div>
-                        )}
-                        {/* Admin Views Counter */}
-                        {userRole === 'admin' && sys === 'Growth & development' && (
-                          <div className="absolute top-4 left-4 z-10 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-3 py-1.5 rounded-full flex items-center gap-1.5 backdrop-blur-sm shadow-lg">
-                            <Zap className="w-3.5 h-3.5" />
-                            <span className="text-xs font-bold tracking-wider">{growthViews} Views</span>
-                          </div>
-                        )}
-                        {/* AI Background Image */}
-                        {SYSTEM_BGS[sys] && (
-                          <div className="absolute inset-0 z-0">
-                            <img src={SYSTEM_BGS[sys]} alt={sys} className="w-full h-full object-cover opacity-40 group-hover:opacity-70 transition-all duration-500 mix-blend-overlay" />
-                            <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-transparent" />
-                          </div>
-                        )}
-
-                        {/* Gradient Glow */}
-                        <div className="absolute top-0 right-0 w-32 h-32 opacity-10 group-hover:opacity-20 transition-opacity duration-500 blur-3xl rounded-full z-0" style={{background: color, transform: 'translate(30%, -30%)'}} />
-                        
-                        <div className="relative z-10 flex justify-between items-start w-full">
-                          {sys === 'تحديدات الاطفال' ? (
-                            <div className="w-12 h-12"></div>
-                          ) : (
-                            <div className="w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:-translate-y-1" style={{background: `linear-gradient(135deg, ${color}20, ${color}10)`, border: `1px solid ${color}40`, color: color}}>
-                              <SysIcon className="w-6 h-6" />
-                            </div>
-                          )}
-                          <div className="flex items-center justify-center w-8 h-8 rounded-full bg-white/5 text-slate-400 opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-x-2 group-hover:translate-x-0">
-                            <ArrowRight className="w-4 h-4" />
-                          </div>
                         </div>
-
-                        <div className="relative z-10 mt-6">
-                          <h3 className="text-white font-black text-lg leading-tight mb-1">
-                            {sys === 'معسكر الورقة الأولى' ? 'معسكر الورقة الأولى ⚡' : sys === 'معسكر الورقة الثانية' ? 'معسكر الورقة الثانية ⚡' : sys}
-                          </h3>
-                          {sys !== 'معسكر الورقة الأولى' && sys !== 'معسكر الورقة الثانية' && (
-                            <div className="flex items-center gap-2">
-                              <div className="w-1.5 h-1.5 rounded-full" style={{background: color, boxShadow: `0 0 10px ${color}`}} />
-                              <p className="text-slate-400 text-xs font-semibold">{count} visual slides</p>
-                            </div>
-                          )}
-                        </div>
-                      </button>
-                    );
-                  })}
-
-                  {selectedModule === 'الورقة الثانية' && (
-                    <button 
-                      onClick={() => {
-                        if (isSpaceSubscribed('الورقة الثانية') || userData?.role === 'admin') {
-                          navigate('/flashcards/second-paper-interactive');
-                        } else {
-                          setShowSubscriptionModal(true);
-                        }
-                      }}
-                      className="group relative bg-gradient-to-br from-slate-950 via-[#1e1b18] to-slate-900 border border-amber-500/30 hover:border-amber-400/60 rounded-3xl text-right transition-all duration-500 active:scale-[0.98] hover:scale-[1.03] overflow-hidden p-6 flex flex-col justify-between min-h-[160px] shadow-[0_4px_30px_rgba(0,0,0,0.4)] hover:shadow-[0_0_35px_rgba(217,119,6,0.25)] cursor-pointer"
-                    >
-                      {/* Subscription Lock Badge */}
-                      {!(isSpaceSubscribed('الورقة الثانية') || userData?.role === 'admin') && (
-                        <div className="absolute top-4 right-4 z-10 bg-amber-500/20 text-amber-500 border border-amber-500/30 px-3 py-1.5 rounded-full flex items-center gap-1.5 backdrop-blur-sm shadow-lg">
-                          <Lock className="w-3.5 h-3.5" />
-                          <span className="text-xs font-bold uppercase tracking-wider">Premium</span>
-                        </div>
-                      )}
-
-                      {/* Luxurious Golden Animated Glow Background */}
-                      <div className="absolute -right-10 -top-10 w-40 h-40 bg-gradient-to-br from-amber-500/20 to-yellow-500/10 rounded-full blur-3xl -z-10 group-hover:scale-150 group-hover:from-amber-400/30 transition-all duration-700 ease-out" />
-                      <div className="absolute left-10 bottom-10 w-24 h-24 bg-amber-600/5 rounded-full blur-2xl -z-10 group-hover:scale-125 transition-transform duration-700" />
-                      
-                      {/* Top Bar with Luxurious Sparkles Icon and Arrow */}
-                      <div className="relative z-10 flex justify-between items-start w-full">
-                        <div className="w-12 h-12 rounded-2xl flex items-center justify-center shadow-[0_0_20px_rgba(217,119,6,0.15)] group-hover:shadow-[0_0_25px_rgba(217,119,6,0.35)] transition-all duration-500 bg-gradient-to-br from-amber-500/20 to-yellow-600/10 border border-amber-500/40 group-hover:border-amber-400 text-amber-400 animate-pulse">
-                          <Sparkles className="w-5 h-5 filter drop-shadow-[0_0_5px_rgba(245,158,11,0.5)]" />
-                        </div>
-                        {isSpaceSubscribed('الورقة الثانية') || userData?.role === 'admin' ? (
-                          <div className="flex items-center justify-center w-8 h-8 rounded-full bg-amber-500/10 text-amber-300 opacity-0 group-hover:opacity-100 transition-all duration-500 -translate-x-2 group-hover:translate-x-0 border border-amber-500/20">
-                            <ArrowRight className="w-4 h-4" />
-                          </div>
-                        ) : null}
                       </div>
-
-                      {/* Content Area with Premium Text Style */}
-                      <div className="relative z-10 mt-6 text-right w-full">
-                        <h3 className="font-black text-lg leading-tight mb-1 text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-yellow-400 to-amber-300 group-hover:from-white group-hover:to-amber-200 transition-all duration-500">
-                          فلاش كارد الورقة الثانية ✨
-                        </h3>
-                        <p className="text-amber-500/70 group-hover:text-amber-300/90 text-xs font-semibold tracking-wide transition-colors duration-500">
-                          بوابة المراجعة التفاعلية الفخمة
-                        </p>
-                      </div>
-                    </button>
-                  )}
-                </div>
+                    </div>
+                  </div>
+                ) : (
+                  // Normal layout for other subjects/modules
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
+                    {[...(systems[selectedModule] || [])].sort((a, b) => {
+                      const getPriority = (x: string) => {
+                        if (x === 'تحديدات الاطفال') return 1;
+                        if (x === 'معسكر الورقة الأولى') return 2;
+                        if (x === 'Growth & development') return 3;
+                        return 100;
+                      };
+                      const pA = getPriority(a);
+                      const pB = getPriority(b);
+                      if (pA !== pB) return pA - pB;
+                      return a.localeCompare(b);
+                    }).map(sys => renderSystemCard(sys))}
+                  </div>
+                )}
               </div>
             </div>
           ) : selectedSystem === 'معسكر الورقة الأولى' ? (
@@ -11417,6 +11640,13 @@ const FlashSpace = () => {
                       : `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
                   };
 
+                  const nowMs = Date.now();
+                  const CAMP2_START_TIME = new Date('2026-06-10T21:00:00+03:00').getTime();
+                  const CAMP2_END_TIME   = new Date('2026-06-11T00:00:00+03:00').getTime();
+                  const isAdmin          = userData?.role === 'admin';
+                  const showUnsolvedEssay = nowMs >= CAMP2_START_TIME || isAdmin;
+                  const showSolvedEssay   = nowMs >= CAMP2_START_TIME || isAdmin;
+
                   const isWindowOpen  = camp2ExamState === 'ready' || camp2ExamState === 'finished';
                   const canSeeAnswers = hasAttemptedCamp2 || camp2ExamState === 'finished';
 
@@ -11440,7 +11670,7 @@ const FlashSpace = () => {
                         )}
                         {(camp2ExamState === 'finished' || hasAttemptedCamp2) && (
                           <span className="text-[11px] font-black text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 px-3 py-1 rounded-full">
-                            ✅ {hasAttemptedCamp2 ? `أجبت بنجاح — ${camp2AttemptScore}/5` : 'انتهى الكويز'}
+                            ✅ {hasAttemptedCamp2 ? `أجبت بنجاح — ${camp2AttemptScore}/45` : 'انتهى الكويز'}
                           </span>
                         )}
                       </div>
@@ -11460,7 +11690,7 @@ const FlashSpace = () => {
                           <button
                             disabled={!isWindowOpen}
                             onClick={() => handleDownloadPDF(
-                              '/معسكر_الورقة_الثانية_اليوم_الأول_كويز.pdf',
+                              'camp2_quiz',
                               '/معسكر_الورقة_الثانية_اليوم_الأول_كويز.pdf',
                               'معسكر_الورقة_الثانية_اليوم_الأول_كويز.pdf'
                             )}
@@ -11471,123 +11701,211 @@ const FlashSpace = () => {
                         </div>
 
                         {/* PDF with answers — only after attempt */}
-                        <div className={`rounded-2xl border p-5 flex flex-col gap-3 transition-all ${canSeeAnswers ? 'bg-slate-800/60 border-emerald-500/30 hover:border-emerald-400/60' : 'bg-slate-900/40 border-white/5 opacity-60'}`}>
-                          <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-xl shrink-0">✅</div>
-                            <div>
-                              <p className="text-sm font-black text-white">الإجابات النموذجية</p>
-                              <p className="text-[11px] text-slate-500 font-bold">متاح بعد حل الكويز</p>
-                            </div>
-                          </div>
-                          <button
-                            disabled={!canSeeAnswers}
-                            onClick={() => handleDownloadPDF(
-                              '/معسكر_الورقة_الثانية_اليوم_الأول_كويز_إجابات.pdf',
-                              '/معسكر_الورقة_الثانية_اليوم_الأول_كويز_إجابات.pdf',
-                              'معسكر_الورقة_الثانية_اليوم_الأول_كويز_إجابات.pdf'
-                            )}
-                            className={`w-full py-2.5 rounded-xl text-xs font-black transition-all ${canSeeAnswers ? 'bg-emerald-500 hover:bg-emerald-400 text-white active:scale-95' : 'bg-slate-800 text-slate-600 cursor-not-allowed'}`}
-                          >
-                            {canSeeAnswers ? '⬇️ تحميل الإجابات' : '🔒 حل الكويز أولاً'}
-                          </button>
-                        </div>
-                      </div>
-
-                      {/* Online EMQ Quiz */}
-                      {isWindowOpen && !hasAttemptedCamp2 && (() => {
-                        const THEME1_DATA = {
-                          title: 'Hematological Disorders',
-                          marks: 5,
-                          options: ['Aplastic anaemia','Thalassaemia Intermedia','Spherocytosis','Glucose 6 Phosphate dehydrogenase deficiency','Hemosiderosis'],
-                          letters: ['A','B','C','D','E'],
-                          questions: [
-                            'Acute hemolysis may be exacerbated by anti-malarial therapy.',
-                            'Characterized by the overgrowth of bones of the face.',
-                            'May be a consequence of cytomegalovirus infection.',
-                            'May present with characteristic skin pigmentation and is secondary to multiple transfusions.',
-                            'Occurs as a result of a congenital defect of the red cell membrane.',
-                          ],
-                          correctAnswers: ['D','B','A','E','C'],
-                        };
-
-                        return (
-                          <div className="bg-slate-900/60 backdrop-blur-xl border border-white/8 rounded-2xl p-5 space-y-5">
-                            <div className="flex items-center justify-between">
-                              <h4 className="text-sm font-black text-white">🧠 Ill-Extended Matching Questions</h4>
-                              <span className="text-[11px] font-black text-slate-500 bg-slate-800 px-3 py-1 rounded-full">٥ درجات</span>
-                            </div>
-
-                            {/* Theme 1 */}
-                            <div className="space-y-3">
-                              <p className="text-xs font-black text-cyan-400">1) Theme: {THEME1_DATA.title}</p>
-
-                              {/* Options */}
-                              <div className="grid grid-cols-1 gap-1 bg-slate-800/60 rounded-xl p-3 border border-white/5">
-                                {THEME1_DATA.options.map((opt, i) => (
-                                  <div key={i} className="text-xs text-slate-300 font-semibold flex gap-2">
-                                    <span className="text-cyan-400 font-black">{THEME1_DATA.letters[i]}.</span>
-                                    <span>{opt}</span>
-                                  </div>
-                                ))}
-                              </div>
-
-                              <p className="text-[11px] text-rose-400 font-black italic">From the list above, select one choice most suitable for each option:</p>
-
-                              {/* Questions with selectors */}
-                              <div className="space-y-2" id="camp2-quiz-form">
-                                {THEME1_DATA.questions.map((q, i) => (
-                                  <div key={i} className="flex items-start gap-3 bg-slate-800/40 rounded-xl px-3 py-2.5 border border-white/5">
-                                    <span className="text-xs font-black text-white bg-slate-700 rounded-lg px-2 py-0.5 shrink-0 mt-0.5">{i+1}</span>
-                                    <p className="text-xs text-slate-300 font-semibold flex-1 leading-relaxed">{q}</p>
-                                    <select
-                                      id={`camp2-q${i}`}
-                                      defaultValue=""
-                                      className="bg-slate-700 text-white text-xs font-black rounded-lg px-2 py-1.5 border border-white/10 shrink-0 outline-none focus:border-cyan-500 cursor-pointer"
-                                    >
-                                      <option value="" disabled>—</option>
-                                      {THEME1_DATA.letters.map(l => (
-                                        <option key={l} value={l}>{l}</option>
-                                      ))}
-                                    </select>
-                                  </div>
-                                ))}
+                        {canSeeAnswers ? (
+                          <div className="rounded-2xl border p-5 flex flex-col gap-3 transition-all bg-slate-800/60 border-emerald-500/30 hover:border-emerald-400/60">
+                            <div className="flex items-center gap-3">
+                              <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-xl shrink-0">✅</div>
+                              <div>
+                                <p className="text-sm font-black text-white">الإجابات النموذجية</p>
+                                <p className="text-[11px] text-slate-500 font-bold">متاح بعد حل الكويز</p>
                               </div>
                             </div>
-
-                            {/* Submit Button */}
                             <button
-                              onClick={() => {
-                                const answers = THEME1_DATA.questions.map((_, i) => {
-                                  const el = document.getElementById(`camp2-q${i}`) as HTMLSelectElement;
-                                  return el?.value || '';
-                                });
-                                if (answers.some(a => !a)) {
-                                  alert('أجب على كل الأسئلة أولاً!');
-                                  return;
-                                }
-                                const score = answers.filter((a, i) => a === THEME1_DATA.correctAnswers[i]).length;
-                                localStorage.setItem('camp2_day1_quiz_completed', 'true');
-                                localStorage.setItem('camp2_day1_quiz_score', String(score));
-                                setHasAttemptedCamp2(true);
-                                setCamp2AttemptScore(score);
-                                setCamp2ExamState('finished');
-                              }}
-                              className="w-full py-3 bg-gradient-to-r from-cyan-500 to-indigo-500 hover:from-cyan-400 hover:to-indigo-400 text-white font-black text-sm rounded-xl transition-all active:scale-95 shadow-lg shadow-cyan-500/20"
+                              onClick={() => handleDownloadPDF(
+                                'camp2_quiz_answers',
+                                '/معسكر_الورقة_الثانية_اليوم_الأول_كويز_إجابات.pdf',
+                                'معسكر_الورقة_الثانية_اليوم_الأول_كويز_إجابات.pdf'
+                              )}
+                              className="w-full py-2.5 rounded-xl text-xs font-black transition-all bg-emerald-500 hover:bg-emerald-400 text-white active:scale-95"
                             >
-                              ✅ تسليم الكويز
+                              ⬇️ تحميل الإجابات
                             </button>
                           </div>
-                        );
-                      })()}
+                        ) : (
+                          <div className="rounded-2xl border p-5 flex flex-col gap-3 bg-slate-900/40 border-white/5 opacity-60 text-right">
+                            <div className="flex items-center gap-3">
+                              <div className="w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center text-xl shrink-0">🔒</div>
+                              <div>
+                                <p className="text-sm font-black text-white">الإجابات النموذجية</p>
+                                <p className="text-[11px] text-slate-500 font-bold">يفتح بعد حل الكويز أو في 12:00 منتصف الليل</p>
+                              </div>
+                            </div>
+                            <button
+                              disabled
+                              className="w-full py-2.5 rounded-xl text-xs font-black bg-slate-800 text-slate-600 cursor-not-allowed"
+                            >
+                              🔒 غير متاح بعد
+                            </button>
+                          </div>
+                        )}
+                      </div>
 
-                      {/* Score display after attempt */}
-                      {hasAttemptedCamp2 && (
-                        <div className="bg-gradient-to-br from-emerald-500/10 to-cyan-500/10 border border-emerald-500/20 rounded-2xl p-5 text-center space-y-2">
-                          <p className="text-3xl font-black text-white">{camp2AttemptScore}<span className="text-slate-500 text-lg">/5</span></p>
-                          <p className="text-sm font-black text-emerald-400">
-                            {camp2AttemptScore >= 4 ? '🎉 ممتاز! أداء رائع' : camp2AttemptScore >= 3 ? '👍 جيد جداً' : '📚 راجع المادة مرة ثانية'}
+                      {/* Essay Section Header */}
+                      <div className="flex flex-col gap-1.5 pt-6 border-t border-white/5 text-right">
+                        <div className="flex items-center justify-between">
+                          <h3 className="text-base font-black text-white flex items-center gap-2">
+                            <span className="text-xl">✍️</span> الأسئلة المقالية (مقالي اليوم الأول)
+                          </h3>
+                          {/* Status badges */}
+                          {!showUnsolvedEssay && (
+                            <span className="text-[11px] font-black text-amber-400 bg-amber-500/10 border border-amber-500/20 px-3 py-1 rounded-full">
+                              🔒 يفتح المقالي في 09:00 م
+                            </span>
+                          )}
+                          {showUnsolvedEssay && (
+                            <span className="text-[11px] font-black text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 px-3 py-1 rounded-full">
+                              ✅ الأسئلة والإجابات متاحة الآن
+                            </span>
+                          )}
+                        </div>
+                        <p className="text-[11px] text-slate-400 font-bold">ملفات الأسئلة المقالية الهامة لمعسكر اليوم الأول.</p>
+                      </div>
+
+                      {/* Essay PDF Cards */}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        {/* Unsolved Essay PDF Card */}
+                        {showUnsolvedEssay ? (
+                          <div className="rounded-2xl border p-5 flex flex-col gap-3 transition-all bg-slate-800/60 border-purple-500/30 hover:border-purple-400/60 text-right">
+                            <div className="flex items-center gap-3">
+                              <div className="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-xl shrink-0">📝</div>
+                              <div>
+                                <p className="text-sm font-black text-white">كراسة الأسئلة المقالية</p>
+                                <p className="text-[11px] text-slate-500 font-bold">بدون إجابات — للتدريب والحل</p>
+                              </div>
+                            </div>
+                            <button
+                              onClick={() => handleDownloadPDF(
+                                'camp2_essay',
+                                '/معسكر_الورقة_الثانية_اليوم_الأول_مقالي.pdf',
+                                'معسكر_الورقة_الثانية_اليوم_الأول_مقالي.pdf'
+                              )}
+                              className="w-full py-2.5 rounded-xl text-xs font-black transition-all bg-purple-600 hover:bg-purple-500 text-white active:scale-95 cursor-pointer"
+                            >
+                              ⬇️ تحميل كراسة الأسئلة المقالية
+                            </button>
+                          </div>
+                        ) : (
+                          <div className="rounded-2xl border p-5 flex flex-col gap-3 bg-slate-900/40 border-white/5 opacity-60 text-right">
+                            <div className="flex items-center gap-3">
+                              <div className="w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center text-xl shrink-0">🔒</div>
+                              <div>
+                                <p className="text-sm font-black text-white">كراسة الأسئلة المقالية</p>
+                                <p className="text-[11px] text-slate-500 font-bold">يفتح تلقائياً في تمام الساعة 09:00 مساءً</p>
+                              </div>
+                            </div>
+                            <button
+                              disabled
+                              className="w-full py-2.5 rounded-xl text-xs font-black bg-slate-800 text-slate-600 cursor-not-allowed"
+                            >
+                              🔒 غير متاح بعد
+                            </button>
+                          </div>
+                        )}
+
+                        {/* Solved Essay PDF Card — only shown after midnight */}
+                        {showSolvedEssay ? (
+                          <div className="rounded-2xl border p-5 flex flex-col gap-3 transition-all bg-slate-800/60 border-emerald-500/30 hover:border-emerald-400/60 text-right">
+                            <div className="flex items-center gap-3">
+                              <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-xl shrink-0">✅</div>
+                              <div>
+                                <p className="text-sm font-black text-white">إجابات الأسئلة المقالية</p>
+                                <p className="text-[11px] text-slate-500 font-bold">نموذج الإجابات الكامل والحلول</p>
+                              </div>
+                            </div>
+                            <button
+                              onClick={() => handleDownloadPDF(
+                                'camp2_essay_answers',
+                                '/معسكر_الورقة_الثانية_اليوم_الأول_مقالي_إجابات.pdf',
+                                'معسكر_الورقة_الثانية_اليوم_الأول_مقالي_إجابات.pdf'
+                              )}
+                              className="w-full py-2.5 rounded-xl text-xs font-black transition-all bg-emerald-500 hover:bg-emerald-400 text-white active:scale-95 cursor-pointer"
+                            >
+                              ⬇️ تحميل نموذج الإجابات
+                            </button>
+                          </div>
+                        ) : (
+                          <div className="rounded-2xl border p-5 flex flex-col gap-3 bg-slate-900/40 border-white/5 opacity-60 text-right">
+                            <div className="flex items-center gap-3">
+                              <div className="w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center text-xl shrink-0">🔒</div>
+                              <div>
+                                <p className="text-sm font-black text-white">إجابات الأسئلة المقالية</p>
+                                <p className="text-[11px] text-slate-500 font-bold">يفتح تلقائياً في تمام الساعة 09:00 مساءً</p>
+                              </div>
+                            </div>
+                            <button
+                              disabled
+                              className="w-full py-2.5 rounded-xl text-xs font-black bg-slate-800 text-slate-600 cursor-not-allowed"
+                            >
+                              🔒 غير متاح بعد
+                            </button>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Interactive Matching Quiz */}
+                      {hasAttemptedCamp2 ? (
+                        <div className="text-center p-6 bg-emerald-500/10 border border-emerald-500/30 rounded-[2rem] space-y-2" dir="rtl">
+                          <p className="text-base font-black text-emerald-400">لقد أتممت هذا الاختبار بنجاح! 🎉</p>
+                          <p className="text-sm font-bold text-slate-350">
+                            درجتك المسجلة في خوادم الإدارة: <span className="text-amber-400 text-lg font-black">{Math.round((camp2AttemptScore / 45) * 100)}% ({camp2AttemptScore} من 45)</span>
                           </p>
-                          <p className="text-xs text-slate-500 font-bold">تقدر تحمل الإجابات النموذجية دلوقتي ☝️</p>
+                          <p className="text-xs text-slate-400">غير مسموح بإعادة المحاولة لضمان مبدأ تكافؤ الفرص.</p>
+                        </div>
+                      ) : camp2ExamState === 'locked' ? (
+                        <div className="space-y-3 text-center p-6 bg-rose-500/5 border border-dashed border-rose-500/20 rounded-[2rem]">
+                          <ShieldAlert className="w-10 h-10 mx-auto text-rose-500 animate-pulse" />
+                          <div className="space-y-0.5">
+                            <h4 className="text-sm font-black text-white">الاختبار مغلق ومجدول حالياً</h4>
+                            <p className="text-xs text-slate-400">يفتح الاختبار تلقائياً في تمام الساعة 09:00 مساءً.</p>
+                          </div>
+                        </div>
+                      ) : camp2ExamState === 'ready' ? (
+                        <div className="bg-slate-900/40 border border-white/5 rounded-[2rem] p-6 space-y-4 flex flex-col justify-between">
+                          <div className="space-y-3 text-right">
+                            <div className="flex items-center gap-3">
+                              <div className="w-10 h-10 bg-rose-500/10 text-rose-500 rounded-xl flex items-center justify-center">
+                                <Trophy className="w-5 h-5 animate-pulse" />
+                              </div>
+                              <div>
+                                <h3 className="text-lg font-black text-white">اختبار التوصيل التفاعلي (اليوم الأول)</h3>
+                                <p className="text-xs text-slate-400 font-semibold">توصيل ذكي مدمج لتغطية مواضيع اليوم الأول.</p>
+                              </div>
+                            </div>
+                            <div className="bg-slate-950/80 border border-white/5 rounded-xl p-3 flex items-center gap-3">
+                              <Clock className="w-4 h-4 text-rose-500 animate-pulse" />
+                              <div className="text-right">
+                                <p className="text-[10px] text-slate-500 font-bold">مدة الاختبار المقررة</p>
+                                <p className="text-xs font-black text-slate-200">30 دقيقة كاملة</p>
+                              </div>
+                            </div>
+                          </div>
+                          <button 
+                            onClick={startCampMatchingGame}
+                            className="w-full py-4 bg-gradient-to-r from-cyan-500 to-indigo-500 hover:from-cyan-400 hover:to-indigo-400 text-white rounded-2xl font-black text-sm transition-all shadow-lg active:scale-[0.98] hover:scale-[1.01] flex items-center justify-center gap-2"
+                          >
+                            <Play className="w-4 h-4 fill-white text-white" />
+                            <span>ابدأ اختبار التوصيل الآن (30 د)</span>
+                          </button>
+                        </div>
+                      ) : camp2ExamState === 'finished' && !hasAttemptedCamp2 ? (
+                        <div className="space-y-3 text-center p-6 bg-rose-500/5 border border-dashed border-rose-500/20 rounded-[2rem]">
+                          <ShieldAlert className="w-10 h-10 mx-auto text-rose-500 animate-pulse" />
+                          <div className="space-y-0.5">
+                            <h4 className="text-sm font-black text-rose-400">عذراً، انتهى الوقت المتاح للاختبار! ⏰</h4>
+                            <p className="text-xs text-slate-400">كان متاحاً فقط من الساعة 09:00 مساءً حتى الساعة 12:00 منتصف الليل.</p>
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="space-y-2">
+                          <div className="text-center text-xs font-black text-rose-400 bg-rose-500/10 p-2.5 rounded-xl">
+                            الاختبار قيد التشغيل حالياً!
+                          </div>
+                          <button
+                            onClick={() => { playSound('click'); setCampExamState('active'); }}
+                            className="w-full py-3.5 rounded-2xl bg-white text-slate-900 font-black text-xs transition-all hover:scale-[1.01]"
+                          >
+                            الرجوع لنافذة الاختبار النشط
+                          </button>
                         </div>
                       )}
                     </div>
@@ -13034,10 +13352,40 @@ const FlashSpace = () => {
                             <span>الحجم</span>
                             <span className="text-indigo-500">{toolSettings[tool.id as Tool].size}px</span>
                           </div>
-                          <input type="range" min="1" max="100" value={toolSettings[tool.id as Tool].size}
-                            onChange={e => updateSetting(tool.id as Tool, 'size', parseInt(e.target.value))}
-                            className="w-full accent-indigo-500 h-1 bg-slate-100 rounded-lg appearance-none cursor-pointer"
-                          />
+                          {tool.id === 'laser' ? (
+                            <div className="flex items-center justify-between gap-3 bg-slate-50 p-1 rounded-xl border border-slate-200">
+                              <button
+                                onClick={() => {
+                                  const currentSize = toolSettings.laser.size;
+                                  if (currentSize > 1) {
+                                    updateSetting('laser', 'size', currentSize - 1);
+                                  }
+                                }}
+                                className="w-8 h-8 rounded-lg bg-white border border-slate-200 text-slate-600 active:bg-slate-100 hover:bg-slate-50 flex items-center justify-center font-bold text-lg transition-all"
+                              >
+                                -
+                              </button>
+                              <span className="text-sm font-black text-slate-800 tabular-nums">
+                                {toolSettings.laser.size}
+                              </span>
+                              <button
+                                onClick={() => {
+                                  const currentSize = toolSettings.laser.size;
+                                  if (currentSize < 100) {
+                                    updateSetting('laser', 'size', currentSize + 1);
+                                  }
+                                }}
+                                className="w-8 h-8 rounded-lg bg-white border border-slate-200 text-slate-600 active:bg-slate-100 hover:bg-slate-50 flex items-center justify-center font-bold text-lg transition-all"
+                              >
+                                +
+                              </button>
+                            </div>
+                          ) : (
+                            <input type="range" min="1" max="100" value={toolSettings[tool.id as Tool].size}
+                              onChange={e => updateSetting(tool.id as Tool, 'size', parseInt(e.target.value))}
+                              className="w-full accent-indigo-500 h-1 bg-slate-100 rounded-lg appearance-none cursor-pointer"
+                            />
+                          )}
                         </div>
                         {tool.id === 'highlighter' && (
                           <div className="space-y-2">

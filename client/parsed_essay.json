@@ -1,0 +1,205 @@
+[
+  {
+    "section": "Topic 1: Bronchial Asthma (Triggers, Investigations, Clinical Picture)",
+    "caseText": "",
+    "questionNum": "Question 1",
+    "questionText": "Define Bronchial Asthma.",
+    "answerText": "Asthma can be regarded as a diffuse obstructive lung disease with:\nHyperactivity of airways to a variety of stimuli.\nA high degree of reversibility of the obstruction either spontaneously or with treatment.\nChronic inflammation of the airways."
+  },
+  {
+    "section": "Topic 1: Bronchial Asthma (Triggers, Investigations, Clinical Picture)",
+    "caseText": "",
+    "questionNum": "Question 2",
+    "questionText": "Enumerate four risk factors associated with the epidemiology of childhood asthma.",
+    "answerText": "1. Poverty. 2. Maternal smoking. 3. Birth weight less than 2500 g. 4. Overcrowding."
+  },
+  {
+    "section": "Topic 1: Bronchial Asthma (Triggers, Investigations, Clinical Picture)",
+    "caseText": "",
+    "questionNum": "Question 3",
+    "questionText": "List four major pathophysiology changes responsible for airway obstruction in asthma.",
+    "answerText": "1. Bronchoconstriction. 2. Increased mucus secretion. 3. Mucosal oedema and cellular infiltration. 4. Desquamation of epithelial and inflammatory cells."
+  },
+  {
+    "section": "Topic 1: Bronchial Asthma (Triggers, Investigations, Clinical Picture)",
+    "caseText": "",
+    "questionNum": "Question 4",
+    "questionText": "Enumerate four indoor or seasonal allergens that act as asthma triggers.",
+    "answerText": "1. Animal dander. 2. Dust mites. 3. Cockroaches. 4. Pollens."
+  },
+  {
+    "section": "Topic 1: Bronchial Asthma (Triggers, Investigations, Clinical Picture)",
+    "caseText": "",
+    "questionNum": "Question 5",
+    "questionText": "Mention three common comorbid conditions associated with asthma that make it difficult to treat.",
+    "answerText": "1. Rhinitis. 2. Sinusitis. 3. Gastroesophageal reflux."
+  },
+  {
+    "section": "Topic 1: Bronchial Asthma (Triggers, Investigations, Clinical Picture)",
+    "caseText": "",
+    "questionNum": "Question 6",
+    "questionText": "List four key clinical signs and symptoms of an acute asthma episode.",
+    "answerText": "1. Cough (tight and non-productive). 2. Wheezing. 3. Tachypnea and dyspnea with prolonged expiration. 4. Use of accessory muscles of respiration."
+  },
+  {
+    "section": "Topic 1: Bronchial Asthma (Triggers, Investigations, Clinical Picture)",
+    "caseText": "",
+    "questionNum": "Question 7",
+    "questionText": "A 14-year-old boy presents with a history of cough and occasional wheezes at night, increasing during football matches. Enumerate the comprehensive Laboratory Investigations useful for this condition.",
+    "answerText": "1. Blood examination: CBC usually shows eosinophilia more than $250\\text{-}400\\text{ cell/mm}^3$ , and Serum IgE levels are usually elevated. 2. Sputum: White and tenacious, usually showing eosinophilia and granules from disrupted cells. 3. Pulmonary function tests (Spirometry): Done for children > 5 years to evaluate airflow limitation and reversibility. 4. Blood gas analysis: Important in patients during exacerbations requiring hospitalization to monitor $PCO_2$, $PO_2$, and pH."
+  },
+  {
+    "section": "Topic 2: Pneumonia",
+    "caseText": "",
+    "questionNum": "Question 9",
+    "questionText": "Define Community-acquired pneumonia (CAP) and Hospital-acquired pneumonia (HAP).",
+    "answerText": "* Community-acquired pneumonia (CAP): It is the presence of signs and symptoms of pneumonia in a previously healthy child due to an infection acquired outside the hospital.\nHospital-acquired pneumonia (HAP): It is pneumonia that presents clinically after two days of hospital admission."
+  },
+  {
+    "section": "Topic 2: Pneumonia",
+    "caseText": "",
+    "questionNum": "Question 10",
+    "questionText": "Mention the WHO definition of fast breathing (tachypnea) according to age groups.",
+    "answerText": "1. From birth to 2 months $\\rightarrow$ more than $60/\\text{min}$. 2. From 2 m-1 year $\\rightarrow$ more than $50/\\text{min}$. 3. From 1-5 years $\\rightarrow$ more than $40/\\text{min}$."
+  },
+  {
+    "section": "Topic 2: Pneumonia",
+    "caseText": "",
+    "questionNum": "Question 11",
+    "questionText": "List four signs of respiratory distress that may occur in a child with pneumonia.",
+    "answerText": "1. Grunting. 2. Nasal flaring. 3. Retractions (supraclavicular, suprasternal, intercostal and subcostal). 4. Cyanosis."
+  },
+  {
+    "section": "Topic 2: Pneumonia",
+    "caseText": "",
+    "questionNum": "Question 12",
+    "questionText": "Enumerate four local lung examination findings over the affected lung field in a pneumonia patient.",
+    "answerText": "1. Diminished breath sounds. 2. Scattered crackles and rhonchi. 3. Bronchial breathing. 4. Increased tactile vocal fremitus or Dullness on percussion."
+  },
+  {
+    "section": "Topic 2: Pneumonia",
+    "caseText": "",
+    "questionNum": "Question 13",
+    "questionText": "List four non-respiratory gastrointestinal manifestations that can occur with pneumonia.",
+    "answerText": "1. Vomiting. 2. Anorexia. 3. Diarrhea. 4. Abdominal distention."
+  },
+  {
+    "section": "Topic 2: Pneumonia",
+    "caseText": "",
+    "questionNum": "Question 14",
+    "questionText": "Enumerate five clinical criteria that should lead to consideration of hospitalization/ICU admission for a child with Community-Acquired Pneumonia.",
+    "answerText": "1. Age < 6 mo. 2. Toxic appearance. 3. Moderate to severe respiratory distress (retractions, nasal flaring, grunting). 4. Hypoxemia (oxygen saturation <90% in room air). 5. Shock or Severe dehydration."
+  },
+  {
+    "section": "Topic 2: Pneumonia",
+    "caseText": "",
+    "questionNum": "Question 15",
+    "questionText": "Mention four diagnostic chest X-ray findings or clinical rules regarding the use of X-ray in pneumonia.",
+    "answerText": "1. It shows a lobar, patchy, or interstitial infiltrate. 2. No need to order X-ray for a patient with mild pneumonia. 3. No need to repeat chest X-ray if the patient has clinically improved. 4. In viral pneumonia, it usually shows hyperinflation with bilateral interstitial infiltrates and peribronchial cuffing."
+  },
+  {
+    "section": "Topic 2: Pneumonia",
+    "caseText": "",
+    "questionNum": "Question 16",
+    "questionText": "Enumerate four causes for pneumonia that failed to resolve (Unresolved pneumonia) after antibiotic treatment, and enumerate two investigations that can be performed.",
+    "answerText": "* Causes of delayed resolution (Choose 4):\nInadequate therapy (inappropriate antibiotic choice, dose, interval, or poor compliance).\nResistant organisms.\nImpaired host defenses (Immunodeficiency or ciliary dyskinesia).\nNonbacterial causes of pneumonia (viruses, fungi, parasites, and TB).\nForeign body aspiration or Cystic fibrosis.\nCongenital lung anomalies.\nInvestigations (Choose 2):\nRepeat chest X-ray.\nHigh-resolution CT scans.\nFiberoptic bronchoscopy and bronchoalveolar lavage (BAL)."
+  },
+  {
+    "section": "Topic 3: Wheezes",
+    "caseText": "",
+    "questionNum": "Question 18",
+    "questionText": "Define Wheezing.",
+    "answerText": "It is an expiratory continuous musical sound due to partial obstruction at the level of small bronchi and bronchioles."
+  },
+  {
+    "section": "Topic 3: Wheezes",
+    "caseText": "",
+    "questionNum": "Question 19",
+    "questionText": "Enumerate three pediatric causes of acute wheezy chest.",
+    "answerText": "1. Acute bronchiolitis. 2. Severe bacterial bronchopneumonia. 3. Foreign body aspiration."
+  },
+  {
+    "section": "Section II: Shock",
+    "caseText": "",
+    "questionNum": "Q2",
+    "questionText": "Define Shock in pediatric patients.",
+    "answerText": "Shock is the clinical state of circulatory inadequacy when there is disruption of tissue perfusion leading to inadequate supplies of oxygen and nutrients to and removal of metabolites from the cells of an end organ."
+  },
+  {
+    "section": "Section II: Shock",
+    "caseText": "",
+    "questionNum": "Q3",
+    "questionText": "List the clinical grading of Shock including the presentation of each grade.",
+    "answerText": "Grade I (Early shock = peripheral hypoperfusion): Tachycardia and poor peripheral perfusion.\nGrade II (Established shock = arterial hypotension): Tachycardia, poor peripheral perfusion, and hypotension.\nGrade III (Advanced shock = vital organ hypoperfusion): Multiple organ system failure (MOSF).\nGrade IV (Irreversible shock = irreversible cellular damage): Refractory metabolic acidosis."
+  },
+  {
+    "section": "Section III: Coma & Glasgow Coma Scale (GCS)",
+    "caseText": "",
+    "questionNum": "Q5",
+    "questionText": "Define Coma and outline its primary and secondary brain lesion causes.",
+    "answerText": "Definition: Coma is a state of prolonged unconsciousness in which the child cannot be aroused even with painful stimuli.\nPrimary brain lesion causes: Intracranial infection (Meningitis, encephalitis, brain abscess); Intracranial hemorrhage (Traumatic head injury or Non-traumatic such as hemophilia, DIC, ITP, rupture aneurysm, A-V malformation); Other brain lesions (Cerebral infarction, status epilepticus, brain tumors).\nSecondary brain lesion causes (Encephalopathy): Hypoxic encephalopathy (with hypoxia, shock, severe anemia); Endogenous encephalopathy (with severe dehydration, metabolic acidosis, electrolyte disturbances, acute renal failure, acute hepatic failure, DKA, hypoglycemia, hyperammonemia); Exogenous encephalopathy (poisoning)."
+  },
+  {
+    "section": "Section III: Coma & Glasgow Coma Scale (GCS)",
+    "caseText": "",
+    "questionNum": "Q6",
+    "questionText": "Mention the clinical grading system of Coma.",
+    "answerText": "Grade I (stupor): The patient can be aroused for only a short period (less than a minute).\nGrade II (light coma): The patient cannot be aroused by painful stimuli, but responds to painful stimuli by withdrawal movements.\nGrade III (deep coma): No response to painful stimuli but breathes spontaneously.\nGrade IV (deep coma with apnea): No response to painful stimuli and apnea. If not mechanically ventilated, brain death occurs in 5 minutes."
+  },
+  {
+    "section": "Section III: Coma & Glasgow Coma Scale (GCS)",
+    "caseText": "",
+    "questionNum": "Q7",
+    "questionText": "Detail the components and score allocation of the Pediatric Glasgow Coma Scale (GCS).",
+    "answerText": "The scale provides a numerical score from 3 to 15 based on three main responses:\nEye Opening (Total points: 4): Spontaneous (4), To voice (3), To pain (2), None (1).\nVerbal Response (Total points: 5):\nOlder Children: Oriented (5), Confused (4), Inappropriate words (3), Incomprehensible words (2), None (1).\nInfants and Young Children: Appropriate words, smiles, fixes, and follows (5); Consolable crying (4); Persistently irritable (3); Restless, agitated (2); None (1).\nMotor Response (Total points: 6): Obeys (6), Localizes pain (5), Withdraws (4), Flexion (3), Extension (2), None (1)."
+  },
+  {
+    "section": "Title 1: Principles of family medicine",
+    "caseText": "Case 1: A 45-year-old male patient who has been registered with the same family physician for 10 years presents for a routine check-up. The physician manages his Hypertension, screens him for Colon Cancer, evaluates his psychosocial stress at work, and coordinates his care with a cardiologist when needed.",
+    "questionNum": "Question 1",
+    "questionText": "Enumerate the four key elements of \"Continuity of Care\" as a core principle in family medicine demonstrated in managing this patient over his life course.",
+    "answerText": "1. Mutual trust between patient and physician. 2. Long-term therapeutic relationship. 3. Effectiveness of care. 4. Continuity focused on the patient, not on isolated diseases."
+  },
+  {
+    "section": "Title 2: Family physician- family health team- family health model",
+    "caseText": "Case 2: A family physician is reviewing the monthly performance of the Family Health Center (FHC). He notices a conflict in the delegation of duties between the clinical nurse and the social worker, as well as a lack of proper documentation in the health records.",
+    "questionNum": "Question 3",
+    "questionText": "Enumerate the five core parameters of the family physician's role as a \"Five-Star Doctor\" summarized by the World Health Organization (WHO).",
+    "answerText": "1. Assesses and improves the quality of care by responding to the patient's total health needs. 2. Makes optimal use of new technologies in health care. 3. Promotes healthy lifestyles. 4. Recognizes individual and community health needs. 5. Works efficiently as a member of the health care team."
+  },
+  {
+    "section": "Title 3: Basic benefit package",
+    "caseText": "Case 3: A mother brings her infant to the clinic. The family physician is reviewing the components of the Basic Benefit Package (BBP) to verify which child clinical services and laboratory tests can be fully completed at the primary care facility.",
+    "questionNum": "Question 5",
+    "questionText": "Enumerate four essential laboratory investigations that are fully available at the level of the Family Health Unit (FHU) according to the BBP laboratory services guidelines.",
+    "answerText": "1. Blood glucose. 2. Hemoglobin (Hb). 3. Stool analysis. 4. Urine analysis."
+  },
+  {
+    "section": "Title 4: family - Family dynamics",
+    "caseText": "Case 4: A 14-year-old adolescent is brought to the clinic. Genogram analysis reveals a strong family history of early-onset coronary artery disease. Recently, the family experienced a major crisis due to the sudden death of the father, causing profound emotional instability.",
+    "questionNum": "Question 7",
+    "questionText": "Enumerate the five main functional parameters of the family that represent its baseline societal obligations using the CAPRS framework.",
+    "answerText": "1. C - Care: Provision of basic needs such as food, shelter, and social support. 2. A - Affection: Psychosocial support including love, warmth, and emotional security. 3. P - Providing status: Helping family members determine future education, occupation, and social roles. 4. R - Reproduction: Continuity of the family through legal marriage and childbearing. 5. S - Socialization: Teaching social skills, norms, values, and acceptable behaviors."
+  },
+  {
+    "section": "Title 5: patient education",
+    "caseText": "Case 5: A 50-year-old male patient with newly diagnosed asymptomatic Hypertension tells the family physician, \"I don't need to take my anti-hypertensive drugs daily; I will only take them on the days when I feel a headache\".",
+    "questionNum": "Question 9",
+    "questionText": "Enumerate four fundamental reasons/clinical advantages that outline the core importance of implementing effective patient education in family medicine.",
+    "answerText": "1. Increased patient satisfaction with medical care. 2. Promotion of healthy behaviors and modification of unhealthy habits. 3. Reduction of unnecessary health care utilization (avoidable office visits/phone calls). 4. Reduction of serious illness outcomes, decrease in complications, and lowering hospitalization costs."
+  },
+  {
+    "section": "Title 6: Referral",
+    "caseText": "Case 6: A family physician is caring for a patient with progressive symptoms of ischemic heart disease that are no longer responding efficiently to medical management at the primary care setting. He decides to transfer the care of this specific problem to a cardiologist.",
+    "questionNum": "Question 11",
+    "questionText": "Enumerate five essential socio-demographic or clinical components that MUST be clearly documented inside a standard, structurally valid medical referral letter.",
+    "answerText": "1. Socio-demographic data (name, age, sex, and family health record number). 2. Type of referral (urgent or elective) and destination hospital/specialty. 3. Main complaint, present history, and relevant past medical/surgical history. 4. Relevant physical examination findings and matching investigations. 5. Provisional diagnosis and explicit reasons/expectations for referral."
+  },
+  {
+    "section": "Title 6: Referral",
+    "caseText": "",
+    "questionNum": "Question 12",
+    "questionText": "Clearly state the primary conceptual difference between a \"Referral\" and a \"Consultation\" within family medicine practice.",
+    "answerText": "* Consultation is the practice of one physician asking another for an opinion or assistance regarding the diagnosis and management of a patient (while retaining primary responsibility).\nReferral is the formal process of transferring the actual clinical responsibility of a patient to another physician for the care of a specific health problem."
+  }
+]
