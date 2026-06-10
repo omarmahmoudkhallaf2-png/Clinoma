@@ -2,27 +2,6 @@
   {
     "section": "Topic 1: Bronchial Asthma (Triggers, Investigations, Clinical Picture)",
     "caseText": "",
-    "questionNum": "Question 1",
-    "questionText": "Define Bronchial Asthma.",
-    "answerText": "Asthma can be regarded as a diffuse obstructive lung disease with:\nHyperactivity of airways to a variety of stimuli.\nA high degree of reversibility of the obstruction either spontaneously or with treatment.\nChronic inflammation of the airways."
-  },
-  {
-    "section": "Topic 1: Bronchial Asthma (Triggers, Investigations, Clinical Picture)",
-    "caseText": "",
-    "questionNum": "Question 2",
-    "questionText": "Enumerate four risk factors associated with the epidemiology of childhood asthma.",
-    "answerText": "1. Poverty. 2. Maternal smoking. 3. Birth weight less than 2500 g. 4. Overcrowding."
-  },
-  {
-    "section": "Topic 1: Bronchial Asthma (Triggers, Investigations, Clinical Picture)",
-    "caseText": "",
-    "questionNum": "Question 3",
-    "questionText": "List four major pathophysiology changes responsible for airway obstruction in asthma.",
-    "answerText": "1. Bronchoconstriction. 2. Increased mucus secretion. 3. Mucosal oedema and cellular infiltration. 4. Desquamation of epithelial and inflammatory cells."
-  },
-  {
-    "section": "Topic 1: Bronchial Asthma (Triggers, Investigations, Clinical Picture)",
-    "caseText": "",
     "questionNum": "Question 4",
     "questionText": "Enumerate four indoor or seasonal allergens that act as asthma triggers.",
     "answerText": "1. Animal dander. 2. Dust mites. 3. Cockroaches. 4. Pollens."
@@ -43,10 +22,10 @@
   },
   {
     "section": "Topic 1: Bronchial Asthma (Triggers, Investigations, Clinical Picture)",
-    "caseText": "",
+    "caseText": "A 14-year-old boy presents with a history of cough and occasional wheezes at night, increasing during football matches.",
     "questionNum": "Question 7",
-    "questionText": "A 14-year-old boy presents with a history of cough and occasional wheezes at night, increasing during football matches. Enumerate the comprehensive Laboratory Investigations useful for this condition.",
-    "answerText": "1. Blood examination: CBC usually shows eosinophilia more than $250\\text{-}400\\text{ cell/mm}^3$ , and Serum IgE levels are usually elevated. 2. Sputum: White and tenacious, usually showing eosinophilia and granules from disrupted cells. 3. Pulmonary function tests (Spirometry): Done for children > 5 years to evaluate airflow limitation and reversibility. 4. Blood gas analysis: Important in patients during exacerbations requiring hospitalization to monitor $PCO_2$, $PO_2$, and pH."
+    "questionText": "Enumerate the comprehensive Laboratory Investigations useful for this condition.",
+    "answerText": "1. Blood examination: CBC usually shows eosinophilia more than 250-400 cell/mm³, and Serum IgE levels are usually elevated. 2. Sputum: White and tenacious, usually showing eosinophilia and granules from disrupted cells. 3. Pulmonary function tests (Spirometry): Done for children > 5 years to evaluate airflow limitation and reversibility. 4. Blood gas analysis: Important in patients during exacerbations requiring hospitalization to monitor PCO2, PO2, and pH."
   },
   {
     "section": "Topic 2: Pneumonia",
@@ -60,7 +39,7 @@
     "caseText": "",
     "questionNum": "Question 10",
     "questionText": "Mention the WHO definition of fast breathing (tachypnea) according to age groups.",
-    "answerText": "1. From birth to 2 months $\\rightarrow$ more than $60/\\text{min}$. 2. From 2 m-1 year $\\rightarrow$ more than $50/\\text{min}$. 3. From 1-5 years $\\rightarrow$ more than $40/\\text{min}$."
+    "answerText": "1. From birth to 2 months → more than 60/min. 2. From 2 m-1 year → more than 50/min. 3. From 1-5 years → more than 40/min."
   },
   {
     "section": "Topic 2: Pneumonia",
@@ -98,6 +77,13 @@
     "answerText": "1. It shows a lobar, patchy, or interstitial infiltrate. 2. No need to order X-ray for a patient with mild pneumonia. 3. No need to repeat chest X-ray if the patient has clinically improved. 4. In viral pneumonia, it usually shows hyperinflation with bilateral interstitial infiltrates and peribronchial cuffing."
   },
   {
+    "section": "Topic 2: Pneumonia",
+    "caseText": "",
+    "questionNum": "Question 17",
+    "questionText": "List four thoracic cavity complications caused by the direct spread of pneumonia infection.",
+    "answerText": "1. Pleural effusion. 2. Empyema. 3. Lung abscess. 4. Pericarditis."
+  },
+  {
     "section": "Topic 3: Wheezes",
     "caseText": "",
     "questionNum": "Question 18",
@@ -112,6 +98,20 @@
     "answerText": "1. Acute bronchiolitis. 2. Severe bacterial bronchopneumonia. 3. Foreign body aspiration."
   },
   {
+    "section": "Topic 3: Wheezes",
+    "caseText": "",
+    "questionNum": "Question 20",
+    "questionText": "Mention four causes of recurrent wheezing in infants and childhood.",
+    "answerText": "1. Bronchial asthma. 2. Recurrent aspiration (infant with GERD). 3. Chronic chest infection. 4. Acute congestive heart failure."
+  },
+  {
+    "section": "Section I: Cardiopulmonary Resuscitation (CPR)",
+    "caseText": "",
+    "questionNum": "Q1",
+    "questionText": "Enumerate the three main support types of Cardiopulmonary Resuscitation (CPR) and outline the specific steps or components of each type.",
+    "answerText": "The three main support types and their steps are:\nI- Basic Life Support (A, B, C): Aims to restore spontaneous breathing and circulation.\nA: Airway control: Open the airway by triple airway maneuver (Head tilt, Jaw thrust, Mouth opening), Clear the airway (Remove obvious foreign bodies cautiously avoiding finger sweep, and suction the mouth/Oropharynx), and Maintain patent airway (using Oropharyngeal airway or Endotracheal tube).\nB: Breathing support: Administered with artificial ventilation via mouth-to-mouth breathing, bag and mask ventilation with O2, or bag and tube ventilation with O2 (ventilatory rate is 20 breaths/minute).\nC: Circulation support: Administered with cardiac compression at the midsternum point. Techniques include hand encircling (newborns), two fingers (infants), one hand (young children), and two hands (old children). Frequency is about 100/minute. Ratio of ventilation to cardiac compression is 1:5 altogether.\nII- Advanced Life Support (D, E, F): Indicated when basic life support is not successful.\nD: Drugs (I.V.): Insert I.V line and give fluids (Ringer's lactate or normal saline: 20 ml/kg over 10 min), give sodium bicarbonate (1 ml/kg of 8.4% solution or 2 ml/kg of 5% solution), and give adrenaline (0.1 ml/kg of diluted solution 1 ml+9 ml saline).\nE: ECG monitoring: Important to detect various cardiac arrhythmias (With asystole: Repeat adrenaline 10 times the first dose).\nF: Fibrillation control: Indicated with ventricular fibrillation; defibrillate up to 3 times (2 joules/kg, 4 joules/kg, and 8 joules/kg).\nIII- Prolonged life support (G, H, I): It is the post-resuscitation management and aims to:\nG: Recognition and treatment of the causative disease according to the etiology.\nH: Brain recovery by control of any convulsive fits or acute increased intracranial pressure.\nI: Intensive care for multiple system support done carefully in the PICU."
+  },
+  {
     "section": "Section II: Shock",
     "caseText": "",
     "questionNum": "Q2",
@@ -124,6 +124,13 @@
     "questionNum": "Q3",
     "questionText": "List the clinical grading of Shock including the presentation of each grade.",
     "answerText": "Grade I (Early shock = peripheral hypoperfusion): Tachycardia and poor peripheral perfusion.\nGrade II (Established shock = arterial hypotension): Tachycardia, poor peripheral perfusion, and hypotension.\nGrade III (Advanced shock = vital organ hypoperfusion): Multiple organ system failure (MOSF).\nGrade IV (Irreversible shock = irreversible cellular damage): Refractory metabolic acidosis."
+  },
+  {
+    "section": "Section II: Shock",
+    "caseText": "",
+    "questionNum": "Q4",
+    "questionText": "Enumerate the main types of shock and detail the specific causes for each type as per the textbook.",
+    "answerText": "Septic shock:\nPrimary septicemia (due to fulminant sepsis as meningococcal septicemia).\nSecondary septicemia (due to serious focal infection).\nEndogenous septicemia (due to translocation of bacteria from the gut).\nHypovolemic shock:\nSevere dehydration (severe diarrhea, severe vomiting, diabetic ketoacidosis, heat stroke, diabetes insipidus).\nSevere hemorrhage (external or internal and traumatic or spontaneous).\nSevere burns (due to plasma losses).\nObstructive shock:\nTension pneumothorax or hemothorax.\nCardiac tamponade (due to pericardial effusion or hemopericardium).\nCritical obstructive lesions (critical pulmonary or aortic stenosis, critical coarctation).\nPulmonary embolism by thrombus, fat or air.\nCardiogenic shock:\nSevere acute heart failure.\nAdvanced shock (myocardial ischemia).\nLate septic shock (due to toxic myocarditis).\nKinetic or Distributive shock:\nAnaphylactic shock (due to drugs, foods, insect stings, serums, immunoglobulins).\nNeurogenic shock (head trauma, brain stem injury, or high spinal cord transection).\nEarly Septic shock.\nMetabolic shock:\nAcute suprarenal failure (hemorrhage or necrosis)."
   },
   {
     "section": "Section III: Coma & Glasgow Coma Scale (GCS)",
@@ -147,43 +154,85 @@
     "answerText": "The scale provides a numerical score from 3 to 15 based on three main responses:\nEye Opening (Total points: 4): Spontaneous (4), To voice (3), To pain (2), None (1).\nVerbal Response (Total points: 5):\nOlder Children: Oriented (5), Confused (4), Inappropriate words (3), Incomprehensible words (2), None (1).\nInfants and Young Children: Appropriate words, smiles, fixes, and follows (5); Consolable crying (4); Persistently irritable (3); Restless, agitated (2); None (1).\nMotor Response (Total points: 6): Obeys (6), Localizes pain (5), Withdraws (4), Flexion (3), Extension (2), None (1)."
   },
   {
+    "section": "Section III: Coma & Glasgow Coma Scale (GCS)",
+    "caseText": "",
+    "questionNum": "Q8",
+    "questionText": "Mention the advantages of utilizing the Glasgow Coma Scale (GCS) in pediatric emergencies.",
+    "answerText": "Objective & standardized: Provides a numerical score (3-15) to track consciousness over time.\nSimple and quick: Can be applied at bedside in emergencies.\nWidely accepted: Used internationally in trauma, PICU, and emergency settings.\nPredictive value: Low GCS (≤8) indicates severe brain injury and need for airway protection.\nCommunication tool: Allows clinicians to communicate patient status clearly."
+  },
+  {
     "section": "Title 1: Principles of family medicine",
-    "caseText": "Case 1: A 45-year-old male patient who has been registered with the same family physician for 10 years presents for a routine check-up. The physician manages his Hypertension, screens him for Colon Cancer, evaluates his psychosocial stress at work, and coordinates his care with a cardiologist when needed.",
+    "caseText": "A 45-year-old male patient who has been registered with the same family physician for 10 years presents for a routine check-up. The physician manages his Hypertension, screens him for Colon Cancer, evaluates his psychosocial stress at work, and coordinates his care with a cardiologist when needed.",
     "questionNum": "Question 1",
     "questionText": "Enumerate the four key elements of \"Continuity of Care\" as a core principle in family medicine demonstrated in managing this patient over his life course.",
     "answerText": "1. Mutual trust between patient and physician. 2. Long-term therapeutic relationship. 3. Effectiveness of care. 4. Continuity focused on the patient, not on isolated diseases."
   },
   {
+    "section": "Title 1: Principles of family medicine",
+    "caseText": "",
+    "questionNum": "Question 2",
+    "questionText": "List the five core services or dimensions integrated within the comprehensive and holistic approach of family medicine.",
+    "answerText": "1. Health promotion. 2. Disease prevention. 3. Curative care. 4. Rehabilitation. 5. Physical, psychological, and social support."
+  },
+  {
     "section": "Title 2: Family physician- family health team- family health model",
-    "caseText": "Case 2: A family physician is reviewing the monthly performance of the Family Health Center (FHC). He notices a conflict in the delegation of duties between the clinical nurse and the social worker, as well as a lack of proper documentation in the health records.",
+    "caseText": "A family physician is reviewing the monthly performance of the Family Health Center (FHC). He notices a conflict in the delegation of duties between the clinical nurse and the social worker, as well as a lack of proper documentation in the health records.",
     "questionNum": "Question 3",
     "questionText": "Enumerate the five core parameters of the family physician's role as a \"Five-Star Doctor\" summarized by the World Health Organization (WHO).",
     "answerText": "1. Assesses and improves the quality of care by responding to the patient's total health needs. 2. Makes optimal use of new technologies in health care. 3. Promotes healthy lifestyles. 4. Recognizes individual and community health needs. 5. Works efficiently as a member of the health care team."
   },
   {
+    "section": "Title 2: Family physician- family health team- family health model",
+    "caseText": "",
+    "questionNum": "Question 4",
+    "questionText": "Enumerate four specific members who belong strictly to the \"Administrative and Support Staff\" category of the Family Health Team.",
+    "answerText": "1. Front Office Staff. 2. Medical Records Officer. 3. Births and Deaths Officer. 4. Pharmacy Clerk or Storage Room Officer."
+  },
+  {
     "section": "Title 3: Basic benefit package",
-    "caseText": "Case 3: A mother brings her infant to the clinic. The family physician is reviewing the components of the Basic Benefit Package (BBP) to verify which child clinical services and laboratory tests can be fully completed at the primary care facility.",
+    "caseText": "A mother brings her infant to the clinic. The family physician is reviewing the components of the Basic Benefit Package (BBP) to verify which child clinical services and laboratory tests can be fully completed at the primary care facility.",
     "questionNum": "Question 5",
     "questionText": "Enumerate four essential laboratory investigations that are fully available at the level of the Family Health Unit (FHU) according to the BBP laboratory services guidelines.",
     "answerText": "1. Blood glucose. 2. Hemoglobin (Hb). 3. Stool analysis. 4. Urine analysis."
   },
   {
+    "section": "Title 3: Basic benefit package",
+    "caseText": "",
+    "questionNum": "Question 6",
+    "questionText": "List the three sequential levels of service delivery through which the Basic Benefit Package is implemented within the family health delivery model.",
+    "answerText": "1. Family Health Unit (FHU). 2. Family Health Centre (FHC). 3. Hospital Level."
+  },
+  {
     "section": "Title 4: family - Family dynamics",
-    "caseText": "Case 4: A 14-year-old adolescent is brought to the clinic. Genogram analysis reveals a strong family history of early-onset coronary artery disease. Recently, the family experienced a major crisis due to the sudden death of the father, causing profound emotional instability.",
+    "caseText": "A 14-year-old adolescent is brought to the clinic. Genogram analysis reveals a strong family history of early-onset coronary artery disease. Recently, the family experienced a major crisis due to the sudden death of the father, causing profound emotional instability.",
     "questionNum": "Question 7",
     "questionText": "Enumerate the five main functional parameters of the family that represent its baseline societal obligations using the CAPRS framework.",
     "answerText": "1. C - Care: Provision of basic needs such as food, shelter, and social support. 2. A - Affection: Psychosocial support including love, warmth, and emotional security. 3. P - Providing status: Helping family members determine future education, occupation, and social roles. 4. R - Reproduction: Continuity of the family through legal marriage and childbearing. 5. S - Socialization: Teaching social skills, norms, values, and acceptable behaviors."
   },
   {
+    "section": "Title 4: family - Family dynamics",
+    "caseText": "",
+    "questionNum": "Question 8",
+    "questionText": "List four chronic or metabolic diseases in which a detailed family history contributes directly to calculating the patient's individual risk database.",
+    "answerText": "1. Cancer (especially breast, colon, prostate, and ovarian). 2. Hypertension. 3. Diabetes Mellitus. 4. Hyperlipidaemia or Coronary artery disease."
+  },
+  {
     "section": "Title 5: patient education",
-    "caseText": "Case 5: A 50-year-old male patient with newly diagnosed asymptomatic Hypertension tells the family physician, \"I don't need to take my anti-hypertensive drugs daily; I will only take them on the days when I feel a headache\".",
+    "caseText": "A 50-year-old male patient with newly diagnosed asymptomatic Hypertension tells the family physician, \"I don't need to take my anti-hypertensive drugs daily; I will only take them on the days when I feel a headache\".",
     "questionNum": "Question 9",
     "questionText": "Enumerate four fundamental reasons/clinical advantages that outline the core importance of implementing effective patient education in family medicine.",
     "answerText": "1. Increased patient satisfaction with medical care. 2. Promotion of healthy behaviors and modification of unhealthy habits. 3. Reduction of unnecessary health care utilization (avoidable office visits/phone calls). 4. Reduction of serious illness outcomes, decrease in complications, and lowering hospitalization costs."
   },
   {
+    "section": "Title 5: patient education",
+    "caseText": "",
+    "questionNum": "Question 10",
+    "questionText": "List four essential behavioral or structural principles that must guide the delivery of high-quality patient education during a clinical consultation.",
+    "answerText": "1. Feedback (ensuring the patient understands the information). 2. Reinforcement (encouraging and rewarding progress). 3. Individualization (tailoring education according to baseline needs/goals). 4. Facilitation (providing printed materials or skills training)."
+  },
+  {
     "section": "Title 6: Referral",
-    "caseText": "Case 6: A family physician is caring for a patient with progressive symptoms of ischemic heart disease that are no longer responding efficiently to medical management at the primary care setting. He decides to transfer the care of this specific problem to a cardiologist.",
+    "caseText": "A family physician is caring for a patient with progressive symptoms of ischemic heart disease that are no longer responding efficiently to medical management at the primary care setting. He decides to transfer the care of this specific problem to a cardiologist.",
     "questionNum": "Question 11",
     "questionText": "Enumerate five essential socio-demographic or clinical components that MUST be clearly documented inside a standard, structurally valid medical referral letter.",
     "answerText": "1. Socio-demographic data (name, age, sex, and family health record number). 2. Type of referral (urgent or elective) and destination hospital/specialty. 3. Main complaint, present history, and relevant past medical/surgical history. 4. Relevant physical examination findings and matching investigations. 5. Provisional diagnosis and explicit reasons/expectations for referral."
