@@ -1,407 +1,358 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8"/>
-<title>Generate Camp2 PDFs</title>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet"/>
+<title>Camp 2 — Day 1 Quiz Generator</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
-  body { font-family: 'Nunito', sans-serif; background: #1a1a2e; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; gap: 16px; }
-  button { padding: 16px 32px; border: none; border-radius: 14px; font-size: 16px; font-family: 'Fredoka One', cursive; cursor: pointer; }
-  .btn-q { background: linear-gradient(135deg, #e63946, #c1121f); color: white; }
-  .btn-a { background: linear-gradient(135deg, #06d6a0, #0096c7); color: white; }
-  #status { font-size: 14px; color: #aaa; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Nunito',sans-serif; background:#0f1117; color:white; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:100vh; gap:20px; padding:30px; }
+h1 { font-family:'Fredoka One',cursive; font-size:24px; color:#e0e0e0; letter-spacing:1px; }
+p  { font-size:13px; color:#888; max-width:480px; text-align:center; line-height:1.6; }
+.btns { display:flex; gap:14px; flex-wrap:wrap; justify-content:center; }
+button { padding:14px 28px; border:none; border-radius:12px; font-family:'Fredoka One',cursive; font-size:15px; cursor:pointer; transition:opacity 0.2s; }
+button:hover { opacity:0.85; }
+.btn-q { background:#2d2d2d; color:#e0e0e0; border:1px solid #444; }
+.btn-a { background:#2d2d2d; color:#7dd3a8; border:1px solid #3d5a4a; }
+#status { font-size:13px; color:#7dd3a8; height:20px; }
 
-  /* ─── PDF TEMPLATE ─────────────────────── */
-  #quiz-template {
-    position: absolute; left: -9999px; top: 0;
-    width: 794px; /* A4 width in px at 96dpi */
-    background: white;
-    color: #1a1a2e;
-    font-family: 'Nunito', sans-serif;
-    padding: 40px 50px 50px;
-    box-sizing: border-box;
-    font-size: 13px;
-    line-height: 1.6;
-  }
+/* ── PDF TEMPLATE ──────────────────────────────── */
+#pdf-template {
+  position:absolute; left:-9999px; top:0;
+  width:794px;
+  background:#fff;
+  color:#222;
+  font-family:'Nunito',sans-serif;
+  padding:48px 56px 56px;
+  box-sizing:border-box;
+  font-size:12.5px;
+  line-height:1.65;
+}
 
-  .pdf-header {
-    text-align: center;
-    border-bottom: 4px solid #e63946;
-    padding-bottom: 12px;
-    margin-bottom: 20px;
-  }
-  .pdf-logo {
-    font-family: 'Fredoka One', cursive;
-    font-size: 26px;
-    color: #e63946;
-  }
-  .pdf-sub {
-    font-size: 10px;
-    color: #666;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-top: 4px;
-  }
+.hdr { border-bottom:2px solid #ddd; padding-bottom:14px; margin-bottom:24px; }
+.hdr-title { font-family:'Fredoka One',cursive; font-size:20px; color:#222; letter-spacing:0.5px; }
+.hdr-sub { font-size:10px; color:#888; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; margin-top:4px; }
+.hdr-right { text-align:right; font-size:10px; color:#888; font-weight:700; line-height:1.8; }
+.hdr-inner { display:flex; justify-content:space-between; align-items:flex-end; }
 
-  .quiz-title-box {
-    background: linear-gradient(135deg, #e63946, #c1121f);
-    color: white;
-    border-radius: 12px;
-    padding: 12px 20px;
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .quiz-title-main {
-    font-family: 'Fredoka One', cursive;
-    font-size: 16px;
-  }
-  .quiz-meta {
-    font-size: 9px;
-    font-weight: 800;
-    text-align: right;
-    line-height: 1.5;
-  }
+.meta-row { display:flex; gap:0; margin-bottom:24px; border:1px solid #e8e8e8; border-radius:8px; overflow:hidden; }
+.meta-cell { flex:1; padding:9px 14px; text-align:center; border-right:1px solid #e8e8e8; }
+.meta-cell:last-child { border-right:none; }
+.meta-label { font-size:8.5px; font-weight:800; color:#999; text-transform:uppercase; letter-spacing:1px; display:block; margin-bottom:2px; }
+.meta-val { font-family:'Fredoka One',cursive; font-size:12px; color:#333; }
 
-  .info-bar {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-  .info-cell {
-    border: 2px solid #e63946;
-    border-radius: 10px;
-    padding: 8px 12px;
-    text-align: center;
-  }
-  .info-label {
-    font-size: 8px;
-    font-weight: 900;
-    color: #e63946;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    display: block;
-  }
-  .info-value {
-    font-family: 'Fredoka One', cursive;
-    font-size: 12px;
-    color: #1a1a2e;
-  }
+.section-label { font-family:'Fredoka One',cursive; font-size:13px; color:#555; margin-bottom:16px; padding:7px 14px; background:#f7f7f7; border-left:3px solid #ccc; border-radius:4px; display:flex; justify-content:space-between; }
 
-  .section-header {
-    background: #1a1a2e;
-    color: white;
-    border-radius: 10px;
-    padding: 10px 16px;
-    margin-bottom: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .section-title {
-    font-family: 'Fredoka One', cursive;
-    font-size: 13px;
-  }
-  .section-marks {
-    background: #e63946;
-    color: white;
-    font-weight: 900;
-    font-size: 9px;
-    padding: 3px 10px;
-    border-radius: 20px;
-  }
+/* Ill-EMQ */
+.emq-block { margin-bottom:28px; }
+.emq-num { font-family:'Fredoka One',cursive; font-size:12px; color:#333; background:#f0f0f0; border-radius:5px; padding:2px 8px; display:inline-block; margin-bottom:10px; }
+.emq-theme { font-size:12px; font-weight:800; color:#222; display:inline; margin-left:8px; }
+.emq-marks { font-size:10px; color:#888; font-weight:700; display:inline; }
 
-  .theme-box {
-    border: 2px solid #e0e0e0;
-    border-radius: 12px;
-    padding: 16px 18px;
-    margin-bottom: 20px;
-  }
-  .theme-title {
-    font-family: 'Fredoka One', cursive;
-    font-size: 13px;
-    color: #e63946;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .theme-num-badge {
-    background: #e63946;
-    color: white;
-    border-radius: 50%;
-    width: 24px; height: 24px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 10px;
-    font-weight: 900;
-    flex-shrink: 0;
-  }
+.options-box { background:#fafafa; border:1px solid #ebebeb; border-radius:6px; padding:10px 14px; margin-bottom:12px; display:grid; grid-template-columns:1fr 1fr; gap:4px 20px; }
+.opt-row { font-size:11.5px; color:#333; display:flex; gap:5px; }
+.opt-letter { font-family:'Fredoka One',cursive; color:#555; font-size:11.5px; min-width:14px; }
 
-  .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5px 16px;
-    margin-bottom: 12px;
-    padding: 10px 12px;
-    background: #f8f9fa;
-    border-radius: 8px;
-    border-left: 4px solid #e63946;
-  }
-  .option-row {
-    font-size: 11px;
-    display: flex;
-    gap: 5px;
-  }
-  .option-letter {
-    font-family: 'Fredoka One', cursive;
-    color: #e63946;
-    font-size: 11px;
-    min-width: 15px;
-  }
+.instr { font-size:10.5px; font-weight:800; color:#777; font-style:italic; margin-bottom:10px; }
 
-  .instruction {
-    font-size: 9.5px;
-    font-weight: 800;
-    color: #c1121f;
-    margin-bottom: 8px;
-    font-style: italic;
-  }
+.q-list { display:flex; flex-direction:column; gap:7px; }
+.q-row { display:flex; align-items:flex-start; gap:9px; font-size:11.5px; color:#333; }
+.q-badge { background:#f0f0f0; border-radius:4px; padding:1px 7px; font-family:'Fredoka One',cursive; font-size:10.5px; color:#555; flex-shrink:0; min-width:22px; text-align:center; margin-top:2px; }
 
-  .question-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
-    margin-bottom: 7px;
-    font-size: 11px;
-  }
-  .q-num {
-    font-family: 'Fredoka One', cursive;
-    background: #eee;
-    border-radius: 5px;
-    padding: 1px 6px;
-    font-size: 10px;
-    min-width: 22px;
-    text-align: center;
-    flex-shrink: 0;
-  }
+.blank-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:7px; margin-top:14px; }
+.blank-cell { border:1px solid #ddd; border-radius:6px; padding:8px 5px; text-align:center; }
+.blank-num { font-size:8.5px; font-weight:800; color:#888; display:block; margin-bottom:6px; }
+.blank-line { display:block; height:18px; border-bottom:1.5px solid #bbb; margin:0 6px; }
 
-  .answer-row-blank {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 6px;
-    margin-top: 12px;
-    padding: 8px;
-    background: #f8f9fa;
-    border-radius: 8px;
-  }
-  .blank-cell {
-    border: 2px solid #e63946;
-    border-radius: 7px;
-    padding: 7px 4px;
-    text-align: center;
-  }
-  .blank-label {
-    font-size: 8px;
-    font-weight: 900;
-    color: #e63946;
-    display: block;
-    margin-bottom: 4px;
-  }
-  .blank-line {
-    display: block;
-    height: 20px;
-    border-bottom: 2px solid #1a1a2e;
-    margin: 0 6px;
-  }
+/* Answers table */
+.ans-section { margin-top:30px; border-top:2px solid #eee; padding-top:20px; }
+.ans-title { font-family:'Fredoka One',cursive; font-size:14px; color:#333; margin-bottom:12px; }
+.ans-table { width:100%; border-collapse:collapse; font-size:11.5px; }
+.ans-table thead tr { background:#f0f0f0; }
+.ans-table th { font-family:'Fredoka One',cursive; font-size:11px; padding:9px 6px; text-align:center; border:1px solid #e0e0e0; color:#555; font-weight:900; }
+.ans-table td { font-family:'Fredoka One',cursive; font-size:20px; color:#333; text-align:center; padding:12px 6px; border:1px solid #e8e8e8; }
+.ans-mark { display:block; font-family:'Nunito',sans-serif; font-weight:700; font-size:8px; color:#aaa; }
 
-  /* Answers table */
-  .answers-section { margin-top: 24px; }
-  .answers-title {
-    font-family: 'Fredoka One', cursive;
-    font-size: 14px;
-    color: #1a1a2e;
-    margin-bottom: 10px;
-    border-bottom: 3px solid #e63946;
-    padding-bottom: 5px;
-  }
-  .answers-table {
-    width: 100%;
-    border-collapse: collapse;
-    border-radius: 10px;
-    overflow: hidden;
-  }
-  .answers-table thead tr { background: #e63946; color: white; }
-  .answers-table th {
-    font-family: 'Fredoka One', cursive;
-    font-size: 11px;
-    padding: 9px 6px;
-    text-align: center;
-    border-right: 1px solid rgba(255,255,255,0.3);
-  }
-  .mark-label {
-    font-family: 'Nunito', sans-serif;
-    font-weight: 700;
-    font-size: 8px;
-    opacity: 0.9;
-    display: block;
-  }
-  .answers-table tbody tr { background: #fff9f9; }
-  .answer-cell {
-    font-family: 'Fredoka One', cursive;
-    font-size: 20px;
-    color: #e63946;
-    text-align: center;
-    padding: 12px 6px;
-    border-right: 1px solid #f0caca;
-    border-bottom: 1px solid #f0caca;
-  }
+.footer { margin-top:36px; border-top:1px solid #eee; padding-top:12px; text-align:center; font-size:10px; color:#bbb; font-family:'Fredoka One',cursive; letter-spacing:0.5px; }
 
-  .pdf-footer {
-    margin-top: 28px;
-    text-align: center;
-    border-top: 2px dashed #ddd;
-    padding-top: 10px;
-    font-family: 'Fredoka One', cursive;
-    font-size: 10px;
-    color: #aaa;
-  }
-  .pdf-footer span { color: #e63946; }
+/* Short Essay Section */
+.essay-section { margin-top:8px; }
+.essay-block { margin-bottom:22px; border:1px solid #ebebeb; border-radius:8px; padding:14px 16px; }
+.essay-qnum { font-family:'Fredoka One',cursive; font-size:11px; color:#888; margin-bottom:6px; display:inline-block; background:#f5f5f5; padding:1px 8px; border-radius:4px; }
+.essay-qtitle { font-size:12px; font-weight:800; color:#333; margin-bottom:6px; }
+.essay-qtext { font-size:11.5px; color:#444; margin-bottom:10px; line-height:1.6; }
+.essay-ans-box { background:#fafafa; border:1px solid #e8e8e8; border-radius:6px; padding:10px 12px; font-size:11px; color:#555; line-height:1.7; white-space:pre-line; }
+.essay-blank { height:48px; border-bottom:1px solid #ddd; margin-bottom:6px; }
+.essay-blank-label { font-size:9px; color:#bbb; font-weight:700; text-align:right; display:block; margin-top:2px; }
 </style>
 </head>
 <body>
 
-<h2 style="font-family:'Fredoka One',cursive; font-size:22px;">⚡ Camp 2 PDF Generator</h2>
-<p style="color:#aaa; font-size:13px;">Click to generate and download each PDF</p>
+<h1>📄 Camp 2 — Day 1 Quiz Generator</h1>
+<p>Click to generate and download each PDF. Fonts load from Google — keep network on.</p>
 
-<button class="btn-q" onclick="generate(false)">📄 Download — Quiz (No Answers)</button>
-<button class="btn-a" onclick="generate(true)">✅ Download — Answer Key</button>
+<div class="btns">
+  <button class="btn-q" onclick="generate(false)">📄 Student Copy (No Answers)</button>
+  <button class="btn-a" onclick="generate(true)">✅ Answer Key Edition</button>
+</div>
 <div id="status"></div>
 
-<!-- HIDDEN TEMPLATE -->
-<div id="quiz-template"></div>
+<div id="pdf-template"></div>
 
 <script>
-const THEME1 = {
-  title: 'Hematological Disorders',
-  marks: 5,
-  options: [
-    { letter: 'A', text: 'Aplastic anaemia' },
-    { letter: 'B', text: 'Thalassaemia Intermedia' },
-    { letter: 'C', text: 'Spherocytosis' },
-    { letter: 'D', text: 'Glucose 6 Phosphate dehydrogenase deficiency' },
-    { letter: 'E', text: 'Hemosiderosis' },
-  ],
-  questions: [
-    { num: 1, text: 'Acute hemolysis may be exacerbated by anti-malarial therapy.' },
-    { num: 2, text: 'Characterized by the overgrowth of bones of the face.' },
-    { num: 3, text: 'May be a consequence of cytomegalovirus infection.' },
-    { num: 4, text: 'May present with characteristic skin pigmentation and is secondary to multiple transfusions.' },
-    { num: 5, text: 'Occurs as a result of a congenital defect of the red cell membrane.' },
-  ],
-  answers: ['D', 'B', 'A', 'E', 'C'],
+// ═══════════════════════════════════════════════
+//  QUIZ DATA  — from questions.ts (Day 1)
+// ═══════════════════════════════════════════════
+
+const EMQ = {
+  sectionTitle: 'Ill-Extended Matching Questions (EMQ)',
+  totalMarks: 16,
+  themes: [
+    {
+      num: 1,
+      title: 'Hematological Disorders',
+      marks: 5,
+      options: [
+        { l:'A', t:'Aplastic anaemia' },
+        { l:'B', t:'Thalassaemia Intermedia' },
+        { l:'C', t:'Spherocytosis' },
+        { l:'D', t:'Glucose 6 Phosphate dehydrogenase deficiency' },
+        { l:'E', t:'Hemosiderosis' },
+      ],
+      questions: [
+        'Acute hemolysis may be exacerbated by anti-malarial therapy.',
+        'Characterized by the overgrowth of bones of the face.',
+        'May be a consequence of cytomegalovirus infection.',
+        'May present with characteristic skin pigmentation and is secondary to multiple transfusions.',
+        'Occurs as a result of a congenital defect of the red cell membrane.',
+      ],
+      answers: ['D','B','A','E','C'],
+    },
+  ]
 };
 
-function buildInnerHTML(withAnswers) {
-  const optionsHTML = THEME1.options.map(o =>
-    `<div class="option-row"><span class="option-letter">${o.letter}.</span><span>${o.text}</span></div>`
-  ).join('');
+// Short-Essay Questions — Day 1 (from questions.ts chapterId 2 + 4 + 5 day1 topics)
+const ESSAYS = [
+  // ─── Chest Diseases ───────────────────────────────────────
+  {
+    num:1, topic:'Chest Diseases — Croup',
+    q:'Enumerate the 4 classic symptoms of Croup.',
+    a:'1. Barking cough.\n2. Inspiratory stridor.\n3. Hoarseness of voice.\n4. Respiratory distress (worse at night).',
+  },
+  {
+    num:2, topic:'Chest Diseases — Epiglottitis',
+    q:'Enumerate 4 classic clinical findings of Acute Epiglottitis.',
+    a:'1. Acute onset of high-grade fever and severe sore throat.\n2. Drooling of saliva (due to severe inability to swallow).\n3. Hyperextension of the neck (sniffing position).\n4. Severe, rapidly progressive respiratory distress without a barking cough.',
+  },
+  {
+    num:3, topic:'Chest Diseases — Epiglottitis',
+    q:'Enumerate 4 critical contraindications in the immediate management of suspected Epiglottitis.',
+    a:'1. Do not place the child in a supine position.\n2. Do not examine the oral cavity using a tongue depressor.\n3. Do not perform agitating diagnostic tests before securing the airway.\n4. Do not rely on corticosteroids or nebulized epinephrine (ineffective).',
+  },
+  {
+    num:4, topic:'Chest Diseases — Pneumonia',
+    q:'Enumerate 4 physical chest examination findings of localized lung consolidation in Pneumonia.',
+    a:'1. Diminished breath sounds over the affected field.\n2. Localized scattered crackles (crepitations).\n3. Bronchial breathing.\n4. Dullness on percussion.',
+  },
+  {
+    num:5, topic:'Chest Diseases — Pneumonia',
+    q:'Enumerate 4 non-respiratory systemic manifestations during childhood Pneumonia.',
+    a:'1. Gastrointestinal disturbances (vomiting, anorexia, diarrhea).\n2. Abdominal distension (paralytic ileus or swallowed air).\n3. Severe abdominal pain (mimicking acute surgical conditions in lower-lobe pneumonia).\n4. Neck rigidity or meningism (in right upper lobe pneumonia).',
+  },
+  {
+    num:6, topic:'Chest Diseases — Pneumonia',
+    q:'Enumerate 4 primary criteria for Hospitalization in pediatric Pneumonia.',
+    a:'1. Age less than 6 months.\n2. Moderate to severe respiratory distress or hypoxemia (SpO₂ <90%).\n3. Toxic appearance or signs of shock/severe dehydration.\n4. Inability to tolerate oral medications or failure of outpatient antibiotic therapy.',
+  },
+  // ─── Emergency Medicine ───────────────────────────────────
+  {
+    num:7, topic:'Emergency Medicine — CPR',
+    q:'Define CPR and state the critical timelines for brain and cardiovascular survival.',
+    a:'1. Definition: CPR is a sudden unexpected cessation of circulation and/or respiration in a patient unlikely to die with good recovery potential.\n2. Survival Timelines: Without resuscitation within 5 minutes, brain or cardiovascular death will occur. Irreversible brain damage happens after 7 minutes.',
+  },
+  {
+    num:8, topic:'Emergency Medicine — CPR',
+    q:'Enumerate the three levels (types) of Life Support in CPR and their corresponding alphabetic steps.',
+    a:'1. Basic Life Support (BLS): Steps A, B, and C.\n2. Advanced Life Support (ALS): Steps D, E, and F.\n3. Prolonged Life Support (PLS): Steps G, H, and I.',
+  },
+  {
+    num:9, topic:'Emergency Medicine — Shock',
+    q:'Enumerate 4 prominent types of shock categorized in pediatric emergency medicine.',
+    a:'1. Hypovolemic shock (severe dehydration or hemorrhage).\n2. Septic shock (fulminant infection).\n3. Cardiogenic shock (acute heart failure).\n4. Distributive shock (anaphylactic or neurogenic).',
+  },
+  {
+    num:10, topic:'Emergency Medicine — Glasgow Coma Scale',
+    q:'State the purpose of the Glasgow Coma Scale (GCS) and its three components with maximum points.',
+    a:'Purpose: To assess level of consciousness and neurological function rapidly.\nComponents:\n1. Eye Opening: 4 points.\n2. Verbal Response: 5 points.\n3. Motor Response: 6 points.\nTotal Score Range: 3 – 15.',
+  },
+  // ─── Family Medicine — Part 1 ─────────────────────────────
+  {
+    num:11, topic:'Family Medicine — Principles',
+    q:'Define "Family Medicine" and enumerate 4 core principles that distinguish it from other specialties.',
+    a:'1. Comprehensive care: Covers all ages, genders, and organ systems.\n2. Continuity: Long-term doctor–patient relationship over time.\n3. Coordination: Bridges primary care and specialist referrals.\n4. Community-oriented: Emphasizes prevention and population health at the PHC level.',
+  },
+  {
+    num:12, topic:'Family Medicine — Referral & Consultation',
+    q:'Enumerate 4 indications for Referral or Consultation by a Family Physician.',
+    a:'1. Diagnosis beyond the scope of primary care (complex or rare conditions).\n2. Need for specialist procedures or investigations (e.g., endoscopy, biopsy).\n3. Inadequate response to first-line treatment after appropriate trial.\n4. Patient or family request for a second opinion.',
+  },
+];
 
-  const questionsHTML = THEME1.questions.map(q =>
-    `<div class="question-item"><span class="q-num">${q.num}</span><span>${q.text}</span></div>`
-  ).join('');
+// ═══════════════════════════════════════════════
+//  HTML BUILDER
+// ═══════════════════════════════════════════════
+function buildHTML(withAnswers) {
+  const edition = withAnswers ? '✅ Answer Key Edition' : '🖊️ Student Copy — No Answers';
 
-  const answerPartHTML = withAnswers
-    ? `<div class="answers-section">
-        <div class="answers-title">✅ Answers</div>
-        <table class="answers-table">
-          <thead><tr>
-            ${THEME1.answers.map((_,i) => `<th>No. ${i+1}<span class="mark-label">(1 mark)</span></th>`).join('')}
-          </tr></thead>
-          <tbody><tr>
-            ${THEME1.answers.map(a => `<td class="answer-cell">${a}</td>`).join('')}
-          </tr></tbody>
-        </table>
-      </div>`
-    : `<div class="answer-row-blank">
-        ${THEME1.questions.map(q => `
-          <div class="blank-cell">
-            <span class="blank-label">No. ${q.num} (1 mark)</span>
-            <span class="blank-line"></span>
-          </div>`).join('')}
+  // EMQ Themes
+  let emqHTML = '';
+  for (const theme of EMQ.themes) {
+    const optsHTML = theme.options.map(o =>
+      `<div class="opt-row"><span class="opt-letter">${o.l}.</span><span>${o.t}</span></div>`
+    ).join('');
+
+    const qHTML = theme.questions.map((q, i) =>
+      `<div class="q-row"><span class="q-badge">${i+1}</span><span>${q}</span></div>`
+    ).join('');
+
+    const bottomHTML = withAnswers
+      ? `<div class="ans-section">
+           <div class="ans-title">Answers</div>
+           <table class="ans-table">
+             <thead><tr>
+               ${theme.answers.map((_,i) => `<th>No. ${i+1}<span class="ans-mark">(1 mark)</span></th>`).join('')}
+             </tr></thead>
+             <tbody><tr>
+               ${theme.answers.map(a => `<td>${a}</td>`).join('')}
+             </tr></tbody>
+           </table>
+         </div>`
+      : `<div class="blank-grid">
+           ${theme.questions.map((_, i) => `
+             <div class="blank-cell">
+               <span class="blank-num">No. ${i+1} (1 mark)</span>
+               <span class="blank-line"></span>
+             </div>`).join('')}
+         </div>`;
+
+    emqHTML += `
+      <div class="emq-block">
+        <div><span class="emq-num">${theme.num}</span>
+          <span class="emq-theme">Theme: ${theme.title}</span>
+          <span class="emq-marks">&nbsp;(${theme.marks} marks)</span>
+        </div>
+        <div style="height:10px"></div>
+        <div class="options-box">${optsHTML}</div>
+        <p class="instr">From the list above, select one choice that is most suitable for the following options:</p>
+        <div class="q-list">${qHTML}</div>
+        ${bottomHTML}
       </div>`;
+  }
+
+  // Short Essays
+  let essayHTML = '';
+  for (const e of ESSAYS) {
+    essayHTML += `
+      <div class="essay-block">
+        <span class="essay-qnum">Q${e.num}</span>
+        <div class="essay-qtitle">${e.topic}</div>
+        <div class="essay-qtext">${e.q}</div>
+        ${withAnswers
+          ? `<div class="essay-ans-box">${e.a}</div>`
+          : `<div class="essay-blank"></div>
+             <div class="essay-blank" style="height:32px;"></div>
+             <span class="essay-blank-label">Write your answer above</span>`
+        }
+      </div>`;
+  }
 
   return `
-    <div class="pdf-header">
-      <div class="pdf-logo">⚡ Med Prep</div>
-      <div class="pdf-sub">معسكر الورقة الثانية للأطفال — اليوم الأول</div>
-    </div>
-
-    <div class="quiz-title-box">
-      <div class="quiz-title-main">📝 Day 1 Quiz — Second Paper Camp</div>
-      <div class="quiz-meta">${withAnswers ? '✅ Answer Key Edition' : '🖊️ Student Copy'}<br/>Total Marks: 16 | Time: 30 min</div>
-    </div>
-
-    <div class="info-bar">
-      <div class="info-cell"><span class="info-label">Quiz Type</span><span class="info-value">Ill-Extended Matching</span></div>
-      <div class="info-cell"><span class="info-label">Total Marks</span><span class="info-value">16 Marks</span></div>
-      <div class="info-cell"><span class="info-label">Duration</span><span class="info-value">30 Minutes</span></div>
-    </div>
-
-    <div class="section-header">
-      <span class="section-title">Ill-Extended Matching Questions (EMQ)</span>
-      <span class="section-marks">Total: 16 marks</span>
-    </div>
-
-    <div class="theme-box">
-      <div class="theme-title">
-        <span class="theme-num-badge">1</span>
-        Theme: ${THEME1.title}
-        <span style="font-family:'Nunito',sans-serif;font-size:9px;color:#666;font-weight:800;">(${THEME1.marks} marks)</span>
+    <div class="hdr">
+      <div class="hdr-inner">
+        <div>
+          <div class="hdr-title">معسكر الورقة الثانية — Day 1 Quiz</div>
+          <div class="hdr-sub">Second Paper Camp · Pediatrics · Flash Space</div>
+        </div>
+        <div class="hdr-right">
+          ${edition}<br/>
+          Total Marks: ${EMQ.totalMarks} + Short Essays<br/>
+          Duration: 30 Minutes
+        </div>
       </div>
-      <div class="options-grid">${optionsHTML}</div>
-      <div class="instruction">From the list above, select one choice that is most suitable for the following options:</div>
-      ${questionsHTML}
-      ${answerPartHTML}
     </div>
 
-    <div class="pdf-footer">Prepared exclusively for <span>Med Prep — معسكر الورقة الثانية</span> ⚡</div>
+    <div class="meta-row">
+      <div class="meta-cell"><span class="meta-label">Quiz Format</span><span class="meta-val">EMQ + Short Essay</span></div>
+      <div class="meta-cell"><span class="meta-label">EMQ Marks</span><span class="meta-val">${EMQ.totalMarks}</span></div>
+      <div class="meta-cell"><span class="meta-label">Duration</span><span class="meta-val">30 min</span></div>
+      <div class="meta-cell"><span class="meta-label">Date</span><span class="meta-val">June 10 2026</span></div>
+    </div>
+
+    <div class="section-label">
+      <span>Ill-Extended Matching Questions (EMQ)</span>
+      <span style="color:#aaa;font-size:11px;">Total: ${EMQ.totalMarks} marks</span>
+    </div>
+    ${emqHTML}
+
+    <div class="section-label" style="margin-top:28px;">
+      <span>Short Essay Questions</span>
+      <span style="color:#aaa;font-size:11px;">Chapters: Chest · Emergency · Family Medicine</span>
+    </div>
+    <div class="essay-section">${essayHTML}</div>
+
+    <div class="footer">
+      Med Prep — معسكر الورقة الثانية للأطفال ⚡ · All rights reserved
+    </div>
   `;
 }
 
+// ═══════════════════════════════════════════════
+//  GENERATE PDF
+// ═══════════════════════════════════════════════
 async function generate(withAnswers) {
   const status = document.getElementById('status');
-  status.textContent = '⏳ Generating PDF...';
+  status.textContent = '⏳ Rendering...';
 
-  const el = document.getElementById('quiz-template');
-  el.innerHTML = buildInnerHTML(withAnswers);
-
-  // Wait for fonts
+  const el = document.getElementById('pdf-template');
+  el.innerHTML = buildHTML(withAnswers);
   await document.fonts.ready;
-  await new Promise(r => setTimeout(r, 800));
+  await new Promise(r => setTimeout(r, 900));
 
   try {
     const canvas = await html2canvas(el, {
-      scale: 2.5,
+      scale: 2.2,
       useCORS: true,
-      backgroundColor: '#ffffff',
-      logging: false,
+      backgroundColor:'#ffffff',
+      logging:false,
     });
 
     const { jsPDF } = window.jspdf;
-    const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+    const pdf = new jsPDF({ orientation:'portrait', unit:'mm', format:'a4' });
 
-    const imgData = canvas.toDataURL('image/png');
     const pdfW = 210;
     const pdfH = (canvas.height / canvas.width) * pdfW;
+    const pageH = 297;
 
-    pdf.addImage(imgData, 'PNG', 0, 0, pdfW, pdfH);
+    if (pdfH <= pageH) {
+      pdf.addImage(canvas.toDataURL('image/jpeg', 0.92), 'JPEG', 0, 0, pdfW, pdfH);
+    } else {
+      // Multi-page
+      const ratio = canvas.width / pdfW;
+      let y = 0;
+      while (y < canvas.height) {
+        const sliceH = Math.min(pageH * ratio, canvas.height - y);
+        const sliceCanvas = document.createElement('canvas');
+        sliceCanvas.width = canvas.width;
+        sliceCanvas.height = sliceH;
+        const ctx = sliceCanvas.getContext('2d');
+        ctx.drawImage(canvas, 0, -y);
+        pdf.addImage(sliceCanvas.toDataURL('image/jpeg', 0.92), 'JPEG', 0, 0, pdfW, (sliceH / ratio));
+        y += sliceH;
+        if (y < canvas.height) pdf.addPage();
+      }
+    }
 
     const fname = withAnswers
       ? 'معسكر_الورقة_الثانية_اليوم_الأول_كويز_إجابات.pdf'
