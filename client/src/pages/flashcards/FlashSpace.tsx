@@ -8909,6 +8909,14 @@ const FlashSpace = () => {
 
   // --- Second Paper Camp states ---
   const [camp2ActiveDay, setCamp2ActiveDay] = useState<number>(1);
+  const [camp2ExamState, setCamp2ExamState] = useState<'locked' | 'ready' | 'finished'>('locked');
+  const [camp2TimeRemainingToStart, setCamp2TimeRemainingToStart] = useState<number>(0);
+  const [hasAttemptedCamp2, setHasAttemptedCamp2] = useState<boolean>(() =>
+    localStorage.getItem('camp2_day1_quiz_completed') === 'true'
+  );
+  const [camp2AttemptScore, setCamp2AttemptScore] = useState<number>(() =>
+    Number(localStorage.getItem('camp2_day1_quiz_score') || '0')
+  );
 
   const handleDownloadPDF = async (pdfIdOrCompress: string | boolean, pdfUrlInput?: string, defaultNameInput?: string) => {
     setDownloadProgress(0);
@@ -9852,6 +9860,32 @@ const FlashSpace = () => {
     });
     return () => unsubscribe();
   }, [user, campActiveDay]);
+
+  // --- Second Paper Camp Scheduler ---
+  useEffect(() => {
+    // Quiz window: 9 PM – midnight tonight (Cairo time = UTC+3)
+    const CAMP2_START = new Date('2026-06-10T21:00:00+03:00').getTime(); // 9 PM Cairo
+    const CAMP2_END   = new Date('2026-06-11T00:00:00+03:00').getTime(); // midnight Cairo
+
+    const check = () => {
+      const now = Date.now();
+      if (now < CAMP2_START) {
+        setCamp2TimeRemainingToStart(Math.ceil((CAMP2_START - now) / 1000));
+        if (!hasAttemptedCamp2) setCamp2ExamState('locked');
+      } else if (now > CAMP2_END) {
+        setCamp2TimeRemainingToStart(-1);
+        // After window: allow PDF download regardless
+        setCamp2ExamState('finished');
+      } else {
+        setCamp2TimeRemainingToStart(0);
+        if (!hasAttemptedCamp2) setCamp2ExamState('ready');
+      }
+    };
+
+    check();
+    const interval = setInterval(check, 1000);
+    return () => clearInterval(interval);
+  }, [hasAttemptedCamp2]);
 
   const campMatchesRef = useRef(campMatches);
   const campCurrentSetIdxRef = useRef(campCurrentSetIdx);
@@ -11371,11 +11405,194 @@ const FlashSpace = () => {
                   );
                 })()}
 
-                {/* Coming Soon Note */}
-                <div className="mt-8 py-6 text-center bg-slate-900/20 backdrop-blur-md rounded-[2rem] border border-dashed border-cyan-500/10 space-y-2">
-                  <p className="text-xs font-black text-slate-400">سيتم إضافة المزيد من محتوى معسكر الورقة الثانية قريباً 🚀</p>
-                  <p className="text-[11px] text-slate-600 font-bold">تابع التحديثات على المنصة</p>
-                </div>
+                {/* ─── DAY 1 QUIZ SECTION ─────────────────────────── */}
+                {camp2ActiveDay === 1 && (() => {
+                  // Helper: format seconds to HH:MM:SS
+                  const fmtCountdown = (secs: number) => {
+                    const h = Math.floor(secs / 3600);
+                    const m = Math.floor((secs % 3600) / 60);
+                    const s = secs % 60;
+                    return h > 0
+                      ? `${h}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`
+                      : `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+                  };
+
+                  const isWindowOpen  = camp2ExamState === 'ready' || camp2ExamState === 'finished';
+                  const canSeeAnswers = hasAttemptedCamp2 || camp2ExamState === 'finished';
+
+                  return (
+                    <div className="mt-8 space-y-4">
+                      {/* Quiz Header */}
+                      <div className="flex items-center justify-between">
+                        <h3 className="text-base font-black text-white flex items-center gap-2">
+                          <span className="text-xl">📝</span> كويز اليوم الأول
+                        </h3>
+                        {/* State badge */}
+                        {camp2ExamState === 'locked' && camp2TimeRemainingToStart > 0 && (
+                          <span className="text-[11px] font-black text-amber-400 bg-amber-500/10 border border-amber-500/20 px-3 py-1 rounded-full">
+                            🔒 يبدأ بعد {fmtCountdown(camp2TimeRemainingToStart)}
+                          </span>
+                        )}
+                        {camp2ExamState === 'ready' && (
+                          <span className="text-[11px] font-black text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full animate-pulse">
+                            🟢 الكويز متاح الآن
+                          </span>
+                        )}
+                        {(camp2ExamState === 'finished' || hasAttemptedCamp2) && (
+                          <span className="text-[11px] font-black text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 px-3 py-1 rounded-full">
+                            ✅ {hasAttemptedCamp2 ? `أجبت بنجاح — ${camp2AttemptScore}/5` : 'انتهى الكويز'}
+                          </span>
+                        )}
+                      </div>
+
+                      {/* Two PDF Cards side by side */}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+                        {/* PDF without answers — available during window */}
+                        <div className={`rounded-2xl border p-5 flex flex-col gap-3 transition-all ${isWindowOpen ? 'bg-slate-800/60 border-cyan-500/30 hover:border-cyan-400/60' : 'bg-slate-900/40 border-white/5 opacity-60'}`}>
+                          <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-xl shrink-0">📄</div>
+                            <div>
+                              <p className="text-sm font-black text-white">ورقة الكويز</p>
+                              <p className="text-[11px] text-slate-500 font-bold">بدون إجابات — ٣٠ دقيقة</p>
+                            </div>
+                          </div>
+                          <button
+                            disabled={!isWindowOpen}
+                            onClick={() => handleDownloadPDF(
+                              '/معسكر_الورقة_الثانية_اليوم_الأول_كويز.pdf',
+                              '/معسكر_الورقة_الثانية_اليوم_الأول_كويز.pdf',
+                              'معسكر_الورقة_الثانية_اليوم_الأول_كويز.pdf'
+                            )}
+                            className={`w-full py-2.5 rounded-xl text-xs font-black transition-all ${isWindowOpen ? 'bg-cyan-500 hover:bg-cyan-400 text-white active:scale-95' : 'bg-slate-800 text-slate-600 cursor-not-allowed'}`}
+                          >
+                            {isWindowOpen ? '⬇️ تحميل ورقة الكويز' : '🔒 غير متاح بعد'}
+                          </button>
+                        </div>
+
+                        {/* PDF with answers — only after attempt */}
+                        <div className={`rounded-2xl border p-5 flex flex-col gap-3 transition-all ${canSeeAnswers ? 'bg-slate-800/60 border-emerald-500/30 hover:border-emerald-400/60' : 'bg-slate-900/40 border-white/5 opacity-60'}`}>
+                          <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-xl shrink-0">✅</div>
+                            <div>
+                              <p className="text-sm font-black text-white">الإجابات النموذجية</p>
+                              <p className="text-[11px] text-slate-500 font-bold">متاح بعد حل الكويز</p>
+                            </div>
+                          </div>
+                          <button
+                            disabled={!canSeeAnswers}
+                            onClick={() => handleDownloadPDF(
+                              '/معسكر_الورقة_الثانية_اليوم_الأول_كويز_إجابات.pdf',
+                              '/معسكر_الورقة_الثانية_اليوم_الأول_كويز_إجابات.pdf',
+                              'معسكر_الورقة_الثانية_اليوم_الأول_كويز_إجابات.pdf'
+                            )}
+                            className={`w-full py-2.5 rounded-xl text-xs font-black transition-all ${canSeeAnswers ? 'bg-emerald-500 hover:bg-emerald-400 text-white active:scale-95' : 'bg-slate-800 text-slate-600 cursor-not-allowed'}`}
+                          >
+                            {canSeeAnswers ? '⬇️ تحميل الإجابات' : '🔒 حل الكويز أولاً'}
+                          </button>
+                        </div>
+                      </div>
+
+                      {/* Online EMQ Quiz */}
+                      {isWindowOpen && !hasAttemptedCamp2 && (() => {
+                        const THEME1_DATA = {
+                          title: 'Hematological Disorders',
+                          marks: 5,
+                          options: ['Aplastic anaemia','Thalassaemia Intermedia','Spherocytosis','Glucose 6 Phosphate dehydrogenase deficiency','Hemosiderosis'],
+                          letters: ['A','B','C','D','E'],
+                          questions: [
+                            'Acute hemolysis may be exacerbated by anti-malarial therapy.',
+                            'Characterized by the overgrowth of bones of the face.',
+                            'May be a consequence of cytomegalovirus infection.',
+                            'May present with characteristic skin pigmentation and is secondary to multiple transfusions.',
+                            'Occurs as a result of a congenital defect of the red cell membrane.',
+                          ],
+                          correctAnswers: ['D','B','A','E','C'],
+                        };
+
+                        return (
+                          <div className="bg-slate-900/60 backdrop-blur-xl border border-white/8 rounded-2xl p-5 space-y-5">
+                            <div className="flex items-center justify-between">
+                              <h4 className="text-sm font-black text-white">🧠 Ill-Extended Matching Questions</h4>
+                              <span className="text-[11px] font-black text-slate-500 bg-slate-800 px-3 py-1 rounded-full">٥ درجات</span>
+                            </div>
+
+                            {/* Theme 1 */}
+                            <div className="space-y-3">
+                              <p className="text-xs font-black text-cyan-400">1) Theme: {THEME1_DATA.title}</p>
+
+                              {/* Options */}
+                              <div className="grid grid-cols-1 gap-1 bg-slate-800/60 rounded-xl p-3 border border-white/5">
+                                {THEME1_DATA.options.map((opt, i) => (
+                                  <div key={i} className="text-xs text-slate-300 font-semibold flex gap-2">
+                                    <span className="text-cyan-400 font-black">{THEME1_DATA.letters[i]}.</span>
+                                    <span>{opt}</span>
+                                  </div>
+                                ))}
+                              </div>
+
+                              <p className="text-[11px] text-rose-400 font-black italic">From the list above, select one choice most suitable for each option:</p>
+
+                              {/* Questions with selectors */}
+                              <div className="space-y-2" id="camp2-quiz-form">
+                                {THEME1_DATA.questions.map((q, i) => (
+                                  <div key={i} className="flex items-start gap-3 bg-slate-800/40 rounded-xl px-3 py-2.5 border border-white/5">
+                                    <span className="text-xs font-black text-white bg-slate-700 rounded-lg px-2 py-0.5 shrink-0 mt-0.5">{i+1}</span>
+                                    <p className="text-xs text-slate-300 font-semibold flex-1 leading-relaxed">{q}</p>
+                                    <select
+                                      id={`camp2-q${i}`}
+                                      defaultValue=""
+                                      className="bg-slate-700 text-white text-xs font-black rounded-lg px-2 py-1.5 border border-white/10 shrink-0 outline-none focus:border-cyan-500 cursor-pointer"
+                                    >
+                                      <option value="" disabled>—</option>
+                                      {THEME1_DATA.letters.map(l => (
+                                        <option key={l} value={l}>{l}</option>
+                                      ))}
+                                    </select>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+
+                            {/* Submit Button */}
+                            <button
+                              onClick={() => {
+                                const answers = THEME1_DATA.questions.map((_, i) => {
+                                  const el = document.getElementById(`camp2-q${i}`) as HTMLSelectElement;
+                                  return el?.value || '';
+                                });
+                                if (answers.some(a => !a)) {
+                                  alert('أجب على كل الأسئلة أولاً!');
+                                  return;
+                                }
+                                const score = answers.filter((a, i) => a === THEME1_DATA.correctAnswers[i]).length;
+                                localStorage.setItem('camp2_day1_quiz_completed', 'true');
+                                localStorage.setItem('camp2_day1_quiz_score', String(score));
+                                setHasAttemptedCamp2(true);
+                                setCamp2AttemptScore(score);
+                                setCamp2ExamState('finished');
+                              }}
+                              className="w-full py-3 bg-gradient-to-r from-cyan-500 to-indigo-500 hover:from-cyan-400 hover:to-indigo-400 text-white font-black text-sm rounded-xl transition-all active:scale-95 shadow-lg shadow-cyan-500/20"
+                            >
+                              ✅ تسليم الكويز
+                            </button>
+                          </div>
+                        );
+                      })()}
+
+                      {/* Score display after attempt */}
+                      {hasAttemptedCamp2 && (
+                        <div className="bg-gradient-to-br from-emerald-500/10 to-cyan-500/10 border border-emerald-500/20 rounded-2xl p-5 text-center space-y-2">
+                          <p className="text-3xl font-black text-white">{camp2AttemptScore}<span className="text-slate-500 text-lg">/5</span></p>
+                          <p className="text-sm font-black text-emerald-400">
+                            {camp2AttemptScore >= 4 ? '🎉 ممتاز! أداء رائع' : camp2AttemptScore >= 3 ? '👍 جيد جداً' : '📚 راجع المادة مرة ثانية'}
+                          </p>
+                          <p className="text-xs text-slate-500 font-bold">تقدر تحمل الإجابات النموذجية دلوقتي ☝️</p>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })()}
               </div>
             </div>
           ) : selectedSystem === 'تحديدات الاطفال' && !selectedSubSystem ? (

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>Generate Camp2 PDFs</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+  body { font-family: 'Nunito', sans-serif; background: #1a1a2e; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; gap: 16px; }
+  button { padding: 16px 32px; border: none; border-radius: 14px; font-size: 16px; font-family: 'Fredoka One', cursive; cursor: pointer; }
+  .btn-q { background: linear-gradient(135deg, #e63946, #c1121f); color: white; }
+  .btn-a { background: linear-gradient(135deg, #06d6a0, #0096c7); color: white; }
+  #status { font-size: 14px; color: #aaa; }
+
+  /* ─── PDF TEMPLATE ─────────────────────── */
+  #quiz-template {
+    position: absolute; left: -9999px; top: 0;
+    width: 794px; /* A4 width in px at 96dpi */
+    background: white;
+    color: #1a1a2e;
+    font-family: 'Nunito', sans-serif;
+    padding: 40px 50px 50px;
+    box-sizing: border-box;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .pdf-header {
+    text-align: center;
+    border-bottom: 4px solid #e63946;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+  }
+  .pdf-logo {
+    font-family: 'Fredoka One', cursive;
+    font-size: 26px;
+    color: #e63946;
+  }
+  .pdf-sub {
+    font-size: 10px;
+    color: #666;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 4px;
+  }
+
+  .quiz-title-box {
+    background: linear-gradient(135deg, #e63946, #c1121f);
+    color: white;
+    border-radius: 12px;
+    padding: 12px 20px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .quiz-title-main {
+    font-family: 'Fredoka One', cursive;
+    font-size: 16px;
+  }
+  .quiz-meta {
+    font-size: 9px;
+    font-weight: 800;
+    text-align: right;
+    line-height: 1.5;
+  }
+
+  .info-bar {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .info-cell {
+    border: 2px solid #e63946;
+    border-radius: 10px;
+    padding: 8px 12px;
+    text-align: center;
+  }
+  .info-label {
+    font-size: 8px;
+    font-weight: 900;
+    color: #e63946;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+  }
+  .info-value {
+    font-family: 'Fredoka One', cursive;
+    font-size: 12px;
+    color: #1a1a2e;
+  }
+
+  .section-header {
+    background: #1a1a2e;
+    color: white;
+    border-radius: 10px;
+    padding: 10px 16px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .section-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: 13px;
+  }
+  .section-marks {
+    background: #e63946;
+    color: white;
+    font-weight: 900;
+    font-size: 9px;
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+
+  .theme-box {
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin-bottom: 20px;
+  }
+  .theme-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: 13px;
+    color: #e63946;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .theme-num-badge {
+    background: #e63946;
+    color: white;
+    border-radius: 50%;
+    width: 24px; height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 900;
+    flex-shrink: 0;
+  }
+
+  .options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px 16px;
+    margin-bottom: 12px;
+    padding: 10px 12px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #e63946;
+  }
+  .option-row {
+    font-size: 11px;
+    display: flex;
+    gap: 5px;
+  }
+  .option-letter {
+    font-family: 'Fredoka One', cursive;
+    color: #e63946;
+    font-size: 11px;
+    min-width: 15px;
+  }
+
+  .instruction {
+    font-size: 9.5px;
+    font-weight: 800;
+    color: #c1121f;
+    margin-bottom: 8px;
+    font-style: italic;
+  }
+
+  .question-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 7px;
+    font-size: 11px;
+  }
+  .q-num {
+    font-family: 'Fredoka One', cursive;
+    background: #eee;
+    border-radius: 5px;
+    padding: 1px 6px;
+    font-size: 10px;
+    min-width: 22px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  .answer-row-blank {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+    margin-top: 12px;
+    padding: 8px;
+    background: #f8f9fa;
+    border-radius: 8px;
+  }
+  .blank-cell {
+    border: 2px solid #e63946;
+    border-radius: 7px;
+    padding: 7px 4px;
+    text-align: center;
+  }
+  .blank-label {
+    font-size: 8px;
+    font-weight: 900;
+    color: #e63946;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .blank-line {
+    display: block;
+    height: 20px;
+    border-bottom: 2px solid #1a1a2e;
+    margin: 0 6px;
+  }
+
+  /* Answers table */
+  .answers-section { margin-top: 24px; }
+  .answers-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: 14px;
+    color: #1a1a2e;
+    margin-bottom: 10px;
+    border-bottom: 3px solid #e63946;
+    padding-bottom: 5px;
+  }
+  .answers-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .answers-table thead tr { background: #e63946; color: white; }
+  .answers-table th {
+    font-family: 'Fredoka One', cursive;
+    font-size: 11px;
+    padding: 9px 6px;
+    text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.3);
+  }
+  .mark-label {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 8px;
+    opacity: 0.9;
+    display: block;
+  }
+  .answers-table tbody tr { background: #fff9f9; }
+  .answer-cell {
+    font-family: 'Fredoka One', cursive;
+    font-size: 20px;
+    color: #e63946;
+    text-align: center;
+    padding: 12px 6px;
+    border-right: 1px solid #f0caca;
+    border-bottom: 1px solid #f0caca;
+  }
+
+  .pdf-footer {
+    margin-top: 28px;
+    text-align: center;
+    border-top: 2px dashed #ddd;
+    padding-top: 10px;
+    font-family: 'Fredoka One', cursive;
+    font-size: 10px;
+    color: #aaa;
+  }
+  .pdf-footer span { color: #e63946; }
+</style>
+</head>
+<body>
+
+<h2 style="font-family:'Fredoka One',cursive; font-size:22px;">⚡ Camp 2 PDF Generator</h2>
+<p style="color:#aaa; font-size:13px;">Click to generate and download each PDF</p>
+
+<button class="btn-q" onclick="generate(false)">📄 Download — Quiz (No Answers)</button>
+<button class="btn-a" onclick="generate(true)">✅ Download — Answer Key</button>
+<div id="status"></div>
+
+<!-- HIDDEN TEMPLATE -->
+<div id="quiz-template"></div>
+
+<script>
+const THEME1 = {
+  title: 'Hematological Disorders',
+  marks: 5,
+  options: [
+    { letter: 'A', text: 'Aplastic anaemia' },
+    { letter: 'B', text: 'Thalassaemia Intermedia' },
+    { letter: 'C', text: 'Spherocytosis' },
+    { letter: 'D', text: 'Glucose 6 Phosphate dehydrogenase deficiency' },
+    { letter: 'E', text: 'Hemosiderosis' },
+  ],
+  questions: [
+    { num: 1, text: 'Acute hemolysis may be exacerbated by anti-malarial therapy.' },
+    { num: 2, text: 'Characterized by the overgrowth of bones of the face.' },
+    { num: 3, text: 'May be a consequence of cytomegalovirus infection.' },
+    { num: 4, text: 'May present with characteristic skin pigmentation and is secondary to multiple transfusions.' },
+    { num: 5, text: 'Occurs as a result of a congenital defect of the red cell membrane.' },
+  ],
+  answers: ['D', 'B', 'A', 'E', 'C'],
+};
+
+function buildInnerHTML(withAnswers) {
+  const optionsHTML = THEME1.options.map(o =>
+    `<div class="option-row"><span class="option-letter">${o.letter}.</span><span>${o.text}</span></div>`
+  ).join('');
+
+  const questionsHTML = THEME1.questions.map(q =>
+    `<div class="question-item"><span class="q-num">${q.num}</span><span>${q.text}</span></div>`
+  ).join('');
+
+  const answerPartHTML = withAnswers
+    ? `<div class="answers-section">
+        <div class="answers-title">✅ Answers</div>
+        <table class="answers-table">
+          <thead><tr>
+            ${THEME1.answers.map((_,i) => `<th>No. ${i+1}<span class="mark-label">(1 mark)</span></th>`).join('')}
+          </tr></thead>
+          <tbody><tr>
+            ${THEME1.answers.map(a => `<td class="answer-cell">${a}</td>`).join('')}
+          </tr></tbody>
+        </table>
+      </div>`
+    : `<div class="answer-row-blank">
+        ${THEME1.questions.map(q => `
+          <div class="blank-cell">
+            <span class="blank-label">No. ${q.num} (1 mark)</span>
+            <span class="blank-line"></span>
+          </div>`).join('')}
+      </div>`;
+
+  return `
+    <div class="pdf-header">
+      <div class="pdf-logo">⚡ Med Prep</div>
+      <div class="pdf-sub">معسكر الورقة الثانية للأطفال — اليوم الأول</div>
+    </div>
+
+    <div class="quiz-title-box">
+      <div class="quiz-title-main">📝 Day 1 Quiz — Second Paper Camp</div>
+      <div class="quiz-meta">${withAnswers ? '✅ Answer Key Edition' : '🖊️ Student Copy'}<br/>Total Marks: 16 | Time: 30 min</div>
+    </div>
+
+    <div class="info-bar">
+      <div class="info-cell"><span class="info-label">Quiz Type</span><span class="info-value">Ill-Extended Matching</span></div>
+      <div class="info-cell"><span class="info-label">Total Marks</span><span class="info-value">16 Marks</span></div>
+      <div class="info-cell"><span class="info-label">Duration</span><span class="info-value">30 Minutes</span></div>
+    </div>
+
+    <div class="section-header">
+      <span class="section-title">Ill-Extended Matching Questions (EMQ)</span>
+      <span class="section-marks">Total: 16 marks</span>
+    </div>
+
+    <div class="theme-box">
+      <div class="theme-title">
+        <span class="theme-num-badge">1</span>
+        Theme: ${THEME1.title}
+        <span style="font-family:'Nunito',sans-serif;font-size:9px;color:#666;font-weight:800;">(${THEME1.marks} marks)</span>
+      </div>
+      <div class="options-grid">${optionsHTML}</div>
+      <div class="instruction">From the list above, select one choice that is most suitable for the following options:</div>
+      ${questionsHTML}
+      ${answerPartHTML}
+    </div>
+
+    <div class="pdf-footer">Prepared exclusively for <span>Med Prep — معسكر الورقة الثانية</span> ⚡</div>
+  `;
+}
+
+async function generate(withAnswers) {
+  const status = document.getElementById('status');
+  status.textContent = '⏳ Generating PDF...';
+
+  const el = document.getElementById('quiz-template');
+  el.innerHTML = buildInnerHTML(withAnswers);
+
+  // Wait for fonts
+  await document.fonts.ready;
+  await new Promise(r => setTimeout(r, 800));
+
+  try {
+    const canvas = await html2canvas(el, {
+      scale: 2.5,
+      useCORS: true,
+      backgroundColor: '#ffffff',
+      logging: false,
+    });
+
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+
+    const imgData = canvas.toDataURL('image/png');
+    const pdfW = 210;
+    const pdfH = (canvas.height / canvas.width) * pdfW;
+
+    pdf.addImage(imgData, 'PNG', 0, 0, pdfW, pdfH);
+
+    const fname = withAnswers
+      ? 'معسكر_الورقة_الثانية_اليوم_الأول_كويز_إجابات.pdf'
+      : 'معسكر_الورقة_الثانية_اليوم_الأول_كويز.pdf';
+
+    pdf.save(fname);
+    status.textContent = `✅ Downloaded: ${fname}`;
+  } catch(e) {
+    status.textContent = '❌ Error: ' + e.message;
+    console.error(e);
+  }
+}
+</script>
+</body>
+</html>
