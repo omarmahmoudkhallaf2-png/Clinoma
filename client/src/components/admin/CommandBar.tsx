@@ -23,7 +23,6 @@ export default function CommandBar() {
   const actions = [
     { icon: HelpCircle, label: 'Add New Question', path: '/admin', tab: 'questions', action: 'add' },
     { icon: Users, label: 'Manage Users', path: '/admin', tab: 'users' },
-    { icon: FileText, label: 'Create Study Note', path: '/admin', tab: 'notes' },
     { icon: Database, label: 'Course Structure', path: '/admin', tab: 'courses' },
     { icon: Settings, label: 'Platform Settings', path: '/admin', tab: 'settings' },
     { icon: Zap, label: 'View Analytics', path: '/admin', tab: 'analytics' },

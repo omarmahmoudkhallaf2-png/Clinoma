@@ -18,7 +18,6 @@ import UserManagement from '../../components/admin/UserManagement';
 import CourseManagement from '../../components/admin/CourseManagement';
 import AppConfig from '../../components/admin/AppConfig';
 import AdminAnalytics from '../../components/admin/AdminAnalytics';
-import NoteForm from '../../components/admin/NoteForm';
 import BulkUploadModal from '../../components/admin/BulkUploadModal';
 import CommandBar from '../../components/admin/CommandBar';
 import AuditLogViewer from '../../components/admin/AuditLogViewer';
@@ -40,10 +39,10 @@ import type { Question } from '../../types/quiz';
 export default function AdminDashboard() {
   const { user, userRole } = useAuth();
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState<'analytics' | 'questions' | 'users' | 'courses' | 'settings' | 'notes' | 'audit' | 'health' | 'formal_results' | 'exams' | 'flashcards' | 'flashspace' | 'data_themes' | 'videos' | 'leaderboard'>(() => {
+  const [activeTab, setActiveTab] = useState<'analytics' | 'questions' | 'users' | 'courses' | 'settings' | 'audit' | 'health' | 'formal_results' | 'exams' | 'flashcards' | 'flashspace' | 'data_themes' | 'videos' | 'leaderboard'>(() => {
     const params = new URLSearchParams(window.location.search);
     const tab = params.get('tab');
-    const validTabs = ['analytics', 'questions', 'users', 'courses', 'settings', 'notes', 'audit', 'health', 'formal_results', 'exams', 'flashcards', 'flashspace', 'data_themes', 'videos', 'leaderboard'];
+    const validTabs = ['analytics', 'questions', 'users', 'courses', 'settings', 'audit', 'health', 'formal_results', 'exams', 'flashcards', 'flashspace', 'data_themes', 'videos', 'leaderboard'];
     return (tab && validTabs.includes(tab)) ? (tab as any) : 'analytics';
   });
   const [questions, setQuestions] = useState<Question[]>([]);
@@ -64,7 +63,6 @@ export default function AdminDashboard() {
   // Modals
   const [isBulkModalOpen, setIsBulkModalOpen] = useState(false);
   const [isWizardOpen, setIsWizardOpen] = useState(false);
-  const [isNoteModalOpen, setIsNoteModalOpen] = useState(false);
   const [editingQuestion, setEditingQuestion] = useState<Question | null>(null);
 
   // Filters & Pagination
@@ -269,27 +267,6 @@ export default function AdminDashboard() {
     }
   };
 
-  const handleClearNotes = async () => {
-    if (!window.confirm('⚠ هل أنت متأكد من مسح جميع النوتس؟ لا يمكن التراجع عن هذه الخطوة.')) return;
-    setLoading(true);
-    try {
-      const q = query(collection(db, 'notes'));
-      const snap = await getDocs(q);
-      const docs = snap.docs;
-      for (let i = 0; i < docs.length; i += 500) {
-        const batch = writeBatch(db);
-        const chunk = docs.slice(i, i + 500);
-        chunk.forEach(d => batch.delete(d.ref));
-        await batch.commit();
-      }
-      sendAdminNotification(`تم مسح ${snap.size} نوتس بنجاح`, 'zap');
-      await fetchData();
-    } catch (err: any) {
-      sendAdminNotification('فشل في مسح النوتس', 'error');
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const filteredQuestions = useMemo(() => {
     return questions.filter(q => {
@@ -349,7 +326,6 @@ export default function AdminDashboard() {
         {[
           { id: 'analytics', label: 'Insights', icon: BarChart3 },
           { id: 'questions', label: 'Content Hub', icon: HelpCircle },
-          { id: 'notes', label: 'Knowledge Base', icon: FileText },
           { id: 'users', label: 'Permissions', icon: Users },
           { id: 'courses', label: 'Logic Layers', icon: Database },
           { id: 'audit', label: 'Audit Stream', icon: Activity },
@@ -462,35 +438,6 @@ export default function AdminDashboard() {
             {activeTab === 'settings' && <AppConfig />}
             { activeTab === 'data_themes' && <DataThemeManager /> }
             { activeTab === 'videos' && <VideoManager /> }
-            {activeTab === 'notes' && (
-              <div className="p-12 space-y-12 animate-in slide-in-from-bottom-8 duration-500">
-                <div className="flex justify-between items-center bg-emerald-500/10 p-10 rounded-[4rem] border-2 border-emerald-500/20">
-                  <div>
-                    <h2 className="text-4xl font-black tracking-tight">Knowledge Base Repository</h2>
-                    <p className="text-emerald-700 font-bold opacity-60">Manage study notes and theoretical content links.</p>
-                  </div>
-                  <div className="flex gap-4">
-                    <button onClick={handleClearNotes} className="px-10 py-5 bg-rose-600 text-white rounded-[2.5rem] font-black shadow-xl shadow-rose-600/20 hover:scale-105 transition-all">Clear All Notes</button>
-                    <button onClick={() => setIsNoteModalOpen(true)} className="px-10 py-5 bg-emerald-600 text-white rounded-[2.5rem] font-black shadow-xl shadow-emerald-600/20 hover:scale-105 transition-all">Create New Entry</button>
-                  </div>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {notes.map(note => (
-                    <div key={note.id} className="p-8 bg-secondary/20 rounded-[3rem] border-2 border-border hover:border-primary/40 transition-all group">
-                      <h4 className="text-2xl font-black group-hover:text-primary transition-colors mb-2">{note.title}</h4>
-                      <p className="text-muted-foreground font-bold text-sm mb-6 line-clamp-2">{note.content}</p>
-                      <div className="flex justify-between items-center pt-6 border-t border-border">
-                        <span className="text-[10px] font-black uppercase tracking-widest text-primary bg-primary/10 px-3 py-1 rounded-lg">{note.category}</span>
-                        <div className="flex gap-2">
-                          <button className="p-2 bg-card rounded-lg border border-border hover:bg-primary hover:text-white transition-all"><Edit2 className="w-4 h-4" /></button>
-                          <button className="p-2 bg-card rounded-lg border border-border hover:bg-rose-500 hover:text-white transition-all"><Trash2 className="w-4 h-4" /></button>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
             {activeTab === 'health' && (
               <div className="p-12 space-y-12 animate-in slide-in-from-bottom-8 duration-500">
                 <div className="bg-primary/5 border-2 border-primary/20 p-12 rounded-[4rem] text-center space-y-10 relative overflow-hidden">
@@ -635,13 +582,6 @@ export default function AdminDashboard() {
         <BulkUploadModal onUpload={handleBulkUpload} onClose={() => setIsBulkModalOpen(false)} />
       )}
 
-      {isNoteModalOpen && (
-        <div className="fixed inset-0 z-[1100] flex items-center justify-center p-4 bg-background/90 backdrop-blur-3xl animate-in zoom-in-95 duration-500">
-          <div className="w-full max-w-5xl">
-            <NoteForm onSave={async (d) => { await addDoc(collection(db,'notes'), {...d, createdAt: new Date()}); await fetchData(); setIsNoteModalOpen(false); }} onCancel={() => setIsNoteModalOpen(false)} />
-          </div>
-        </div>
-      )}
     </div>
   );
 }
