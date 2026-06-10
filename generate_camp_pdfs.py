@@ -418,7 +418,7 @@ def build_pdf_version(chapters, output_filename, is_answered_version=False, stud
         fontName='ComicFont',
         fontSize=9.5,
         leading=13.5,
-        textColor=colors.HexColor("#115E59"),
+        textColor=colors.HexColor("#000000"),
         alignment=0
     )
 

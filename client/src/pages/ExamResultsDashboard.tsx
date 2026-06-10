@@ -53,7 +53,13 @@ export default function ExamResultsDashboard() {
         durationMinutes: 15,
         createdAt: new Date()
       };
-      setExams([campExam, ...dbExams]);
+      const camp2Exam = {
+        id: 'second_paper_camp_matching_day1',
+        title: '🔥 معسكر الورقة الثانية - اختبار التوصيل التفاعلي - اليوم الأول',
+        durationMinutes: 30,
+        createdAt: new Date()
+      };
+      setExams([campExam, camp2Exam, ...dbExams]);
     });
 
     return () => {

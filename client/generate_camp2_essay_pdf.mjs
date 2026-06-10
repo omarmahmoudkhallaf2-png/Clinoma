@@ -334,7 +334,7 @@ function buildHTML(withAnswers) {
     .answer-content {
       font-size: 9.5pt;
       font-weight: 700;
-      color: #064e3b;
+      color: #000000;
       line-height: 1.4;
     }
 
