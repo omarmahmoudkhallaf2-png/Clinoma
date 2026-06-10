@@ -1,0 +1,172 @@
+Topic 1: Bronchial Asthma (Triggers, Investigations, Clinical Picture)
+Question 1 (Define): Define Bronchial Asthma.
+Answer: Asthma can be regarded as a diffuse obstructive lung disease with:
+Hyperactivity of airways to a variety of stimuli.
+A high degree of reversibility of the obstruction either spontaneously or with treatment.
+Chronic inflammation of the airways.
+Question 2 (Enumerate): Enumerate four risk factors associated with the epidemiology of childhood asthma.
+Answer: 1. Poverty. 2. Maternal smoking. 3. Birth weight less than 2500 g. 4. Overcrowding.
+Question 3 (List): List four major pathophysiology changes responsible for airway obstruction in asthma.
+Answer: 1. Bronchoconstriction. 2. Increased mucus secretion. 3. Mucosal oedema and cellular infiltration. 4. Desquamation of epithelial and inflammatory cells.
+Question 4 (Enumerate): Enumerate four indoor or seasonal allergens that act as asthma triggers.
+Answer: 1. Animal dander. 2. Dust mites. 3. Cockroaches. 4. Pollens.
+Question 5 (Mention): Mention three common comorbid conditions associated with asthma that make it difficult to treat.
+Answer: 1. Rhinitis. 2. Sinusitis. 3. Gastroesophageal reflux.
+Question 6 (List): List four key clinical signs and symptoms of an acute asthma episode.
+Answer: 1. Cough (tight and non-productive). 2. Wheezing. 3. Tachypnea and dyspnea with prolonged expiration. 4. Use of accessory muscles of respiration.
+Question 7 (Enumerate) — [From Final 38]: A 14-year-old boy presents with a history of cough and occasional wheezes at night, increasing during football matches. Enumerate the comprehensive Laboratory Investigations useful for this condition.
+Answer: 1. Blood examination: CBC usually shows eosinophilia more than $250\text{-}400\text{ cell/mm}^3$ , and Serum IgE levels are usually elevated. 2. Sputum: White and tenacious, usually showing eosinophilia and granules from disrupted cells. 3. Pulmonary function tests (Spirometry): Done for children > 5 years to evaluate airflow limitation and reversibility. 4. Blood gas analysis: Important in patients during exacerbations requiring hospitalization to monitor $PCO_2$, $PO_2$, and pH.
+Question 8 (List): List four life-threatening clinical signs found in a child with Status Asthmaticus.
+Answer: 1. Severe dyspnea. 2. Tachycardia. 3. Retraction of the sternocleidomastoid muscles. 4. Mental state ranging from agitation to somnolence.
+Topic 2: Pneumonia
+Question 9 (Define): Define Community-acquired pneumonia (CAP) and Hospital-acquired pneumonia (HAP).
+Answer: * Community-acquired pneumonia (CAP): It is the presence of signs and symptoms of pneumonia in a previously healthy child due to an infection acquired outside the hospital.
+Hospital-acquired pneumonia (HAP): It is pneumonia that presents clinically after two days of hospital admission.
+Question 10 (Mention): Mention the WHO definition of fast breathing (tachypnea) according to age groups.
+Answer: 1. From birth to 2 months $\rightarrow$ more than $60/\text{min}$. 2. From 2 m-1 year $\rightarrow$ more than $50/\text{min}$. 3. From 1-5 years $\rightarrow$ more than $40/\text{min}$.
+Question 11 (List): List four signs of respiratory distress that may occur in a child with pneumonia.
+Answer: 1. Grunting. 2. Nasal flaring. 3. Retractions (supraclavicular, suprasternal, intercostal and subcostal). 4. Cyanosis.
+Question 12 (Enumerate): Enumerate four local lung examination findings over the affected lung field in a pneumonia patient.
+Answer: 1. Diminished breath sounds. 2. Scattered crackles and rhonchi. 3. Bronchial breathing. 4. Increased tactile vocal fremitus or Dullness on percussion.
+Question 13 (List): List four non-respiratory gastrointestinal manifestations that can occur with pneumonia.
+Answer: 1. Vomiting. 2. Anorexia. 3. Diarrhea. 4. Abdominal distention.
+Question 14 (Enumerate) — [From Final 39]: Enumerate five clinical criteria that should lead to consideration of hospitalization/ICU admission for a child with Community-Acquired Pneumonia.
+Answer: 1. Age < 6 mo. 2. Toxic appearance. 3. Moderate to severe respiratory distress (retractions, nasal flaring, grunting). 4. Hypoxemia (oxygen saturation <90% in room air). 5. Shock or Severe dehydration.
+Question 15 (Mention): Mention four diagnostic chest X-ray findings or clinical rules regarding the use of X-ray in pneumonia.
+Answer: 1. It shows a lobar, patchy, or interstitial infiltrate. 2. No need to order X-ray for a patient with mild pneumonia. 3. No need to repeat chest X-ray if the patient has clinically improved. 4. In viral pneumonia, it usually shows hyperinflation with bilateral interstitial infiltrates and peribronchial cuffing.
+Question 16 (Enumerate) — [From Final 42]: Enumerate four causes for pneumonia that failed to resolve (Unresolved pneumonia) after antibiotic treatment, and enumerate two investigations that can be performed.
+Answer: * Causes of delayed resolution (Choose 4):
+Inadequate therapy (inappropriate antibiotic choice, dose, interval, or poor compliance).
+Resistant organisms.
+Impaired host defenses (Immunodeficiency or ciliary dyskinesia).
+Nonbacterial causes of pneumonia (viruses, fungi, parasites, and TB).
+Foreign body aspiration or Cystic fibrosis.
+Congenital lung anomalies.
+Investigations (Choose 2):
+Repeat chest X-ray.
+High-resolution CT scans.
+Fiberoptic bronchoscopy and bronchoalveolar lavage (BAL).
+Question 17 (List) — [From Oral 2021]: List four thoracic cavity complications caused by the direct spread of pneumonia infection.
+Answer: 1. Pleural effusion. 2. Empyema. 3. Lung abscess. 4. Pericarditis.
+Topic 3: Wheezes
+Question 18 (Define): Define Wheezing.
+Answer: It is an expiratory continuous musical sound due to partial obstruction at the level of small bronchi and bronchioles.
+Question 19 (Enumerate) — [From Final 39]: Enumerate three pediatric causes of acute wheezy chest.
+Answer: 1. Acute bronchiolitis. 2. Severe bacterial bronchopneumonia. 3. Foreign body aspiration.
+Question 20 (Mention): Mention four causes of recurrent wheezing in infants and childhood.
+Answer: 1. Bronchial asthma. 2. Recurrent aspiration (infant with GERD). 3. Chronic chest infection. 4. Acute congestive heart failure.
+
+Section I: Cardiopulmonary Resuscitation (CPR)
+Q1: Enumerate the three main support types of Cardiopulmonary Resuscitation (CPR) and outline the specific steps or components of each type.
+Answer:
+The three main support types and their steps are:
+I- Basic Life Support (A, B, C): Aims to restore spontaneous breathing and circulation.
+A: Airway control: Open the airway by triple airway maneuver (Head tilt, Jaw thrust, Mouth opening) , Clear the airway (Remove obvious foreign bodies cautiously avoiding finger sweep, and suction the mouth/Oropharynx) , and Maintain patent airway (using Oropharyngeal airway or Endotracheal tube).
+B: Breathing support: Administered with artificial ventilation via mouth-to-mouth breathing, bag and mask ventilation with $O_2$, or bag and tube ventilation with $O_2$ (ventilatory rate is 20 breaths/minute).
+C: Circulation support: Administered with cardiac compression at the midsternum point. Techniques include hand encircling (newborns), two fingers (infants), one hand (young children), and two hands (old children). Frequency is about 100/minute. Ratio of ventilation to cardiac compression is 1:5 altogether.
+II- Advanced Life Support (D, E, F): Indicated when basic life support is not successful.
+D: Drugs (I.V.): Insert I.V line and give fluids (Ringer's lactate or normal saline: $20\text{ ml/kg}$ over 10 min), give sodium bicarbonate ($1\text{ ml/kg}$ of 8.4% solution or $2\text{ ml/kg}$ of 5% solution), and give adrenaline ($0.1\text{ ml/kg}$ of diluted solution $1\text{ ml}+9\text{ ml}$ saline).
+E: ECG monitoring: Important to detect various cardiac arrhythmias (With asystole: Repeat adrenaline 10 times the first dose).
+F: Fibrillation control: Indicated with ventricular fibrillation; defibrillate up to 3 times (2 joules/kg, 4 joules/kg, and 8 joules/kg).
+III- Prolonged life support (G, H, I): It is the post-resuscitation management and aims to:
+G: Recognition and treatment of the causative disease according to the etiology.
+H: Brain recovery by control of any convulsive fits or acute increased intracranial pressure.
+I: Intensive care for multiple system support done carefully in the PICU.
+Section II: Shock
+Q2: Define Shock in pediatric patients.
+Answer: Shock is the clinical state of circulatory inadequacy when there is disruption of tissue perfusion leading to inadequate supplies of oxygen and nutrients to and removal of metabolites from the cells of an end organ.
+Q3: List the clinical grading of Shock including the presentation of each grade.
+Answer:
+Grade I (Early shock = peripheral hypoperfusion): Tachycardia and poor peripheral perfusion.
+Grade II (Established shock = arterial hypotension): Tachycardia, poor peripheral perfusion, and hypotension.
+Grade III (Advanced shock = vital organ hypoperfusion): Multiple organ system failure (MOSF).
+Grade IV (Irreversible shock = irreversible cellular damage): Refractory metabolic acidosis.
+Q4: Short Essay: Enumerate the main types of shock and detail the specific causes for each type as per the textbook.
+Answer:
+Septic shock:
+Primary septicemia (due to fulminant sepsis as meningococcal septicemia).
+Secondary septicemia (due to serious focal infection).
+Endogenous septicemia (due to translocation of bacteria from the gut).
+Hypovolemic shock:
+Severe dehydration (severe diarrhea, severe vomiting, diabetic ketoacidosis, heat stroke, diabetes insipidus).
+Severe hemorrhage (external or internal and traumatic or spontaneous).
+Severe burns (due to plasma losses).
+Obstructive shock:
+Tension pneumothorax or hemothorax.
+Cardiac tamponade (due to pericardial effusion or hemopericardium).
+Critical obstructive lesions (critical pulmonary or aortic stenosis, critical coarctation).
+Pulmonary embolism by thrombus, fat or air.
+Cardiogenic shock:
+Severe acute heart failure.
+Advanced shock (myocardial ischemia).
+Late septic shock (due to toxic myocarditis).
+Kinetic or Distributive shock:
+Anaphylactic shock (due to drugs, foods, insect stings, serums, immunoglobulins).
+Neurogenic shock (head trauma, brain stem injury, or high spinal cord transection).
+Early Septic shock.
+Metabolic shock:
+Acute suprarenal failure (hemorrhage or necrosis).
+Section III: Coma & Glasgow Coma Scale (GCS)
+Q5: Define Coma and outline its primary and secondary brain lesion causes.
+Answer:
+Definition: Coma is a state of prolonged unconsciousness in which the child cannot be aroused even with painful stimuli.
+Primary brain lesion causes: Intracranial infection (Meningitis, encephalitis, brain abscess); Intracranial hemorrhage (Traumatic head injury or Non-traumatic such as hemophilia, DIC, ITP, rupture aneurysm, A-V malformation); Other brain lesions (Cerebral infarction, status epilepticus, brain tumors).
+Secondary brain lesion causes (Encephalopathy): Hypoxic encephalopathy (with hypoxia, shock, severe anemia); Endogenous encephalopathy (with severe dehydration, metabolic acidosis, electrolyte disturbances, acute renal failure, acute hepatic failure, DKA, hypoglycemia, hyperammonemia); Exogenous encephalopathy (poisoning).
+Q6: Mention the clinical grading system of Coma.
+Answer:
+Grade I (stupor): The patient can be aroused for only a short period (less than a minute).
+Grade II (light coma): The patient cannot be aroused by painful stimuli, but responds to painful stimuli by withdrawal movements.
+Grade III (deep coma): No response to painful stimuli but breathes spontaneously.
+Grade IV (deep coma with apnea): No response to painful stimuli and apnea. If not mechanically ventilated, brain death occurs in 5 minutes.
+Q7: Detail the components and score allocation of the Pediatric Glasgow Coma Scale (GCS).
+Answer: The scale provides a numerical score from 3 to 15 based on three main responses:
+Eye Opening (Total points: 4): Spontaneous (4), To voice (3), To pain (2), None (1).
+Verbal Response (Total points: 5):
+Older Children: Oriented (5), Confused (4), Inappropriate words (3), Incomprehensible words (2), None (1).
+Infants and Young Children: Appropriate words, smiles, fixes, and follows (5); Consolable crying (4); Persistently irritable (3); Restless, agitated (2); None (1).
+Motor Response (Total points: 6): Obeys (6), Localizes pain (5), Withdraws (4), Flexion (3), Extension (2), None (1).
+Q8: Mention the advantages of utilizing the Glasgow Coma Scale (GCS) in pediatric emergencies.
+Answer:
+Objective & standardized: Provides a numerical score (3-15) to track consciousness over time.
+Simple and quick: Can be applied at bedside in emergencies.
+Widely accepted: Used internationally in trauma, PICU, and emergency settings.
+Predictive value: Low GCS ($\le8$) indicates severe brain injury and need for airway protection.
+Communication tool: Allows clinicians to communicate patient status clearly.
+
+Title 1: Principles of family medicine
+Case 1: A 45-year-old male patient who has been registered with the same family physician for 10 years presents for a routine check-up. The physician manages his Hypertension, screens him for Colon Cancer, evaluates his psychosocial stress at work, and coordinates his care with a cardiologist when needed.
+Question 1: Enumerate the four key elements of "Continuity of Care" as a core principle in family medicine demonstrated in managing this patient over his life course.
+Answer 1: 1. Mutual trust between patient and physician. 2. Long-term therapeutic relationship. 3. Effectiveness of care. 4. Continuity focused on the patient, not on isolated diseases.
+Question 2: List the five core services or dimensions integrated within the comprehensive and holistic approach of family medicine.
+Answer 2: 1. Health promotion. 2. Disease prevention. 3. Curative care. 4. Rehabilitation. 5. Physical, psychological, and social support.
+Title 2: Family physician- family health team- family health model
+Case 2: A family physician is reviewing the monthly performance of the Family Health Center (FHC). He notices a conflict in the delegation of duties between the clinical nurse and the social worker, as well as a lack of proper documentation in the health records.
+Question 3: Enumerate the five core parameters of the family physician's role as a "Five-Star Doctor" summarized by the World Health Organization (WHO).
+Answer 3: 1. Assesses and improves the quality of care by responding to the patient's total health needs. 2. Makes optimal use of new technologies in health care. 3. Promotes healthy lifestyles. 4. Recognizes individual and community health needs. 5. Works efficiently as a member of the health care team.
+Question 4: Enumerate four specific members who belong strictly to the "Administrative and Support Staff" category of the Family Health Team.
+Answer 4: 1. Front Office Staff. 2. Medical Records Officer. 3. Births and Deaths Officer. 4. Pharmacy Clerk or Storage Room Officer.
+Title 3: Basic benefit package
+Case 3: A mother brings her infant to the clinic. The family physician is reviewing the components of the Basic Benefit Package (BBP) to verify which child clinical services and laboratory tests can be fully completed at the primary care facility.
+Question 5: Enumerate four essential laboratory investigations that are fully available at the level of the Family Health Unit (FHU) according to the BBP laboratory services guidelines.
+Answer 5: 1. Blood glucose. 2. Hemoglobin (Hb). 3. Stool analysis. 4. Urine analysis.
+Question 6: List the three sequential levels of service delivery through which the Basic Benefit Package is implemented within the family health delivery model.
+Answer 6: 1. Family Health Unit (FHU). 2. Family Health Centre (FHC). 3. Hospital Level.
+Title 4: family - Family dynamics
+Case 4: A 14-year-old adolescent is brought to the clinic. Genogram analysis reveals a strong family history of early-onset coronary artery disease. Recently, the family experienced a major crisis due to the sudden death of the father, causing profound emotional instability.
+Question 7: Enumerate the five main functional parameters of the family that represent its baseline societal obligations using the CAPRS framework.
+Answer 7: 1. C - Care: Provision of basic needs such as food, shelter, and social support. 2. A - Affection: Psychosocial support including love, warmth, and emotional security. 3. P - Providing status: Helping family members determine future education, occupation, and social roles. 4. R - Reproduction: Continuity of the family through legal marriage and childbearing. 5. S - Socialization: Teaching social skills, norms, values, and acceptable behaviors.
+Question 8: List four chronic or metabolic diseases in which a detailed family history contributes directly to calculating the patient's individual risk database.
+Answer 8: 1. Cancer (especially breast, colon, prostate, and ovarian). 2. Hypertension. 3. Diabetes Mellitus. 4. Hyperlipidaemia or Coronary artery disease.
+Title 5: patient education
+Case 5: A 50-year-old male patient with newly diagnosed asymptomatic Hypertension tells the family physician, "I don't need to take my anti-hypertensive drugs daily; I will only take them on the days when I feel a headache".
+Question 9: Enumerate four fundamental reasons/clinical advantages that outline the core importance of implementing effective patient education in family medicine.
+Answer 9: 1. Increased patient satisfaction with medical care. 2. Promotion of healthy behaviors and modification of unhealthy habits. 3. Reduction of unnecessary health care utilization (avoidable office visits/phone calls). 4. Reduction of serious illness outcomes, decrease in complications, and lowering hospitalization costs.
+Question 10: List four essential behavioral or structural principles that must guide the delivery of high-quality patient education during a clinical consultation.
+Answer 10: 1. Feedback (ensuring the patient understands the information). 2. Reinforcement (encouraging and rewarding progress). 3. Individualization (tailoring education according to baseline needs/goals). 4. Facilitation (providing printed materials or skills training).
+Title 6: Referral
+Case 6: A family physician is caring for a patient with progressive symptoms of ischemic heart disease that are no longer responding efficiently to medical management at the primary care setting. He decides to transfer the care of this specific problem to a cardiologist.
+Question 11: Enumerate five essential socio-demographic or clinical components that MUST be clearly documented inside a standard, structurally valid medical referral letter.
+Answer 11: 1. Socio-demographic data (name, age, sex, and family health record number). 2. Type of referral (urgent or elective) and destination hospital/specialty. 3. Main complaint, present history, and relevant past medical/surgical history. 4. Relevant physical examination findings and matching investigations. 5. Provisional diagnosis and explicit reasons/expectations for referral.
+Question 12: Clearly state the primary conceptual difference between a "Referral" and a "Consultation" within family medicine practice.
+Answer 12: * Consultation is the practice of one physician asking another for an opinion or assistance regarding the diagnosis and management of a patient (while retaining primary responsibility).
+Referral is the formal process of transferring the actual clinical responsibility of a patient to another physician for the care of a specific health problem.
