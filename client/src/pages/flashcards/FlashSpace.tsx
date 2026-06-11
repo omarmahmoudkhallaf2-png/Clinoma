@@ -9269,7 +9269,7 @@ const FlashSpace = () => {
         margin = 20;
         box_w = 170;
         box_h = 14;
-      } else if (pdfId === 'camp2_quiz' || pdfId === 'camp2_quiz_answers' || pdfId === 'camp2_essay' || pdfId === 'camp2_essay_answers') {
+      } else if (pdfId === 'camp2_quiz' || pdfId === 'camp2_quiz_answers' || pdfId === 'camp2_essay' || pdfId === 'camp2_essay_answers' || pdfId === 'camp2_essay_day2' || pdfId === 'camp2_essay_day2_answers') {
         chapterCovers = [];
         margin = 15;
         box_w = 170;
@@ -9295,7 +9295,7 @@ const FlashSpace = () => {
       for (let i = 0; i < pageCount; i++) {
         const p = i + 1;
         // Skip cover, index, and chapter covers
-        const skipThreshold = (pdfId === 'camp2_quiz' || pdfId === 'camp2_quiz_answers' || pdfId === 'camp2_essay' || pdfId === 'camp2_essay_answers') ? 0 : (pdfId === 'questions' || pdfId === 'answers' || pdfId === 'quiz' || pdfId === 'quiz_answers') ? 1 : 2;
+        const skipThreshold = (pdfId === 'camp2_quiz' || pdfId === 'camp2_quiz_answers' || pdfId === 'camp2_essay' || pdfId === 'camp2_essay_answers' || pdfId === 'camp2_essay_day2' || pdfId === 'camp2_essay_day2_answers') ? 0 : (pdfId === 'questions' || pdfId === 'answers' || pdfId === 'quiz' || pdfId === 'quiz_answers') ? 1 : 2;
         if (p > skipThreshold && !chapterCovers.includes(p)) {
           const page = pdfDoc.getPage(i);
           const height = page.getHeight();
@@ -10993,7 +10993,7 @@ const FlashSpace = () => {
           ) : !selectedSystem ? (
             // SYSTEM SELECTION - premium glassmorphism layout
             <div className="h-full flex flex-col p-4 md:p-8 gap-6 md:gap-8 max-w-7xl mx-auto w-full">
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 shrink-0 mt-2">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 shrink-0 mt-2 relative">
                 <div className="flex items-center gap-4">
                   <button onClick={() => {
                     setSelectedModule(null);
@@ -11030,9 +11030,19 @@ const FlashSpace = () => {
                   </div>
                 )}
                 {selectedModule === 'الورقة الثانية' && (
-                  <div className="flex items-center gap-2.5 px-4 py-2.5 bg-white/5 border border-white/10 rounded-2xl text-white text-xs md:text-sm font-black backdrop-blur-md shadow-md animate-pulse">
-                    <Clock className="w-4 h-4 text-white" />
-                    <span dir="rtl">{countdownText}</span>
+                  <div className="md:absolute md:left-1/2 md:-translate-x-1/2 md:top-1/2 md:-translate-y-1/2 flex items-center justify-center z-30 w-full md:w-auto">
+                    <div className="relative flex items-center gap-3 bg-gradient-to-r from-purple-950/40 via-slate-900 to-purple-950/40 border-2 border-purple-500/40 hover:border-purple-400/70 shadow-[0_0_25px_rgba(168,85,247,0.25)] px-6 py-2 rounded-2xl transition-all duration-300 select-none group animate-pulse scale-105">
+                      {/* Glow backing */}
+                      <div className="absolute inset-0 bg-purple-500/[0.05] rounded-2xl blur-md group-hover:bg-purple-500/[0.1] transition-colors" />
+                      
+                      <div className="w-7 h-7 rounded-lg bg-purple-500/20 flex items-center justify-center border border-purple-500/30 shrink-0 z-10">
+                        <Clock className="w-4 h-4 text-purple-350 animate-pulse" />
+                      </div>
+                      
+                      <span className="font-mono text-xs md:text-sm font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-100 via-pink-200 to-purple-100 tracking-wide z-10" dir="rtl">
+                        {countdownText}
+                      </span>
+                    </div>
                   </div>
                 )}
               </div>
@@ -11908,6 +11918,120 @@ const FlashSpace = () => {
                           </button>
                         </div>
                       )}
+                    </div>
+                  );
+                })()}
+
+                {/* ─── DAY 2 ESSAY SECTION ─────────────────────────── */}
+                {camp2ActiveDay === 2 && (() => {
+                  const nowMs = Date.now();
+                  const CAMP2_DAY2_START_TIME = new Date('2026-06-11T09:00:00+03:00').getTime(); // 9 AM Cairo time on June 11
+                  const isAdmin          = userData?.role === 'admin';
+                  const showUnsolvedEssay = nowMs >= CAMP2_DAY2_START_TIME || isAdmin;
+                  const showSolvedEssay   = nowMs >= CAMP2_DAY2_START_TIME || isAdmin;
+
+                  return (
+                    <div className="mt-8 space-y-4">
+                      {/* Essay Section Header */}
+                      <div className="flex flex-col gap-1.5 pt-6 border-t border-white/5 text-right">
+                        <div className="flex items-center justify-between">
+                          <h3 className="text-base font-black text-white flex items-center gap-2">
+                            <span className="text-xl">✍️</span> الأسئلة المقالية (مقالي اليوم الثاني)
+                          </h3>
+                          {!showUnsolvedEssay && (
+                            <span className="text-[11px] font-black text-amber-400 bg-amber-500/10 border border-amber-500/20 px-3 py-1 rounded-full">
+                              🔒 يفتح المقالي في 09:00 ص
+                            </span>
+                          )}
+                          {showUnsolvedEssay && (
+                            <span className="text-[11px] font-black text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 px-3 py-1 rounded-full">
+                              ✅ الأسئلة والإجابات متاحة الآن
+                            </span>
+                          )}
+                        </div>
+                        <p className="text-[11px] text-slate-400 font-bold">ملفات الأسئلة المقالية الهامة لمعسكر اليوم الثاني.</p>
+                      </div>
+
+                      {/* Essay PDF Cards */}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        {/* Unsolved Essay PDF Card */}
+                        {showUnsolvedEssay ? (
+                          <div className="rounded-2xl border p-5 flex flex-col gap-3 transition-all bg-slate-800/60 border-purple-500/30 hover:border-purple-400/60 text-right">
+                            <div className="flex items-center gap-3">
+                              <div className="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-xl shrink-0">📝</div>
+                              <div>
+                                <p className="text-sm font-black text-white">كراسة الأسئلة المقالية</p>
+                                <p className="text-[11px] text-slate-500 font-bold">بدون إجابات — للتدريب والحل</p>
+                              </div>
+                            </div>
+                            <button
+                              onClick={() => handleDownloadPDF(
+                                'camp2_essay_day2',
+                                '/معسكر_الورقة_الثانية_اليوم_الثاني_مقالي.pdf',
+                                'معسكر_الورقة_الثانية_اليوم_الثاني_مقالي.pdf'
+                              )}
+                              className="w-full py-2.5 rounded-xl text-xs font-black transition-all bg-purple-600 hover:bg-purple-500 text-white active:scale-95 cursor-pointer"
+                            >
+                              ⬇️ تحميل كراسة الأسئلة المقالية
+                            </button>
+                          </div>
+                        ) : (
+                          <div className="rounded-2xl border p-5 flex flex-col gap-3 bg-slate-900/40 border-white/5 opacity-60 text-right">
+                            <div className="flex items-center gap-3">
+                              <div className="w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center text-xl shrink-0">🔒</div>
+                              <div>
+                                <p className="text-sm font-black text-white">كراسة الأسئلة المقالية</p>
+                                <p className="text-[11px] text-slate-500 font-bold">يفتح تلقائياً في تمام الساعة 09:00 صباحاً</p>
+                              </div>
+                            </div>
+                            <button
+                              disabled
+                              className="w-full py-2.5 rounded-xl text-xs font-black bg-slate-800 text-slate-600 cursor-not-allowed"
+                            >
+                              🔒 غير متاح بعد
+                            </button>
+                          </div>
+                        )}
+
+                        {/* Solved Essay PDF Card */}
+                        {showSolvedEssay ? (
+                          <div className="rounded-2xl border p-5 flex flex-col gap-3 transition-all bg-slate-800/60 border-emerald-500/30 hover:border-emerald-400/60 text-right">
+                            <div className="flex items-center gap-3">
+                              <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-xl shrink-0">✅</div>
+                              <div>
+                                <p className="text-sm font-black text-white">إجابات الأسئلة المقالية</p>
+                                <p className="text-[11px] text-slate-500 font-bold">نموذج الإجابات الكامل والحلول</p>
+                              </div>
+                            </div>
+                            <button
+                              onClick={() => handleDownloadPDF(
+                                'camp2_essay_day2_answers',
+                                '/معسكر_الورقة_الثانية_اليوم_الثاني_مقالي_إجابات.pdf',
+                                'معسكر_الورقة_الثانية_اليوم_الثاني_مقالي_إجابات.pdf'
+                              )}
+                              className="w-full py-2.5 rounded-xl text-xs font-black transition-all bg-emerald-500 hover:bg-emerald-400 text-white active:scale-95 cursor-pointer"
+                            >
+                              ⬇️ تحميل نموذج الإجابات
+                            </button>
+                          </div>
+                        ) : (
+                          <div className="rounded-2xl border p-5 flex flex-col gap-3 bg-slate-900/40 border-white/5 opacity-60 text-right">
+                            <div className="flex items-center gap-3">
+                              <div className="w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center text-xl shrink-0">🔒</div>
+                              <div>
+                                <p className="text-sm font-black text-white">إجابات الأسئلة المقالية</p>
+                                <p className="text-[11px] text-slate-500 font-bold">يفتح تلقائياً في تمام الساعة 09:00 صباحاً</p>
+                              </div>
+                            </div>
+                            <button
+                              disabled
+                              className="w-full py-2.5 rounded-xl text-xs font-black bg-slate-800 text-slate-600 cursor-not-allowed"
+                            >
+                              🔒 غير متاح بعد
+                            </button>
+                          </div>
+                        )}
+                      </div>
                     </div>
                   );
                 })()}
@@ -12829,31 +12953,43 @@ const FlashSpace = () => {
                 <div className="absolute top-0 left-0 w-80 h-80 bg-rose-500/10 rounded-full blur-[100px] pointer-events-none" />
 
                 {/* Game Top Info */}
-                <div className="flex items-center justify-between border-b border-slate-800 pb-4 relative z-20">
-                  <div className="flex items-center gap-4 text-right">
-                    <div className="p-2.5 bg-rose-500/10 text-rose-500 rounded-xl">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between border-b border-slate-800 pb-4 gap-4 relative z-20" dir="rtl">
+                  {/* Title & Description (Right side in RTL) */}
+                  <div className="flex items-center gap-3 text-right">
+                    <div className="p-2.5 bg-rose-500/10 text-rose-500 rounded-xl shrink-0">
                       <Award className="w-5 h-5" />
                     </div>
                     <div>
-                      <h3 className="text-base md:text-lg font-black text-amber-500 tracking-tight">
+                      <h3 className="text-sm md:text-base font-black text-amber-500 tracking-tight">
                         {currentMatchingSets[campCurrentSetIdx].title}
                       </h3>
-                      <p className="text-xs text-slate-400 font-bold">
+                      <p className="text-[11px] text-slate-400 font-bold">
                         {currentMatchingSets[campCurrentSetIdx].description}
                       </p>
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-6 bg-slate-950 border border-slate-800 px-5 py-2.5 rounded-2xl">
-                    <div className="flex items-center gap-2">
-                      <Clock className="w-4 h-4 text-rose-500 animate-pulse" />
-                      <span className="font-mono text-lg font-bold text-rose-500">
+                  {/* Centered Timer: Extremely clear and attractive */}
+                  <div className="flex flex-col items-center justify-center sm:absolute sm:left-1/2 sm:-translate-x-1/2 sm:top-1/2 sm:-translate-y-1/2">
+                    <div className="relative flex flex-col items-center bg-gradient-to-b from-slate-950 to-slate-900 border-2 border-rose-500/30 shadow-lg shadow-rose-500/10 px-6 md:px-8 py-1.5 rounded-2xl transition-all select-none hover:border-rose-500/60 group">
+                      {/* Glow effect background */}
+                      <div className="absolute inset-0 bg-rose-500/[0.02] rounded-2xl blur-sm group-hover:bg-rose-500/[0.05] transition-colors" />
+                      
+                      <span className="text-[9px] md:text-[10px] font-black text-rose-400 uppercase tracking-widest mb-0.5 z-10 flex items-center gap-1">
+                        <Clock className="w-3.5 h-3.5 text-rose-500 animate-pulse" /> الوقت المتبقي
+                      </span>
+                      <span className="font-mono text-xl md:text-2xl font-black text-rose-500 tracking-wider z-10 animate-pulse">
                         {Math.floor(campTestTimeLeft / 60)}:{(campTestTimeLeft % 60).toString().padStart(2, '0')}
                       </span>
                     </div>
-                    <div className="h-4 w-px bg-slate-800" />
-                    <div className="text-xs font-black text-slate-400">
-                      المجموعة: <span className="text-amber-500">{campCurrentSetIdx + 1}</span> / {currentMatchingSets.length}
+                  </div>
+
+                  {/* Group / Set Index (Left side in RTL) */}
+                  <div className="flex justify-end self-end sm:self-center">
+                    <div className="flex items-center gap-2 bg-slate-950 border border-slate-800 px-4 py-2 rounded-xl">
+                      <span className="text-xs font-black text-slate-400">
+                        المجموعة: <span className="text-amber-500 font-black">{campCurrentSetIdx + 1}</span> / {currentMatchingSets.length}
+                      </span>
                     </div>
                   </div>
                 </div>
