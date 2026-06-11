@@ -40,7 +40,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="flex items-center gap-3 group cursor-pointer" onClick={() => navigate('/')}>
             <div className="group-hover:scale-110 transition-transform duration-500">
-              <img src="/favicon.svg" alt="Clinoma Logo" className="w-10 h-10 object-contain" />
+              <img src="/favicon.svg" alt="Clinoma Logo" className="w-10 h-10 object-contain rounded-xl" />
             </div>
             <span className="text-2xl font-black tracking-tighter">CLINOMA</span>
           </div>
@@ -136,7 +136,7 @@ export default function Home() {
           <div className="col-span-2 space-y-6">
             <div className="flex items-center gap-3 mb-6">
               <div className="hover:scale-110 transition-transform duration-500">
-                <img src="/favicon.svg" alt="Clinoma Logo" className="w-10 h-10 object-contain" />
+                <img src="/favicon.svg" alt="Clinoma Logo" className="w-10 h-10 object-contain rounded-xl" />
               </div>
               <span className="text-2xl font-black tracking-tighter">CLINOMA</span>
             </div>
