@@ -31,7 +31,7 @@ import { Button } from '../ui/Button';
 import NotificationCenter from './NotificationCenter';
 import { useData } from '../../context/DataContext';
 
-export default function Sidebar({ isOpen = false, setIsOpen = (_: boolean) => { } }: any) {
+export default function Sidebar({ isOpen = false, setIsOpen = (_: boolean) => { }, isCollapsed = false, setIsCollapsed = (_: boolean) => { } }: any) {
   const navigate = useNavigate();
   const location = useLocation();
   const { theme, toggleTheme } = useTheme();
@@ -90,8 +90,9 @@ export default function Sidebar({ isOpen = false, setIsOpen = (_: boolean) => { 
       </AnimatePresence>
 
       <div className={cn(
-        "fixed left-0 top-0 h-screen w-72 bg-card border-r border-border flex flex-col z-50 transition-transform duration-300 ease-in-out lg:translate-x-0",
-        isOpen ? "translate-x-0" : "-translate-x-full"
+        "fixed left-0 top-0 h-screen w-72 bg-card border-r border-border flex flex-col z-50 transition-all duration-300 ease-in-out",
+        isOpen ? "translate-x-0" : "-translate-x-full",
+        isCollapsed ? "lg:-translate-x-full" : "lg:translate-x-0"
       )}>
         {/* Brand Header */}
         <div className="p-6 overflow-y-auto flex-1 custom-scrollbar">
@@ -108,6 +109,19 @@ export default function Sidebar({ isOpen = false, setIsOpen = (_: boolean) => { 
                 <span className="text-[10px] font-bold text-primary uppercase tracking-[0.2em] mt-1 opacity-60">Medical Hub</span>
               </div>
             </div>
+            
+            {/* Desktop collapse button */}
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setIsCollapsed(true)}
+              className="hidden lg:flex hover:bg-secondary/50 rounded-xl"
+              title="إخفاء القائمة"
+            >
+              <X className="w-5 h-5 text-muted-foreground" />
+            </Button>
+
+            {/* Mobile close button */}
             <Button
               variant="ghost"
               size="icon"
@@ -120,7 +134,7 @@ export default function Sidebar({ isOpen = false, setIsOpen = (_: boolean) => { 
 
           {/* Quick Search Trigger */}
           <button
-            onClick={() => window.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', ctrlKey: true }))}
+            onClick={() => window.dispatchEvent(new CustomEvent('toggle-command-palette'))}
             className="w-full flex items-center gap-2 px-3 py-2 rounded-lg bg-muted/50 border border-transparent hover:border-border transition-all text-muted-foreground group mb-6"
           >
             <Search className="w-4 h-4" />
