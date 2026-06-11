@@ -111,7 +111,7 @@ export default function Login() {
           {/* Logo */}
           <div className="flex items-center justify-center gap-2 mb-8">
             <div className="group-hover:scale-110 transition-transform duration-500">
-              <img src="/favicon.svg" alt="Clinoma Logo" className="w-16 h-16 object-contain rounded-2xl" />
+              <img src="/favicon.png" alt="Clinoma Logo" className="w-16 h-16 object-contain" />
             </div>
             <span className="text-2xl font-extrabold tracking-tight">CLINOMA</span>
           </div>
