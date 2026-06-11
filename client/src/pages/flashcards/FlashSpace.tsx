@@ -11925,7 +11925,7 @@ const FlashSpace = () => {
                 {/* ─── DAY 2 ESSAY SECTION ─────────────────────────── */}
                 {camp2ActiveDay === 2 && (() => {
                   const nowMs = Date.now();
-                  const CAMP2_DAY2_START_TIME = new Date('2026-06-11T09:00:00+03:00').getTime(); // 9 AM Cairo time on June 11
+                  const CAMP2_DAY2_START_TIME = new Date('2026-06-11T18:00:00+03:00').getTime(); // 6 PM Cairo time on June 11
                   const isAdmin          = userData?.role === 'admin';
                   const showUnsolvedEssay = nowMs >= CAMP2_DAY2_START_TIME || isAdmin;
                   const showSolvedEssay   = nowMs >= CAMP2_DAY2_START_TIME || isAdmin;
@@ -11940,7 +11940,7 @@ const FlashSpace = () => {
                           </h3>
                           {!showUnsolvedEssay && (
                             <span className="text-[11px] font-black text-amber-400 bg-amber-500/10 border border-amber-500/20 px-3 py-1 rounded-full">
-                              🔒 يفتح المقالي في 09:00 ص
+                              🔒 يفتح المقالي في 06:00 م
                             </span>
                           )}
                           {showUnsolvedEssay && (
@@ -11981,7 +11981,7 @@ const FlashSpace = () => {
                               <div className="w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center text-xl shrink-0">🔒</div>
                               <div>
                                 <p className="text-sm font-black text-white">كراسة الأسئلة المقالية</p>
-                                <p className="text-[11px] text-slate-500 font-bold">يفتح تلقائياً في تمام الساعة 09:00 صباحاً</p>
+                                <p className="text-[11px] text-slate-500 font-bold">يفتح تلقائياً في تمام الساعة 06:00 مساءً</p>
                               </div>
                             </div>
                             <button
@@ -12020,7 +12020,7 @@ const FlashSpace = () => {
                               <div className="w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center text-xl shrink-0">🔒</div>
                               <div>
                                 <p className="text-sm font-black text-white">إجابات الأسئلة المقالية</p>
-                                <p className="text-[11px] text-slate-500 font-bold">يفتح تلقائياً في تمام الساعة 09:00 صباحاً</p>
+                                <p className="text-[11px] text-slate-500 font-bold">يفتح تلقائياً في تمام الساعة 06:00 مساءً</p>
                               </div>
                             </div>
                             <button
