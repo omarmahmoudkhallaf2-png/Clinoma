@@ -9,78 +9,42 @@ import {
   Database,
   HelpCircle,
   Command as CommandIcon,
-  Brain,
-  BookOpen,
-  Clock,
-  Video,
-  ClipboardList
 } from "lucide-react"
 import { useAuth } from "../../context/AuthContext"
-import { useData } from "../../context/DataContext"
 
 export function CommandPalette() {
   const [open, setOpen] = React.useState(false)
   const [search, setSearch] = React.useState("")
   const navigate = useNavigate()
   const { logout, userRole } = useAuth()
-  const { courses } = useData()
 
   React.useEffect(() => {
+    // SECURITY: Only register the shortcut listener for admins
+    if (userRole !== 'admin') return;
+
     const down = (e: KeyboardEvent) => {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault()
         setOpen((open) => !open)
       }
     }
-    const handleToggle = () => {
-      setOpen((open) => !open)
-    }
-
     document.addEventListener("keydown", down)
-    window.addEventListener("toggle-command-palette", handleToggle)
-    return () => {
-      document.removeEventListener("keydown", down)
-      window.removeEventListener("toggle-command-palette", handleToggle)
-    }
-  }, [])
+    return () => document.removeEventListener("keydown", down)
+  }, [userRole])
 
-  const actions: any[] = [
+  const actions = [
     { icon: LayoutDashboard, label: "لوحة التحكم", path: "/dashboard", category: "Navigation" },
-    { icon: Settings, label: "الإعدادات الشخصية", path: "/settings", category: "Navigation" },
-    { icon: Brain, label: "المراجعة الذكية", path: "/review", category: "Smart tools" },
-    { icon: BookOpen, label: "الفلاش كارد - Flash Space", path: "/flashcards", category: "Smart tools" },
-    { icon: ClipboardList, label: "الاختبارات والتوصيل", path: "/exams", category: "Smart tools" },
-    { icon: Database, label: "بنوك الأسئلة", path: "/question-banks", category: "Navigation" },
-    { icon: Video, label: "المكتبة التعليمية المرئية (الفيديوهات)", path: "/dashboard", category: "Navigation" },
-    { icon: Clock, label: "ساعة التركيز Pomodoro", path: "/pomodoro", category: "Smart tools" },
-    { icon: HelpCircle, label: "الدعم الفني", action: () => {
-      window.open("https://t.me/Clinoma_Admins", "_blank");
-    }, category: "Support" },
+    { icon: Settings, label: "الإعدادات", path: "/settings", category: "Navigation" },
+    { icon: HelpCircle, label: "الدعم الفني", action: () => {}, category: "Support" },
     { icon: LogOut, label: "تسجيل الخروج", action: logout, category: "Account" },
   ]
 
-  // Add admin options ONLY for admins
   if (userRole === "admin") {
     actions.push({ icon: Database, label: "إدارة المنصة", path: "/admin", category: "Admin" })
   }
 
-  // Add courses dynamically
-  if (courses && courses.length > 0) {
-    courses.forEach((course: any) => {
-      actions.push({
-        icon: BookOpen,
-        label: course.name,
-        path: course.isFlashSpace 
-          ? `/flashcards/space?module=${encodeURIComponent(course.flashSpaceModule || course.name)}`
-          : `/course/${course.id}`,
-        category: "Courses / الكورسات"
-      });
-    });
-  }
-
   const filteredActions = actions.filter(a => 
-    a.label.toLowerCase().includes(search.toLowerCase()) ||
-    (a.category && a.category.toLowerCase().includes(search.toLowerCase()))
+    a.label.toLowerCase().includes(search.toLowerCase())
   )
 
   const handleAction = (item: any) => {
@@ -90,10 +54,13 @@ export function CommandPalette() {
     setSearch("")
   }
 
+  // SECURITY: Don't render anything if not an admin
+  if (userRole !== 'admin') return null;
+
   return (
     <AnimatePresence>
       {open && (
-        <div className="fixed inset-0 z-[99999] flex items-start justify-center pt-[20vh] px-4">
+        <div className="fixed inset-0 z-[100] flex items-start justify-center pt-[20vh] px-4">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -129,7 +96,7 @@ export function CommandPalette() {
                       onClick={() => handleAction(item)}
                       className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm text-foreground hover:bg-accent transition-colors group"
                     >
-                      <item.icon className="h-4 w-4 text-muted-foreground group-hover:text-primary shrink-0" />
+                      <item.icon className="h-4 w-4 text-muted-foreground group-hover:text-primary" />
                       <span className="flex-1 text-right" dir="rtl">{item.label}</span>
                       <span className="text-[10px] text-muted-foreground uppercase tracking-wider">{item.category}</span>
                     </button>

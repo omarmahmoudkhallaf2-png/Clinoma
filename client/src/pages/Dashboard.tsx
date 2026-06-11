@@ -121,23 +121,78 @@ export default function Dashboard() {
             className="space-y-10"
           >
       {/* Premium Welcome Banner */}
-      <section 
-        onClick={() => navigate('/review')}
-        className="relative overflow-hidden rounded-[2rem] bg-gradient-to-r from-primary via-indigo-600 to-primary px-8 py-6 text-white shadow-xl shadow-primary/10 cursor-pointer hover:scale-[1.01] active:scale-[0.99] transition-all group"
-      >
-        <div className="absolute top-0 right-0 -mr-20 -mt-20 h-48 w-48 rounded-full bg-white/10 blur-2xl" />
-        <div className="absolute bottom-0 left-0 -ml-20 -mb-20 h-48 w-48 rounded-full bg-indigo-500/20 blur-2xl" />
+      <section className="relative overflow-hidden rounded-2xl bg-primary px-8 py-12 text-white shadow-2xl shadow-primary/20">
+        <div className="absolute top-0 right-0 -mr-20 -mt-20 h-64 w-64 rounded-full bg-white/10 blur-3xl" />
+        <div className="absolute bottom-0 left-0 -ml-20 -mb-20 h-64 w-64 rounded-full bg-indigo-500/20 blur-3xl" />
         
-        <div className="relative z-10 flex items-center justify-between w-full" dir="rtl">
-          <h1 className="text-xl md:text-3xl font-black tracking-tight flex items-center gap-2 select-none">
-            أهلاً بك، {user?.displayName}! 👋
-          </h1>
-          <span className="text-xs md:text-sm font-black bg-white/10 hover:bg-white/20 border border-white/10 px-5 py-2.5 rounded-xl flex items-center gap-2 transition-all">
-            <Brain className="w-4 h-4" />
-            <span>ابدأ المراجعة الذكية</span>
-          </span>
+        <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="space-y-3 text-center md:text-right">
+            <h1 className="text-2xl md:text-4xl font-black tracking-tight">
+              أهلاً بك، {user?.displayName?.split(' ')[0]}! 👋
+            </h1>
+            <p className="text-sm md:text-base text-primary-foreground/70 font-medium max-w-xl">
+              تتبع تقدمك، راجع أخطائك، واستعد للامتحانات بأفضل الأدوات التعليمية.
+            </p>
+            <div className="flex flex-wrap items-center gap-3 mt-4 justify-center md:justify-start">
+              <Button 
+                variant="ghost" 
+                size="sm"
+                onClick={() => navigate('/review')}
+                className="text-white hover:bg-white/10 text-xs font-bold px-6"
+              >
+                المراجعة الذكية
+              </Button>
+            </div>
+          </div>
+          
+          <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
+            <Card isGlass className="border-white/20 p-4 md:p-6 text-center shadow-none hover:scale-105 transition-transform duration-500">
+              <TrendingUp className="w-6 h-6 md:w-8 md:h-8 mx-auto mb-2 text-emerald-300" />
+              <div className="text-2xl md:text-3xl font-bold">%{userStats.accuracy}</div>
+              <div className="text-[8px] md:text-[10px] uppercase tracking-widest font-bold opacity-60">نسبة الدقة</div>
+            </Card>
+            <Card isGlass className="border-white/20 p-4 md:p-6 text-center shadow-none hover:scale-105 transition-transform duration-500 delay-75">
+              <Crown className="w-6 h-6 md:w-8 md:h-8 mx-auto mb-2 text-amber-300" />
+              <div className="text-2xl md:text-3xl font-bold">{userStats.points}</div>
+              <div className="text-[8px] md:text-[10px] uppercase tracking-widest font-bold opacity-60">إجمالي النقاط</div>
+            </Card>
+            <Card isGlass className="border-white/20 p-4 md:p-6 text-center shadow-none hover:scale-105 transition-transform duration-500 delay-150">
+              <Zap className="w-6 h-6 md:w-8 md:h-8 mx-auto mb-2 text-amber-300" />
+              <div className="text-2xl md:text-3xl font-bold">{userStats.streak}</div>
+              <div className="text-[8px] md:text-[10px] uppercase tracking-widest font-bold opacity-60">التفاعل اليومي</div>
+            </Card>
+          </div>
         </div>
       </section>
+
+      {/* Pomodoro Premium Banner - Static Edition */}
+      <div 
+        onClick={() => navigate('/pomodoro')}
+        className="relative group cursor-pointer"
+      >
+        <div className="absolute -inset-1 bg-gradient-to-r from-rose-600 to-rose-400 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200" />
+        <Card className="relative bg-gradient-to-r from-rose-600 via-rose-500 to-rose-400 border-none overflow-hidden h-20 md:h-24 flex items-center px-6 md:px-8 shadow-xl">
+          <div className="absolute top-0 right-0 -mr-10 -mt-10 h-32 w-32 rounded-full bg-white/10 blur-3xl group-hover:scale-150 transition-transform duration-700" />
+          
+          <div className="relative z-10 flex items-center justify-between w-full">
+            <div className="flex items-center gap-4 md:gap-6">
+              <div className="p-2 md:p-3 bg-white/10 backdrop-blur-md rounded-xl md:rounded-2xl border border-white/20">
+                <Clock className="w-5 h-5 md:w-8 md:h-8 text-white" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-xl md:text-3xl font-black text-white tracking-tighter leading-none">POMODORO</span>
+                <span className="text-[8px] md:text-xs font-bold text-white/60 uppercase tracking-[0.2em] mt-1">Focus Studio</span>
+              </div>
+            </div>
+            <div className="flex items-center gap-3 text-white font-bold text-xs md:text-base" dir="rtl">
+              <span className="hidden sm:block">نظام التركيز العالمي</span>
+              <div className="p-1.5 md:p-2 bg-white/20 rounded-full">
+                <ArrowRight className="w-4 h-4" />
+              </div>
+            </div>
+          </div>
+        </Card>
+      </div>
 
 
 
@@ -154,25 +209,26 @@ export default function Dashboard() {
                   عرض الكل <ChevronRight className="w-4 h-4" />
                 </Button>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {myCourses.map(course => (
-                  <Card key={course.id} className="group overflow-hidden border border-slate-100 dark:border-slate-800/50 hover:border-primary/20 rounded-[2rem] shadow-md hover:scale-[1.01] transition-all duration-300 relative bg-gradient-to-br from-white via-slate-50/50 to-slate-100/30 dark:from-slate-900 dark:to-slate-800/30">
+                  <Card key={course.id} className="group overflow-hidden border border-slate-100 dark:border-slate-800/50 hover:border-primary/20 rounded-[2.5rem] shadow-xl hover:scale-[1.02] transition-all duration-500 relative bg-gradient-to-br from-white via-slate-50/50 to-slate-100/30 dark:from-slate-900 dark:to-slate-800/30">
                     {course.trending && (
-                      <div className="absolute top-0 right-10 bg-gradient-to-r from-rose-500 to-orange-500 text-white text-[9px] font-black px-3 py-1 rounded-b-lg shadow-md flex items-center gap-1 z-10">
-                        <Zap className="w-3 h-3 fill-current" />
-                        رائج
+                      <div className="absolute top-0 right-10 bg-gradient-to-r from-rose-500 to-orange-500 text-white text-[10px] font-black px-4 py-1.5 rounded-b-xl shadow-lg flex items-center gap-1.5 z-10 animate-pulse">
+                        <Zap className="w-3.5 h-3.5 fill-current" />
+                        رائج الآن
                       </div>
                     )}
-                    <CardContent className="p-5 flex flex-col justify-between h-full gap-5">
-                      <div className="flex items-center gap-4 text-right w-full" dir="rtl">
-                        <div className={`w-12 h-12 ${course.isFlashSpace ? 'bg-indigo-50 text-indigo-600 group-hover:bg-indigo-600 shadow-indigo-500/5' : 'bg-primary/5 text-primary group-hover:bg-primary shadow-primary/5'} rounded-2xl flex items-center justify-center group-hover:text-white transition-all duration-300 shadow-sm flex-shrink-0`}>
-                          {course.isFlashSpace ? <Sparkles className="w-5 h-5" /> : <BookOpen className="w-5 h-5" />}
+                    <CardContent className="p-8 flex flex-col justify-between h-full gap-8">
+                      <div className="flex flex-col items-end gap-6 text-right w-full" dir="rtl">
+                        <div className={`w-16 h-16 ${course.isFlashSpace ? 'bg-indigo-50 text-indigo-600 group-hover:bg-indigo-600 shadow-indigo-500/10' : 'bg-primary/5 text-primary group-hover:bg-primary shadow-primary/5'} rounded-[1.5rem] flex items-center justify-center group-hover:text-white transition-all duration-500 shadow-md flex-shrink-0`}>
+                          {course.isFlashSpace ? <Sparkles className="w-7 h-7" /> : <BookOpen className="w-7 h-7" />}
                         </div>
-                        <div className="space-y-1">
-                          <h3 className="text-lg font-black text-slate-800 dark:text-white tracking-tight leading-tight">{course.name}</h3>
+                        <div className="space-y-3 w-full">
+                          <h3 className="text-2xl font-black text-slate-800 dark:text-white tracking-tight leading-tight">{course.name}</h3>
                           {course.isFlashSpace && (
-                            <span className="bg-indigo-100 text-indigo-700 px-2 py-0.5 rounded-md flex items-center gap-1 text-[9px] w-fit font-black"><Sparkles className="w-2.5 h-2.5" /> FLASH SPACE</span>
+                            <span className="bg-indigo-100 text-indigo-700 px-2 py-0.5 rounded-md flex items-center gap-1 text-[10px] w-fit font-black"><Sparkles className="w-3 h-3" /> FLASH SPACE</span>
                           )}
+                          <p className="text-sm text-slate-400 dark:text-slate-400 font-semibold leading-relaxed min-h-[48px] line-clamp-2">{course.description}</p>
                         </div>
                       </div>
                       <div className="flex items-center justify-end w-full">
@@ -185,10 +241,10 @@ export default function Dashboard() {
                               navigate(`/course/${course.id}`);
                             }
                           }}
-                          className={`w-full md:w-auto px-5 py-2.5 rounded-xl font-black text-[10px] uppercase shadow-md ${course.isFlashSpace ? 'bg-indigo-600 hover:bg-indigo-700 shadow-indigo-600/10' : 'shadow-primary/5 hover:shadow-lg'} hover:scale-[1.01] active:scale-95 transition-all flex items-center justify-center gap-2`}
+                          className={`w-full md:w-auto px-8 py-4 rounded-2xl font-black text-xs uppercase shadow-lg ${course.isFlashSpace ? 'bg-indigo-600 hover:bg-indigo-700 shadow-indigo-600/20' : 'shadow-primary/10 hover:shadow-xl'} hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3`}
                         >
                           <span>استكمال المذاكرة</span>
-                          <ArrowRight className="w-3.5 h-3.5" />
+                          <ArrowRight className="w-4 h-4" />
                         </Button>
                       </div>
                     </CardContent>
