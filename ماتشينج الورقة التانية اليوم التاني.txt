@@ -1,0 +1,236 @@
+Group 1: Clinical Presentations & Definitions
+Match the clinical scenario or core definition with the most appropriate diagnosis/stage:
+
+Column A (Scenarios & Definitions):
+
+1. An 8-year-old child presenting with cola-colored urine, mild to moderate edema, and hypertension 1–2 weeks after an episode of pharyngitis.
+
+2. A pediatric patient presenting with frothy urine, massive generalized edema (anasarca), hypoalbuminemia (<2.5 g/dL), and severe hyperlipidemia (>250 mg/dL).
+
+3. Persistent abnormalities of kidney structure or function for >3 months, OR a persistent decrease in GFR <60 mL/min/1.73m² for >3 months.
+
+4. A rapid decline in GFR staged as Stage 2 "Injury" based on pRIFLE criteria, where GFR decreases by 50% or urine output is <0.5 mL/kg/h for 16 hours.
+
+5. A young girl presenting with dysuria, urgency, frequency, and malodorous urine, characterized strictly by "NO FEVER and NO RENAL INJURY".
+
+Column B (Options):
+
+A) Cystitis (UTI)
+
+B) Stage 2 "Injury" (pRIFLE Criteria - AKI)
+
+C) Nephrotic Syndrome (MCNS)
+
+D) Chronic Kidney Disease (CKD)
+
+E) Acute Post-Streptococcal Glomerulonephritis (APSGN)
+
+Answer Key:
+
+1 -> (E)
+
+2 -> (C)
+
+3 -> (D)
+
+4 -> (B)
+
+5 -> (A)
+
+Group 2: Diagnostics, Pathology & Imaging
+Match the diagnostic finding, lab test, or imaging modality with its specific clinical indication:
+
+Column A (Diagnostic Findings & Tests):
+
+1. Immunofluorescence pathology showing characteristic "Lumpy bumpy deposits of immunoglobulin and complement on the GBM".
+
+2. Electron microscopy demonstrating "Effacement of epithelial cell foot processes" in a child with suspected Minimal Change Disease (MCNS).
+
+3. The rising antibody titer that serves as the "best tool for cutaneous (skin) streptococcal evidence" evaluation.
+
+4. A nuclear imaging modality designated as "useful if acute pyelonephritis is uncertain or to assess SCARRING".
+
+5. A contrast imaging study indicated in "ALL children <5 years old with a febrile UTI" to screen for Vesicoureteral Reflux (VUR).
+
+Column B (Options):
+
+A) Minimal Change Disease (MCNS)
+
+B) DNase B Antibody Titer
+
+C) Voiding Cystourethrogram (VCUG)
+
+D) APSGN Histopathology
+
+E) DMSA Renal Scanning
+
+Answer Key:
+
+1 -> (D)
+
+2 -> (A)
+
+3 -> (B)
+
+4 -> (E)
+
+5 -> (C)
+
+Group 3: Treatment, Management & Lab Differentiation
+Match the therapeutic intervention or laboratory index profile with the correct clinical scenario:
+
+Column A (Interventions & Lab Values):
+
+1. Administration of IV 25% Human Albumin (0.5 g/kg) with Furosemide, indicated for massive anasarca causing respiratory distress or hypovolemic shock.
+
+2. A 10-day course of oral penicillin to eradicate active streptococci, noting that it "does not alter the GN natural history".
+
+3. Long-term administration of ACE inhibitors (such as enalapril or lisinopril) specifically indicated for managing proteinuria and hypertension.
+
+4. A diagnostic lab profile showing: Urine Specific Gravity >1020, Osmolality >500, UNa <20 mEq/L, and FENa <1%.
+
+5. A diagnostic lab profile showing: Urine Specific Gravity <1010, Osmolality <350, UNa >40 mEq/L, and FENa >2%.
+
+Column B (Options):
+
+A) Intrinsic Renal AKI Differential Diagnostic Profile
+
+B) Management of Proteinuria & Hypertension in CKD
+
+C) Pre-Renal AKI Differential Diagnostic Profile
+
+D) Supportive Treatment in Nephrotic Syndrome
+
+E) Specific Measures in APSGN Management
+
+Answer Key:
+
+1 -> (D)
+
+2 -> (E)
+
+3 -> (B)
+
+4 -> (C)
+
+5 -> (A)   
+
+
+
+
+up 1: Neonatal Jaundice & Bilirubin Toxicity
+Match the clinical description or lab criteria with the correct diagnosis or neurological phase:
+
+Column A (Descriptions & Criteria):
+
+1. Jaundice appearing within the first 24 hours of life, with a Total Serum Bilirubin (TSB) rise > 5 mg/dL/day or conjugated bilirubin > 2 mg/dL.
+
+2. Jaundice appearing after 24 hours of life (typically day 2–3), peaking on day 4–5, and resolving spontaneously within 10–14 days.
+
+3. The initial phase of Acute Bilirubin Encephalopathy (ABE) characterized clinically by lethargy, hypotonia, and a poor suck reflex.
+
+4. The intermediate phase of ABE characterized by irritability, hypertonia, a high-pitched cry, retrocollis, and opisthotonos.
+
+5. Chronic permanent clinical sequelae of bilirubin toxicity presenting with athetoid cerebral palsy, sensorineural hearing loss, and dental enamel dysplasia.
+
+Column B (Options):
+
+A) Phase 2 of Acute Bilirubin Encephalopathy
+
+B) Chronic Bilirubin Encephalopathy (Kernicterus)
+
+C) Pathological Jaundice
+
+D) Phase 1 of Acute Bilirubin Encephalopathy
+
+E) Physiological Jaundice
+
+Answer Key:
+
+1 -> (C)
+
+2 -> (E)
+
+3 -> (D)
+
+4 -> (A)
+
+5 -> (B)
+
+Group 2: Neonatal Sepsis & Complications of Prematurity
+Match the risk factor, clinical presentation, or diagnostic finding with its respective neonatal condition:
+
+Column A (Clinical Findings & Risk Factors):
+
+1. Infection manifesting within < 72 hours of birth, typically associated with maternal risk factors and vertical transmission of GBS or E. coli.
+
+2. Infection manifesting > 72 hours after birth, typically nosocomial (hospital-acquired) or community-acquired, commonly caused by CoNS or S. aureus.
+
+3. A prematurity complication due to surfactant deficiency, presenting with grunting, tachypnea, and a classic "ground-glass" opacity on chest X-ray.
+
+4. A severe gastrointestinal complication in preterm infants presenting with abdominal distension, bloody stools, and "pneumatosis intestinalis" on X-ray.
+
+5. A cardiovascular complication of prematurity where incomplete closure of the shunt causes a continuous machine-like murmur and bounding pulses.
+
+Column B (Options):
+
+A) Late-Onset Sepsis (LOS)
+
+B) Respiratory Distress Syndrome (RDS)
+
+C) Patent Ductus Arteriosus (PDA)
+
+D) Early-Onset Sepsis (EOS)
+
+E) Necrotizing Enterocolitis (NEC)
+
+Answer Key:
+
+1 -> (D)
+
+2 -> (A)
+
+3 -> (B)
+
+4 -> (E)
+
+5 -> (C)
+
+Group 3: Transient Cutaneous Lesions of the Newborn
+Match the specific dermatological description and diagnostic hallmark with the correct neonatal skin lesion:
+
+Column A (Dermatological & Cellular Findings):
+
+1. Tiny, 1–2 mm pearly white or yellowish keratin-filled cysts commonly clustered over the nose, chin, and forehead, resolving within weeks.
+
+2. A benign rash appearing on day 2–3 of life as erythematous macules and papules containing central pustules filled predominantly with eosinophils.
+
+3. Flat, blue-gray melanocytic macules or patches typically located over the lumbosacral region, common in darker-skinned infants, and fade with time.
+
+4. Inflammatory comedones, papules, and pustules appearing around 2–3 weeks of life primarily on the face, induced by maternal androgens.
+
+5. Blotchy erythematous patches with fine scaling often found on the scalp, eyebrows, and behind ears, commonly called "cradle cap".
+
+Column B (Options):
+
+A) Erythema Toxicum Neonatorum
+
+B) Neonatal Acne (Cephalic Pustulosis)
+
+C) Milia
+
+D) Seborrheic Dermatitis
+
+E) Mongolian Spots (Congenital Dermal Melanocytosis)
+
+Answer Key:
+
+1 -> (C)
+
+2 -> (A)
+
+3 -> (E)
+
+4 -> (B)
+
+5 -> (D)   

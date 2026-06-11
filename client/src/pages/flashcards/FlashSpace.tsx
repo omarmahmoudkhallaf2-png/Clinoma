@@ -8494,6 +8494,81 @@ const CAMP2_DAY1_MATCHING_SETS: MatchingSet[] = [
   }
 ];
 
+const CAMP2_DAY2_MATCHING_SETS: MatchingSet[] = [
+  {
+    id: 'c2_d2_set1',
+    title: 'المجموعة 1: Clinical Presentations & Definitions (Nephrology)',
+    description: 'قم بتوصيل كل حالة بالتشخيص المناسب لها.',
+    pairs: [
+      { id: 'c2_d2_s1_p1', question: 'An 8-year-old child presenting with cola-colored urine, mild to moderate edema, and hypertension 1–2 weeks after an episode of pharyngitis.', answer: 'Acute Post-Streptococcal Glomerulonephritis (APSGN)' },
+      { id: 'c2_d2_s1_p2', question: 'A pediatric patient presenting with frothy urine, massive generalized edema (anasarca), hypoalbuminemia (<2.5 g/dL), and severe hyperlipidemia (>250 mg/dL).', answer: 'Nephrotic Syndrome (MCNS)' },
+      { id: 'c2_d2_s1_p3', question: 'Persistent abnormalities of kidney structure or function for >3 months, OR a persistent decrease in GFR <60 mL/min/1.73m² for >3 months.', answer: 'Chronic Kidney Disease (CKD)' },
+      { id: 'c2_d2_s1_p4', question: 'A rapid decline in GFR staged as Stage 2 "Injury" based on pRIFLE criteria, where GFR decreases by 50% or urine output is <0.5 mL/kg/h for 16 hours.', answer: 'Stage 2 "Injury" (pRIFLE Criteria - AKI)' },
+      { id: 'c2_d2_s1_p5', question: 'A young girl presenting with dysuria, urgency, frequency, and malodorous urine, characterized strictly by "NO FEVER and NO RENAL INJURY".', answer: 'Cystitis (UTI)' }
+    ]
+  },
+  {
+    id: 'c2_d2_set2',
+    title: 'المجموعة 2: Diagnostics, Pathology & Imaging (Nephrology)',
+    description: 'قم بتوصيل كل تشخيص أو فحص مخبري بالدلالة السريرية له.',
+    pairs: [
+      { id: 'c2_d2_s2_p1', question: 'Immunofluorescence pathology showing characteristic "Lumpy bumpy deposits of immunoglobulin and complement on the GBM".', answer: 'APSGN Histopathology' },
+      { id: 'c2_d2_s2_p2', question: 'Electron microscopy demonstrating "Effacement of epithelial cell foot processes" in a child with suspected Minimal Change Disease (MCNS).', answer: 'Minimal Change Disease (MCNS)' },
+      { id: 'c2_d2_s2_p3', question: 'The rising antibody titer that serves as the "best tool for cutaneous (skin) streptococcal evidence" evaluation.', answer: 'DNase B Antibody Titer' },
+      { id: 'c2_d2_s2_p4', question: 'A nuclear imaging modality designated as "useful if acute pyelonephritis is uncertain or to assess SCARRING".', answer: 'DMSA Renal Scanning' },
+      { id: 'c2_d2_s2_p5', question: 'A contrast imaging study indicated in "ALL children <5 years old with a febrile UTI" to screen for Vesicoureteral Reflux (VUR).', answer: 'Voiding Cystourethrogram (VCUG)' }
+    ]
+  },
+  {
+    id: 'c2_d2_set3',
+    title: 'المجموعة 3: Treatment, Management & Lab Differentiation (Nephrology)',
+    description: 'قم بتوصيل الإجراء العلاجي أو الفحص المخبري بالحالة السريرية المناسبة.',
+    pairs: [
+      { id: 'c2_d2_s3_p1', question: 'Administration of IV 25% Human Albumin (0.5 g/kg) with Furosemide, indicated for massive anasarca causing respiratory distress or hypovolemic shock.', answer: 'Supportive Treatment in Nephrotic Syndrome' },
+      { id: 'c2_d2_s3_p2', question: 'A 10-day course of oral penicillin to eradicate active streptococci, noting that it "does not alter the GN natural history".', answer: 'Specific Measures in APSGN Management' },
+      { id: 'c2_d2_s3_p3', question: 'Long-term administration of ACE inhibitors (such as enalapril or lisinopril) specifically indicated for managing proteinuria and hypertension.', answer: 'Management of Proteinuria & Hypertension in CKD' },
+      { id: 'c2_d2_s3_p4', question: 'A diagnostic lab profile showing: Urine Specific Gravity >1020, Osmolality >500, UNa <20 mEq/L, and FENa <1%.', answer: 'Pre-Renal AKI Differential Diagnostic Profile' },
+      { id: 'c2_d2_s3_p5', question: 'A diagnostic lab profile showing: Urine Specific Gravity <1010, Osmolality <350, UNa >40 mEq/L, and FENa >2%.', answer: 'Intrinsic Renal AKI Differential Diagnostic Profile' }
+    ]
+  },
+  {
+    id: 'c2_d2_set4',
+    title: 'المجموعة 4: Neonatal Jaundice & Bilirubin Toxicity (Neonatology)',
+    description: 'قم بتوصيل الوصف السريري أو المخبري بالتشخيص أو المرحلة العصبية المطابقة.',
+    pairs: [
+      { id: 'c2_d2_s4_p1', question: 'Jaundice appearing within the first 24 hours of life, with a Total Serum Bilirubin (TSB) rise > 5 mg/dL/day or conjugated bilirubin > 2 mg/dL.', answer: 'Pathological Jaundice' },
+      { id: 'c2_d2_s4_p2', question: 'Jaundice appearing after 24 hours of life (typically day 2–3), peaking on day 4–5, and resolving spontaneously within 10–14 days.', answer: 'Physiological Jaundice' },
+      { id: 'c2_d2_s4_p3', question: 'The initial phase of Acute Bilirubin Encephalopathy (ABE) characterized clinically by lethargy, hypotonia, and a poor suck reflex.', answer: 'Phase 1 of Acute Bilirubin Encephalopathy' },
+      { id: 'c2_d2_s4_p4', question: 'The intermediate phase of ABE characterized by irritability, hypertonia, a high-pitched cry, retrocollis, and opisthotonos.', answer: 'Phase 2 of Acute Bilirubin Encephalopathy' },
+      { id: 'c2_d2_s4_p5', question: 'Chronic permanent clinical sequelae of bilirubin toxicity presenting with athetoid cerebral palsy, sensorineural hearing loss, and dental enamel dysplasia.', answer: 'Chronic Bilirubin Encephalopathy (Kernicterus)' }
+    ]
+  },
+  {
+    id: 'c2_d2_set5',
+    title: 'المجموعة 5: Neonatal Sepsis & Complications of Prematurity (Neonatology)',
+    description: 'قم بتوصيل عامل الخطورة أو العلامة التشخيصية بالحالة السريرية المناسبة.',
+    pairs: [
+      { id: 'c2_d2_s5_p1', question: 'Infection manifesting within < 72 hours of birth, typically associated with maternal risk factors and vertical transmission of GBS or E. coli.', answer: 'Early-Onset Sepsis (EOS)' },
+      { id: 'c2_d2_s5_p2', question: 'Infection manifesting > 72 hours after birth, typically nosocomial (hospital-acquired) or community-acquired, commonly caused by CoNS or S. aureus.', answer: 'Late-Onset Sepsis (LOS)' },
+      { id: 'c2_d2_s5_p3', question: 'A prematurity complication due to surfactant deficiency, presenting with grunting, tachypnea, and a classic "ground-glass" opacity on chest X-ray.', answer: 'Respiratory Distress Syndrome (RDS)' },
+      { id: 'c2_d2_s5_p4', question: 'A severe gastrointestinal complication in preterm infants presenting with abdominal distension, bloody stools, and "pneumatosis intestinalis" on X-ray.', answer: 'Necrotizing Enterocolitis (NEC)' },
+      { id: 'c2_d2_s5_p5', question: 'A cardiovascular complication of prematurity where incomplete closure of the shunt causes a continuous machine-like murmur and bounding pulses.', answer: 'Patent Ductus Arteriosus (PDA)' }
+    ]
+  },
+  {
+    id: 'c2_d2_set6',
+    title: 'المجموعة 6: Transient Cutaneous Lesions of the Newborn (Neonatology)',
+    description: 'قم بتوصيل الوصف السريري والخلوي بالآفة الجلدية الصحيحة لحديثي الولادة.',
+    pairs: [
+      { id: 'c2_d2_s6_p1', question: 'Tiny, 1–2 mm pearly white or yellowish keratin-filled cysts commonly clustered over the nose, chin, and forehead, resolving within weeks.', answer: 'Milia' },
+      { id: 'c2_d2_s6_p2', question: 'A benign rash appearing on day 2–3 of life as erythematous macules and papules containing central pustules filled predominantly with eosinophils.', answer: 'Erythema Toxicum Neonatorum' },
+      { id: 'c2_d2_s6_p3', question: 'Flat, blue-gray melanocytic macules or patches typically located over the lumbosacral region, common in darker-skinned infants, and fade with time.', answer: 'Mongolian Spots (Congenital Dermal Melanocytosis)' },
+      { id: 'c2_d2_s6_p4', question: 'Inflammatory comedones, papules, and pustules appearing around 2–3 weeks of life primarily on the face, induced by maternal androgens.', answer: 'Neonatal Acne (Cephalic Pustulosis)' },
+      { id: 'c2_d2_s6_p5', question: 'Blotchy erythematous patches with fine scaling often found on the scalp, eyebrows, and behind ears, commonly called "cradle cap".', answer: 'Seborrheic Dermatitis' }
+    ]
+  }
+];
+
 const playSound = (type: 'click' | 'correct' | 'wrong' | 'success') => {
   try {
     const audioCtx = new (window.AudioContext || (window as any).webkitAudioContext)();
@@ -9105,10 +9180,21 @@ const FlashSpace = () => {
   const [downloadProgress, setDownloadProgress] = useState(0);
   const [downloadStatus, setDownloadStatus] = useState<string | null>(null);
 
+  // --- Second Paper Camp states ---
+  const [camp2ActiveDay, setCamp2ActiveDay] = useState<number>(1);
+  const [camp2ExamState, setCamp2ExamState] = useState<'locked' | 'ready' | 'finished'>('locked');
+  const [camp2TimeRemainingToStart, setCamp2TimeRemainingToStart] = useState<number>(0);
+  const [hasAttemptedCamp2, setHasAttemptedCamp2] = useState<boolean>(() =>
+    localStorage.getItem(`camp2_day${camp2ActiveDay}_quiz_completed`) === 'true'
+  );
+  const [camp2AttemptScore, setCamp2AttemptScore] = useState<number>(() =>
+    Number(localStorage.getItem(`camp2_day${camp2ActiveDay}_quiz_score`) || '0')
+  );
+
   // --- First Paper Camp states ---
   const [campActiveDay, setCampActiveDay] = useState<number>(1);
   const currentMatchingSets = selectedSystem === 'معسكر الورقة الثانية'
-    ? CAMP2_DAY1_MATCHING_SETS
+    ? (camp2ActiveDay === 2 ? CAMP2_DAY2_MATCHING_SETS : CAMP2_DAY1_MATCHING_SETS)
     : (campActiveDay === 3 ? DAY3_MATCHING_SETS : (campActiveDay === 2 ? DAY2_MATCHING_SETS : DAY1_MATCHING_SETS));
 
   useEffect(() => {
@@ -9118,7 +9204,7 @@ const FlashSpace = () => {
     setCampActiveSelection(null);
     setCampTimeSpentSeconds(0);
     const setsPool = selectedSystem === 'معسكر الورقة الثانية'
-      ? CAMP2_DAY1_MATCHING_SETS
+      ? (camp2ActiveDay === 2 ? CAMP2_DAY2_MATCHING_SETS : CAMP2_DAY1_MATCHING_SETS)
       : (campActiveDay === 3 ? DAY3_MATCHING_SETS : (campActiveDay === 2 ? DAY2_MATCHING_SETS : DAY1_MATCHING_SETS));
     const totalPairs = setsPool.reduce((acc: number, s: MatchingSet) => acc + s.pairs.length, 0);
     setCampTotalPairsCount(totalPairs);
@@ -9138,7 +9224,7 @@ const FlashSpace = () => {
       const calculatedStartStr = `${year}-${month}-${date}T${hours}:${minutes}`;
       setCampStartTimeStr(calculatedStartStr);
     }
-  }, [campActiveDay, selectedSystem]);
+  }, [campActiveDay, selectedSystem, camp2ActiveDay]);
 
   const [campActiveTab, setCampActiveTab] = useState<'chapters' | 'notebook'>('chapters');
   const [campShowSettings, setCampShowSettings] = useState(false);
@@ -9169,16 +9255,6 @@ const FlashSpace = () => {
     return localStorage.getItem('day1_quiz_completed') === 'true';
   });
 
-  // --- Second Paper Camp states ---
-  const [camp2ActiveDay, setCamp2ActiveDay] = useState<number>(1);
-  const [camp2ExamState, setCamp2ExamState] = useState<'locked' | 'ready' | 'finished'>('locked');
-  const [camp2TimeRemainingToStart, setCamp2TimeRemainingToStart] = useState<number>(0);
-  const [hasAttemptedCamp2, setHasAttemptedCamp2] = useState<boolean>(() =>
-    localStorage.getItem('camp2_day1_quiz_completed') === 'true'
-  );
-  const [camp2AttemptScore, setCamp2AttemptScore] = useState<number>(() =>
-    Number(localStorage.getItem('camp2_day1_quiz_score') || '0')
-  );
 
   const handleDownloadPDF = async (pdfIdOrCompress: string | boolean, pdfUrlInput?: string, defaultNameInput?: string) => {
     setDownloadProgress(0);
@@ -9269,7 +9345,7 @@ const FlashSpace = () => {
         margin = 20;
         box_w = 170;
         box_h = 14;
-      } else if (pdfId === 'camp2_quiz' || pdfId === 'camp2_quiz_answers' || pdfId === 'camp2_essay' || pdfId === 'camp2_essay_answers' || pdfId === 'camp2_essay_day2' || pdfId === 'camp2_essay_day2_answers') {
+      } else if (pdfId === 'camp2_quiz' || pdfId === 'camp2_quiz_answers' || pdfId === 'camp2_quiz_day2' || pdfId === 'camp2_quiz_day2_answers' || pdfId === 'camp2_essay' || pdfId === 'camp2_essay_answers' || pdfId === 'camp2_essay_day2' || pdfId === 'camp2_essay_day2_answers') {
         chapterCovers = [];
         margin = 15;
         box_w = 170;
@@ -9295,7 +9371,7 @@ const FlashSpace = () => {
       for (let i = 0; i < pageCount; i++) {
         const p = i + 1;
         // Skip cover, index, and chapter covers
-        const skipThreshold = (pdfId === 'camp2_quiz' || pdfId === 'camp2_quiz_answers' || pdfId === 'camp2_essay' || pdfId === 'camp2_essay_answers' || pdfId === 'camp2_essay_day2' || pdfId === 'camp2_essay_day2_answers') ? 0 : (pdfId === 'questions' || pdfId === 'answers' || pdfId === 'quiz' || pdfId === 'quiz_answers') ? 1 : 2;
+        const skipThreshold = (pdfId === 'camp2_quiz' || pdfId === 'camp2_quiz_answers' || pdfId === 'camp2_quiz_day2' || pdfId === 'camp2_quiz_day2_answers' || pdfId === 'camp2_essay' || pdfId === 'camp2_essay_answers' || pdfId === 'camp2_essay_day2' || pdfId === 'camp2_essay_day2_answers') ? 0 : (pdfId === 'questions' || pdfId === 'answers' || pdfId === 'quiz' || pdfId === 'quiz_answers') ? 1 : 2;
         if (p > skipThreshold && !chapterCovers.includes(p)) {
           const page = pdfDoc.getPage(i);
           const height = page.getHeight();
@@ -10130,9 +10206,10 @@ const FlashSpace = () => {
 
   // --- Second Paper Camp Scheduler ---
   useEffect(() => {
-    // Quiz window: 9 PM – midnight tonight (Cairo time = UTC+3)
-    const CAMP2_START = new Date('2026-06-10T21:00:00+03:00').getTime(); // 9 PM Cairo
-    const CAMP2_END   = new Date('2026-06-11T00:00:00+03:00').getTime(); // midnight Cairo
+    const startIso = camp2ActiveDay === 2 ? '2026-06-11T21:00:00+03:00' : '2026-06-10T21:00:00+03:00';
+    const endIso   = camp2ActiveDay === 2 ? '2026-06-12T00:00:00+03:00' : '2026-06-11T00:00:00+03:00';
+    const CAMP2_START = new Date(startIso).getTime();
+    const CAMP2_END   = new Date(endIso).getTime();
 
     const check = () => {
       const now = Date.now();
@@ -10157,7 +10234,48 @@ const FlashSpace = () => {
     check();
     const interval = setInterval(check, 1000);
     return () => clearInterval(interval);
-  }, [hasAttemptedCamp2]);
+  }, [hasAttemptedCamp2, camp2ActiveDay]);
+
+  // Firestore Attempt Sync / Lockout check for Camp 2
+  useEffect(() => {
+    if (!user) {
+      const localCompleted = localStorage.getItem(`camp2_day${camp2ActiveDay}_quiz_completed`) === 'true';
+      setHasAttemptedCamp2(localCompleted);
+      if (localCompleted) {
+        const score = Number(localStorage.getItem(`camp2_day${camp2ActiveDay}_quiz_score`) || '0');
+        setCamp2AttemptScore(score);
+        setCamp2ExamState('finished');
+      }
+      return;
+    }
+    const currentExamId = `second_paper_camp_matching_day${camp2ActiveDay}`;
+    const q = query(
+      collection(dbExam, 'exam_attempts'),
+      where('userId', '==', user.uid),
+      where('examId', '==', currentExamId)
+    );
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      if (!snapshot.empty) {
+        const attempt = snapshot.docs[0].data();
+        setHasAttemptedCamp2(true);
+        setCamp2AttemptScore(attempt.score);
+        setCamp2ExamState('finished');
+        localStorage.setItem(`camp2_day${camp2ActiveDay}_quiz_completed`, 'true');
+        localStorage.setItem(`camp2_day${camp2ActiveDay}_quiz_score`, String(attempt.score));
+      } else {
+        const localCompleted = localStorage.getItem(`camp2_day${camp2ActiveDay}_quiz_completed`) === 'true';
+        setHasAttemptedCamp2(localCompleted);
+        if (localCompleted) {
+          const score = Number(localStorage.getItem(`camp2_day${camp2ActiveDay}_quiz_score`) || '0');
+          setCamp2AttemptScore(score);
+          setCamp2ExamState('finished');
+        } else {
+          // Let scheduler decide
+        }
+      }
+    });
+    return () => unsubscribe();
+  }, [user, camp2ActiveDay]);
 
   const campMatchesRef = useRef(campMatches);
   const campCurrentSetIdxRef = useRef(campCurrentSetIdx);
@@ -10393,8 +10511,8 @@ const FlashSpace = () => {
       setCamp2AttemptScore(finalCorrect);
       setHasAttemptedCamp2(true);
       setCamp2ExamState('finished');
-      localStorage.setItem('camp2_day1_quiz_completed', 'true');
-      localStorage.setItem('camp2_day1_quiz_score', String(finalCorrect));
+      localStorage.setItem(`camp2_day${camp2ActiveDay}_quiz_completed`, 'true');
+      localStorage.setItem(`camp2_day${camp2ActiveDay}_quiz_score`, String(finalCorrect));
     } else {
       setCampScore(finalScore);
       setCampExamState('finished');
@@ -10409,9 +10527,9 @@ const FlashSpace = () => {
           userEmail: user.email || 'unknown@gmail.com',
           studentName: userData?.name || user.displayName || 'طالب معسكر',
           userName: userData?.name || user.displayName || 'طالب معسكر',
-          examId: isCamp2 ? 'second_paper_camp_matching_day1' : 'first_paper_camp_matching',
+          examId: isCamp2 ? `second_paper_camp_matching_day${camp2ActiveDay}` : 'first_paper_camp_matching',
           examTitle: isCamp2 
-            ? '🔥 معسكر الورقة الثانية - اختبار التوصيل التفاعلي - اليوم الأول' 
+            ? `🔥 معسكر الورقة الثانية - اختبار التوصيل التفاعلي - اليوم ${camp2ActiveDay === 2 ? 'الثاني' : 'الأول'}` 
             : '🔥 معسكر الورقة الأولى - اختبار التوصيل التفاعلي',
           score: finalCorrect,
           totalQuestions: total,
@@ -11924,14 +12042,155 @@ const FlashSpace = () => {
 
                 {/* ─── DAY 2 ESSAY SECTION ─────────────────────────── */}
                 {camp2ActiveDay === 2 && (() => {
+                  const fmtCountdown = (secs: number) => {
+                    const h = Math.floor(secs / 3600);
+                    const m = Math.floor((secs % 3600) / 60);
+                    const s = secs % 60;
+                    return h > 0
+                      ? `${h}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`
+                      : `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+                  };
+
                   const nowMs = Date.now();
                   const CAMP2_DAY2_START_TIME = new Date('2026-06-11T18:00:00+03:00').getTime(); // 6 PM Cairo time on June 11
                   const isAdmin          = userData?.role === 'admin';
                   const showUnsolvedEssay = nowMs >= CAMP2_DAY2_START_TIME || isAdmin;
                   const showSolvedEssay   = nowMs >= CAMP2_DAY2_START_TIME || isAdmin;
 
+                  const isWindowOpen  = camp2ExamState === 'ready' || camp2ExamState === 'finished';
+                  const canSeeAnswers = hasAttemptedCamp2 || camp2ExamState === 'finished';
+
                   return (
                     <div className="mt-8 space-y-4">
+                      {/* Quiz Section */}
+                      <div className="flex items-center justify-between">
+                        <h3 className="text-base font-black text-white flex items-center gap-2">
+                          <span className="text-xl">📝</span> كويز اليوم الثاني
+                        </h3>
+                        {/* State badge */}
+                        {camp2ExamState === 'locked' && camp2TimeRemainingToStart > 0 && (
+                          <span className="text-[11px] font-black text-amber-400 bg-amber-500/10 border border-amber-500/20 px-3 py-1 rounded-full">
+                            🔒 يبدأ بعد {fmtCountdown(camp2TimeRemainingToStart)}
+                          </span>
+                        )}
+                        {camp2ExamState === 'ready' && (
+                          <span className="text-[11px] font-black text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full animate-pulse">
+                            🟢 (30 سؤال) الكويز متاح الآن
+                          </span>
+                        )}
+                        {(camp2ExamState === 'finished' || hasAttemptedCamp2) && (
+                          <span className="text-[11px] font-black text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 px-3 py-1 rounded-full">
+                            ✅ {hasAttemptedCamp2 ? `أجبت بنجاح — ${camp2AttemptScore}/30` : 'انتهى الكويز'}
+                          </span>
+                        )}
+                      </div>
+
+                      {/* Two PDF Cards side by side */}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+                        {/* PDF without answers — available during window */}
+                        <div className={`rounded-2xl border p-5 flex flex-col gap-3 transition-all ${isWindowOpen ? 'bg-slate-800/60 border-cyan-500/30 hover:border-cyan-400/60' : 'bg-slate-900/40 border-white/5 opacity-60'}`}>
+                          <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-xl shrink-0">📄</div>
+                            <div>
+                              <p className="text-sm font-black text-white">ورقة الكويز</p>
+                              <p className="text-[11px] text-slate-500 font-bold">بدون إجابات — ٣٠ دقيقة</p>
+                            </div>
+                          </div>
+                          <button
+                            disabled={!isWindowOpen}
+                            onClick={() => handleDownloadPDF(
+                              'camp2_quiz_day2',
+                              '/معسكر_الورقة_الثانية_اليوم_الثاني_كويز.pdf',
+                              'معسكر_الورقة_الثانية_اليوم_الثاني_كويز.pdf'
+                            )}
+                            className={`w-full py-2.5 rounded-xl text-xs font-black transition-all ${isWindowOpen ? 'bg-cyan-500 hover:bg-cyan-400 text-white active:scale-95' : 'bg-slate-800 text-slate-600 cursor-not-allowed'}`}
+                          >
+                            {isWindowOpen ? '⬇️ تحميل ورقة الكويز' : '🔒 غير متاح بعد'}
+                          </button>
+                        </div>
+
+                        {/* PDF with answers — only after attempt */}
+                        {canSeeAnswers ? (
+                          <div className="rounded-2xl border p-5 flex flex-col gap-3 transition-all bg-slate-800/60 border-emerald-500/30 hover:border-emerald-400/60">
+                            <div className="flex items-center gap-3">
+                              <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-xl shrink-0">✅</div>
+                              <div>
+                                <p className="text-sm font-black text-white">الإجابات النموذجية</p>
+                                <p className="text-[11px] text-slate-500 font-bold">متاح بعد حل الكويز</p>
+                              </div>
+                            </div>
+                            <button
+                              onClick={() => handleDownloadPDF(
+                                'camp2_quiz_day2_answers',
+                                '/معسكر_الورقة_الثانية_اليوم_الثاني_كويز_إجابات.pdf',
+                                'معسكر_الورقة_الثانية_اليوم_الثاني_كويز_إجابات.pdf'
+                              )}
+                              className="w-full py-2.5 rounded-xl text-xs font-black transition-all bg-emerald-500 hover:bg-emerald-400 text-white active:scale-95"
+                            >
+                              ⬇️ تحميل الإجابات
+                            </button>
+                          </div>
+                        ) : (
+                          <div className="rounded-2xl border p-5 flex flex-col gap-3 bg-slate-900/40 border-white/5 opacity-60 text-right">
+                            <div className="flex items-center gap-3">
+                              <div className="w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center text-xl shrink-0">🔒</div>
+                              <div>
+                                <p className="text-sm font-black text-white">الإجابات النموذجية</p>
+                                <p className="text-[11px] text-slate-500 font-bold">يفتح بعد حل الكويز أو في 12:00 منتصف الليل</p>
+                              </div>
+                            </div>
+                            <button
+                              disabled
+                              className="w-full py-2.5 rounded-xl text-xs font-black bg-slate-800 text-slate-600 cursor-not-allowed"
+                            >
+                              🔒 غير متاح بعد
+                            </button>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Interactive Matching Test Gameplay Section */}
+                      {hasAttemptedCamp2 ? (
+                        <div className="text-center p-6 bg-emerald-500/10 border border-emerald-500/30 rounded-[2rem] space-y-2" dir="rtl">
+                          <p className="text-base font-black text-emerald-400">لقد أتممت هذا الاختبار بنجاح! 🎉</p>
+                          <p className="text-sm font-bold text-slate-350">
+                            درجتك المسجلة في خوادم الإدارة: <span className="text-amber-400 text-lg font-black">{Math.round((camp2AttemptScore / 30) * 100)}% ({camp2AttemptScore} من 30)</span>
+                          </p>
+                          <p className="text-xs text-slate-400 font-bold">غير مسموح بإعادة المحاولة لضمان مبدأ تكافؤ الفرص.</p>
+                        </div>
+                      ) : camp2ExamState === 'locked' ? (
+                        <div className="space-y-3 text-center p-6 bg-rose-500/5 border border-dashed border-rose-500/20 rounded-[2rem]">
+                          <ShieldAlert className="w-10 h-10 mx-auto text-rose-500 animate-pulse" />
+                          <div className="space-y-0.5">
+                            <h4 className="text-sm font-black text-white">الاختبار مغلق ومجدول حالياً</h4>
+                            <p className="text-xs text-slate-400 font-bold">
+                              {camp2TimeRemainingToStart > 0 
+                                ? `يبدأ الاختبار تلقائياً بعد ${fmtCountdown(camp2TimeRemainingToStart)} في تمام الساعة 09:00 مساءً`
+                                : "انتهت الفترة المحددة للاختبار الرسمي بالكامل."
+                              }
+                            </p>
+                          </div>
+                        </div>
+                      ) : camp2ExamState === 'ready' ? (
+                        <div className="text-center p-6 bg-cyan-500/10 border border-cyan-500/30 rounded-[2rem] space-y-4">
+                          <div className="space-y-1">
+                            <p className="text-sm font-black text-white">جاهز لبدء اختبار التوصيل التفاعلي؟ 🚀</p>
+                            <p className="text-[11px] text-slate-400 font-bold">لديك فرصة واحدة فقط لتقديمه وحفظ نتيجتك رسمياً. الوقت المحدد: ٣٠ دقيقة.</p>
+                          </div>
+                          <button
+                            onClick={startCampMatchingGame}
+                            className="px-6 py-2.5 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-black rounded-xl text-xs transition-all active:scale-95 shadow-lg shadow-cyan-500/25 cursor-pointer"
+                          >
+                            🎯 ابدأ اختبار التوصيل الآن
+                          </button>
+                        </div>
+                      ) : (
+                        <div className="text-center p-6 bg-rose-500/5 border border-rose-500/20 rounded-[2rem]">
+                          <p className="text-xs font-bold text-rose-400">انتهت الفترة المخصصة لتقديم الكويز.</p>
+                        </div>
+                      )}
+
                       {/* Essay Section Header */}
                       <div className="flex flex-col gap-1.5 pt-6 border-t border-white/5 text-right">
                         <div className="flex items-center justify-between">
