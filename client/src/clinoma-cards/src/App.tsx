@@ -449,6 +449,7 @@ export default function App({ onExit, isExpectations = false }: { onExit?: () =>
                   addToReview={addToReview}
                   markAsMastered={markAsMastered}
                   onResetChapterProgress={resetChapterProgress}
+                  isExpectations={isExpectations}
                 />
               </motion.div>
             )}

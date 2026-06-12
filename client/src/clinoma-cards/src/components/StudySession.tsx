@@ -38,6 +38,7 @@ interface StudySessionProps {
   addToReview: (id: string) => void;
   markAsMastered: (id: string) => void;
   onResetChapterProgress?: (chapterId: number) => void;
+  isExpectations?: boolean;
 }
 
 export default function StudySession({ 
@@ -47,7 +48,8 @@ export default function StudySession({
   onBack, 
   addToReview, 
   markAsMastered,
-  onResetChapterProgress
+  onResetChapterProgress,
+  isExpectations = false
 }: StudySessionProps) {
   const [isTopicSelectorOpen, setIsTopicSelectorOpen] = useState(true);
   const [selectedTopics, setSelectedTopics] = useState<string[]>(['all']);
@@ -800,7 +802,7 @@ export default function StudySession({
                     </span>
                   )}
                 </div>
-                {currentQuestion.explanation && (
+                {currentQuestion.explanation && !isExpectations && (
                   <button
                     id="toggle-explanation-btn"
                     onClick={() => setShowExplanation(prev => !prev)}
@@ -822,13 +824,15 @@ export default function StudySession({
               </div>
 
               {/* Explanation Panel if toggled */}
-              <ExplanationDrawer
-                isOpen={showExplanation}
-                onClose={() => setShowExplanation(false)}
-                explanation={currentQuestion.explanation || ""}
-                questionTitle={currentQuestion.content}
-                topic={currentQuestion.topic}
-              />
+              {!isExpectations && (
+                <ExplanationDrawer
+                  isOpen={showExplanation}
+                  onClose={() => setShowExplanation(false)}
+                  explanation={currentQuestion.explanation || ""}
+                  questionTitle={currentQuestion.content}
+                  topic={currentQuestion.topic}
+                />
+              )}
             </div>
 
             {/* Answer Display Card view */}
