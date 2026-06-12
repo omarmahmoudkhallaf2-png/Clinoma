@@ -14,6 +14,7 @@ import { DifficultyLevel } from '../types';
 import type { Question, Chapter } from '../types';
 import { INITIAL_QUESTIONS } from '../data/questions';
 import { ExplanationDrawer } from './ExplanationDrawer';
+import { renderCardContent } from '../utils/cardUtils';
 
 const STICKERS = [
   'https://i.ibb.co/FkSVV8dd/fjf.webp',
@@ -32,6 +33,7 @@ const STICKERS = [
 interface StudySessionProps {
   chapter: Chapter;
   questions: Question[];
+  allQuestions: Question[];
   onBack: () => void;
   addToReview: (id: string) => void;
   markAsMastered: (id: string) => void;
@@ -41,6 +43,7 @@ interface StudySessionProps {
 export default function StudySession({ 
   chapter, 
   questions, 
+  allQuestions,
   onBack, 
   addToReview, 
   markAsMastered,
@@ -73,10 +76,10 @@ export default function StudySession({
     if (chapter.id === 0) {
       return questions.length === 0;
     } else {
-      const totalCount = INITIAL_QUESTIONS.filter(q => q.chapterId === chapter.id).length;
+      const totalCount = allQuestions.filter(q => q.chapterId === chapter.id).length;
       return totalCount > 0 && questions.length === 0;
     }
-  }, [chapter, questions]);
+  }, [chapter, questions, allQuestions]);
   
   // Track time spent on the same question for distraction warning system
   const [timeSpentOnQuestion, setTimeSpentOnQuestion] = useState(0);
@@ -394,7 +397,7 @@ export default function StudySession({
           <div className="bg-slate-50/70 p-4 rounded-2xl border border-slate-100 flex items-center justify-between text-xs font-bold text-slate-500">
             <span>إجمالي الأسئلة في هذا التبويب:</span>
             <span className="text-slate-800 font-mono text-base font-black">
-              {chapter.id === 0 ? INITIAL_QUESTIONS.length : INITIAL_QUESTIONS.filter(q => q.chapterId === chapter.id).length} سؤالاً
+              {chapter.id === 0 ? allQuestions.length : allQuestions.filter(q => q.chapterId === chapter.id).length} سؤالاً
             </span>
           </div>
 
@@ -451,7 +454,7 @@ export default function StudySession({
               {/* Scrollable Topics Area */}
               <div className="flex-1 overflow-y-auto pr-2 space-y-3 custom-scrollbar mb-8">
                  {(() => {
-                   const chapterTotal = INITIAL_QUESTIONS.filter(q => q.chapterId === chapter.id).length;
+                   const chapterTotal = allQuestions.filter(q => q.chapterId === chapter.id).length;
                    const chapterActive = questions.filter(q => q.chapterId === chapter.id).length;
                    return (
                      <button
@@ -472,7 +475,7 @@ export default function StudySession({
                  {chapter.topics && chapter.topics.map((top, idx) => {
                     const isSelected = selectedTopics.includes(top);
                     const isAsthma = top.toLowerCase() === 'bronchial asthma';
-                    const totalTopicQuestions = INITIAL_QUESTIONS.filter(q => q.chapterId === chapter.id && q.topic === top).length;
+                    const totalTopicQuestions = allQuestions.filter(q => q.chapterId === chapter.id && q.topic === top).length;
                     const activeTopicQuestions = questions.filter(q => q.chapterId === chapter.id && q.topic === top).length;
                     return (
                       <button
@@ -814,10 +817,8 @@ export default function StudySession({
                 )}
               </div>
               
-              <div className="flex-1 flex flex-col pt-2 mb-2">
-                <p className="text-xl md:text-2xl text-slate-800 leading-relaxed font-semibold max-w-4xl">
-                   {currentQuestion.content}
-                </p>
+              <div className="flex-1 flex flex-col pt-2 mb-2 w-full">
+                {renderCardContent(currentQuestion.content)}
               </div>
 
               {/* Explanation Panel if toggled */}

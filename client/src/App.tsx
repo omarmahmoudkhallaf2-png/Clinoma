@@ -115,6 +115,7 @@ const AnimatedRoutes = () => {
           <Route path="/flashcards/decks" element={<ProtectedRoute><FlashcardsDashboard /></ProtectedRoute>} />
           <Route path="/flashcards/space" element={<ProtectedRoute useLayout={false}><FlashSpace /></ProtectedRoute>} />
           <Route path="/flashcards/second-paper-interactive" element={<ProtectedRoute useLayout={false}><ClinomaCardsApp onExit={() => window.history.back()} /></ProtectedRoute>} />
+          <Route path="/flashcards/second-paper-expectations" element={<ProtectedRoute useLayout={false}><ClinomaCardsApp isExpectations={true} onExit={() => window.history.back()} /></ProtectedRoute>} />
           <Route path="/flashcards/fantasy" element={<ProtectedRoute useLayout={false}><FantasyGroups /></ProtectedRoute>} />
           <Route path="/flashcards/study/:deckId" element={<ProtectedRoute useLayout={false}><StudyMode /></ProtectedRoute>} />
           <Route path="/flashcards/create" element={<ProtectedRoute><CreateCard /></ProtectedRoute>} />

@@ -27,7 +27,10 @@ const MIXED_CHAPTER: Chapter = {
   topics: []
 };
 
-export default function App({ onExit }: { onExit?: () => void }) {
+export default function App({ onExit, isExpectations = false }: { onExit?: () => void; isExpectations?: boolean }) {
+  const QUESTIONS = isExpectations 
+    ? INITIAL_QUESTIONS.filter(q => q.id.startsWith('remix_'))
+    : INITIAL_QUESTIONS.filter(q => !q.id.startsWith('remix_'));
   const [view, setView] = useState<'home' | 'study' | 'review'>('home');
   const [activeChapter, setActiveChapter] = useState<Chapter | null>(null);
   const [reviewList, setReviewList] = useState<string[]>(() => {
@@ -52,7 +55,7 @@ export default function App({ onExit }: { onExit?: () => void }) {
 
   const startChapter = (chapter: Chapter) => {
     setActiveChapter(chapter);
-    const chapterQuestions = INITIAL_QUESTIONS.filter(q => q.chapterId === chapter.id);
+    const chapterQuestions = QUESTIONS.filter(q => q.chapterId === chapter.id);
     // Filter out mastered questions to avoid repetition
     const unmastered = chapterQuestions.filter(q => !masteredIds.includes(q.id));
     setSessionQuestions(unmastered);
@@ -63,7 +66,7 @@ export default function App({ onExit }: { onExit?: () => void }) {
   const startMixedSession = () => {
     setActiveChapter(MIXED_CHAPTER);
     // Shuffle unmastered questions across all chapters
-    const unmastered = INITIAL_QUESTIONS.filter(q => !masteredIds.includes(q.id));
+    const unmastered = QUESTIONS.filter(q => !masteredIds.includes(q.id));
     
     // Perform standard random sort
     const shuffled = [...unmastered].sort(() => Math.random() - 0.5);
@@ -102,11 +105,11 @@ export default function App({ onExit }: { onExit?: () => void }) {
       localStorage.removeItem('clinoma_review_list');
       localStorage.removeItem('clinoma_mastered_ids');
       if (activeChapter?.id === 0) {
-        setSessionQuestions(INITIAL_QUESTIONS);
+        setSessionQuestions(QUESTIONS);
       }
     } else {
       // Specific chapter questions
-      const chapterQuestions = INITIAL_QUESTIONS.filter(q => q.chapterId === chapterId);
+      const chapterQuestions = QUESTIONS.filter(q => q.chapterId === chapterId);
       const chapterQuestionIds = chapterQuestions.map(q => q.id);
       setMasteredIds(prev => prev.filter(id => !chapterQuestionIds.includes(id)));
       setReviewList(prev => prev.filter(id => !chapterQuestionIds.includes(id)));
@@ -140,8 +143,12 @@ export default function App({ onExit }: { onExit?: () => void }) {
               <img src="https://i.ibb.co/qMgGdD03/202605081225.jpg" alt="Logo" className="w-full h-full object-cover animate-fade-in" referrerPolicy="no-referrer" />
             </div>
             <div className="text-left">
-              <span className="text-xl font-black text-slate-900 leading-none block">CLINOMA CARDS</span>
-              <span className="text-[9px] text-slate-400 uppercase tracking-widest font-bold leading-none mt-1 block">Pediatric Board Preparation</span>
+              <span className="text-xl font-black text-slate-900 leading-none block">
+                {isExpectations ? "CLINOMA EXPECTATIONS" : "CLINOMA CARDS"}
+              </span>
+              <span className="text-[9px] text-slate-400 uppercase tracking-widest font-bold leading-none mt-1 block">
+                {isExpectations ? "توقعات الورقة الثانية للأطفال" : "Pediatric Board Preparation"}
+              </span>
             </div>
           </a>
         </div>
@@ -166,7 +173,7 @@ export default function App({ onExit }: { onExit?: () => void }) {
           <div className="px-3 py-1.5 bg-slate-50 border border-slate-205 rounded-xl flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
             <span className="text-[10px] text-slate-650 font-extrabold uppercase tracking-wider">
-              {masteredIds.length} / {INITIAL_QUESTIONS.length} Mastered
+              {masteredIds.length} / {QUESTIONS.length} Mastered
             </span>
           </div>
 
@@ -205,7 +212,9 @@ export default function App({ onExit }: { onExit?: () => void }) {
                   <div className="w-9 h-9 flex items-center justify-center overflow-hidden rounded-xl">
                     <img src="https://i.ibb.co/qMgGdD03/202605081225.jpg" alt="Logo" className="w-full h-full object-cover animate-fade-in" referrerPolicy="no-referrer" />
                   </div>
-                  <span className="text-xl font-bold tracking-tight text-white leading-none">CLINOMA CARDS</span>
+                  <span className="text-xl font-bold tracking-tight text-white leading-none">
+                    {isExpectations ? "CLINOMA EXPECTATIONS" : "CLINOMA CARDS"}
+                  </span>
                 </a>
                 <button onClick={() => setSidebarOpen(false)} className="p-2 text-slate-500 hover:text-white hover:bg-slate-900 rounded-lg">
                   <X className="w-5 h-5" />
@@ -253,7 +262,7 @@ export default function App({ onExit }: { onExit?: () => void }) {
                   <div className="text-[10px] font-bold text-slate-505 uppercase tracking-widest px-3 pb-2">Chapters</div>
                   <div className="space-y-1">
                     {CHAPTERS.map(ch => {
-                      const chapterQuestions = INITIAL_QUESTIONS.filter(q => q.chapterId === ch.id);
+                      const chapterQuestions = QUESTIONS.filter(q => q.chapterId === ch.id);
                       const totalCount = chapterQuestions.length;
                       const masteredCount = chapterQuestions.filter(q => masteredIds.includes(q.id)).length;
                       
@@ -289,12 +298,12 @@ export default function App({ onExit }: { onExit?: () => void }) {
                   <div className="flex items-center justify-between mb-2">
                     <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Total Progress</p>
                     <p className="text-[10px] text-blue-400 font-mono font-bold">
-                      {masteredIds.length}/{INITIAL_QUESTIONS.length}
+                      {masteredIds.length}/{QUESTIONS.length}
                     </p>
                   </div>
                   <div className="h-1.5 bg-slate-800 rounded-full overflow-hidden">
                     <div 
-                      style={{ width: `${INITIAL_QUESTIONS.length > 0 ? (masteredIds.length / INITIAL_QUESTIONS.length) * 100 : 0}%` }}
+                      style={{ width: `${QUESTIONS.length > 0 ? (masteredIds.length / QUESTIONS.length) * 100 : 0}%` }}
                       className="h-full bg-blue-500 rounded-full transition-all duration-300"
                     />
                   </div>
@@ -329,7 +338,9 @@ export default function App({ onExit }: { onExit?: () => void }) {
                 <div className="text-left flex flex-col md:flex-row md:items-end justify-between gap-4">
                   <div>
                     <a href="https://clinoma.pages.dev" target="_blank" rel="noopener noreferrer" className="block group">
-                      <h2 className="text-3xl font-extrabold text-slate-900 font-display group-hover:text-blue-600 transition-colors">CLINOMA CARDS</h2>
+                      <h2 className="text-3xl font-extrabold text-slate-900 font-display group-hover:text-blue-600 transition-colors">
+                      {isExpectations ? "توقعات كلينوما للورقة الثانية 🎯" : "CLINOMA CARDS"}
+                    </h2>
                     </a>
                   </div>
                   <button
@@ -344,7 +355,7 @@ export default function App({ onExit }: { onExit?: () => void }) {
                 {/* Grid listing Chapters with Individual Question stats */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
                   {CHAPTERS.map((chapter) => {
-                    const chapterQuestions = INITIAL_QUESTIONS.filter(q => q.chapterId === chapter.id);
+                    const chapterQuestions = QUESTIONS.filter(q => q.chapterId === chapter.id);
                     const totalCount = chapterQuestions.length;
                     const masteredCount = chapterQuestions.filter(q => masteredIds.includes(q.id)).length;
                     const reviewCount = chapterQuestions.filter(q => reviewList.includes(q.id)).length;
@@ -383,13 +394,13 @@ export default function App({ onExit }: { onExit?: () => void }) {
                         <div className="flex justify-between text-xs md:text-sm font-bold text-slate-305">
                           <span>Progress Bar (Overall Success Metrics)</span>
                           <span className="font-mono text-blue-400">
-                            {masteredIds.length} of {INITIAL_QUESTIONS.length} Questions ({INITIAL_QUESTIONS.length > 0 ? Math.round((masteredIds.length / INITIAL_QUESTIONS.length) * 100) : 0}%)
+                            {masteredIds.length} of {QUESTIONS.length} Questions ({QUESTIONS.length > 0 ? Math.round((masteredIds.length / QUESTIONS.length) * 100) : 0}%)
                           </span>
                         </div>
                         <div className="h-3.5 bg-slate-800/80 rounded-full overflow-hidden p-0.5 border border-slate-700/30">
                           <motion.div 
                             initial={{ width: 0 }}
-                            animate={{ width: `${INITIAL_QUESTIONS.length > 0 ? (masteredIds.length / INITIAL_QUESTIONS.length) * 100 : 0}%` }}
+                            animate={{ width: `${QUESTIONS.length > 0 ? (masteredIds.length / QUESTIONS.length) * 100 : 0}%` }}
                             transition={{ duration: 1, ease: 'easeOut' }}
                             className="h-full bg-gradient-to-r from-blue-505 to-indigo-500 rounded-full" 
                           />
@@ -406,7 +417,7 @@ export default function App({ onExit }: { onExit?: () => void }) {
                         </div>
                         <div className="flex-1 sm:flex-none px-4 py-3 bg-slate-850/65 border border-slate-800 rounded-2xl text-center min-w-[100px]">
                           <p className="text-[9px] text-slate-400 font-bold uppercase tracking-wider">TOTAL BANK</p>
-                          <p className="text-xl font-black text-white">{INITIAL_QUESTIONS.length}</p>
+                          <p className="text-xl font-black text-white">{QUESTIONS.length}</p>
                         </div>
                       </div>
 
@@ -433,6 +444,7 @@ export default function App({ onExit }: { onExit?: () => void }) {
                 <StudySession 
                   chapter={activeChapter} 
                   questions={sessionQuestions}
+                  allQuestions={QUESTIONS}
                   onBack={() => setView('home')}
                   addToReview={addToReview}
                   markAsMastered={markAsMastered}
@@ -450,7 +462,7 @@ export default function App({ onExit }: { onExit?: () => void }) {
               >
                 <ReviewView 
                   reviewIds={reviewList} 
-                  allQuestions={INITIAL_QUESTIONS}
+                  allQuestions={QUESTIONS}
                   onBack={() => setView('home')}
                   onMarkMastered={markAsMastered}
                   onRemoveReview={removeFromReview}
@@ -520,7 +532,7 @@ export default function App({ onExit }: { onExit?: () => void }) {
                   <span className="text-[10px] font-black text-slate-400 tracking-wider block text-right pr-1 uppercase">تصفير تبويب مخصص لبعض الفصول</span>
                   
                   {CHAPTERS.map(ch => {
-                    const chapterQuestions = INITIAL_QUESTIONS.filter(q => q.chapterId === ch.id);
+                    const chapterQuestions = QUESTIONS.filter(q => q.chapterId === ch.id);
                     const totalCount = chapterQuestions.length;
                     const masteredCount = chapterQuestions.filter(q => masteredIds.includes(q.id)).length;
                     const percent = totalCount > 0 ? Math.round((masteredCount / totalCount) * 100) : 0;

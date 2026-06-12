@@ -205,7 +205,7 @@ export function ExplanationDrawer({
                 <span className="text-xs font-black text-blue-600 block mb-1.5 uppercase tracking-wider">
                   Question Content:
                 </span>
-                <p className="text-slate-900 text-base sm:text-lg font-extrabold leading-relaxed text-left antialiased">
+                <p className="text-slate-900 text-base sm:text-lg font-extrabold leading-relaxed text-left antialiased whitespace-pre-line">
                   {questionTitle}
                 </p>
               </div>

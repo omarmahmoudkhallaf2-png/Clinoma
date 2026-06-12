@@ -4,6 +4,7 @@ import { ArrowLeft, CheckCircle2, Clock, AlertTriangle, ChevronDown, ChevronUp, 
 import type { Question, Chapter } from '../types';
 import { CHAPTERS } from '../data/chapters';
 import { ExplanationDrawer } from './ExplanationDrawer';
+import { renderCardContent } from '../utils/cardUtils';
 
 interface ReviewViewProps {
   reviewIds: string[];
@@ -186,7 +187,9 @@ function ReviewCard({
         </div>
       </div>
 
-      <p className="text-slate-800 text-base md:text-lg font-medium leading-relaxed mt-1">{q.content}</p>
+      <div className="w-full mt-1">
+        {renderCardContent(q.content)}
+      </div>
 
       {/* Explanation Panel if toggled */}
       <ExplanationDrawer

@@ -941,8 +941,8 @@ export const INITIAL_QUESTIONS: Question[] = [
     chapterId: 5,
     type: "short-essay",
     title: "Core Principles of Family Medicine",
-    content: "Enumerate the 4 core principles of Family Medicine.",
-    answer: "1. Continuity of care.\n2. Comprehensiveness.\n3. Coordination and Collaboration.\n4. Prevention and Community-oriented care.",
+    content: "Enumerate the core principles of Family Medicine.",
+    answer: "1. Continuity of Care\n2. Comprehensiveness\n3. Coordination and Collaboration\n4. Community-Oriented Care\n5. Family-Oriented Care\n6. Prevention",
     isClinical: false,
     topic: "Principles of Family Medicine"
   },
@@ -954,8 +954,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     content: "A family physician manages a registered patient diagnosed with Type 2 Diabetes Mellitus. Instead of solely writing a pharmaceutical prescription, the physician updates the family health record folder, evaluates how the patient's job environment affects his compliance, and arranges a shared educational session with the patient's spouse to plan structured home dietary routines.\n\nQuestions:\n1. List the core principles of family medicine demonstrated by the physician's holistic approach during this single clinical encounter.\n2. List four distinct operational differences comparing the Family Medicine Model against the traditional Specialist Care Model regarding patient focus, continuity, and coordination.",
     answer: "1. Principles: Comprehensiveness (biopsychosocial approach) and Family-Oriented Care.\n2. Operational Differences: Family context vs regardless of family, patient-centered (concerns/beliefs) vs problem-centered (disease), continuous vs fragmented, and coordinated vs uncoordinated.",
     isClinical: true,
-    topic: "Principles of Family Medicine",
-    explanation: "نموذج طب الأسرة في إدارة الأمراض المزمنة:\n- يركز طب الأسرة على المريض ككل (Biopsychosocial) وليس مجرد عضو مريض، ويهتم بسياقه العائلي والاجتماعي.\n- الاختلاف عن التخصصات الدقيقة يكمن في الاستمرارية (Continuity) والتنسيق (Coordination) والشمولية."
+    topic: "Principles of Family Medicine"
   },
   {
     id: "q-fm-pfm-3",
@@ -988,8 +987,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     content: "A new patient presents to the clinic with multiple non-specific somatic complaints. Instead of focusing only on the biological illness, the family physician evaluates the patient's concerns, values, and beliefs, and reviews her physical, psychological, and social environment.\n\nQuestions:\n1. List the core principles of family medicine that guide the physician’s process of care.\n2. Enumerate the comprehensive dimensions of integrated care that a family physician must provide under the holistic approach.",
     answer: "1. Core principles: Continuity of care, Comprehensiveness, Coordination and collaboration, Community-oriented care, Family-oriented care, and Prevention.\n2. Dimensions: Health promotion, Disease prevention, Curative care, Rehabilitation, and Physical, psychological, and social support.",
     isClinical: true,
-    topic: "Principles of Family Medicine",
-    explanation: "مبادئ طب الأسرة والنهج الشمولي:\n- طب الأسرة لا يعالج المرض كحالة بيولوجية فقط، بل يهتم بالمريض كشخص (Patient-centered) وفي سياقه الاجتماعي والنفسي.\n- الرعاية المتكاملة تشمل: الوقاية، العلاج، التأهيل، والدعم النفسي والاجتماعي."
+    topic: "Principles of Family Medicine"
   },
 
   // topic: "The Family Physician & RISE Framework"
@@ -1000,7 +998,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     type: "short-essay",
     title: "WHO Five-Star Doctor Roles",
     content: "Enumerate the 5 roles that comprise the WHO definition of a \"Five-Star Doctor\".",
-    answer: "1. Assesses and improves the quality of care (Care provider).\n2. Makes optimal use of new technologies in health care (Decision maker).\n3. Promotes healthy lifestyles (Health communicator).\n4. Recognizes individual and community health needs (Community leader).\n5. Works efficiently as a member of the health care team (Manager).",
+    answer: "1. Assesses and improves the quality of care by responding to the patient’s total health needs\n2. Makes optimal use of new technologies in health care\n3. Promotes healthy lifestyles\n4. Recognizes individual and community health needs\n5. Works efficiently as a member of the health care team",
     isClinical: false,
     topic: "The Family Physician & RISE Framework"
   },
@@ -1010,7 +1008,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     type: "short-essay",
     title: "Family Physician Core Characteristics",
     content: "Enumerate 4 primary characteristics or functions a Family Physician must demonstrate in practice.",
-    answer: "1. A strong sense of responsibility for the total and continuous care of individuals and families.\n2. Compassion, empathy, and a genuine interest in patients and their families.\n3. The ability to manage multiple medical problems occurring simultaneously.\n4. Skills necessary for the long-term management of chronic diseases and educating families.",
+    answer: "1. A strong sense of responsibility for total, continuous care of individuals and families during health, illness, and rehabilitation.\n2. Compassion and empathy, with genuine interest in patients and their families.\n3. Ability to manage multiple problems occurring simultaneously.\n4. Skills necessary for management of chronic diseases and ability to educate patients and families about health and disease.",
     isClinical: false,
     topic: "The Family Physician & RISE Framework"
   },
@@ -1020,7 +1018,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     type: "short-essay",
     title: "Manager Role Responsibilities",
     content: "Enumerate 4 distinct responsibilities that define the \"Managerial Role\" of the family physician within a Family Health Center (FHC).",
-    answer: "1. Responsibility for all technical and administrative activities within the center.\n2. Promoting intersectoral coordination between health, education, and social services.\n3. Ensuring the strict implementation of national health policies and health service programs.\n4. Investigating public complaints and ensuring appropriate responses to community needs.",
+    answer: "1. Is responsible for all activities within the Family Health Center (FHC)\n2. Promotes intersectoral coordination (e.g., education, agriculture, social services)\n3. Ensures implementation of national health policies and health service delivery programs\n4. Investigates public complaints and ensures appropriate responses to feasible community needs",
     isClinical: true,
     topic: "The Family Physician & RISE Framework"
   },
@@ -1040,7 +1038,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     type: "short-essay",
     title: "Intersectoral Coordination Areas",
     content: "Mention the 4 areas of intersectoral coordination that a family physician promotes in their managerial role.",
-    answer: "1. Education.\n2. Agriculture.\n3. Social services.\n4. National health policies.",
+    answer: "1. Education\n2. Agriculture\n3. Social services\n4. National health policies",
     isClinical: false,
     topic: "The Family Physician & RISE Framework"
   },  // topic: "The Family Physician & RISE Framework"
@@ -1050,7 +1048,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     type: "short-essay",
     title: "RISE Acronym Components",
     content: "Enumerate the 4 components represented by the acronym \"RISE\" framework in family medicine prevention.",
-    answer: "1. R - Risk assessment.\n2. I - Immunization.\n3. S - Screening.\n4. E - Education.",
+    answer: "1. R – Risk assessment: Identification of risk factors at individual and family levels\n2. I – Immunization: Responsibility for vaccination services\n3. S – Screening: Early detection of diseases\n4. E – Education: Health education of individuals, families, and the community regarding health problems and their solutions",
     isClinical: false,
     topic: "The Family Physician & RISE Framework"
   },
@@ -1083,7 +1081,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     type: "short-essay",
     title: "Family Medicine vs Specialist Focus",
     content: "Enumerate 4 distinct features that differentiate the Family Medicine Model from the Specialist/Traditional Care Model regarding patient care and focus.",
-    answer: "1. Family Medicine provides care within the context of the family, whereas Specialist care focuses regardless of family context.\n2. Family Medicine is patient-centered (recognizing values/needs), whereas Specialist care is problem-centered (focusing on a specific disease or complaint).\n3. Family Medicine places strong emphasis on a continuous, healing relationship, whereas Specialist care has limited appreciation of the physician-patient relationship.\n4. Family Medicine is individual, family, and community-oriented, whereas Specialist care is individual patient-oriented.",
+    answer: "Specialist Care Model:\n- Patient care regardless of family context\n- Problem-centered: focuses on a specific disease or complaint\n- Limited appreciation of physician–patient relationship\n- Individual patient oriented\n\nFamily Medicine Model:\n- Patient care within the context of the family\n- Patient-centered: recognizes patient concerns, values, beliefs, and needs\n- Strong emphasis on a healing, continuous physician–patient relationship\n- Individual, family, and community oriented",
     isClinical: false,
     topic: "Comparative Medical Models"
   },
@@ -1093,7 +1091,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     type: "short-essay",
     title: "Organizational Model Differences",
     content: "Enumerate 4 organizational differences between the Traditional Model of Practice and the Family Medicine Model.",
-    answer: "1. Traditional systems often disrupt relationships, whereas Family Medicine systems support continuous, healing relationships.\n2. Traditional care features a single physician model, whereas Family Medicine utilizes a multidisciplinary team approach.\n3. Traditional documentation uses paper-based records, whereas Family Medicine utilizes electronic health records.\n4. Traditional practice style is mostly reactive, whereas Family Medicine is both responsive and proactive.",
+    answer: "Traditional Model:\n- Paper-based medical records\n- Physician is the main source of care\n- Care is mostly reactive\n- Non-organized chronic disease management\n\nFamily Medicine Model:\n- Electronic health records\n- Multidisciplinary healthcare team\n- Care is both responsive and proactive\n- Purposeful, organized chronic disease management",
     isClinical: false,
     topic: "Comparative Medical Models"
   },
@@ -1103,7 +1101,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     type: "short-essay",
     title: "Chronic Disease Management Features",
     content: "Enumerate 4 characteristics of chronic disease management under the Family Medicine Model.",
-    answer: "1. Management is purposeful and structurally organized.\n2. Driven by integrated, practice-based, and evidence-based practice guidelines.\n3. Integrates preventive, curative, and rehabilitative primary care services.\n4. Utilizes continuous quality and safety measurements for service improvement.",
+    answer: "1. Purposeful, organized chronic disease management.\n2. Multidisciplinary healthcare team approach.\n3. Evidence-based practice guidelines.\n4. Continuous quality and safety measurements for service improvement.",
     isClinical: true,
     topic: "Comparative Medical Models"
   },
@@ -1116,7 +1114,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     type: "short-essay",
     title: "Clinical Staff Members",
     content: "Enumerate 4 distinct members that comprise the \"Clinical Staff\" of the multidisciplinary Family Health Team.",
-    answer: "1. Family Physicians.\n2. Nurses.\n3. Pharmacists.\n4. Laboratory Technicians / Assistants.",
+    answer: "1. Family Physicians (acting as team leader)\n2. Nurses\n3. Pharmacists\n4. Laboratory Technicians / Assistants\n5. Social Worker / Sanitarian",
     isClinical: false,
     topic: "Family Health Team & PHC Services"
   },
@@ -1126,7 +1124,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     type: "short-essay",
     title: "Administrative and Support Staff",
     content: "Enumerate 4 distinct members that comprise the \"Administrative and Support Staff\" of a Family Health Team.",
-    answer: "1. Medical Records Officer.\n2. Front Office Staff / Assistants.\n3. Births and Deaths Officer.\n4. Janitors and Guards (or Storage Room Officer).",
+    answer: "1. Front Office Staff / Assistant\n2. Medical Records Officer\n3. Births and Deaths Officer\n4. Janitors and Guards",
     isClinical: false,
     topic: "Family Health Team & PHC Services"
   },
@@ -1136,7 +1134,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     type: "short-essay",
     title: "Leader Duties of Family Physician",
     content: "Enumerate 4 primary duties of the Family Physician acting as the leader of the Family Health Team.",
-    answer: "1. Directing and coordinating all technical and clinical team activities.\n2. Supporting collaborative teamwork and multidisciplinary team building.\n3. Ensuring the integrated delivery of clinical, preventive, and administrative services.\n4. Supervising the field implementation of Primary Health Care (PHC) activities.",
+    answer: "1. Directing and coordinating team activities.\n2. Supporting teamwork and team building.\n3. Ensuring integration of clinical, preventive, and administrative services.\n4. Supervising the implementation of Primary Health Care (PHC) activities.",
     isClinical: false,
     topic: "Family Health Team & PHC Services"
   },
@@ -1146,7 +1144,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     type: "short-essay",
     title: "Catchment Area Team Duties",
     content: "Enumerate 4 distinct responsibilities of the Family Health Team regarding family practice catchment area activities.",
-    answer: "1. Managing a defined, registered roster of families within the community catchment area.\n2. Providing continuous and comprehensive primary care for all registered families.\n3. Creating, updating, and maintaining comprehensive family folders and health files.\n4. Implementing specific national priority healthcare programs (such as IMCI and Family Planning).",
+    answer: "1. Responsible for a defined roster of families within the catchment area.\n2. Providing continuous and comprehensive care for registered families.\n3. Creating and maintaining family folders.\n4. Implementing specific national and priority programs (IMCI, Family Planning).",
     isClinical: true,
     topic: "Family Health Team & PHC Services"
   },
@@ -1156,7 +1154,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     type: "short-essay",
     title: "Upgrading Team Performance",
     content: "List the factors that help in upgrading and improving Family Health Team performance.",
-    answer: "1. Clearly defined job descriptions.\n2. Regular training and capacity-building.\n3. Regular team meetings for planning/monitoring.\n4. Incentives (financial and non-financial).\n5. An effective system of communication.",
+    answer: "1. Clearly defined job descriptions for each team member.\n2. Regular training and capacity-building activities.\n3. Regular team meetings for planning, monitoring, and problem-solving.\n4. Incentives (financial and non-financial) to motivate staff.\n5. An effective system of communication among team members.",
     isClinical: false,
     topic: "Family Health Team & PHC Services"
   },
@@ -1178,8 +1176,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     content: "A family physician is executing her role as the designated leader of a newly established Family Health Team (FHT) within a Family Health Center (FHC). The team needs to coordinate to implement primary health care services effectively for the registered catchment area.\n\nQuestions:\n1. List the specific clinical staff members who compose the Family Health Team under the physician's leadership.\n2. Enumerate the core managerial and supervisory responsibilities of the Family Physician as the team leader.",
     answer: "1. Clinical Staff: Nurses, Pharmacists, Laboratory Technicians, Laboratory Assistants, Social Workers, and Sanitarians.\n2. Leadership responsibilities: Directing/coordinating team activities, supporting teamwork, ensuring integration of clinical/preventive/administrative services, and supervising PHC activities.",
     isClinical: true,
-    topic: "Family Health Team & PHC Services",
-    explanation: "قيادة فريق صحة الأسرة:\n- الطبيب هو قائد الفريق (Team Leader)، والهدف هو التنسيق بين كل التخصصات (تمريض، صيادلة، معامل، أخصائيين اجتماعيين) لتقديم خدمة شاملة.\n- المسؤولية تشمل التنسيق الفني، الإشراف الميداني، وربط الخدمات الإدارية بالفنية."
+    topic: "Family Health Team & PHC Services"
   },
 
   // topic: "PHC Services at FHU/FHC"
@@ -1189,7 +1186,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     type: "short-essay",
     title: "Core PHC Services",
     content: "Enumerate 4 core services delivered by the Family Health Team at the FHU/FHC.",
-    answer: "1. Creating and maintaining family folders.\n2. Providing bio-psycho-social care throughout all stages of the human life cycle.\n3. Conducting initial examinations for all family members.\n4. Early detection of health problems through periodic examinations and screening tests.",
+    answer: "1. Creating and maintaining family folders.\n2. Conducting initial examinations for all family members.\n3. Providing bio-psycho-social care throughout all stages of the human life cycle.\n4. Early detection of health problems through periodic examinations and screening tests.",
     isClinical: false,
     topic: "Family Health Team & PHC Services"
   },
@@ -1202,7 +1199,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     type: "short-essay",
     title: "CAPRS Framework Functions",
     content: "Enumerate the 5 functions of the family represented by the \"CAPRS\" framework.",
-    answer: "1. C - Care.\n2. A - Affection.\n3. P - Providing status.\n4. R - Reproduction.\n5. S - Socialization.",
+    answer: "CAPRS:\n- C - Care: Provision of basic needs such as food, shelter, and social support.\n- A - Affection: Psychosocial support including love, warmth, and emotional security.\n- P - Providing status: Helping family members determine future education, occupation, and social roles.\n- R - Reproduction: Continuity of the family through legal marriage and childbearing.\n- S - Socialization: Teaching social skills, norms, values, and acceptable behaviors.",
     isClinical: false,
     topic: "Family Dynamics & The Human Life Cycle"
   },
@@ -1212,7 +1209,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     type: "short-essay",
     title: "Biological Family Risk Factors",
     content: "Enumerate 4 distinct conditions or categories where family history explicitly contributes to patient risk (The Biologic Family risk factor).",
-    answer: "1. Cancers (especially breast, colon, prostate, and ovarian).\n2. Cardiovascular diseases (Hypertension, atherosclerosis, coronary artery disease).\n3. Metabolic disorders (Diabetes Mellitus and Hyperlipidemia).\n4. Autoimmune/endocrinal disorders, or infections (such as tuberculosis or hepatitis B).",
+    answer: "1. Cancers (especially breast, colon, prostate, and ovarian).\n2. Hypertension and Diabetes.\n3. Hyperlipidaemia, atherosclerosis, coronary artery disease.\n4. Infections as Tuberculosis, hepatitis B, or other prevalent infectious diseases.",
     isClinical: true,
     topic: "Anticipatory Care & Immunization Guidelines"
   },
@@ -1234,8 +1231,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     content: "A 45-year-old patient with persistent environmental allergies and chronic family conflicts presents for a follow-up visit. The family physician decides to systematically analyze the patient's home setting and structural support system.\n\nQuestions:\n1. List the three structural types of families assessed in family practice to understand hereditary, environmental, or social risks.\n2. Enumerate the core family functions represented by the \"CAPRS\" framework.",
     answer: "1. Structural family types: Biologic Family (hereditary), Household Family (environment), and Functional Family (social/support).\n2. CAPRS Framework: Care, Affection, Providing status, Reproduction, and Socialization.",
     isClinical: true,
-    topic: "Family Dynamics & The Human Life Cycle",
-    explanation: "هيكل الأسرة ووظائفها:\n- بنقيم الأسرة من 3 زوايا: بيولوجية (وراثة)، منزلية (بيئة مشتركة)، ووظيفية (دعم اجتماعي).\n- نموذج CAPRS بيلخص وظائف الأسرة: الرعاية، العاطفة، المكانة الاجتماعية، التكاثر، والتنشئة الاجتماعية."
+    topic: "Family Dynamics & The Human Life Cycle"
   },
 
 
@@ -1258,7 +1254,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     type: "short-essay",
     title: "Initial Life Cycle Stages",
     content: "Enumerate 4 initial stages of the Human Life Cycle along with their respective transitional events.",
-    answer: "1. Preconception stage -> Transitional event: Conception.\n2. Fetal life stage -> Transitional event: Birth.\n3. Breast dependence stage -> Transitional event: Weaning.\n4. Preschool age stage -> Transitional event: School entry.",
+    answer: "1. Preconception -> Conception\n2. Fetal life -> Birth\n3. Breast dependence -> Weaning\n4. Preschool age -> School entry\n5. School age -> Puberty\n6. Adolescence -> Attainment of maturity\n7. Age of production & reproduction -> Climacteric\n8. Senescence -> Gradual decline",
     isClinical: false,
     topic: "Family Dynamics & The Human Life Cycle"
   },
@@ -1268,7 +1264,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     type: "short-essay",
     title: "Preconception Health Needs",
     content: "Enumerate 4 primary health needs or clinical interventions focused during the \"Preconception\" stage.",
-    answer: "1. Premarital clinical counseling.\n2. Comprehensive premarital medical examination.\n3. Inter-conception care and child spacing advice.\n4. Genetic counseling when structurally indicated.",
+    answer: "1. Premarital counseling and examination.\n2. Inter-conception care.\n3. Child spacing.\n4. Genetic counseling when indicated.",
     isClinical: true,
     topic: "Family Dynamics & The Human Life Cycle"
   },
@@ -1278,7 +1274,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     type: "short-essay",
     title: "Pediatric Health Risks",
     content: "Enumerate 4 common pediatric health risks or nutritional deficiencies encountered during the \"Breast Dependence & Preschool Age\" stages.",
-    answer: "1. Practical acute respiratory tract infections (ARI).\n2. Acute diarrheal diseases.\n3. Protein-energy malnutrition (such as Kwashiorkor or Marasmus).\n4. Micronutrient deficiencies (such as Rickets or Vitamin A deficiency).",
+    answer: "1. Acute respiratory infections.\n2. Diarrheal diseases.\n3. Malnutrition (protein-energy malnutrition like kwashiorkor, marasmus).\n4. Rickets or Vitamin A deficiency.",
     isClinical: true,
     topic: "Family Dynamics & The Human Life Cycle"
   },
@@ -1288,7 +1284,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     type: "short-essay",
     title: "Adolescence Risk Factors",
     content: "Enumerate 4 classic behavioral or psychological risk factors characteristic of the \"Adolescence\" life cycle stage.",
-    answer: "1. Psychological and emotional instability linked to puberty.\n2. Initiation of tobacco smoking or substance use.\n3. Onset of eating disorders (such as anorexia nervosa or obesity).\n4. Risk-taking behaviors, delinquency, or vulnerability to peer pressure.",
+    answer: "1. Puberty and physiological changes.\n2. Psychological and emotional instability.\n3. Risk behaviors (smoking, drugs, delinquency).\n4. Vulnerability to peer pressure.",
     isClinical: false,
     topic: "Family Dynamics & The Human Life Cycle"
   },
@@ -1301,7 +1297,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     type: "short-essay",
     title: "BBP Core Characteristics",
     content: "Enumerate 4 core characteristics or regulatory design benefits of the BBP.",
-    answer: "1. Provides a clearly defined set of integrated curative, preventive, and public health services.\n2. Tailored explicitly to baseline population health needs, focusing on poor and low-income groups.\n3. Ensures cost-effectiveness, maximization of efficiency, and financial protection.\n4. Limits the duplication of services, unnecessary investigations, and multi-provider drug dispensing costs.",
+    answer: "1. Provides a defined and integrated set of curative, preventive, and public health services.\n2. Based on population health needs, with special emphasis on poor and low-income groups.\n3. Ensures cost-effectiveness and efficiency in healthcare delivery.\n4. Limits duplication of services and investigations, particularly those resulting from drug dispensing by multiple providers.",
     isClinical: false,
     topic: "Basic Benefit Package & Level of Care"
   },
@@ -1311,7 +1307,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     type: "short-essay",
     title: "BBP Delivery Levels",
     content: "Enumerate the 3 levels of service delivery of the BBP under the Family Health Delivery Model.",
-    answer: "1. Family Health Unit (FHU) level.\n2. Family Health Centre (FHC) level.\n3. Hospital Level (Specialist care).",
+    answer: "1. Family Health Unit (FHU)\n2. Family Health Centre (FHC)\n3. Hospital Level",
     isClinical: false,
     topic: "Basic Benefit Package & Level of Care"
   },
@@ -1321,7 +1317,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     type: "short-essay",
     title: "Laboratory Investigations at FHU",
     content: "Enumerate the laboratory investigations available specifically at the Family Health Unit (FHU) level.",
-    answer: "Blood glucose, Blood group and Rh factor, Erythrocyte sedimentation rate (ESR), Hemoglobin (Hb), Pregnancy test, Stool analysis, and Urine analysis.",
+    answer: "Blood glucose, Blood group and Rh factor, Erythrocyte sedimentation rate (ESR), Hemoglobin (Hb), Pregnancy test, Stool analysis, Urine analysis.",
     isClinical: true,
     topic: "Basic Benefit Package & Level of Care"
   },
@@ -1332,7 +1328,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     type: "short-essay",
     title: "FHC vs FHU Investigations",
     content: "Enumerate 4 specific laboratory investigations available at the Family Health Centre (FHC) level that are not available at the FHU level.",
-    answer: "1. Anti-streptolysin O titer (ASOT).\n2. Complete blood count (CBC).\n3. Culture and sensitivity testing.\n4. Blood chemistry including liver and kidney function tests.",
+    answer: "1. Anti-streptolysin O titer (ASOT)\n2. Complete blood count (CBC)\n3. Culture and sensitivity testing\n4. Blood chemistry (liver/kidney function tests, electrolytes, glucose)\n5. CSF analysis / Semen analysis",
     isClinical: true,
     topic: "Basic Benefit Package & Level of Care"
   },
@@ -1344,8 +1340,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     content: "An administrative audit is conducted at a primary care sector to evaluate the execution of the Basic Benefit Package (BBP) delivered through the Family Health Delivery Model. The auditors need to verify whether clinical services are being appropriately distributed across different tiers.\n\nQuestions:\n1. List the specific medical and surgical capabilities that differentiate the Family Health Center (FHC) service tier from the Family Health Unit (FHU) tier.\n2. Enumerate the outpatient specialist and emergency services managed exclusively at the Hospital level under the BBP framework.",
     answer: "1. Differentiating capabilities at FHC: Diagnostic X-ray services and Safe delivery services.\n2. Hospital-level services: Specialist outpatient services, Basic inpatient care, and Emergency/referral services (including emergency surgery).",
     isClinical: true,
-    topic: "Basic Benefit Package & Level of Care",
-    explanation: "مستويات تقديم الخدمة في حزمة المنافع الأساسية (BBP):\n- الفرق الجوهري بين المركز (FHC) والوحدة (FHU) هو توفر الأشعة التشخيصية وخدمات الولادة الآمنة في المركز.\n- الحالات المتخصصة والجراحات الطارئة والتنويم مكانها دائماً في المستشفى (Level 3)."
+    topic: "Basic Benefit Package & Level of Care"
   },
 
   // topic: "Maternal & Women's Health in BBP"
@@ -1355,7 +1350,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     type: "short-essay",
     title: "ANC Screening Elements",
     content: "Enumerate 4 core elements or screening interventions performed during routine primary \"Antenatal Care\" (ANC).",
-    answer: "1. Clinical management and tracking of normal pregnancy progression.\n2. Administration of Tetanus Toxoid (TT) immunization.\n3. Routine screening for pre-eclampsia (hypertension) and gestational diabetes mellitus.\n4. Screening for maternal iron-deficiency anemia, urinary tract infections, and thyroid disorders.",
+    answer: "1. Management of normal pregnancy\n2. Tetanus toxoid (TT) immunization\n3. Screening for: Hypertension (pre-eclampsia), Diabetes mellitus, Urinary tract infection, Anemia, Thyroid disorders\n4. Nutrition and breastfeeding counseling",
     isClinical: true,
     topic: "Basic Benefit Package & Level of Care"
   },
@@ -1365,7 +1360,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     type: "short-essay",
     title: "Postnatal Care Components",
     content: "Enumerate 4 distinct components of \"Postnatal and Post-Abortive Care\" integrated into women's health services.",
-    answer: "1. Clinical management and follow-up of the normal postpartum period.\n2. Timely identification and rapid hospital referral of complicated postpartum or post-abortive cases.\n3. Early detection of recurrent abortion risk and medical counseling of post-abortive women.\n4. Provision of intensive breastfeeding guidance and postpartum family planning counseling.",
+    answer: "1. Management of normal postpartum period\n2. Referral of complicated postpartum and post-abortive cases\n3. Detection of recurrent abortion\n4. Counseling of post-abortive women\n5. Breastfeeding and family planning counseling",
     isClinical: true,
     topic: "Basic Benefit Package & Level of Care"
   },
@@ -1375,7 +1370,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     type: "short-essay",
     title: "Family Planning Interventions",
     content: "Enumerate 4 clinical services or contraceptive interventions provided under primary \"Family Planning\" (FP) services.",
-    answer: "1. Community health education and contraceptive information campaigns.\n2. Provision and clinical insertion of modern contraceptive methods.\n3. Early identification and management of contraceptive side effects.\n4. Initial clinical workup and structured referral of complicated infertility cases.",
+    answer: "1. Health education and information\n2. Provision of contraceptive methods\n3. Referral of complications and infertility cases",
     isClinical: true,
     topic: "Basic Benefit Package & Level of Care"
   },
@@ -1389,7 +1384,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     type: "short-essay",
     title: "Patient Education Clinical Values",
     content: "Enumerate 4 primary clinical values or benefits of implementing effective Patient Education.",
-    answer: "1. Significantly increases patient satisfaction with medical care and management plans.\n2. Promotes healthy behaviors and helps patients modify unhealthy habits.\n3. Reduces unnecessary health care utilization, avoidable office visits, and phone consultations.\n4. Decreases serious illness outcomes and complications, reducing hospitalization and emergency costs.",
+    answer: "1. Increased patient satisfaction.\n2. Promotion of healthy behaviors.\n3. Reduction of unnecessary health care utilization.\n4. Reduction of serious illness outcomes (decrease complications, reduce hospitalization costs).\n5. Health promotion and mortality reduction.",
     isClinical: false,
     topic: "Patient Education & Verbal Counseling"
   },
@@ -1399,7 +1394,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     type: "short-essay",
     title: "Educational Intervention Moments",
     content: "Enumerate 4 distinct moments or times within a single clinical encounter where patient education should actively take place.",
-    answer: "1. During history taking: to assess baseline knowledge, identify habits, and correct initial misconceptions.\n2. During physical examination: to explain the specific purpose of examination maneuvers and findings.\n3. During diagnosis discussion: to clarify the condition and explain medical terminology in simple language.\n4. During treatment planning: to assess patient understanding, identify barriers to adherence, and ensure feasibility.",
+    answer: "1. During history taking: Assess patient habits, baseline knowledge, beliefs, and skills, and correct misconceptions.\n2. During physical examination: Explain the purpose of examination maneuvers and the meaning of findings.\n3. During diagnosis discussion: Clarify the diagnosis and explain medical terminology in simple language.\n4. During treatment planning: Assess patient understanding, identify barriers to adherence, and ensure feasibility of the plan.",
     isClinical: true,
     topic: "Patient Education & Verbal Counseling"
   },
@@ -1409,7 +1404,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     type: "short-essay",
     title: "Core Educational Principles",
     content: "Enumerate the 4 core educational principles represented by Feedback, Reinforcement, Individualization, and Facilitation.",
-    answer: "1. Feedback: Ensuring explicitly that the patient accurately understands the medical information provided.\n2. Reinforcement: Encouraging and rewarding clinical progress to support permanent behavior change.\n3. Individualization: Tailoring health messages according to the patient's unique characteristics and goals.\n4. Facilitation: Providing clear educational materials or skills training to help patients make informed decisions.",
+    answer: "1. Feedback: Ensure that the patient understands the information provided.\n2. Reinforcement: Encourage and reward progress to support behavior change.\n3. Individualization: Tailor education according to the patient’s characteristics, needs, and specific health goals.\n4. Facilitation: Provide educational materials or skills training that help patients make informed decisions.",
     isClinical: false,
     topic: "Patient Education & Verbal Counseling"
   },
@@ -1419,7 +1414,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     type: "short-essay",
     title: "Verbal Instruction Guidelines",
     content: "Mention 4 guidelines the physician must follow to deliver effective verbal instruction.",
-    answer: "1. Understand the patient's circumstances/fears.\n2. Avoid medical jargon.\n3. Be specific and concise.\n4. Continuously assess understanding by asking for feedback.",
+    answer: "1. Understand the patient's circumstances, fears, expectations, and readiness to change.\n2. Avoid medical jargon and use simple, clear language.\n3. Be specific and concise in explanations.\n4. Continuously assess understanding by asking for feedback and summarizing key points.\n5. Encourage patients to ask questions and actively participate in their care.",
     isClinical: false,
     topic: "Patient Education & Verbal Counseling"
   },
@@ -1431,8 +1426,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     content: "During a busy clinic shift, a family physician notes that several patients with chronic conditions have poor medical compliance due to deeply held health misconceptions and lack of awareness about their management plans.\n\nQuestions:\n1. List the four distinct times during an individual clinical encounter where a family physician should actively integrate patient education.\n2. Enumerate six organizational principles that make patient education highly effective at the practice level.",
     answer: "1. Timings: During history taking, physical examination, diagnosis discussion, and treatment planning.\n2. Principles: Feedback, Reinforcement, Individualization, Facilitation, Use of multiple educational channels, and Assessment of patient knowledge.",
     isClinical: true,
-    topic: "Patient Education & Verbal Counseling",
-    explanation: "تثقيف المريض داخل العيادة:\n- التثقيف مش مجرد \"كلمتين في الآخر\"، بل هو عملية مستمرة تبدأ من أخذ التاريخ المرضي وحتى وضع الخطة العلاجية.\n- مبادئ النجاح: التكرار (Reinforcement)، التغذية الراجعة (Feedback)، وتخصيص المعلومة حسب حاجة المريض (Individualization)."
+    topic: "Patient Education & Verbal Counseling"
   },
 
   // topic: "Referral & Consultation Processes"
@@ -1443,7 +1437,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     type: "short-essay",
     title: "Primary Referral Purposes",
     content: "Enumerate 4 valid reasons or purposes for making a formal referral to secondary care.",
-    answer: "1. Inadequate diagnostic or therapeutic resources available within the family practice clinic setting.\n2. Need for expert confirmation of a complex provisional diagnosis or plan of management.\n3. Handling a clinical emergency that requires specialized inpatient or surgical intervention.\n4. Honoring a direct patient request for a second opinion to preserve the doctor-patient relationship.",
+    answer: "1. Diagnosis: Inadequate diagnostic and therapeutic resources and service in the clinic.\n2. Management: Confirmation of diagnosis or plan of management.\n3. Patient's request for referral.\n4. When physician is unsatisfied with the patient prognosis.",
     isClinical: true,
     topic: "Referral & Consultation Processes"
   },
@@ -1455,8 +1449,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     content: "A family physician is managing a patient whose chronic condition has failed to show expected prognostic improvement. The physician decides that the patient will significantly benefit from formal secondary specialist care.\n\nQuestions:\n1. State the textual operational difference between a Consultation and a formal Referral.\n2. Enumerate eight mandatory clinical data elements that must be documented inside a structured referral letter.",
     answer: "1. Difference: Consultation is asking for an opinion/assistance while retaining primary responsibility. Referral is formally transferring responsibility for a specific problem.\n2. Data elements: Socio-demographic data, Refereed hospital/specialty, Type of referral, Chief complaint/History, Past history, Physical exam findings, Investigation findings, and Medication/Diagnosis.",
     isClinical: true,
-    topic: "Referral & Consultation Processes",
-    explanation: "الإحالة والاستشارة في طب الأسرة:\n- الفرق الجوهري هو \"المسؤولية\": في الاستشارة تظل معك، في الإحالة تنتقل للمتخصص.\n- خطاب الإحالة هو وسيلة التواصل، ويجب أن يحتوي على كل بيانات المريض الطبية والاجتماعية لضمان استمرارية الرعاية."
+    topic: "Referral & Consultation Processes"
   },
   {
     id: "q-fm-rle-3",
@@ -1464,7 +1457,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     type: "short-essay",
     title: "Referral Letter Standards",
     content: "Enumerate 4 general criteria that a high-quality Referral Letter must fulfill.",
-    answer: "1. It must be concise and contain only essential, relevant data.\n2. Written using clear, simple, and legible language.\n3. Explicitly clarify and specify the reasons for referral and expectations from the specialist.\n4. Fully documented within the patient's family file and the center's referral register.",
+    answer: "1. Concise and contain essential information.\n2. Select relevant data that will help the patient and receiving doctor.\n3. Use clear simple language.\n4. Clarify and specify the reasons for referral and expectations.\n5. Document in the file and register.",
     isClinical: false,
     topic: "Referral & Consultation Processes"
   },
@@ -1477,8 +1470,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     content: "A healthy 40-year-old asymptomatic patient presents to the clinic wishing to establish a baseline assessment of his health status, occupational exposures, and lifestyle habits.\n\nQuestions:\n1. List the six fundamental components that must be completed during a standard, structured Periodic Health Examination.\n2. Enumerate the key medical history parameters that the clinician must collect to build a comprehensive clinical database.",
     answer: "1. Components: Building the database, Medical history, Family history, Social history, Occupational and environmental history, and Anticipatory guidance.\n2. Medical history parameters: Previous diagnoses/treatment, current/previous medications, allergies, history of immunizations/childhood illnesses, and prior surgical history.",
     isClinical: true,
-    topic: "Periodic Health Examination (PHE)",
-    explanation: "الفحص الدوري الشامل (PHE):\n- الهدف هو بناء قاعدة بيانات (Database) للمريض الصحيح لتوقع المخاطر قبل حدوثها.\n- بيشمل 6 محاور: قاعدة البيانات، التاريخ الطبي، العائلي، الاجتماعي، المهني والبيئي، وأخيراً التوجيه الاستباقي (Anticipatory guidance)."
+    topic: "Periodic Health Examination (PHE)"
   },
   // topic: "Behavioral Health & Substance Abuse"
   {
@@ -1489,8 +1481,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     content: "An adult patient presents to the primary care unit with multiple vague somatic symptoms that do not clearly fit a single organic disease. The family physician suspects that an underlying substance dependency may be the root cause.\n\nQuestions:\n1. List six diverse somatic or psychological clinical findings that should alert a clinician to the high prevalence of underlying substance or drug abuse.\n2. State the primary role of the family physician when domestic violence or abuse is suspected or identified within a household.",
     answer: "1. Red flags: Unexplained excitability/anxiety, GI complaints (dyspepsia/loss of appetite), Cardiac/Hypertension (poor response to treatment), Depression/Sleep disturbances, Sexual dysfunction, and Recurrent trauma or multiple somatic complaints.\n2. Physician role: Act strictly as a counsellor and supporter.",
     isClinical: true,
-    topic: "Behavioral Health & Substance Abuse",
-    explanation: "علامات إدمان المواد المخدرة والعنف المنزلي:\n- الإدمان غالباً بيجي في صورة \"أعراض جسدية غير مفسرة\": قلق، مشاكل هضم، ضغط مبيتحسنش بالعلاج، أو إصابات متكررة.\n- في حالات العنف المنزلي، دور الطبيب الأول هو الدعم والارشاد (Counsellor and supporter)."
+    topic: "Behavioral Health & Substance Abuse"
   },
   {
     id: "q-fm-rle-4",
@@ -1498,7 +1489,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     type: "short-essay",
     title: "Referral Letter Elements",
     content: "Enumerate 4 essential clinical \"Elements\" that must be written inside a standard Referral Letter.",
-    answer: "1. Socio-demographic data (name, age, sex, family health record number).\n2. Main clinical complaint and brief present history of the illness.\n3. Relevant physical examination findings and matching primary investigation results.\n4. Current medications in use (including exact dosages) and documented drug allergies.",
+    answer: "1. Socio-demographic data (name, age, sex, family health record number).\n2. Name of hospital or specialty to which referred.\n3. Type of referral (urgent or elective).\n4. Complaint and present history.\n5. Past medical and surgical history.\n6. Relevant physical examination.\n7. Relevant investigation.\n8. Medication in use (type, dosage and allergies).\n9. Provisional diagnosis.\n10. Reasons for referral.\n11. Name and signature of the referring physician.",
     isClinical: false,
     topic: "Referral & Consultation Processes"
   },
@@ -1511,7 +1502,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     type: "short-essay",
     title: "Childhood Educational Guidance",
     content: "Enumerate 4 important health education messages delivered during childhood anticipatory care visits.",
-    answer: "1. The vital importance of well-baby care and the exact timing for periodic visits.\n2. Promotion of exclusive breastfeeding and proper nutritional weaning techniques.\n3. Adherence to the national compulsory immunization schedule.\n4. Home accident prevention and early management of diarrhea using Oral Rehydration Therapy (ORT).",
+    answer: "1. Importance of well-baby care and timing for visits.\n2. Promotion and techniques of breast feeding.\n3. Proper Weaning.\n4. Immunization schedule.\n5. Accident prevention.\n6. Prevention of dehydration by proper use of oral rehydration therapy (ORT).",
     isClinical: true,
     topic: "Anticipatory Care & Immunization Guidelines"
   },
@@ -1521,7 +1512,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     type: "short-essay",
     title: "False Vaccine Contraindications",
     content: "Enumerate 4 childhood conditions or medical histories that are falsely considered contraindications but are actually SAFE for immunization.",
-    answer: "1. Prematurity (infants should be immunized at their usual chronological age).\n2. Mild recent acute infections, such as otitis media or mild fever.\n3. Documented history of penicillin allergy.\n4. Mild localized reactions to a previous vaccine dose.",
+    answer: "1. Prematurely (immunize at usual chronological age).\n2. Recent infection such as otitis media.\n3. Penicillin allergy.\n4. Local reaction to previous vaccine.\n5. Pregnant mother.\n6. Breast-feeding mother.",
     isClinical: true,
     topic: "Anticipatory Care & Immunization Guidelines"
   },
@@ -1531,7 +1522,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     type: "short-essay",
     title: "True Vaccine Contraindications",
     content: "Enumerate 4 true, absolute medical \"Contraindications\" to child immunization.",
-    answer: "1. Documented history of a severe anaphylactic reaction to a previous vaccine component.\n2. Onset of a seizure or a high fever >40.5°C within 48 hours of a prior pertussis vaccine dose.\n3. True, severe egg allergy or neomycin allergy (specifically for the MMR vaccine).\n4. Severe immunocompromised state (absolute contraindication for live vaccines like OPV).",
+    answer: "1. Anaphylactic reaction to a vaccine.\n2. Seizure or fever > 40.5 C within 48 hr of pertussis vaccine.\n3. True Egg Allergy (MMR).\n4. Neomycin allergy (MMR).\n5. Immunocompromised patient (OPV).\n6. Untreated moderate to severe illness + fever.",
     isClinical: true,
     topic: "Anticipatory Care & Immunization Guidelines"
   },
@@ -1541,7 +1532,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     type: "short-essay",
     title: "Preschool Nutritional Care Interventions",
     content: "Enumerate the 4 main direct interventions and roles of the family physician for nutritional care in preschool children.",
-    answer: "1. Growth monitoring and early detection and correction of malnutrition.\n2. Nutrition education including promotion of breastfeeding and proper weaning.\n3. Nutrient supplementation including vitamin A, vitamin D, and iron.\n4. Referral of the malnourished child when needed.",
+    answer: "1. Growth monitoring.\n2. Nutrition education (promotion of breastfeeding, proper weaning).\n3. Nutrient supplementation (Vitamin A, Vitamin D, Iron).\n4. Referral of malnourished child when needed.",
     isClinical: true,
     topic: "Anticipatory Care & Immunization Guidelines"
   },
@@ -1554,7 +1545,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     type: "short-essay",
     title: "HEEADSSS Framework Letters",
     content: "Enumerate the developmental stages represented by the letters in the adolescent \"HEEADSSS\" psychosocial interview tool.",
-    answer: "1. Home environment.\n2. Eating and nutrition.\n3. Education and employment.\n4. Activities.\n5. Drugs / Substance use.\n6. Sexuality.\n7. Suicide / Depression.\n8. Safety.",
+    answer: "Home environment, Eating and nutrition, Education and employment, Activities, Drugs/substance use, Sexuality, Suicide/depression, Safety.",
     isClinical: false,
     topic: "Adolescent Psychosocial Health & HEADSSS Interview"
   },
@@ -1566,8 +1557,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     content: "A 15-year-old high school student presents to the clinic for his routine annual adolescent health check-up. The patient appears reserved, and his parents report that he has recently developed intense mood swings, an increased desire for independence from them, and an extreme reliance on his peer codes and lifestyle choices.\n\nQuestions:\n1. List the standard psychosocial domains evaluated by the HEEADSSS interview tool to screen this adolescent.\n2. List four mandatory clinical screening tests or physical measurements required during this comprehensive visit.",
     answer: "1. HEEADSSS domains: Home, Eating, Education, Activities, Drugs, Suicide/depression, Sex, and Safety.\n2. Screening/Measurements: Blood pressure measurement, Obesity screening (height and weight), Haemoglobin percentage, and Depression screening.",
     isClinical: true,
-    topic: "Adolescent Psychosocial Health & HEADSSS Interview",
-    explanation: "تقييم الصحة النفسية والاجتماعية للمراهقين (HEEADSSS tool):\n- الـ HEEADSSS بيغطي كل جوانب حياة المراهق: البيت (Home)، الأكل (Eating)، التعليم (Education)، الأنشطة (Activities)، المخدرات (Drugs)، الاكتئاب/الانتحار (Suicide)، الجنس (Sex)، والأمان (Safety).\n- فحوصات ضرورية في الفحص السنوي: قياس الضغط، فحص السمنة، نسبة الهيموجلوبين، وفحص الاكتئاب."
+    topic: "Adolescent Psychosocial Health & HEADSSS Interview"
   },
   {
     id: "q-fm-aph-3",
@@ -1575,7 +1565,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     type: "short-essay",
     title: "Adolescence Emergent Health Issues",
     content: "Enumerate 4 common physical or behavioral health problems that emerge during the adolescent phase.",
-    answer: "1. Eating disorders (such as anorexia nervosa, overweight, and structural obesity).\n2. Behavioral and psychological disorders (such as severe depression or adjustment reactions).\n3. Risk-taking substance abuse and early tobacco smoking dependency.\n4. Dermatological problems (such as acne), or vulnerability to abuse and accidental injuries.",
+    answer: "1. Puberty and rapid physiological changes.\n2. Psychological and emotional instability.\n3. Risk behaviors (smoking, drugs, delinquency).\n4. Vulnerability to peer pressure.",
     isClinical: true,
     topic: "Adolescent Psychosocial Health & HEADSSS Interview"
   },
@@ -1585,7 +1575,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     type: "short-essay",
     title: "Adolescedet Physical Exam Guidelines",
     content: "Enumerate 4 key clinical guidelines recommendations for conducting a physical examination on a teenage patient.",
-    answer: "1. Strictly respect physical privacy, avoid unnecessary body exposure, and keep doors closed.\n2. Permit parents to remain inside the examination room only if the adolescent explicitly requests it.\n3. Utilize the examination as a good teaching tool to talk and explain their bodies, lowering anxiety.\n4. Do not perform pelvic or genital examinations routinely; reserve them for direct request, if sexually active, or if presenting with localized pain.",
+    answer: "1. Respect physical privacy, keep doors closed.\n2. Permit parents to remain inside only if requested by the adolescent.\n3. Use exam as a teaching tool to explain their bodies and reduce anxiety.\n4. Avoid routine pelvic or genital examinations unless specifically indicated.",
     isClinical: true,
     topic: "Adolescent Psychosocial Health & HEADSSS Interview"
   },
@@ -1629,8 +1619,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     content: "A 3-week-old young infant is evaluated at a primary health care setting for localized skin and cord changes. Physical examination shows umbilical redness and pus draining, but the redness does not extend to the skin. The infant is alert, moves his limbs normally, feeds eagerly, lacks grunting, and has an axillary temperature of 36.6°C.\n\nQuestions:\n1. What is the correct IMCI classification and the mandated follow-up timeline for this young infant?\n2. List the overall medical management guidelines and the localized care instructions that must be taught to the mother for home care.",
     answer: "1. Classification: LOCAL BACTERIAL INFECTION (Follow-up in 2 days).\n2. Management: Prescribe oral antibiotic, teach local treatment at home twice daily (wash hands, wash off pus/crusts with soap/water, dry, paint with gentian violet, wash hands again).",
     isClinical: true,
-    topic: "IMCI Young Infant Care (Up to 2 Months)",
-    explanation: "علاج عدوى السرة الموضعية في حديثي الولادة:\n- بما أن الاحمرار لا يمتد للجلد المحيط، والطفل حالته جيدة، التصنيف هو **Local Bacterial Infection**.\n- العلاج: مضاد حيوي فموي وعناية موضعية مرتين يومياً بالماء والصابون ثم صبغة الجنتيان (Gentian violet)."
+    topic: "IMCI Young Infant Care (Up to 2 Months)"
   },
   {
     id: "q-fm-syi-case-psbi",
@@ -1640,8 +1629,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     content: "A 6-day-old neonate is brought to the family physician with a maternal complaint of refusing to breastfeed over the past 12 hours. On clinical observation, the young infant is lethargic. The respiratory rate is 64 breaths per minute, and severe chest indrawing is clearly visible on the lower thoracic wall.\n\nQuestions:\n1. State the immediate clinical classification and the primary operational disposition of this case.\n2. Enumerate the mandatory clinical stabilization lines (pre-referral treatments) required in the clinic before transport.",
     answer: "1. Classification: POSSIBLE SERIOUS BACTERIAL INFECTION (PSBI). Disposition: Refer URGENTLY to hospital.\n2. Stabilization: Give first dose of appropriate IM antibiotic, treat to prevent low blood sugar, and advise how to keep the infant warm during transport.",
     isClinical: true,
-    topic: "IMCI Young Infant Care (Up to 2 Months)",
-    explanation: "الاشتباه في عدوى بكتيرية شديدة (PSBI) في حديثي الولادة:\n- العلامات: النهجان (64)، سحب ضلعي شديد، خمول، ورفض الرضاعة.\n- الإجراء: إحالة فورية للمستشفى مع حقنة مضاد حيوي عضلي أولية، ومنع هبوط السكر، وتدفئة الطفل."
+    topic: "IMCI Young Infant Care (Up to 2 Months)"
   },
   {
     id: "q-fm-syi-case-diarrhea",
@@ -1651,8 +1639,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     content: "A 6-week-old young infant is brought to the clinic due to passing loose stools for 2 days. On clinical assessment, the infant has no signs of a serious bacterial infection. He is non-irritable, alert, lacks sunken eyes, and his skin pinch returns immediately.\n\nQuestions:\n1. State the correct IMCI diarrhea classification and the designated clinical management plan letter for this young infant?\n2. Enumerate the core rules of home treatment that the physician must teach the mother before discharging this patient.",
     answer: "1. Classification: Diarrhoea with NO DEHYDRATION (Plan A).\n2. Home treatment: Give extra fluids, continue frequent/exclusive breastfeeding, advise when to return immediately, and schedule follow-up in 2 days.",
     isClinical: true,
-    topic: "IMCI Young Infant Care (Up to 2 Months)",
-    explanation: "الإسهال في الرضع أقل من شهرين (No dehydration):\n- لو مفيش علامات جفاف، بنمشي على الخطة (A).\n- القواعد: رضاعة طبيعية مطلقة ومستمرة، سوائل إضافية، وتوعية الأم بعلامات الخطر."
+    topic: "IMCI Young Infant Care (Up to 2 Months)"
   },
   {
     id: "q-fm-syi-2",
@@ -1660,7 +1647,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     type: "short-essay",
     title: "Possible Serious Bacterial Infection Signs",
     content: "Enumerate 4 clinical signs that classify a young infant under the critical category of \"POSSIBLE SERIOUS BACTERIAL INFECTION\" (Red Box).",
-    answer: "1. Not able to feed or decreased spontaneous movements.\n2. Convulsions (current or history during illness) or a bulging fontanelle.\n3. Fast breathing (60 breaths per minute or more) or severe chest indrawing/nasal flaring/grunting.\n4. High fever (37.5°C or above) or low body temperature (less than 35.5°C).",
+    answer: "1. Not able to feed or decreased spontaneous movements.\n2. Convulsions.\n3. Fast breathing (60 breaths per minute or more) or severe chest indrawing.\n4. High fever (37.5°C or above) or low body temperature (less than 35.5°C).\n5. Bulging fontanelle.",
     isClinical: true,
     topic: "IMCI Young Infant Care (Up to 2 Months)"
   },
@@ -1670,7 +1657,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     type: "short-essay",
     title: "Prereferral Urgent Treatment Steps",
     content: "Enumerate 4 urgent pre-referral treatment steps required for a young infant classified with a Possible Serious Bacterial Infection.",
-    answer: "1. Administration of the first dose of intramuscular antibiotics (Ampicillin plus Gentamicin).\n2. Immediate medical treatment of current convulsions if present (rectal sodium valproate).\n3. Instituting measures to prevent low blood sugar (glucose or expressed breastmilk).\n4. Advising the mother how to keep the young infant warm (prevent hypothermia) on the way to the hospital.",
+    answer: "1. First dose of intramuscular antibiotics (Ampicillin plus Gentamicin).\n2. Treat convulsions (rectal sodium valproate).\n3. Prevent low blood sugar (give expressed breastmilk or sugar water if able to swallow, or by nasogastric tube if unable).\n4. Keep the young infant warm (prevent hypothermia) during transport.",
     isClinical: true,
     topic: "IMCI Young Infant Care (Up to 2 Months)"
   },
@@ -1680,7 +1667,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     type: "short-essay",
     title: "Breastfeeding Attachment Indicators",
     content: "Enumerate 4 indicators looked for when assessing Breastfeeding positioning and attachment in a young infant.",
-    answer: "1. Infant's chin touching the breast, and the mouth wide open.\n2. Lower lip turned outward, and more areola visible above than below the mouth.\n3. Infant's neck straight or bent slightly back, with the body close and turned towards the mother.\n4. Infant suckling effectively, characterized by slow, deep sucks followed by occasional pauses.",
+    answer: "1. Infant's chin touching the breast.\n2. Mouth wide open.\n3. Lower lip turned outward.\n4. More areola visible above than below the mouth.\n5. Infant's neck straight or bent slightly back.\n6. Body close and turned towards the mother.\n7. Slow, deep sucks followed by occasional pauses.",
     isClinical: true,
     topic: "IMCI Young Infant Care (Up to 2 Months)"
   },
@@ -1704,8 +1691,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     content: "A 10-month-old infant is brought to the clinic due to passing frequent loose stools for 3 days. On assessment, the infant is restless and irritable, has noticeably sunken eyes, and when the abdominal skin is pinched, it goes back slowly. When offered a cup of water, the infant drinks eagerly and thirstily. There is no blood in the stool.\n\nQuestions:\n1. State the correct IMCI hydration classification and the corresponding structured treatment plan letter.\n2. List the clinic-based fluid management protocol and the primary health education components delivered to the caregiver for this plan.",
     answer: "1. Classification: SOME DEHYDRATION (Plan B).\n2. Management: Give recommended ORS in clinic over 4 hours, teach mother how to mix/give ORS, show how much fluid for home, and counsel on 3 Rules of Home Treatment (Extra Fluid, Continue Feeding, Know When to Return).",
     isClinical: true,
-    topic: "IMCI Management of Diarrhoea and Dehydration",
-    explanation: "تصنيف الجفاف المتوسط (Some Dehydration):\n- العلامات: قلق/هياج، عين غائرة، شرب بنهم، انكماش الجلد يرجع ببطء.\n- الخطة (B): تعويض بالـ ORS في العيادة لمدة 4 ساعات مع تعليم الأم قواعد العلاج المنزلي الثلاثة."
+    topic: "IMCI Management of Diarrhoea and Dehydration"
   },
   {
     id: "q-fm-dd-case-severe",
@@ -1715,8 +1701,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     content: "A 3-year-old child is brought to the Family Health Center with acute, severe watery diarrhea. Upon physical examination, the child is found to be completely lethargic and unconscious, and the abdominal skin pinch returns very slowly, taking longer than 2 seconds. Intravenous (IV) fluid access is successfully established right away in the clinic facility.\n\nQuestions:\n1. State the hydration classification and the designated clinical treatment plan letter.\n2. Enumerate the standard clinical protocol guidelines for managing this patient under this plan, including fluid status evaluation and pre-discharge criteria.",
     answer: "1. Classification: SEVERE DEHYDRATION (Plan C).\n2. Guidelines: Start IV fluids immediately, reassess every 1-2 hours (speed up if not improving), give ORS as soon as child can drink, reassess after 3 hours to reclassify, and observe for 6 hours after rehydration to ensure ORS tolerance.",
     isClinical: true,
-    topic: "IMCI Management of Diarrhoea and Dehydration",
-    explanation: "الجفاف الشديد (Severe Dehydration) وكيفية إنقاذه:\n- العلامات: غياب وعي/خمول شديد، انكماش الجلد يرجع ببطء شديد جداً (> 2 ثانية).\n- الخطة (C): سوائل وريدية فورية، مراقبة دقيقة، تحول للـ ORS تدريجياً، وإعادة تصنيف الحالة بعد 3 ساعات."
+    topic: "IMCI Management of Diarrhoea and Dehydration"
   },
 
   // topic: "Breastfeeding Management & Composition"
@@ -1726,7 +1711,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     type: "short-essay",
     title: "Breastfeeding Advantages",
     content: "Enumerate 4 primary advantages of Breastfeeding for the infant.",
-    answer: "1. Provides optimal nutrition tailored specifically to infant needs.\n2. Contains essential antibodies (like secretory IgA) that provide immunological protection.\n3. Promotes emotional bonding between the mother and infant.\n4. Reduces the risk of developing obesity, Type 2 diabetes, and allergic diseases later in life.",
+    answer: "- Protect babies against some short- and long-term illnesses.\n- have a lower risk of asthma.\n- builds a special bond.",
     isClinical: false,
     topic: "Breastfeeding Management & Composition"
   },
@@ -1738,19 +1723,17 @@ export const INITIAL_QUESTIONS: Question[] = [
     content: "A breastfeeding mother of a 1-month-old infant presents to the primary care unit and is diagnosed with active, untreated airborne Tuberculosis.\n\nQuestions:\n1. State the precise text guidelines regarding the division of direct breastfeeding versus feeding expressed breast milk for this patient.\n2. List the clinical conditions and timeline criteria that must be satisfied before this mother is safely permitted to resume direct breastfeeding.",
     answer: "1. Guidelines: Temporarily NOT breastfeed directly (airborne precautions), but CAN feed expressed breast milk.\n2. Criteria: Mother must be treated with anti-TB therapy for 2 weeks AND formally documented to be no longer contagious.",
     isClinical: true,
-    topic: "Breastfeeding Management & Composition",
-    explanation: "الرضاعة الطبيعية ومرض الدرن (Tuberculosis):\n- الأم المصابة بنوع معدي (Airborne) تمنع من الرضاعة المباشرة خوفاً من نقل العدوى بالهواء، لكن يمكنها إعطاء لبنها معصوراً (Expressed milk).\n- تعود للرضاعة المباشرة بعد أسبوعين من بدء العلاج بشرط التأكد أنها لم تعد معدية."
+    topic: "Breastfeeding Management & Composition"
   },
   {
-    id: "q-fm-bm-case-human-animal",
+    id: "q-fm-bm-case-benefits",
     chapterId: 5,
     type: "problem-solving",
-    title: "Breastfeeding Management & Composition Case",
-    content: "A primary care center organizes an educational session for pregnant mothers regarding neonatal and infant nutrition. Several mothers ask for a scientific comparison regarding the structural properties of human breast milk versus raw animal milks.\n\nQuestions:\n1. Enumerate the explicit physiological benefits of breastfeeding specifically defined for the mother's long-term health.\n2. List and categorize the contraindications of breastfeeding into absolute versus temporary contraindications:\n   - List three absolute contraindications where mothers should NOT breastfeed or feed expressed breast milk.\n   - List two temporary contraindications where mothers should temporarily NOT breastfeed but CAN feed expressed breast milk.",
-    answer: "1. Maternal Benefits:\n- Reduces risk of breast/ovarian cancer, type 2 diabetes, and high blood pressure.\n- Reduces risk of developing osteoporosis by increasing gut calcium absorption and decreasing urine losses.\n- Produces oxytocin, which helps contract the uterus back to its pre-pregnancy size.\n- Burns calories and uses mom's fat stores to maintain weight.\n- Lowers chance of developing postpartum depression by letting pregnancy hormones decrease slowly.\n\n2. Contraindications Categorization:\n- Absolute Contraindications (NOT breastfeed or feed expressed milk):\n  - Infant diagnosed with classic galactosemia.\n  - Mother has HIV and is not on antiretroviral therapy (ART).\n  - Mother is using an illicit drug (opioids, PCP, or cocaine).\n  - Mother has suspected or confirmed Ebola virus disease.\n- Temporary Contraindications (Temporarily NOT breastfeed, but CAN feed expressed milk):\n  - Mother has untreated, active tuberculosis (requires airborne precautions and temporary separation).\n  - Mother has active herpes simplex virus (HSV) with lesions on the breast.",
+    title: "Breastfeeding Benefits & Contraindications",
+    content: "A mother brings her newborn for a check-up and asks the family physician about breastfeeding rules, the benefits of breastfeeding for her own health, and if there are absolute reasons to avoid it.\n\nQuestions:\n1. List the basic breastfeeding recommendation rules according to the WHO.\n2. Enumerate four health benefits of breastfeeding for the mother.\n3. List three absolute contraindications where the mother must not breastfeed or feed expressed milk.",
+    answer: "1. WHO Breastfeeding recommendations:\n- Initiate breastfeeding within one hour of birth.\n- Infants should be exclusively breastfed for the first six months of life.\n- Breastfeeding should continue for up to two years or beyond.\n\n2. Health benefits of breastfeeding for the mother:\n- reduces the mother's risk of breast and ovarian cancer.\n- reduce the risk of developing osteoporosis.\n- maintaining weight by burning calories.\n- lower the chance of developing postpartum depression.\n\n3. Absolute contraindications to breastfeeding (must NOT breastfeed or feed expressed breast milk):\n- Infant diagnosed with classic galactosemia.\n- Mother has HIV and is not on antiretroviral therapy (ART).\n- Mother is using an illicit drug (such as opioids, PCP, or cocaine).\n- Suspected or confirmed Ebola virus disease.",
     isClinical: true,
-    topic: "Breastfeeding Management & Composition",
-    explanation: "فوائد الرضاعة الطبيعية للأم وموانع الاستخدام:\n- الرضاعة بتقلل خطر السرطانات، السكر، وهشاشة العظام، وتساعد في عودة الرحم لحجمه الطبيعي.\n- موانع مطلقة (ممنوع رضاعة أو لبن معصور): الجالاكتوزيميا عند الرضيع، HIV عند الأم بدون علاج، تعاطي المخدرات، أو مرض إيبولا.\n- موانع مؤقتة (ممنوع رضاعة مباشرة لكن مسموح لبن معصور): الدرن الرئوي النشط غير المعالج، هربس الثدي النشط."
+    topic: "Breastfeeding Management & Composition"
   },
   {
     id: "q-fm-bm-2",
@@ -1758,7 +1741,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     type: "short-essay",
     title: "Maternal Benefits of Breastfeeding",
     content: "Enumerate 4 health benefits of breastfeeding for the lactating mother.",
-    answer: "1. Reduces risk of breast and ovarian cancer.\n2. Lowers risk of type 2 diabetes and hypertension.\n3. Reduces risk of developing osteoporosis.\n4. Produces oxytocin to help contract the uterus back to its pre-pregnancy size.",
+    answer: "- reduce the mother's risk of breast and ovarian cancer.\n- reduce the risk of developing osteoporosis.\n- maintaining weight by burning calories.\n- lower the chance of developing postpartum depression.",
     isClinical: false,
     topic: "Breastfeeding Management & Composition"
   },
@@ -1769,7 +1752,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     type: "short-essay",
     title: "Breastfeeding Contraindications",
     content: "List 3 absolute contraindications where a mother must NOT breastfeed or feed expressed breast milk.",
-    answer: "1. Infant diagnosed with classic galactosemia.\n2. Mother has HIV and is not on antiretroviral therapy (ART).\n3. Mother is using an illicit drug (such as opioids, PCP, or cocaine).",
+    answer: "1. Infant diagnosed with classic galactosemia.\n2. Mother has HIV and is not on antiretroviral therapy (ART).\n3. Mother is using an illicit drug (such as opioids, PCP, or cocaine).\n4. Suspected or confirmed Ebola virus disease.",
     isClinical: true,
     topic: "Breastfeeding Management & Composition"
   },
@@ -2650,5 +2633,1201 @@ export const INITIAL_QUESTIONS: Question[] = [
     isClinical: true,
     topic: "Coma",
     explanation: "فن وملاحظات التفريق الإكلينيكي العصبي بين عيوب قشرة مخ وجذع الدماغ بغيبوبة الأطفال:\n1. المسار الفعلي: يتم عبر فحص ورصد ردود الأفعال العصبية والانعكاسات الحيوية بجذع الدماغ. فإذا كانت انعكاسات الحدقة وجريان الدموع وحركة بؤبؤ العين سليمة فالعيب معزول بقشرة الدماغ العليا، بينما لو غابت وخمد تفاعلها فالوهن مقيم بجذع المخ العصبي المهلك.\n2. الانعكاسات الثلاثة المستخدمة بالعيادة بالتفصيل للحكم:\n   - انعكاس وقدرة فحص انكماش قزحية حدقة العين للضوء الحاد.\n   - رد الفعل اللمسي لقرنيات وجفن الرمش للرعش.\n   - انعكاس Doll's eyes حركية حنجرة المخ الحركي عند تدوير الرأس."
+  },
+
+  {
+    id: "q-fm-case-rise-fivestar",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Case: Preventive Care & Five-Star Doctor",
+    content: "A 45-year-old man visits the Family Health Center. The family physician checks his risk factors for diabetes, reviews his immunization status, advises on early screening, and educates him about a healthy diet.\n\nQuestions:\n1. What is the framework used by the family physician for prevention in this scenario? Explain its components.\n2. Enumerate the five roles of a Five-Star Doctor summarized by the WHO.",
+    answer: "1. RISE framework:\n- R – Risk assessment: Identification of risk factors at individual and family levels.\n- I – Immunization: Responsibility for vaccination services.\n- S – Screening: Early detection of diseases.\n- E – Education: Health education of individuals, families, and the community regarding health problems and their solutions.\n\n2. Five-Star Doctor roles (WHO):\n1. Assesses and improves the quality of care by responding to the patient's total health needs.\n2. Makes optimal use of new technologies in health care.\n3. Promotes healthy lifestyles.\n4. Recognizes individual and community health needs.\n5. Works efficiently as a member of the health care team.",
+    isClinical: true,
+    topic: "The Family Physician & RISE Framework"
+  },
+
+  {
+    id: "q-fm-case-models",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Case: Specialist vs Family Medicine Models",
+    content: "A patient visits the family physician for hypertension management. He remarks that his previous specialist only focused on his disease, whereas the family physician evaluates him within his family context and works with a multidisciplinary team.\n\nQuestions:\n1. Compare the patient focus and coordination of care in the Specialist Care Model vs the Family Medicine Model.\n2. Contrast the traditional model of practice vs the family medicine model regarding chronic disease management and team structure.",
+    answer: "1. Comparison between Specialist Care and Family Medicine Model:\n- Patient focus: Specialist Care focuses regardless of family context and is problem-centered (focuses on specific disease). Family Medicine Model cares within the context of the family and is patient-centered (recognizes patient concerns, values, beliefs, and needs).\n- Coordination of care: Specialist Care is uncoordinated. Family Medicine Model coordinates care with other health professionals.\n\n2. Contrast between Traditional Model and Family Medicine Model:\n- Team structure: Traditional Model uses a single physician as the main source of care. Family Medicine Model uses a multidisciplinary healthcare team.\n- Chronic disease management: Traditional Model has non-organized chronic disease management. Family Medicine Model has purposeful, organized chronic disease management.",
+    isClinical: true,
+    topic: "Comparative Medical Models"
+  },
+
+  {
+    id: "q-fm-case-bbp-levels",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Case: BBP Levels of Service Delivery & Labs",
+    content: "A health team is evaluating BBP services at a primary care unit. A pregnant woman attends for antenatal care, and another patient is being referred to a secondary hospital for emergency surgery.\n\nQuestions:\n1. Mention the three levels of service delivery of the BBP.\n2. Enumerate the laboratory investigations available specifically at the Family Health Unit (FHU) level.",
+    answer: "1. Three levels of service delivery of the BBP:\n- Family Health Unit (FHU)\n- Family Health Centre (FHC)\n- Hospital Level\n\n2. Laboratory investigations available at the FHU level:\n- Blood glucose\n- Blood group and Rh factor\n- Erythrocyte sedimentation rate (ESR)\n- Hemoglobin (Hb)\n- Pregnancy test\n- Stool analysis\n- Urine analysis.",
+    isClinical: true,
+    topic: "Basic Benefit Package & Level of Care"
+  },
+
+  {
+    id: "q-fm-case-syi-psbi",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Case: Sick Young Infant Assessment",
+    content: "A mother brings her 10-day-old neonate to the clinic. She reports the baby is not able to feed since morning and is unusually sleepy. On examination, the baby has an axillary temperature of 38.0°C and a respiratory rate of 62 breaths per minute.\n\nQuestions:\n1. What is the correct IMCI classification for this young infant?\n2. What are the urgent pre-referral treatment steps required before sending the infant to the hospital?",
+    answer: "1. Classification: POSSIBLE SERIOUS BACTERIAL INFECTION (PSBI).\n\n2. Pre-referral treatment steps:\n- Give the first dose of intramuscular antibiotics (Ampicillin plus Gentamicin).\n- Treat to prevent low blood sugar (give expressed breastmilk or sugar water if able to swallow, or by nasogastric tube if unable).\n- Advise the mother how to keep the young infant warm (prevent hypothermia) during transport.",
+    isClinical: true,
+    topic: "IMCI Young Infant Care (Up to 2 Months)"
+  },
+
+  {
+    id: "q-fm-case-imci-pneumonia",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Case: Sick Child IMCI Classification",
+    content: "A 15-month-old child presents with a cough and fever. On examination, the child is lethargic, has a respiratory rate of 45 breaths per minute, and is unable to drink or breastfeed.\n\nQuestions:\n1. List the general danger signs present in this child.\n2. How would this child be classified under the IMCI guidelines for cough or difficult breathing, and what is the required action?",
+    answer: "1. General danger signs present: Lethargic or unconscious, and unable to drink or breastfeed.\n\n2. Classification and Action:\n- Classification: SEVERE PNEUMONIA OR VERY SEVERE DISEASE (due to presence of general danger signs in a child with cough or difficult breathing).\n- Required Action: Give first dose of an appropriate antibiotic and refer URGENTLY to hospital.",
+    isClinical: true,
+    topic: "IMCI Case Management Overview"
+  },
+
+  {
+    id: "remix_q1",
+    chapterId: 1,
+    type: "problem-solving",
+    title: "Nephritic syndrome (Clinical picture)",
+    content: "Clinical picture of nephritic syndrome",
+    answer: "Sudden onset of gross hematuria (cola-colored urine)\nEdema (mild to moderate, usually periorbital)\nHypertension\nOliguria may be present\nProteinuria (mild to moderate)",
+    isClinical: false,
+    topic: "Acute Post-Streptococcal Glomerulonephritis (APSGN)",
+    explanation: "Clinical picture of nephritic syndrome:\n- **Sudden onset of gross hematuria**: (cola-colored urine)\n- **Edema**: (mild to moderate, usually periorbital)\n- **Hypertension**\n- **Oliguria**: may be present\n- **Proteinuria**: (mild to moderate)"
+  },
+
+  {
+    id: "remix_q2",
+    chapterId: 1,
+    type: "problem-solving",
+    title: "Nephritic syndrome (Complications)",
+    content: "Complications of nephritic syndrome (APSGN)",
+    answer: "Hyperkalemia\nHypertensive encephalopathy\nCongestive heart failure\nRapidly progressive glomerulonephritis (RPGN)\nAcute kidney injury",
+    isClinical: false,
+    topic: "Acute Post-Streptococcal Glomerulonephritis (APSGN)",
+    explanation: "Complications of nephritic syndrome (APSGN):\n- **Hyperkalemia**\n- **Hypertensive encephalopathy**\n- **Congestive heart failure**\n- **Rapidly progressive glomerulonephritis (RPGN)**\n- **Acute kidney injury**"
+  },
+
+  {
+    id: "remix_q3",
+    chapterId: 1,
+    type: "problem-solving",
+    title: "Nephrotic syndrome (Clinical picture)",
+    content: "Clinical picture of nephrotic syndrome",
+    answer: "Generalized edema (initially periorbital in the morning, then lower extremities, ascites, pleural effusion, genital edema)\nFrothy urine (due to proteinuria)\nAnorexia, irritability, abdominal pain\nHypertension and gross hematuria are uncommon (In MCNS)",
+    isClinical: false,
+    topic: "Nephrotic Syndrome",
+    explanation: "Clinical picture of nephrotic syndrome:\n- **Generalized edema**: (initially periorbital in the morning, then lower extremities, ascites, pleural effusion, genital edema)\n- **Frothy urine**: (due to proteinuria)\n- **Anorexia, irritability, abdominal pain**\n- **Hypertension and gross hematuria**: are uncommon (In MCNS)"
+  },
+
+  {
+    id: "remix_q4",
+    chapterId: 1,
+    type: "problem-solving",
+    title: "Nephrotic syndrome (Investigations)",
+    content: "Investigations of nephrotic syndrome",
+    answer: "Urine analysis: Heavy proteinuria (3+ or 4+ dipstick, >40 mg/m²/hr), waxy and hyaline casts\nSerum albumin: Low (<2.5 g/dL)\nSerum cholesterol: Elevated (>250 mg/dL)\nSerum creatinine: Usually normal\nC3 and C4: Normal (In MCNS)",
+    isClinical: false,
+    topic: "Nephrotic Syndrome",
+    explanation: "Investigations of nephrotic syndrome:\n- **Urine analysis**: Heavy proteinuria (3+ or 4+ dipstick, >40 mg/m²/hr), waxy and hyaline casts\n- **Serum albumin**: Low (<2.5 g/dL)\n- **Serum cholesterol**: Elevated (>250 mg/dL)\n- **Serum creatinine**: Usually normal\n- **C3 and C4**: Normal (In MCNS)"
+  },
+
+  {
+    id: "remix_q5",
+    chapterId: 1,
+    type: "problem-solving",
+    title: "Nephrotic syndrome (Complications)",
+    content: "Complications of nephrotic syndrome",
+    answer: "Infection (spontaneous bacterial peritonitis, sepsis, pneumonia, cellulitis)\nThromboembolic events (renal vein thrombosis, pulmonary embolus)\nHypovolemic shock\nRelapse\nComplications of therapy (steroids, cyclophosphamide)",
+    isClinical: false,
+    topic: "Nephrotic Syndrome",
+    explanation: "Complications of nephrotic syndrome:\n- **Infection**: (spontaneous bacterial peritonitis, sepsis, pneumonia, cellulitis)\n- **Thromboembolic events**: (renal vein thrombosis, pulmonary embolus)\n- **Hypovolemic shock**\n- **Relapse**\n- **Complications of therapy**: (steroids, cyclophosphamide)"
+  },
+
+  {
+    id: "remix_q6",
+    chapterId: 1,
+    type: "problem-solving",
+    title: "Glomerular causes of hematuria",
+    content: "Glomerular causes of hematuria",
+    answer: "IgA nephropathy (Berger disease)\nPost-streptococcal glomerulonephritis\nAlport syndrome (hereditary nephritis)\nThin glomerular basement membrane nephropathy\nHenoch-Schönlein purpura nephritis\nSystemic lupus erythematosus nephritis",
+    isClinical: false,
+    topic: "Hematuria",
+    explanation: "Glomerular causes of hematuria:\n- **IgA nephropathy** (Berger disease)\n- **Post-streptococcal glomerulonephritis**\n- **Alport syndrome** (hereditary nephritis)\n- **Thin glomerular basement membrane nephropathy**\n- **Henoch-Schönlein purpura nephritis**\n- **Systemic lupus erythematosus nephritis**"
+  },
+
+  {
+    id: "remix_q7",
+    chapterId: 1,
+    type: "problem-solving",
+    title: "Extra-glomerular causes of hematuria",
+    content: "Extra-glomerular causes of hematuria",
+    answer: "Urinary tract Infection (cystitis, pyelonephritis)\nUrolithiasis (renal calculi)\nTrauma\nCoagulopathy\nTumor (Wilms tumor)\nPolycystic kidney disease, Renal vein thrombosis",
+    isClinical: false,
+    topic: "Hematuria",
+    explanation: "Extra-glomerular causes of hematuria:\n- **Urinary tract Infection**: (cystitis, pyelonephritis)\n- **Urolithiasis**: (renal calculi)\n- **Trauma**\n- **Coagulopathy**\n- **Tumor**: (Wilms tumor)\n- **Polycystic kidney disease**\n- **Renal vein thrombosis**"
+  },
+
+  {
+    id: "remix_q8",
+    chapterId: 1,
+    type: "problem-solving",
+    title: "Clinical picture of AKI",
+    content: "Clinical picture of acute kidney injury (AKI)",
+    answer: "Oliguria or anuria\nEdema (fluid overload)\nHypertension\nAcidotic breathing (rapid and deep)\nUremic encephalopathy (confusion, convulsions, coma) – in advanced cases\nHyperkalemia (arrhythmias)\nMetabolic acidosis",
+    isClinical: false,
+    topic: "Acute Kidney Injury (AKI)",
+    explanation: "Clinical picture of acute kidney injury (AKI):\n- **Oliguria or anuria**\n- **Edema**: (fluid overload)\n- **Hypertension**\n- **Acidotic breathing**: (rapid and deep)\n- **Uremic encephalopathy**: (confusion, convulsions, coma) – in advanced cases\n- **Hyperkalemia**: (arrhythmias)\n- **Metabolic acidosis**"
+  },
+
+  {
+    id: "remix_q9",
+    chapterId: 1,
+    type: "problem-solving",
+    title: "Investigations of AKI",
+    content: "Investigations of AKI",
+    answer: "Urine output: Oliguria (UOP <1 ml/kg/hr or <40 ml/m²/day) or anuria (<30 ml/m²/day)\nRenal function tests: Increased serum creatinine, blood urea, BUN\nArterial blood gas: Metabolic acidosis (↓ pH, ↓ PaCO₂, ↓ HCO₃)\nElectrolytes: Hyperkalemia, dilutional hyponatremia, hypocalcemia, hyperphosphatemia\nUrine analysis: To differentiate prerenal vs intrinsic vs postrenal",
+    isClinical: false,
+    topic: "Acute Kidney Injury (AKI)",
+    explanation: "Investigations of AKI:\n- **Urine output**: Oliguria (UOP <1 ml/kg/hr or <40 ml/m²/day) or anuria (<30 ml/m²/day)\n- **Renal function tests**: Increased serum creatinine, blood urea, BUN\n- **Arterial blood gas**: Metabolic acidosis (↓ pH, ↓ PaCO₂, ↓ HCO₃)\n- **Electrolytes**: Hyperkalemia, dilutional hyponatremia, hypocalcemia, hyperphosphatemia\n- **Urine analysis**: To differentiate prerenal vs intrinsic vs postrenal"
+  },
+
+  {
+    id: "remix_q10",
+    chapterId: 1,
+    type: "matching",
+    title: "Matching Case - APSGN",
+    content: "An 8-year-old female child with cola-colored urine, BP 80th percentile, hx of URI 2 weeks ago, low C3.",
+    answer: "C) Acute post post streptococcal glomerulonephritis (APSGN)",
+    isClinical: true,
+    topic: "Acute Post-Streptococcal Glomerulonephritis (APSGN)",
+    explanation: "Diagnosis case study:\n- Patient is 8 years old with **cola-colored urine** (gross hematuria).\n- **BP 80th percentile** and **low C3** levels.\n- Previous history of **URI 2 weeks ago** strongly points to post-infectious etiology.\n- **Answer**: C) Acute post streptococcal glomerulonephritis (APSGN)"
+  },
+
+  {
+    id: "remix_q11",
+    chapterId: 1,
+    type: "matching",
+    title: "Matching Case - Chronic Renal Failure",
+    content: "A 12-year-old boy, shorter than colleagues, generalized bony aches, hyperkalemia, serum creatinine 2.6 mg/dL.",
+    answer: "K) Chronic renal failure (CKD)",
+    isClinical: true,
+    topic: "Chronic Kidney Disease (CKD)",
+    explanation: "Diagnosis case study:\n- Boy is 12 years old, **shorter than colleagues** (chronic sign indicating developmental delay).\n- **Generalized bony aches** (due to renal osteodystrophy).\n- Shows **hyperkalemia** and high **serum creatinine 2.6 mg/dL**.\n- **Answer**: K) Chronic renal failure (CKD)"
+  },
+
+  {
+    id: "remix_q12",
+    chapterId: 1,
+    type: "matching",
+    title: "Matching Case - Nephrotic Syndrome (Eyes)",
+    content: "A 5 year old girl with puffiness around eyes, proteinuria with minimal trace of blood.",
+    answer: "A) Nephrotic syndrome",
+    isClinical: true,
+    topic: "Nephrotic Syndrome",
+    explanation: "Diagnosis case study:\n- Girl is 5 years old presenting with **puffiness around eyes** (periorbital edema).\n- Urinalysis shows heavy **proteinuria with minimal trace of blood**.\n- Strongly points to Nephrotic syndrome.\n- **Answer**: A) Nephrotic syndrome"
+  },
+
+  {
+    id: "remix_q13",
+    chapterId: 1,
+    type: "matching",
+    title: "Matching Case - HUS",
+    content: "A 2 year old boy with bloody diarrhea, abdominal pain, puffiness around eyes, jaundice, microangiopathic hemolytic anemia, thrombocytopenia.",
+    answer: "A) Haemolytic uraemic syndrome (HUS)",
+    isClinical: true,
+    topic: "Acute Kidney Injury (AKI)",
+    explanation: "Diagnosis case study:\n- Patient is a 2-year-old boy presenting with **bloody diarrhea** and **abdominal pain**.\n- Lab and clinical findings: **puffiness around eyes**, **jaundice**, **microangiopathic hemolytic anemia**, and **thrombocytopenia** (classic triad).\n- **Answer**: A) Haemolytic uraemic syndrome (HUS)"
+  },
+
+  {
+    id: "remix_q14",
+    chapterId: 3,
+    type: "problem-solving",
+    title: "Complications of prematurity",
+    content: "Complications of prematurity",
+    answer: "Respiratory: Respiratory distress syndrome (Hyaline membrane disease), Bronchopulmonary dysplasia, Apnea, Pneumothorax\nCNS: Intraventricular hemorrhage, Periventricular leukomalacia, Retinopathy of prematurity (ROP), Kernicterus\nGastrointestinal: Necrotizing enterocolitis (NEC), Difficult feeding\nMetabolic: Hypoglycemia, Hypocalcemia, Hypothermia\nHematologic: Anemia, Hyperbilirubinemia (indirect), Vitamin K deficiency, DIC\nCardiovascular: Patent ductus arteriosus (PDA), Hypotension\nRenal: Electrolyte disturbances, Acidosis\nImmunologic: Infection and sepsis\nNutritional: Rickets of prematurity",
+    isClinical: false,
+    topic: "Prematurity and its Complications",
+    explanation: "Complications of prematurity:\n- **Respiratory**: Respiratory distress syndrome (Hyaline membrane disease), Bronchopulmonary dysplasia, Apnea, Pneumothorax\n- **CNS**: Intraventricular hemorrhage, Periventricular leukomalacia, Retinopathy of prematurity (ROP), Kernicterus\n- **Gastrointestinal**: Necrotizing enterocolitis (NEC), Difficult feeding\n- **Metabolic**: Hypoglycemia, Hypocalcemia, Hypothermia\n- **Hematologic**: Anemia, Hyperbilirubinemia (indirect), Vitamin K deficiency, DIC\n- **Cardiovascular**: Patent ductus arteriosus (PDA), Hypotension\n- **Renal**: Electrolyte disturbances, Acidosis\n- **Immunologic**: Infection and sepsis\n- **Nutritional**: Rickets of prematurity"
+  },
+
+  {
+    id: "remix_q15",
+    chapterId: 3,
+    type: "problem-solving",
+    title: "Clinical picture of neonatal sepsis",
+    content: "Clinical picture of neonatal sepsis",
+    answer: "Temperature instability (hypothermia or fever)\nRespiratory distress (tachypnea, grunting, retractions, apnea, cyanosis)\nCardiovascular signs (tachycardia or bradycardia, poor perfusion, prolonged capillary refill, hypotension)\nGastrointestinal signs (poor feeding, vomiting, abdominal distension, ileus, diarrhea)\nNeurological signs (lethargy, hypotonia, seizures, irritability, high-pitched cry)\nHematologic signs (petechiae, purpura, bleeding, jaundice)\nMiscellaneous (sclerema, bulging fontanel)",
+    isClinical: false,
+    topic: "Neonatal Sepsis",
+    explanation: "Clinical picture of neonatal sepsis:\n- **Temperature instability**: (hypothermia or fever)\n- **Respiratory distress**: (tachypnea, grunting, retractions, apnea, cyanosis)\n- **Cardiovascular signs**: (tachycardia or bradycardia, poor perfusion, prolonged capillary refill, hypotension)\n- **Gastrointestinal signs**: (poor feeding, vomiting, abdominal distension, ileus, diarrhea)\n- **Neurological signs**: (lethargy, hypotonia, seizures, irritability, high-pitched cry)\n- **Hematologic signs**: (petechiae, purpura, bleeding, jaundice)\n- **Miscellaneous**: (sclerema, bulging fontanel)"
+  },
+
+  {
+    id: "remix_q16",
+    chapterId: 3,
+    type: "problem-solving",
+    title: "Clinical sepsis score components",
+    content: "Clinical sepsis score components",
+    answer: "Temperature instability\nRespiratory signs (tachypnea, grunting, retractions, apnea)\nCardiovascular signs (tachycardia, poor perfusion)\nGI signs (poor feeding, vomiting, distensIon)\nNeurological signs (lethargy, seizures, hypotonia)\nHematologic signs (petechiae, jaundice)",
+    isClinical: false,
+    topic: "Neonatal Sepsis",
+    explanation: "Clinical sepsis score components:\n- **Temperature instability**\n- **Respiratory signs**: (tachypnea, grunting, retractions, apnea)\n- **Cardiovascular signs**: (tachycardia, poor perfusion)\n- **GI signs**: (poor feeding, vomiting, distensIon)\n- **Neurological signs**: (lethargy, seizures, hypotonia)\n- **Hematologic signs**: (petechiae, jaundice)"
+  },
+
+  {
+    id: "remix_q17",
+    chapterId: 3,
+    type: "problem-solving",
+    title: "Significance of clinical sepsis score",
+    content: "Significance of clinical sepsis score",
+    answer: "Helps identify neonates with possible sepsis early before culture results\nGuides decision to start empirical antibiotics promptly\nHigh score indicates high probability of sepsis and need for full workup",
+    isClinical: false,
+    topic: "Neonatal Sepsis",
+    explanation: "Significance of clinical sepsis score:\n- **Identify Sepsis**: Helps identify neonates with possible sepsis early before culture results\n- **Treatment Guide**: Guides decision to start empirical antibiotics promptly\n- **Risk Assessment**: High score indicates high probability of sepsis and need for full workup"
+  },
+
+  {
+    id: "remix_q18",
+    chapterId: 3,
+    type: "problem-solving",
+    title: "Benign transient cutaneous lesions",
+    content: "Benign transient cutaneous lesions in newborns",
+    answer: "Acrocyanosis (harmless cyanosis of hands and feet)\nErythema toxicum (small white papules on erythematous base, contains eosinophils)\nMongolian spots (blue-black pigmentation over buttocks and back)\nMilia (tiny white papules on nose and chin, due to distended sebaceous glands)\nSalmon patch (transitory macular capillary hemangioma on eyelids or neck)\nVernix caseosa (whitish, cheesy, greasy material covering the body)\nLanugo hair (fine, soft hair on premature Infants)\nPustular melanosis (vesiculopustular eruption In black neonates)",
+    isClinical: false,
+    topic: "Transient Cutaneous Lesions",
+    explanation: "Benign transient cutaneous lesions in newborns:\n- **Acrocyanosis**: (harmless cyanosis of hands and feet)\n- **Erythema toxicum**: (small white papules on erythematous base, contains eosinophils)\n- **Mongolian spots**: (blue-black pigmentation over buttocks and back)\n- **Milia**: (tiny white papules on nose and chin, due to distended sebaceous glands)\n- **Salmon patch**: (transitory macular capillary hemangioma on eyelids or neck)\n- **Vernix caseosa**: (whitish, cheesy, greasy material covering the body)\n- **Lanugo hair**: (fine, soft hair on premature Infants)\n- **Pustular melanosis**: (vesiculopustular eruption In black neonates)"
+  },
+
+  {
+    id: "remix_q19",
+    chapterId: 3,
+    type: "problem-solving",
+    title: "Physiological vs Pathological Jaundice",
+    content: "Compare between physiological and pathological jaundice",
+    answer: "Differences across criteria:\n1. Time of appearance: Physiological appears after 24 hours of life (day 2-3) [FT: 2-3 day, PT: 4-6 day] vs Pathological appears within first 24 hours.\n2. Rate of bilirubin rise: Physiological is slower than 5 mg/dL/24hrs vs Pathological is faster than 5 mg/dL/24hrs.\n3. Peak bilirubin Level: Physiological has Peak <12 mg/dL for FT and <14 mg/dL for PT vs Pathological exceeds physiological range (FT >12, PT >14).\n4. Duration (Time of disappearance): Physiological resolves within 7 days for FT (within 10-14 for PT) vs Pathological persists after 1 week (FT) or after 2 weeks (PT).\n5. Type of bilirubin: Physiological is usually unconjugated vs Pathological can be unconjugated or conjugated.\n6. Color of urine and stool: Physiological normal vs Pathological pale stool and dark urine (conjugated).\n7. Clinical picture: Physiological is asymptomatic (active, normal feeding) vs Pathological is ill, lethargic, or feeding poorly.\n8. Severity & Treatment: Physiological is mild (no treatment, observation & feeding) vs Pathological is often severe (requires investigation and treatment).",
+    isClinical: false,
+    topic: "Physiological Jaundice",
+    explanation: "Comparison Table (Physiological vs Pathological Jaundice):\n\n- **Time of appearance**:\n  * Physiological: After 24 hours of life (day 2-3) (FT: 2nd - 3rd day, PT: 4th - 6th day)\n  * Pathological: Within first 24 hours of life\n\n- **Time of disappearance**:\n  * Physiological: FT: within 7 days, PT: within 10-14 days\n  * Pathological: FT: Persistence after one week, PT: Persistence after two weeks\n\n- **Type of bilirubin**:\n  * Physiological: Usually unconjugated\n  * Pathological: Unconjugated or conjugated\n\n- **Level of bilirubin**:\n  * Physiological: FT: < 12 mg/dl (Peak bilirubin at day 3-5 in term), PT: < 14 mg/dl\n  * Pathological: FT: > 12 mg/dl, PT: > 14 mg/dl\n\n- **Rate of bilirubin / rise**:\n  * Physiological: Rate is slower than 5mg/dl /24hrs\n  * Pathological: Rate is faster than 5mg/dl /24hrs\n\n- **Color of urine and stool**:\n  * Physiological: Normal color\n  * Pathological: Pale stool and dark urine may occur\n\n- **Clinical picture**:\n  * Physiological: Asymptomatic (Baby feels well and is active. No hepatosplenomegaly or anemia.)\n  * Pathological: Baby may be sick (The infant is ill, lethargic, or feeding poorly.)\n\n- **Treatment**:\n  * Physiological: Nothing and observation only (adequate feeding)\n  * Pathological: Requires investigation and treatment\n\n- **Severity**:\n  * Physiological: Mild\n  * Pathological: Often Severe"
+  },
+
+  {
+    id: "remix_q20",
+    chapterId: 3,
+    type: "problem-solving",
+    title: "Definition of Kernicterus",
+    content: "Definition of Kernicterus",
+    answer: "Kernicterus is bilirubin-induced neurologic dysfunction caused by deposition of unconjugated bilirubin in the basal ganglia and brainstem nuclei",
+    isClinical: false,
+    topic: "Complications of Indirect Hyperbilirubinemia",
+    explanation: "Definition of Kernicterus:\n- **Bilirubin-induced neurologic dysfunction**\n- Caused by deposition of **unconjugated bilirubin** in the basal ganglia and brainstem nuclei"
+  },
+
+  {
+    id: "remix_q21",
+    chapterId: 3,
+    type: "problem-solving",
+    title: "Acute features of Kernicterus",
+    content: "Clinical features (acute bilirubin encephalopathy)",
+    answer: "Lethargy, poor feeding, hypotonia\nHypertonia (opisthotonos, retrocollis)\nHigh-pitched cry\nSeizures\nApnea",
+    isClinical: false,
+    topic: "Complications of Indirect Hyperbilirubinemia",
+    explanation: "Clinical features (acute bilirubin encephalopathy):\n- **Early features**: Lethargy, poor feeding, hypotonia\n- **Progressive features**: Hypertonia (opisthotonos, retrocollis)\n- **Severe features**: High-pitched cry, Seizures, Apnea"
+  },
+
+  {
+    id: "remix_q22",
+    chapterId: 3,
+    type: "problem-solving",
+    title: "Chronic features of Kernicterus",
+    content: "Long-term sequelae (chronic kernicterus)",
+    answer: "Choreoathetoid cerebral palsy (involuntary movements)\nSensorineural hearing loss\nDental enamel dysplasia\nIntellectual disability\nGaze palsy (upward gaze paralysis)\nBilirubin threshold for exchange transfusion (term infant): Varies by weight and risk factors, typically >20-25 mg/dL",
+    isClinical: false,
+    topic: "Complications of Indirect Hyperbilirubinemia",
+    explanation: "Long-term sequelae (chronic kernicterus):\n- **Choreoathetoid cerebral palsy**: (involuntary movements)\n- **Sensorineural hearing loss**\n- **Dental enamel dysplasia**\n- **Intellectual disability**\n- **Gaze palsy**: (upward gaze paralysis)\n- **Exchange transfusion threshold**: Varies by weight and risk factors, typically >20-25 mg/dL"
+  },
+
+  {
+    id: "remix_q23",
+    chapterId: 3,
+    type: "matching",
+    title: "Matching Case - ABO Incompatibility",
+    content: "Mother blood group A Rhesus positive, baby blood group B Rhesus negative.",
+    answer: "A) ABO Incompatibility",
+    isClinical: true,
+    topic: "Pathological Jaundice",
+    explanation: "Diagnosis case study:\n- Mother: **A Rhesus positive**, Baby: **B Rhesus negative**.\n- Since mother is Rh+, there is no maternal Rh immunization. However, the different key blood types (Mother A, Baby B) lead to immunologic incompatibility.\n- **Answer**: A) ABO Incompatibility"
+  },
+
+  {
+    id: "remix_q24",
+    chapterId: 3,
+    type: "matching",
+    title: "Matching Case - Physiological Jaundice",
+    content: "A 4 day old baby is well but has a tinge of jaundice.",
+    answer: "H) Physiological jaundice",
+    isClinical: true,
+    topic: "Physiological Jaundice",
+    explanation: "Diagnosis case study:\n- Baby is **4 days old** (normal onset timeline for typical transition).\n- Baby is **clinically well** except for a mild tinge of jaundice.\n- Matches standard physiological jaundice findings perfectly.\n- **Answer**: H) Physiological jaundice"
+  },
+
+  {
+    id: "remix_q25",
+    chapterId: 3,
+    type: "matching",
+    title: "Matching Case - Breast Milk Jaundice",
+    content: "A breast fed 3 week old baby has mild jaundice but Is gaining weight satisfactorily.",
+    answer: "B) Breast milk jaundice",
+    isClinical: true,
+    topic: "Physiological Jaundice",
+    explanation: "Diagnosis case study:\n- Baby is **breast fed** and **3 weeks old** (past classic physiological onset timeline).\n- Feeding is effective and patient is **gaining weight satisfactorily**, which confirms breastfeeding safety and points specifically to breast milk jaundice.\n- **Answer**: B) Breast milk jaundice"
+  },
+
+  {
+    id: "remix_q26",
+    chapterId: 3,
+    type: "matching",
+    title: "Matching Case - Biliary Atresia",
+    content: "A 12 day old baby Is jaundiced with pale stools.",
+    answer: "D) Extrahepatic biliary atresia",
+    isClinical: true,
+    topic: "Pathological Jaundice",
+    explanation: "Diagnosis case study:\n- Baby is **12 days old** presenting with persistent jaundice.\n- Highly specific clinical presentation: **pale stools** (acholic stools due to lack of bile excretion into intestine).\n- Strongly points to Extrahepatic biliary atresia.\n- **Answer**: D) Extrahepatic biliary atresia"
+  },
+
+  {
+    id: "remix_q27",
+    chapterId: 2,
+    type: "problem-solving",
+    title: "Triggers of Asthma",
+    content: "Common triggers of bronchial asthma",
+    answer: "Viral respiratory infections\nIndoor allergens (animal dander, dust mites, cockroaches)\nSeasonal allergens (pollens)\nAir pollutants (tobacco smoke, dust, strong odors)\nExercise\nCold dry air\nCrying, laughter, hyperventilation\nDrugs (aspirin, NSAIDs, beta-blockers)",
+    isClinical: false,
+    topic: "Bronchial Asthma",
+    explanation: "Common triggers of bronchial asthma:\n- **Infections**: Viral respiratory infections\n- **Allergens**: Indoor (animal dander, dust mites, cockroaches) & Seasonal (pollens)\n- **Irritants**: Air pollutants (tobacco smoke, dust, strong odors)\n- **Environment**: Exercise, Cold dry air\n- **Psychological**: Crying, laughter, hyperventilation\n- **Pharmacological**: Drugs (aspirin, NSAIDs, beta-blockers)"
+  },
+
+  {
+    id: "remix_q28",
+    chapterId: 2,
+    type: "problem-solving",
+    title: "Investigation of Asthma",
+    content: "Investigation of Bronchial Asthma",
+    answer: "Complete blood count (CBC): Eosinophilia (>250-400 cells/mm³)\nSerum IgE: Usually elevated\n:Pulmonary function tests (spirometry) for children >5 years\nLow FEV1\nLow FEV1/FVC ratio\nReversible airflow obstruction (increase In FEV1 >9-12% after bronchodilator)\nPeak expiratory flow rate (PEFR) varIabilIty: Day-to-day variation ≥20%\nChest X-ray: To exclude other diagnoses or complications (normal in asthma)\nAllergy testing (skin prick test or specific IgE)",
+    isClinical: false,
+    topic: "Bronchial Asthma",
+    explanation: "Investigation of Bronchial Asthma:\n- **CBC**: Eosinophilia (>250-400 cells/mm³)\n- **Serum IgE**: Usually elevated\n- **Pulmonary Function Tests (spirometry)**: (low FEV1, low FEV1/FVC ratio)\n- **Reversible Obstruction**: (increase in FEV1 >9-12% after bronchodilator)\n- **PEFR variability**: (Day-to-day variation ≥20%)\n- **Chest X-ray**: To exclude other diagnoses (typically normal in simple asthma)\n- **Allergy testing**: (skin prick test or specific IgE)"
+  },
+
+  {
+    id: "remix_q29",
+    chapterId: 2,
+    type: "problem-solving",
+    title: "Clinical picture of Pneumonia",
+    content: "Clinical picture of pneumonia",
+    answer: "Tachypnea (most sensitive and specific sign)\nCough (productive or dry)\nFever (low to high grade)\nRespiratory distress (nasal flaring, retractions, grunting, cyanosis)\nDecreased breath sounds, crackles, rhonchi, bronchial breathing\nDullness on percussion (if consolidation or effusion)\nNon-respiratory manifestations: vomiting, diarrhea, abdominal pain (can mimic gastroenteritis or surgical abdomen)",
+    isClinical: false,
+    topic: "Pneumonia",
+    explanation: "Clinical picture of pneumonia:\n- **Main sign**: Tachypnea (most sensitive and specific sign)\n- **Presentation**: Cough (productive or dry), Fever (low to high grade)\n- **Distress indicators**: Nasal flaring, retractions, grunting, cyanosis\n- **Auscultation**: Decreased breath sounds, crackles, rhonchi, bronchial breathing\n- **Percussion**: Dullness on percussion (with consolidation or effusion)\n- **Atypical signs**: Vomiting, diarrhea, abdominal pain (can mimic gastroenteritis or surgical abdomen)"
+  },
+
+  {
+    id: "remix_q30",
+    chapterId: 2,
+    type: "problem-solving",
+    title: "Complications of Pneumonia",
+    content: "Complications of pneumonia",
+    answer: "Pleural effusion\nEmpyema\nLung abscess\nPneumatocele (especially with S. aureus)\nBronchopleural fistula\nBacteremia / sepsis\nMeningitis Pericarditis",
+    isClinical: false,
+    topic: "Pneumonia",
+    explanation: "Complications of pneumonia:\n- **Pleural effusion**\n- **Empyema**\n- **Lung abscess**\n- **Pneumatocele**: (especially with S. aureus)\n- **Bronchopleural fistula**\n- **Bacteremia / sepsis**\n- **Meningitis Pericarditis**"
+  },
+
+  {
+    id: "remix_q31",
+    chapterId: 2,
+    type: "problem-solving",
+    title: "Investigations of Pneumonia",
+    content: "Investigations of pneumonia",
+    answer: "Chest X-ray: Lobar consolidation, patchy Infiltrate, or interstitial pattern\nCBC: Leukocytosis with PMN predominance (bacterial) or lymphocytosis (viral)\nAcute phase reactants: Elevated CRP, ESR, procalcitonin (in bacterial)\nBlood culture: To identify organism\nPulse oximetry: To assess oxygenation\nSputum culture: Limited value In young children\nPCR (nasopharyngeal): For Mycoplasma, Pertussis, viral pathogens\nCT scan (for complicated or unresolved pneumonia)",
+    isClinical: false,
+    topic: "Pneumonia",
+    explanation: "Investigations of pneumonia:\n- **Imaging**: Chest X-ray (Lobar consolidation, patchy Infiltrate, or interstitial pattern) & CT scan (if complicated/unresolved)\n- **Blood Labs**: CBC (Leukocytosis with PMN or lymphocytosis) & Acute phase reactants (CRP, ESR, procalcitonin)\n- **Microbiology**: Blood culture, Sputum culture, Nasopharyngeal PCR\n- **Monitoring**: Pulse oximetry"
+  },
+
+  {
+    id: "remix_q32",
+    chapterId: 2,
+    type: "problem-solving",
+    title: "Acute causes of wheezing",
+    content: "Acute causes of wheezing",
+    answer: "Acute bronchiolitis (RSV)\nBronchial asthma exacerbation\nForeign body aspiration\nSevere bacterial bronchopneumonia",
+    isClinical: false,
+    topic: "Wheezy Chest and Foreign Body Aspiration",
+    explanation: "Acute causes of wheezing:\n- **Acute bronchiolitis** (RSV)\n- **Bronchial asthma exacerbation**\n- **Foreign body aspiration**\n- **Severe bacterial bronchopneumonia**"
+  },
+
+  {
+    id: "remix_q33",
+    chapterId: 2,
+    type: "problem-solving",
+    title: "Recurrent causes of wheezing",
+    content: "Recurrent causes of wheezing",
+    answer: "Bronchial asthma\nRecurrent aspiration (GERD)\nChronic chest Infection (cystic fibrosis, Immunodeficiency)",
+    isClinical: false,
+    topic: "Wheezy Chest and Foreign Body Aspiration",
+    explanation: "Recurrent causes of wheezing:\n- **Bronchial asthma**\n- **Recurrent aspiration** (GERD)\n- **Chronic chest Infection**: (cystic fibrosis, Immunodeficiency)"
+  },
+
+  {
+    id: "remix_q34",
+    chapterId: 2,
+    type: "problem-solving",
+    title: "Noisy breathing differential diagnosis",
+    content: "Non-wheeze causes of noisy breathing (differential diagnosis)",
+    answer: "Stridor (croup, epiglottitis, foreign body in larynx/trachea)\nSnoring (adenoid enlargement, nasal obstruction)\nGrunting (severe respiratory distress)\nRattling (secretions In trachea/bronchi)",
+    isClinical: false,
+    topic: "Wheezy Chest and Foreign Body Aspiration",
+    explanation: "Non-wheeze causes of noisy breathing (differential diagnosis):\n- **Stridor**: (croup, epiglottitis, foreign body in larynx/trachea)\n- **Snoring**: (adenoid enlargement, nasal obstruction)\n- **Grunting**: (indicates severe respiratory distress)\n- **Rattling**: (due to secretions in trachea/bronchi)"
+  },
+
+  {
+    id: "remix_q35",
+    chapterId: 2,
+    type: "matching",
+    title: "Matching Case - Pneumonia",
+    content: "Six month old: high fever, breathlessness, cough, dull percussion note, bronchial breath sounds.",
+    answer: "Answer: G) Pneumonia",
+    isClinical: true,
+    topic: "Pneumonia",
+    explanation: "Diagnosis case study:\n- 6 months old with high fever, respiratory struggle and cough.\n- Diagnostic signs: **dull percussion** and **bronchial breath sounds** indicating pulmonary consolidation.\n- **Answer**: G) Pneumonia"
+  },
+
+  {
+    id: "remix_q36",
+    chapterId: 2,
+    type: "matching",
+    title: "Matching Case - Bronchiolitis",
+    content: "Nine month old: wheezy, coughing, cyanosed, breathless, Intercostal recession.",
+    answer: "Answer: B) Bronchiolitis",
+    isClinical: true,
+    topic: "Bronchiolitis",
+    explanation: "Diagnosis case study:\n- **9 months old** presenting with **wheezing**, respiratory distress indicators (cyanosed, breathless, intercostal recession).\n- Classic RSV-related infantile presentation.\n- **Answer**: B) Bronchiolitis"
+  },
+
+  {
+    id: "remix_q37",
+    chapterId: 2,
+    type: "matching",
+    title: "Matching Case - Whooping Cough",
+    content: "Four year old non-immunized: bouts of coughing ending In vomiting, absolute lymphocytosis.",
+    answer: "Answer: J) Whooping cough (Pertussis)",
+    isClinical: true,
+    topic: "Croup",
+    explanation: "Diagnosis case study:\n- Child is **4 years old** and **non-immunized**.\n- Shows **paroxysms/bouts of coughing ending in vomiting**.\n- Laboratory results show **absolute lymphocytosis**.\n- Classic cough sequence of Pertussis.\n- **Answer**: J) Whooping cough (Pertussis)"
+  },
+
+  {
+    id: "remix_q38",
+    chapterId: 2,
+    type: "matching",
+    title: "Matching Case - Croup",
+    content: "9 month old: upset, stridor, hoarse voice, barking cough, low grade fever.",
+    answer: "Answer: C) Croup",
+    isClinical: true,
+    topic: "Croup",
+    explanation: "Diagnosis case study:\n- Infants aged **9 months** presenting with distress and hallmark symptoms of **barking cough**, hoarse voice, stridor, and low grade fever.\n- Classical laryngotracheitis picture.\n- **Answer**: C) Croup"
+  },
+
+  {
+    id: "remix_q39",
+    chapterId: 2,
+    type: "matching",
+    title: "Matching Case - Epiglottitis",
+    content: "2 year old: very unwell, fever 39°C, unable to swallow secretions, continuous stridor, drooling.",
+    answer: "Answer: F) Epiglottitis",
+    isClinical: true,
+    topic: "Epiglottitis",
+    explanation: "Diagnosis case study:\n- Acute onset in a **2 years old** presenting highly toxic (very unwell, fever 39°C).\n- Pathognomonic airway struggle signs: **unable to swallow secretions**, leading to **drooling** and continuous respiratory **stridor**.\n- Immediate pediatric airway emergency.\n- **Answer**: F) Epiglottitis"
+  },
+
+  {
+    id: "remix_q40",
+    chapterId: 4,
+    type: "problem-solving",
+    title: "Definition of coma",
+    content: "Definition of coma",
+    answer: "Coma is a state of prolonged unconsciousness In which the child cannot be aroused even with painful stimuli",
+    isClinical: false,
+    topic: "Coma",
+    explanation: "Definition of coma:\n- State of **prolonged unconsciousness**\n- Child **cannot be aroused** even with painful stimuli"
+  },
+
+  {
+    id: "remix_q41",
+    chapterId: 4,
+    type: "problem-solving",
+    title: "Causes of coma",
+    content: "Causes of coma",
+    answer: "Intracranial infection (meningitis, encephalitis, brain abscess)\nIntracranial hemorrhage (traumatic or non-traumatic)\nHypoxic-ischemic encephalopathy (shock, severe anemia, hypoxia)\nMetabolic disorders (DKA, hypoglycemia, hepatic failure, renal failure, electrolyte imbalance)\nPoisoning (exogenous toxins)\nStatus epilepticus\nBrain tumor",
+    isClinical: false,
+    topic: "Coma",
+    explanation: "Causes of coma:\n- **Infectious**: Intracranial infection (meningitis, encephalitis, brain abscess)\n- **Hemorrhagic**: Intracranial hemorrhage\n- **Ischemic**: Hypoxic-ischemic encephalopathy\n- **Metabolic**: Metabolic disorders (DKA, hypoglycemia, hepatic failure, renal failure, electrolyte imbalance)\n- **Toxicity**: Poisoning (exogenous toxins)\n- **Neurological**: Status epilepticus & Brain tumor"
+  },
+
+  {
+    id: "remix_q42",
+    chapterId: 4,
+    type: "problem-solving",
+    title: "Grading of coma",
+    content: "Grading of coma (clinical grades)",
+    answer: "Grade I (Stupor): Patient can be aroused for only a short period (less than a minute)\nGrade II (Light coma): Cannot be aroused by painful stimuli, but withdraws to pain\nGrade III (Deep coma): No response to painful stimuli, but breathes spontaneously\nGrade IV (Deep coma with apnea): No response to painful stimuli and apnea",
+    isClinical: false,
+    topic: "Coma",
+    explanation: "Grading of coma:\n- **Grade I (Stupor)**: Patient can be aroused for only a short period (less than a minute)\n- **Grade II (Light coma)**: Cannot be aroused by painful stimuli, but withdraws to pain\n- **Grade III (Deep coma)**: No response to painful stimuli, but breathes spontaneously\n- **Grade IV (Deep coma with apnea)**: No response to painful stimuli and apnea"
+  },
+
+  {
+    id: "remix_q43",
+    chapterId: 4,
+    type: "problem-solving",
+    title: "Definition of shock",
+    content: "Definition of shock",
+    answer: "Shock is the clinical state of circulatory Inadequacy where there Is disruption of tissue perfusion, leading to Inadequate supply of oxygen and nutrIents to, and removal of metabolites from, cells of end organs",
+    isClinical: false,
+    topic: "Shock",
+    explanation: "Definition of shock:\n- **Circulatory inadequacy** leading to disrupted tissue perfusion\n- Impairs oxygen and nutrient delivery, and hampers metabolite removal from cells of end organs"
+  },
+
+  {
+    id: "remix_q44",
+    chapterId: 4,
+    type: "problem-solving",
+    title: "Causes of shock (types)",
+    content: "Causes of shock (types)",
+    answer: "Hypovolemic shock (dehydration, hemorrhage, burns)\nCardiogenic shock (heart failure, myocarditis)\nObstructive shock (tension pneumothorax, cardiac tamponade, pulmonary embolism)\nDistributive (kinetic) shock (septic, anaphylactic, neurogenic)\nMetabolic shock (acute adrenal failure)",
+    isClinical: false,
+    topic: "Shock",
+    explanation: "Causes of shock (types):\n- **Hypovolemic**: dehydration, hemorrhage, burns\n- **Cardiogenic**: heart failure, myocarditis\n- **Obstructive**: tension pneumothorax, cardiac tamponade, pulmonary embolism\n- **Distributive (kinetic)**: septic, anaphylactic, neurogenic\n- **Metabolic**: acute adrenal failure"
+  },
+
+  {
+    id: "remix_q45",
+    chapterId: 4,
+    type: "problem-solving",
+    title: "Grading of shock",
+    content: "Grading of shock",
+    answer: "Grade I (Compensated shock): Tachycardia, normal blood pressure, prolonged capillary refill, cool extremities\nGrade II (Early shock): Tachycardia + poor peripheral perfusion\nGrade III (Established shock): Tachycardia + poor perfusion + hypotension\nGrade IV (Advanced shock): Multiple organ system failure (MOSF)\nGrade V (Irreversible shock): Refractory metabolic acidosis, Irreversible cellular damage",
+    isClinical: false,
+    topic: "Shock",
+    explanation: "Grading of shock:\n- **Grade I (Compensated)**: Tachycardia, normal blood pressure, prolonged capillary refill, cool extremities\n- **Grade II (Early)**: Tachycardia + poor peripheral perfusion\n- **Grade III (Established)**: Tachycardia + poor perfusion + hypotension\n- **Grade IV (Advanced)**: Multiple organ system failure (MOSF)\n- **Grade V (Irreversible)**: Refractory metabolic acidosis, Irreversible cellular damage"
+  },
+
+  {
+    id: "remix_q46",
+    chapterId: 4,
+    type: "problem-solving",
+    title: "Basic Life Support (A, B, C)",
+    content: "Basic Life Support (A, B, C)",
+    answer: "A – Airway control: Open airway (head tilt, jaw thrust, mouth opening), clear airway (suction), maintain patent airway (oropharyngeal airway or ETT)\nB – Breathing support: Mouth-to-mouth, bag and mask with O2 (20 breaths/minute)\nC – Circulation support: Cardiac compression at midstream point (rate 100/minute, ratio 1:5 with ventilation)",
+    isClinical: false,
+    topic: "Steps of Cardiopulmonary Resuscitation (CPR)",
+    explanation: "Basic Life Support (A, B, C):\n- **A – Airway control**: Open airway, clear airway (suction), maintain patent airway\n- **B – Breathing support**: Mouth-to-mouth, bag and mask with O2 (20 breaths/min)\n- **C – Circulation support**: Cardiac compression at midstream, rate 100/min, ratio 1:5 with ventilation"
+  },
+
+  {
+    id: "remix_q47",
+    chapterId: 4,
+    type: "problem-solving",
+    title: "CPR Compression Depth",
+    content: "Compression depth by age",
+    answer: "Newborns: 2 cm (hand encircling technique)\nInfants: 2 cm (two-finger technique)\nYoung children: 3 cm (one-hand technique)\nOlder children: 4 cm (two-hands technique)",
+    isClinical: false,
+    topic: "Steps of Cardiopulmonary Resuscitation (CPR)",
+    explanation: "Compression depth by age:\n- **Newborns**: 2 cm (hand encircling technique)\n- **Infants**: 2 cm (two-finger technique)\n- **Young children**: 3 cm (one-hand technique)\n- **Older children**: 4 cm (two-hands technique)"
+  },
+
+  {
+    id: "remix_q48",
+    chapterId: 4,
+    type: "problem-solving",
+    title: "Advanced Life Support (D, E, F)",
+    content: "Advanced Life Support (D, E, F)",
+    answer: "D – Drugs: IV fluids (20 ml/kg), sodium bicarbonate, Adrenaline\nE – ECG monitoring: Detect arrhythmias (asystole, VF)\nF – Fibrillation control: Defibrillation (2, 4, 8 joules/kg)",
+    isClinical: false,
+    topic: "Steps of Cardiopulmonary Resuscitation (CPR)",
+    explanation: "Advanced Life Support (D, E, F):\n- **D – Drugs**: IV fluids (20 ml/kg), sodium bicarbonate, Adrenaline\n- **E – ECG monitoring**: Detect arrhythmias (such as asystole, VF)\n- **F – Fibrillation control**: Defibrillation (2, 4, 8 joules/kg)"
+  },
+
+  {
+    id: "remix_q49",
+    chapterId: 4,
+    type: "problem-solving",
+    title: "Post-resuscitation (G, H, I)",
+    content: "Post-resuscitation (G, H, I)",
+    answer: "G – Recognition and treatment of causative disease\nH – Brain recovery (control convulsions, increased ICP)\nI – Intensive care for multiple system support",
+    isClinical: false,
+    topic: "Steps of Cardiopulmonary Resuscitation (CPR)",
+    explanation: "Post-resuscitation (G, H, I):\n- **G – Recognition**: Recognition and treatment of causative disease\n- **H – Brain recovery**: Control convulsions, manage increased ICP\n- **I – Intensive care**: for multiple system support"
+  },
+
+  {
+    id: "remix_q50",
+    chapterId: 4,
+    type: "problem-solving",
+    title: "Glasgow Coma Scale Items",
+    content: "Glasgow Coma Scale (GCS) Items",
+    answer: "Eye opening (1-4): Spontaneous (4), To voice (3), To pain (2), None (1)\nVerbal response (1-5): Oriented (5), Confused (4), Inappropriate words (3), Incomprehensible (2), None (1)\nMotor response (1-6): Obeys commands (6), Localizes pain (5), Withdraws (4), Flexion (3), Extension (2), None (1)\nTotal score: 3 to 15 (Score ≤8 = severe brain injury)",
+    isClinical: false,
+    topic: "Glasgow Coma Scale and its Advantages",
+    explanation: "Glasgow Coma Scale (GCS) Items:\n- **Eye opening (1-4)**: Spontaneous (4), To voice (3), To pain (2), None (1)\n- **Verbal response (1-5)**: Oriented (5), Confused (4), Inappropriate words (3), Incomprehensible (2), None (1)\n- **Motor response (1-6)**: Obeys commands (6), Localizes pain (5), Withdraws (4), Flexion (3), Extension (2), None (1)\n- **Total score**: 3 to 15 (Score ≤8 indicates severe brain injury)"
+  },
+
+  {
+    id: "remix_q51",
+    chapterId: 4,
+    type: "problem-solving",
+    title: "Advantages of GCS",
+    content: "Advantages of GCS",
+    answer: "Objective and standardized assessment of consciousness\nSimple and quick – can be performed at bedside in emergencies\nAllows serial monitoring to detect Improvement or deterioration",
+    isClinical: false,
+    topic: "Glasgow Coma Scale and its Advantages",
+    explanation: "Advantages of GCS:\n- **Standardized**: Objective and standardized assessment of consciousness\n- **Clinical utility**: Simple and quick – can be performed at bedside in emergencies\n- **Tracking**: Allows serial monitoring to detect Improvement or deterioration"
+  },
+
+  {
+    id: "remix_q52",
+    chapterId: 4,
+    type: "problem-solving",
+    title: "Disadvantages of GCS",
+    content: "Disadvantages of GCS",
+    answer: "Limited in young children/infants (verbal component hard to assess)\nAffected by sedation, Intubation, or neuromuscular blockade\nDoes not assess brainstem function directly (pupillary reaction, reflexes)",
+    isClinical: false,
+    topic: "Glasgow Coma Scale and its Advantages",
+    explanation: "Disadvantages of GCS:\n- **Age limitation**: Limited in young children/infants (verbal component is hard to assess)\n- **Interventions**: Affected by sedation, Intubation, or neuromuscular blockade\n- **Anatomy limit**: Does not assess brainstem function directly (pupillary reaction, reflexes)"
+  },
+
+  {
+    id: "remix_fm_case_1",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Case 1: Adolescent Health Evaluation",
+    content: "A 15-year-old male comes to his family physician for routine annual medical evaluation. He has no significant medical history and receives all childhood vaccinations as reported in his family record.\n\nQuestions:\na) Enumerate five health educational messages needed to this age group.\nb) List five screening tests needed for him.",
+    answer: "a) Five health educational messages:\n1. PERSONAL HYGIENE\n2. DENTAL CARE\n3. PROPER NUTRITION AND LOW FAT\n4. WEAR HELMET IN RIDING BIKE\n5. REGULAR EXERCISE\n\nb) Five screening tests:\n1. BLOOD PRESSURE\n2. HEMOGLOBIN PERCENT\n3. LIPID PROFILE\n4. DEPRESSION SCREENING\n5. OBESITY",
+    isClinical: true,
+    topic: "Anticipatory Care & Immunization Guidelines"
+  },
+
+  {
+    id: "remix_fm_case_2",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Case 2: Family Support Functions",
+    content: "A child with a chronic illness receives emotional support, food, shelter, and help in school decisions from his parents.\n\nQuestions:\n1. Which family functions are illustrated in this scenario?\n2. Mention the mnemonic used to remember family functions.",
+    answer: "1. Care, Affection, Providing status\n2. Mnemonic: CAPRS",
+    isClinical: true,
+    topic: "Family Dynamics & The Human Life Cycle"
+  },
+
+  {
+    id: "remix_fm_case_3",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Case 3: Three-Generation Living Structure",
+    content: "A man lives with his wife and elderly mother in the same house for the past 2 years.\n\nQuestions:\n1. How would you classify this family type?\n2. Mention one health implication relevant to this family structure.",
+    answer: "1. Extending family\n2. Decision making conflict, Burden of taking care of mother. On the other hand, giving emotional support.",
+    isClinical: true,
+    topic: "Family Dynamics & The Human Life Cycle"
+  },
+
+  {
+    id: "remix_fm_case_4",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Case 4: Smoking in the Household",
+    content: "Several members of one household are smokers, and a teenage boy recently started smoking.\n\nQuestions:\n1. How can the family act as a source of illness in this case?\n2. Identify one preventive role of the family physician.",
+    answer: "1. Sharing bad habits as smoking, Genetic predisposition, Spread of communicable disease.\n2. Educate this family to quit smoking & stop doing it in front of the young family members.",
+    isClinical: true,
+    topic: "Family Dynamics & The Human Life Cycle"
+  },
+
+  {
+    id: "remix_fm_case_5",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Case 5: Routine 9-Month Well-Child Visit",
+    content: "A 9-month-old infant is brought by his mother for routine vaccination. The child is healthy, with normal growth and no danger signs.\n\nQuestions:\n1. At which level of care should this service be provided?\n2. Which BBP component does this belong to?",
+    answer: "1. Primary health care level \"FHU\"\n2. Child health services (immunization & vitamins supplementation)",
+    isClinical: true,
+    topic: "Basic Benefit Package & Level of Care"
+  },
+
+  {
+    id: "remix_fm_case_6",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Case 6: Family Planning Consultation",
+    content: "A 30-year-old woman with three children asks for information about contraception and wants to start a suitable family planning method.\n\nQuestions:\n1. Which BBP service is provided?\n2. Where this service should be delivered?",
+    answer: "1. Woman health services\n2. At the primary health care at the FHU",
+    isClinical: true,
+    topic: "Basic Benefit Package & Level of Care"
+  },
+
+  {
+    id: "remix_fm_case_7",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Case 7: Middle-Aged Female Screenings",
+    content: "A 40-year-old woman comes for routine health check with no complaints.\n\nQuestions:\n1. What screening service should be offered?\n2. What action is taken if a suspicious lump is found?",
+    answer: "1. Breast & cervical cancer, DM & HTN\n2. Referral urgently to hospital",
+    isClinical: true,
+    topic: "Basic Benefit Package & Level of Care"
+  },
+
+  {
+    id: "remix_fm_case_8",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Case 8: Child with Diarrhea, No Dehydration",
+    content: "A 3-year-old child presents with diarrhea but no dehydration or danger signs.\n\nQuestions:\n1. Which program is used to manage this case?\n2. At which level of care?",
+    answer: "1. IMCI\n2. FHU",
+    isClinical: true,
+    topic: "IMCI Case Management Overview"
+  },
+
+  {
+    id: "remix_fm_case_9",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Case 9: Patient Education in Smoking Cessation",
+    content: "A 35 years old male patient comes to you. He is a heavy smoker. He complains of cough and difficult breathing. You try to educate this patient to stop smoking.\n\nQuestion:\nList 5 principles of patient education you can use with this patient:",
+    answer: "a. Feedback: Ensure that the patient understands the information provided.\nb. Reinforcement: Encourage and reward progress to support behavior change.\nc. Individualization: Tailor education according to the patient's characteristics, needs, and specific health goals.\nd. Facilitation: Provide educational materials or skills training.\ne. Use of multiple educational channels.\nf. Assessment of patient knowledge: Identify gaps in knowledge and correct misunderstandings.",
+    isClinical: true,
+    topic: "Patient Education & Verbal Counseling"
+  },
+
+  {
+    id: "remix_fm_case_10",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Case 10: Long-standing Diabetic Counseling",
+    content: "You are caring 62 years of patient who was diagnosed type diabetes 16 years ago. His history includes hypertension and clinical signs of early renal failure. He forgets taking his medications on time and reports that, \"My blood sugar never has been too good, and I don't think it ever will be\".\n\nQuestions:\nA. You plan to educate this patient how to control his blood sugar, mention three verbal instructions to give effective message.\nB- Enumerate three advantages of patient education.",
+    answer: "A. Verbal instructions:\n1. Understand the patient's circumstances, fears, expectations, and readiness to change.\n2. Avoid medical jargon and use simple, clear language.\n3. Be specific and concise in explanations.\n4. Continuously assess understanding by asking for feedback and summarizing key points.\n5. Encourage patients to ask questions and actively participate in their care.\n\nB. Advantages of patient education:\na. Increased patient satisfaction\nb. Promotion of healthy behaviors\nc. Reduction of unnecessary health care utilization\nd. Reduction of serious illness outcomes\ne. Health promotion and mortality reduction",
+    isClinical: true,
+    topic: "Patient Education & Verbal Counseling"
+  },
+
+  {
+    id: "remix_fm_case_11",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Case 11: Mrs. A: Headaches & Family Conflict",
+    content: "A 35-year-old woman (Mrs. A) visits the Family Health Unit complaining of recurrent headaches and fatigue. She lives in an extended family with her husband, two children, and her mother-in-law. Recently, there has been ongoing conflict between her and her mother-in-law, causing emotional stress. Her husband is a heavy smoker, and her 12-year-old son has recently started experimenting with smoking. The family physician conducts a comprehensive assessment, exploring family dynamics, lifestyle factors, and psychosocial stressors. The physician provides counseling, addresses unhealthy behaviors, and decides to refer the patient to a neurologist for further evaluation of her headaches while continuing follow-up care.\n\nQuestions:\n1- How would you classify the type of family in this case?\n2- Identify TWO negative health influences related to family dynamics in this scenario?\n3- What elements of family dynamics are affecting the patient's health?\n4- What is the role of the family physician in managing patient at the primary care level?\n5- Mention TWO reasons for referring this patient to a specialist?\n6- After referral, what is the responsibility of the family physician to ensure continuity of care?",
+    answer: "1- Extended family\n2- Family conflict (with mother-in-law) causes stress and headaches. Husband is a heavy smoker causing passive smoking and bad role modeling.\n3- Interpersonal conflict, poor communication, unhealthy lifestyle behaviors (smoking), negative role modeling, and psychosocial stress.\n4- Comprehensive assessment (biological + psychological), counseling & health education (smoking cessation & stress management), addressing relationships, and specialist referral + follow-up.\n5- Uncertain diagnosis (recurrent headaches need evaluation to rule out secondary causes), and need for specialized investigations/management.\n6- Follow up after specialist visit, review and integrate specialist report, coordinate ongoing management, ensure adherence, and provide ongoing monitoring.",
+    isClinical: true,
+    topic: "Principles of Family Medicine"
+  },
+
+  {
+    id: "remix_fm_case_12",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Case 12: Ahmed & Mona: Launching Center Stage",
+    content: "Ahmed 76 married to mona 70, they have 3 sons married and not live with them, Ahmed complains from uncontrolled hypertension. He suffers from dyspnea and chest pain but relieved by rest. He is referred for ECG & laboratory investigation.\n\nQuestions:\nWhat is the Type of the family?\nWhat is the Phase of the family?\nWhat is the Type of referral and cause?",
+    answer: "Type: Nuclear biologic family\nPhase: family as launching center\nReferral Type: Elective. Cause: Confirmation of diagnosis, Lack of resources.",
+    isClinical: true,
+    topic: "Referral & Consultation Processes"
+  },
+
+  {
+    id: "remix_fm_case_13",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Case 13: Khalid Ali: Aging Family & Request",
+    content: "Mr. Khalid Ali, 67 years old, illiterate. He lives with his wife, Huda who is 60 years old. His two sons are married, and both live with him. He has had hypertension and diabetes for 3 years and is taking medication for both. During his follow-up visit, you found him complaining of losing 3 kg in one month, sleeping problems, fatigue, not enjoying any activities and a generally slowing down than previous. He requested to be referred to an internal medicine physician. You try to explain his condition, but he is insisting on being referred. So, you refereed him.\n\nQuestions:\nName the type of Khalid's family:\nName the family stage for this family:\nName the cause for referral and the type of referral:",
+    answer: "Family Type: Nuclear biologic family\nFamily Stage: Aging family\nReferral Cause: Patient request. Type: Elective.",
+    isClinical: true,
+    topic: "Referral & Consultation Processes"
+  },
+
+  {
+    id: "remix_fm_case_14",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Case 14: Amira Ali: Aging Nuclear Family",
+    content: "Mrs. Amira Ali, 62 years old comes to you. She is illiterate. She lives with her husband, 65 years old. Her two sons are married, and both live away from them. She has hypertension and diabetes for 3 years on medication. She complains bony aches and felt down in the bathroom 2 days ago.\n\nQuestions:\nName the type of Mrs Amira Family:\nName the stage of this family:",
+    answer: "Family Type: Nuclear family\nFamily Stage: Aging family",
+    isClinical: true,
+    topic: "Family Dynamics & The Human Life Cycle"
+  },
+
+  {
+    id: "remix_fm_case_15",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Case 15: Karma & Hassan: Palliative Care & Family",
+    content: "Karma is a 77-year-old hypertensive female living with her husband (Mr. Hassan), who has end-stage lung cancer on palliative care. She has two sons and 3 grandchildren living with her. Her son (Maged) is concerned because she has poor appetite and recent weight loss.\n\nQuestions:\nName the type and stage of this family:\nEnumerate two health education messages you would give Maged (as a caregiver) regarding his father's (Mr. Hassan's) care.",
+    answer: "Type & Stage: Aging family stage, Extended biologic family type.\nHealth education messages:\n- Give medications regularly as prescribed, especially pain medications.\n- Observe danger signs such as severe breathlessness, severe pain, inability to eat or drink, or confusion.\n- Provide comfort care and emotional support.\n- Maintain good nutrition and hydration as tolerated.\n- Prevent bed sores by changing position regularly and keeping skin clean.\n- Seek medical help if the condition worsens.",
+    isClinical: true,
+    topic: "Family Dynamics & The Human Life Cycle"
+  },
+
+  {
+    id: "remix_fm_case_16",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Case 16: Urgent Referral for Epistaxis",
+    content: "A 10-year-old boy comes to you with uncontrolled sever nasal bleeding after trauma. You try to stop bleeding, but it doesn't. You refer the case to the nearest hospital.\n\nQuestions:\nName the type of referral in this case?\nList four (4) causes of referral in general?",
+    answer: "Type: Urgent\nCauses of referral:\n- Diagnosis: inadequate diagnostic resources.\n- Management: confirmation of diagnosis and management plan.\n- Patient request.\n- Physician is unsatisfied with patient prognosis.",
+    isClinical: true,
+    topic: "Referral & Consultation Processes"
+  },
+
+  {
+    id: "remix_fm_case_17",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Case 17: Vaccine Contraindications & Adolescents",
+    content: "A mother presented to the family health clinic with her 14-year-old daughter for routine follow-up and her 13-month-old breastfed baby who had been sick for the past 2 days. There was no significant medical history, and all childhood vaccinations were up-to-date as per the family health record.\n\nQuestions:\nEnumerate 4 elements of the periodic health examination for this 14-year-old female:\nEnumerate 4 contraindications of vaccines:",
+    answer: "Periodic exam elements: Database building (medical history), Social history, Anticipatory guidance, family history, Occupational and environmental history (School).\nVaccine contraindications: Anaphylactic reaction to vaccine, true egg allergy, immunocompromised, Neomycin allergy.",
+    isClinical: true,
+    topic: "Anticipatory Care & Immunization Guidelines"
+  },
+
+  {
+    id: "remix_fm_case_18",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Case 18: PHC Services & Baby Nutrition",
+    content: "A lady came to the primary health care unit of Shebin Elkom accompanied by her 2monthold baby:\n\nQuestions:\nWhat are the primary health care services which would be beneficial to this lady and her child?\nRegarding the nutrition of this lady and her child, what are the health education messages you would like to give her?",
+    answer: "PHC services: Immunization, growth monitoring, postnatal care, family planning.\nNutrition messages:\n- Child: Exclusive breastfeeding, feeding on demand.\n- Mother: Balanced diet, hydration.",
+    isClinical: true,
+    topic: "Family Health Team & PHC Services"
+  },
+
+  {
+    id: "remix_fm_q1",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Definition of Continuity of Care",
+    content: "Define continuity of care as a core principle of family medicine.",
+    answer: "Care is based on a long-term relationship between the patient and the family physician, extending across multiple episodes of illness, preventive and well-person visits, and the entire life course, from intrauterine life to terminal care.",
+    isClinical: true,
+    topic: "Principles of Family Medicine"
+  },
+
+  {
+    id: "remix_fm_q2",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Core Principle of Family Medicine",
+    content: "What is the core principle of family medicine care?",
+    answer: "Family medicine is a unique clinical discipline distinguished by its process of care, not merely by its content. At the center of this process lies the patient–physician relationship, with the patient viewed within the context of the family and the community.",
+    isClinical: true,
+    topic: "Principles of Family Medicine"
+  },
+
+  {
+    id: "remix_fm_q3",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Chronic Disease Management Skills",
+    content: "In addition to direct patient care, list 3 skills necessary for management of chronic diseases by the family physician.",
+    answer: "1. Ability to manage multiple problems occurring simultaneously.\n2. Desire to identify health problems at the earliest possible stage.\n3. Ability to educate patients and families about health and disease.",
+    isClinical: true,
+    topic: "The Family Physician & RISE Framework"
+  },
+
+  {
+    id: "remix_fm_q4",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Traditional Practice vs Family Medicine Model",
+    content: "Contrast the core principle approach between traditional practice and family medicine model.",
+    answer: "- Traditional Model: Systems often disrupt the patient–physician relationship\n- Family Medicine Model: Systems support continuous, healing relationships",
+    isClinical: true,
+    topic: "Comparative Medical Models"
+  },
+
+  {
+    id: "remix_fm_q5",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Continuity of Care Key Elements",
+    content: "Enumerate the key elements of continuity of care in family practice.",
+    answer: "• Mutual trust between patient and physician\n• Long-term therapeutic relationship\n• Effectiveness of care\n• Continuity focused on the patient, not on isolated diseases",
+    isClinical: true,
+    topic: "Principles of Family Medicine"
+  },
+
+  {
+    id: "remix_fm_q6",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Coordinated-Care vs Collaborative-Care",
+    content: "Differentiate between Coordinated-Care and Collaborative-Care in family medicine.",
+    answer: "- Coordinated-Care: Family physicians manage most health problems at first contact. When referral is necessary, they ensure timely and appropriate referral, inform patients about available services, coordinate advice and follow-up care, and act as care managers across health and social services.\n- Collaborative-Care: Family physicians work with medical, health, and social care providers, delegate care appropriately based on professional competence, participating actively in multidisciplinary teams, and are prepared to exercise team leadership when needed.",
+    isClinical: true,
+    topic: "Principles of Family Medicine"
+  },
+
+  {
+    id: "remix_fm_q7",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Managerial Role Responsibilities",
+    content: "List 3 responsibilities of the family physician in their managerial role.",
+    answer: "• Is responsible for all activities within the Family Health Center (FHC)\n• Promotes intersectoral coordination (e.g., education, agriculture, social services)\n• Ensures implementation of national health policies and health service delivery programs",
+    isClinical: true,
+    topic: "The Family Physician & RISE Framework"
+  },
+
+  {
+    id: "remix_fm_q8",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Curative Role of Family Physician",
+    content: "Enumerate 2 aspects of the curative role of the family physician.",
+    answer: "Treatment of common health problems prevalent in the catchment area. Continuous follow-up and management of chronic diseases.",
+    isClinical: true,
+    topic: "The Family Physician & RISE Framework"
+  },
+
+  {
+    id: "remix_fm_q9",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Improving Health Team Performance",
+    content: "Mention 3 factors that help in upgrading and improving family health team performance.",
+    answer: "• Clearly defined job descriptions for each team member\n• Regular training and capacity-building activities\n• Regular team meetings for planning, monitoring, and problem-solving",
+    isClinical: true,
+    topic: "Family Health Team & PHC Services"
+  },
+
+  {
+    id: "remix_fm_q10",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Biologic vs Functional Family",
+    content: "Differentiate between Biologic family and Functional family.",
+    answer: "- Biologic Family: People related by blood who share genetic and hereditary risks.\n- Functional Family: People who provide emotional, social, or caregiving support, even if not related.",
+    isClinical: true,
+    topic: "Family Dynamics & The Human Life Cycle"
+  },
+
+  {
+    id: "remix_fm_q11",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Family Functions: Continuity",
+    content: "What is the function of the family in reproduction?",
+    answer: "Continuity of the family through legal marriage and childbearing.",
+    isClinical: true,
+    topic: "Family Dynamics & The Human Life Cycle"
+  },
+
+  {
+    id: "remix_fm_q12",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Family as Source of Illness",
+    content: "Mention 3 ways in which a family can act as a source of illness.",
+    answer: "• Transmission of genetic disorders\n• Spread of communicable diseases\n• Adoption of unhealthy habits (e.g. smoking)",
+    isClinical: true,
+    topic: "Family Dynamics & The Human Life Cycle"
+  },
+
+  {
+    id: "remix_fm_q13",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Family Functions: CAPRS Mnemonic",
+    content: "Enumerate the functions of the family using the CAPRS framework.",
+    answer: "CAPRS:\n- C - Care: Provision of basic needs such as food, shelter, and social support.\n- A - Affection: Psychosocial support including love, warmth, and emotional security.\n- P - Providing status: Helping family members determine future education, occupation, and social roles.\n- R - Reproduction: Continuity of the family through legal marriage and childbearing.\n- S - Socialization: Teaching social skills, norms, values, and acceptable behaviors.",
+    isClinical: true,
+    topic: "Family Dynamics & The Human Life Cycle"
+  },
+
+  {
+    id: "remix_fm_q14",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Biologic Family Risk Identification",
+    content: "Explain how the biologic family type helps in patient care and risk identification.",
+    answer: "Help identify genetic predispositions to diseases (e.g. cancer, heart disease, asthma). Guides decisions on screening, early detection, and preventive measures. Genograms and family history improve diagnostic accuracy.",
+    isClinical: true,
+    topic: "Family Dynamics & The Human Life Cycle"
+  },
+
+  {
+    id: "remix_fm_q15",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Biologic vs Household Family",
+    content: "Differentiate between Biologic family and Household family.",
+    answer: "- Biologic Family: People related by blood who share genetic and hereditary risks.\n- Household Family: Individuals living together in the same home, regardless of biological relationship.",
+    isClinical: true,
+    topic: "Family Dynamics & The Human Life Cycle"
+  },
+
+  {
+    id: "remix_fm_q16",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Human Life Cycle vs Family Life Cycle",
+    content: "Differentiate between the human life cycle and the family life cycle.",
+    answer: "- The Human Life Cycle: Consists of several developmental stages, each associated with transitional events, specific health problems, and care needs.\n- The Family Life Cycle: A theoretical framework to describe the formation, maintenance, change, and dissolution of marital and family relations.",
+    isClinical: true,
+    topic: "Family Dynamics & The Human Life Cycle"
+  },
+
+  {
+    id: "remix_fm_q17",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Household vs Functional Family",
+    content: "Differentiate between Household family and Functional family.",
+    answer: "- Household Family: Highlights shared environmental factors (e.g., infections, allergens, stressors).\n- Functional Family: People who provide emotional, social, or caregiving support, even if not related.",
+    isClinical: true,
+    topic: "Family Dynamics & The Human Life Cycle"
+  },
+
+  {
+    id: "remix_fm_q18",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Importance of Functional Family Structure",
+    content: "Explain the importance of understanding the functional family type for a patient's care plan.",
+    answer: "• Crucial for understanding the patient's support system, coping ability, and adherence.\n• Helps identify key individuals to include in care planning, counseling, and education.",
+    isClinical: true,
+    topic: "Family Dynamics & The Human Life Cycle"
+  },
+
+  {
+    id: "remix_fm_q19",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "WHO Breastfeeding Guidelines",
+    content: "What are the 3 main breastfeeding guidelines recommended by the WHO?",
+    answer: "- Initiate breastfeeding within one hour of birth.\n- Infants should be exclusively breastfed for the first six months of life.\n- Breastfeeding should continue for up to two years or beyond.",
+    isClinical: true,
+    topic: "Breastfeeding Management & Composition"
+  },
+
+  {
+    id: "remix_fm_q20",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Maternal Benefits of Breastfeeding",
+    content: "Enumerate 4 benefits of breastfeeding for the nursing mother.",
+    answer: "- reduce the mother's risk of breast and ovarian cancer.\n- reduce the risk of developing osteoporosis.\n- maintaining weight by burning calories.\n- lower the chance of developing postpartum depression.",
+    isClinical: true,
+    topic: "Breastfeeding Management & Composition"
+  },
+
+  {
+    id: "remix_fm_q21",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Infant Benefits of Breastfeeding",
+    content: "Enumerate 3 benefits of breastfeeding for the infant.",
+    answer: "- Protect babies against some short- and long-term illnesses.\n- have a lower risk of asthma.\n- builds a special bond.",
+    isClinical: true,
+    topic: "Breastfeeding Management & Composition"
+  },
+
+  {
+    id: "remix_fm_q22",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Temporary Breastfeeding Contraindications",
+    content: "Enumerate 2 temporary contraindications to breastfeeding where the mother must temporarily not breastfeed but wait until her milk is safe.",
+    answer: "1. Untreated brucellosis.\n2. Active herpes simplex virus infection with lesions on the breast.",
+    isClinical: true,
+    topic: "Breastfeeding Management & Composition"
+  },
+
+  {
+    id: "remix_fm_q23",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Absolute Breastfeeding Contraindications",
+    content: "Enumerate 3 absolute contraindications where a mother must absolutely not breastfeed and not feed expressed milk.",
+    answer: "1. Suspected or confirmed Ebola virus disease.\n2. HIV.\n3. Using an illicit drug (such as opioids, PCP, or cocaine).",
+    isClinical: true,
+    topic: "Breastfeeding Management & Composition"
+  },
+
+  {
+    id: "remix_fm_q24",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Breastfeeding Impact on Osteoporosis",
+    content: "Explain how breastfeeding reduces the mother's risk of developing osteoporosis.",
+    answer: "breastfeeding increases gut absorption of calcium and decreases calcium losses in urine.",
+    isClinical: true,
+    topic: "Breastfeeding Management & Composition"
+  },
+
+  {
+    id: "remix_fm_case_19",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Case: Preventive Care & Five-Star Doctor",
+    content: "A 45-year-old man visits the Family Health Center. The family physician checks his risk factors for diabetes, reviews his immunization status, advises on early screening, and educates him about a healthy diet.\n\nQuestions:\n1. What is the framework used by the family physician for prevention in this scenario? Explain its components.\n2. Enumerate the five roles of a Five-Star Doctor summarized by the WHO.",
+    answer: "1. RISE framework:\n- R – Risk assessment: Identification of risk factors at individual and family levels.\n- I – Immunization: Responsibility for vaccination services.\n- S – Screening: Early detection of diseases.\n- E – Education: Health education of individuals, families, and the community regarding health problems and their solutions.\n\n2. Five-Star Doctor roles (WHO):\n1. Assesses and improves the quality of care by responding to the patient's total health needs.\n2. Makes optimal use of new technologies in health care.\n3. Promotes healthy lifestyles.\n4. Recognizes individual and community health needs.\n5. Works efficiently as a member of the health care team.",
+    isClinical: true,
+    topic: "The Family Physician & RISE Framework"
+  },
+
+  {
+    id: "remix_fm_case_20",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Case: Specialist vs Family Medicine Models",
+    content: "A patient visits the family physician for hypertension management. He remarks that his previous specialist only focused on his disease, whereas the family physician evaluates him within his family context and works with a multidisciplinary team.\n\nQuestions:\n1. Compare the patient focus and coordination of care in the Specialist Care Model vs the Family Medicine Model.\n2. Contrast the traditional model of practice vs the family medicine model regarding chronic disease management and team structure.",
+    answer: "1. Comparison between Specialist Care and Family Medicine Model:\n- Patient focus: Specialist Care focuses regardless of family context and is problem-centered (focuses on specific disease). Family Medicine Model cares within the context of the family and is patient-centered (recognizes patient concerns, values, beliefs, and needs).\n- Coordination of care: Specialist Care is uncoordinated. Family Medicine Model coordinates care with other health professionals.\n\n2. Contrast between Traditional Model and Family Medicine Model:\n- Team structure: Traditional Model uses a single physician as the main source of care. Family Medicine Model uses a multidisciplinary healthcare team.\n- Chronic disease management: Traditional Model has non-organized chronic disease management. Family Medicine Model has purposeful, organized chronic disease management.",
+    isClinical: true,
+    topic: "Comparative Medical Models"
+  },
+
+  {
+    id: "remix_fm_case_21",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Case: BBP Levels of Service Delivery & Labs",
+    content: "A health team is evaluating BBP services at a primary care unit. A pregnant woman attends for antenatal care, and another patient is being referred to a secondary hospital for emergency surgery.\n\nQuestions:\n1. Mention the three levels of service delivery of the BBP.\n2. Enumerate the laboratory investigations available specifically at the Family Health Unit (FHU) level.",
+    answer: "1. Three levels of service delivery of the BBP:\n- Family Health Unit (FHU)\n- Family Health Centre (FHC)\n- Hospital Level\n\n2. Laboratory investigations available at the FHU level:\n- Blood glucose\n- Blood group and Rh factor\n- Erythrocyte sedimentation rate (ESR)\n- Hemoglobin (Hb)\n- Pregnancy test\n- Stool analysis\n- Urine analysis.",
+    isClinical: true,
+    topic: "Basic Benefit Package & Level of Care"
+  },
+
+  {
+    id: "remix_fm_case_22",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Case: Sick Young Infant Assessment",
+    content: "A mother brings her 10-day-old neonate to the clinic. She reports the baby is not able to feed since morning and is unusually sleepy. On examination, the baby has an axillary temperature of 38.0°C and a respiratory rate of 62 breaths per minute.\n\nQuestions:\n1. What is the correct IMCI classification for this young infant?\n2. What are the urgent pre-referral treatment steps required before sending the infant to the hospital?",
+    answer: "1. Classification: POSSIBLE SERIOUS BACTERIAL INFECTION (PSBI).\n\n2. Pre-referral treatment steps:\n- Give the first dose of intramuscular antibiotics (Ampicillin plus Gentamicin).\n- Treat to prevent low blood sugar (give expressed breastmilk or sugar water if able to swallow, or by nasogastric tube if unable).\n- Advise the mother how to keep the young infant warm (prevent hypothermia) during transport.",
+    isClinical: true,
+    topic: "IMCI Young Infant Care (Up to 2 Months)"
+  },
+
+  {
+    id: "remix_fm_case_23",
+    chapterId: 5,
+    type: "problem-solving",
+    title: "Case: Sick Child IMCI Classification",
+    content: "A 15-month-old child presents with a cough and fever. On examination, the child is lethargic, has a respiratory rate of 45 breaths per minute, and is unable to drink or breastfeed.\n\nQuestions:\n1. List the general danger signs present in this child.\n2. How would this child be classified under the IMCI guidelines for cough or difficult breathing, and what is the required action?",
+    answer: "1. General danger signs present: Lethargic or unconscious, and unable to drink or breastfeed.\n\n2. Classification and Action:\n- Classification: SEVERE PNEUMONIA OR VERY SEVERE DISEASE (due to presence of general danger signs in a child with cough or difficult breathing).\n- Required Action: Give first dose of an appropriate antibiotic and refer URGENTLY to hospital.",
+    isClinical: true,
+    topic: "IMCI Case Management Overview"
   }
 ];

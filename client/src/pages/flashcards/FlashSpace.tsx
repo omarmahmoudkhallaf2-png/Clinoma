@@ -11166,92 +11166,143 @@ const FlashSpace = () => {
               </div>
               <div className="flex-1 overflow-y-auto pb-8">
                 {selectedModule === 'الورقة الثانية' ? (
-                  <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 text-right" dir="rtl">
-                    {/* Right Sidebar: Camp & Flashcards */}
-                    <div className="lg:col-span-1 flex flex-col gap-4">
-                      <div className="bg-slate-900/35 backdrop-blur-xl border border-white/5 rounded-[2rem] p-5 flex flex-col gap-4 text-right">
-                        <div className="flex items-center gap-2 border-b border-white/5 pb-3">
-                          <Zap className="w-5 h-5 text-amber-400 animate-pulse" />
-                          <h4 className="text-sm font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-amber-100 font-mono tracking-wide">
-                            المعسكر والمراجعة التفاعلية
-                          </h4>
+                  <div className="flex flex-col gap-6 text-right w-full" dir="rtl">
+                    {/* Expectations Banner */}
+                    <button 
+                      onClick={() => {
+                        if (isFamilySubscribed) {
+                          navigate('/flashcards/second-paper-expectations');
+                        } else {
+                          setShowSubscriptionModal(true);
+                        }
+                      }}
+                      className="group relative w-full bg-gradient-to-r from-purple-950 via-[#1b153b] to-indigo-950 border border-purple-500/30 hover:border-purple-400/60 rounded-3xl p-6 text-right transition-all duration-500 active:scale-[0.99] hover:scale-[1.01] overflow-hidden flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 shadow-[0_4px_30px_rgba(0,0,0,0.4)] hover:shadow-[0_0_35px_rgba(168,85,247,0.25)] cursor-pointer"
+                    >
+                      {/* Purple Animated Glow Background */}
+                      <div className="absolute -right-20 -top-20 w-60 h-60 bg-gradient-to-br from-purple-500/15 to-indigo-500/5 rounded-full blur-3xl -z-10 group-hover:scale-150 group-hover:from-purple-400/25 transition-all duration-700 ease-out" />
+                      
+                      <div className="flex items-center gap-4 z-10 text-right">
+                        <div className="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 shadow-[0_0_20px_rgba(168,85,247,0.15)] group-hover:shadow-[0_0_25px_rgba(168,85,247,0.35)] transition-all duration-500 bg-gradient-to-br from-purple-500/20 to-indigo-650/10 border border-purple-500/40 group-hover:border-purple-400 text-purple-300 animate-pulse">
+                          <Trophy className="w-7 h-7 filter drop-shadow-[0_0_5px_rgba(168,85,247,0.5)]" />
                         </div>
-                        <div className="flex flex-col gap-4">
-                          {renderSystemCard('معسكر الورقة الثانية')}
-                          
-                          <button 
-                            onClick={() => {
-                              if (isSpaceSubscribed('الورقة الثانية') || userData?.role === 'admin') {
-                                navigate('/flashcards/second-paper-interactive');
-                              } else {
-                                setShowSubscriptionModal(true);
-                              }
-                            }}
-                            className="group relative bg-gradient-to-br from-slate-950 via-[#1e1b18] to-slate-900 border border-amber-500/30 hover:border-amber-400/60 rounded-3xl text-right transition-all duration-500 active:scale-[0.98] hover:scale-[1.03] overflow-hidden p-6 flex flex-col justify-between min-h-[160px] shadow-[0_4px_30px_rgba(0,0,0,0.4)] hover:shadow-[0_0_35px_rgba(217,119,6,0.25)] cursor-pointer w-full"
-                          >
-                            {/* Subscription Lock Badge */}
-                            {!(isSpaceSubscribed('الورقة الثانية') || userData?.role === 'admin') && (
-                              <div className="absolute top-4 right-4 z-10 bg-amber-500/20 text-amber-500 border border-amber-500/30 px-3 py-1.5 rounded-full flex items-center gap-1.5 backdrop-blur-sm shadow-lg">
-                                <Lock className="w-3.5 h-3.5" />
-                                <span className="text-xs font-bold uppercase tracking-wider">Premium</span>
-                              </div>
+                        <div className="text-right">
+                          <div className="flex items-center gap-2 flex-wrap justify-start">
+                            <h3 className="font-black text-xl md:text-2xl text-transparent bg-clip-text bg-gradient-to-r from-purple-100 via-pink-200 to-indigo-100 group-hover:from-white group-hover:to-purple-200 transition-all duration-500">
+                              توقعات كلينوما للورقة الثانية 🎯
+                            </h3>
+                            {!isFamilySubscribed && (
+                              <span className="bg-amber-500/20 text-amber-400 border border-amber-500/30 px-2.5 py-1 rounded-full flex items-center gap-1 backdrop-blur-sm text-xs font-bold">
+                                <Lock className="w-3 h-3" />
+                                <span>Premium</span>
+                              </span>
                             )}
-
-                            {/* Luxurious Golden Animated Glow Background */}
-                            <div className="absolute -right-10 -top-10 w-40 h-40 bg-gradient-to-br from-amber-500/20 to-yellow-500/10 rounded-full blur-3xl -z-10 group-hover:scale-150 group-hover:from-amber-400/30 transition-all duration-700 ease-out" />
-                            <div className="absolute left-10 bottom-10 w-24 h-24 bg-amber-600/5 rounded-full blur-2xl -z-10 group-hover:scale-125 transition-transform duration-700" />
-                            
-                            {/* Top Bar with Luxurious Sparkles Icon and Arrow */}
-                            <div className="relative z-10 flex justify-between items-start w-full">
-                              <div className="w-12 h-12 rounded-2xl flex items-center justify-center shadow-[0_0_20px_rgba(217,119,6,0.15)] group-hover:shadow-[0_0_25px_rgba(217,119,6,0.35)] transition-all duration-500 bg-gradient-to-br from-amber-500/20 to-yellow-600/10 border border-amber-500/40 group-hover:border-amber-400 text-amber-400 animate-pulse">
-                                <Sparkles className="w-5 h-5 filter drop-shadow-[0_0_5px_rgba(245,158,11,0.5)]" />
-                              </div>
-                              {isSpaceSubscribed('الورقة الثانية') || userData?.role === 'admin' ? (
-                                <div className="flex items-center justify-center w-8 h-8 rounded-full bg-amber-500/10 text-amber-300 opacity-0 group-hover:opacity-100 transition-all duration-500 -translate-x-2 group-hover:translate-x-0 border border-amber-500/20">
-                                  <ArrowRight className="w-4 h-4" />
-                                </div>
-                              ) : null}
-                            </div>
-
-                            {/* Content Area with Premium Text Style */}
-                            <div className="relative z-10 mt-6 text-right w-full">
-                              <h3 className="font-black text-lg leading-tight mb-1 text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-yellow-400 to-amber-300 group-hover:from-white group-hover:to-amber-200 transition-all duration-500">
-                                فلاش كارد الورقة الثانية ✨
-                              </h3>
-                              <p className="text-amber-500/70 group-hover:text-amber-300/90 text-xs font-semibold tracking-wide transition-colors duration-500">
-                                بوابة المراجعة التفاعلية الفخمة
-                              </p>
-                            </div>
-                          </button>
+                          </div>
+                          <p className="text-purple-300/60 group-hover:text-purple-200/80 text-xs font-semibold tracking-wide transition-colors duration-500 mt-1">
+                            مجموعة توقعات حصرية لأهم النقاط والحالات الطبية الشائعة للورقة الثانية
+                          </p>
                         </div>
                       </div>
-                    </div>
 
-                    {/* Left/Bottom: The 5 core chapters */}
-                    <div className="lg:col-span-3">
-                      <div className="bg-slate-900/15 backdrop-blur-xl border border-white/5 rounded-[2rem] p-6 text-right">
-                        <div className="flex items-center gap-2 border-b border-white/5 pb-3 mb-6">
-                          <BookOpen className="w-5 h-5 text-cyan-400" />
-                          <h4 className="text-sm font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-indigo-300 font-mono tracking-wide">
-                            الشباتر الأساسية الخمسة
-                          </h4>
+                      <div className="flex items-center justify-end gap-3 z-10 shrink-0">
+                        {isFamilySubscribed ? (
+                          <div className="flex items-center justify-center w-10 h-10 rounded-full bg-purple-500/10 text-purple-300 group-hover:bg-purple-500/20 group-hover:text-white transition-all duration-500 border border-purple-500/20">
+                            <ChevronLeft className="w-5 h-5 rotate-180" />
+                          </div>
+                        ) : (
+                          <span className="text-xs font-black px-4 py-2 bg-purple-500/20 hover:bg-purple-500/30 border border-purple-500/30 rounded-xl text-purple-300 transition-colors">
+                            اشترك الآن للدخول
+                          </span>
+                        )}
+                      </div>
+                    </button>
+
+                    <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 text-right">
+                      {/* Right Sidebar: Camp & Flashcards */}
+                      <div className="lg:col-span-1 flex flex-col gap-4">
+                        <div className="bg-slate-900/35 backdrop-blur-xl border border-white/5 rounded-[2rem] p-5 flex flex-col gap-4 text-right">
+                          <div className="flex items-center gap-2 border-b border-white/5 pb-3">
+                            <Zap className="w-5 h-5 text-amber-400 animate-pulse" />
+                            <h4 className="text-sm font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-amber-100 font-mono tracking-wide">
+                              المعسكر والمراجعة التفاعلية
+                            </h4>
+                          </div>
+                          <div className="flex flex-col gap-4">
+                            {renderSystemCard('معسكر الورقة الثانية')}
+                            
+                            <button 
+                              onClick={() => {
+                                if (isSpaceSubscribed('الورقة الثانية') || userData?.role === 'admin') {
+                                  navigate('/flashcards/second-paper-interactive');
+                                } else {
+                                  setShowSubscriptionModal(true);
+                                }
+                              }}
+                              className="group relative bg-gradient-to-br from-slate-950 via-[#1e1b18] to-slate-900 border border-amber-500/30 hover:border-amber-400/60 rounded-3xl text-right transition-all duration-500 active:scale-[0.98] hover:scale-[1.03] overflow-hidden p-6 flex flex-col justify-between min-h-[160px] shadow-[0_4px_30px_rgba(0,0,0,0.4)] hover:shadow-[0_0_35px_rgba(217,119,6,0.25)] cursor-pointer w-full"
+                            >
+                              {/* Subscription Lock Badge */}
+                              {!(isSpaceSubscribed('الورقة الثانية') || userData?.role === 'admin') && (
+                                <div className="absolute top-4 right-4 z-10 bg-amber-500/20 text-amber-500 border border-amber-500/30 px-3 py-1.5 rounded-full flex items-center gap-1.5 backdrop-blur-sm shadow-lg">
+                                  <Lock className="w-3.5 h-3.5" />
+                                  <span className="text-xs font-bold uppercase tracking-wider">Premium</span>
+                                </div>
+                              )}
+
+                              {/* Luxurious Golden Animated Glow Background */}
+                              <div className="absolute -right-10 -top-10 w-40 h-40 bg-gradient-to-br from-amber-500/20 to-yellow-500/10 rounded-full blur-3xl -z-10 group-hover:scale-150 group-hover:from-amber-400/30 transition-all duration-700 ease-out" />
+                              <div className="absolute left-10 bottom-10 w-24 h-24 bg-amber-600/5 rounded-full blur-2xl -z-10 group-hover:scale-125 transition-transform duration-700" />
+                              
+                              {/* Top Bar with Luxurious Sparkles Icon and Arrow */}
+                              <div className="relative z-10 flex justify-between items-start w-full">
+                                <div className="w-12 h-12 rounded-2xl flex items-center justify-center shadow-[0_0_20px_rgba(217,119,6,0.15)] group-hover:shadow-[0_0_25px_rgba(217,119,6,0.35)] transition-all duration-500 bg-gradient-to-br from-amber-500/20 to-yellow-600/10 border border-amber-500/40 group-hover:border-amber-400 text-amber-400 animate-pulse">
+                                  <Sparkles className="w-5 h-5 filter drop-shadow-[0_0_5px_rgba(245,158,11,0.5)]" />
+                                </div>
+                                {isSpaceSubscribed('الورقة الثانية') || userData?.role === 'admin' ? (
+                                  <div className="flex items-center justify-center w-8 h-8 rounded-full bg-amber-500/10 text-amber-300 opacity-0 group-hover:opacity-100 transition-all duration-500 -translate-x-2 group-hover:translate-x-0 border border-amber-500/20">
+                                    <ArrowRight className="w-4 h-4" />
+                                  </div>
+                                ) : null}
+                              </div>
+
+                              {/* Content Area with Premium Text Style */}
+                              <div className="relative z-10 mt-6 text-right w-full">
+                                <h3 className="font-black text-lg leading-tight mb-1 text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-yellow-400 to-amber-300 group-hover:from-white group-hover:to-amber-200 transition-all duration-500">
+                                  فلاش كارد الورقة الثانية ✨
+                                </h3>
+                                <p className="text-amber-500/70 group-hover:text-amber-300/90 text-xs font-semibold tracking-wide transition-colors duration-500">
+                                  بوابة المراجعة التفاعلية الفخمة
+                                </p>
+                              </div>
+                            </button>
+                          </div>
                         </div>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
-                          {[...(systems[selectedModule] || [])]
-                            .filter(sys => sys !== 'معسكر الورقة الثانية')
-                            .sort((a, b) => {
-                              const getPriority = (x: string) => {
-                                if (x === 'Renal diseases') return 10;
-                                if (x === 'Chest diseases') return 20;
-                                if (x === 'Neonatology') return 30;
-                                if (x === 'Emergency Medicine') return 40;
-                                if (x === 'Family Medicine') return 50;
-                                return 100;
-                              };
-                              return getPriority(a) - getPriority(b);
-                            })
-                            .map(sys => renderSystemCard(sys))
-                          }
+                      </div>
+
+                      {/* Left/Bottom: The 5 core chapters */}
+                      <div className="lg:col-span-3">
+                        <div className="bg-slate-900/15 backdrop-blur-xl border border-white/5 rounded-[2rem] p-6 text-right">
+                          <div className="flex items-center gap-2 border-b border-white/5 pb-3 mb-6">
+                            <BookOpen className="w-5 h-5 text-cyan-400" />
+                            <h4 className="text-sm font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-indigo-300 font-mono tracking-wide">
+                              الشباتر الأساسية الخمسة
+                            </h4>
+                          </div>
+                          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
+                            {[...(systems[selectedModule] || [])]
+                              .filter(sys => sys !== 'معسكر الورقة الثانية')
+                              .sort((a, b) => {
+                                const getPriority = (x: string) => {
+                                  if (x === 'Renal diseases') return 10;
+                                  if (x === 'Chest diseases') return 20;
+                                  if (x === 'Neonatology') return 30;
+                                  if (x === 'Emergency Medicine') return 40;
+                                  if (x === 'Family Medicine') return 50;
+                                  return 100;
+                                };
+                                return getPriority(a) - getPriority(b);
+                              })
+                              .map(sys => renderSystemCard(sys))
+                            }
+                          </div>
                         </div>
                       </div>
                     </div>
