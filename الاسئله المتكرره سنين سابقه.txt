@@ -1,0 +1,1271 @@
+================================================================================
+معسكر الورقة الثانية - الأسئلة المقالية لليوم الأول والثاني + الأسئلة المتكررة
+================================================================================
+هذا الملف يحتوي على الأسئلة المقالية لليوم الأول واليوم الثاني من معسكر طب الأسرة والأطفال
+بالإضافة إلى الأسئلة المتكررة من السنين السابقة.
+
+================================================================================
+اليوم الأول من المعسكر: الأسئلة المقالية
+================================================================================
+
+Question 4 (Enumerate): Enumerate four indoor or seasonal allergens that act as asthma triggers.
+Answer: 1. Animal dander. 2. Dust mites. 3. Cockroaches. 4. Pollens.
+Question 5 (Mention): Mention three common comorbid conditions associated with asthma that make it difficult to treat.
+Answer: 1. Rhinitis. 2. Sinusitis. 3. Gastroesophageal reflux.
+Question 6 (List): List four key clinical signs and symptoms of an acute asthma episode.
+Answer: 1. Cough (tight and non-productive). 2. Wheezing. 3. Tachypnea and dyspnea with prolonged expiration. 4. Use of accessory muscles of respiration.
+Question 7 (Enumerate) — [From Final 38]: A 14-year-old boy presents with a history of cough and occasional wheezes at night, increasing during football matches. Enumerate the comprehensive Laboratory Investigations useful for this condition.
+Answer: 1. Blood examination: CBC usually shows eosinophilia more than $250\text{-}400\text{ cell/mm}^3$ , and Serum IgE levels are usually elevated. 2. Sputum: White and tenacious, usually showing eosinophilia and granules from disrupted cells. 3. Pulmonary function tests (Spirometry): Done for children > 5 years to evaluate airflow limitation and reversibility. 4. Blood gas analysis: Important in patients during exacerbations requiring hospitalization to monitor $PCO_2$, $PO_2$, and pH.
+
+Topic 2: Pneumonia
+Question 9 (Define): Define Community-acquired pneumonia (CAP) and Hospital-acquired pneumonia (HAP).
+Answer: * Community-acquired pneumonia (CAP): It is the presence of signs and symptoms of pneumonia in a previously healthy child due to an infection acquired outside the hospital.
+Hospital-acquired pneumonia (HAP): It is pneumonia that presents clinically after two days of hospital admission.
+Question 10 (Mention): Mention the WHO definition of fast breathing (tachypnea) according to age groups.
+Answer: 1. From birth to 2 months $\rightarrow$ more than $60/\text{min}$. 2. From 2 m-1 year $\rightarrow$ more than $50/\text{min}$. 3. From 1-5 years $\rightarrow$ more than $40/\text{min}$.
+Question 11 (List): List four signs of respiratory distress that may occur in a child with pneumonia.
+Answer: 1. Grunting. 2. Nasal flaring. 3. Retractions (supraclavicular, suprasternal, intercostal and subcostal). 4. Cyanosis.
+Question 12 (Enumerate): Enumerate four local lung examination findings over the affected lung field in a pneumonia patient.
+Answer: 1. Diminished breath sounds. 2. Scattered crackles and rhonchi. 3. Bronchial breathing. 4. Increased tactile vocal fremitus or Dullness on percussion.
+Question 13 (List): List four non-respiratory gastrointestinal manifestations that can occur with pneumonia.
+Answer: 1. Vomiting. 2. Anorexia. 3. Diarrhea. 4. Abdominal distention.
+Question 14 (Enumerate) — [From Final 39]: Enumerate five clinical criteria that should lead to consideration of hospitalization/ICU admission for a child with Community-Acquired Pneumonia.
+Answer: 1. Age < 6 mo. 2. Toxic appearance. 3. Moderate to severe respiratory distress (retractions, nasal flaring, grunting). 4. Hypoxemia (oxygen saturation <90% in room air). 5. Shock or Severe dehydration.
+Question 15 (Mention): Mention four diagnostic chest X-ray findings or clinical rules regarding the use of X-ray in pneumonia.
+Answer: 1. It shows a lobar, patchy, or interstitial infiltrate. 2. No need to order X-ray for a patient with mild pneumonia. 3. No need to repeat chest X-ray if the patient has clinically improved. 4. In viral pneumonia, it usually shows hyperinflation with bilateral interstitial infiltrates and peribronchial cuffing.
+
+
+Question 17 (List) — [From Oral 2021]: List four thoracic cavity complications caused by the direct spread of pneumonia infection.
+Answer: 1. Pleural effusion. 2. Empyema. 3. Lung abscess. 4. Pericarditis.
+Topic 3: Wheezes
+Question 18 (Define): Define Wheezing.
+Answer: It is an expiratory continuous musical sound due to partial obstruction at the level of small bronchi and bronchioles.
+Question 19 (Enumerate) — [From Final 39]: Enumerate three pediatric causes of acute wheezy chest.
+Answer: 1. Acute bronchiolitis. 2. Severe bacterial bronchopneumonia. 3. Foreign body aspiration.
+Question 20 (Mention): Mention four causes of recurrent wheezing in infants and childhood.
+Answer: 1. Bronchial asthma. 2. Recurrent aspiration (infant with GERD). 3. Chronic chest infection. 4. Acute congestive heart failure.
+
+Section I: Cardiopulmonary Resuscitation (CPR)
+Q1: Enumerate the three main support types of Cardiopulmonary Resuscitation (CPR) and outline the specific steps or components of each type.
+Answer:
+The three main support types and their steps are:
+I- Basic Life Support (A, B, C): Aims to restore spontaneous breathing and circulation.
+A: Airway control: Open the airway by triple airway maneuver (Head tilt, Jaw thrust, Mouth opening) , Clear the airway (Remove obvious foreign bodies cautiously avoiding finger sweep, and suction the mouth/Oropharynx) , and Maintain patent airway (using Oropharyngeal airway or Endotracheal tube).
+B: Breathing support: Administered with artificial ventilation via mouth-to-mouth breathing, bag and mask ventilation with $O_2$, or bag and tube ventilation with $O_2$ (ventilatory rate is 20 breaths/minute).
+C: Circulation support: Administered with cardiac compression at the midsternum point. Techniques include hand encircling (newborns), two fingers (infants), one hand (young children), and two hands (old children). Frequency is about 100/minute. Ratio of ventilation to cardiac compression is 1:5 altogether.
+II- Advanced Life Support (D, E, F): Indicated when basic life support is not successful.
+D: Drugs (I.V.): Insert I.V line and give fluids (Ringer's lactate or normal saline: $20\text{ ml/kg}$ over 10 min), give sodium bicarbonate ($1\text{ ml/kg}$ of 8.4% solution or $2\text{ ml/kg}$ of 5% solution), and give adrenaline ($0.1\text{ ml/kg}$ of diluted solution $1\text{ ml}+9\text{ ml}$ saline).
+E: ECG monitoring: Important to detect various cardiac arrhythmias (With asystole: Repeat adrenaline 10 times the first dose).
+F: Fibrillation control: Indicated with ventricular fibrillation; defibrillate up to 3 times (2 joules/kg, 4 joules/kg, and 8 joules/kg).
+III- Prolonged life support (G, H, I): It is the post-resuscitation management and aims to:
+G: Recognition and treatment of the causative disease according to the etiology.
+H: Brain recovery by control of any convulsive fits or acute increased intracranial pressure.
+I: Intensive care for multiple system support done carefully in the PICU.
+Section II: Shock
+Q2: Define Shock in pediatric patients.
+Answer: Shock is the clinical state of circulatory inadequacy when there is disruption of tissue perfusion leading to inadequate supplies of oxygen and nutrients to and removal of metabolites from the cells of an end organ.
+Q3: List the clinical grading of Shock including the presentation of each grade.
+Answer:
+Grade I (Early shock = peripheral hypoperfusion): Tachycardia and poor peripheral perfusion.
+Grade II (Established shock = arterial hypotension): Tachycardia, poor peripheral perfusion, and hypotension.
+Grade III (Advanced shock = vital organ hypoperfusion): Multiple organ system failure (MOSF).
+Grade IV (Irreversible shock = irreversible cellular damage): Refractory metabolic acidosis.
+Q4: Short Essay: Enumerate the main types of shock and detail the specific causes for each type as per the textbook.
+Answer:
+Septic shock:
+Primary septicemia (due to fulminant sepsis as meningococcal septicemia).
+Secondary septicemia (due to serious focal infection).
+Endogenous septicemia (due to translocation of bacteria from the gut).
+Hypovolemic shock:
+Severe dehydration (severe diarrhea, severe vomiting, diabetic ketoacidosis, heat stroke, diabetes insipidus).
+Severe hemorrhage (external or internal and traumatic or spontaneous).
+Severe burns (due to plasma losses).
+Obstructive shock:
+Tension pneumothorax or hemothorax.
+Cardiac tamponade (due to pericardial effusion or hemopericardium).
+Critical obstructive lesions (critical pulmonary or aortic stenosis, critical coarctation).
+Pulmonary embolism by thrombus, fat or air.
+Cardiogenic shock:
+Severe acute heart failure.
+Advanced shock (myocardial ischemia).
+Late septic shock (due to toxic myocarditis).
+Kinetic or Distributive shock:
+Anaphylactic shock (due to drugs, foods, insect stings, serums, immunoglobulins).
+Neurogenic shock (head trauma, brain stem injury, or high spinal cord transection).
+Early Septic shock.
+Metabolic shock:
+Acute suprarenal failure (hemorrhage or necrosis).
+Section III: Coma & Glasgow Coma Scale (GCS)
+Q5: Define Coma and outline its primary and secondary brain lesion causes.
+Answer:
+Definition: Coma is a state of prolonged unconsciousness in which the child cannot be aroused even with painful stimuli.
+Primary brain lesion causes: Intracranial infection (Meningitis, encephalitis, brain abscess); Intracranial hemorrhage (Traumatic head injury or Non-traumatic such as hemophilia, DIC, ITP, rupture aneurysm, A-V malformation); Other brain lesions (Cerebral infarction, status epilepticus, brain tumors).
+Secondary brain lesion causes (Encephalopathy): Hypoxic encephalopathy (with hypoxia, shock, severe anemia); Endogenous encephalopathy (with severe dehydration, metabolic acidosis, electrolyte disturbances, acute renal failure, acute hepatic failure, DKA, hypoglycemia, hyperammonemia); Exogenous encephalopathy (poisoning).
+Q6: Mention the clinical grading system of Coma.
+Answer:
+Grade I (stupor): The patient can be aroused for only a short period (less than a minute).
+Grade II (light coma): The patient cannot be aroused by painful stimuli, but responds to painful stimuli by withdrawal movements.
+Grade III (deep coma): No response to painful stimuli but breathes spontaneously.
+Grade IV (deep coma with apnea): No response to painful stimuli and apnea. If not mechanically ventilated, brain death occurs in 5 minutes.
+Q7: Detail the components and score allocation of the Pediatric Glasgow Coma Scale (GCS).
+Answer: The scale provides a numerical score from 3 to 15 based on three main responses:
+Eye Opening (Total points: 4): Spontaneous (4), To voice (3), To pain (2), None (1).
+Verbal Response (Total points: 5):
+Older Children: Oriented (5), Confused (4), Inappropriate words (3), Incomprehensible words (2), None (1).
+Infants and Young Children: Appropriate words, smiles, fixes, and follows (5); Consolable crying (4); Persistently irritable (3); Restless, agitated (2); None (1).
+Motor Response (Total points: 6): Obeys (6), Localizes pain (5), Withdraws (4), Flexion (3), Extension (2), None (1).
+Q8: Mention the advantages of utilizing the Glasgow Coma Scale (GCS) in pediatric emergencies.
+Answer:
+Objective & standardized: Provides a numerical score (3-15) to track consciousness over time.
+Simple and quick: Can be applied at bedside in emergencies.
+Widely accepted: Used internationally in trauma, PICU, and emergency settings.
+Predictive value: Low GCS ($\le8$) indicates severe brain injury and need for airway protection.
+Communication tool: Allows clinicians to communicate patient status clearly.
+
+Title 1: Principles of family medicine
+Case 1: A 45-year-old male patient who has been registered with the same family physician for 10 years presents for a routine check-up. The physician manages his Hypertension, screens him for Colon Cancer, evaluates his psychosocial stress at work, and coordinates his care with a cardiologist when needed.
+Question 1: Enumerate the four key elements of "Continuity of Care" as a core principle in family medicine demonstrated in managing this patient over his life course.
+Answer 1: 1. Mutual trust between patient and physician. 2. Long-term therapeutic relationship. 3. Effectiveness of care. 4. Continuity focused on the patient, not on isolated diseases.
+Question 2: List the five core services or dimensions integrated within the comprehensive and holistic approach of family medicine.
+Answer 2: 1. Health promotion. 2. Disease prevention. 3. Curative care. 4. Rehabilitation. 5. Physical, psychological, and social support.
+Title 2: Family physician- family health team- family health model
+Case 2: A family physician is reviewing the monthly performance of the Family Health Center (FHC). He notices a conflict in the delegation of duties between the clinical nurse and the social worker, as well as a lack of proper documentation in the health records.
+Question 3: Enumerate the five core parameters of the family physician's role as a "Five-Star Doctor" summarized by the World Health Organization (WHO).
+Answer 3: 1. Assesses and improves the quality of care by responding to the patient's total health needs. 2. Makes optimal use of new technologies in health care. 3. Promotes healthy lifestyles. 4. Recognizes individual and community health needs. 5. Works efficiently as a member of the health care team.
+Question 4: Enumerate four specific members who belong strictly to the "Administrative and Support Staff" category of the Family Health Team.
+Answer 4: 1. Front Office Staff. 2. Medical Records Officer. 3. Births and Deaths Officer. 4. Pharmacy Clerk or Storage Room Officer.
+Title 3: Basic benefit package
+Case 3: A mother brings her infant to the clinic. The family physician is reviewing the components of the Basic Benefit Package (BBP) to verify which child clinical services and laboratory tests can be fully completed at the primary care facility.
+Question 5: Enumerate four essential laboratory investigations that are fully available at the level of the Family Health Unit (FHU) according to the BBP laboratory services guidelines.
+Answer 5: 1. Blood glucose. 2. Hemoglobin (Hb). 3. Stool analysis. 4. Urine analysis.
+Question 6: List the three sequential levels of service delivery through which the Basic Benefit Package is implemented within the family health delivery model.
+Answer 6: 1. Family Health Unit (FHU). 2. Family Health Centre (FHC). 3. Hospital Level.
+Title 4: family - Family dynamics
+Case 4: A 14-year-old adolescent is brought to the clinic. Genogram analysis reveals a strong family history of early-onset coronary artery disease. Recently, the family experienced a major crisis due to the sudden death of the father, causing profound emotional instability.
+Question 7: Enumerate the five main functional parameters of the family that represent its baseline societal obligations using the CAPRS framework.
+Answer 7: 1. C - Care: Provision of basic needs such as food, shelter, and social support. 2. A - Affection: Psychosocial support including love, warmth, and emotional security. 3. P - Providing status: Helping family members determine future education, occupation, and social roles. 4. R - Reproduction: Continuity of the family through legal marriage and childbearing. 5. S - Socialization: Teaching social skills, norms, values, and acceptable behaviors.
+Question 8: List four chronic or metabolic diseases in which a detailed family history contributes directly to calculating the patient's individual risk database.
+Answer 8: 1. Cancer (especially breast, colon, prostate, and ovarian). 2. Hypertension. 3. Diabetes Mellitus. 4. Hyperlipidaemia or Coronary artery disease.
+Title 5: patient education
+Case 5: A 50-year-old male patient with newly diagnosed asymptomatic Hypertension tells the family physician, "I don't need to take my anti-hypertensive drugs daily; I will only take them on the days when I feel a headache".
+Question 9: Enumerate four fundamental reasons/clinical advantages that outline the core importance of implementing effective patient education in family medicine.
+Answer 9: 1. Increased patient satisfaction with medical care. 2. Promotion of healthy behaviors and modification of unhealthy habits. 3. Reduction of unnecessary health care utilization (avoidable office visits/phone calls). 4. Reduction of serious illness outcomes, decrease in complications, and lowering hospitalization costs.
+Question 10: List four essential behavioral or structural principles that must guide the delivery of high-quality patient education during a clinical consultation.
+Answer 10: 1. Feedback (ensuring the patient understands the information). 2. Reinforcement (encouraging and rewarding progress). 3. Individualization (tailoring education according to baseline needs/goals). 4. Facilitation (providing printed materials or skills training).
+Title 6: Referral
+Case 6: A family physician is caring for a patient with progressive symptoms of ischemic heart disease that are no longer responding efficiently to medical management at the primary care setting. He decides to transfer the care of this specific problem to a cardiologist.
+Question 11: Enumerate five essential socio-demographic or clinical components that MUST be clearly documented inside a standard, structurally valid medical referral letter.
+Answer 11: 1. Socio-demographic data (name, age, sex, and family health record number). 2. Type of referral (urgent or elective) and destination hospital/specialty. 3. Main complaint, present history, and relevant past medical/surgical history. 4. Relevant physical examination findings and matching investigations. 5. Provisional diagnosis and explicit reasons/expectations for referral.
+Question 12: Clearly state the primary conceptual difference between a "Referral" and a "Consultation" within family medicine practice.
+Answer 12: * Consultation is the practice of one physician asking another for an opinion or assistance regarding the diagnosis and management of a patient (while retaining primary responsibility).
+Referral is the formal process of transferring the actual clinical responsibility of a patient to another physician for the care of a specific health problem.
+
+================================================================================
+اليوم الثاني من المعسكر: الأسئلة المقالية
+================================================================================
+
+أسئلة شابتر renal
+
+---
+
+## HEMATURIA
+
+---
+
+**Q1. Define hematuria and microscopic hematuria.**
+
+- Hematuria = presence of blood in urine, either gross (visible to naked eye) or microscopic (detected only by dipstick or microscopy).
+- Microscopic hematuria = more than 5 RBCs per high power field in the sediment from 10 ml of centrifuged freshly voided urine.
+
+---
+
+**Q2. Enumerate the causes of hematuria in children (glomerular and extra-glomerular).**
+
+**Glomerular:**
+- Isolated renal: IgA nephropathy, post-infectious GN, membranous nephropathy, membranoproliferative GN, FSGS, anti-GBM disease
+- Multi-system: SLE nephritis, HSP nephritis, Goodpasture syndrome, HUS, sickle cell glomerulopathy, HIV nephropathy
+
+**Extra-glomerular:**
+- Upper urinary tract: pyelonephritis, interstitial nephritis, ATN, renal vein/artery thrombosis, crystalluria (calcium, oxalate, uric acid), cystic kidney disease, Wilms tumor, trauma
+- Lower urinary tract: cystitis, urethritis, urolithiasis
+
+---
+
+**Q3. How can you differentiate glomerular hematuria from lower urinary tract hematuria?**
+
+| Feature | Glomerular (Renal) | Lower Urinary Tract |
+|---|---|---|
+| Color | Cola / smoky | Pink or red |
+| RBCs morphology | Dysmorphic | Normal |
+| RBCs casts | + | − |
+| Blood clots | − | + |
+| Proteinuria | >100 mg/dL | <100 mg/dL |
+| Symptoms | Edema, hypertension | Dysuria |
+
+---
+
+**Q4. Enumerate the causes of dark red / brown urine.**
+
+**With RBCs (Hematuria):** glomerular and extra-glomerular causes as above.
+
+**Without RBCs — Heme positive:**
+- Hemoglobinuria: in acute hemolytic anemia → fragmented RBCs + reticulocytosis, plasma color red
+- Myoglobinuria: rhabdomyolysis (viral myositis, crush injury, prolonged fits) → high serum creatine kinase, plasma color clear
+
+**Without RBCs — Heme negative:**
+- Drugs: chloroquine, deferoxamine, ibuprofen, metronidazole, nitrofurantoin, rifampin, salicylates, sulfasalazine, phenazopyridine
+- Dyes: beets, blackberries, food coloring
+- Methemoglobin, urates
+
+---
+
+**Q5. List the laboratory investigations used in the evaluation of a child with glomerular hematuria.**
+
+For all cases:
+1. Fresh urine analysis (casts, bacteria, crystals, RBCs shape)
+2. Abdominal ultrasound
+3. Renal function tests
+4. Blood picture
+5. Coagulation profile
+
+For glomerular hematuria specifically:
+- Serum C3 (reduced in: post-infectious GN, SLE nephritis, nephritis with chronic infection, MPGN)
+- For post-strep GN: ASO titre, anti-DNase B titre, throat/skin culture
+- For lupus: ANA, anti-double stranded DNA
+
+---
+
+**Q6. Mention the indications for renal biopsy in a child with hematuria.**
+
+1. Unexplained persistent or recurrent gross hematuria
+2. Lupus nephritis
+3. GN with nephritic-nephrotic picture or absent/low C3
+4. Unexplained acute renal failure
+
+---
+---
+
+## ACUTE POST-STREPTOCOCCAL GLOMERULONEPHRITIS (APSGN)
+
+---
+
+**Q1. Define APSGN.**
+
+Acute specific self-limited glomerulonephritis due to prior streptococcal infection, characterized by:
+1. Sudden onset of gross hematuria
+2. Edema (mild to moderate)
+3. Hypertension
+4. Oliguria (may be present)
+
+---
+
+**Q2. Describe the clinical picture of APSGN.**
+
+- Age: 5–12 years, uncommon before age 3
+- Latent period: 1–2 weeks after pharyngitis, 3–6 weeks after pyoderma
+- Gross hematuria (cola/smoky urine)
+- Edema: results from salt and water retention
+- Hypertension: seen in 60% of patients
+- Oliguria may be present
+- Severity ranges from asymptomatic microscopic hematuria to acute kidney injury
+- Nonspecific symptoms: malaise, lethargy, abdominal/flank pain, fever
+- May develop encephalopathy or heart failure due to hypertension or hypervolemia
+- Acute phase resolves within 6–8 weeks
+- Microscopic hematuria may persist for 1–2 years
+
+---
+
+**Q3. Enumerate the investigations used to confirm the diagnosis of APSGN.**
+
+**Urine analysis:**
+- Color: smoky red / cola-like
+- Oliguria with high specific gravity
+- Dysmorphic RBCs
+- RBC casts
+- Nephritic range proteinuria
+- Polymorphonuclear leukocytes
+
+**Serology:**
+- Serum C3: reduced in acute phase, returns to normal after 6–8 weeks
+- ASO titre: elevated after pharyngeal infection
+- Anti-DNase B: best marker for cutaneous streptococcal infection
+- Throat or skin culture
+
+**Clinical diagnosis is likely when:**
+- Acute nephritic syndrome
+- Evidence of recent streptococcal infection
+- Low C3 level
+
+---
+
+**Q4. Enumerate the complications of APSGN.**
+
+- Hypertensive encephalopathy (10% of cases)
+- Congestive heart failure
+- Hyperkalemia
+- Hyperphosphatemia
+- Hypocalcemia
+- Metabolic acidosis
+- Seizures
+- Uremia
+- Rapidly progressive glomerulonephritis (RPGN)
+
+---
+
+**Q5. List the medical emergencies in APSGN.**
+
+A. Hyperkalemia
+B. Hypertensive encephalopathy
+C. Congestive heart failure
+D. Rapidly progressive glomerulonephritis (RPGN)
+
+---
+
+**Q6. Mention the treatment of APSGN.**
+
+**A. General measures:**
+1. Bed rest: only during the oliguric phase
+2. Fluid restriction: intake = UOP + 400 ml/m²/day
+3. Protein and salt restriction
+4. High carbohydrate diet
+
+**B. Specific measures:**
+1. Management of renal insufficiency and hypertension
+2. Eradication of streptococcal infection: 10-day course of penicillin (does not alter natural history of GN)
+
+---
+---
+
+## NEPHROTIC SYNDROME
+
+---
+
+**Q1. Define nephrotic syndrome and mention its four characteristic features.**
+
+Nephrotic syndrome is primarily a pediatric disorder, 15 times more common in children than adults (incidence 2–3/100,000 children/year).
+
+Four characteristic features:
+1. Heavy proteinuria (>3.5 g/24hr in adults or >40 mg/m²/hr in children)
+2. Hypoalbuminemia (<2.5 g/dL)
+3. Generalized edema
+4. Hyperlipidemia (hypercholesterolemia >250 mg/dL)
+
+---
+
+**Q2. Describe the pathogenesis of edema in nephrotic syndrome.**
+
+1. Increased GBM permeability → heavy proteinuria → hypoalbuminemia
+2. Decreased plasma oncotic pressure → fluid shift to interstitial tissue
+3. Decreased intravascular volume → decreased renal blood flow → activation of JGA → increased aldosterone → Na and H₂O retention → more edema
+4. Decreased intravascular volume → increased ADH → H₂O retention → more edema
+5. Hypoproteinemia → liver increases lipoprotein synthesis → hyperlipidemia (+ decreased lipoprotein lipase → decreased lipid catabolism)
+
+---
+
+**Q3. Enumerate the complications of nephrotic syndrome.**
+
+1. Infection (major complication): spontaneous bacterial peritonitis most common (S. pneumoniae commonest organism), also sepsis, pneumonia, cellulitis, UTI
+2. Thromboembolic events (2–5% in children): renal vein thrombosis, pulmonary embolus, sagittal sinus thrombosis
+3. Hypovolemic shock (with aggressive diuretic therapy)
+4. Renal failure (from hypovolemia or renal vein thrombosis)
+5. Relapse
+6. Complications of therapy (steroids, cyclophosphamide)
+
+---
+
+**Q4. Describe the steroid therapy used in idiopathic nephrotic syndrome.**
+
+**Induction of remission:**
+- Prednisone 60 mg/m²/day (max 60 mg/day), divided into 2–3 doses, for at least 4 consecutive weeks
+- 80–90% of children respond (urine trace/negative for protein for 3 consecutive days = steroid responsive)
+
+**Alternate-day dose:**
+- After initial 4–6 weeks: taper to 40 mg/m²/day given every other day as single morning dose, then slowly discontinued over 2–3 months
+
+**Definitions:**
+- Steroid dependent: relapses while on alternate-day therapy OR within 14 days of stopping prednisone
+- Frequent relapsers: respond well but relapse 4 or more times in 12 months
+- Steroid resistant: fail to respond within 4–6 weeks → renal biopsy required
+
+**Alternative agents (for steroid-dependent/resistant):**
+Cyclophosphamide, methylprednisolone, cyclosporine, ACE inhibitors + angiotensin II blockers
+
+---
+
+**Q5. List the indications for renal biopsy in nephrotic syndrome.**
+
+**Before treatment:**
+1. Hematuria
+2. Hypertension
+3. Renal insufficiency
+4. Hypocomplementemia (low C3)
+5. Age <1 year or >10 years
+
+**After treatment:**
+1. Frequent relapsers
+2. Steroid resistant
+
+---
+
+**Q6. Mention the indications for IV albumin infusion in nephrotic syndrome.**
+
+IV 25% human albumin (0.5 g/kg/12hr):
+1. Massive generalized edema (anasarca) with respiratory difficulty → albumin + IV furosemide (1–2 mg/kg)
+2. Hypovolemic shock → albumin alone
+
+*(Close monitoring of volume status, serum electrolytes, and renal function is mandatory)*
+
+---
+---
+
+## ACUTE KIDNEY INJURY (AKI)
+
+---
+
+**Q1. Define AKI, oliguria, and anuria in children.**
+
+- **AKI:** rapid decline (hours to days) in GFR resulting in: impairment of nitrogenous waste excretion, loss of water/electrolyte regulation, and loss of acid-base regulation
+- **Oliguria:** urine output <1 ml/kg/hr or <400 ml/m²/day
+- **Anuria:** urine output <30 ml/m²/day
+
+---
+
+**Q2. Enumerate the causes of AKI classified into prerenal, intrinsic renal, and postrenal.**
+
+**Prerenal:**
+Dehydration, hemorrhage, sepsis, hypoalbuminemia, cardiac failure
+
+**Intrinsic renal:**
+- Glomerulonephritis: post-infectious GN, SLE, HSP, MPGN, anti-GBM disease, HUS
+- Acute tubular necrosis, cortical necrosis, renal vein thrombosis
+- Acute interstitial nephritis, tumor infiltration, tumor lysis syndrome
+
+**Postrenal:**
+Posterior urethral valve, PUJ obstruction, ureterovesical junction obstruction, ureterocele, tumors, urolithiasis, hemorrhagic cystitis, neurogenic bladder
+
+---
+
+**Q3. How do you differentiate prerenal AKI from intrinsic renal AKI?**
+
+| Feature | Prerenal | Intrinsic Renal |
+|---|---|---|
+| History | Vomiting, diarrhea, dehydration | Pharyngitis + edema + hematuria; or hypotension + nephrotoxic drugs |
+| Examination | Tachycardia, dry mucosae, poor perfusion | Peripheral edema, rales, gallop; ± rash/arthritis |
+| Specific gravity | >1020 | <1010 |
+| Urine osmolality | >500 mOsm/kg | <350 mOsm/kg |
+| Urine Na | <20 mEq/L | >40 mEq/L |
+| FENa | <1% (<2.5% neonates) | >2% (>10% neonates) |
+
+---
+
+**Q4. Enumerate the clinical manifestations of AKI (oliguric phase).**
+
+**Early AKI:**
+- Oliguria or anuria
+- Edema
+- Hypertension
+- Acidotic breathing (rapid + deep)
+
+**Advanced AKI (above + ):**
+- ↑ Urea → uremic encephalopathy (confusion → convulsion → coma)
+- ↓ Na → convulsions
+- ↑ K → arrhythmias
+- Hypervolemia → heart failure → acute pulmonary edema
+- Metabolic acidosis → GIT stress ulcer
+
+---
+
+**Q5. List the stages of AKI according to modified pRIFLE criteria.**
+
+| Stage | GFR | Urine Output |
+|---|---|---|
+| Risk | GFR decrease by 25% | <0.5 ml/kg/hr for 8 hrs |
+| Injury | GFR decrease by 50% | <0.5 ml/kg/hr for 16 hrs |
+| Failure | GFR decrease by 75% or <35 ml/min/1.73m² | <0.3 ml/kg/hr for 24 hrs or anuric for 12 hrs |
+| Loss | Persistent failure >4 weeks | — |
+| End stage | Persistent failure >3 months (ESRD) | — |
+
+---
+
+**Q6. Mention the electrolyte and acid-base disturbances seen in advanced AKI.**
+
+- Hyperkalemia → arrhythmias
+- Dilutional hyponatremia → convulsions
+- Hypocalcemia
+- Hyperphosphatemia
+- Metabolic acidosis (↓ pH, ↓ PaCO₂, ↓ HCO₃)
+- ↑ Urea → uremic encephalopathy
+---
+أسئلة شابتر neonatology 
+## Topic 1: Transient Cutaneous Lesions
+
+**Q1. Define transient cutaneous lesions in the newborn.**
+
+* **Answer:** Transient cutaneous lesions are temporary, self-limiting skin changes seen in the normal newborn due to physiological adaptation to extrauterine life. They require no treatment and resolve spontaneously.
+
+**Q2. Enumerate the transient cutaneous lesions seen in the newborn.**
+
+* **Answer:** * Acrocyanosis
+* Mottling (Cutis Marmorata)
+* Harlequin color change
+* Vernix caseosa
+* Lanugo hair
+* Salmon patch (capillary hemangioma)
+* Mongolian spots
+* Erythema toxicum
+* Pustular melanosis
+* Milia of face
+* Physiological jaundice
+
+**Q3. Define Acrocyanosis.**
+
+* **Answer:** Temporary, harmless cyanosis of the hands and feet seen in newborns, especially when they are cool, resulting from vasomotor instability and peripheral circulatory sluggishness.
+
+**Q4. Define Harlequin color change.**
+
+* **Answer:** A rare, transient, and harmless division of the newborn's body from the forehead to the pubis into red and pale halves, which characteristically occurs when the neonate lies on his side.
+
+**Q5. Define Erythema toxicum.**
+
+* **Answer:** Small, white, occasionally vesiculopustular papules on an erythematous base that develop 1–3 days after birth, persist for as long as 1 week, contain eosinophils, and are usually distributed on the face, trunk, and extremities.
+
+**Q6. Mention the clinical features of Erythema toxicum.**
+
+* **Answer:** * Appears 1–3 days after birth.
+* Small white vesiculopustular papules on an erythematous base.
+* Contains eosinophils (not neutrophils).
+* Distributed on face, trunk, and extremities.
+* Persists up to 1 week then disappears spontaneously.
+
+**Q7. Define Mongolian spots.**
+
+* **Answer:** Blue, well-demarcated areas of pigmentation seen over the buttocks, back, and sometimes other parts of the body in more than 50% of newborns, which tend to disappear within the first year.
+
+**Q8. Mention the clinical features of Mongolian spots.**
+
+* **Answer:** * Blue, well-demarcated area of pigmentation.
+* Seen over buttocks, back, and sometimes other parts of the body.
+* Seen in more than 50% of newborns.
+* Tend to disappear within the first year of life.
+* Treatment: reassurance only.
+
+**Q9. Mention the clinical features of Pustular Melanosis.**
+
+* **Answer:** * Benign lesion seen predominantly in black neonates.
+* Present at birth as a vesiculopustular eruption.
+* Distributed around the chin, neck, back, extremities, palms, or soles.
+* Contains neutrophils (unlike erythema toxicum).
+* Lasts for 2–3 days.
+
+**Q10. Differentiate between Erythema toxicum and Pustular Melanosis.**
+
+* **Answer:** * **Erythema toxicum:** Appears 1–3 days after birth, contains eosinophils, affects face/trunk/extremities, and resolves in 1 week.
+* **Pustular melanosis:** Present at birth, contains neutrophils, seen predominantly in black neonates, affects chin/neck/back/extremities/palms/soles, and lasts 2–3 days.
+
+**Q11. List four transient skin features or substances related to maturity or delivery found on a newborn's skin.**
+
+* **Answer:** * Vernix caseosa (cheesy material, decreases near term).
+* Lanugo hair (fine immature hair, lost or replaced in term infants).
+* Scattered petechiae (seen on the presenting part after difficult delivery).
+* Amniotic bands (associated with membrane rupture or vascular compromise).
+
+---
+
+## Topic 2: Prematurity and Its Complications
+
+**Q1. Define Prematurity / Premature infant.**
+
+* **Answer:** Prematurity refers to a live-born infant delivered before 37 completed weeks of gestational age, as defined by the World Health Organization.
+
+**Q2. Enumerate the causes of prematurity.**
+
+* **Answer:** * **Idiopathic:** Most common cause.
+* **Maternal causes:** Young age (<20 yrs) or older age (>40 yrs), pre-eclampsia, abruptio placentae, placenta praevia, chorioamnionitis, PROM, polyhydramnios, incompetent OS, trauma, DM, chronic illness, and drug abuse.
+* **Fetal causes:** Fetal distress, fetal anomalies, multiple gestation, erythroblastosis, and non-immune hydrops.
+* **Socioeconomic:** Low socioeconomic status.
+
+**Q3. Enumerate the physiological handicaps of prematurity.**
+
+* **Answer:** * **Impaired thermoregulation:** Due to immature centers, large surface area, and reduced subcutaneous fat.
+* **Respiratory:** Weak muscles, surfactant deficiency, and poor cough/gag reflexes.
+* **GIT:** Poor sucking/swallowing, weak cardiac sphincter, and decreased fat absorption.
+* **Hepatic:** Impaired bilirubin conjugation and vitamin K-dependent factor deficiency.
+* **Haemostatic:** Increased capillary fragility and impaired clotting mechanisms.
+* **Renal:** Low GFR and poor urine concentration capability.
+* **CNS:** Poorly developed brain, soft skull, and immature blood-brain barrier.
+* **Immunological:** Reduced placental transmission of immunoglobulins and impaired phagocytosis.
+
+**Q4. Enumerate the physiological handicaps of the premature infant specifically regarding Respiratory and Gastrointestinal systems.**
+
+* **Answer:** * **Respiratory Handicaps:** Poorly developed respiratory center, weak respiratory muscles, deficiency of pulmonary surfactant, poorly developed lung alveoli, and poor gag and cough reflexes.
+* **Gastrointestinal Handicaps:** Poor suckling and swallowing reflexes, weak cardiac sphincter, low stomach capacity and acidity, decreased fat digestion/absorption of fats and fat-soluble vitamins, and hypotonicity of the muscle coat of the colon.
+
+**Q5. List four physical features or signs of underdevelopment observed during the clinical examination of a premature infant.**
+
+* **Answer:** * Underdeveloped ear cartilage (soft ear firmness).
+* Absent or minimal sole creases (creases on anterior 1/3 or before).
+* Immature genitalia (testis in inguinal canal / prominent labia minora).
+* Diminished or absent breast nodule (breast size < 0.5 cm).
+
+**Q6. List the Respiratory complications of prematurity.**
+
+* **Answer:** * Respiratory distress syndrome (hyaline membrane disease)
+* Bronchopulmonary dysplasia
+* Pneumothorax and pneumomediastinum
+* Pulmonary interstitial emphysema
+* Congenital pneumonia
+* Pulmonary hypoplasia
+* Pulmonary hemorrhage
+* Apnea of prematurity
+
+**Q7. List the Central Nervous System (CNS) complications of prematurity.**
+
+* **Answer:** * Intraventricular hemorrhage (IVH)
+* Periventricular leukomalacia
+* Hypoxic-ischemic encephalopathy (HIE)
+* Seizures
+* Retinopathy of prematurity (ROP)
+* Deafness
+* Kernicterus (bilirubin encephalopathy)
+
+**Q8. Enumerate the Cardiovascular and Gastrointestinal complications of prematurity.**
+
+* **Answer:** * **Cardiovascular Complications:** Patent ductus arteriosus (PDA), hypotension, hypertension, and bradycardia (associated with apnea).
+* **Gastrointestinal Complications:** Difficult feeding, necrotizing enterocolitis (NEC), hyperbilirubinemia (direct and indirect), and spontaneous isolated gastrointestinal perforation.
+
+**Q9. Mention the Hematologic complications of prematurity.**
+
+* **Answer:** * Anemia (early or late onset)
+* Hyperbilirubinemia-indirect
+* Subcutaneous or organ (liver, adrenal) hemorrhage
+* Vitamin K deficiency / Disseminated intravascular coagulopathy (DIC)
+
+**Q10. List four Metabolic and Endocrine complications of prematurity.**
+
+* **Answer:** * Hypocalcemia
+* Hypoglycemia
+* Hypothermia
+* Electrolyte disturbances
+
+**Q11. Mention the essential guidelines for prophylactic vitamin administration in the management of a preterm infant.**
+
+* **Answer:** * **Vitamin K1:** 1 mg IM once immediately after birth.
+* **Vitamin D:** 800 I.U./day.
+* **Vitamin A:** 8000 I.U./day (usually started after the 2nd week).
+* **Vitamin C:** 50 mg/day.
+* **Folic Acid:** 5 mg twice weekly.
+
+---
+
+## Topic 3: Compare Between Physiological and Pathological Jaundice
+
+**Q1. Define the Enterohepatic Circulation of Bilirubin.**
+
+* **Answer:** The process where conjugated bilirubin in the small intestine is converted back to the unconjugated form by the action of the enzyme $\beta$-glucuronidase, and is subsequently reabsorbed into the circulation to undergo reconjugation in the liver.
+
+**Q2. Define and state the criteria of Physiological Jaundice.**
+
+* **Answer:** Physiological jaundice is a self-limiting, benign hyperbilirubinemia of the newborn.
+* **In full-term infants:** It appears on the 2nd–3rd day of life, peak bilirubin level is <12 mg/dL, and it resolves within 7 days.
+* **In preterm infants:** It appears on the 4th–6th day, peak level is <14 mg/dL, and resolves within 10–14 days.
+* **Clinical status:** The infant remains completely傲 asymptomatic and requires no treatment.
+
+**Q3. List the predisposing factors/causes that explain the development of physiological jaundice.**
+
+* **Answer:** * Increased bilirubin production from the accelerated breakdown of fetal red blood cells.
+* Transient limitation in the hepatic uptake of bilirubin (deficiency of Y and Z ligandin proteins).
+* Transient limitation in bilirubin conjugation due to immature glucuronyl transferase (G.T.) enzyme.
+* Increased enterohepatic circulation of bilirubin.
+
+**Q4. Enumerate the risk factors for exaggerated physiological jaundice.**
+
+* **Answer:** * Maternal diabetes.
+* Prematurity.
+* Race (Chinese, Japanese, Korean, and Native American).
+* Male sex.
+* Polycythemia or Trisomy 21.
+* Cephalohematoma or cutaneous bruising.
+* Oxytocin induction.
+* Weight loss (dehydration or caloric deprivation) and delayed bowel movement.
+* A sibling who had physiological jaundice.
+
+**Q5. Define Pathological Jaundice and list the criteria used to identify it.**
+
+* **Answer:** Pathological jaundice is neonatal jaundice that does not fit the typical criteria for physiological jaundice. It is highly suspected in the presence of any of the following criteria:
+* Appears within the first 24 hours of life.
+* Serum bilirubin is rising at a rate faster than 5 mg/dL/24 hr.
+* Serum bilirubin exceeds 12 mg/dL in full-term or 14 mg/dL in preterm infants.
+* Jaundice persists beyond 7 days in full-term or 14 days in preterm infants.
+* Direct-reacting bilirubin is greater than 20% of the total bilirubin at any time.
+* Family history of hemolytic disease, or presence of pallor, hepatomegaly, and splenomegaly.
+* Failure of phototherapy to lower bilirubin, or the infant shows signs of illness or kernicterus.
+
+**Q6. Mention four clinical signs of an "Ill baby" with Pathologic Jaundice.**
+
+* **Answer:** * Vomiting or poor feeding.
+* Lethargy or apnea.
+* Hepatomegaly or splenomegaly.
+* Light-colored stools or dark urine positive for bilirubin.
+
+**Q7. Enumerate four Pathologic causes of Neonatal Jaundice due to "Increased Formation" (Hemolysis), excluding immune incompatibility.**
+
+* **Answer:** * **RBC cell wall defects:** Congenital spherocytosis or elliptocytosis.
+* **Enzymatic defects:** Glucose-6-phosphate dehydrogenase (G6PD) deficiency or pyruvate kinase deficiency.
+* **Hemoglobin defects:** $\alpha$-thalassemia.
+* **Extravascular hemolysis:** Cephalhematoma or internal tissue bruising.
+
+**Q8. Enumerate four causes of Pathologic Jaundice due to Conjugation Defects.**
+
+* **Answer:** * Immaturity of G.T. enzyme (e.g., Hypothyroidism).
+* Crigler-Najjar Syndrome Type I (severe deficiency).
+* Crigler-Najjar Syndrome Type II (mild/moderate deficiency) or Gilbert's Syndrome.
+* Inhibition of the enzyme (e.g., Breast milk jaundice or Lucey Driscoll syndrome).
+
+**Q9. Mention four causes of Pathologic Jaundice related to Excretion or Secretion Defects.**
+
+* **Answer:** * Biliary Atresia (obliteration of the intrahepatic or extrahepatic biliary tree).
+* Choledochal Cyst.
+* Dubin-Johnson Syndrome or Rotor Syndrome (hepatocyte secretion defects).
+* Inspissated Bile Syndrome.
+
+---
+
+## Topic 4: Complications of Indirect Hyperbilirubinemia
+
+**Q1. Enumerate the complications of indirect hyperbilirubinemia.**
+
+* **Answer:** * Inspissated bile syndrome.
+* Kernicterus (bilirubin encephalopathy).
+
+**Q2. Define Inspissated Bile Syndrome.**
+
+* **Answer:** A complication of indirect hyperbilirubinemia characterized by persistent icterus in association with significant elevations in both direct and indirect bilirubin levels in infants with hemolytic disease, which clears spontaneously within a few weeks or months.
+
+**Q3. Define Kernicterus.**
+
+* **Answer:** Kernicterus, or bilirubin encephalopathy, is a neurological syndrome resulting from the pathological deposition of unconjugated bilirubin in the basal ganglia and brainstem nuclei. It typically develops when serum bilirubin levels exceed 30 mg/dL (overall danger range 21–50 mg/dL).
+
+**Q4. Enumerate the predisposing factors for kernicterus.**
+
+* **Answer:** * Unconjugated hyperbilirubinemia (markedly elevated indirect bilirubin).
+* Hypoalbuminaemia (which increases the toxic free form of unbound bilirubin).
+* Factors that increase the permeability of the Blood-Brain Barrier (B.B.B), such as sepsis, hypoxia, and acidosis.
+
+**Q5. Describe the clinical stages of Acute Kernicterus.**
+
+* **Answer:** * **Phase 1 (1st 1–2 days):** Poor sucking, loss of Moro reflex, stupor, high-pitched cry, hypotonia, and seizures.
+* **Phase 2 (middle of 1st week):** Hypertonia of extensor muscles, opisthotonos, retrocollis, bulging fontanel, and fever.
+* **Phase 3 (after 1st week):** Manifests primarily as persistent hypertonia.
+
+**Q6. List the clinical features of Chronic Kernicterus (by 3 years of age) and during the 2nd year of life.**
+
+* **Answer:** * **During the 2nd year of life:** Abatement of opisthotonos and seizures, accompanied by a steady increase in irregular involuntary movements, muscle rigidity, or hypotonia.
+* **By 3 years of age (Complete Syndrome):**
+* Bilateral choreoathetosis and extrapyramidal signs.
+* Seizures and mental deficiency.
+* Dysarthric speech and high-frequency hearing loss.
+* Squinting and defective upward movement of the eyes.
+* Pyramidal signs, hypotonia, and ataxia (in some infants).
+
+
+
+**Q7. Mention four preventable causes/pitfalls leading to Kernicterus.**
+
+* **Answer:** * Early discharge (<48 hr) with no early follow-up (within 48 hr of discharge), particularly in near-term infants.
+* Failure to check the bilirubin level in an infant noted to be jaundiced in the first 24 hours.
+* Underestimating the severity of jaundice by clinical (visual) assessment alone.
+* Delay in measuring the serum bilirubin level or delay in initiating phototherapy/exchange transfusion.
+
+**Q8. List the parameters to monitor and evaluate when performing a visual/clinical assessment of a jaundiced newborn.**
+
+* **Answer:** * **Anatomic progression of jaundice via dermal pressure:** Progresses from face ($\approx$ 5 mg/dL) to mid-abdomen ($\approx$ 15 mg/dL) and down to the soles ($\approx$ 20 mg/dL).
+* **Type/hue of jaundice:** Bright yellow or orange color signifies indirect bilirubin deposition, whereas a greenish color indicates obstructive (direct) bilirubin.
+* **Vascular/tissue signs:** Presence of pallor, plethora, or extravascular blood (cephalohematoma, bruising).
+* **Organ systemic signs:** Hepatosplenomegaly (H.S.M.), signs of congenital infection, abdominal distention, or central nervous system affection.
+
+**Q9. Enumerate four major complications or risks associated with performing an Exchange Transfusion.**
+
+* **Answer:** * Transient bradycardia (with or without calcium infusion) or cyanosis/apnea.
+* Electrolyte disturbances and metabolic acidosis.
+* Vascular thrombosis or portal vein thrombosis leading to late portal hypertension.
+* Necrotizing enterocolitis (NEC).
+
+---
+
+## Topic 5: Neonatal Sepsis and Its Clinical Sepsis Score
+
+**Q1. Define Neonatal Sepsis.**
+
+* **Answer:** Neonatal sepsis is a clinical syndrome of systemic illness resulting from the pathophysiological effects of local or systemic infection accompanied by bacteremia in the first 4 weeks of life. In 30% of cases it is associated with meningitis, and in 20% of cases with pneumonia or urinary tract infection.
+
+**Q2. Define Nosocomial Sepsis.**
+
+* **Answer:** Hospital-acquired neonatal sepsis where clinical manifestations appear after about 8 days from hospital admission, with a pathogenesis directly related to the underlying neonatal illness and the unique flora of the neonatal intensive care unit (NICU).
+
+**Q3. Differentiate between Early onset and Late onset neonatal sepsis.**
+
+* **Answer:** * **Early onset sepsis:** Manifestations are present at birth or anytime during the first week (usually <3 days) of life; it is a fulminant multisystem illness where the organism is acquired during the intrapartum period from the maternal genital tract (or transplacentally). History of maternal obstetric complications is common.
+* **Late onset sepsis:** Manifestations appear 8–28 days after delivery; it can be multisystem or focal. The organism is acquired from the maternal genital tract or the environment (human contact/contaminated equipment). Maternal obstetric complications are uncommon.
+
+**Q4. Differentiate between Possible, Probable, and Proven Sepsis based on diagnostic classification.**
+
+* **Answer:** * **Possible Sepsis:** Defined by the isolated presence of suggestive clinical signs and symptoms.
+* **Probable Sepsis:** Suggestive clinical signs coupled with risk factors, a positive septic screen (CBC, CRP, ESR), or radiological evidence of pneumonia.
+* **Proven Sepsis:** Clinical signs of sepsis confirmed by a positive culture from a normally sterile site (blood, CSF, or urine).
+
+**Q5. Enumerate the risk factors for neonatal sepsis.**
+
+* **Answer:** * **Maternal risk factors:** Premature rupture of membranes (>24 hr), maternal peripartum fever ($\ge$ 38.0°C) or chorioamnionitis, UTI, vaginal/perineal colonization with GBS/E.coli, and meconium-stained or foul-smelling amniotic fluid.
+* **Neonatal risk factors:** Prematurity (single most important risk factor), multiple gestations, galactosemia (predisposed to E.coli), immune defects, resuscitation at birth, male sex, and black race.
+* **Environmental risk factors:** Crowding, inadequate nursing staff, lack of hand washing, invasive procedures, and prolonged antibiotic use.
+
+**Q6. List the causative organisms of neonatal sepsis.**
+
+* **Answer:** * E. coli
+* Klebsiella
+* Enterococci
+* Proteus
+* Pseudomonas
+* Listeria monocytogenes
+* Group B Streptococcus (GBS)
+
+**Q7. Mention the Clinical Sepsis Score for neonatal sepsis.**
+
+* **Answer:** Sepsis is suspected if a baby has 3 or more of the following signs (each item scores 1 point):
+* Apnea, tachypnea, cyanosis, respiratory distress — 1 point.
+* Bradycardia or tachycardia — 1 point.
+* Hypotonia or seizure — 1 point.
+* Poor skin color, poor peripheral circulation — 1 point.
+* Irritability, lethargy, poor feeding — 1 point.
+* Hepatosplenomegaly, abdominal distension — 1 point.
+* Fever or hypothermia — 1 point.
+
+**Q8. List four clinical signs of Central Nervous System (CNS) and Gastrointestinal (GI) dysfunction in a septic neonate.**
+
+* **Answer:** * **CNS Signs:** Lethargy, irritability, tremors, seizures, hypotonia, hyporeflexia, a full fontanelle, or a high-pitched cry.
+* **Gastrointestinal Signs:** Abdominal distention, vomiting, poor feeding, diarrhea, hepatomegaly, or splenomegaly.
+
+**Q9. Enumerate the investigations (sepsis work-up) for neonatal sepsis.**
+
+* **Answer:** * **Evidence of infection:** Blood culture (gold standard), CSF culture, urine culture (by catheter or suprapubic puncture for neonates > 24h), and Gram stain of amniotic fluid or gastric aspirate.
+* **Evidence of inflammation:** * CBC (neutrophilia/neutropenia, band cell to total neutrophil ratio $>0.2$, toxic granulation, thrombocytopenia, fragmented RBCs).
+* Elevated acute-phase reactants (CRP and ESR) and cytokines (Interleukin-6).
+
+
+* **Evidence of Multiorgan Dysfunction:** Blood gases (metabolic acidosis), renal function tests (BUN, creatinine), hepatic function tests (bilirubin, ALT, AST, ammonia, PT, PTT for DIC).
+* **Radiological studies:** Chest X-ray (for respiratory symptoms) and urinary tract imaging (renal ultrasound/scan).
+
+
+
+================================================================================
+الأسئلة المتكررة سنين سابقة (إضافية)
+================================================================================
+
+--------------------------------------------------------------------------------
+1. Renal 🚨
+--------------------------------------------------------------------------------
+
+Nephritic syndrome (Clinical picture / Complications) 🌸
+
+* Clinical picture of nephritic syndrome:
+- Sudden onset of gross hematuria (cola-colored urine)
+- Edema (mild to moderate, usually periorbital)
+- Hypertension
+- Oliguria may be present
+- Proteinuria (mild to moderate)
+
+* Complications of nephritic syndrome (APSGN):
+- Hyperkalemia
+- Hypertensive encephalopathy
+- Congestive heart failure
+- Rapidly progressive glomerulonephritis (RPGN)
+- Acute kidney injury
+
+--------------------------------------------------------------------------------
+
+Nephrotic syndrome (Clinical picture / Investigation / Complication) 🌸
+
+* Clinical picture of nephrotic syndrome:
+- Generalized edema (initially periorbital in the morning, then lower extremities, ascites, pleural effusion, genital edema)
+- Frothy urine (due to proteinuria)
+- Anorexia, irritability, abdominal pain
+- Hypertension and gross hematuria are uncommon (In MCNS)
+
+* Investigations of nephrotic syndrome:
+- Urine analysis: Heavy proteinuria (3+ or 4+ dipstick, >40 mg/m²/hr), waxy and hyaline casts
+- Serum albumin: Low (<2.5 g/dL)
+- Serum cholesterol: Elevated (>250 mg/dL)
+- Serum creatinine: Usually normal
+- C3 and C4: Normal (In MCNS)
+
+* Complications of nephrotic syndrome:
+- Infection (spontaneous bacterial peritonitis, sepsis, pneumonia, cellulitis)
+- Thromboembolic events (renal vein thrombosis, pulmonary embolus)
+- Hypovolemic shock
+- Relapse
+- Complications of therapy (steroids, cyclophosphamide)
+
+--------------------------------------------------------------------------------
+
+Hematuria (Causes of gross and microscopic Hematuria) 🌸
+
+* Glomerular causes of hematuria:
+- IgA nephropathy (Berger disease)
+- Post-streptococcal glomerulonephritis
+- Alport syndrome (hereditary nephritis)
+- Thin glomerular basement membrane nephropathy
+- Henoch-Schönlein purpura nephritis
+- Systemic lupus erythematosus nephritis
+
+* Extra-glomerular causes of hematuria:
+- Urinary tract Infection (cystitis, pyelonephritis)
+- Urolithiasis (renal calculi)
+- Trauma
+- Coagulopathy
+- Tumor (Wilms tumor)
+- Polycystic kidney disease
+- Renal vein thrombosis
+
+--------------------------------------------------------------------------------
+
+AKI (CP / Investigation) 🌸
+
+* Clinical picture of acute kidney injury (AKI):
+- Oliguria or anuria
+- Edema (fluid overload)
+- Hypertension
+- Acidotic breathing (rapid and deep)
+- Uremic encephalopathy (confusion, convulsions, coma) – in advanced cases
+- Hyperkalemia (arrhythmias)
+- Metabolic acidosis
+
+* Investigations of AKI:
+- Urine output: Oliguria (UOP <1 ml/kg/hr or <400 mg/m²/day) or anuria (<30 ml/m²/day)
+- Renal function tests: Increased serum creatinine, blood urea, BUN
+- Arterial blood gas: Metabolic acidosis (↓ pH, ↓ PaCO₂, ↓ HCO₃)
+- Electrolytes: Hyperkalemia, dilutional hyponatremia, hypocalcemia, hyperphosphatemia
+- Urine analysis: To differentiate prerenal vs intrinsic vs postrenal
+
+--------------------------------------------------------------------------------
+2. Neonate 🚨
+--------------------------------------------------------------------------------
+
+Complication of Prematurity 🌸
+
+* Complications of prematurity:
+- Respiratory: Respiratory distress syndrome (Hyaline membrane disease), Bronchopulmonary dysplasia, Apnea, Pneumothorax
+- CNS: Intraventricular hemorrhage, Periventricular leukomalacia, Retinopathy of prematurity (ROP), Kernicterus
+- Gastrointestinal: Necrotizing enterocolitis (NEC), Difficult feeding
+- Metabolic: Hypoglycemia, Hypocalcemia, Hypothermia
+- Hematologic: Anemia, Hyperbilirubinemia (indirect), Vitamin K deficiency, DIC
+- Cardiovascular: Patent ductus arteriosus (PDA), Hypotension
+- Renal: Electrolyte disturbances, Acidosis
+- Immunologic: Infection and sepsis
+- Nutritional: Rickets of prematurity
+
+--------------------------------------------------------------------------------
+
+Clinical picture of neonatal sepsis & clInical sepsis score 🌸
+
+* Clinical picture of neonatal sepsis:
+- Temperature instability (hypothermia or fever)
+- Respiratory distress (tachypnea, grunting, retractions, apnea, cyanosis)
+- Cardiovascular signs (tachycardia or bradycardia, poor perfusion, prolonged capillary refill, hypotension)
+- Gastrointestinal signs (poor feeding, vomiting, abdominal distension, ileus, diarrhea)
+- Neurological signs (lethargy, hypotonia, seizures, irritability, high-pitched cry)
+- Hematologic signs (petechiae, purpura, bleeding, jaundice)
+- Miscellaneous (sclerema, bulging fontanel)
+
+* Clinical sepsis score components:
+- Temperature instability
+- Respiratory signs (tachypnea, grunting, retractions, apnea)
+- Cardiovascular signs (tachycardia, poor perfusion)
+- GI signs (poor feeding, vomiting, distension)
+- Neurological signs (lethargy, seizures, hypotonia)
+- Hematologic signs (petechiae, jaundice)
+
+* Significance of clinical sepsis score:
+- Helps identify neonates with possible sepsis early before culture results
+- Guides decision to start empirical antibiotics promptly
+- High score indicates high probability of sepsis and need for full workup
+
+--------------------------------------------------------------------------------
+
+Transient cutaneous lesions (benign neonatal skin findings) 🌸
+
+* Benign transient cutaneous lesions in newborns:
+- Acrocyanosis (harmless cyanosis of hands and feet)
+- Erythema toxicum (small white papules on erythematous base, contains eosinophils)
+- Mongolian spots (blue-black pigmentation over buttocks and back)
+- Milia (tiny white papules on nose and chin, due to distended sebaceous glands)
+- Salmon patch (transitory macular capillary hemangioma on eyelids or neck)
+- Vernix caseosa (whitish, cheesy, greasy material covering the body)
+- Lanugo hair (fine, soft hair on premature infants)
+- Pustular melanosis (vesiculopustular eruption in black neonates)
+
+--------------------------------------------------------------------------------
+
+Compare between physiological and pathological jaundice 🌸
+
+| Criteria | Physiological Jaundice | Pathological Jaundice |
+| :--- | :--- | :--- |
+| Time of appearance | After 24 hours of life (day 2-3) | Within first 24 hours of life |
+| Rate of rise | <5 mg/dL/day | >=5 mg/dL/day |
+| Peak bilirubin level (term) | <12-13 mg/dL | Exceeds physiological range |
+| Duration (term) | Resolves within 7 days | Persists beyond 14 days |
+| Clinical condition | Baby is well, active, feeding normally | Baby is ill, lethargic, feeding poorly |
+| Stool/urine color | Normal | Pale stools, dark urine (conjugated) |
+| Causes | Increased RBC turnover + immature liver | Hemolytic diseases (ABO/Rh), infection, metabolic, biliary atresia |
+
+--------------------------------------------------------------------------------
+
+Complication of Indirect hyperbilirubinemia (Kernicterus) 🌸
+
+* Definition: Kernicterus is bilirubin-induced neurologic dysfunction caused by deposition of unconjugated bilirubin in the basal ganglia and brainstem nuclei.
+
+* Clinical features (acute bilirubin encephalopathy):
+- Lethargy, poor feeding, hypotonia
+- Hypertonia (opisthotonos, retrocollis)
+- High-pitched cry
+- Seizures
+- Apnea
+
+* Long-term sequelae (chronic kernicterus):
+- Choreoathetoid cerebral palsy (involuntary movements)
+- Sensorineural hearing loss
+- Dental enamel dysplasia
+- Intellectual disability
+- Gaze palsy (upward gaze paralysis)
+
+* Bilirubin threshold for exchange transfusion (term infant): Varies by weight and risk factors, typically >20-25 mg/dL.
+
+--------------------------------------------------------------------------------
+3. Chest 🚨
+--------------------------------------------------------------------------------
+
+Triggers of Bronchial Asthma 🌸
+
+* Common triggers of bronchial asthma:
+- Viral respiratory infections
+- Indoor allergens (animal dander, dust mites, cockroaches)
+- Seasonal allergens (pollens)
+- Air pollutants (tobacco smoke, dust, strong odors)
+- Exercise
+- Cold dry air
+- Crying, laughter, hyperventilation
+- Drugs (aspirin, NSAIDs, beta-blockers)
+
+--------------------------------------------------------------------------------
+
+Investigation of Bronchial Asthma 🌸
+
+* Investigations of bronchial asthma:
+- Complete blood count (CBC): Eosinophilia (>250-400 cells/mm³)
+- Serum IgE: Usually elevated
+- Pulmonary function tests (spirometry) for children >5 years:
+  - Low FEV1
+  - Low FEV1/FVC ratio
+  - Reversible airflow obstruction (increase in FEV1 >9-12% after bronchodilator)
+- Peak expiratory flow rate (PEFR) variability: Day-to-day variation >=20%
+- Chest X-ray: To exclude other diagnoses or complications (normal in asthma)
+- Allergy testing (skin prick test or specific IgE)
+
+--------------------------------------------------------------------------------
+
+Pneumonia (CP / Complication / Investigation) 🌸
+
+* Clinical picture of pneumonia:
+- Tachypnea (most sensitive and specific sign)
+- Cough (productive or dry)
+- Fever (low to high grade)
+- Respiratory distress (nasal flaring, retractions, grunting, cyanosis)
+- Decreased breath sounds, crackles, rhonchi, bronchial breathing
+- Dullness on percussion (if consolidation or effusion)
+- Non-respiratory manifestations: vomiting, diarrhea, abdominal pain (can mimic gastroenteritis or surgical abdomen)
+
+* Complications of pneumonia:
+- Pleural effusion
+- Empyema
+- Lung abscess
+- Pneumatocele (especially with S. aureus)
+- Bronchopleural fistula
+- Bacteremia / sepsis
+- Meningitis
+- Pericarditis
+
+* Investigations of pneumonia:
+- Chest X-ray: Lobar consolidation, patchy infiltrate, or interstitial pattern
+- CBC: Leukocytosis with PMN predominance (bacterial) or lymphocytosis (viral)
+- Acute phase reactants: Elevated CRP, ESR, procalcitonin (in bacterial)
+- Blood culture: To identify organism
+- Pulse oximetry: To assess oxygenation
+- Sputum culture: Limited value in young children
+- PCR (nasopharyngeal): For Mycoplasma, Pertussis, viral pathogens
+- CT scan (for complicated or unresolved pneumonia)
+
+--------------------------------------------------------------------------------
+
+Causes of wheeze 🌸
+
+* Acute causes of wheezing:
+- Acute bronchiolitis (RSV)
+- Bronchial asthma exacerbation
+- Foreign body aspiration
+- Severe bacterial bronchopneumonia
+
+* Recurrent causes of wheezing:
+- Bronchial asthma
+- Recurrent aspiration (GERD)
+- Chronic chest infection (cystic fibrosis, immunodeficiency)
+
+* Non-wheeze causes of noisy breathing (differential diagnosis):
+- Stridor (croup, epiglottitis, foreign body in larynx/trachea)
+- Snoring (adenoid enlargement, nasal obstruction)
+- Grunting (severe respiratory distress)
+- Rattling (secretions in trachea/bronchi)
+
+--------------------------------------------------------------------------------
+4. Emergency 🚨
+--------------------------------------------------------------------------------
+
+Definition, causes, and grading of coma 🌸
+
+* Definition of coma:
+Coma is a state of prolonged unconsciousness in which the child cannot be aroused even with painful stimuli.
+
+* Causes of coma:
+- Intracranial infection (meningitis, encephalitis, brain abscess)
+- Intracranial hemorrhage (traumatic or non-traumatic)
+- Hypoxic-ischemic encephalopathy (shock, severe anemia, hypoxia)
+- Metabolic disorders (DKA, hypoglycemia, hepatic failure, renal failure, electrolyte imbalance)
+- Poisoning (exogenous toxins)
+- Status epilepticus
+- Brain tumor
+
+* Grading of coma (clinical grades):
+- Grade I (Stupor): Patient can be aroused for only a short period (less than a minute)
+- Grade II (Light coma): Cannot be aroused by painful stimuli, but withdraws to pain
+- Grade III (Deep coma): No response to painful stimuli, but breathes spontaneously
+- Grade IV (Deep coma with apnea): No response to painful stimuli and apnea
+
+--------------------------------------------------------------------------------
+
+Definition, causes, and grading of shock 🌸
+
+* Definition of shock:
+Shock is the clinical state of circulatory inadequacy where there is disruption of tissue perfusion, leading to inadequate supply of oxygen and nutrients to, and removal of metabolites from, cells of end organs.
+
+* Causes of shock (types):
+- Hypovolemic shock (dehydration, hemorrhage, burns)
+- Cardiogenic shock (heart failure, myocarditis)
+- Obstructive shock (tension pneumothorax, cardiac tamponade, pulmonary embolism)
+- Distributive (kinetic) shock (septic, anaphylactic, neurogenic)
+- Metabolic shock (acute adrenal failure)
+
+* Grading of shock:
+- Grade I (Compensated shock): Tachycardia, normal blood pressure, prolonged capillary refill, cool extremities
+- Grade II (Early shock): Tachycardia + poor peripheral perfusion
+- Grade III (Established shock): Tachycardia + poor perfusion + hypotension
+- Grade IV (Advanced shock): Multiple organ system failure (MOSF)
+- Grade V (Irreversible shock): Refractory metabolic acidosis, irreversible cellular damage
+
+--------------------------------------------------------------------------------
+
+Steps of CPR (Cardiopulmonary Resuscitation) 🌸
+
+* Basic Life Support (A, B, C):
+- A – Airway control: Open airway (head tilt, jaw thrust, mouth opening), clear airway (suction), maintain patent airway (oropharyngeal airway or ETT)
+- B – Breathing support: Mouth-to-mouth, bag and mask with O2 (20 breaths/minute)
+- C – Circulation support: Cardiac compression at midstream point (rate 100/minute, ratio 1:5 with ventilation)
+
+* Compression depth by age:
+- Newborns: 2 cm (hand encircling technique)
+- Infants: 2 cm (two-finger technique)
+- Young children: 3 cm (one-hand technique)
+- Older children: 4 cm (two-hands technique)
+
+* Advanced Life Support (D, E, F):
+- D – Drugs: IV fluids (20 ml/kg), sodium bicarbonate, Adrenaline
+- E – ECG monitoring: Detect arrhythmias (asystole, VF)
+- F – Fibrillation control: Defibrillation (2, 4, 8 joules/kg)
+
+* Post-resuscitation (G, H, I):
+- G – Recognition and treatment of causative disease
+- H – Brain recovery (control convulsions, increased ICP)
+- I – Intensive care for multiple system support
+
+--------------------------------------------------------------------------------
+
+Score and advantages of GCS (Glasgow Coma Scale) 🌸
+
+* Glasgow Coma Scale (GCS) Items:
+- Eye opening (1-4): Spontaneous (4), To voice (3), To pain (2), None (1)
+- Verbal response (1-5): Oriented (5), Confused (4), Inappropriate words (3), Incomprehensible (2), None (1)
+- Motor response (1-6): Obeys commands (6), Localizes pain (5), Withdraws (4), Flexion (3), Extension (2), None (1)
+- Total score: 3 to 15 (Score <=8 = severe brain injury)
+
+* Advantages of GCS:
+- Objective and standardized assessment of consciousness
+- Simple and quick – can be performed at bedside in emergencies
+- Allows serial monitoring to detect improvement or deterioration
+
+* Disadvantages of GCS:
+- Limited in young children/infants (verbal component hard to assess)
+- Affected by sedation, intubation, or neuromuscular blockade
+- Does not assess brainstem function directly (pupillary reaction, reflexes)
+
+--------------------------------------------------------------------------------
+5. Matching Questions 🚨
+--------------------------------------------------------------------------------
+
+Matching Renal 1 (Urinary Tract Disease) 🌸
+
+* For each case, select the most likely diagnosis:
+1. An 8-year-old female child with cola-colored urine, BP 80th percentile, hx of URI 2 weeks ago, low C3.
+   - Answer: C) Acute post streptococcal glomerulonephritis (APSGN)
+2. A 12-year-old boy, shorter than colleagues, generalized bony aches, hyperkalemia, serum creatinine 2.6 mg/dL.
+   - Answer: K) Chronic renal failure (CKD)
+3. A 5 year old girl with puffiness around eyes, proteinuria with minimal trace of blood.
+   - Answer: A) Nephrotic syndrome
+
+--------------------------------------------------------------------------------
+
+Matching Renal 2 (Diseases with renal manifestations) 🌸
+
+* For each case, select the most likely diagnosis:
+1. A 2 year old boy with bloody diarrhea, abdominal pain, puffiness around eyes, jaundice, microangiopathic hemolytic anemia, thrombocytopenia.
+   - Answer: A) Haemolytic uraemic syndrome (HUS)
+2. A 12-year-old boy, shorter, bony aches, hyperkalemia, creatinine 2.6 mg/dL.
+   - Answer: K) Chronic renal failure (CKD)
+3. A 5 year old girl with puffiness around eyes, proteinuria with minimal trace of blood.
+   - Answer: C) Nephrotic syndrome
+
+--------------------------------------------------------------------------------
+
+Matching Chest (Childhood respiratory diseases) 🌸
+
+* For each case, select the most likely diagnosis:
+1. Six month old: high fever, breathlessness, cough, dull percussion note, bronchial breath sounds.
+   - Answer: G) Pneumonia
+2. Nine month old: wheezy, coughing, cyanosed, breathless, intercostal recession.
+   - Answer: B) Bronchiolitis
+3. Four year old non-immunized: bouts of coughing ending in vomiting, absolute lymphocytosis.
+   - Answer: J) Whooping cough (Pertussis)
+4. Nine month old: upset, stridor, hoarse voice, barking cough, low grade fever.
+   - Answer: C) Croup
+5. Two year old: very unwell, fever 39°C, unable to swallow secretions, continuous stridor, drooling.
+   - Answer: F) Epiglottitis
+
+--------------------------------------------------------------------------------
+
+Matching Jaundice (Diagnosis of Neonatal Jaundice) 🌸
+
+* For each case, select the most likely diagnosis:
+1. Mother blood group A Rhesus positive, baby blood group B Rhesus negative.
+   - Answer: A) ABO Incompatibility
+2. A 4 day old baby is well but has a tinge of jaundice.
+   - Answer: H) Physiological jaundice
+3. A breast fed 3 week old baby has mild jaundice but is gaining weight satisfactorily.
+   - Answer: B) Breast milk jaundice
+4. A 12 day old baby is jaundiced with pale stools.
+   - Answer: D) Extrahepatic biliary atresia
