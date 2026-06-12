@@ -405,3 +405,112 @@ A 2-year-old toddler presents with a 3-day history of frequent loose, watery sto
 2. If trained, start rehydration via the NG tube (or mouth) with ORS solution, giving $20\text{ ml/kg/hour}$ for 6 hours (total of $120\text{ ml/kg}$).
 3. If not trained in NG tube rehydration, immediately check if the child can drink.
 4. If the child cannot drink, immediately **refer URGENTLY to the hospital** for IV or NG treatment.
+
+### Title 1: Principles of family medicine
+
+* **Question 1:** Enumerate the core actions a family physician takes to ensure effective "Coordinated-Care" when a patient referral to another specialty is necessary.
+* 
+**Answer 1:** 1. Ensure timely and appropriate referral.
+2. Inform patients about available services.
+3. Coordinate advice and follow-up care.
+4. Act as care managers across health and social services.
+
+
+
+### Title 2: Family physician- family health team- family health model
+
+* **Question 2:** List four conceptual differences that distinguish the "Family Medicine Model" from the "Traditional Model of Practice" regarding care style and organization.
+* 
+**Answer 2:** 1. Care is integrated, whereas in the traditional model it is often fragmented.
+2. Care is both responsive and proactive, compared to mostly reactive care.
+3. It utilizes a multidisciplinary healthcare team rather than a single physician model.
+4. It relies on evidence-based practice rather than solely experience-based practice.
+
+
+
+### Title 3: Basic benefit package (BBP)
+
+* **Question 3:** Enumerate four specific non-communicable diseases (NCDs) that are managed under the "Health Services for All Age Groups" within the BBP.
+* 
+**Answer 3:** 1. Hypertension.
+2. Diabetes mellitus.
+3. Ischemic heart disease.
+4. Rheumatic diseases.
+
+
+
+### Title 4: Family dynamics & Life Cycle
+
+* **Question 4:** Enumerate three specific health risks or nutritional deficiencies that highly characterize the "Preschool age & Breast dependence" stage of the human life cycle.
+* 
+**Answer 4:** 1. Acute respiratory infections.
+2. Diarrheal diseases.
+3. Malnutrition (such as Protein-energy malnutrition, Rickets, or Vitamin A deficiency).
+
+
+
+### Title 5: Patient education
+
+* **Question 5:** Enumerate four essential practices a physician should follow when delivering effective "Verbal Instruction" during a patient education encounter.
+* 
+**Answer 5:** 1. Understand the patient's circumstances, fears, expectations, and readiness to change.
+2. Avoid medical jargon and use simple, clear language.
+3. Be specific and concise in explanations.
+4. Continuously assess understanding by asking for feedback and summarizing key points.
+
+
+
+### Title 6: Referral
+
+* **Question 6:** Enumerate the three distinct types of referral in family practice, and briefly define the danger of a "Lateral referral".
+* 
+**Answer 6:** * The three types are: Urgent, Elective, and Lateral referral.
+
+
+* 
+**Lateral referral:** It occurs from specialist to specialist without the involvement of the original referring family physician, which compromises continuous patient care.
+
+
+
+
+
+### Title 7 & 8: Anticipatory care (1 & 2)
+
+* **Question 7:** Enumerate four common atypical or nonspecific clinical presentations that should raise a primary care physician's suspicion of Domestic Violence during anticipatory screening.
+* 
+**Answer 7:** 1. Depression.
+2. Fatigue.
+3. Unexplained abdominal or pelvic pain.
+4. Multiple somatic complaints that are frequently atypical.
+
+
+
+### Title 9: Breast feeding
+
+* **Question 8:** Enumerate four evidence-based medical benefits of breastfeeding specifically for the nursing mother.
+* 
+**Answer 8:** 1. Reduces the mother's risk of breast and ovarian cancer, type 2 diabetes, and high blood pressure.
+2. Reduces the risk of developing osteoporosis.
+3. Produces oxytocin, which helps contract the uterus back to its pre-pregnancy size.
+4. Lowers the chance of developing postpartum depression.
+
+
+
+### Title 10: IMCI up to two months
+
+* **Question 9:** Enumerate the clinical criteria or historical findings that classify a young infant as having a "FEEDING PROBLEM" under IMCI guidelines (assuming no severe classification is present).
+* 
+**Answer 9:** 1. Not well attached to the breast.
+2. Not suckling effectively.
+3. Less than 8 breastfeeds in 24 hours.
+4. Receives other foods or drinks.
+
+
+
+### Title 11: IMCI 2 months-5 years
+
+* **Question 10:** Enumerate the treatment protocol steps for a child presenting with "Wheezing" who has fast breathing but NO general danger signs and NO stridor, according to IMCI flowcharts.
+* 
+**Answer 10:** 1. Give a rapid-acting bronchodilator and reassess the child 30 minutes later.
+2. If fast breathing alone persists after reassessment, treat for PNEUMONIA and give oral salbutamol for 5 days.
+3. If there is no fast breathing after the bronchodilator, treat for NO PNEUMONIA: COUGH OR COLD and give oral salbutamol for 5 days.
