@@ -130,3 +130,47 @@ export const renderCardContent = (content: string) => {
     </div>
   );
 };
+
+export const isImageUrl = (url: string | undefined): boolean => {
+  if (!url) return false;
+  const trimmed = url.trim();
+  if (!trimmed) return false;
+  const cleanUrl = trimmed.split('?')[0].split('#')[0];
+  return /\.(jpeg|jpg|gif|png|webp|svg|bmp)$/i.test(cleanUrl) || 
+         trimmed.includes('i.ibb.co') || 
+         trimmed.includes('images.unsplash.com') ||
+         trimmed.startsWith('data:image/');
+};
+
+export const renderMediaLink = (url: string | undefined, label: string) => {
+  if (!url) return null;
+  const trimmedUrl = url.trim();
+  if (!trimmedUrl) return null;
+
+  if (isImageUrl(trimmedUrl)) {
+    return (
+      <div className="mt-4 w-full max-w-lg overflow-hidden rounded-2xl border border-slate-200 shadow-md">
+        <img 
+          src={trimmedUrl} 
+          alt={label} 
+          className="w-full h-auto max-h-[350px] object-contain hover:scale-[1.02] transition-transform duration-300" 
+          referrerPolicy="no-referrer"
+        />
+      </div>
+    );
+  }
+
+  return (
+    <div className="mt-4">
+      <a 
+        href={trimmedUrl} 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-blue-50 hover:bg-blue-100 border border-blue-100 text-blue-600 hover:text-blue-800 font-bold transition-all text-xs shadow-sm"
+      >
+        <span>🔗</span>
+        <span>{label}</span>
+      </a>
+    </div>
+  );
+};

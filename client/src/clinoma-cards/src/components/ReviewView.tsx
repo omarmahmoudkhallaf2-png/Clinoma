@@ -4,7 +4,7 @@ import { ArrowLeft, CheckCircle2, Clock, AlertTriangle, ChevronDown, ChevronUp, 
 import type { Question, Chapter } from '../types';
 import { CHAPTERS } from '../data/chapters';
 import { ExplanationDrawer } from './ExplanationDrawer';
-import { renderCardContent } from '../utils/cardUtils';
+import { renderCardContent, renderMediaLink } from '../utils/cardUtils';
 
 interface ReviewViewProps {
   reviewIds: string[];
@@ -189,6 +189,7 @@ function ReviewCard({
 
       <div className="w-full mt-1">
         {renderCardContent(q.content)}
+        {renderMediaLink(q.questionLink, "رابط إضافي للسؤال")}
       </div>
 
       {/* Explanation Panel if toggled */}
@@ -240,6 +241,7 @@ function ReviewCard({
                   </div>
                 ))}
               </div>
+              {renderMediaLink(q.answerLink, "رابط إضافي للإجابة")}
             </motion.div>
           )}
         </AnimatePresence>

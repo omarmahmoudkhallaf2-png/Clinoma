@@ -28,6 +28,7 @@ import FlashSpaceManager from '../../components/admin/FlashSpaceManager';
 import DataThemeManager from '../../components/admin/DataThemeManager';
 import VideoManager from '../../components/admin/VideoManager';
 import Leaderboard from '../../components/admin/Leaderboard';
+import ClinomaExpectationsManager from '../../components/admin/ClinomaExpectationsManager';
 
 
 import { runSystemAudit } from '../../lib/systemHealer';
@@ -39,10 +40,10 @@ import type { Question } from '../../types/quiz';
 export default function AdminDashboard() {
   const { user, userRole } = useAuth();
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState<'analytics' | 'questions' | 'users' | 'courses' | 'settings' | 'audit' | 'health' | 'formal_results' | 'exams' | 'flashcards' | 'flashspace' | 'data_themes' | 'videos' | 'leaderboard'>(() => {
+  const [activeTab, setActiveTab] = useState<'analytics' | 'questions' | 'users' | 'courses' | 'settings' | 'audit' | 'health' | 'formal_results' | 'exams' | 'flashcards' | 'flashspace' | 'data_themes' | 'videos' | 'leaderboard' | 'expectations'>(() => {
     const params = new URLSearchParams(window.location.search);
     const tab = params.get('tab');
-    const validTabs = ['analytics', 'questions', 'users', 'courses', 'settings', 'audit', 'health', 'formal_results', 'exams', 'flashcards', 'flashspace', 'data_themes', 'videos', 'leaderboard'];
+    const validTabs = ['analytics', 'questions', 'users', 'courses', 'settings', 'audit', 'health', 'formal_results', 'exams', 'flashcards', 'flashspace', 'data_themes', 'videos', 'leaderboard', 'expectations'];
     return (tab && validTabs.includes(tab)) ? (tab as any) : 'analytics';
   });
   const [questions, setQuestions] = useState<Question[]>([]);
@@ -333,6 +334,7 @@ export default function AdminDashboard() {
           { id: 'settings', label: 'OS Config', icon: Settings },
           { id: 'exams', label: 'Exams', icon: ClipboardList },
           { id: 'flashcards', label: 'Flashcards', icon: Brain },
+          { id: 'expectations', label: 'Clinoma Expectations', icon: Sparkles },
           { id: 'data_themes', label: 'Data Themes', icon: Database },
           { id: 'flashspace', label: 'Flash Space', icon: Layout },
           { id: 'videos', label: 'Video Library', icon: Video },
@@ -434,6 +436,7 @@ export default function AdminDashboard() {
             {activeTab === 'exams' && <ExamManager />}
             {activeTab === 'audit' && <AuditLogViewer />}
             {activeTab === 'flashcards' && <FlashcardManager />}
+            {activeTab === 'expectations' && <ClinomaExpectationsManager />}
             {activeTab === 'flashspace' && <FlashSpaceManager />}
             {activeTab === 'settings' && <AppConfig />}
             { activeTab === 'data_themes' && <DataThemeManager /> }

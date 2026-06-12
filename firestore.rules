@@ -100,6 +100,17 @@ service cloud.firestore {
       allow create: if isSignedIn();
     }
 
+    // --- Clinoma Expectations & Resets ---
+    match /clinoma_expectations/{docId} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin();
+    }
+
+    match /clinoma_resets/{docId} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin();
+    }
+
     // --- Global Settings ---
     match /settings/{settingId} {
       allow read: if isSignedIn();

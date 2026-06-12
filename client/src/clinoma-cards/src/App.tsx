@@ -20,6 +20,8 @@ import type { Question, Chapter } from './types';
 import StudySession from './components/StudySession';
 import ReviewView from './components/ReviewView';
 import CountdownTimer from './components/CountdownTimer';
+import { db } from '../../lib/firebase';
+import { collection, doc, getDoc, getDocs, writeBatch, setDoc } from 'firebase/firestore';
 
 const MIXED_CHAPTER: Chapter = {
   id: 0,
@@ -28,9 +30,12 @@ const MIXED_CHAPTER: Chapter = {
 };
 
 export default function App({ onExit, isExpectations = false }: { onExit?: () => void; isExpectations?: boolean }) {
-  const QUESTIONS = isExpectations 
-    ? INITIAL_QUESTIONS.filter(q => q.id.startsWith('remix_'))
-    : INITIAL_QUESTIONS.filter(q => !q.id.startsWith('remix_'));
+  const [dynamicQuestions, setDynamicQuestions] = useState<Question[]>(() => {
+    return isExpectations 
+      ? INITIAL_QUESTIONS.filter(q => q.id.startsWith('remix_'))
+      : INITIAL_QUESTIONS.filter(q => !q.id.startsWith('remix_'));
+  });
+  const QUESTIONS = dynamicQuestions;
   const [view, setView] = useState<'home' | 'study' | 'review'>('home');
   const [activeChapter, setActiveChapter] = useState<Chapter | null>(null);
   const [reviewList, setReviewList] = useState<string[]>(() => {
@@ -52,6 +57,146 @@ export default function App({ onExit, isExpectations = false }: { onExit?: () =>
   useEffect(() => {
     localStorage.setItem('clinoma_mastered_ids', JSON.stringify(masteredIds));
   }, [masteredIds]);
+
+  // Load and seed expectations questions from Firestore with client-side version caching
+  useEffect(() => {
+    if (isExpectations) {
+      const loadFirestoreQuestions = async () => {
+        try {
+          // 1. Get the current database version
+          const metaRef = doc(db, 'settings', 'clinoma_expectations_meta');
+          const metaSnap = await getDoc(metaRef);
+          
+          let serverVersion = 1;
+          if (metaSnap.exists()) {
+            serverVersion = metaSnap.data().version || 1;
+          } else {
+            // If the meta document doesn't exist, create it initially
+            await setDoc(metaRef, { version: 1, updatedAt: new Date() }, { merge: true });
+          }
+
+          // 2. Read local cache and local version
+          const cachedVersionStr = localStorage.getItem('clinoma_expectations_version');
+          const cachedVersion = cachedVersionStr ? parseInt(cachedVersionStr) : 0;
+          const cachedQuestionsStr = localStorage.getItem('clinoma_expectations_cache');
+
+          if (cachedQuestionsStr && cachedVersion === serverVersion) {
+            // Local cache is up-to-date! Use it to save ~100 Firestore reads
+            try {
+              const list = JSON.parse(cachedQuestionsStr) as Question[];
+              setDynamicQuestions(list);
+              return; // exit early
+            } catch (cacheErr) {
+              console.error("Cache parsing failed, reloading from server...", cacheErr);
+            }
+          }
+
+          // 3. Fallback/mismatch: Load from Firestore
+          const snap = await getDocs(collection(db, 'clinoma_expectations'));
+          if (!snap.empty) {
+            const list = snap.docs.map(docSnap => ({ id: docSnap.id, ...docSnap.data() } as Question));
+            // Sort by id to preserve order
+            list.sort((a, b) => {
+              const numA = parseInt(a.id.replace('remix_q', '')) || 0;
+              const numB = parseInt(b.id.replace('remix_q', '')) || 0;
+              return numA - numB;
+            });
+            
+            // Save to local storage cache
+            localStorage.setItem('clinoma_expectations_cache', JSON.stringify(list));
+            localStorage.setItem('clinoma_expectations_version', String(serverVersion));
+            
+            setDynamicQuestions(list);
+          } else {
+            // Seed Firestore with local remix questions so the DB is populated initially
+            const batch = writeBatch(db);
+            const localRemix = INITIAL_QUESTIONS.filter(q => q.id.startsWith('remix_'));
+            localRemix.forEach(q => {
+              const docRef = doc(db, 'clinoma_expectations', q.id);
+              batch.set(docRef, q);
+            });
+            await batch.commit();
+
+            // Set meta doc version to 1 as it is seeded
+            await setDoc(metaRef, { version: 1, updatedAt: new Date() }, { merge: true });
+
+            localStorage.setItem('clinoma_expectations_cache', JSON.stringify(localRemix));
+            localStorage.setItem('clinoma_expectations_version', '1');
+
+            setDynamicQuestions(localRemix);
+          }
+        } catch (err) {
+          console.error("Failed to load/seed clinoma expectations:", err);
+        }
+      };
+      loadFirestoreQuestions();
+    }
+  }, [isExpectations]);
+
+  // Check and apply resets from Firestore
+  useEffect(() => {
+    const checkAndApplyResets = async () => {
+      try {
+        const snap = await getDocs(collection(db, 'clinoma_resets'));
+        if (snap.empty) return;
+
+        // Load processed resets from localStorage
+        const processedStr = localStorage.getItem('clinoma_processed_resets');
+        const processed: string[] = processedStr ? JSON.parse(processedStr) : [];
+
+        let updatedMastered = [...masteredIds];
+        let updatedReview = [...reviewList];
+        let stateChanged = false;
+        const newlyProcessed: string[] = [];
+
+        snap.docs.forEach(docSnap => {
+          const resetId = docSnap.id;
+          if (processed.includes(resetId)) return;
+
+          const resetData = docSnap.data();
+          const chId = Number(resetData.chapterId);
+          const topic = resetData.topic;
+
+          // Find all questions in QUESTIONS that match this reset criteria
+          const matchQuestions = QUESTIONS.filter(q => {
+            const matchCh = q.chapterId === chId;
+            const matchTopic = !topic || topic === 'all' || q.topic === topic;
+            return matchCh && matchTopic;
+          });
+
+          if (matchQuestions.length > 0) {
+            const matchIds = matchQuestions.map(q => q.id);
+            const prevMasteredLen = updatedMastered.length;
+            const prevReviewLen = updatedReview.length;
+            updatedMastered = updatedMastered.filter(id => !matchIds.includes(id));
+            updatedReview = updatedReview.filter(id => !matchIds.includes(id));
+            if (updatedMastered.length !== prevMasteredLen || updatedReview.length !== prevReviewLen) {
+              stateChanged = true;
+            }
+          }
+
+          newlyProcessed.push(resetId);
+        });
+
+        if (newlyProcessed.length > 0) {
+          const finalProcessed = [...processed, ...newlyProcessed];
+          localStorage.setItem('clinoma_processed_resets', JSON.stringify(finalProcessed));
+          if (stateChanged) {
+            setMasteredIds(updatedMastered);
+            setReviewList(updatedReview);
+            localStorage.setItem('clinoma_mastered_ids', JSON.stringify(updatedMastered));
+            localStorage.setItem('clinoma_review_list', JSON.stringify(updatedReview));
+          }
+        }
+      } catch (err) {
+        console.error("Error checking/applying resets:", err);
+      }
+    };
+
+    if (QUESTIONS.length > 0) {
+      checkAndApplyResets();
+    }
+  }, [QUESTIONS, masteredIds, reviewList]);
 
   const startChapter = (chapter: Chapter) => {
     setActiveChapter(chapter);

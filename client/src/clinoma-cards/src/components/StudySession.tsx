@@ -14,7 +14,7 @@ import { DifficultyLevel } from '../types';
 import type { Question, Chapter } from '../types';
 import { INITIAL_QUESTIONS } from '../data/questions';
 import { ExplanationDrawer } from './ExplanationDrawer';
-import { renderCardContent } from '../utils/cardUtils';
+import { renderCardContent, renderMediaLink } from '../utils/cardUtils';
 
 const STICKERS = [
   'https://i.ibb.co/FkSVV8dd/fjf.webp',
@@ -821,6 +821,7 @@ export default function StudySession({
               
               <div className="flex-1 flex flex-col pt-2 mb-2 w-full">
                 {renderCardContent(currentQuestion.content)}
+                {renderMediaLink(currentQuestion.questionLink, "رابط إضافي للسؤال")}
               </div>
 
               {/* Explanation Panel if toggled */}
@@ -877,6 +878,7 @@ export default function StudySession({
                           </div>
                         ))}
                       </div>
+                      {renderMediaLink(currentQuestion.answerLink, "رابط إضافي للإجابة")}
                     </div>
 
                     {/* Quick Recurrence Controls */}

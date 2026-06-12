@@ -24,6 +24,8 @@ export interface Question {
   isClinical: boolean;
   topic?: string;
   explanation?: string;
+  questionLink?: string;
+  answerLink?: string;
 }
 
 export interface Chapter {
