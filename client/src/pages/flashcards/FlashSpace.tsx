@@ -45,7 +45,9 @@ import {
   Download,
   Loader2,
   Settings,
-  Award
+  Award,
+  AlertCircle,
+  Timer
 } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -7808,13 +7810,367 @@ const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
       "front": "List 3 absolute contraindications where a mother must NOT breastfeed or feed expressed breast milk.",
       "back": "Infant diagnosed with classic galactosemia.\nMother has HIV and is not on antiretroviral therapy (ART).\nMother is using an illicit drug (such as opioids, PCP, or cocaine)."
     }
+  ],
+  "Comprehensive Anatomy & Physiology of the Eyelids": [
+    {
+      "id": "eyelid_anatomy_q1",
+      "front": "Enumerate the layers of the eyelid from outside inwards.",
+      "back": "1) Skin & Subcutaneous tissue.\n2) Muscle layer.\n3) Submuscular areolar tissue.\n4) Fibrous layer (Tarsus).\n5) Palpebral conjunctiva."
+    },
+    {
+      "id": "eyelid_anatomy_q2",
+      "front": "Explain the gross anatomy of the eyelid margin and its divisions.",
+      "back": "It is 2–3 mm wide, divided by the punctum into:\n- Lacrimal part (medial 1/6th): Has no cilia/glands, contains the lacrimal canaliculus.\n- Ciliary part (lateral 5/6th): Formed of: Anterior border (cilia, Zeiss, and Moll's glands), Grey line (for surgical splitting), White line (Meibomian orifices), and Sharp posterior border."
+    },
+    {
+      "id": "eyelid_anatomy_q3",
+      "front": "Enumerate the different muscles of the eyelids and mention their nerve supply.",
+      "back": "1) Orbicularis Oculi: Supplied by the facial (7th) nerve.\n2) Levator Palpebrae Superioris: Supplied by the oculomotor (3rd) nerve.\n3) Involuntary Muscles: Muller's muscle (sympathetic supply) and Lower lid retractors."
+    },
+    {
+      "id": "eyelid_anatomy_q4",
+      "front": "Enumerate the main physiological functions of the eyelids.",
+      "back": "1) Protection of the globe from external injury.\n2) Help tear distribution by blinking.\n3) Help tear drainage through the lacrimal pump.\n4) Help aqueous drainage through ocular massage."
+    }
+  ],
+  "Anatomy": [
+    {
+      "id": "eyelid_anatomy_q1_alias",
+      "front": "Enumerate the layers of the eyelid from outside inwards.",
+      "back": "1) Skin & Subcutaneous tissue.\n2) Muscle layer.\n3) Submuscular areolar tissue.\n4) Fibrous layer (Tarsus).\n5) Palpebral conjunctiva."
+    },
+    {
+      "id": "eyelid_anatomy_q2_alias",
+      "front": "Explain the gross anatomy of the eyelid margin and its divisions.",
+      "back": "It is 2–3 mm wide, divided by the punctum into:\n- Lacrimal part (medial 1/6th): Has no cilia/glands, contains the lacrimal canaliculus.\n- Ciliary part (lateral 5/6th): Formed of: Anterior border (cilia, Zeiss, and Moll's glands), Grey line (for surgical splitting), White line (Meibomian orifices), and Sharp posterior border."
+    },
+    {
+      "id": "eyelid_anatomy_q3_alias",
+      "front": "Enumerate the different muscles of the eyelids and mention their nerve supply.",
+      "back": "1) Orbicularis Oculi: Supplied by the facial (7th) nerve.\n2) Levator Palpebrae Superioris: Supplied by the oculomotor (3rd) nerve.\n3) Involuntary Muscles: Muller's muscle (sympathetic supply) and Lower lid retractors."
+    },
+    {
+      "id": "eyelid_anatomy_q4_alias",
+      "front": "Enumerate the main physiological functions of the eyelids.",
+      "back": "1) Protection of the globe from external injury.\n2) Help tear distribution by blinking.\n3) Help tear drainage through the lacrimal pump.\n4) Help aqueous drainage through ocular massage."
+    }
+  ],
+  "Blepharitis (Chronic Inflammation of Eyelid Margin)": [
+    {
+      "id": "eyelid_blepharitis_q1",
+      "front": "Define Blepharitis and enumerate its main types.",
+      "back": "- Definition: Chronic inflammation of the eyelid margin.\n- Types: 1) Anterior blepharitis (Squamous and Ulcerative). 2) Posterior blepharitis (Meibomian gland dysfunction). 3) Mixed blepharitis."
+    },
+    {
+      "id": "eyelid_blepharitis_q2",
+      "front": "Explain the clinical picture (symptoms and signs) of Anterior Blepharitis.",
+      "back": "- Symptoms: Burning sensation, itching, lacrimation, photophobia, and frequent falling of hair.\n- Signs: Squamous type shows greasy grayish-white scales between lashes. Ulcerative type shows lashes glued together by yellow crusts; removing them leaves minute bleeding ulcers."
+    },
+    {
+      "id": "eyelid_blepharitis_q3",
+      "front": "Enumerate the ocular complications of chronic Blepharitis.",
+      "back": "- Lacrimal: Punctal occlusion.\n- Conjunctiva: Chronic conjunctivitis.\n- Cornea: Marginal corneal ulcers and superficial punctate keratitis.\n- Eyelid: Trichiasis, madarosis, multiple styes, and destruction of the sharp posterior border leading to epiphora, initiating a vicious circle of epiphora-eczema-ectropion."
+    },
+    {
+      "id": "eyelid_blepharitis_q4",
+      "front": "Explain the main lines of treatment for Blepharitis.",
+      "back": "Warm compresses, removal of scales using diluted baby shampoo, and local antibiotic ointment."
+    }
+  ],
+  "Blepharitis": [
+    {
+      "id": "eyelid_blepharitis_q1_alias",
+      "front": "Define Blepharitis and enumerate its main types.",
+      "back": "- Definition: Chronic inflammation of the eyelid margin.\n- Types: 1) Anterior blepharitis (Squamous and Ulcerative). 2) Posterior blepharitis (Meibomian gland dysfunction). 3) Mixed blepharitis."
+    },
+    {
+      "id": "eyelid_blepharitis_q2_alias",
+      "front": "Explain the clinical picture (symptoms and signs) of Anterior Blepharitis.",
+      "back": "- Symptoms: Burning sensation, itching, lacrimation, photophobia, and frequent falling of hair.\n- Signs: Squamous type shows greasy grayish-white scales between lashes. Ulcerative type shows lashes glued together by yellow crusts; removing them leaves minute bleeding ulcers."
+    },
+    {
+      "id": "eyelid_blepharitis_q3_alias",
+      "front": "Enumerate the ocular complications of chronic Blepharitis.",
+      "back": "- Lacrimal: Punctal occlusion.\n- Conjunctiva: Chronic conjunctivitis.\n- Cornea: Marginal corneal ulcers and superficial punctate keratitis.\n- Eyelid: Trichiasis, madarosis, multiple styes, and destruction of the sharp posterior border leading to epiphora, initiating a vicious circle of epiphora-eczema-ectropion."
+    },
+    {
+      "id": "eyelid_blepharitis_q4_alias",
+      "front": "Explain the main lines of treatment for Blepharitis.",
+      "back": "Warm compresses, removal of scales using diluted baby shampoo, and local antibiotic ointment."
+    }
+  ],
+  "Acute Suppurative Inflammations of Eyelid Glands (Stye & Hordeolum Internum)": [
+    {
+      "id": "eyelid_stye_q1",
+      "front": "Define Hordeolum Externum (Stye) and mention its causative organism.",
+      "back": "- Definition: Acute suppurative inflammation of the Zeiss gland.\n- Causative organism: Staphylococcus aureus."
+    },
+    {
+      "id": "eyelid_stye_q2",
+      "front": "Explain the clinical picture and signs of a Stye.",
+      "back": "Painful red swelling at the eyelid margin, forming a tender yellow point or abscess at the root of a lash."
+    },
+    {
+      "id": "eyelid_stye_q3",
+      "front": "Why is it strictly contraindicated to press or squeeze a Stye? Mention the possible complications.",
+      "back": "Do not press to evacuate a stye because it may spread the infection, causing severe complications like orbital cellulitis or cavernous sinus thrombosis."
+    },
+    {
+      "id": "eyelid_stye_q4",
+      "front": "Define Hordeolum Internum and explain how it clinically differs from a Stye.",
+      "back": "- Definition: Acute suppurative inflammation of the Meibomian gland.\n- Difference: The pain is more severe because the gland is larger and embedded under tension in the tarsus. The swelling is away from the lid margin (not related to eyelashes), and a yellow spot appears on the conjunctival side."
+    }
+  ],
+  "Stye": [
+    {
+      "id": "eyelid_stye_q1_alias",
+      "front": "Define Hordeolum Externum (Stye) and mention its causative organism.",
+      "back": "- Definition: Acute suppurative inflammation of the Zeiss gland.\n- Causative organism: Staphylococcus aureus."
+    },
+    {
+      "id": "eyelid_stye_q2_alias",
+      "front": "Explain the clinical picture and signs of a Stye.",
+      "back": "Painful red swelling at the eyelid margin, forming a tender yellow point or abscess at the root of a lash."
+    },
+    {
+      "id": "eyelid_stye_q3_alias",
+      "front": "Why is it strictly contraindicated to press or squeeze a Stye? Mention the possible complications.",
+      "back": "Do not press to evacuate a stye because it may spread the infection, causing severe complications like orbital cellulitis or cavernous sinus thrombosis."
+    },
+    {
+      "id": "eyelid_stye_q4_alias",
+      "front": "Define Hordeolum Internum and explain how it clinically differs from a Stye.",
+      "back": "- Definition: Acute suppurative inflammation of the Meibomian gland.\n- Difference: The pain is more severe because the gland is larger and embedded under tension in the tarsus. The swelling is away from the lid margin (not related to eyelashes), and a yellow spot appears on the conjunctival side."
+    }
+  ],
+  "Chalazion (Chronic Lipo-granuloma) & Distichiasis": [
+    {
+      "id": "eyelid_chalazion_q1",
+      "front": "Define Chalazion and explain its clinical picture.",
+      "back": "- Definition: Localized chronic inflammatory lipo-granuloma of a Meibomian gland.\n- Clinical Picture: Painless swelling under the skin of the eyelid. Presents as a localized, firm, painless, non-tender swelling with freely mobile skin. The palpebral conjunctiva looks red or bluish-grey over it."
+    },
+    {
+      "id": "eyelid_chalazion_q2",
+      "front": "Explain the treatment lines for a large, infected, or recurrent Chalazion.",
+      "back": "- Large chalazion: Incision (cruciate or vertical) and curettage/scraping from the conjunctival side.\n- Infected chalazion: Treated as hordeolum internum (antibiotics and warm compresses).\n- Recurrent swelling in the same gland: Excision biopsy and histopathological examination to exclude malignancy."
+    },
+    {
+      "id": "eyelid_chalazion_q3",
+      "front": "Define Distichiasis and mention its surgical treatment.",
+      "back": "- Definition: Congenital abnormality where an extra row of lashes arises from the lid margin behind the grey line at the Meibomian gland orifices.\n- Treatment: Selective destruction of ectopic lashes or cryotherapy on the anterior surface of the tarsus after splitting the lid at the grey line."
+    }
+  ],
+  "Chalazion": [
+    {
+      "id": "eyelid_chalazion_q1_alias",
+      "front": "Define Chalazion and explain its clinical picture.",
+      "back": "- Definition: Localized chronic inflammatory lipo-granuloma of a Meibomian gland.\n- Clinical Picture: Painless swelling under the skin of the eyelid. Presents as a localized, firm, painless, non-tender swelling with freely mobile skin. The palpebral conjunctiva looks red or bluish-grey over it."
+    },
+    {
+      "id": "eyelid_chalazion_q2_alias",
+      "front": "Explain the treatment lines for a large, infected, or recurrent Chalazion.",
+      "back": "- Large chalazion: Incision (cruciate or vertical) and curettage/scraping from the conjunctival side.\n- Infected chalazion: Treated as hordeolum internum (antibiotics and warm compresses).\n- Recurrent swelling in the same gland: Excision biopsy and histopathological examination to exclude malignancy."
+    },
+    {
+      "id": "eyelid_chalazion_q3_alias",
+      "front": "Define Distichiasis and mention its surgical treatment.",
+      "back": "- Definition: Congenital abnormality where an extra row of lashes arises from the lid margin behind the grey line at the Meibomian gland orifices.\n- Treatment: Selective destruction of ectopic lashes or cryotherapy on the anterior surface of the tarsus after splitting the lid at the grey line."
+    }
+  ],
+  "Acquired Misdirected Lashes (Trichiasis & Rubbing Lashes)": [
+    {
+      "id": "eyelid_trichiasis_q1",
+      "front": "Define Trichiasis and differentiate it from rubbing lashes.",
+      "back": "Trichiasis is an acquired condition in which MORE than 4 lashes are directed posteriorly and rub against the globe. Rubbing Lashes refers to 4 or LESS inward misdirected lashes."
+    },
+    {
+      "id": "eyelid_trichiasis_q2",
+      "front": "Enumerate the common causes of acquired mal-directed lashes.",
+      "back": "Cicatrizing diseases affecting the lid margin: Trachoma (commonest in Egypt), ulcerative blepharitis, trauma, and chemical burns."
+    },
+    {
+      "id": "eyelid_trichiasis_q3",
+      "front": "Enumerate the complications of Trichiasis on the conjunctiva and cornea.",
+      "back": "Conjunctival chronic conjunctivitis and ulceration. Corneal recurrent ulceration, opacification, and epithelial plaques."
+    },
+    {
+      "id": "eyelid_trichiasis_q4",
+      "front": "Explain the temporary and permanent treatment lines for Trichiasis.",
+      "back": "- Temporary: Epilation (lashes regrow within 2–3 weeks).\n- Permanent: Destruction of involved lashes by electrolysis, argon laser ablation, or diathermy."
+    }
+  ],
+  "Trichiasis": [
+    {
+      "id": "eyelid_trichiasis_q1_alias",
+      "front": "Define Trichiasis and differentiate it from rubbing lashes.",
+      "back": "Trichiasis is an acquired condition in which MORE than 4 lashes are directed posteriorly and rub against the globe. Rubbing Lashes refers to 4 or LESS inward misdirected lashes."
+    },
+    {
+      "id": "eyelid_trichiasis_q2_alias",
+      "front": "Enumerate the common causes of acquired mal-directed lashes.",
+      "back": "Cicatrizing diseases affecting the lid margin: Trachoma (commonest in Egypt), ulcerative blepharitis, trauma, and chemical burns."
+    },
+    {
+      "id": "eyelid_trichiasis_q3_alias",
+      "front": "Enumerate the complications of Trichiasis on the conjunctiva and cornea.",
+      "back": "Conjunctival chronic conjunctivitis and ulceration. Corneal recurrent ulceration, opacification, and epithelial plaques."
+    },
+    {
+      "id": "eyelid_trichiasis_q4_alias",
+      "front": "Explain the temporary and permanent treatment lines for Trichiasis.",
+      "back": "- Temporary: Epilation (lashes regrow within 2–3 weeks).\n- Permanent: Destruction of involved lashes by electrolysis, argon laser ablation, or diathermy."
+    }
+  ],
+  "Entropion & Ectropion (Lid Margin Malpositions)": [
+    {
+      "id": "eyelid_entropion_ectropion_q1",
+      "front": "Define Entropion and enumerate its etiological types.",
+      "back": "- Definition: Rolling in of the lid margin with eyelashes rubbing against the eyeball.\n- Types: Congenital, Cicatricial, Spastic, and Senile (Involutional)."
+    },
+    {
+      "id": "eyelid_entropion_ectropion_q2",
+      "front": "Define Ectropion and explain its clinical degrees.",
+      "back": "- Definition: Rolling out (outward rotation) of the lid margin.\n- Degrees: Mild (punctum is visible without pulling lid), Moderate (tarsal conjunctiva exposed), Severe (completely everted lid exposing the conjunctival fornix)."
+    },
+    {
+      "id": "eyelid_entropion_ectropion_q3",
+      "front": "Enumerate the etiological types of Ectropion.",
+      "back": "Congenital, Cicatricial, Senile (Involutional), Mechanical, and Paralytic."
+    },
+    {
+      "id": "eyelid_entropion_ectropion_q4",
+      "front": "Explain the comprehensive management lines for Paralytic Ectropion.",
+      "back": "Help nerve regeneration (Vitamin B complex, vasodilators, cortisone), help muscle (massage and electrical stimulation), protect cornea (artificial tears by day, ointment at night, lid strapping)."
+    }
+  ],
+  "Entropion": [
+    {
+      "id": "eyelid_entropion_q1_alias",
+      "front": "Define Entropion and enumerate its etiological types.",
+      "back": "- Definition: Rolling in of the lid margin with eyelashes rubbing against the eyeball.\n- Types: Congenital, Cicatricial, Spastic, and Senile (Involutional)."
+    }
+  ],
+  "Ectropion": [
+    {
+      "id": "eyelid_ectropion_q1_alias",
+      "front": "Define Ectropion and explain its clinical degrees.",
+      "back": "- Definition: Rolling out (outward rotation) of the lid margin.\n- Degrees: Mild (punctum is visible without pulling lid), Moderate (tarsal conjunctiva exposed), Severe (completely everted lid exposing the conjunctival fornix)."
+    },
+    {
+      "id": "eyelid_ectropion_q2_alias",
+      "front": "Enumerate the etiological types of Ectropion.",
+      "back": "Congenital, Cicatricial, Senile (Involutional), Mechanical, and Paralytic."
+    },
+    {
+      "id": "eyelid_ectropion_q3_alias",
+      "front": "Explain the comprehensive management lines for Paralytic Ectropion.",
+      "back": "Help nerve regeneration (Vitamin B complex, vasodilators, cortisone), help muscle (massage and electrical stimulation), protect cornea (artificial tears by day, ointment at night, lid strapping)."
+    }
+  ],
+  "Lagophthalmos (Incomplete Lid Closure)": [
+    {
+      "id": "eyelid_lagophthalmos_q1",
+      "front": "Define Lagophthalmos and explain the protective role of Bell's Phenomenon.",
+      "back": "- Definition: Incomplete closure of the palpebral fissure on voluntary or involuntary closure.\n- Bell's Phenomenon: A protective mechanism where rolling up of the eye during sleep diminishes the exposure effect."
+    },
+    {
+      "id": "eyelid_lagophthalmos_q2",
+      "front": "Enumerate the local pathological causes of Lagophthalmos.",
+      "back": "- Lid lesions: Severe ectropion, structural loss (coloboma), overcorrection of ptosis/entropion, spastic lid retraction (thyroid ophthalmopathy), and LMN facial palsy.\n- Globe lesions: Proptosis, anterior staphyloma, buphthalmos."
+    },
+    {
+      "id": "eyelid_lagophthalmos_q3",
+      "front": "Enumerate the complications of severe Lagophthalmos.",
+      "back": "Exposure keratitis (may end in corneal ulceration, perforation, and eye loss) and dry, xerotic conjunctiva."
+    },
+    {
+      "id": "eyelid_lagophthalmos_q4",
+      "front": "Explain the temporary and surgical treatment lines for Lagophthalmos.",
+      "back": "- Temporary: Ointment at night, narrow plaster strips for closure, or a contact lens.\n- Surgical: Lateral tarsorrhaphy (reduces fissure width) or median tarsorrhaphy (union of whole lid margin in severe cases)."
+    }
+  ],
+  "Lagophthalmos": [
+    {
+      "id": "eyelid_lagophthalmos_q1_alias",
+      "front": "Define Lagophthalmos and explain the protective role of Bell's Phenomenon.",
+      "back": "- Definition: Incomplete closure of the palpebral fissure on voluntary or involuntary closure.\n- Bell's Phenomenon: A protective mechanism where rolling up of the eye during sleep diminishes the exposure effect."
+    },
+    {
+      "id": "eyelid_lagophthalmos_q2_alias",
+      "front": "Enumerate the local pathological causes of Lagophthalmos.",
+      "back": "- Lid lesions: Severe ectropion, structural loss (coloboma), overcorrection of ptosis/entropion, spastic lid retraction (thyroid ophthalmopathy), and LMN facial palsy.\n- Globe lesions: Proptosis, anterior staphyloma, buphthalmos."
+    },
+    {
+      "id": "eyelid_lagophthalmos_q3_alias",
+      "front": "Enumerate the complications of severe Lagophthalmos.",
+      "back": "Exposure keratitis (may end in corneal ulceration, perforation, and eye loss) and dry, xerotic conjunctiva."
+    },
+    {
+      "id": "eyelid_lagophthalmos_q4_alias",
+      "front": "Explain the temporary and surgical treatment lines for Lagophthalmos.",
+      "back": "- Temporary: Ointment at night, narrow plaster strips for closure, or a contact lens.\n- Surgical: Lateral tarsorrhaphy (reduces fissure width) or median tarsorrhaphy (union of whole lid margin in severe cases)."
+    }
+  ],
+  "Ptosis (Drooping of Upper Eyelid)": [
+    {
+      "id": "eyelid_ptosis_q1",
+      "front": "Define Ptosis and enumerate its acquired causes.",
+      "back": "- Definition: Drooping of the upper eyelid (normally covers the upper 1/6th of cornea).\n- Acquired Causes: Neurogenic (3rd nerve palsy, Horner syndrome), Myogenic (trauma, tumor, Myasthenia Gravis), Aponeurotic (Senile degeneration), Traumatic, Mechanical (increased lid weight), and Hysterical."
+    },
+    {
+      "id": "eyelid_ptosis_q2",
+      "front": "Explain the compensatory clinical signs observed in patients with severe Ptosis.",
+      "back": "Compensatory frontalis muscle contraction (forehead wrinkling, arched eyebrows) and head thrown backward (chin elevation)."
+    },
+    {
+      "id": "eyelid_ptosis_q3",
+      "front": "Enumerate the clinical grading parameters for the amount of Ptosis and Levator function power.",
+      "back": "- Amount of Ptosis (MRD): Mild (1–2 mm), Moderate (3 mm), Severe (> 4 mm).\n- Levator Function Power: Normal (≥15 mm), Good (11–14 mm), Fair (5–11 mm), Poor (≤4 mm)."
+    },
+    {
+      "id": "eyelid_ptosis_q4",
+      "front": "Explain the surgical choices for treating Ptosis based on the levator muscle function.",
+      "back": "1) If levator action is fair or good: Levator resection and advancement.\n2) If levator function is poor & severe ptosis: Frontalis suspension (sling) / Hiss operation."
+    }
+  ],
+  "Ptosis": [
+    {
+      "id": "eyelid_ptosis_q1_alias",
+      "front": "Define Ptosis and enumerate its acquired causes.",
+      "back": "- Definition: Drooping of the upper eyelid (normally covers the upper 1/6th of cornea).\n- Acquired Causes: Neurogenic (3rd nerve palsy, Horner syndrome), Myogenic (trauma, tumor, Myasthenia Gravis), Aponeurotic (Senile degeneration), Traumatic, Mechanical (increased lid weight), and Hysterical."
+    },
+    {
+      "id": "eyelid_ptosis_q2_alias",
+      "front": "Explain the compensatory clinical signs observed in patients with severe Ptosis.",
+      "back": "Compensatory frontalis muscle contraction (forehead wrinkling, arched eyebrows) and head thrown backward (chin elevation)."
+    },
+    {
+      "id": "eyelid_ptosis_q3_alias",
+      "front": "Enumerate the clinical grading parameters for the amount of Ptosis and Levator function power.",
+      "back": "- Amount of Ptosis (MRD): Mild (1–2 mm), Moderate (3 mm), Severe (> 4 mm).\n- Levator Function Power: Normal (≥15 mm), Good (11–14 mm), Fair (5–11 mm), Poor (≤4 mm)."
+    },
+    {
+      "id": "eyelid_ptosis_q4_alias",
+      "front": "Explain the surgical choices for treating Ptosis based on the levator muscle function.",
+      "back": "1) If levator action is fair or good: Levator resection and advancement.\n2) If levator function is poor & severe ptosis: Frontalis suspension (sling) / Hiss operation."
+    }
   ]
-};;
+};
 
 const getQuestionsForKey = (key: string) => {
   if (!key) return [];
-  const lowerKey = key.toLowerCase();
-  const matchedKey = Object.keys(PEDIATRICS_QUESTIONS).find(k => k.toLowerCase() === lowerKey);
+  const lowerKey = key.toLowerCase().trim();
+  
+  // 1. Exact case-insensitive match
+  let matchedKey = Object.keys(PEDIATRICS_QUESTIONS).find(k => k.toLowerCase() === lowerKey);
+  if (matchedKey) return PEDIATRICS_QUESTIONS[matchedKey];
+  
+  // 2. Substring match fallback
+  matchedKey = Object.keys(PEDIATRICS_QUESTIONS).find(k => {
+    const lk = k.toLowerCase();
+    return lk.includes(lowerKey) || lowerKey.includes(lk);
+  });
+  
   return matchedKey ? PEDIATRICS_QUESTIONS[matchedKey] : [];
 };
 
@@ -9973,8 +10329,10 @@ const FlashSpace = () => {
   const [qHardCount, setQHardCount] = useState(0);
   const [qRepeatCount, setQRepeatCount] = useState(0);
   const [isCardFlipped, setIsCardFlipped] = useState(false);
+  const [qShowAnswer, setQShowAnswer] = useState(false);
   const [qSessionDone, setQSessionDone] = useState(false);
   const [isChapterQuestionMode, setIsChapterQuestionMode] = useState(false);
+  const [qSessionMode, setQSessionMode] = useState<'topic' | 'chapter'>('topic');
   // --- Priority Review System State ---
   const [spacePriorities, setSpacePriorities] = useState<Record<string, 'A'|'B'|'C'>>({});
   const [isReviewCenterOpen, setIsReviewCenterOpen] = useState(false);
@@ -10217,13 +10575,19 @@ const FlashSpace = () => {
     document.body.removeChild(link);
     toast.success("تم تحميل جميع ملاحظات الورقة الثانية بنجاح! 📥");
   };
-
   const triggerExitStudySession = () => {
     onNavigateToBoard(null);
   };
 
   const [activeCategory, setActiveCategory] = useState<string>('All');
-  const [historyStack, setHistoryStack] = useState<{qQueue: Question[], qDone: Question[], qHardCount: number, qRepeatCount: number}[]>([]);
+  const [historyStack, setHistoryStack] = useState<{qQueue: Question[], qDone: Question[], qHardCount: number, qRepeatCount: number, easyCount?: number}[]>([]);
+  const [easyCount, setEasyCount] = useState(0);
+  const [showStickerModal, setShowStickerModal] = useState(false);
+  const [activeSticker, setActiveSticker] = useState('');
+  const [distractionReminderEnabled, setDistractionReminderEnabled] = useState(true);
+  const [timeSpentOnQuestion, setTimeSpentOnQuestion] = useState(0);
+  const [distractionWarningPhase, setDistractionWarningPhase] = useState<'none' | 'first' | 'second'>('none');
+  const [returnedToSameQuestion, setReturnedToSameQuestion] = useState(false);
 
   // Vector Engine
   const [paths, setPaths] = useState<Path[]>([]);
@@ -11143,15 +11507,18 @@ const FlashSpace = () => {
   };
 
   // --- Question Session Helpers ---
-  const startQuestionSession = (questions: Question[]) => {
+  const startQuestionSession = (questions: Question[], mode: 'topic' | 'chapter' = 'topic') => {
     const shuffled = [...questions].sort(() => Math.random() - 0.5);
     setQQueue(shuffled);
     setQDone([]);
     setQHardCount(0);
     setQRepeatCount(0);
+    setEasyCount(0);
     setHistoryStack([]);
     setIsCardFlipped(false);
+    setQShowAnswer(false);
     setQSessionDone(false);
+    setQSessionMode(mode);
   };
 
   const previousCard = () => {
@@ -11161,6 +11528,9 @@ const FlashSpace = () => {
     setQDone(lastState.qDone);
     setQHardCount(lastState.qHardCount);
     setQRepeatCount(lastState.qRepeatCount);
+    if (lastState.easyCount !== undefined) {
+      setEasyCount(lastState.easyCount);
+    }
     setHistoryStack(prev => prev.slice(0, -1));
     setIsCardFlipped(false);
   };
@@ -11184,18 +11554,43 @@ const FlashSpace = () => {
     return 1;
   };
 
-  const rateCard = (rating: 'easy' | 'repeat' | 'hard') => {
+  const rateCard = (rating: 'easy' | 'medium' | 'hard' | 'very_hard') => {
     const current = qQueue[0];
+    if (!current) return;
     const rest = qQueue.slice(1);
     
     // Save state before changing
-    setHistoryStack(prev => [...prev, { qQueue, qDone, qHardCount, qRepeatCount }]);
+    setHistoryStack(prev => [...prev, { qQueue, qDone, qHardCount, qRepeatCount, easyCount }]);
     
     setIsCardFlipped(false);
+    setQShowAnswer(false);
     setTimeout(() => {
       if (rating === 'easy') {
         const newDone = [...qDone, current];
         setQDone(newDone);
+        
+        // Sticker reward system
+        const nextCount = easyCount + 1;
+        setEasyCount(nextCount);
+        if (nextCount > 0 && nextCount % 5 === 0) {
+          const STICKERS = [
+            'https://i.ibb.co/FkSVV8dd/fjf.webp',
+            'https://i.ibb.co/Kz8DfZY8/mfg.webp',
+            'https://i.ibb.co/hJz75hQz/hdfxdfhm.webp',
+            'https://i.ibb.co/PsbLfTWJ/jfj.webp',
+            'https://i.ibb.co/1tt3xVPF/gf.webp',
+            'https://i.ibb.co/KcC18smy/65424.webp',
+            'https://i.ibb.co/vxZcpw73/54.webp',
+            'https://i.ibb.co/LDSnXV8f/554.webp',
+            'https://i.ibb.co/2m7Lp9y/222.webp',
+            'https://i.ibb.co/zVgJ1W2z/sticker1.webp',
+            'https://i.ibb.co/rG36k3mW/sticker.webp'
+          ];
+          const randomSticker = STICKERS[Math.floor(Math.random() * STICKERS.length)];
+          setActiveSticker(randomSticker);
+          setShowStickerModal(true);
+        }
+
         if (rest.length === 0) {
           setQSessionDone(true);
           setQQueue([]);
@@ -11237,10 +11632,171 @@ const FlashSpace = () => {
       } else {
         if (rating === 'hard') setQHardCount(c => c + 1);
         else setQRepeatCount(c => c + 1);
-        setQQueue([...rest, current]);
+        
+        // Topic mode: Very Hard=1, Hard=3, Medium=5
+        // Chapter mode: Very Hard=2, Hard=5, Medium=10
+        let jump: number;
+        if (qSessionMode === 'topic') {
+          jump = rating === 'very_hard' ? 1 : rating === 'hard' ? 3 : 5;
+        } else {
+          jump = rating === 'very_hard' ? 2 : rating === 'hard' ? 5 : 10;
+        }
+        
+        const updatedQueue = [...rest];
+        if (jump < updatedQueue.length) {
+          updatedQueue.splice(jump, 0, current);
+        } else {
+          updatedQueue.push(current);
+        }
+        setQQueue(updatedQueue);
       }
     }, 300);
   };
+
+  // --- Clinoma Card System Helpers & Hooks ---
+  const handleResumeFromWarning = () => {
+    if (distractionWarningPhase === 'first') {
+      setReturnedToSameQuestion(true);
+    }
+    setDistractionWarningPhase('none');
+    setTimeSpentOnQuestion(0);
+  };
+
+  // Reset timers each time the active question changes
+  useEffect(() => {
+    setTimeSpentOnQuestion(0);
+    setDistractionWarningPhase('none');
+    setReturnedToSameQuestion(false);
+  }, [qQueue[0]?.id]);
+
+  // Distraction Warning system interval timer
+  useEffect(() => {
+    const currentQuestion = qQueue[0];
+    if (!currentQuestion || qSessionDone || !distractionReminderEnabled) {
+      return;
+    }
+
+    const interval = setInterval(() => {
+      if (distractionWarningPhase === 'none') {
+        setTimeSpentOnQuestion(prev => prev + 1);
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [qQueue[0]?.id, qSessionDone, distractionWarningPhase, distractionReminderEnabled]);
+
+  // Monitor distraction warning time threshold
+  useEffect(() => {
+    if (distractionWarningPhase === 'none' && timeSpentOnQuestion >= 180) { // 3 minutes = 180 seconds
+      if (!returnedToSameQuestion) {
+        setDistractionWarningPhase('first');
+      } else {
+        setDistractionWarningPhase('second');
+      }
+    }
+  }, [timeSpentOnQuestion, distractionWarningPhase, returnedToSameQuestion]);
+
+  // Play buzzer sound on warning phase trigger
+  useEffect(() => {
+    if (distractionWarningPhase === 'first' || distractionWarningPhase === 'second') {
+      try {
+        const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
+        if (AudioContextClass) {
+          const ctx = new AudioContextClass();
+          const now = ctx.currentTime;
+          
+          const pulses = distractionWarningPhase === 'first' ? 2 : 3;
+          const frequency = distractionWarningPhase === 'first' ? 620 : 780;
+          const duration = 0.15;
+          
+          for (let i = 0; i < pulses; i++) {
+            const startTime = now + i * 0.25;
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            
+            osc.type = 'sawtooth';
+            osc.frequency.setValueAtTime(frequency, startTime);
+            
+            const filter = ctx.createBiquadFilter();
+            filter.type = 'bandpass';
+            filter.frequency.setValueAtTime(frequency, startTime);
+            filter.Q.setValueAtTime(1.5, startTime);
+            
+            gain.gain.setValueAtTime(0, startTime);
+            gain.gain.linearRampToValueAtTime(0.4, startTime + 0.02);
+            gain.gain.exponentialRampToValueAtTime(0.001, startTime + duration);
+            
+            osc.connect(filter);
+            filter.connect(gain);
+            gain.connect(ctx.destination);
+            
+            osc.start(startTime);
+            osc.stop(startTime + duration + 0.05);
+          }
+        }
+      } catch (err) {
+        console.error("Audio buzzer error:", err);
+      }
+    }
+  }, [distractionWarningPhase]);
+
+  // Keyboard Shortcuts Listener
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      const activeEl = document.activeElement;
+      if (activeEl && (activeEl.tagName === 'INPUT' || activeEl.tagName === 'TEXTAREA' || activeEl.hasAttribute('contenteditable'))) {
+        return;
+      }
+
+      if (showStickerModal) {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          setShowStickerModal(false);
+        }
+        return;
+      }
+
+      if (distractionWarningPhase !== 'none' || qSessionDone) {
+        return;
+      }
+
+      if (qQueue.length === 0) return;
+
+      if (!isCardFlipped) {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          setIsCardFlipped(true);
+        }
+        return;
+      }
+
+      // Ratings Shortcuts: Easy (0), Medium (1), Hard (2), Very Hard (3)
+      if (event.key === '0') {
+        event.preventDefault();
+        rateCard('easy');
+      } else if (event.key === '1') {
+        event.preventDefault();
+        rateCard('medium');
+      } else if (event.key === '2') {
+        event.preventDefault();
+        rateCard('hard');
+      } else if (event.key === '3') {
+        event.preventDefault();
+        rateCard('very_hard');
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [
+    showStickerModal,
+    distractionWarningPhase,
+    qSessionDone,
+    isCardFlipped,
+    qQueue
+  ]);
 
   const isPediatricSubscribed = isSpaceSubscribed('Pediatrics');
   const isFamilySubscribed = isSpaceSubscribed('الورقة الثانية') || userData?.role === 'admin';
@@ -11593,415 +12149,180 @@ const FlashSpace = () => {
                                 <h3 className="font-black text-lg leading-tight mb-1 text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-yellow-400 to-amber-300 group-hover:from-white group-hover:to-amber-200 transition-all duration-500">
                                   فلاش كارد الورقة الثانية ✨
                                 </h3>
-                                <p className="text-amber-500/70 group-hover:text-amber-300/90 text-xs font-semibold tracking-wide transition-colors duration-500">
-                                  بوابة المراجعة التفاعلية الفخمة
+                                <p className="text-amber-500/70 group-hover:text-amber-300/90 text-xs font-semibold tracking-wide transition-colors dura                        {/* Flashcard Flat Layout */}
+                        <div className="w-full flex-1 flex items-center justify-center py-4 md:py-8">
+                          <div className="w-full max-w-3xl lg:max-w-4xl bg-white rounded-3xl border-2 border-slate-100 shadow-xl overflow-hidden min-h-[460px] flex flex-col relative">
+                            {/* Distraction Warning overlay */}
+                            <AnimatePresence>
+                              {distractionWarningPhase !== 'none' && (
+                                <motion.div
+                                  initial={{ opacity: 0 }}
+                                  animate={{ opacity: 1 }}
+                                  exit={{ opacity: 0 }}
+                                  className="absolute inset-0 z-50 bg-white/95 backdrop-blur-sm flex flex-col items-center justify-center p-6 text-center rounded-3xl border-2 border-slate-100 shadow-xl"
+                                  dir="rtl"
+                                >
+                                  {distractionWarningPhase === 'first' ? (
+                                    <motion.div 
+                                      initial={{ scale: 0.9, y: 10 }}
+                                      animate={{ scale: 1, y: 0 }}
+                                      exit={{ scale: 0.9, y: 10 }}
+                                      className="max-w-md w-full space-y-6 flex flex-col items-center"
+                                    >
+                                      <div className="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center text-yellow-600 shadow-md animate-bounce">
+                                        <Timer className="w-10 h-10" />
+                                      </div>
+                                      <div className="space-y-2">
+                                        <h3 className="text-3xl font-black text-yellow-600 tracking-tight">متسرحش⏳</h3>
+                                      </div>
+                                      <button
+                                        onClick={handleResumeFromWarning}
+                                        className="px-8 py-3.5 bg-yellow-500 hover:bg-yellow-600 text-slate-900 rounded-2xl font-black text-base shadow-lg shadow-yellow-500/20 active:scale-95 transition-all w-full max-w-xs cursor-pointer"
+                                      >
+                                        يلا بينا
+                                      </button>
+                                    </motion.div>
+                                  ) : (
+                                    <motion.div 
+                                      initial={{ scale: 0.9, y: 10 }}
+                                      animate={{ scale: 1, y: 0 }}
+                                      exit={{ scale: 0.9, y: 10 }}
+                                      className="max-w-md w-full space-y-6 flex flex-col items-center"
+                                    >
+                                      <div className="w-20 h-20 bg-rose-100 rounded-full flex items-center justify-center text-rose-600 shadow-md animate-pulse">
+                                        <AlertCircle className="w-10 h-10" />
+                                      </div>
+                                      <div className="space-y-2">
+                                        <h3 className="text-3xl font-black text-rose-650 tracking-tight text-red-650">كفاية سرحان🛑</h3>
+                                      </div>
+                                      <button
+                                        onClick={handleResumeFromWarning}
+                                        className="px-8 py-3.5 bg-rose-600 hover:bg-rose-700 text-white rounded-2xl font-black text-base shadow-lg shadow-rose-600/20 active:scale-95 transition-all w-full max-w-xs cursor-pointer"
+                                      >
+                                        يلا بينا
+                                      </button>
+                                    </motion.div>
+                                  )}
+                                </motion.div>
+                              )}
+                            </AnimatePresence>
+
+                            {/* Question Section - Always Visible */}
+                            <div className="p-6 sm:p-8 md:p-12 border-b border-slate-100 bg-white flex flex-col items-center justify-center min-h-[200px]">
+                              <div className="w-10 h-10 md:w-12 md:h-12 bg-indigo-50 rounded-2xl flex items-center justify-center mb-4 md:mb-6 shrink-0">
+                                <span className="text-indigo-500 font-black text-sm md:text-base">Q</span>
+                              </div>
+                              <div className="w-full flex items-center justify-center overflow-y-auto custom-scrollbar pr-2">
+                                <p className={`text-slate-800 font-black leading-relaxed whitespace-pre-line w-full ${(currentCard?.front?.length || 0) > 105 ? 'text-sm sm:text-base lg:text-lg text-left' : 'text-lg sm:text-xl md:text-2xl lg:text-3xl text-center'}`} dir="auto">
+                                  {currentCard?.front}
                                 </p>
                               </div>
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Left/Bottom: The 5 core chapters */}
-                      <div className="lg:col-span-3">
-                        <div className="bg-slate-900/15 backdrop-blur-xl border border-white/5 rounded-[2rem] p-6 text-right">
-                          <div className="flex items-center gap-2 border-b border-white/5 pb-3 mb-6">
-                            <BookOpen className="w-5 h-5 text-cyan-400" />
-                            <h4 className="text-sm font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-indigo-300 font-mono tracking-wide">
-                              الشباتر الأساسية الخمسة
-                            </h4>
-                          </div>
-                          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
-                            {[...(systems[selectedModule] || [])]
-                              .filter(sys => sys !== 'معسكر الورقة الثانية')
-                              .sort((a, b) => {
-                                const getPriority = (x: string) => {
-                                  if (x === 'Renal diseases') return 10;
-                                  if (x === 'Chest diseases') return 20;
-                                  if (x === 'Neonatology') return 30;
-                                  if (x === 'Emergency Medicine') return 40;
-                                  if (x === 'Family Medicine') return 50;
-                                  return 100;
-                                };
-                                return getPriority(a) - getPriority(b);
-                              })
-                              .map(sys => renderSystemCard(sys))
-                            }
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ) : (
-                  // Normal layout for other subjects/modules
-                  [...(systems[selectedModule] || [])].length === 0 ? (
-                    <div className="py-20 flex flex-col items-center justify-center text-slate-500 bg-slate-900/30 rounded-[3rem] border border-dashed border-white/5 text-center p-8 max-w-xl mx-auto space-y-6">
-                      <BookOpen className="w-16 h-16 text-slate-600 opacity-40 mx-auto animate-pulse" />
-                      <div>
-                        <p className="text-lg font-black text-slate-300">لا توجد شباتر في هذا القسم حالياً 📚</p>
-                        <p className="text-xs text-slate-500 font-bold mt-1">يمكنك البدء بإضافة شباتر وصور توضيحية لتبدأ الدراسة.</p>
-                      </div>
-                      {userData?.role === 'admin' && (
-                        <button
-                          onClick={() => setIsAddChapterOpen(true)}
-                          className="px-8 py-4 bg-emerald-500 hover:bg-emerald-600 text-white rounded-2xl font-black transition-all shadow-lg shadow-emerald-500/20 active:scale-95"
-                        >
-                          ➕ إضافة أول شابتر الآن
-                        </button>
-                      )}
-                    </div>
-                  ) : (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
-                      {[...(systems[selectedModule] || [])].sort((a, b) => {
-                        // If selectedModule is Ophthalmology, use the specific ordering index
-                        if (selectedModule === 'Opthalmology' || selectedModule === 'Ophthalmology') {
-                          const order = [
-                            'Eyelid',
-                            'Lacrimal System',
-                            'Conjunctiva',
-                            'Cornea & Sclera',
-                            'Lens',
-                            'Orbit',
-                            'Errors of Refraction',
-                            'Glaucoma',
-                            'Uveitis',
-                            'Strabismus',
-                            'Retina',
-                            'Neuro-ophthalmology',
-                            'Ocular Trauma'
-                          ];
-                          const idxA = order.indexOf(a);
-                          const idxB = order.indexOf(b);
-                          if (idxA !== -1 && idxB !== -1) return idxA - idxB;
-                          if (idxA !== -1) return -1;
-                          if (idxB !== -1) return 1;
-                        }
-
-                        const getPriority = (x: string) => {
-                          if (x === 'تحديدات الاطفال') return 1;
-                          if (x === 'معسكر الورقة الأولى') return 2;
-                          if (x === 'Growth & development') return 3;
-                          return 100;
-                        };
-                        const pA = getPriority(a);
-                        const pB = getPriority(b);
-                        if (pA !== pB) return pA - pB;
-                        return a.localeCompare(b);
-                      }).map(sys => renderSystemCard(sys))}
-                    </div>
-                  )
-                )}
-              </div>
-            </div>
-          ) : selectedSystem === 'معسكر الورقة الأولى' ? (
-            // --- CUSTOM CAMP DASHBOARD INSIDE FLASH SPACE ---
-            <div className="h-full flex flex-col p-4 md:p-8 gap-6 md:gap-8 max-w-7xl mx-auto w-full relative" dir="rtl">
-              {/* Header */}
-              <div className="flex items-center justify-between gap-4 shrink-0 mt-2">
-                <div className="flex items-center gap-4">
-                  <button onClick={() => {
-                    setSelectedSystem(null);
-                    setSelectedSubSystem(null);
-                    setSelectedBoard(null);
-                    setIsChapterQuestionMode(false);
-                    setShowQuestions(false);
-                    setShowExplanation(false);
-                  }} className="p-2.5 bg-white/5 active:bg-white/15 hover:bg-white/10 rounded-2xl text-slate-400 transition-all border border-white/5 hover:border-white/10 hover:shadow-lg hover:shadow-black/20">
-                    <ChevronLeft className="w-5 h-5" />
-                  </button>
-                  <div>
-                    <h2 className="text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-white/60">معسكر الورقة الأولى للأطفال ⚡</h2>
-                    <p className="text-slate-500 text-xs font-bold uppercase mt-1">تصفح المعسكر المكثف مقسماً إلى 3 أيام</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Day Switcher */}
-              <div className="flex justify-center gap-3 shrink-0 my-2">
-                {[1, 2, 3].map((day) => (
-                  <button
-                    key={day}
-                    onClick={() => setCampActiveDay(day)}
-                    className={`px-6 py-3 rounded-2xl font-black text-sm md:text-base transition-all duration-300 shadow-md ${
-                      campActiveDay === day 
-                        ? 'bg-gradient-to-r from-amber-500 to-rose-500 text-white scale-[1.04]'
-                        : 'bg-slate-900/50 border border-white/5 text-slate-350 hover:bg-white/5'
-                    }`}
-                  >
-                    اليوم {day === 1 ? 'الأول' : day === 2 ? 'الثاني' : 'الثالث'}
-                  </button>
-                ))}
-              </div>
-
-              {/* Grid of Chapter Slides */}
-              <div className="flex-1 overflow-y-auto pb-8">
-                {(() => {
-                  const dayLabel = campActiveDay === 1 ? 'اليوم الأول' : campActiveDay === 2 ? 'اليوم الثاني' : 'اليوم الثالث';
-                  const dayLabelEng = campActiveDay === 1 ? 'Day 1' : campActiveDay === 2 ? 'Day 2' : 'Day 3';
-                  const campActiveSlides = (
-                    campActiveDay === 1 ? [
-                      { 
-                        label: 'I. GROWTH AND DEVELOPMENT', 
-                        subSystemKey: 'Growth & Development', 
-                        arabic: 'النمو والتطور للأطفال',
-                        gradient: 'from-amber-500 to-orange-500 bg-amber-500/10 text-amber-400' 
-                      },
-                      { 
-                        label: 'II. NUTRITION', 
-                        subSystemKey: 'Nutrition', 
-                        arabic: 'التغذية العلاجية للأطفال',
-                        gradient: 'from-emerald-500 to-teal-500 bg-emerald-500/10 text-emerald-400' 
-                      },
-                      { 
-                        label: 'III. GIT', 
-                        subSystemKey: 'GIT', 
-                        arabic: 'الجهاز الهضمي للأطفال',
-                        gradient: 'from-indigo-500 to-blue-500 bg-indigo-500/10 text-indigo-400' 
-                      },
-                      { 
-                        label: 'IV. GENETIC DISEASES', 
-                        subSystemKey: 'Genetics', 
-                        arabic: 'الأمراض الوراثية للأطفال',
-                        gradient: 'from-rose-500 to-pink-500 bg-rose-500/10 text-rose-400' 
-                      }
-                    ] : campActiveDay === 2 ? [
-                      { 
-                        label: 'V. ENDOCRINOLOGY', 
-                        subSystemKey: 'Endocrinology', 
-                        arabic: 'الغدد الصماء للأطفال',
-                        gradient: 'from-violet-500 to-fuchsia-500 bg-violet-500/10 text-violet-400' 
-                      },
-                      { 
-                        label: 'VI. HEMATOLOGY AND ONCOLOGY', 
-                        subSystemKey: 'Hematology & Oncology', 
-                        arabic: 'أمراض الدم والأورام للأطفال',
-                        gradient: 'from-red-500 to-rose-500 bg-red-500/10 text-red-400' 
-                      }
-                    ] : [
-                      { 
-                        label: 'VII. CVS', 
-                        subSystemKey: 'CVS', 
-                        arabic: 'القلب والأوعية الدموية للأطفال',
-                        gradient: 'from-amber-500 to-orange-500 bg-amber-500/10 text-amber-400' 
-                      },
-                      { 
-                        label: 'VIII. CNS', 
-                        subSystemKey: 'CNS', 
-                        arabic: 'الجهاز العصبي والالتهابات للأطفال',
-                        gradient: 'from-indigo-500 to-cyan-500 bg-indigo-500/10 text-indigo-400' 
-                      }
-                    ]
-                  );
-
-                  if (campActiveSlides.length === 0) {
-                    return (
-                      <div className="py-16 text-center bg-slate-900/30 backdrop-blur-md rounded-[2rem] border border-dashed border-white/5 space-y-3">
-                        <p className="text-base font-black text-slate-300">سيتم إضافة محتوى {dayLabel} قريباً 📚</p>
-                        <p className="text-xs text-slate-500 font-bold">يرجى متابعة التحديثات القادمة للمعسكر المتميز.</p>
-                      </div>
-                    );
-                  }
-
-                  return (
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      {campActiveSlides.map((item, idx) => {
-                        const slideCount = boards.filter(b => 
-                          b.system === 'تحديدات الاطفال' && 
-                          b.subSystem === item.subSystemKey
-                        ).length;
-
-                        return (
-                          <div 
-                            key={idx}
-                            onClick={() => {
-                              setSelectedSystem('تحديدات الاطفال');
-                              setSelectedSubSystem(item.subSystemKey);
-                            }}
-                            className="group bg-slate-900/50 backdrop-blur-xl border border-white/5 hover:border-indigo-500/40 rounded-3xl p-6 shadow-lg active:scale-[0.98] hover:scale-[1.01] transition-all duration-300 cursor-pointer flex flex-col justify-between min-h-[160px]"
-                          >
-                            <div className="space-y-3 text-right">
-                              <div className="flex items-center justify-between">
-                                <span className={`inline-block text-[10px] font-black uppercase tracking-wider px-3.5 py-1.5 rounded-full ${item.gradient}`}>
-                                  {slideCount} ملفات تفاعلية
-                                </span>
-                                <span className="text-[10px] font-bold text-slate-500 uppercase">تحديدات الاطفال</span>
-                              </div>
-                              <h3 className="text-xl font-black text-white group-hover:text-amber-400 transition-colors leading-snug font-mono tracking-wide uppercase">
-                                {item.label}
-                              </h3>
                             </div>
-                            <div className="flex items-center justify-between border-t border-white/5 pt-4 mt-6 text-xs font-black text-slate-400 group-hover:text-amber-400 transition-colors">
-                              <span className="transform group-hover:translate-x-[-6px] transition-transform">← افتح محتوى الشابتر بالأسئلة والتحديدات كاملة</span>
+
+                            {/* Answer Section / Controls */}
+                            <div className="flex-1 flex flex-col min-h-[220px] bg-slate-50/10 justify-center">
+                              <AnimatePresence mode="wait">
+                                {!isCardFlipped ? (
+                                  <motion.div
+                                    key="reveal-btn-container"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}
+                                    className="flex-1 flex flex-col items-center justify-center p-10"
+                                  >
+                                    <button
+                                      onClick={() => setIsCardFlipped(true)}
+                                      className="group relative px-8 py-3.5 bg-slate-900 hover:bg-slate-800 text-white rounded-2xl font-bold text-sm overflow-hidden transition-all hover:scale-[1.03] active:scale-95 shadow-lg shadow-slate-200 cursor-pointer"
+                                    >
+                                      <span className="relative z-10 flex items-center gap-2.5">
+                                        <Eye className="w-4 h-4" />
+                                        <span>Show Model Answer</span>
+                                      </span>
+                                    </button>
+                                  </motion.div>
+                                ) : (
+                                  <motion.div
+                                    key="answer-content-container"
+                                    initial={{ opacity: 0, y: 15 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    className="flex-1 flex flex-col justify-between"
+                                  >
+                                    <div className="flex-1 bg-slate-50/35 p-6 sm:p-8 border-b border-slate-50 flex flex-col items-center justify-center">
+                                      <div className="w-10 h-10 md:w-12 md:h-12 bg-indigo-500 rounded-2xl flex items-center justify-center mb-4 md:mb-6 shrink-0">
+                                        <span className="text-white font-black text-sm md:text-base">A</span>
+                                      </div>
+                                      <div className="w-full flex items-center justify-center overflow-y-auto custom-scrollbar pr-2 max-h-[300px]">
+                                        <p className={`text-slate-800 font-black leading-relaxed whitespace-pre-line w-full ${(currentCard?.back?.length || 0) > 105 ? 'text-sm sm:text-base lg:text-lg text-left' : 'text-base sm:text-lg md:text-xl lg:text-2xl text-center'}`} dir="auto">
+                                          {currentCard?.back}
+                                        </p>
+                                      </div>
+                                    </div>
+
+                                    {/* Rating Controls */}
+                                    <div className="bg-slate-50/40 p-4 border-t border-slate-100 font-sans">
+                                      <p className="text-center text-xs font-black text-slate-400 uppercase tracking-widest mb-3">How well did you know this?</p>
+                                      <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3 w-full max-w-3xl mx-auto">
+                                        <button
+                                          id="difficulty-very-hard-btn"
+                                          onClick={() => rateCard('very_hard')}
+                                          className="group flex flex-col items-center p-1.5 sm:p-2.5 bg-white rounded-xl border border-slate-200 hover:border-rose-200 hover:bg-rose-50/30 transition-all text-center relative cursor-pointer"
+                                        >
+                                          <span className="absolute top-1 right-1 flex items-center justify-center w-3.5 h-3.5 text-[8px] font-mono font-bold bg-slate-100 text-slate-500 border border-slate-200 rounded">
+                                            3
+                                          </span>
+                                          <div className="text-rose-600 font-extrabold text-[10px] sm:text-xs mt-1 sm:mt-1.5">Very Hard</div>
+                                          <div className="text-[8px] sm:text-[9px] text-slate-400 font-semibold uppercase tracking-wider mt-0.5">
+                                            {qSessionMode === 'topic' ? 'In 1 Card' : 'In 2 Cards'}
+                                          </div>
+                                        </button>
+
+                                        <button
+                                          id="difficulty-hard-btn"
+                                          onClick={() => rateCard('hard')}
+                                          className="group flex flex-col items-center p-1.5 sm:p-2.5 bg-amber-500/10 rounded-xl border border-amber-500/20 hover:border-amber-500/40 hover:bg-amber-500/15 transition-all text-center relative cursor-pointer"
+                                        >
+                                          <span className="absolute top-1 right-1 flex items-center justify-center w-3.5 h-3.5 text-[8px] font-mono font-bold bg-amber-500/20 text-amber-800 border border-amber-500/30 rounded">
+                                            2
+                                          </span>
+                                          <div className="text-amber-700 font-extrabold text-[10px] sm:text-xs mt-1 sm:mt-1.5">Hard</div>
+                                          <div className="text-[8px] sm:text-[9px] text-amber-500 font-semibold uppercase tracking-wider mt-0.5 font-mono">
+                                            {qSessionMode === 'topic' ? 'In 3 Cards' : 'In 5 Cards'}
+                                          </div>
+                                        </button>
+
+                                        <button
+                                          id="difficulty-medium-btn"
+                                          onClick={() => rateCard('medium')}
+                                          className="group flex flex-col items-center p-1.5 sm:p-2.5 bg-blue-500/10 rounded-xl border border-blue-500/20 hover:border-blue-500/40 hover:bg-blue-500/15 transition-all text-center relative cursor-pointer"
+                                        >
+                                          <span className="absolute top-1 right-1 flex items-center justify-center w-3.5 h-3.5 text-[8px] font-mono font-bold bg-blue-500/20 text-blue-800 border border-blue-500/30 rounded">
+                                            1
+                                          </span>
+                                          <div className="text-blue-700 font-extrabold text-[10px] sm:text-xs mt-1 sm:mt-1.5">Medium</div>
+                                          <div className="text-[8px] sm:text-[9px] text-blue-500 font-semibold uppercase tracking-wider mt-0.5">
+                                            {qSessionMode === 'topic' ? 'In 5 Cards' : 'In 10 Cards'}
+                                          </div>
+                                        </button>
+
+                                        <button
+                                          id="difficulty-easy-btn"
+                                          onClick={() => rateCard('easy')}
+                                          className="group flex flex-col items-center p-1.5 sm:p-2.5 bg-emerald-500/10 rounded-xl border border-emerald-500/20 hover:border-emerald-500/40 hover:bg-emerald-500/15 transition-all text-center relative cursor-pointer"
+                                        >
+                                          <span className="absolute top-1 right-1 flex items-center justify-center w-3.5 h-3.5 text-[8px] font-mono font-bold bg-emerald-500/20 text-emerald-850 border border-emerald-500/30 rounded">
+                                            0
+                                          </span>
+                                          <div className="text-emerald-750 font-extrabold text-[10px] sm:text-xs mt-1 sm:mt-1.5">Easy</div>
+                                          <div className="text-[8px] sm:text-[9px] text-emerald-600 font-semibold uppercase tracking-wider mt-0.5">Ready & Mastered</div>
+                                        </button>
+                                      </div>
+                                    </div>
+                                  </motion.div>
+                                )}
+                              </AnimatePresence>
                             </div>
                           </div>
-                        );
-                      })}
-                    </div>
-                  );
-                })()}
-
-                {/* PDFs and Timed Matching Section */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 pt-10">
-                  {/* PDF Center */}
-                  <div className="bg-slate-900/40 backdrop-blur-xl border border-white/5 rounded-[2rem] p-6 space-y-4">
-                    <div className="flex items-center gap-3 text-right">
-                      <div className="w-10 h-10 bg-amber-500/10 text-amber-500 rounded-xl flex items-center justify-center">
-                        <FileText className="w-5 h-5" />
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-black text-white">تحميل ملفات الـ PDF الموقعة</h3>
-                        <p className="text-xs text-slate-400 font-semibold">تنزيل مذكرات وأسئلة المعسكر التفاعلية المدمجة.</p>
-                      </div>
-                    </div>
-
-                    <div className="space-y-4">
-                      {(CAMP_PDF_RESOURCES[campActiveDay] || []).map((pdf) => (
-                        <div 
-                          key={pdf.id}
-                          className="bg-slate-955 border border-slate-800 rounded-2xl p-4 flex items-center justify-between hover:border-amber-500/40 transition-colors"
-                        >
-                          <div className="flex items-center gap-4 text-right">
-                            <div className="w-10 h-10 bg-slate-900 text-amber-500 rounded-xl flex items-center justify-center font-bold text-xs">
-                              PDF
-                            </div>
-                            <div className="space-y-0.5">
-                              <h4 className="text-sm font-black text-white">{pdf.title}</h4>
-                              <p className="text-[11px] text-slate-500 font-bold flex items-center gap-2">
-                                <span>الحجم: {pdf.size}</span>
-                                <span>•</span>
-                                <span className="text-amber-500">{pdf.type}</span>
-                              </p>
-                            </div>
-                          </div>
-                          <button 
-                            onClick={(e) => { 
-                              e.preventDefault(); 
-                              playSound('click'); 
-                              handleDownloadPDF(pdf.id, pdf.file, `${pdf.id}_day${campActiveDay}_camp.pdf`); 
-                            }}
-                            className="p-3 bg-amber-500/10 text-amber-500 hover:bg-amber-500 hover:text-white rounded-xl transition-all"
-                          >
-                            <Download className="w-4 h-4" />
-                          </button>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Timed Test */}
-                  <div className="bg-slate-900/40 backdrop-blur-xl border border-white/5 rounded-[2rem] p-6 space-y-4 flex flex-col justify-between">
-                    <div className="space-y-3 text-right">
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-rose-500/10 text-rose-500 rounded-xl flex items-center justify-center">
-                          <Trophy className="w-5 h-5 animate-pulse" />
-                        </div>
-                        <div>
-                          <h3 className="text-lg font-black text-white">اختبار التوصيل التفاعلي</h3>
-                          <p className="text-xs text-slate-400 font-semibold">توصيل ذكي مدمج بـ z-index فائق لعدم التداخل.</p>
-                        </div>
-                      </div>
-
-                      <div className="bg-slate-950/80 border border-white/5 rounded-xl p-3 flex items-center gap-3">
-                        <Clock className="w-4 h-4 text-rose-500 animate-pulse" />
-                        <div className="text-right">
-                          <p className="text-[10px] text-slate-500 font-bold">مدة الاختبار المقررة</p>
-                          <p className="text-xs font-black text-slate-200">{campDurationMins} دقيقة كاملة</p>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="pt-4">
-                      {hasAttemptedCamp ? (
-                        <div className="text-center p-4 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl space-y-2" dir="rtl">
-                          <p className="text-sm font-black text-emerald-400">لقد أتممت هذا الاختبار بنجاح! 🎉</p>
-                          <p className="text-xs font-bold text-slate-300">
-                            درجتك المسجلة في خوادم الإدارة: <span className="text-amber-400 text-sm font-black">{campAttemptScore}%</span>
-                          </p>
-                          <p className="text-[10px] text-slate-400">غير مسموح بإعادة المحاولة لضمان مبدأ تكافؤ الفرص.</p>
-                          <button
-                            onClick={() => {
-                              playSound('click');
-                              const dayNames = ['الأول', 'الثاني', 'الثالث'];
-                              const dayName = dayNames[campActiveDay - 1] || 'الأول';
-                              handleDownloadPDF('quiz_answers', `/معسكر_الورقة_الأولى_اليوم_${dayName}_كويز_إجابات.pdf`, `quiz_answers_day${campActiveDay}_camp.pdf`);
-                            }}
-                            className="mt-3 w-full py-2.5 bg-amber-500 hover:bg-amber-600 text-slate-950 font-black rounded-xl text-xs flex items-center justify-center gap-2 transition-all shadow-md cursor-pointer"
-                          >
-                            <Download className="w-4 h-4 text-slate-950" />
-                            <span>تحميل كراسة إجابات الكويز المتجاوبة (PDF)</span>
-                          </button>
-                        </div>
-                      ) : campExamState === 'locked' ? (
-                        campTimeRemainingToStart === -1 ? (
-                          <div className="space-y-3 text-center p-4 bg-rose-500/5 border border-dashed border-rose-500/20 rounded-2xl">
-                            <ShieldAlert className="w-8 h-8 mx-auto text-rose-500 animate-pulse" />
-                            <div className="space-y-0.5">
-                              <h4 className="text-xs font-black text-rose-400">عذراً، انتهى الوقت المتاح للاختبار! ⏰</h4>
-                              <p className="text-[10px] text-slate-400">كان متاحاً فقط من الساعة 09:00 مساءً حتى الساعة 11:00 مساءً.</p>
-                            </div>
-                            <button
-                              onClick={() => {
-                                playSound('click');
-                                const dayNames = ['الأول', 'الثاني', 'الثالث'];
-                                const dayName = dayNames[campActiveDay - 1] || 'الأول';
-                                handleDownloadPDF('quiz_answers', `/معسكر_الورقة_الأولى_اليوم_${dayName}_كويز_إجابات.pdf`, `quiz_answers_day${campActiveDay}_camp.pdf`);
-                              }}
-                              className="mt-3 w-full py-2.5 bg-amber-500 hover:bg-amber-600 text-slate-950 font-black rounded-xl text-xs flex items-center justify-center gap-2 transition-all shadow-md cursor-pointer"
-                            >
-                              <Download className="w-4 h-4 text-slate-950" />
-                              <span>تحميل كراسة إجابات الكويز المتجاوبة (PDF)</span>
-                            </button>
-                          </div>
-                        ) : (
-                          <div className="space-y-3 text-center p-4 bg-amber-500/5 border border-dashed border-amber-500/20 rounded-2xl">
-                            <ShieldAlert className="w-8 h-8 mx-auto text-amber-500 animate-pulse" />
-                            <div className="space-y-0.5">
-                              <h4 className="text-xs font-black text-white">الاختبار مغلق ومجدول حالياً</h4>
-                              <p className="text-[10px] text-slate-400">يفتح الاختبار تلقائياً بعد انتهاء الوقت التالي:</p>
-                            </div>
-                            <div className="text-lg font-black text-amber-500 tracking-wider">
-                              {(() => {
-                                const hours = Math.floor(campTimeRemainingToStart / 3600);
-                                const minutes = Math.floor((campTimeRemainingToStart % 3600) / 60);
-                                const seconds = campTimeRemainingToStart % 60;
-                                return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-                              })()}
-                            </div>
-                          </div>
-                        )
-                      ) : campExamState === 'ready' ? (
-                        <button 
-                          onClick={startCampMatchingGame}
-                          className="w-full py-4 bg-gradient-to-r from-amber-500 to-rose-500 hover:from-amber-600 hover:to-rose-600 text-white rounded-2xl font-black text-sm transition-all shadow-lg active:scale-[0.98] hover:scale-[1.01] flex items-center justify-center gap-2"
-                        >
-                          <Play className="w-4 h-4 fill-white text-white" />
-                          <span>ابدأ اختبار التوصيل الآن ({campDurationMins} د)</span>
-                        </button>
-                      ) : (
-                        <div className="space-y-2">
-                          <div className="text-center text-xs font-black text-rose-400 bg-rose-500/10 p-2.5 rounded-xl">
-                            الاختبار قيد التشغيل حالياً!
-                          </div>
-                          <button
-                            onClick={() => { playSound('click'); setCampExamState('active'); }}
-                            className="w-full py-3.5 rounded-2xl bg-white text-slate-900 font-black text-xs transition-all hover:scale-[1.01]"
-                          >
-                            الرجوع لنافذة الاختبار النشط
-                          </button>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ) : selectedSystem === 'معسكر الورقة الثانية' ? (
-            // --- CUSTOM CAMP 2 DASHBOARD INSIDE FLASH SPACE ---
-            <div className="h-full flex flex-col p-4 md:p-8 gap-6 md:gap-8 max-w-7xl mx-auto w-full relative" dir="rtl">
-              {/* Header */}
-              <div className="flex items-center justify-between gap-4 shrink-0 mt-2">
-                <div className="flex items-center gap-4">
-                  <button onClick={() => {
+                        </div>         <button onClick={() => {
                     setSelectedSystem(null);
                     setSelectedSubSystem(null);
                     setSelectedBoard(null);
@@ -12871,72 +13192,11 @@ const FlashSpace = () => {
                     const isNeuroChapter = selectedSystem === 'Neurology';
                     const hasNeuroCategories = isNeuroChapter && allQuestions.some(q => (q as any).category);
 
-                    const getFilteredQuestions = (cat: string) => {
-                      let filtered = allQuestions;
-                      if (cat === 'previous_years') {
-                        filtered = allQuestions.filter(q => (q as any).category === 'previous_years');
-                      } else if (cat === 'clinoma') {
-                        filtered = allQuestions.filter(q => (q as any).category === 'clinoma');
-                      } else if (cat !== 'All') {
-                        filtered = allQuestions.filter(q => {
-                          if (cat === 'Definitions') return q.front.toLowerCase().startsWith('define');
-                          if (cat === 'Enumerate') return q.front.toLowerCase().startsWith('enumerate');
-                          if (cat === 'Cases') return q.front.toLowerCase().startsWith('case');
-                          if (cat === 'Matching') return q.front.toLowerCase().startsWith('match') || q.type === 'matching';
-                          return true;
-                        });
-                      }
-                      return groupCases(filtered);
-                    };
-
-                    const CategoryTabs = () => (
-                      <div className="flex flex-wrap items-center justify-center gap-2 mb-6 w-full max-w-2xl mx-auto border-b border-slate-100 pb-3">
-                        {(hasNeuroCategories
-                          ? ['previous_years', 'clinoma']
-                          : ['All', 'Definitions', 'Enumerate', 'Matching', 'Cases']
-                        ).map(cat => {
-                          const count = getFilteredQuestions(cat).length;
-                          const label = cat === 'previous_years' ? '📅 السنين السابقة' : cat === 'clinoma' ? '⭐ أسئلة Clinoma' : cat;
-                          const activeColor = cat === 'previous_years' ? 'bg-amber-500 text-white shadow-md shadow-amber-200' : cat === 'clinoma' ? 'bg-indigo-500 text-white shadow-md shadow-indigo-200' : 'bg-indigo-500 text-white shadow-md';
-                          return (
-                            <button
-                              key={cat}
-                              onClick={() => {
-                                setActiveCategory(cat);
-                                const newQs = getFilteredQuestions(cat);
-                                if (newQs.length > 0) startQuestionSession(newQs);
-                                else { setQQueue([]); setQDone([]); setQSessionDone(false); }
-                              }}
-                              className={`px-5 py-2.5 flex items-center gap-2 rounded-full text-sm font-bold transition-all ${
-                                activeCategory === cat ? activeColor : 'bg-slate-100 text-slate-500 hover:bg-slate-200'
-                              }`}
-                            >
-                              {label}
-                              <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-black ${activeCategory === cat ? 'bg-white/25 text-white' : 'bg-slate-200 text-slate-500'}`}>{count}</span>
-                            </button>
-                          );
-                        })}
-                      </div>
-                    );
-
                     const questions = qQueue.concat(qDone); // Total questions in this session
                     const totalQ = qDone.length + qQueue.length;
                     const currentCard = qQueue[0];
 
-                    if (questions.length === 0 && allQuestions.length > 0) {
-                      return (
-                        <div className="flex flex-col items-center justify-center py-20 text-center px-8">
-                          <CategoryTabs />
-                          <div className="w-20 h-20 bg-slate-50 rounded-[2rem] flex items-center justify-center mb-6">
-                            <Brain className="w-10 h-10 text-slate-400" />
-                          </div>
-                          <h3 className="text-2xl font-black text-slate-800 mb-2">No Questions in this Category</h3>
-                          <p className="text-slate-400">Please select another category.</p>
-                        </div>
-                      );
-                    }
-
-                    if (questions.length === 0) {
+                    if (allQuestions.length === 0) {
                       return (
                         <div className="flex flex-col items-center justify-center py-24 text-center">
                           <div className="w-16 h-16 bg-emerald-50 rounded-2xl flex items-center justify-center mb-4">
@@ -12971,8 +13231,8 @@ const FlashSpace = () => {
                           </div>
                           <div className="flex items-center gap-4">
                             <button
-                              onClick={() => startQuestionSession(getFilteredQuestions(activeCategory))}
-                              className="px-8 py-3 bg-slate-900 text-white rounded-2xl font-black hover:bg-indigo-600 transition-all"
+                              onClick={() => startQuestionSession(allQuestions, 'chapter')}
+                              className="px-8 py-3 bg-slate-900 text-white rounded-2xl font-black hover:bg-indigo-600 transition-all cursor-pointer"
                             >
                               Restart Session
                             </button>
@@ -12983,7 +13243,7 @@ const FlashSpace = () => {
                                 setShowExplanation(false);
                                 setSelectedBoard(null);
                               }}
-                              className="px-8 py-3 bg-white border-2 border-slate-200 text-slate-700 rounded-2xl font-black hover:border-slate-300 hover:bg-slate-50 transition-all"
+                              className="px-8 py-3 bg-white border-2 border-slate-200 text-slate-700 rounded-2xl font-black hover:border-slate-300 hover:bg-slate-50 transition-all cursor-pointer"
                             >
                               Back to Chapter
                             </button>
@@ -12994,8 +13254,7 @@ const FlashSpace = () => {
 
                     // Active flashcard
                     return (
-                      <div className="flex flex-col items-center justify-between h-full py-4 px-2 md:px-6 max-w-5xl mx-auto">
-                        <CategoryTabs />
+                      <div className="flex flex-col items-center justify-between h-full py-4 px-2 md:px-6 max-w-5xl mx-auto w-full">
                         {/* Header Controls */}
                         <div className="w-full flex items-center justify-between mb-4">
                           <button
@@ -13004,7 +13263,22 @@ const FlashSpace = () => {
                           >
                             <ChevronLeft className="w-4 h-4" /> Exit
                           </button>
-                          <h3 className="font-black text-indigo-600">Chapter Questions</h3>
+                          <div className="flex items-center gap-3">
+                            <button
+                              onClick={() => setDistractionReminderEnabled(!distractionReminderEnabled)}
+                              className={cn(
+                                "px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1 border cursor-pointer",
+                                distractionReminderEnabled
+                                  ? "bg-amber-50 border-amber-200 text-amber-700 hover:bg-amber-100"
+                                  : "bg-slate-50 border-slate-200 text-slate-400 hover:bg-slate-100"
+                              )}
+                              title="تذكير عدم السرحان 🧠"
+                            >
+                              <span>🧠</span>
+                              <span className="hidden sm:inline">مانع السرحان</span>
+                            </button>
+                            <h3 className="font-black text-indigo-600">Chapter Questions</h3>
+                          </div>
                         </div>
 
                         {/* Progress */}
@@ -13024,9 +13298,64 @@ const FlashSpace = () => {
                         {/* Flashcard */}
                         <div className="w-full flex-1 flex items-center justify-center py-4 md:py-8">
                           <div
-                            className="flashcard-container w-full max-w-3xl lg:max-w-4xl"
+                            className="flashcard-container w-full max-w-3xl lg:max-w-4xl relative"
                             style={{perspective: '1200px'}}
                           >
+                            {/* Distraction Warning overlay */}
+                            <AnimatePresence>
+                              {distractionWarningPhase !== 'none' && (
+                                <motion.div
+                                  initial={{ opacity: 0 }}
+                                  animate={{ opacity: 1 }}
+                                  exit={{ opacity: 0 }}
+                                  className="absolute inset-0 z-50 bg-white/95 backdrop-blur-sm flex flex-col items-center justify-center p-6 text-center rounded-3xl border-2 border-slate-100 shadow-xl"
+                                  dir="rtl"
+                                >
+                                  {distractionWarningPhase === 'first' ? (
+                                    <motion.div 
+                                      initial={{ scale: 0.9, y: 10 }}
+                                      animate={{ scale: 1, y: 0 }}
+                                      exit={{ scale: 0.9, y: 10 }}
+                                      className="max-w-md w-full space-y-6 flex flex-col items-center"
+                                    >
+                                      <div className="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center text-yellow-600 shadow-md animate-bounce">
+                                        <Timer className="w-10 h-10" />
+                                      </div>
+                                      <div className="space-y-2">
+                                        <h3 className="text-3xl font-black text-yellow-600 tracking-tight">متسرحش⏳</h3>
+                                      </div>
+                                      <button
+                                        onClick={handleResumeFromWarning}
+                                        className="px-8 py-3.5 bg-yellow-500 hover:bg-yellow-600 text-slate-900 rounded-2xl font-black text-base shadow-lg shadow-yellow-500/20 active:scale-95 transition-all w-full max-w-xs cursor-pointer"
+                                      >
+                                        يلا بينا
+                                      </button>
+                                    </motion.div>
+                                  ) : (
+                                    <motion.div 
+                                      initial={{ scale: 0.9, y: 10 }}
+                                      animate={{ scale: 1, y: 0 }}
+                                      exit={{ scale: 0.9, y: 10 }}
+                                      className="max-w-md w-full space-y-6 flex flex-col items-center"
+                                    >
+                                      <div className="w-20 h-20 bg-rose-100 rounded-full flex items-center justify-center text-rose-600 shadow-md animate-pulse">
+                                        <AlertCircle className="w-10 h-10" />
+                                      </div>
+                                      <div className="space-y-2">
+                                        <h3 className="text-3xl font-black text-rose-650 tracking-tight text-red-650">كفاية سرحان🛑</h3>
+                                      </div>
+                                      <button
+                                        onClick={handleResumeFromWarning}
+                                        className="px-8 py-3.5 bg-rose-600 hover:bg-rose-700 text-white rounded-2xl font-black text-base shadow-lg shadow-rose-600/20 active:scale-95 transition-all w-full max-w-xs cursor-pointer"
+                                      >
+                                        يلا بينا
+                                      </button>
+                                    </motion.div>
+                                  )}
+                                </motion.div>
+                              )}
+                            </AnimatePresence>
+
                             <div
                               className="flashcard relative w-full min-h-[400px] md:min-h-[500px] lg:min-h-[550px]"
                               style={{
@@ -13088,25 +13417,54 @@ const FlashSpace = () => {
                         {/* Rating Buttons */}
                         {isCardFlipped ? (
                           <div className="w-full space-y-3">
-                            <p className="text-center text-xs font-black text-slate-400 uppercase tracking-widest mb-3">How well did you know this?</p>
-                            <div className="grid grid-cols-3 gap-2 md:gap-3">
-                              <button
+                            <p className="text-center text-xs font-black text-slate-400 uppercase tracking-widest mb-1">How well did you know this?</p>
+                            <div className="bg-slate-50/40 p-2 sm:p-4 grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3 border border-slate-200/50 w-full rounded-2xl font-sans max-w-3xl mx-auto">
+                              <button 
+                                id="difficulty-very-hard-btn"
+                                onClick={() => rateCard('very_hard')}
+                                className="group flex flex-col items-center p-1.5 sm:p-2.5 bg-white rounded-xl border border-slate-200 hover:border-rose-200 hover:bg-rose-50/30 transition-all text-center relative cursor-pointer"
+                              >
+                                <span className="absolute top-1 right-1 flex items-center justify-center w-3.5 h-3.5 text-[8px] font-mono font-bold bg-slate-100 text-slate-500 border border-slate-200 rounded">
+                                  3
+                                </span>
+                                <div className="text-rose-600 font-extrabold text-[10px] sm:text-xs mt-1 sm:mt-1.5">Very Hard</div>
+                                <div className="text-[8px] sm:text-[9px] text-slate-400 font-semibold uppercase tracking-wider mt-0.5">In 2 Cards</div>
+                              </button>
+                              
+                              <button 
+                                id="difficulty-hard-btn"
                                 onClick={() => rateCard('hard')}
-                                className="py-3 md:py-4 bg-rose-50 hover:bg-rose-500 text-rose-600 hover:text-white rounded-2xl font-black text-xs md:text-sm transition-all hover:scale-105 active:scale-95 border-2 border-rose-100 hover:border-rose-500"
+                                className="group flex flex-col items-center p-1.5 sm:p-2.5 bg-amber-500/10 rounded-xl border border-amber-500/20 hover:border-amber-500/40 hover:bg-amber-500/15 transition-all text-center relative cursor-pointer"
                               >
-                                🔴 Hard
+                                <span className="absolute top-1 right-1 flex items-center justify-center w-3.5 h-3.5 text-[8px] font-mono font-bold bg-amber-500/20 text-amber-800 border border-amber-500/30 rounded">
+                                  2
+                                </span>
+                                <div className="text-amber-700 font-extrabold text-[10px] sm:text-xs mt-1 sm:mt-1.5">Hard</div>
+                                <div className="text-[8px] sm:text-[9px] text-amber-500 font-semibold uppercase tracking-wider mt-0.5 font-mono">In 5 Cards</div>
                               </button>
-                              <button
-                                onClick={() => setIsCardFlipped(false)}
-                                className="py-3 md:py-4 bg-amber-50 hover:bg-amber-500 text-amber-600 hover:text-white rounded-2xl font-black text-xs md:text-sm transition-all hover:scale-105 active:scale-95 border-2 border-amber-100 hover:border-amber-500"
+
+                              <button 
+                                id="difficulty-medium-btn"
+                                onClick={() => rateCard('medium')}
+                                className="group flex flex-col items-center p-1.5 sm:p-2.5 bg-blue-500/10 rounded-xl border border-blue-500/20 hover:border-blue-500/40 hover:bg-blue-500/15 transition-all text-center relative cursor-pointer"
                               >
-                                ↩️ Return Question
+                                <span className="absolute top-1 right-1 flex items-center justify-center w-3.5 h-3.5 text-[8px] font-mono font-bold bg-blue-500/20 text-blue-800 border border-blue-500/30 rounded">
+                                  1
+                                </span>
+                                <div className="text-blue-700 font-extrabold text-[10px] sm:text-xs mt-1 sm:mt-1.5">Medium</div>
+                                <div className="text-[8px] sm:text-[9px] text-blue-500 font-semibold uppercase tracking-wider mt-0.5">In 10 Cards</div>
                               </button>
-                              <button
+
+                              <button 
+                                id="difficulty-easy-btn"
                                 onClick={() => rateCard('easy')}
-                                className="py-3 md:py-4 bg-emerald-50 hover:bg-emerald-500 text-emerald-600 hover:text-white rounded-2xl font-black text-xs md:text-sm transition-all hover:scale-105 active:scale-95 border-2 border-emerald-100 hover:border-emerald-500"
+                                className="group flex flex-col items-center p-1.5 sm:p-2.5 bg-emerald-500/10 rounded-xl border border-emerald-500/20 hover:border-emerald-500/40 hover:bg-emerald-500/15 transition-all text-center relative cursor-pointer"
                               >
-                                🟢 Easy
+                                <span className="absolute top-1 right-1 flex items-center justify-center w-3.5 h-3.5 text-[8px] font-mono font-bold bg-emerald-500/20 text-emerald-850 border border-emerald-500/30 rounded">
+                                  0
+                                </span>
+                                <div className="text-emerald-750 font-extrabold text-[10px] sm:text-xs mt-1 sm:mt-1.5">Easy</div>
+                                <div className="text-[8px] sm:text-[9px] text-emerald-600 font-semibold uppercase tracking-wider mt-0.5">Ready & Mastered</div>
                               </button>
                             </div>
                           </div>
@@ -13229,7 +13587,7 @@ const FlashSpace = () => {
                               : [...chapterQuestions, ...generalQuestions];
 
                             if (allQuestions.length > 0) {
-                              startQuestionSession(allQuestions);
+                              startQuestionSession(allQuestions, 'chapter');
                               setIsChapterQuestionMode(true);
                             } else {
                               toast.error('No questions available for this section yet');
@@ -14074,6 +14432,45 @@ const FlashSpace = () => {
         </div>
       )}
 
+      {/* 5-Easy Sticker Reward Modal */}
+      <AnimatePresence>
+        {showStickerModal && (
+          <div className="fixed inset-0 z-[9999999] flex items-center justify-center p-4">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setShowStickerModal(false)}
+              className="fixed inset-0 bg-slate-950/80 backdrop-blur-md"
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              className="bg-white rounded-[2.5rem] p-6 max-w-sm w-full shadow-2xl relative z-10 border border-slate-100 flex flex-col items-center justify-center text-center overflow-hidden"
+            >
+              {/* No words around it - just the sticker inside a clean frame */}
+              <div className="w-full aspect-square max-w-[280px] flex items-center justify-center overflow-hidden rounded-2xl bg-slate-50/50 p-2 border border-slate-100 mb-6">
+                <img 
+                  src={activeSticker} 
+                  alt="Sticker Reward" 
+                  className="w-full h-full object-contain hover:scale-105 transition-all duration-300"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+              
+              {/* Below it, a button saying "يلا بينا" to continue */}
+              <button
+                onClick={() => setShowStickerModal(false)}
+                className="w-full py-4 bg-emerald-600 hover:bg-emerald-700 text-white font-black text-lg rounded-2xl shadow-lg shadow-emerald-600/20 active:scale-95 transition-all duration-200 cursor-pointer"
+              >
+                يلا بينا
+              </button>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
       {/* Edit Board Modal */}
       {isEditBoardOpen && (
         <div className="fixed inset-0 z-[999999] flex items-center justify-center p-4" dir="rtl">
@@ -14228,7 +14625,7 @@ const FlashSpace = () => {
                             setSelectedSystem(selectedBoard.system);
                           }
                           setSelectedSubSystem(subSys);
-                          startQuestionSession(allQuestions);
+                          startQuestionSession(allQuestions, 'chapter');
                           setIsChapterQuestionMode(true);
                         } else {
                           toast.error('No questions available for this sub-chapter yet');
@@ -14302,7 +14699,7 @@ const FlashSpace = () => {
                   setSelectedModule(selectedBoard.module);
                   setSelectedSystem(selectedBoard.system);
                 }
-                startQuestionSession(allQuestions);
+                startQuestionSession(allQuestions, 'chapter');
                 setIsChapterQuestionMode(true);
               } else {
                 toast.error('No questions available for this chapter yet');
@@ -14757,10 +15154,28 @@ const FlashSpace = () => {
                             </div>
                             <h3 className="text-2xl font-black text-slate-800 mb-2">{selectedBoard.disease}</h3>
                             <p className="text-slate-400 mb-2">{questions.length} questions</p>
-                            <p className="text-slate-300 text-sm mb-10 max-w-xs">Rate each card as Easy, Repeat, or Hard. Hard & Repeat cards come back until you know them all.</p>
+                            <p className="text-slate-300 text-sm mb-6 max-w-xs">Rate each card as Very Hard, Hard, Medium, or Easy. Harder cards come back until you know them all.</p>
+                            
+                            {/* Distraction/Focus Reminder Switch */}
+                            <div className="p-4 bg-amber-50/40 rounded-2xl border border-amber-100/60 flex items-center justify-between text-right mb-6 w-full max-w-md" dir="rtl">
+                              <div className="space-y-0.5 ml-4 flex-1 text-right">
+                                <span className="text-xs font-black text-amber-800 block">تذكير عدم السرحان 🧠</span>
+                                <span className="text-[10px] text-slate-500 block leading-relaxed font-semibold">تنبهك الشاشة تلقائياً في حال قضيت أكثر من 3 دقائق على نفس السؤال لمساعدتك في الحفاظ على تركيزك.</span>
+                              </div>
+                              <label className="relative inline-flex items-center cursor-pointer shrink-0 select-none">
+                                <input 
+                                  type="checkbox" 
+                                  checked={distractionReminderEnabled}
+                                  onChange={() => setDistractionReminderEnabled(!distractionReminderEnabled)}
+                                  className="sr-only peer"
+                                />
+                                <div className="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-[-20px] after:content-[''] after:absolute after:top-[2px] after:right-[2px] after:bg-white after:border-gray-250 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-amber-500"></div>
+                              </label>
+                            </div>
+
                             <button
                               onClick={() => startQuestionSession(questions)}
-                              className="px-10 py-4 bg-emerald-500 text-white rounded-2xl font-black text-base hover:bg-emerald-600 transition-all shadow-lg hover:scale-105 active:scale-95"
+                              className="px-10 py-4 bg-emerald-500 text-white rounded-2xl font-black text-base hover:bg-emerald-600 transition-all shadow-lg hover:scale-105 active:scale-95 cursor-pointer"
                             >
                               Start Session →
                             </button>
@@ -14820,9 +15235,64 @@ const FlashSpace = () => {
                           {/* Flashcard */}
                           <div className="w-full flex-1 flex items-center justify-center py-6 md:py-10">
                             <div
-                              className="flashcard-container w-full max-w-3xl lg:max-w-4xl"
+                              className="flashcard-container w-full max-w-3xl lg:max-w-4xl relative"
                               style={{perspective: '1200px'}}
                             >
+                              {/* Distraction Warning overlay */}
+                              <AnimatePresence>
+                                {distractionWarningPhase !== 'none' && (
+                                  <motion.div
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}
+                                    className="absolute inset-0 z-50 bg-white/95 backdrop-blur-sm flex flex-col items-center justify-center p-6 text-center rounded-3xl border-2 border-slate-100 shadow-xl"
+                                    dir="rtl"
+                                  >
+                                    {distractionWarningPhase === 'first' ? (
+                                      <motion.div 
+                                        initial={{ scale: 0.9, y: 10 }}
+                                        animate={{ scale: 1, y: 0 }}
+                                        exit={{ scale: 0.9, y: 10 }}
+                                        className="max-w-md w-full space-y-6 flex flex-col items-center"
+                                      >
+                                        <div className="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center text-yellow-600 shadow-md animate-bounce">
+                                          <Timer className="w-10 h-10" />
+                                        </div>
+                                        <div className="space-y-2">
+                                          <h3 className="text-3xl font-black text-yellow-600 tracking-tight">متسرحش⏳</h3>
+                                        </div>
+                                        <button
+                                          onClick={handleResumeFromWarning}
+                                          className="px-8 py-3.5 bg-yellow-500 hover:bg-yellow-600 text-slate-900 rounded-2xl font-black text-base shadow-lg shadow-yellow-500/20 active:scale-95 transition-all w-full max-w-xs cursor-pointer"
+                                        >
+                                          يلا بينا
+                                        </button>
+                                      </motion.div>
+                                    ) : (
+                                      <motion.div 
+                                        initial={{ scale: 0.9, y: 10 }}
+                                        animate={{ scale: 1, y: 0 }}
+                                        exit={{ scale: 0.9, y: 10 }}
+                                        className="max-w-md w-full space-y-6 flex flex-col items-center"
+                                      >
+                                        <div className="w-20 h-20 bg-rose-100 rounded-full flex items-center justify-center text-rose-600 shadow-md animate-pulse">
+                                          <AlertCircle className="w-10 h-10" />
+                                        </div>
+                                        <div className="space-y-2">
+                                          <h3 className="text-3xl font-black text-rose-650 tracking-tight text-red-650">كفاية سرحان🛑</h3>
+                                        </div>
+                                        <button
+                                          onClick={handleResumeFromWarning}
+                                          className="px-8 py-3.5 bg-rose-600 hover:bg-rose-700 text-white rounded-2xl font-black text-base shadow-lg shadow-rose-600/20 active:scale-95 transition-all w-full max-w-xs cursor-pointer"
+                                        >
+                                          يلا بينا
+                                        </button>
+                                      </motion.div>
+                                    )}
+                                  </motion.div>
+                                )}
+                              </AnimatePresence>
+
                               <div
                                 className="flashcard relative w-full min-h-[400px] md:min-h-[500px] lg:min-h-[550px]"
                                 style={{
@@ -14884,25 +15354,54 @@ const FlashSpace = () => {
                           {/* Rating Buttons */}
                           {isCardFlipped ? (
                             <div className="w-full space-y-3">
-                              <p className="text-center text-xs font-black text-slate-400 uppercase tracking-widest mb-3">How well did you know this?</p>
-                              <div className="grid grid-cols-3 gap-3">
-                                <button
+                              <p className="text-center text-xs font-black text-slate-400 uppercase tracking-widest mb-1">How well did you know this?</p>
+                              <div className="bg-slate-50/40 p-2 sm:p-4 grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3 border border-slate-200/50 w-full rounded-2xl font-sans max-w-3xl mx-auto">
+                                <button 
+                                  id="difficulty-very-hard-btn-drawer"
+                                  onClick={() => rateCard('very_hard')}
+                                  className="group flex flex-col items-center p-1.5 sm:p-2.5 bg-white rounded-xl border border-slate-200 hover:border-rose-200 hover:bg-rose-50/30 transition-all text-center relative cursor-pointer"
+                                >
+                                  <span className="absolute top-1 right-1 flex items-center justify-center w-3.5 h-3.5 text-[8px] font-mono font-bold bg-slate-100 text-slate-500 border border-slate-200 rounded">
+                                    3
+                                  </span>
+                                  <div className="text-rose-600 font-extrabold text-[10px] sm:text-xs mt-1 sm:mt-1.5">Very Hard</div>
+                                  <div className="text-[8px] sm:text-[9px] text-slate-400 font-semibold uppercase tracking-wider mt-0.5">In 2 Cards</div>
+                                </button>
+                                
+                                <button 
+                                  id="difficulty-hard-btn-drawer"
                                   onClick={() => rateCard('hard')}
-                                  className="py-4 bg-rose-50 hover:bg-rose-500 text-rose-600 hover:text-white rounded-2xl font-black text-sm transition-all hover:scale-105 active:scale-95 border-2 border-rose-100 hover:border-rose-500"
+                                  className="group flex flex-col items-center p-1.5 sm:p-2.5 bg-amber-500/10 rounded-xl border border-amber-500/20 hover:border-amber-500/40 hover:bg-amber-500/15 transition-all text-center relative cursor-pointer"
                                 >
-                                  🔴 Hard
+                                  <span className="absolute top-1 right-1 flex items-center justify-center w-3.5 h-3.5 text-[8px] font-mono font-bold bg-amber-500/20 text-amber-800 border border-amber-500/30 rounded">
+                                    2
+                                  </span>
+                                  <div className="text-amber-700 font-extrabold text-[10px] sm:text-xs mt-1 sm:mt-1.5">Hard</div>
+                                  <div className="text-[8px] sm:text-[9px] text-amber-500 font-semibold uppercase tracking-wider mt-0.5 font-mono">In 5 Cards</div>
                                 </button>
-                                <button
-                                  onClick={() => setIsCardFlipped(false)}
-                                  className="py-4 bg-amber-50 hover:bg-amber-500 text-amber-600 hover:text-white rounded-2xl font-black text-sm transition-all hover:scale-105 active:scale-95 border-2 border-amber-100 hover:border-amber-500"
+
+                                <button 
+                                  id="difficulty-medium-btn-drawer"
+                                  onClick={() => rateCard('medium')}
+                                  className="group flex flex-col items-center p-1.5 sm:p-2.5 bg-blue-500/10 rounded-xl border border-blue-500/20 hover:border-blue-500/40 hover:bg-blue-500/15 transition-all text-center relative cursor-pointer"
                                 >
-                                  ↩️ Return Question
+                                  <span className="absolute top-1 right-1 flex items-center justify-center w-3.5 h-3.5 text-[8px] font-mono font-bold bg-blue-500/20 text-blue-800 border border-blue-500/30 rounded">
+                                    1
+                                  </span>
+                                  <div className="text-blue-700 font-extrabold text-[10px] sm:text-xs mt-1 sm:mt-1.5">Medium</div>
+                                  <div className="text-[8px] sm:text-[9px] text-blue-500 font-semibold uppercase tracking-wider mt-0.5">In 10 Cards</div>
                                 </button>
-                                <button
+
+                                <button 
+                                  id="difficulty-easy-btn-drawer"
                                   onClick={() => rateCard('easy')}
-                                  className="py-4 bg-emerald-50 hover:bg-emerald-500 text-emerald-600 hover:text-white rounded-2xl font-black text-sm transition-all hover:scale-105 active:scale-95 border-2 border-emerald-100 hover:border-emerald-500"
+                                  className="group flex flex-col items-center p-1.5 sm:p-2.5 bg-emerald-500/10 rounded-xl border border-emerald-500/20 hover:border-emerald-500/40 hover:bg-emerald-500/15 transition-all text-center relative cursor-pointer"
                                 >
-                                  🟢 Easy
+                                  <span className="absolute top-1 right-1 flex items-center justify-center w-3.5 h-3.5 text-[8px] font-mono font-bold bg-emerald-500/20 text-emerald-850 border border-emerald-500/30 rounded">
+                                    0
+                                  </span>
+                                  <div className="text-emerald-750 font-extrabold text-[10px] sm:text-xs mt-1 sm:mt-1.5">Easy</div>
+                                  <div className="text-[8px] sm:text-[9px] text-emerald-600 font-semibold uppercase tracking-wider mt-0.5">Ready & Mastered</div>
                                 </button>
                               </div>
                             </div>
