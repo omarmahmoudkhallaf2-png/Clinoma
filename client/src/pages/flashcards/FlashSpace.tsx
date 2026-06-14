@@ -13100,12 +13100,6 @@ const FlashSpace = () => {
 
                     return (
                       <button key={mod} onClick={() => {
-                        const cleanEmail = user?.email?.toLowerCase().trim();
-                        const isReviewerEmail = cleanEmail === 'mahmoud.01201681278@gmail.com' || cleanEmail === 'youssefkhodarejo1@gmail.com';
-                        if (isOpthalmology && userData?.role !== 'admin' && !isReviewerEmail) {
-                          toast.error('هذا المديول تحت التطوير للأدمن فقط حالياً 🚧');
-                          return;
-                        }
                         setSelectedModule(mod);
                       }}
                         className="group relative backdrop-blur-xl border border-white/5 active:border-indigo-500/50 hover:border-indigo-500/50 rounded-3xl text-left transition-all duration-300 active:scale-[0.98] hover:scale-[1.02] overflow-hidden p-6 hover:shadow-2xl hover:shadow-indigo-500/10 bg-slate-900/50"
