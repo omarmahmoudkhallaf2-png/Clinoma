@@ -10665,6 +10665,91 @@ const bbcodeAndMarkdownToHtml = (text: string): string => {
   // HR line
   html = html.replace(/^---$/gim, '<hr class="my-8 border-slate-200" />');
   
+  // Markdown Tables Parser
+  const tableLines = html.split('\n');
+  let inTable = false;
+  let tableRows: string[][] = [];
+  let tableAlignments: string[] = [];
+  let parsedLines = [];
+
+  for (let i = 0; i < tableLines.length; i++) {
+    const line = tableLines[i];
+    const trimmed = line.trim();
+    
+    if (trimmed.startsWith('|') && trimmed.endsWith('|') && trimmed.length > 1) {
+      const cells = trimmed.split('|').map(c => c.trim()).filter((c, idx, arr) => idx > 0 && idx < arr.length - 1);
+      const isSeparator = cells.every(c => c.replace(/[:-\s]/g, '') === '');
+      
+      if (isSeparator) {
+        tableAlignments = cells.map(c => {
+          const left = c.startsWith(':');
+          const right = c.endsWith(':');
+          if (left && right) return 'center';
+          if (right) return 'left';
+          if (left) return 'left';
+          return 'right';
+        });
+      } else {
+        tableRows.push(cells);
+      }
+      inTable = true;
+    } else {
+      if (inTable) {
+        if (tableRows.length > 0) {
+          let tableHtml = '<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200/85 shadow-sm"><table class="w-full border-collapse text-sm text-right" dir="rtl">';
+          const headers = tableRows[0];
+          tableHtml += '<thead class="bg-slate-50 text-slate-800 border-b border-slate-200"><tr>';
+          headers.forEach((h, idx) => {
+            const align = tableAlignments[idx] || 'right';
+            const alignClass = align === 'center' ? 'text-center' : (align === 'left' ? 'text-left' : 'text-right');
+            tableHtml += `<th class="px-4 py-3 font-black text-slate-700 ${alignClass}">${h}</th>`;
+          });
+          tableHtml += '</tr></thead>';
+          tableHtml += '<tbody class="divide-y divide-slate-100 bg-white text-slate-650">';
+          for (let r = 1; r < tableRows.length; r++) {
+            tableHtml += '<tr class="hover:bg-slate-50/50 transition-colors">';
+            tableRows[r].forEach((cell, idx) => {
+              const align = tableAlignments[idx] || 'right';
+              const alignClass = align === 'center' ? 'text-center' : (align === 'left' ? 'text-left' : 'text-right');
+              tableHtml += `<td class="px-4 py-3.5 ${alignClass}">${cell}</td>`;
+            });
+            tableHtml += '</tr>';
+          }
+          tableHtml += '</tbody></table></div>';
+          parsedLines.push(tableHtml);
+        }
+        inTable = false;
+        tableRows = [];
+        tableAlignments = [];
+      }
+      parsedLines.push(line);
+    }
+  }
+  if (inTable && tableRows.length > 0) {
+    let tableHtml = '<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200/85 shadow-sm"><table class="w-full border-collapse text-sm text-right" dir="rtl">';
+    const headers = tableRows[0];
+    tableHtml += '<thead class="bg-slate-50 text-slate-800 border-b border-slate-200"><tr>';
+    headers.forEach((h, idx) => {
+      const align = tableAlignments[idx] || 'right';
+      const alignClass = align === 'center' ? 'text-center' : (align === 'left' ? 'text-left' : 'text-right');
+      tableHtml += `<th class="px-4 py-3 font-black text-slate-700 ${alignClass}">${h}</th>`;
+    });
+    tableHtml += '</tr></thead>';
+    tableHtml += '<tbody class="divide-y divide-slate-100 bg-white text-slate-650">';
+    for (let r = 1; r < tableRows.length; r++) {
+      tableHtml += '<tr class="hover:bg-slate-50/50 transition-colors">';
+      tableRows[r].forEach((cell, idx) => {
+        const align = tableAlignments[idx] || 'right';
+        const alignClass = align === 'center' ? 'text-center' : (align === 'left' ? 'text-left' : 'text-right');
+        tableHtml += `<td class="px-4 py-3.5 ${alignClass}">${cell}</td>`;
+      });
+      tableHtml += '</tr>';
+    }
+    tableHtml += '</tbody></table></div>';
+    parsedLines.push(tableHtml);
+  }
+  html = parsedLines.join('\n');
+  
   // Bullet points
   const lines = html.split('\n');
   let inList = false;
@@ -10696,7 +10781,7 @@ const bbcodeAndMarkdownToHtml = (text: string): string => {
   html = paragraphs.map(p => {
     const trimmed = p.trim();
     if (!trimmed) return '';
-    if (trimmed.startsWith('<h') || trimmed.startsWith('<ul') || trimmed.startsWith('<hr')) {
+    if (trimmed.startsWith('<h') || trimmed.startsWith('<ul') || trimmed.startsWith('<hr') || trimmed.startsWith('<div')) {
       return trimmed;
     }
     return `<div class="leading-relaxed text-current text-right mb-4">${trimmed}</div>`;
