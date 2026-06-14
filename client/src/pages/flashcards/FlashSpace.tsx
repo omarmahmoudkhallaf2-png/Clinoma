@@ -9121,19 +9121,19 @@ const FlashSpace = () => {
       'Family Medicine': '/assets/chapters/family_bg.png',
       'Neonatology': '/assets/chapters/neonatology_bg.png',
       // Ophthalmology chapters background mapping
-      'Eyelid': '/assets/chapters/family_bg.png',
-      'Lacrimal System': '/assets/chapters/nutrition_bg_1779636686441.png',
-      'Conjunctiva': '/assets/chapters/gastro_bg_1779636588519.png',
-      'Cornea & Sclera': '/assets/chapters/cardio_bg_1779636563389.png',
-      'Lens': '/assets/chapters/chest_bg.png',
-      'Orbit': '/assets/chapters/neuro_bg_1779636673967.png',
-      'Errors of Refraction': '/assets/chapters/emergency_bg.png',
-      'Glaucoma': '/assets/chapters/renal_bg_1779636699582.png',
-      'Uveitis': '/assets/chapters/infect_bg_1779636662158.png',
-      'Strabismus': '/assets/chapters/growth_bg_1779636618747.png',
-      'Retina': '/assets/chapters/genetic_bg_1779636605335.png',
-      'Neuro-ophthalmology': '/assets/chapters/neuro_bg_1779636673967.png',
-      'Ocular Trauma': '/assets/chapters/emergency_bg.png'
+      'Eyelid': '/assets/chapters/eyelid_bg.png',
+      'Lacrimal System': '/assets/chapters/lacrimal_bg.png',
+      'Conjunctiva': '/assets/chapters/conjunctiva_bg.png',
+      'Cornea & Sclera': '/assets/chapters/cornea_bg.png',
+      'Lens': '/assets/chapters/lens_bg.png',
+      'Orbit': '/assets/chapters/orbit_bg.png',
+      'Errors of Refraction': '/assets/chapters/refraction_bg.png',
+      'Glaucoma': '/assets/chapters/glaucoma_bg.png',
+      'Uveitis': '/assets/chapters/uveitis_bg.png',
+      'Strabismus': '/assets/chapters/strabismus_bg.png',
+      'Retina': '/assets/chapters/retina_bg.png',
+      'Neuro-ophthalmology': '/assets/chapters/neuro_op_bg.png',
+      'Ocular Trauma': '/assets/chapters/trauma_bg.png'
     };
 
     const lwSys = sys.toLowerCase();
