@@ -8996,15 +8996,10 @@ const FlashSpace = () => {
   const [isAddChapterOpen, setIsAddChapterOpen] = useState(false);
   const [newChapterName, setNewChapterName] = useState('');
   const [isAddBoardOpen, setIsAddBoardOpen] = useState(false);
-  const [newBoardForm, setNewBoardForm] = useState({
-    disease: '',
-    medicalImage: '',
-    explanation: ''
-  });
-
-  // Batch inline adding mode option
-  const [isBatchMode, setIsBatchMode] = useState(false);
-  const [batchText, setBatchText] = useState(''); // Syntax: "Name | Link | Explanation" or just "Name | Link" per line
+  // Form array for multiple boards adding at once
+  const [batchBoards, setBatchBoards] = useState<Array<{ disease: string; medicalImage: string; explanation: string }>>([
+    { disease: '', medicalImage: '', explanation: '' }
+  ]);
 
   const handleAddChapter = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -9050,96 +9045,34 @@ const FlashSpace = () => {
     e.preventDefault();
     if (!selectedModule || !selectedSystem) return;
 
-    if (isBatchMode) {
-      if (!batchText.trim()) {
-        toast.error('الرجاء إدخال بيانات الدفعة أولاً');
-        return;
-      }
-      const lines = batchText.split('\n').map(l => l.trim()).filter(Boolean);
-      if (lines.length === 0) {
-        toast.error('الرجاء كتابة سطر واحد على الأقل');
-        return;
-      }
-
-      const toastId = toast.loading(`جاري إضافة ${lines.length} صور دفعة واحدة...`);
-      try {
-        const addedBoards: Board[] = [];
-        for (const line of lines) {
-          const parts = line.split('|').map(p => p.trim());
-          const name = parts[0] || '';
-          const link = parts[1] || '';
-          const explanation = parts[2] || `Study guide for ${name}`;
-
-          if (!name || !link) {
-            console.warn("Skipping invalid line: ", line);
-            continue;
-          }
-
-          const payload = {
-            module: selectedModule,
-            system: selectedSystem,
-            disease: name,
-            medicalImage: link,
-            explanation: explanation,
-            createdAt: Date.now()
-          };
-
-          const docRef = await addDoc(collection(db, 'flashspace_boards'), payload);
-          addedBoards.push({
-            id: docRef.id,
-            ...payload
-          });
-        }
-
-        if (addedBoards.length === 0) {
-          toast.error('لم يتم إضافة أي صور، تحقق من التنسيق (الاسم | الرابط)', { id: toastId });
-          return;
-        }
-
-        // Clean up placeholders of current chapter locally
-        const placeholders = boards.filter(b => b.module === selectedModule && b.system === selectedSystem && (b as any).isPlaceholder);
-        for (const p of placeholders) {
-          try {
-            await deleteDoc(doc(db, 'flashspace_boards', p.id));
-          } catch (e) {
-            console.warn("Could not delete placeholder:", e);
-          }
-        }
-
-        setBoards(prev => {
-          const remaining = prev.filter(b => !(b.module === selectedModule && b.system === selectedSystem && (b as any).isPlaceholder));
-          return [...remaining, ...addedBoards];
-        });
-
-        toast.success(`تم إضافة ${addedBoards.length} صور بنجاح! 🎉`, { id: toastId });
-        setIsAddBoardOpen(false);
-        setBatchText('');
-      } catch (err) {
-        console.error(err);
-        toast.error('فشلت عملية الإضافة الجماعية', { id: toastId });
-      }
+    // Filter out empty items in the batch list
+    const validItems = batchBoards.filter(item => item.disease.trim() && item.medicalImage.trim());
+    if (validItems.length === 0) {
+      toast.error('الرجاء تعبئة اسم الحالة ورابط الصورة لبطاقة واحدة على الأقل');
       return;
     }
 
-    if (!newBoardForm.disease.trim() || !newBoardForm.medicalImage.trim()) {
-      toast.error('Please enter disease name and image URL');
-      return;
-    }
-    const toastId = toast.loading('Adding board...');
+    const toastId = toast.loading(`جاري حفظ عدد ${validItems.length} لوحة...`);
     try {
-      const payload = {
-        module: selectedModule,
-        system: selectedSystem,
-        disease: newBoardForm.disease.trim(),
-        medicalImage: newBoardForm.medicalImage.trim(),
-        explanation: newBoardForm.explanation.trim() || `Study guide for ${newBoardForm.disease.trim()}`,
-        createdAt: Date.now()
-      };
-      const docRef = await addDoc(collection(db, 'flashspace_boards'), payload);
-      const newBoardItem: Board = {
-        id: docRef.id,
-        ...payload
-      };
+      const addedBoards: Board[] = [];
+
+      // Process and save all valid boards
+      for (const item of validItems) {
+        const payload = {
+          module: selectedModule,
+          system: selectedSystem,
+          disease: item.disease.trim(),
+          medicalImage: item.medicalImage.trim(),
+          explanation: item.explanation.trim() || `Study guide for ${item.disease.trim()}`,
+          createdAt: Date.now()
+        };
+
+        const docRef = await addDoc(collection(db, 'flashspace_boards'), payload);
+        addedBoards.push({
+          id: docRef.id,
+          ...payload
+        });
+      }
 
       // Filter out placeholders of current chapter locally
       const placeholders = boards.filter(b => b.module === selectedModule && b.system === selectedSystem && (b as any).isPlaceholder);
@@ -9154,15 +9087,16 @@ const FlashSpace = () => {
       // Update state directly
       setBoards(prev => {
         const remaining = prev.filter(b => !(b.module === selectedModule && b.system === selectedSystem && (b as any).isPlaceholder));
-        return [...remaining, newBoardItem];
+        return [...remaining, ...addedBoards];
       });
 
-      toast.success('Board added successfully!', { id: toastId });
+      toast.success(`تم حفظ ${addedBoards.length} لوحة بنجاح! 🚀`, { id: toastId });
       setIsAddBoardOpen(false);
-      setNewBoardForm({ disease: '', medicalImage: '', explanation: '' });
+      // Reset form array back to single empty item
+      setBatchBoards([{ disease: '', medicalImage: '', explanation: '' }]);
     } catch (err) {
       console.error(err);
-      toast.error('Failed to add board', { id: toastId });
+      toast.error('فشلت عملية حفظ اللوحات', { id: toastId });
     }
   };
   
@@ -13898,87 +13832,83 @@ const FlashSpace = () => {
                 <X className="w-5 h-5" />
               </button>
             </div>
-            <form onSubmit={handleAddBoard} className="space-y-6">
-              {/* Add mode selector */}
-              <div className="flex gap-2 p-1 bg-slate-950 rounded-xl border border-white/5">
-                <button
-                  type="button"
-                  onClick={() => setIsBatchMode(false)}
-                  className={cn(
-                    "flex-1 py-2 text-xs font-black rounded-lg transition-all",
-                    !isBatchMode ? "bg-indigo-600 text-white" : "text-slate-400 hover:text-white"
-                  )}
-                >
-                  إضافة صورة فردية
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setIsBatchMode(true)}
-                  className={cn(
-                    "flex-1 py-2 text-xs font-black rounded-lg transition-all",
-                    isBatchMode ? "bg-indigo-600 text-white" : "text-slate-400 hover:text-white"
-                  )}
-                >
-                  إضافة جماعية (Batch) ⚡
-                </button>
+            <form onSubmit={handleAddBoard} className="space-y-4 max-h-[70vh] flex flex-col">
+              <div className="overflow-y-auto pr-1 space-y-6 flex-1 py-1">
+                {batchBoards.map((board, idx) => (
+                  <div key={idx} className="bg-slate-950/40 p-5 rounded-2xl border border-white/5 space-y-4 relative">
+                    <div className="flex justify-between items-center">
+                      <span className="text-xs font-black text-indigo-400">بطاقة الصورة رقم #{idx + 1}</span>
+                      {batchBoards.length > 1 && (
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setBatchBoards(prev => prev.filter((_, i) => i !== idx));
+                          }}
+                          className="text-xs font-bold text-rose-400 hover:text-rose-300 bg-rose-500/10 px-2.5 py-1 rounded-lg border border-rose-500/20"
+                        >
+                          حذف الصورة
+                        </button>
+                      )}
+                    </div>
+
+                    <div className="space-y-2">
+                      <label className="text-xs font-bold text-slate-400 block">عنوان الحالة / المرض</label>
+                      <input 
+                        type="text" required placeholder="مثال: Corneal Ulcer..."
+                        value={board.disease} 
+                        onChange={e => {
+                          const val = e.target.value;
+                          setBatchBoards(prev => prev.map((item, i) => i === idx ? { ...item, disease: val } : item));
+                        }}
+                        className="w-full bg-slate-950 text-white px-4 py-2.5 rounded-xl border border-white/10 outline-none focus:border-indigo-500 text-sm font-bold"
+                      />
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <label className="text-xs font-bold text-slate-400 block">رابط الصورة المباشر (Link/URL)</label>
+                      <input 
+                        type="text" required placeholder="مثال: https://i.postimg.cc/xyz.jpg..."
+                        value={board.medicalImage} 
+                        onChange={e => {
+                          const val = e.target.value;
+                          setBatchBoards(prev => prev.map((item, i) => i === idx ? { ...item, medicalImage: val } : item));
+                        }}
+                        className="w-full bg-slate-950 text-white px-4 py-2.5 rounded-xl border border-white/10 outline-none focus:border-indigo-500 text-sm font-bold"
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <label className="text-xs font-bold text-slate-400 block">شرح طبي إضافي (ملاحظات)</label>
+                      <input 
+                        type="text" placeholder="اكتب الشرح الطبي هنا (اختياري)..."
+                        value={board.explanation} 
+                        onChange={e => {
+                          const val = e.target.value;
+                          setBatchBoards(prev => prev.map((item, i) => i === idx ? { ...item, explanation: val } : item));
+                        }}
+                        className="w-full bg-slate-950 text-white px-4 py-2.5 rounded-xl border border-white/10 outline-none focus:border-indigo-500 text-xs font-medium"
+                      />
+                    </div>
+                  </div>
+                ))}
               </div>
 
-              {!isBatchMode ? (
-                <>
-                  <div className="space-y-2">
-                    <label className="text-xs font-black text-slate-400">عنوان الحالة / المرض</label>
-                    <input 
-                      type="text" required={!isBatchMode} placeholder="مثال: Corneal Ulcer..."
-                      value={newBoardForm.disease} onChange={e => setNewBoardForm({...newBoardForm, disease: e.target.value})}
-                      className="w-full bg-slate-950 text-white px-4 py-3 rounded-xl border border-white/10 outline-none focus:border-indigo-500 font-bold"
-                    />
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <label className="text-xs font-black text-slate-400">رابط الصورة المباشر (Link/URL)</label>
-                    <input 
-                      type="text" required={!isBatchMode} placeholder="مثال: https://i.postimg.cc/xyz.jpg..."
-                      value={newBoardForm.medicalImage} onChange={e => setNewBoardForm({...newBoardForm, medicalImage: e.target.value})}
-                      className="w-full bg-slate-950 text-white px-4 py-3 rounded-xl border border-white/10 outline-none focus:border-indigo-500 font-bold"
-                    />
-                  </div>
+              <div className="pt-4 space-y-3 border-t border-white/10 shrink-0">
+                <button
+                  type="button"
+                  onClick={() => setBatchBoards(prev => [...prev, { disease: '', medicalImage: '', explanation: '' }])}
+                  className="w-full py-3 bg-indigo-600/20 hover:bg-indigo-600/30 border border-indigo-500/40 text-indigo-300 rounded-xl font-bold text-sm transition-all active:scale-[0.98]"
+                >
+                  ➕ إضافة خانة صورة أخرى للدفعة
+                </button>
 
-                  <div className="space-y-2">
-                    <label className="text-xs font-black text-slate-400">شرح طبي إضافي (ملاحظات)</label>
-                    <textarea 
-                      rows={4} placeholder="اكتب الشرح الطبي باللغة العربية أو الإنجليزية هنا..."
-                      value={newBoardForm.explanation} onChange={e => setNewBoardForm({...newBoardForm, explanation: e.target.value})}
-                      className="w-full bg-slate-950 text-white px-4 py-3 rounded-xl border border-white/10 outline-none focus:border-indigo-500 font-medium leading-relaxed"
-                    />
-                  </div>
-                </>
-              ) : (
-                <div className="space-y-3">
-                  <div className="bg-indigo-950/20 border border-indigo-500/20 rounded-xl p-4 text-xs leading-relaxed text-indigo-300">
-                    <strong>طريقة الكتابة الجماعية:</strong> اكتب كل صورة في سطر جديد كالتالي:
-                    <div className="mt-2 font-mono bg-slate-950 text-slate-300 p-2 rounded-lg" dir="ltr">
-                      الاسم | رابط الصورة | وصف طبي اختياري
-                    </div>
-                    <span className="block mt-1 text-[10px] text-slate-400">مثال: Corneal Ulcer | https://i.postimg.cc/xyz.jpg | شرح الحالة بالتفصيل</span>
-                  </div>
-                  
-                  <label className="text-xs font-black text-slate-400 block">قائمة الصور (سطر لكل صورة)</label>
-                  <textarea 
-                    rows={8} required={isBatchMode}
-                    placeholder="Corneal Ulcer | https://i.postimg.cc/xyz.jpg&#10;Blepharitis | https://i.postimg.cc/abc.jpg"
-                    value={batchText} onChange={e => setBatchText(e.target.value)}
-                    className="w-full bg-slate-950 text-white px-4 py-3 rounded-xl border border-white/10 outline-none focus:border-indigo-500 font-medium leading-relaxed font-mono"
-                    dir="ltr"
-                  />
-                </div>
-              )}
-
-              <button 
-                type="submit"
-                className="w-full py-4 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl font-black text-base transition-all active:scale-95 shadow-lg shadow-emerald-500/20"
-              >
-                {isBatchMode ? 'حفظ الدفعة بالكامل الآن ⚡' : 'حفظ اللوحة الجديدة الآن 🚀'}
-              </button>
+                <button 
+                  type="submit"
+                  className="w-full py-4 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl font-black text-base transition-all active:scale-95 shadow-lg shadow-emerald-500/20"
+                >
+                  حفظ كافة اللوحات المضافة الآن 🚀 ({batchBoards.filter(b => b.disease.trim() && b.medicalImage.trim()).length} جاهزة)
+                </button>
+              </div>
             </form>
           </div>
         </div>
@@ -15487,86 +15417,7 @@ const FlashSpace = () => {
         </div>
       )}
 
-      {/* Add Chapter Modal */}
-      {isAddChapterOpen && (
-        <div className="fixed inset-0 z-[999999] flex items-center justify-center p-4" dir="rtl">
-          <div className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm" onClick={() => setIsAddChapterOpen(false)} />
-          <div className="relative bg-slate-900 border border-white/10 rounded-[2.5rem] p-8 max-w-md w-full shadow-2xl flex flex-col animate-in zoom-in-95 duration-200 text-right">
-            <div className="flex justify-between items-center mb-6">
-              <h3 className="text-xl font-black text-white">إضافة شابتر جديد (Chapter)</h3>
-              <button onClick={() => setIsAddChapterOpen(false)} className="p-2 bg-white/5 hover:bg-rose-500/20 text-slate-400 hover:text-rose-400 rounded-xl transition-all">
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-            <form onSubmit={handleAddChapter} className="space-y-6">
-              <div className="space-y-2">
-                <label className="text-xs font-black text-slate-400">اسم الشابتر الجديد</label>
-                <input 
-                  type="text" required placeholder="مثال: Cornea & Sclera..."
-                  value={newChapterName} onChange={e => setNewChapterName(e.target.value)}
-                  className="w-full bg-slate-950 text-white px-4 py-3 rounded-xl border border-white/10 outline-none focus:border-indigo-500 font-bold"
-                />
-              </div>
-              <button 
-                type="submit"
-                className="w-full py-4 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl font-black text-base transition-all active:scale-95 shadow-lg shadow-emerald-500/20"
-              >
-                إنشاء الشابتر الآن 🚀
-              </button>
-            </form>
-          </div>
-        </div>
-      )}
 
-      {/* Add Board Modal */}
-      {isAddBoardOpen && (
-        <div className="fixed inset-0 z-[999999] flex items-center justify-center p-4" dir="rtl">
-          <div className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm" onClick={() => setIsAddBoardOpen(false)} />
-          <div className="relative bg-slate-900 border border-white/10 rounded-[2.5rem] p-8 max-w-lg w-full shadow-2xl flex flex-col animate-in zoom-in-95 duration-200 text-right">
-            <div className="flex justify-between items-center mb-6">
-              <h3 className="text-xl font-black text-white">إضافة صورة/حالة جديدة للشابتر</h3>
-              <button onClick={() => setIsAddBoardOpen(false)} className="p-2 bg-white/5 hover:bg-rose-500/20 text-slate-400 hover:text-rose-400 rounded-xl transition-all">
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-            <form onSubmit={handleAddBoard} className="space-y-6">
-              <div className="space-y-2">
-                <label className="text-xs font-black text-slate-400">عنوان الحالة / المرض</label>
-                <input 
-                  type="text" required placeholder="مثال: Corneal Ulcer..."
-                  value={newBoardForm.disease} onChange={e => setNewBoardForm({...newBoardForm, disease: e.target.value})}
-                  className="w-full bg-slate-950 text-white px-4 py-3 rounded-xl border border-white/10 outline-none focus:border-indigo-500 font-bold"
-                />
-              </div>
-              
-              <div className="space-y-2">
-                <label className="text-xs font-black text-slate-400">رابط الصورة المباشر (Link/URL)</label>
-                <input 
-                  type="text" required placeholder="مثال: https://i.postimg.cc/xyz.jpg..."
-                  value={newBoardForm.medicalImage} onChange={e => setNewBoardForm({...newBoardForm, medicalImage: e.target.value})}
-                  className="w-full bg-slate-950 text-white px-4 py-3 rounded-xl border border-white/10 outline-none focus:border-indigo-500 font-bold"
-                />
-              </div>
-
-              <div className="space-y-2">
-                <label className="text-xs font-black text-slate-400">شرح طبي إضافي (ملاحظات)</label>
-                <textarea 
-                  rows={4} placeholder="اكتب الشرح الطبي باللغة العربية أو الإنجليزية هنا..."
-                  value={newBoardForm.explanation} onChange={e => setNewBoardForm({...newBoardForm, explanation: e.target.value})}
-                  className="w-full bg-slate-950 text-white px-4 py-3 rounded-xl border border-white/10 outline-none focus:border-indigo-500 font-medium leading-relaxed"
-                />
-              </div>
-
-              <button 
-                type="submit"
-                className="w-full py-4 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl font-black text-base transition-all active:scale-95 shadow-lg shadow-emerald-500/20"
-              >
-                حفظ اللوحة الجديدة الآن 🚀
-              </button>
-            </form>
-          </div>
-        </div>
-      )}
 
 <style>{`
         .custom-scrollbar::-webkit-scrollbar { width: 4px; }
