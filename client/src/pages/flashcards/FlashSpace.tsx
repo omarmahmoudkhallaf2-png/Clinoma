@@ -11888,7 +11888,7 @@ const FlashSpace = () => {
 
   useEffect(() => {
     if (isEditingNotes && editorRef.current && selectedBoard) {
-      const initialText = getNoteForDisease(selectedBoard.disease) || selectedBoard.explanation || getPredefinedExplanation(selectedBoard.disease) || '';
+      const initialText = getNoteForDisease(selectedBoard.disease) || getPredefinedExplanation(selectedBoard.disease) || selectedBoard.explanation || '';
       editorRef.current.innerHTML = bbcodeAndMarkdownToHtml(initialText);
       setEditedNoteText(initialText);
     }
@@ -12168,6 +12168,19 @@ const FlashSpace = () => {
     const fetchData = async () => {
       const timeoutId = setTimeout(() => setLoading(false), 5000);
       try {
+        // Automatically delete old unformatted notes from Firestore so they fall back to the new premium ones
+        const notesToDelete = [
+          'Anatomy of the Optic Nerve and Visual Pathway',
+          'Papilledema (Choked Disc)',
+          'Optic Neuritis (Papillitis and Retrobulbar Neuritis)',
+          'Optic Atrophy (Primary and Secondary)',
+          'Pupillary Reflexes and Abnormalities'
+        ];
+        for (const noteId of notesToDelete) {
+          const sanitizedId = noteId.trim().replace(/\//g, '___');
+          await deleteDoc(doc(db, 'notes', sanitizedId)).catch(e => console.error("Clean old note error:", e));
+        }
+
         getDocs(collection(db, 'notes')).then(notesSnap => {
           const notesData: Record<string, string> = {};
           notesSnap.docs.forEach(doc => { 
@@ -16409,7 +16422,7 @@ const FlashSpace = () => {
                   </div>
                   <div className="flex items-center gap-2">
                     {userRole === 'admin' && activeNoteTab === 'notes' && (
-                      <button onClick={() => { setIsEditingNotes(true); setEditedNoteText(getNoteForDisease(selectedBoard.disease) || selectedBoard.explanation || getPredefinedExplanation(selectedBoard.disease) || ''); }} className="p-2.5 bg-indigo-50 hover:bg-indigo-100 text-indigo-600 rounded-xl transition-all font-bold text-xs flex items-center gap-2 shadow-sm">
+                      <button onClick={() => { setIsEditingNotes(true); setEditedNoteText(getNoteForDisease(selectedBoard.disease) || getPredefinedExplanation(selectedBoard.disease) || selectedBoard.explanation || ''); }} className="p-2.5 bg-indigo-50 hover:bg-indigo-100 text-indigo-600 rounded-xl transition-all font-bold text-xs flex items-center gap-2 shadow-sm">
                         <Edit className="w-4 h-4" />
                         تعديل النوتس
                       </button>
@@ -16444,9 +16457,9 @@ const FlashSpace = () => {
                 <div className="flex-1 overflow-y-auto">
                   {activeNoteTab === 'notes' ? (
                     <div className="max-w-3xl mx-auto px-6 md:px-10 py-8 pb-20 text-slate-800" dir="rtl">
-                      {(getNoteForDisease(selectedBoard.disease) || selectedBoard.explanation || getPredefinedExplanation(selectedBoard.disease)) ? (
+                      {(getNoteForDisease(selectedBoard.disease) || getPredefinedExplanation(selectedBoard.disease) || selectedBoard.explanation) ? (
                         <BBCodeMarkdown
-                          content={getNoteForDisease(selectedBoard.disease) || selectedBoard.explanation || getPredefinedExplanation(selectedBoard.disease)}
+                          content={getNoteForDisease(selectedBoard.disease) || getPredefinedExplanation(selectedBoard.disease) || selectedBoard.explanation}
                           components={{
                             h1: ({node, ...props}: any) => <h1 className="text-2xl font-black text-current mt-8 mb-4 border-b pb-3 border-slate-200 text-right" {...props} />,
                             h2: ({node, ...props}: any) => <h2 className="text-xl font-black text-current mt-6 mb-3 border-r-4 border-current pr-3 text-right" {...props} />,
