@@ -13057,10 +13057,10 @@ const FlashSpace = () => {
                     return (
                       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
                         {currentBoards.map(board => (
-                          <button
+                          <div
                             key={board.id}
                             onClick={() => { onNavigateToBoard(board); }}
-                            className="group relative bg-slate-900/50 backdrop-blur-xl border border-white/5 active:border-indigo-500/50 hover:border-indigo-500/40 rounded-3xl overflow-hidden transition-all duration-300 active:scale-[0.97] hover:scale-[1.02] text-left flex flex-col hover:shadow-2xl hover:shadow-indigo-500/20"
+                            className="group relative bg-slate-900/50 backdrop-blur-xl border border-white/5 hover:border-indigo-500/40 rounded-3xl overflow-hidden transition-all duration-300 active:scale-[0.97] hover:scale-[1.02] text-left flex flex-col hover:shadow-2xl hover:shadow-indigo-500/20 cursor-pointer"
                           >
                             <div className="flex-1 overflow-hidden bg-black/40 relative aspect-video">
                               <div className="absolute inset-0 bg-indigo-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 mix-blend-overlay" />
@@ -13073,14 +13073,44 @@ const FlashSpace = () => {
                                 </div>
                               </div>
                             </div>
-                            <div className="p-4 md:p-5 shrink-0 bg-gradient-to-t from-slate-900/80 to-transparent">
-                              <h5 className="font-black text-white text-sm md:text-base leading-snug line-clamp-2 drop-shadow-md">{board.disease}</h5>
-                              <div className="mt-2 flex items-center gap-2">
-                                <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]" />
-                                <span className="text-slate-400 text-[10px] md:text-xs font-semibold uppercase tracking-wider">Study Mode</span>
+                            <div className="p-4 md:p-5 shrink-0 bg-gradient-to-t from-slate-900/80 to-transparent relative z-30">
+                              <h5 className="font-black text-white text-sm md:text-base leading-snug line-clamp-2 drop-shadow-md pr-1">{board.disease}</h5>
+                              
+                              <div className="mt-2 flex items-center justify-between gap-2 flex-wrap">
+                                <div className="flex items-center gap-2">
+                                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]" />
+                                  <span className="text-slate-400 text-[10px] md:text-xs font-semibold uppercase tracking-wider">Study Mode</span>
+                                </div>
+
+                                {userRole === 'admin' && (board.module === 'Opthalmology' || board.module === 'Ophthalmology') && (
+                                  <div className="flex items-center gap-1.5" onClick={e => e.stopPropagation()} dir="rtl">
+                                    <button
+                                      onClick={() => {
+                                        setEditBoardForm({
+                                          id: board.id,
+                                          disease: board.disease || '',
+                                          medicalImage: board.medicalImage || '',
+                                          explanation: board.explanation || ''
+                                        });
+                                        setIsEditBoardOpen(true);
+                                      }}
+                                      className="px-2 py-1 bg-indigo-600/80 hover:bg-indigo-650 text-white rounded-lg text-[10px] font-bold transition-all"
+                                      title="تعديل الرابط / الاسم"
+                                    >
+                                      تعديل 📝
+                                    </button>
+                                    <button
+                                      onClick={() => handleDeleteBoard(board.id)}
+                                      className="px-2 py-1 bg-rose-600/80 hover:bg-rose-700 text-white rounded-lg text-[10px] font-bold transition-all"
+                                      title="حذف الصورة"
+                                    >
+                                      حذف 🗑️
+                                    </button>
+                                  </div>
+                                )}
                               </div>
                             </div>
-                          </button>
+                          </div>
                         ))}
                         <button
                           onClick={() => {
