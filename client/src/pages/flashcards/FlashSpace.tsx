@@ -11300,7 +11300,8 @@ const FlashSpace = () => {
 
                     return (
                       <button key={mod} onClick={() => {
-                        if (isOpthalmology && userData?.role !== 'admin') {
+                        const isReviewerEmail = user?.email?.toLowerCase().trim() === 'mahmoud.01201681278@gmail.com';
+                        if (isOpthalmology && userData?.role !== 'admin' && !isReviewerEmail) {
                           toast.error('هذا المديول تحت التطوير للأدمن فقط حالياً 🚧');
                           return;
                         }
