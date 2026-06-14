@@ -3452,6 +3452,1144 @@ interface Question {
 }
 
 const PEDIATRICS_QUESTIONS: Record<string, Question[]> = {
+  "Anatomy of the Lacrimal Secretory System & Tear Film": [
+    {
+      "id": "sec_paper_ophthalmology_anatomy_of_the_lacrimal_secretory_system___tear_film_q1",
+      "front": "Enumerate the components of the Lacrimal Secretory System.",
+      "back": "1) The main lacrimal gland.\n2) The accessory lacrimal glands (Krause's glands in the fornices and Wolfring glands in the palpebral conjunctiva)."
+    },
+    {
+      "id": "sec_paper_ophthalmology_anatomy_of_the_lacrimal_secretory_system___tear_film_q2",
+      "front": "Enumerate the three layers of the precorneal tear film and mention the source of secretion for each.",
+      "back": "1) Outer lipid layer: Secreted by Meibomian and accessory Zeiss glands.\n2) Middle aqueous layer: Secreted by main and accessory lacrimal glands.\n3) Inner mucin layer: Secreted by conjunctival goblet cells."
+    },
+    {
+      "id": "sec_paper_ophthalmology_anatomy_of_the_lacrimal_secretory_system___tear_film_q3",
+      "front": "Explain the main functions of tears.",
+      "back": "1) Nutrition: Supplies glucose and oxygen to the cornea.\n2) Optical: Maintains uniformity by filling epithelial irregularities.\n3) Protection: Wetting against dryness, mechanical washout, and antimicrobial action."
+    }
+  ],
+  "Anatomy & Physiology of the Lacrimal Drainage System": [
+    {
+      "id": "sec_paper_ophthalmology_anatomy___physiology_of_the_lacrimal_drainage_system_q1",
+      "front": "Enumerate the components of the Lacrimal Drainage System.",
+      "back": "1) Two lacrimal puncta.\n2) Two canaliculi.\n3) Lacrimal sac.\n4) Nasolacrimal duct."
+    },
+    {
+      "id": "sec_paper_ophthalmology_anatomy___physiology_of_the_lacrimal_drainage_system_q2",
+      "front": "Explain the anatomy and function of Hasner's valve.",
+      "back": "It is a one-way valve guarding the end of the nasolacrimal duct in the inferior meatus of the nose. It allows tears down into the nose but prevents air from going up into the lacrimal system."
+    },
+    {
+      "id": "sec_paper_ophthalmology_anatomy___physiology_of_the_lacrimal_drainage_system_q3",
+      "front": "Explain the tear drainage mechanism.",
+      "back": "Evaporation accounts for a small percentage. Excretion occurs via Passive forces (gravity and capillarity) and Active forces (the pump mechanism of the lacrimal sac driven by Horner's muscle during blinking)."
+    }
+  ],
+  "Watering of the Eye (Lacrimation vs. Epiphora)": [
+    {
+      "id": "sec_paper_ophthalmology_watering_of_the_eye__lacrimation_vs__epiphora__q1",
+      "front": "Define Watering of the Eye and mention its two main divisions.",
+      "back": "- Definition: Overflow of tears on the cheek. \n- Divisions: Lacrimation and Epiphora."
+    },
+    {
+      "id": "sec_paper_ophthalmology_watering_of_the_eye__lacrimation_vs__epiphora__q2",
+      "front": "Define Lacrimation and enumerate its main causes.",
+      "back": "- Definition: Over-secretion of tears with normal, patent lacrimal passages.\n- Causes: Psychic and emotional conditions, Synkinesis with cranial nerves (yawning/vomiting), and Reflexes (bright light, corneal foreign body, or nasal mucosa irritation)."
+    },
+    {
+      "id": "sec_paper_ophthalmology_watering_of_the_eye__lacrimation_vs__epiphora__q3",
+      "front": "Define Epiphora and enumerate its causes due to failure of the pump mechanism.",
+      "back": "- Definition: Obstruction of the lacrimal passages with normal tear secretion.\n- Causes due to pump failure: Irregular sharp lid margin, ectropion, or orbicularis muscle paralysis (facial nerve palsy)."
+    }
+  ],
+  "Clinical Evaluation and Investigations of Epiphora": [
+    {
+      "id": "sec_paper_ophthalmology_clinical_evaluation_and_investigations_of_epiphora_q1",
+      "front": "Explain the technique and significance of the Regurgitation Test.",
+      "back": "- Technique: Apply firm pressure over the lacrimal sac against the lacrimal bone.\n- Significance: Positive Regurgitation (reflux of pus/tears) indicates nasolacrimal duct obstruction and serves as a definite proof of anatomical blockage. Negative Regurgitation signifies patent passages or a blockage higher up in the canaliculi."
+    },
+    {
+      "id": "sec_paper_ophthalmology_clinical_evaluation_and_investigations_of_epiphora_q2",
+      "front": "Enumerate the imaging and ENT evaluation methods used for Epiphora.",
+      "back": "1) Dacryocystography: Visualizes anatomical details and exact site of strictures using contrast material.\n2) Computed Tomography (CT) scan.\n3) ENT Examination: Vital to discover external outlet obstructions and evaluate the nasal mucosa."
+    }
+  ],
+  "Surgical Management of Epiphora": [
+    {
+      "id": "sec_paper_ophthalmology_surgical_management_of_epiphora_q1",
+      "front": "Enumerate the surgical options for punctal and canalicular stenosis.",
+      "back": "Dilatation and probing, One-snip ampullotomy, Laser punctoplasty, Two-snip operation, and Conjunctivo-dacryocystorhinostomy."
+    },
+    {
+      "id": "sec_paper_ophthalmology_surgical_management_of_epiphora_q2",
+      "front": "Explain the stepwise management of congenital Nasolacrimal Duct (NLD) obstruction.",
+      "back": "Starts with medical hydrostatic massage over the sac and topical antibiotics during the first year of life. Followed by mechanical dilatation and probing if it fails. If probing fails repeatedly, silastic intubation or a surgical bypass is performed."
+    },
+    {
+      "id": "sec_paper_ophthalmology_surgical_management_of_epiphora_q3",
+      "front": "Explain the surgical management of acquired Nasolacrimal Duct obstruction.",
+      "back": "Probing usually fails in adults. It requires Dacryocystorhinostomy (DCR) to create a permanent fistula between the sac and the nasal mucosa, or Dacryocystectomy (DCT) if the bypass is contraindicated."
+    }
+  ],
+  "Acute and Chronic Dacryocystitis": [
+    {
+      "id": "sec_paper_ophthalmology_acute_and_chronic_dacryocystitis_q1",
+      "front": "Define Acute Dacryocystitis and enumerate its complications.",
+      "back": "- Definition: Acute suppurative inflammation of the lacrimal sac.\n- Complications: Lacrimal fistula, pyocele, progression to chronic dacryocystitis, orbital cellulitis, and cavernous sinus thrombosis."
+    },
+    {
+      "id": "sec_paper_ophthalmology_acute_and_chronic_dacryocystitis_q2",
+      "front": "Explain the clinical picture of Chronic Dacryocystitis.",
+      "back": "Epiphora accompanied by mucoid or purulent discharge, a hyperemic inner canthus, a painless sac swelling below the medial palpebral ligament, and a positive regurgitation test."
+    },
+    {
+      "id": "sec_paper_ophthalmology_acute_and_chronic_dacryocystitis_q3",
+      "front": "Enumerate the complications of Chronic Dacryocystitis.",
+      "back": "Hypopyon corneal ulcers from minor abrasions, eczema or ectropion from chronic watering, recurrent conjunctivitis, mucocele, and it stands as a major septic contraindication for any intraocular surgery."
+    }
+  ],
+  "Dry Eye Syndrome & Lacrimal Gland Diseases": [
+    {
+      "id": "sec_paper_ophthalmology_dry_eye_syndrome___lacrimal_gland_diseases_q1",
+      "front": "Define Dry Eye Syndrome and enumerate its causes.",
+      "back": "- Definition: Partial or absolute deficiency in aqueous tear production or stability.\n- Causes: Congenital alacrima, surgical removal/trauma, chronic sarcoidosis dacryoadenitis, Keratoconjunctivitis sicca, mucin deficiency (trachoma/chemical burns), vitamin A deficiency, lagophthalmos, senile glandular atrophy, and iatrogenic drugs."
+    },
+    {
+      "id": "sec_paper_ophthalmology_dry_eye_syndrome___lacrimal_gland_diseases_q2",
+      "front": "Explain the clinical picture and diagnostic tests for Dry Eye Syndrome.",
+      "back": "- Clinical Picture: Ocular irritation, foreign body/burning sensation, deficient tear film, punctate epithelial erosions, filamentary keratitis, conjunctival wrinkling, and Bitot's spots.\n- Diagnosis: Schirmer's test, Tear break-up time, and Rose Bengal staining."
+    },
+    {
+      "id": "sec_paper_ophthalmology_dry_eye_syndrome___lacrimal_gland_diseases_q3",
+      "front": "Enumerate the lines of treatment for Dry Eye Syndrome.",
+      "back": "Protective glasses, artificial tear drops and lubricating gels, punctal occlusion, therapeutic soft bandage contact lenses, mucolytics (acetylcysteine), and short courses of local steroids."
+    }
+  ],
+  "Normal Anatomy & Histology of the Conjunctiva": [
+    {
+      "id": "sec_paper_ophthalmology_normal_anatomy___histology_of_the_conjunctiva_q1",
+      "front": "Enumerate the two primary histological layers of the conjunctiva.",
+      "back": "1) The Epithelium.\n2) The Substantia Propria."
+    },
+    {
+      "id": "sec_paper_ophthalmology_normal_anatomy___histology_of_the_conjunctiva_q2",
+      "front": "Explain the structure of the Substantia Propria.",
+      "back": "It is composed of two distinct layers:\n- Superficial adenoid layer: Formed of loose connective tissue containing numerous leukocytes.\n- Deep fibrous layer: Much denser in structure, containing the blood vessels and nerves of the conjunctiva."
+    },
+    {
+      "id": "sec_paper_ophthalmology_normal_anatomy___histology_of_the_conjunctiva_q3",
+      "front": "Enumerate the main clinical classifications of conjunctival diseases.",
+      "back": "Inflammations (Conjunctivitis), Allergic reactions, and Degenerations."
+    }
+  ],
+  "Acute Mucopurulent Conjunctivitis (MPC)": [
+    {
+      "id": "sec_paper_ophthalmology_acute_mucopurulent_conjunctivitis__mpc__q1",
+      "front": "Define Acute Mucopurulent Conjunctivitis.",
+      "back": "An acute infective conjunctivitis characterized by marked hyperemia and mucopurulent discharge."
+    },
+    {
+      "id": "sec_paper_ophthalmology_acute_mucopurulent_conjunctivitis__mpc__q2",
+      "front": "Enumerate the causative organisms of MPC.",
+      "back": "Koch-Weeks bacillus (80% of cases, also known as Haemophilus aegyptius) and other pyogenic organisms (20%, e.g., Staphylococcus, Streptococcus, Pneumococcus)."
+    },
+    {
+      "id": "sec_paper_ophthalmology_acute_mucopurulent_conjunctivitis__mpc__q3",
+      "front": "Explain why an eyelid bandage is absolutely contraindicated in MPC.",
+      "back": "It is completely contraindicated because it prevents the free exit of discharge, increases the temperature of the conjunctival sac, and promotes bacterial multiplication and toxin retention."
+    }
+  ],
+  "Acute Purulent Conjunctivitis (PC / Acute Blenorrhoea)": [
+    {
+      "id": "sec_paper_ophthalmology_acute_purulent_conjunctivitis__pc___acute_blenorrhoea__q1",
+      "front": "Define Acute Purulent Conjunctivitis.",
+      "back": "An acute, highly contagious suppurative inflammation of the conjunctiva characterized by severe hyperemia, copious purulent discharge, preauricular lymphadenopathy, and a strong tendency for corneal involvement."
+    },
+    {
+      "id": "sec_paper_ophthalmology_acute_purulent_conjunctivitis__pc___acute_blenorrhoea__q2",
+      "front": "Explain the clinical progression (stages) of Purulent Conjunctivitis.",
+      "back": "1) Stage of Infiltration (2-3 days): Marked eyelid edema, severe conjunctival chemosis, watery/mucoid discharge, and mild fever.\n2) Stage of Discharge (2-3 weeks): Diminishing edema but development of profuse, thick purulent discharge.\n3) Chronic Stage (2-3 months): Subsiding edema, redness localized to fornices, minimal discharge but full of gonococci (carrier state)."
+    },
+    {
+      "id": "sec_paper_ophthalmology_acute_purulent_conjunctivitis__pc___acute_blenorrhoea__q3",
+      "front": "Explain the corneal complications of Purulent Conjunctivitis and why they occur.",
+      "back": "Severe marginal or central corneal ulcers that commonly perforate. This occurs because Gonococci can invade an intact corneal epithelium, and severe chemosis compresses limbal capillaries (impairing nutrition) while forming a physical gutter that traps proteolytic enzymes and exotoxins."
+    }
+  ],
+  "Ophthalmia Neonatorum": [
+    {
+      "id": "sec_paper_ophthalmology_ophthalmia_neonatorum_q1",
+      "front": "Define Ophthalmia Neonatorum.",
+      "back": "Any form of acute conjunctivitis occurring within the first month after delivery, transmitted from maternal passages during labor or via contaminated towels."
+    },
+    {
+      "id": "sec_paper_ophthalmology_ophthalmia_neonatorum_q2",
+      "front": "Enumerate the infectious and non-infectious causes of Ophthalmia Neonatorum.",
+      "back": "- Infectious: Gonococci (50%), Chlamydia trachomatis, other bacteria (Staph, Strept, B. coli, Pneumococcus), and Herpes simplex virus.\n- Non-infectious: Chemical conjunctivitis induced by irritation from prophylactic drops."
+    },
+    {
+      "id": "sec_paper_ophthalmology_ophthalmia_neonatorum_q3",
+      "front": "Explain the clinical features and treatment of N. Gonorrhoeae Ophthalmia Neonatorum.",
+      "back": "- Features: Onset at 24-48 hours, hyperacute, copious purulent discharge, severe lid swelling/chemosis. \n- Treatment: Requires systemic Benzyl penicillin or a single IM injection of Cefotaxime plus topical tobramycin/fluoroquinolone drops."
+    }
+  ],
+  "Inclusion & Adenoviral Conjunctivitis": [
+    {
+      "id": "sec_paper_ophthalmology_inclusion___adenoviral_conjunctivitis_q1",
+      "front": "Enumerate the types and causative agents of Adenoviral Conjunctivitis.",
+      "back": "1) Epidemic Keratoconjunctivitis (EKC): Caused by adenovirus types 8 and 19.\n2) Pharyngo-conjunctival fever (PCF): Caused by types 3 and 7."
+    },
+    {
+      "id": "sec_paper_ophthalmology_inclusion___adenoviral_conjunctivitis_q2",
+      "front": "Explain the clinical picture of Inclusion Conjunctivitis in adults.",
+      "back": "Hyperemia, mucopurulent discharge, large follicles located mainly in the lower palpebral conjunctiva, superficial keratitis (without pannus), and preauricular lymphadenopathy."
+    },
+    {
+      "id": "sec_paper_ophthalmology_inclusion___adenoviral_conjunctivitis_q3",
+      "front": "Explain the key clinical differences between EKC and PCF.",
+      "back": "EKC is characterized by progressive keratitis (punctate epithelial keratitis -> subepithelial lesions -> stromal infiltrates). PCF is characterized by systemic symptoms like fever and pharyngitis."
+    }
+  ],
+  "Trachoma (Egyptian Ophthalmia) - Pathogenesis & McCallan's Classification": [
+    {
+      "id": "sec_paper_ophthalmology_trachoma__egyptian_ophthalmia____pathogenesis___mccallan_s_classification_q1",
+      "front": "Define Trachoma.",
+      "back": "A chronic infective keratoconjunctivitis caused by Chlamydia trachomatis, characterized by the formation of follicles, papillae, and pannus, healing exclusively by cicatrization (scarring) leading to potential lid deformities and blindness."
+    },
+    {
+      "id": "sec_paper_ophthalmology_trachoma__egyptian_ophthalmia____pathogenesis___mccallan_s_classification_q2",
+      "front": "Explain McCallan's Stage T1 (Trachoma at onset).",
+      "back": "Incubation of 6-12 days. Gritty sensation, lid heaviness, mucoid discharge, and photophobia. Shows small, immature, non-raised, grayish, non-expressible follicles on the upper tarsal conjunctiva. Early upper corneal active infiltration (Trachomatous pannus) begins."
+    },
+    {
+      "id": "sec_paper_ophthalmology_trachoma__egyptian_ophthalmia____pathogenesis___mccallan_s_classification_q3",
+      "front": "Explain the findings in McCallan's Stage T3 (Starting cicatrization).",
+      "back": "Active inflammation coexists with early scarring. Shows star-shaped or radiating white scars on the upper tarsal conjunctiva, including Arlt's line. May show Post-trachomatous degenerations (PTDs) and Post-trachomatous concretions (PTCs)."
+    }
+  ],
+  "WHO Classification & Corneal Manifestations / Complications of Trachoma": [
+    {
+      "id": "sec_paper_ophthalmology_who_classification___corneal_manifestations___complications_of_trachoma_q1",
+      "front": "Enumerate the components of the WHO Simplified Grading System for Trachoma.",
+      "back": "1) TF: Trachomatous Follicles.\n2) TI: Trachomatous Intense.\n3) TS: Trachomatous Scarring.\n4) TT: Trachomatous Trichiasis.\n5) CO: Corneal Opacity."
+    },
+    {
+      "id": "sec_paper_ophthalmology_who_classification___corneal_manifestations___complications_of_trachoma_q2",
+      "front": "Explain Trachomatous Pannus and Herbert's Rosettes.",
+      "back": "- Trachomatous Pannus: Cellular infiltration and superficial vascularization of the upper cornea.\n- Herbert's Rosettes: Grayish small elevated lymphoid follicles at the edge of the active pannus. They heal to leave permanent, depressed clear pits at the limbus called Herbert's pits."
+    },
+    {
+      "id": "sec_paper_ophthalmology_who_classification___corneal_manifestations___complications_of_trachoma_q3",
+      "front": "Enumerate the eyelid and conjunctival complications of Trachoma.",
+      "back": "- Eyelid: Trichiasis, cicatricial entropion, and mechanical/infiltrative ptosis.\n- Conjunctiva: Xerosis, posterior symblepharon, and hyaline degeneration of tarsus/conjunctiva."
+    }
+  ],
+  "Vernal Kerato-Conjunctivitis (VKC / Spring Catarrh)": [
+    {
+      "id": "sec_paper_ophthalmology_vernal_kerato_conjunctivitis__vkc___spring_catarrh__q1",
+      "front": "Define Vernal Kerato-Conjunctivitis (VKC).",
+      "back": "A chronic, bilateral, recurrent seasonal allergic conjunctivitis driven by IgE-mediated hypersensitivity to unknown exogenous allergens (ultraviolet rays, heat, dust, pollen grains)."
+    },
+    {
+      "id": "sec_paper_ophthalmology_vernal_kerato_conjunctivitis__vkc___spring_catarrh__q2",
+      "front": "Explain the clinical signs of the Palpebral and Bulbar types of VKC.",
+      "back": "- Palpebral type: Upper palpebral conjunctiva shows large, flat-topped, dark red or bluish-white papillae arranged in a characteristic \"cobble-stone\" pattern.\n- Bulbar type: Shows gelatinous masses at the limbus containing small, white elevated spots called \"Tranta's spots\" (concretions of calcium, eosinophils, and necrotic epithelium)."
+    },
+    {
+      "id": "sec_paper_ophthalmology_vernal_kerato_conjunctivitis__vkc___spring_catarrh__q3",
+      "front": "Enumerate the corneal manifestations of VKC.",
+      "back": "Punctate epithelial keratitis, epithelial macro-erosions forming a sterile \"Shield ulcer,\" and peripheral corneal opacities resembling arcus senilis."
+    }
+  ],
+  "Phlyctenular Kerato-Conjunctivitis & Conjunctival Degenerations": [
+    {
+      "id": "sec_paper_ophthalmology_phlyctenular_kerato_conjunctivitis___conjunctival_degenerations_q1",
+      "front": "Define Phlyctenular Kerato-Conjunctivitis and describe its characteristic lesion.",
+      "back": "- Definition: An acute allergic nodular condition resulting from hypersensitivity to an endogenous allergen/toxin.\n- Characteristic Lesion: The Phlycten—a round, small (1–3 mm), grayish elevated nodule surrounded by a localized zone of conjunctival injection, commonly located at the limbus."
+    },
+    {
+      "id": "sec_paper_ophthalmology_phlyctenular_kerato_conjunctivitis___conjunctival_degenerations_q2",
+      "front": "Explain the clinical features of a Pterygium.",
+      "back": "A triangular vascular encroachment of the conjunctiva onto the cornea. Consists of a blunt head (apex on cornea), neck (at limbus), and body (on sclera). Located nasally and usually bilateral."
+    },
+    {
+      "id": "sec_paper_ophthalmology_phlyctenular_kerato_conjunctivitis___conjunctival_degenerations_q3",
+      "front": "Enumerate the indications for surgical removal of a Pterygium.",
+      "back": "Indicated if it is progressive, encroaches on the pupil, causes disfigurement, or induces diplopia."
+    }
+  ],
+  "Symblepharon": [
+    {
+      "id": "sec_paper_ophthalmology_symblepharon_q1",
+      "front": "Define Symblepharon.",
+      "back": "Pathological adhesion of the palpebral conjunctiva to the bulbar conjunctiva or the corneal surface."
+    },
+    {
+      "id": "sec_paper_ophthalmology_symblepharon_q2",
+      "front": "Enumerate the causes of Symblepharon.",
+      "back": "1) Severe cicatricial trachoma.\n2) Chemical/thermal trauma (acid or alkali burns).\n3) Postoperative surgical complications.\n4) Membranous conjunctivitis.\n5) Autoimmune blistering diseases (Stevens-Johnson syndrome and ocular cicatricial pemphigoid)."
+    },
+    {
+      "id": "sec_paper_ophthalmology_symblepharon_q3",
+      "front": "Explain the prophylactic management (acute phase) of Symblepharon.",
+      "back": "Frequent sweeping of the fornices with a glass rod coated with antibiotic ointment to break early fibrinous adhesions, topical cortisone to check active fibroblastic proliferation, and insertion of a symblepharon contact shell until complete epithelialization."
+    }
+  ],
+  "Applied Anatomy, Histology, & Physiology of the Crystalline Lens": [
+    {
+      "id": "sec_paper_ophthalmology_applied_anatomy__histology____physiology_of_the_crystalline_lens_q1",
+      "front": "Enumerate the histological components of the crystalline lens.",
+      "back": "1) Capsule: A smooth, elastic, semipermeable basement membrane.\n2) Anterior Epithelium: A single layer of cuboidal metabolic cells.\n3) Lens Fibers: Elongated, tightly packed cells forming the cortex and the nucleus."
+    },
+    {
+      "id": "sec_paper_ophthalmology_applied_anatomy__histology____physiology_of_the_crystalline_lens_q2",
+      "front": "Explain the physiological mechanism of Accommodation.",
+      "back": "Contraction of the ciliary muscle moves the ciliary body forward and inward, relaxing the zonules of Zinn. Due to its intrinsic elasticity, the lens capsule bulges forward, making the anterior surface highly convex and increasing its refractive index, while the posterior surface remains almost unchanged."
+    },
+    {
+      "id": "sec_paper_ophthalmology_applied_anatomy__histology____physiology_of_the_crystalline_lens_q3",
+      "front": "Enumerate the physiological and anatomical factors maintaining lens transparency.",
+      "back": "Absolute avascularity, tightly packed fiber membranes, a regular lattice arrangement of crystalline proteins, and an active ATP-dependent sodium-potassium dehydration pump located in the epithelium."
+    }
+  ],
+  "Congenital and Developmental Cataract: Etiology, Morphology, and Complications": [
+    {
+      "id": "sec_paper_ophthalmology_congenital_and_developmental_cataract__etiology__morphology__and_complications_q1",
+      "front": "Define congenital cataract and enumerate its maternal causes.",
+      "back": "- Definition: An opacity of the crystalline lens or its capsule present at birth or developing during early infancy.\n- Maternal Causes: Intrauterine infections (TORCH, mainly Rubella), maternal malnutrition, avitaminosis (Vitamin D/Calcium deficiency), and systemic hypoxia or placental hemorrhages."
+    },
+    {
+      "id": "sec_paper_ophthalmology_congenital_and_developmental_cataract__etiology__morphology__and_complications_q2",
+      "front": "Explain the clinical presentation and morphological features of Zonular / Lamellar Cataract.",
+      "back": "It is the commonest symptomatic developmental type. It affects a specific layer or zone of the lens cortex while the nucleus and outer cortex remain clear. It shows a central disc opacification with linear \"riders\" or spokes projecting outward like a steering wheel."
+    },
+    {
+      "id": "sec_paper_ophthalmology_congenital_and_developmental_cataract__etiology__morphology__and_complications_q3",
+      "front": "Explain the ocular complications of visually significant central congenital cataracts.",
+      "back": "They obstruct light projection, leading to irreversible sensory deprivation amblyopia (lazy eye). Unilateral cases cause sensory strabismus (squint), and bilateral cases lead to generalized horizontal nystagmus and delayed mental development."
+    }
+  ],
+  "Acquired Senile Cortical Cataract: Stages and Morphology": [
+    {
+      "id": "sec_paper_ophthalmology_acquired_senile_cortical_cataract__stages_and_morphology_q1",
+      "front": "Explain the pathogenesis of senile cortical cataract.",
+      "back": "Driven by age-related oxidative stress. The primary mechanism involves two major changes: initial over-hydration of lens fibers (fluid influx) followed by structural denaturation and subsequent coagulation of the lens proteins."
+    },
+    {
+      "id": "sec_paper_ophthalmology_acquired_senile_cortical_cataract__stages_and_morphology_q2",
+      "front": "Enumerate the four successive clinical stages of senile cortical cataract.",
+      "back": "1) Incipient Stage.\n2) Immature Stage.\n3) Mature Stage.\n4) Hypermature Stage."
+    },
+    {
+      "id": "sec_paper_ophthalmology_acquired_senile_cortical_cataract__stages_and_morphology_q3",
+      "front": "Explain the \"Intumescent Form\" and its major complication.",
+      "back": "A critical variant of the immature stage where rapid fiber breakdown causes massive osmotic fluid influx. The lens swells significantly, deepening the posterior chamber and pushing the iris forward. This narrows the anterior chamber angle and can precipitate acute secondary phacomorphic angle-closure glaucoma."
+    },
+    {
+      "id": "sec_paper_ophthalmology_acquired_senile_cortical_cataract__stages_and_morphology_q4",
+      "front": "Differentiate between the Sclerotic and Morgagnian forms of Hypermature cataract.",
+      "back": "- Sclerotic Form: The lens shrinks into a small, flat, yellow disc with a deeply wrinkled anterior capsule and a tremulous iris (iridodonesis).\n- Morgagnian Form: The entire cortex liquefies into a milky-white fluid, and the dense, hard, brownish-yellow nucleus resists proteolysis and sinks heavily to the bottom of the capsular bag."
+    }
+  ],
+  "Senile Nuclear Cataract and Nuclear Sclerosis Differential Diagnosis": [
+    {
+      "id": "sec_paper_ophthalmology_senile_nuclear_cataract_and_nuclear_sclerosis_differential_diagnosis_q1",
+      "front": "Explain the clinical phenomenon of \"second sight\" in early senile nuclear cataract.",
+      "back": "The marked increase in the refractive index of the sclerosed nucleus induces a progressive index myopia. This index change shifts the patient's near point closer, temporarily correcting presbyopia and allowing elderly patients to read again without reading glasses."
+    },
+    {
+      "id": "sec_paper_ophthalmology_senile_nuclear_cataract_and_nuclear_sclerosis_differential_diagnosis_q2",
+      "front": "Differentiate clinically between physiological Nuclear Sclerosis and pathological Nuclear Cataract regarding visual acuity and red reflex.",
+      "back": "- Nuclear Sclerosis: Visual acuity is easily corrected back to normal (6/6) using appropriate myopic spectacles. Distant direct ophthalmoscopy shows a completely clear, unobstructed red reflex.\n- Nuclear Cataract: Visual acuity cannot be improved or corrected with spectacles. The red reflex demonstrates a permanent central black silhouette defect."
+    }
+  ],
+  "Lens-Induced Glaucomas and Lens Displacements (Ectopia Lentis)": [
+    {
+      "id": "sec_paper_ophthalmology_lens_induced_glaucomas_and_lens_displacements__ectopia_lentis__q1",
+      "front": "Enumerate the types of Lens-Induced (Phacogenic) Glaucomas.",
+      "back": "1) Phacomorphic Glaucoma.\n2) Phacolytic Glaucoma.\n3) Phacoanaphylactic Endophthalmitis/Glaucoma.\n4) Lens-Particle Glaucoma."
+    },
+    {
+      "id": "sec_paper_ophthalmology_lens_induced_glaucomas_and_lens_displacements__ectopia_lentis__q2",
+      "front": "Define Phacolytic Glaucoma and explain its mechanism.",
+      "back": "A secondary open-angle glaucoma occurring in hypermature cataracts. Soluble, heavy liquid lens proteins leak through the intact but degenerated capsule into the anterior chamber. Macrophages phagocytose these proteins, swell, and permanently clog the trabecular meshwork."
+    },
+    {
+      "id": "sec_paper_ophthalmology_lens_induced_glaucomas_and_lens_displacements__ectopia_lentis__q3",
+      "front": "Differentiate between lens subluxation and lens dislocation.",
+      "back": "- Subluxation (Partial Displacement): Some zonular fibers are broken; the lens tilts but remains behind the pupil.\n- Dislocation (Complete Displacement): All zonular fibers are ruptured, and the lens is completely displaced from the pupillary area (either anteriorly into the AC or posteriorly into the vitreous)."
+    }
+  ],
+  "Preoperative Ocular Assessment, Biometry, and Intraocular Lens (IOL) Modalities": [
+    {
+      "id": "sec_paper_ophthalmology_preoperative_ocular_assessment__biometry__and_intraocular_lens__iol__modalities_q1",
+      "front": "Enumerate the crucial local ocular assessments required before cataract surgery.",
+      "back": "1) Visual Acuity Testing (essential check for Light Perception PL and Projection PR).\n2) Intraocular Pressure (IOP).\n3) Adnexa & Conjunctiva (to rule out active infections).\n4) Cornea (clarity and endothelial health).\n5) Pupillary Light Reflexes.\n6) Posterior Segment Assessment (fundoscopy or B-scan ultrasound)."
+    },
+    {
+      "id": "sec_paper_ophthalmology_preoperative_ocular_assessment__biometry__and_intraocular_lens__iol__modalities_q2",
+      "front": "Explain the purpose of Biometry and mention the parameters used in the SRK formula.",
+      "back": "- Purpose: To determine the exact dioptric power of the intraocular implant.\n- Parameters: Axial Length (L) measured by A-scan ultrasonography, and Corneal curvature/refractive power (K) measured by Keratometry. Formula: P = A - 2.5L - 0.9K."
+    },
+    {
+      "id": "sec_paper_ophthalmology_preoperative_ocular_assessment__biometry__and_intraocular_lens__iol__modalities_q3",
+      "front": "Enumerate the optical designs and anatomical fixation sites of Intraocular Lenses (IOLs).",
+      "back": "- Optical Designs: Monofocal, Multifocal/Accommodative, and Toric IOLs.\n- Anatomical Fixation: Posterior Chamber IOLs (in the capsular bag or in the sulcus) and Anterior Chamber IOLs (in the angle)."
+    }
+  ],
+  "Modern Cataract Surgical Techniques and Complications": [
+    {
+      "id": "sec_paper_ophthalmology_modern_cataract_surgical_techniques_and_complications_q1",
+      "front": "Enumerate the major sequential steps of Phacoemulsification.",
+      "back": "1) Clear corneal micro-incision.\n2) Continuous Curvilinear Capsulorhexis (CCC).\n3) Hydrodissection & Hydrodelineation.\n4) Ultrasonic Nuclear Emulsification.\n5) Automated Cortical Aspiration.\n6) Implantation of a flexible, foldable PCIOL inside the capsular bag."
+    },
+    {
+      "id": "sec_paper_ophthalmology_modern_cataract_surgical_techniques_and_complications_q2",
+      "front": "Explain the indications for Manual Extracapsular Cataract Extraction (ECCE) vs. Intracapsular Cataract Extraction (ICCE).",
+      "back": "- ECCE: Indicated for extremely hard, advanced cataracts where phacoemulsification might damage the corneal endothelium.\n- ICCE: Obsolete for standard cases, but remains indicated for severe lens subluxation or dislocation."
+    },
+    {
+      "id": "sec_paper_ophthalmology_modern_cataract_surgical_techniques_and_complications_q3",
+      "front": "Enumerate the major postoperative complications of cataract surgery.",
+      "back": "Operative vitreous loss, expulsive choroidal hemorrhage, postoperative transient corneal edema (striate keratopathy), secondary glaucoma, cystoid macular edema, retinal detachment, and acute bacterial endophthalmitis."
+    }
+  ],
+  "Traumatic, Complicated, and After-Cataract (Posterior Capsule Opacification)": [
+    {
+      "id": "sec_paper_ophthalmology_traumatic__complicated__and_after_cataract__posterior_capsule_opacification__q1",
+      "front": "Describe the clinical signs of a Concussion (Blunt) Trauma cataract.",
+      "back": "Causes a characteristic \"Rosette-shaped\" or feathery cortical opacity, typically tracking along the posterior lens sutures. It may also show a Vossius ring (a circular ring of brown iris pigment imprinted on the anterior lens capsule at the site of impact)."
+    },
+    {
+      "id": "sec_paper_ophthalmology_traumatic__complicated__and_after_cataract__posterior_capsule_opacification__q2",
+      "front": "Explain the pathogenesis and morphological appearance of a Complicated Cataract.",
+      "back": "- Pathogenesis: Diffusing toxins or metabolic imbalances from chronic intraocular diseases (like chronic anterior uveitis or retinitis pigmentosa) alter lens permeability.\n- Appearance: Characteristically manifests as a bread-crumb-like posterior subcapsular cortical opacity displaying a distinct irregular \"polychromatic luster\" (iridescent gold, green, and blue sheen)."
+    },
+    {
+      "id": "sec_paper_ophthalmology_traumatic__complicated__and_after_cataract__posterior_capsule_opacification__q3",
+      "front": "Define After-Cataract (Posterior Capsule Opacification) and explain its management.",
+      "back": "- Definition: Opacification and thickening of the remaining posterior lens capsule that persists or develops months to years after a successful extracapsular cataract extraction or phacoemulsification, forming Elschnig's pearls or Soemmering's ring.\n- Management: Non-invasive, outpatient Neodymium:YAG (Nd:YAG) laser capsulotomy to create a clear central opening in the pupillary visual axis."
+    }
+  ],
+  "Anatomy of the Orbit (Walls, Foramina, Sinuses, and Contents)": [
+    {
+      "id": "sec_paper_ophthalmology_anatomy_of_the_orbit__walls__foramina__sinuses__and_contents__q1",
+      "front": "Enumerate the bones forming the walls of the orbit.",
+      "back": "Comprised of seven bones: ethmoid, frontal, lacrimal, maxillary, palatine, sphenoid, and zygomatic."
+    },
+    {
+      "id": "sec_paper_ophthalmology_anatomy_of_the_orbit__walls__foramina__sinuses__and_contents__q2",
+      "front": "Explain the transmissions of the Superior Orbital Fissure.",
+      "back": "It transmits the oculomotor (3rd), trochlear (4th), and abducent (6th) nerves, the three branches of the ophthalmic division of the trigeminal nerve, superior and inferior ophthalmic veins, and sympathetic fibers."
+    },
+    {
+      "id": "sec_paper_ophthalmology_anatomy_of_the_orbit__walls__foramina__sinuses__and_contents__q3",
+      "front": "Enumerate the intra-orbital contents.",
+      "back": "The eyeball, extraocular muscles, lacrimal gland, vessels and nerves, ciliary ganglion, and orbital fat."
+    }
+  ],
+  "Orbital Infections: Orbital Cellulitis and Preseptal Cellulitis": [
+    {
+      "id": "sec_paper_ophthalmology_orbital_infections__orbital_cellulitis_and_preseptal_cellulitis_q1",
+      "front": "Define Orbital Cellulitis and enumerate its etiology.",
+      "back": "- Definition: Acute suppurative inflammation of the orbital fibrofatty tissue.\n- Etiology: Endogenous (extension from paranasal sinuses), Exogenous (penetrating trauma or septic surgery), or Blood-borne (metastatic infection as in pyemia)."
+    },
+    {
+      "id": "sec_paper_ophthalmology_orbital_infections__orbital_cellulitis_and_preseptal_cellulitis_q2",
+      "front": "Explain the clinical signs of Orbital Cellulitis.",
+      "back": "Lid edema, conjunctival chemosis, rapid axial proptosis, and marked limitation of ocular movements in all directions."
+    },
+    {
+      "id": "sec_paper_ophthalmology_orbital_infections__orbital_cellulitis_and_preseptal_cellulitis_q3",
+      "front": "Define Preseptal Cellulitis and explain how it clinically differentiates from true orbital cellulitis.",
+      "back": "- Definition: Infection of the eyelid and surrounding skin strictly anterior to the orbital septum.\n- Differentiation: In preseptal cellulitis, visual acuity is not affected, ocular movement is completely intact, and there is no proptosis (which clinically differentiates it from true orbital cellulitis)."
+    }
+  ],
+  "Thyroid Eye Disease (TED) & Thyrotoxic Exophthalmos (Graves' Disease)": [
+    {
+      "id": "sec_paper_ophthalmology_thyroid_eye_disease__ted____thyrotoxic_exophthalmos__graves__disease__q1",
+      "front": "Define Thyroid Eye Disease and explain its pathogenesis.",
+      "back": "- Definition: Ocular and orbital changes resulting from thyroid gland dysfunction. It is the most common cause of both unilateral and bilateral proptosis.\n- Pathogenesis: Immunogenic deposition of abnormal mucopolysaccharides and collagen in the orbit and extraocular muscles, accompanied by lymphocytic infiltration. This swelling is followed later by permanent muscle fibrosis."
+    },
+    {
+      "id": "sec_paper_ophthalmology_thyroid_eye_disease__ted____thyrotoxic_exophthalmos__graves__disease__q2",
+      "front": "Enumerate the local signs of Thyrotoxic Exophthalmos.",
+      "back": "1) Soft tissue involvement (edema and congestion).\n2) Lid retraction (staring look, infrequent blinking, lid lag).\n3) Axial proptosis.\n4) Restrictive myopathy (limited motility causing diplopia).\n5) Optic neuropathy."
+    },
+    {
+      "id": "sec_paper_ophthalmology_thyroid_eye_disease__ted____thyrotoxic_exophthalmos__graves__disease__q3",
+      "front": "Explain the treatment lines for advanced Thyroid Eye Disease.",
+      "back": "Treat the underlying thyrotoxicosis, use artificial tear substitutes, perform lateral tarsorrhaphy for severe lagophthalmos, administer systemic steroids, and perform surgical orbital decompression in advanced cases with optic neuropathy."
+    }
+  ],
+  "Cavernous Sinus Thrombosis (Vascular Orbital Lesion)": [
+    {
+      "id": "sec_paper_ophthalmology_cavernous_sinus_thrombosis__vascular_orbital_lesion__q1",
+      "front": "Enumerate the nerves located within the lateral wall and directly inside the Cavernous Sinus.",
+      "back": "- Lateral wall: Oculomotor (3rd), trochlear (4th), and the ophthalmic and maxillary divisions of the trigeminal nerve.\n- Inside the sinus: Abducent (6th) nerve (running with the internal carotid artery)."
+    },
+    {
+      "id": "sec_paper_ophthalmology_cavernous_sinus_thrombosis__vascular_orbital_lesion__q2",
+      "front": "Explain the clinical signs of Cavernous Sinus Thrombosis.",
+      "back": "Lid edema, conjunctival chemosis, rapidly increasing axial proptosis, total ophthalmoplegia, distinct edema in the mastoid region, and rapid involvement of the contralateral eye."
+    },
+    {
+      "id": "sec_paper_ophthalmology_cavernous_sinus_thrombosis__vascular_orbital_lesion__q3",
+      "front": "Enumerate the treatment lines for Cavernous Sinus Thrombosis.",
+      "back": "Immediate hospitalization, intensive intravenous broad-spectrum antibiotics, intravenous heparin every 6 hours, and urgent treatment of the causative primary septic focus."
+    }
+  ],
+  "Proptosis, Enophthalmos, and Atrophia Bulbi": [
+    {
+      "id": "sec_paper_ophthalmology_proptosis__enophthalmos__and_atrophia_bulbi_q1",
+      "front": "Define Proptosis and enumerate its unilateral causes.",
+      "back": "- Definition: Abnormal protrusion of the eyeball outside the orbital rim.\n- Unilateral Causes: Thyroid ophthalmopathy, developmental dermoid cysts, trauma (retrobulbar hemorrhage), inflammatory orbital pseudotumor, vascular orbital varices or carotid-cavernous fistula, and neoplastic tumors."
+    },
+    {
+      "id": "sec_paper_ophthalmology_proptosis__enophthalmos__and_atrophia_bulbi_q2",
+      "front": "Define Enophthalmos and enumerate its causes.",
+      "back": "- Definition: Retraction of the eyeball deep into the orbit.\n- Causes: Microphthalmos, orbital floor blow-out fractures, post-inflammatory fibrosis, cicatrizing orbital tumors, or surgical removal of orbital contents."
+    },
+    {
+      "id": "sec_paper_ophthalmology_proptosis__enophthalmos__and_atrophia_bulbi_q3",
+      "front": "Define Atrophia Bulbi and mention its management.",
+      "back": "- Definition: A completely shrunken, disorganized globe with total loss of vision caused by severe ocular trauma, long-standing retinal detachment, or severe intraocular inflammation.\n- Management: Requires surgical enucleation if it becomes a blind painful eye."
+    }
+  ],
+  "Major Operations of the Orbit (Enucleation, Evisceration, and Exenteration)": [
+    {
+      "id": "sec_paper_ophthalmology_major_operations_of_the_orbit__enucleation__evisceration__and_exenteration__q1",
+      "front": "Define Enucleation and enumerate its clinical indications.",
+      "back": "- Definition: Complete removal of the entire eyeball, leaving the extraocular muscles, the conjunctiva, and the optic nerve behind in the orbit.\n- Indications: To stop pain in blind painful eyes (absolute glaucoma), save the patient's life in intraocular tumors (retinoblastoma), save the contralateral eye in sympathetic ophthalmia, and improve cosmetic appearance after severe trauma."
+    },
+    {
+      "id": "sec_paper_ophthalmology_major_operations_of_the_orbit__enucleation__evisceration__and_exenteration__q2",
+      "front": "Define Evisceration and explain when it is specifically indicated over Enucleation.",
+      "back": "- Definition: Removal of the internal intraocular contents only, leaving the host scleral shell, conjunctiva, and optic nerve fully intact and free.\n- Indications: Active endophthalmitis, panophthalmitis, and uncontrollable expulsive hemorrhage (where cutting the optic nerve risks spreading infection to the brain)."
+    },
+    {
+      "id": "sec_paper_ophthalmology_major_operations_of_the_orbit__enucleation__evisceration__and_exenteration__q3",
+      "front": "Define Exenteration and mention its indications.",
+      "back": "- Definition: Massive surgical removal of all orbital contents completely within the orbital periosteum, including the eyelids.\n- Indications: Severe, destructive malignant orbital tumors with a free periosteum and no distant metastasis, or massive malignant tumors of the lid, conjunctiva, and eyeball that extensively invade the orbit."
+    }
+  ],
+  "Physiology of Ocular Refraction & General Investigations": [
+    {
+      "id": "sec_paper_ophthalmology_physiology_of_ocular_refraction___general_investigations_q1",
+      "front": "Define Emmetropia and Ametropia.",
+      "back": "- Emmetropia: It is the normal condition of refraction of the eye in which, with accommodation completely relaxed, parallel rays of light coming from infinity focus precisely on the retina.\n- Ametropia: It is the abnormal condition of refraction in which, with accommodation completely relaxed, parallel rays do not come to a focus on the retina."
+    },
+    {
+      "id": "sec_paper_ophthalmology_physiology_of_ocular_refraction___general_investigations_q2",
+      "front": "Define the Visual Axis, Optic Axis, and Angle Alpha.",
+      "back": "- Visual Axis: The line connecting the macula and the object of regard passing through the nodal point.\n- Optic Axis: The line connecting the center of the cornea, lens, and retina.\n- Angle Alpha: The angle between the visual and optic axes at the nodal point (normally positive, 2 to 5 degrees)."
+    },
+    {
+      "id": "sec_paper_ophthalmology_physiology_of_ocular_refraction___general_investigations_q3",
+      "front": "Enumerate the methods of estimating refraction.",
+      "back": "1) Retinoscopy: The most reliable objective method using different dioptric powers to neutralize principal meridians.\n2) Keratometry: Measures the power and axis of the highest and least meridians of the cornea.\n3) Corneal Topography: The most sensitive and accurate method for mapping corneal architecture."
+    }
+  ],
+  "Myopia (Short-Sightedness)": [
+    {
+      "id": "sec_paper_ophthalmology_myopia__short_sightedness__q1",
+      "front": "Define Myopia and explain its etiology.",
+      "back": "- Definition: A condition where, with accommodation relaxed, parallel rays come to a focus in front of the retina. The Far Point is at a finite distance nearer than infinity.\n- Etiology: \n  1) Axial Myopia (Most common): Abnormal increase in axial length. \n  2) Refractive Myopia: Increased refractive power via Curvature myopia or Index myopia. \n  3) Abnormal position of the lens: Anterior dislocation."
+    },
+    {
+      "id": "sec_paper_ophthalmology_myopia__short_sightedness__q2",
+      "front": "Enumerate the types of Axial Myopia.",
+      "back": "1) Simple: Starts at puberty (14 yrs), progresses slowly, stabilizes in twenties, rarely exceeds 6D.\n2) Progressive (Malignant): Starts early (5-10 yrs), progresses rapidly over 25D with degenerative fundus changes.\n3) Congenital: Present at birth, rapid progression to 10D then stationary."
+    },
+    {
+      "id": "sec_paper_ophthalmology_myopia__short_sightedness__q3",
+      "front": "Explain the fundus signs of High Myopia.",
+      "back": "Tessellated (tigeroid) fundus, chorioretinal degenerations, posterior staphyloma, Myopic crescent (scleral exposure around optic disc), and Fuchs' spot (black macular area due to subretinal choroidal neovascular membrane hemorrhage)."
+    },
+    {
+      "id": "sec_paper_ophthalmology_myopia__short_sightedness__q4",
+      "front": "Enumerate the complications of High Myopia.",
+      "back": "Apparent convergent or true divergent squint, Posterior Vitreous Detachment, Rhegmatogenous Retinal Detachment, complicated cataract, pigmentary glaucoma, and consecutive optic atrophy."
+    }
+  ],
+  "Hypermetropia (Far-Sightedness)": [
+    {
+      "id": "sec_paper_ophthalmology_hypermetropia__far_sightedness__q1",
+      "front": "Define Hypermetropia and mention the role of accommodation in it.",
+      "back": "- Definition: A condition where, with accommodation relaxed, parallel rays come to a focus behind the retina. The Far Point is virtual and imaginary behind the eye.\n- Role of Accommodation: It is the only refractive error that can be actively corrected by the patient's own ciliary muscle, as accommodation increases refractive power."
+    },
+    {
+      "id": "sec_paper_ophthalmology_hypermetropia__far_sightedness__q2",
+      "front": "Enumerate the clinical components of Hypermetropia.",
+      "back": "1) Total: The full amount measured under complete cycloplegia (atropine).\n2) Latent: The portion constantly corrected by physiological ciliary tone (about 1 Diopter).\n3) Manifest: The uncorrected portion (Total minus Latent).\n4) Facultative: The part of manifest hypermetropia correctable by voluntary accommodation.\n5) Absolute: The part of manifest hypermetropia that cannot be corrected by accommodation."
+    },
+    {
+      "id": "sec_paper_ophthalmology_hypermetropia__far_sightedness__q3",
+      "front": "Explain the clinical picture and signs of Hypermetropia in adults.",
+      "back": "Adults suffer progressive visual drop, accommodative asthenopia, and early presbyopia due to exhaustion. Signs in high errors include a small globe, small cornea, shallow anterior chamber, narrow angle, and a fundus with bright vascular reflex (water-silk), tortuous vessels, and Pseudo-papilledema (blurred disc margins due to crowded nerve fibers)."
+    }
+  ],
+  "Astigmatism (Non-Spherical Refractive Error)": [
+    {
+      "id": "sec_paper_ophthalmology_astigmatism__non_spherical_refractive_error__q1",
+      "front": "Define Astigmatism.",
+      "back": "A condition where the eye does not possess the same refractive power in all meridia. Parallel rays do not focus on a single point but form a focal line. It cannot be corrected by simple spherical lenses."
+    },
+    {
+      "id": "sec_paper_ophthalmology_astigmatism__non_spherical_refractive_error__q2",
+      "front": "Differentiate between Regular and Irregular Astigmatism.",
+      "back": "- Regular: Principal meridians of highest and lowest power are at right angles, with a gradual power change.\n- Irregular: Principal meridians are not at right angles, power changes irregularly (e.g., in keratoconus or severe scars), and it cannot be corrected by ordinary glasses."
+    },
+    {
+      "id": "sec_paper_ophthalmology_astigmatism__non_spherical_refractive_error__q3",
+      "front": "Enumerate the optical subdivisions of Regular Astigmatism.",
+      "back": "1) Simple: One meridian emmetropic, the other ametropic (myopic or hypermetropic).\n2) Compound: Both meridians ametropic of the same type.\n3) Mixed: One meridian myopic, the other hypermetropic."
+    }
+  ],
+  "Aphakia, Anisometropia, and Presbyopia": [
+    {
+      "id": "sec_paper_ophthalmology_aphakia__anisometropia__and_presbyopia_q1",
+      "front": "Define Aphakia and enumerate its clinical signs.",
+      "back": "- Definition: Total absence of the crystalline lens.\n- Signs: Extracapsular scar, deep anterior chamber, tremulous iris (iridodonesis), jet-black pupillary area, and absence of two of the three Purkinje-Sanson images."
+    },
+    {
+      "id": "sec_paper_ophthalmology_aphakia__anisometropia__and_presbyopia_q2",
+      "front": "Define Anisometropia and explain why ordinary glasses are contraindicated in unilateral aphakia.",
+      "back": "- Definition: A considerable difference in refraction between the two eyes (more than 4 Diopters).\n- Explanation: Ordinary glasses are strictly contraindicated in unilateral aphakia/anisometropia because a large plus lens magnifies the retinal image by 30%, causing severe aniseikonia and binocular diplopia."
+    },
+    {
+      "id": "sec_paper_ophthalmology_aphakia__anisometropia__and_presbyopia_q3",
+      "front": "Define Presbyopia and explain its management calculation.",
+      "back": "- Definition: The physiological age-related recession of the near point making near vision uncomfortable due to loss of lens elasticity.\n- Management Calculation: Correct distant vision first. Measure the near point, calculate the total amplitude of accommodation, keep 1/3 of it in reserve for comfort, and add plus lenses to the remaining 2/3 so the total refractive power reaches 3 Diopters (for a standard reading distance of 33 cm)."
+    }
+  ],
+  "Anatomy of the Angle, Aqueous Physiology & Intraocular Pressure": [
+    {
+      "id": "sec_paper_ophthalmology_anatomy_of_the_angle__aqueous_physiology___intraocular_pressure_q1",
+      "front": "Enumerate the gonioscopic structures of the anterior chamber angle from anterior to posterior.",
+      "back": "1) Schwalbe's line (end of Descemet's membrane).\n2) Trabecular meshwork (sponge-like bands).\n3) Scleral spur (origin of ciliary muscle).\n4) Anterior surface of Ciliary body.\n5) Root of the iris."
+    },
+    {
+      "id": "sec_paper_ophthalmology_anatomy_of_the_angle__aqueous_physiology___intraocular_pressure_q2",
+      "front": "Explain the physiology of Aqueous Humor formation and its main functions.",
+      "back": "- Formation: 80% active secretion (via carbonic anhydrase) and 20% passive ultrafiltration by the ciliary body processes. \n- Functions: Regulating IOP, providing nutrition to avascular structures (cornea/lens), and serving as a refractive medium."
+    },
+    {
+      "id": "sec_paper_ophthalmology_anatomy_of_the_angle__aqueous_physiology___intraocular_pressure_q3",
+      "front": "Enumerate the methods of measuring Intraocular Pressure (Tonometry).",
+      "back": "1) Indentation Tonometry (Schiotz tonometer).\n2) Applanation Tonometry (Goldmann tonometer, the gold standard).\n3) Non-contact Air-puff tonometer."
+    }
+  ],
+  "Glaucoma Definition & Congenital Glaucoma (Buphthalmos)": [
+    {
+      "id": "sec_paper_ophthalmology_glaucoma_definition___congenital_glaucoma__buphthalmos__q1",
+      "front": "Define Glaucoma and enumerate its main classifications.",
+      "back": "- Definition: A progressive optic neuropathy characterized by optic nerve damage and visual field defects, with elevated IOP being the major risk factor. \n- Classifications: Congenital/Developmental and Acquired (Primary Open/Closed angle, and Secondary)."
+    },
+    {
+      "id": "sec_paper_ophthalmology_glaucoma_definition___congenital_glaucoma__buphthalmos__q2",
+      "front": "Explain the classic triad of symptoms in Congenital Glaucoma (Buphthalmos) and their cause.",
+      "back": "- Triad: Lacrimation, Photophobia, and Blepharospasm. \n- Cause: Due to corneal nerve stretching."
+    },
+    {
+      "id": "sec_paper_ophthalmology_glaucoma_definition___congenital_glaucoma__buphthalmos__q3",
+      "front": "Enumerate the clinical signs of Congenital Glaucoma regarding the cornea and the globe.",
+      "back": "- Cornea: Edema, progressive enlargement (>12 mm diameter), and Haab's striae (horizontal tears in Descemet's membrane). \n- Globe & Sclera: Enlarged eyeball with a bluish sclera due to thinning."
+    },
+    {
+      "id": "sec_paper_ophthalmology_glaucoma_definition___congenital_glaucoma__buphthalmos__q4",
+      "front": "Explain the surgical management lines for Congenital Glaucoma.",
+      "back": "Medical treatment is only used temporarily to clear corneal edema. Surgeries include Goniotomy (if cornea is clear), Trabeculotomy (if cornea is hazy), and in resistant cases, Subscleral Trabeculectomy, Valve implantation (Ahmed valve), or Cyclodestructive procedures."
+    }
+  ],
+  "Primary Open Angle Glaucoma (Chronic Simple Glaucoma)": [
+    {
+      "id": "sec_paper_ophthalmology_primary_open_angle_glaucoma__chronic_simple_glaucoma__q1",
+      "front": "Define Primary Open Angle Glaucoma (POAG) and enumerate its risk factors.",
+      "back": "- Definition: A bilateral, asymmetrical, non-congestive elevation of IOP in the presence of an open angle, leading to optic nerve damage and visual field loss. \n- Risk Factors: Age >50, positive family history, dark races, myopia, diabetes, and vasospastic disorders."
+    },
+    {
+      "id": "sec_paper_ophthalmology_primary_open_angle_glaucoma__chronic_simple_glaucoma__q2",
+      "front": "Explain the early and late signs of Glaucomatous Optic Cupping.",
+      "back": "- Early signs: Enlarged C/D ratio (>0.4), vertical elongation of the cup, cup asymmetry between eyes, and splinter hemorrhages. \n- Late signs: Deep cup (>0.7), overhanging undermined edges, interruption of retinal vessels, and nasal shift of blood vessels."
+    },
+    {
+      "id": "sec_paper_ophthalmology_primary_open_angle_glaucoma__chronic_simple_glaucoma__q3",
+      "front": "Enumerate the central visual field changes in POAG.",
+      "back": "Paracentral scotoma in Bjerrum area, Seidle scotoma (sickle-shaped blind spot extension), Arcuate (Bjerrum) scotoma, Baring of the blind spot, and Ronne nasal step."
+    },
+    {
+      "id": "sec_paper_ophthalmology_primary_open_angle_glaucoma__chronic_simple_glaucoma__q4",
+      "front": "Explain the medical treatment lines for POAG.",
+      "back": "First line includes topical Prostaglandin analogues (increase uveoscleral outflow) and Beta-blockers (decrease aqueous formation). Second line includes Carbonic Anhydrase Inhibitors (CAI) and Alpha-2 agonists."
+    }
+  ],
+  "Primary Angle Closure Glaucoma (PACG)": [
+    {
+      "id": "sec_paper_ophthalmology_primary_angle_closure_glaucoma__pacg__q1",
+      "front": "Enumerate the predisposing factors for Primary Angle Closure Glaucoma.",
+      "back": "Typically occurs bilaterally in neurotic females over 40 years with hypermetropic (small) eyes, shallow anterior chambers, and thick lenses."
+    },
+    {
+      "id": "sec_paper_ophthalmology_primary_angle_closure_glaucoma__pacg__q2",
+      "front": "Explain the pathogenesis mechanisms of PACG (Pupillary Block vs. Plateau Iris).",
+      "back": "- Pupillary Block: Iris-lens apposition traps aqueous, causing iris bombe that occludes the angle. \n- Plateau Iris: Anteriorly positioned ciliary processes push the peripheral iris forward."
+    },
+    {
+      "id": "sec_paper_ophthalmology_primary_angle_closure_glaucoma__pacg__q3",
+      "front": "Explain the clinical signs of the Acute Congestive Phase of PACG.",
+      "back": "Intensely high IOP (up to 50 mmHg), stony hard globe, severe corneal edema, circumcorneal ciliary injection (CCCI), and a characteristic vertically oval, fixed, semi-dilated bluish pupil."
+    },
+    {
+      "id": "sec_paper_ophthalmology_primary_angle_closure_glaucoma__pacg__q4",
+      "front": "Explain the emergency medical and surgical management of an acute attack of PACG.",
+      "back": "- Medical: IV Hyperosmotics (Mannitol 20%), Systemic CAI (Acetazolamide), topical Beta-blockers, and intensive Miotics (Pilocarpine 2%). \n- Surgical/Laser: Peripheral Iridectomy/Iridotomy is mandatory for the affected eye, and prophylactic iridotomy must be performed on the fellow eye."
+    }
+  ],
+  "Secondary Glaucomas (Systemic, Local, and Phacogenic)": [
+    {
+      "id": "sec_paper_ophthalmology_secondary_glaucomas__systemic__local__and_phacogenic__q1",
+      "front": "Explain how chronic iridocyclitis causes secondary closed-angle glaucoma.",
+      "back": "Through extensive Peripheral Anterior Synechiae (PAS) or a 360-degree ring posterior synechia (seclusio pupillae) leading to iris bombe."
+    },
+    {
+      "id": "sec_paper_ophthalmology_secondary_glaucomas__systemic__local__and_phacogenic__q2",
+      "front": "Enumerate the types of Lens-Induced (Phacogenic) Glaucomas.",
+      "back": "1) Phacolytic Glaucoma.\n2) Phacoanaphylactic Glaucoma.\n3) Phacomorphic Glaucoma.\n4) Lens Displacement.\n5) Exfoliation Glaucoma."
+    },
+    {
+      "id": "sec_paper_ophthalmology_secondary_glaucomas__systemic__local__and_phacogenic__q3",
+      "front": "Define Neovascular Glaucoma and enumerate its common causes.",
+      "back": "- Definition: Severe intractable glaucoma caused by the growth of a fibrovascular membrane over the iris (rubeosis iridis) and angle, secondary to severe retinal ischemia. \n- Causes: Central Retinal Vein Occlusion (\"100-day glaucoma\"), Proliferative Diabetic Retinopathy, or intraocular tumors."
+    }
+  ],
+  "Anatomy and Physiology of the Uveal Tract": [
+    {
+      "id": "sec_paper_ophthalmology_anatomy_and_physiology_of_the_uveal_tract_q1",
+      "front": "Enumerate the three contiguous parts of the uveal tract from anterior to posterior.",
+      "back": "1) The Iris.\n2) The Ciliary Body.\n3) The Choroid."
+    },
+    {
+      "id": "sec_paper_ophthalmology_anatomy_and_physiology_of_the_uveal_tract_q2",
+      "front": "Explain the function of the iris and name its two muscles with their nerve supply.",
+      "back": "It controls the amount of light entering the eye via two muscles: the sphincter pupillae (parasympathetic supply, causes miosis/constriction) and the dilator pupillae (sympathetic supply, causes mydriasis/dilation)."
+    },
+    {
+      "id": "sec_paper_ophthalmology_anatomy_and_physiology_of_the_uveal_tract_q3",
+      "front": "Enumerate the divisions of the Ciliary Body and mention its main functions.",
+      "back": "It is divided into the pars plicata (the anterior highly vascular part containing ciliary processes that actively secrete aqueous humor) and the pars plana (the posterior flat part). It contains the ciliary muscle, which is entirely responsible for the mechanism of accommodation."
+    }
+  ],
+  "Classification & Etiology of Uveitis (Iridocyclitis)": [
+    {
+      "id": "sec_paper_ophthalmology_classification___etiology_of_uveitis__iridocyclitis__q1",
+      "front": "Enumerate the anatomical classifications of Uveitis.",
+      "back": "1) Anterior uveitis (Iritis, Iridocyclitis).\n2) Intermediate uveitis (Pars planitis).\n3) Posterior uveitis (Choroiditis, Chorioretinitis).\n4) Panuveitis (involving the entire uveal tract)."
+    },
+    {
+      "id": "sec_paper_ophthalmology_classification___etiology_of_uveitis__iridocyclitis__q2",
+      "front": "Explain the pathological difference between Granulomatous and Non-granulomatous uveitis.",
+      "back": "- Granulomatous: Insidious onset, large mutton-fat KP's, thick iris nodules, broad posterior synechiae, commonly caused by TB, Syphilis, and Sarcoidosis.\n- Non-granulomatous: Acute onset, fine KP's, intense flare and cells, no iris nodules, usually immune-mediated."
+    },
+    {
+      "id": "sec_paper_ophthalmology_classification___etiology_of_uveitis__iridocyclitis__q3",
+      "front": "Enumerate the endogenous (systemic & immune) causes of Anterior Uveitis.",
+      "back": "Idiopathic (most common), HLA-B27 associated systemic diseases (Ankylosing Spondylitis), Autoimmune and collagen vascular conditions (Rheumatoid arthritis, Sarcoidosis), Viral infections (Herpes Simplex), and Bacterial/Parasitic infections (Tuberculosis, Toxoplasmosis)."
+    }
+  ],
+  "Clinical Picture & Signs of Acute Anterior Uveitis (Iridocyclitis)": [
+    {
+      "id": "sec_paper_ophthalmology_clinical_picture___signs_of_acute_anterior_uveitis__iridocyclitis__q1",
+      "front": "Explain the clinical symptoms of acute anterior uveitis.",
+      "back": "Acute, deep, throbbing ocular pain (typically worse at night and exacerbated upon accommodation), severe photophobia, reflex lacrimation, and marked blurring of vision (due to aqueous turbidity, exudates, and corneal edema)."
+    },
+    {
+      "id": "sec_paper_ophthalmology_clinical_picture___signs_of_acute_anterior_uveitis__iridocyclitis__q2",
+      "front": "Define Keratic Precipitates (KP's) and mention their classic arrangement.",
+      "back": "- Definition: Cellular deposits of leukocytes on the corneal endothelium.\n- Arrangement: Classically arranged in a base-down triangular pattern (Arlt's triangle) due to anterior chamber convection currents."
+    },
+    {
+      "id": "sec_paper_ophthalmology_clinical_picture___signs_of_acute_anterior_uveitis__iridocyclitis__q3",
+      "front": "Explain the iris and pupillary changes in acute anterior uveitis.",
+      "back": "The iris becomes edematous, water-logged, muddy, and loses its normal crisp crypt pattern. The pupil is initially constricted (Miosis) due to irritative sphincter spasm, its reaction to light becomes extremely sluggish, and it may acquire an irregular festooned shape due to the formation of Posterior Synechiae."
+    }
+  ],
+  "Complications and Sequelae of Iridocyclitis": [
+    {
+      "id": "sec_paper_ophthalmology_complications_and_sequelae_of_iridocyclitis_q1",
+      "front": "Explain the mechanisms of Secondary Glaucoma in both the early acute and late chronic phases of iridocyclitis.",
+      "back": "- Early acute phase (Open-angle): Due to mechanical blockage of the trabecular meshwork by inflammatory cells, thick fibrin, or high-protein plasmoid aqueous.\n- Late chronic phase (Closed-angle): Due to organized Peripheral Anterior Synechiae (PAS), or a complete 360-degree Ring Posterior Synechia (Seclusio Pupillae) leading to Iris Bombe."
+    },
+    {
+      "id": "sec_paper_ophthalmology_complications_and_sequelae_of_iridocyclitis_q2",
+      "front": "Define Band Keratopathy and mention its association.",
+      "back": "A progressive horizontal band of grayish-white calcium salt deposition in Bowman's membrane of the cornea, typically occurring in chronic smoldering uveitis, especially in children with Juvenile Idiopathic Arthritis (JIA)."
+    },
+    {
+      "id": "sec_paper_ophthalmology_complications_and_sequelae_of_iridocyclitis_q3",
+      "front": "Define Phthisis Bulbi as a complication of uveitis.",
+      "back": "The devastating end-stage of severe chronic destructive uveitis; it presents as a shrunken, totally disorganized, soft, and blind eye due to permanent failure of aqueous secretion by the destroyed, fibrosed ciliary body."
+    }
+  ],
+  "Management of Iridocyclitis & Sympathetic Ophthalmia": [
+    {
+      "id": "sec_paper_ophthalmology_management_of_iridocyclitis___sympathetic_ophthalmia_q1",
+      "front": "Explain the absolute critical role of Mydriatics & Cycloplegics (Atropine 1%) in managing acute iridocyclitis.",
+      "back": "It forcibly breaks existing posterior synechiae and prevents new ones, completely paralyzes the ciliary muscle and sphincter pupillae to provide absolute rest and relieve painful spasm, and directly decreases ciliary vascular congestion."
+    },
+    {
+      "id": "sec_paper_ophthalmology_management_of_iridocyclitis___sympathetic_ophthalmia_q2",
+      "front": "Define Sympathetic Ophthalmia.",
+      "back": "A rare, devastating, bilateral, chronic granulomatous panuveitis. It exclusively follows a penetrating ocular trauma or intraocular surgery in one eye (the exciting eye), leading to a delayed autoimmune inflammatory response against exposed uveal and retinal antigens in the normal, uninjured fellow eye (the sympathizing eye)."
+    },
+    {
+      "id": "sec_paper_ophthalmology_management_of_iridocyclitis___sympathetic_ophthalmia_q3",
+      "front": "Explain the prevention and management of Sympathetic Ophthalmia.",
+      "back": "- Prevention: Prompt meticulous microsurgical repair of penetrating injuries. Prophylactic enucleation within 14 days of trauma absolutely prevents the condition if the injured eye is completely blind and disorganized.\n- Treatment: Once established, it requires massive, prolonged systemic corticosteroids and immunosuppressive therapy."
+    }
+  ],
+  "Physiology of Binocular Vision & Apparent Squint": [
+    {
+      "id": "sec_paper_ophthalmology_physiology_of_binocular_vision___apparent_squint_q1",
+      "front": "Define Binocular Vision and enumerate its three grades.",
+      "back": "- Definition: The coordinated use of both eyes to produce a single visual mental impression.\n- Grades: \n  1) Grade I (Simultaneous Perception): Ability to see two dissimilar objects simultaneously.\n  2) Grade II (Fusion): Ability to superimpose two incomplete similar objects to form a complete picture.\n  3) Grade III (Stereoscopic Vision): Ability to appreciate 3D depth by superimposing slightly dissimilar objects."
+    },
+    {
+      "id": "sec_paper_ophthalmology_physiology_of_binocular_vision___apparent_squint_q2",
+      "front": "Define Orthophoria.",
+      "back": "Perfect muscle balance with parallel visual axes even when binocular vision is abolished."
+    },
+    {
+      "id": "sec_paper_ophthalmology_physiology_of_binocular_vision___apparent_squint_q3",
+      "front": "Define Apparent Squint (Pseudo-strabismus) and give two clinical examples.",
+      "back": "- Definition: Appearance of ocular deviation but visual axes are completely normal.\n- Examples: 1) Apparent Convergent Squint (caused by Epicanthus skin folds covering the inner canthus). 2) Apparent Divergent Squint (caused by a large positive angle alpha in high hypermetropia)."
+    }
+  ],
+  "Latent Squint (Heterophoria)": [
+    {
+      "id": "sec_paper_ophthalmology_latent_squint__heterophoria__q1",
+      "front": "Define Latent Squint (Heterophoria) and enumerate its types.",
+      "back": "- Definition: Ocular deviation with an abnormal direction of the visual axes that is only manifested when binocular vision is dissociated (e.g., by fatigue or covering one eye).\n- Types: Esophoria (tendency to deviate inwards), Exophoria (outwards), Hyperphoria (upwards), and Hypophoria (downwards)."
+    },
+    {
+      "id": "sec_paper_ophthalmology_latent_squint__heterophoria__q2",
+      "front": "Enumerate the diagnostic tests used for the dissociation of binocular vision.",
+      "back": "1) Cover Test.\n2) Maddox Rod Test (for distance).\n3) Maddox Wing Test (for near)."
+    },
+    {
+      "id": "sec_paper_ophthalmology_latent_squint__heterophoria__q3",
+      "front": "Explain the treatment lines for decompensated Latent Squint.",
+      "back": "Exact correction of refractive errors, Orthoptic exercises (e.g., pencil-to-nose for convergence insufficiency), relieving prisms (base directed towards the deviation), or surgical muscle correction in highly resistant cases."
+    }
+  ],
+  "Manifest Paralytic Squint (Incomitant Strabismus)": [
+    {
+      "id": "sec_paper_ophthalmology_manifest_paralytic_squint__incomitant_strabismus__q1",
+      "front": "Define Manifest Paralytic Squint.",
+      "back": "Ocular deviation due to complete (paralysis) or partial (paresis) loss of muscle function, where the angle of squint is highly variable in different directions of gaze."
+    },
+    {
+      "id": "sec_paper_ophthalmology_manifest_paralytic_squint__incomitant_strabismus__q2",
+      "front": "Explain the clinical symptoms of Manifest Paralytic Squint.",
+      "back": "1) Diplopia: Disappears completely when one eye is covered. Can be uncrossed or crossed.\n2) False Projection (Past Pointing): False spatial orientation of objects situated in the direction of the paralyzed muscle's action.\n3) Ocular Torticollis: A compensatory head posture adopted to avoid diplopia.\n4) Vertigo and Nausea."
+    },
+    {
+      "id": "sec_paper_ophthalmology_manifest_paralytic_squint__incomitant_strabismus__q3",
+      "front": "Explain the clinical signs of Manifest Paralytic Squint regarding ocular deviation and movements.",
+      "back": "Ocular deviation occurs in the opposite direction of the paralyzed muscle. Secondary Deviation is greater than Primary Deviation (when the paralyzed eye is forced to fixate, the normal eye deviates excessively). There is marked limitation of ocular movements in the direction of the paralyzed muscle."
+    }
+  ],
+  "Manifest Concomitant Squint (Heterotropia)": [
+    {
+      "id": "sec_paper_ophthalmology_manifest_concomitant_squint__heterotropia__q1",
+      "front": "Define Manifest Concomitant Squint (Heterotropia).",
+      "back": "Ocular deviation where the angle of squint remains constant in all directions of gaze. Caused by sensory, motor, or central fusion obstacles during the first 6 years of life."
+    },
+    {
+      "id": "sec_paper_ophthalmology_manifest_concomitant_squint__heterotropia__q2",
+      "front": "Enumerate the common causes of Concomitant Squint.",
+      "back": "1) Refractive Errors: Hypermetropia leads to excessive accommodation and convergence (Accommodative Esotropia), while Myopia leads to under-accommodation and divergent squint (Exotropia).\n2) Stimulus Deprivation: Severe vision drop in one eye due to congenital ptosis or dense cataract disrupts normal fusion."
+    },
+    {
+      "id": "sec_paper_ophthalmology_manifest_concomitant_squint__heterotropia__q3",
+      "front": "Explain the clinical picture of Concomitant Squint regarding diplopia and eye movements.",
+      "back": "Noticeable ocular deviation and defective vision, but classically features NO diplopia and NO limitation of extraocular movements (due to sensory adaptations like suppression)."
+    }
+  ],
+  "Examination & Treatment of Concomitant Squint": [
+    {
+      "id": "sec_paper_ophthalmology_examination___treatment_of_concomitant_squint_q1",
+      "front": "Explain the Hirschberg Test (Corneal Reflex) and how to estimate the angle of squint using it.",
+      "back": "The patient fixes on a light at 0.5m. The reflex is decentered in the squinting eye.\n- Reflex at the pupillary margin = 15 degrees angle.\n- Reflex midway to limbus = 30 degrees.\n- Reflex at the limbus = 45 degrees."
+    },
+    {
+      "id": "sec_paper_ophthalmology_examination___treatment_of_concomitant_squint_q2",
+      "front": "Enumerate the diagnostic examinations used for evaluating Concomitant Squint.",
+      "back": "1) Cover / Uncover Test.\n2) Hirschberg Test (Corneal Reflex).\n3) Synoptophore (Major Amblyoscope).\n4) Prism Bar Cover Test."
+    },
+    {
+      "id": "sec_paper_ophthalmology_examination___treatment_of_concomitant_squint_q3",
+      "front": "Enumerate the comprehensive treatment lines for Concomitant Squint.",
+      "back": "1) Optical (accurate correction of refractive error).\n2) Occlusion Therapy (patching the sound fixing eye).\n3) Pleoptics (stimulation of the true fovea).\n4) Orthoptics (exercises to restore fusion).\n5) Surgical Correction (Recessing overacting muscles or Resecting underacting muscles)."
+    }
+  ],
+  "Anatomy of the Retina, Blood Supply, and The Vitreous": [
+    {
+      "id": "sec_paper_ophthalmology_anatomy_of_the_retina__blood_supply__and_the_vitreous_q1",
+      "front": "Enumerate the 10 microscopic layers of the retina from outside inwards.",
+      "back": "1) Retinal pigment epithelium (RPE). \n2) Photoreceptors (rods and cones). \n3) Outer limiting membrane. \n4) Outer nuclear layer. \n5) Outer plexiform layer. \n6) Inner nuclear layer. \n7) Inner plexiform layer. \n8) Ganglion cell layer. \n9) Nerve fiber layer. \n10) Inner limiting membrane."
+    },
+    {
+      "id": "sec_paper_ophthalmology_anatomy_of_the_retina__blood_supply__and_the_vitreous_q2",
+      "front": "Explain the blood supply of the retina.",
+      "back": "The inner 5 layers are supplied by the central retinal artery. The outer 5 layers are completely avascular and nourished by diffusion from the choriocapillaris of the choroid."
+    },
+    {
+      "id": "sec_paper_ophthalmology_anatomy_of_the_retina__blood_supply__and_the_vitreous_q3",
+      "front": "Define the Macula and Fovea.",
+      "back": "The macula lutea is the dark central area 3 mm temporal to the optic disc. The fovea is the central depression within the macula, and the foveola is its completely avascular center."
+    }
+  ],
+  "Diabetic Retinopathy (DR) & Hypertensive Retinopathy": [
+    {
+      "id": "sec_paper_ophthalmology_diabetic_retinopathy__dr____hypertensive_retinopathy_q1",
+      "front": "Enumerate the risk factors for Diabetic Retinopathy.",
+      "back": "Young age, long duration, poor control, coexisting hypertension, and pregnancy."
+    },
+    {
+      "id": "sec_paper_ophthalmology_diabetic_retinopathy__dr____hypertensive_retinopathy_q2",
+      "front": "Explain the pathogenesis of microvascular leakage in Diabetic Retinopathy.",
+      "back": "Decrease in pericytes leads to breakdown of the blood-retinal barrier, causing hemorrhages, edema, and hard lipid exudates."
+    },
+    {
+      "id": "sec_paper_ophthalmology_diabetic_retinopathy__dr____hypertensive_retinopathy_q3",
+      "front": "Explain the fundus signs of Toxemia of Pregnancy.",
+      "back": "Severe arteriolar spasm, macular star, flame-shaped hemorrhages, cotton wool spots, papilledema, and massive exudation that may produce serous retinal detachment. No arteriosclerosis is seen because the hypertension is not longstanding."
+    }
+  ],
+  "Retinopathy of Prematurity (ROP) & Retinal Vein Occlusions": [
+    {
+      "id": "sec_paper_ophthalmology_retinopathy_of_prematurity__rop____retinal_vein_occlusions_q1",
+      "front": "Define Retinopathy of Prematurity (ROP) and enumerate its stages.",
+      "back": "- Definition: A proliferative retinopathy affecting pre-term infants (<30 weeks gestation) and low birth weight who are exposed to high oxygen therapy.\n- Stages: Stage 1 (Demarcation line), Stage 2 (Ridge formation), Stage 3 (Ridge with extraretinal fibrovascular proliferation), Stage 4 (Subtotal tractional RD), and Stage 5 (Total RD)."
+    },
+    {
+      "id": "sec_paper_ophthalmology_retinopathy_of_prematurity__rop____retinal_vein_occlusions_q2",
+      "front": "Explain the pathogenesis of Central Retinal Vein Occlusion (CRVO).",
+      "back": "Arteriosclerotic changes in the central retinal artery compress the adjacent vein within the shared adventitial sheath."
+    },
+    {
+      "id": "sec_paper_ophthalmology_retinopathy_of_prematurity__rop____retinal_vein_occlusions_q3",
+      "front": "Differentiate between the clinical signs of Non-Ischemic and Ischemic CRVO.",
+      "back": "- Non-Ischemic: Moderate visual drop, mild tortuous veins, dot-blot hemorrhages, few cotton wool spots, and good capillary perfusion. \n- Ischemic: Severe visual drop (<6/60), marked Afferent Pupillary Defect (RAPD), extensive dot-blot/flame hemorrhages, numerous cotton wool spots, severe disc edema, and extensive non-perfusion areas."
+    }
+  ],
+  "Central and Branch Retinal Artery Occlusion (CRAO & BRAO)": [
+    {
+      "id": "sec_paper_ophthalmology_central_and_branch_retinal_artery_occlusion__crao___brao__q1",
+      "front": "Explain the clinical picture (symptoms) of Central Retinal Artery Occlusion (CRAO).",
+      "back": "Presents with sudden, painless, profound, and devastating loss of vision (patient can only see hand movement or less) and a marked Afferent Pupillary Defect is instantly present."
+    },
+    {
+      "id": "sec_paper_ophthalmology_central_and_branch_retinal_artery_occlusion__crao___brao__q2",
+      "front": "Explain the \"Cherry-Red Spot\" sign in CRAO.",
+      "back": "The entire retina becomes opaque, pale, and milky-white due to severe ischemic edema of the inner layers. A classic \"Cherry-Red Spot\" appears at the macula because the thin fovea remains transparent, allowing the normal red choroidal circulation beneath to show through, contrasting sharply with the surrounding pale retina."
+    },
+    {
+      "id": "sec_paper_ophthalmology_central_and_branch_retinal_artery_occlusion__crao___brao__q3",
+      "front": "Enumerate the emergency treatment lines for CRAO.",
+      "back": "Must be initiated within 90 minutes. Includes lowering IOP to increase perfusion (IV Acetazolamide, IV Mannitol, anterior chamber paracentesis), Ocular massage, Sublingual nitroglycerin, Carbogen inhalation (95% O2 / 5% CO2), and IV Streptokinase."
+    }
+  ],
+  "Retinal Detachment (RD): Rhegmatogenous, Tractional, and Exudative": [
+    {
+      "id": "sec_paper_ophthalmology_retinal_detachment__rd___rhegmatogenous__tractional__and_exudative_q1",
+      "front": "Define Retinal Detachment.",
+      "back": "Separation of the sensory neuro-retina from the underlying retinal pigment epithelium (RPE). Fluid accumulates in the potential subretinal space."
+    },
+    {
+      "id": "sec_paper_ophthalmology_retinal_detachment__rd___rhegmatogenous__tractional__and_exudative_q2",
+      "front": "Explain the etiology and symptoms of Rhegmatogenous Retinal Detachment.",
+      "back": "- Etiology: Caused by a full-thickness retinal break (tear or hole) allowing liquefied vitreous to gain access to the subretinal space. \n- Symptoms: Flashes of light (photopsia) due to vitreoretinal traction, floaters (moving vitreous opacities), and a progressive black curtain field defect."
+    },
+    {
+      "id": "sec_paper_ophthalmology_retinal_detachment__rd___rhegmatogenous__tractional__and_exudative_q3",
+      "front": "Enumerate the causes and signs of Exudative (Serous) Retinal Detachment.",
+      "back": "- Causes: Choroidal tumors (malignant melanoma), severe intraocular inflammation (Harada's disease), or systemic diseases (toxemia of pregnancy, malignant hypertension).\n- Signs: Bullous convex detachment, smooth surface, and highly characteristic \"shifting fluid\" (subretinal fluid moves rapidly to the most dependent position with changes in head posture)."
+    }
+  ],
+  "Retinitis Pigmentosa (Primary Pigmentary Retinal Dystrophy)": [
+    {
+      "id": "sec_paper_ophthalmology_retinitis_pigmentosa__primary_pigmentary_retinal_dystrophy__q1",
+      "front": "Define Retinitis Pigmentosa.",
+      "back": "A bilateral, hereditary, and slowly progressive primary degeneration of the retinal photoreceptors (predominantly the rods) and the retinal pigment epithelium."
+    },
+    {
+      "id": "sec_paper_ophthalmology_retinitis_pigmentosa__primary_pigmentary_retinal_dystrophy__q2",
+      "front": "Explain the earliest and most prominent clinical symptom of Retinitis Pigmentosa.",
+      "back": "Nyctalopia (Night Blindness): Occurs due to the early, diffuse dysfunction and death of the peripheral rod photoreceptors."
+    },
+    {
+      "id": "sec_paper_ophthalmology_retinitis_pigmentosa__primary_pigmentary_retinal_dystrophy__q3",
+      "front": "Enumerate the classic clinical triad (Fundus signs) of Retinitis Pigmentosa.",
+      "back": "1) Mid-peripheral pigment clumps appearing classically as \"Bone-Spicules\". \n2) Marked Arteriolar Attenuation (thread-like retinal vessels). \n3) Waxy yellow pallor of the Optic Disc."
+    }
+  ],
+  "Anatomy of the Optic Nerve and Visual Pathway": [
+    {
+      "id": "sec_paper_ophthalmology_anatomy_of_the_optic_nerve_and_visual_pathway_q1",
+      "front": "Enumerate the four parts of the Optic Nerve.",
+      "back": "Intraocular (the optic disc), Intraorbital, Intracanalicular (passing through the optic canal), and Intracranial."
+    },
+    {
+      "id": "sec_paper_ophthalmology_anatomy_of_the_optic_nerve_and_visual_pathway_q2",
+      "front": "Explain the visual pathway from the retina to the visual cortex.",
+      "back": "Light impulses travel from the Retina -> Optic Nerve -> Optic Chiasma (where nasal retinal fibers cross to the opposite side while temporal fibers remain uncrossed) -> Optic Tract -> Lateral Geniculate Body (synapse station) -> Optic Radiation -> Visual Cortex (in the occipital lobe)."
+    },
+    {
+      "id": "sec_paper_ophthalmology_anatomy_of_the_optic_nerve_and_visual_pathway_q3",
+      "front": "Explain the visual field defects associated with lesions in the optic nerve, optic chiasma, and optic tract.",
+      "back": "- Optic Nerve Lesion: Causes complete ipsilateral blindness in the affected eye.\n- Optic Chiasma Lesion: Causes bitemporal hemianopia (loss of both outer visual fields).\n- Optic Tract or Radiation Lesion: Causes contralateral homonymous hemianopia (loss of the same side of the visual field in both eyes)."
+    }
+  ],
+  "Papilledema (Choked Disc)": [
+    {
+      "id": "sec_paper_ophthalmology_papilledema__choked_disc__q1",
+      "front": "Define Papilledema and enumerate its etiology.",
+      "back": "- Definition: A bilateral, non-inflammatory, passive swelling of the optic disc secondary to raised intracranial pressure (ICP).\n- Etiology: Intracranial space-occupying lesions (brain tumors), malignant hypertension, hydrocephalus, and benign intracranial hypertension (pseudotumor cerebri)."
+    },
+    {
+      "id": "sec_paper_ophthalmology_papilledema__choked_disc__q2",
+      "front": "Explain the clinical symptoms of Papilledema.",
+      "back": "Visual acuity remains remarkably completely normal in the early stages, except for transient visual obscurations (seconds of blurring). Associated with severe headache (worse in the morning) and projectile vomiting."
+    },
+    {
+      "id": "sec_paper_ophthalmology_papilledema__choked_disc__q3",
+      "front": "Explain the fundus signs of Papilledema.",
+      "back": "The optic disc is hyperemic and markedly swollen with blurred margins. The physiological cup is obliterated. The retina shows flame-shaped hemorrhages, cotton wool spots (infarcts), and tortuous engorged veins. Paton's lines (circumferential retinal folds) may appear."
+    }
+  ],
+  "Optic Neuritis (Papillitis and Retrobulbar Neuritis)": [
+    {
+      "id": "sec_paper_ophthalmology_optic_neuritis__papillitis_and_retrobulbar_neuritis__q1",
+      "front": "Define Optic Neuritis and enumerate its morphological types.",
+      "back": "- Definition: An acute inflammatory or demyelinating disease of the optic nerve.\n- Types: Papillitis (inflammation involving the optic disc) and Retrobulbar Neuritis (inflammation involving the nerve behind the globe)."
+    },
+    {
+      "id": "sec_paper_ophthalmology_optic_neuritis__papillitis_and_retrobulbar_neuritis__q2",
+      "front": "Explain the clinical picture and signs of Retrobulbar Neuritis.",
+      "back": "Sudden, profound, and highly painful loss of unilateral vision, exacerbated by eye movement. Shows marked Relative Afferent Pupillary Defect (RAPD) and a dense central scotoma. The fundus initially appears completely normal (classically described as \"neither the doctor nor the patient sees anything\")."
+    },
+    {
+      "id": "sec_paper_ophthalmology_optic_neuritis__papillitis_and_retrobulbar_neuritis__q3",
+      "front": "Explain the specific treatment lines for Optic Neuritis.",
+      "back": "High-dose intravenous systemic corticosteroids (Methylprednisolone) followed by an oral taper to accelerate visual recovery."
+    }
+  ],
+  "Optic Atrophy (Primary and Secondary)": [
+    {
+      "id": "sec_paper_ophthalmology_optic_atrophy__primary_and_secondary__q1",
+      "front": "Define Optic Atrophy.",
+      "back": "Irreversible degeneration of optic nerve fibers with the loss of myelin and glial overgrowth, leading to a pale optic disc and permanent visual loss."
+    },
+    {
+      "id": "sec_paper_ophthalmology_optic_atrophy__primary_and_secondary__q2",
+      "front": "Differentiate clinically between Primary and Secondary Optic Atrophy regarding the fundus picture.",
+      "back": "- Primary Optic Atrophy: The fundus classically shows a chalky white disc with sharply defined margins, a highly visible lamina cribrosa, and completely normal retinal vessels.\n- Secondary Optic Atrophy: The fundus shows a dirty grey or pale disc with blurred, irregular margins, an obliterated hidden lamina cribrosa, and severely attenuated retinal vessels."
+    },
+    {
+      "id": "sec_paper_ophthalmology_optic_atrophy__primary_and_secondary__q3",
+      "front": "Enumerate the fundus signs of Glaucomatous and Consecutive Optic Atrophy.",
+      "back": "- Glaucomatous Atrophy: Characterized by deep, wide cupping with a nasal shift of the central vessels.\n- Consecutive Atrophy: Displays a characteristic waxy yellow disc pallor."
+    }
+  ],
+  "Pupillary Reflexes and Abnormalities": [
+    {
+      "id": "sec_paper_ophthalmology_pupillary_reflexes_and_abnormalities_q1",
+      "front": "Explain the pathway of the light reflex.",
+      "back": "Afferent fibers travel via the optic nerve to the pretectal nucleus, sending bilateral fibers to both Edinger-Westphal nuclei. Efferent fibers travel via the Oculomotor (3rd) nerve to the ciliary ganglion, then via short ciliary nerves to the sphincter pupillae."
+    },
+    {
+      "id": "sec_paper_ophthalmology_pupillary_reflexes_and_abnormalities_q2",
+      "front": "Define Relative Afferent Pupillary Defect (RAPD) and mention its diagnostic test.",
+      "back": "- Definition & Test: Detected by the swinging flashlight test. When light swings to the diseased eye, paradoxical pupillary dilation occurs. It indicates unilateral extensive optic nerve or massive retinal disease."
+    },
+    {
+      "id": "sec_paper_ophthalmology_pupillary_reflexes_and_abnormalities_q3",
+      "front": "Define Argyll Robertson Pupil and Adie's Tonic Pupil.",
+      "back": "- Argyll Robertson Pupil: Bilateral small, irregular pupils that demonstrate Light-Near Dissociation (they constrict on accommodation but completely fail to react to light).\n- Adie's Tonic Pupil: A dilated pupil with an extremely sluggish reaction to light and slow accommodation."
+    },
+    {
+      "id": "sec_paper_ophthalmology_pupillary_reflexes_and_abnormalities_q4",
+      "front": "Enumerate the classic triad of Horner's Syndrome.",
+      "back": "Miosis (constricted pupil), mild Ptosis (drooping lid), and Anhidrosis (lack of sweating on one side of the face)."
+    }
+  ],
+  "Blunt Ocular Trauma (Anterior Segment Concussion)": [
+    {
+      "id": "sec_paper_ophthalmology_blunt_ocular_trauma__anterior_segment_concussion__q1",
+      "front": "Explain Traumatic Hyphema and mention its major complications.",
+      "back": "- Explanation: Collection of blood in the anterior chamber from ruptured iris or ciliary body vessels. \n- Complications: Secondary glaucoma and toxic corneal blood staining."
+    },
+    {
+      "id": "sec_paper_ophthalmology_blunt_ocular_trauma__anterior_segment_concussion__q2",
+      "front": "Enumerate the blunt trauma manifestations affecting the iris and ciliary body.",
+      "back": "Traumatic mydriasis (sphincter tears), Iridodialysis (tearing of the iris root forming a D-shaped pupil), and Angle recession (tearing of the ciliary body face)."
+    },
+    {
+      "id": "sec_paper_ophthalmology_blunt_ocular_trauma__anterior_segment_concussion__q3",
+      "front": "Enumerate the lens manifestations following blunt ocular trauma.",
+      "back": "Vossius ring (a circular ring of brown iris pigment imprinted on the anterior capsule), Rosette-shaped concussion cataract, and lens subluxation/dislocation due to the physical rupture of the zonules of Zinn."
+    }
+  ],
+  "Blunt Ocular Trauma (Posterior Segment and Orbit)": [
+    {
+      "id": "sec_paper_ophthalmology_blunt_ocular_trauma__posterior_segment_and_orbit__q1",
+      "front": "Explain Commotio Retinae (Berlin's edema) and traumatic choroidal rupture.",
+      "back": "- Commotio Retinae: A milky white retinal haze at the posterior pole.\n- Traumatic Choroidal Rupture: Classically appears as a crescent-shaped scar concentric to the optic disc."
+    },
+    {
+      "id": "sec_paper_ophthalmology_blunt_ocular_trauma__posterior_segment_and_orbit__q2",
+      "front": "Define Blow-out Fracture of the orbit and enumerate its clinical presentation.",
+      "back": "- Definition: A sudden rise in intraorbital pressure fractures the weakest bone (usually the orbital floor).\n- Presentation: Enophthalmos, infraorbital nerve anesthesia (numb cheek), and restricted up-gaze causing vertical diplopia due to mechanical entrapment of the inferior rectus muscle."
+    }
+  ],
+  "Penetrating Ocular Injuries and Intraocular Foreign Bodies (IOFB)": [
+    {
+      "id": "sec_paper_ophthalmology_penetrating_ocular_injuries_and_intraocular_foreign_bodies__iofb__q1",
+      "front": "Define Penetrating Ocular Injuries and enumerate their clinical signs.",
+      "back": "- Definition: Full-thickness sharp wounds to the globe.\n- Signs: Shallow or lost anterior chamber, prolapse of uveal tissue (iris), a peaked or irregular pupil pointing towards the wound, hypotony, and visible tissue lacerations."
+    },
+    {
+      "id": "sec_paper_ophthalmology_penetrating_ocular_injuries_and_intraocular_foreign_bodies__iofb__q2",
+      "front": "Explain the specific metallic reactions caused by retained iron and copper IOFBs.",
+      "back": "- Siderosis Bulbi (Iron): Oxidation causes rust-brown deposits in the lens, iris heterochromia, and severe retinal pigmentary degeneration.\n- Chalcosis (Copper): Causes intense purulent sterile inflammation or deposits forming a \"sunflower cataract.\""
+    },
+    {
+      "id": "sec_paper_ophthalmology_penetrating_ocular_injuries_and_intraocular_foreign_bodies__iofb__q3",
+      "front": "Explain the management protocol for Penetrating Ocular Injuries and IOFB.",
+      "back": "Urgent surgical exploration, primary meticulous wound closure, excision or reposition of prolapsed uveal tissue, broad-spectrum IV antibiotics, tetanus prophylaxis, and IOFB removal via Pars Plana Vitrectomy."
+    }
+  ],
+  "Chemical Ocular Burns (Acid and Alkali Injuries)": [
+    {
+      "id": "sec_paper_ophthalmology_chemical_ocular_burns__acid_and_alkali_injuries__q1",
+      "front": "Explain the mechanism of injury in Alkali vs. Acid burns and why alkalis are more dangerous.",
+      "back": "Alkalis cause rapid saponification of cellular fatty acids, allowing them to penetrate deeply and rapidly into the globe. Acids cause superficial coagulative protein necrosis, which forms a physical barrier that limits deeper penetration."
+    },
+    {
+      "id": "sec_paper_ophthalmology_chemical_ocular_burns__acid_and_alkali_injuries__q2",
+      "front": "Enumerate the complications of severe chemical ocular burns.",
+      "back": "Severe Symblepharon (adhesion between palpebral and bulbar conjunctiva), secondary glaucoma, intractable corneal ulceration, perforation, and dense vascularized leukoma."
+    },
+    {
+      "id": "sec_paper_ophthalmology_chemical_ocular_burns__acid_and_alkali_injuries__q3",
+      "front": "Explain the absolute emergency management for chemical ocular burns.",
+      "back": "The absolute priority is immediate, copious, and continuous irrigation of the eye using any available neutral fluid (saline or tap water) for at least 30 minutes before taking any history or examination. Double eversion of the eyelids is mandatory to sweep and remove any retained particulate matter."
+    }
+  ],
+
   "Pediatric Hematuria Approach & Evaluation": [
   {
       "id": "sec_paper_pediatric_hematuria_approach_and_evaluation_q1",
