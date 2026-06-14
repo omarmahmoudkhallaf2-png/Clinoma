@@ -9002,6 +9002,10 @@ const FlashSpace = () => {
     explanation: ''
   });
 
+  // Batch inline adding mode option
+  const [isBatchMode, setIsBatchMode] = useState(false);
+  const [batchText, setBatchText] = useState(''); // Syntax: "Name | Link | Explanation" or just "Name | Link" per line
+
   const handleAddChapter = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!newChapterName.trim() || !selectedModule) return;
@@ -9044,7 +9048,80 @@ const FlashSpace = () => {
 
   const handleAddBoard = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!newBoardForm.disease.trim() || !newBoardForm.medicalImage.trim() || !selectedModule || !selectedSystem) {
+    if (!selectedModule || !selectedSystem) return;
+
+    if (isBatchMode) {
+      if (!batchText.trim()) {
+        toast.error('الرجاء إدخال بيانات الدفعة أولاً');
+        return;
+      }
+      const lines = batchText.split('\n').map(l => l.trim()).filter(Boolean);
+      if (lines.length === 0) {
+        toast.error('الرجاء كتابة سطر واحد على الأقل');
+        return;
+      }
+
+      const toastId = toast.loading(`جاري إضافة ${lines.length} صور دفعة واحدة...`);
+      try {
+        const addedBoards: Board[] = [];
+        for (const line of lines) {
+          const parts = line.split('|').map(p => p.trim());
+          const name = parts[0] || '';
+          const link = parts[1] || '';
+          const explanation = parts[2] || `Study guide for ${name}`;
+
+          if (!name || !link) {
+            console.warn("Skipping invalid line: ", line);
+            continue;
+          }
+
+          const payload = {
+            module: selectedModule,
+            system: selectedSystem,
+            disease: name,
+            medicalImage: link,
+            explanation: explanation,
+            createdAt: Date.now()
+          };
+
+          const docRef = await addDoc(collection(db, 'flashspace_boards'), payload);
+          addedBoards.push({
+            id: docRef.id,
+            ...payload
+          });
+        }
+
+        if (addedBoards.length === 0) {
+          toast.error('لم يتم إضافة أي صور، تحقق من التنسيق (الاسم | الرابط)', { id: toastId });
+          return;
+        }
+
+        // Clean up placeholders of current chapter locally
+        const placeholders = boards.filter(b => b.module === selectedModule && b.system === selectedSystem && (b as any).isPlaceholder);
+        for (const p of placeholders) {
+          try {
+            await deleteDoc(doc(db, 'flashspace_boards', p.id));
+          } catch (e) {
+            console.warn("Could not delete placeholder:", e);
+          }
+        }
+
+        setBoards(prev => {
+          const remaining = prev.filter(b => !(b.module === selectedModule && b.system === selectedSystem && (b as any).isPlaceholder));
+          return [...remaining, ...addedBoards];
+        });
+
+        toast.success(`تم إضافة ${addedBoards.length} صور بنجاح! 🎉`, { id: toastId });
+        setIsAddBoardOpen(false);
+        setBatchText('');
+      } catch (err) {
+        console.error(err);
+        toast.error('فشلت عملية الإضافة الجماعية', { id: toastId });
+      }
+      return;
+    }
+
+    if (!newBoardForm.disease.trim() || !newBoardForm.medicalImage.trim()) {
       toast.error('Please enter disease name and image URL');
       return;
     }
@@ -13822,38 +13899,85 @@ const FlashSpace = () => {
               </button>
             </div>
             <form onSubmit={handleAddBoard} className="space-y-6">
-              <div className="space-y-2">
-                <label className="text-xs font-black text-slate-400">عنوان الحالة / المرض</label>
-                <input 
-                  type="text" required placeholder="مثال: Corneal Ulcer..."
-                  value={newBoardForm.disease} onChange={e => setNewBoardForm({...newBoardForm, disease: e.target.value})}
-                  className="w-full bg-slate-950 text-white px-4 py-3 rounded-xl border border-white/10 outline-none focus:border-indigo-500 font-bold"
-                />
-              </div>
-              
-              <div className="space-y-2">
-                <label className="text-xs font-black text-slate-400">رابط الصورة المباشر (Link/URL)</label>
-                <input 
-                  type="text" required placeholder="مثال: https://i.postimg.cc/xyz.jpg..."
-                  value={newBoardForm.medicalImage} onChange={e => setNewBoardForm({...newBoardForm, medicalImage: e.target.value})}
-                  className="w-full bg-slate-950 text-white px-4 py-3 rounded-xl border border-white/10 outline-none focus:border-indigo-500 font-bold"
-                />
+              {/* Add mode selector */}
+              <div className="flex gap-2 p-1 bg-slate-950 rounded-xl border border-white/5">
+                <button
+                  type="button"
+                  onClick={() => setIsBatchMode(false)}
+                  className={cn(
+                    "flex-1 py-2 text-xs font-black rounded-lg transition-all",
+                    !isBatchMode ? "bg-indigo-600 text-white" : "text-slate-400 hover:text-white"
+                  )}
+                >
+                  إضافة صورة فردية
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setIsBatchMode(true)}
+                  className={cn(
+                    "flex-1 py-2 text-xs font-black rounded-lg transition-all",
+                    isBatchMode ? "bg-indigo-600 text-white" : "text-slate-400 hover:text-white"
+                  )}
+                >
+                  إضافة جماعية (Batch) ⚡
+                </button>
               </div>
 
-              <div className="space-y-2">
-                <label className="text-xs font-black text-slate-400">شرح طبي إضافي (ملاحظات)</label>
-                <textarea 
-                  rows={4} placeholder="اكتب الشرح الطبي باللغة العربية أو الإنجليزية هنا..."
-                  value={newBoardForm.explanation} onChange={e => setNewBoardForm({...newBoardForm, explanation: e.target.value})}
-                  className="w-full bg-slate-950 text-white px-4 py-3 rounded-xl border border-white/10 outline-none focus:border-indigo-500 font-medium leading-relaxed"
-                />
-              </div>
+              {!isBatchMode ? (
+                <>
+                  <div className="space-y-2">
+                    <label className="text-xs font-black text-slate-400">عنوان الحالة / المرض</label>
+                    <input 
+                      type="text" required={!isBatchMode} placeholder="مثال: Corneal Ulcer..."
+                      value={newBoardForm.disease} onChange={e => setNewBoardForm({...newBoardForm, disease: e.target.value})}
+                      className="w-full bg-slate-950 text-white px-4 py-3 rounded-xl border border-white/10 outline-none focus:border-indigo-500 font-bold"
+                    />
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <label className="text-xs font-black text-slate-400">رابط الصورة المباشر (Link/URL)</label>
+                    <input 
+                      type="text" required={!isBatchMode} placeholder="مثال: https://i.postimg.cc/xyz.jpg..."
+                      value={newBoardForm.medicalImage} onChange={e => setNewBoardForm({...newBoardForm, medicalImage: e.target.value})}
+                      className="w-full bg-slate-950 text-white px-4 py-3 rounded-xl border border-white/10 outline-none focus:border-indigo-500 font-bold"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="text-xs font-black text-slate-400">شرح طبي إضافي (ملاحظات)</label>
+                    <textarea 
+                      rows={4} placeholder="اكتب الشرح الطبي باللغة العربية أو الإنجليزية هنا..."
+                      value={newBoardForm.explanation} onChange={e => setNewBoardForm({...newBoardForm, explanation: e.target.value})}
+                      className="w-full bg-slate-950 text-white px-4 py-3 rounded-xl border border-white/10 outline-none focus:border-indigo-500 font-medium leading-relaxed"
+                    />
+                  </div>
+                </>
+              ) : (
+                <div className="space-y-3">
+                  <div className="bg-indigo-950/20 border border-indigo-500/20 rounded-xl p-4 text-xs leading-relaxed text-indigo-300">
+                    <strong>طريقة الكتابة الجماعية:</strong> اكتب كل صورة في سطر جديد كالتالي:
+                    <div className="mt-2 font-mono bg-slate-950 text-slate-300 p-2 rounded-lg" dir="ltr">
+                      الاسم | رابط الصورة | وصف طبي اختياري
+                    </div>
+                    <span className="block mt-1 text-[10px] text-slate-400">مثال: Corneal Ulcer | https://i.postimg.cc/xyz.jpg | شرح الحالة بالتفصيل</span>
+                  </div>
+                  
+                  <label className="text-xs font-black text-slate-400 block">قائمة الصور (سطر لكل صورة)</label>
+                  <textarea 
+                    rows={8} required={isBatchMode}
+                    placeholder="Corneal Ulcer | https://i.postimg.cc/xyz.jpg&#10;Blepharitis | https://i.postimg.cc/abc.jpg"
+                    value={batchText} onChange={e => setBatchText(e.target.value)}
+                    className="w-full bg-slate-950 text-white px-4 py-3 rounded-xl border border-white/10 outline-none focus:border-indigo-500 font-medium leading-relaxed font-mono"
+                    dir="ltr"
+                  />
+                </div>
+              )}
 
               <button 
                 type="submit"
                 className="w-full py-4 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl font-black text-base transition-all active:scale-95 shadow-lg shadow-emerald-500/20"
               >
-                حفظ اللوحة الجديدة الآن 🚀
+                {isBatchMode ? 'حفظ الدفعة بالكامل الآن ⚡' : 'حفظ اللوحة الجديدة الآن 🚀'}
               </button>
             </form>
           </div>
