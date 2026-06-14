@@ -11397,7 +11397,8 @@ const FlashSpace = () => {
 
                     return (
                       <button key={mod} onClick={() => {
-                        const isReviewerEmail = user?.email?.toLowerCase().trim() === 'mahmoud.01201681278@gmail.com';
+                        const cleanEmail = user?.email?.toLowerCase().trim();
+                        const isReviewerEmail = cleanEmail === 'mahmoud.01201681278@gmail.com' || cleanEmail === 'youssefkhodarejo1@gmail.com';
                         if (isOpthalmology && userData?.role !== 'admin' && !isReviewerEmail) {
                           toast.error('هذا المديول تحت التطوير للأدمن فقط حالياً 🚧');
                           return;
