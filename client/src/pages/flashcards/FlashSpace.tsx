@@ -10942,6 +10942,9 @@ const FlashSpace = () => {
       }
       return isSpaceSubscribed('الورقة الثانية');
     }
+    if (moduleName === 'Opthalmology' || moduleName === 'Ophthalmology') {
+      return isSpaceSubscribed('Opthalmology') || isSpaceSubscribed('Ophthalmology') || isSpaceSubscribed('الورقة الثانية');
+    }
     return isSpaceSubscribed(moduleName);
   };
 
@@ -12944,7 +12947,13 @@ const FlashSpace = () => {
   let subDetailsTitle = "For ALL Chapters";
   let subWhatsAppText = "أريد الاستفسار أكثر عن كورس pediatrics على flash space";
 
-  if (selectedModule === 'الورقة الثانية') {
+  if (selectedModule === 'Opthalmology' || selectedModule === 'Ophthalmology') {
+    subPrice = "60";
+    subTitle = "اشتراك كورس الرمد (Ophthalmology)";
+    subDescription = "احصل على وصول كامل لجميع شباتر ولوحات الرمد التفاعلية بـ 60 جنيه فقط.";
+    subDetailsTitle = "كورس الرمد الشامل";
+    subWhatsAppText = "أريد الاشتراك في كورس الرمد";
+  } else if (selectedModule === 'الورقة الثانية') {
     if (!isPediatricSubscribed) {
       subPrice = "100";
       subTitle = "اشتراك الورقة الثانية + الرمد";
