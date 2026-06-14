@@ -9,7 +9,7 @@ import {
   ChevronRight, Clock, Zap, CheckCircle, 
   XCircle, Bookmark, ArrowRight, Activity,
   Crown, Search, Settings as SettingsIcon, RotateCcw, Database,
-  Video, Folder, ChevronLeft, Home, Sparkles
+  Video, Folder, ChevronLeft, Home, Sparkles, Flame
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { cn } from '../lib/utils';
@@ -19,7 +19,7 @@ import { Skeleton } from '../components/ui/Skeleton';
 import { useData } from '../context/DataContext';
 
 export default function Dashboard() {
-  const { user, isSubscribed } = useAuth();
+  const { user, isSubscribed, isSpaceSubscribed } = useAuth();
   const navigate = useNavigate();
   const { courses, videoFolders, videos: allVideos, loading: dataLoading } = useData();
   const [loading, setLoading] = useState(true);
@@ -210,46 +210,90 @@ export default function Dashboard() {
                 </Button>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {myCourses.map(course => (
-                  <Card key={course.id} className="group overflow-hidden border border-slate-100 dark:border-slate-800/50 hover:border-primary/20 rounded-[2.5rem] shadow-xl hover:scale-[1.02] transition-all duration-500 relative bg-gradient-to-br from-white via-slate-50/50 to-slate-100/30 dark:from-slate-900 dark:to-slate-800/30">
-                    {course.trending && (
-                      <div className="absolute top-0 right-10 bg-gradient-to-r from-rose-500 to-orange-500 text-white text-[10px] font-black px-4 py-1.5 rounded-b-xl shadow-lg flex items-center gap-1.5 z-10 animate-pulse">
-                        <Zap className="w-3.5 h-3.5 fill-current" />
-                        رائج الآن
-                      </div>
-                    )}
-                    <CardContent className="p-8 flex flex-col justify-between h-full gap-8">
-                      <div className="flex flex-col items-end gap-6 text-right w-full" dir="rtl">
-                        <div className={`w-16 h-16 ${course.isFlashSpace ? 'bg-indigo-50 text-indigo-600 group-hover:bg-indigo-600 shadow-indigo-500/10' : 'bg-primary/5 text-primary group-hover:bg-primary shadow-primary/5'} rounded-[1.5rem] flex items-center justify-center group-hover:text-white transition-all duration-500 shadow-md flex-shrink-0`}>
-                          {course.isFlashSpace ? <Sparkles className="w-7 h-7" /> : <BookOpen className="w-7 h-7" />}
+                {myCourses.map(course => {
+                  const isOphth = course.id === 'ophthalmology_flash_space';
+                  const isSubscribedToOphth = isSpaceSubscribed('Ophthalmology') || isSpaceSubscribed('الورقة الثانية');
+                  const hasAccess = isOphth ? isSubscribedToOphth : true;
+
+                  return (
+                    <Card 
+                      key={course.id} 
+                      className={cn(
+                        "group overflow-hidden rounded-[2.5rem] shadow-xl hover:scale-[1.02] transition-all duration-500 relative flex flex-col justify-between h-full",
+                        isOphth 
+                          ? "border-2 border-orange-500/40 dark:border-orange-500/20 hover:border-orange-500 bg-gradient-to-br from-amber-50/50 via-orange-50/20 to-red-50/10 dark:from-slate-900 dark:via-orange-950/10 dark:to-red-950/10" 
+                          : "border border-slate-100 dark:border-slate-800/50 hover:border-primary/20 bg-gradient-to-br from-white via-slate-50/50 to-slate-100/30 dark:from-slate-900 dark:to-slate-800/30"
+                      )}
+                    >
+                      {isOphth ? (
+                        <div className="absolute top-0 right-10 bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 text-white text-sm font-black px-5 py-2 rounded-b-xl shadow-lg z-10">
+                          <span>60 جنيه</span>
                         </div>
-                        <div className="space-y-3 w-full">
-                          <h3 className="text-2xl font-black text-slate-800 dark:text-white tracking-tight leading-tight">{course.name}</h3>
-                          {course.isFlashSpace && (
-                            <span className="bg-indigo-100 text-indigo-700 px-2 py-0.5 rounded-md flex items-center gap-1 text-[10px] w-fit font-black"><Sparkles className="w-3 h-3" /> FLASH SPACE</span>
-                          )}
-                          <p className="text-sm text-slate-400 dark:text-slate-400 font-semibold leading-relaxed min-h-[48px] line-clamp-2">{course.description}</p>
+                      ) : course.trending ? (
+                        <div className="absolute top-0 right-10 bg-gradient-to-r from-rose-500 to-orange-500 text-white text-[10px] font-black px-4 py-1.5 rounded-b-xl shadow-lg flex items-center gap-1.5 z-10 animate-pulse">
+                          <Zap className="w-3.5 h-3.5 fill-current" />
+                          رائج الآن
                         </div>
-                      </div>
-                      <div className="flex items-center justify-end w-full">
-                        <Button 
-                          onClick={() => {
-                            if (course.isFlashSpace) {
-                              const modParam = course.flashSpaceModule ? `?module=${encodeURIComponent(course.flashSpaceModule)}` : '';
-                              navigate(`/flashcards/space${modParam}`);
-                            } else {
-                              navigate(`/course/${course.id}`);
-                            }
-                          }}
-                          className={`w-full md:w-auto px-8 py-4 rounded-2xl font-black text-xs uppercase shadow-lg ${course.isFlashSpace ? 'bg-indigo-600 hover:bg-indigo-700 shadow-indigo-600/20' : 'shadow-primary/10 hover:shadow-xl'} hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3`}
-                        >
-                          <span>استكمال المذاكرة</span>
-                          <ArrowRight className="w-4 h-4" />
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
+                      ) : null}
+                      <CardContent className="p-8 flex flex-col justify-between h-full gap-8">
+                        <div className="flex flex-col items-end gap-6 text-right w-full" dir="rtl">
+                          <div className={cn(
+                            "w-16 h-16 rounded-[1.5rem] flex items-center justify-center group-hover:text-white transition-all duration-500 shadow-md flex-shrink-0",
+                            isOphth
+                              ? "bg-orange-50 text-orange-600 group-hover:bg-gradient-to-r group-hover:from-orange-500 group-hover:to-rose-500 shadow-orange-500/10"
+                              : course.isFlashSpace 
+                                ? 'bg-indigo-50 text-indigo-600 group-hover:bg-indigo-600 shadow-indigo-500/10' 
+                                : 'bg-primary/5 text-primary group-hover:bg-primary shadow-primary/5'
+                          )}>
+                            {isOphth ? <Sparkles className="w-7 h-7" /> : course.isFlashSpace ? <Sparkles className="w-7 h-7" /> : <BookOpen className="w-7 h-7" />}
+                          </div>
+                          <div className="space-y-3 w-full">
+                            <h3 className="text-2xl font-black text-slate-800 dark:text-white tracking-tight leading-tight">{course.name}</h3>
+                            {course.isFlashSpace && (
+                              <span className={cn(
+                                "px-2 py-0.5 rounded-md flex items-center gap-1 text-[10px] w-fit font-black",
+                                isOphth ? "bg-orange-100 text-orange-700" : "bg-indigo-100 text-indigo-700"
+                              )}>
+                                <Sparkles className="w-3 h-3" />
+                                FLASH SPACE
+                              </span>
+                            )}
+                            <p className="text-sm text-slate-400 dark:text-slate-400 font-semibold leading-relaxed min-h-[48px] line-clamp-2">{course.description}</p>
+                            
+                            {isOphth && !hasAccess && (
+                              <div className="mt-2 bg-rose-500/10 border border-rose-500/20 text-rose-600 dark:text-rose-400 px-5 py-2.5 rounded-2xl text-base font-black w-fit">
+                                <span>السعر: 60 جنيه فقط</span>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                        <div className="flex items-center justify-end w-full">
+                          <Button 
+                            onClick={() => {
+                              if (course.isFlashSpace) {
+                                const modParam = course.flashSpaceModule ? `?module=${encodeURIComponent(course.flashSpaceModule)}` : '';
+                                navigate(`/flashcards/space${modParam}`);
+                              } else {
+                                navigate(`/course/${course.id}`);
+                              }
+                            }}
+                            className={cn(
+                              "w-full md:w-auto px-8 py-4 rounded-2xl font-black text-xs uppercase shadow-lg hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3",
+                              isOphth
+                                ? "bg-gradient-to-r from-orange-500 to-rose-500 hover:from-orange-600 hover:to-rose-600 text-white shadow-orange-500/20"
+                                : course.isFlashSpace 
+                                  ? 'bg-indigo-600 hover:bg-indigo-700 shadow-indigo-600/20 text-white' 
+                                  : 'shadow-primary/10 hover:shadow-xl'
+                            )}
+                          >
+                            <span>{isOphth && !hasAccess ? "اشترك الآن للبدء" : "استكمال المذاكرة"}</span>
+                            <ArrowRight className="w-4 h-4" />
+                          </Button>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  );
+                })}
               </div>
             </section>
           )}
