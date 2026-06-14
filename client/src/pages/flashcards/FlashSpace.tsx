@@ -306,6 +306,325 @@ const SECOND_PAPER_SLIDES: Record<string, string[]> = {
   ]
 };
 
+const OPHTHALMOLOGY_EXPLANATIONS: Record<string, string> = {
+  'Anatomy of the Optic Nerve and Visual Pathway': `[font=Cairo][size=18][color=#1e293b]## 📌 Anatomy of the Optic Nerve & Visual Pathway[/color][/size][/font]
+
+الـ [color=#3b82f6]**Optic nerve**[/color] عبارة عن تجميعة لـ Axons بتاعة الـ [color=#8b5cf6]**Retinal ganglion cells**[/color]. وعشان يوصل للمخ بيمشي في 4 مراحل (4 Parts):
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 1. The Optic Nerve Parts (O-O-C-C)[/color][/size][/font]
+
+* [color=#3b82f6]**Intraocular Part (Optic Disc):**[/color] ده الجزء اللي جوة العين نفسه، وهو ده اللي بتشوفه بالفحص بـ [color=#3b82f6]*Ophthalmoscope*[/color]. طوله صغير جداً (حوالي [color=#10b981]**1 mm**[/color]).
+* [color=#3b82f6]**Intraorbital Part:**[/color] ده الجزء اللي ماشي جوة الـ Orbit (محجر العين) لحد ما يوصل للـ Apex. طوله حوالي [color=#10b981]**25 to 30 mm**[/color]، والميزة هنا إنه ماشي [highlight=#fef08a]**S-shaped**[/highlight] (فيه تعرج) عشان لما العين تتحرك يمين وشمال، العصب ميتشدش ويتقطع.
+* [color=#3b82f6]**Intracanalicular Part:**[/color] ده الجزء اللي محشور جوة العظم، تحديداً بيمشي في [color=#3b82f6]**Optic canal**[/color]. طوله حوالي [color=#10b981]**5 to 9 mm**[/color]. الجزء ده [color=#ef4444]**خطر جداً**[/color]؛ لأن أي [color=#ef4444]**Fracture**[/color] في الـ Skull base ممكن يعمل له Compression بسهولة.
+* [color=#3b82f6]**Intracranial Part:**[/color] ده الجزء اللي جوة الجمجمة خلاص وبيحوم فوق الـ Middle cranial fossa لحد ما يقابل أخوه الناحية التانية ويعملوا الـ Chiasma. طوله حوالي [color=#10b981]**10 to 16 mm**[/color].
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 2. The Visual Pathway (The Journey of Light)[/color][/size][/font]
+
+الرحلة بتبدأ من أول ما الضوء يقع على الشبكية لحد ما يترجم لصور في المخ:
+[font=Cairo][size=15][color=#8b5cf6]**Retina ➔ Optic Nerve ➔ Optic Chiasma ➔ Optic Tract ➔ Lateral Geniculate Body (LGB) ➔ Optic Radiation ➔ Visual Cortex**[/color][/size][/font]
+
+[font=Cairo][size=15][color=#ef4444]**الـ Rule الذهبية في الـ Chiasma:**[/color][/size][/font]
+* [color=#3b82f6]**Nasal retinal fibers:**[/color] دول المسؤولين عن رؤية الـ **Temporal field** (المجال الخارجي). الألياف دي [color=#ef4444]**Cross**[/color] (بتعدي الناحية التانية في الـ Chiasma).
+* [color=#3b82f6]**Temporal retinal fibers:**[/color] دول المسؤولين عن رؤية الـ **Nasal field** (المجال الداخلي ناحية المناخير). الألياف دي [color=#10b981]**Uncrossed**[/color] (بتفضل ماشية في نفس الناحية).
+
+> 💡 [color=#8b5cf6]**ملحوظة دكتور:**[/color] الـ **Lateral Geniculate Body (LGB)** هو الـ Synapse station (محطة الترانزيت) اللي موجودة في الـ Thalamus، ومنها بتطلع الألياف اللي اسمها **Optic Radiation** متجهة للـ **Visual Cortex** في الـ Occipital lobe (تحديداً Brodmann area 17).
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 3. Visual Field Defects (فين القطع؟ وايه النتيجة؟)[/color][/size][/font]
+
+عشان متتلخبطش خالص في الحتة دي، افتكر دايماً إن **الشبكية الـ Nasal بتشوف الـ Temporal field، والشبكية الـ Temporal بتشوف الـ Nasal field** (عكس بعض).
+
+* [color=#ef4444]**Optic Nerve Lesion:**[/color]
+  * **السبب:** القطع هنا قبل الـ Chiasma خالص، يعني ضربنا العصب كله بتاع عين واحدة.
+  * **النتيجة:** [color=#ef4444]**Complete ipsilateral blindness**[/color] (عمى كامل في العين المصابة). العين التانية سليمة 100%.
+* [color=#ef4444]**Optic Chiasma Lesion:**[/color]
+  * **السبب المشهور جداً:** [highlight=#fef08a]**Pituitary adenoma**[/highlight] (ورم الغدة النخامية) لأن الغدة قاعدة تحت الـ Chiasma بالظبط، فلما تكبر تضغط على الـ Crossing fibers اللي في النص.
+  * **مين اللي في النص؟** الـ Nasal fibers بتاعة العينين.
+  * **النتيجة:** الـ Nasal fibers مسؤولة عن الـ Temporal fields، فلما تتضرب، العيان يفقد الرؤية في الأطراف الخارجية للعينين. دي بنسميها [color=#ef4444]**Bitemporal hemianopia**[/color] (كأنه لابس نظارة خيل ومش شايف الجوانب).
+* [color=#ef4444]**Optic Tract or Radiation Lesion:**[/color]
+  * **السبب:** القطع هنا بعد الـ Chiasma (يعني الـ Left tract مثلاً شايل الـ Temporal fibers بتاعة الـ Left eye + الـ Nasal fibers بتاعة الـ Right eye).
+  * **النتيجة:** هتفقد نص المجال اليمين في العينين، أو نص المجال الشمال في العينين. دي بنسميها [color=#ef4444]**Contralateral homonymous hemianopia**[/color].
+  * *مثال:* لو الـ **Right** Optic tract اتضرب، العيان هيقفل عينه اليمين والشمال ومش هيشوف النص **الشمال** (Left) في الاتنين.
+
+---
+
+[font=Cairo][size=16][color=#8b5cf6]### 💡 Mnemonics & Memorization Aids[/color][/size][/font]
+
+* **أجزاء الـ Optic Nerve بالترتيب من برة لجوه:**
+افتكر كلمة [color=#ef4444]**O-O-C-C**[/color] عشان متنساش الـ 4 Parts:
+**O**cular ➔ **O**rbital ➔ **C**analicular ➔ **C**ranial
+* **تفتكر الـ Synapse فين؟**
+الـ [color=#3b82f6]**L**ateral **G**eniculate **B**ody[/color] ➔ افتكرها بـ [color=#3b82f6]**L**ight **G**oes **B**ackwards[/color] (الضوء يرجع للخلف للـ Cortex).
+* **الـ Chiasma والـ Pituitary:**
+افتكر إن الـ [color=#3b82f6]**P**ituitary gland[/color] بتعمل [color=#ef4444]**P**ressure[/color] في النص، والنص فيه الـ **Crossing Nasal fibers**، والـ Nasal يشوف الـ Temporal ➔ إذن النتيجة **Bitemporal**.\n`,
+
+  'Papilledema (Choked Disc)': `[font=Cairo][size=18][color=#1e293b]## 📌 Papilledema (Choked Disc)[/color][/size][/font]
+
+موضوع من المواضيع المهمة جداً لأنه علامة خطر (Red flag) لـ Life-threatening condition.
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 1. Definition[/color][/size][/font]
+
+الـ [color=#ef4444]**Papilledema**[/color] هو عبارة عن [color=#ef4444]**Bilateral, non-inflammatory, passive swelling**[/color] للـ Optic disc.
+* **السبب الرئيسي والوحيد عشان نسميها Papilledema:** وجود [color=#ef4444]**Raised intracranial pressure (ICP)**[/color].
+* 💡 [color=#8b5cf6]**ملحوظة دكتور:**[/color] لو السويلنج ده unilateral أو مش بسببه زيادة الـ ICP، بنسميه **Optic disc edema** وليس **Papilledema**.
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 2. Etiology (ليه الـ ICP بيزيد?)[/color][/size][/font]
+
+أي حاجة تزود الضغط جوة الجمجمة هتمنع الـ Axoplasmic flow وتضغط على الـ Optic nerve، زي:
+* [color=#3b82f6]**Intracranial Space-Occupying Lesions (SOL):**[/color] زي الـ Brain tumors او الـ Abscess.
+* [color=#3b82f6]**Malignant Hypertension:**[/color] الارتفاع الشديد والمفاجئ في ضغط الدم.
+* [color=#3b82f6]**Hydrocephalus:**[/color] تجمع السوائل (CSF) في بطينات المخ.
+* [color=#3b82f6]**Idiopathic Intracranial Hypertension (Pseudotumor Cerebri):**[/color] بيزيد الـ ICP بدون وجود ورم أو سبب واضح، ومشهور جداً في الـ [color=#8b5cf6]**Young obese females**[/color].
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 3. Clinical Symptoms (التناقض الشهير!)[/color][/size][/font]
+
+هنا فيه تريكة وسؤال امتحان مشهور جداً:
+* [color=#10b981]**Visual Acuity:**[/color] في الـ Early stages، حدة الإبصار بتفضل [highlight=#bbf7d0]**Remarkably completely normal!**[/highlight] العيان بيشوف 6/6 عادي جداً بالرغم من إن شكل الـ Disc مرعب في الفحص.
+* [color=#3b82f6]**Transient Visual Obscurations (TVOs):**[/color] ده العرض البصري الوحيد في الأول، عبارة عن نوبات "غيمامة" أو زغللة لثواني معدودة (Seconds of blurring) وبتروح، وغالباً بتحصل لما العيان يغير وضعيته فجأة (زي إنه يقف فجأة).
+* [color=#ef4444]**ICP Symptoms (أعراض زيادة ضغط المخ):**[/color]
+  * **Severe headache:** صداع شديد جداً وبيكون *Worse in the morning* (لأن الـ CSF pressure بيزيد وإحنا نايمين).
+  * **Projectile vomiting:** قيء مندفِع وبدون غثيان قبله (Nausea).
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 4. Fundus Signs (ماذا نرى بالـ Ophthalmoscope؟)[/color][/size][/font]
+
+لما تبص على قاع العين، هتشوف التغيرات دي بالترتيب:
+* [color=#3b82f6]**Disc Changes:**[/color] الـ Disc بيكون **Hyperemic** (أحمر ومحتقن) و**Markedly swollen** مع **Blurred margins** (الحدود بتاعته سايحة ومش واضحة)، والـ Physiological cup بيحصل له **Obliterated** (بيختفي تماماً بسبب الـ Edema).
+* [color=#3b82f6]**Vascular Changes:**[/color] الأوردة بتكون **Tortuous and engorged veins** (ملتوية ومتضخمة نتيجة الاحتقان).
+* [color=#3b82f6]**Retinal Changes:**[/color]
+  * **Flame-shaped hemorrhages:** نزيف على شكل لهب شمعة (ماشي مع اتجاه الـ Nerve fiber layer).
+  * **Cotton wool spots:** بقع بيضاء شبه القطن، ودي عبارة عن Micro-infarcts في الـ Nerve fiber layer.
+  * **Paton's lines:** خطوط أو ثنايا دائرية في الشبكية (Circumferential retinal folds) بتحصل حوالين الـ Disc نتيجة الزق والسويلنج الشديد.
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 5. Visual Field & Late Stage[/color][/size][/font]
+
+* [color=#3b82f6]**Visual Field:**[/color] الفحص بيبين [highlight=#fef08a]**Enlarged blind spot**[/highlight] (البقعة العمياء بتكبر)، وده طبيعي لأن الـ Swollen disc واخد مساحة أكبر من حجمه الحقيقي.
+* [color=#ef4444]**Late Stage (The Danger):**[/color] لو الـ ICP ده متعالجش بسرعة والضغط فضلت مستمر لفترة طويلة، الـ Axons دي هتموت، وهيحصل **Consecutive secondary optic atrophy**. في المرحلة دي، الـ Disc بيتحول للون الأبيض (Pale)، وهنا بيحصل [color=#ef4444]**Permanent and profound drop in vision**[/color] (عمى دائم لا قدر الله).
+
+---
+
+[font=Cairo][size=16][color=#8b5cf6]### 💡 Mnemonics & Memorization Aids[/color][/size][/font]
+
+* **عشان تفتكر أعراض الـ Fundus كلها ورا بعض، افتكر جملة (C-H-O-P):**
+  * **C** ➔ Cup obliteration / Cotton wool spots.
+  * **H** ➔ Hyperemic disc / Hemorrhages (Flame-shaped).
+  * **O** ➔ Obscured / Blurred margins.
+  * **P** ➔ Paton's lines.
+* **تريكة الـ Visual Acuity:**
+افتكر دايماً: [color=#10b981]**Papilledema = Early Normal Vision**[/color] (العيان بيشتكي من دماغه وصداع، مش من عينه، لحد ما ندخل في الـ Atrophy).\n`,
+
+  'Optic Neuritis (Papillitis and Retrobulbar Neuritis)': `[font=Cairo][size=18][color=#1e293b]## 📌 Optic Neuritis[/color][/size][/font]
+
+موضوع من كلاسيكيات الـ Ophthalmology والـ Neurology، ودايماً بيجي مقارنة مع الـ Papilledema.
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 1. Definition[/color][/size][/font]
+
+الـ [color=#ef4444]**Optic Neuritis**[/color] هو عبارة عن [color=#ef4444]**Acute inflammatory or demyelinating disease**[/color] بيصيب الـ Optic nerve. الالتهاب ده ممكن يكون بسبب Infection أو Autoimmune، أو جزء من Demyelinating disease.
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 2. Morphological Types (النوعين وحكاية كل واحد)[/color][/size][/font]
+
+بنعسمه حسب مكان الالتهاب في العصب:
+
+* [color=#3b82f6]**1) Papillitis:**[/color]
+  * **المكان:** الالتهاب واخد الـ Intraocular portion (يعني الـ Optic disc نفسه جوه العين).
+  * **الفئة المستهدفة:** *More common in children*، وغالباً بيحصل بعد Viral infection (زي الـ Measles أو Mumps).
+  * **الفحص:** بما إنه في الـ Disc، لما تبص بالـ Ophthalmoscope هتشوف الـ Disc واضح جداً إنه **Swollen** و**Hyperemic**.
+* [color=#3b82f6]**2) Retrobulbar Neuritis:**[/color]
+  * **المكان:** الالتهاب واخد الجزء اللي Behind the globe (ورا العين)، فالعين من جوه سليمة كشكل.
+  * **الفئة المستهدفة:** *More common in adults*، ومرتبط ارتباطاً وثيقاً بمرض [color=#8b5cf6]**Multiple Sclerosis (MS)**[/color].
+  * **الجملة الكلاسيكية الشهيرة:** [highlight=#fef08a]**"The doctor sees nothing, and the patient sees nothing."**[/highlight]
+  * **السبب:** المريض مش شايف حاجة لأن العصب ملتهب ومقطوعة منه الإشارة (Vision Loss)، والدكتور مش شايف حاجة لأن الـ Fundus في الأول بيبان Initially normal تماماً، لأن الالتهاب مستخبي ورا الجمجمة.
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 3. Clinical Picture (الشكوى الثلاثية - Triad)[/color][/size][/font]
+
+العيان بيجيلك بـ Triad واضح جداً:
+* [color=#ef4444]**Sudden & Unilateral:**[/color] الفقدان مفاجئ وفي عين واحدة بس (عكس الـ Papilledema تماماً).
+* [color=#ef4444]**Profound loss of vision:**[/color] تدهور حاد وشديد في حدة الإبصار (العيان مش شايف، بعكس الـ Papilledema في الأول اللي بيكون 6/6).
+* [color=#ef4444]**Painful:**[/color] فيه *Pain exacerbated by eye movement* (وجع شديد بيزيد جداً لما العيان يحرك عينه يمين أو شمال)، وده لأن عضلات العين (Extraocular muscles) بتلمس الـ Inflamed optic nerve sheath وهي بتحرك العين.
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 4. Clinical Signs (العلامات الإكلينيكية)[/color][/size][/font]
+
+* [color=#3b82f6]**Relative Afferent Pupillary Defect (RAPD):**[/color] أو اللي بنسميها **Marcus Gunn pupil**. لما تعمل الـ *Swinging flashlight test*، تلاقي الـ Pupil في العين المصابة بيحصل لها [color=#ef4444]**Dilation بدل الـ Constriction**[/color] لما تسلط عليها الضوء، لأن الإشارة العصبية اللي رايحة للمخ ضعيفة جداً.
+* [color=#3b82f6]**Visual Field:**[/color] بيبين [color=#ef4444]**Dense central scotoma**[/color] (بقعة عمياء في نص الساحة البصرية بالظبط، لأن الألياف اللي جاية من الـ Macula هي أول وأكتر حاجة بتضرب).
+* [color=#3b82f6]**Fundus Examination:**[/color]
+  * **في الـ Retrobulbar:** يكون Normal تماماً في البداية.
+  * **في الـ Papillitis:** بتشوف Swollen and hyperemic disc وممكن شوية Hemorrhages.
+  * 💡 [color=#8b5cf6]**كيف تفرق بين الـ Papillitis والـ Papilledema في الـ Fundus؟**[/color] الـ Papillitis بتميزها بـ 3 حاجات: **Unilateral** (غالباً)، ومعاها **Severe/Profound visual loss**، والـ Swelling مش بيكون Markedly elevated زي الـ Papilledema.
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 5. Treatment (الإنقاذ السريع)[/color][/size][/font]
+
+الهدف هنا هو Accelerate visual recovery ونقلل الـ Inflammation بسرعة عشان الـ Axons متموتش:
+* [color=#10b981]**High-dose IV Systemic Corticosteroids:**[/color] بندي **Methylprednisolone** بالوريد بجرعات عالية (غالباً **1 g/day** لمدة 3 أيام).
+* [color=#3b82f6]**Oral Taper:**[/color] بعد الـ IV، بنمشي العيان على **Oral prednisone** وبنسحبه تدريجياً (Oral taper) عشان نمنع الـ Recurrence ونحمي الـ Adrenal gland.
+
+---
+
+[font=Cairo][size=16][color=#8b5cf6]### 💡 Mnemonics & Memorization Aids[/color][/size][/font]
+
+* **عشان تفتكر الـ Retrobulbar Neuritis:**
+افتكر كلمة **Retro** تعني "خلف"، وطالما ورا يبقى مستخبي ➔ *Doctor sees nothing, patient sees nothing.* وافتكر حرف [color=#8b5cf6]**M**[/color] في Retro**M**bulbar (تجاوزاً) عشان تفكرك بالـ **MS** (Multiple Sclerosis).
+* **ليه الوجع بيزيد مع الحركة؟ (Eye Movement Pain):**
+افتكر إن الـ Optic nerve محاوط بالـ Extraocular muscles. لما العين تتحرك، العضلات بتعمل Tug / Pull على الـ Inflamed sheath، فتعمل الوجع.
+* [color=#ef4444]**الفرق الجوهري في كلمة واحدة:**[/color]
+  * **Papilledema** = Vision is OK (Early), No Pain, Bilateral.
+  * **Optic Neuritis** = Vision is Gone, Severe Pain, Unilateral.\n`,
+
+  'Optic Atrophy (Primary and Secondary)': `[font=Cairo][size=18][color=#1e293b]## 📌 Optic Atrophy (ضمور العصب البصري)[/color][/size][/font]
+
+دي الـ **End-stage** لأي مرض قوي أو مزمن سيبناه بدون علاج في الـ Optic nerve.
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 1. Definition[/color][/size][/font]
+
+الـ [color=#ef4444]**Optic Atrophy**[/color] هو عبارة عن [color=#ef4444]**Irreversible degeneration**[/color] للألياف العصبية (Optic nerve fibers). لما الألياف دي بتموت، بيفقد العصب الـ Myelin بتاعه، وبيحصل مكانها **Glial overgrowth** (تليف أو تكاثر للخلايا الغرائية).
+* **النتيجة الحتمية:** الـ Optic disc بيفقد لونه الوردي الطبيعي ويتحول للون شاحب ([color=#ef4444]**Pale optic disc**[/color])، ومعاه **Permanent visual loss** (فقدان نظر دائم لا يمكن استعادته).
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 2. Primary vs. Secondary Optic Atrophy (المقارنة الأهم)[/color][/size][/font]
+
+التقسيمة هنا قائمة على سؤال جوهري: هل العصب حصل له Atrophy على نظافة، ولا بعد معركة وسويلنج؟
+
+* [color=#3b82f6]**1) Primary Optic Atrophy:**[/color]
+  * **الآلية:** بيحصل نتيجة **Direct lesion** (إصابة مباشرة) للعصب البصري، بدون ما يسبقها أي Swelling أو Edema للـ Disc.
+  * **الأسباب:** *Trauma* (قطع مباشر في العصب)، *Toxic neuropathies* (أشهرها الـ Methanol toxicity أو سبرتو الميثانول)، *Compressive tumors* (ورم ضاغط على العصب من برة).
+  * **شكل الـ Fundus (على نظافة):**
+    * الـ Disc بيبان [color=#10b981]**Chalky white**[/color] (أبيض طباشيري ناصع).
+    * الـ Margins بتكون **Sharply defined** (حادة وواضحة جداً لأن مفيش تليف مغطيها).
+    * الـ Lamina cribrosa بتكون **Highly visible** (تقدر تشوف الثقوب بتاعة العظم بوضوح لأن الـ Cup فاضي ونظيف).
+    * الـ Retinal vessels بتكون **Completely normal**.
+* [color=#ef4444]**2) Secondary Optic Atrophy:**[/color]
+  * **الآلية:** بيحصل كـ Sequence أو نهاية لـ **Chronic, long-standing disc swelling** (يعني العصب كان متبهدل ومنفوخ لفترة طويلة قبل ما يموت).
+  * **الأسباب:** *Chronic papilledema* أو *Papillitis* سبناهم من غير علاج.
+  * **شكل الـ Fundus (مكان المعركة):**
+    * الـ Disc بيبان [color=#ef4444]**Dirty grey or pale**[/color] (رمادي متسخ نتيجة الـ Gliosis والـ Exudates القديمة).
+    * الـ Margins بتكون **Blurred and irregular** (مشوهة ومش واضحة لأن الـ Fibrosis بوظ معالمها).
+    * الـ Lamina cribrosa بتكون **Obliterated / Hidden** (مستخبية تماماً ومدمورة تحت الـ Glial tissue).
+    * الـ Retinal vessels بتكون **Severely attenuated** (ضيقة ومخفوقة جداً).
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 3. Other Special Types of Atrophy[/color][/size][/font]
+
+* [color=#3b82f6]**1) Glaucomatous Atrophy:**[/color]
+  * **السبب:** نتيجة الارتفاع المزمن في ضغط العين (Glaucoma).
+  * **الشكل المميز:** بتشوف [highlight=#fef08a]**Deep, wide cupping**[/highlight] (الـ Cup بياكل الـ Disc كله ويبقى غويط جداً)، وبتلاقي الأوعية الدموية المركزية حصل لها **Nasal shift** (الـ Central vessels متزحزحة ومحدوفة ناحية الـ Nose).
+* [color=#3b82f6]**2) Consecutive Atrophy:**[/color]
+  * **السبب:** العصب هنا سليم، لكن المشكلة في الـ Retina نفسها حصل فيها Widespread destruction (تدمير شامل للشبكية زي مرض الـ *Retinitis Pigmentosa*)، فلما الخلايا الأم ماتت، العصب حصل له ضمور بالتبعية.
+  * **الشكل المميز:** بيبان الـ Disc بلون **Waxy yellow** (أصفر شمعي) وليس أبيض، ويكون معاها Thread-like vessels.
+
+---
+
+[font=Cairo][size=16][color=#8b5cf6]### 💡 Mnemonics & Memorization Aids[/color][/size][/font]
+
+* **تجميعة الـ Fundus بالـ الكلمات المفتاحية (Keywords):**
+  * **Primary** ➔ Chalky White + Sharp Margins (افتكر: خط ابتدائي مرسوم بالطباشير والمسطرة).
+  * **Secondary** ➔ Dirty Grey + Blurred Margins (افتكر: خناقة وسوائل قديمة سابت عك "Dirty").
+  * **Glaucomatous** ➔ Deep Cup + Nasal Shift.
+  * **Consecutive** ➔ Waxy Yellow (شمعة مطفية بسبب موت الشبكية).
+* **تريكة الـ Lamina Cribrosa:**
+  * في الـ **Primary** ➔ الـ Lamina بتكون *Patent / Visible*.
+  * في الـ **Secondary** ➔ الـ Lamina بتكون *Shut / Obliterated*.\n`,
+
+  'Pupillary Reflexes and Abnormalities': `[font=Cairo][size=18][color=#1e293b]## 📌 Pupillary Reflexes and Abnormalities[/color][/size][/font]
+
+من أهم المواضيع المشتركة بين الـ Ophthalmology والـ Neurology، وتريكاته دايماً بتعتمد على فهم الـ Pathway.
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 1. Light Reflex Pathway (مسار إشارة الضوء)[/color][/size][/font]
+
+المنعكس ده بيتميز إنه [color=#10b981]**Bilateral**[/color] (لما تنور في عين، الاتنين بيقفلوا) بفضل وصلة عصبية معينة. المسار مقسم لـ Afferent و Efferent:
+
+* [color=#3b82f6]**A) Afferent Pathway (الداخل / الإحساس بالضوء):**[/color]
+  * Retina ➔ Optic Nerve ➔ الـ Fibers بتسيب الـ Optic tract قبل الـ LGB وتروح للـ [color=#3b82f6]**Pretectal nucleus**[/color] في الـ Midbrain.
+  * **التريكة هنا:** الـ Pretectal nucleus بتبعت [highlight=#fef08a]**Bilateral fibers**[/highlight] للـ **Edinger-Westphal (EW) nuclei** على الناحيتين (الـ Right والـ Left). ده التفسير العلمي ليه لما بتنور في عين واحدة (Direct reflex)، العين التانية بتقفل معاها (Indirect / Consensual reflex).
+* [color=#3b82f6]**B) Efferent Pathway (الخارج / الحركة والأمر بالقفل):**[/color]
+  * الإشارة بتطلع من الـ **EW nucleus** (Parasympathetic fibers) وتنزلق مع الـ **Oculomotor (3rd) nerve**.
+  * بتعمل Synapse في محطة الـ **Ciliary ganglion**.
+  * تطلع منها الـ **Short ciliary nerves** لتغذي الـ **Sphincter pupillae muscle** فتعمل الـ Constriction (Miosis).
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 2. Relative Afferent Pupillary Defect (RAPD / Marcus Gunn Pupil)[/color][/size][/font]
+
+* **الفحص المستخدم:** [color=#8b5cf6]**Swinging flashlight test**[/color] (بتنور في العين السليمة ثانية، وتنقل الكشاف بسرعة للعين المصابة).
+* **ماذا يحدث؟ (Paradoxical Dilation):** لما بتنقل الضوء للعين المصابة، بتلاقي الـ Pupil بتاعها [color=#ef4444]**وسع فجأة بدل ما يضيق!**[/color]
+* **التفسير العلمي:** العين المصابة فيها العصب تعبان جداً، فمش حاسة بقوة الضوء مقارنة بالعين السليمة. لما نقلت الكشاف ليها، المخ اعتبر إن الإضاءة "قلت" بالنسبة للوضع اللي فات، فأعطى أمر للعينين إنهم يوسعوا.
+* **الأسباب:** **Unilateral** extensive optic nerve disease (زي الـ Optic neuritis) أو Massive retinal disease (مثل Central Retinal Artery Occlusion).
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 3. Argyll Robertson Pupil[/color][/size][/font]
+
+* **الشكل:** **Bilateral small, irregular pupils**.
+* **الظاهرة الشهيرة:** [highlight=#fef08a]**Light-Near Dissociation**[/highlight].
+  * **Accommodation:** [color=#10b981]**Positive**[/color] (Pupils constrict on accommodation).
+  * **Light:** [color=#ef4444]**Negative**[/color] (Completely fail to react to light).
+* **السبب الكلاسيكي:** [color=#ef4444]**Neurosyphilis**[/color] (مرض الزهري العصبي) نتيجة ضرب الـ Pretectal nucleus.
+* 💡 *Mnemonic:* افتكر إن الـ **A**rgyll **R**obertson pupil شبه الـ **A**dvanced **R**esident (نائب رئيس القسم) ➔ [color=#3b82f6]**Accommodates but does not React!**[/color]
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 4. Adie's Tonic Pupil (الكسول)[/color][/size][/font]
+
+* **الشكل:** Pupil بيكون **Dilated** (واسع) و**Unilateral** (غالباً).
+* **الاستجابة:** بيكون عنده **Extremely sluggish** (استجابة بطيئة وكسولة جداً للضوء وللـ Accommodation). لما يضيق، بياخد وقت طويل جداً عشان يرجع يوسع تاني (Tonic).
+* **الفئة المستهدفة:** مشهور جداً في الـ [color=#8b5cf6]**Young females**[/color].
+* **السبب:** ضرب الـ **Ciliary ganglion** (الـ Efferent parasympathetic pathway).
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 5. Horner's Syndrome (غلق محبس الـ Sympathetic)[/color][/size][/font]
+
+هنا المشكلة مش في الـ Parasympathetic، هنا الـ [color=#ef4444]**Sympathetic pathway**[/color] حصله Palsy (شلل)، وبالتالي الـ Parasympathetic شغال لوحده وبقوة بدون مقاومة.
+
+[font=Cairo][size=15][color=#ef4444]**الـ Classic Triad المشهور جداً:**[/color][/size][/font]
+1. [color=#3b82f6]**Miosis:**[/color] الـ Pupil بيكون ضيق (لأن الـ Dilator pupillae muscle مفيش sympathetic يشغلها، فالـ Sphincter قافلة العين).
+2. [color=#3b82f6]**Mild Ptosis:**[/color] سقوط بسيط جداً في الجفن العلوي (نتيجة شلل الـ **Müller's muscle** وهي smooth muscle بتساعد في رفع الجفن ومدعومة بالـ sympathetic).
+3. [color=#3b82f6]**Anhidrosis:**[/color] غياب العرق في الناحية المصابة من الوجه (لأن الغدد العرقية بتتغذى sympathetic).
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 📊 Quick Diagnostic Summary Table[/color][/size][/font]
+
+| Condition | Pupil Size | Light Reflex | Accommodation | Unilateral / Bilateral |
+| --- | --- | --- | --- | --- |
+| **RAPD** | Normal in dark | Paradoxical Dilation | Normal | Unilateral |
+| **Argyll Robertson** | Small & Irregular | **Absent** | **Present** | Bilateral |
+| **Adie's Tonic** | Dilated | Sluggish / Absent | Sluggish | Unilateral (Young Females) |
+| **Horner's** | Constricted (Miosis) | Normal | Normal | Unilateral (+ Ptosis & Anhidrosis) |\n`
+};
+
+const getPredefinedExplanation = (disease: string) => {
+  return OPHTHALMOLOGY_EXPLANATIONS[disease] || PEDIATRICS_EXPLANATIONS[disease] || '';
+};
+
 const PEDIATRICS_EXPLANATIONS: Record<string, string> = {
   'Acute Rheumatic Fever (ARF)': `
 ### 3. الحمى الروماتيزمية الحادة (Acute Rheumatic Fever - ARF)
@@ -11569,7 +11888,7 @@ const FlashSpace = () => {
 
   useEffect(() => {
     if (isEditingNotes && editorRef.current && selectedBoard) {
-      const initialText = getNoteForDisease(selectedBoard.disease) || selectedBoard.explanation || PEDIATRICS_EXPLANATIONS[selectedBoard.disease] || '';
+      const initialText = getNoteForDisease(selectedBoard.disease) || selectedBoard.explanation || getPredefinedExplanation(selectedBoard.disease) || '';
       editorRef.current.innerHTML = bbcodeAndMarkdownToHtml(initialText);
       setEditedNoteText(initialText);
     }
@@ -16090,7 +16409,7 @@ const FlashSpace = () => {
                   </div>
                   <div className="flex items-center gap-2">
                     {userRole === 'admin' && activeNoteTab === 'notes' && (
-                      <button onClick={() => { setIsEditingNotes(true); setEditedNoteText(getNoteForDisease(selectedBoard.disease) || selectedBoard.explanation || PEDIATRICS_EXPLANATIONS[selectedBoard.disease] || ''); }} className="p-2.5 bg-indigo-50 hover:bg-indigo-100 text-indigo-600 rounded-xl transition-all font-bold text-xs flex items-center gap-2 shadow-sm">
+                      <button onClick={() => { setIsEditingNotes(true); setEditedNoteText(getNoteForDisease(selectedBoard.disease) || selectedBoard.explanation || getPredefinedExplanation(selectedBoard.disease) || ''); }} className="p-2.5 bg-indigo-50 hover:bg-indigo-100 text-indigo-600 rounded-xl transition-all font-bold text-xs flex items-center gap-2 shadow-sm">
                         <Edit className="w-4 h-4" />
                         تعديل النوتس
                       </button>
@@ -16125,9 +16444,9 @@ const FlashSpace = () => {
                 <div className="flex-1 overflow-y-auto">
                   {activeNoteTab === 'notes' ? (
                     <div className="max-w-3xl mx-auto px-6 md:px-10 py-8 pb-20 text-slate-800" dir="rtl">
-                      {(getNoteForDisease(selectedBoard.disease) || selectedBoard.explanation || PEDIATRICS_EXPLANATIONS[selectedBoard.disease]) ? (
+                      {(getNoteForDisease(selectedBoard.disease) || selectedBoard.explanation || getPredefinedExplanation(selectedBoard.disease)) ? (
                         <BBCodeMarkdown
-                          content={getNoteForDisease(selectedBoard.disease) || selectedBoard.explanation || PEDIATRICS_EXPLANATIONS[selectedBoard.disease]}
+                          content={getNoteForDisease(selectedBoard.disease) || selectedBoard.explanation || getPredefinedExplanation(selectedBoard.disease)}
                           components={{
                             h1: ({node, ...props}: any) => <h1 className="text-2xl font-black text-current mt-8 mb-4 border-b pb-3 border-slate-200 text-right" {...props} />,
                             h2: ({node, ...props}: any) => <h2 className="text-xl font-black text-current mt-6 mb-3 border-r-4 border-current pr-3 text-right" {...props} />,
