@@ -49,7 +49,7 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
       const staticCourses = [
         {
           id: 'ophthalmology_flash_space',
-          name: 'كورس الرمد الشامل 🔥 (Ophthalmology)',
+          name: 'كورس الرمد الشامل (Ophthalmology)',
           description: 'Flash Space - مساحة دراسة تفاعلية وحصرية لكورس الرمد. مدعومة بتقنيات متقدمة.',
           level: 'fifth',
           price: '60',

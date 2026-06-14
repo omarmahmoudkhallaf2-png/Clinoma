@@ -226,9 +226,8 @@ export default function Dashboard() {
                       )}
                     >
                       {isOphth ? (
-                        <div className="absolute top-0 right-10 bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 text-white text-xs font-black px-4 py-1.5 rounded-b-xl shadow-lg flex items-center gap-1.5 z-10 animate-bounce">
-                          <Flame className="w-3.5 h-3.5 fill-current animate-pulse text-yellow-300" />
-                          <span>60 ج 🔥</span>
+                        <div className="absolute top-0 right-10 bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 text-white text-sm font-black px-5 py-2 rounded-b-xl shadow-lg z-10">
+                          <span>60 جنيه</span>
                         </div>
                       ) : course.trending ? (
                         <div className="absolute top-0 right-10 bg-gradient-to-r from-rose-500 to-orange-500 text-white text-[10px] font-black px-4 py-1.5 rounded-b-xl shadow-lg flex items-center gap-1.5 z-10 animate-pulse">
@@ -246,7 +245,7 @@ export default function Dashboard() {
                                 ? 'bg-indigo-50 text-indigo-600 group-hover:bg-indigo-600 shadow-indigo-500/10' 
                                 : 'bg-primary/5 text-primary group-hover:bg-primary shadow-primary/5'
                           )}>
-                            {isOphth ? <Flame className="w-7 h-7" /> : course.isFlashSpace ? <Sparkles className="w-7 h-7" /> : <BookOpen className="w-7 h-7" />}
+                            {isOphth ? <Sparkles className="w-7 h-7" /> : course.isFlashSpace ? <Sparkles className="w-7 h-7" /> : <BookOpen className="w-7 h-7" />}
                           </div>
                           <div className="space-y-3 w-full">
                             <h3 className="text-2xl font-black text-slate-800 dark:text-white tracking-tight leading-tight">{course.name}</h3>
@@ -255,16 +254,15 @@ export default function Dashboard() {
                                 "px-2 py-0.5 rounded-md flex items-center gap-1 text-[10px] w-fit font-black",
                                 isOphth ? "bg-orange-100 text-orange-700" : "bg-indigo-100 text-indigo-700"
                               )}>
-                                {isOphth ? <Flame className="w-3 h-3 text-orange-500 fill-orange-500" /> : <Sparkles className="w-3 h-3" />}
+                                <Sparkles className="w-3 h-3" />
                                 FLASH SPACE
                               </span>
                             )}
                             <p className="text-sm text-slate-400 dark:text-slate-400 font-semibold leading-relaxed min-h-[48px] line-clamp-2">{course.description}</p>
                             
                             {isOphth && !hasAccess && (
-                              <div className="flex items-center gap-2 mt-2 bg-rose-500/10 border border-rose-500/20 text-rose-600 dark:text-rose-400 px-4 py-1.5 rounded-2xl text-sm font-black w-fit">
-                                <Flame className="w-4 h-4 text-orange-500 fill-orange-500 animate-pulse animate-bounce" />
-                                <span>السعر: 60 جنيه فقط 🔥</span>
+                              <div className="mt-2 bg-rose-500/10 border border-rose-500/20 text-rose-600 dark:text-rose-400 px-5 py-2.5 rounded-2xl text-base font-black w-fit">
+                                <span>السعر: 60 جنيه فقط</span>
                               </div>
                             )}
                           </div>
