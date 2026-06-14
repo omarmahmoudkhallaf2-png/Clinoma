@@ -8979,6 +8979,95 @@ const domToBBCode = (node: Node): string => {
   return childrenContent;
 };
 
+const BatchBoardItem = ({ 
+  board, 
+  idx, 
+  onRemove, 
+  onChangeDisease, 
+  onChangeImage, 
+  onChangeExplanation,
+  length
+}: { 
+  board: { disease: string; medicalImage: string; explanation: string };
+  idx: number;
+  onRemove: () => void;
+  onChangeDisease: (val: string) => void;
+  onChangeImage: (val: string) => void;
+  onChangeExplanation: (val: string) => void;
+  length: number;
+}) => {
+  const localEditorRef = useRef<HTMLDivElement>(null);
+
+  // Initialize content once on mount
+  useEffect(() => {
+    if (localEditorRef.current) {
+      const html = bbcodeAndMarkdownToHtml(board.explanation || '');
+      if (localEditorRef.current.innerHTML !== html) {
+        localEditorRef.current.innerHTML = html;
+      }
+    }
+  }, []);
+
+  const handleInput = () => {
+    if (localEditorRef.current) {
+      const bbcode = domToBBCode(localEditorRef.current);
+      onChangeExplanation(bbcode);
+    }
+  };
+
+  return (
+    <div className="bg-slate-950/40 p-5 rounded-2xl border border-white/5 space-y-4 relative text-right">
+      <div className="flex justify-between items-center">
+        <span className="text-xs font-black text-indigo-400">بطاقة الصورة رقم #{idx + 1}</span>
+        {length > 1 && (
+          <button
+            type="button"
+            onClick={onRemove}
+            className="text-xs font-bold text-rose-400 hover:text-rose-300 bg-rose-500/10 px-2.5 py-1 rounded-lg border border-rose-500/20"
+          >
+            حذف الصورة
+          </button>
+        )}
+      </div>
+
+      <div className="space-y-2">
+        <label className="text-xs font-bold text-slate-400 block">عنوان الحالة / المرض</label>
+        <input 
+          type="text" required placeholder="مثال: Corneal Ulcer..."
+          value={board.disease} 
+          onChange={e => onChangeDisease(e.target.value)}
+          className="w-full bg-slate-950 text-white px-4 py-2.5 rounded-xl border border-white/10 outline-none focus:border-indigo-500 text-sm font-bold"
+        />
+      </div>
+      
+      <div className="space-y-2">
+        <label className="text-xs font-bold text-slate-400 block">رابط الصورة المباشر (Link/URL)</label>
+        <input 
+          type="text" required placeholder="مثال: https://i.postimg.cc/xyz.jpg..."
+          value={board.medicalImage} 
+          onChange={e => onChangeImage(e.target.value)}
+          className="w-full bg-slate-950 text-white px-4 py-2.5 rounded-xl border border-white/10 outline-none focus:border-indigo-500 text-sm font-bold"
+        />
+      </div>
+
+      <div className="space-y-2">
+        <label className="text-xs font-bold text-slate-400 block">شرح طبي إضافي (ملاحظات - تدعم التظليل والألوان المنسوخة)</label>
+        <div
+          ref={localEditorRef}
+          contentEditable
+          suppressContentEditableWarning
+          onInput={handleInput}
+          onPaste={e => {
+            setTimeout(handleInput, 50);
+          }}
+          className="w-full bg-slate-950 text-white px-4 py-2.5 rounded-xl border border-white/10 outline-none focus:border-indigo-500 text-xs font-medium min-h-[80px] overflow-y-auto text-right leading-relaxed custom-scrollbar"
+          dir="rtl"
+        />
+      </div>
+    </div>
+  );
+};
+
 const FlashSpace = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -9036,12 +9125,13 @@ const FlashSpace = () => {
       return;
     }
     const toastId = toast.loading('جاري تعديل بيانات الصورة...');
+    const finalExplanation = editExplanationRef.current ? domToBBCode(editExplanationRef.current) : editBoardForm.explanation;
     try {
       const docRef = doc(db, 'flashspace_boards', editBoardForm.id);
       await updateDoc(docRef, {
         disease: editBoardForm.disease.trim(),
         medicalImage: editBoardForm.medicalImage.trim(),
-        explanation: editBoardForm.explanation.trim()
+        explanation: finalExplanation.trim()
       });
 
       // Update state locally
@@ -9049,7 +9139,7 @@ const FlashSpace = () => {
         ...b,
         disease: editBoardForm.disease.trim(),
         medicalImage: editBoardForm.medicalImage.trim(),
-        explanation: editBoardForm.explanation.trim()
+        explanation: finalExplanation.trim()
       } : b));
 
       // Update selectedBoard if it is the edited one
@@ -9058,7 +9148,7 @@ const FlashSpace = () => {
           ...prev,
           disease: editBoardForm.disease.trim(),
           medicalImage: editBoardForm.medicalImage.trim(),
-          explanation: editBoardForm.explanation.trim()
+          explanation: finalExplanation.trim()
         } : null);
       }
 
@@ -9894,6 +9984,7 @@ const FlashSpace = () => {
   const [editedNoteText, setEditedNoteText] = useState("");
   
   const editorRef = useRef<HTMLDivElement>(null);
+  const editExplanationRef = useRef<HTMLDivElement>(null);
   
   const applyFormatting = (tag: string, value?: string) => {
     const selection = window.getSelection();
@@ -9977,11 +10068,17 @@ const FlashSpace = () => {
 
   useEffect(() => {
     if (isEditingNotes && editorRef.current && selectedBoard) {
-      const initialText = getNoteForDisease(selectedBoard.disease) || PEDIATRICS_EXPLANATIONS[selectedBoard.disease] || '';
+      const initialText = getNoteForDisease(selectedBoard.disease) || selectedBoard.explanation || PEDIATRICS_EXPLANATIONS[selectedBoard.disease] || '';
       editorRef.current.innerHTML = bbcodeAndMarkdownToHtml(initialText);
       setEditedNoteText(initialText);
     }
-  }, [isEditingNotes, selectedBoard?.disease, firebaseNotes]);
+  }, [isEditingNotes, selectedBoard?.disease, selectedBoard?.explanation, firebaseNotes]);
+
+  useEffect(() => {
+    if (isEditBoardOpen && editExplanationRef.current) {
+      editExplanationRef.current.innerHTML = bbcodeAndMarkdownToHtml(editBoardForm.explanation || '');
+    }
+  }, [isEditBoardOpen, editBoardForm.id]);
 
   useEffect(() => {
     if (userData?.spacePriorities) {
@@ -13935,61 +14032,24 @@ const FlashSpace = () => {
             <form onSubmit={handleAddBoard} className="space-y-4 max-h-[70vh] flex flex-col">
               <div className="overflow-y-auto pr-1 space-y-6 flex-1 py-1">
                 {batchBoards.map((board, idx) => (
-                  <div key={idx} className="bg-slate-950/40 p-5 rounded-2xl border border-white/5 space-y-4 relative">
-                    <div className="flex justify-between items-center">
-                      <span className="text-xs font-black text-indigo-400">بطاقة الصورة رقم #{idx + 1}</span>
-                      {batchBoards.length > 1 && (
-                        <button
-                          type="button"
-                          onClick={() => {
-                            setBatchBoards(prev => prev.filter((_, i) => i !== idx));
-                          }}
-                          className="text-xs font-bold text-rose-400 hover:text-rose-300 bg-rose-500/10 px-2.5 py-1 rounded-lg border border-rose-500/20"
-                        >
-                          حذف الصورة
-                        </button>
-                      )}
-                    </div>
-
-                    <div className="space-y-2">
-                      <label className="text-xs font-bold text-slate-400 block">عنوان الحالة / المرض</label>
-                      <input 
-                        type="text" required placeholder="مثال: Corneal Ulcer..."
-                        value={board.disease} 
-                        onChange={e => {
-                          const val = e.target.value;
-                          setBatchBoards(prev => prev.map((item, i) => i === idx ? { ...item, disease: val } : item));
-                        }}
-                        className="w-full bg-slate-950 text-white px-4 py-2.5 rounded-xl border border-white/10 outline-none focus:border-indigo-500 text-sm font-bold"
-                      />
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <label className="text-xs font-bold text-slate-400 block">رابط الصورة المباشر (Link/URL)</label>
-                      <input 
-                        type="text" required placeholder="مثال: https://i.postimg.cc/xyz.jpg..."
-                        value={board.medicalImage} 
-                        onChange={e => {
-                          const val = e.target.value;
-                          setBatchBoards(prev => prev.map((item, i) => i === idx ? { ...item, medicalImage: val } : item));
-                        }}
-                        className="w-full bg-slate-950 text-white px-4 py-2.5 rounded-xl border border-white/10 outline-none focus:border-indigo-500 text-sm font-bold"
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <label className="text-xs font-bold text-slate-400 block">شرح طبي إضافي (ملاحظات)</label>
-                      <input 
-                        type="text" placeholder="اكتب الشرح الطبي هنا (اختياري)..."
-                        value={board.explanation} 
-                        onChange={e => {
-                          const val = e.target.value;
-                          setBatchBoards(prev => prev.map((item, i) => i === idx ? { ...item, explanation: val } : item));
-                        }}
-                        className="w-full bg-slate-950 text-white px-4 py-2.5 rounded-xl border border-white/10 outline-none focus:border-indigo-500 text-xs font-medium"
-                      />
-                    </div>
-                  </div>
+                  <BatchBoardItem
+                    key={idx}
+                    board={board}
+                    idx={idx}
+                    length={batchBoards.length}
+                    onRemove={() => {
+                      setBatchBoards(prev => prev.filter((_, i) => i !== idx));
+                    }}
+                    onChangeDisease={val => {
+                      setBatchBoards(prev => prev.map((item, i) => i === idx ? { ...item, disease: val } : item));
+                    }}
+                    onChangeImage={val => {
+                      setBatchBoards(prev => prev.map((item, i) => i === idx ? { ...item, medicalImage: val } : item));
+                    }}
+                    onChangeExplanation={val => {
+                      setBatchBoards(prev => prev.map((item, i) => i === idx ? { ...item, explanation: val } : item));
+                    }}
+                  />
                 ))}
               </div>
 
@@ -14047,12 +14107,25 @@ const FlashSpace = () => {
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-bold text-slate-400 block">شرح طبي إضافي (ملاحظات)</label>
-                <textarea 
-                  rows={4} placeholder="اكتب الشرح الطبي هنا (اختياري)..."
-                  value={editBoardForm.explanation} 
-                  onChange={e => setEditBoardForm(prev => ({ ...prev, explanation: e.target.value }))}
-                  className="w-full bg-slate-950 text-white px-4 py-2.5 rounded-xl border border-white/10 outline-none focus:border-indigo-500 text-xs font-medium"
+                <label className="text-xs font-bold text-slate-400 block">شرح طبي إضافي (ملاحظات - تدعم التظليل والألوان المنسوخة)</label>
+                <div 
+                  ref={editExplanationRef}
+                  contentEditable
+                  suppressContentEditableWarning
+                  onInput={() => {
+                    if (editExplanationRef.current) {
+                      setEditBoardForm(prev => ({ ...prev, explanation: domToBBCode(editExplanationRef.current!) }));
+                    }
+                  }}
+                  onPaste={() => {
+                    setTimeout(() => {
+                      if (editExplanationRef.current) {
+                        setEditBoardForm(prev => ({ ...prev, explanation: domToBBCode(editExplanationRef.current!) }));
+                      }
+                    }, 50);
+                  }}
+                  className="w-full bg-slate-950 text-white px-4 py-2.5 rounded-xl border border-white/10 outline-none focus:border-indigo-500 text-xs font-medium min-h-[100px] overflow-y-auto text-right leading-relaxed custom-scrollbar"
+                  dir="rtl"
                 />
               </div>
 
@@ -14540,7 +14613,7 @@ const FlashSpace = () => {
                   </div>
                   <div className="flex items-center gap-2">
                     {userRole === 'admin' && activeNoteTab === 'notes' && (
-                      <button onClick={() => { setIsEditingNotes(true); setEditedNoteText(getNoteForDisease(selectedBoard.disease) || PEDIATRICS_EXPLANATIONS[selectedBoard.disease] || ''); }} className="p-2.5 bg-indigo-50 hover:bg-indigo-100 text-indigo-600 rounded-xl transition-all font-bold text-xs flex items-center gap-2 shadow-sm">
+                      <button onClick={() => { setIsEditingNotes(true); setEditedNoteText(getNoteForDisease(selectedBoard.disease) || selectedBoard.explanation || PEDIATRICS_EXPLANATIONS[selectedBoard.disease] || ''); }} className="p-2.5 bg-indigo-50 hover:bg-indigo-100 text-indigo-600 rounded-xl transition-all font-bold text-xs flex items-center gap-2 shadow-sm">
                         <Edit className="w-4 h-4" />
                         تعديل النوتس
                       </button>
@@ -14575,9 +14648,9 @@ const FlashSpace = () => {
                 <div className="flex-1 overflow-y-auto">
                   {activeNoteTab === 'notes' ? (
                     <div className="max-w-3xl mx-auto px-6 md:px-10 py-8 pb-20 text-slate-800" dir="rtl">
-                      {(getNoteForDisease(selectedBoard.disease) || PEDIATRICS_EXPLANATIONS[selectedBoard.disease]) ? (
+                      {(getNoteForDisease(selectedBoard.disease) || selectedBoard.explanation || PEDIATRICS_EXPLANATIONS[selectedBoard.disease]) ? (
                         <BBCodeMarkdown
-                          content={getNoteForDisease(selectedBoard.disease) || PEDIATRICS_EXPLANATIONS[selectedBoard.disease]}
+                          content={getNoteForDisease(selectedBoard.disease) || selectedBoard.explanation || PEDIATRICS_EXPLANATIONS[selectedBoard.disease]}
                           components={{
                             h1: ({node, ...props}: any) => <h1 className="text-2xl font-black text-current mt-8 mb-4 border-b pb-3 border-slate-200 text-right" {...props} />,
                             h2: ({node, ...props}: any) => <h2 className="text-xl font-black text-current mt-6 mb-3 border-r-4 border-current pr-3 text-right" {...props} />,
