@@ -68,6 +68,17 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
           isFlashSpace: true,
           flashSpaceModule: 'الورقة الثانية',
           trending: true,
+        },
+        {
+          id: 'ophthalmology_flash_space',
+          name: 'كورس الرمد الشامل 🔥 (Ophthalmology)',
+          description: 'Flash Space - مساحة دراسة تفاعلية وحصرية لكورس الرمد. مدعومة بتقنيات متقدمة.',
+          level: 'fifth',
+          price: '60',
+          details: 'مساحة دراسة بصرية تفاعلية (Flash Space)\nشرح وحفظ الصور الطبية لـ 13 شابتر رمد\nمطابقة مرنة مع اللوحات والرسومات\nمتاح تلقائياً لمشتركي الورقة الثانية',
+          isFlashSpace: true,
+          flashSpaceModule: 'Ophthalmology',
+          trending: true,
         }
       ];
 
