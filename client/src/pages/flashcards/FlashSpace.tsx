@@ -12150,180 +12150,113 @@ const FlashSpace = () => {
                                 <h3 className="font-black text-lg leading-tight mb-1 text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-yellow-400 to-amber-300 group-hover:from-white group-hover:to-amber-200 transition-all duration-500">
                                   فلاش كارد الورقة الثانية ✨
                                 </h3>
-                                <p className="text-amber-500/70 group-hover:text-amber-300/90 text-xs font-semibold tracking-wide transition-colors dura                        {/* Flashcard Flat Layout */}
-                        <div className="w-full flex-1 flex items-center justify-center py-4 md:py-8">
-                          <div className="w-full max-w-3xl lg:max-w-4xl bg-white rounded-3xl border-2 border-slate-100 shadow-xl overflow-hidden min-h-[460px] flex flex-col relative">
-                            {/* Distraction Warning overlay */}
-                            <AnimatePresence>
-                              {distractionWarningPhase !== 'none' && (
-                                <motion.div
-                                  initial={{ opacity: 0 }}
-                                  animate={{ opacity: 1 }}
-                                  exit={{ opacity: 0 }}
-                                  className="absolute inset-0 z-50 bg-white/95 backdrop-blur-sm flex flex-col items-center justify-center p-6 text-center rounded-3xl border-2 border-slate-100 shadow-xl"
-                                  dir="rtl"
-                                >
-                                  {distractionWarningPhase === 'first' ? (
-                                    <motion.div 
-                                      initial={{ scale: 0.9, y: 10 }}
-                                      animate={{ scale: 1, y: 0 }}
-                                      exit={{ scale: 0.9, y: 10 }}
-                                      className="max-w-md w-full space-y-6 flex flex-col items-center"
-                                    >
-                                      <div className="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center text-yellow-600 shadow-md animate-bounce">
-                                        <Timer className="w-10 h-10" />
-                                      </div>
-                                      <div className="space-y-2">
-                                        <h3 className="text-3xl font-black text-yellow-600 tracking-tight">متسرحش⏳</h3>
-                                      </div>
-                                      <button
-                                        onClick={handleResumeFromWarning}
-                                        className="px-8 py-3.5 bg-yellow-500 hover:bg-yellow-600 text-slate-900 rounded-2xl font-black text-base shadow-lg shadow-yellow-500/20 active:scale-95 transition-all w-full max-w-xs cursor-pointer"
-                                      >
-                                        يلا بينا
-                                      </button>
-                                    </motion.div>
-                                  ) : (
-                                    <motion.div 
-                                      initial={{ scale: 0.9, y: 10 }}
-                                      animate={{ scale: 1, y: 0 }}
-                                      exit={{ scale: 0.9, y: 10 }}
-                                      className="max-w-md w-full space-y-6 flex flex-col items-center"
-                                    >
-                                      <div className="w-20 h-20 bg-rose-100 rounded-full flex items-center justify-center text-rose-600 shadow-md animate-pulse">
-                                        <AlertCircle className="w-10 h-10" />
-                                      </div>
-                                      <div className="space-y-2">
-                                        <h3 className="text-3xl font-black text-rose-650 tracking-tight text-red-650">كفاية سرحان🛑</h3>
-                                      </div>
-                                      <button
-                                        onClick={handleResumeFromWarning}
-                                        className="px-8 py-3.5 bg-rose-600 hover:bg-rose-700 text-white rounded-2xl font-black text-base shadow-lg shadow-rose-600/20 active:scale-95 transition-all w-full max-w-xs cursor-pointer"
-                                      >
-                                        يلا بينا
-                                      </button>
-                                    </motion.div>
-                                  )}
-                                </motion.div>
-                              )}
-                            </AnimatePresence>
-
-                            {/* Question Section - Always Visible */}
-                            <div className="p-6 sm:p-8 md:p-12 border-b border-slate-100 bg-white flex flex-col items-center justify-center min-h-[200px]">
-                              <div className="w-10 h-10 md:w-12 md:h-12 bg-indigo-50 rounded-2xl flex items-center justify-center mb-4 md:mb-6 shrink-0">
-                                <span className="text-indigo-500 font-black text-sm md:text-base">Q</span>
-                              </div>
-                              <div className="w-full flex items-center justify-center overflow-y-auto custom-scrollbar pr-2">
-                                <p className={`text-slate-800 font-black leading-relaxed whitespace-pre-line w-full ${(currentCard?.front?.length || 0) > 105 ? 'text-sm sm:text-base lg:text-lg text-left' : 'text-lg sm:text-xl md:text-2xl lg:text-3xl text-center'}`} dir="auto">
-                                  {currentCard?.front}
+                                <p className="text-amber-500/70 group-hover:text-amber-300/90 text-xs font-semibold tracking-wide transition-colors duration-500">
+                                  ╪¿┘ê╪º╪¿╪⌐ ╪º┘ä┘à╪▒╪º╪¼╪╣╪⌐ ╪º┘ä╪¬┘ü╪º╪╣┘ä┘è╪⌐ ╪º┘ä┘ü╪«┘à╪⌐
                                 </p>
                               </div>
-                            </div>
-
-                            {/* Answer Section / Controls */}
-                            <div className="flex-1 flex flex-col min-h-[220px] bg-slate-50/10 justify-center">
-                              <AnimatePresence mode="wait">
-                                {!isCardFlipped ? (
-                                  <motion.div
-                                    key="reveal-btn-container"
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    exit={{ opacity: 0 }}
-                                    className="flex-1 flex flex-col items-center justify-center p-10"
-                                  >
-                                    <button
-                                      onClick={() => setIsCardFlipped(true)}
-                                      className="group relative px-8 py-3.5 bg-slate-900 hover:bg-slate-800 text-white rounded-2xl font-bold text-sm overflow-hidden transition-all hover:scale-[1.03] active:scale-95 shadow-lg shadow-slate-200 cursor-pointer"
-                                    >
-                                      <span className="relative z-10 flex items-center gap-2.5">
-                                        <Eye className="w-4 h-4" />
-                                        <span>Show Model Answer</span>
-                                      </span>
-                                    </button>
-                                  </motion.div>
-                                ) : (
-                                  <motion.div
-                                    key="answer-content-container"
-                                    initial={{ opacity: 0, y: 15 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    className="flex-1 flex flex-col justify-between"
-                                  >
-                                    <div className="flex-1 bg-slate-50/35 p-6 sm:p-8 border-b border-slate-50 flex flex-col items-center justify-center">
-                                      <div className="w-10 h-10 md:w-12 md:h-12 bg-indigo-500 rounded-2xl flex items-center justify-center mb-4 md:mb-6 shrink-0">
-                                        <span className="text-white font-black text-sm md:text-base">A</span>
-                                      </div>
-                                      <div className="w-full flex items-center justify-center overflow-y-auto custom-scrollbar pr-2 max-h-[300px]">
-                                        <p className={`text-slate-800 font-black leading-relaxed whitespace-pre-line w-full ${(currentCard?.back?.length || 0) > 105 ? 'text-sm sm:text-base lg:text-lg text-left' : 'text-base sm:text-lg md:text-xl lg:text-2xl text-center'}`} dir="auto">
-                                          {currentCard?.back}
-                                        </p>
-                                      </div>
-                                    </div>
-
-                                    {/* Rating Controls */}
-                                    <div className="bg-slate-50/40 p-4 border-t border-slate-100 font-sans">
-                                      <p className="text-center text-xs font-black text-slate-400 uppercase tracking-widest mb-3">How well did you know this?</p>
-                                      <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3 w-full max-w-3xl mx-auto">
-                                        <button
-                                          id="difficulty-very-hard-btn"
-                                          onClick={() => rateCard('very_hard')}
-                                          className="group flex flex-col items-center p-1.5 sm:p-2.5 bg-white rounded-xl border border-slate-200 hover:border-rose-200 hover:bg-rose-50/30 transition-all text-center relative cursor-pointer"
-                                        >
-                                          <span className="absolute top-1 right-1 flex items-center justify-center w-3.5 h-3.5 text-[8px] font-mono font-bold bg-slate-100 text-slate-500 border border-slate-200 rounded">
-                                            3
-                                          </span>
-                                          <div className="text-rose-600 font-extrabold text-[10px] sm:text-xs mt-1 sm:mt-1.5">Very Hard</div>
-                                          <div className="text-[8px] sm:text-[9px] text-slate-400 font-semibold uppercase tracking-wider mt-0.5">
-                                            {qSessionMode === 'topic' ? 'In 1 Card' : 'In 2 Cards'}
-                                          </div>
-                                        </button>
-
-                                        <button
-                                          id="difficulty-hard-btn"
-                                          onClick={() => rateCard('hard')}
-                                          className="group flex flex-col items-center p-1.5 sm:p-2.5 bg-amber-500/10 rounded-xl border border-amber-500/20 hover:border-amber-500/40 hover:bg-amber-500/15 transition-all text-center relative cursor-pointer"
-                                        >
-                                          <span className="absolute top-1 right-1 flex items-center justify-center w-3.5 h-3.5 text-[8px] font-mono font-bold bg-amber-500/20 text-amber-800 border border-amber-500/30 rounded">
-                                            2
-                                          </span>
-                                          <div className="text-amber-700 font-extrabold text-[10px] sm:text-xs mt-1 sm:mt-1.5">Hard</div>
-                                          <div className="text-[8px] sm:text-[9px] text-amber-500 font-semibold uppercase tracking-wider mt-0.5 font-mono">
-                                            {qSessionMode === 'topic' ? 'In 3 Cards' : 'In 5 Cards'}
-                                          </div>
-                                        </button>
-
-                                        <button
-                                          id="difficulty-medium-btn"
-                                          onClick={() => rateCard('medium')}
-                                          className="group flex flex-col items-center p-1.5 sm:p-2.5 bg-blue-500/10 rounded-xl border border-blue-500/20 hover:border-blue-500/40 hover:bg-blue-500/15 transition-all text-center relative cursor-pointer"
-                                        >
-                                          <span className="absolute top-1 right-1 flex items-center justify-center w-3.5 h-3.5 text-[8px] font-mono font-bold bg-blue-500/20 text-blue-800 border border-blue-500/30 rounded">
-                                            1
-                                          </span>
-                                          <div className="text-blue-700 font-extrabold text-[10px] sm:text-xs mt-1 sm:mt-1.5">Medium</div>
-                                          <div className="text-[8px] sm:text-[9px] text-blue-500 font-semibold uppercase tracking-wider mt-0.5">
-                                            {qSessionMode === 'topic' ? 'In 5 Cards' : 'In 10 Cards'}
-                                          </div>
-                                        </button>
-
-                                        <button
-                                          id="difficulty-easy-btn"
-                                          onClick={() => rateCard('easy')}
-                                          className="group flex flex-col items-center p-1.5 sm:p-2.5 bg-emerald-500/10 rounded-xl border border-emerald-500/20 hover:border-emerald-500/40 hover:bg-emerald-500/15 transition-all text-center relative cursor-pointer"
-                                        >
-                                          <span className="absolute top-1 right-1 flex items-center justify-center w-3.5 h-3.5 text-[8px] font-mono font-bold bg-emerald-500/20 text-emerald-850 border border-emerald-500/30 rounded">
-                                            0
-                                          </span>
-                                          <div className="text-emerald-750 font-extrabold text-[10px] sm:text-xs mt-1 sm:mt-1.5">Easy</div>
-                                          <div className="text-[8px] sm:text-[9px] text-emerald-600 font-semibold uppercase tracking-wider mt-0.5">Ready & Mastered</div>
-                                        </button>
-                                      </div>
-                                    </div>
-                                  </motion.div>
-                                )}
-                              </AnimatePresence>
-                            </div>
+                            </button>
                           </div>
-                        </div>         <button onClick={() => {
+                        </div>
+                      </div>
+
+                      {/* Left/Bottom: The 5 core chapters */}
+                      <div className="lg:col-span-3">
+                        <div className="bg-slate-900/15 backdrop-blur-xl border border-white/5 rounded-[2rem] p-6 text-right">
+                          <div className="flex items-center gap-2 border-b border-white/5 pb-3 mb-6">
+                            <BookOpen className="w-5 h-5 text-cyan-400" />
+                            <h4 className="text-sm font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-indigo-300 font-mono tracking-wide">
+                              ╪º┘ä╪┤╪¿╪º╪¬╪▒ ╪º┘ä╪ú╪│╪º╪│┘è╪⌐ ╪º┘ä╪«┘à╪│╪⌐
+                            </h4>
+                          </div>
+                          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
+                            {[...(systems[selectedModule] || [])]
+                              .filter(sys => sys !== '┘à╪╣╪│┘â╪▒ ╪º┘ä┘ê╪▒┘é╪⌐ ╪º┘ä╪½╪º┘å┘è╪⌐')
+                              .sort((a, b) => {
+                                const getPriority = (x: string) => {
+                                  if (x === 'Renal diseases') return 10;
+                                  if (x === 'Chest diseases') return 20;
+                                  if (x === 'Neonatology') return 30;
+                                  if (x === 'Emergency Medicine') return 40;
+                                  if (x === 'Family Medicine') return 50;
+                                  return 100;
+                                };
+                                return getPriority(a) - getPriority(b);
+                              })
+                              .map(sys => renderSystemCard(sys))
+                            }
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  // Normal layout for other subjects/modules
+                  [...(systems[selectedModule] || [])].length === 0 ? (
+                    <div className="py-20 flex flex-col items-center justify-center text-slate-500 bg-slate-900/30 rounded-[3rem] border border-dashed border-white/5 text-center p-8 max-w-xl mx-auto space-y-6">
+                      <BookOpen className="w-16 h-16 text-slate-600 opacity-40 mx-auto animate-pulse" />
+                      <div>
+                        <p className="text-lg font-black text-slate-300">┘ä╪º ╪¬┘ê╪¼╪» ╪┤╪¿╪º╪¬╪▒ ┘ü┘è ┘ç╪░╪º ╪º┘ä┘é╪│┘à ╪¡╪º┘ä┘è╪º┘ï ≡ƒôÜ</p>
+                        <p className="text-xs text-slate-500 font-bold mt-1">┘è┘à┘â┘å┘â ╪º┘ä╪¿╪»╪í ╪¿╪Ñ╪╢╪º┘ü╪⌐ ╪┤╪¿╪º╪¬╪▒ ┘ê╪╡┘ê╪▒ ╪¬┘ê╪╢┘è╪¡┘è╪⌐ ┘ä╪¬╪¿╪»╪ú ╪º┘ä╪»╪▒╪º╪│╪⌐.</p>
+                      </div>
+                      {userData?.role === 'admin' && (
+                        <button
+                          onClick={() => setIsAddChapterOpen(true)}
+                          className="px-8 py-4 bg-emerald-500 hover:bg-emerald-600 text-white rounded-2xl font-black transition-all shadow-lg shadow-emerald-500/20 active:scale-95"
+                        >
+                          Γ₧ò ╪Ñ╪╢╪º┘ü╪⌐ ╪ú┘ê┘ä ╪┤╪º╪¿╪¬╪▒ ╪º┘ä╪ó┘å
+                        </button>
+                      )}
+                    </div>
+                  ) : (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
+                      {[...(systems[selectedModule] || [])].sort((a, b) => {
+                        // If selectedModule is Ophthalmology, use the specific ordering index
+                        if (selectedModule === 'Opthalmology' || selectedModule === 'Ophthalmology') {
+                          const order = [
+                            'Eyelid',
+                            'Lacrimal System',
+                            'Conjunctiva',
+                            'Cornea & Sclera',
+                            'Lens',
+                            'Orbit',
+                            'Errors of Refraction',
+                            'Glaucoma',
+                            'Uveitis',
+                            'Strabismus',
+                            'Retina',
+                            'Neuro-ophthalmology',
+                            'Ocular Trauma'
+                          ];
+                          const idxA = order.indexOf(a);
+                          const idxB = order.indexOf(b);
+                          if (idxA !== -1 && idxB !== -1) return idxA - idxB;
+                          if (idxA !== -1) return -1;
+                          if (idxB !== -1) return 1;
+                        }
+
+                        const getPriority = (x: string) => {
+                          if (x === '╪¬╪¡╪»┘è╪»╪º╪¬ ╪º┘ä╪º╪╖┘ü╪º┘ä') return 1;
+                          if (x === '┘à╪╣╪│┘â╪▒ ╪º┘ä┘ê╪▒┘é╪⌐ ╪º┘ä╪ú┘ê┘ä┘ë') return 2;
+                          if (x === 'Growth & development') return 3;
+                          return 100;
+                        };
+                        const pA = getPriority(a);
+                        const pB = getPriority(b);
+                        if (pA !== pB) return pA - pB;
+                        return a.localeCompare(b);
+                      }).map(sys => renderSystemCard(sys))}
+                    </div>
+                  )
+                )}
+              </div>
+            </div>
+          ) : selectedSystem === '┘à╪╣╪│┘â╪▒ ╪º┘ä┘ê╪▒┘é╪⌐ ╪º┘ä╪ú┘ê┘ä┘ë' ? (
+            // --- CUSTOM CAMP DASHBOARD INSIDE FLASH SPACE ---
+            <div className="h-full flex flex-col p-4 md:p-8 gap-6 md:gap-8 max-w-7xl mx-auto w-full relative" dir="rtl">
+              {/* Header */}
+              <div className="flex items-center justify-between gap-4 shrink-0 mt-2">
+                <div className="flex items-center gap-4">
+                  <button onClick={() => {
                     setSelectedSystem(null);
                     setSelectedSubSystem(null);
                     setSelectedBoard(null);
