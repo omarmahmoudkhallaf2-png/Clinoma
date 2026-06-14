@@ -72,9 +72,9 @@ export default function AvailableCourses() {
                 } p-10 rounded-[3.5rem] relative flex flex-col shadow-2xl transition-all hover:-translate-y-4 hover:shadow-primary/5`}
               >
                 {isOphth ? (
-                  <div className="absolute -top-4 left-10 bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 text-white text-[10px] font-black px-6 py-2 rounded-full shadow-xl flex items-center gap-2 z-10 animate-pulse">
-                    <Flame className="w-4 h-4 fill-current text-yellow-300" />
-                    مميـز للغايـة 🔥
+                  <div className="absolute -top-4 left-10 bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 text-white text-xs font-black px-6 py-2 rounded-full shadow-xl flex items-center gap-2 z-10 animate-pulse">
+                    <Flame className="w-4 h-4 fill-current text-yellow-300 animate-pulse" />
+                    <span>60 ج 🔥</span>
                   </div>
                 ) : plan.trending ? (
                   <div className="absolute -top-4 left-10 bg-gradient-to-r from-rose-500 to-orange-500 text-white text-[10px] font-black px-6 py-2 rounded-full shadow-xl flex items-center gap-2 z-10 animate-pulse">

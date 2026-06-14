@@ -226,9 +226,9 @@ export default function Dashboard() {
                       )}
                     >
                       {isOphth ? (
-                        <div className="absolute top-0 right-10 bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 text-white text-[10px] font-black px-4 py-1.5 rounded-b-xl shadow-lg flex items-center gap-1.5 z-10 animate-bounce">
+                        <div className="absolute top-0 right-10 bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 text-white text-xs font-black px-4 py-1.5 rounded-b-xl shadow-lg flex items-center gap-1.5 z-10 animate-bounce">
                           <Flame className="w-3.5 h-3.5 fill-current animate-pulse text-yellow-300" />
-                          مميز جداً 🔥
+                          <span>60 ج 🔥</span>
                         </div>
                       ) : course.trending ? (
                         <div className="absolute top-0 right-10 bg-gradient-to-r from-rose-500 to-orange-500 text-white text-[10px] font-black px-4 py-1.5 rounded-b-xl shadow-lg flex items-center gap-1.5 z-10 animate-pulse">

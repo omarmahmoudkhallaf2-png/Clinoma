@@ -48,6 +48,17 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
 
       const staticCourses = [
         {
+          id: 'ophthalmology_flash_space',
+          name: 'كورس الرمد الشامل 🔥 (Ophthalmology)',
+          description: 'Flash Space - مساحة دراسة تفاعلية وحصرية لكورس الرمد. مدعومة بتقنيات متقدمة.',
+          level: 'fifth',
+          price: '60',
+          details: 'مساحة دراسة بصرية تفاعلية (Flash Space)\nشرح وحفظ الصور الطبية لـ 13 شابتر رمد\nمطابقة مرنة مع اللوحات والرسومات\nمتاح تلقائياً لمشتركي الورقة الثانية',
+          isFlashSpace: true,
+          flashSpaceModule: 'Ophthalmology',
+          trending: true,
+        },
+        {
           id: 'pediatrics_flash_space',
           name: 'طب الأطفال (Pediatrics)',
           description: 'Flash Space - مساحة دراسة تفاعلية وحصرية لكورس الأطفال. مدعومة بتقنيات متقدمة.',
@@ -68,17 +79,6 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
           isFlashSpace: true,
           flashSpaceModule: 'الورقة الثانية',
           trending: true,
-        },
-        {
-          id: 'ophthalmology_flash_space',
-          name: 'كورس الرمد الشامل 🔥 (Ophthalmology)',
-          description: 'Flash Space - مساحة دراسة تفاعلية وحصرية لكورس الرمد. مدعومة بتقنيات متقدمة.',
-          level: 'fifth',
-          price: '60',
-          details: 'مساحة دراسة بصرية تفاعلية (Flash Space)\nشرح وحفظ الصور الطبية لـ 13 شابتر رمد\nمطابقة مرنة مع اللوحات والرسومات\nمتاح تلقائياً لمشتركي الورقة الثانية',
-          isFlashSpace: true,
-          flashSpaceModule: 'Ophthalmology',
-          trending: true,
         }
       ];
 
@@ -89,7 +89,23 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
         }
       });
 
-      setCourses(allCourses);
+      // Explicitly order the courses: Ophthalmology first, Second Paper second, Pediatrics third, then any others
+      const orderedCourses: any[] = [];
+      const ophth = allCourses.find(c => c.id === 'ophthalmology_flash_space');
+      const secondPaper = allCourses.find(c => c.id === 'second_paper_flash_space');
+      const peds = allCourses.find(c => c.id === 'pediatrics_flash_space');
+      
+      if (ophth) orderedCourses.push(ophth);
+      if (secondPaper) orderedCourses.push(secondPaper);
+      if (peds) orderedCourses.push(peds);
+      
+      allCourses.forEach(c => {
+        if (c.id !== 'ophthalmology_flash_space' && c.id !== 'second_paper_flash_space' && c.id !== 'pediatrics_flash_space') {
+          orderedCourses.push(c);
+        }
+      });
+
+      setCourses(orderedCourses);
       setVideoFolders(fetchedFolders);
       setVideos(fetchedVideos);
     } catch (err) {
