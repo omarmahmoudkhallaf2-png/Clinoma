@@ -9001,6 +9001,75 @@ const FlashSpace = () => {
     { disease: '', medicalImage: '', explanation: '' }
   ]);
 
+  // Edit Board state
+  const [isEditBoardOpen, setIsEditBoardOpen] = useState(false);
+  const [editBoardForm, setEditBoardForm] = useState({
+    id: '',
+    disease: '',
+    medicalImage: '',
+    explanation: ''
+  });
+
+  const handleDeleteBoard = async (boardId: string) => {
+    if (!window.confirm('هل أنت متأكد من رغبتك في حذف هذه الصورة نهائياً؟')) return;
+    const toastId = toast.loading('جاري حذف الصورة...');
+    try {
+      await deleteDoc(doc(db, 'flashspace_boards', boardId));
+      setBoards(prev => prev.filter(b => b.id !== boardId));
+      
+      // If the deleted board was selected, clear selectedBoard or select the next one
+      if (selectedBoard?.id === boardId) {
+        setSelectedBoard(null);
+      }
+      
+      toast.success('تم حذف الصورة بنجاح!', { id: toastId });
+    } catch (err) {
+      console.error(err);
+      toast.error('فشل حذف الصورة', { id: toastId });
+    }
+  };
+
+  const handleEditBoard = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!editBoardForm.id || !editBoardForm.disease.trim() || !editBoardForm.medicalImage.trim()) {
+      toast.error('الرجاء إدخال اسم الصورة والرابط');
+      return;
+    }
+    const toastId = toast.loading('جاري تعديل بيانات الصورة...');
+    try {
+      const docRef = doc(db, 'flashspace_boards', editBoardForm.id);
+      await updateDoc(docRef, {
+        disease: editBoardForm.disease.trim(),
+        medicalImage: editBoardForm.medicalImage.trim(),
+        explanation: editBoardForm.explanation.trim()
+      });
+
+      // Update state locally
+      setBoards(prev => prev.map(b => b.id === editBoardForm.id ? {
+        ...b,
+        disease: editBoardForm.disease.trim(),
+        medicalImage: editBoardForm.medicalImage.trim(),
+        explanation: editBoardForm.explanation.trim()
+      } : b));
+
+      // Update selectedBoard if it is the edited one
+      if (selectedBoard?.id === editBoardForm.id) {
+        setSelectedBoard(prev => prev ? {
+          ...prev,
+          disease: editBoardForm.disease.trim(),
+          medicalImage: editBoardForm.medicalImage.trim(),
+          explanation: editBoardForm.explanation.trim()
+        } : null);
+      }
+
+      toast.success('تم تحديث بيانات الصورة بنجاح!', { id: toastId });
+      setIsEditBoardOpen(false);
+    } catch (err) {
+      console.error(err);
+      toast.error('فشل تعديل البيانات', { id: toastId });
+    }
+  };
+
   const handleAddChapter = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!newChapterName.trim() || !selectedModule) return;
@@ -13913,6 +13982,68 @@ const FlashSpace = () => {
           </div>
         </div>
       )}
+
+      {/* Edit Board Modal */}
+      {isEditBoardOpen && (
+        <div className="fixed inset-0 z-[999999] flex items-center justify-center p-4" dir="rtl">
+          <div className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm" onClick={() => setIsEditBoardOpen(false)} />
+          <div className="relative bg-slate-900 border border-white/10 rounded-[2.5rem] p-8 max-w-lg w-full shadow-2xl flex flex-col animate-in zoom-in-95 duration-200 text-right text-white">
+            <div className="flex justify-between items-center mb-6">
+              <h3 className="text-xl font-black text-white">📝 تعديل بيانات الصورة / الحالة</h3>
+              <button onClick={() => setIsEditBoardOpen(false)} className="p-2 bg-white/5 hover:bg-rose-500/20 text-slate-400 hover:text-rose-400 rounded-xl transition-all">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            <form onSubmit={handleEditBoard} className="space-y-4">
+              <div className="space-y-2">
+                <label className="text-xs font-bold text-slate-400 block">عنوان الحالة / المرض</label>
+                <input 
+                  type="text" required placeholder="مثال: Corneal Ulcer..."
+                  value={editBoardForm.disease} 
+                  onChange={e => setEditBoardForm(prev => ({ ...prev, disease: e.target.value }))}
+                  className="w-full bg-slate-950 text-white px-4 py-2.5 rounded-xl border border-white/10 outline-none focus:border-indigo-500 text-sm font-bold"
+                />
+              </div>
+              
+              <div className="space-y-2">
+                <label className="text-xs font-bold text-slate-400 block">رابط الصورة المباشر (Link/URL)</label>
+                <input 
+                  type="text" required placeholder="مثال: https://i.postimg.cc/xyz.jpg..."
+                  value={editBoardForm.medicalImage} 
+                  onChange={e => setEditBoardForm(prev => ({ ...prev, medicalImage: e.target.value }))}
+                  className="w-full bg-slate-950 text-white px-4 py-2.5 rounded-xl border border-white/10 outline-none focus:border-indigo-500 text-sm font-bold"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-xs font-bold text-slate-400 block">شرح طبي إضافي (ملاحظات)</label>
+                <textarea 
+                  rows={4} placeholder="اكتب الشرح الطبي هنا (اختياري)..."
+                  value={editBoardForm.explanation} 
+                  onChange={e => setEditBoardForm(prev => ({ ...prev, explanation: e.target.value }))}
+                  className="w-full bg-slate-950 text-white px-4 py-2.5 rounded-xl border border-white/10 outline-none focus:border-indigo-500 text-xs font-medium"
+                />
+              </div>
+
+              <div className="pt-4 flex gap-3">
+                <button 
+                  type="submit"
+                  className="flex-1 py-3.5 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl font-black text-sm transition-all active:scale-95 shadow-lg shadow-emerald-500/20"
+                >
+                  حفظ التعديلات الآن 💾
+                </button>
+                <button 
+                  type="button"
+                  onClick={() => setIsEditBoardOpen(false)}
+                  className="px-6 py-3.5 bg-slate-850 hover:bg-slate-800 text-slate-300 rounded-xl font-bold text-sm transition-all active:scale-95 border border-white/5"
+                >
+                  إلغاء
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
       </div>
     );
   }
@@ -14105,9 +14236,33 @@ const FlashSpace = () => {
             </button>
           </div>
 
-          {/* Center: title - hidden on small screens */}
-          <div className="text-center hidden sm:block min-w-0 flex-1 mx-2">
+           {/* Center: title - hidden on small screens */}
+          <div className="text-center hidden sm:flex items-center justify-center gap-3 min-w-0 flex-1 mx-2">
             <p className="font-black text-slate-800 text-xs line-clamp-1">{selectedBoard?.disease}</p>
+            {userRole === 'admin' && (selectedBoard?.module === 'Opthalmology' || selectedBoard?.module === 'Ophthalmology') && (
+              <div className="flex items-center gap-1.5 shrink-0" dir="rtl">
+                <button
+                  onClick={() => {
+                    setEditBoardForm({
+                      id: selectedBoard.id,
+                      disease: selectedBoard.disease || '',
+                      medicalImage: selectedBoard.medicalImage || '',
+                      explanation: selectedBoard.explanation || ''
+                    });
+                    setIsEditBoardOpen(true);
+                  }}
+                  className="px-2.5 py-1 bg-indigo-50 hover:bg-indigo-100 text-indigo-650 rounded-lg text-[10px] font-black border border-indigo-150 transition-all active:scale-95"
+                >
+                  📝 تعديل الصورة/اللينك
+                </button>
+                <button
+                  onClick={() => handleDeleteBoard(selectedBoard.id)}
+                  className="px-2.5 py-1 bg-rose-50 hover:bg-rose-100 text-rose-600 rounded-lg text-[10px] font-black border border-rose-150 transition-all active:scale-95"
+                >
+                  🗑️ حذف الصورة
+                </button>
+              </div>
+            )}
           </div>
 
           {/* Right: Drawing Tools - scrollable on mobile */}
