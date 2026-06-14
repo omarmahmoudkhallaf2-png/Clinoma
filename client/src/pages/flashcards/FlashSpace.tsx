@@ -11849,7 +11849,10 @@ const FlashSpace = () => {
       try {
         getDocs(collection(db, 'notes')).then(notesSnap => {
           const notesData: Record<string, string> = {};
-          notesSnap.docs.forEach(doc => { notesData[doc.id] = doc.data().content; });
+          notesSnap.docs.forEach(doc => { 
+            const originalKey = doc.id.replace(/___/g, '/');
+            notesData[originalKey] = doc.data().content; 
+          });
           setFirebaseNotes(notesData);
         }).catch(err => console.error("Error fetching notes:", err));
 
@@ -17227,7 +17230,8 @@ const FlashSpace = () => {
                   try {
                     const noteId = selectedBoard?.disease || '';
                     if (!noteId) return;
-                    await setDoc(doc(db, 'notes', noteId), {
+                    const sanitizedId = noteId.trim().replace(/\//g, '___');
+                    await setDoc(doc(db, 'notes', sanitizedId), {
                       content: editedNoteText,
                       updatedAt: Date.now()
                     });
