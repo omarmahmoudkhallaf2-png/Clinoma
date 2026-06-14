@@ -11450,6 +11450,30 @@ const FlashSpace = () => {
                   ) : (
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
                       {[...(systems[selectedModule] || [])].sort((a, b) => {
+                        // If selectedModule is Ophthalmology, use the specific ordering index
+                        if (selectedModule === 'Opthalmology' || selectedModule === 'Ophthalmology') {
+                          const order = [
+                            'Eyelid',
+                            'Lacrimal System',
+                            'Conjunctiva',
+                            'Cornea & Sclera',
+                            'Lens',
+                            'Orbit',
+                            'Errors of Refraction',
+                            'Glaucoma',
+                            'Uveitis',
+                            'Strabismus',
+                            'Retina',
+                            'Neuro-ophthalmology',
+                            'Ocular Trauma'
+                          ];
+                          const idxA = order.indexOf(a);
+                          const idxB = order.indexOf(b);
+                          if (idxA !== -1 && idxB !== -1) return idxA - idxB;
+                          if (idxA !== -1) return -1;
+                          if (idxB !== -1) return 1;
+                        }
+
                         const getPriority = (x: string) => {
                           if (x === 'تحديدات الاطفال') return 1;
                           if (x === 'معسكر الورقة الأولى') return 2;
