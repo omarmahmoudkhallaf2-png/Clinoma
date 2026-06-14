@@ -10184,6 +10184,29 @@ const FlashSpace = () => {
             if (!sysMap[b.module].includes(b.system)) sysMap[b.module].push(b.system);
           }
         });
+
+        // Inject Opthalmology chapters in specific order
+        const ophthalmologyChapters = [
+          'Eyelid',
+          'Lacrimal System',
+          'Conjunctiva',
+          'Cornea & Sclera',
+          'Lens',
+          'Orbit',
+          'Errors of Refraction',
+          'Glaucoma',
+          'Uveitis',
+          'Strabismus',
+          'Retina',
+          'Neuro-ophthalmology',
+          'Ocular Trauma'
+        ];
+        
+        sysMap['Opthalmology'] = ophthalmologyChapters;
+        if (!sysMap['Ophthalmology']) {
+          sysMap['Ophthalmology'] = ophthalmologyChapters;
+        }
+
         // Manually inject معسكر الورقة الثانية into الورقة الثانية systems
         if (!sysMap['الورقة الثانية']) sysMap['الورقة الثانية'] = [];
         if (!sysMap['الورقة الثانية'].includes('معسكر الورقة الثانية')) {
