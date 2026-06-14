@@ -335,7 +335,14 @@ const FlashSpaceManager = () => {
                   </div>
                   
                   <div className="md:col-span-2 space-y-3">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-4">Clinical Image (Back Side)</label>
+                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-4">Clinical Image URL (Direct Link)</label>
+                    <input 
+                      type="text" placeholder="Paste image link/URL here (e.g. https://i.postimg.cc/...)..."
+                      value={form.medicalImage} onChange={e => setForm({...form, medicalImage: e.target.value})}
+                      className="w-full bg-slate-50 px-10 py-6 rounded-[2.5rem] border-2 border-slate-100 outline-none focus:border-indigo-500 font-bold text-lg mb-4"
+                    />
+
+                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-4 ml-4">Or Upload Image File</label>
                     <div className="relative">
                       <input 
                         type="file" accept="image/*"

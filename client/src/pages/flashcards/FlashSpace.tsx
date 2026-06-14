@@ -52,7 +52,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { useAuth } from '../../context/AuthContext';
 import { db, auth, dbExam } from '../../lib/firebase';
-import { collection, query, getDocs, orderBy, doc, updateDoc, increment, arrayUnion, deleteField, getDoc, setDoc, addDoc, serverTimestamp, where, onSnapshot } from 'firebase/firestore';
+import { collection, query, getDocs, orderBy, doc, updateDoc, increment, arrayUnion, deleteField, getDoc, setDoc, addDoc, deleteDoc, serverTimestamp, where, onSnapshot } from 'firebase/firestore';
 import ReactMarkdown from 'react-markdown';
 import { CampNotebookToDo } from '../../components/CampNotebookToDo';
 
@@ -83,6 +83,7 @@ interface Board {
   disease: string;
   medicalImage: string;
   explanation: string;
+  isPlaceholder?: boolean;
   createdAt: number;
 }
 
@@ -8991,6 +8992,78 @@ const FlashSpace = () => {
   const [modules, setModules] = useState<string[]>([]);
   const [systems, setSystems] = useState<Record<string, string[]>>({});
   
+  // Admin inline adding states
+  const [isAddChapterOpen, setIsAddChapterOpen] = useState(false);
+  const [newChapterName, setNewChapterName] = useState('');
+  const [isAddBoardOpen, setIsAddBoardOpen] = useState(false);
+  const [newBoardForm, setNewBoardForm] = useState({
+    disease: '',
+    medicalImage: '',
+    explanation: ''
+  });
+
+  const handleAddChapter = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newChapterName.trim() || !selectedModule) return;
+    const toastId = toast.loading('Saving chapter...');
+    try {
+      const payload = {
+        module: selectedModule,
+        system: newChapterName.trim(),
+        disease: '_placeholder_',
+        medicalImage: '_placeholder_',
+        explanation: 'Placeholder chapter definition',
+        isPlaceholder: true,
+        createdAt: Date.now()
+      };
+      await addDoc(collection(db, 'flashspace_boards'), payload);
+      toast.success('Chapter created successfully!', { id: toastId });
+      setIsAddChapterOpen(false);
+      setNewChapterName('');
+      window.location.reload();
+    } catch (err) {
+      console.error(err);
+      toast.error('Failed to create chapter', { id: toastId });
+    }
+  };
+
+  const handleAddBoard = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newBoardForm.disease.trim() || !newBoardForm.medicalImage.trim() || !selectedModule || !selectedSystem) {
+      toast.error('Please enter disease name and image URL');
+      return;
+    }
+    const toastId = toast.loading('Adding board...');
+    try {
+      const payload = {
+        module: selectedModule,
+        system: selectedSystem,
+        disease: newBoardForm.disease.trim(),
+        medicalImage: newBoardForm.medicalImage.trim(),
+        explanation: newBoardForm.explanation.trim() || `Study guide for ${newBoardForm.disease.trim()}`,
+        createdAt: Date.now()
+      };
+      await addDoc(collection(db, 'flashspace_boards'), payload);
+      
+      const placeholders = boards.filter(b => b.module === selectedModule && b.system === selectedSystem && (b as any).isPlaceholder);
+      for (const p of placeholders) {
+        try {
+          await deleteDoc(doc(db, 'flashspace_boards', p.id));
+        } catch (e) {
+          console.warn("Could not delete placeholder:", e);
+        }
+      }
+
+      toast.success('Board added successfully!', { id: toastId });
+      setIsAddBoardOpen(false);
+      setNewBoardForm({ disease: '', medicalImage: '', explanation: '' });
+      window.location.reload();
+    } catch (err) {
+      console.error(err);
+      toast.error('Failed to add board', { id: toastId });
+    }
+  };
+  
   // Countdown state for the exam on 13/6/2026 at 10:00 AM Cairo Time (UTC+3)
   const [countdownText, setCountdownText] = useState('');
   useEffect(() => {
@@ -11039,6 +11112,25 @@ const FlashSpace = () => {
             >
               🏆 مجموعات التحدي (Fantasy)
             </button>
+            {userData?.role === 'admin' && selectedModule && (
+              <>
+                {!selectedSystem ? (
+                  <button 
+                    onClick={() => setIsAddChapterOpen(true)}
+                    className="px-4 py-2 bg-emerald-500 hover:bg-emerald-600 border border-emerald-500/20 rounded-xl text-white font-black text-xs flex items-center gap-2 transition-all"
+                  >
+                    ➕ إضافة شابتر
+                  </button>
+                ) : (
+                  <button 
+                    onClick={() => setIsAddBoardOpen(true)}
+                    className="px-4 py-2 bg-emerald-500 hover:bg-emerald-600 border border-emerald-500/20 rounded-xl text-white font-black text-xs flex items-center gap-2 transition-all"
+                  >
+                    ➕ إضافة صورة
+                  </button>
+                )}
+              </>
+            )}
             <button onClick={() => navigate('/flashcards')} className="px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl text-slate-400 font-bold text-xs flex items-center gap-2 transition-all">
               <ChevronLeft className="w-4 h-4" /> Back
             </button>
@@ -11060,31 +11152,23 @@ const FlashSpace = () => {
               <div className="flex-1 overflow-y-auto pb-8">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                   {modules.map(mod => {
-                    const isOpthalmology = mod === 'Opthalmology';
+                    const isOpthalmology = mod === 'Opthalmology' || mod === 'Ophthalmology';
                     const hasAccess = userData?.role === 'admin' || isSpaceSubscribed(mod);
 
                     return (
-                    <button key={mod} onClick={() => {
-                      if (isOpthalmology && !hasAccess) {
-                        toast('Coming Soon! قريباً جداً 🚀', {
-                          icon: '🚧',
-                          style: {
-                            borderRadius: '16px',
-                            background: '#1e293b',
-                            color: '#fff',
-                            fontWeight: 'bold'
-                          }
-                        });
-                        return;
-                      }
-                      setSelectedModule(mod);
-                    }}
-                      className="group relative backdrop-blur-xl border border-white/5 active:border-indigo-500/50 hover:border-indigo-500/50 rounded-3xl text-left transition-all duration-300 active:scale-[0.98] hover:scale-[1.02] overflow-hidden p-6 hover:shadow-2xl hover:shadow-indigo-500/10 bg-slate-900/50"
-                    >
-                      {/* Gradient Glow */}
-                      <div className="absolute top-0 right-0 w-40 h-40 opacity-10 group-hover:opacity-30 transition-opacity duration-500 blur-3xl rounded-full" style={{background: '#6366f1', transform: 'translate(40%, -40%)'}} />
+                      <button key={mod} onClick={() => {
+                        if (isOpthalmology && userData?.role !== 'admin') {
+                          toast.error('هذا المديول تحت التطوير للأدمن فقط حالياً 🚧');
+                          return;
+                        }
+                        setSelectedModule(mod);
+                      }}
+                        className="group relative backdrop-blur-xl border border-white/5 active:border-indigo-500/50 hover:border-indigo-500/50 rounded-3xl text-left transition-all duration-300 active:scale-[0.98] hover:scale-[1.02] overflow-hidden p-6 hover:shadow-2xl hover:shadow-indigo-500/10 bg-slate-900/50"
+                      >
+                        {/* Gradient Glow */}
+                        <div className="absolute top-0 right-0 w-40 h-40 opacity-10 group-hover:opacity-30 transition-opacity duration-500 blur-3xl rounded-full" style={{background: '#6366f1', transform: 'translate(40%, -40%)'}} />
                       
-                      {isOpthalmology && !hasAccess && (
+                      {isOpthalmology && !hasAccess && (!systems[mod] || systems[mod].length === 0) && (
                         <div className="absolute top-4 right-4 z-10 bg-amber-500/20 text-amber-400 border border-amber-500/30 px-3 py-1 rounded-full flex items-center gap-1 backdrop-blur-sm shadow-md">
                           <span className="text-[10px] font-black uppercase tracking-wider">Coming Soon 🚀</span>
                         </div>
@@ -11098,7 +11182,7 @@ const FlashSpace = () => {
                           <div>
                             <h3 className="text-xl font-black text-white leading-tight">{mod}</h3>
                             <p className="text-slate-400 text-xs font-semibold mt-1">
-                              {isOpthalmology ? 'Under Development' : `${systems[mod]?.length || 0} chapters available`}
+                              {isOpthalmology && (!systems[mod] || systems[mod].length === 0) ? 'Under Development' : `${systems[mod]?.length || 0} chapters available`}
                             </p>
                           </div>
                         </div>
@@ -11309,20 +11393,38 @@ const FlashSpace = () => {
                   </div>
                 ) : (
                   // Normal layout for other subjects/modules
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
-                    {[...(systems[selectedModule] || [])].sort((a, b) => {
-                      const getPriority = (x: string) => {
-                        if (x === 'تحديدات الاطفال') return 1;
-                        if (x === 'معسكر الورقة الأولى') return 2;
-                        if (x === 'Growth & development') return 3;
-                        return 100;
-                      };
-                      const pA = getPriority(a);
-                      const pB = getPriority(b);
-                      if (pA !== pB) return pA - pB;
-                      return a.localeCompare(b);
-                    }).map(sys => renderSystemCard(sys))}
-                  </div>
+                  [...(systems[selectedModule] || [])].length === 0 ? (
+                    <div className="py-20 flex flex-col items-center justify-center text-slate-500 bg-slate-900/30 rounded-[3rem] border border-dashed border-white/5 text-center p-8 max-w-xl mx-auto space-y-6">
+                      <BookOpen className="w-16 h-16 text-slate-600 opacity-40 mx-auto animate-pulse" />
+                      <div>
+                        <p className="text-lg font-black text-slate-300">لا توجد شباتر في هذا القسم حالياً 📚</p>
+                        <p className="text-xs text-slate-500 font-bold mt-1">يمكنك البدء بإضافة شباتر وصور توضيحية لتبدأ الدراسة.</p>
+                      </div>
+                      {userData?.role === 'admin' && (
+                        <button
+                          onClick={() => setIsAddChapterOpen(true)}
+                          className="px-8 py-4 bg-emerald-500 hover:bg-emerald-600 text-white rounded-2xl font-black transition-all shadow-lg shadow-emerald-500/20 active:scale-95"
+                        >
+                          ➕ إضافة أول شابتر الآن
+                        </button>
+                      )}
+                    </div>
+                  ) : (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
+                      {[...(systems[selectedModule] || [])].sort((a, b) => {
+                        const getPriority = (x: string) => {
+                          if (x === 'تحديدات الاطفال') return 1;
+                          if (x === 'معسكر الورقة الأولى') return 2;
+                          if (x === 'Growth & development') return 3;
+                          return 100;
+                        };
+                        const pA = getPriority(a);
+                        const pB = getPriority(b);
+                        if (pA !== pB) return pA - pB;
+                        return a.localeCompare(b);
+                      }).map(sys => renderSystemCard(sys))}
+                    </div>
+                  )
                 )}
               </div>
             </div>
@@ -12764,79 +12866,103 @@ const FlashSpace = () => {
                     );
                   })()
                 ) : (
-                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-                    {boards.filter(b => b.module === selectedModule && b.system === selectedSystem && matchesSubSystem(b.subSystem, selectedSubSystem)).map(board => (
-                    <button
-                      key={board.id}
-                      onClick={() => { onNavigateToBoard(board); }}
-                      className="group relative bg-slate-900/50 backdrop-blur-xl border border-white/5 active:border-indigo-500/50 hover:border-indigo-500/40 rounded-3xl overflow-hidden transition-all duration-300 active:scale-[0.97] hover:scale-[1.02] text-left flex flex-col hover:shadow-2xl hover:shadow-indigo-500/20"
-                    >
-                      <div className="flex-1 overflow-hidden bg-black/40 relative aspect-video">
-                        <div className="absolute inset-0 bg-indigo-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 mix-blend-overlay" />
-                        <img src={board.medicalImage} alt="" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                        
-                        {/* Play Icon overlay */}
-                        <div className="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 scale-90 group-hover:scale-100">
-                          <div className="w-12 h-12 rounded-full bg-indigo-600/90 text-white flex items-center justify-center backdrop-blur-sm shadow-xl">
-                            <Play className="w-5 h-5 ml-1" />
+                  (() => {
+                    const currentBoards = boards.filter(b => b.module === selectedModule && b.system === selectedSystem && matchesSubSystem(b.subSystem, selectedSubSystem) && !b.isPlaceholder);
+                    if (currentBoards.length === 0) {
+                      return (
+                        <div className="py-20 flex flex-col items-center justify-center text-slate-500 bg-slate-900/30 rounded-[3rem] border border-dashed border-white/5 text-center p-8 max-w-xl mx-auto space-y-6">
+                          <Eye className="w-16 h-16 text-slate-650 opacity-40 mx-auto animate-pulse" />
+                          <div>
+                            <p className="text-lg font-black text-slate-350">لا توجد صور في هذا الشابتر حالياً 📸</p>
+                            <p className="text-xs text-slate-500 font-bold mt-1">يمكنك البدء بإضافة الصور واللوحات الطبية لتبدأ الدراسة.</p>
                           </div>
+                          {userData?.role === 'admin' && (
+                            <button
+                              onClick={() => setIsAddBoardOpen(true)}
+                              className="px-8 py-4 bg-emerald-500 hover:bg-emerald-600 text-white rounded-2xl font-black transition-all shadow-lg shadow-emerald-500/20 active:scale-95"
+                            >
+                              ➕ إضافة أول صورة/لوحة الآن
+                            </button>
+                          )}
                         </div>
-                      </div>
-                      <div className="p-4 md:p-5 shrink-0 bg-gradient-to-t from-slate-900/80 to-transparent">
-                        <h5 className="font-black text-white text-sm md:text-base leading-snug line-clamp-2 drop-shadow-md">{board.disease}</h5>
-                        <div className="mt-2 flex items-center gap-2">
-                          <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]" />
-                          <span className="text-slate-400 text-[10px] md:text-xs font-semibold uppercase tracking-wider">Study Mode</span>
-                        </div>
-                      </div>
-                    </button>
-                  ))}
-                    <button
-                      onClick={() => {
-                        const chapterSlides = (selectedSystem === 'تحديدات الاطفال' && selectedSubSystem)
-                          ? boards.filter(b => b.system === selectedSystem && matchesSubSystem(b.subSystem, selectedSubSystem))
-                          : boards.filter(b => b.module === selectedModule && b.system === selectedSystem);
-                        
-                        const chapterQuestions = selectedSystem === 'تحديدات الاطفال' ? [] : chapterSlides.flatMap(board => {
-                          const diseaseKey = (board.disease || '').replace(/\.(jpeg|jpg|png)\s*$/i, '').trim();
-                          return getQuestionsForKey(diseaseKey);
-                        });
-                        
-                        const generalQuestions = getQuestionsForKey(`_CHAPTER_${selectedSystem}`);
-                        const subChapterQuestions = selectedSubSystem ? getQuestionsForKey(`_SUBCHAPTER_${selectedSubSystem}`) : [];
-                        
-                        const allQuestions = (selectedSystem === 'تحديدات الاطفال' && selectedSubSystem)
-                          ? [...subChapterQuestions]
-                          : [...chapterQuestions, ...generalQuestions];
+                      );
+                    }
+                    return (
+                      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+                        {currentBoards.map(board => (
+                          <button
+                            key={board.id}
+                            onClick={() => { onNavigateToBoard(board); }}
+                            className="group relative bg-slate-900/50 backdrop-blur-xl border border-white/5 active:border-indigo-500/50 hover:border-indigo-500/40 rounded-3xl overflow-hidden transition-all duration-300 active:scale-[0.97] hover:scale-[1.02] text-left flex flex-col hover:shadow-2xl hover:shadow-indigo-500/20"
+                          >
+                            <div className="flex-1 overflow-hidden bg-black/40 relative aspect-video">
+                              <div className="absolute inset-0 bg-indigo-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 mix-blend-overlay" />
+                              <img src={board.medicalImage} alt="" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                              
+                              {/* Play Icon overlay */}
+                              <div className="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 scale-90 group-hover:scale-100">
+                                <div className="w-12 h-12 rounded-full bg-indigo-600/90 text-white flex items-center justify-center backdrop-blur-sm shadow-xl">
+                                  <Play className="w-5 h-5 ml-1" />
+                                </div>
+                              </div>
+                            </div>
+                            <div className="p-4 md:p-5 shrink-0 bg-gradient-to-t from-slate-900/80 to-transparent">
+                              <h5 className="font-black text-white text-sm md:text-base leading-snug line-clamp-2 drop-shadow-md">{board.disease}</h5>
+                              <div className="mt-2 flex items-center gap-2">
+                                <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]" />
+                                <span className="text-slate-400 text-[10px] md:text-xs font-semibold uppercase tracking-wider">Study Mode</span>
+                              </div>
+                            </div>
+                          </button>
+                        ))}
+                        <button
+                          onClick={() => {
+                            const chapterSlides = (selectedSystem === 'تحديدات الاطفال' && selectedSubSystem)
+                              ? boards.filter(b => b.system === selectedSystem && matchesSubSystem(b.subSystem, selectedSubSystem) && !b.isPlaceholder)
+                              : boards.filter(b => b.module === selectedModule && b.system === selectedSystem && !b.isPlaceholder);
+                            
+                            const chapterQuestions = selectedSystem === 'تحديدات الاطفال' ? [] : chapterSlides.flatMap(board => {
+                              const diseaseKey = (board.disease || '').replace(/\.(jpeg|jpg|png)\s*$/i, '').trim();
+                              return getQuestionsForKey(diseaseKey);
+                            });
+                            
+                            const generalQuestions = getQuestionsForKey(`_CHAPTER_${selectedSystem}`);
+                            const subChapterQuestions = selectedSubSystem ? getQuestionsForKey(`_SUBCHAPTER_${selectedSubSystem}`) : [];
+                            
+                            const allQuestions = (selectedSystem === 'تحديدات الاطفال' && selectedSubSystem)
+                              ? [...subChapterQuestions]
+                              : [...chapterQuestions, ...generalQuestions];
 
-                        if (allQuestions.length > 0) {
-                          startQuestionSession(allQuestions);
-                          setIsChapterQuestionMode(true);
-                        } else {
-                          toast.error('No questions available for this section yet');
-                        }
-                      }}
-                      className="group relative bg-slate-900/50 backdrop-blur-xl border border-white/5 active:border-emerald-500/50 hover:border-emerald-500/40 rounded-3xl overflow-hidden transition-all duration-300 active:scale-[0.97] hover:scale-[1.02] text-left flex flex-col hover:shadow-2xl hover:shadow-emerald-500/20"
-                    >
-                      <div className="flex-1 overflow-hidden bg-gradient-to-br from-emerald-500 to-teal-600 relative aspect-video flex flex-col items-center justify-center">
-                        <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 mix-blend-overlay" />
-                        <Brain className="w-16 h-16 text-white/90 drop-shadow-lg transition-transform duration-700 group-hover:scale-110" />
-                        
-                        <div className="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 scale-90 group-hover:scale-100">
-                          <div className="w-12 h-12 rounded-full bg-white text-emerald-600 flex items-center justify-center backdrop-blur-sm shadow-xl">
-                            <Brain className="w-5 h-5" />
+                            if (allQuestions.length > 0) {
+                              startQuestionSession(allQuestions);
+                              setIsChapterQuestionMode(true);
+                            } else {
+                              toast.error('No questions available for this section yet');
+                            }
+                          }}
+                          className="group relative bg-slate-900/50 backdrop-blur-xl border border-white/5 active:border-emerald-500/50 hover:border-emerald-500/40 rounded-3xl overflow-hidden transition-all duration-300 active:scale-[0.97] hover:scale-[1.02] text-left flex flex-col hover:shadow-2xl hover:shadow-emerald-500/20"
+                        >
+                          <div className="flex-1 overflow-hidden bg-gradient-to-br from-emerald-500 to-teal-600 relative aspect-video flex flex-col items-center justify-center">
+                            <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 mix-blend-overlay" />
+                            <Brain className="w-16 h-16 text-white/90 drop-shadow-lg transition-transform duration-700 group-hover:scale-110" />
+                            
+                            <div className="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 scale-90 group-hover:scale-100">
+                              <div className="w-12 h-12 rounded-full bg-white text-emerald-600 flex items-center justify-center backdrop-blur-sm shadow-xl">
+                                <Brain className="w-5 h-5" />
+                              </div>
+                            </div>
                           </div>
-                        </div>
+                          <div className="p-4 md:p-5 shrink-0 bg-gradient-to-t from-slate-900/80 to-transparent">
+                            <h5 className="font-black text-white text-sm md:text-base leading-snug drop-shadow-md">Practice All Questions</h5>
+                            <div className="mt-2 flex items-center gap-2">
+                              <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]" />
+                              <p className="text-emerald-400 font-bold text-[10px] md:text-xs tracking-wider uppercase">Quiz Mode</p>
+                            </div>
+                          </div>
+                        </button>
                       </div>
-                      <div className="p-4 md:p-5 shrink-0 bg-gradient-to-t from-slate-900/80 to-transparent">
-                        <h5 className="font-black text-white text-sm md:text-base leading-snug drop-shadow-md">Practice All Questions</h5>
-                        <div className="mt-2 flex items-center gap-2">
-                          <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]" />
-                          <p className="text-emerald-400 font-bold text-[10px] md:text-xs tracking-wider uppercase">Quiz Mode</p>
-                        </div>
-                      </div>
-                    </button>
-                  </div>
+                    );
+                  })()
                 )}
               </div>
             </div>
@@ -13562,6 +13688,87 @@ const FlashSpace = () => {
                 إلغاء
               </button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Add Chapter Modal */}
+      {isAddChapterOpen && (
+        <div className="fixed inset-0 z-[999999] flex items-center justify-center p-4" dir="rtl">
+          <div className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm" onClick={() => setIsAddChapterOpen(false)} />
+          <div className="relative bg-slate-900 border border-white/10 rounded-[2.5rem] p-8 max-w-md w-full shadow-2xl flex flex-col animate-in zoom-in-95 duration-200 text-right text-white">
+            <div className="flex justify-between items-center mb-6">
+              <h3 className="text-xl font-black text-white">إضافة شابتر جديد (Chapter)</h3>
+              <button onClick={() => setIsAddChapterOpen(false)} className="p-2 bg-white/5 hover:bg-rose-500/20 text-slate-400 hover:text-rose-400 rounded-xl transition-all">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            <form onSubmit={handleAddChapter} className="space-y-6">
+              <div className="space-y-2">
+                <label className="text-xs font-black text-slate-400">اسم الشابتر الجديد</label>
+                <input 
+                  type="text" required placeholder="مثال: Cornea & Sclera..."
+                  value={newChapterName} onChange={e => setNewChapterName(e.target.value)}
+                  className="w-full bg-slate-950 text-white px-4 py-3 rounded-xl border border-white/10 outline-none focus:border-indigo-500 font-bold"
+                />
+              </div>
+              <button 
+                type="submit"
+                className="w-full py-4 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl font-black text-base transition-all active:scale-95 shadow-lg shadow-emerald-500/20"
+              >
+                إنشاء الشابتر الآن 🚀
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* Add Board Modal */}
+      {isAddBoardOpen && (
+        <div className="fixed inset-0 z-[999999] flex items-center justify-center p-4" dir="rtl">
+          <div className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm" onClick={() => setIsAddBoardOpen(false)} />
+          <div className="relative bg-slate-900 border border-white/10 rounded-[2.5rem] p-8 max-w-lg w-full shadow-2xl flex flex-col animate-in zoom-in-95 duration-200 text-right text-white">
+            <div className="flex justify-between items-center mb-6">
+              <h3 className="text-xl font-black text-white">إضافة صورة/حالة جديدة للشابتر</h3>
+              <button onClick={() => setIsAddBoardOpen(false)} className="p-2 bg-white/5 hover:bg-rose-500/20 text-slate-400 hover:text-rose-400 rounded-xl transition-all">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            <form onSubmit={handleAddBoard} className="space-y-6">
+              <div className="space-y-2">
+                <label className="text-xs font-black text-slate-400">عنوان الحالة / المرض</label>
+                <input 
+                  type="text" required placeholder="مثال: Corneal Ulcer..."
+                  value={newBoardForm.disease} onChange={e => setNewBoardForm({...newBoardForm, disease: e.target.value})}
+                  className="w-full bg-slate-950 text-white px-4 py-3 rounded-xl border border-white/10 outline-none focus:border-indigo-500 font-bold"
+                />
+              </div>
+              
+              <div className="space-y-2">
+                <label className="text-xs font-black text-slate-400">رابط الصورة المباشر (Link/URL)</label>
+                <input 
+                  type="text" required placeholder="مثال: https://i.postimg.cc/xyz.jpg..."
+                  value={newBoardForm.medicalImage} onChange={e => setNewBoardForm({...newBoardForm, medicalImage: e.target.value})}
+                  className="w-full bg-slate-950 text-white px-4 py-3 rounded-xl border border-white/10 outline-none focus:border-indigo-500 font-bold"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-xs font-black text-slate-400">شرح طبي إضافي (ملاحظات)</label>
+                <textarea 
+                  rows={4} placeholder="اكتب الشرح الطبي باللغة العربية أو الإنجليزية هنا..."
+                  value={newBoardForm.explanation} onChange={e => setNewBoardForm({...newBoardForm, explanation: e.target.value})}
+                  className="w-full bg-slate-950 text-white px-4 py-3 rounded-xl border border-white/10 outline-none focus:border-indigo-500 font-medium leading-relaxed"
+                />
+              </div>
+
+              <button 
+                type="submit"
+                className="w-full py-4 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl font-black text-base transition-all active:scale-95 shadow-lg shadow-emerald-500/20"
+              >
+                حفظ اللوحة الجديدة الآن 🚀
+              </button>
+            </form>
           </div>
         </div>
       )}
@@ -15065,6 +15272,87 @@ const FlashSpace = () => {
                 حفظ النوتس (Save)
               </button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Add Chapter Modal */}
+      {isAddChapterOpen && (
+        <div className="fixed inset-0 z-[999999] flex items-center justify-center p-4" dir="rtl">
+          <div className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm" onClick={() => setIsAddChapterOpen(false)} />
+          <div className="relative bg-slate-900 border border-white/10 rounded-[2.5rem] p-8 max-w-md w-full shadow-2xl flex flex-col animate-in zoom-in-95 duration-200 text-right">
+            <div className="flex justify-between items-center mb-6">
+              <h3 className="text-xl font-black text-white">إضافة شابتر جديد (Chapter)</h3>
+              <button onClick={() => setIsAddChapterOpen(false)} className="p-2 bg-white/5 hover:bg-rose-500/20 text-slate-400 hover:text-rose-400 rounded-xl transition-all">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            <form onSubmit={handleAddChapter} className="space-y-6">
+              <div className="space-y-2">
+                <label className="text-xs font-black text-slate-400">اسم الشابتر الجديد</label>
+                <input 
+                  type="text" required placeholder="مثال: Cornea & Sclera..."
+                  value={newChapterName} onChange={e => setNewChapterName(e.target.value)}
+                  className="w-full bg-slate-950 text-white px-4 py-3 rounded-xl border border-white/10 outline-none focus:border-indigo-500 font-bold"
+                />
+              </div>
+              <button 
+                type="submit"
+                className="w-full py-4 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl font-black text-base transition-all active:scale-95 shadow-lg shadow-emerald-500/20"
+              >
+                إنشاء الشابتر الآن 🚀
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* Add Board Modal */}
+      {isAddBoardOpen && (
+        <div className="fixed inset-0 z-[999999] flex items-center justify-center p-4" dir="rtl">
+          <div className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm" onClick={() => setIsAddBoardOpen(false)} />
+          <div className="relative bg-slate-900 border border-white/10 rounded-[2.5rem] p-8 max-w-lg w-full shadow-2xl flex flex-col animate-in zoom-in-95 duration-200 text-right">
+            <div className="flex justify-between items-center mb-6">
+              <h3 className="text-xl font-black text-white">إضافة صورة/حالة جديدة للشابتر</h3>
+              <button onClick={() => setIsAddBoardOpen(false)} className="p-2 bg-white/5 hover:bg-rose-500/20 text-slate-400 hover:text-rose-400 rounded-xl transition-all">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            <form onSubmit={handleAddBoard} className="space-y-6">
+              <div className="space-y-2">
+                <label className="text-xs font-black text-slate-400">عنوان الحالة / المرض</label>
+                <input 
+                  type="text" required placeholder="مثال: Corneal Ulcer..."
+                  value={newBoardForm.disease} onChange={e => setNewBoardForm({...newBoardForm, disease: e.target.value})}
+                  className="w-full bg-slate-950 text-white px-4 py-3 rounded-xl border border-white/10 outline-none focus:border-indigo-500 font-bold"
+                />
+              </div>
+              
+              <div className="space-y-2">
+                <label className="text-xs font-black text-slate-400">رابط الصورة المباشر (Link/URL)</label>
+                <input 
+                  type="text" required placeholder="مثال: https://i.postimg.cc/xyz.jpg..."
+                  value={newBoardForm.medicalImage} onChange={e => setNewBoardForm({...newBoardForm, medicalImage: e.target.value})}
+                  className="w-full bg-slate-950 text-white px-4 py-3 rounded-xl border border-white/10 outline-none focus:border-indigo-500 font-bold"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-xs font-black text-slate-400">شرح طبي إضافي (ملاحظات)</label>
+                <textarea 
+                  rows={4} placeholder="اكتب الشرح الطبي باللغة العربية أو الإنجليزية هنا..."
+                  value={newBoardForm.explanation} onChange={e => setNewBoardForm({...newBoardForm, explanation: e.target.value})}
+                  className="w-full bg-slate-950 text-white px-4 py-3 rounded-xl border border-white/10 outline-none focus:border-indigo-500 font-medium leading-relaxed"
+                />
+              </div>
+
+              <button 
+                type="submit"
+                className="w-full py-4 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl font-black text-base transition-all active:scale-95 shadow-lg shadow-emerald-500/20"
+              >
+                حفظ اللوحة الجديدة الآن 🚀
+              </button>
+            </form>
           </div>
         </div>
       )}
