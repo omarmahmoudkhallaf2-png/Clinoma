@@ -9016,11 +9016,26 @@ const FlashSpace = () => {
         isPlaceholder: true,
         createdAt: Date.now()
       };
-      await addDoc(collection(db, 'flashspace_boards'), payload);
+      const docRef = await addDoc(collection(db, 'flashspace_boards'), payload);
+      const newBoardItem: Board = {
+        id: docRef.id,
+        ...payload
+      };
+      
+      // Update local state instead of reloading
+      setBoards(prev => [...prev, newBoardItem]);
+      setSystems(prev => {
+        const next = { ...prev };
+        if (!next[selectedModule]) next[selectedModule] = [];
+        if (!next[selectedModule].includes(payload.system)) {
+          next[selectedModule] = [...next[selectedModule], payload.system];
+        }
+        return next;
+      });
+
       toast.success('Chapter created successfully!', { id: toastId });
       setIsAddChapterOpen(false);
       setNewChapterName('');
-      window.location.reload();
     } catch (err) {
       console.error(err);
       toast.error('Failed to create chapter', { id: toastId });
@@ -9043,8 +9058,13 @@ const FlashSpace = () => {
         explanation: newBoardForm.explanation.trim() || `Study guide for ${newBoardForm.disease.trim()}`,
         createdAt: Date.now()
       };
-      await addDoc(collection(db, 'flashspace_boards'), payload);
-      
+      const docRef = await addDoc(collection(db, 'flashspace_boards'), payload);
+      const newBoardItem: Board = {
+        id: docRef.id,
+        ...payload
+      };
+
+      // Filter out placeholders of current chapter locally
       const placeholders = boards.filter(b => b.module === selectedModule && b.system === selectedSystem && (b as any).isPlaceholder);
       for (const p of placeholders) {
         try {
@@ -9054,10 +9074,15 @@ const FlashSpace = () => {
         }
       }
 
+      // Update state directly
+      setBoards(prev => {
+        const remaining = prev.filter(b => !(b.module === selectedModule && b.system === selectedSystem && (b as any).isPlaceholder));
+        return [...remaining, newBoardItem];
+      });
+
       toast.success('Board added successfully!', { id: toastId });
       setIsAddBoardOpen(false);
       setNewBoardForm({ disease: '', medicalImage: '', explanation: '' });
-      window.location.reload();
     } catch (err) {
       console.error(err);
       toast.error('Failed to add board', { id: toastId });
