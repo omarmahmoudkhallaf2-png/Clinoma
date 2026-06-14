@@ -55,7 +55,7 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
           price: '60',
           details: 'مساحة دراسة بصرية تفاعلية (Flash Space)\nشرح وحفظ الصور الطبية لـ 13 شابتر رمد\nمطابقة مرنة مع اللوحات والرسومات\nمتاح تلقائياً لمشتركي الورقة الثانية',
           isFlashSpace: true,
-          flashSpaceModule: 'Ophthalmology',
+          flashSpaceModule: 'Opthalmology',
           trending: true,
         },
         {

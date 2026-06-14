@@ -10915,14 +10915,16 @@ const FlashSpace = () => {
 
   const [selectedModule, setSelectedModule] = useState<string | null>(() => {
     const searchParams = new URLSearchParams(window.location.search);
-    return searchParams.get('module') || null;
+    const mod = searchParams.get('module');
+    if (mod === 'Ophthalmology') return 'Opthalmology';
+    return mod || null;
   });
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
     const queryMod = searchParams.get('module');
     if (queryMod) {
-      setSelectedModule(queryMod);
+      setSelectedModule(queryMod === 'Ophthalmology' ? 'Opthalmology' : queryMod);
     }
   }, [location.search]);
 
