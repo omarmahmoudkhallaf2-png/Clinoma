@@ -45,7 +45,9 @@ import {
   Download,
   Loader2,
   Settings,
-  Award
+  Award,
+  AlertCircle,
+  Timer
 } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -9068,6 +9070,20 @@ const BatchBoardItem = ({
   );
 };
 
+const STICKERS = [
+  'https://i.ibb.co/FkSVV8dd/fjf.webp',
+  'https://i.ibb.co/Kz8DfZY8/mfg.webp',
+  'https://i.ibb.co/hJz75hQz/hdfxdfhm.webp',
+  'https://i.ibb.co/PsbLfTWJ/jfj.webp',
+  'https://i.ibb.co/1tt3xVPF/gf.webp',
+  'https://i.ibb.co/KcC18smy/65424.webp',
+  'https://i.ibb.co/vxZcpw73/54.webp',
+  'https://i.ibb.co/LDSnXV8f/554.webp',
+  'https://i.ibb.co/2m7Lp9y/222.webp',
+  'https://i.ibb.co/zVgJ1W2z/sticker1.webp',
+  'https://i.ibb.co/rG36k3mW/sticker.webp'
+];
+
 const FlashSpace = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -9975,6 +9991,13 @@ const FlashSpace = () => {
   const [isCardFlipped, setIsCardFlipped] = useState(false);
   const [qSessionDone, setQSessionDone] = useState(false);
   const [isChapterQuestionMode, setIsChapterQuestionMode] = useState(false);
+  const [easyCount, setEasyCount] = useState(0);
+  const [showStickerModal, setShowStickerModal] = useState(false);
+  const [activeSticker, setActiveSticker] = useState('');
+  const [distractionReminderEnabled, setDistractionReminderEnabled] = useState(true);
+  const [timeSpentOnQuestion, setTimeSpentOnQuestion] = useState(0);
+  const [distractionWarningPhase, setDistractionWarningPhase] = useState<'none' | 'first' | 'second'>('none');
+  const [returnedToSameQuestion, setReturnedToSameQuestion] = useState(false);
   // --- Priority Review System State ---
   const [spacePriorities, setSpacePriorities] = useState<Record<string, 'A'|'B'|'C'>>({});
   const [isReviewCenterOpen, setIsReviewCenterOpen] = useState(false);
@@ -10085,6 +10108,137 @@ const FlashSpace = () => {
       setSpacePriorities(userData.spacePriorities);
     }
   }, [userData?.spacePriorities]);
+
+  // --- Mind-Wandering Preventer Hooks ---
+  // Reset timers each time the question changes
+  useEffect(() => {
+    setTimeSpentOnQuestion(0);
+    setDistractionWarningPhase('none');
+    setReturnedToSameQuestion(false);
+  }, [qQueue[0]?.id]);
+
+  // Distraction system interval timer
+  useEffect(() => {
+    if (qQueue.length === 0 || qSessionDone || !distractionReminderEnabled) {
+      return;
+    }
+
+    const interval = setInterval(() => {
+      if (distractionWarningPhase === 'none') {
+        setTimeSpentOnQuestion(prev => prev + 1);
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [qQueue[0]?.id, qSessionDone, distractionWarningPhase, distractionReminderEnabled, qQueue.length]);
+
+  // Monitor distraction warning time threshold to set the phase cleanly
+  useEffect(() => {
+    if (distractionWarningPhase === 'none' && timeSpentOnQuestion >= 180) { // 3 minutes = 180 seconds
+      if (!returnedToSameQuestion) {
+        setDistractionWarningPhase('first');
+      } else {
+        setDistractionWarningPhase('second');
+      }
+    }
+  }, [timeSpentOnQuestion, distractionWarningPhase, returnedToSameQuestion]);
+
+  // Play a strong buzzer sound when distraction warning phase triggers
+  useEffect(() => {
+    if (distractionWarningPhase === 'first' || distractionWarningPhase === 'second') {
+      try {
+        const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
+        if (AudioContextClass) {
+          const ctx = new AudioContextClass();
+          const now = ctx.currentTime;
+          
+          const pulses = distractionWarningPhase === 'first' ? 2 : 3;
+          const frequency = distractionWarningPhase === 'first' ? 620 : 780;
+          const duration = distractionWarningPhase === 'first' ? 0.18 : 0.28; 
+          
+          for (let i = 0; i < pulses; i++) {
+            const startTime = now + i * 0.25;
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            
+            osc.type = 'sawtooth';
+            osc.frequency.setValueAtTime(frequency, startTime);
+            
+            const filter = ctx.createBiquadFilter();
+            filter.type = 'bandpass';
+            filter.frequency.setValueAtTime(frequency, startTime);
+            filter.Q.setValueAtTime(1.5, startTime);
+            
+            gain.gain.setValueAtTime(0, startTime);
+            gain.gain.linearRampToValueAtTime(0.4, startTime + 0.02);
+            gain.gain.exponentialRampToValueAtTime(0.001, startTime + duration);
+            
+            osc.connect(filter);
+            filter.connect(gain);
+            gain.connect(ctx.destination);
+            
+            osc.start(startTime);
+            osc.stop(startTime + duration + 0.05);
+          }
+        }
+      } catch (err) {
+        console.error("Audio buzzer error:", err);
+      }
+    }
+  }, [distractionWarningPhase]);
+
+  const handleResumeFromWarning = () => {
+    setTimeSpentOnQuestion(0);
+    setDistractionWarningPhase('none');
+    setReturnedToSameQuestion(true);
+  };
+
+  // Keyboard Shortcuts Listener for Study Session Rating
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      const activeEl = document.activeElement;
+      if (activeEl && (activeEl.tagName === 'INPUT' || activeEl.tagName === 'TEXTAREA' || activeEl.hasAttribute('contenteditable'))) {
+        return;
+      }
+
+      if (showStickerModal) {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          setShowStickerModal(false);
+        }
+        return;
+      }
+
+      if (qQueue.length === 0 || qSessionDone || distractionWarningPhase !== 'none') {
+        return;
+      }
+
+      if (!isCardFlipped) {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          setIsCardFlipped(true);
+        }
+        return;
+      }
+
+      if (event.key === '0') {
+        event.preventDefault();
+        rateCard('easy');
+      } else if (event.key === '1') {
+        event.preventDefault();
+        rateCard('medium');
+      } else if (event.key === '2') {
+        event.preventDefault();
+        rateCard('hard');
+      } else if (event.key === '3') {
+        event.preventDefault();
+        rateCard('very_hard');
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [qQueue, qSessionDone, distractionWarningPhase, isCardFlipped, showStickerModal]);
 
   const handleSetPriority = async (itemId: string, priority: 'A'|'B'|'C'|null) => {
     if (!user) return;
@@ -10223,7 +10377,7 @@ const FlashSpace = () => {
   };
 
   const [activeCategory, setActiveCategory] = useState<string>('All');
-  const [historyStack, setHistoryStack] = useState<{qQueue: Question[], qDone: Question[], qHardCount: number, qRepeatCount: number}[]>([]);
+  const [historyStack, setHistoryStack] = useState<{qQueue: Question[], qDone: Question[], qHardCount: number, qRepeatCount: number, easyCount?: number}[]>([]);
 
   // Vector Engine
   const [paths, setPaths] = useState<Path[]>([]);
@@ -11161,6 +11315,9 @@ const FlashSpace = () => {
     setQDone(lastState.qDone);
     setQHardCount(lastState.qHardCount);
     setQRepeatCount(lastState.qRepeatCount);
+    if (lastState.easyCount !== undefined) {
+      setEasyCount(lastState.easyCount);
+    }
     setHistoryStack(prev => prev.slice(0, -1));
     setIsCardFlipped(false);
   };
