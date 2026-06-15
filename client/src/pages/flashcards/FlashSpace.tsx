@@ -59,6 +59,7 @@ import { collection, query, getDocs, orderBy, doc, updateDoc, increment, arrayUn
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { CampNotebookToDo } from '../../components/CampNotebookToDo';
+import { formatNoteWithAI } from '../../lib/aiFormatter';
 
 // --- Vector Types ---
 type Tool = 'pen' | 'highlighter' | 'eraser' | 'laser' | 'text' | 'pan';
@@ -12640,6 +12641,7 @@ const FlashSpace = () => {
   const [reviewFilter, setReviewFilter] = useState<'A'|'B'|'C'>('A');
   const [isEditingNotes, setIsEditingNotes] = useState(false);
   const [editedNoteText, setEditedNoteText] = useState("");
+  const [isAiFormatting, setIsAiFormatting] = useState(false);
   
   const editorRef = useRef<HTMLDivElement>(null);
   const editExplanationRef = useRef<HTMLDivElement>(null);
@@ -18377,6 +18379,39 @@ const FlashSpace = () => {
                 <button onClick={() => applyFormatting('highlight', '#bfdbfe')} className="w-4 h-4 rounded-full bg-blue-200 border border-blue-300 hover:scale-110 transition-all" title="أزرق" />
                 <button onClick={() => applyFormatting('highlight', '#fed7aa')} className="w-4 h-4 rounded-full bg-orange-200 border border-orange-300 hover:scale-110 transition-all" title="برتقالي" />
               </div>
+
+              {/* AI Format Button */}
+              <button
+                disabled={isAiFormatting || !editedNoteText.trim()}
+                onClick={async () => {
+                  setIsAiFormatting(true);
+                  try {
+                    const formatted = await formatNoteWithAI(editedNoteText);
+                    setEditedNoteText(formatted);
+                    if (editorRef.current) {
+                      editorRef.current.innerHTML = bbcodeAndMarkdownToHtml(formatted);
+                    }
+                    toast.success('تم التنسيق بنجاح! ✨');
+                  } catch (err: any) {
+                    toast.error(err.message || 'فشل التنسيق');
+                  } finally {
+                    setIsAiFormatting(false);
+                  }
+                }}
+                className="flex items-center gap-1.5 px-4 py-1.5 bg-gradient-to-r from-violet-600 to-indigo-600 text-white rounded-xl font-black text-[11px] shadow-lg shadow-violet-600/20 hover:scale-[1.04] active:scale-95 transition-all disabled:opacity-40 disabled:pointer-events-none border border-violet-500/30"
+              >
+                {isAiFormatting ? (
+                  <>
+                    <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                    جاري التنسيق...
+                  </>
+                ) : (
+                  <>
+                    <Sparkles className="w-3.5 h-3.5" />
+                    ✨ AI تنسيق
+                  </>
+                )}
+              </button>
             </div>
             
             <div className="flex-1 min-h-0 bg-white rounded-b-2xl border border-slate-200 overflow-hidden mb-4 relative p-4 flex flex-col">

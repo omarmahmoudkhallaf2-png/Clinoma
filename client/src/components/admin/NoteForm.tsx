@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Save, X, FileUp, FileText, Video, Image as ImageIcon, Loader2 } from 'lucide-react';
+import { Save, X, FileUp, FileText, Video, Image as ImageIcon, Loader2, Sparkles } from 'lucide-react';
+import { formatNoteWithAI } from '../../lib/aiFormatter';
 import { db } from '../../lib/firebase';
 import { collection, query, getDocs } from 'firebase/firestore';
 
@@ -12,6 +13,7 @@ export default function NoteForm({ onSave, onCancel }: NoteFormProps) {
   const [courses, setCourses] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   const [uploading, setUploading] = useState(false);
+  const [aiFormatting, setAiFormatting] = useState(false);
   const [formData, setFormData] = useState({
     title: '',
     content: '',
@@ -257,6 +259,39 @@ export default function NoteForm({ onSave, onCancel }: NoteFormProps) {
               </div>
             )}
           </div>
+        </div>
+
+        {/* AI Format Button */}
+        <div className="flex items-center gap-3">
+          <button
+            type="button"
+            disabled={aiFormatting || !formData.content.trim()}
+            onClick={async () => {
+              setAiFormatting(true);
+              try {
+                const formatted = await formatNoteWithAI(formData.content);
+                setFormData(prev => ({ ...prev, content: formatted }));
+              } catch (err: any) {
+                alert(err.message || 'فشل التنسيق');
+              } finally {
+                setAiFormatting(false);
+              }
+            }}
+            className="flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-violet-600 to-indigo-600 text-white rounded-2xl font-black text-sm shadow-lg shadow-violet-600/20 hover:scale-[1.03] active:scale-95 transition-all disabled:opacity-40 disabled:pointer-events-none"
+          >
+            {aiFormatting ? (
+              <>
+                <Loader2 className="w-4 h-4 animate-spin" />
+                جاري التنسيق بالذكاء الاصطناعي...
+              </>
+            ) : (
+              <>
+                <Sparkles className="w-4 h-4" />
+                ✨ تنسيق بالذكاء الاصطناعي
+              </>
+            )}
+          </button>
+          <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Gemini 2.5 Flash</span>
         </div>
 
         <textarea 
