@@ -1,11 +1,21 @@
 
-const KEYS = [
-  "AIzaSyB0GrBSsl3xbr_eDmSQtWk5v4VOS0p2gFQ",
-  "AIzaSyALv9jWafoAN9AVh4psyYQUaPpPL-ig-J4",
-  "AIzaSyAsuqzTQlgwhhhUAUhLy9Wd92xgR_kvVDA",
-  "AIzaSyA05ajCmTzdHKYE1YAU0t6VQHj3DhUE-Zw",
-  "AIzaSyAyZ-gdyKEgGgBwZx77EkPVpC1vDyjsyPc"
-];
+function getGeminiKeys(): string[] {
+  const localKeys = localStorage.getItem("admin_gemini_keys");
+  if (localKeys) {
+    return localKeys.split(',').map(k => k.trim()).filter(Boolean);
+  }
+  const envKeys = import.meta.env.VITE_GEMINI_KEYS;
+  if (envKeys) {
+    return envKeys.split(',').map(k => k.trim()).filter(Boolean);
+  }
+  return [
+    "AIzaSyB0GrBSsl3xbr_eDmSQtWk5v4VOS0p2gFQ",
+    "AIzaSyALv9jWafoAN9AVh4psyYQUaPpPL-ig-J4",
+    "AIzaSyAsuqzTQlgwhhhUAUhLy9Wd92xgR_kvVDA",
+    "AIzaSyA05ajCmTzdHKYE1YAU0t6VQHj3DhUE-Zw",
+    "AIzaSyAyZ-gdyKEgGgBwZx77EkPVpC1vDyjsyPc"
+  ];
+}
 
 const MODELS = [
   "gemini-3.1-flash-lite", 
@@ -41,7 +51,7 @@ const tryGeminiFetch = async (model: string, payload: any, key: string) => {
 };
 
 export const extractTopics = async (fileData: { data: string, mimeType: string }) => {
-  const allKeys = [...KEYS].sort(() => Math.random() - 0.5);
+  const allKeys = [...getGeminiKeys()].sort(() => Math.random() - 0.5);
 
   for (const key of allKeys) {
     for (const model of MODELS) {
@@ -87,7 +97,7 @@ export const generateAIResponse = async (
 2. استخدم الجداول المقارنة (Tables) والإيموجي الطبية.
 3. التزم بمحتوى الملف المرفوع إذا وجد.`;
 
-  const allKeys = [...KEYS].sort(() => Math.random() - 0.5);
+  const allKeys = [...getGeminiKeys()].sort(() => Math.random() - 0.5);
 
   for (const key of allKeys) {
     for (const model of MODELS) {
@@ -112,7 +122,7 @@ export const generateAIResponse = async (
 };
 
 export const generateFlashcards = async (text: string, files?: { data: string, mimeType: string }[]) => {
-  const allKeys = [...KEYS].sort(() => Math.random() - 0.5);
+  const allKeys = [...getGeminiKeys()].sort(() => Math.random() - 0.5);
 
   const systemPrompt = `You are a professional medical educator. 
   CRITICAL RULE: Generate flashcards ONLY from the provided content. 
@@ -147,7 +157,7 @@ export const generateFlashcards = async (text: string, files?: { data: string, m
 };
 
 export const generateAIExam = async (prompt: string, files?: { data: string, mimeType: string }[]) => {
-  const allKeys = [...KEYS].sort(() => Math.random() - 0.5);
+  const allKeys = [...getGeminiKeys()].sort(() => Math.random() - 0.5);
 
   const systemPrompt = `You are an expert medical examiner. 
   STRICT RULE: Generate MCQs ONLY from the provided content.

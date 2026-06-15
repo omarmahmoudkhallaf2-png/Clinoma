@@ -6,22 +6,23 @@
  * compatible with the FlashSpace editor format.
  */
 
-const FORMATTER_KEYS = [
-  "AQ.Ab8RN6KcQCVRi7ciw8HleEC1Roaj6CbM9MzTGeUS01Ps4fJRJQ",
-  "AQ.Ab8RN6JriojoEmeK_UsPlz7WRvLB2kvV4oYGSLsMxCwUMgDR3A",
-  "AQ.Ab8RN6JarYwS0XdvKCujlqIwEwXcTWoEmHYi_EHRE0FWLuitCw",
-];
-
-const FORMATTER_MODEL = "gemini-2.5-flash";
-
-// Global round-robin counter (persists across calls within the session)
-let _rrIndex = 0;
-
-function getNextKey(): string {
-  const key = FORMATTER_KEYS[_rrIndex % FORMATTER_KEYS.length];
-  _rrIndex++;
-  return key;
+function getFormatterKeys(): string[] {
+  const localKeys = localStorage.getItem("admin_gemini_keys");
+  if (localKeys) {
+    return localKeys.split(',').map(k => k.trim()).filter(Boolean);
+  }
+  const envKeys = import.meta.env.VITE_GEMINI_KEYS;
+  if (envKeys) {
+    return envKeys.split(',').map(k => k.trim()).filter(Boolean);
+  }
+  return [
+    "AQ.Ab8RN6KcQCVRi7ciw8HleEC1Roaj6CbM9MzTGeUS01Ps4fJRJQ",
+    "AQ.Ab8RN6JriojoEmeK_UsPlz7WRvLB2kvV4oYGSLsMxCwUMgDR3A",
+    "AQ.Ab8RN6JarYwS0XdvKCujlqIwEwXcTWoEmHYi_EHRE0FWLuitCw"
+  ];
 }
+
+let _rrIndex = 0;
 
 const FORMATTING_PROMPT = `أنت خبير تنسيق نصوص طبية. مهمتك هي أخذ النص الخام التالي وإرجاعه بتنسيق غني وجميل.
 
@@ -79,7 +80,13 @@ export async function formatNoteWithAI(rawText: string): Promise<string> {
     throw new Error("النص فارغ. اكتب نصاً أولاً ثم اضغط تنسيق.");
   }
 
-  const key = getNextKey();
+  const keys = getFormatterKeys();
+  if (keys.length === 0) {
+    throw new Error("مفاتيح API غير مدخلة. يرجى تهيئة المفاتيح من زر الإعدادات ⚙️.");
+  }
+
+  const key = keys[_rrIndex % keys.length];
+  _rrIndex++;
 
   const payload = {
     contents: [
@@ -94,52 +101,66 @@ export async function formatNoteWithAI(rawText: string): Promise<string> {
     },
   };
 
-  // Try v1beta first, then v1
-  const versions = ["v1beta", "v1"];
-  for (const version of versions) {
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 45000); // 45s timeout for formatting
+  const models = [
+    "gemini-3.1-flash-lite",
+    "gemini-3-flash",
+    "gemini-2.5-flash",
+    "gemini-2.0-flash",
+    "gemini-1.5-flash"
+  ];
 
-    try {
-      const url = `https://generativelanguage.googleapis.com/${version}/models/${FORMATTER_MODEL}:generateContent?key=${key}`;
-      const response = await fetch(url, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-        signal: controller.signal,
-      });
+  for (const model of models) {
+    for (const version of ["v1beta", "v1"]) {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 20000); // 20s per call
 
-      clearTimeout(timeoutId);
+      try {
+        const url = `https://generativelanguage.googleapis.com/${version}/models/${model}:generateContent?key=${key}`;
+        const response = await fetch(url, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+          signal: controller.signal,
+        });
 
-      if (response.status === 429 || response.status === 403) {
-        continue; // Try next version
-      }
+        clearTimeout(timeoutId);
 
-      if (response.ok) {
-        const data = await response.json();
-        const formatted =
-          data.candidates?.[0]?.content?.parts?.[0]?.text || "";
-
-        if (!formatted.trim()) {
-          throw new Error("الذكاء الاصطناعي لم يرجع نص. حاول مرة أخرى.");
+        if (response.status === 401 || response.status === 403 || response.status === 400) {
+          const bodyText = await response.text();
+          if (bodyText.includes("leaked") || bodyText.includes("revoked") || bodyText.includes("credentials") || bodyText.includes("API key not valid")) {
+            throw new Error("مفتاح API الخاص بك غير صالح أو تم إيقافه (تم كشف تسريبه على GitHub). يرجى إضافة مفتاح جديد من الإعدادات ⚙️.");
+          }
+          continue; // Try next model/version combination
         }
 
-        // Clean any markdown code fences the model might wrap
-        return formatted
-          .replace(/^```[\w]*\n?/gm, "")
-          .replace(/\n?```$/gm, "")
-          .trim();
+        if (response.ok) {
+          const data = await response.json();
+          const formatted = data.candidates?.[0]?.content?.parts?.[0]?.text || "";
+
+          if (!formatted.trim()) {
+            throw new Error("الذكاء الاصطناعي لم يرجع نص. حاول مرة أخرى.");
+          }
+
+          // Clean any markdown code fences the model might wrap
+          return formatted
+            .replace(/^```[\w]*\n?/gm, "")
+            .replace(/\n?```$/gm, "")
+            .trim();
+        }
+      } catch (err: any) {
+        clearTimeout(timeoutId);
+        if (err.message.includes("تسريبه") || err.message.includes("غير صالح")) {
+          throw err;
+        }
+        if (err.name === "AbortError") {
+          continue;
+        }
+        // Network errors or other API issues, continue loop
       }
-    } catch (err: any) {
-      clearTimeout(timeoutId);
-      if (err.name === "AbortError") {
-        throw new Error("انتهت مهلة الطلب. حاول مرة أخرى.");
-      }
-      continue;
     }
   }
 
   throw new Error(
-    "فشل تنسيق النص. جميع المحاولات فشلت. حاول مرة أخرى لاحقاً."
+    "فشل تنسيق النص. جميع محاولات الاتصال بالـ API فشلت. تأكد من صحة مفاتيحك وحالة الشبكة."
   );
 }

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Save, X, FileUp, FileText, Video, Image as ImageIcon, Loader2, Sparkles } from 'lucide-react';
+import { Save, X, FileUp, FileText, Video, Image as ImageIcon, Loader2, Sparkles, Settings } from 'lucide-react';
 import { formatNoteWithAI } from '../../lib/aiFormatter';
 import { db } from '../../lib/firebase';
 import { collection, query, getDocs } from 'firebase/firestore';
@@ -291,7 +291,24 @@ export default function NoteForm({ onSave, onCancel }: NoteFormProps) {
               </>
             )}
           </button>
-          <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Gemini 2.5 Flash</span>
+          
+          <button
+            type="button"
+            onClick={() => {
+              const currentKeys = localStorage.getItem("admin_gemini_keys") || "";
+              const input = prompt("أدخل مفاتيح Gemini API الخاصة بك (افصل بينها بفاصلة ,):", currentKeys);
+              if (input !== null) {
+                localStorage.setItem("admin_gemini_keys", input.trim());
+                alert("تم حفظ مفاتيح API بنجاح! 🔑");
+              }
+            }}
+            className="p-3 text-muted-foreground hover:bg-secondary rounded-2xl transition-all border border-border hover:scale-105 active:scale-95"
+            title="إعدادات مفاتيح Gemini API"
+          >
+            <Settings className="w-5 h-5" />
+          </button>
+
+          <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Gemini API</span>
         </div>
 
         <textarea 

@@ -18412,6 +18412,22 @@ const FlashSpace = () => {
                   </>
                 )}
               </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  const currentKeys = localStorage.getItem("admin_gemini_keys") || "";
+                  const input = prompt("أدخل مفاتيح Gemini API الخاصة بك (افصل بينها بفاصلة ,):", currentKeys);
+                  if (input !== null) {
+                    localStorage.setItem("admin_gemini_keys", input.trim());
+                    toast.success("تم حفظ مفاتيح API بنجاح! 🔑");
+                  }
+                }}
+                className="p-1.5 text-slate-500 hover:bg-slate-100 rounded-xl transition-all border border-slate-200 hover:scale-105 active:scale-95"
+                title="إعدادات مفاتيح Gemini API"
+              >
+                <Settings className="w-4 h-4" />
+              </button>
             </div>
             
             <div className="flex-1 min-h-0 bg-white rounded-b-2xl border border-slate-200 overflow-hidden mb-4 relative p-4 flex flex-col">
