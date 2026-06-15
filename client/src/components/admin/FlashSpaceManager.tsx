@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { db } from '../../lib/firebase';
 import { cn } from '../../lib/utils';
 import toast from 'react-hot-toast';
+import { formatNoteWithAI } from '../../lib/aiFormatter';
 import { 
   collection, 
   query, 
@@ -27,7 +28,8 @@ import {
   Brain,
   Zap,
   Upload,
-  Loader2
+  Loader2,
+  Sparkles
 } from 'lucide-react';
 
 interface Board {
@@ -47,6 +49,7 @@ const FlashSpaceManager = () => {
   const [editingBoard, setEditingBoard] = useState<Board | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [uploading, setUploading] = useState(false);
+  const [aiFormatting, setAiFormatting] = useState(false);
 
   // Form State
   const [form, setForm] = useState({
@@ -375,7 +378,57 @@ const FlashSpaceManager = () => {
                   </div>
 
                   <div className="md:col-span-2 space-y-3">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-4">Medical Explanation</label>
+                    <div className="flex items-center justify-between ml-4">
+                      <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">Medical Explanation</label>
+                      <div className="flex items-center gap-2">
+                        <button
+                          type="button"
+                          disabled={aiFormatting || !form.explanation.trim()}
+                          onClick={async () => {
+                            setAiFormatting(true);
+                            const t = toast.loading('Formatting with Gemini...');
+                            try {
+                              const formatted = await formatNoteWithAI(form.explanation);
+                              setForm(prev => ({ ...prev, explanation: formatted }));
+                              toast.success('Formatted successfully! ✨', { id: t });
+                            } catch (err: any) {
+                              toast.error(err.message || 'Formatting failed', { id: t });
+                            } finally {
+                              setAiFormatting(false);
+                            }
+                          }}
+                          className="flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-r from-violet-600 to-indigo-600 text-white rounded-xl font-black text-[10px] shadow-lg shadow-violet-600/20 hover:scale-[1.04] active:scale-95 transition-all disabled:opacity-40 disabled:pointer-events-none border border-violet-500/30"
+                        >
+                          {aiFormatting ? (
+                            <>
+                              <Loader2 className="w-3 h-3 animate-spin" />
+                              Formatting...
+                            </>
+                          ) : (
+                            <>
+                              <Sparkles className="w-3 h-3" />
+                              ✨ AI Format
+                            </>
+                          )}
+                        </button>
+                        
+                        <button
+                          type="button"
+                          onClick={() => {
+                            const currentKeys = localStorage.getItem("admin_gemini_keys") || "";
+                            const input = prompt("أدخل مفاتيح Gemini API الخاصة بك (افصل بينها بفاصلة ,):", currentKeys);
+                            if (input !== null) {
+                              localStorage.setItem("admin_gemini_keys", input.trim());
+                              toast.success("تم حفظ مفاتيح API بنجاح! 🔑");
+                            }
+                          }}
+                          className="p-1.5 text-slate-500 hover:bg-slate-100 rounded-xl transition-all border border-slate-200 hover:scale-105 active:scale-95"
+                          title="إعدادات مفاتيح Gemini API"
+                        >
+                          <Settings className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
+                    </div>
                     <textarea 
                       required rows={4} placeholder="Enter clinical details..."
                       value={form.explanation} onChange={e => setForm({...form, explanation: e.target.value})}
