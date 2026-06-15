@@ -80,9 +80,21 @@ export async function formatNoteWithAI(rawText: string): Promise<string> {
     throw new Error("النص فارغ. اكتب نصاً أولاً ثم اضغط تنسيق.");
   }
 
+  // Check if keys are configured in localStorage or env variables
+  const hasLocalKeys = !!localStorage.getItem("admin_gemini_keys");
+  const hasEnvKeys = !!import.meta.env.VITE_GEMINI_KEYS;
+
+  if (!hasLocalKeys && !hasEnvKeys) {
+    const input = prompt("الرجاء إدخال مفتاح Gemini API الخاص بك لتفعيل التنسيق بالذكاء الاصطناعي (مفتاح واحد أو أكثر مفصولة بفاصلة ,):");
+    if (!input || !input.trim()) {
+      throw new Error("لم يتم إدخال مفتاح API. تم إلغاء عملية التنسيق.");
+    }
+    localStorage.setItem("admin_gemini_keys", input.trim());
+  }
+
   const keys = getFormatterKeys();
   if (keys.length === 0) {
-    throw new Error("مفاتيح API غير مدخلة. يرجى تهيئة المفاتيح من زر الإعدادات ⚙️.");
+    throw new Error("لم يتم العثور على مفتاح API نشط.");
   }
 
   const key = keys[_rrIndex % keys.length];
@@ -128,7 +140,9 @@ export async function formatNoteWithAI(rawText: string): Promise<string> {
         if (response.status === 401 || response.status === 403 || response.status === 400) {
           const bodyText = await response.text();
           if (bodyText.includes("leaked") || bodyText.includes("revoked") || bodyText.includes("credentials") || bodyText.includes("API key not valid")) {
-            throw new Error("مفتاح API الخاص بك غير صالح أو تم إيقافه (تم كشف تسريبه على GitHub). يرجى إضافة مفتاح جديد من الإعدادات ⚙️.");
+            // Clear the invalid keys from local storage so it prompts again next time
+            localStorage.removeItem("admin_gemini_keys");
+            throw new Error("مفتاح API الخاص بك غير صالح أو تم إيقافه (تم كشف تسريبه على GitHub). يرجى المحاولة مرة أخرى وإدخال مفتاح جديد صالح.");
           }
           continue; // Try next model/version combination
         }
@@ -149,7 +163,7 @@ export async function formatNoteWithAI(rawText: string): Promise<string> {
         }
       } catch (err: any) {
         clearTimeout(timeoutId);
-        if (err.message.includes("تسريبه") || err.message.includes("غير صالح")) {
+        if (err.message.includes("تسريبه") || err.message.includes("غير صالح") || err.message.includes("إلغاء")) {
           throw err;
         }
         if (err.name === "AbortError") {
@@ -160,7 +174,9 @@ export async function formatNoteWithAI(rawText: string): Promise<string> {
     }
   }
 
+  // If it gets here and failed, let's also clear localStorage in case the key itself is generally bad
+  localStorage.removeItem("admin_gemini_keys");
   throw new Error(
-    "فشل تنسيق النص. جميع محاولات الاتصال بالـ API فشلت. تأكد من صحة مفاتيحك وحالة الشبكة."
+    "فشل تنسيق النص. تأكد من صحة مفاتيح الـ API المضافة وصلاحية حسابك."
   );
 }
