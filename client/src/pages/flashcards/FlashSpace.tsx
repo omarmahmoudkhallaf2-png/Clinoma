@@ -1,3 +1,4 @@
+// Strabismus HMR trigger
 import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
@@ -56,6 +57,7 @@ import { useAuth } from '../../context/AuthContext';
 import { db, auth, dbExam } from '../../lib/firebase';
 import { collection, query, getDocs, orderBy, doc, updateDoc, increment, arrayUnion, deleteField, getDoc, setDoc, addDoc, deleteDoc, serverTimestamp, where, onSnapshot } from 'firebase/firestore';
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { CampNotebookToDo } from '../../components/CampNotebookToDo';
 
 // --- Vector Types ---
@@ -315,10 +317,10 @@ const OPHTHALMOLOGY_EXPLANATIONS: Record<string, string> = {
 
 [font=Cairo][size=16][color=#1e293b]### 1. The Optic Nerve Parts (O-O-C-C)[/color][/size][/font]
 
-* [color=#3b82f6]**Intraocular Part (Optic Disc):**[/color] ده الجزء اللي جوة العين نفسه، وهو ده اللي بتشوفه بالفحص بـ [color=#3b82f6]*Ophthalmoscope*[/color]. طوله صغير جداً (حوالي [color=#10b981]**1 mm**[/color]).
-* [color=#3b82f6]**Intraorbital Part:**[/color] ده الجزء اللي ماشي جوة الـ Orbit (محجر العين) لحد ما يوصل للـ Apex. طوله حوالي [color=#10b981]**25 to 30 mm**[/color]، والميزة هنا إنه ماشي [highlight=#fef08a]**S-shaped**[/highlight] (فيه تعرج) عشان لما العين تتحرك يمين وشمال، العصب ميتشدش ويتقطع.
-* [color=#3b82f6]**Intracanalicular Part:**[/color] ده الجزء اللي محشور جوة العظم، تحديداً بيمشي في [color=#3b82f6]**Optic canal**[/color]. طوله حوالي [color=#10b981]**5 to 9 mm**[/color]. الجزء ده [color=#ef4444]**خطر جداً**[/color]؛ لأن أي [color=#ef4444]**Fracture**[/color] في الـ Skull base ممكن يعمل له Compression بسهولة.
-* [color=#3b82f6]**Intracranial Part:**[/color] ده الجزء اللي جوة الجمجمة خلاص وبيحوم فوق الـ Middle cranial fossa لحد ما يقابل أخوه الناحية التانية ويعملوا الـ Chiasma. طوله حوالي [color=#10b981]**10 to 16 mm**[/color].
+* [color=#8b5cf6]**Intraocular Part (Optic Disc):**[/color] ده الجزء اللي جوة العين نفسه، وهو ده اللي بتشوفه بالفحص بـ [color=#3b82f6]*Ophthalmoscope*[/color]. طوله صغير جداً (حوالي [color=#10b981]**1 mm**[/color]).
+* [color=#8b5cf6]**Intraorbital Part:**[/color] ده الجزء اللي ماشي جوة الـ Orbit (محجر العين) لحد ما يوصل للـ Apex. طوله حوالي [color=#10b981]**25 to 30 mm**[/color]، والميزة هنا إنه ماشي [highlight=#fef08a]**S-shaped**[/highlight] (فيه تعرج) عشان لما العين تتحرك يمين وشمال، العصب ميتشدش ويتقطع.
+* [color=#8b5cf6]**Intracanalicular Part:**[/color] ده الجزء اللي محشور جوة العظم، تحديداً بيمشي في [color=#3b82f6]**Optic canal**[/color]. طوله حوالي [color=#10b981]**5 to 9 mm**[/color]. الجزء ده [color=#ef4444]**خطر جداً**[/color]؛ لأن أي [color=#ef4444]**Fracture**[/color] في الـ Skull base ممكن يعمل له Compression بسهولة.
+* [color=#8b5cf6]**Intracranial Part:**[/color] ده الجزء اللي جوة الجمجمة خلاص وبيحوم فوق الـ Middle cranial fossa لحد ما يقابل أخوه الناحية التانية ويعملوا الـ Chiasma. طوله حوالي [color=#10b981]**10 to 16 mm**[/color].
 
 ---
 
@@ -328,8 +330,8 @@ const OPHTHALMOLOGY_EXPLANATIONS: Record<string, string> = {
 [font=Cairo][size=15][color=#8b5cf6]**Retina ➔ Optic Nerve ➔ Optic Chiasma ➔ Optic Tract ➔ Lateral Geniculate Body (LGB) ➔ Optic Radiation ➔ Visual Cortex**[/color][/size][/font]
 
 [font=Cairo][size=15][color=#ef4444]**الـ Rule الذهبية في الـ Chiasma:**[/color][/size][/font]
-* [color=#3b82f6]**Nasal retinal fibers:**[/color] دول المسؤولين عن رؤية الـ **Temporal field** (المجال الخارجي). الألياف دي [color=#ef4444]**Cross**[/color] (بتعدي الناحية التانية في الـ Chiasma).
-* [color=#3b82f6]**Temporal retinal fibers:**[/color] دول المسؤولين عن رؤية الـ **Nasal field** (المجال الداخلي ناحية المناخير). الألياف دي [color=#10b981]**Uncrossed**[/color] (بتفضل ماشية في نفس الناحية).
+* [color=#8b5cf6]**Nasal retinal fibers:**[/color] دول المسؤولين عن رؤية الـ **Temporal field** (المجال الخارجي). الألياف دي [color=#ef4444]**Cross**[/color] (بتعدي الناحية التانية في الـ Chiasma).
+* [color=#8b5cf6]**Temporal retinal fibers:**[/color] دول المسؤولين عن رؤية الـ **Nasal field** (المجال الداخلي ناحية المناخير). الألياف دي [color=#10b981]**Uncrossed**[/color] (بتفضل ماشية في نفس الناحية).
 
 > 💡 [color=#8b5cf6]**ملحوظة دكتور:**[/color] الـ **Lateral Geniculate Body (LGB)** هو الـ Synapse station (محطة الترانزيت) اللي موجودة في الـ Thalamus، ومنها بتطلع الألياف اللي اسمها **Optic Radiation** متجهة للـ **Visual Cortex** في الـ Occipital lobe (تحديداً Brodmann area 17).
 
@@ -339,14 +341,14 @@ const OPHTHALMOLOGY_EXPLANATIONS: Record<string, string> = {
 
 عشان متتلخبطش خالص في الحتة دي، افتكر دايماً إن **الشبكية الـ Nasal بتشوف الـ Temporal field، والشبكية الـ Temporal بتشوف الـ Nasal field** (عكس بعض).
 
-* [color=#ef4444]**Optic Nerve Lesion:**[/color]
+* [color=#8b5cf6]**Optic Nerve Lesion:**[/color]
   * **السبب:** القطع هنا قبل الـ Chiasma خالص، يعني ضربنا العصب كله بتاع عين واحدة.
-  * **النتيجة:** [color=#ef4444]**Complete ipsilateral blindness**[/color] (عمى كامل في العين المصابة). العين التانية سليمة 100%.
-* [color=#ef4444]**Optic Chiasma Lesion:**[/color]
+  * **النتيجة:** [color=#8b5cf6]**Complete ipsilateral blindness**[/color] (عمى كامل في العين المصابة). العين التانية سليمة 100%.
+* [color=#8b5cf6]**Optic Chiasma Lesion:**[/color]
   * **السبب المشهور جداً:** [highlight=#fef08a]**Pituitary adenoma**[/highlight] (ورم الغدة النخامية) لأن الغدة قاعدة تحت الـ Chiasma بالظبط، فلما تكبر تضغط على الـ Crossing fibers اللي في النص.
   * **مين اللي في النص؟** الـ Nasal fibers بتاعة العينين.
   * **النتيجة:** الـ Nasal fibers مسؤولة عن الـ Temporal fields، فلما تتضرب، العيان يفقد الرؤية في الأطراف الخارجية للعينين. دي بنسميها [color=#ef4444]**Bitemporal hemianopia**[/color] (كأنه لابس نظارة خيل ومش شايف الجوانب).
-* [color=#ef4444]**Optic Tract or Radiation Lesion:**[/color]
+* [color=#8b5cf6]**Optic Tract or Radiation Lesion:**[/color]
   * **السبب:** القطع هنا بعد الـ Chiasma (يعني الـ Left tract مثلاً شايل الـ Temporal fibers بتاعة الـ Left eye + الـ Nasal fibers بتاعة الـ Right eye).
   * **النتيجة:** هتفقد نص المجال اليمين في العينين، أو نص المجال الشمال في العينين. دي بنسميها [color=#ef4444]**Contralateral homonymous hemianopia**[/color].
   * *مثال:* لو الـ **Right** Optic tract اتضرب، العيان هيقفل عينه اليمين والشمال ومش هيشوف النص **الشمال** (Left) في الاتنين.
@@ -380,19 +382,19 @@ const OPHTHALMOLOGY_EXPLANATIONS: Record<string, string> = {
 [font=Cairo][size=16][color=#1e293b]### 2. Etiology (ليه الـ ICP بيزيد?)[/color][/size][/font]
 
 أي حاجة تزود الضغط جوة الجمجمة هتمنع الـ Axoplasmic flow وتضغط على الـ Optic nerve، زي:
-* [color=#3b82f6]**Intracranial Space-Occupying Lesions (SOL):**[/color] زي الـ Brain tumors او الـ Abscess.
-* [color=#3b82f6]**Malignant Hypertension:**[/color] الارتفاع الشديد والمفاجئ في ضغط الدم.
-* [color=#3b82f6]**Hydrocephalus:**[/color] تجمع السوائل (CSF) في بطينات المخ.
-* [color=#3b82f6]**Idiopathic Intracranial Hypertension (Pseudotumor Cerebri):**[/color] بيزيد الـ ICP بدون وجود ورم أو سبب واضح، ومشهور جداً في الـ [color=#8b5cf6]**Young obese females**[/color].
+* [color=#8b5cf6]**Intracranial Space-Occupying Lesions (SOL):**[/color] زي الـ Brain tumors او الـ Abscess.
+* [color=#8b5cf6]**Malignant Hypertension:**[/color] الارتفاع الشديد والمفاجئ في ضغط الدم.
+* [color=#8b5cf6]**Hydrocephalus:**[/color] تجمع السوائل (CSF) في بطينات المخ.
+* [color=#8b5cf6]**Idiopathic Intracranial Hypertension (Pseudotumor Cerebri):**[/color] بيزيد الـ ICP بدون وجود ورم أو سبب واضح، ومشهور جداً في الـ [color=#8b5cf6]**Young obese females**[/color].
 
 ---
 
 [font=Cairo][size=16][color=#1e293b]### 3. Clinical Symptoms (التناقض الشهير!)[/color][/size][/font]
 
 هنا فيه تريكة وسؤال امتحان مشهور جداً:
-* [color=#10b981]**Visual Acuity:**[/color] في الـ Early stages، حدة الإبصار بتفضل [highlight=#bbf7d0]**Remarkably completely normal!**[/highlight] العيان بيشوف 6/6 عادي جداً بالرغم من إن شكل الـ Disc مرعب في الفحص.
-* [color=#3b82f6]**Transient Visual Obscurations (TVOs):**[/color] ده العرض البصري الوحيد في الأول، عبارة عن نوبات "غيمامة" أو زغللة لثواني معدودة (Seconds of blurring) وبتروح، وغالباً بتحصل لما العيان يغير وضعيته فجأة (زي إنه يقف فجأة).
-* [color=#ef4444]**ICP Symptoms (أعراض زيادة ضغط المخ):**[/color]
+* [color=#8b5cf6]**Visual Acuity:**[/color] في الـ Early stages، حدة الإبصار بتفضل [highlight=#bbf7d0]**Remarkably completely normal!**[/highlight] العيان بيشوف 6/6 عادي جداً بالرغم من إن شكل الـ Disc مرعب في الفحص.
+* [color=#8b5cf6]**Transient Visual Obscurations (TVOs):**[/color] ده العرض البصري الوحيد في الأول، عبارة عن نوبات "غيمامة" أو زغللة لثواني معدودة (Seconds of blurring) وبتروح، وغالباً بتحصل لما العيان يغير وضعيته فجأة (زي إنه يقف فجأة).
+* [color=#8b5cf6]**ICP Symptoms (أعراض زيادة ضغط المخ):**[/color]
   * **Severe headache:** صداع شديد جداً وبيكون *Worse in the morning* (لأن الـ CSF pressure بيزيد وإحنا نايمين).
   * **Projectile vomiting:** قيء مندفِع وبدون غثيان قبله (Nausea).
 
@@ -401,9 +403,9 @@ const OPHTHALMOLOGY_EXPLANATIONS: Record<string, string> = {
 [font=Cairo][size=16][color=#1e293b]### 4. Fundus Signs (ماذا نرى بالـ Ophthalmoscope؟)[/color][/size][/font]
 
 لما تبص على قاع العين، هتشوف التغيرات دي بالترتيب:
-* [color=#3b82f6]**Disc Changes:**[/color] الـ Disc بيكون **Hyperemic** (أحمر ومحتقن) و**Markedly swollen** مع **Blurred margins** (الحدود بتاعته سايحة ومش واضحة)، والـ Physiological cup بيحصل له **Obliterated** (بيختفي تماماً بسبب الـ Edema).
-* [color=#3b82f6]**Vascular Changes:**[/color] الأوردة بتكون **Tortuous and engorged veins** (ملتوية ومتضخمة نتيجة الاحتقان).
-* [color=#3b82f6]**Retinal Changes:**[/color]
+* [color=#8b5cf6]**Disc Changes:**[/color] الـ Disc بيكون **Hyperemic** (أحمر ومحتقن) و**Markedly swollen** مع **Blurred margins** (الحدود بتاعته سايحة ومش واضحة)، والـ Physiological cup بيحصل له **Obliterated** (بيختفي تماماً بسبب الـ Edema).
+* [color=#8b5cf6]**Vascular Changes:**[/color] الأوردة بتكون **Tortuous and engorged veins** (ملتوية ومتضخمة نتيجة الاحتقان).
+* [color=#8b5cf6]**Retinal Changes:**[/color]
   * **Flame-shaped hemorrhages:** نزيف على شكل لهب شمعة (ماشي مع اتجاه الـ Nerve fiber layer).
   * **Cotton wool spots:** بقع بيضاء شبه القطن، ودي عبارة عن Micro-infarcts في الـ Nerve fiber layer.
   * **Paton's lines:** خطوط أو ثنايا دائرية في الشبكية (Circumferential retinal folds) بتحصل حوالين الـ Disc نتيجة الزق والسويلنج الشديد.
@@ -412,8 +414,8 @@ const OPHTHALMOLOGY_EXPLANATIONS: Record<string, string> = {
 
 [font=Cairo][size=16][color=#1e293b]### 5. Visual Field & Late Stage[/color][/size][/font]
 
-* [color=#3b82f6]**Visual Field:**[/color] الفحص بيبين [highlight=#fef08a]**Enlarged blind spot**[/highlight] (البقعة العمياء بتكبر)، وده طبيعي لأن الـ Swollen disc واخد مساحة أكبر من حجمه الحقيقي.
-* [color=#ef4444]**Late Stage (The Danger):**[/color] لو الـ ICP ده متعالجش بسرعة والضغط فضلت مستمر لفترة طويلة، الـ Axons دي هتموت، وهيحصل **Consecutive secondary optic atrophy**. في المرحلة دي، الـ Disc بيتحول للون الأبيض (Pale)، وهنا بيحصل [color=#ef4444]**Permanent and profound drop in vision**[/color] (عمى دائم لا قدر الله).
+* [color=#8b5cf6]**Visual Field:**[/color] الفحص بيبين [highlight=#fef08a]**Enlarged blind spot**[/highlight] (البقعة العمياء بتكبر)، وده طبيعي لأن الـ Swollen disc واخد مساحة أكبر من حجمه الحقيقي.
+* [color=#8b5cf6]**Late Stage (The Danger):**[/color] لو الـ ICP ده متعالجش بسرعة والضغط فضلت مستمر لفترة طويلة، الـ Axons دي هتموت، وهيحصل **Consecutive secondary optic atrophy**. في المرحلة دي، الـ Disc بيتحول للون الأبيض (Pale)، وهنا بيحصل [color=#ef4444]**Permanent and profound drop in vision**[/color] (عمى دائم لا قدر الله).
 
 ---
 
@@ -443,11 +445,11 @@ const OPHTHALMOLOGY_EXPLANATIONS: Record<string, string> = {
 
 بنعسمه حسب مكان الالتهاب في العصب:
 
-* [color=#3b82f6]**1) Papillitis:**[/color]
+* [color=#8b5cf6]**1) Papillitis:**[/color]
   * **المكان:** الالتهاب واخد الـ Intraocular portion (يعني الـ Optic disc نفسه جوه العين).
   * **الفئة المستهدفة:** *More common in children*، وغالباً بيحصل بعد Viral infection (زي الـ Measles أو Mumps).
   * **الفحص:** بما إنه في الـ Disc، لما تبص بالـ Ophthalmoscope هتشوف الـ Disc واضح جداً إنه **Swollen** و**Hyperemic**.
-* [color=#3b82f6]**2) Retrobulbar Neuritis:**[/color]
+* [color=#8b5cf6]**2) Retrobulbar Neuritis:**[/color]
   * **المكان:** الالتهاب واخد الجزء اللي Behind the globe (ورا العين)، فالعين من جوه سليمة كشكل.
   * **الفئة المستهدفة:** *More common in adults*، ومرتبط ارتباطاً وثيقاً بمرض [color=#8b5cf6]**Multiple Sclerosis (MS)**[/color].
   * **الجملة الكلاسيكية الشهيرة:** [highlight=#fef08a]**"The doctor sees nothing, and the patient sees nothing."**[/highlight]
@@ -458,17 +460,17 @@ const OPHTHALMOLOGY_EXPLANATIONS: Record<string, string> = {
 [font=Cairo][size=16][color=#1e293b]### 3. Clinical Picture (الشكوى الثلاثية - Triad)[/color][/size][/font]
 
 العيان بيجيلك بـ Triad واضح جداً:
-* [color=#ef4444]**Sudden & Unilateral:**[/color] الفقدان مفاجئ وفي عين واحدة بس (عكس الـ Papilledema تماماً).
-* [color=#ef4444]**Profound loss of vision:**[/color] تدهور حاد وشديد في حدة الإبصار (العيان مش شايف، بعكس الـ Papilledema في الأول اللي بيكون 6/6).
-* [color=#ef4444]**Painful:**[/color] فيه *Pain exacerbated by eye movement* (وجع شديد بيزيد جداً لما العيان يحرك عينه يمين أو شمال)، وده لأن عضلات العين (Extraocular muscles) بتلمس الـ Inflamed optic nerve sheath وهي بتحرك العين.
+* [color=#8b5cf6]**Sudden & Unilateral:**[/color] الفقدان مفاجئ وفي عين واحدة بس (عكس الـ Papilledema تماماً).
+* [color=#8b5cf6]**Profound loss of vision:**[/color] تدهور حاد وشديد في حدة الإبصار (العيان مش شايف، بعكس الـ Papilledema في الأول اللي بيكون 6/6).
+* [color=#8b5cf6]**Painful:**[/color] فيه *Pain exacerbated by eye movement* (وجع شديد بيزيد جداً لما العيان يحرك عينه يمين أو شمال)، وده لأن عضلات العين (Extraocular muscles) بتلمس الـ Inflamed optic nerve sheath وهي بتحرك العين.
 
 ---
 
 [font=Cairo][size=16][color=#1e293b]### 4. Clinical Signs (العلامات الإكلينيكية)[/color][/size][/font]
 
-* [color=#3b82f6]**Relative Afferent Pupillary Defect (RAPD):**[/color] أو اللي بنسميها **Marcus Gunn pupil**. لما تعمل الـ *Swinging flashlight test*، تلاقي الـ Pupil في العين المصابة بيحصل لها [color=#ef4444]**Dilation بدل الـ Constriction**[/color] لما تسلط عليها الضوء، لأن الإشارة العصبية اللي رايحة للمخ ضعيفة جداً.
-* [color=#3b82f6]**Visual Field:**[/color] بيبين [color=#ef4444]**Dense central scotoma**[/color] (بقعة عمياء في نص الساحة البصرية بالظبط، لأن الألياف اللي جاية من الـ Macula هي أول وأكتر حاجة بتضرب).
-* [color=#3b82f6]**Fundus Examination:**[/color]
+* [color=#8b5cf6]**Relative Afferent Pupillary Defect (RAPD):**[/color] أو اللي بنسميها **Marcus Gunn pupil**. لما تعمل الـ *Swinging flashlight test*، تلاقي الـ Pupil في العين المصابة بيحصل لها [color=#ef4444]**Dilation بدل الـ Constriction**[/color] لما تسلط عليها الضوء، لأن الإشارة العصبية اللي رايحة للمخ ضعيفة جداً.
+* [color=#8b5cf6]**Visual Field:**[/color] بيبين [color=#ef4444]**Dense central scotoma**[/color] (بقعة عمياء في نص الساحة البصرية بالظبط، لأن الألياف اللي جاية من الـ Macula هي أول وأكتر حاجة بتضرب).
+* [color=#8b5cf6]**Fundus Examination:**[/color]
   * **في الـ Retrobulbar:** يكون Normal تماماً في البداية.
   * **في الـ Papillitis:** بتشوف Swollen and hyperemic disc وممكن شوية Hemorrhages.
   * 💡 [color=#8b5cf6]**كيف تفرق بين الـ Papillitis والـ Papilledema في الـ Fundus؟**[/color] الـ Papillitis بتميزها بـ 3 حاجات: **Unilateral** (غالباً)، ومعاها **Severe/Profound visual loss**، والـ Swelling مش بيكون Markedly elevated زي الـ Papilledema.
@@ -478,8 +480,8 @@ const OPHTHALMOLOGY_EXPLANATIONS: Record<string, string> = {
 [font=Cairo][size=16][color=#1e293b]### 5. Treatment (الإنقاذ السريع)[/color][/size][/font]
 
 الهدف هنا هو Accelerate visual recovery ونقلل الـ Inflammation بسرعة عشان الـ Axons متموتش:
-* [color=#10b981]**High-dose IV Systemic Corticosteroids:**[/color] بندي **Methylprednisolone** بالوريد بجرعات عالية (غالباً **1 g/day** لمدة 3 أيام).
-* [color=#3b82f6]**Oral Taper:**[/color] بعد الـ IV، بنمشي العيان على **Oral prednisone** وبنسحبه تدريجياً (Oral taper) عشان نمنع الـ Recurrence ونحمي الـ Adrenal gland.
+* [color=#8b5cf6]**High-dose IV Systemic Corticosteroids:**[/color] بندي **Methylprednisolone** بالوريد بجرعات عالية (غالباً **1 g/day** لمدة 3 أيام).
+* [color=#8b5cf6]**Oral Taper:**[/color] بعد الـ IV، بنمشي العيان على **Oral prednisone** وبنسحبه تدريجياً (Oral taper) عشان نمنع الـ Recurrence ونحمي الـ Adrenal gland.
 
 ---
 
@@ -489,7 +491,7 @@ const OPHTHALMOLOGY_EXPLANATIONS: Record<string, string> = {
 افتكر كلمة **Retro** تعني "خلف"، وطالما ورا يبقى مستخبي ➔ *Doctor sees nothing, patient sees nothing.* وافتكر حرف [color=#8b5cf6]**M**[/color] في Retro**M**bulbar (تجاوزاً) عشان تفكرك بالـ **MS** (Multiple Sclerosis).
 * **ليه الوجع بيزيد مع الحركة؟ (Eye Movement Pain):**
 افتكر إن الـ Optic nerve محاوط بالـ Extraocular muscles. لما العين تتحرك، العضلات بتعمل Tug / Pull على الـ Inflamed sheath، فتعمل الوجع.
-* [color=#ef4444]**الفرق الجوهري في كلمة واحدة:**[/color]
+* [color=#8b5cf6]**الفرق الجوهري في كلمة واحدة:**[/color]
   * **Papilledema** = Vision is OK (Early), No Pain, Bilateral.
   * **Optic Neuritis** = Vision is Gone, Severe Pain, Unilateral.\n`,
 
@@ -510,7 +512,7 @@ const OPHTHALMOLOGY_EXPLANATIONS: Record<string, string> = {
 
 التقسيمة هنا قائمة على سؤال جوهري: هل العصب حصل له Atrophy على نظافة، ولا بعد معركة وسويلنج؟
 
-* [color=#3b82f6]**1) Primary Optic Atrophy:**[/color]
+* [color=#8b5cf6]**1) Primary Optic Atrophy:**[/color]
   * **الآلية:** بيحصل نتيجة **Direct lesion** (إصابة مباشرة) للعصب البصري، بدون ما يسبقها أي Swelling أو Edema للـ Disc.
   * **الأسباب:** *Trauma* (قطع مباشر في العصب)، *Toxic neuropathies* (أشهرها الـ Methanol toxicity أو سبرتو الميثانول)، *Compressive tumors* (ورم ضاغط على العصب من برة).
   * **شكل الـ Fundus (على نظافة):**
@@ -518,7 +520,7 @@ const OPHTHALMOLOGY_EXPLANATIONS: Record<string, string> = {
     * الـ Margins بتكون **Sharply defined** (حادة وواضحة جداً لأن مفيش تليف مغطيها).
     * الـ Lamina cribrosa بتكون **Highly visible** (تقدر تشوف الثقوب بتاعة العظم بوضوح لأن الـ Cup فاضي ونظيف).
     * الـ Retinal vessels بتكون **Completely normal**.
-* [color=#ef4444]**2) Secondary Optic Atrophy:**[/color]
+* [color=#8b5cf6]**2) Secondary Optic Atrophy:**[/color]
   * **الآلية:** بيحصل كـ Sequence أو نهاية لـ **Chronic, long-standing disc swelling** (يعني العصب كان متبهدل ومنفوخ لفترة طويلة قبل ما يموت).
   * **الأسباب:** *Chronic papilledema* أو *Papillitis* سبناهم من غير علاج.
   * **شكل الـ Fundus (مكان المعركة):**
@@ -531,10 +533,10 @@ const OPHTHALMOLOGY_EXPLANATIONS: Record<string, string> = {
 
 [font=Cairo][size=16][color=#1e293b]### 3. Other Special Types of Atrophy[/color][/size][/font]
 
-* [color=#3b82f6]**1) Glaucomatous Atrophy:**[/color]
+* [color=#8b5cf6]**1) Glaucomatous Atrophy:**[/color]
   * **السبب:** نتيجة الارتفاع المزمن في ضغط العين (Glaucoma).
   * **الشكل المميز:** بتشوف [highlight=#fef08a]**Deep, wide cupping**[/highlight] (الـ Cup بياكل الـ Disc كله ويبقى غويط جداً)، وبتلاقي الأوعية الدموية المركزية حصل لها **Nasal shift** (الـ Central vessels متزحزحة ومحدوفة ناحية الـ Nose).
-* [color=#3b82f6]**2) Consecutive Atrophy:**[/color]
+* [color=#8b5cf6]**2) Consecutive Atrophy:**[/color]
   * **السبب:** العصب هنا سليم، لكن المشكلة في الـ Retina نفسها حصل فيها Widespread destruction (تدمير شامل للشبكية زي مرض الـ *Retinitis Pigmentosa*)، فلما الخلايا الأم ماتت، العصب حصل له ضمور بالتبعية.
   * **الشكل المميز:** بيبان الـ Disc بلون **Waxy yellow** (أصفر شمعي) وليس أبيض، ويكون معاها Thread-like vessels.
 
@@ -561,10 +563,10 @@ const OPHTHALMOLOGY_EXPLANATIONS: Record<string, string> = {
 
 المنعكس ده بيتميز إنه [color=#10b981]**Bilateral**[/color] (لما تنور في عين، الاتنين بيقفلوا) بفضل وصلة عصبية معينة. المسار مقسم لـ Afferent و Efferent:
 
-* [color=#3b82f6]**A) Afferent Pathway (الداخل / الإحساس بالضوء):**[/color]
+* [color=#8b5cf6]**A) Afferent Pathway (الداخل / الإحساس بالضوء):**[/color]
   * Retina ➔ Optic Nerve ➔ الـ Fibers بتسيب الـ Optic tract قبل الـ LGB وتروح للـ [color=#3b82f6]**Pretectal nucleus**[/color] في الـ Midbrain.
   * **التريكة هنا:** الـ Pretectal nucleus بتبعت [highlight=#fef08a]**Bilateral fibers**[/highlight] للـ **Edinger-Westphal (EW) nuclei** على الناحيتين (الـ Right والـ Left). ده التفسير العلمي ليه لما بتنور في عين واحدة (Direct reflex)، العين التانية بتقفل معاها (Indirect / Consensual reflex).
-* [color=#3b82f6]**B) Efferent Pathway (الخارج / الحركة والأمر بالقفل):**[/color]
+* [color=#8b5cf6]**B) Efferent Pathway (الخارج / الحركة والأمر بالقفل):**[/color]
   * الإشارة بتطلع من الـ **EW nucleus** (Parasympathetic fibers) وتنزلق مع الـ **Oculomotor (3rd) nerve**.
   * بتعمل Synapse في محطة الـ **Ciliary ganglion**.
   * تطلع منها الـ **Short ciliary nerves** لتغذي الـ **Sphincter pupillae muscle** فتعمل الـ Constriction (Miosis).
@@ -584,9 +586,9 @@ const OPHTHALMOLOGY_EXPLANATIONS: Record<string, string> = {
 
 * **الشكل:** **Bilateral small, irregular pupils**.
 * **الظاهرة الشهيرة:** [highlight=#fef08a]**Light-Near Dissociation**[/highlight].
-  * **Accommodation:** [color=#10b981]**Positive**[/color] (Pupils constrict on accommodation).
-  * **Light:** [color=#ef4444]**Negative**[/color] (Completely fail to react to light).
-* **السبب الكلاسيكي:** [color=#ef4444]**Neurosyphilis**[/color] (مرض الزهري العصبي) نتيجة ضرب الـ Pretectal nucleus.
+  * **Accommodation:** [color=#8b5cf6]**Positive**[/color] (Pupils constrict on accommodation).
+  * **Light:** [color=#8b5cf6]**Negative**[/color] (Completely fail to react to light).
+* **السبب الكلاسيكي:** [color=#8b5cf6]**Neurosyphilis**[/color] (مرض الزهري العصبي) نتيجة ضرب الـ Pretectal nucleus.
 * 💡 *Mnemonic:* افتكر إن الـ **A**rgyll **R**obertson pupil شبه الـ **A**dvanced **R**esident (نائب رئيس القسم) ➔ [color=#3b82f6]**Accommodates but does not React!**[/color]
 
 ---
@@ -605,9 +607,9 @@ const OPHTHALMOLOGY_EXPLANATIONS: Record<string, string> = {
 هنا المشكلة مش في الـ Parasympathetic، هنا الـ [color=#ef4444]**Sympathetic pathway**[/color] حصله Palsy (شلل)، وبالتالي الـ Parasympathetic شغال لوحده وبقوة بدون مقاومة.
 
 [font=Cairo][size=15][color=#ef4444]**الـ Classic Triad المشهور جداً:**[/color][/size][/font]
-1. [color=#3b82f6]**Miosis:**[/color] الـ Pupil بيكون ضيق (لأن الـ Dilator pupillae muscle مفيش sympathetic يشغلها، فالـ Sphincter قافلة العين).
-2. [color=#3b82f6]**Mild Ptosis:**[/color] سقوط بسيط جداً في الجفن العلوي (نتيجة شلل الـ **Müller's muscle** وهي smooth muscle بتساعد في رفع الجفن ومدعومة بالـ sympathetic).
-3. [color=#3b82f6]**Anhidrosis:**[/color] غياب العرق في الناحية المصابة من الوجه (لأن الغدد العرقية بتتغذى sympathetic).
+1. [color=#8b5cf6]**Miosis:**[/color] الـ Pupil بيكون ضيق (لأن الـ Dilator pupillae muscle مفيش sympathetic يشغلها، فالـ Sphincter قافلة العين).
+2. [color=#8b5cf6]**Mild Ptosis:**[/color] سقوط بسيط جداً في الجفن العلوي (نتيجة شلل الـ **Müller's muscle** وهي smooth muscle بتساعد في رفع الجفن ومدعومة بالـ sympathetic).
+3. [color=#8b5cf6]**Anhidrosis:**[/color] غياب العرق في الناحية المصابة من الوجه (لأن الغدد العرقية بتتغذى sympathetic).
 
 ---
 
@@ -618,7 +620,651 @@ const OPHTHALMOLOGY_EXPLANATIONS: Record<string, string> = {
 | **RAPD** | Normal in dark | Paradoxical Dilation | Normal | Unilateral |
 | **Argyll Robertson** | Small & Irregular | **Absent** | **Present** | Bilateral |
 | **Adie's Tonic** | Dilated | Sluggish / Absent | Sluggish | Unilateral (Young Females) |
-| **Horner's** | Constricted (Miosis) | Normal | Normal | Unilateral (+ Ptosis & Anhidrosis) |\n`
+| **Horner's** | Constricted (Miosis) | Normal | Normal | Unilateral (+ Ptosis & Anhidrosis) |\n`,
+
+  'Anatomy of the Retina, Blood Supply, and The Vitreous': `[font=Cairo][size=18][color=#1e293b]## 📌 Anatomy of the Retina, Blood Supply, and The Vitreous[/color][/size][/font]
+
+الشبكية هي الـ [color=#3b82f6]**Inner neurosensory transparent layer**[/color] للعين، ومكانها محشور بدقة بين الـ Choroid (من الخارج) والـ Vitreous (من الداخل).
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 1. Gross Anatomy & Boundaries[/color][/size][/font]
+
+* [color=#8b5cf6]**من الأمام:**[/color] تبدأ عند [color=#8b5cf6]**Ora serrata**[/color] (خط متعرج يمثل نهاية الجزء الحسي وبداية الـ Ciliary body).
+* [color=#8b5cf6]**من الخلف:**[/color] تنتهي عند [color=#8b5cf6]**Optic disc**[/color].
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 2. Microscopic Anatomy (The 10 Layers)[/color][/size][/font]
+
+الترتيب [color=#ef4444]**من الخارج إلى الداخل**[/color] (من جهة الـ Choroid باتجاه الـ Vitreous):
+
+1. [color=#8b5cf6]**Retinal Pigment Epithelium (RPE):**[/color] طبقة واحدة مكعبة مليئة بصبغة الميلانين ([color=#10b981]**Single layer of pigmented cubical cells**[/color]). تمتص الضوء الزائد وتغذي الـ Photoreceptors.
+2. [color=#8b5cf6]**Photoreceptors:**[/color] الخلايا الحاسة للضوء؛ الـ [color=#3b82f6]**Rods**[/color] (للرؤية الليلية) والـ [color=#3b82f6]**Cones**[/color] (لرؤية الألوان والتفاصيل).
+3. [color=#8b5cf6]**Outer Limiting Membrane:**[/color] غشاء يفصل بين أجزاء الـ Photoreceptors ونواياها.
+4. [color=#8b5cf6]**Outer Nuclear Layer:**[/color] تحتوي على الـ [color=#10b981]**Nuclei of rods and cones**[/color].
+5. [color=#8b5cf6]**Outer Plexiform Layer:**[/color] منطقة التشابك العصبي ([color=#8b5cf6]**Synapses**[/color]) بين الـ Photoreceptors والـ Bipolar cells.
+6. [color=#8b5cf6]**Inner Nuclear Layer:**[/color] تحتوي على نوايا الـ [color=#10b981]**Bipolar cells**[/color] والـ [color=#10b981]**Muller cells**[/color] (الخلايا التدعيمية).
+7. [color=#8b5cf6]**Inner Plexiform Layer:**[/color] منطقة الـ [color=#8b5cf6]**Synapses**[/color] بين الـ Bipolar cells والـ Ganglion cells.
+8. [color=#8b5cf6]**Ganglion Cell Layer:**[/color] تحتوي على الـ Cell bodies الخاصة بالـ Ganglion cells.
+9. [color=#8b5cf6]**Nerve Fiber Layer (NFL):**[/color] عبارة عن الـ [color=#10b981]**Axons of ganglion cells**[/color] التي تتجمع لتشكل الـ [color=#3b82f6]**Optic nerve**[/color].
+10. [color=#8b5cf6]**Inner Limiting Membrane:**[/color] الغشاء الأخير الفاصل بين الشبكية والـ Vitreous.
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 3. The Macula & Fovea (مركز الإبصار الحاد)[/color][/size][/font]
+
+* [color=#8b5cf6]**Macula Lutea:**[/color] منطقة دائرية داكنة تقع [color=#10b981]**3 mm Temporal**[/color] للـ Optic disc. مسؤولة عن الـ *Central & Color vision*.
+* [color=#8b5cf6]**Fovea:**[/color] منخفض في مركز الـ Macula، خالي من معظم الطبقات الداخلية لتصل الأشعة للـ Cones مباشرة دون تشتيت.
+* [color=#8b5cf6]**Foveola:**[/color] المركز الدقيق جداً للـ Fovea، وتتميز بأنها [highlight=#fef08a]**Completely avascular center**[/highlight] وتحتوي على [color=#ef4444]**Cones فقط**[/color]، مسؤولة عن أعلى حدة إبصار (Visual acuity 6/6).
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 4. Blood Supply (قاعدة الخمسات)[/color][/size][/font]
+
+| Layers (الطبقات) | Nutrition Source (مصدر التغذية) | Vessels / Mechanism (الأوعية/الآلية) |
+| :--- | :--- | :--- |
+| [color=#3b82f6]**Inner 5 Layers (الداخلية)**[/color] | Central Retinal Artery (CRA) | فرع من الـ Ophthalmic artery يدخل من منتصف العصب البصري |
+| [color=#ef4444]**Outer 5 Layers (الخارجية)**[/color] | Diffusion from Choroid | خالية تماماً من الأوعية ([color=#ef4444]**Avascular**[/color]) وتتغذى بالانتشار من الـ Choriocapillaris |
+
+> 💡 [color=#ef4444]**تريكة امتحان هامة جداً:**[/color] حوالي [color=#10b981]**10-20% من البشر**[/color] لديهم شريان إضافي مستمد من الـ Choroid يسمى [color=#8b5cf6]**Cilioretinal artery**[/color] يغذي الـ Macula. في حالة انسداد الشريان المركزي (CRAO)، تظل الـ Macula سليمة والنظر المركزي محفوظاً بفضل هذا الشريان البديل!
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 5. The Vitreous (الجسم الزجاجي)[/color][/size][/font]
+
+عبارة عن [color=#3b82f6]**Clear, transparent gel**[/color] يملأ الغرفة الخلفية للعين ويشغل حوالي [color=#10b981]**ثُلثي (2/3) حجم العين**[/color].
+* [color=#8b5cf6]**التركيب الكيميائي:**[/color] يتكون من [color=#10b981]**99% ماء**[/color]، والـ 1% الباقية عبارة عن [color=#8b5cf6]**Hyaluronic acid**[/color] (يعطيه قوام الجيل) وشبكة دقيقة من [color=#8b5cf6]**Collagen fibers**[/color].
+* [color=#8b5cf6]**الوظائف الرئيسية:**[/color]
+  1. [color=#8b5cf6]**Stabilizes globe volume:**[/color] يحافظ على شكل وضغط العين الكروي.
+  2. [color=#8b5cf6]**Cushion for the retina:**[/color] يعمل كممتص للصدمات (Shock absorber) لحماية الشبكية.
+  3. [color=#8b5cf6]**Optical medium:**[/color] وسط شفاف تماماً يسمح بمرور الضوء دون تشتيت.
+
+---
+
+[font=Cairo][size=16][color=#8b5cf6]### 💡 Mnemonics & Memorization Aids[/color][/size][/font]
+
+* **ترتيب الـ 10 طبقات بكلمة (N-P-N-P) التبادلية من الداخل للخارج:**
+  Photoreceptors (**P**) ➔ Nuclear (**N**) ➔ Plexiform (**P**) ➔ Nuclear (**N**) ➔ Plexiform (**P**) ➔ Ganglion.
+  ودائماً الـ **RPE** في أقصى الخارج ملاصق للـ Choroid، والـ **Inner Limiting** في أقصى الداخل ملاصق للـ Vitreous.
+* **تذكر الـ Blood Supply بقاعدة الخمسات المتوازية:**
+  * **Inner 5** ➔ **CRA** (شريان الشبكية المركزي).
+  * **Outer 5** ➔ **Choroid** (بالـ Diffusion).`,
+
+  'Diabetic Retinopathy (DR) & Hypertensive Retinopathy': `[font=Cairo][size=18][color=#1e293b]## 📌 Diabetic & Hypertensive Retinopathies[/color][/size][/font]
+
+التأثير المباشر للأمراض النظامية (Systemic diseases) على أوعية العين الدموية هو من أهم موضوعات الشبكية إكلينيكياً وامتحانياً.
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 1. Diabetic Retinopathy (DR)[/color][/size][/font]
+
+هو الـ [color=#ef4444]**Commonest cause of blindness in the working population**[/color].
+* [color=#8b5cf6]**Risk Factors:**[/color] طول فترة المرض ([color=#ef4444]**Long duration**[/color] - أهم عامل)، وعدم انضباط السكر (Poor control), والضغط المصاحب، والـ [color=#8b5cf6]**Pregnancy**[/color] (يسبب تسارعاً عنيفاً للمرض).
+
+[font=Cairo][size=15][color=#1e293b]#### Pathogenesis: الـ Dual Mechanism الشهير[/color][/size][/font]
+
+| Mechanism (الآلية) | Vascular Changes (التغيرات) | Fundus Findings (قاع العين) |
+| :--- | :--- | :--- |
+| [color=#3b82f6]**1) Leakage (الرشح)**[/color] | **Loss of pericytes** موت الخلايا التدعيمية وتدمر الـ Blood-retinal barrier | **Microaneurysms**, Hemorrhages, retinal edema, **Hard exudates** (الرشح الأصفر الدهني) |
+| [color=#ef4444]**2) Occlusion (الانسداد)**[/color] | **Thickening of basement membrane** مع تجمعات الصفائح، مما يغلق الأوعية | **Ischemia** (نقص الأكسجين)، الشبكية تفرز [color=#ef4444]**VEGF**[/color] لإنتاج أوعية جديدة مشوهة هشة تنزف بسهولة |
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 2. Hypertensive Retinopathy[/color][/size][/font]
+
+تأثير ضغط الدم المرتفع على الشبكية:
+* [color=#8b5cf6]**Mild Hypertension:**[/color] يسبب [color=#10b981]**Generalized arteriolar narrowing**[/color] كـ Reflex للحماية، ومع الوقت يحدث [color=#10b981]**Arteriosclerosis**[/color] (تصلب شرايين يتغير فيه انعكاس الضوء من *Copper wire* إلى *Silver wire*).
+* [color=#8b5cf6]**Sustained Hypertension:**[/color] يدمر جدار الوعاء الدموي فيحدث Leakage وينتج عنه: [color=#ef4444]**Flame-shaped hemorrhages**[/color] (نزيف سطحي يتبع الـ NFL) وRetinal edema وHard exudates.
+* [color=#8b5cf6]**Severe Hypertension:**[/color] يغلق الـ Precapillary arterioles تماماً فيظهر [color=#ef4444]**Cotton wool spots**[/color] (دليل الاحتشاء الإقفاري).
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 3. Malignant Hypertension[/color][/size][/font]
+
+عندما يتخطى الـ Diastolic BP حاجز الـ [color=#ef4444]**140 mmHg**[/color]:
+* يحدث تدمير مباشر للـ Choroidal arterioles (Fibrinoid necrosis).
+* [color=#8b5cf6]**The Hallmark Signs:**[/color] يظهر العيان بـ [highlight=#fef08a]**Severe papilledema**[/highlight] (بسبب زيادة الـ ICP والـ Edema) مع [color=#ef4444]**Massive exudative retinal detachment**[/color] (انفصال شبكي رشحي نتيجة السوائل الرهيبة المرشحة تحت الشبكية من الـ Choroid).
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 4. Retinopathy of Toxemia of Pregnancy (تسمم الحمل)[/color][/size][/font]
+
+يحدث متأخراً في الحمل (غالباً [color=#10b981]**After the 20th week**[/color]):
+* [color=#8b5cf6]**Fundus Picture:**[/color] يظهر [color=#ef4444]**Severe arteriolar spasm**[/color] (شرايين مخنوقة)، مع [color=#8b5cf6]**Macular star**[/color] (الرشح يترتب على شكل نجمة حول الـ Macula)، وFlame-shaped hemorrhages، وCotton wool spots، وSerous retinal detachment.
+* > 💡 [color=#ef4444]**تريكة سؤال امتحان هامة:**[/color] [highlight=#fef08a]**No arteriosclerosis is seen!**[/highlight] لا يوجد تصلب شرايين بالرغم من المنظر المرعب، لأن الضغط هنا *Acute and not longstanding* (الحمل مدته أشهر فلا وقت للتصلب).
+* [color=#8b5cf6]**Treatment:**[/color] حالة طارئة لإنقاذ حياة الأم ونظرها؛ العلاج هو [color=#ef4444]**Urgent elective termination of pregnancy**[/color] (إنهاء الحمل فوراً)، وبعد الولادة تتراجع كل هذه التغيرات وتعود طبيعية تماماً!
+
+---
+
+[font=Cairo][size=16][color=#8b5cf6]### 💡 Mnemonics & Memorization Aids[/color][/size][/font]
+
+* **الفرق بين الـ Exudates في الـ Diabetes والـ Hypertension:**
+  * في الـ **Diabetes** ➔ الرشح دائرى وبطيء فيعمل **Hard exudates / Circinate pattern**.
+  * في الـ **Toxemia of pregnancy** ➔ الرشح سريع وعنيف حول الـ Macula فيعمل **Macular Star**.
+* **تذكر جدار الوعاء الدموي في الـ DM والـ HTN:**
+  * الـ **Diabetes** يكره الـ **Pericytes** (يموتها فيحدث Leakage).
+  * الـ **Hypertension** يكره الـ **Endothelium** ويزيد الـ **Smooth muscle thickness** (فيعمل Narrowing و Spasm).
+* **تريكة الـ Toxemia:**
+  افتكر دايماً: **Toxemia = Star but No Sclerosis** (نجمة في الماكولا، وبدون تصلب شرايين).`,
+
+  'Retinopathy of Prematurity (ROP) & Retinal Vein Occlusions': `[font=Cairo][size=18][color=#1e293b]## 📌 Retinopathy of Prematurity (ROP) & Retinal Vein Occlusions[/color][/size][/font]
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 1. Retinopathy of Prematurity (ROP)[/color][/size][/font]
+
+هو عبارة عن [color=#ef4444]**Proliferative retinopathy**[/color] يصيب الأطفال حديثي الولادة نتيجة خلل في نمو الأوعية الدموية للشبكية.
+* [color=#8b5cf6]**المريض النموذجي (High-Risk Infant):**[/color]
+  1. ولد مبكراً جداً: [color=#ef4444]**Pre-term infant (< 30 weeks)**[/color].
+  2. وزن ضئيل جداً: [color=#ef4444]**Low birth weight (< 1500 gm)**[/color].
+  3. تعرض لـ [highlight=#fef08a]**High oxygen therapy**[/highlight] في الحضّانة. الأكسجين العالي يوقف نمو الأوعية، وعند الخروج للهواء العادي تدخل الشبكية في Ischemia عنيفة تفرز VEGF.
+
+[font=Cairo][size=15][color=#1e293b]#### ROP Stages (الخمس مراحل):[/color][/size][/font]
+* [color=#8b5cf6]**Stage 1 (Demarcation line):**[/color] خط أبيض مسطح يفصل بين الشبكية ذات الأوعية والشبكية الخالية منها (Avascular).
+* [color=#8b5cf6]**Stage 2 (Ridge formation):**[/color] الخط يرتفع ويتحول لنتوء أو رصيف (**Ridge**) يحتوي على شنتات (A-V shunts).
+* [color=#8b5cf6]**Stage 3 (Extraretinal fibrovascular proliferation):**[/color] نمو أوعية مشوهة وألياف من الـ Ridge باتجاه الـ Vitreous.
+* [color=#8b5cf6]**Stage 4 (Subtotal tractional RD):**[/color] التليف يشد الشبكية فيحدث انفصال شبكي جزئي.
+* [color=#8b5cf6]**Stage 5 (Total RD):**[/color] انفصال شبكي كامل يؤدي للعمى.
+
+> 💡 [color=#ef4444]**تريكة العلاج في الامتحان:**[/color] الـ Threshold لتغيير مسار المرض وعلاجه هو [color=#ef4444]**Stage 3**[/color]. العلاج هو تدمير الجزء الخالي من الأوعية بالكامل عن طريق [color=#10b981]**Laser photocoagulation**[/color] أو [color=#10b981]**Cryotherapy**[/color] لمنع إفراز الـ VEGF.
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 2. Central Retinal Vein Occlusion (CRVO)[/color][/size][/font]
+
+* [color=#8b5cf6]**الآلية (Pathogenesis):**[/color] الشريان والوريد المركزيان محشوران معاً داخل غلاف مشترك ([color=#8b5cf6]**Shared adventitial sheath**[/color]). مع تصلب الشرايين (Arteriosclerosis) لدى كبار السن، يضغط جدار الشريان الصلب على جدار الوريد الضعيف فيغلقه.
+
+[font=Cairo][size=15][color=#1e293b]#### Types of CRVO (المقارنة الأهم في الـ Fundus):[/color][/size][/font]
+
+| Feature (وجه المقارنة) | Non-Ischemic CRVO (الحميد - 80%) | Ischemic CRVO (الخبيث - 20%) |
+| :--- | :--- | :--- |
+| **Visual Acuity (النظر)** | Moderate drop (زغللة متوسطة) | [color=#ef4444]**Severe drop (< 6/60)**[/color] (تدهور حاد) |
+| **RAPD (استجابة الحدقة)** | Negative (غائب) | [color=#ef4444]**Marked / Positive (Marcus Gunn)**[/color] |
+| **Fundus Picture (قاع العين)** | Mild tortuous veins, few hemorrhages, mild edema | [color=#ef4444]**"Tomato Splat" / "Blood & Thunder"**[/color] نزيف غزير في كل مكان، Cotton wool spots كثيرة، Severe disc edema |
+| **Fluorescein Angiography** | Good capillary perfusion (تروية جيدة) | Extensive non-perfusion (إقفار شديد) |
+| **Dreaded Complication** | Rare | [color=#ef4444]**Neovascular Glaucoma (NVG)**[/color] جلوكوما الأوعية الجديدة نتيجة الـ VEGF ("جلوكوما الـ 100 يوم") |
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 3. Branch Retinal Vein Occlusion (BRVO)[/color][/size][/font]
+
+يحدث الانسداد في فرع واحد من أفرع الوريد، غالباً عند نقطة تقاطع شريان فوق وريد ([color=#8b5cf6]**Arteriovenous crossing**[/color])، وتحديداً في الـ [color=#10b981]**Superior temporal branch**[/color].
+* [color=#8b5cf6]**Fundus Picture:**[/color] تقتصر التغيرات (Veins, Hemorrhages, Edema) تماماً على [color=#ef4444]**Wedge-shaped area**[/color] (منطقة وتدية أو مثلثية مصابة). باقي الشبكية سليم تماماً.
+* > 💡 [color=#ef4444]**تريكة سؤال امتحان مشهورة جداً:**[/color] السبب الرئيسي لضعف النظر المزمن والمستمر في حالات الـ BRVO هو الـ [highlight=#fef08a]**Chronic macular edema**[/highlight] (ارتشاح مركز الإبصار المزمن) الممتد من الفرع المصاب إلى الـ Macula.
+
+---
+
+[font=Cairo][size=16][color=#8b5cf6]### 💡 Mnemonics & Memorization Aids[/color][/size][/font]
+
+* **تذكر مراحل الـ ROP بكلمة (L-R-P-D):**
+  * Stage 1 ➔ **L**ine (Demarcation line).
+  * Stage 2 ➔ **R**idge.
+  * Stage 3 ➔ **P**roliferation (Fibrovascular).
+  * Stage 4 & 5 ➔ **D**etachment (Tractional RD).
+* **تذكر الـ Ischemic CRVO بـ "مضاعفات الـ 100 يوم":**
+  الـ Neovascular glaucoma تسمى إكلينيكياً بـ **100-day glaucoma**، لأنها تحتاج حوالي 3 شهور بعد الانسداد لظهور الـ Rubeosis iridis وإغلاق الـ Angle.`,
+
+  'Central and Branch Retinal Artery Occlusion (CRAO & BRAO)': `[font=Cairo][size=18][color=#1e293b]## 📌 Central & Branch Retinal Artery Occlusion (CRAO & BRAO)[/color][/size][/font]
+
+هو بمثابة "جلطة أو سكتة دماغية" لكن في العين ([color=#ef4444]**Stroke of the eye**[/color]). حالة طوارئ قصوى ([color=#ef4444]**True Ocular Emergency**[/color]) والوقت هنا يساوي النظر تماماً.
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 1. Central Retinal Artery Occlusion (CRAO)[/color][/size][/font]
+
+الانسداد يصيب الشريان الرئيسي المغذي للـ Inner 5 layers للشبكية.
+* [color=#8b5cf6]**الأسباب الرئيسية:**[/color] تصلب الشرايين (Atherosclerosis)، أو جلطة متحركة ([color=#8b5cf6]**Emboli**[/color] - من الشريان السباتي أو صمامات القلب)، أو التهاب الشرايين الصدغي ([color=#ef4444]**Temporal / Giant Cell Arteritis**[/color] - مرض مناعي خطير في كبار السن قد يضرب العين الأخرى خلال أيام إن لم يُعالج بالـ Corticosteroids).
+
+[font=Cairo][size=15][color=#1e293b]#### Presentation & Fundus Signs (اللوحة الكلاسيكية في الامتحان):[/color][/size][/font]
+* [color=#8b5cf6]**Visual drop:**[/color] فقدان مفاجئ، غير مؤلم، وحاد جداً للنظر ([color=#ef4444]**Sudden, painless, profound visual loss**[/color]) في ثوانٍ معدودة. النظر يقل لدرجة حركة اليد (HM) أو إدراك الضوء (PL) فقط.
+* [color=#8b5cf6]**RAPD:**[/color] يظهر [color=#ef4444]**Relative Afferent Pupillary Defect**[/color] فوراً لموت الخلايا الحاسة.
+* [color=#8b5cf6]**Milky-white retina:**[/color] الشبكية تفقد شفافيتها وتتحول للون أبيض حليبي شاحب بسبب الـ *Ischemic edema* في الـ Inner layers.
+* [color=#8b5cf6]**Cherry-Red Spot (الكرزة الحمراء - سؤال امتحان حتمي):**[/color] نقطة حمراء ناصعة في مركز الـ Macula (تحديداً الـ Fovea).
+  * *التفسير العلمي:* الـ Fovea رقيقة جداً ولا تحتوي على الـ Inner 5 layers التي حدثت فيها الـ Edema والبياض، وتتغذى بالـ Diffusion من الـ Choroid السليم، فيظهر اللون الأحمر الطبيعي للـ Choroid بوضوح من تحتها ويحدث تباين (Contrast) صارخ مع البياض المحيط.
+* [color=#8b5cf6]**Cattle-truck segmentation:**[/color] الشرايين ضيقة جداً والدم داخلها متقطع كعربات قطار البضائع نتيجة الركود (Stasis).
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 2. Branch Retinal Artery Occlusion (BRAO)[/color][/size][/font]
+
+الجلطة (غالباً Embolus) تقف في فرع صغير من أفرع الشريان.
+* [color=#8b5cf6]**Clinical Picture:**[/color] فقدان مفاجئ وغير مؤلم لـ [color=#ef4444]**Specific sector of the visual field**[/color] (مثال: العيان لا يرى الربع العلوي أو السفلي).
+* [color=#8b5cf6]**Fundus Signs:**[/color] منطقة وتدية ([color=#ef4444]**Wedge-shaped area**[/color]) من الـ White ischemic retina تتبع التوزيع التشريحي للفرع المغلق، وغالباً ترى الجلطة الكلسية عند نقطة التفرع (Bifurcation).
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 3. Treatment of CRAO (The 90-Minute Window)[/color][/size][/font]
+
+الشبكية لا تستحمل Ischemia كاملة لأكثر من [color=#ef4444]**90-120 دقيقة**[/color]، بعدها يحدث موت كامل لا رجعة فيه ([color=#ef4444]**Irreversible retinal necrosis**[/color]). العلاج يهدف لتوسيع الشرايين أو تقليل الضغط لتحريك الجلطة (Dislodge) لمكان أبعد وأصغر:
+
+1. [color=#8b5cf6]**Lowering IOP (تقليل ضغط العين فوراً):**[/color] لزيادة تروية الشريان (Increase perfusion):
+   * **IV Acetazolamide (Diamox)** + **IV Mannitol**.
+   * **Anterior chamber paracentesis:** سحب نقطة من الـ Aqueous humor من الغرفة الأمامية بإبرة رفيعة لإنزال الـ IOP للصفر فوراً.
+2. [color=#8b5cf6]**Ocular Massage (مساج العين):**[/color] ضغط متقطع بالإصبع على العين يعمل تذبذبات في الضغط تساعد في زحزحة الجلطة (Dislodgement of embolus).
+3. [color=#8b5cf6]**Vasodilators (موسعات الأوعية):**[/color]
+   * **Sublingual Nitroglycerin** (تحت اللسان).
+   * **Carbogen inhalation:** استنشاق هواء مكون من [color=#10b981]**95% O2 & 5% CO2**[/color]. الـ CO2 أقوى vasodilator طبيعي لشرايين العين، وفي نفس الوقت نمد الشبكية بأكسجين عالٍ.
+4. [color=#8b5cf6]**Thrombolytic Therapy:**[/color] إعطاء [color=#ef4444]**IV Streptokinase**[/color] لإذابة الجلطة في الساعات الأولى.
+
+---
+
+[font=Cairo][size=16][color=#8b5cf6]### 💡 Mnemonics & Memorization Aids[/color][/size][/font]
+
+* **التناقض الصارخ بين الـ Artery والـ Vein occlusion:**
+  * الـ **CRVO** ➔ انسداد وريدي ➔ احتقان ونزيف مرعب ➔ **"Blood and Thunder"** أو **Tomato Splat**.
+  * الـ **CRAO** ➔ انسداد شرياني ➔ اختفاء الدم تماماً وبياض ➔ **"Milky-white"** مع **"Cherry-Red Spot"**.
+* **ليه الـ Cherry-Red Spot بتظهر؟**
+  افتكر دايماً جملة: **"Choroid shows through the Fovea"** (الشبكية المحيطة بيضاء كالتلج، والـ Fovea رقيقة كالشباك المفتوح على حمام الدم اللي في الـ Choroid تحتها).`,
+
+  'Retinal Detachment (RD): Rhegmatogenous, Tractional, and Exudative': `[font=Cairo][size=18][color=#1e293b]## 📌 Retinal Detachment (RD)[/color][/size][/font]
+
+الانفصال الشبكي لا يحدث بين الشبكية وعظم العين، بل يحدث في مكان محدد جداً: [color=#ef4444]**Separation of the neurosensory retina from the underlying Retinal Pigment Epithelium (RPE)**[/color]. هذا الفراغ يمتلئ بالسوائل، فتنقطع التغذية الدموية القادمة بالـ Diffusion من الـ Choroid إلى الـ Outer 5 layers.
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 1. Types of Retinal Detachment[/color][/size][/font]
+
+[font=Cairo][size=15][color=#1e293b]#### 1) Rhegmatogenous RD (النوع الثقبي - الأكثر شيوعاً)[/color][/size][/font]
+* [color=#8b5cf6]**الآلية:**[/color] كلمة "Rhegma" تعني قطع أو ثقب. يحدث بسبب [color=#ef4444]**Full-thickness retinal break (tear or hole)**[/color] يسمح للـ *Liquefied vitreous* بالدخول تحت الشبكية وفصلها عن الـ RPE.
+* [color=#8b5cf6]**Risk Factors:**[/color] قصر النظر الشديد ([color=#ef4444]**High myopia**[/color])، أو غياب العدسة (**Aphakia / Pseudophakia**)، أو Lattice degeneration، أو الصدمات القوية (Trauma).
+* [color=#8b5cf6]**الشكوى الثلاثية للعيان (Symptoms):**[/color]
+  1. **Photopsia (Flashes of light):** فلاشات ضوء نتيجة شد الـ Vitreous على الشبكية (*Vitreoretinal traction*).
+  2. **Floaters (الذباب الطائر):** رؤية نقط سوداء أو خيوط متحركة نتيجة تحلل الـ Vitreous أو نزف خفيف.
+  3. **Progressive black curtain:** ستارة سوداء تتسع تدريجياً في مجال الرؤية (تظهر في اتجاه معاكس لمكان الانفصال بالشبكية).
+* [color=#8b5cf6]**Signs & Treatment:**[/color] ضغط العين منخفض (Reduced IOP)، الشبكية تظهر رمادية ومحدبة وتموج وتتحرك مع حركة العين (**Grayish, convex, mobile, undulating**)، ويظهر الثقب بلون أحمر وردي.
+  * **العلاج جراحي حتماً:** [color=#8b5cf6]**Scleral Buckling**[/color] (حزام حول العين يضغط الـ Sclera للداخل لتلامس الـ RPE) أو [color=#10b981]**Pars Plana Vitrectomy (PPV)**[/color] (استئصال الزجاجي وفرد الشبكية بالغاز أو الزيت وقفل الثقب بالليزر).
+
+[font=Cairo][size=15][color=#1e293b]#### 2) Tractional RD (النوع الشدّي)[/color][/size][/font]
+* [color=#8b5cf6]**الآلية:**[/color] لا توجد ثقوب! الشبكية سليمة لكن ألياف وحبال ليفية متقلصة (**Contracting fibrovascular membranes**) على سطح الشبكية تشدها ميكانيكياً للخارج وتفصلها عن الـ RPE.
+* [color=#8b5cf6]**الأسباب:**[/color] أي مرض يسبب نمو أوعية جديدة وتليف وعلى رأسهم: [highlight=#fef08a]**Proliferative Diabetic Retinopathy (PDR)**[/highlight]، و ROP متقدم، و Sickle cell retinopathy.
+* [color=#8b5cf6]**Signs & Treatment:**[/color] لا توجد ثقوب، سطح الشبكية [color=#ef4444]**Concave (مقعر)**[/color]، الحركة محدودة وثابتة (**Restricted mobility**)، ولا يوجد Shifting fluid.
+  * **العلاج جراحي:** [color=#8b5cf6]**PPV + Membrane peeling**[/color] (تقشير وقص الأغشية الليفية بدقة لتحرير الشبكية).
+
+[font=Cairo][size=15][color=#1e293b]#### 3) Exudative / Serous RD (النوع الرشحي)[/color][/size][/font]
+* [color=#8b5cf6]**الآلية:**[/color] لا ثقب ولا شد ليفي! المشكلة من تحت الشبكية؛ أوعية الـ Choroid ترشح سوائل بغزارة فتتجمع مباشرة تحت الشبكية وتفصلها.
+* [color=#8b5cf6]**الأسباب:**[/color] أورام الـ Choroid (Malignant melanoma)، أو التهاب عنيف (Harada's disease)، أو أمراض نظامية حادة ([color=#ef4444]**Toxemia of pregnancy**[/color]، و **Malignant hypertension**).
+* [color=#8b5cf6]**Signs & Treatment:**[/color] الانفصال منفوخ بالوني (Bullous convex)، السطح ناعم، والعلامة السحرية هي وجود [highlight=#fef08a]**Shifting Fluid**[/highlight] (السائل يتحرك بحرية مع وضعية الرأس).
+  * **العلاج:** [color=#8b5cf6]**لا نتدخل جراحياً أبداً للشبكية!**[/color] العلاج هو [color=#10b981]**علاج السبب الرئيسي**[/color] (تنظيم الضغط العنيف، علاج الورم، أو إعطاء ستيرويدات للالتهاب)، وبمجرد علاج السبب يمتص الـ RPE السائل وتعود الشبكية لمكانها.
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 📊 Comparison & Exam Differentiation Table[/color][/size][/font]
+
+| Type (النوع) | Break / Tear (الثقب) | Shape / Surface (الشكل) | Mobility (الحركة) | Key Causes / Signs (العلامات والأسباب) |
+| :--- | :--- | :--- | :--- | :--- |
+| **Rhegmatogenous (ثقبي)** | Present (أحمر) | Convex (محدب) | Mobile & Undulating (متموج) | Flashes & Floaters, High Myopia, Trauma |
+| **Tractional (شدّي)** | Absent (لا يوجد) | Concave (مقعر) | Restricted (محدد وثابت) | Proliferative DR, Membrane Peeling |
+| **Exudative (رشحي)** | Absent (لا يوجد) | Bullous Convex (بالوني) | Shifting Fluid (سوائل متحركة) | Tumors, Pregnancy Toxemia, Malignant HTN |
+
+---
+
+[font=Cairo][size=16][color=#8b5cf6]### 💡 Mnemonics & Memorization Aids[/color][/size][/font]
+
+* **تذكر الفرق بحروف الكلمات:**
+  * **R**hegmatogenous ➔ **R**upture (ثقب) + **R**ed break + **R**educed IOP.
+  * **T**ractional ➔ **T**aut / **T**ight (مشدودة Concave) + **T**reatment is Membrane Peeling.
+  * **E**xudative ➔ **E**scape of fluid (رشح) + **E**very position changes fluid place (**Shifting fluid**).`,
+
+  'Physiology of Binocular Vision & Apparent Squint': `[font=Cairo][size=18][color=#1e293b]## 📌 Physiology of Binocular Vision & Apparent Squint[/color][/size][/font]
+
+مساء الخير يا دكتور. وصلنا الآن لواحد من أمتع موضوعات الـ Pediatric Ophthalmology والـ Strabismus (الحول)، وهو فهم كيف تعمل العينان معاً كفريق واحد ([color=#3b82f6]**Binocular Vision**[/color])، وكيف يمكن للشكل التشريحي للوجه أو العين أن يخدعنا ويُعطي انطباعاً كاذباً بوجود حول بالرغم من أن العينين سليمتان تماماً ([color=#ef4444]**Apparent Squint**[/color]).
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 1. Physiology of Binocular Vision (الرؤية بالعينين)[/color][/size][/font]
+
+الـ Binocular vision هي عملية عصبية وبصرية معقدة، تهدف لدمج الصورتين القادمتين من العينين لإنتاج [color=#8b5cf6]**Single visual mental impression**[/color] في المخ.
+
+* [color=#8b5cf6]**الجدول الزمني للتطور (Timeline):**[/color]
+  * عند [color=#10b981]**6 أشهر:**[/color] يبدأ الطفل في تطوير الثبات البصري وتنسيق حركة العينين ([color=#3b82f6]**Maintained fixation**[/color]).
+  * عند [color=#10b981]**6 سنوات:**[/color] يكتمل نمو المسارات العصبية في المخ تماماً وتترسخ القدرة على الدمج البصري ([color=#3b82f6]**Fully established with fusion**[/color]).
+* [color=#8b5cf6]**الأهمية والفائدة:**[/color]
+  1. [color=#3b82f6]**Stereopsis:**[/color] القدرة على إدراك الأبعاد الثلاثية والعمق والمسافات (3D depth perception).
+  2. [color=#3b82f6]**Enlarging the visual field:**[/color] توسيع الساحة البصرية الإجمالية.
+  3. [color=#3b82f6]**Masking optical defects:**[/color] العين السليمة بتغطي على عيوب العين الأضعف لو كانت العيوب بسيطة.
+
+[font=Cairo][size=15][color=#8b5cf6]**Grades of Binocular Vision (درجات الـ Worth)**[/color][/size][/font]
+
+المخ بيتعلم الرؤية بالعينين على 3 مراحل أو درجات متتالية:
+
+* [color=#8b5cf6]**Grade I (Simultaneous Perception):**[/color] القدرة على رؤية صورتين مختلفتين تماماً في نفس اللحظة (الاختبار الشهير في جهاز السينوبتوفور: العيان يشوف [color=#3b82f6]**العصفور والقفص**[/color] مع بعض).
+* [color=#8b5cf6]**Grade II (Fusion):**[/color] القدرة على دمج صورتين متشابهتين لكن كل واحدة ناقصة جزء، عشان المخ يطلع صورة واحدة كاملة (مثال: صورة أرنب ماسك باقة ورد في عين، وأرنب من غير ورد في العين التانية ➔ المخ يدمجهم ويشوف أرنب كامل ماسك الورد).
+* [color=#8b5cf6]**Grade III (Stereoscopic Vision):**[/color] أعلى درجات الرؤية؛ وهي القدرة على إدراك الـ [color=#10b981]**3D depth**[/color] عن طريق دمج صورتين لنفس الجسم مأخوذتين من زاويتين مختلفتين قليلاً (نفس فكرة سينما الـ 3D).
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 2. Basic Geometrical Definitions[/color][/size][/font]
+
+عشان نفهم الـ Apparent squint، لازم نفرق بين خطين وهميين وزاوية جوه العين:
+
+* [color=#8b5cf6]**Orthophoria:**[/color] التوازن العضلي المثالي. المحاور البصرية بتفضل متوازية تماماً حتى لو غطينا عين ومنعنا الـ Binocular vision (مفيش لا حول حقيقي ولا حول كامن).
+* [color=#8b5cf6]**Visual Axis (المحور البصري الحقيقي):**[/color] الخط اللي بيربط الـ [color=#3b82f6]**Macula**[/color] بالـ Object اللي بتبص عليه، ويمر بنقطة الـ Nodal point للعين. ده الخط اللي العيان بيشوف بيه فعلياً.
+* [color=#8b5cf6]**Optic Axis (المحور الهندسي للعين):**[/color] الخط الهندسي اللي بيمر بالمركز التشريحي للقرنية والعدسة والشبكية.
+* [color=#8b5cf6]**Angle Alpha (α):**[/color] هي الزاوية المحصورة بين الـ Visual axis والـ Optic axis. الطبيعي إنها تكون [color=#10b981]**Positive angle**[/color] (من 2 إلى 5 درجات)، لأن الـ Macula جغرافيا تقع Temporal للـ Optic axis.
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 3. Apparent Squint (Pseudo-strabismus)[/color][/size][/font]
+
+هنا العيان (غالباً طفل) بيجيلك العيادة وأهله مرعوبين وبيقولوا "الولد عينه داخلة لجوه أو خارجة لبره يا دكتور"، لكن لما بتعمل الفحص والـ [color=#3b82f6]**Corneal light reflex (Hirschberg test)**[/color]，بتلاقي الـ Light reflex متمركز في نص القرنيتين بالظبط، والـ [color=#10b981]**Visual axes كلاهما Parallel وسليم تماماً**[/color].
+
+الخداع البصري ده له نوعين مشهورين جداً في الحالات الإكلينيكية:
+
+[font=Cairo][size=15][color=#8b5cf6]**1) Apparent Convergent Squint (الحول الداخلي الكاذب)**[/color][/size][/font]
+
+* [color=#8b5cf6]**السبب التشريحي:**[/color] وجود [color=#ef4444]**Epicanthus (Epicanthal folds)**[/color]. دي ثنايا جلدية زايدة عند طرُف المناخير بتغطي الـ Inner canthus والـ Sclera الداخلية بتاعة العين.
+* [color=#8b5cf6]**ليه بيخدعنا؟**[/color] لما الطفل يبص على الجنب، الجلد ده بيخبي بياض العين الداخلي تماماً، فيتهيأ للأم إن العين دخلت لجوه وحصل لها حول ([color=#ef4444]**Esotropia**[/color])، بالرغم من إن المحاور البصرية سليمة. المنظر ده بيتحسن تلقائياً لما الطفل يكبر وعضم المناخير ينمو ويشد الجلد ده لفوق.
+
+[font=Cairo][size=15][color=#8b5cf6]**2) Apparent Divergent Squint (الحول الخارجي الكاذب)**[/color][/size][/font]
+
+* [color=#8b5cf6]**السبب التشريحي:**[/color] وجود [color=#ef4444]**Large positive angle alpha**[/color].
+* [color=#8b5cf6]**متى تحدث؟**[/color] في حالات الـ [color=#3b82f6]**High Hypermetropia**[/color] (طول النظر الشديد) لأن العين بتكون قصيرة هندسياً.
+* [color=#8b5cf6]**ليه بيخدعنا؟**[/color] لما الزاوية ألفا تكبر جداً، العين بتضطر تلوف وتتحرك سنة لبرة (Temporally) عشان تخلي الـ Visual axis يجي في النص بالظبط على الحاجه اللي بتبص عليها. التحرك الهندسي ده بيدي إيحاء كاذب إن العين حادفة لبرة ([color=#ef4444]**Exotropia**[/color]).
+
+---
+
+[font=Cairo][size=16][color=#8b5cf6]### 💡 Mnemonics & Memorization Aids[/color][/size][/font]
+
+* [color=#8b5cf6]**تذكر درجات الـ Binocular Vision بالترتيب (P-F-S):**[/color]
+  * **P** ➔ **P**erception (إدراك مجرد لصور مختلفة).
+  * **F** ➔ **F**usion (لحام ودمج لصور متشابهة).
+  * **S** ➔ **S**tereopsis (البُعد الثالث المجسم).
+* [color=#8b5cf6]**تريكة الـ Apparent Squint في العيادة والامتحانات:**[/color]
+  * **Epicanthus** ➔ بيخبي الـ Sclera الداخلية ➔ يعطي إيحاء بـ [color=#ef4444]**Convergence**[/color] (الحول الداخلي).
+  * **High Hypermetropia** ➔ معاها **Large Positive Angle Alpha** ➔ تعطي إيحاء بـ [color=#ef4444]**Divergence**[/color] (الحول الخارجي).`,
+
+  'Latent Squint (Heterophoria)': `[font=Cairo][size=18][color=#1e293b]## 📌 Latent Squint (Heterophoria)[/color][/size][/font]
+
+أهلاً بك يا دكتور. ندخل الآن في نوع آخر من الحول وهو الـ [color=#3b82f6]**Latent Squint**[/color] أو ما يُعرف علمياً بـ [color=#3b82f6]**Heterophoria**[/color] (الحول الكامن).
+
+التريكة الجوهرية هنا يا دكتور إن العينين في الوضع الطبيعي والعيان صاحي ومفوق بيبانوا [color=#10b981]**Parallel وسلام 100%**[/color]، والسبب في كده إن المخ باعت إشارات عصبية قوية ومقاوِمة (Fusion mechanism) عشان يجبر العضلات تفضل متوازية. الحول ده "مستخبي" ومش بيظهر غير لو إحنا دمرنا الـ Binocular vision وفصلنا العينين عن بعض ([color=#ef4444]**Dissociated**[/color]).
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 1. Definition[/color][/size][/font]
+
+هو عبارة عن [color=#ef4444]**Ocular deviation**[/color] اتجاه المحاور البصرية فيه غير طبيعي، ولكنه [color=#ef4444]**Only manifested**[/color] (لا يظهر علناً) إلا عندما يحصل [color=#ef4444]**Dissociation للـ Binocular vision**[/color]؛ إما بفعل فاعل (زي إننا نغطي عين في العيادة) أو بسبب إجهاد شديد للعيان ([color=#ef4444]**Fatigue**[/color] أو Ill-health) فيفقد المخ قدرته على التحكم.
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 2. Types (حسب اتجاه الميل)[/color][/size][/font]
+
+* [color=#8b5cf6]**Esophoria:**[/color] العين يجيلها ميل تتحرك لجوه ([color=#ef4444]**Inwards**[/color]).
+* [color=#8b5cf6]**Exophoria:**[/color] العين يجيلها ميل تتحرك لبره ([color=#ef4444]**Outwards**[/color]).
+* [color=#8b5cf6]**Hyperphoria:**[/color] ميل للحركة لأعلى ([color=#ef4444]**Upwards**[/color]).
+* [color=#8b5cf6]**Hypophoria:**[/color] ميل للحركة لأسفل ([color=#ef4444]**Downwards**[/color]).
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 3. Etiology (ليه العضلات عندها الميل ده؟)[/color][/size][/font]
+
+السبب يدور حول محورين أساسيين:
+
+* [color=#8b5cf6]**Uncorrected Errors of Refraction (علاقة الـ Accommodation بالـ Convergence):**[/color]
+  * [color=#10b981]**Hypermetropia (طول النظر):**[/color] العيان ده دايماً بيعمل [color=#3b82f6]**Excessive accommodation**[/color] عشان يشوف بوضوح. وبما إن الـ Accommodation مرتبط فسيولوجياً بالـ Convergence، فكتر التشغيل بيعمل تحفيز زايد للعضلات الداخلية، فيحصل [color=#ef4444]**Esophoria**[/color].
+  * [color=#10b981]**Myopia (قصر النظر):**[/color] العيان ده مش محتاج يعمل accommodation للقريب، فمفيش تحفيز للـ Convergence، فالعضلات تسترخي لبره ويحصل [color=#ef4444]**Exophoria**[/color].
+* [color=#8b5cf6]**Muscle Weakness:**[/color] ضعف أو خلل بسيط جداً في اتزان الـ Extraocular muscles.
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 4. Clinical Picture (التحول من التعويض إلى الإجهاد)[/color][/size][/font]
+
+* [color=#8b5cf6]**Compensating Cases:**[/color] معظم البشر عندهم نسبة Heterophoria وبيروحوا وييجوا والـ Fusion mechanism معوضاهم تماماً و[color=#10b981]**Asymptomatic**[/color].
+* [color=#8b5cf6]**Decompensated Cases:**[/color] لما العيان يتعب، يجهد، أو يسهر كتير، المخ بيتعب والـ Fusion يقع، فتبدأ تظهر أعراض الـ [color=#ef4444]**Muscular Asthenopia**[/color] (إجهاد العين):
+  * صداع وزغللة بعد القراءة أو الشغل القريب لفترة طويلة ([color=#ef4444]**Eye strain after prolonged close work**[/color]).
+  * [color=#ef4444]**Blurring and running of letters:**[/color] العيان يقولك "الكلام بيدخل في بعضه والسطور بتجري مني وأنا بقرا".
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 5. Diagnostic Tests (كيف نكشف المستور؟)[/color][/size][/font]
+
+الفكرة الأساسية في كل الاختبارات دي هي عمل [color=#8b5cf6]**Dissociation**[/color] (فصل العينين عشان المخ ميعرفش يدمج الصورتين, فالعين المصابة ترتاح وتروح لوضع الحول بتاعها):
+
+* [color=#8b5cf6]**1) Cover-Uncover Test:**[/color]
+  * بتغطي عين بالـ Occluder (كده لغينا الـ Binocular vision) ➔ تلاقي العين اللي تحت الغطاء [color=#ef4444]**انحرفت ودخلت في الحول (Deviates)**[/color].
+  * أول ما تشيل الغطاء فجأة ([color=#3b82f6]**Uncover**[/color]) ➔ تلاقي العين [color=#10b981]**Rapidly returns**[/color] (بتتحرك بسرعة وتعدل نفسها للسنتر) عشان المخ لقط الصورة تاني ورجّع الـ Fusion.
+* [color=#8b5cf6]**2) Maddox Rod Test:**[/color]
+  * بنحط اسطوانات حمراء قدام عين واحدة، فالعيان يشوف النور الأبيض بالعين السليمة على شكل (نقطة بيضاء)، ويشوفه بالعين التانية على شكل (خط أحمر طويل). الصورتين مختلفين تماماً فالمخ مش هيعرف يعملهم Fusion، وبكده كشفنا الحول وبنقيس بيه الـ [color=#3b82f6]**Distance latent squint**[/color].
+* [color=#8b5cf6]**3) Maddox Wing Test:**[/color]
+  * جهاز بيمسكه العيان قريب من عينه، بيفصل الساحة البصرية تماماً، عين تشوف سهم وعين تشوف أرقام، وده مستخدم للـ [color=#3b82f6]**Near latent squint**[/color].
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 6. Treatment[/color][/size][/font]
+
+* [color=#8b5cf6]**Compensated:**[/color] لا تحتاج لأي علاج (No treatment).
+* [color=#8b5cf6]**Decompensated:**[/color] بنمشي بخطوات تدريجية:
+  1. [color=#8b5cf6]**Exact correction of refractive errors:**[/color] نلبسه النظارة المناسبة بالـ Cycloplegic refraction (عشان نظبط الـ Accommodative convergence).
+  2. [color=#8b5cf6]**Orthoptic exercises:**[/color] تمارين لعضلات العين، وأشهرها تمرين [color=#3b82f6]**Pencil-to-nose**[/color] (يقرب قلم من مناخيره ويركز عليه) لعلاج الـ Convergence insufficiency.
+  3. [color=#8b5cf6]**Prisms (المنشور البصري):**[/color] نظارات فيها منشور بيحرف الضوء ويريّح العضلة المتعبة، والتريكة إن الـ [color=#ef4444]**Base بتاع الـ Prism بيمشي في اتجاه الـ Deviation**[/color] (لو عينه حادفة لبره Exophoria، بندي الـ Base لبره Outwards "Base-out").
+  4. [color=#8b5cf6]**Surgery:**[/color] نتدخل جراحياً لتقوية أو إرخاء العضلات فقط في الـ Highly resistant cases اللي مش مستجيبة للنظارة أو التمارين وأعراضها شديدة.
+
+---
+
+[font=Cairo][size=16][color=#8b5cf6]### 💡 Mnemonics & Memorization Aids[/color][/size][/font]
+
+* [color=#8b5cf6]**تذكر علاقة العيوب الانكسارية بالحول الكامن:**[/color]
+  * **Hyper**metropia ➔ **Excess** accommodation ➔ **Eso**phoria (كلهم فيهم حروف زيادة وضغط لجوه).
+  * **Myopia** ➔ **Minimal** accommodation ➔ **Exo**phoria.
+* [color=#8b5cf6]**تريكة الـ Cover test للتفريق بين الـ Latent والـ Manifest squint:**[/color]
+  * في الـ **Latent** (Heterophoria) ➔ العين اللي [color=#ef4444]**تحت الغطاء**[/color] هي اللي بتتحرك لما نغطيها وتتعدل لما نشيله.
+  * في الـ **Manifest** (Heterotropia) ➔ العين [color=#10b981]**المكشوفة**[/color] هي اللي بتتحرك وتتعدل لما نغطي العين التانية المحولة.
+* [color=#8b5cf6]**تذكر الـ Maddox tools بالـ Wings:**[/color]
+  افتكر إن الـ **Wing** (الجناح) ده حاجة قريبة منك وبتمسكها بإيدك ➔ إذن الـ Maddox **Wing** للـ **Near** squint، بينما الـ **Rod** (العصا الممتدة) للـ **Distance**.`,
+
+  'Manifest Paralytic Squint (Incomitant Strabismus)': `[font=Cairo][size=18][color=#1e293b]## 📌 Manifest Paralytic Squint (Incomitant Strabismus)[/color][/size][/font]
+
+أهلاً بك يا دكتور. وصلنا الآن لنوع مهم جداً من الحول، وهو الـ [color=#ef4444]**Manifest Paralytic Squint**[/color] أو ما يُعرف بـ [color=#ef4444]**Incomitant Strabismus**[/color] (الحول الشللي الظاهر).
+
+التريكة الكبرى والاسم التاني للمرض ده هو [color=#3b82f6]**Incomitant**[/color]، وتعني "غير مترافق أو غير متساوي"، لأن زاوية الحول هنا [color=#ef4444]**Highly variable**[/color]؛ بتتغير حسب الاتجاه اللي العيان بيبص فيه (بتزيد جداً لما العيان يبص في اتجاه العضلة المشلولة، وتقل أو تختفي لما يبص في الاتجاه العكسي).
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 1. Definition & Etiology[/color][/size][/font]
+
+هو عبارة عن [color=#ef4444]**Ocular deviation**[/color] حاد وظاهر ناتج عن [color=#ef4444]**Complete (paralysis) or partial (paresis) loss of muscle function**[/color] (شلل كلي أو جزئي في العضلة).
+
+* [color=#8b5cf6]**الأسباب:**[/color] إصابة تضرب الـ Ocular motor nuclei في الـ Brainstem، أو الـ Cranial nerves المسؤولين عن الحركة (3rd, 4th, or 6th)، أو مرض مباشر في الـ Extraocular muscles نفسها.
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 2. Clinical Symptoms (معاناة المريض الرباعية)[/color][/size][/font]
+
+العيان بيجيلك بـ Presentation حاد ومزعج جداً، وأعراضه بتشمل:
+
+* [color=#8b5cf6]**1) Diplopia (الرؤية المزدوجة):**[/color]
+  * العيان بيشوف الحاجه اثنين، والـ Diplopia دي [color=#ef4444]**Disappears completely when one eye is covered**[/color] (بتختفي تماماً لو غطينا أي عين من الاتنين، لأنها ناتجة عن عدم توافق العينين معاً).
+  * **تريكة الـ MCQs:** الـ Diplopia دي ممكن تكون:
+    * [color=#3b82f6]**Uncrossed (Homonymous):**[/color] في حالة الـ **Abducens (6th) nerve palsy** (العين حادفة لجوه، فالصورتين بيجوا متوازيين مفيش تقاطع).
+    * [color=#3b82f6]**Crossed (Heteronymous):**[/color] في حالة الـ **Oculomotor (3rd) nerve palsy** (العين حادفة لبره، فالصور بتقطع بعضها).
+* [color=#8b5cf6]**2) False Projection (Past Pointing - الخداع المكاني):**[/color]
+  * لو طلبنا من العيان يقفل عينه السليمة ويشاور بسرعة بصباعه على قلم في اتجاه العضلة المشلولة، صباعه بيعدي القلم ويشاور أبعد منه ([color=#ef4444]**Past pointing**[/color]).
+  * **التفسير العلمي:** المخ عشان يحرك العين المشلولة سنة صغيرة بيبعت [color=#3b82f6]**Excessive innervation**[/color] (إشارات عصبية عنيفة جداً)، فالمخ بيتخدع ويفتكر إن الجسم بعيد جداً بناءً على كمية الإشارات اللي بعتها، فيخلي إيد العيان تحدف أبعد.
+* [color=#8b5cf6]**3) Ocular Torticollis (الوضع التعويضي للرأس):**[/color]
+  * العيان بيلف وجهه، أو يميل رأسه، أو يرفع/ينزل دقنه ([color=#10b981]**Face turn, head tilt, or chin elevation**[/color]).
+  * **الهدف:** الهروب من الـ Diplopia؛ العيان بيلف رأسه بحيث يخلي العين تبص [color=#10b981]**Away from the field of the paralyzed muscle**[/color] (في الاتجاه السليم اللي ميهزش الدبلوпيا).
+* [color=#8b5cf6]**4) Vertigo and Nausea:**[/color] دوار وغمامان نفس نتيجة التضارب الرهيب في تحديد المسافات والصور بالمخ.
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 3. Clinical Signs (كيف تفحصه كطبيب؟)[/color][/size][/font]
+
+* [color=#8b5cf6]**Direction of Deviation:**[/color] العين بتنحرف في [color=#ef4444]**الاتجاه العكسي تماماً**[/color] لعمل العضلة المشلولة (لو الـ Lateral rectus اليمين مشلولة، الـ Medial rectus السليمة هتشد العين لجوه، فالعين تحول Esotropia).
+* [color=#8b5cf6]**The Golden Rule (Secondary > Primary Deviation):**[/color]
+  * [color=#10b981]**Primary deviation:**[/color] لما العيان يثبت نظره بالعين السليمة، العين المشلولة بتحول بزاوية معينة.
+  * [color=#10b981]**Secondary deviation:**[/color] لما تجبر العيان يقفل عينه السليمة ويثبت نظره بالعين المشلولة؛ هنا المخ بيبعت إشارات عنيفة جداً عشان يعدل العين التعبانة، وبما إن الإشارات بتروح للعينين بالتساوي (حسب [color=#3b82f6]**Herings law**[/color])، العين السليمة المستخبية ورا الغطاء بتتحرك وتلف جوه بـ [color=#ef4444]**Excessive deviation**[/color] زاوية أكبر بكتير!
+* [color=#8b5cf6]**Marked Limitation:**[/color] ضعف وحبسة واضحة جداً في حركة العين في اتجاه عمل العضلة المشلولة.
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 4. Management (خطة العلاج)[/color][/size][/font]
+
+* [color=#8b5cf6]**Medical & Etiological Treatment:**[/color] البحث فوراً عن السبب العصبي أو النظامي وعلاجه (تظبيط السكر والضغط، علاج الـ Tumor أو الـ Aneurysm إن وُجد).
+* [color=#8b5cf6]**Symptomatic Relief (لإراحة المريض مؤقتاً):**[/color]
+  * **Temporary occlusion:** نغطي عين واحدة بالـ Patch عشان نلغي الـ Diplopia تماماً ويرتاح من الدوار.
+  * **Relieving prisms:** نظارة منشور لحرف الضوء ومنع ازدواج الرؤية في زوايا معينة.
+* [color=#8b5cf6]**Surgical Correction (التوقيت حاسم):**[/color]
+  * [color=#ef4444]**لا نلمس المريض جراحياً قبل مرور 6 أشهر (> 6 months)**[/color]؛ لأن معظم حالات الـ Cranial nerve palsies الناتجة عن مسببات طبية كالسكر أو الضغط بيحصلها [color=#10b981]**Spontaneous recovery**[/color] (شفاء تلقائي) في خلال من 3 لـ 6 شهور. لو عدينا الـ 6 شهور والحول ثابت، بندخل جراحياً لعمل Recess/Resect أو Muscle transposition.
+
+---
+
+[font=Cairo][size=16][color=#8b5cf6]### 💡 Mnemonics & Memorization Aids[/color][/size][/font]
+
+* [color=#8b5cf6]**تذكر قاعدة الـ Deviations بكلمة (S-P):**[/color]
+  * الـ **Secondary** deviation دايماً أكبر من الـ **Primary** ([color=#ef4444]**Secondary > Primary**[/color]). وافتكرها علمياً بـ: **Secondary** = **S**ick eye fixing (العين العيانة هي اللي بتثبت فالمجهود مضاعف).
+* [color=#8b5cf6]**تذكر نوع الـ Diplopia:**[/color]
+  * في الـ **6th nerve palsy** ➔ العين داخلة لجوه (Convergent) ➔ الـ Diplopia بتكون [color=#3b82f6]**Uncrossed**[/color] (الـ 6 شقيا، مفيهاش تقاطع).
+  * في الـ **3rd nerve palsy** ➔ العين خارجة لبره (Divergent) ➔ الـ Diplopia بتكون [color=#3b82f6]**Crossed**[/color] (حرف الـ 3 فيه انحناءات متقاطعة).
+* [color=#8b5cf6]**توقيت الجراحة:**[/color]
+  * افتكر رقم **6**؛ العصب **السادس** هو أشهر عصب بيتشل، والجراحة ممنوعة قبل **6 شهور**.`,
+
+  'Manifest Concomitant Squint (Heterotropia)': `[font=Cairo][size=18][color=#1e293b]## 📌 Manifest Concomitant Squint (Heterotropia)[/color][/size][/font]
+
+أهلاً بك يا دكتور. وصلنا الآن لنوع الحول الأكثر شهرة ورؤية في عيادات الأطفال، وهو الـ [color=#3b82f6]**Manifest Concomitant Squint**[/color] أو ما يُعرف بـ [color=#3b82f6]**Heterotropia**[/color] (الحول المترافق الظاهر).
+
+التريكة الكبرى والاسم الثاني للمرض هو [color=#8b5cf6]**Concomitant**[/color] (مترافق أو متساوي)، لأن زاوية الحول هنا [color=#10b981]**Remains constant in all directions of gaze**[/color]؛ يعني لو العيان بص يمين، شمال، فوق، أو تحت، زاوية الحول ثابتة لا تتغير، وعشان كده دايماً بنقارنه بالـ Paralytic squint اللي لسه مخلصينه.
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 1. Definition & Etiology[/color][/size][/font]
+
+هو عبارة عن [color=#ef4444]**Ocular deviation**[/color] مستمر وظاهر، بيحصل نتيجة وجود عائق منع المخ إنه يعمل Fusion (sensory, motor, or central fusion obstacles) خلال [color=#10b981]**الـ 6 سنوات الأولى من العمر**[/color] (ودي الـ Critical period اللي المخ بيتعلم فيها يشوف بالعينين مع بعض). طالما المخ معرفش يدمج الصورتين، بيبدأ يسيب عين من الاتنين تحدف وتعمل حول.
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 2. Common Causes (أشهر الأسباب)[/color][/size][/font]
+
+* [color=#8b5cf6]**1) Refractive Errors (العيوب الانكسارية - اللعبة الشهيرة):**[/color]
+  * [color=#10b981]**Hypermetropia (طول النظر):**[/color] الطفل بيعمل [color=#ef4444]**Excessive accommodation**[/color] عشان يشوف بوضوح، وده بيعمل تحفيز عنيف ومستمر للـ Convergence، فينتهي الأمر بـ [color=#ef4444]**Accommodative Esotropia**[/color] (حول داخلي ظاهر).
+  * [color=#10b981]**Myopia (قصر النظر):**[/color] الطفل مش محتاج يعمل accommodation للقريب، فبيحصل كسل واستخراء في الـ Convergence، وينتهي الأمر بـ [color=#ef4444]**Exotropia**[/color] (حول خارجي ظاهر).
+* [color=#8b5cf6]**2) Stimulus Deprivation (الحرمان البصري):**[/color]
+  * عين الطفل مش شايفة ضوء أو صورة واضحة بسبب [color=#ef4444]**Congenital ptosis**[/color] (سقوط الجفن واغلاق العين) أو [color=#ef4444]**Dense congenital cataract**[/color] (مياه بيضاء كثيفة). طالما العين دي مش بتبعت صورة نظيفة للمخ، المخ بيمسحها من حساباته ويهملها، فتقوم العين دي تحدف لبره أو لجوه.
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 3. Classifications (التقسيمات)[/color][/size][/font]
+
+بنقسم الـ Concomitant squint حسب كذا محور:
+
+* [color=#8b5cf6]**حسب الاتجاه:**[/color] [color=#3b82f6]**Esotropia**[/color] (داخلي - الأكثر شيوعاً في الأطفال)، [color=#3b82f6]**Exotropia**[/color] (خارجي)، أو [color=#3b82f6]**Vertical**[/color] (رأسي).
+* [color=#8b5cf6]**حسب الثبات:**[/color] [color=#3b82f6]**Constant**[/color] (ثابت طول الوقت) أو [color=#3b82f6]**Intermittent**[/color] (بيجي ويروح حسب تركيز الطفل أو تعبه).
+* [color=#8b5cf6]**حسب العين المصابة (مهمة جداً):**[/color]
+  * [color=#10b981]**Unilateral Squint:**[/color] عين واحدة "ثابتة" هي اللي دايماً حادفة ومحولة، والعين التانية هي اللي دايماً بتثبت النظر (Fixating eye). النوع ده [color=#ef4444]**خطير جداً**[/color] لأنه بيدخل في Amblyopia.
+  * [color=#10b981]**Alternating Squint:**[/color] العينين بيبدلوا مع بعض؛ شوية يثبت باليمين فالشمال تحول، وشوية يثبت بالشمال فاليمين تحول. النوع ده [color=#10b981]**أقل خطورة على النظر**[/color]، لأن العينين بيشتغلوا بالتبادل فمفيش عين بتموت تماماً.
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 4. Sensory Adaptations (كيف يحمي المخ نفسه؟)[/color][/size][/font]
+
+الطفل الصغير عنده قدرة مذهلة على التكيف العصبى ([color=#3b82f6]**Neuroplasticity**[/color]). لما العين تحول، الصورتين بيروحوا لأماكن مختلفة في المخ، فالمفروض يحصل Diplopia (ازدواج رؤية). عشان المخ يحمي الطفل من الصداع والدوار، بيعمل حركة ذكية وسريعة جداً اسمها [color=#ef4444]**Suppression**[/color] (التثبيط أو الإلغاء): المخ بـ "يطفي" الإشارة الجاية من العين المحولة تماماً ويركز مع العين السليمة.
+
+الـ Suppression المستمر ده بيؤدي لـ 3 كوارث بالترتيب:
+
+* [color=#8b5cf6]**1) Amblyopia (Lazy Eye / كسل العين):**[/color]
+  * اسمها العلمي [color=#ef4444]**Amblyopia Ex-anopsia**[/color]. طالما المخ هامل العين دي تماماً وكاتم إشارتها، المسارات العصبية بتاعتها في الـ Visual cortex بيحصلها Atrophy، وينتج عنها [color=#ef4444]**Permanent profound drop in visual acuity**[/color] (ضعف نظر شديد ودائم لا يمكن تصليحه بالنظارة بعد سن 8 لـ 9 سنوات).
+* [color=#8b5cf6]**2) Types of Fixation:**[/color]
+  * [color=#3b82f6]**Centric fixation:**[/color] العين لسه محتفظة بقدرتها إنها تثبت النظر بالـ Fovea لما نغطي العين التانية.
+  * [color=#3b82f6]**Eccentric fixation:**[/color] من كتر الإهمال والكسل، الـ Fovea بتموت تماماً، وتبدأ نقطة تانية عشوائية برة الـ Fovea ([color=#ef4444]**Extrafoveal retinal point**[/color]) تاخد هي وظيفة التثبيت، والطفل يفقد الـ Central vision في العين دي.
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 5. Clinical Picture (السيناريو الكلاسيكي للـ Concomitant)[/color][/size][/font]
+
+الطفل بيجيلك العيادة بالمنظر ده:
+
+* [color=#8b5cf6]**Noticeable ocular deviation:**[/color] الحول واضح جداً وضوح الشمس للأهل والدكتور.
+* [color=#8b5cf6]**Defective vision:**[/color] نظر العين المحولة بيكون ضعيف بسبب الـ Refractive error أو الـ Amblyopia.
+* [color=#8b5cf6]**The Diagnostic Negatives (التناقض مع الـ Paralytic):**[/color]
+  * [color=#ef4444]**NO Diplopia:**[/color] الطفل عمره ما هيشتكي من رؤية مزدوجة لأن المخ عمل [color=#10b981]**Suppression**[/color] فوراً (بعكس الكبير في السن اللي حصله شلل فجأة فبيشوف الدنيا اتنين).
+  * [color=#ef4444]**NO Limitation of movement:**[/color] حرك عيون الطفل في كل الاتجاهات، هتلاقي العينين بيتحركوا بشكل كامل 100% ومفيش أي عضلة محبوسة أو مشلولة.
+  * [color=#ef4444]**Primary Deviation = Secondary Deviation:**[/color] لو قيست زاوية الحول بالعين اليمين أو العين الشمال، تلاقي الزاوية ثابتة بالظبط (لأن التوازن العصبي والعضلي متساوي بين العينين).
+
+---
+
+[font=Cairo][size=16][color=#8b5cf6]### 💡 Mnemonics & Memorization Aids[/color][/size][/font]
+
+* [color=#8b5cf6]**المقارنة الذهبية اللى بتخلص الـ Squint في الامتحانات:**[/color]
+
+| Feature | **Paralytic Squint** (Incomitant) | **Concomitant Squint** (Heterotropia) |
+| :--- | :--- | :--- |
+| **Angle of Squint** | **Variable** (Changes with gaze) | **Constant** in all directions |
+| **Diplopia** | **Present** (Severe) | **Absent** (Due to Suppression) |
+| **Limitation** | **Marked Limitation** in affected muscle | **No Limitation** (Full movement) |
+| **Deviations** | **Secondary > Primary** | **Secondary = Primary** |
+| **Age** | Mostly Adults (Neuro/Vascular) | Children (< 6 years old) |
+
+* [color=#8b5cf6]**تذكر خطورة الـ Unilateral مقابل الـ Alternating:**[/color]
+  * **Unilateral** ➔ **U**nhappy eye ➔ **U**nilateral suppression ➔ **Amblyopia** (العين كسلَت وماتت).
+  * **Alternating** ➔ **A**live eyes ➔ **A**lternating fixation ➔ **No Amblyopia** (العينين صاحيين لأنهم بيبدلوا).`,
+
+  'Examination & Treatment of Concomitant Squint': `[font=Cairo][size=18][color=#1e293b]## 📌 Examination & Treatment of Concomitant Squint[/color][/size][/font]
+
+أهلاً بك يا دكتور. وصلنا الآن للمحطة التشخيصية والعلاجية الحاسمة في موضوع الـ [color=#3b82f6]**Concomitant Squint**[/color]. في هذا الجزء، الهدف كأطباء هو تفكيك العوائق البصرية وإعادة المحاور للسنتر لحماية نظر الطفل من الـ Amblyopia وتطوير الـ Binocular vision قبل فوات الأوان.
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 1. Diagnostic Examination (كيف نقيس ونشخص الحول؟)[/color][/size][/font]
+
+الفحص هنا بيبدأ بالعين المجردة وينتهي بأجهزة القياس الدقيقة:
+
+* [color=#8b5cf6]**1) Cover / Uncover Test:**[/color]
+  * **طريقة الفحص:** بنغطي العين السليمة اللي بتثبت النظر (Fixating eye) ونراقب العين التانية المحولة.
+  * **ماذا نرى؟** العين المحولة بتتحرك بسرعة للسنتر عشان تاخد هي الـ Fixation.
+  * **التريكة:** الاختبار ده بيقيس الـ [color=#ef4444]**Secondary deviation**[/color] (لما العين المحولة تثبت). في الـ Concomitant squint، بنلاقي إن [color=#10b981]**Primary deviation = Secondary deviation**[/color] تماماً (عكس الـ Paralytic). كمان بيعرفنا هل الحول [color=#3b82f6]**Unilateral**[/color] (العين المحولة بترجع تحول تاني أول ما نشيل الغطاء) ولا [color=#3b82f6]**Alternating**[/color] (العين بتفضل ثابتة والعين التانية هي اللي بتحول).
+* [color=#8b5cf6]**2) Hirschberg Test (Corneal Light Reflex - اختبار الكشاف البدائي والسريع):**[/color]
+  * العيان بيبص على كشاف صغير على بعد نص متر ([color=#10b981]**0.5 m**[/color])، وبنبص على انعكاس نقطة الضوء على القرنية:
+    * **Normal:** الانعكاس في نص الـ Pupil بالظبط على الناحيتين.
+    * **Squint:** النقطة بتكون متزحزحة (Decentered). بنقيس الزاوية بالـ Rule المشهورة دي:
+      * لو الضوء عند الـ [color=#3b82f6]**Pupillary margin**[/color] ➔ زاوية الحول = [color=#ef4444]**15°**[/color]
+      * لو الضوء [color=#3b82f6]**Midway to limbus**[/color] (بين بؤبؤ العين وطرف القرنية) ➔ زاوية الحول = [color=#ef4444]**30°**[/color]
+      * لو الضوء عند الـ [color=#3b82f6]**Limbus**[/color] (طرف القرنية بالظبط) ➔ زاوية الحول = [color=#ef4444]**45°**[/color]
+* [color=#8b5cf6]**3) Synoptophore (Major Amblyoscope):**[/color]
+  * ده الجهاز الأكاديمي الأهم والأدق في عيادة الحول. بيقيس الـ [color=#10b981]**Exact subjective and objective angle of squint**[/color]، وكمان بنشخص بيه درجات الـ Binocular vision والـ Suppression.
+* [color=#8b5cf6]**4) Prism Bar Cover Test:**[/color]
+  * بنحط منشور زجاجي (Prism) بقوة متصاعدة قدام العين المحولة مع عمل الـ Cover test، لحد ما نلاقي حركة العين انعدمت تماماً والـ Corneal reflex بقى متمركز in the center 100%. قوة الـ Prism ده هي زاوية الحول بالـ (Prism Diopters).
+
+---
+
+[font=Cairo][size=16][color=#1e293b]### 2. Comprehensive Treatment Lines[/color][/size][/font]
+
+> 💡 [color=#ef4444]**القاعدة الذهبية للتوقيت (Timing):**[/color] العلاج لازم يبدأ [color=#ef4444]**As early as possible**[/color] (فور اكتشاف الحول)؛ لأن الـ Brain plastic period بتنتهي حول سن 8 لـ 9 سنوات. لو تأخرنا، الـ Amblyopia بتبقى permanent والعين بتفقد الـ 3D Vision للأبد.
+
+العلاج بيمشي بالترتيب والخطوات دي، ومش دايماً بنحتاج جراحة:
+
+[font=Cairo][size=15][color=#8b5cf6]**1) Optical Treatment (العلاج بالنظارة)**[/color][/size][/font]
+* عمل [color=#3b82f6]**Accurate cycloplegic refraction**[/color] (قطرات شلل عضلة الهدبي مثل الأتروبين لكشف كل درجات طول النظر المستخفية).
+* النظارة هنا هي العلاج الجذري لـ [color=#8b5cf6]**Accommodative Esotropia**[/color]؛ أول ما الطفل بيلبس النظارة، الـ Excessive accommodation بيقف، فالعين بتتعدل تماماً بدون أي جراحة!
+
+[font=Cairo][size=15][color=#8b5cf6]**2) Occlusion Therapy (العلاج بالغطاء / الباتش)**[/color][/size][/font]
+* [color=#ef4444]**The Gold Standard لعلاج الـ Amblyopia:**[/color] بنغطي العين السليمة 100% ([color=#10b981]**Patching the sound fixing eye**[/color]).
+* [color=#8b5cf6]**الهدف:**[/color] بنجبر المخ غصب عنه إنه يشغل العين الكسلانة المحولة عشان يبني المسارات العصبية بتاعتها تاني. عدد ساعات الغطاء في اليوم بيعتمد على سن الطفل وعمق الـ Amblyopia.
+
+[font=Cairo][size=15][color=#8b5cf6]**3) Pleoptics**[/color][/size][/font]
+* بنستخدمها لو الطفل دخل في مرحلة الـ [color=#ef4444]**Eccentric fixation**[/color] (يعني الـ Fovea ماتت والشبكية بتثبت بنقطة تانية). الأجهزة دي بتعمل تعتيم على النقطة الغلط وتعمل [color=#10b981]**Intense stimulation (Red light/Flicker) للـ True fovea**[/color] عشان تصحيها وتخليها تمسك الـ Fixation تاني.
+
+[font=Cairo][size=15][color=#8b5cf6]**4) Orthoptics (تمارين تقويم البصر)**[/color][/size][/font]
+* تمارين بصرية بتتعمل على جهاز الـ Synoptophore بعد ما نعدل المحاور البصرية، والهدف منها تدريب المخ على الـ [color=#3b82f6]**Fusion**[/color] والـ [color=#3b82f6]**Stereopsis**[/color] عشان الحول ميرجعش تاني بعد ما نوقف علاج.
+
+[font=Cairo][size=15][color=#8b5cf6]**5) Surgical Correction (التعديل الميكانيكي)**[/color][/size][/font]
+* بندخل جراحة لو النظارة مصلحتش الحول بالكامل، واللعب كله ميكانيكا على الـ Extraocular muscles:
+  * [color=#8b5cf6]**Recession (إرخاء):**[/color] بنقص العضلة القوية (Overacting) ونرجعها لورا ونخيطها في مكان أبعد على الـ Sclera عشان نضعف قوتها (زي إرخاء الـ Medial rectus في حالات الـ Esotropia).
+  * [color=#8b5cf6]**Resection (تقوية):**[/color] بنقص حتة من العضلة الضعيفة (Underacting) ونخيطها في مكانها الأصلي عشان نقصرها ونزود عزمها وشَدّها.
+
+---
+
+[font=Cairo][size=16][color=#8b5cf6]### 💡 Mnemonics & Memorization Aids[/color][/size][/font]
+
+* [color=#8b5cf6]**تذكر أرقام الـ Hirschberg test بـ "مضاعفات الرقم 15":**[/color]
+  * **P**upil margin ➔ **15°**
+  * **M**idway ➔ **30°** (15 × 2)
+  * **L**imbus ➔ **45°** (15 × 3)
+  * *Mnemonic سريع لتذكر الترتيب من جوه لبره:* كلمة **P-M-L** (زي ترتيب الحروف أو افتكرها بـ **P**upil ➔ **M**iddle ➔ **L**imbus).
+* [color=#8b5cf6]**تذكر جراحات الحول (R&R):**[/color]
+  * **R**e**C**ess = **C**ut and move ba**C**k ➔ Weakening.
+  * **R**e**S**ect = **S**horten muscle ➔ Strengthening.
+* [color=#8b5cf6]**خطوات العلاج دايماً مرتبة تشريحياً وعصبياً:**[/color]
+  نظارة أولاً (**Optical**) ➔ صحي العين الكسلانة (**Occlusion**) ➔ مرّن المخ على الدمج (**Orthoptics**) ➔ لو لسه المحاور مش مظبوطة، شد وأرخي العضلات (**Surgery**).`
 };
 
 const getPredefinedExplanation = (disease: string) => {
@@ -10530,6 +11176,7 @@ const BBCodeMarkdown = ({ content, components }: { content: string, components: 
             components={components}
             disallowedElements={['p']}
             unwrapDisallowed={true}
+            remarkPlugins={[remarkGfm]}
           >
             {plainText}
           </ReactMarkdown>
@@ -10577,6 +11224,7 @@ const BBCodeMarkdown = ({ content, components }: { content: string, components: 
           components={components}
           disallowedElements={['p']}
           unwrapDisallowed={true}
+          remarkPlugins={[remarkGfm]}
         >
           {tail}
         </ReactMarkdown>
@@ -10586,26 +11234,131 @@ const BBCodeMarkdown = ({ content, components }: { content: string, components: 
     return parts;
   };
 
-  const paragraphs = content.split(/\n\s*\n/);
+  // Parser that handles lines one by one to split list items and paragraphs correctly.
+  const lines = content.split('\n').map(l => l.replace(/\r$/, ''));
+  const blocks: any[] = [];
+  let currentList: { type: 'ul' | 'ol'; lines: string[] } | null = null;
+  
+  const flushList = () => {
+    if (currentList) {
+      blocks.push({
+        type: currentList.type,
+        lines: currentList.lines
+      });
+      currentList = null;
+    }
+  };
+  
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    const trimmed = line.trim();
+    
+    // Check list type
+    const isUl = trimmed.startsWith('*') || (trimmed.startsWith('-') && trimmed !== '---');
+    const isOl = /^\d+\./.test(trimmed);
+    
+    if (isUl) {
+      if (currentList && currentList.type !== 'ul') {
+        flushList();
+      }
+      if (!currentList) {
+        currentList = { type: 'ul', lines: [] };
+      }
+      currentList.lines.push(line);
+    } else if (isOl) {
+      if (currentList && currentList.type !== 'ol') {
+        flushList();
+      }
+      if (!currentList) {
+        currentList = { type: 'ol', lines: [] };
+      }
+      currentList.lines.push(line);
+    } else {
+      flushList();
+      
+      if (trimmed === '') {
+        blocks.push({ type: 'empty', content: '' });
+      } else if (trimmed === '---') {
+        blocks.push({ type: 'hr', content: line });
+      } else if (trimmed.startsWith('|')) {
+        let tableLines = [line];
+        while (i + 1 < lines.length && lines[i + 1].trim().startsWith('|')) {
+          i++;
+          tableLines.push(lines[i].replace(/\r$/, ''));
+        }
+        blocks.push({ type: 'table', content: tableLines.join('\n') });
+      } else if (trimmed.startsWith('#') || trimmed.includes('##') || trimmed.includes('###')) {
+        blocks.push({ type: 'heading', content: line });
+      } else {
+        let paraLines = [line];
+        while (i + 1 < lines.length) {
+          const nextTrimmed = lines[i + 1].trim();
+          const nextIsUl = nextTrimmed.startsWith('*') || (nextTrimmed.startsWith('-') && nextTrimmed !== '---');
+          const nextIsOl = /^\d+\./.test(nextTrimmed);
+          if (nextTrimmed === '' || nextTrimmed === '---' || nextTrimmed.startsWith('|') || nextTrimmed.startsWith('#') || nextTrimmed.includes('##') || nextTrimmed.includes('###') || nextIsUl || nextIsOl) {
+            break;
+          }
+          i++;
+          paraLines.push(lines[i].replace(/\r$/, ''));
+        }
+        blocks.push({ type: 'paragraph', content: paraLines.join('\n') });
+      }
+    }
+  }
+  flushList();
+
   return (
     <div className="space-y-4">
-      {paragraphs.map((pText, idx) => {
-        const isHeading = pText.trim().startsWith('#');
-        const isList = pText.trim().startsWith('*') || pText.trim().startsWith('-') || /^\d+\./.test(pText.trim());
-        const isHr = pText.trim() === '---';
+      {blocks.map((block, idx) => {
+        if (block.type === 'empty') {
+          return <div key={idx} className="h-2" />;
+        }
         
-        if (isHeading || isList || isHr) {
+        if (block.type === 'hr') {
           return (
             <div key={idx} className="text-right">
-              {renderInline(pText)}
+              {renderInline('---')}
             </div>
           );
         }
         
+        if (block.type === 'heading' || block.type === 'table') {
+          return (
+            <div key={idx} className="text-right">
+              {renderInline(block.content)}
+            </div>
+          );
+        }
+        
+        if (block.type === 'ul' || block.type === 'ol') {
+          const ListTag = block.type;
+          const listClass = block.type === 'ol'
+            ? "list-decimal list-inside mr-4 mb-4 space-y-3 text-current text-right"
+            : "list-disc list-inside mr-4 mb-4 space-y-3 text-current text-right";
+            
+          return (
+            <ListTag key={idx} className={listClass}>
+              {block.lines.map((line: string, lIdx: number) => {
+                const lineTrimmed = line.trim();
+                const lineContent = lineTrimmed.replace(/^([\*\-]|^\d+\.)\s*/, '');
+                // Detect indentation level (e.g. nested sub-lists)
+                const indentLevel = line.match(/^\s*/)?.[0].length || 0;
+                const indentClass = indentLevel >= 4 ? "mr-8" : indentLevel >= 2 ? "mr-4" : "";
+                
+                return (
+                  <li key={lIdx} className={cn("marker:text-current text-current mb-2.5 leading-loose text-right", indentClass)}>
+                    {renderInline(lineContent)}
+                  </li>
+                );
+              })}
+            </ListTag>
+          );
+        }
+        
         return (
-          <p key={idx} className="mb-4 text-black leading-loose text-base text-right">
-            {renderInline(pText)}
-          </p>
+          <div key={idx} className="mb-4 text-black leading-loose text-base text-right">
+            {renderInline(block.content)}
+          </div>
         );
       })}
     </div>
@@ -11973,7 +12726,7 @@ const FlashSpace = () => {
 
   useEffect(() => {
     if (isEditingNotes && editorRef.current && selectedBoard) {
-      const initialText = getNoteForDisease(selectedBoard.disease) || getPredefinedExplanation(selectedBoard.disease) || selectedBoard.explanation || '';
+      const initialText = getPredefinedExplanation(selectedBoard.disease) || getNoteForDisease(selectedBoard.disease) || selectedBoard.explanation || '';
       editorRef.current.innerHTML = bbcodeAndMarkdownToHtml(initialText);
       setEditedNoteText(initialText);
     }
@@ -16507,7 +17260,7 @@ const FlashSpace = () => {
                   </div>
                   <div className="flex items-center gap-2">
                     {userRole === 'admin' && activeNoteTab === 'notes' && (
-                      <button onClick={() => { setIsEditingNotes(true); setEditedNoteText(getNoteForDisease(selectedBoard.disease) || getPredefinedExplanation(selectedBoard.disease) || selectedBoard.explanation || ''); }} className="p-2.5 bg-indigo-50 hover:bg-indigo-100 text-indigo-600 rounded-xl transition-all font-bold text-xs flex items-center gap-2 shadow-sm">
+                      <button onClick={() => { setIsEditingNotes(true); setEditedNoteText(getPredefinedExplanation(selectedBoard.disease) || getNoteForDisease(selectedBoard.disease) || selectedBoard.explanation || ''); }} className="p-2.5 bg-indigo-50 hover:bg-indigo-100 text-indigo-600 rounded-xl transition-all font-bold text-xs flex items-center gap-2 shadow-sm">
                         <Edit className="w-4 h-4" />
                         تعديل النوتس
                       </button>
@@ -16542,9 +17295,9 @@ const FlashSpace = () => {
                 <div className="flex-1 overflow-y-auto">
                   {activeNoteTab === 'notes' ? (
                     <div className="max-w-3xl mx-auto px-6 md:px-10 py-8 pb-20 text-slate-800" dir="rtl">
-                      {(getNoteForDisease(selectedBoard.disease) || getPredefinedExplanation(selectedBoard.disease) || selectedBoard.explanation) ? (
+                      {(getPredefinedExplanation(selectedBoard.disease) || getNoteForDisease(selectedBoard.disease) || selectedBoard.explanation) ? (
                         <BBCodeMarkdown
-                          content={getNoteForDisease(selectedBoard.disease) || getPredefinedExplanation(selectedBoard.disease) || selectedBoard.explanation}
+                          content={getPredefinedExplanation(selectedBoard.disease) || getNoteForDisease(selectedBoard.disease) || selectedBoard.explanation}
                           components={{
                             h1: ({node, ...props}: any) => <h1 className="text-2xl font-black text-current mt-8 mb-4 border-b pb-3 border-slate-200 text-right" {...props} />,
                             h2: ({node, ...props}: any) => <h2 className="text-xl font-black text-current mt-6 mb-3 border-r-4 border-current pr-3 text-right" {...props} />,
@@ -16556,6 +17309,16 @@ const FlashSpace = () => {
                             strong: ({node, ...props}: any) => <strong className="font-black text-current" {...props} />,
                             code: ({node, ...props}: any) => <code className="font-mono text-sm bg-slate-100/60 px-2 py-0.5 rounded-lg mx-0.5 text-current font-bold" {...props} />,
                             hr: ({node, ...props}: any) => <hr className="my-8 border-slate-200" {...props} />,
+                            table: ({node, ...props}: any) => (
+                              <div className="overflow-x-auto my-6 rounded-2xl border border-slate-200/85 shadow-sm">
+                                <table className="w-full border-collapse text-sm text-right" dir="rtl" {...props} />
+                              </div>
+                            ),
+                            thead: ({node, ...props}: any) => <thead className="bg-slate-50 text-slate-800 border-b border-slate-200" {...props} />,
+                            tbody: ({node, ...props}: any) => <tbody className="divide-y divide-slate-100 bg-white text-slate-650" {...props} />,
+                            tr: ({node, ...props}: any) => <tr className="hover:bg-slate-50/50 transition-colors" {...props} />,
+                            th: ({node, ...props}: any) => <th className="px-4 py-3 font-black text-slate-700 text-right" {...props} />,
+                            td: ({node, ...props}: any) => <td className="px-4 py-3.5 text-right text-slate-600" {...props} />,
                           }}
                         />
                       ) : (
