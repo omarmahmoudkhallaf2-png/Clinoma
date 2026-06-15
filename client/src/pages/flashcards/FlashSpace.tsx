@@ -11277,7 +11277,7 @@ const BBCodeMarkdown = ({ content, components }: { content: string, components: 
   // Uncross BBCode tags and [i]: e.g. [color=...][i]text[/color][/i] -> [color=...][i]text[/i][/color]
   preparedContent = preparedContent.replace(/\[(color|highlight|size|font)=([^\]]+)\]\s*\[i\]([\s\S]*?)\[\/\1\]\s*\[\/i\]/gi, '[$1=$2][i]$3[/i][/$1]');
 
-  // Parser that handles lines one by one to split list items and paragraphs correctly.
+  // Parser that handles lines one by one to split list items, tables, paragraphs, and headings correctly.
   const lines = preparedContent.split('\n').map(l => l.replace(/\r$/, ''));
   const blocks: any[] = [];
   let currentList: { type: 'ul' | 'ol'; lines: string[] } | null = null;
@@ -11291,6 +11291,20 @@ const BBCodeMarkdown = ({ content, components }: { content: string, components: 
       currentList = null;
     }
   };
+
+  const isSeparatorLine = (str: string) => {
+    const clean = str.trim();
+    if (!clean.includes('|')) return false;
+    const remaining = clean.replace(/[|:\-\s]/g, '');
+    return remaining === '' && clean.replace(/[^|]/g, '').length >= 1;
+  };
+
+  const getCells = (str: string) => {
+    let cells = str.split('|').map(c => c.trim());
+    if (cells.length > 0 && cells[0] === '') cells.shift();
+    if (cells.length > 0 && cells[cells.length - 1] === '') cells.pop();
+    return cells;
+  };
   
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
@@ -11299,6 +11313,12 @@ const BBCodeMarkdown = ({ content, components }: { content: string, components: 
     // Check list type
     const isUl = trimmed.startsWith('*') || (trimmed.startsWith('-') && trimmed !== '---');
     const isOl = /^\d+\./.test(trimmed);
+    
+    // Check table type
+    const pipeCount = (trimmed.match(/\|/g) || []).length;
+    const nextLineText = lines[i + 1] ? lines[i + 1].trim() : '';
+    const nextIsSep = isSeparatorLine(nextLineText);
+    const isTable = pipeCount >= 1 && (nextIsSep || (blocks.length > 0 && blocks[blocks.length - 1].type === 'table'));
     
     if (isUl) {
       if (currentList && currentList.type !== 'ul') {
@@ -11316,6 +11336,18 @@ const BBCodeMarkdown = ({ content, components }: { content: string, components: 
         currentList = { type: 'ol', lines: [] };
       }
       currentList.lines.push(line);
+    } else if (isTable) {
+      flushList();
+      let tableLinesList = [line];
+      while (i + 1 < lines.length) {
+        const nextLineVal = lines[i + 1];
+        const nextTrim = nextLineVal.trim();
+        const nextPipeCount = (nextTrim.match(/\|/g) || []).length;
+        if (nextPipeCount === 0) break;
+        i++;
+        tableLinesList.push(nextLineVal.replace(/\r$/, ''));
+      }
+      blocks.push({ type: 'table', content: tableLinesList });
     } else {
       flushList();
       
@@ -11323,16 +11355,6 @@ const BBCodeMarkdown = ({ content, components }: { content: string, components: 
         blocks.push({ type: 'empty', content: '' });
       } else if (trimmed === '---') {
         blocks.push({ type: 'hr', content: line });
-      } else if (trimmed.includes('|') && trimmed.split('|').length > 2) {
-        let tableLines = [line];
-        while (i + 1 < lines.length) {
-          const nextTrimmed = lines[i + 1].trim();
-          const nextIsTableLine = nextTrimmed.includes('|') && nextTrimmed.split('|').length > 2;
-          if (!nextIsTableLine) break;
-          i++;
-          tableLines.push(lines[i].replace(/\r$/, ''));
-        }
-        blocks.push({ type: 'table', content: tableLines.join('\n') });
       } else if (trimmed.startsWith('#') || trimmed.includes('##') || trimmed.includes('###')) {
         blocks.push({ type: 'heading', content: line });
       } else {
@@ -11341,7 +11363,11 @@ const BBCodeMarkdown = ({ content, components }: { content: string, components: 
           const nextTrimmed = lines[i + 1].trim();
           const nextIsUl = nextTrimmed.startsWith('*') || (nextTrimmed.startsWith('-') && nextTrimmed !== '---');
           const nextIsOl = /^\d+\./.test(nextTrimmed);
-          if (nextTrimmed === '' || nextTrimmed === '---' || nextTrimmed.startsWith('|') || nextTrimmed.startsWith('#') || nextTrimmed.includes('##') || nextTrimmed.includes('###') || nextIsUl || nextIsOl) {
+          const nextPipeCount = (nextTrimmed.match(/\|/g) || []).length;
+          const nextNextLineVal = lines[i + 2] ? lines[i + 2].trim() : '';
+          const nextIsTableLine = nextPipeCount >= 1 && isSeparatorLine(nextNextLineVal);
+          
+          if (nextTrimmed === '' || nextTrimmed === '---' || nextTrimmed.startsWith('#') || nextTrimmed.includes('##') || nextTrimmed.includes('###') || nextIsUl || nextIsOl || nextIsTableLine) {
             break;
           }
           i++;
@@ -11354,7 +11380,7 @@ const BBCodeMarkdown = ({ content, components }: { content: string, components: 
   flushList();
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 prose-notes">
       {blocks.map((block, idx) => {
         if (block.type === 'empty') {
           return <div key={idx} className="h-2" />;
@@ -11368,10 +11394,73 @@ const BBCodeMarkdown = ({ content, components }: { content: string, components: 
           );
         }
         
-        if (block.type === 'heading' || block.type === 'table') {
+        if (block.type === 'heading') {
           return (
             <div key={idx} className="text-right">
               {renderInline(block.content)}
+            </div>
+          );
+        }
+
+        if (block.type === 'table') {
+          const tLines = block.content as string[];
+          let tableRows: string[][] = [];
+          let tableAlignments: string[] = [];
+          
+          tLines.forEach((line) => {
+            const trimmed = line.trim();
+            if (isSeparatorLine(trimmed)) {
+              const cells = getCells(trimmed);
+              tableAlignments = cells.map(c => {
+                const left = c.startsWith(':');
+                const right = c.endsWith(':');
+                if (left && right) return 'center';
+                if (right) return 'left';
+                if (left) return 'left';
+                return 'right';
+              });
+            } else {
+              tableRows.push(getCells(line));
+            }
+          });
+          
+          if (tableRows.length === 0) return null;
+          
+          const headers = tableRows[0];
+          const dataRows = tableRows.slice(1);
+          
+          return (
+            <div key={idx} className="overflow-x-auto my-6 rounded-2xl border border-slate-200/85 shadow-sm" dir="rtl">
+              <table className="w-full border-collapse text-sm text-right">
+                <thead className="bg-slate-50 text-slate-800 border-b border-slate-200">
+                  <tr>
+                    {headers.map((h, hIdx) => {
+                      const align = tableAlignments[hIdx] || 'right';
+                      const alignClass = align === 'center' ? 'text-center' : (align === 'left' ? 'text-left' : 'text-right');
+                      return (
+                        <th key={hIdx} className={`px-4 py-3 font-black text-slate-700 ${alignClass}`}>
+                          {renderInline(h)}
+                        </th>
+                      );
+                    })}
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-100 bg-white text-slate-650">
+                  {dataRows.map((row, rIdx) => (
+                    <tr key={rIdx} className="hover:bg-slate-50/50 transition-colors">
+                      {row.map((cell, cIdx) => {
+                        const align = tableAlignments[cIdx] || 'right';
+                        const alignClass = align === 'center' ? 'text-center' : (align === 'left' ? 'text-left' : 'text-right');
+                        return (
+                          <td key={cIdx} className={`px-4 py-3.5 ${alignClass}`}>
+                            {renderInline(cell)}
+                          </td>
+                        );
+                      })}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           );
         }
@@ -11503,15 +11592,31 @@ const bbcodeAndMarkdownToHtml = (text: string): string => {
   let tableAlignments: string[] = [];
   let parsedLines = [];
 
+  const isSeparatorLine = (str: string) => {
+    const clean = str.trim();
+    if (!clean.includes('|')) return false;
+    const remaining = clean.replace(/[|:\-\s]/g, '');
+    return remaining === '' && clean.replace(/[^|]/g, '').length >= 1;
+  };
+
+  const getCells = (str: string) => {
+    let cells = str.split('|').map(c => c.trim());
+    if (cells.length > 0 && cells[0] === '') cells.shift();
+    if (cells.length > 0 && cells[cells.length - 1] === '') cells.pop();
+    return cells;
+  };
+
   for (let i = 0; i < tableLines.length; i++) {
     const line = tableLines[i];
     const trimmed = line.trim();
-    
-    if (trimmed.startsWith('|') && trimmed.endsWith('|') && trimmed.length > 1) {
-      const cells = trimmed.split('|').map(c => c.trim()).filter((c, idx, arr) => idx > 0 && idx < arr.length - 1);
-      const isSeparator = cells.every(c => c.replace(/[:-\s]/g, '') === '');
-      
-      if (isSeparator) {
+    const pipeCount = (trimmed.match(/\|/g) || []).length;
+    const nextLineText = tableLines[i + 1] ? tableLines[i + 1].trim() : '';
+    const nextIsSep = isSeparatorLine(nextLineText);
+    const isTableRow = pipeCount >= 1 && (inTable || nextIsSep);
+
+    if (isTableRow) {
+      if (isSeparatorLine(trimmed)) {
+        const cells = getCells(trimmed);
         tableAlignments = cells.map(c => {
           const left = c.startsWith(':');
           const right = c.endsWith(':');
@@ -11521,7 +11626,7 @@ const bbcodeAndMarkdownToHtml = (text: string): string => {
           return 'right';
         });
       } else {
-        tableRows.push(cells);
+        tableRows.push(getCells(line));
       }
       inTable = true;
     } else {
@@ -11580,6 +11685,7 @@ const bbcodeAndMarkdownToHtml = (text: string): string => {
     parsedLines.push(tableHtml);
   }
   html = parsedLines.join('\n');
+
   
   // Bullet points
   const lines = html.split('\n');
@@ -11789,7 +11895,7 @@ const BatchBoardItem = ({
           onPaste={e => {
             setTimeout(handleInput, 50);
           }}
-          className="w-full bg-slate-950 text-white px-4 py-2.5 rounded-xl border border-white/10 outline-none focus:border-indigo-500 text-xs font-medium min-h-[80px] overflow-y-auto text-right leading-relaxed custom-scrollbar"
+          className="w-full bg-slate-950 text-white px-4 py-2.5 rounded-xl border border-white/10 outline-none focus:border-indigo-500 text-xs font-medium min-h-[80px] overflow-y-auto text-right leading-relaxed custom-scrollbar prose-notes prose-dark"
           dir="rtl"
         />
       </div>
@@ -16850,7 +16956,7 @@ const FlashSpace = () => {
                       }
                     }, 50);
                   }}
-                  className="w-full bg-slate-950 text-white px-4 py-2.5 rounded-xl border border-white/10 outline-none focus:border-indigo-500 text-xs font-medium min-h-[100px] overflow-y-auto text-right leading-relaxed custom-scrollbar"
+                  className="w-full bg-slate-950 text-white px-4 py-2.5 rounded-xl border border-white/10 outline-none focus:border-indigo-500 text-xs font-medium min-h-[100px] overflow-y-auto text-right leading-relaxed custom-scrollbar prose-notes prose-dark"
                   dir="rtl"
                 />
               </div>
@@ -17378,8 +17484,8 @@ const FlashSpace = () => {
                         <BBCodeMarkdown
                           content={getPredefinedExplanation(selectedBoard.disease) || getNoteForDisease(selectedBoard.disease) || selectedBoard.explanation}
                           components={{
-                            h1: ({node, ...props}: any) => <h1 className="text-3xl md:text-4xl font-black text-slate-800 mt-10 mb-6 border-b-2 pb-4 border-slate-100 text-right" {...props} />,
-                            h2: ({node, ...props}: any) => <h2 className="text-2xl md:text-3xl font-black text-slate-800 mt-8 mb-4 border-r-4 border-indigo-500 pr-4 text-right" {...props} />,
+                            h1: ({node, ...props}: any) => <h1 className="text-3xl md:text-4xl font-black text-slate-900 mt-10 mb-6 border-b-2 pb-4 border-slate-100 text-right" {...props} />,
+                            h2: ({node, ...props}: any) => <h2 className="text-2xl md:text-3xl font-black text-indigo-600 mt-8 mb-4 border-r-4 border-indigo-500 pr-4 text-right" {...props} />,
                             h3: ({node, ...props}: any) => <h3 className="text-xl md:text-2xl font-bold text-slate-700 mt-6 mb-3 text-right" {...props} />,
                             p: ({node, ...props}: any) => <span className="text-current leading-loose text-base text-right" {...props} />,
                             ul: ({node, ...props}: any) => <ul className="list-disc list-inside mr-4 mb-4 space-y-2 text-current text-right" {...props} />,
@@ -18524,7 +18630,7 @@ const FlashSpace = () => {
                     }
                   }, 50);
                 }}
-                className="flex-1 h-full overflow-y-auto bg-slate-50 rounded-xl border border-slate-200 p-6 custom-scrollbar text-slate-800 text-right leading-relaxed outline-none"
+                className="flex-1 h-full overflow-y-auto bg-slate-50 rounded-xl border border-slate-200 p-6 custom-scrollbar text-slate-800 text-right leading-relaxed outline-none prose-notes"
                 dir="rtl"
               />
             </div>
