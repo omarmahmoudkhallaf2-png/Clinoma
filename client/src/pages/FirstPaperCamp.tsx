@@ -446,7 +446,7 @@ export default function FirstPaperCamp() {
       // @ts-ignore
       const { PDFDocument, rgb, StandardFonts } = await import('https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.esm.js');
       
-      const pdfDoc = await PDFDocument.load(pdfBytes);
+const pdfDoc = await PDFDocument.load(pdfBytes);
       const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
       
       const pageCount = pdfDoc.getPageCount();
@@ -513,13 +513,39 @@ export default function FirstPaperCamp() {
       const modifiedPdfBytes = await pdfDoc.save();
       const blob = new Blob([modifiedPdfBytes], { type: "application/pdf" });
       const downloadUrl = URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.href = downloadUrl;
-      link.download = defaultName;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      URL.revokeObjectURL(downloadUrl);
+      
+      // Detect iOS / iPadOS
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
+                    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+      
+      // Detect Standalone / WebView wrappers
+      const isWebView = /FBAN|FBAV|Instagram|LinkedIn|Messenger|Slack|Twitter|Line|Snapchat/.test(navigator.userAgent) ||
+                        window.matchMedia('(display-mode: standalone)').matches ||
+                        // @ts-ignore
+                        window.navigator.standalone ||
+                        navigator.userAgent.includes('wv') ||
+                        navigator.userAgent.includes('WebView');
+
+      if (isIOS || isWebView) {
+        // iOS Safari and WebViews preview PDF in a new tab for native save
+        const newWindow = window.open(downloadUrl, '_blank');
+        if (!newWindow) {
+          window.location.href = downloadUrl;
+        }
+      } else {
+        // Standard desktop/Android flow
+        const link = document.createElement("a");
+        link.href = downloadUrl;
+        link.download = defaultName;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+      
+      // Delay revocation to prevent race conditions
+      setTimeout(() => {
+        URL.revokeObjectURL(downloadUrl);
+      }, 30000);
       
       setDownloadProgress(100);
       setDownloadStatus("Successfully compiled! 🎉");

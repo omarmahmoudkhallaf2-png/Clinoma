@@ -12798,13 +12798,42 @@ const FlashSpace = () => {
       // Step 4: Trigger native browser download
       const blob = new Blob([modifiedPdfBytes], { type: "application/pdf" });
       const downloadUrl = URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.href = downloadUrl;
-      link.download = defaultName;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      URL.revokeObjectURL(downloadUrl);
+      
+      // Detect iOS / iPadOS
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
+                    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+      
+      // Detect Standalone / WebView wrappers
+      const isWebView = /FBAN|FBAV|Instagram|LinkedIn|Messenger|Slack|Twitter|Line|Snapchat/.test(navigator.userAgent) ||
+                        window.matchMedia('(display-mode: standalone)').matches ||
+                        // @ts-ignore
+                        window.navigator.standalone ||
+                        navigator.userAgent.includes('wv') ||
+                        navigator.userAgent.includes('WebView');
+
+      if (isIOS || isWebView) {
+        // iOS Safari and WebViews handle direct download elements poorly.
+        // Opening the blob URL in a new window allows Safari's native PDF preview to open,
+        // from which the user can easily click "Share" -> "Save to Files".
+        const newWindow = window.open(downloadUrl, '_blank');
+        if (!newWindow) {
+          // If popup is blocked, redirect the current window location to the PDF blob
+          window.location.href = downloadUrl;
+        }
+      } else {
+        // Standard desktop / Android flow
+        const link = document.createElement("a");
+        link.href = downloadUrl;
+        link.download = defaultName;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+      
+      // Delay revocation to prevent race conditions in slower browsers/mobile devices
+      setTimeout(() => {
+        URL.revokeObjectURL(downloadUrl);
+      }, 30000);
       
       setDownloadProgress(100);
       setDownloadStatus("تم التنزيل بنجاح! 🎉");
@@ -14562,7 +14591,7 @@ const FlashSpace = () => {
             <div className="flex items-center gap-1.5 px-3 py-1.5 bg-amber-500/10 text-amber-400 border border-amber-500/20 rounded-xl text-xs font-black">
               ⭐ {userData?.points ?? 0}
             </div>
-            {selectedModule === 'الورقة الثانية' && (
+            {(selectedModule === 'الورقة الثانية' || selectedModule === 'Opthalmology' || selectedModule === 'Ophthalmology') && (
               <>
                 <button 
                   onClick={() => setIsDownloadModalOpen(true)}
