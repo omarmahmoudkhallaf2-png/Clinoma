@@ -11163,7 +11163,7 @@ const BBCodeMarkdown = ({ content, components }: { content: string, components: 
   const renderInline = (text: string): React.ReactNode[] => {
     if (!text) return [];
     
-    const regex = /\[(u|color|size|font|highlight)(?:=([^\]]+))?\]([\s\S]*?)\[\/\1\]/g;
+    const regex = /\[(u|color|size|font|highlight|b|i)(?:=([^\]]+))?\]([\s\S]*?)\[\/\1\]/g;
     let parts: React.ReactNode[] = [];
     let lastIndex = 0;
     let match;
@@ -11212,6 +11212,10 @@ const BBCodeMarkdown = ({ content, components }: { content: string, components: 
         parts.push(<span key={key} style={{ fontFamily }}>{parsedInner}</span>);
       } else if (tag === 'highlight') {
         parts.push(<span key={key} style={{ backgroundColor: value }} className="px-1.5 py-0.5 rounded mx-0.5">{parsedInner}</span>);
+      } else if (tag === 'b') {
+        parts.push(<strong key={key} className="font-black text-current">{parsedInner}</strong>);
+      } else if (tag === 'i') {
+        parts.push(<em key={key} className="font-bold italic text-current">{parsedInner}</em>);
       }
       
       lastIndex = regex.lastIndex;
@@ -11235,8 +11239,46 @@ const BBCodeMarkdown = ({ content, components }: { content: string, components: 
     return parts;
   };
 
+  // Pre-process content to normalize bold/italic markdown into BBCode [b] and [i] tags.
+  // This avoids issues where Markdown syntax is split across BBCode tag boundaries.
+  let preparedContent = content || '';
+  
+  // 1. Fix common AI typos in BBCode tags: e.g. [font/] or [/font=Outfit] or [i/]
+  preparedContent = preparedContent
+    .replace(/\[\/(font|color|size|highlight|b|i|u)=[^\]]+\]/gi, '[/$1]')  // [/tag=value] -> [/tag]
+    .replace(/\[(font|color|size|highlight|b|i|u)\/\]/gi, '[/$1]')        // [tag/] -> [/tag]
+    .replace(/\[\/(font|color|size|highlight|b|i|u)\/\]/gi, '[/$1]');      // [/tag/] -> [/tag]
+
+  // Automatically close any unclosed BBCode tags at the end of the string
+  const tagsToClose = ['font', 'color', 'size', 'highlight', 'b', 'i', 'u'];
+  for (const tag of tagsToClose) {
+    const openCount = (preparedContent.match(new RegExp(`\\[${tag}(?:=[^\\]]+)?\\]`, 'gi')) || []).length;
+    const closeCount = (preparedContent.match(new RegExp(`\\[\\/${tag}\\]`, 'gi')) || []).length;
+    if (openCount > closeCount) {
+      preparedContent += `[/${tag}]`.repeat(openCount - closeCount);
+    }
+  }
+  
+  // Convert **bold** (allowing optional spaces inside) to [b]bold[/b]
+  preparedContent = preparedContent.replace(/\*\*\s*([\s\S]*?)\s*\*\*/g, '[b]$1[/b]');
+  
+  // Convert *italic* (allowing optional spaces inside) to [i]italic[/i]
+  preparedContent = preparedContent.replace(/\*\s*([\s\S]*?)\s*\*/g, '[i]$1[/i]');
+
+  // Uncross [b] and BBCode tags: e.g. [b][color=...]text[/b][/color] -> [color=...][b]text[/b][/color]
+  preparedContent = preparedContent.replace(/\[b\]\s*\[(color|highlight|size|font)=([^\]]+)\]([\s\S]*?)\[\/b\]\s*\[\/\1\]/gi, '[$1=$2][b]$3[/b][/$1]');
+  
+  // Uncross BBCode tags and [b]: e.g. [color=...][b]text[/color][/b] -> [color=...][b]text[/b][/color]
+  preparedContent = preparedContent.replace(/\[(color|highlight|size|font)=([^\]]+)\]\s*\[b\]([\s\S]*?)\[\/\1\]\s*\[\/b\]/gi, '[$1=$2][b]$3[/b][/$1]');
+
+  // Uncross [i] and BBCode tags: e.g. [i][color=...]text[/i][/color] -> [color=...][i]text[/i][/color]
+  preparedContent = preparedContent.replace(/\[i\]\s*\[(color|highlight|size|font)=([^\]]+)\]([\s\S]*?)\[\/i\]\s*\[\/\1\]/gi, '[$1=$2][i]$3[/i][/$1]');
+  
+  // Uncross BBCode tags and [i]: e.g. [color=...][i]text[/color][/i] -> [color=...][i]text[/i][/color]
+  preparedContent = preparedContent.replace(/\[(color|highlight|size|font)=([^\]]+)\]\s*\[i\]([\s\S]*?)\[\/\1\]\s*\[\/i\]/gi, '[$1=$2][i]$3[/i][/$1]');
+
   // Parser that handles lines one by one to split list items and paragraphs correctly.
-  const lines = content.split('\n').map(l => l.replace(/\r$/, ''));
+  const lines = preparedContent.split('\n').map(l => l.replace(/\r$/, ''));
   const blocks: any[] = [];
   let currentList: { type: 'ul' | 'ol'; lines: string[] } | null = null;
   
@@ -11281,9 +11323,12 @@ const BBCodeMarkdown = ({ content, components }: { content: string, components: 
         blocks.push({ type: 'empty', content: '' });
       } else if (trimmed === '---') {
         blocks.push({ type: 'hr', content: line });
-      } else if (trimmed.startsWith('|')) {
+      } else if (trimmed.includes('|') && trimmed.split('|').length > 2) {
         let tableLines = [line];
-        while (i + 1 < lines.length && lines[i + 1].trim().startsWith('|')) {
+        while (i + 1 < lines.length) {
+          const nextTrimmed = lines[i + 1].trim();
+          const nextIsTableLine = nextTrimmed.includes('|') && nextTrimmed.split('|').length > 2;
+          if (!nextIsTableLine) break;
           i++;
           tableLines.push(lines[i].replace(/\r$/, ''));
         }
@@ -11369,8 +11414,26 @@ const BBCodeMarkdown = ({ content, components }: { content: string, components: 
 const bbcodeAndMarkdownToHtml = (text: string): string => {
   if (!text) return '';
   
+  let preparedText = text;
+
+  // 1. Fix common AI typos in BBCode tags: e.g. [font/] or [/font=Outfit] or [i/]
+  preparedText = preparedText
+    .replace(/\[\/(font|color|size|highlight|b|i|u)=[^\]]+\]/gi, '[/$1]')  // [/tag=value] -> [/tag]
+    .replace(/\[(font|color|size|highlight|b|i|u)\/\]/gi, '[/$1]')        // [tag/] -> [/tag]
+    .replace(/\[\/(font|color|size|highlight|b|i|u)\/\]/gi, '[/$1]');      // [/tag/] -> [/tag]
+
+  // Automatically close any unclosed BBCode tags at the end of the string
+  const tagsToClose = ['font', 'color', 'size', 'highlight', 'b', 'i', 'u'];
+  for (const tag of tagsToClose) {
+    const openCount = (preparedText.match(new RegExp(`\\[${tag}(?:=[^\\]]+)?\\]`, 'gi')) || []).length;
+    const closeCount = (preparedText.match(new RegExp(`\\[\\/${tag}\\]`, 'gi')) || []).length;
+    if (openCount > closeCount) {
+      preparedText += `[/${tag}]`.repeat(openCount - closeCount);
+    }
+  }
+
   // Escape HTML tags to prevent broken nodes
-  let html = text
+  let html = preparedText
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;');
@@ -11405,11 +11468,25 @@ const bbcodeAndMarkdownToHtml = (text: string): string => {
     return `<span style="font-size: ${size};">${content}</span>`;
   });
   
-  // Bold (**text** or __text__)
-  html = html.replace(/\*\*([\s\S]*?)\*\*/g, '<strong>$1</strong>');
+  // Uncross [b] and BBCode tags: e.g. [b][color=...]text[/b][/color] -> [color=...][b]text[/b][/color]
+  html = html.replace(/\[b\]\s*\[(color|highlight|size|font)=([^\]]+)\]([\s\S]*?)\[\/b\]\s*\[\/\1\]/gi, '[$1=$2][b]$3[/b][/$1]');
   
-  // Italic (*text* or _text_)
-  html = html.replace(/\*([\s\S]*?)\*/g, '<em>$1</em>');
+  // Uncross BBCode tags and [b]: e.g. [color=...][b]text[/color][/b] -> [color=...][b]text[/b][/color]
+  html = html.replace(/\[(color|highlight|size|font)=([^\]]+)\]\s*\[b\]([\s\S]*?)\[\/\1\]\s*\[\/b\]/gi, '[$1=$2][b]$3[/b][/$1]');
+
+  // Uncross [i] and BBCode tags: e.g. [i][color=...]text[/i][/color] -> [color=...][i]text[/i][/color]
+  html = html.replace(/\[i\]\s*\[(color|highlight|size|font)=([^\]]+)\]([\s\S]*?)\[\/i\]\s*\[\/\1\]/gi, '[$1=$2][i]$3[/i][/$1]');
+  
+  // Uncross BBCode tags and [i]: e.g. [color=...][i]text[/color][/i] -> [color=...][i]text[/i][/color]
+  html = html.replace(/\[(color|highlight|size|font)=([^\]]+)\]\s*\[i\]([\s\S]*?)\[\/\1\]\s*\[\/i\]/gi, '[$1=$2][i]$3[/i][/$1]');
+
+  // Bold [b] or ** (allowing optional spaces inside)
+  html = html.replace(/\[b\]\s*([\s\S]*?)\s*\[\/b\]/gi, '<strong>$1</strong>');
+  html = html.replace(/\*\*\s*([\s\S]*?)\s*\*\*/g, '<strong>$1</strong>');
+  
+  // Italic [i] or * (allowing optional spaces inside)
+  html = html.replace(/\[i\]\s*([\s\S]*?)\s*\[\/i\]/gi, '<em>$1</em>');
+  html = html.replace(/\*\s*([\s\S]*?)\s*\*/g, '<em>$1</em>');
   
   // Headings
   html = html.replace(/^### (.*$)/gim, '<h3>$1</h3>');
@@ -17301,9 +17378,9 @@ const FlashSpace = () => {
                         <BBCodeMarkdown
                           content={getPredefinedExplanation(selectedBoard.disease) || getNoteForDisease(selectedBoard.disease) || selectedBoard.explanation}
                           components={{
-                            h1: ({node, ...props}: any) => <h1 className="text-2xl font-black text-current mt-8 mb-4 border-b pb-3 border-slate-200 text-right" {...props} />,
-                            h2: ({node, ...props}: any) => <h2 className="text-xl font-black text-current mt-6 mb-3 border-r-4 border-current pr-3 text-right" {...props} />,
-                            h3: ({node, ...props}: any) => <h3 className="text-lg font-extrabold text-current mt-5 mb-2 text-right" {...props} />,
+                            h1: ({node, ...props}: any) => <h1 className="text-3xl md:text-4xl font-black text-slate-800 mt-10 mb-6 border-b-2 pb-4 border-slate-100 text-right" {...props} />,
+                            h2: ({node, ...props}: any) => <h2 className="text-2xl md:text-3xl font-black text-slate-800 mt-8 mb-4 border-r-4 border-indigo-500 pr-4 text-right" {...props} />,
+                            h3: ({node, ...props}: any) => <h3 className="text-xl md:text-2xl font-bold text-slate-700 mt-6 mb-3 text-right" {...props} />,
                             p: ({node, ...props}: any) => <span className="text-current leading-loose text-base text-right" {...props} />,
                             ul: ({node, ...props}: any) => <ul className="list-disc list-inside mr-4 mb-4 space-y-2 text-current text-right" {...props} />,
                             ol: ({node, ...props}: any) => <ol className="list-decimal list-inside mr-4 mb-4 space-y-2 text-current text-right" {...props} />,
@@ -18408,7 +18485,7 @@ const FlashSpace = () => {
                 ) : (
                   <>
                     <Sparkles className="w-3.5 h-3.5" />
-                    ✨ AI تنسيق
+                    ✨ AI تنسيق (v2)
                   </>
                 )}
               </button>

@@ -2,11 +2,11 @@
 function getGeminiKeys(): string[] {
   const localKeys = localStorage.getItem("admin_gemini_keys");
   if (localKeys) {
-    return localKeys.split(',').map(k => k.trim()).filter(Boolean);
+    return localKeys.split(',').map((k: string) => k.trim()).filter(Boolean);
   }
   const envKeys = import.meta.env.VITE_GEMINI_KEYS;
   if (envKeys) {
-    return envKeys.split(',').map(k => k.trim()).filter(Boolean);
+    return envKeys.split(',').map((k: string) => k.trim()).filter(Boolean);
   }
   return [
     "AIzaSyB0GrBSsl3xbr_eDmSQtWk5v4VOS0p2gFQ",

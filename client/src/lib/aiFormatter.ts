@@ -9,11 +9,11 @@
 function getFormatterKeys(): string[] {
   const localKeys = localStorage.getItem("admin_gemini_keys");
   if (localKeys) {
-    return localKeys.split(',').map(k => k.trim()).filter(Boolean);
+    return localKeys.split(',').map((k: string) => k.trim()).filter(Boolean);
   }
   const envKeys = import.meta.env.VITE_GEMINI_KEYS;
   if (envKeys) {
-    return envKeys.split(',').map(k => k.trim()).filter(Boolean);
+    return envKeys.split(',').map((k: string) => k.trim()).filter(Boolean);
   }
   return [
     "AQ.Ab8RN6KcQCVRi7ciw8HleEC1Roaj6CbM9MzTGeUS01Ps4fJRJQ",
@@ -30,7 +30,8 @@ const FORMATTING_PROMPT = `أنت خبير تنسيق نصوص طبية. مهم�
 
 1. **نظّف النص**: أزل أي رموز غريبة أو أحرف غير مفهومة أو تكرارات غير ضرورية.
 2. **العناوين**: حوّل العناوين الرئيسية لعناوين كبيرة باستخدام \`# عنوان\` للعنوان الرئيسي و \`## عنوان\` للفرعي و \`### عنوان\` للأصغر.
-3. **Bold**: اجعل الكلمات والمصطلحات المهمة **عريضة** باستخدام \`**نص**\`.
+3. **Bold**: اجعل الكلمات والمصطلحات المهمة **عريضة** باستخدام \`[b]نص[/b]\` (لا تستخدم \`**\` للخط العريض). تأكد من تداخل التاغات بشكل سليم دائماً (مثل: \`[color=...][b]نص[/b][/color]\` وليس \`[b][color=...]نص[/b][/color]\`).
+3.1. **Italic**: اجعل الكلمات المائلة باستخدام \`[i]نص[/i]\` (لا تستخدم \`*\` للمائل).
 4. **Highlight بألوان متنوعة**: استخدم ألوان highlight مختلفة ومتناسقة على الكلمات والمصطلحات المهمة. استخدم هذه الألوان بالتناوب:
    - \`[highlight=#FBBF24]كلمة مهمة[/highlight]\` — أصفر ذهبي
    - \`[highlight=#34D399]مصطلح طبي[/highlight]\` — أخضر فاتح
