@@ -1,0 +1,101 @@
+Chapter 1: Eyelid
+ 1. Comprehensive Anatomy & Physiology of the Eyelids
+ 2. Blepharitis (Chronic Inflammation of Eyelid Margin)
+ 3. Acute Suppurative Inflammations of Eyelid Glands (Stye & Hordeolum Internum)
+ 4. Chalazion (Chronic Lipo-granuloma) & Distichiasis
+ 5. Acquired Misdirected Lashes (Trichiasis & Rubbing Lashes)
+ 6. Entropion & Ectropion (Lid Margin Malpositions)
+ 7. Lagophthalmos (Incomplete Lid Closure)
+ 8. Ptosis (Drooping of Upper Eyelid)
+Chapter 2: Lacrimal System
+ 1. Anatomy of the Lacrimal Secretory System & Tear Film
+ 2. Anatomy & Physiology of the Lacrimal Drainage System
+ 3. Watering of the Eye (Lacrimation vs. Epiphora)
+ 4. Clinical Evaluation and Investigations of Epiphora
+ 5. Surgical Management of Epiphora
+ 6. Acute and Chronic Dacryocystitis
+ 7. Dry Eye Syndrome & Lacrimal Gland Diseases
+Chapter 3: Conjunctiva
+ 1. Normal Anatomy & Histology of the Conjunctiva
+ 2. Acute Mucopurulent Conjunctivitis (MPC)
+ 3. Acute Purulent Conjunctivitis (PC / Acute Blenorrhoea)
+ 4. Ophthalmia Neonatorum
+ 5. Inclusion & Adenoviral Conjunctivitis
+ 6. Trachoma (Egyptian Ophthalmia) - Pathogenesis & McCallan's Classification
+ 7. WHO Classification & Corneal Manifestations / Complications of Trachoma
+ 8. Vernal Kerato-Conjunctivitis (VKC / Spring Catarrh)
+ 9. Phlyctenular Kerato-Conjunctivitis & Conjunctival Degenerations
+ 10. Symblepharon
+Chapter 4: Cornea & Sclera
+ 1. Gross Anatomy & Physiology of the Cornea
+ 2. Micro-Anatomy & Histological Layers of the Cornea
+ 3. Classification of Keratitis & Hypopyon Corneal Ulcer (Acute Serpiginous Ulcer)
+ 4. Complications, Sequelae, and Scar Grading of Corneal Ulcers
+ 5. Comprehensive Treatment Protocols for Corneal Ulcers
+ 6. Viral Keratitis: Dendritic Ulcer (Herpes Simplex Virus)
+ 7. Herpes Zoster Ophthalmicus (HZO) & Fungal Corneal Ulcers
+ 8. Primary Non-Infective Ulcers: Neurotrophic & Lagophthalmos Keratitis
+ 9. Keratoconus (Conical Cornea) & Ectatic Ocular Disorders
+ 10. Keratoplasty (Corneal Graft), Keratorefractive Surgery & Diseases of the Sclera
+Chapter 5: Lens
+ 1. Applied Anatomy, Histology, & Physiology of the Crystalline Lens
+ 2. Congenital and Developmental Cataract: Etiology, Morphology, and Complications
+ 3. Acquired Senile Cortical Cataract: Stages and Morphology
+ 4. Senile Nuclear Cataract and Nuclear Sclerosis Differential Diagnosis
+ 5. Lens-Induced Glaucomas and Lens Displacements (Ectopia Lentis)
+ 6. Preoperative Ocular Assessment, Biometry, and Intraocular Lens (IOL) Modalities
+ 7. Modern Cataract Surgical Techniques and Complications
+ 8. Traumatic, Complicated, and After-Cataract (Posterior Capsule Opacification)
+Chapter 6: Orbit
+ 1. Anatomy of the Orbit (Walls, Foramina, Sinuses, and Contents)
+ 2. Orbital Infections: Orbital Cellulitis and Preseptal Cellulitis
+ 3. Thyroid Eye Disease (TED) & Thyrotoxic Exophthalmos (Graves' Disease)
+ 4. Cavernous Sinus Thrombosis (Vascular Orbital Lesion)
+ 5. Proptosis, Enophthalmos, and Atrophia Bulbi
+ 6. Major Operations of the Orbit (Enucleation, Evisceration, and Exenteration)
+Chapter 7: Errors of Refraction (EOR)
+ 1. Physiology of Ocular Refraction & General Investigations
+ 2. Myopia (Short-Sightedness)
+ 3. Hypermetropia (Far-Sightedness)
+ 4. Astigmatism (Non-Spherical Refractive Error)
+ 5. Aphakia, Anisometropia, and Presbyopia
+Chapter 8: Glaucoma
+ 1. Anatomy of the Angle, Aqueous Physiology & Intraocular Pressure
+ 2. Glaucoma Definition & Congenital Glaucoma (Buphthalmos)
+ 3. Primary Open Angle Glaucoma (Chronic Simple Glaucoma)
+ 4. Primary Angle Closure Glaucoma (PACG)
+ 5. Secondary Glaucomas (Systemic, Local, and Phacogenic)
+Chapter 9: Uveitis
+ 1. Anatomy and Physiology of the Uveal Tract
+ 2. Classification & Etiology of Uveitis (Iridocyclitis)
+ 3. Clinical Picture & Signs of Acute Anterior Uveitis (Iridocyclitis)
+4. Complications and Sequelae of Iridocyclitis
+ 5. Management of Iridocyclitis & Sympathetic Ophthalmia
+Chapter 10: Strabismus
+ 1. Physiology of Binocular Vision & Apparent Squint
+ 2. Latent Squint (Heterophoria)
+ 3. Manifest Paralytic Squint (Incomitant Strabismus)
+ 4. Manifest Concomitant Squint (Heterotropia)
+ 5. Examination & Treatment of Concomitant Squint
+Chapter 11: Retina
+ 1. Anatomy of the Retina, Blood Supply, and The Vitreous
+ 2. Diabetic Retinopathy (DR) & Hypertensive Retinopathy
+ 3. Retinopathy of Prematurity (ROP) & Retinal Vein Occlusions
+ 4. Central and Branch Retinal Artery Occlusion (CRAO & BRAO)
+ 5. Retinal Detachment (RD): Rhegmatogenous, Tractional, and Exudative
+ 6. Retinitis Pigmentosa (Primary Pigmentary Retinal Dystrophy)
+Chapter 12: Neuro-ophthalmology
+ 1. Anatomy of the Optic Nerve and Visual Pathway 
+ 2. Pupillary Reflexes and Abnormalities
+ 3. Optic Neuritis (Papillitis and Retrobulbar Neuritis)
+ 4. Papilledema (Choked Disc)
+ 5. Optic Neuritis (Papillitis and Retrobulbar Neuritis)
+Chapter 13: Ocular trauma
+ 1. Chemical Ocular Burns (Acid and Alkali Injuries) 
+ 2. Physical, Thermal, and Radiation Ocular Injuries
+ 3. The Eyelid Injuries: Ecchymosis, Traumatic Ptosis, & Lacerate
+ 4. Blunt Injuries & Fractures of the Orbit: Retrobulbar
+ 5. Blunt Ocular Trauma (Anterior Segment Concussion)
+ 6. Blunt Ocular Trauma (Posterior Segment and Orbit)
+ 7. Penetrating Ocular Injuries and Intraocular Foreign Bodies
+  

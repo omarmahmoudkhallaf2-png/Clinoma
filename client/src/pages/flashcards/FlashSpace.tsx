@@ -12642,8 +12642,10 @@ const FlashSpace = () => {
         margin = 15;
         box_w = 170;
         box_h = 14;
-      } else if (pdfId.startsWith('second_paper')) {
-        if (pdfId.includes('ped')) {
+      } else if (pdfId.startsWith('second_paper') || pdfId.startsWith('ophthalmology')) {
+        if (pdfId.includes('ophthalmology')) {
+          chapterCovers = [4, 13, 21, 32, 43, 52, 59, 65, 71, 77, 83, 90, 96];
+        } else if (pdfId.includes('ped')) {
           chapterCovers = [3, 15, 23, 30];
         } else {
           chapterCovers = [3, 15, 23, 30, 36];
@@ -12669,7 +12671,7 @@ const FlashSpace = () => {
           const height = page.getHeight();
           const width = page.getWidth();
           
-          if (pdfId.startsWith('second_paper')) {
+          if (pdfId.startsWith('second_paper') || pdfId.startsWith('ophthalmology')) {
             const header_y = height - 31;
             
             // Clear previous name text area (x: width - 30 - 2*box_w + 22, width: box_w - 24, height: box_h - 2)
@@ -16440,7 +16442,31 @@ const FlashSpace = () => {
               ) : (
                 // Options View
                 <div className="w-full space-y-4 max-h-[50vh] overflow-y-auto pr-1">
-                  {selectedModule === 'الورقة الثانية' ? (
+                  {selectedModule === 'Opthalmology' || selectedModule === 'Ophthalmology' ? (
+                    <>
+                      {/* Ophthalmology Compressed */}
+                      <button
+                        onClick={() => handleDownloadPDF('ophthalmology_comp', '/tahdedat_ophthalmology_compressed.pdf', 'تحديدات_الرمد_مضغوط.pdf')}
+                        disabled={!(isSpaceSubscribed('Opthalmology') || isSpaceSubscribed('Ophthalmology') || isSpaceSubscribed('الورقة الثانية') || userData?.role === 'admin')}
+                        className={cn(
+                          "group relative w-full p-4 bg-slate-950/50 border rounded-2xl text-left transition-all active:scale-[0.98] duration-300",
+                          (isSpaceSubscribed('Opthalmology') || isSpaceSubscribed('Ophthalmology') || isSpaceSubscribed('الورقة الثانية') || userData?.role === 'admin')
+                            ? "hover:bg-indigo-500/10 border-white/5 hover:border-indigo-500/30 cursor-pointer"
+                            : "opacity-40 border-white/5 cursor-not-allowed"
+                        )}
+                      >
+                        <div className="absolute top-2 right-2 bg-indigo-500/20 text-indigo-400 border border-indigo-500/30 text-[9px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider">
+                          {(isSpaceSubscribed('Opthalmology') || isSpaceSubscribed('Ophthalmology') || isSpaceSubscribed('الورقة الثانية') || userData?.role === 'admin') ? "موصى به (مضغوط)" : "🔒 غير مشترك"}
+                        </div>
+                        <div className="text-white font-black text-base flex items-center gap-2 mb-1">
+                          <span>تحديدات الرمد الشاملة - مضغوط</span>
+                        </div>
+                        <div className="text-xs text-slate-400 font-bold leading-relaxed">
+                          نسخة مضغوطة فائقة الجودة تشمل جميع شباتر ولوحات الرمد (18.0 MB).
+                        </div>
+                      </button>
+                    </>
+                  ) : selectedModule === 'الورقة الثانية' ? (
                     <>
                       {/* 1. Full PDF Compressed */}
                       <button
@@ -18436,7 +18462,31 @@ const FlashSpace = () => {
             ) : (
               // Options View
               <div className="w-full space-y-4 max-h-[50vh] overflow-y-auto pr-1">
-                {selectedModule === 'الورقة الثانية' ? (
+                {selectedModule === 'Opthalmology' || selectedModule === 'Ophthalmology' ? (
+                  <>
+                    {/* Ophthalmology Compressed */}
+                    <button
+                      onClick={() => handleDownloadPDF('ophthalmology_comp', '/tahdedat_ophthalmology_compressed.pdf', 'تحديدات_الرمد_مضغوط.pdf')}
+                      disabled={!(isSpaceSubscribed('Opthalmology') || isSpaceSubscribed('Ophthalmology') || isSpaceSubscribed('الورقة الثانية') || userData?.role === 'admin')}
+                      className={cn(
+                        "group relative w-full p-4 bg-slate-950/50 border rounded-2xl text-left transition-all active:scale-[0.98] duration-300",
+                        (isSpaceSubscribed('Opthalmology') || isSpaceSubscribed('Ophthalmology') || isSpaceSubscribed('الورقة الثانية') || userData?.role === 'admin')
+                          ? "hover:bg-indigo-500/10 border-white/5 hover:border-indigo-500/30 cursor-pointer"
+                          : "opacity-40 border-white/5 cursor-not-allowed"
+                      )}
+                    >
+                      <div className="absolute top-2 right-2 bg-indigo-500/20 text-indigo-400 border border-indigo-500/30 text-[9px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider">
+                        {(isSpaceSubscribed('Opthalmology') || isSpaceSubscribed('Ophthalmology') || isSpaceSubscribed('الورقة الثانية') || userData?.role === 'admin') ? "موصى به (مضغوط)" : "🔒 غير مشترك"}
+                      </div>
+                      <div className="text-white font-black text-base flex items-center gap-2 mb-1">
+                        <span>تحديدات الرمد الشاملة - مضغوط</span>
+                      </div>
+                      <div className="text-xs text-slate-400 font-bold leading-relaxed">
+                        نسخة مضغوطة فائقة الجودة تشمل جميع شباتر ولوحات الرمد (18.0 MB).
+                      </div>
+                    </button>
+                  </>
+                ) : selectedModule === 'الورقة الثانية' ? (
                   <>
                     {/* 1. Full PDF Compressed */}
                     <button
