@@ -11163,41 +11163,122 @@ const BBCodeMarkdown = ({ content, components }: { content: string, components: 
   const renderInline = (text: string): React.ReactNode[] => {
     if (!text) return [];
     
-    const regex = /\[(u|color|size|font|highlight|b|i)(?:=([^\]]+))?\]([\s\S]*?)\[\/\1\]/g;
-    let parts: React.ReactNode[] = [];
+    // Normalization of tags
+    let preparedText = text
+      .replace(/\[\/(font|color|size|highlight|b|i|u)=[^\]]+\]/gi, '[/$1]')  // [/tag=value] -> [/tag]
+      .replace(/\[(font|color|size|highlight|b|i|u)\/\]/gi, '[/$1]')        // [tag/] -> [/tag]
+      .replace(/\[\/(font|color|size|highlight|b|i|u)\/\]/gi, '[/$1]');      // [/tag/] -> [/tag]
+
+    // Tokenize BBCode tags
+    const tagRegex = /\[(\/?)(font|color|size|highlight|b|i|u)(?:=([^\]]+))?\]/gi;
+    interface Token {
+      type: 'text' | 'open' | 'close';
+      tag?: string;
+      value?: string;
+      text?: string;
+    }
+    const tokens: Token[] = [];
     let lastIndex = 0;
     let match;
     
-    while ((match = regex.exec(text)) !== null) {
-      const plainText = text.substring(lastIndex, match.index);
+    while ((match = tagRegex.exec(preparedText)) !== null) {
+      const plainText = preparedText.substring(lastIndex, match.index);
       if (plainText) {
-        parts.push(
+        tokens.push({ type: 'text', text: plainText });
+      }
+      
+      const isClose = match[1] === '/';
+      const tag = match[2].toLowerCase();
+      const value = match[3] || '';
+      
+      if (isClose) {
+        tokens.push({ type: 'close', tag });
+      } else {
+        tokens.push({ type: 'open', tag, value });
+      }
+      
+      lastIndex = tagRegex.lastIndex;
+    }
+    
+    const tail = preparedText.substring(lastIndex);
+    if (tail) {
+      tokens.push({ type: 'text', text: tail });
+    }
+
+    // Stack-based AST parsing
+    interface ASTNode {
+      type: 'text' | 'tag';
+      tag?: string;
+      value?: string;
+      text?: string;
+      children: ASTNode[];
+    }
+    const root: ASTNode = { type: 'tag', children: [] };
+    const stack: ASTNode[] = [root];
+    
+    for (const token of tokens) {
+      if (token.type === 'text') {
+        const parent = stack[stack.length - 1];
+        parent.children.push({ type: 'text', text: token.text, children: [] });
+      } else if (token.type === 'open') {
+        const newNode: ASTNode = {
+          type: 'tag',
+          tag: token.tag,
+          value: token.value,
+          children: []
+        };
+        const parent = stack[stack.length - 1];
+        parent.children.push(newNode);
+        stack.push(newNode);
+      } else if (token.type === 'close') {
+        let matchIndex = -1;
+        for (let i = stack.length - 1; i >= 1; i--) {
+          if (stack[i].tag === token.tag) {
+            matchIndex = i;
+            break;
+          }
+        }
+        
+        if (matchIndex !== -1) {
+          while (stack.length > matchIndex) {
+            stack.pop();
+          }
+        } else {
+          // Unmatched close tag, treat as text
+          const parent = stack[stack.length - 1];
+          parent.children.push({ type: 'text', text: `[/${token.tag}]`, children: [] });
+        }
+      }
+    }
+
+    // Render AST to React nodes
+    const renderNode = (node: ASTNode, index: number): React.ReactNode => {
+      const key = `${node.tag || 'text'}-${index}`;
+      if (node.type === 'text') {
+        return (
           <ReactMarkdown 
-            key={`plain-${lastIndex}`} 
+            key={key} 
             components={components}
             disallowedElements={['p']}
             unwrapDisallowed={true}
             remarkPlugins={[remarkGfm]}
           >
-            {plainText}
+            {node.text || ''}
           </ReactMarkdown>
         );
       }
       
-      const tag = match[1];
-      const value = match[2] || '';
-      const innerContent = match[3] || '';
-      const key = `bb-${match.index}`;
-      
-      const parsedInner = renderInline(innerContent);
+      const parsedChildren = node.children.map((child, idx) => renderNode(child, idx));
+      const tag = node.tag;
+      const value = node.value || '';
       
       if (tag === 'u') {
-        parts.push(<span key={key} style={{ textDecoration: 'underline' }}>{parsedInner}</span>);
+        return <span key={key} style={{ textDecoration: 'underline' }}>{parsedChildren}</span>;
       } else if (tag === 'color') {
-        parts.push(<span key={key} style={{ color: value }}>{parsedInner}</span>);
+        return <span key={key} style={{ color: value }}>{parsedChildren}</span>;
       } else if (tag === 'size') {
         const sizeVal = /^\d+$/.test(value) ? `${value}px` : value;
-        parts.push(<span key={key} style={{ fontSize: sizeVal }}>{parsedInner}</span>);
+        return <span key={key} style={{ fontSize: sizeVal }}>{parsedChildren}</span>;
       } else if (tag === 'font') {
         let fontFamily = value;
         if (value.toLowerCase() === 'cartoon' || value.toLowerCase() === 'fredoka') {
@@ -11209,34 +11290,19 @@ const BBCodeMarkdown = ({ content, components }: { content: string, components: 
         } else if (value.toLowerCase() === 'outfit') {
           fontFamily = "'Outfit', sans-serif";
         }
-        parts.push(<span key={key} style={{ fontFamily }}>{parsedInner}</span>);
+        return <span key={key} style={{ fontFamily }}>{parsedChildren}</span>;
       } else if (tag === 'highlight') {
-        parts.push(<span key={key} style={{ backgroundColor: value }} className="px-1.5 py-0.5 rounded mx-0.5">{parsedInner}</span>);
+        return <span key={key} style={{ backgroundColor: value }} className="px-1.5 py-0.5 rounded mx-0.5">{parsedChildren}</span>;
       } else if (tag === 'b') {
-        parts.push(<strong key={key} className="font-black text-current">{parsedInner}</strong>);
+        return <strong key={key} className="font-black text-current">{parsedChildren}</strong>;
       } else if (tag === 'i') {
-        parts.push(<em key={key} className="font-bold italic text-current">{parsedInner}</em>);
+        return <em key={key} className="font-bold italic text-current">{parsedChildren}</em>;
       }
       
-      lastIndex = regex.lastIndex;
-    }
-    
-    const tail = text.substring(lastIndex);
-    if (tail) {
-      parts.push(
-        <ReactMarkdown 
-          key={`plain-tail-${lastIndex}`} 
-          components={components}
-          disallowedElements={['p']}
-          unwrapDisallowed={true}
-          remarkPlugins={[remarkGfm]}
-        >
-          {tail}
-        </ReactMarkdown>
-      );
-    }
-    
-    return parts;
+      return <React.Fragment key={key}>{parsedChildren}</React.Fragment>;
+    };
+
+    return root.children.map((child, idx) => renderNode(child, idx));
   };
 
   // Pre-process content to normalize bold/italic markdown into BBCode [b] and [i] tags.
@@ -11310,9 +11376,13 @@ const BBCodeMarkdown = ({ content, components }: { content: string, components: 
     const line = lines[i];
     const trimmed = line.trim();
     
-    // Check list type
-    const isUl = trimmed.startsWith('*') || (trimmed.startsWith('-') && trimmed !== '---');
-    const isOl = /^\d+\./.test(trimmed);
+    // Check clean line content (ignoring leading BBCode tags) for indicators
+    const cleanForIndicators = trimmed.replace(/^(?:\[(?:font|color|size|highlight|b|i|u)(?:=[^\]]+)?\]\s*)+/i, '');
+    
+    const isUl = cleanForIndicators.startsWith('*') || (cleanForIndicators.startsWith('-') && cleanForIndicators !== '---');
+    const isOl = /^\d+\./.test(cleanForIndicators);
+    const isHeading = cleanForIndicators.startsWith('#');
+    const isHr = cleanForIndicators === '---';
     
     // Check table type
     const pipeCount = (trimmed.match(/\|/g) || []).length;
@@ -11353,21 +11423,31 @@ const BBCodeMarkdown = ({ content, components }: { content: string, components: 
       
       if (trimmed === '') {
         blocks.push({ type: 'empty', content: '' });
-      } else if (trimmed === '---') {
+      } else if (isHr) {
         blocks.push({ type: 'hr', content: line });
-      } else if (trimmed.startsWith('#') || trimmed.includes('##') || trimmed.includes('###')) {
-        blocks.push({ type: 'heading', content: line });
+      } else if (isHeading) {
+        const headingMatch = cleanForIndicators.match(/^(#{1,6})\s+/);
+        const level = headingMatch ? headingMatch[1].length : 2;
+        // Strip the heading prefix (like ## ) from the original line content
+        const content = line.replace(/#{1,6}\s+/, '');
+        blocks.push({ type: 'heading', level, content });
       } else {
         let paraLines = [line];
         while (i + 1 < lines.length) {
-          const nextTrimmed = lines[i + 1].trim();
-          const nextIsUl = nextTrimmed.startsWith('*') || (nextTrimmed.startsWith('-') && nextTrimmed !== '---');
-          const nextIsOl = /^\d+\./.test(nextTrimmed);
+          const nextLineVal = lines[i + 1];
+          const nextTrimmed = nextLineVal.trim();
+          
+          const nextCleanForIndicators = nextTrimmed.replace(/^(?:\[(?:font|color|size|highlight|b|i|u)(?:=[^\]]+)?\]\s*)+/i, '');
+          const nextIsUl = nextCleanForIndicators.startsWith('*') || (nextCleanForIndicators.startsWith('-') && nextCleanForIndicators !== '---');
+          const nextIsOl = /^\d+\./.test(nextCleanForIndicators);
+          const nextIsHeading = nextCleanForIndicators.startsWith('#');
+          const nextIsHr = nextCleanForIndicators === '---';
+          
           const nextPipeCount = (nextTrimmed.match(/\|/g) || []).length;
           const nextNextLineVal = lines[i + 2] ? lines[i + 2].trim() : '';
           const nextIsTableLine = nextPipeCount >= 1 && isSeparatorLine(nextNextLineVal);
           
-          if (nextTrimmed === '' || nextTrimmed === '---' || nextTrimmed.startsWith('#') || nextTrimmed.includes('##') || nextTrimmed.includes('###') || nextIsUl || nextIsOl || nextIsTableLine) {
+          if (nextTrimmed === '' || nextIsHr || nextIsHeading || nextIsUl || nextIsOl || nextIsTableLine) {
             break;
           }
           i++;
@@ -11380,7 +11460,7 @@ const BBCodeMarkdown = ({ content, components }: { content: string, components: 
   flushList();
 
   return (
-    <div className="space-y-4 prose-notes">
+    <div className="space-y-4 prose-notes text-right" dir="rtl">
       {blocks.map((block, idx) => {
         if (block.type === 'empty') {
           return <div key={idx} className="h-2" />;
@@ -11388,17 +11468,34 @@ const BBCodeMarkdown = ({ content, components }: { content: string, components: 
         
         if (block.type === 'hr') {
           return (
-            <div key={idx} className="text-right">
-              {renderInline('---')}
+            <div key={idx} className="text-right py-4">
+              <hr className="border-slate-200" />
             </div>
           );
         }
         
         if (block.type === 'heading') {
+          const HeadingTag = block.level === 1 ? components.h1 : block.level === 2 ? components.h2 : components.h3;
+          const Tag = block.level === 1 ? 'h1' : block.level === 2 ? 'h2' : 'h3';
+          
+          if (HeadingTag) {
+            return (
+              <HeadingTag key={idx}>
+                {renderInline(block.content)}
+              </HeadingTag>
+            );
+          }
+          
+          const defaultHeadingClasses = block.level === 1
+            ? "text-3xl md:text-4xl font-black text-slate-900 mt-10 mb-6 border-b-2 pb-4 border-slate-100 text-right block"
+            : block.level === 2
+            ? "text-2xl md:text-3xl font-black text-indigo-600 mt-8 mb-4 border-r-4 border-indigo-500 pr-4 text-right block"
+            : "text-xl md:text-2xl font-bold text-slate-700 mt-6 mb-3 text-right block";
+            
           return (
-            <div key={idx} className="text-right">
+            <Tag key={idx} className={defaultHeadingClasses}>
               {renderInline(block.content)}
-            </div>
+            </Tag>
           );
         }
 
@@ -11468,13 +11565,14 @@ const BBCodeMarkdown = ({ content, components }: { content: string, components: 
         if (block.type === 'ul' || block.type === 'ol') {
           const ListTag = block.type;
           const listClass = block.type === 'ol'
-            ? "list-decimal list-inside mr-4 mb-4 space-y-3 text-current text-right"
-            : "list-disc list-inside mr-4 mb-4 space-y-3 text-current text-right";
+            ? "list-decimal list-inside mr-4 mb-4 space-y-3 text-current text-right block"
+            : "list-disc list-inside mr-4 mb-4 space-y-3 text-current text-right block";
             
           return (
             <ListTag key={idx} className={listClass}>
               {block.lines.map((line: string, lIdx: number) => {
                 const lineTrimmed = line.trim();
+                // Strip list item prefix (like * or - or 1.) from original line
                 const lineContent = lineTrimmed.replace(/^([\*\-]|^\d+\.)\s*/, '');
                 // Detect indentation level (e.g. nested sub-lists)
                 const indentLevel = line.match(/^\s*/)?.[0].length || 0;
@@ -11491,7 +11589,7 @@ const BBCodeMarkdown = ({ content, components }: { content: string, components: 
         }
         
         return (
-          <div key={idx} className="mb-4 text-black leading-loose text-base text-right">
+          <div key={idx} className="mb-4 text-black leading-loose text-base text-right block">
             {renderInline(block.content)}
           </div>
         );
@@ -11511,70 +11609,142 @@ const bbcodeAndMarkdownToHtml = (text: string): string => {
     .replace(/\[(font|color|size|highlight|b|i|u)\/\]/gi, '[/$1]')        // [tag/] -> [/tag]
     .replace(/\[\/(font|color|size|highlight|b|i|u)\/\]/gi, '[/$1]');      // [/tag/] -> [/tag]
 
-  // Automatically close any unclosed BBCode tags at the end of the string
-  const tagsToClose = ['font', 'color', 'size', 'highlight', 'b', 'i', 'u'];
-  for (const tag of tagsToClose) {
-    const openCount = (preparedText.match(new RegExp(`\\[${tag}(?:=[^\\]]+)?\\]`, 'gi')) || []).length;
-    const closeCount = (preparedText.match(new RegExp(`\\[\\/${tag}\\]`, 'gi')) || []).length;
-    if (openCount > closeCount) {
-      preparedText += `[/${tag}]`.repeat(openCount - closeCount);
+  // Tokenize BBCode tags
+  const tagRegex = /\[(\/?)(font|color|size|highlight|b|i|u)(?:=([^\]]+))?\]/gi;
+  interface Token {
+    type: 'text' | 'open' | 'close';
+    tag?: string;
+    value?: string;
+    text?: string;
+  }
+  const tokens: Token[] = [];
+  let lastIndex = 0;
+  let match;
+  
+  while ((match = tagRegex.exec(preparedText)) !== null) {
+    const plainText = preparedText.substring(lastIndex, match.index);
+    if (plainText) {
+      tokens.push({ type: 'text', text: plainText });
+    }
+    
+    const isClose = match[1] === '/';
+    const tag = match[2].toLowerCase();
+    const value = match[3] || '';
+    
+    if (isClose) {
+      tokens.push({ type: 'close', tag });
+    } else {
+      tokens.push({ type: 'open', tag, value });
+    }
+    
+    lastIndex = tagRegex.lastIndex;
+  }
+  
+  const tail = preparedText.substring(lastIndex);
+  if (tail) {
+    tokens.push({ type: 'text', text: tail });
+  }
+
+  // Stack-based AST parsing
+  interface ASTNode {
+    type: 'text' | 'tag';
+    tag?: string;
+    value?: string;
+    text?: string;
+    children: ASTNode[];
+  }
+  const root: ASTNode = { type: 'tag', children: [] };
+  const stack: ASTNode[] = [root];
+  
+  for (const token of tokens) {
+    if (token.type === 'text') {
+      const parent = stack[stack.length - 1];
+      parent.children.push({ type: 'text', text: token.text, children: [] });
+    } else if (token.type === 'open') {
+      const newNode: ASTNode = {
+        type: 'tag',
+        tag: token.tag,
+        value: token.value,
+        children: []
+      };
+      const parent = stack[stack.length - 1];
+      parent.children.push(newNode);
+      stack.push(newNode);
+    } else if (token.type === 'close') {
+      let matchIndex = -1;
+      for (let i = stack.length - 1; i >= 1; i--) {
+        if (stack[i].tag === token.tag) {
+          matchIndex = i;
+          break;
+        }
+      }
+      
+      if (matchIndex !== -1) {
+        while (stack.length > matchIndex) {
+          stack.pop();
+        }
+      } else {
+        const parent = stack[stack.length - 1];
+        parent.children.push({ type: 'text', text: `[/${token.tag}]`, children: [] });
+      }
     }
   }
 
-  // Escape HTML tags to prevent broken nodes
-  let html = preparedText
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;');
-    
-  // Underline
-  html = html.replace(/\[u\]([\s\S]*?)\[\/u\]/gi, '<span style="text-decoration: underline;">$1</span>');
-  
-  // Font
-  html = html.replace(/\[font=([^\]]+)\]([\s\S]*?)\[\/font\]/gi, (match, fontName, content) => {
-    let family = fontName;
-    if (fontName.toLowerCase() === 'cartoon' || fontName.toLowerCase() === 'fredoka') {
-      family = "'Fredoka', sans-serif";
-    } else if (fontName.toLowerCase() === 'lalezar') {
-      family = "'Lalezar', cursive";
-    } else if (fontName.toLowerCase() === 'cairo') {
-      family = "'Cairo', sans-serif";
-    } else if (fontName.toLowerCase() === 'outfit') {
-      family = "'Outfit', sans-serif";
+  // Escape HTML helper
+  const escapeHtml = (str: string): string => {
+    return str
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+  };
+
+  // Convert AST to HTML string
+  const nodeToHtml = (node: ASTNode): string => {
+    if (node.type === 'text') {
+      return escapeHtml(node.text || '');
     }
-    return `<span style="font-family: ${family};">${content}</span>`;
-  });
-  
-  // Color
-  html = html.replace(/\[color=([^\]]+)\]([\s\S]*?)\[\/color\]/gi, '<span style="color: $1;">$2</span>');
-  
-  // Highlight
-  html = html.replace(/\[highlight=([^\]]+)\]([\s\S]*?)\[\/highlight\]/gi, '<span style="background-color: $1;" class="px-1.5 py-0.5 rounded mx-0.5">$2</span>');
-  
-  // Size
-  html = html.replace(/\[size=([^\]]+)\]([\s\S]*?)\[\/size\]/gi, (match, sizeVal, content) => {
-    const size = /^\d+$/.test(sizeVal) ? `${sizeVal}px` : sizeVal;
-    return `<span style="font-size: ${size};">${content}</span>`;
-  });
-  
-  // Uncross [b] and BBCode tags: e.g. [b][color=...]text[/b][/color] -> [color=...][b]text[/b][/color]
-  html = html.replace(/\[b\]\s*\[(color|highlight|size|font)=([^\]]+)\]([\s\S]*?)\[\/b\]\s*\[\/\1\]/gi, '[$1=$2][b]$3[/b][/$1]');
-  
-  // Uncross BBCode tags and [b]: e.g. [color=...][b]text[/color][/b] -> [color=...][b]text[/b][/color]
-  html = html.replace(/\[(color|highlight|size|font)=([^\]]+)\]\s*\[b\]([\s\S]*?)\[\/\1\]\s*\[\/b\]/gi, '[$1=$2][b]$3[/b][/$1]');
+    
+    const childrenHtml = node.children.map(child => nodeToHtml(child)).join('');
+    const tag = node.tag;
+    const value = node.value || '';
+    
+    if (tag === 'u') {
+      return `<span style="text-decoration: underline;">${childrenHtml}</span>`;
+    } else if (tag === 'color') {
+      return `<span style="color: ${value};">${childrenHtml}</span>`;
+    } else if (tag === 'size') {
+      const size = /^\d+$/.test(value) ? `${value}px` : value;
+      return `<span style="font-size: ${size};">${childrenHtml}</span>`;
+    } else if (tag === 'font') {
+      let family = value;
+      if (value.toLowerCase() === 'cartoon' || value.toLowerCase() === 'fredoka') {
+        family = "'Fredoka', sans-serif";
+      } else if (value.toLowerCase() === 'lalezar') {
+        family = "'Lalezar', cursive";
+      } else if (value.toLowerCase() === 'cairo') {
+        family = "'Cairo', sans-serif";
+      } else if (value.toLowerCase() === 'outfit') {
+        family = "'Outfit', sans-serif";
+      }
+      return `<span style="font-family: ${family};">${childrenHtml}</span>`;
+    } else if (tag === 'highlight') {
+      return `<span style="background-color: ${value};" class="px-1.5 py-0.5 rounded mx-0.5">${childrenHtml}</span>`;
+    } else if (tag === 'b') {
+      return `<strong>${childrenHtml}</strong>`;
+    } else if (tag === 'i') {
+      return `<em>${childrenHtml}</em>`;
+    }
+    
+    return childrenHtml;
+  };
 
-  // Uncross [i] and BBCode tags: e.g. [i][color=...]text[/i][/color] -> [color=...][i]text[/i][/color]
-  html = html.replace(/\[i\]\s*\[(color|highlight|size|font)=([^\]]+)\]([\s\S]*?)\[\/i\]\s*\[\/\1\]/gi, '[$1=$2][i]$3[/i][/$1]');
-  
-  // Uncross BBCode tags and [i]: e.g. [color=...][i]text[/color][/i] -> [color=...][i]text[/i][/color]
-  html = html.replace(/\[(color|highlight|size|font)=([^\]]+)\]\s*\[i\]([\s\S]*?)\[\/\1\]\s*\[\/i\]/gi, '[$1=$2][i]$3[/i][/$1]');
+  let html = root.children.map(child => nodeToHtml(child)).join('');
 
-  // Bold [b] or ** (allowing optional spaces inside)
-  html = html.replace(/\[b\]\s*([\s\S]*?)\s*\[\/b\]/gi, '<strong>$1</strong>');
+  // Markdown replacements on compiled HTML
+  // Bold ** (allowing optional spaces inside)
   html = html.replace(/\*\*\s*([\s\S]*?)\s*\*\*/g, '<strong>$1</strong>');
   
-  // Italic [i] or * (allowing optional spaces inside)
-  html = html.replace(/\[i\]\s*([\s\S]*?)\s*\[\/i\]/gi, '<em>$1</em>');
+  // Italic * (allowing optional spaces inside)
   html = html.replace(/\*\s*([\s\S]*?)\s*\*/g, '<em>$1</em>');
   
   // Headings
@@ -11686,7 +11856,6 @@ const bbcodeAndMarkdownToHtml = (text: string): string => {
   }
   html = parsedLines.join('\n');
 
-  
   // Bullet points
   const lines = html.split('\n');
   let inList = false;
@@ -17479,7 +17648,7 @@ const FlashSpace = () => {
                 {/* Tab Content */}
                 <div className="flex-1 overflow-y-auto">
                   {activeNoteTab === 'notes' ? (
-                    <div className="max-w-3xl mx-auto px-6 md:px-10 py-8 pb-20 text-slate-800" dir="rtl">
+                    <div className="max-w-3xl mx-auto px-6 md:px-10 py-8 pb-20 text-slate-800 text-right" dir="rtl">
                       {(getPredefinedExplanation(selectedBoard.disease) || getNoteForDisease(selectedBoard.disease) || selectedBoard.explanation) ? (
                         <BBCodeMarkdown
                           content={getPredefinedExplanation(selectedBoard.disease) || getNoteForDisease(selectedBoard.disease) || selectedBoard.explanation}
