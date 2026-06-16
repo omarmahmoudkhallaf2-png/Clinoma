@@ -14909,43 +14909,95 @@ const FlashSpace = () => {
                       )}
                     </div>
                   ) : (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
-                      {[...(systems[selectedModule] || [])].sort((a, b) => {
-                        // If selectedModule is Ophthalmology, use the specific ordering index
-                        if (selectedModule === 'Opthalmology' || selectedModule === 'Ophthalmology') {
-                          const order = [
-                            'Eyelid',
-                            'Lacrimal System',
-                            'Conjunctiva',
-                            'Cornea & Sclera',
-                            'Lens',
-                            'Orbit',
-                            'Errors of Refraction',
-                            'Glaucoma',
-                            'Uveitis',
-                            'Strabismus',
-                            'Retina',
-                            'Neuro-ophthalmology',
-                            'Ocular Trauma'
-                          ];
-                          const idxA = order.indexOf(a);
-                          const idxB = order.indexOf(b);
-                          if (idxA !== -1 && idxB !== -1) return idxA - idxB;
-                          if (idxA !== -1) return -1;
-                          if (idxB !== -1) return 1;
-                        }
+                    <div className="flex flex-col gap-6 w-full text-right" dir="rtl">
+                      {(selectedModule === 'Opthalmology' || selectedModule === 'Ophthalmology') && (
+                        <button 
+                          onClick={() => {
+                            if (isSpaceSubscribed('Opthalmology') || isSpaceSubscribed('Ophthalmology') || userData?.role === 'admin') {
+                              navigate('/flashcards/ophthalmology-interactive');
+                            } else {
+                              setShowSubscriptionModal(true);
+                            }
+                          }}
+                          className="group relative w-full bg-gradient-to-r from-indigo-950 via-[#1b153b] to-slate-900 border border-indigo-500/30 hover:border-indigo-400/60 rounded-3xl p-6 text-right transition-all duration-500 active:scale-[0.99] hover:scale-[1.01] overflow-hidden flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 shadow-[0_4px_30px_rgba(0,0,0,0.4)] hover:shadow-[0_0_35px_rgba(168,85,247,0.25)] cursor-pointer"
+                        >
+                          {/* Purple Animated Glow Background */}
+                          <div className="absolute -right-20 -top-20 w-60 h-60 bg-gradient-to-br from-indigo-500/15 to-purple-500/5 rounded-full blur-3xl -z-10 group-hover:scale-150 group-hover:from-indigo-400/25 transition-all duration-700 ease-out" />
+                          
+                          <div className="flex items-center gap-4 z-10 text-right">
+                            <div className="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 shadow-[0_0_20px_rgba(168,85,247,0.15)] group-hover:shadow-[0_0_25px_rgba(168,85,247,0.35)] transition-all duration-500 bg-gradient-to-br from-indigo-500/20 to-purple-650/10 border border-indigo-500/40 group-hover:border-indigo-400 text-indigo-300 animate-pulse">
+                              <Eye className="w-7 h-7 filter drop-shadow-[0_0_5px_rgba(168,85,247,0.5)]" />
+                            </div>
+                            <div className="text-right">
+                              <div className="flex items-center gap-2 flex-wrap justify-start">
+                                <h3 className="font-black text-xl md:text-2xl text-transparent bg-clip-text bg-gradient-to-r from-indigo-100 via-purple-200 to-indigo-100 group-hover:from-white group-hover:to-indigo-200 transition-all duration-500">
+                                  فلاش كارد الرمد 👁️✨
+                                </h3>
+                                {!(isSpaceSubscribed('Opthalmology') || isSpaceSubscribed('Ophthalmology') || userData?.role === 'admin') && (
+                                  <span className="bg-amber-500/20 text-amber-400 border border-amber-500/30 px-2.5 py-1 rounded-full flex items-center gap-1 backdrop-blur-sm text-xs font-bold">
+                                    <Lock className="w-3 h-3" />
+                                    <span>Premium</span>
+                                  </span>
+                                )}
+                              </div>
+                              <p className="text-indigo-300/60 group-hover:text-indigo-200/80 text-xs font-semibold tracking-wide transition-colors duration-500 mt-1">
+                                مراجعة تفاعلية شاملة لجميع فصول وأسئلة الرمد من ملف الـ ZIP مباشرة
+                              </p>
+                            </div>
+                          </div>
 
-                        const getPriority = (x: string) => {
-                          if (x === '╪¬╪¡╪»┘è╪»╪º╪¬ ╪º┘ä╪º╪╖┘ü╪º┘ä') return 1;
-                          if (x === '┘à╪╣╪│┘â╪▒ ╪º┘ä┘ê╪▒┘é╪⌐ ╪º┘ä╪ú┘ê┘ä┘ë') return 2;
-                          if (x === 'Growth & development') return 3;
-                          return 100;
-                        };
-                        const pA = getPriority(a);
-                        const pB = getPriority(b);
-                        if (pA !== pB) return pA - pB;
-                        return a.localeCompare(b);
-                      }).map(sys => renderSystemCard(sys))}
+                          <div className="flex items-center justify-end gap-3 z-10 shrink-0">
+                            {(isSpaceSubscribed('Opthalmology') || isSpaceSubscribed('Ophthalmology') || userData?.role === 'admin') ? (
+                              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-indigo-500/10 text-indigo-300 group-hover:bg-indigo-500/20 group-hover:text-white transition-all duration-500 border border-indigo-500/20">
+                                <ChevronLeft className="w-5 h-5 rotate-180" />
+                              </div>
+                            ) : (
+                              <span className="text-xs font-black px-4 py-2 bg-indigo-500/20 hover:bg-indigo-500/30 border border-indigo-500/30 rounded-xl text-indigo-300 transition-colors">
+                                اشترك الآن للدخول
+                              </span>
+                            )}
+                          </div>
+                        </button>
+                      )}
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
+                        {[...(systems[selectedModule] || [])].sort((a, b) => {
+                          // If selectedModule is Ophthalmology, use the specific ordering index
+                          if (selectedModule === 'Opthalmology' || selectedModule === 'Ophthalmology') {
+                            const order = [
+                              'Eyelid',
+                              'Lacrimal System',
+                              'Conjunctiva',
+                              'Cornea & Sclera',
+                              'Lens',
+                              'Orbit',
+                              'Errors of Refraction',
+                              'Glaucoma',
+                              'Uveitis',
+                              'Strabismus',
+                              'Retina',
+                              'Neuro-ophthalmology',
+                              'Ocular Trauma'
+                            ];
+                            const idxA = order.indexOf(a);
+                            const idxB = order.indexOf(b);
+                            if (idxA !== -1 && idxB !== -1) return idxA - idxB;
+                            if (idxA !== -1) return -1;
+                            if (idxB !== -1) return 1;
+                          }
+
+                          const getPriority = (x: string) => {
+                            if (x === 'تحديدات الأطفال') return 1;
+                            if (x === 'معسكر الورقة الأولى') return 2;
+                            if (x === 'Growth & development') return 3;
+                            return 100;
+                          };
+                          const pA = getPriority(a);
+                          const pB = getPriority(b);
+                          if (pA !== pB) return pA - pB;
+                          return a.localeCompare(b);
+                        }).map(sys => renderSystemCard(sys))}
+                      </div>
                     </div>
                   )
                 )}
