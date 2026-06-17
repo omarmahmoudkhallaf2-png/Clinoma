@@ -5,7 +5,7 @@ import {
   Plus, Search, Loader2, 
   BarChart3, HelpCircle, Users, Settings, 
   Database, FileText, Zap, ChevronRight, ChevronLeft, 
-  Download, Activity, Terminal, Edit2, Trash2, X, Shield, Brain, Trophy, ClipboardList, Sparkles, Layout, Video
+  Download, Activity, Terminal, Edit2, Trash2, X, Shield, Brain, Trophy, ClipboardList, Sparkles, Layout, Video, CreditCard
 } from 'lucide-react';
 import ExamResultsDashboard from '../ExamResultsDashboard';
 import { db } from '../../lib/firebase';
@@ -29,6 +29,7 @@ import DataThemeManager from '../../components/admin/DataThemeManager';
 import VideoManager from '../../components/admin/VideoManager';
 import Leaderboard from '../../components/admin/Leaderboard';
 import ClinomaExpectationsManager from '../../components/admin/ClinomaExpectationsManager';
+import SubscribersManager from '../../components/admin/SubscribersManager';
 
 
 import { runSystemAudit } from '../../lib/systemHealer';
@@ -40,10 +41,10 @@ import type { Question } from '../../types/quiz';
 export default function AdminDashboard() {
   const { user, userRole } = useAuth();
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState<'analytics' | 'questions' | 'users' | 'courses' | 'settings' | 'audit' | 'health' | 'formal_results' | 'exams' | 'flashcards' | 'flashspace' | 'data_themes' | 'videos' | 'leaderboard' | 'expectations'>(() => {
+  const [activeTab, setActiveTab] = useState<'analytics' | 'questions' | 'users' | 'subscribers' | 'courses' | 'settings' | 'audit' | 'health' | 'formal_results' | 'exams' | 'flashcards' | 'flashspace' | 'data_themes' | 'videos' | 'leaderboard' | 'expectations'>(() => {
     const params = new URLSearchParams(window.location.search);
     const tab = params.get('tab');
-    const validTabs = ['analytics', 'questions', 'users', 'courses', 'settings', 'audit', 'health', 'formal_results', 'exams', 'flashcards', 'flashspace', 'data_themes', 'videos', 'leaderboard', 'expectations'];
+    const validTabs = ['analytics', 'questions', 'users', 'subscribers', 'courses', 'settings', 'audit', 'health', 'formal_results', 'exams', 'flashcards', 'flashspace', 'data_themes', 'videos', 'leaderboard', 'expectations'];
     return (tab && validTabs.includes(tab)) ? (tab as any) : 'analytics';
   });
   const [questions, setQuestions] = useState<Question[]>([]);
@@ -328,6 +329,7 @@ export default function AdminDashboard() {
           { id: 'analytics', label: 'Insights', icon: BarChart3 },
           { id: 'questions', label: 'Content Hub', icon: HelpCircle },
           { id: 'users', label: 'Permissions', icon: Users },
+          { id: 'subscribers', label: 'Subscribers', icon: CreditCard },
           { id: 'courses', label: 'Logic Layers', icon: Database },
           { id: 'audit', label: 'Audit Stream', icon: Activity },
           { id: 'health', label: 'System Health', icon: Shield },
@@ -430,6 +432,7 @@ export default function AdminDashboard() {
               </div>
             )}
             {activeTab === 'users' && <UserManagement />}
+            {activeTab === 'subscribers' && <SubscribersManager />}
             {activeTab === 'leaderboard' && <Leaderboard />}
             {activeTab === 'courses' && <CourseManagement onDeleteCourse={handleDeleteCourse} isDeletingId={isDeleting} />}
             {activeTab === 'formal_results' && <ExamResultsDashboard />}
