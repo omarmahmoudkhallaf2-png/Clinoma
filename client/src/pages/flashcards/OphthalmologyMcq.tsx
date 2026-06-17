@@ -209,10 +209,16 @@ export default function OphthalmologyMcq({ onExit }: { onExit: () => void }) {
     updateCache(incorrectIds, updated);
   };
 
-  const copyQuestion = (e: React.MouseEvent, text: string) => {
+  const copyQuestion = (e: React.MouseEvent, questionObj: any) => {
     e.stopPropagation();
-    navigator.clipboard.writeText(text);
-    toast.success("تم نسخ السؤال بنجاح! 📋");
+    if (!questionObj) return;
+    const optionLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
+    const optionsText = questionObj.options && questionObj.options.length > 0
+      ? questionObj.options.map((opt: string, idx: number) => `${optionLetters[idx] || (idx + 1)}. ${opt}`).join('\n')
+      : '';
+    const textToCopy = `${questionObj.question}\n\n${optionsText}`.trim();
+    navigator.clipboard.writeText(textToCopy);
+    toast.success("تم نسخ السؤال والاختيارات بنجاح! 📋");
   };
 
   const formatTime = (totalSeconds: number) => {
@@ -638,7 +644,7 @@ export default function OphthalmologyMcq({ onExit }: { onExit: () => void }) {
                     <motion.button
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
-                      onClick={(e) => copyQuestion(e, currentQuestion.question)}
+                      onClick={(e) => copyQuestion(e, currentQuestion)}
                       className={`p-3 rounded-xl border transition-all cursor-pointer flex items-center justify-center ${
                         isDark ? 'border-slate-800 bg-slate-900 text-slate-400 hover:text-white hover:bg-slate-800' : 'border-slate-200 bg-slate-50 text-slate-500 hover:text-slate-700 hover:bg-slate-100'
                       }`}
