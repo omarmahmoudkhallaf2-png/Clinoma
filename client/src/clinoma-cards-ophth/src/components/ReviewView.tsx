@@ -174,7 +174,7 @@ function ReviewCard({
       </div>
 
       <div className="w-full">
-        <QuestionPrompt content={q.content} topic={q.topic} type={q.type} title={q.title} answer={q.answer} isPastYear={q.isPastYear} />
+        <QuestionPrompt content={q.content} topic={q.topic} type={q.type} title={q.title} answer={q.answer} isPastYear={q.isPastYear} isSurgical={q.isSurgical} />
       </div>
 
       {/* Answer Reveal Panel */}

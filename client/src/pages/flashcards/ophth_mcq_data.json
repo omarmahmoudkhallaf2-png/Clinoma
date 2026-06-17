@@ -4691,5 +4691,246 @@
       "correctAnswerIndex": 1
     }
   ],
-  "exam41": []
+  "exam41": [
+    {
+      "id": "e41_q1",
+      "question": "A 12-year-old male with bilateral itchy red eyes for 2 months. He experienced similar attacks before, but recently he noticed tiny white spots along the limbus. Which of the following is the most likely diagnosis?",
+      "options": [
+        "Healed trachomatous pannus.",
+        "Active trachomatous pannus.",
+        "Palpebral spring catarrh.",
+        "Bulbar spring catarrh",
+        "Limbal phylecten"
+      ],
+      "correctAnswerIndex": 3
+    },
+    {
+      "id": "e41_q2",
+      "question": "Which of the following nerves is of high value to the ophthalmologist if involved by the Varicella Zoster virus?",
+      "options": [
+        "Nasociliary nerve.",
+        "Frontal nerve.",
+        "Lacrimal nerve.",
+        "Maxillary nerve.",
+        "Infraorbital nerve"
+      ],
+      "correctAnswerIndex": 0
+    },
+    {
+      "id": "e41_q3",
+      "question": "A male patient 30 years old with visual acuity of 6/6 in both eyes. 12 hours ago, he presented with drop of vision of the left eye. On examination, VA was 6/6 in right eye and 6/60 in left eye. Fundus examination showed blurred optic disc edges in left eye with normal IOP on both eyes. Which of the following is the most possible diagnosis?",
+      "options": [
+        "Central retinal artery occlusion",
+        "Herpetic corneal ulcer",
+        "Lens subluxation",
+        "Papillitis",
+        "Acute congestive glaucoma"
+      ],
+      "correctAnswerIndex": 3
+    },
+    {
+      "id": "e41_q4",
+      "question": "A 45-year-old female with chronic dacryocystitis. Which of the following most likely describes her condition?",
+      "options": [
+        "S shaped deformity of upper eyelid.",
+        "Blurring of near vision",
+        "Severe pain, fever, and tenderness.",
+        "Swelling below the medial palpebral ligament.",
+        "Negative regurgitation test"
+      ],
+      "correctAnswerIndex": 3
+    },
+    {
+      "id": "e41_q5",
+      "question": "On swabbing crusts from a patient with ulcerative blepharitis, what is organism that will be found?",
+      "options": [
+        "E.coli",
+        "Pneumococcus.",
+        "Staphylococcus aureus.",
+        "Morax Axenfeld diplobacillus.",
+        "H. influenza"
+      ],
+      "correctAnswerIndex": 2
+    },
+    {
+      "id": "e41_q6",
+      "question": "Male farmer presented with ocular surface fibro-vascular band at the nasal limbus extending onto the cornea. Which of the following factors is the possible cause?",
+      "options": [
+        "Exposure to infra-red rays.",
+        "Exposure to ionic radiation.",
+        "Exposure to ultraviolet rays.",
+        "Exposure to an allergen.",
+        "Exposure to chemicals."
+      ],
+      "correctAnswerIndex": 2
+    },
+    {
+      "id": "e41_q7",
+      "question": "After trauma to the globe with a tennis ball, Which of the following complications is possible to occur:",
+      "options": [
+        "Fleisher ring",
+        "Vossius ring",
+        "Microaneurysm of retinal vessels",
+        "Tractional retinal detachment",
+        "Concommitant squint"
+      ],
+      "correctAnswerIndex": 1
+    },
+    {
+      "id": "e41_q8",
+      "question": "Satellite lesions in the cornea may be seen in:",
+      "options": [
+        "Fungal corneal ulcer",
+        "Bacterial corneal ulcer",
+        "Viral corneal ulcer",
+        "Shield ulcer",
+        "Fasicular ulcer"
+      ],
+      "correctAnswerIndex": 0
+    },
+    {
+      "id": "e41_q9",
+      "question": "A 30 years old male is subjected to blunt trauma to his left eye. After fundus examination he is found to have peripheral retinal break without detachment. What is the most appropriate management?",
+      "options": [
+        "Argon laser photocoagulation around the break",
+        "Argon laser photocoagulation around the break with buckling",
+        "Buckling with drainage of subretinal fluid",
+        "Vitrectomy without silicone oil injection",
+        "Vitrectomy with silicone oil injection"
+      ],
+      "correctAnswerIndex": 0
+    },
+    {
+      "id": "e41_q10",
+      "question": "During examination of the light reflex in a patient suffering from Right oculomotor nerve paralysis, Stimulation of the right eye with light will cause:",
+      "options": [
+        "Absent direct and consensual reflex",
+        "Intact direct and consensual reflex",
+        "Absent direct and intact consensual reflex",
+        "Intact direct and absent consensual reflex",
+        "Sluggish pupillary reaction on both sides"
+      ],
+      "correctAnswerIndex": 2
+    },
+    {
+      "id": "e41_q11",
+      "question": "After surgery for excision of a Left parietal lobe tumour, Which of the following visual field defects is liable to occur?",
+      "options": [
+        "Right inferior homonymous quadrantanopia",
+        "Right superior homonymous quadrantanopia",
+        "Left inferior homonymous quadrantanopia",
+        "Left superior homonymous quadrantanopia",
+        "Right inferior heteronymous quadrantanopia"
+      ],
+      "correctAnswerIndex": 0
+    },
+    {
+      "id": "e41_q12",
+      "question": "A 56 years old male patient, diabetic for 10 years underwent left cataract surgery 5 days ago. Now the patient complains of diminution of vision in this eye associated with severe pain. On examination there is ciliary injection and hypopyon. What is the most likely diagnosis?",
+      "options": [
+        "Endophthalmitis.",
+        "Panophthalmitis.",
+        "Orbital cellulitis.",
+        "Cavernous sinus thrombosis.",
+        "Orbital apex syndrome."
+      ],
+      "correctAnswerIndex": 0
+    },
+    {
+      "id": "e41_q13",
+      "question": "A 40-year-old woman presents with A rapid onset of painful red eye which developed after an anxiety attack. She has blurred vision with colored halo around light. Also, she has vomited twice and she has headache. What is the most important clinical test you need to do to confirm your diagnosis?",
+      "options": [
+        "Corneal staining with Flourescein",
+        "IOP measurement",
+        "Regurgitation test",
+        "Light reflex testing",
+        "Ocular motility testing"
+      ],
+      "correctAnswerIndex": 1
+    },
+    {
+      "id": "e41_q14",
+      "question": "Primary optic atrophy could occur as a result of:",
+      "options": [
+        "Retinal disease",
+        "Chronic glaucoma",
+        "Papilledema",
+        "After extensive pan retinal photo coagulation",
+        "Brain tumours"
+      ],
+      "correctAnswerIndex": 4
+    },
+    {
+      "id": "e41_q15",
+      "question": "In central retinal artery occlusion, Cherry red spot is due to:",
+      "options": [
+        "Macular hemorrhage",
+        "Increased choroidal perfusion",
+        "Increased retinal macular perfusion",
+        "The contrast between pale retina and reddish choroid",
+        "Macular atrophy"
+      ],
+      "correctAnswerIndex": 3
+    },
+    {
+      "id": "e41_q16",
+      "question": "A 6-month infant presenting with a localized dot shaped anterior polar cataract with no other apparent ocular abnormality is best managed by:",
+      "options": [
+        "lensectomy with intraocular lens implantation.",
+        "lensectomy without intraocular lens implantation.",
+        "black pupil contact lens.",
+        "extracapsular cataract extraction with IOL.",
+        "follow up with visual acuity monitoring."
+      ],
+      "correctAnswerIndex": 4
+    },
+    {
+      "id": "e41_q17",
+      "question": "The first line of treatment in acid burns of the eye is:",
+      "options": [
+        "Patching the eye.",
+        "Instilling a drop of oil in the eye.",
+        "Waiting until the ophthalmologist arrives.",
+        "Immediate wash with plain water.",
+        "Instilling a drop of surface anesthetic into the eye."
+      ],
+      "correctAnswerIndex": 3
+    },
+    {
+      "id": "e41_q18",
+      "question": "A fifty years-old male with sudden onset of 7th nerve palsy affecting all the facial muscles. What is your first line of treatment?",
+      "options": [
+        "Continuous ocular lubrication.",
+        "Immediate lateral tarsorrhaphy.",
+        "Immediate resection of the levator muscle.",
+        "Topical corticosteroids.",
+        "Systemic antibiotic"
+      ],
+      "correctAnswerIndex": 0
+    },
+    {
+      "id": "e41_q19",
+      "question": "A child with refraction of + 6.0 D in both eyes. What is the most probable ocular deviation that may complicate if the child neglects to wear his glasses?",
+      "options": [
+        "Concomitant true divergent squint.",
+        "Concomitant true convergent squint.",
+        "Apparent convergent squint",
+        "Incomitant true convergent squint.",
+        "Incomitant true divergent squint."
+      ],
+      "correctAnswerIndex": 1
+    },
+    {
+      "id": "e41_q20",
+      "question": "A 55-year-old male patient complained of diminished vision in daylight. What is the most probable cause?",
+      "options": [
+        "Arcus senilis",
+        "Posterior polar cataract.",
+        "Peripheral cortical cataract.",
+        "Peripheral corneal opacity.",
+        "Retinitis pigmentosa"
+      ],
+      "correctAnswerIndex": 1
+    }
+  ]
 }

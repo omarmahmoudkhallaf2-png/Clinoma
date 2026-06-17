@@ -9,6 +9,7 @@ interface QuestionPromptProps {
   title?: string;
   answer?: string;
   isPastYear?: boolean;
+  isSurgical?: boolean;
 }
 
 export function extractCoreTerms(title?: string, topic?: string): string[] {
@@ -289,12 +290,22 @@ export function parseQuestionContent(content: string): { scenario: string; quest
   };
 }
 
-export default function QuestionPrompt({ content, topic, chapterTitle, type, title, answer, isPastYear }: QuestionPromptProps) {
+export default function QuestionPrompt({ content, topic, chapterTitle, type, title, answer, isPastYear, isSurgical }: QuestionPromptProps) {
   const [copied, setCopied] = useState(false);
 
+  const cleanContent = useMemo(() => {
+    if (!content) return "";
+    return content.replace(/\\n/g, '\n');
+  }, [content]);
+
+  const cleanAnswer = useMemo(() => {
+    if (!answer) return "";
+    return answer.replace(/\\n/g, '\n');
+  }, [answer]);
+
   const handleCopy = async () => {
-    if (!answer) return;
-    const plainText = `السؤال:\n${content}\n\nالإجابة:\n${answer}`;
+    if (!cleanAnswer) return;
+    const plainText = `السؤال:\n${cleanContent}\n\nالإجابة:\n${cleanAnswer}`;
     try {
       await navigator.clipboard.writeText(plainText);
       setCopied(true);
@@ -308,31 +319,39 @@ export default function QuestionPrompt({ content, topic, chapterTitle, type, tit
     const matchTitle = title?.toLowerCase().includes('case') || false;
     const matchTopic = topic?.toLowerCase().includes('case') || false;
     const matchType = type?.toLowerCase().includes('case') || false;
-    const hasNumberedList = /\n\s*(?:1|\d+)[\s.)\-]+/.test(content);
+    const hasNumberedList = /\n\s*(?:1|\d+)[\s.)\-]+/.test(cleanContent);
     return matchTitle || matchTopic || matchType || hasNumberedList;
-  }, [title, topic, type, content]);
+  }, [title, topic, type, cleanContent]);
 
   const parsed = useMemo(() => {
     if (isCase) {
-      return parseQuestionContent(content);
+      return parseQuestionContent(cleanContent);
     }
     return {
-      scenario: content,
+      scenario: cleanContent,
       questions: []
     };
-  }, [isCase, content]);
+  }, [isCase, cleanContent]);
 
   return (
     <div className="w-full flex flex-col text-left font-sans">
-      {isPastYear && (
-        <div className="mb-4 inline-flex items-center gap-1.5 px-3 py-1.5 border border-amber-300 bg-amber-50 rounded-xl text-amber-800 text-xs font-black tracking-wider select-none max-w-max mr-auto">
-          <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse shrink-0" />
-          <span>أسئلة سنوات سابقة 📜</span>
-        </div>
-      )}
+      <div className="flex flex-wrap gap-2 mb-4">
+        {isPastYear && (
+          <div className="inline-flex items-center gap-1.5 px-3 py-1.5 border border-amber-300 bg-amber-50 rounded-xl text-amber-800 text-xs font-black tracking-wider select-none max-w-max mr-auto">
+            <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse shrink-0" />
+            <span>أسئلة سنوات سابقة 📜</span>
+          </div>
+        )}
+        {isSurgical && (
+          <div className="inline-flex items-center gap-1.5 px-3 py-1.5 border border-blue-200 bg-blue-50 rounded-xl text-blue-800 text-xs font-black tracking-wider select-none max-w-max uppercase font-mono">
+            <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse shrink-0" />
+            <span>surgical principles ✂️</span>
+          </div>
+        )}
+      </div>
 
       {/* Copy Button Row */}
-      {answer && (
+      {cleanAnswer && (
         <div className="flex justify-end mb-4">
           <button
             onClick={handleCopy}
@@ -364,7 +383,7 @@ export default function QuestionPrompt({ content, topic, chapterTitle, type, tit
       ) : (
         <div className="bg-[#F8FAFC] border-l-[4px] border-[#2563EB] rounded-2xl p-6 md:p-8 text-left shadow-sm">
           <p className="text-slate-800 text-base md:text-lg leading-relaxed font-semibold max-w-4xl">
-            {renderTextWithHighlights(content, title, topic)}
+            {renderTextWithHighlights(cleanContent, title, topic)}
           </p>
         </div>
       )}
@@ -607,12 +626,18 @@ export function getCriterionIcon(name: string): string {
 
 export function AnswerFormatter({ answer, topic, title, content }: AnswerFormatterProps) {
   const [showTraditional, setShowTraditional] = useState(false);
-  const lines = useMemo(() => answer.split('\n'), [answer]);
+
+  const cleanAnswer = useMemo(() => {
+    if (!answer) return "";
+    return answer.replace(/\\n/g, '\n');
+  }, [answer]);
+
+  const lines = useMemo(() => cleanAnswer.split('\n'), [cleanAnswer]);
 
   // Try parsing comparison data
   const comparisonData = useMemo(() => {
-    return tryParseComparison(answer, title, topic);
-  }, [answer, title, topic]);
+    return tryParseComparison(cleanAnswer, title, topic);
+  }, [cleanAnswer, title, topic]);
 
   if (comparisonData && !showTraditional) {
     const data = comparisonData;

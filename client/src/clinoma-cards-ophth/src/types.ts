@@ -24,6 +24,7 @@ export interface Question {
   isClinical: boolean;
   topic?: string;
   isPastYear?: boolean;
+  isSurgical?: boolean;
 }
 
 export interface Chapter {
