@@ -14943,7 +14943,7 @@ const FlashSpace = () => {
                                   )}
                                 </div>
                                 <p className="text-indigo-300/60 group-hover:text-indigo-200/80 text-xs font-semibold tracking-wide transition-colors duration-500 mt-1">
-                                  مراجعة تفاعلية شاملة لجميع فصول وأسئلة الرمد من ملف الـ ZIP مباشرة
+                                  مراجعة تفاعلية شاملة لجميع فصول وأسئلة الرمد
                                 </p>
                               </div>
                             </div>
