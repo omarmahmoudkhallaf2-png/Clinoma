@@ -574,6 +574,9 @@ export default function OphthalmologyWritten({ onExit }: { onExit?: () => void }
                           <span className="font-extrabold text-slate-200 group-hover:text-indigo-400 transition-colors block text-lg sm:text-xl">
                             {ch.titleAr || ch.title}
                           </span>
+                          <span className="text-xs sm:text-sm text-indigo-400/70 font-bold block mt-0.5" dir="ltr">
+                            {ch.title}
+                          </span>
                           <span className="text-xs sm:text-sm text-slate-500 font-bold block mt-0.5" dir="ltr">
                             {ch.questions.length} Written Questions
                           </span>
