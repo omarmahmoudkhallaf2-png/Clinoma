@@ -14,8 +14,9 @@ import {
   RotateCcw,
   BookOpen
 } from 'lucide-react';
-import type { Question, Chapter } from '../types';
 import { DifficultyLevel } from '../types';
+import type { Question, Chapter } from '../types';
+import { sortChapterQuestions } from '../utils/sorting';
 import QuestionPrompt, { AnswerFormatter } from './QuestionFormatter';
 
 interface StudySessionProps {
@@ -74,6 +75,7 @@ export default function StudySession({
   const [sessionDuration, setSessionDuration] = useState<number>(30); // 10 minutes to 2 hours (120 minutes)
   const [displayMode, setDisplayMode] = useState<'cards' | 'list'>('cards');
   const [practiceCategory, setPracticeCategory] = useState<'study' | 'cases' | 'mixed'>('mixed');
+  const [cardOrder, setCardOrder] = useState<'logical' | 'shuffled'>(chapter.id === 0 ? 'shuffled' : 'logical');
 
   // Compute question pool counts in real-time based on selected topics
   const currentPoolOfSelectedTopicsAndMasteredType = useMemo(() => {
@@ -317,13 +319,49 @@ export default function StudySession({
 
       // Check constraints to make sure shortcut keys are only active during a true card session
       if (
-        displayMode !== 'cards' ||
         sessionQuestions.length === 0 ||
         isFinished ||
         isTopicSelectorOpen ||
         isConfigModalOpen ||
         showContinuePrompt
       ) {
+        return;
+      }
+
+      // --- List Mode Keyboard Interactions ---
+      if (displayMode === 'list') {
+        if (e.key === ' ') {
+          e.preventDefault();
+          const elements: (HTMLElement | null)[] = sessionQuestions.map((_, idx) => 
+            document.getElementById(`list-question-${idx}`)
+          );
+
+          // Find current reading index (first element whose bottom is at least 120px down has not been scrolled past completely)
+          const currIdx = elements.findIndex(el => {
+            if (!el) return false;
+            const rect = el.getBoundingClientRect();
+            return rect.bottom >= 120;
+          });
+
+          if (currIdx !== -1) {
+            const nextIdx = currIdx + 1;
+            if (nextIdx < elements.length) {
+              const targetEl = elements[nextIdx];
+              if (targetEl) {
+                targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              }
+            } else {
+              const footerEl = document.getElementById('list-footer');
+              if (footerEl) {
+                footerEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              }
+            }
+          }
+        }
+        return;
+      }
+
+      if (displayMode !== 'cards') {
         return;
       }
 
@@ -398,10 +436,15 @@ export default function StudySession({
       filtered = filtered.filter(q => isQuestionCase(q));
     }
 
-    const shuffled = [...filtered].sort(() => Math.random() - 0.5);
+    let sessionList = [...filtered];
+    if (cardOrder === 'logical') {
+      sessionList = sortChapterQuestions(chapter.id, sessionList);
+    } else {
+      sessionList.sort(() => Math.random() - 0.5);
+    }
     
-    setSessionQuestions(shuffled);
-    setInitialUniqueCount(shuffled.length);
+    setSessionQuestions(sessionList);
+    setInitialUniqueCount(sessionList.length);
     setCurrentIndex(0);
     setShowAnswer(false);
     setIsFinished(false);
@@ -917,6 +960,40 @@ export default function StudySession({
                   </div>
                 </div>
 
+                {/* E. Card / List Question Ordering Choice (Logical vs Shuffled) */}
+                <div className="space-y-2 pt-2 border-t border-slate-100 mt-2">
+                  <span className="text-xs font-bold text-slate-500 block text-right font-sans">تسلسل وترتيب الأسئلة</span>
+                  <div className="grid grid-cols-2 gap-3" dir="rtl">
+                    {/* Logical Sequence */}
+                    <button
+                      type="button"
+                      onClick={() => setCardOrder('logical')}
+                      className={`py-2 px-3 rounded-xl border-2 text-center transition-all font-semibold text-xs flex flex-col items-center justify-center gap-1.5 leading-snug h-[68px] cursor-pointer ${
+                        cardOrder === 'logical'
+                          ? 'bg-blue-50/60 border-blue-600 text-blue-900 shadow-sm'
+                          : 'bg-white border-slate-205 border-slate-200 text-slate-700 hover:border-slate-300'
+                      }`}
+                    >
+                      <span className="font-extrabold flex items-center gap-1 text-[11px]"><span className="text-[13px]">🔄</span> تسلسل طبي متدرج</span>
+                      <span className="text-[9px] opacity-75 leading-tight text-center">تناسب المذاكرة والتأصيل العلمي (من التعريف للعلاج)</span>
+                    </button>
+
+                    {/* Random Shuffled Sequence */}
+                    <button
+                      type="button"
+                      onClick={() => setCardOrder('shuffled')}
+                      className={`py-2 px-3 rounded-xl border-2 text-center transition-all font-semibold text-xs flex flex-col items-center justify-center gap-1.5 leading-snug h-[68px] cursor-pointer ${
+                        cardOrder === 'shuffled'
+                          ? 'bg-amber-50/60 border-amber-600 text-amber-900 shadow-sm'
+                          : 'bg-white border-slate-205 border-slate-200 text-slate-700 hover:border-slate-300'
+                      }`}
+                    >
+                      <span className="font-extrabold flex items-center gap-1 text-[11px]"><span className="text-[13px]">🔀</span> ترتيب عشوائي مخلوط</span>
+                      <span className="text-[9px] opacity-75 leading-tight text-center">لمحاكاة الامتحانات واختبار كفاءة الاسترجاع الذهني</span>
+                    </button>
+                  </div>
+                </div>
+
               </div>
 
               {/* Footer configuration triggers */}
@@ -1223,6 +1300,7 @@ export default function StudySession({
                 return (
                   <div 
                     key={q.id} 
+                    id={`list-question-${idx}`}
                     className={`bg-white rounded-3xl border transition-all duration-300 p-6 md:p-8 flex flex-col gap-6 relative overflow-hidden text-right leading-relaxed ${
                       isMastered ? 'border-emerald-300 bg-emerald-50/10' : 'border-slate-200 shadow-sm'
                     }`}
@@ -1317,7 +1395,7 @@ export default function StudySession({
             </div>
 
             {/* List footer banner */}
-            <div className="p-8 bg-gradient-to-r from-blue-600 to-indigo-650 text-white rounded-3xl text-center space-y-4 shadow-lg" dir="rtl">
+            <div id="list-footer" className="p-8 bg-gradient-to-r from-blue-600 to-indigo-650 text-white rounded-3xl text-center space-y-4 shadow-lg" dir="rtl">
               <span className="text-[10px] font-bold tracking-widest text-blue-300">لقد وصلت للنهاية 🎉</span>
               <h3 className="text-xl font-black font-sans">عمل رائع في مراجعة القائمة بالكامل!</h3>
               <p className="text-xs text-blue-100 max-w-sm mx-auto leading-relaxed">

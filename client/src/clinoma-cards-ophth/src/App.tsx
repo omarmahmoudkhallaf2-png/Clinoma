@@ -15,8 +15,11 @@ import {
   RotateCcw
 } from 'lucide-react';
 import { CHAPTERS } from './data/chapters';
-import { INITIAL_QUESTIONS } from './data/questions';
+import { INITIAL_QUESTIONS as RAW_INITIAL_QUESTIONS } from './data/questions';
 import type { Question, Chapter } from './types';
+import { sortAllQuestions } from './utils/sorting';
+
+const INITIAL_QUESTIONS = sortAllQuestions(RAW_INITIAL_QUESTIONS);
 import StudySession from './components/StudySession';
 import ReviewView from './components/ReviewView';
 
@@ -119,6 +122,7 @@ export default function App({ onExit }: { onExit?: () => void }) {
     localStorage.removeItem('clinoma_review_list');
     localStorage.removeItem('clinoma_mastered_ids');
     setShowResetConfirm(false);
+    setSidebarOpen(false);
   };
 
   const resetChapterProgress = (chapterId: number) => {
@@ -130,16 +134,17 @@ export default function App({ onExit }: { onExit?: () => void }) {
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-900 overflow-x-hidden">
       {/* Sleek Persistent Top Global Header Bar */}
-      <header className="sticky top-0 z-40 w-full flex items-center justify-between px-6 py-4 bg-white/85 backdrop-blur-md border-b border-slate-100 shadow-sm animate-slide-down">
-        <div className="flex items-center gap-3">
-          <button
-            onClick={() => setSidebarOpen(true)}
-            className="p-2.5 bg-slate-50 hover:bg-slate-100 rounded-xl text-slate-600 transition-all border border-slate-200/50 cursor-pointer"
+      <header className="flex items-center justify-between p-4 px-6 md:px-8 bg-white border-b sticky top-0 z-[50] shadow-sm">
+        <div className="flex items-center gap-4">
+          <button 
+            onClick={() => setSidebarOpen(true)} 
+            className="p-2 hover:bg-slate-100 rounded-xl transition-all duration-200 focus:outline-none"
+            aria-label="Toggle Sidebar Menu"
           >
-            <Menu className="w-5 h-5" />
+            <Menu className="w-6 h-6 text-slate-705 hover:text-blue-600" />
           </button>
           
-          <a href="#" className="flex items-center gap-3.5 hover:opacity-90 transition-opacity">
+          <a href="https://clinoma.pages.dev" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2.5 hover:opacity-80 transition-opacity">
             <div className="w-9 h-9 flex items-center justify-center overflow-hidden rounded-xl shadow-md shadow-blue-500/20">
               <img src="https://i.ibb.co/qMgGdD03/202605081225.jpg" alt="Logo" className="w-full h-full object-cover animate-fade-in" referrerPolicy="no-referrer" />
             </div>
