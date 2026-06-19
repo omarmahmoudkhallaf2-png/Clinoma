@@ -299,12 +299,37 @@ class _MainWrapperPageState extends State<MainWrapperPage> {
                       cacheMode: CacheMode.LOAD_DEFAULT,
                       domStorageEnabled: true,
                       databaseEnabled: true,
+                      useShouldOverrideUrlLoading: true,
+                      useOnDownloadStart: true,
                     ),
                     onWebViewCreated: (controller) {
                       webViewController = controller;
                     },
                     shouldInterceptRequest: (controller, request) async {
                       return await _handleRequest(request.url);
+                    },
+                    shouldOverrideUrlLoading: (controller, navigationAction) async {
+                      final url = navigationAction.request.url;
+                      if (url != null) {
+                        final urlString = url.toString();
+                        if (urlString.toLowerCase().contains('.pdf')) {
+                          try {
+                            await InAppBrowser.openWithSystemBrowser(url: url);
+                            return NavigationActionPolicy.CANCEL;
+                          } catch (e) {
+                            debugPrint("Failed to open PDF in system browser: $e");
+                          }
+                        }
+                      }
+                      return NavigationActionPolicy.ALLOW;
+                    },
+                    onDownloadStartRequest: (controller, downloadStartRequest) async {
+                      final url = downloadStartRequest.url;
+                      try {
+                        await InAppBrowser.openWithSystemBrowser(url: url);
+                      } catch (e) {
+                        debugPrint("Failed to open system browser for download: $e");
+                      }
                     },
                     onLoadStart: (controller, url) {
                       setState(() {

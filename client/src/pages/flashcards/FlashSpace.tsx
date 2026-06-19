@@ -12568,6 +12568,31 @@ const FlashSpace = () => {
       defaultName = defaultNameInput || "document.pdf";
     }
     
+    // Detect Standalone / WebView wrappers
+    const isWebView = /FBAN|FBAV|Instagram|LinkedIn|Messenger|Slack|Twitter|Line|Snapchat/.test(navigator.userAgent) ||
+                      window.matchMedia('(display-mode: standalone)').matches ||
+                      // @ts-ignore
+                      window.navigator.standalone ||
+                      navigator.userAgent.includes('wv') ||
+                      navigator.userAgent.includes('WebView');
+    const isAndroidWebView = isWebView && /Android/i.test(navigator.userAgent);
+
+    if (isAndroidWebView) {
+      setDownloadProgress(50);
+      setDownloadStatus("جاري تحويل الرابط للمتصفح الخارجي للتحميل...");
+      const absoluteUrl = new URL(pdfUrl, window.location.origin).href;
+      window.location.href = absoluteUrl;
+      setTimeout(() => {
+        setDownloadProgress(100);
+        setDownloadStatus("تم التوجيه بنجاح! 🎉");
+      }, 1000);
+      setTimeout(() => {
+        setIsDownloadModalOpen(false);
+        setDownloadStatus(null);
+      }, 2000);
+      return;
+    }
+    
     const rawDisplayName = user?.displayName || userData?.name || user?.email?.split('@')[0] || "User";
     const displayEmail = user?.email || userData?.email || "user@gmail.com";
     const cleanDisplayName = rawDisplayName.replace(/[^\x00-\x7F]/g, "").trim() || displayEmail.split('@')[0];
