@@ -444,10 +444,11 @@ export default function FirstPaperCamp() {
       }
       
       // @ts-ignore
-      const { PDFDocument, rgb, StandardFonts } = await import('https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.esm.js');
+      const { PDFDocument, rgb, StandardFonts, degrees } = await import('https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.esm.js');
       
 const pdfDoc = await PDFDocument.load(pdfBytes);
       const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
+      const helveticaBoldFont = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
       
       const pageCount = pdfDoc.getPageCount();
       let chapterCovers: number[] = [];
@@ -503,6 +504,30 @@ const pdfDoc = await PDFDocument.load(pdfBytes);
             size: 7.5,
             font: helveticaFont,
             color: rgb(15/255, 23/255, 42/255),
+          });
+
+          // Draw user's Gmail at the top of the page in the center
+          page.drawText(displayEmail, {
+            x: width / 2 - helveticaFont.widthOfTextAtSize(displayEmail, 6.5) / 2,
+            y: height - 12,
+            size: 6.5,
+            font: helveticaFont,
+            color: rgb(100/255, 116/255, 139/255),
+            opacity: 0.5
+          });
+
+          // Draw diagonal watermark (Clinoma + Gmail) rotated 30 degrees
+          const watermarkText = `Clinoma - ${displayEmail}`;
+          const watermarkFontSize = 24;
+          const textWidth = helveticaBoldFont.widthOfTextAtSize(watermarkText, watermarkFontSize);
+          page.drawText(watermarkText, {
+            x: width / 2 - textWidth / 2.3,
+            y: height / 2 - textWidth / 5,
+            size: watermarkFontSize,
+            font: helveticaBoldFont,
+            color: rgb(100/255, 116/255, 139/255),
+            opacity: 0.04,
+            rotate: degrees(30),
           });
         }
       }

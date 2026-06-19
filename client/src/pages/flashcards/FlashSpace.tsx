@@ -12613,7 +12613,7 @@ const FlashSpace = () => {
       
       // Step 3: Load pdf-lib dynamically from CDN (highly optimized ESM)
       // @ts-ignore
-      const { PDFDocument, rgb, StandardFonts } = await import('https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.esm.js');
+      const { PDFDocument, rgb, StandardFonts, degrees } = await import('https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.esm.js');
       
       const pdfDoc = await PDFDocument.load(pdfBytes);
       const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
@@ -12788,6 +12788,30 @@ const FlashSpace = () => {
               color: rgb(15/255, 23/255, 42/255),
             });
           }
+
+          // Draw user's Gmail at the top of the page in the center
+          page.drawText(displayEmail, {
+            x: width / 2 - helveticaFont.widthOfTextAtSize(displayEmail, 6.5) / 2,
+            y: height - 12,
+            size: 6.5,
+            font: helveticaFont,
+            color: rgb(100/255, 116/255, 139/255),
+            opacity: 0.5
+          });
+
+          // Draw diagonal watermark (Clinoma + Gmail) rotated 30 degrees
+          const watermarkText = `Clinoma - ${displayEmail}`;
+          const watermarkFontSize = 24;
+          const textWidth = helveticaBoldFont.widthOfTextAtSize(watermarkText, watermarkFontSize);
+          page.drawText(watermarkText, {
+            x: width / 2 - textWidth / 2.3,
+            y: height / 2 - textWidth / 5,
+            size: watermarkFontSize,
+            font: helveticaBoldFont,
+            color: rgb(100/255, 116/255, 139/255),
+            opacity: 0.04,
+            rotate: degrees(30),
+          });
         }
       }
       
@@ -15008,6 +15032,54 @@ const FlashSpace = () => {
                               )}
                             </div>
                           </button>
+
+                          <button 
+                            onClick={() => {
+                              if (isSpaceSubscribed('Opthalmology') || isSpaceSubscribed('Ophthalmology') || userData?.role === 'admin') {
+                                navigate('/flashcards/ophthalmology-written');
+                              } else {
+                                setShowSubscriptionModal(true);
+                              }
+                            }}
+                            className="group relative w-full bg-gradient-to-r from-emerald-950 via-[#064e3b] to-slate-900 border border-emerald-500/30 hover:border-emerald-400/60 rounded-3xl p-6 text-right transition-all duration-500 active:scale-[0.99] hover:scale-[1.01] overflow-hidden flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 shadow-[0_4px_30px_rgba(0,0,0,0.4)] hover:shadow-[0_0_35px_rgba(16,185,129,0.25)] cursor-pointer"
+                          >
+                            {/* Emerald Animated Glow Background */}
+                            <div className="absolute -right-20 -top-20 w-60 h-60 bg-gradient-to-br from-emerald-500/15 to-teal-500/5 rounded-full blur-3xl -z-10 group-hover:scale-150 group-hover:from-emerald-400/25 transition-all duration-700 ease-out" />
+                            
+                            <div className="flex items-center gap-4 z-10 text-right">
+                              <div className="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 shadow-[0_0_20px_rgba(16,185,129,0.15)] group-hover:shadow-[0_0_25px_rgba(16,185,129,0.35)] transition-all duration-500 bg-gradient-to-br from-emerald-500/20 to-teal-650/10 border border-emerald-500/40 group-hover:border-emerald-400 text-emerald-300 animate-pulse">
+                                <BookOpen className="w-7 h-7 filter drop-shadow-[0_0_5px_rgba(16,185,129,0.5)]" />
+                              </div>
+                              <div className="text-right">
+                                <div className="flex items-center gap-2 flex-wrap justify-start">
+                                  <h3 className="font-black text-xl md:text-2xl text-transparent bg-clip-text bg-gradient-to-r from-emerald-100 via-teal-200 to-emerald-100 group-hover:from-white group-hover:to-emerald-200 transition-all duration-500">
+                                    الأسئلة المقالية (Clinoma Written) ✍️✨
+                                  </h3>
+                                  {!(isSpaceSubscribed('Opthalmology') || isSpaceSubscribed('Ophthalmology') || userData?.role === 'admin') && (
+                                    <span className="bg-amber-500/20 text-amber-400 border border-amber-500/30 px-2.5 py-1 rounded-full flex items-center gap-1 backdrop-blur-sm text-xs font-bold">
+                                      <Lock className="w-3 h-3" />
+                                      <span>Premium</span>
+                                    </span>
+                                  )}
+                                </div>
+                                <p className="text-emerald-300/60 group-hover:text-emerald-200/80 text-xs font-semibold tracking-wide transition-colors duration-500 mt-1">
+                                  تجميعة الأسئلة المقالية الشاملة والمحلولة بجميع فصول الرمد
+                                </p>
+                              </div>
+                            </div>
+
+                            <div className="flex items-center justify-end gap-3 z-10 shrink-0">
+                              {(isSpaceSubscribed('Opthalmology') || isSpaceSubscribed('Ophthalmology') || userData?.role === 'admin') ? (
+                                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-emerald-500/10 text-emerald-300 group-hover:bg-emerald-500/20 group-hover:text-white transition-all duration-500 border border-emerald-500/20">
+                                  <ChevronLeft className="w-5 h-5 rotate-180" />
+                                </div>
+                              ) : (
+                                <span className="text-xs font-black px-4 py-2 bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-500/30 rounded-xl text-emerald-300 transition-colors">
+                                  اشترك الآن للدخول
+                                </span>
+                              )}
+                            </div>
+                          </button>
                         </>
                       )}
 
@@ -16595,6 +16667,50 @@ const FlashSpace = () => {
                         </div>
                         <div className="text-xs text-slate-400 font-bold leading-relaxed">
                           نسخة مضغوطة فائقة الجودة تشمل جميع شباتر ولوحات الرمد (18.0 MB).
+                        </div>
+                      </button>
+
+                      {/* Ophthalmology Written - Model Answers */}
+                      <button
+                        onClick={() => handleDownloadPDF('ophthalmology_written_ans', '/clinoma_written_ophthalmology.pdf', 'مذكرة_الرمد_المقالية_نموذجية.pdf')}
+                        disabled={!(isSpaceSubscribed('Opthalmology') || isSpaceSubscribed('Ophthalmology') || isSpaceSubscribed('الورقة الثانية') || userData?.role === 'admin')}
+                        className={cn(
+                          "group relative w-full p-4 bg-slate-950/50 border rounded-2xl text-left transition-all active:scale-[0.98] duration-300",
+                          (isSpaceSubscribed('Opthalmology') || isSpaceSubscribed('Ophthalmology') || isSpaceSubscribed('الورقة الثانية') || userData?.role === 'admin')
+                            ? "hover:bg-indigo-500/10 border-white/5 hover:border-indigo-500/30 cursor-pointer"
+                            : "opacity-40 border-white/5 cursor-not-allowed"
+                        )}
+                      >
+                        <div className="absolute top-2 right-2 bg-indigo-500/20 text-indigo-400 border border-indigo-500/30 text-[9px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider">
+                          {(isSpaceSubscribed('Opthalmology') || isSpaceSubscribed('Ophthalmology') || isSpaceSubscribed('الورقة الثانية') || userData?.role === 'admin') ? "الإجابات النموذجية" : "🔒 غير مشترك"}
+                        </div>
+                        <div className="text-white font-black text-base flex items-center gap-2 mb-1">
+                          <span>أسئلة الرمد المقالية - الإجابات النموذجية</span>
+                        </div>
+                        <div className="text-xs text-slate-400 font-bold leading-relaxed">
+                          كتيب الأسئلة المقالية للرمد كاملاً شاملاً الإجابات النموذجية.
+                        </div>
+                      </button>
+
+                      {/* Ophthalmology Written - Student Copy */}
+                      <button
+                        onClick={() => handleDownloadPDF('ophthalmology_written_std', '/clinoma_written_ophthalmology_student.pdf', 'مذكرة_الرمد_المقالية_للطالب.pdf')}
+                        disabled={!(isSpaceSubscribed('Opthalmology') || isSpaceSubscribed('Ophthalmology') || isSpaceSubscribed('الورقة الثانية') || userData?.role === 'admin')}
+                        className={cn(
+                          "group relative w-full p-4 bg-slate-950/50 border rounded-2xl text-left transition-all active:scale-[0.98] duration-300",
+                          (isSpaceSubscribed('Opthalmology') || isSpaceSubscribed('Ophthalmology') || isSpaceSubscribed('الورقة الثانية') || userData?.role === 'admin')
+                            ? "hover:bg-white/5 border-white/5 hover:border-white/10 cursor-pointer"
+                            : "opacity-40 border-white/5 cursor-not-allowed"
+                        )}
+                      >
+                        <div className="absolute top-2 right-2 bg-slate-800 text-slate-400 border border-slate-700 text-[9px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider">
+                          {(isSpaceSubscribed('Opthalmology') || isSpaceSubscribed('Ophthalmology') || isSpaceSubscribed('الورقة الثانية') || userData?.role === 'admin') ? "نسخة الطالب" : "🔒 غير مشترك"}
+                        </div>
+                        <div className="text-white font-black text-base flex items-center gap-2 mb-1">
+                          <span>أسئلة الرمد المقالية - نسخة الطالب</span>
+                        </div>
+                        <div className="text-xs text-slate-400 font-bold leading-relaxed">
+                          كتيب يحتوي على مسافات فارغة تحت كل سؤال للتدريب والكتابة اليدوية.
                         </div>
                       </button>
                     </>

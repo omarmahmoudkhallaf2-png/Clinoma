@@ -49,6 +49,7 @@ const QuestionBanksPortal = lazy(() => import("./pages/QuestionBanksPortal"));
 const ClinomaCardsApp = lazy(() => import("./clinoma-cards/src/App"));
 const ClinomaCardsOphthApp = lazy(() => import("./clinoma-cards-ophth/src/App"));
 const OphthalmologyMcq = lazy(() => import("./pages/flashcards/OphthalmologyMcq"));
+const OphthalmologyWritten = lazy(() => import("./pages/flashcards/OphthalmologyWritten"));
 
 import { CommandPalette } from "./components/ui/CommandPalette";
 import { AmbientAudioProvider } from "./context/AmbientAudioContext";
@@ -120,6 +121,7 @@ const AnimatedRoutes = () => {
           <Route path="/flashcards/second-paper-expectations" element={<ProtectedRoute useLayout={false}><ClinomaCardsApp isExpectations={true} onExit={() => window.history.back()} /></ProtectedRoute>} />
           <Route path="/flashcards/ophthalmology-interactive" element={<ProtectedRoute useLayout={false}><ClinomaCardsOphthApp onExit={() => window.history.back()} /></ProtectedRoute>} />
           <Route path="/flashcards/ophthalmology-mcq" element={<ProtectedRoute useLayout={false}><OphthalmologyMcq onExit={() => window.history.back()} /></ProtectedRoute>} />
+          <Route path="/flashcards/ophthalmology-written" element={<ProtectedRoute useLayout={false}><OphthalmologyWritten onExit={() => window.history.back()} /></ProtectedRoute>} />
           <Route path="/flashcards/fantasy" element={<ProtectedRoute useLayout={false}><FantasyGroups /></ProtectedRoute>} />
           <Route path="/flashcards/study/:deckId" element={<ProtectedRoute useLayout={false}><StudyMode /></ProtectedRoute>} />
           <Route path="/flashcards/create" element={<ProtectedRoute><CreateCard /></ProtectedRoute>} />
