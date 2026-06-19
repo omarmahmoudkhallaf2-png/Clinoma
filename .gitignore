@@ -40,4 +40,6 @@ scratch/
 تحديدات_الأطفال.pdf
 *.log
 *.pdf
+!client/public/clinoma_written_ophthalmology.pdf
+!client/public/clinoma_written_ophthalmology_student.pdf
 temp_romod_imgs/
