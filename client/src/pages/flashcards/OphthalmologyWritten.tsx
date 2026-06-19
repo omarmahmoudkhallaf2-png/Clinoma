@@ -313,6 +313,87 @@ export default function OphthalmologyWritten({ onExit }: { onExit?: () => void }
     );
   };
 
+  // Helper to render answer (with table conversion if necessary)
+  const renderAnswer = (answer: string, type?: string) => {
+    const lines = answer.split('\n');
+    const elements: React.ReactNode[] = [];
+    let inTable = false;
+    let tableRows: string[][] = [];
+
+    const renderCurrentTable = (key: number) => {
+      if (tableRows.length === 0) return null;
+      const rows = tableRows.map((cols, rowIdx) => {
+        const isHeader = rowIdx === 0;
+        return (
+          <tr key={rowIdx} className={isHeader ? "bg-slate-900 border-b-2 border-slate-800" : "border-b border-slate-850/60 hover:bg-slate-900/10"}>
+            {cols.map((col, colIdx) => {
+              const CellTag = isHeader ? 'th' : 'td';
+              return (
+                <CellTag key={colIdx} className={`p-3 text-left text-xs sm:text-sm font-semibold border border-slate-850/80 ${isHeader ? 'text-white' : 'text-slate-300'}`}>
+                  {col}
+                </CellTag>
+              );
+            })}
+          </tr>
+        );
+      });
+
+      return (
+        <div key={`table-${key}`} className="overflow-x-auto my-3 border border-slate-850 rounded-xl">
+          <table className="w-full border-collapse bg-slate-900/30 text-left">
+            <tbody>
+              {rows}
+            </tbody>
+          </table>
+        </div>
+      );
+    };
+
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i];
+      const trimmed = line.trim();
+
+      if (trimmed.includes('|')) {
+        if (trimmed.replace(/[\s\-:|]/g, '') === '') {
+          continue;
+        }
+
+        if (!inTable) {
+          inTable = true;
+          tableRows = [];
+        }
+
+        let cells = line.split('|').map(c => c.trim());
+        if (line.trim().startsWith('|')) cells.shift();
+        if (line.trim().endsWith('|')) cells.pop();
+
+        tableRows.push(cells);
+      } else {
+        if (inTable) {
+          elements.push(renderCurrentTable(i));
+          inTable = false;
+          tableRows = [];
+        }
+
+        if (trimmed) {
+          elements.push(
+            <p key={`p-${i}`} className="text-slate-200 text-sm sm:text-base whitespace-pre-line leading-relaxed font-medium pl-1 text-left mb-2">
+              {trimmed}
+            </p>
+          );
+        } else {
+          elements.push(<div key={`br-${i}`} className="h-2" />);
+        }
+      }
+    }
+
+    if (inTable) {
+      elements.push(renderCurrentTable(lines.length));
+    }
+
+    return <div className="space-y-1">{elements}</div>;
+  };
+
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 font-sans p-4 sm:p-6 md:p-12 overflow-x-hidden">
       <div className="max-w-5xl mx-auto space-y-6 sm:space-y-8">
@@ -458,9 +539,7 @@ export default function OphthalmologyWritten({ onExit }: { onExit?: () => void }
                                   <span className="inline-block bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[9px] font-black px-2.5 py-0.5 rounded-md uppercase mb-2">
                                     Model Answer
                                   </span>
-                                  <p className="text-slate-200 text-sm sm:text-base whitespace-pre-line leading-relaxed font-medium pl-1 text-left">
-                                    {q.answer}
-                                  </p>
+                                  {renderAnswer(q.answer, q.type)}
                                 </div>
                               </motion.div>
                             )}
@@ -625,9 +704,7 @@ export default function OphthalmologyWritten({ onExit }: { onExit?: () => void }
                                   <span className="inline-flex bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[9px] font-black px-2.5 py-0.5 rounded-md uppercase mb-2">
                                     Model Answer
                                   </span>
-                                  <p className="text-slate-200 text-sm sm:text-base whitespace-pre-line leading-relaxed font-medium pl-1 text-left">
-                                    {q.answer}
-                                  </p>
+                                  {renderAnswer(q.answer, q.type)}
                                 </>
                               ) : (
                                 <>

@@ -94,6 +94,24 @@
           "type": "definition",
           "question": "Define Hordeolum externum (Stye)?",
           "answer": "Hordeolum externum (Stye) is an acute, painful, purulent bacterial infection (typically Staphylococcus aureus) of the eyelash follicle and its associated glands of Zeis or Moll."
+        },
+        {
+          "id": "ophth_written_eyelid_q16",
+          "type": "enumerate",
+          "question": "Enumerate causes of ptosis.",
+          "answer": "Causes include:\n1. Congenital: Due to levator muscle dysgenesis.\n2. Myogenic: Due to muscular disorders (e.g., Myasthenia Gravis).\n3. Neurogenic: Due to third nerve palsy or Horner's syndrome.\n4. Mechanical: Due to excessive lid weight (e.g., tumors, chalazia, severe edema).\n5. Aponeurotic: Age-related dehiscence or disinsertion of the levator aponeurosis."
+        },
+        {
+          "id": "ophth_written_eyelid_q17",
+          "type": "definition",
+          "question": "Define Ectropion: (Lid)?",
+          "answer": "Ectropion is an abnormal outward turning or eversion of the eyelid margin away from the globe."
+        },
+        {
+          "id": "ophth_written_eyelid_q18",
+          "type": "surgical_principle",
+          "question": "Give the surgical principle of: Modified Blaskovics operation / Fasanella-Servat (in Ptosis correction).",
+          "answer": "The surgical principle relies on the resection of a portion of the tarsal plate, conjunctiva, and Müller's muscle from an internal approach to elevate the upper eyelid."
         }
       ]
     },
@@ -161,6 +179,18 @@
           "type": "enumerate",
           "question": "Enumerate the layers of the Cornea from anterior to posterior.",
           "answer": "1. Epithelium (stratified squamous non-keratinized).\n2. Bowman's membrane (acellular collagenous layer, does not regenerate).\n3. Stroma (constitutes 90% of thickness, regular arrangement of collagen fibrils).\n4. Descemet's membrane (basement membrane of endothelium, regenerates).\n5. Endothelium (single layer of hexagonal cells, maintains dehydration, does not regenerate)."
+        },
+        {
+          "id": "ophth_written_cornea_q11",
+          "type": "definition",
+          "question": "Define Keratoconus?",
+          "answer": "Keratoconus is a bilateral, non-inflammatory, progressive condition characterized by the central or paracentral thinning and cone-like bulging of the cornea."
+        },
+        {
+          "id": "ophth_written_cornea_q12",
+          "type": "surgical_principle",
+          "question": "Give the surgical principle of: Penetrating Keratoplasty (PKP) (in Corneal Opacity).",
+          "answer": "The surgical principle involves the excision of a full-thickness button of the host's opaque or diseased cornea and replacing it with a clear, full-thickness donor corneal button, which is subsequently secured with sutures."
         }
       ]
     },
@@ -209,7 +239,7 @@
           "id": "ophth_written_retina_q7",
           "type": "scenario",
           "question": "A 60-year-old hypertensive diabetic patient presents with sudden painless loss of vision in his right eye. Fundus examination reveals extensive intraretinal hemorrhages, cotton wool spots, and disc edema. (a) What is the most probable diagnosis? (b) How do you differentiate between the ischemic and non-ischemic types?",
-          "answer": "a) Diagnosis: Central Retinal Vein Occlusion (CRVO) (often termed \"blood and thunder\" fundus).\n\nb) Differentiator Table:\nFeature | Non-Ischemic CRVO | Ischemic CRVO\n---|---|---\nVisual Acuity | Mild-to-moderate impairment (usually > 6/60) | Severe impairment (usually < 6/60 or PL)\nAfferent Pupillary Defect (RAPD) | Absent or very mild | Marked (positive RAPD)\nFundus hemorrhages | Moderate hemorrhages | Extensive, dense \"splash-of-tomato-juice\" hemorrhages\nCotton wool spots | Few or absent | Numerous (> 10)\nFluorescein Angiography | Small areas of capillary non-perfusion | Large areas (> 10 disc areas) of capillary non-perfusion\nComplications | Good prognosis; low rate of rubeosis iridis | High risk (50%) of developing rubeosis iridis and neovascular glaucoma (\"100-day glaucoma\")"
+          "answer": "a) Diagnosis: Central Retinal Veion Occlusion (CRVO) (often termed \"blood and thunder\" fundus).\n\nb) Differentiator Table:\nFeature | Non-Ischemic CRVO | Ischemic CRVO\n---|---|---\nVisual Acuity | Mild-to-moderate impairment (usually > 6/60) | Severe impairment (usually < 6/60 or PL)\nAfferent Pupillary Defect (RAPD) | Absent or very mild | Marked (positive RAPD)\nFundus hemorrhages | Moderate hemorrhages | Extensive, dense \"splash-of-tomato-juice\" hemorrhages\nCotton wool spots | Few or absent | Numerous (> 10)\nFluorescein Angiography | Small areas of capillary non-perfusion | Large areas (> 10 disc areas) of capillary non-perfusion\nComplications | Good prognosis; low rate of rubeosis iridis | High risk (50%) of developing rubeosis iridis and neovascular glaucoma (\"100-day glaucoma\")"
         },
         {
           "id": "ophth_written_retina_q8",
@@ -234,6 +264,12 @@
           "type": "enumerate",
           "question": "Enumerate optic nerve head changes in open-angle glaucoma.",
           "answer": "1. Progressive enlargement and deepening of the optic cup (increased Cup/Disc ratio > 0.6 or asymmetry > 0.2 between eyes).\n2. Thinning and notching of the neuroretinal rim (especially at the superior and inferior poles - ISNT rule violation).\n3. Nasalization of retinal vessels (shifting of vessels towards the nasal side of the disc).\n4. Bayonetting sign (vessels making sharp double bends as they cross the excavation margin).\n5. Splinter hemorrhages (Drance hemorrhages) at the disc margin."
+        },
+        {
+          "id": "ophth_written_retina_q12",
+          "type": "enumerate",
+          "question": "Name three types of Retinal Detachment based on their pathology.",
+          "answer": "1. Rhegmatogenous Retinal Detachment.\n2. Tractional Retinal Detachment.\n3. Exudative (Serous) Retinal Detachment."
         }
       ]
     },
@@ -288,13 +324,25 @@
           "id": "ophth_written_eor_q8",
           "type": "surgical_principle",
           "question": "Name two suitable corneal refractive surgical options and list three absolute contraindications.",
-          "answer": "Corneal Refractive Surgical Options:\n1. LASIK (Laser-Assisted In Situ Keratomileusis): Flap created in corneal stroma, and excimer laser ablation performed underneath.\n2. PRK (Photorefractive Keratectomy) / Trans-PRK: Surface ablation of the corneal stroma after epithelial removal.\n3. SMILE (Small Incision Lenticule Extraction): Femtosecond laser creates and extracts a stromal lenticule through a microscopic incision.\n\nAbsolute Contraindications:\n1. Keratoconus, suspected keratoconus, or abnormal corneal topography.\n2. Inadequate corneal thickness (calculated residual stromal bed thickness under flap < 250 microns).\n3. Active ocular infection or severe ocular surface inflammation (e.g., severe dry eye, active uveitis).\n4. Severe systemic connective tissue disease (e.g., systemic lupus erythematosus, rheumatoid arthritis)."
+          "answer": "Corneal Refractive Surgical Options:\n1. LASIK (Laser-Assisted In Situ Keratomileusis): Flap created in corneal stroma, and excimer laser ablation performed underneath.\n2. PRK (Photorefractive Keratectomy) / Trans-PRK: Surface ablation of the corneal stroma after epithelial removal.\n3. SMILE (Small Incision Lenticule Extraction): Femtosecond laser creates and extracts a stromal lenticule through a microscopic incision.\n\nAbsolute Contraindications:\n1. Active corneal disease or thin corneas (risk of ectasia).\n2. Uncontrolled systemic diseases or autoimmune diseases.\n3. Severe dry eye or ocular surface disease."
         },
         {
           "id": "ophth_written_eor_q9",
           "type": "surgical_principle",
           "question": "Explain the optical principle of the 'Pinhole test' and what it indicates if vision improves with it.",
           "answer": "Optical Principle:\nThe pinhole acts as an artificial pupil that blocks peripheral divergent light rays (which cause spherical aberration and blur in refractive errors) and only allows central, parallel light rays to enter the eye and reach the fovea directly.\n\nClinical Indication:\n- If visual acuity improves with the pinhole: The visual loss is primarily due to an uncorrected error of refraction or corneal irregularity.\n- If visual acuity does not improve: The visual loss is due to an organic pathology (such as macular disease, vitreous opacity, optic nerve lesion, or advanced cataract)."
+        },
+        {
+          "id": "ophth_written_eor_q10",
+          "type": "enumerate",
+          "question": "Name two suitable corneal refractive surgical options for this patient.",
+          "answer": "1. LASIK (Laser-Assisted In Situ Keratomileusis).\n2. PRK (Photorefractive Keratectomy) or SMILE (Small Incision Lenticule Extraction)."
+        },
+        {
+          "id": "ophth_written_eor_q11",
+          "type": "enumerate",
+          "question": "List three absolute contraindications for performing laser refractive surgery (such as LASIK).",
+          "answer": "1. Keratoconus or abnormal corneal topography.\n2. Inadequate central corneal thickness.\n3. Active ocular inflammation or severe autoimmune/connective tissue diseases."
         }
       ]
     },
@@ -330,35 +378,71 @@
         {
           "id": "ophth_written_conjunctiva_q5",
           "type": "definition",
-          "question": "Define trachoma and enumerate its eyelid and corneal complications.",
-          "answer": "Trachoma is a chronic keratoconjunctivitis caused by Chlamydia trachomatis (serotypes A, B, Ba, and C), endemic in developing areas, characterized by follicles, papillae, and pannus, healing with cicatrization.\n\nEyelid Complications:\n- Trichiasis (misdirected lashes).\n- Cicatricial Entropion (inward lid rotation due to conjunctival scarring - Arlt's line).\n- Ptosis (due to scarring of Müller's muscle and lid thickening - tylosis).\n- Madarosis or Ankyloblepharon.\n\nCorneal Complications:\n- Trachomatous corneal ulcer (due to mechanical irritation of trichiasis).\n- Corneal opacities (nebula/leucoma) leading to blindness.\n- Pannus (superficial corneal vascularization and infiltration).\n- Xerosis (severe dryness due to destruction of goblet cells and lacrimal ducts)."
+          "question": "Define trachoma.",
+          "answer": "Trachoma (Egyptian ophthalmia) is a chronic infective disease affecting the conjunctiva and cornea. It is caused by Chlamydia trachomatis, characterized by the formation of follicles, papillae, and pannus, and heals by cicatrization with potential visual disability and lid deformity."
         },
         {
           "id": "ophth_written_conjunctiva_q6",
+          "type": "definition",
+          "question": "What is the etiology of trachoma, including the causative agent and mode of transmission?",
+          "answer": "The causative agent belongs to chlamydiae (Chlamydia trachomatis) with 15 immunotypes. Serotypes A, B, Ba, and C are associated with endemic trachoma. Transmission occurs via direct and indirect contact with infected discharge through hands, clothes, or towels. Flies play a major role in spreading the organism."
+        },
+        {
+          "id": "ophth_written_conjunctiva_q7",
+          "type": "definition",
+          "question": "Describe the clinical stages of trachoma according to McCallan's classification.",
+          "answer": "T1 (Trachoma at onset): Immature follicles on the upper tarsal conjunctiva with early corneal changes (trachomatous pannus). Symptoms include gritty sensation, lid heaviness, mucus discharge, and photophobia.\nT2 (Established/florid trachoma): Mature soft follicles with papillary hypertrophy (subtypes T2a, T2b, T2c).\nT3 (Starting cicatrization): Active signs plus scarring (Arlt's line, PTDs, PTCs).\nT4 (Cicatrized/healed): Only scar tissue present; no active inflammation or infectivity."
+        },
+        {
+          "id": "ophth_written_conjunctiva_q8",
+          "type": "definition",
+          "question": "Outline the WHO simplified grading system for trachoma.",
+          "answer": "TF: Trachomatous follicles (5 or more); TI: Trachomatous intense inflammation (obscuring >50% of tarsal vessels); TS: Trachomatous scarring; TT: Trachomatous trichiasis; CO: Corneal opacity (obscuring pupil margin or vision ≤6/18)."
+        },
+        {
+          "id": "ophth_written_conjunctiva_q9",
+          "type": "definition",
+          "question": "Describe the corneal manifestations of trachoma.",
+          "answer": "Corneal involvement occurs simultaneously with conjunctival infection, primarily affecting the upper cornea. Key features include trachomatous pannus (cellular infiltration + superficial vascularization; types: thin, vascular, fleshy, annular, cicatrized) with Herbert's rosettes/pits, and superficial linear trachomatous corneal ulcers at the lower border of the pannus."
+        },
+        {
+          "id": "ophth_written_conjunctiva_q10",
+          "type": "enumerate",
+          "question": "Enumerate the complications of trachoma.",
+          "answer": "Eyelid: Trichiasis, entropion (commonly upper lid), ptosis.\nConjunctival: Xerosis, symblepharon, hyaline degeneration.\nCorneal: Diffuse nebulae, leucoma, xerosis.\nLacrimal: Chronic dacryocystitis, dacryoadenitis."
+        },
+        {
+          "id": "ophth_written_conjunctiva_q11",
+          "type": "surgical_principle",
+          "question": "What is the treatment of trachoma?",
+          "answer": "Prophylaxis: Strict hygiene, sanitation, fly control, and health education.\nMedical: Given only in active stages (antibiotics).\nSurgical: Expression of large follicles (T2a), scraping of papillae (T2b), or picking of PTDs/PTCs (T3/T4)."
+        },
+        {
+          "id": "ophth_written_conjunctiva_q12",
           "type": "enumerate",
           "question": "Enumerate the clinical types and manifestations of Vernal Kerato-Conjunctivitis (Spring Catarrh).",
           "answer": "Vernal Kerato-conjunctivitis (VKC) is a bilateral, recurrent, seasonal allergic inflammation, predominantly affecting young boys.\n\nClinical Types:\n1. Palpebral Type: Giant cobblestone papillae on the upper tarsal conjunctiva.\n2. Bulbar/Limbal Type: Gelatinous thickening at the limbus with white Horner-Trantas dots (clumps of eosinophils).\n3. Mixed Type: Combination of palpebral and bulbar features.\n\nOcular/Corneal Manifestations:\n- Severe itching, photophobia, and ropy mucoid discharge.\n- Shield ulcer (sterile transverse ulcer in upper cornea due to friction of giant papillae).\n- Punctate epithelial keratitis."
         },
         {
-          "id": "ophth_written_conjunctiva_q7",
+          "id": "ophth_written_conjunctiva_q13",
           "type": "scenario",
           "question": "A 10-year-old boy presents with severe bilateral itching, ropy mucoid discharge, and photophobia. On examination, you see large, flat-topped papillae on the upper tarsal conjunctiva. (a) What is your diagnosis? (b) How do you differentiate these papillae from trachomatous papillae?",
           "answer": "a) Diagnosis: Vernal Kerato-conjunctivitis (VKC) - Palpebral type.\n\nb) Differentiator Table:\nFeature | VKC Papillae | Trachomatous Papillae\n---|---|---\nEtiology | IgE-mediated allergic reaction | Chronic infection (Chlamydia trachomatis)\nSize | Giant (\"Cobblestone\" appearance, > 1 mm) | Fine, small, velvety red spots\nColor | Bluish-white (milky hue due to mucus/fibrosis) | Bright red (hyperemic)\nUpper Fornix | Free from lesions | Scarred and involved (follicles present)\nDischarge | Thick, ropy, elastic mucoid discharge | Mucopurulent discharge (rich in bacteria, no eosinophils)"
         },
         {
-          "id": "ophth_written_conjunctiva_q8",
+          "id": "ophth_written_conjunctiva_q14",
           "type": "definition",
           "question": "Define pannus and describe its clinical types.",
-          "answer": "Pannus is the superficial infiltration of the cornea with inflammatory cells and newly formed blood vessels from the limbus into the upper part of the cornea (between Bowman's membrane and epithelium).\n\nClinical Types:\n1. Pannus Tenuis: Thin, early pannus with few vessels and mild infiltration.\n2. Pannus Vasculosus: Highly vascularized, active pannus with multiple engorged vessels.\n3. Pannus Carnosus (Fleshy): Thick, red, gelatinous pannus indicating severe active disease.\n4. Pannus Annularis: Rare form forming a complete vascular ring around the cornea.\n5. Pannus Siccus (Cicatrized): Inactive, healed pannus characterized by white fibrous tissue and empty \"ghost\" vessels."
+          "answer": "Pannus is the superficial infiltration of the cornea with inflammatory cells and newly formed blood vessels from the limbus into the upper part of the cornea (between Bowman's membrane and epithelium).\n\nClinical Types:\n1. Thin (pannus tenuis).\n2. Vascular (pannus vasculosus).\n3. Fleshy (pannus carnosus).\n4. Annular (pannus annulosus).\n5. Healed/Cicatrized (pannus cicus)."
         },
         {
-          "id": "ophth_written_conjunctiva_q9",
+          "id": "ophth_written_conjunctiva_q15",
           "type": "definition",
           "question": "Define Ophthalmia Neonatorum and name the causative organisms and their time of onset.",
           "answer": "Ophthalmia Neonatorum is any acute conjunctivitis occurring in a newborn during the first month of life (acquired during passage through the birth canal).\n\nCauses & Time of Onset:\n1. Chemical (e.g., Silver nitrate drops prophylaxis): Appears within the first 24 hours (resolves spontaneously).\n2. Gonococcal (Neisseria gonorrhoeae): Appears 2 to 5 days after birth (hyperacute purulent conjunctivitis, risk of rapid corneal perforation).\n3. Chlamydial (Chlamydia trachomatis - Inclusion blennorrhea): Appears 5 to 14 days after birth (mucopurulent, most common infectious cause).\n4. Viral (Herpes Simplex Virus-2): Appears 1 to 2 weeks after birth (vesicles on lids, geographic keratitis).\n5. Other Bacteria (Staphylococcus, Streptococcus): Appears 5 to 10 days after birth."
         },
         {
-          "id": "ophth_written_conjunctiva_q10",
+          "id": "ophth_written_conjunctiva_q16",
           "type": "surgical_principle",
           "question": "What is the surgical principle for treating a recurrent pterygium?",
           "answer": "The surgical principle is to excise the pterygium head and body completely, and then create a barrier to prevent the migration of subconjunctival fibroblasts and vessels across the limbus.\n\nMethods to prevent recurrence:\n1. Wide excision with conjunctival autograft (CAG) (harvested from superior bulbar conjunctiva of same eye) secured with sutures or fibrin glue.\n2. Excision with amniotic membrane graft (AMG).\n3. Intraoperative application of Mitomycin C (MMC 0.02% for 2-3 minutes) to inhibit fibrovascular proliferation.\n4. Post-operative Beta irradiation (Strontium-90)."
@@ -374,13 +458,13 @@
           "id": "ophth_written_orbit_q1",
           "type": "definition",
           "question": "Define proptosis and enumerate its common causes.",
-          "answer": "Proptosis (exophthalmos) is the abnormal protrusion or forward displacement of the eyeball from the orbit.\n\nCommon Causes:\n1. Endocrine: Thyroid eye disease (Graves' ophthalmopathy - most common cause of bilateral and unilateral proptosis).\n2. Inflammatory: Orbital cellulitis, orbital pseudotumor (nonspecific orbital inflammation).\n3. Vascular: Carotid-cavernous sinus fistula (pulsating proptosis), orbital varices.\n4. Neoplastic:\n   - Benign: Cavernous hemangioma, optic nerve glioma.\n   - Malignant: Rhabdomyosarcoma (children), lacrimal gland carcinoma, orbital metastasis.\n5. Traumatic: Retrobulbar hemorrhage, orbital roof fracture."
+          "answer": "Proptosis (exophthalmos) is the abnormal protrusion or forward displacement of the eyeball from the orbit.\n\nCommon Causes:\n1. Endocrine: Thyroid eye disease (Graves' ophthalmopathy - most common cause of bilateral and unilateral proptosis).\n2. Inflammatory: Orbital cellulitis, orbital tissue swelling (pseudotumor).\n3. Vascular: Carotid-cavernous sinus fistula (pulsating proptosis), orbital varices.\n4. Neoplastic: Cavernous hemangioma, optic nerve glioma, rhabdomyosarcoma.\n5. Traumatic: Retrobulbar hemorrhage, orbital fractures."
         },
         {
           "id": "ophth_written_orbit_q2",
           "type": "definition",
           "question": "Define orbital cellulitis and enumerate its potential complications.",
-          "answer": "Orbital cellulitis is an acute, purulent, life- and vision-threatening infection of the soft tissues of the orbit posterior to the orbital septum, usually secondary to paranasal sinusitis (especially ethmoidal).\n\nComplications:\n1. Ocular:\n   - Exposure keratopathy and corneal ulceration.\n   - Compressive optic neuropathy (leading to permanent blindness).\n   - Central retinal artery occlusion (CRAO) or central retinal vein occlusion (CRVO).\n   - Orbital abscess or subperiosteal abscess.\n   - Panophthalmitis.\n2. Intracranial:\n   - Cavernous sinus thrombosis (life-threatening bilateral ophthalmoplegia and sepsis).\n   - Meningitis and extradural/brain abscess.\n3. Systemic: Septicemia and pyaemia."
+          "answer": "Orbital cellulitis is an acute, purulent, life- and vision-threatening infection of the soft tissues of the orbit posterior to the orbital septum, usually secondary to paranasal sinusitis (especially ethmoidal).\n\nComplications:\n1. Ocular:\n   - Exposure keratopathy and corneal ulceration.\n   - Compressive optic neuropathy (leading to permanent blindness).\n   - Central retinal artery occlusion (CRAO) or central retinal vein occlusion (CRVO).\n   - Subperiosteal or orbital abscess.\n   - Panophthalmitis.\n2. Intracranial:\n   - Cavernous sinus thrombosis (life-threatening bilateral ophthalmoplegia and sepsis).\n   - Meningitis and extradural/brain abscess.\n3. Systemic: Septicemia and pyaemia."
         },
         {
           "id": "ophth_written_orbit_q3",
@@ -410,7 +494,7 @@
           "id": "ophth_written_orbit_q7",
           "type": "surgical_principle",
           "question": "Describe the clinical approach and surgical priority in treating thyroid eye disease (TED) orbitopathy.",
-          "answer": "Clinical Approach:\nAssess activity using the Clinical Activity Score (CAS) and severity (mild, moderate, severe/sight-threatening due to optic neuropathy).\n1. Active phase: Immunosuppressants (IV Methylprednisolone) and orbital radiotherapy.\n2. Inactive phase: Surgical rehabilitation.\n\nSurgical Priority (Must be done in this strict chronological order):\n1. Orbital Decompression: First priority, to expand the orbital cavity by removing bone/fat, relieving compressive optic neuropathy or severe proptosis.\n2. Extraocular Muscle (Strabismus) Surgery: Second priority, to correct diplopia and realign the eyes after decompression.\n3. Eyelid Surgery (Lid recession or blepharoplasty): Third priority, to correct eyelid retraction (Dalrymple's sign) and improve lid closure."
+          "answer": "Clinical Approach:\nAssess activity using the Clinical Activity Score (CAS) and severity (mild, moderate, severe/sight-threatening due to optic neuropathy).\n1. Active phase: Immunosuppressants (IV Methylprednisolone) and orbital radiotherapy.\n2. Inactive phase: Surgical rehabilitation.\n\nSurgical Priority (Must be done in this strict chronological order):\n1. Orbital Decompression: First priority, to expand the orbital cavity by removing bone/fat, relieving compressive optic neuropathy or severe proptosis.\n2. Extraocular Muscle (Strabismus) Surgery: Second priority, to correct diplopia and realign the eyes after decompression.\n3. Eyelid Surgery (Lid recession or blephaloplasty): Third priority, to correct eyelid retraction (Dalrymple's sign) and improve lid closure."
         },
         {
           "id": "ophth_written_orbit_q8",
@@ -423,6 +507,12 @@
           "type": "scenario",
           "question": "A patient presents with pulsating proptosis, a bruit over the eye, and dilated episcleral veins. (a) What is the most probable diagnosis? (b) What is the surgical principle for treating this condition?",
           "answer": "a) Diagnosis: Carotid-Cavernous Sinus Fistula (CCF) (abnormal communication between the carotid system and the cavernous sinus, leading to high-pressure arterial blood flowing retrogradely into orbital veins).\n\nb) Surgical/Management Principle:\nThe principle is to close the abnormal fistula communication without compromising the main internal carotid artery flow, thereby lowering venous pressure and stopping the bruit/pulsation.\n\nMethod:\nInterventional Endovascular embolization (done via angiography catheter inserting microcoils, Onyx glue, or detachable balloons into the cavernous sinus via the femoral vein/inferior petrosal sinus)."
+        },
+        {
+          "id": "ophth_written_orbit_q10",
+          "type": "enumerate",
+          "question": "Enumerate three clinical signs of Graves' Ophthalmopathy.",
+          "answer": "1. Exophthalmos (Proptosis).\n2. Upper eyelid retraction (Dalrymple's sign).\n3. Eyelid lag on downward gaze (Von Graefe's sign)."
         }
       ]
     }

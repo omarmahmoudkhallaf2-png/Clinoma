@@ -10,35 +10,100 @@ const dataPath = join(__dirname, 'src', 'pages', 'flashcards', 'ophth_written_da
 const rawData = readFileSync(dataPath, 'utf-8');
 const DATA = JSON.parse(rawData);
 
+function parseMarkdownToHTML(text) {
+  const lines = text.split('\n');
+  let html = '';
+  let inTable = false;
+  let tableRows = [];
+  
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    const trimmed = line.trim();
+    
+    // Check if it's a table row
+    if (trimmed.includes('|')) {
+      // Check if it's a separator line (like ---|---|--- or :---)
+      if (trimmed.replace(/[\s\-:|]/g, '') === '') {
+        // It is a separator line, skip it
+        continue;
+      }
+      
+      if (!inTable) {
+        inTable = true;
+        tableRows = [];
+      }
+      
+      // Parse cells
+      let cells = line.split('|').map(c => c.trim());
+      // Handle leading/trailing empty cells if the line started/ended with |
+      if (line.trim().startsWith('|')) cells.shift();
+      if (line.trim().endsWith('|')) cells.pop();
+      
+      tableRows.push(cells);
+    } else {
+      // Not a table row. If we were in a table, close it first
+      if (inTable) {
+        html += renderTableHTML(tableRows);
+        inTable = false;
+        tableRows = [];
+      }
+      // Add normal paragraph
+      if (trimmed) {
+        if (trimmed.startsWith('- ') || trimmed.startsWith('* ')) {
+          html += `<li class="bullet-item">${trimmed.substring(2)}</li>`;
+        } else {
+          html += `<p class="paragraph-content">${trimmed}</p>`;
+        }
+      } else {
+        html += '<div class="space-divider"></div>';
+      }
+    }
+  }
+  
+  if (inTable) {
+    html += renderTableHTML(tableRows);
+  }
+  
+  return html;
+}
+
+function renderTableHTML(rows) {
+  if (rows.length === 0) return '';
+  let tableHtml = '<table class="comparison-table">';
+  
+  // First row is header
+  const header = rows[0];
+  tableHtml += '<thead><tr>';
+  header.forEach(cell => {
+    tableHtml += `<th>${cell}</th>`;
+  });
+  tableHtml += '</tr></thead>';
+  
+  // Remaining rows are body
+  tableHtml += '<tbody>';
+  for (let i = 1; i < rows.length; i++) {
+    tableHtml += '<tr>';
+    rows[i].forEach(cell => {
+      tableHtml += `<td>${cell}</td>`;
+    });
+    tableHtml += '</tr>';
+  }
+  tableHtml += '</tbody></table>';
+  
+  return tableHtml;
+}
+
 // ===== HTML GENERATOR =====
 function buildHTML(withAnswers) {
   const chaptersHTML = DATA.chapters.map(ch => {
     const questionsHTML = ch.questions.map((q, idx) => {
-      // Check if it's a comparison or contains markdown tables and convert them to simple HTML tables
-      let answerContent = q.answer;
-      if (q.type === 'comparison' && answerContent.includes('|')) {
-        const lines = answerContent.split('\n');
-        const rows = lines.map(line => {
-          if (!line.trim()) return '';
-          if (line.includes('---|---|---')) return ''; // separator row
-          const cols = line.split('|').map(c => c.trim());
-          if (cols.length < 2) return '';
-          
-          const isHeader = lines.indexOf(line) === 0;
-          const cellTag = isHeader ? 'th' : 'td';
-          return `<tr>${cols.map(c => `<${cellTag}>${c}</${cellTag}>`).join('')}</tr>`;
-        }).join('');
-        
-        answerContent = `<table class="comparison-table">${rows}</table>`;
-      } else {
-        answerContent = answerContent.replace(/\n/g, '<br/>');
-      }
+      let answerContent = parseMarkdownToHTML(q.answer);
 
       const answerHTML = withAnswers
         ? `
           <div class="answer-box">
             <span class="answer-badge">Model Answer</span>
-            <p class="answer-content">${answerContent}</p>
+            <div class="answer-content">${answerContent}</div>
           </div>
         `
         : `
@@ -268,6 +333,18 @@ function buildHTML(withAnswers) {
       font-weight: 700;
       color: #1e293b;
       line-height: 1.5;
+    }
+    .paragraph-content {
+      margin-bottom: 6px;
+    }
+    .bullet-item {
+      margin-left: 16px;
+      margin-bottom: 4px;
+      list-style-type: disc;
+      display: list-item;
+    }
+    .space-divider {
+      height: 8px;
     }
 
     /* ─── TABLES ────────────────────────── */
