@@ -2,6 +2,68 @@ import type { Chapter } from '../types';
 
 export const CHAPTERS: Chapter[] = [
   {
+    id: 100,
+    title: 'Keywords Cases Clues',
+    topics: [
+      'Eyelid',
+      'Lacrimal',
+      'Conjunctiva',
+      'Cornea',
+      'Lens',
+      'Glaucoma',
+      'Uveitis',
+      'Retina',
+      'Strabismus',
+      'Orbit & Infections',
+      'Trauma',
+      'Neuro-ophthalmology',
+      'Miscellaneous'
+    ]
+  },
+  {
+    id: 200,
+    title: 'Treatment Q&As',
+    topics: [
+      'Eyelid Treatments',
+      'Lacrimal System Treatments',
+      'Conjunctiva Treatments',
+      'Cornea & Sclera Treatments',
+      'Lens Treatments',
+      'Orbit Treatments',
+      'Errors of Refraction Treatments',
+      'Glaucoma Treatments',
+      'Uveal Tract Treatments',
+      'Strabismus Treatments',
+      'Retina Treatments',
+      'Neuro-ophthalmology Treatments',
+      'Ocular Trauma Treatments'
+    ]
+  },
+  {
+    id: 300,
+    title: 'Ophthalmic Comparisons',
+    topics: [
+      'Lid Glands & Chalazion',
+      'Limbus & Conjunctival Lesions',
+      'Trachoma & Spring Catarrh Papillae',
+      'Corneal Pannus Types',
+      'Lens Nuclear Hydration',
+      'Retinal Vein Occlusions (CRVO)',
+      'Retinal Detachment types',
+      'Squint & Eye Deviations',
+      'Optic Nerve Swelling (Papilledema/Papillitis)',
+      'Pupillary Aperture (Miosis/Mydriasis)',
+      'Light-Near Dissociation Pupils',
+      'Eyelid Positional Anomalies',
+      'Intraocular Suppurative Inflammations'
+    ]
+  },
+  {
+    id: 400,
+    title: 'ذكر فين',
+    topics: []
+  },
+  {
     id: 1,
     title: 'Eye lid',
     topics: [

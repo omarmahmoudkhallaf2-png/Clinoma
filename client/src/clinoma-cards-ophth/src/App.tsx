@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   BookOpen, 
+  BookMarked,
   LayoutDashboard, 
   GraduationCap, 
   History, 
@@ -12,7 +13,9 @@ import {
   CheckCircle2,
   AlertCircle,
   Brain,
-  RotateCcw
+  RotateCcw,
+  Sparkles,
+  Scale
 } from 'lucide-react';
 import { CHAPTERS } from './data/chapters';
 import { INITIAL_QUESTIONS as RAW_INITIAL_QUESTIONS } from './data/questions';
@@ -22,6 +25,10 @@ import { sortAllQuestions } from './utils/sorting';
 const INITIAL_QUESTIONS = sortAllQuestions(RAW_INITIAL_QUESTIONS);
 import StudySession from './components/StudySession';
 import ReviewView from './components/ReviewView';
+import CompilationsView from './components/CompilationsView';
+import TreatmentsView from './components/TreatmentsView';
+import ComparisonsView from './components/ComparisonsView';
+import SummaryNotesView from './components/SummaryNotesView';
 
 const MIXED_CHAPTER: Chapter = {
   id: 0,
@@ -54,8 +61,9 @@ const isQuestionCase = (q: Question): boolean => {
   return false;
 };
 
-export default function App({ onExit }: { onExit?: () => void }) {
-  const [view, setView] = useState<'home' | 'study' | 'review'>('home');
+export default function App({ onExit }: { onExit?: () => void } = {}) {
+  const [view, setView] = useState<'home' | 'study' | 'review' | 'compilations' | 'treatments' | 'comparisons'>('home');
+  const [homeCategory, setHomeCategory] = useState<'chapters' | 'compilations' | 'summary'>('chapters');
   const [activeChapter, setActiveChapter] = useState<Chapter | null>(null);
   const [reviewList, setReviewList] = useState<string[]>(() => {
     const saved = localStorage.getItem('clinoma_review_list');
@@ -83,6 +91,13 @@ export default function App({ onExit }: { onExit?: () => void }) {
     setSessionQuestions(chapterQuestions);
     setView('study');
     setSidebarOpen(false);
+  };
+
+  const startKeywordsCases = () => {
+    const kwCh = CHAPTERS.find(c => c.id === 100);
+    if (kwCh) {
+      startChapter(kwCh);
+    }
   };
 
   const startMixedSession = () => {
@@ -156,7 +171,7 @@ export default function App({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Global Top Stats */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2.5">
           {view === 'home' && (
             <button
               onClick={startMixedSession}
@@ -219,6 +234,12 @@ export default function App({ onExit }: { onExit?: () => void }) {
                       active={view === 'home'} 
                       onClick={() => { setView('home'); setSidebarOpen(false); }}
                     />
+                    <SidebarItem 
+                      icon={<Sparkles className="w-4 h-4 text-amber-500 animate-pulse"/>} 
+                      label="Keywords Cases Clues" 
+                      active={view === 'study' && activeChapter?.id === 100} 
+                      onClick={() => { startKeywordsCases(); }}
+                    />
                     <button 
                       onClick={() => { setView('review'); setSidebarOpen(false); }}
                       className={`w-full flex items-center justify-between px-3 py-2.5 text-xs font-semibold rounded-lg transition-all ${
@@ -240,6 +261,30 @@ export default function App({ onExit }: { onExit?: () => void }) {
                       label="Mixed Shuffle Session" 
                       active={activeChapter?.id === 0 && view === 'study'} 
                       onClick={() => { startMixedSession(); setSidebarOpen(false); }}
+                    />
+                    <SidebarItem 
+                      icon={<BookMarked className="w-4 h-4"/>} 
+                      label="Board Compilations" 
+                      active={view === 'compilations'} 
+                      onClick={() => { setView('compilations'); setSidebarOpen(false); }}
+                    />
+                    <SidebarItem 
+                      icon={<BookOpen className="w-4 h-4 text-indigo-400"/>} 
+                      label="Ophthalmology Notes (الخلاصة)" 
+                      active={view === 'home' && homeCategory === 'summary'} 
+                      onClick={() => { setView('home'); setHomeCategory('summary'); setSidebarOpen(false); }}
+                    />
+                    <SidebarItem 
+                      icon={<GraduationCap className="w-4 h-4 text-emerald-400"/>} 
+                      label="Treatment Q&A" 
+                      active={view === 'treatments'} 
+                      onClick={() => { setView('treatments'); setSidebarOpen(false); }}
+                    />
+                    <SidebarItem 
+                      icon={<Scale className="w-4 h-4 text-rose-400"/>} 
+                      label="Comparisons Chart" 
+                      active={view === 'comparisons'} 
+                      onClick={() => { setView('comparisons'); setSidebarOpen(false); }}
                     />
                   </div>
                 </div>
@@ -267,7 +312,7 @@ export default function App({ onExit }: { onExit?: () => void }) {
                           }`}
                         >
                           <span className="flex items-center gap-2 overflow-hidden mr-1">
-                            <span className="text-[10px] font-mono opacity-50 text-amber-500/60">{(actualIdx + 1) < 10 ? `0${actualIdx + 1}` : actualIdx + 1}</span>
+                            <span className="text-[10px] font-mono opacity-50 text-amber-500/60">{actualIdx < 10 ? `0${actualIdx}` : actualIdx}</span>
                             <span className="truncate">{ch.title}</span>
                           </span>
                           <span className="flex items-center gap-1.5 shrink-0">
@@ -281,12 +326,12 @@ export default function App({ onExit }: { onExit?: () => void }) {
                               <span
                                 onClick={(e) => {
                                   e.stopPropagation();
-                                  if (window.confirm(`هل أنت متأكد من تصفير تقدم ${ch.title}؟`)) {
+                                  if (window.confirm(`Are you sure you want to reset your progress for ${ch.title}?`)) {
                                     resetChapterProgress(ch.id);
                                   }
                                 }}
                                 className="p-1 hover:bg-rose-500/25 rounded text-rose-455 hover:text-rose-300 transition-all cursor-pointer flex items-center justify-center text-rose-400"
-                                title="تصفير تقدم الشابتر"
+                                title="Reset Chapter Progress"
                               >
                                 <RotateCcw className="w-3 h-3" />
                               </span>
@@ -297,16 +342,56 @@ export default function App({ onExit }: { onExit?: () => void }) {
                     })}
                   </div>
 
-                  {/* Elegant Divider Line in the Sidebar */}
-                  <div className="my-5 border-t border-slate-800/80 relative">
-                    <span className="absolute -top-2 left-1/2 -translate-x-1/2 bg-slate-950 px-2 text-[8px] font-black text-slate-500 uppercase tracking-widest border border-slate-800/60 rounded">
-                      ⏳ Pending Drafts
-                    </span>
-                  </div>
+                 {/* Revision Compilations list with stats in Sidebar */}
+                 <div className="mt-5">
+                   <div className="text-[10px] font-black text-blue-400 uppercase tracking-widest px-3 pb-2 flex items-center justify-between font-sans">
+                     <span>Revision Compilations</span>
+                     <span className="text-[8px] bg-blue-500/10 text-blue-400 px-1.5 py-0.5 rounded font-black tracking-widest border border-blue-500/20">COMPS</span>
+                   </div>
+                   <div className="space-y-1">
+                     {CHAPTERS.filter(ch => [100, 200, 300, 400].includes(ch.id)).map((ch) => {
+                       const chapterQuestions = INITIAL_QUESTIONS.filter(q => q.chapterId === ch.id);
+                       const totalCount = chapterQuestions.length;
+                       const masteredCount = chapterQuestions.filter(q => masteredIds.includes(q.id)).length;
+                       return (
+                         <button 
+                           key={ch.id}
+                           onClick={() => { startChapter(ch); }}
+                           className={`w-full flex items-center justify-between px-3 py-2 text-xs font-semibold rounded-lg transition-all border ${
+                             activeChapter?.id === ch.id && view === 'study'
+                               ? 'text-white bg-blue-500/20 border-blue-500/60'
+                               : 'text-blue-400 bg-slate-950 border-slate-900/50 hover:bg-slate-900 hover:text-blue-300'
+                           }`}
+                         >
+                           <span className="flex items-center gap-2 overflow-hidden mr-1">
+                             <span className="text-[10px] font-mono opacity-65 text-blue-400">
+                               {ch.id === 100 ? '🔑' : ch.id === 200 ? '💊' : ch.id === 300 ? '⚖️' : '📌'}
+                             </span>
+                             <span className="truncate">{ch.title}</span>
+                           </span>
+                           <span className="flex items-center gap-1.5 shrink-0">
+                             <span className={`text-[10px] font-mono px-1.5 py-0.5 rounded ${
+                               activeChapter?.id === ch.id && view === 'study' ? 'bg-blue-500 text-white font-bold' : 'bg-slate-900 text-blue-400 font-bold'
+                             }`}>
+                               {masteredCount}/{totalCount}
+                             </span>
+                           </span>
+                         </button>
+                       );
+                     })}
+                   </div>
+                 </div>
 
-                  <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest px-3 pb-2 mt-2">Draft Chapters</div>
-                  <div className="space-y-1">
-                    {CHAPTERS.filter(ch => ![1, 3, 4, 6, 7, 11].includes(ch.id)).map((ch) => {
+                {/* Elegant Divider Line in the Sidebar */}
+                <div className="my-5 border-t border-slate-800/80 relative">
+                  <span className="absolute -top-2 left-1/2 -translate-x-1/2 bg-slate-950 px-2 text-[8px] font-black text-slate-500 uppercase tracking-widest border border-slate-800/60 rounded">
+                    ⏳ Pending Drafts
+                  </span>
+                </div>
+
+                <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest px-3 pb-2 mt-2">Draft Chapters</div>
+                <div className="space-y-1">
+                  {CHAPTERS.filter(ch => ![100, 200, 300, 400, 1, 3, 4, 6, 7, 11].includes(ch.id)).map((ch) => {
                       const chapterQuestions = INITIAL_QUESTIONS.filter(q => q.chapterId === ch.id);
                       const totalCount = chapterQuestions.length;
                       const masteredCount = chapterQuestions.filter(q => masteredIds.includes(q.id)).length;
@@ -322,7 +407,7 @@ export default function App({ onExit }: { onExit?: () => void }) {
                           }`}
                         >
                           <span className="flex items-center gap-2 overflow-hidden mr-1">
-                            <span className="text-[10px] font-mono opacity-50 text-slate-500">{(actualIdx + 1) < 10 ? `0${actualIdx + 1}` : actualIdx + 1}</span>
+                            <span className="text-[10px] font-mono opacity-50 text-slate-500">{actualIdx < 10 ? `0${actualIdx}` : actualIdx}</span>
                             <span className="truncate">{ch.title}</span>
                           </span>
                           <span className="flex items-center gap-1.5 shrink-0">
@@ -335,12 +420,12 @@ export default function App({ onExit }: { onExit?: () => void }) {
                               <span
                                 onClick={(e) => {
                                   e.stopPropagation();
-                                  if (window.confirm(`هل أنت متأكد من تصفير تقدم ${ch.title}؟`)) {
+                                  if (window.confirm(`Are you sure you want to reset your progress for ${ch.title}?`)) {
                                     resetChapterProgress(ch.id);
                                   }
                                 }}
                                 className="p-1 hover:bg-rose-500/20 rounded text-rose-500 hover:text-rose-450 transition-all cursor-pointer flex items-center justify-center"
-                                title="تصفير تقدم الشابتر"
+                                title="Reset Chapter Progress"
                               >
                                 <RotateCcw className="w-3 h-3" />
                               </span>
@@ -381,7 +466,8 @@ export default function App({ onExit }: { onExit?: () => void }) {
                 exit={{ opacity: 0, y: -10 }}
                 className="space-y-8"
               >
-                <div className="text-left flex flex-col md:flex-row md:items-end justify-between gap-4">
+                {/* Top Title Bar */}
+                <div className="text-left flex flex-col md:flex-row md:items-end justify-between items-start gap-4 border-b border-slate-200/60 pb-4">
                   <div>
                     <a href="https://clinoma.pages.dev" target="_blank" rel="noopener noreferrer" className="block group">
                       <h2 className="text-3xl font-extrabold text-slate-900 font-display group-hover:text-blue-600 transition-colors">CLINOMA CARDS</h2>
@@ -389,40 +475,230 @@ export default function App({ onExit }: { onExit?: () => void }) {
                   </div>
                   <button
                     onClick={startMixedSession}
-                    className="md:hidden w-full flex items-center justify-center gap-2 px-5 py-3.5 bg-slate-905 hover:bg-slate-800 text-white rounded-2xl text-sm font-bold shadow-md"
+                    className="md:hidden w-full flex items-center justify-center gap-2 px-5 py-3.5 bg-slate-950 hover:bg-slate-800 text-white rounded-2xl text-sm font-bold shadow-md"
                   >
                     <Brain className="w-4 h-4 text-blue-400" />
                     <span>Mixed Practice Challenge</span>
                   </button>
                 </div>
 
-                {/* Grid of all chapters rendered sequentially */}
-                <div className="space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
-                    {CHAPTERS.map((chapter) => {
-                      const chapterQuestions = INITIAL_QUESTIONS.filter(q => q.chapterId === chapter.id);
-                      const totalCount = chapterQuestions.length;
-                      const masteredCount = chapterQuestions.filter(q => masteredIds.includes(q.id)).length;
-                      const reviewCount = chapterQuestions.filter(q => reviewList.includes(q.id)).length;
-                      const originalIdx = CHAPTERS.findIndex(c => c.id === chapter.id);
+                {/* Primary Category Selector Tab */}
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 bg-white p-4 rounded-3xl border border-slate-200/80 shadow-sm">
+                  <div className="flex items-center gap-3">
+                    <span className="text-3xl select-none">
+                      {homeCategory === 'chapters' ? '📚' : homeCategory === 'summary' ? '📝' : '⚡'}
+                    </span>
+                    <div>
+                      <h3 className="text-lg font-black text-slate-900 tracking-tight font-display select-none">
+                        {homeCategory === 'chapters' 
+                          ? 'الشباتر الـ 13 (Clinical Chapters)' 
+                          : homeCategory === 'summary' 
+                            ? 'الخلاصة الطبية العيونية الشاملة (Quick Notes)' 
+                            : 'تجميعات المراجعة للبورد (Revision Hub)'}
+                      </h3>
+                      <p className="text-xs text-slate-500 font-bold mt-0.5" dir="rtl">
+                        {homeCategory === 'chapters' 
+                          ? 'تصفح الـ 13 شابتر كاملة لدراسة تفاصيل وموضوعات العيون' 
+                          : homeCategory === 'summary'
+                            ? 'ملخص الـ 14 شابتر كاملة على شكل سيستم وبطاقات فلاش سريعة الحفظ'
+                            : 'مفاتيح التلقين، بروتوكولات العلاج والمقارنات الهامة السريعة'}
+                      </p>
+                    </div>
+                  </div>
 
-                      return (
-                        <ChapterCard 
-                          key={chapter.id} 
-                          chapter={chapter} 
-                          index={originalIdx}
-                          masteredCount={masteredCount}
-                          totalCount={totalCount}
-                          reviewCount={reviewCount}
-                          onClick={() => startChapter(chapter)}
-                          onReset={() => resetChapterProgress(chapter.id)}
-                        />
-                      );
-                    })}
+                  <div className="flex bg-slate-100 p-1 rounded-2xl border border-slate-200 grow sm:grow-0 max-w-xl w-full sm:w-auto shadow-inner overflow-x-auto">
+                    <button
+                      onClick={() => setHomeCategory('chapters')}
+                      type="button"
+                      className={`flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-black tracking-wide shrink-0 transition-all duration-200 ${
+                        homeCategory === 'chapters'
+                          ? 'bg-slate-900 text-white shadow-sm'
+                          : 'text-slate-500 hover:text-slate-800'
+                      }`}
+                    >
+                      📚 الشباتر
+                    </button>
+                    <button
+                      onClick={() => setHomeCategory('compilations')}
+                      type="button"
+                      className={`flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-black tracking-wide shrink-0 transition-all duration-200 ${
+                        homeCategory === 'compilations'
+                          ? 'bg-[#154c59] text-white shadow-sm'
+                          : 'text-slate-500 hover:text-slate-800'
+                      }`}
+                    >
+                      ⚡ التجميعات
+                    </button>
+                    <button
+                      onClick={() => setHomeCategory('summary')}
+                      type="button"
+                      className={`flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-black tracking-wide shrink-0 transition-all duration-200 ${
+                        homeCategory === 'summary'
+                          ? 'bg-indigo-900 text-white shadow-sm'
+                          : 'text-slate-500 hover:text-slate-800'
+                      }`}
+                    >
+                      📝 الخلاصة
+                    </button>
                   </div>
                 </div>
 
-                {/* No overall status block under chapters */}
+                {/* Conditionally Render Content based on Home Category Selection */}
+                {homeCategory === 'compilations' ? (
+                  <div className="space-y-8">
+                    {/* Banners Grid only displayed under Compilations Tab */}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+                      {/* Highlighted Compilations Revision Banner Card */}
+                      <motion.div 
+                        whileHover={{ y: -3, scale: 1.01 }}
+                        onClick={() => setView('compilations')}
+                        className="bg-gradient-to-r from-[#154c59] to-teal-800 p-6 rounded-3xl border border-teal-500/25 shadow-md shadow-teal-950/15 text-right flex flex-col justify-between gap-5 cursor-pointer relative overflow-hidden group select-none"
+                        dir="rtl"
+                      >
+                        <div className="absolute left-0 top-0 w-32 h-32 bg-white/5 rounded-full blur-2xl pointer-events-none" />
+                        <div className="flex items-start gap-4">
+                          <div className="w-12 h-12 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl flex items-center justify-center text-2xl shrink-0 group-hover:scale-110 transition-transform duration-300">
+                            📚
+                          </div>
+                          <div className="text-right">
+                            <div className="flex items-center gap-2 mb-1">
+                              <span className="bg-amber-400 text-slate-950 text-[9px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider select-none">LIST</span>
+                              <span className="text-teal-200 text-xs font-bold font-mono">Revision Sheet</span>
+                            </div>
+                            <h3 className="text-lg font-extrabold text-[#ffffff] font-display">Board Compilations</h3>
+                            <p className="text-xs text-white/80 font-medium mt-1">Interactive key sheets compiled for high-yield boards review!</p>
+                          </div>
+                        </div>
+                        <div className="px-4 py-2 bg-white text-[#154c59] hover:bg-slate-50 text-xs font-black rounded-lg shadow-md transition-colors flex items-center justify-center gap-1.5 w-fit self-end animate-pulse">
+                          <span>Open Compilations</span>
+                          <span className="text-base font-bold">➔</span>
+                        </div>
+                      </motion.div>
+
+                      {/* Highlighted Treatments Banner Card */}
+                      <motion.div 
+                        whileHover={{ y: -3, scale: 1.01 }}
+                        onClick={() => setView('treatments')}
+                        className="bg-gradient-to-r from-[#0d3c33] to-emerald-800 p-6 rounded-3xl border border-emerald-500/25 shadow-md shadow-[#0d3c33]/15 text-right flex flex-col justify-between gap-5 cursor-pointer relative overflow-hidden group select-none"
+                        dir="rtl"
+                      >
+                        <div className="absolute left-0 top-0 w-32 h-32 bg-white/5 rounded-full blur-2xl pointer-events-none" />
+                        <div className="flex items-start gap-4">
+                          <div className="w-12 h-12 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl flex items-center justify-center text-2xl shrink-0 group-hover:scale-110 transition-transform duration-300">
+                            🩺
+                          </div>
+                          <div className="text-right">
+                            <div className="flex items-center gap-2 mb-1">
+                              <span className="bg-emerald-400 text-slate-950 text-[9px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider select-none">THERAPY</span>
+                              <span className="text-emerald-200 text-xs font-bold font-mono">Therapeutic Guide</span>
+                            </div>
+                            <h3 className="text-lg font-extrabold text-[#ffffff] font-display">Treatment Q&A</h3>
+                            <p className="text-xs text-white/80 font-medium mt-1">All 13 ophthalmic chapters' treatments structured sequentially!</p>
+                          </div>
+                        </div>
+                        <div className="px-4 py-2 bg-white text-emerald-800 hover:bg-slate-50 text-xs font-black rounded-lg shadow-md transition-colors flex items-center justify-center gap-1.5 w-fit self-end animate-pulse">
+                          <span>Open Treatments</span>
+                          <span className="text-base font-bold">➔</span>
+                        </div>
+                      </motion.div>
+
+                      {/* Highlighted Comparisons Banner Card */}
+                      <motion.div 
+                        whileHover={{ y: -3, scale: 1.01 }}
+                        onClick={() => setView('comparisons')}
+                        className="bg-gradient-to-r from-slate-900 to-rose-950 p-6 rounded-3xl border border-rose-500/25 shadow-md shadow-rose-950/15 text-right flex flex-col justify-between gap-5 cursor-pointer relative overflow-hidden group select-none"
+                        dir="rtl"
+                      >
+                        <div className="absolute left-0 top-0 w-32 h-32 bg-white/5 rounded-full blur-2xl pointer-events-none" />
+                        <div className="flex items-start gap-4">
+                          <div className="w-12 h-12 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl flex items-center justify-center text-2xl shrink-0 group-hover:scale-110 transition-transform duration-300">
+                            ⚖️
+                          </div>
+                          <div className="text-right">
+                            <div className="flex items-center gap-2 mb-1">
+                              <span className="bg-rose-450 text-white text-[9px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider select-none bg-rose-600 animate-pulse">NEW</span>
+                              <span className="text-rose-200 text-xs font-bold font-mono">Comparisons Hub</span>
+                            </div>
+                            <h3 className="text-lg font-extrabold text-[#ffffff] font-display">Ophthalmic Comparisons</h3>
+                            <p className="text-xs text-white/80 font-medium mt-1">High-yield tables comparing styes, papillae, RD, squint, etc.</p>
+                          </div>
+                        </div>
+                        <div className="px-4 py-2 bg-white text-rose-900 hover:bg-slate-50 text-xs font-black rounded-lg shadow-md transition-colors flex items-center justify-center gap-1.5 w-fit self-end animate-pulse">
+                          <span>Open Comparisons</span>
+                          <span className="text-base font-bold">➔</span>
+                        </div>
+                      </motion.div>
+                    </div>
+
+                     {/* Also display the compilations interactive decks in a small grid */}
+                     <div className="space-y-4">
+                       <div className="flex items-center justify-between border-b border-slate-200 pb-2">
+                         <span className="text-xs font-bold text-slate-400 capitalize tracking-wider font-mono">Flashcards Mode Decks</span>
+                         <span className="text-xs font-bold text-teal-700 bg-teal-50 px-2.5 py-1 rounded-full">4 Compilations Decks</span>
+                       </div>
+                       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch font-sans">
+                         {CHAPTERS.filter(c => c.id === 100 || c.id === 200 || c.id === 300 || c.id === 400).map((chapter) => {
+                          const chapterQuestions = INITIAL_QUESTIONS.filter(q => q.chapterId === chapter.id);
+                          const totalCount = chapterQuestions.length;
+                          const masteredCount = chapterQuestions.filter(q => masteredIds.includes(q.id)).length;
+                          const reviewCount = chapterQuestions.filter(q => reviewList.includes(q.id)).length;
+                          const originalIdx = CHAPTERS.findIndex(c => c.id === chapter.id);
+
+                          return (
+                            <ChapterCard 
+                              key={chapter.id} 
+                              chapter={chapter} 
+                              index={originalIdx}
+                              masteredCount={masteredCount}
+                              totalCount={totalCount}
+                              reviewCount={reviewCount}
+                              onClick={() => startChapter(chapter)}
+                              onReset={() => resetChapterProgress(chapter.id)}
+                            />
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </div>
+                ) : homeCategory === 'summary' ? (
+                  <motion.div
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <SummaryNotesView />
+                  </motion.div>
+                ) : (
+                  /* Display the 13 clinical studies chapters */
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between border-b border-slate-200 pb-2">
+                      <span className="text-xs font-bold text-slate-400 capitalize tracking-wider font-mono">Clinical System Modules</span>
+                      <span className="text-xs font-bold text-amber-600 bg-amber-50 px-2.5 py-1 rounded-full font-mono">13 Chapters Total</span>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch font-sans">
+                      {CHAPTERS.filter(c => c.id !== 100 && c.id !== 200 && c.id !== 300 && c.id !== 400).map((chapter) => {
+                        const chapterQuestions = INITIAL_QUESTIONS.filter(q => q.chapterId === chapter.id);
+                        const totalCount = chapterQuestions.length;
+                        const masteredCount = chapterQuestions.filter(q => masteredIds.includes(q.id)).length;
+                        const reviewCount = chapterQuestions.filter(q => reviewList.includes(q.id)).length;
+                        const originalIdx = CHAPTERS.findIndex(c => c.id === chapter.id);
+
+                        return (
+                          <ChapterCard 
+                            key={chapter.id} 
+                            chapter={chapter} 
+                            index={originalIdx}
+                            masteredCount={masteredCount}
+                            totalCount={totalCount}
+                            reviewCount={reviewCount}
+                            onClick={() => startChapter(chapter)}
+                            onReset={() => resetChapterProgress(chapter.id)}
+                          />
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
               </motion.div>
             )}
 
@@ -459,6 +735,42 @@ export default function App({ onExit }: { onExit?: () => void }) {
                   onRemoveReview={removeFromReview}
                   startMixedSession={startMixedSession}
                 />
+              </motion.div>
+            )}
+
+            {view === 'compilations' && (
+              <motion.div
+                key="compilations"
+                initial={{ opacity: 0, scale: 0.98 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.98 }}
+                transition={{ duration: 0.2 }}
+              >
+                <CompilationsView onBack={() => setView('home')} />
+              </motion.div>
+            )}
+
+            {view === 'treatments' && (
+              <motion.div
+                key="treatments"
+                initial={{ opacity: 0, scale: 0.98 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.98 }}
+                transition={{ duration: 0.2 }}
+              >
+                <TreatmentsView onBack={() => setView('home')} />
+              </motion.div>
+            )}
+
+            {view === 'comparisons' && (
+              <motion.div
+                key="comparisons"
+                initial={{ opacity: 0, scale: 0.98 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.98 }}
+                transition={{ duration: 0.2 }}
+              >
+                <ComparisonsView onBack={() => setView('home')} />
               </motion.div>
             )}
           </AnimatePresence>
@@ -633,12 +945,12 @@ function ChapterCard({
                 <span
                   onClick={(e) => {
                     e.stopPropagation();
-                    if (window.confirm(`هل أنت متأكد من تصفير تقدم ${chapter.title}؟`)) {
+                    if (window.confirm(`Are you sure you want to reset your progress for ${chapter.title}?`)) {
                       onReset();
                     }
                   }}
                   className="p-1 bg-slate-900 border border-slate-800 hover:bg-rose-950 hover:border-rose-900 rounded-lg text-rose-455 hover:text-rose-300 transition-all flex items-center justify-center cursor-pointer text-rose-400"
-                  title="تصفير تقدم الشابتر"
+                  title="Reset Chapter Progress"
                 >
                   <RotateCcw className="w-3 h-3" />
                 </span>
@@ -702,12 +1014,12 @@ function ChapterCard({
               <span
                 onClick={(e) => {
                   e.stopPropagation();
-                  if (window.confirm(`هل أنت متأكد من تصفير تقدم ${chapter.title}؟`)) {
+                  if (window.confirm(`Are you sure you want to reset your progress for ${chapter.title}?`)) {
                     onReset();
                   }
                 }}
                 className="p-1 bg-slate-50 border border-slate-200 hover:bg-rose-50 hover:border-rose-200 rounded-lg text-rose-500 hover:text-rose-600 transition-all flex items-center justify-center cursor-pointer"
-                title="تصفير تقدم الشابتر"
+                title="Reset Chapter Progress"
               >
                 <RotateCcw className="w-3 h-3" />
               </span>

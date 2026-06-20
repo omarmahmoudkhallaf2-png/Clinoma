@@ -14,8 +14,8 @@ import {
   RotateCcw,
   BookOpen
 } from 'lucide-react';
-import { DifficultyLevel } from '../types';
 import type { Question, Chapter } from '../types';
+import { DifficultyLevel } from '../types';;
 import { sortChapterQuestions } from '../utils/sorting';
 import QuestionPrompt, { AnswerFormatter } from './QuestionFormatter';
 
@@ -62,8 +62,8 @@ export default function StudySession({
   masteredIds
 }: StudySessionProps) {
   // Navigation & Step states
-  const [isTopicSelectorOpen, setIsTopicSelectorOpen] = useState(chapter.id !== 0);
-  const [isConfigModalOpen, setIsConfigModalOpen] = useState(chapter.id === 0);
+  const [isTopicSelectorOpen, setIsTopicSelectorOpen] = useState(chapter.id !== 0 && chapter.id !== 400);
+  const [isConfigModalOpen, setIsConfigModalOpen] = useState(chapter.id === 0 || chapter.id === 400);
   
   // Choice states
   const [selectedTopics, setSelectedTopics] = useState<string[]>(['all']);
@@ -304,7 +304,7 @@ export default function StudySession({
         return;
       }
 
-      // 1. Exit/Dismiss mind-wandering ("عدم السرحان") prompt
+      // 1. Exit/Dismiss mind-wandering prompt
       if (showDistracted) {
         if (e.key === ' ' || e.key === 'Enter' || e.key === 'Escape' || ['0', '1', '2', '3'].includes(e.key)) {
           e.preventDefault();
@@ -371,7 +371,7 @@ export default function StudySession({
         if (!showAnswer) {
           setShowAnswer(true);
         } else {
-          // If answer is already showing, space/enter rates as "متوسط" (DifficultyLevel.MEDIUM)
+          // If answer is already showing, space/enter rates as "Medium" (DifficultyLevel.MEDIUM)
           handleDifficulty(DifficultyLevel.MEDIUM);
         }
         return;
@@ -559,7 +559,7 @@ export default function StudySession({
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.9, opacity: 0, y: 20 }}
               className="bg-white rounded-[2rem] p-8 max-w-sm w-full text-center shadow-2xl border border-slate-100 flex flex-col items-center"
-              dir="rtl"
+              dir="ltr"
             >
               {!hasReturned ? (
                 <>
@@ -567,9 +567,9 @@ export default function StudySession({
                     <AlertTriangle className="w-10 h-10" />
                   </div>
                   <h3 className="text-3xl font-black text-yellow-500 mb-8 font-sans leading-none">
-                    متسرحش! ⏰
+                    Stay Focused! ⏰
                   </h3>
-                  <p className="text-slate-500 text-xs font-bold mb-6">لقد مرت فترة من الوقت بدون تفاعل، حافظ على تركيزك!</p>
+                  <p className="text-slate-500 text-xs font-bold mb-6">It has been a while without interaction. Stay focused!</p>
                   <button
                     onClick={() => {
                       setShowDistracted(false);
@@ -578,7 +578,7 @@ export default function StudySession({
                     }}
                     className="w-full py-4 bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-extrabold text-base rounded-2xl transition-all shadow-lg shadow-yellow-100 active:scale-95 cursor-pointer selection:bg-none"
                   >
-                    يلا بينا
+                    Let's Go
                   </button>
                 </>
               ) : (
@@ -587,9 +587,9 @@ export default function StudySession({
                     <AlertCircle className="w-10 h-10" />
                   </div>
                   <h3 className="text-3xl font-black text-red-600 mb-8 font-sans leading-none">
-                    كفاية سرحان! 🎯
+                    Focus Time! 🎯
                   </h3>
-                  <p className="text-slate-500 text-xs font-bold mb-6">المذاكرة الفعالة تتطلب يقظة تامة، عد لإنهاء جلستك الآن.</p>
+                  <p className="text-slate-500 text-xs font-bold mb-6">Active learning requires complete alertness. Return to your session now.</p>
                   <button
                     onClick={() => {
                       setShowDistracted(false);
@@ -597,7 +597,7 @@ export default function StudySession({
                     }}
                     className="w-full py-4 bg-red-600 hover:bg-red-700 text-white font-black text-base rounded-2xl transition-all shadow-lg shadow-red-200 active:scale-95 cursor-pointer"
                   >
-                    يلا بينا
+                    Let's Go
                   </button>
                 </>
               )}
@@ -628,10 +628,10 @@ export default function StudySession({
                   <Clock className="w-8 h-8" />
                 </div>
                 <h3 className="text-2xl font-black text-slate-800 leading-tight">
-                  انتهى وقت الجلسة المقررة! ⏱️
+                  Planned session time is up! ⏱️
                 </h3>
                 <p className="text-sm text-slate-500 mt-3 font-medium leading-relaxed font-sans">
-                  لم تنتهِ من جميع أسئلة هذه الجلسة بعد. هل تود استكمال الجلسة ومتابعة المذاكرة والأسئلة المتبقية؟
+                  You haven't completed all questions in this session yet. Would you like to continue studying the remaining questions?
                 </p>
                 
                 <div className="mt-8 flex flex-col gap-3">
@@ -644,7 +644,7 @@ export default function StudySession({
                     }}
                     className="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-sm rounded-2xl transition-all shadow-lg active:scale-[0.98] cursor-pointer"
                   >
-                    نعم، استكمال الجلسة ومواصلة المذاكرة 🚀
+                    Yes, continue studying 🚀
                   </button>
                   
                   <button
@@ -654,7 +654,7 @@ export default function StudySession({
                     }}
                     className="w-full py-3.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-extrabold text-sm rounded-2xl transition-all active:scale-[0.98] cursor-pointer"
                   >
-                    لا، إنهاء الجلسة وعرض الملخص
+                    No, finish session and show summary
                   </button>
                 </div>
               </div>
@@ -677,10 +677,10 @@ export default function StudySession({
               animate={{ scale: 1, opacity: 1, y: 0 }}
               className="bg-white rounded-[2rem] p-6 md:p-8 w-full max-w-xl shadow-2xl border border-slate-150 flex flex-col max-h-[90vh]"
             >
-              <div className="flex justify-between items-start mb-6" dir="rtl">
-                <div className="text-right">
-                  <h2 className="text-2xl font-black text-slate-900 leading-tight">تهيئة جلسة المذاكرة</h2>
-                  <p className="text-xs text-slate-400 font-bold mt-1">اختر المواضيع الخاصة بـ {chapter.title} للمذاكرة</p>
+              <div className="flex justify-between items-start mb-6 text-left" dir="ltr">
+                <div className="text-left">
+                  <h2 className="text-2xl font-black text-slate-900 leading-tight">Configure Study Session</h2>
+                  <p className="text-xs text-slate-400 font-bold mt-1">Choose topics from {chapter.title} to study</p>
                 </div>
                 <button onClick={onBack} className="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-50 rounded-xl transition-all">
                   <ArrowLeft className="w-5 h-5 transform rotate-180" />
@@ -691,13 +691,13 @@ export default function StudySession({
               <div className="flex-1 overflow-y-auto pr-1 space-y-3 scrollbar-hide mb-6">
                 <button
                   onClick={() => toggleTopic('all')}
-                  className={`w-full flex items-center justify-between p-4 rounded-2xl text-right transition-all border-2 ${selectedTopics.includes('all') ? 'bg-slate-900 border-slate-900 text-white shadow-lg' : 'bg-slate-50 border-transparent text-slate-700 hover:bg-slate-100'}`}
-                  dir="rtl"
+                  className={`w-full flex items-center justify-between p-4 rounded-2xl text-left transition-all border-2 ${selectedTopics.includes('all') ? 'bg-slate-900 border-slate-900 text-white shadow-lg' : 'bg-slate-50 border-transparent text-slate-700 hover:bg-slate-100'}`}
+                  dir="ltr"
                 >
-                  <div className="text-right">
-                    <span className="font-bold text-sm block">📚 دراسة الفصل بالكامل (All Topics)</span>
+                  <div className="text-left">
+                    <span className="font-bold text-sm block">📚 Study Entire Chapter (All Topics)</span>
                     <span className="text-[10px] opacity-75 block mt-0.5">
-                      يحتوي على {questions.length} سؤال • (المتبقي: {questions.length - questions.filter(q => masteredIds.includes(q.id)).length}) • ({questions.filter(q => masteredIds.includes(q.id)).length} متقن)
+                      Contains {questions.length} questions • ({questions.length - questions.filter(q => masteredIds.includes(q.id)).length} remaining) • ({questions.filter(q => masteredIds.includes(q.id)).length} mastered)
                     </span>
                   </div>
                   {selectedTopics.includes('all') && <CheckCircle2 className="w-5 h-5" />}
@@ -714,13 +714,13 @@ export default function StudySession({
                     <button
                       key={idx}
                       onClick={() => toggleTopic(top)}
-                      className={`w-full flex items-center justify-between p-4 rounded-2xl text-right transition-all border-2 ${isSelected ? 'bg-blue-50 border-blue-600 text-blue-800' : 'bg-white border-slate-100 text-slate-650 hover:border-slate-200'}`}
-                      dir="rtl"
+                      className={`w-full flex items-center justify-between p-4 rounded-2xl text-left transition-all border-2 ${isSelected ? 'bg-blue-50 border-blue-600 text-blue-800' : 'bg-white border-slate-100 text-slate-650 hover:border-slate-200'}`}
+                      dir="ltr"
                     >
-                      <div className="text-right">
+                      <div className="text-left">
                         <span className="font-bold text-sm block">{idx + 1}. {top}</span>
                         <span className="text-[10px] text-slate-400 block mt-0.5">
-                          يحتوي على {totalTopicCount} سؤال • (المتبقي: {remainingTopicCount}) • ({masteredTopicCount} متقن)
+                          Contains {totalTopicCount} questions • ({remainingTopicCount} remaining) • ({masteredTopicCount} mastered)
                         </span>
                       </div>
                       {isSelected && <CheckCircle2 className="w-5 h-5 text-blue-600" />}
@@ -730,10 +730,10 @@ export default function StudySession({
               </div>
 
               {/* Practice Filter Switch */}
-              <div className="p-4 bg-slate-50 border border-slate-100 rounded-2xl flex items-center justify-between mb-6" dir="rtl">
-                <div className="text-right">
-                  <span className="text-xs font-bold text-slate-800 block font-sans">تخطي الأسئلة المتقنة (Exclude Mastered)</span>
-                  <span className="text-[10px] text-slate-400 block font-normal">عرض الأسئلة غير المتقنة فقط لتوفير الوقت</span>
+              <div className="p-4 bg-slate-50 border border-slate-100 rounded-2xl flex items-center justify-between mb-6" dir="ltr">
+                <div className="text-left">
+                  <span className="text-xs font-bold text-slate-800 block font-sans">Skip Mastered Questions (Exclude Mastered)</span>
+                  <span className="text-[10px] text-slate-400 block font-normal">Show only unmastered questions to save time</span>
                 </div>
                 <button
                   type="button"
@@ -749,13 +749,13 @@ export default function StudySession({
                   onClick={onBack}
                   className="px-4 py-3.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-2xl text-xs font-extrabold transition-all"
                 >
-                  إلغاء
+                  Cancel
                 </button>
                 <button
                   onClick={handleTopicsConfirmed}
                   className="flex-1 py-3.5 bg-blue-600 hover:bg-blue-700 text-white rounded-2xl text-xs font-black uppercase tracking-wider transition-all shadow-lg active:scale-95"
                 >
-                  التالي: ضبط تفضيلات الجلسة ➔
+                  Next: Configure Session ➔
                 </button>
               </div>
             </motion.div>
@@ -776,12 +776,12 @@ export default function StudySession({
               initial={{ scale: 0.93, opacity: 0, y: 15 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               className="bg-white rounded-[2rem] p-6 md:p-8 w-full max-w-xl shadow-2xl border border-slate-150 flex flex-col max-h-[90vh]"
-              dir="rtl"
+              dir="ltr"
             >
-              <div className="flex justify-between items-start mb-6">
-                <div className="text-right">
-                  <h2 className="text-2xl font-black text-slate-900 leading-tight">تفضيلات جلسة المذاكرة</h2>
-                  <p className="text-xs text-slate-400 font-bold mt-1">اضبط إعدادات التركيز وعرض الأسئلة المناسبة لك</p>
+              <div className="flex justify-between items-start mb-6 text-left">
+                <div className="text-left">
+                  <h2 className="text-2xl font-black text-slate-900 leading-tight">Study Session Settings</h2>
+                  <p className="text-xs text-slate-400 font-bold mt-1">Adjust focus settings and question display</p>
                 </div>
                 {chapter.id !== 0 ? (
                   <button 
@@ -809,8 +809,8 @@ export default function StudySession({
                 {/* A. Focus alerts anti mind wandering settings */}
                 <div className="p-4 bg-amber-50/50 border border-amber-200 rounded-xl space-y-3">
                   <div className="flex items-center justify-between">
-                    <div className="text-right">
-                      <span className="text-sm font-bold text-amber-900 block font-sans">تنبيه عدم السرحان</span>
+                    <div className="text-left">
+                      <span className="text-sm font-bold text-amber-900 block font-sans">Anti-Distraction Alert</span>
                     </div>
                     <button
                       type="button"
@@ -824,8 +824,8 @@ export default function StudySession({
                   {focusAlertEnabled && (
                     <div className="space-y-2 animate-in fade-in duration-200">
                       <div className="flex justify-between text-xs font-semibold text-amber-800">
-                        <span>المدة بين كل تنبيه:</span>
-                        <span>كل {focusAlertInterval} {focusAlertInterval === 1 ? 'دقيقة' : focusAlertInterval === 2 ? 'دقيقتين' : 'دقائق'}</span>
+                        <span>Alert Interval:</span>
+                        <span>Every {focusAlertInterval} {focusAlertInterval === 1 ? 'minute' : 'minutes'}</span>
                       </div>
                       <input
                         type="range"
@@ -841,17 +841,17 @@ export default function StudySession({
 
                 {/* B. Session duration timer settings */}
                 <div className="p-4 bg-blue-50/30 border border-blue-200 rounded-xl space-y-3">
-                  <div className="text-right">
-                    <span className="text-sm font-bold text-[#1E40AF] block font-sans">مدة جلسة المذاكرة</span>
+                  <div className="text-left">
+                    <span className="text-sm font-bold text-[#1E40AF] block font-sans">Study Session Duration</span>
                   </div>
                   
                   <div className="space-y-2">
                     <div className="flex justify-between text-xs font-semibold text-[#1E40AF]">
-                      <span>زمن الجلسة المفضل:</span>
+                      <span>Preferred Session Time:</span>
                       <span className="font-mono text-[#1D4ED8]">
                         {sessionDuration >= 60 
-                          ? `${Math.floor(sessionDuration / 60)} ساعة ${sessionDuration % 60 > 0 ? `و ${sessionDuration % 60} دقيقة` : ''}` 
-                          : `${sessionDuration} دقيقة`}
+                          ? `${Math.floor(sessionDuration / 60)} hr ${sessionDuration % 60 > 0 ? `${sessionDuration % 60} mins` : ''}` 
+                          : `${sessionDuration} mins`}
                       </span>
                     </div>
                     <input
@@ -864,16 +864,16 @@ export default function StudySession({
                       className="w-full h-1.5 bg-blue-200 rounded-lg appearance-none cursor-pointer accent-blue-600 block"
                     />
                     <div className="flex justify-between text-[9px] text-blue-500 font-bold px-1 select-none font-sans">
-                      <span>١٠ دقائق</span>
-                      <span>ساعة واحدة (٦٠ د.)</span>
-                      <span>ساعتان (١٢٠ د.)</span>
+                      <span>10 minutes</span>
+                      <span>1 hour (60 min)</span>
+                      <span>2 hours (120 min)</span>
                     </div>
                   </div>
                 </div>
 
                 {/* C. Question displaying system chooser */}
                 <div className="space-y-2">
-                  <span className="text-xs font-bold text-slate-500 block text-right font-sans">نظام عرض الأسئلة</span>
+                  <span className="text-xs font-bold text-slate-500 block text-left font-sans">Question Display Mode</span>
                   <div className="grid grid-cols-2 gap-3">
                     {/* Cards Mode */}
                     <button
@@ -885,7 +885,7 @@ export default function StudySession({
                           : 'bg-white border-slate-205 border-slate-200 text-slate-700 hover:border-slate-300'
                       }`}
                     >
-                      نظام الكروت
+                      Cards Mode
                     </button>
 
                     {/* Scrollable list Mode */}
@@ -898,14 +898,14 @@ export default function StudySession({
                           : 'bg-white border-slate-205 border-slate-200 text-slate-700 hover:border-slate-300'
                       }`}
                     >
-                      نظام القائمة
+                      List Mode
                     </button>
                   </div>
                 </div>
 
                 {/* D. Practice Category (Study / Cases / Mixed) Selector */}
                 <div className="space-y-2 pt-1">
-                  <span className="text-xs font-bold text-slate-500 block text-right font-sans">تخصيص نمط الأسئلة للجلسة</span>
+                  <span className="text-xs font-bold text-slate-500 block text-left font-sans">Session Question Type</span>
                   <div className="grid grid-cols-3 gap-2">
                     {/* Normal Study Type */}
                     <button
@@ -920,8 +920,8 @@ export default function StudySession({
                             : 'bg-white border-slate-205 border-slate-200 text-slate-700 hover:border-slate-300'
                       }`}
                     >
-                      <span>أسئلة دراسة</span>
-                      <span className="text-[9px] font-mono opacity-60">({studyCount} س)</span>
+                      <span>Study Questions</span>
+                      <span className="text-[9px] font-mono opacity-60">({studyCount} Q)</span>
                     </button>
 
                     {/* Clinical Cases Only Type */}
@@ -937,8 +937,8 @@ export default function StudySession({
                             : 'bg-white border-slate-205 border-slate-200 text-slate-700 hover:border-slate-300'
                       }`}
                     >
-                      <span>إكلينيكي (Cases)</span>
-                      <span className="text-[9px] font-mono opacity-60">({casesCount} ح)</span>
+                      <span>Clinical Cases</span>
+                      <span className="text-[9px] font-mono opacity-60">({casesCount} C)</span>
                     </button>
 
                     {/* Mixed Type */}
@@ -954,16 +954,16 @@ export default function StudySession({
                             : 'bg-white border-slate-205 border-slate-200 text-slate-700 hover:border-slate-300'
                       }`}
                     >
-                      <span>مزيج شامل</span>
-                      <span className="text-[9px] font-mono opacity-60">({totalCount} م)</span>
+                      <span>Mixed Practice</span>
+                      <span className="text-[9px] font-mono opacity-60">({totalCount} M)</span>
                     </button>
                   </div>
                 </div>
 
                 {/* E. Card / List Question Ordering Choice (Logical vs Shuffled) */}
                 <div className="space-y-2 pt-2 border-t border-slate-100 mt-2">
-                  <span className="text-xs font-bold text-slate-500 block text-right font-sans">تسلسل وترتيب الأسئلة</span>
-                  <div className="grid grid-cols-2 gap-3" dir="rtl">
+                  <span className="text-xs font-bold text-slate-500 block text-left font-sans">Question Sequence & Order</span>
+                  <div className="grid grid-cols-2 gap-3" dir="ltr">
                     {/* Logical Sequence */}
                     <button
                       type="button"
@@ -974,8 +974,8 @@ export default function StudySession({
                           : 'bg-white border-slate-205 border-slate-200 text-slate-700 hover:border-slate-300'
                       }`}
                     >
-                      <span className="font-extrabold flex items-center gap-1 text-[11px]"><span className="text-[13px]">🔄</span> تسلسل طبي متدرج</span>
-                      <span className="text-[9px] opacity-75 leading-tight text-center">تناسب المذاكرة والتأصيل العلمي (من التعريف للعلاج)</span>
+                      <span className="font-extrabold flex items-center gap-1 text-[11px]"><span className="text-[13px]">🔄</span> Logical Sequence</span>
+                      <span className="text-[9px] opacity-75 leading-tight text-center">Best for learning from foundations to treatment</span>
                     </button>
 
                     {/* Random Shuffled Sequence */}
@@ -988,8 +988,8 @@ export default function StudySession({
                           : 'bg-white border-slate-205 border-slate-200 text-slate-700 hover:border-slate-300'
                       }`}
                     >
-                      <span className="font-extrabold flex items-center gap-1 text-[11px]"><span className="text-[13px]">🔀</span> ترتيب عشوائي مخلوط</span>
-                      <span className="text-[9px] opacity-75 leading-tight text-center">لمحاكاة الامتحانات واختبار كفاءة الاسترجاع الذهني</span>
+                      <span className="font-extrabold flex items-center gap-1 text-[11px]"><span className="text-[13px]">🔀</span> Shuffled Random Order</span>
+                      <span className="text-[9px] opacity-75 leading-tight text-center">Simulate exams and test active recall</span>
                     </button>
                   </div>
                 </div>
@@ -1006,7 +1006,7 @@ export default function StudySession({
                     }}
                     className="px-4 py-3.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-2xl text-xs font-extrabold transition-all"
                   >
-                    تعديل المواضيع
+                    Edit Topics
                   </button>
                 )}
                 <button
@@ -1021,8 +1021,8 @@ export default function StudySession({
                   <Play className="w-3.5 h-3.5" />
                   <span>
                     {activeCategoryCount === 0 
-                      ? 'لا توجد أسئلة متبقية (تم إتقان الكل) 🏁' 
-                      : 'بدء جلسة المذاكرة الآن 🚀'}
+                      ? 'No questions remaining (all mastered) 🏁' 
+                      : 'Start Study Session Now 🚀'}
                   </span>
                 </button>
               </div>
@@ -1046,8 +1046,8 @@ export default function StudySession({
             </h1>
             <p className="text-[10px] text-slate-405 text-left font-bold mt-0.5 text-slate-400">
               {displayMode === 'cards' 
-                ? `كرت ${Math.min(currentIndex + 1, sessionQuestions.length)} • ${selectedTopics.includes('all') ? 'جميع المواضيع' : `${selectedTopics.length} مواضيع محددة`}`
-                : `قائمة المذاكرة الكاملة • ${sessionQuestions.length} سؤال متاح`}
+                ? `Card ${Math.min(currentIndex + 1, sessionQuestions.length)} • ${selectedTopics.includes('all') ? 'All Topics' : `${selectedTopics.length} topics selected`}`
+                : `Full Study List • ${sessionQuestions.length} questions available`}
             </p>
           </div>
         </div>
@@ -1061,7 +1061,7 @@ export default function StudySession({
            )}
 
            {!isFinished && displayMode === 'cards' && (
-             <div className="hidden md:flex flex-col items-end bg-blue-50/50 border border-blue-100 px-3 py-1.5 rounded-xl">
+             <div className="hidden md:flex flex-col items-start bg-blue-50/50 border border-blue-100 px-3 py-1.5 rounded-xl">
                 <span className="text-[8px] font-black text-blue-400 uppercase tracking-widest leading-none mb-1">Session Progress</span>
                 <span className="text-xs text-blue-600 font-black leading-none">
                   {remainingCount} Remaining
@@ -1085,16 +1085,16 @@ export default function StudySession({
           /* Empty List fallback */
           <div id="no-questions-placeholder" className="bg-white rounded-3xl border border-slate-200 p-12 py-16 text-center shadow-sm">
             <HelpCircle className="w-16 h-16 text-slate-300 mx-auto mb-4" />
-            <h3 className="text-xl font-bold text-slate-900 mb-2">لا توجد أسئلة لهذه المواضيع</h3>
+            <h3 className="text-xl font-bold text-slate-900 mb-2">No questions found for these topics</h3>
             <p className="text-sm text-slate-500 max-w-md mx-auto mb-6 leading-relaxed font-sans">
-              المجموعة المحددة (<strong>{selectedTopics.includes('all') ? 'جميع مواضيع الفصل' : `${selectedTopics.length} مواضيع مخصصة`}</strong>) لا تحتوي على أسئلة متاحة حالياً للتجربة.
+              The selected set (<strong>{selectedTopics.includes('all') ? 'All Chapters Topics' : `${selectedTopics.length} Custom Topics`}</strong>) does not have any questions available to study.
             </p>
             <button 
               id="back-btn-empty"
               onClick={onBack}
               className="px-6 py-2.5 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-bold transition-all shadow-md cursor-pointer"
             >
-              العودة للرئيسية
+              Back to Home
             </button>
           </div>
         ) : isFinished ? (
@@ -1103,9 +1103,9 @@ export default function StudySession({
             <div className="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6">
               <CheckCircle2 className="w-10 h-10" />
             </div>
-            <h2 className="text-3xl font-extrabold text-slate-950 font-sans">انتهت جلسة المذاكرة! 🎉</h2>
+            <h2 className="text-3xl font-extrabold text-slate-950 font-sans">Study Session Finished! 🎉</h2>
             <p className="text-slate-500 text-base max-w-sm mx-auto font-sans leading-relaxed">
-              عمل رائع! لقد راجعت المجموعة أو انتهت مدة الجلسة المقررة بنجاح. استمر في هذا الزخم وعاود التجربة باستمرار.
+              Great job! You reviewed all cards or the session limit has been reached successfully. Keep up the good work!
             </p>
             <div className="flex justify-center gap-4 mt-8">
               <button 
@@ -1113,7 +1113,7 @@ export default function StudySession({
                 onClick={onBack} 
                 className="px-8 py-3 bg-slate-900 text-white hover:bg-slate-800 rounded-2xl text-xs font-bold uppercase tracking-wider transition-all shadow-md cursor-pointer"
               >
-                العودة للرئيسية
+                Back to Home
               </button>
             </div>
           </div>
@@ -1157,7 +1157,7 @@ export default function StudySession({
                       >
                         <span className="relative z-10 flex items-center justify-center gap-2.5">
                           <Eye className="w-4 h-4" />
-                          <span>إظهار الإجابة النموذجية</span>
+                          <span>Show Model Answer</span>
                           <kbd className="mr-1.5 px-2 py-0.5 text-[11px] bg-slate-800 rounded-md text-slate-350 font-mono select-none border border-slate-700">Space / Enter</kbd>
                         </span>
                       </button>
@@ -1170,7 +1170,7 @@ export default function StudySession({
                       className="flex-1 flex flex-col"
                     >
                       <div className="flex-1 bg-slate-50/30 p-8 text-left border-b border-slate-50 overflow-y-auto max-h-[500px]">
-                        <div className="text-[10px] font-black text-slate-450 text-slate-400 uppercase tracking-widest mb-4">الدليل المعرفي للإجابة</div>
+                        <div className="text-[10px] font-black text-slate-450 text-slate-400 uppercase tracking-widest mb-4">KNOWLEDGE REFERENCE ANSWER</div>
                         <div className="max-w-4xl">
                           <AnswerFormatter 
                             answer={currentQuestion.answer} 
@@ -1189,10 +1189,10 @@ export default function StudySession({
                           className="group flex flex-col items-center p-2.5 bg-white rounded-xl border border-slate-200 hover:border-rose-200 hover:bg-rose-50/30 transition-all text-center cursor-pointer"
                         >
                           <div className="text-rose-600 font-extrabold text-xs flex items-center justify-center gap-1.5">
-                            <span>صعب جداً</span>
+                            <span>Very Hard</span>
                             <kbd className="px-1.5 py-0.2 bg-rose-50 text-[10px] rounded-md border border-rose-200 font-mono">3</kbd>
                           </div>
-                          <div className="text-[9px] text-slate-400 font-semibold uppercase tracking-wider mt-0.5">سيعاد بعد كرتين</div>
+                          <div className="text-[9px] text-slate-400 font-semibold uppercase tracking-wider mt-0.5">Repeated after 2 cards</div>
                         </button>
                         
                         <button 
@@ -1201,10 +1201,10 @@ export default function StudySession({
                           className="group flex flex-col items-center p-2.5 bg-amber-500/10 rounded-xl border border-amber-500/20 hover:border-amber-500/40 hover:bg-amber-500/15 transition-all text-center cursor-pointer"
                         >
                           <div className="text-amber-700 font-extrabold text-xs flex items-center justify-center gap-1.5">
-                            <span>صعب</span>
+                            <span>Hard</span>
                             <kbd className="px-1.5 py-0.2 bg-amber-50 text-[10px] rounded-md border border-amber-200 font-mono">2</kbd>
                           </div>
-                          <div className="text-[9px] text-amber-600 font-semibold uppercase tracking-wider mt-0.5 font-mono">سيعاد بعد ٥ كروت</div>
+                          <div className="text-[9px] text-amber-600 font-semibold uppercase tracking-wider mt-0.5 font-mono">Repeated after 5 cards</div>
                         </button>
 
                         <button 
@@ -1213,10 +1213,10 @@ export default function StudySession({
                           className="group flex flex-col items-center p-2.5 bg-blue-500/10 rounded-xl border border-blue-500/20 hover:border-blue-500/40 hover:bg-blue-500/15 transition-all text-center cursor-pointer"
                         >
                           <div className="text-blue-700 font-extrabold text-xs flex items-center justify-center gap-1.5">
-                            <span>متوسط</span>
+                            <span>Medium</span>
                             <kbd className="px-1.5 py-0.2 bg-blue-50 text-[10px] rounded-md border border-blue-200 font-mono">1</kbd>
                           </div>
-                          <div className="text-[9px] text-blue-600 font-semibold uppercase tracking-wider mt-0.5">سيعاد بعد ١٠ كروت</div>
+                          <div className="text-[9px] text-blue-600 font-semibold uppercase tracking-wider mt-0.5">Repeated after 10 cards</div>
                         </button>
 
                         <button 
@@ -1225,10 +1225,10 @@ export default function StudySession({
                           className="group flex flex-col items-center p-2.5 bg-emerald-500/10 rounded-xl border border-emerald-500/20 hover:border-emerald-500/40 hover:bg-emerald-500/15 transition-all text-center cursor-pointer"
                         >
                           <div className="text-emerald-700 font-extrabold text-xs flex items-center justify-center gap-1.5">
-                            <span>سهل (تم الإتقان)</span>
+                            <span>Easy (Mastered)</span>
                             <kbd className="px-1.5 py-0.2 bg-emerald-50 text-[10px] rounded-md border border-emerald-200 font-mono">0</kbd>
                           </div>
-                          <div className="text-[9px] text-emerald-600 font-semibold uppercase tracking-wider mt-0.5">جاهز ومتقن تماماً</div>
+                          <div className="text-[9px] text-emerald-600 font-semibold uppercase tracking-wider mt-0.5">Fully Mastered</div>
                         </button>
                       </div>
                     </motion.div>
@@ -1241,19 +1241,19 @@ export default function StudySession({
             <div className="mt-6 flex flex-wrap justify-center items-center gap-6">
               <div className="flex items-center gap-1.5 grayscale opacity-75">
                 <span className="w-1.5 h-1.5 rounded-full bg-rose-500" />
-                <span className="text-[9px] text-slate-400 font-bold uppercase tracking-widest">صعب جداً</span>
+                <span className="text-[9px] text-slate-400 font-bold uppercase tracking-widest">Very Hard</span>
               </div>
               <div className="flex items-center gap-1.5 grayscale opacity-75">
                 <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                <span className="text-[9px] text-slate-400 font-bold uppercase tracking-widest">صعب</span>
+                <span className="text-[9px] text-slate-400 font-bold uppercase tracking-widest">Hard</span>
               </div>
               <div className="flex items-center gap-1.5 grayscale opacity-75">
                 <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
-                <span className="text-[9px] text-slate-400 font-bold uppercase tracking-widest">متوسط</span>
+                <span className="text-[9px] text-slate-400 font-bold uppercase tracking-widest">Medium</span>
               </div>
               <div className="flex items-center gap-1.5 grayscale opacity-75">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                <span className="text-[9px] text-slate-400 font-bold uppercase tracking-widest">سهل</span>
+                <span className="text-[9px] text-slate-400 font-bold uppercase tracking-widest">Easy</span>
               </div>
             </div>
           </>
@@ -1263,8 +1263,8 @@ export default function StudySession({
             
             {/* List Controls Panel Header row */}
             <div className="bg-white p-5 rounded-3xl border border-slate-200 shadow-sm flex flex-col md:flex-row justify-between items-center gap-4">
-              <div className="flex items-center gap-3 w-full md:w-auto" dir="rtl">
-                <span className="text-sm font-black text-slate-800 font-sans">تفضيلات القائمة:</span>
+              <div className="flex items-center gap-3 w-full md:w-auto" dir="ltr">
+                <span className="text-sm font-black text-slate-800 font-sans">List Preferences:</span>
                 <button
                   type="button"
                   onClick={() => {
@@ -1278,15 +1278,15 @@ export default function StudySession({
                   }}
                   className="px-5 py-2.5 rounded-2xl border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-800 text-xs font-extrabold transition-all active:scale-95 flex items-center gap-2 cursor-pointer"
                 >
-                  <span>{showAllAnswersInList ? "إخفاء جميع الإجابات 🙈" : "إظهار جميع الإجابات 👁️"}</span>
+                  <span>{showAllAnswersInList ? "Hide All Answers 🙈" : "Reveal All Answers 👁️"}</span>
                 </button>
               </div>
 
               {/* Progress summary for List */}
-              <div className="flex items-center gap-3 w-full md:w-auto text-right" dir="rtl">
-                <span className="text-xs text-slate-400 font-bold font-sans">معدل الإتقان بالفصل:</span>
+              <div className="flex items-center gap-3 w-full md:w-auto text-left" dir="ltr">
+                <span className="text-xs text-slate-400 font-bold font-sans">Chapter Mastery Rate:</span>
                 <div className="px-3.5 py-2 bg-emerald-50 border border-emerald-100 text-emerald-800 rounded-2xl font-black text-xs font-mono">
-                  {masteredIds.filter(id => sessionQuestions.some(q => q.id === id)).length} \ {sessionQuestions.length} متقن
+                  {masteredIds.filter(id => sessionQuestions.some(q => q.id === id)).length} / {sessionQuestions.length} Mastered
                 </div>
               </div>
             </div>
@@ -1301,15 +1301,15 @@ export default function StudySession({
                   <div 
                     key={q.id} 
                     id={`list-question-${idx}`}
-                    className={`bg-white rounded-3xl border transition-all duration-300 p-6 md:p-8 flex flex-col gap-6 relative overflow-hidden text-right leading-relaxed ${
+                    className={`bg-white rounded-3xl border transition-all duration-300 p-6 md:p-8 flex flex-col gap-6 relative overflow-hidden text-left leading-relaxed ${
                       isMastered ? 'border-emerald-300 bg-emerald-50/10' : 'border-slate-200 shadow-sm'
                     }`}
                   >
                     {/* List item identifier row */}
-                    <div className="flex items-center justify-between w-full pb-3 border-b border-slate-100" dir="rtl">
+                    <div className="flex items-center justify-between w-full pb-3 border-b border-slate-100" dir="ltr">
                       <div className="flex items-center gap-2">
                         <span className={`w-2.5 h-2.5 rounded-full shrink-0 ${isMastered ? 'bg-emerald-500 animate-pulse' : 'bg-blue-600'}`} />
-                        <span className="text-xs font-black text-slate-800 font-sans">سؤال {idx + 1} من {sessionQuestions.length}</span>
+                        <span className="text-xs font-black text-slate-800 font-sans">Question {idx + 1} of {sessionQuestions.length}</span>
                       </div>
 
                       {/* Recall rating controller shortcut tags in list stack */}
@@ -1328,14 +1328,14 @@ export default function StudySession({
                               : 'bg-white hover:bg-slate-50 border-slate-200 text-slate-700 font-semibold cursor-pointer'
                           }`}
                         >
-                          {isMastered ? '✓ تم الإتقان' : 'تحديد كمتقن'}
+                          {isMastered ? '✓ Mastered' : 'Mark as Mastered'}
                         </button>
 
                         <button
                           onClick={() => addToReview(q.id)}
                           className="text-[10px] font-black px-3.5 py-2 rounded-full select-none uppercase tracking-wider border bg-white hover:bg-slate-50 border-slate-200 text-slate-700 font-semibold shrink-0 cursor-pointer"
                         >
-                          ⭐ أضف للمراجعة
+                          ⭐ Add to Review
                         </button>
                       </div>
                     </div>
@@ -1365,7 +1365,7 @@ export default function StudySession({
                         }}
                         className="flex items-center gap-2 self-start py-2.5 px-5 bg-slate-50 hover:bg-slate-100 text-slate-800 text-xs font-extrabold rounded-2xl border border-slate-200 transition-all active:scale-95 cursor-pointer select-none"
                       >
-                        <span>{isRevealedObj ? "إخفاء الإجابة النموذجية 🙈" : "عرض الإجابة النموذجية 👁️"}</span>
+                        <span>{isRevealedObj ? "Hide Model Answer 🙈" : "Reveal Model Answer 👁️"}</span>
                       </button>
 
                       <AnimatePresence>
@@ -1395,17 +1395,17 @@ export default function StudySession({
             </div>
 
             {/* List footer banner */}
-            <div id="list-footer" className="p-8 bg-gradient-to-r from-blue-600 to-indigo-650 text-white rounded-3xl text-center space-y-4 shadow-lg" dir="rtl">
-              <span className="text-[10px] font-bold tracking-widest text-blue-300">لقد وصلت للنهاية 🎉</span>
-              <h3 className="text-xl font-black font-sans">عمل رائع في مراجعة القائمة بالكامل!</h3>
+            <div id="list-footer" className="p-8 bg-gradient-to-r from-blue-600 to-indigo-650 text-white rounded-3xl text-center space-y-4 shadow-lg" dir="ltr">
+              <span className="text-[10px] font-bold tracking-widest text-blue-300">You completed the list! 🎉</span>
+              <h3 className="text-xl font-black font-sans">Great job covering the entire study list!</h3>
               <p className="text-xs text-blue-100 max-w-sm mx-auto leading-relaxed">
-                لقد انتهيت من مراجعة الأسئلة وتجربة الاستدعاء الذكي. حافظ على المتابعة الدائمة لتقوية روابط الذاكرة.
+                You have successfully gone through all questions & active recall exercise. Keep practicing!
               </p>
               <button
                 onClick={onBack}
                 className="px-6 py-2.5 bg-white text-blue-900 rounded-xl text-xs font-bold transition-all shadow-md hover:bg-slate-50 cursor-pointer"
               >
-                العودة لصفحة الفصول الرئيسية
+                Back to main chapters
               </button>
             </div>
           </div>
