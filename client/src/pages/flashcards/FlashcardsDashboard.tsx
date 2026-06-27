@@ -1,530 +1,81 @@
-import React, { useState, useEffect } from 'react';
-import { collection, query, where, getDocs, orderBy, doc, writeBatch, deleteDoc } from 'firebase/firestore';
-import { db } from '../../lib/firebase';
-import { useAuth } from '../../context/AuthContext';
-import type { Deck, Flashcard } from '../../types/flashcard';
+import React from 'react';
 import { motion } from 'framer-motion';
-import toast from 'react-hot-toast';
-
-import { 
-  Plus, 
-  Upload, 
-  Download,
-  Brain, 
-  Clock, 
-  Flame, 
-  Search,
-  BookOpen,
-  ArrowRight,
-  MoreVertical,
-  ChevronRight,
-  Sparkles,
-  Edit2,
-  Trash2,
-  CheckCircle2,
-  Filter,
-  RotateCcw
-} from 'lucide-react';
-import { cn } from '../../lib/utils';
-
-import { Link } from 'react-router-dom';
+import { Brain, Sparkles, BookOpen, ArrowRight } from 'lucide-react';
 
 const FlashcardsDashboard = () => {
-  const { user } = useAuth();
-  const [decks, setDecks] = useState<Deck[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [dueCount, setDueCount] = useState(0);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedYear, setSelectedYear] = useState<string>('Third Year');
-  const [selectedModule, setSelectedModule] = useState<string>('All');
-
-  const handleResetProgress = async (deckId: string) => {
-    if (!window.confirm('هل أنت متأكد من مسح كل التقدم في هذه المجموعة والبدء من جديد؟')) return;
-    const loadingToast = toast.loading('جاري إعادة التعيين...');
-    try {
-      const q = query(collection(db, 'flashcards'), where('deckId', '==', deckId));
-      const snapshot = await getDocs(q);
-      const batch = writeBatch(db);
-      snapshot.docs.forEach(doc => {
-        batch.update(doc.ref, {
-          nextReview: Date.now(),
-          interval: 0,
-          easeFactor: 2.5,
-          repetitions: 0,
-          status: 'new',
-          lastReviewed: null
-        });
-      });
-      await batch.commit();
-      toast.success('تم إعادة تعيين التقدم بنجاح!', { id: loadingToast });
-      window.location.reload();
-    } catch (err) {
-      toast.error('فشل إعادة التعيين', { id: loadingToast });
-    }
-  };
-
-  useEffect(() => {
-    if (!user) return;
-
-    const fetchDecks = async () => {
-      try {
-        const decksRef = collection(db, 'decks');
-        
-        // Fetch personal decks
-        const qPersonal = query(
-          decksRef, 
-          where('userId', '==', user.uid)
-        );
-
-        
-        // Fetch public/official decks
-        const qPublic = query(
-          decksRef,
-          where('isPublic', '==', true)
-        );
-        
-        const [personalSnap, publicSnap] = await Promise.all([
-          getDocs(qPersonal),
-          getDocs(qPublic)
-        ]);
-
-        const personalDecks = personalSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        const publicDecks = publicSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-
-        // Merge and remove duplicates if any
-        const allDecksMap = new Map();
-        [...publicDecks, ...personalDecks].forEach(d => allDecksMap.set(d.id, d));
-        const fetchedDecks = (Array.from(allDecksMap.values()) as Deck[])
-          .sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
-
-
-
-        // Fetch due counts for each deck
-        const cardsRef = collection(db, 'flashcards');
-        const now = Date.now();
-        let totalDue = 0;
-
-        const decksWithCounts = await Promise.all(fetchedDecks.map(async (deck) => {
-          // Changed to simple query to avoid Index requirements
-          const cardsQuery = query(
-            cardsRef,
-            where('deckId', '==', deck.id)
-          );
-          const cardsSnap = await getDocs(cardsQuery);
-          // Filter in memory to avoid "Composite Index" requirement
-          const count = cardsSnap.docs.filter(doc => (doc.data().nextReview || 0) <= now).length;
-          totalDue += count;
-          return { ...deck, dueCount: count };
-        }));
-
-        setDecks(decksWithCounts);
-        setDueCount(totalDue);
-      } catch (error) {
-        console.error('Error fetching decks:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchDecks();
-  }, [user]);
-
-  const filteredDecks = decks.filter(deck => 
-    deck.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    deck.subject.toLowerCase().includes(searchQuery.toLowerCase())
-  );
-
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8 space-y-8">
-      {/* Header & Stats */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-        <div>
-          <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-600">
-            Flashcards
-          </h1>
-          <p className="text-muted-foreground mt-2">Master your subjects with spaced repetition.</p>
-        </div>
+    <div className="max-w-4xl mx-auto px-4 py-16 space-y-12" dir="rtl">
+      {/* Header */}
+      <div className="text-center space-y-4">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary border border-primary/20 text-sm font-semibold mb-2"
+        >
+          <Sparkles size={16} className="text-yellow-500" />
+          البطاقات التعليمية المتاحة
+        </motion.div>
         
-        <div className="flex gap-4">
-          <Link to="/flashcards/import" className="flex items-center gap-2 px-4 py-2 rounded-xl bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-all font-medium border border-border/50">
-            <Upload size={18} />
-            Import
-          </Link>
-          <Link to="/flashcards/create" className="flex items-center gap-2 px-4 py-2 rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 transition-all font-medium shadow-lg shadow-primary/20">
-            <Plus size={18} />
-            New Deck
-          </Link>
-        </div>
+        <motion.h1
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="text-4xl md:text-5xl font-black bg-clip-text text-transparent bg-gradient-to-r from-primary via-indigo-500 to-blue-600 tracking-tight"
+        >
+          الفلاش كارد | Flashcards
+        </motion.h1>
+        
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="text-muted-foreground text-lg max-w-lg mx-auto font-medium"
+        >
+          ادرس وحلِّل الحالات الطبية بذكاء وبطرق تفاعلية حديثة.
+        </motion.p>
       </div>
 
-      {/* Stats Row */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="p-6 rounded-2xl bg-card border border-border shadow-sm flex items-center gap-5"
-        >
-          <div className="w-12 h-12 rounded-xl bg-orange-500/10 flex items-center justify-center text-orange-500">
-            <Clock size={24} />
-          </div>
-          <div>
-            <p className="text-sm text-muted-foreground font-medium">Due Today</p>
-            <p className="text-2xl font-bold">{dueCount}</p>
-          </div>
-        </motion.div>
-
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="p-6 rounded-2xl bg-card border border-border shadow-sm flex items-center gap-5"
-        >
-          <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-500">
-            <Brain size={24} />
-          </div>
-          <div>
-            <p className="text-sm text-muted-foreground font-medium">Total Cards</p>
-            <p className="text-2xl font-bold">{decks.reduce((acc, d) => acc + (d.cardCount || 0), 0)}</p>
-          </div>
-        </motion.div>
-
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="p-6 rounded-2xl bg-card border border-border shadow-sm flex items-center gap-5"
-        >
-          <div className="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center text-green-500">
-            <Flame size={24} />
-          </div>
-          <div>
-            <p className="text-sm text-muted-foreground font-medium">Daily Streak</p>
-            <p className="text-2xl font-bold">{useAuth().userData?.streak || 0} Days</p>
-          </div>
-        </motion.div>
-
-      </div>
-
-      {/* Official Decks Section */}
-      {decks.some(d => d.isPublic) && (
-        <div className="space-y-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-            <div className="flex items-center gap-3">
-              <div className="p-2.5 bg-blue-600/10 text-blue-600 rounded-xl">
-                <Sparkles size={22} className="animate-pulse" />
-              </div>
-              <div>
-                <h2 className="text-2xl font-bold text-foreground">Official Medical Decks</h2>
-                <p className="text-sm text-muted-foreground">Expert-curated content for your exams.</p>
-              </div>
-            </div>
-
-            {/* Year Selection Tabs */}
-            <div className="flex bg-muted p-1 rounded-2xl overflow-x-auto no-scrollbar">
-              {['First Year', 'Second Year', 'Third Year', 'Fourth Year', 'Fifth Year', 'Sixth Year'].map(year => (
-                <button
-                  key={year}
-                  onClick={() => {
-                    setSelectedYear(year);
-                    setSelectedModule('All');
-                  }}
-                  className={cn(
-                    "px-4 py-2 rounded-xl text-xs font-black transition-all whitespace-nowrap",
-                    selectedYear === year ? "bg-white text-primary shadow-sm" : "text-muted-foreground hover:text-foreground"
-                  )}
-                >
-                  {year}
-                </button>
-              ))}
-            </div>
+      {/* Main Single Card OSCE 44 */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.3 }}
+        className="relative group max-w-xl mx-auto rounded-3xl p-8 bg-gradient-to-br from-card to-card/50 border border-border/80 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 overflow-hidden"
+      >
+        {/* Glow effect */}
+        <div className="absolute -left-24 -top-24 w-48 h-48 rounded-full bg-primary/10 blur-3xl group-hover:bg-primary/20 transition-all duration-300" />
+        
+        <div className="flex flex-col items-center text-center space-y-6 relative z-10">
+          <div className="w-20 h-20 rounded-2xl bg-gradient-to-tr from-primary to-indigo-600 flex items-center justify-center text-white shadow-xl shadow-primary/20">
+            <Brain size={40} className="animate-pulse" />
           </div>
 
-          {/* Module Selection Chips */}
-          <div className="flex items-center gap-3 overflow-x-auto pb-2 no-scrollbar">
-            <div className="flex items-center gap-2 text-muted-foreground px-2">
-              <Filter size={14} />
-              <span className="text-[10px] font-black uppercase tracking-widest">Modules</span>
-            </div>
-            {['All', ...new Set(decks.filter(d => d.isPublic && d.year === selectedYear).map(d => d.module).filter(Boolean))].map(mod => (
-              <button
-                key={mod as string}
-                onClick={() => setSelectedModule(mod as string)}
-                className={cn(
-                  "px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest border-2 transition-all whitespace-nowrap",
-                  selectedModule === mod 
-                    ? "bg-indigo-600 border-indigo-600 text-white" 
-                    : "border-border text-muted-foreground hover:border-indigo-500/30"
-                )}
-              >
-                {mod as string}
-              </button>
-            ))}
+          <div className="space-y-2">
+            <h2 className="text-3xl font-black text-foreground">اوسكي 44</h2>
+            <span className="inline-block text-[10px] font-black uppercase tracking-widest text-indigo-600 bg-indigo-500/10 px-3 py-1 rounded-full border border-indigo-500/20">
+              OSCE 44 CLINICAL CARDS
+            </span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {decks
-              .filter(d => d.isPublic && 
-                d.year === selectedYear && 
-                (selectedModule === 'All' || d.module === selectedModule)
-              )
-              .map((deck, idx) => (
-                <motion.div
-                  key={deck.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: idx * 0.05 }}
-                  className="group p-6 rounded-3xl bg-indigo-500/[0.03] border-2 border-indigo-500/10 hover:border-indigo-500/30 transition-all cursor-pointer"
-                >
-                  <div className="flex flex-col h-full space-y-4">
-                    <div className="space-y-2">
-                      <div className="flex flex-wrap gap-2">
-                        <span className="text-[9px] font-black uppercase tracking-widest text-indigo-600 bg-indigo-500/10 px-2 py-0.5 rounded-lg border border-indigo-500/20">
-                          {deck.subject}
-                        </span>
-                        {deck.module && (
-                          <span className="text-[9px] font-black uppercase tracking-widest text-emerald-600 bg-emerald-500/10 px-2 py-0.5 rounded-lg border border-emerald-500/20">
-                            {deck.module}
-                          </span>
-                        )}
-                      </div>
-                      <h3 className="text-xl font-bold line-clamp-1">{deck.title}</h3>
-                      <p className="text-sm text-muted-foreground line-clamp-2 leading-relaxed">{deck.description}</p>
-                    </div>
-                    <button 
-                      onClick={async (e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        if (!user) return;
-                        
-                        const isAlreadyAdded = decks.some(d => d.originalDeckId === deck.id && d.userId === user.uid);
-                        if (isAlreadyAdded) {
-                          toast.error('هذه المجموعة موجودة بالفعل في مكتبتك!');
-                          return;
-                        }
+          <p className="text-muted-foreground text-sm leading-relaxed max-w-sm">
+            الفلاش كارد الرسمية والكاملة الخاصة بالاوسكي 44. تم إدراجها بدون أي تعديلات لضمان حصولك على المحتوى الأصلي.
+          </p>
 
-                        const loadingToast = toast.loading('Adding to library...');
-                        try {
-                          const batch = writeBatch(db);
-                          const newDeckRef = doc(collection(db, 'decks'));
-                          batch.set(newDeckRef, {
-                            ...deck,
-                            id: newDeckRef.id,
-                            userId: user.uid,
-                            isPublic: false,
-                            createdAt: Date.now(),
-                            originalDeckId: deck.id
-                          });
-
-                          const cardsSnap = await getDocs(query(collection(db, 'flashcards'), where('deckId', '==', deck.id)));
-                          cardsSnap.docs.forEach(cardDoc => {
-                            const newCardRef = doc(collection(db, 'flashcards'));
-                            batch.set(newCardRef, {
-                              ...cardDoc.data(),
-                              id: newCardRef.id,
-                              deckId: newDeckRef.id,
-                              userId: user.uid,
-                              createdAt: Date.now(),
-                              nextReview: Date.now(),
-                              interval: 0,
-                              repetitions: 0,
-                              status: 'new'
-                            });
-                          });
-
-                          await batch.commit();
-                          toast.success('Deck added to library!', { id: loadingToast });
-                          window.location.reload();
-                        } catch (err) {
-                          toast.error('Failed to add deck', { id: loadingToast });
-                        }
-                      }}
-                      disabled={!!user && decks.some(d => d.originalDeckId === deck.id && d.userId === user.uid)}
-                      className={cn(
-                        "w-full py-3 rounded-2xl font-black text-sm transition-all flex items-center justify-center gap-2 shadow-xl",
-                        user && decks.some(d => d.originalDeckId === deck.id && d.userId === user.uid)
-                          ? "bg-emerald-500/10 text-emerald-600 cursor-default"
-                          : "bg-indigo-600 text-white shadow-indigo-600/20 hover:scale-[1.02]"
-                      )}
-                    >
-                      {user && decks.some(d => d.originalDeckId === deck.id && d.userId === user.uid) ? (
-                        <><CheckCircle2 size={16} /> In Your Library</>
-                      ) : (
-                        <><Plus size={16} /> Add to My Library</>
-                      )}
-                    </button>
-                  </div>
-                </motion.div>
-              ))}
-            {decks.filter(d => d.isPublic && d.year === selectedYear && (selectedModule === 'All' || d.module === selectedModule)).length === 0 && (
-              <div className="col-span-full py-12 text-center bg-muted/20 rounded-[2rem] border-2 border-dashed border-border">
-                <p className="text-muted-foreground font-bold">No decks available for this module yet.</p>
-              </div>
-            )}
+          <div className="w-full pt-4">
+            <a
+              href="/osce44/index.html"
+              className="w-full py-4 rounded-2xl font-black text-base bg-gradient-to-r from-primary to-indigo-600 hover:from-primary/90 hover:to-indigo-600/90 text-white shadow-xl shadow-primary/20 hover:shadow-primary/30 transition-all duration-200 flex items-center justify-center gap-3 hover:scale-[1.02]"
+            >
+              <BookOpen size={20} />
+              ابدأ المذاكرة الآن
+              <ArrowRight size={20} className="transform rotate-180" />
+            </a>
           </div>
         </div>
-      )}
-
-      {/* Main Content (Personal Decks) */}
-      <div className="space-y-6 pt-8 border-t border-border/50">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <div className="p-2.5 bg-primary/10 text-primary rounded-xl">
-              <BookOpen size={22} />
-            </div>
-            <div>
-              <h2 className="text-2xl font-bold text-foreground">My Study Library</h2>
-              <p className="text-sm text-muted-foreground">Your personal and imported flashcard sets.</p>
-            </div>
-          </div>
-          <div className="relative w-full md:w-80">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" size={18} />
-            <input 
-              type="text" 
-              placeholder="Search your library..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-card border border-border focus:ring-2 focus:ring-primary/20 text-sm transition-all shadow-sm"
-            />
-          </div>
-        </div>
-        {loading ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[1, 2, 3].map(i => (
-              <div key={i} className="h-48 rounded-2xl bg-muted animate-pulse" />
-            ))}
-          </div>
-        ) : filteredDecks.filter(d => !d.isPublic || d.userId === user?.uid).length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredDecks.filter(d => !d.isPublic || d.userId === user?.uid).map((deck, idx) => (
-              <motion.div
-                key={deck.id}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: idx * 0.05 }}
-                className="group p-6 rounded-2xl bg-card border border-border hover:border-primary/50 hover:shadow-xl hover:shadow-primary/5 transition-all cursor-pointer relative overflow-hidden"
-              >
-                <div className="absolute top-0 right-0 p-2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <button 
-                    onClick={async (e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                      const cardsSnap = await getDocs(query(collection(db, 'flashcards'), where('deckId', '==', deck.id)));
-                      const cards = cardsSnap.docs.map(doc => doc.data());
-                      const exportData = {
-                        deck: { ...deck, cards: undefined },
-                        cards: cards
-                      };
-                      const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
-                      const url = URL.createObjectURL(blob);
-                      const a = document.createElement('a');
-                      a.href = url;
-                      a.download = `${deck.title.replace(/\s+/g, '_')}_export.json`;
-                      a.click();
-                      toast.success('Deck exported successfully!');
-                    }}
-                    className="p-1 hover:bg-primary/10 rounded-lg transition-colors text-primary"
-                    title="Export Deck"
-                  >
-                    <Download size={18} />
-                  </button>
-                  <Link 
-                    to={`/flashcards/edit/${deck.id}`}
-                    onClick={(e) => e.stopPropagation()}
-                    className="p-1 hover:bg-primary/10 rounded-lg transition-colors text-primary"
-                    title="Edit Deck"
-                  >
-                    <Edit2 size={18} />
-                  </Link>
-                  <button 
-                    onClick={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                      handleResetProgress(deck.id);
-                    }}
-                    className="p-1 hover:bg-orange-500/10 rounded-lg transition-colors text-orange-500"
-                    title="Reset Progress"
-                  >
-                    <RotateCcw size={18} />
-                  </button>
-                  <button 
-                    onClick={async (e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                      if (!confirm('هل أنت متأكد من حذف هذه المجموعة؟')) return;
-                      const loadingToast = toast.loading('جاري الحذف...');
-                      try {
-                        const batch = writeBatch(db);
-                        const cardsSnap = await getDocs(query(collection(db, 'flashcards'), where('deckId', '==', deck.id)));
-                        cardsSnap.docs.forEach(d => batch.delete(d.ref));
-                        batch.delete(doc(db, 'decks', deck.id));
-                        await batch.commit();
-                        toast.success('تم حذف المجموعة بنجاح', { id: loadingToast });
-                        window.location.reload();
-                      } catch (err) {
-                        toast.error('فشل الحذف', { id: loadingToast });
-                      }
-                    }}
-                    className="p-1 hover:bg-rose-500/10 rounded-lg transition-colors text-rose-500"
-                    title="Delete Deck"
-                  >
-                    <Trash2 size={18} />
-                  </button>
-                </div>
-
-
-                <div className="flex flex-col h-full space-y-4">
-                  <div className="space-y-1">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-0.5 rounded-full">
-                      {deck.subject}
-                    </span>
-                    <h3 className="text-xl font-bold group-hover:text-primary transition-colors">{deck.title}</h3>
-                    <p className="text-sm text-muted-foreground line-clamp-2">{deck.description}</p>
-                  </div>
-
-                  <div className="mt-auto pt-4 flex items-center justify-between">
-                    <div className="flex items-center gap-4 text-xs font-medium text-muted-foreground">
-                      <span className="flex items-center gap-1">
-                        <BookOpen size={14} />
-                        {deck.cardCount || 0} cards
-                      </span>
-                      {deck.dueCount! > 0 && (
-                        <span className="flex items-center gap-1 text-orange-500 font-bold">
-                          <Clock size={14} />
-                          {deck.dueCount} due
-                        </span>
-                      )}
-                    </div>
-                    
-                    <Link 
-                      to={`/flashcards/study/${deck.id}`}
-                      className="p-2 rounded-full bg-primary text-primary-foreground translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all shadow-lg shadow-primary/20"
-                    >
-                      <ArrowRight size={18} />
-                    </Link>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        ) : (
-          <div className="flex flex-col items-center justify-center py-20 text-center space-y-4 bg-muted/30 rounded-3xl border-2 border-dashed border-border">
-            <div className="w-16 h-16 rounded-2xl bg-muted flex items-center justify-center text-muted-foreground">
-              <Brain size={32} />
-            </div>
-            <div>
-              <h3 className="text-lg font-medium">No personal decks found</h3>
-              <p className="text-sm text-muted-foreground">Create your own or add an official deck above.</p>
-            </div>
-            <Link to="/flashcards/create" className="px-6 py-2 rounded-xl bg-primary text-primary-foreground font-medium">
-              Create New Deck
-            </Link>
-          </div>
-        )}
-      </div>
+      </motion.div>
     </div>
   );
 };
 
 export default FlashcardsDashboard;
-
-
