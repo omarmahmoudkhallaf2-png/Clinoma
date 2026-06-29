@@ -5,7 +5,7 @@ import {
   Plus, Search, Loader2, 
   BarChart3, HelpCircle, Users, Settings, 
   Database, FileText, Zap, ChevronRight, ChevronLeft, 
-  Download, Activity, Terminal, Edit2, Trash2, X, Shield, Brain, Trophy, ClipboardList, Sparkles
+  Download, Activity, Terminal, Edit2, Trash2, X, Shield, Brain, Trophy, ClipboardList, Sparkles, Layout, Video, CreditCard, BookOpen
 } from 'lucide-react';
 import ExamResultsDashboard from '../ExamResultsDashboard';
 import { db } from '../../lib/firebase';
@@ -18,26 +18,39 @@ import UserManagement from '../../components/admin/UserManagement';
 import CourseManagement from '../../components/admin/CourseManagement';
 import AppConfig from '../../components/admin/AppConfig';
 import AdminAnalytics from '../../components/admin/AdminAnalytics';
-import NoteForm from '../../components/admin/NoteForm';
 import BulkUploadModal from '../../components/admin/BulkUploadModal';
 import CommandBar from '../../components/admin/CommandBar';
 import AuditLogViewer from '../../components/admin/AuditLogViewer';
 import AdminNotifications, { sendAdminNotification } from '../../components/admin/NotificationSystem';
 import ExamManager from '../../components/admin/ExamManager';
 import FlashcardManager from '../../components/admin/FlashcardManager';
+import FlashSpaceManager from '../../components/admin/FlashSpaceManager';
+import DataThemeManager from '../../components/admin/DataThemeManager';
+import VideoManager from '../../components/admin/VideoManager';
+import Leaderboard from '../../components/admin/Leaderboard';
+import ClinomaExpectationsManager from '../../components/admin/ClinomaExpectationsManager';
+import SubscribersManager from '../../components/admin/SubscribersManager';
+import AdminLibraryManager from '../../components/admin/AdminLibraryManager';
 
 
 import { runSystemAudit } from '../../lib/systemHealer';
 import { seedProductionData } from '../../lib/productionSeed';
+import { seedClinicalNutritionData } from '../../lib/seedNutrition';
 import { logAudit } from '../../lib/auditService';
 import type { Question } from '../../types/quiz';
 
 export default function AdminDashboard() {
   const { user, userRole } = useAuth();
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState<'analytics' | 'questions' | 'users' | 'courses' | 'settings' | 'notes' | 'audit' | 'health' | 'formal_results' | 'exams' | 'flashcards'>('analytics');
+  const [activeTab, setActiveTab] = useState<'analytics' | 'questions' | 'users' | 'subscribers' | 'courses' | 'settings' | 'audit' | 'health' | 'formal_results' | 'exams' | 'flashcards' | 'flashspace' | 'data_themes' | 'videos' | 'leaderboard' | 'expectations' | 'library'>(() => {
+    const params = new URLSearchParams(window.location.search);
+    const tab = params.get('tab');
+    const validTabs = ['analytics', 'questions', 'users', 'subscribers', 'courses', 'settings', 'audit', 'health', 'formal_results', 'exams', 'flashcards', 'flashspace', 'data_themes', 'videos', 'leaderboard', 'expectations', 'library'];
+    return (tab && validTabs.includes(tab)) ? (tab as any) : 'analytics';
+  });
   const [questions, setQuestions] = useState<Question[]>([]);
   const [notes, setNotes] = useState<any[]>([]);
+  const [users, setUsers] = useState<any[]>([]);
   const [courses, setCourses] = useState<any[]>([]);
   const [availableSubjects, setAvailableSubjects] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -46,10 +59,13 @@ export default function AdminDashboard() {
   const [auditReports, setAuditReports] = useState<string[]>([]);
   const [isRepairing, setIsRepairing] = useState(false);
 
+  // Clinical Nutrition Seeding States
+  const [isSeedingNutrition, setIsSeedingNutrition] = useState(false);
+  const [nutritionReports, setNutritionReports] = useState<string[]>([]);
+
   // Modals
   const [isBulkModalOpen, setIsBulkModalOpen] = useState(false);
   const [isWizardOpen, setIsWizardOpen] = useState(false);
-  const [isNoteModalOpen, setIsNoteModalOpen] = useState(false);
   const [editingQuestion, setEditingQuestion] = useState<Question | null>(null);
 
   // Filters & Pagination
@@ -62,15 +78,17 @@ export default function AdminDashboard() {
   const fetchData = async () => {
     setLoading(true);
     try {
-      const [qSnap, nSnap, cSnap] = await Promise.all([
+      const [qSnap, nSnap, cSnap, uSnap] = await Promise.all([
         getDocs(query(collection(db, 'questions'), orderBy('createdAt', 'desc'))),
         getDocs(query(collection(db, 'notes'), orderBy('createdAt', 'desc'))),
-        getDocs(query(collection(db, 'courses')))
+        getDocs(query(collection(db, 'courses'))),
+        getDocs(collection(db, 'users'))
       ]);
 
       setQuestions(qSnap.docs.map(doc => ({ id: doc.id, ...doc.data() } as Question)));
       setNotes(nSnap.docs.map(doc => ({ id: doc.id, ...doc.data() })));
       setCourses(cSnap.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+      setUsers(uSnap.docs.map(doc => ({ id: doc.id, ...doc.data() })));
     } catch (err) {
       console.error(err);
       sendAdminNotification('Failed to fetch admin data', 'error');
@@ -123,6 +141,22 @@ export default function AdminDashboard() {
     }
   };
 
+  const handleImportNutrition = async () => {
+    setIsSeedingNutrition(true);
+    setNutritionReports(['Starting Clinical Nutrition Import Sequence...']);
+    try {
+      const result = await seedClinicalNutritionData((log) => {
+        setNutritionReports(prev => [...prev, log]);
+      });
+      sendAdminNotification('Clinical Nutrition Seeded Successfully', 'zap');
+      await fetchData();
+    } catch (err: any) {
+      sendAdminNotification(`Import Failed: ${err.message}`, 'error');
+    } finally {
+      setIsSeedingNutrition(false);
+    }
+  };
+
   const handleBulkUpload = async (data: any[]) => {
     const batch = writeBatch(db);
     data.forEach(q => {
@@ -169,6 +203,74 @@ export default function AdminDashboard() {
     }
   };
 
+  const handleNuclearReset = async () => {
+    const confirm1 = window.confirm('⚠ تحذير: أنت على وشك مسح جميع الأسئلة والفلاش كاردز والنوتس والنتائج. هل أنت متأكد؟');
+    if (!confirm1) return;
+    
+    const confirm2 = window.confirm('🔴 تأكيد نهائي: لن تتمكن من استعادة هذه البيانات أبداً. هل تريد الاستمرار؟');
+    if (!confirm2) return;
+
+    setIsRepairing(true);
+    setAuditReports(['Starting Nuclear Reset Protocol...', 'Initializing deep clean...']);
+    
+    try {
+      const collectionsToClear = ['questions', 'decks', 'flashcards', 'exam_results', 'assistant_chats', 'study_rooms', 'notes'];
+      
+      for (const colName of collectionsToClear) {
+        setAuditReports(prev => [...prev, `Cleaning collection: ${colName}...`]);
+        const q = query(collection(db, colName));
+        const snap = await getDocs(q);
+        
+        if (snap.empty) {
+          setAuditReports(prev => [...prev, `${colName} is already empty.`]);
+          continue;
+        }
+
+        // Use batches for efficiency (500 docs limit per batch)
+        const docs = snap.docs;
+        for (let i = 0; i < docs.length; i += 500) {
+          const batch = writeBatch(db);
+          const chunk = docs.slice(i, i + 500);
+          chunk.forEach(d => batch.delete(d.ref));
+          await batch.commit();
+        }
+        setAuditReports(prev => [...prev, `Successfully cleared ${snap.size} documents from ${colName}.`]);
+      }
+
+      setAuditReports(prev => [...prev, 'Nuclear Reset Complete. System is now CLEAN.', 'Ready for fresh content.']);
+      sendAdminNotification('Database Wiped Successfully', 'zap');
+      fetchData();
+    } catch (err: any) {
+      setAuditReports(prev => [...prev, `CRITICAL ERROR DURING RESET: ${err.message}`]);
+      sendAdminNotification('Reset Failed', 'error');
+    } finally {
+      setIsRepairing(false);
+    }
+  };
+
+  const handleClearQuestions = async () => {
+    if (!window.confirm('⚠ هل أنت متأكد من مسح جميع الأسئلة؟ لا يمكن التراجع عن هذه الخطوة.')) return;
+    setLoading(true);
+    try {
+      const q = query(collection(db, 'questions'));
+      const snap = await getDocs(q);
+      const docs = snap.docs;
+      for (let i = 0; i < docs.length; i += 500) {
+        const batch = writeBatch(db);
+        const chunk = docs.slice(i, i + 500);
+        chunk.forEach(d => batch.delete(d.ref));
+        await batch.commit();
+      }
+      sendAdminNotification(`تم مسح ${snap.size} سؤال بنجاح`, 'zap');
+      await fetchData();
+    } catch (err: any) {
+      sendAdminNotification('فشل في مسح الأسئلة', 'error');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+
   const filteredQuestions = useMemo(() => {
     return questions.filter(q => {
       const matchSearch = !searchQuery || q.text?.toLowerCase().includes(searchQuery.toLowerCase());
@@ -187,7 +289,6 @@ export default function AdminDashboard() {
 
   return (
     <div className="space-y-10 pb-20 animate-in fade-in duration-500 max-w-[1700px] mx-auto px-4 md:px-8 relative">
-      <CommandBar />
 
       {/* Hero Command Center Header */}
       <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 bg-card border-2 border-border p-10 rounded-[4rem] shadow-sm relative overflow-hidden">
@@ -201,7 +302,7 @@ export default function AdminDashboard() {
             <div className="absolute inset-0 bg-primary/20 blur-2xl rounded-full animate-pulse" />
           </div>
           <div>
-            <h1 className="text-6xl font-black tracking-tighter">Command Center</h1>
+            <h1 className="text-6xl font-black tracking-tighter">CLINOMA Command Center</h1>
             <div className="flex items-center gap-3 mt-2">
               <span className="px-3 py-1 bg-emerald-500/10 text-emerald-600 rounded-lg text-[10px] font-black uppercase tracking-widest border border-emerald-500/20">Active Session</span>
               <p className="text-muted-foreground font-black text-lg opacity-40 uppercase tracking-[0.2em]">SaaS OS v3.0</p>
@@ -228,15 +329,21 @@ export default function AdminDashboard() {
         {[
           { id: 'analytics', label: 'Insights', icon: BarChart3 },
           { id: 'questions', label: 'Content Hub', icon: HelpCircle },
-          { id: 'notes', label: 'Knowledge Base', icon: FileText },
           { id: 'users', label: 'Permissions', icon: Users },
+          { id: 'subscribers', label: 'Subscribers', icon: CreditCard },
           { id: 'courses', label: 'Logic Layers', icon: Database },
           { id: 'audit', label: 'Audit Stream', icon: Activity },
           { id: 'health', label: 'System Health', icon: Shield },
           { id: 'settings', label: 'OS Config', icon: Settings },
           { id: 'exams', label: 'Exams', icon: ClipboardList },
           { id: 'flashcards', label: 'Flashcards', icon: Brain },
+          { id: 'expectations', label: 'Clinoma Expectations', icon: Sparkles },
+          { id: 'data_themes', label: 'Data Themes', icon: Database },
+          { id: 'flashspace', label: 'Flash Space', icon: Layout },
+          { id: 'videos', label: 'Video Library', icon: Video },
+          { id: 'leaderboard', label: 'Leaderboard', icon: Trophy },
           { id: 'formal_results', label: 'Formal Results', icon: Trophy },
+          { id: 'library', label: 'المكتبة', icon: BookOpen },
         ].map(tab => (
           <button
             key={tab.id}
@@ -268,7 +375,7 @@ export default function AdminDashboard() {
           </div>
         ) : (
           <>
-            {activeTab === 'analytics' && <AdminAnalytics questions={questions} notes={notes} />}
+            {activeTab === 'analytics' && <AdminAnalytics questions={questions} notes={notes} users={users} />}
             {activeTab === 'questions' && (
               <div className="p-12 space-y-8 animate-in slide-in-from-bottom-8 duration-500">
                 {/* Advanced Search Filter Bar */}
@@ -293,6 +400,13 @@ export default function AdminDashboard() {
                   </select>
                   <div className="flex items-center justify-between px-6 bg-primary/10 rounded-[2.5rem] border-2 border-primary/20">
                     <span className="font-black text-primary text-lg">{filteredQuestions.length}</span>
+                    <button 
+                      onClick={handleClearQuestions}
+                      className="p-3 bg-rose-500 text-white rounded-xl shadow-lg shadow-rose-500/20 hover:scale-110 transition-all ml-2"
+                      title="Clear All Questions"
+                    >
+                      <Trash2 className="w-5 h-5" />
+                    </button>
                     <button className="p-3 bg-primary text-white rounded-xl shadow-lg shadow-primary/20 hover:scale-110 transition-all">
                       <Download className="w-5 h-5" />
                     </button>
@@ -320,38 +434,19 @@ export default function AdminDashboard() {
               </div>
             )}
             {activeTab === 'users' && <UserManagement />}
+            {activeTab === 'subscribers' && <SubscribersManager />}
+            {activeTab === 'leaderboard' && <Leaderboard />}
             {activeTab === 'courses' && <CourseManagement onDeleteCourse={handleDeleteCourse} isDeletingId={isDeleting} />}
             {activeTab === 'formal_results' && <ExamResultsDashboard />}
             {activeTab === 'exams' && <ExamManager />}
             {activeTab === 'audit' && <AuditLogViewer />}
             {activeTab === 'flashcards' && <FlashcardManager />}
+            {activeTab === 'expectations' && <ClinomaExpectationsManager />}
+            {activeTab === 'flashspace' && <FlashSpaceManager />}
             {activeTab === 'settings' && <AppConfig />}
-            {activeTab === 'notes' && (
-              <div className="p-12 space-y-12 animate-in slide-in-from-bottom-8 duration-500">
-                <div className="flex justify-between items-center bg-emerald-500/10 p-10 rounded-[4rem] border-2 border-emerald-500/20">
-                  <div>
-                    <h2 className="text-4xl font-black tracking-tight">Knowledge Base Repository</h2>
-                    <p className="text-emerald-700 font-bold opacity-60">Manage study notes and theoretical content links.</p>
-                  </div>
-                  <button onClick={() => setIsNoteModalOpen(true)} className="px-10 py-5 bg-emerald-600 text-white rounded-[2.5rem] font-black shadow-xl shadow-emerald-600/20 hover:scale-105 transition-all">Create New Entry</button>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {notes.map(note => (
-                    <div key={note.id} className="p-8 bg-secondary/20 rounded-[3rem] border-2 border-border hover:border-primary/40 transition-all group">
-                      <h4 className="text-2xl font-black group-hover:text-primary transition-colors mb-2">{note.title}</h4>
-                      <p className="text-muted-foreground font-bold text-sm mb-6 line-clamp-2">{note.content}</p>
-                      <div className="flex justify-between items-center pt-6 border-t border-border">
-                        <span className="text-[10px] font-black uppercase tracking-widest text-primary bg-primary/10 px-3 py-1 rounded-lg">{note.category}</span>
-                        <div className="flex gap-2">
-                          <button className="p-2 bg-card rounded-lg border border-border hover:bg-primary hover:text-white transition-all"><Edit2 className="w-4 h-4" /></button>
-                          <button className="p-2 bg-card rounded-lg border border-border hover:bg-rose-500 hover:text-white transition-all"><Trash2 className="w-4 h-4" /></button>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
+            { activeTab === 'data_themes' && <DataThemeManager /> }
+            { activeTab === 'videos' && <VideoManager /> }
+            { activeTab === 'library' && <AdminLibraryManager /> }
             {activeTab === 'health' && (
               <div className="p-12 space-y-12 animate-in slide-in-from-bottom-8 duration-500">
                 <div className="bg-primary/5 border-2 border-primary/20 p-12 rounded-[4rem] text-center space-y-10 relative overflow-hidden">
@@ -425,16 +520,52 @@ export default function AdminDashboard() {
                     </div>
                   </div>
 
+                  {/* Clinical Nutrition MCQ Importer Card */}
+                  <div className="max-w-2xl mx-auto p-10 bg-card border-2 border-border rounded-[3.5rem] shadow-xl text-center space-y-6 relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/5 rounded-full -mr-32 -mt-32 blur-[60px]" />
+                    <div className="relative space-y-4">
+                      <div className="w-16 h-16 bg-indigo-500/10 text-indigo-600 rounded-3xl flex items-center justify-center mx-auto shadow-md">
+                        <Database className="w-8 h-8" />
+                      </div>
+                      <div>
+                        <h3 className="text-3xl font-black">Clinical Nutrition Importer</h3>
+                        <p className="text-muted-foreground font-bold text-sm mt-1">
+                          Parses the 172 high-yield questions, structures them into 9 chapters, and seeds the Clinical Nutrition Course and Subject in Firestore.
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <button
+                      onClick={handleImportNutrition}
+                      disabled={isSeedingNutrition}
+                      className="w-full py-6 bg-indigo-600 text-white rounded-3xl font-black text-xl shadow-xl shadow-indigo-600/20 hover:bg-indigo-700 hover:scale-[1.02] active:scale-95 disabled:opacity-50 transition-all flex items-center justify-center gap-3"
+                    >
+                      {isSeedingNutrition ? <Loader2 className="animate-spin w-6 h-6" /> : <Zap className="w-6 h-6 animate-pulse" />}
+                      {isSeedingNutrition ? 'Importing Question Bank...' : 'Import Clinical Nutrition'}
+                    </button>
+                    
+                    {nutritionReports.length > 0 && (
+                      <div className="bg-black text-indigo-400 p-6 rounded-2xl font-mono text-left space-y-2 text-xs border border-indigo-500/20 max-h-48 overflow-y-auto scrollbar-hide">
+                        {nutritionReports.map((report, i) => (
+                          <div key={i} className="flex gap-2">
+                            <span className="opacity-40 text-[10px] mt-0.5">[{new Date().toLocaleTimeString()}]</span>
+                            <span>{report}</span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+
                   <div className="max-w-2xl mx-auto">
                     <button 
-                      onClick={handleSystemRepair}
+                      onClick={handleNuclearReset}
                       disabled={isRepairing}
-                      className="w-full px-12 py-8 bg-primary text-white rounded-[3rem] font-black text-2xl shadow-2xl shadow-primary/30 hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-4 disabled:opacity-50"
+                      className="w-full px-12 py-8 bg-rose-600 text-white rounded-[3rem] font-black text-2xl shadow-2xl shadow-rose-500/30 hover:bg-rose-700 hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-4 disabled:opacity-50"
                     >
-                      {isRepairing ? <Loader2 className="animate-spin w-8 h-8" /> : <Terminal className="w-8 h-8" />}
-                      {isRepairing ? 'Running Deep Repair...' : 'Execute Manual System Override'}
+                      {isRepairing ? <Loader2 className="animate-spin w-8 h-8" /> : <Trash2 className="w-8 h-8" />}
+                      {isRepairing ? 'Cleaning Up...' : 'Nuclear Database Reset'}
                     </button>
-                    <p className="mt-6 text-xs font-bold text-muted-foreground uppercase tracking-widest opacity-40">Safety Lock Active: Superuser permissions required.</p>
+                    <p className="mt-6 text-xs font-bold text-muted-foreground uppercase tracking-widest opacity-40 text-center">Safety Lock Active: This will permanently delete all content.</p>
                   </div>
                 </div>
               </div>
@@ -460,13 +591,6 @@ export default function AdminDashboard() {
         <BulkUploadModal onUpload={handleBulkUpload} onClose={() => setIsBulkModalOpen(false)} />
       )}
 
-      {isNoteModalOpen && (
-        <div className="fixed inset-0 z-[1100] flex items-center justify-center p-4 bg-background/90 backdrop-blur-3xl animate-in zoom-in-95 duration-500">
-          <div className="w-full max-w-5xl">
-            <NoteForm onSave={async (d) => { await addDoc(collection(db,'notes'), {...d, createdAt: new Date()}); await fetchData(); setIsNoteModalOpen(false); }} onCancel={() => setIsNoteModalOpen(false)} />
-          </div>
-        </div>
-      )}
     </div>
   );
 }
