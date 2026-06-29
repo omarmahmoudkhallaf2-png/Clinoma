@@ -145,7 +145,7 @@ export default function AdminDashboard() {
     setIsSeedingNutrition(true);
     setNutritionReports(['Starting Clinical Nutrition Import Sequence...']);
     try {
-      const result = await seedClinicalNutritionData((log) => {
+      const result = await seedClinicalNutritionData((log: string) => {
         setNutritionReports(prev => [...prev, log]);
       });
       sendAdminNotification('Clinical Nutrition Seeded Successfully', 'zap');

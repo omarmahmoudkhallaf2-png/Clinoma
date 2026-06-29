@@ -8,9 +8,10 @@ import {
 interface AnalyticsProps {
   questions: any[];
   notes: any[];
+  users: any[];
 }
 
-export default function AdminAnalytics({ questions, notes }: AnalyticsProps) {
+export default function AdminAnalytics({ questions, notes, users }: AnalyticsProps) {
   const stats = useMemo(() => {
     const categories = questions.reduce((acc: any, q) => {
       acc[q.category] = (acc[q.category] || 0) + 1;
@@ -22,13 +23,25 @@ export default function AdminAnalytics({ questions, notes }: AnalyticsProps) {
       return acc;
     }, {});
 
+    // Calculate Active Users (last 7 days)
+    const sevenDaysAgo = new Date();
+    sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+    
+    const activeUsers = users.filter(u => {
+      if (!u.lastActiveAt) return false;
+      const lastActive = u.lastActiveAt.toDate ? u.lastActiveAt.toDate() : new Date(u.lastActiveAt);
+      return lastActive > sevenDaysAgo;
+    }).length;
+
     return {
       totalQuestions: questions.length,
       totalNotes: notes.length,
+      totalUsers: users.length,
+      activeUsers: activeUsers,
       categories: Object.entries(categories).sort((a: any, b: any) => b[1] - a[1]),
       status: statusCounts
     };
-  }, [questions, notes]);
+  }, [questions, notes, users]);
 
   return (
     <div className="p-10 space-y-10 animate-in fade-in duration-700">
@@ -37,8 +50,8 @@ export default function AdminAnalytics({ questions, notes }: AnalyticsProps) {
         {[
           { label: 'إجمالي الأسئلة', value: stats.totalQuestions, icon: HelpCircle, color: 'primary', trend: '+12%' },
           { label: 'النوتس التعليمية', value: stats.totalNotes, icon: FileText, color: 'indigo', trend: '+5%' },
-          { label: 'المستخدمين النشطين', value: '1,284', icon: Users, color: 'emerald', trend: '+18%' },
-          { label: 'معدل النجاح', value: '76%', icon: Target, color: 'amber', trend: '-2%' },
+          { label: 'المستخدمين النشطين (7 أيام)', value: stats.activeUsers.toLocaleString(), icon: Zap, color: 'emerald', trend: '+18%' },
+          { label: 'إجمالي المشتركين', value: stats.totalUsers.toLocaleString(), icon: Users, color: 'amber', trend: '+24%' },
         ].map((stat, i) => (
           <div key={i} className="bg-card border-2 border-border p-8 rounded-[3rem] shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all group">
             <div className="flex justify-between items-start mb-6">
@@ -131,9 +144,9 @@ export default function AdminAnalytics({ questions, notes }: AnalyticsProps) {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
-            { user: 'Admin Mahmoud', action: 'Added 24 new questions to Physiology', time: '2 mins ago' },
+            { user: 'Admin System', action: 'Added 24 new questions to Physiology', time: '2 mins ago' },
             { user: 'Editor Sara', action: 'Published Cardiology Note set', time: '15 mins ago' },
-            { user: 'Reviewer Omar', action: 'Flagged 2 questions for review', time: '1 hour ago' },
+            { user: 'Reviewer Team', action: 'Flagged 2 questions for review', time: '1 hour ago' },
           ].map((item, i) => (
             <div key={i} className="p-6 bg-secondary/10 border-2 border-border rounded-3xl space-y-3">
               <div className="flex items-center gap-2">
